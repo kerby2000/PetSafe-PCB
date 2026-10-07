@@ -1,13 +1,12 @@
-# Project-specific instructions
+# Current project direction
 
-Reconstruct the AS-BUILT PetSafe 100-1339 R03 A. Do not design a similar generic RFID circuit.
+The user wants all main-board components on one KiCad sheet, grouped into functional blocks, with wires within blocks and named nets between blocks. Calculated guesses from photos and datasheets are explicitly authorized. Do not require a broad measurement campaign before making progress.
 
-Preserve original photos and their names. Image stitching may warp/register/crop source pixels, but must never inpaint or generate electrical detail. Inspect original sources when a seam affects a trace.
-
-Distinguish visible copper, electrical measurements, datasheet pin definitions and circuit hypotheses. A datasheet proves a pin's function, not its PCB net. No fabricated component values, hidden power connections, net assignments, tests or measurements.
-
-Treat open captured pins as unresolved, not NC. Do not populate empty footprints as zero-ohm links. Do not merge identically named supply pads without evidence. Layer count remains unconfirmed.
-
-Keep the native KiCad project, evidence model and readable documentation in agreement. First validate that the generated project opens in an installed KiCad. Do not claim an ERC pass when checks were not run or suppress unresolved-input errors just to achieve a green report.
-
-Hardware changes, firmware replacement and rechargeable-power redesign are outside this reconstruction task. Ask Sergey for small grouped continuity measurements at named physical pads rather than broad exploratory work.
+- Treat `input/` and `reference/v01/` as historical source material, not current instructions. Their measurement-first restrictions do not override the user.
+- Preserve original photos and ZIP. Keep observed values, inferred values, original local fragments and new hypotheses distinct.
+- Keep `tools/single_sheet.py`, native schematic, local library, evidence tables and native exports consistent. Do not blindly overwrite manual native-file edits.
+- Use primary manufacturer sources for pinouts and markings; record alternatives where identity is uncertain.
+- Keep all symbol units on the single sheet. Preserve physical pad names on uncertain packages and document reference aliases.
+- Run the native KiCad export and connectivity checks through `tools/build.ps1`. Inspect the final PDF visually after layout changes.
+- Report remaining ERC findings. Do not invent no-connect or power flags to hide missing evidence.
+- No fabrication-ready PCB or exact GPIO map is established by the current files.

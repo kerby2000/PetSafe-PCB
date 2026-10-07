@@ -1,62 +1,29 @@
+Native KiCad model/netlist cross-check: PASS
 {
-  "scope": "STRUCTURAL_AND_MODEL_CHECKS_ONLY",
-  "native_kicad_available": false,
-  "native_kicad_open_test": "NOT_RUN",
-  "erc": "NOT_RUN",
-  "physical_continuity_checks": "NONE_RECEIVED",
-  "sheet_results": [
-    {
-      "file": "PetSafe_1001339.kicad_sch",
-      "symbol_count": 0,
-      "parse": "PASS",
-      "symbol_definitions_and_pins": "PASS",
-      "no_nc_flags": "PASS"
-    },
-    {
-      "file": "control.kicad_sch",
-      "symbol_count": 29,
-      "parse": "PASS",
-      "symbol_definitions_and_pins": "PASS",
-      "no_nc_flags": "PASS"
-    },
-    {
-      "file": "motor.kicad_sch",
-      "symbol_count": 13,
-      "parse": "PASS",
-      "symbol_definitions_and_pins": "PASS",
-      "no_nc_flags": "PASS"
-    },
-    {
-      "file": "power.kicad_sch",
-      "symbol_count": 25,
-      "parse": "PASS",
-      "symbol_definitions_and_pins": "PASS",
-      "no_nc_flags": "PASS"
-    },
-    {
-      "file": "receiver.kicad_sch",
-      "symbol_count": 33,
-      "parse": "PASS",
-      "symbol_definitions_and_pins": "PASS",
-      "no_nc_flags": "PASS"
-    },
-    {
-      "file": "rf_drive.kicad_sch",
-      "symbol_count": 22,
-      "parse": "PASS",
-      "symbol_definitions_and_pins": "PASS",
-      "no_nc_flags": "PASS"
-    },
-    {
-      "file": "tuning.kicad_sch",
-      "symbol_count": 28,
-      "parse": "PASS",
-      "symbol_definitions_and_pins": "PASS",
-      "no_nc_flags": "PASS"
-    }
-  ],
-  "catalog_entries": 150,
-  "local_net_fragments": 29,
-  "electrically_measured_nets": 0,
-  "unresolved_pads": 290
+  "date": "2026-10-07",
+  "native_tool": "Eeschema 9.0.7",
+  "native_load_and_export": "PASS",
+  "single_sheet": "PASS",
+  "catalog_components": 150,
+  "symbol_units": 154,
+  "physical_pins": 352,
+  "proposed_net_partitions": 81,
+  "netlist_partition_comparison": "PASS",
+  "unintended_multi_pin_nets": 0,
+  "retained_original_visual_fragments": 29,
+  "original_photo_checksums": "PASS (26 files)",
+  "unresolved_physical_pins": 63,
+  "erc_total": 84,
+  "erc_by_type": {
+    "power_pin_not_driven": 5,
+    "pin_not_connected": 63,
+    "label_dangling": 14,
+    "pin_not_driven": 2
+  },
+  "erc_status": "OPEN FINDINGS - unresolved pins, pending inter-block assignments and unasserted power drivers",
+  "gui_open": "NOT_TESTED (native CLI validated)",
+  "hardware_verification": "NOT_PERFORMED",
+  "physical_pcb_layout": "NOT_CREATED",
+  "schematic_sha256": "20f4bc7d06ee830fd658d84b9304fe6ff012cb0bcb0db317670d2912fa131a6a",
+  "input_zip_sha256": "151a5d246b051c6ee7edf50bac941261d3d87defedf9590f2ce442158552b52d"
 }
