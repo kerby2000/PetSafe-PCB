@@ -1,4 +1,4 @@
-# PetSafe functional reconstruction, v0.2
+# PetSafe functional reconstruction, v0.3
 
 The deliverable is one editable KiCad schematic sheet with all 150 entries in the original main-board catalog. It uses wires inside functional blocks and labels between blocks. The 150 entries include named pads, test points and unpopulated footprints; they are not 150 fitted components. The separate PIR daughterboard appears in the photos, but only its main-board connector and interface are modeled here.
 
@@ -11,7 +11,9 @@ The user's instruction to make calculated guesses governs this revision. The imp
 - All 29 original `VISUAL_LOCAL` fragments remain joined in the new model. Their source photographs remain in `original_visual_fragments` in the JSON. Even these fragments are photographic evidence, not continuity results.
 - Every added link is provisional. `evidence/proposed_nets.csv` distinguishes each proposed net and the original fragments it contains. Merging several visual fragments into one net is an inference.
 - Open pins mean unresolved; they do not carry fabricated no-connect flags. No power flags were added just to silence ERC.
-- U2 and U3 have separate functional and supply units on this same sheet. The local library uses conventional symbol shapes while retaining photographed pad IDs on uncertain packages.
+- U2 and U3 have separate functional and supply units on this same A2 sheet. All 22 distinct symbol definitions come from the installed KiCad 10 libraries, placed through the KiCad MCP server. Library pin numbers are mapped to photographed pad IDs in `evidence/pin_crosswalk.json`.
+- U1 and U5 use temporary numbered stock connector symbols because exact vendor symbols are absent. U6 and Q8 use numbered placeholders because identity is unresolved. These are package-pin placeholders, not assertions that the physical parts are connectors. The user was asked for vendor/SnapEDA symbols; none have been fabricated.
+- [LIBRARIES_AND_ALTERNATIVES.md](LIBRARIES_AND_ALTERNATIVES.md) records stock symbols, package choices and Western alternatives. The fitted identities remain in the reconstruction. Selecting an alternative does not authorize changing the board pin map.
 
 ## Identity candidates
 
@@ -102,8 +104,8 @@ U6 is shown in a generic LDO application with input/output capacitors, explicitl
 
 ## Validation and limits
 
-Native KiCad 9.0.7 loaded the schematic and exported one-page vector PDF, SVG and XML netlist. All 150 references and 352 physical pins are retained; 154 drawn symbol units represent the same 150 entries. The validator compares entire pin-set partitions against the independent native netlist, checks all 29 original fragments and verifies all 26 source-photo checksums. It found no unintended multi-pin merges or missing proposed net partitions.
+Native KiCad 10.0.5 loaded the schematic and exported one-page A2 vector PDF, SVG and XML netlist. All 150 references and 352 physical pins are retained; 154 drawn symbol units represent the same 150 entries. The validator translates the documented physical-pad crosswalk and compares entire pin-set partitions against the native netlist, checks all 29 original fragments and verifies all 26 source-photo checksums. It found no unintended multi-pin merges or missing proposed net partitions.
 
-ERC has 84 findings: 63 unconnected physical pins, 14 one-ended signal labels, five undriven power checks and two undriven inputs. These are reported openly, not excluded by settings. They largely represent unassigned GPIO/controls, spare pads, unknown devices and power not declared by artificial flags. The native file has not been opened in the GUI. Hardware verification, exact layer count, dimensioned footprint placement, routed PCB generation and firmware recovery were not performed.
+ERC has 80 findings: 63 unconnected physical pins, 14 isolated pin labels, and three undriven power checks. No off-grid endpoints or dangling wire ends remain. These findings are reported, not excluded by settings. Placeholder pins are passive, so the reduced count does not indicate stronger electrical verification: their actual input/output/power rules cannot yet be checked. The native file has not been opened in the GUI. Hardware verification, exact layer count, dimensioned footprint placement, routed PCB generation and firmware recovery were not performed.
 
 This is a reviewable reconstruction hypothesis, not a confirmed replacement-board design. The remaining high-value questions are the exact Q8 and U6 identities and the hidden PIC-to-block routes. No broad measurement campaign is required to review the work already completed.

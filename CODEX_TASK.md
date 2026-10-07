@@ -1,7 +1,9 @@
-# Continue the single-sheet reconstruction
+# Continue the KiCad 10 single-sheet reconstruction
 
-Read README.md and docs/RECONSTRUCTION.md, then open the one active schematic. The user's request for a functional drawing with calculated guesses takes precedence over the imported v0.1 instructions. The full original package is preserved in input/ and reference/v01/.
+Read README.md and docs/LIBRARIES_AND_ALTERNATIVES.md. Use the existing connected KiCad MCP Server with installed KiCad 10.0.5. The active schematic is one A2 sheet containing all 150 catalog entries with 22 stock symbol definitions and no custom library.
 
-Current delivered state: all 150 original main-board catalog entries on one A0 sheet, 29 retained photo-local fragments, 81 proposed net partitions, and native KiCad 9.0.7 exports validated against the model. U1 and U2 now have strong manufacturer-marking matches. Q8, U6, the exact GPIO map, and filter values remain unresolved.
+Preserve the normal KiCad pin numbers and evidence/pin_crosswalk.json mappings to all 352 physical pads. The 81 modeled net partitions and 29 original visual fragments pass native export checks. ERC has 80 open findings; placeholders have passive pins and incomplete checking. The reconstruction remains inferred, not hardware verified.
 
-Useful future work is focused identification of Q8 and U6, assessment of receiver/tuning alternatives, or reconstruction of the PIR daughterboard if requested. Do not silently present hypotheses as measured facts. Do not recreate the old six-sheet grid.
+Ask for vendor/SnapEDA symbols before creating missing custom symbols. U1 (S-1200B45) and U5 (MX512H) await exact symbols; U6 and Q8 await identification. SGM8542 uses the stock generic dual op-amp. MCP6002-I/SN and DRV8212PDSGR are documented Western alternatives, not substitutions applied to this board.
+
+tools/build.ps1 exports/validates current files without regeneration. -Regenerate explicitly recreates routing around the saved MCP placement template; preserve manual edits before using it. The old custom-symbol author is retired under reference/v02 and refuses direct execution. Never reinstate the old six-sheet grid or silently return to KiCad 9.

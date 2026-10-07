@@ -4,7 +4,7 @@ Coordinate unit = 2.54 mm. All circuit routes are explicitly authored.
 from pathlib import Path
 from collections import defaultdict
 import json, uuid, math, csv
-ROOT=Path(__file__).resolve().parents[1]; OUT=ROOT/'schematic'
+ROOT=Path(__file__).resolve().parents[2]; OUT=ROOT/'schematic'
 BASE=json.loads((ROOT/'reference/v01/evidence/reconstruction.json').read_text())
 C={c['ref']:dict(c) for c in BASE['components']}
 NS=uuid.UUID('c5ee9f10-9018-4456-81b4-a963cfead728')
@@ -373,4 +373,4 @@ def finish():
     print(json.dumps(dict(components=len(C),symbol_units=len(INST),physical_pins=len(PINS),proposed_nets=len(nets),unresolved_pins=len(unresolved),preserved_visual_fragments=len(BASE['nets']),schematic=str(OUT/(PROJECT+'.kicad_sch'))),indent=2))
 
 if __name__=='__main__':
-    power();controller();motor_ui();rf();receiver();tuning();pir_options();legend();finish()
+    raise SystemExit('Historical v0.2 author retired. Use the KiCad 10 MCP placement workflow and tools/build.ps1.')

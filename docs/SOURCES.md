@@ -1,6 +1,6 @@
 # Source register
 
-Manufacturer pinouts and application examples establish plausible functions, not photographed board connectivity. Accessed 2026-10-07. Four key PDFs are saved under `datasheets/`; SHA-256 checksums are in `evidence/datasheet_manifest.json`.
+Manufacturer pinouts and application examples establish plausible functions, not photographed board connectivity. Accessed 2026-10-07 and 2026-10-08. Key PDFs are saved under `datasheets/`; SHA-256 checksums are in `evidence/datasheet_manifest.json`.
 
 | Ref | Primary source | What it supports |
 |---|---|---|
@@ -16,7 +16,7 @@ Manufacturer pinouts and application examples establish plausible functions, not
 | Tuning alternative | [Nexperia PBSS5140T](https://assets.nexperia.com/documents/data-sheet/PBSS5140T.pdf) | Alternative PNP candidate; short-code identification remains ambiguous. |
 | D1 | [Nexperia BAV99](https://assets.nexperia.com/documents/data-sheet/BAV99.pdf) | A7 marking, SOT23 dual-series diode and pin map. Current Diodes-branded BAV99 uses a different marking; do not use that to prove A7. |
 | U6 alternative | [Richtek RT9818](https://www.richtek.com/assets/product_file/RT9818/DS9818-12.pdf) | Voltage-supervisor family exists in a five-pin package. The WN association comes from historical Richtek marking material [mirrored here](https://www.rom.by/files/Richtek_Marking_Code.PDF); it is a lead, not an exact identification. |
-| Native format | [KiCad schematic format](https://dev-docs.kicad.org/en/file-formats/sexpr-schematic/) | Embedded library, symbol units, wires, junctions, instances and labels. Native validation used the official 9.0.7 CLI. |
+| Native format | [KiCad schematic format](https://dev-docs.kicad.org/en/file-formats/sexpr-schematic/) | Embedded library, symbol units, wires, junctions, instances and labels. Native validation uses the installed 10.0.5 CLI. |
 
 ## Photographs used for circuit decisions
 
@@ -32,3 +32,12 @@ Manufacturer pinouts and application examples establish plausible functions, not
 | IMG_2421 and overview photos | Separate PIR daughterboard context; its internal circuit is not reconstructed |
 
 Full provenance remains in the original component model and photo manifest. Existing image registration is an approximate alignment, not a dimensioned board or a verified layer-stack reconstruction. No exact schematic of this board was adopted from an unrelated product.
+
+## KiCad 10 rebuild and Western alternatives (2026-10-08)
+
+- [KiCad MCP Server](https://github.com/mixelpixx/KiCAD-MCP-Server): already installed and connected. Used for standard-library searches, blank schematic creation, all 150 component placements, extra units, footprint inspection and PDF/SVG export.
+- [Microchip MCP6001/2/4 DS20001733L](https://ww1.microchip.com/downloads/aemDocuments/documents/MSLD/ProductDocuments/DataSheets/MCP6001-1R-1U-2-4-1-MHz-Low-Power-Op-Amp-DS20001733L.pdf): page 1 pinout, pages 3-4 operating range, current, offset and bandwidth; SOIC package drawings. Saved as MCP6002.pdf.
+- [TI DRV8212P Rev. A](https://www.ti.com/lit/ds/symlink/drv8212p.pdf): page 4 pin functions and exposed pad, page 5 recommended operating conditions, typical application and package drawing. Saved as DRV8212P.pdf. Preferred motor-driver redesign candidate because MX512H advertises a 3 A peak.
+- [TI DRV8837 Rev. F](https://www.ti.com/lit/ds/symlink/drv8837.pdf): alternative lower-current driver; its separate supplies, sleep input and WSON package differ from MX512H. Saved as DRV8837.pdf.
+
+Library existence and footprint names were verified against the user's installed KiCad 10 libraries through MCP, not inferred from online search results. See LIBRARIES_AND_ALTERNATIVES.md for compatibility boundaries.

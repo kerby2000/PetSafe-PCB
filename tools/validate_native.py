@@ -8,6 +8,7 @@ def main():
     m=json.loads((ROOT/'evidence/reconstruction.json').read_text())
     native=ET.parse(ROOT/'output/PetSafe_netlist.xml')
     def translated(ep):
+        if 'native_pin_crosswalk' in m:return m['native_pin_crosswalk'][ep]
         r,p=ep.rsplit('.',1)
         return m['reference_map'].get(r,r)+'.'+p
     actual={frozenset(n.attrib['ref']+'.'+n.attrib['pin'] for n in net.findall('node')):net.attrib['name'] for net in native.findall('./nets/net')}
@@ -28,10 +29,12 @@ def main():
     erc=json.loads((ROOT/'output/erc.json').read_text())
     violations=[v for sheet in erc['sheets'] for v in sheet['violations']]
     counts=Counter(v['type'] for v in violations)
-    assert set(counts)<={'pin_not_connected','label_dangling','power_pin_not_driven','pin_not_driven'},counts
+    unexpected=set(counts)-{'pin_not_connected','isolated_pin_label','power_pin_not_driven','pin_not_driven'}
+    assert not unexpected,counts
     sch=ROOT/'schematic/PetSafe_1001339.kicad_sch'
     assert '(no_connect ' not in sch.read_text()
-    report=dict(date='2026-10-07',native_tool=native.findtext('./design/tool'),native_load_and_export='PASS',single_sheet='PASS',catalog_components=150,symbol_units=154,physical_pins=352,proposed_net_partitions=len(expected),netlist_partition_comparison='PASS',unintended_multi_pin_nets=0,retained_original_visual_fragments=len(old['nets']),original_photo_checksums=f'PASS ({len(manifest)} files)',unresolved_physical_pins=len(m['unresolved_pins']),erc_total=len(violations),erc_by_type=dict(counts),erc_status='OPEN FINDINGS - unresolved pins, pending inter-block assignments and unasserted power drivers',gui_open='NOT_TESTED (native CLI validated)',hardware_verification='NOT_PERFORMED',physical_pcb_layout='NOT_CREATED',schematic_sha256=sha(sch),input_zip_sha256=sha(ROOT/'input/PetSafe_KiCad_RE_v01.zip'))
+    assert '(lib_id "PetSafe_Working:' not in sch.read_text()
+    report=dict(date='2026-10-08',native_tool=native.findtext('./design/tool'),native_load_and_export='PASS',single_sheet='PASS',catalog_components=150,symbol_units=154,physical_pins=352,stock_library_symbols=22,custom_symbols=0,proposed_net_partitions=len(expected),netlist_partition_comparison='PASS',unintended_multi_pin_nets=0,retained_original_visual_fragments=len(old['nets']),original_photo_checksums=f'PASS ({len(manifest)} files)',unresolved_physical_pins=len(m['unresolved_pins']),erc_total=len(violations),erc_by_type=dict(counts),erc_status='OPEN FINDINGS - see ERC report; placeholders have passive pins and cannot check IC drive rules',gui_open='NOT_TESTED (native CLI validated)',hardware_verification='NOT_PERFORMED',physical_pcb_layout='NOT_CREATED',schematic_sha256=sha(sch),input_zip_sha256=sha(ROOT/'input/PetSafe_KiCad_RE_v01.zip'))
     (ROOT/'evidence/validation.json').write_text(json.dumps(report,indent=2),encoding='utf-8',newline='\n')
     (ROOT/'evidence/validation_log.txt').write_text('Native KiCad model/netlist cross-check: PASS\n'+json.dumps(report,indent=2)+'\n',encoding='utf-8',newline='\n')
     print(json.dumps(report,indent=2))

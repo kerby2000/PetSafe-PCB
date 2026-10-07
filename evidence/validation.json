@@ -1,28 +1,29 @@
 {
-  "date": "2026-10-07",
-  "native_tool": "Eeschema 9.0.7",
+  "date": "2026-10-08",
+  "native_tool": "Eeschema 10.0.5",
   "native_load_and_export": "PASS",
   "single_sheet": "PASS",
   "catalog_components": 150,
   "symbol_units": 154,
   "physical_pins": 352,
+  "stock_library_symbols": 22,
+  "custom_symbols": 0,
   "proposed_net_partitions": 81,
   "netlist_partition_comparison": "PASS",
   "unintended_multi_pin_nets": 0,
   "retained_original_visual_fragments": 29,
   "original_photo_checksums": "PASS (26 files)",
   "unresolved_physical_pins": 63,
-  "erc_total": 84,
+  "erc_total": 80,
   "erc_by_type": {
-    "power_pin_not_driven": 5,
     "pin_not_connected": 63,
-    "label_dangling": 14,
-    "pin_not_driven": 2
+    "power_pin_not_driven": 3,
+    "isolated_pin_label": 14
   },
-  "erc_status": "OPEN FINDINGS - unresolved pins, pending inter-block assignments and unasserted power drivers",
+  "erc_status": "OPEN FINDINGS - see ERC report; placeholders have passive pins and cannot check IC drive rules",
   "gui_open": "NOT_TESTED (native CLI validated)",
   "hardware_verification": "NOT_PERFORMED",
   "physical_pcb_layout": "NOT_CREATED",
-  "schematic_sha256": "20f4bc7d06ee830fd658d84b9304fe6ff012cb0bcb0db317670d2912fa131a6a",
+  "schematic_sha256": "16073e7f02458c681e5a5203e9ba3b643f111a01af4b6f3b8565ab83d8d6c6a6",
   "input_zip_sha256": "151a5d246b051c6ee7edf50bac941261d3d87defedf9590f2ce442158552b52d"
 }
