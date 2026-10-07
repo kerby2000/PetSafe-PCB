@@ -2,6 +2,10 @@
 
 One editable **A2 KiCad 10 sheet**, with all 150 main-board catalog entries grouped into functional blocks. Wires connect parts within blocks; named nets connect blocks. This revision uses the installed **KiCad 10.0.5** and **KiCad MCP Server**, with **22 unmodified stock symbol definitions and zero custom symbols**.
 
+## Follow-up investigation (2026-10-08)
+
+[U6 / Q8 investigation](docs/U6_Q8_INVESTIGATION.html) ranks RT9818A-33PB as U6's leading named candidate and a complementary MOSFET pair as Q8's leading circuit role. It documents the mirrored U6 placeholder numbering, conditional Q8 pin map, and standard-library Western comparison parts. The native v0.3 circuit remains unchanged; H14 must not be treated as an established LDO circuit. U1/U5 vendor files or links are still pending.
+
 ## Open the result
 
 - `index.html`: zoomable offline viewer, searchable inventory and photo links.

@@ -56,3 +56,9 @@ This table matches functions, not physical pad locations. Motor polarity and tru
 Standard SOT-23, SOT-23-5, SOT-23-6 and SOIC footprints are assigned only for identified/candidate packages. Assignment is a package-family hypothesis, not a measurement of the photographed land pattern. Passive sizes, connector pitches, Q8, U6 and unusual LED/button pads remain unassigned where the photographs do not establish dimensions.
 
 The remaining exact-symbol requests are **S-1200B45-M5T1x** and **MX512H (SOP-8)**. Vendor or SnapEDA files can replace their temporary stock placeholders after checking pin maps. SGM8542 does not need a custom drawing: the stock generic dual op-amp already represents its actual pinout. Q8 and U6 need identity clarification before sourcing exact symbols. The old custom library and generator are archived in `reference/v02/`; they are not registered in the active project.
+
+## U6 / Q8 follow-up (2026-10-08)
+
+See the [photo and pin-map investigation](U6_Q8_INVESTIGATION.html). MCP found no exact RT9818 symbol. It confirmed `Transistor_FET:DMC3071LVT` and `Transistor_FET:DMC2053UVT`, including their two-unit six-pin definitions; DMC3071LVT has the standard `Package_TO_SOT_SMD:TSOT-23-6` footprint. These are Western MOSFET topology comparisons, not identified fitted parts or approved substitutes. Their C71 / AR2 markings do not match Q8's 372A. U6 still has no selected Western equivalent. The native placeholders are unchanged, and their provisional numbers must be translated using the investigation before any replacement.
+
+The pending U1/U5 vendor imports now have explicit manufacturer pin contracts in `evidence/vendor_symbol_requirements.json`. No vendor files were received and no custom symbol was created.

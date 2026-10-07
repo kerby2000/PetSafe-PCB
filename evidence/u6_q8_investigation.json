@@ -1,0 +1,146 @@
+{
+  "date": "2026-10-08",
+  "status": "INVESTIGATION_ONLY; native v0.3 unchanged; vendor files pending",
+  "schematic_sha256": "16073e7f02458c681e5a5203e9ba3b643f111a01af4b6f3b8565ab83d8d6c6a6",
+  "photo_derivatives": [
+    {
+      "source": "photos/originals/IMG_2431.jpg",
+      "output": "photos/investigation/Q8_detail.png",
+      "crop_xyxy": [
+        310,
+        990,
+        1070,
+        1930
+      ],
+      "counterclockwise_rotation_degrees": 180
+    },
+    {
+      "source": "photos/originals/IMG_2435.jpg",
+      "output": "photos/investigation/U6_detail.png",
+      "crop_xyxy": [
+        690,
+        1070,
+        1300,
+        1620
+      ],
+      "counterclockwise_rotation_degrees": 90
+    }
+  ],
+  "U6": {
+    "observed_mark": "WN23?",
+    "leading_named_candidate": "RT9818A-33PB",
+    "confidence": "moderate at most; unconfirmed",
+    "manufacturer_mark": "WN-",
+    "mark_source": "docs/datasheets/Richtek_Marking_2008.pdf, PDF p39 / printed C-39",
+    "candidate_package_map": {
+      "R3": "1",
+      "R2": "2",
+      "R1": "3",
+      "L1": "4",
+      "L2": "5"
+    },
+    "candidate_RT9818_functions": {
+      "1": "RESET_OD_ACTIVE_LOW",
+      "2": "VDD",
+      "3": "GND",
+      "4": "NC",
+      "5": "NC"
+    },
+    "candidate_BD46281G_functions": {
+      "1": "ER",
+      "2": "SUB_GND",
+      "3": "GND",
+      "4": "RESET_CMOS_ACTIVE_LOW",
+      "5": "VDD"
+    },
+    "observations": [
+      "Five leads, original photo left two/right three.",
+      "R2 appears routed toward C36; R1 toward C37 area. Not continuity verified.",
+      "No clear outgoing route established for either left-side lead.",
+      "Empty U6A three-pad site nearby; relationship unproved."
+    ],
+    "conflicts": [
+      "v0.3 connector numbering is mirrored relative to conventional SOT-23-5 top view.",
+      "v0.3 LDO roles cannot be carried into the supervisor candidate.",
+      "RT9818 cannot provide a regulated J3 supply from its reset output."
+    ],
+    "alternatives": [
+      {
+        "part": "BD46281G",
+        "rank": "secondary",
+        "reason": "WN manufacturer mark; all five pins used, unlike apparent two-pin-side routing"
+      },
+      {
+        "part": "unknown LDO",
+        "rank": "lower",
+        "reason": "capacitors alone do not establish regulation; no verified WN manufacturer match"
+      }
+    ],
+    "native_mapping_changed": false,
+    "native_symbol_changed": false,
+    "stock_exact_symbol_search": "RT9818: no results via KiCad MCP"
+  },
+  "Q8": {
+    "observed_mark": "372A",
+    "exact_part_identified": false,
+    "leading_role": "complementary N/P MOSFET pair",
+    "role_confidence": "moderate; based on two drives and apparent common outer pads",
+    "candidate_package_map_if_dot_is_pin1": {
+      "T3": "1",
+      "T2": "2",
+      "T1": "3",
+      "B1": "4",
+      "B2": "5",
+      "B3": "6"
+    },
+    "DMC3071LVT_comparison_pin_functions": {
+      "1": "G_N",
+      "2": "S_P",
+      "3": "G_P",
+      "4": "D_P",
+      "5": "S_N",
+      "6": "D_N"
+    },
+    "observations": [
+      "R8/R9 are marked 221 (220 ohms) and feed T1/T3.",
+      "B1/B3 appear to share copper around the B2 two-via island. Not continuity verified.",
+      "Pin-one-like dot appears by original T3."
+    ],
+    "comparison_parts": [
+      {
+        "part": "DMC3071LVT",
+        "mark": "C71",
+        "stock_symbol": "Transistor_FET:DMC3071LVT",
+        "footprint": "Package_TO_SOT_SMD:TSOT-23-6",
+        "identification": false,
+        "approved_substitute": false
+      },
+      {
+        "part": "DMC2053UVT",
+        "mark": "AR2",
+        "stock_symbol": "Transistor_FET:DMC2053UVT",
+        "identification": false,
+        "approved_substitute": false
+      }
+    ],
+    "rejected_short_code_lead": {
+      "part": "SPP3437",
+      "mark": "37",
+      "reason": "single P-channel in SOT-363; does not provide two independent gates"
+    },
+    "remaining_alternative": "unknown dual BJT",
+    "native_mapping_changed": false,
+    "native_symbol_changed": false
+  },
+  "validation_scope": "Document, package-map and provenance checks only. No new KiCad export, hardware tests or continuity checks.",
+  "validation": {
+    "json": "PASS",
+    "local_report_links": "PASS",
+    "source_photo_hashes": "PASS (26)",
+    "datasheet_hashes": "PASS (13)",
+    "vendor_pin_contracts": "PASS (13 pins)",
+    "native_schematic_hash": "UNCHANGED",
+    "browser_preview": "BLOCKED by browser URL policy for file: protocol; no workaround attempted",
+    "visual_report_layout": "NOT_VERIFIED"
+  }
+}

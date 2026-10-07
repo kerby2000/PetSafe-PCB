@@ -4,6 +4,10 @@ The deliverable is one editable KiCad schematic sheet with all 150 entries in th
 
 The user's instruction to make calculated guesses governs this revision. The imported v0.1 documents requested a measurement-first workflow; those documents are historical reference, not instructions overriding the current task. The original ZIP, photographs, capture and source model remain available for comparison.
 
+## Follow-up identity review
+
+The [U6 / Q8 investigation](U6_Q8_INVESTIGATION.html) supersedes the candidate ranking below, but has not changed the v0.3 native circuit. RT9818A-33PB is now the leading named U6 candidate; a complementary N/P MOSFET pair is the leading Q8 role. The U6 crosswalk below is the current placeholder mapping, **not conventional SOT-23-5 numbering**: for the photographed three-lead right side, conventional numbers are R3=1, R2=2, R1=3, L1=4, L2=5. The old LDO role assignments cannot be carried into a supervisor replacement. Conditional Q8 pin numbering and comparison parts are recorded separately.
+
 ## How to read the drawing
 
 - `H_*` names identify inferred inter-block nets. A name without this prefix is not a measurement claim: local wiring also contains hypotheses.

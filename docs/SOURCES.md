@@ -41,3 +41,13 @@ Full provenance remains in the original component model and photo manifest. Exis
 - [TI DRV8837 Rev. F](https://www.ti.com/lit/ds/symlink/drv8837.pdf): alternative lower-current driver; its separate supplies, sleep input and WSON package differ from MX512H. Saved as DRV8837.pdf.
 
 Library existence and footprint names were verified against the user's installed KiCad 10 libraries through MCP, not inferred from online search results. See LIBRARIES_AND_ALTERNATIVES.md for compatibility boundaries.
+
+## U6 / Q8 investigation (2026-10-08)
+
+- [Richtek RT9818 DS9818-12](https://www.richtek.com/assets/product_file/RT9818/DS9818-12.pdf), saved as `RT9818.pdf`: page 3 top-view package numbering and reset/supply/NC functions.
+- [Richtek marking information, mirrored by Jotrin](https://www.jotrin.it/userfiles/downloadfile/202003111510585708.pdf), saved as `Richtek_Marking_2008.pdf`: actual document MI-080418, printed C-39 / PDF page 39 maps RT9818A-33PB to WN-. This is the inspected local marking source for the follow-up.
+- [ROHM BD45/BD46 Rev.007, mirrored by RS](https://docs.rs-online.com/7ad0/0900766b8161bcad.pdf), saved as `BD45_BD46.pdf`: page 1 five-pin map and page 3 WN = BD46281, 2.8 V, 100 ms CMOS detector. Secondary U6 candidate.
+- [Diodes DMC3071LVT](https://www.diodes.com/datasheet/download/DMC3071LVT.pdf) and [DMC2053UVT](https://www.diodes.com/datasheet/download/DMC2053UVT.pdf), saved under those names: page 1 complementary-pair pin maps, TSOT26 packages and C71 / AR2 markings. Topology comparisons only.
+- [SYNC Power SPP3437](https://www.syncpower.com/datasheet/SPP3437.pdf), saved as `SPP3437.pdf`: pages 1-2 show 37 marking but a single P-channel device with multiple drain pins, not the leading two-gate hypothesis.
+
+The [investigation report](U6_Q8_INVESTIGATION.html) separates manufacturer facts from new photo interpretations and the unchanged native v0.3 circuit. The derivative crops are reproducible from crop bounds/rotations in `evidence/u6_q8_investigation.json`; source photographs remain untouched.

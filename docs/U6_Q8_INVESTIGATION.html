@@ -1,0 +1,77 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>PetSafe | U6 and Q8 investigation</title>
+<style>
+*{box-sizing:border-box}body{margin:0;background:#f4f5f3;color:#20332f;font:16px/1.6 system-ui,sans-serif}main{max-width:1120px;margin:auto;padding:36px 28px 70px}h1{font-size:38px;line-height:1.15;letter-spacing:-1px}h2{margin-top:40px}h3{margin-top:28px}a{color:#006d64}p{max-width:950px}.eyebrow{color:#52756c;font-size:13px;text-transform:uppercase;letter-spacing:1.5px}.note{padding:18px 22px;border-left:4px solid #b08a2c;background:#fff5d9}.cards{display:grid;grid-template-columns:1fr 1fr;gap:22px}.card{padding:20px 24px;background:white;border:1px solid #d5e2db;border-radius:10px}.card h2{margin-top:0}table{border-collapse:collapse;width:100%;background:white;font-size:14px}td,th{padding:11px 13px;text-align:left;vertical-align:top;border-bottom:1px solid #dce5df}th{background:#e5ede8}.scroll{overflow:auto}figure{margin:22px 0;background:white;padding:18px;border:1px solid #d5e2db}figure img{display:block;max-width:100%;max-height:580px;margin:auto}figcaption{font-size:13px;color:#52756c;margin-top:12px}code{font-size:.9em}small{color:#52756c}@media(max-width:740px){.cards{grid-template-columns:1fr}main{padding:20px}h1{font-size:30px}}@media print{body{background:white}main{padding:0}.cards{display:block}figure img{max-height:350px}table{font-size:11px}}
+</style></head><body><main>
+<a href="../index.html">&larr; Project review</a>
+<p class="eyebrow">100-1339 R03 A &middot; photograph and manufacturer review &middot; 8 October 2026</p>
+<h1>U6 and Q8: stronger candidates,<br>explicit pin-map conflicts</h1>
+<p>This investigation supplements the v0.3 schematic. It does not certify either device or the board connectivity. The original photographs, package geometry and manufacturer documents are kept separate from the circuit guesses already drawn.</p>
+<div class="cards"><article class="card"><h2>U6 / WN23</h2><p><b>Leading named candidate: Richtek RT9818A-33PB, a voltage supervisor.</b> Historical manufacturer marking information supports WN-. The five-pin package and apparently unused two-pin side are compatible. The suffix and all local traces are not resolved well enough for a confirmed identification.</p><p>The selected LDO application loses confidence. Its placeholder numbering is also mirrored relative to conventional SOT-23-5 numbering.</p></article>
+<article class="card"><h2>Q8 / 372A</h2><p><b>Leading circuit-role hypothesis: complementary N/P MOSFET pair.</b> Two resistor-fed outer pins and the apparent common connection of the opposite outer pads support a half-bridge arrangement.</p><p><b>DMC3071LVT</b> is a useful Western comparison with a stock KiCad symbol and this gate/drain arrangement. Its C71 marking differs; it is not the identified fitted part or an approved drop-in replacement.</p></article></div>
+<p class="note"><b>Effect on the delivered drawing:</b> the native v0.3 schematic, its routing source, netlist and PDF remain unchanged in this investigation. In particular, H14 still contains the earlier LDO guess, and Q8 still has surrogate pin numbers. Read the conflicts below before relying on those blocks. Neither a supervisor symbol nor a MOSFET comparison has been silently substituted.</p>
+
+<h2>U6: what the photograph establishes</h2>
+<figure><a href="../photos/originals/IMG_2435.jpg"><img src="../photos/investigation/U6_detail.png" alt="Rotated crop of original IMG_2435 showing WN23, five leads, C36/C37 and empty U6A pads"></a><figcaption>IMG_2435 crop, rotated 90 degrees counterclockwise for reading. Click for the untouched photograph. All L/R pad names below refer to the <b>original</b> photograph, not this rotated crop. No detail was synthesized.</figcaption></figure>
+<p>There are two leads on the original left and three on the right. C36 and C37 sit beside the three-lead side. R37 reads 220 (22 ohms), and an empty three-pad U6A option is nearby. The middle right lead appears to run toward C36; the upper right lead runs toward the C37 area. Both left leads have no clearly established outgoing route in this image. Solder, package edges and copper pours prevent treating this as a continuity map.</p>
+<p>The capacitors alone do not prove an LDO: supervisors also use supply bypassing and sometimes output filtering. U6A could accommodate a three-pin variant, but its connection to U6 is unproved. No capacitor value, output voltage or downstream destination is recovered by this observation.</p>
+<div class="scroll"><table><thead><tr><th>Candidate</th><th>Manufacturer support</th><th>Fit / conflict</th><th>Disposition</th></tr></thead><tbody>
+<tr><td>Richtek RT9818A-33PB</td><td>Marking guide MI-080418, printed C-39: WN-, SOT-23-5. RT9818 datasheet identifies a voltage detector with a 3.3 V threshold for the -33 option.</td><td>Has two NC pins on the two-lead side; compatible with the apparent lack of routes there. WN- is a prefix match, not a verified interpretation of the complete WN23 string. Supply, reset pull-up and reset destination remain untraced.</td><td><b>Leading named candidate; moderate confidence at most.</b> A 3.3 V threshold is not a 3.3 V regulated output.</td></tr>
+<tr><td>ROHM BD46281G</td><td>BD45/BD46 manufacturer datasheet, page 3: WN, 2.8 V detector, CMOS output, 100 ms delay.</td><td>Compatible five-lead size family. Unlike RT9818, all five pins have roles; two must be grounded. The apparently unused two-lead side weakens this match.</td><td>Secondary named candidate. Marking is insufficient to choose between manufacturers.</td></tr>
+<tr><td>Unidentified five-pin LDO</td><td>The old reconstruction used a generic application circuit; no manufacturer WN-to-LDO match was verified.</td><td>An LDO needs an active output on a lead; neither left-side route is established. Nearby capacitors are weak evidence by themselves.</td><td>Retain as a lower-ranked alternative. No nominal output voltage assigned.</td></tr>
+</tbody></table></div>
+<h3>U6 pin-number correction and competing functions</h3>
+<p>For a conventional SOT-23-5 viewed from above, with three leads on the <b>right</b>, the right-hand numbering runs <b>bottom to top: 1, 2, 3</b>. The current connector placeholder follows the reverse order. The table is a candidate package cross-reference; it has not been applied to the native drawing.</p>
+<div class="scroll"><table><thead><tr><th>Original photo pad</th><th>v0.3 placeholder number / role</th><th>Conventional package number</th><th>RT9818 role</th><th>BD46281G role</th></tr></thead><tbody>
+<tr><td>R1, upper right</td><td>1 / VIN?</td><td>3</td><td>GND</td><td>GND</td></tr>
+<tr><td>R2, middle right</td><td>2 / GND?</td><td>2</td><td>VDD</td><td>SUB, connect to GND</td></tr>
+<tr><td>R3, lower right</td><td>3 / EN?</td><td>1</td><td>Active-low open-drain RESET</td><td>ER, manual reset</td></tr>
+<tr><td>L1, upper left</td><td>5 / OUT?</td><td>4</td><td>NC</td><td>Reset output</td></tr>
+<tr><td>L2, lower left</td><td>4 / NC?</td><td>5</td><td>NC</td><td>VDD</td></tr>
+</tbody></table></div>
+<p><b>Consequences:</b> under RT9818, H14 incorrectly assigns ground to the candidate supply pad and treats an NC pad as an output. Merely replacing the symbol would therefore preserve a wrong circuit. The source of power to J3 cannot be obtained from an RT9818 output. Its reset pull-up and destination must be reconstructed independently; neither is supplied by the marking table.</p>
+<p>No exact RT9818 symbol was found through the installed KiCad MCP library search. Per the user's library preference, no custom device has been drawn. A Western supervisor equivalent cannot be selected responsibly until the threshold, output type and actual wiring are settled.</p>
+
+<h2>Q8: circuit-role evidence and comparison</h2>
+<figure><a href="../photos/originals/IMG_2431.jpg"><img src="../photos/investigation/Q8_detail.png" alt="Original photograph crop rotated to show 372A marking and two drive resistors R8 R9"></a><figcaption>IMG_2431 crop, rotated 180 degrees. The pin-one-like dot is adjacent to the original T3 pad. The top edge of this crop corresponds to the original bottom of Q8.</figcaption></figure>
+<p>R8 and R9 each read 221 (220 ohms). Their tracks approach the two outer pads on Q8's original top edge, T1 and T3. The opposite outer pads B1 and B3 appear to meet a common copper region around an isolated, two-via B2 island. These are useful photo interpretations, not new continuity-verified nets.</p>
+<p>A complementary half-bridge can account for two gate inputs, two supply/source pads and a joined drain output. A dual BJT pair remains possible because 220-ohm resistors can also drive bases. The exact 372A marking did not yield a manufacturer-backed identification. Splitting it into a part code and a date/lot suffix would be an assumption.</p>
+<div class="scroll"><table><thead><tr><th>Photo pad</th><th>v0.3 surrogate number</th><th>Candidate physical number, if dot is pin 1</th><th>DMC3071LVT comparison function</th></tr></thead><tbody>
+<tr><td>T3, upper right</td><td>3</td><td>1</td><td>N-channel gate, via R9</td></tr>
+<tr><td>T2, upper middle</td><td>2</td><td>2</td><td>P-channel source; positive rail in the half-bridge hypothesis</td></tr>
+<tr><td>T1, upper left</td><td>1</td><td>3</td><td>P-channel gate, via R8</td></tr>
+<tr><td>B1, lower left</td><td>6</td><td>4</td><td>P-channel drain</td></tr>
+<tr><td>B2, lower middle</td><td>5</td><td>5</td><td>N-channel source; return in the half-bridge hypothesis</td></tr>
+<tr><td>B3, lower right</td><td>4</td><td>6</td><td>N-channel drain</td></tr>
+</tbody></table></div>
+<p>This comparison makes the proposed R5 output connection more plausible, but does not establish its entire path or the rail connections. C6's association with the outer-pad copper means the existing H07 supply-filter interpretation also deserves review; do not force C6 onto a supply net solely because the old model placed it there.</p>
+<div class="scroll"><table><thead><tr><th>Part considered</th><th>Role / marking</th><th>Result</th></tr></thead><tbody>
+<tr><td>Diodes DMC3071LVT</td><td>30 V complementary MOSFET pair, TSOT26; C71 mark. Gates at 1 and 3, drains at 6 and 4.</td><td>Useful Western topology comparison. KiCad MCP confirms <code>Transistor_FET:DMC3071LVT</code> and <code>Package_TO_SOT_SMD:TSOT-23-6</code>. Different marking; fitted identity and electrical compatibility unproved.</td></tr>
+<tr><td>Diodes DMC2053UVT</td><td>20 V complementary pair with the same functional pin arrangement; AR2 mark.</td><td>Another standard KiCad option. A lower voltage rating must not be assumed adequate for a resonant circuit.</td></tr>
+<tr><td>SYNC Power SPP3437</td><td>37 mark, but a single P-channel MOSFET in SOT-363 with multiple drain pins.</td><td>Weak short-code match. It does not provide the two independent gates required by the leading circuit hypothesis, and its package family is smaller. Not selected.</td></tr>
+<tr><td>Unidentified dual BJT</td><td>Six leads and two resistor-fed bases are possible.</td><td>Retained as a function-level alternative; no exact marking/pin-map match found.</td></tr>
+</tbody></table></div>
+<p><b>Replacement boundary:</b> a stock symbol is not evidence of equivalence. MOSFET gate charge, on-resistance, voltage margin, body-diode behavior and possible simultaneous conduction matter in this circuit. For example, a 4.5 V drive across 220 ohms has an ideal initial current ceiling of about 20 mA before the logic output's own impedance. The drive waveform and resonant loading remain unknown. No replacement is approved and no arbitrary rail connections are added.</p>
+
+<h2>Vendor symbol import: ready checks, pending files</h2>
+<p>No new vendor library was attached or located in Downloads during this follow-up. The old generated PetSafe_Working entries returned by a global library search are not vendor symbols. U1 and U5 remain placeholders until the requested local file paths or vendor/SnapEDA links arrive.</p>
+<div class="scroll"><table><thead><tr><th>Device</th><th>Manufacturer pin contract</th><th>Import checks</th></tr></thead><tbody>
+<tr><td>U1: S-1200B45-M5T1x</td><td>1 VIN; 2 VSS; 3 ON/OFF; 4 NC; 5 VOUT. SOT-23-5, 4.5 V option.</td><td>Use the five-pin M5 package variant. The six-pin SNT variant has a different map. Check active-high control, all five pads and unchanged physical-pad correspondence.</td></tr>
+<tr><td>U5: MX512H</td><td>1 VCC (logic); 2 INA; 3 INB; 4 VDD (motor); 5 OUTB; 6 GND; 7 GND; 8 OUTA. SOP-8.</td><td>Keep both ground pads. Keep logic and motor supplies distinct. Verify the footprint pad numbers; do not accept an unrelated MX512 variant.</td></tr>
+</tbody></table></div>
+<p>When the files are available: preserve the vendor source and its hash, inspect every numbered pin and electrical type, register a project-local library through MCP, replace the placeholders, adapt wires to the actual library pin positions, and run KiCad 10 native export/connectivity checks plus visual review. No custom symbol creation is required for this preparation.</p>
+
+<h2>Sources and reproducibility</h2>
+<p>Primary documents below support device specifications and pin maps. The board observations come only from the supplied photographs. Secondary code indexes were used for search leads, not final identity claims.</p>
+<ol>
+<li><a href="https://www.richtek.com/assets/product_file/RT9818/DS9818-12.pdf">Richtek RT9818 DS9818-12</a>, November 2024, pages 1, 3, 5-6. <a href="datasheets/RT9818.pdf">Saved PDF</a>.</li>
+<li><a href="https://www.jotrin.it/userfiles/downloadfile/202003111510585708.pdf">Richtek Marking Information, MI-080418</a>, printed C-39 / PDF page 39. Manufacturer document hosted by Jotrin; actual edition is 2008. <a href="datasheets/Richtek_Marking_2008.pdf">Saved PDF</a>.</li>
+<li><a href="https://docs.rs-online.com/7ad0/0900766b8161bcad.pdf">ROHM BD45xxx / BD46xxx Rev.007</a>, November 2013, pages 1 and 3. Manufacturer document hosted by RS. <a href="datasheets/BD45_BD46.pdf">Saved PDF</a>.</li>
+<li><a href="https://www.diodes.com/datasheet/download/DMC3071LVT.pdf">Diodes DMC3071LVT DS40062 Rev.2-2</a>, May 2018, pages 1, 3 and 6. <a href="datasheets/DMC3071LVT.pdf">Saved PDF</a>.</li>
+<li><a href="https://www.diodes.com/datasheet/download/DMC2053UVT.pdf">Diodes DMC2053UVT DS40560</a>, page 1. <a href="datasheets/DMC2053UVT.pdf">Saved PDF</a>.</li>
+<li><a href="https://www.syncpower.com/datasheet/SPP3437.pdf">SYNC Power SPP3437 Ver.1</a>, May 2021, pages 1-2. <a href="datasheets/SPP3437.pdf">Saved PDF</a>.</li>
+<li><a href="https://www.ablic.com/en/doc/datasheet/voltage_regulator/S1200_E.pdf">ABLIC S-1200 Rev.6</a>, page 5; <a href="https://static.chipdip.ru/lib/203/DOC045203539.pdf">Mixic MX512H Rev.1.2</a>, pages 1-2. These are the pin contracts for the pending imports.</li>
+</ol>
+<p>Machine-readable findings: <a href="../evidence/u6_q8_investigation.json">candidate and observation record</a>. Import contract: <a href="../evidence/vendor_symbol_requirements.json">vendor symbol requirements</a>. All saved PDFs are included in <a href="../evidence/datasheet_manifest.json">the checksum manifest</a>. Original photo hashes and the native schematic hash remain unchanged.</p>
+</main></body></html>
