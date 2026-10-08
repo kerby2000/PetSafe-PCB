@@ -1,6 +1,6 @@
 {
   "date": "2026-10-08",
-  "revision": "v0.9.1",
+  "revision": "v0.9.2",
   "source_front": "photos/front_registered.jpg",
   "source_rear": "photos/back_mirrored_registered.jpg",
   "images_are_original_photographic_mosaics": true,
@@ -1016,7 +1016,8 @@
         }
       ],
       "review_status": "REJECTED_NOT_VIA",
-      "modeled_nets": []
+      "modeled_nets": [],
+      "component_crosscheck": "User rejects this detection as not a via. Stable ID retained; excluded from active markers."
     },
     {
       "rear_xy": [
@@ -1483,7 +1484,8 @@
         }
       ],
       "review_status": "REJECTED_NOT_VIA",
-      "modeled_nets": []
+      "modeled_nets": [],
+      "component_crosscheck": "User rejects this detection as not a via. Stable ID retained; excluded from active markers."
     },
     {
       "rear_xy": [
@@ -2180,7 +2182,7 @@
       ],
       "review_status": "ASSIGNED",
       "modeled_nets": [],
-      "component_crosscheck": "User correction: GND only. R19 association removed; no R19 ground merge. Any R19-to-V075 relation remains photo-derived."
+      "component_crosscheck": "User correction: GND only. R19 association removed; no R19 ground merge. V075 is now user-associated with Q7; its exact terminal is unresolved."
     },
     {
       "rear_xy": [
@@ -2220,19 +2222,28 @@
       ],
       "rear_appearance": "REAR_CLEARANCE",
       "front_match": "PROJECTED: inspect original front photo; may be under a component",
-      "endpoints": [
-        "R19.2"
-      ],
+      "endpoints": [],
       "net": null,
       "confidence": "rear visible; global front projection approximate",
       "note": "Visible clearance separates this site from the surrounding rear copper; this alone does not identify an internal net.",
       "id": "V075",
       "active": true,
-      "user_reports": [],
-      "review_status": "NOT_IN_USER_LIST",
-      "component_crosscheck": "R19 right/free pad photo association only; user has not confirmed this site. V073 is separately confirmed GND only.",
-      "modeled_nets": [
-        "H_RX_ENABLE_CTL"
+      "user_reports": [
+        {
+          "id": "V075",
+          "claim": "Q7, terminal not specified",
+          "kind": "component_or_issue"
+        }
+      ],
+      "review_status": "USER_REPORTED",
+      "component_crosscheck": "User identifies Q7 but not its terminal. Q7.R and the previous R19.2 continuation are photo candidates only; do not promote an inferred supply/control net to confirmed.",
+      "modeled_nets": [],
+      "component_refs": [
+        "Q7"
+      ],
+      "candidate_endpoints": [
+        "Q7.R",
+        "R19.2"
       ]
     },
     {
@@ -2283,7 +2294,10 @@
       ],
       "rear_appearance": "MAIN_REAR_COPPER",
       "front_match": "PROJECTED: inspect original front photo; may be under a component",
-      "endpoints": [],
+      "endpoints": [
+        "C19.2",
+        "R29.2"
+      ],
       "net": "H_GND",
       "confidence": "User GND report; no per-site ohms supplied",
       "note": "No isolating rear clearance apparent. Main copper is associated with PIC VSS through the reviewed anchors. Individual front endpoint not yet assigned.",
@@ -2292,12 +2306,15 @@
       "user_reports": [
         {
           "id": "V077",
-          "claim": "GND",
+          "claim": "C19-R29 junction is GND, explicitly confirmed in follow-up",
           "kind": "ground"
         }
       ],
       "review_status": "ASSIGNED",
-      "modeled_nets": []
+      "modeled_nets": [
+        "H_GND"
+      ],
+      "component_crosscheck": "User explicitly confirms the C19-R29 junction is GND. R29 opposite the PIC3/TP7 end is pad2; C19 pad2 is assigned to the upper photo pad beside the via. Earlier C19-to-clamp and R29-to-U3.5 guesses withdrawn."
     },
     {
       "rear_xy": [
@@ -2310,7 +2327,9 @@
       ],
       "rear_appearance": "MAIN_REAR_COPPER",
       "front_match": "PROJECTED: inspect original front photo; may be under a component",
-      "endpoints": [],
+      "endpoints": [
+        "C17.2"
+      ],
       "net": "H_GND",
       "confidence": "User GND report; no per-site ohms supplied",
       "note": "No isolating rear clearance apparent. Main copper is associated with PIC VSS through the reviewed anchors. Individual front endpoint not yet assigned.",
@@ -2319,12 +2338,15 @@
       "user_reports": [
         {
           "id": "V078",
-          "claim": "GND",
+          "claim": "C17; earlier GND report retained",
           "kind": "ground"
         }
       ],
       "review_status": "ASSIGNED",
-      "modeled_nets": []
+      "modeled_nets": [
+        "H_GND"
+      ],
+      "component_crosscheck": "User adds C17 to earlier GND report; return pad selected from existing photo/model."
     },
     {
       "rear_xy": [
@@ -2421,7 +2443,10 @@
       ],
       "review_status": "USER_REPORTED",
       "component_crosscheck": "User associates D3; exact terminal on three-lead package still requires local confirmation.",
-      "modeled_nets": []
+      "modeled_nets": [],
+      "component_refs": [
+        "D3"
+      ]
     },
     {
       "rear_xy": [
@@ -2434,7 +2459,9 @@
       ],
       "rear_appearance": "MAIN_REAR_COPPER",
       "front_match": "PROJECTED: inspect original front photo; may be under a component",
-      "endpoints": [],
+      "endpoints": [
+        "C40.2"
+      ],
       "net": "H_GND",
       "confidence": "User GND report; no per-site ohms supplied",
       "note": "No isolating rear clearance apparent. Main copper is associated with PIC VSS through the reviewed anchors. Individual front endpoint not yet assigned.",
@@ -2443,12 +2470,15 @@
       "user_reports": [
         {
           "id": "V083",
-          "claim": "GND",
+          "claim": "C40; earlier GND report retained",
           "kind": "ground"
         }
       ],
       "review_status": "ASSIGNED",
-      "modeled_nets": []
+      "modeled_nets": [
+        "H_GND"
+      ],
+      "component_crosscheck": "User adds C40 to earlier GND report; return pad selected from existing photo/model."
     },
     {
       "rear_xy": [
@@ -2680,15 +2710,26 @@
       ],
       "rear_appearance": "OTHER_REAR_REGION",
       "front_match": "PROJECTED: inspect original front photo; may be under a component",
-      "endpoints": [],
-      "net": null,
+      "endpoints": [
+        "R11.1"
+      ],
+      "net": "H_TUNE_5",
       "confidence": "rear visible; global front projection approximate",
       "note": "Separate strip/antenna region or ambiguous copper boundary; do not assume GND.",
       "id": "V091",
       "active": true,
-      "user_reports": [],
-      "review_status": "NOT_IN_USER_LIST",
-      "modeled_nets": []
+      "user_reports": [
+        {
+          "id": "V091",
+          "claim": "R11",
+          "kind": "component_or_issue"
+        }
+      ],
+      "review_status": "ASSIGNED",
+      "modeled_nets": [
+        "H_TUNE_5"
+      ],
+      "component_crosscheck": "User identifies resistor; free upper photo pad1 selected. Tuning control role remains a hypothesis and onward GPIO is not identified."
     },
     {
       "rear_xy": [
@@ -2858,15 +2899,26 @@
       ],
       "rear_appearance": "OTHER_REAR_REGION",
       "front_match": "PROJECTED: inspect original front photo; may be under a component",
-      "endpoints": [],
-      "net": null,
+      "endpoints": [
+        "R16.1"
+      ],
+      "net": "H_TUNE_4",
       "confidence": "rear visible; global front projection approximate",
       "note": "Separate strip/antenna region or ambiguous copper boundary; do not assume GND.",
       "id": "V097",
       "active": true,
-      "user_reports": [],
-      "review_status": "NOT_IN_USER_LIST",
-      "modeled_nets": []
+      "user_reports": [
+        {
+          "id": "V097",
+          "claim": "R16",
+          "kind": "component_or_issue"
+        }
+      ],
+      "review_status": "ASSIGNED",
+      "modeled_nets": [
+        "H_TUNE_4"
+      ],
+      "component_crosscheck": "User identifies resistor; free upper photo pad1 selected. Tuning control role remains a hypothesis and onward GPIO is not identified."
     },
     {
       "rear_xy": [
@@ -3004,15 +3056,26 @@
       ],
       "rear_appearance": "OTHER_REAR_REGION",
       "front_match": "PROJECTED: inspect original front photo; may be under a component",
-      "endpoints": [],
-      "net": null,
+      "endpoints": [
+        "R15.1"
+      ],
+      "net": "H_TUNE_3",
       "confidence": "rear visible; global front projection approximate",
       "note": "Separate strip/antenna region or ambiguous copper boundary; do not assume GND.",
       "id": "V102",
       "active": true,
-      "user_reports": [],
-      "review_status": "NOT_IN_USER_LIST",
-      "modeled_nets": []
+      "user_reports": [
+        {
+          "id": "V102",
+          "claim": "R15",
+          "kind": "component_or_issue"
+        }
+      ],
+      "review_status": "ASSIGNED",
+      "modeled_nets": [
+        "H_TUNE_3"
+      ],
+      "component_crosscheck": "User identifies resistor; free upper photo pad1 selected. Tuning control role remains a hypothesis and onward GPIO is not identified."
     },
     {
       "rear_xy": [
@@ -3184,15 +3247,26 @@
       ],
       "rear_appearance": "OTHER_REAR_REGION",
       "front_match": "PROJECTED: inspect original front photo; may be under a component",
-      "endpoints": [],
-      "net": null,
+      "endpoints": [
+        "R14.1"
+      ],
+      "net": "H_TUNE_2",
       "confidence": "rear visible; global front projection approximate",
       "note": "Separate strip/antenna region or ambiguous copper boundary; do not assume GND.",
       "id": "V108",
       "active": true,
-      "user_reports": [],
-      "review_status": "NOT_IN_USER_LIST",
-      "modeled_nets": []
+      "user_reports": [
+        {
+          "id": "V108",
+          "claim": "R14",
+          "kind": "component_or_issue"
+        }
+      ],
+      "review_status": "ASSIGNED",
+      "modeled_nets": [
+        "H_TUNE_2"
+      ],
+      "component_crosscheck": "User identifies resistor; free upper photo pad1 selected. Tuning control role remains a hypothesis and onward GPIO is not identified."
     },
     {
       "rear_xy": [
@@ -3286,7 +3360,9 @@
       ],
       "rear_appearance": "OTHER_REAR_REGION",
       "front_match": "PROJECTED: inspect original front photo; may be under a component",
-      "endpoints": [],
+      "endpoints": [
+        "C8.2"
+      ],
       "net": "H_GND",
       "confidence": "User GND report; no per-site ohms supplied",
       "note": "Separate strip/antenna region or ambiguous copper boundary; do not assume GND.",
@@ -3295,12 +3371,15 @@
       "user_reports": [
         {
           "id": "V112",
-          "claim": "GND",
+          "claim": "C8; earlier GND report retained",
           "kind": "ground"
         }
       ],
       "review_status": "ASSIGNED",
-      "modeled_nets": []
+      "modeled_nets": [
+        "H_GND"
+      ],
+      "component_crosscheck": "User adds C8 to earlier GND report; lower photo return pad selected."
     },
     {
       "rear_xy": [
@@ -3314,27 +3393,29 @@
       "rear_appearance": "OTHER_REAR_REGION",
       "front_match": "PROJECTED: inspect original front photo; may be under a component",
       "endpoints": [
-        "Q8.B1",
-        "Q8.B3"
+        "Q8.B2"
       ],
-      "net": null,
-      "confidence": "User GND report; no per-site ohms supplied",
+      "net": "H_GND",
+      "confidence": "User centre-pad/GND clarification; corroborates earlier S-G low resistance",
       "note": "Separate strip/antenna region or ambiguous copper boundary; do not assume GND.",
       "id": "V113",
       "active": true,
       "user_reports": [
         {
           "id": "V113",
-          "claim": "GND",
+          "claim": "Q8 centre pad to island GND; earlier B1/B3 annotation wrong",
           "kind": "ground"
         }
       ],
-      "review_status": "CONFLICT",
-      "component_crosscheck": "Outer joined Q8 pads appear on this front island; GND report conflicts with old output hypothesis. No GND merge applied.",
+      "review_status": "ASSIGNED",
+      "component_crosscheck": "User corrects island destination to the centre pad: B2/package pin5, already modeled as GND. Previous B1/B3 annotation was wrong. Independent earlier D-E low-resistance evidence for the outer-pad join is retained.",
       "modeled_nets": [
-        "H_RF_OUT_CAND"
+        "H_GND"
       ],
-      "conflict": "User GND conflicts with Q8 outer joined-pad/output model. Check direct resistance to GND; component-net merge held."
+      "excluded_endpoints": [
+        "Q8.B1",
+        "Q8.B3"
+      ]
     },
     {
       "rear_xy": [
@@ -3347,8 +3428,10 @@
       ],
       "rear_appearance": "OTHER_REAR_REGION",
       "front_match": "PROJECTED: inspect original front photo; may be under a component",
-      "endpoints": [],
-      "net": "H_GND",
+      "endpoints": [
+        "Q8.T2"
+      ],
+      "net": null,
       "confidence": "User GND report; no per-site ohms supplied",
       "note": "Separate strip/antenna region or ambiguous copper boundary; do not assume GND.",
       "id": "V114",
@@ -3356,12 +3439,16 @@
       "user_reports": [
         {
           "id": "V114",
-          "claim": "GND",
-          "kind": "ground"
+          "claim": "Second pin on the other side of the package; earlier GND versus supply assignment not answered by the follow-up",
+          "kind": "component_or_issue"
         }
       ],
-      "review_status": "ASSIGNED",
-      "modeled_nets": []
+      "review_status": "CONFLICT",
+      "modeled_nets": [
+        "H_RF_VDD"
+      ],
+      "conflict": "User identifies the opposite centre pad, Q8.T2/package pin2. The follow-up repeats the pad location but does not settle the earlier GND claim versus the existing source-supply hypothesis. No supply-to-ground merge applied.",
+      "component_crosscheck": "User: second pin on the opposite side of the package, mapped as T2/package pin2. Follow-up does not establish GND versus source supply; existing supply hypothesis retained separately."
     },
     {
       "rear_xy": [
@@ -3375,27 +3462,29 @@
       "rear_appearance": "OTHER_REAR_REGION",
       "front_match": "PROJECTED: inspect original front photo; may be under a component",
       "endpoints": [
-        "Q8.B1",
-        "Q8.B3"
+        "Q8.B2"
       ],
-      "net": null,
-      "confidence": "User GND report; no per-site ohms supplied",
+      "net": "H_GND",
+      "confidence": "User centre-pad/GND clarification; corroborates earlier S-G low resistance",
       "note": "Separate strip/antenna region or ambiguous copper boundary; do not assume GND.",
       "id": "V115",
       "active": true,
       "user_reports": [
         {
           "id": "V115",
-          "claim": "GND",
+          "claim": "Q8 centre pad to island GND; earlier B1/B3 annotation wrong",
           "kind": "ground"
         }
       ],
-      "review_status": "CONFLICT",
-      "component_crosscheck": "Outer joined Q8 pads appear on this front island; GND report conflicts with old output hypothesis. No GND merge applied.",
+      "review_status": "ASSIGNED",
+      "component_crosscheck": "User corrects island destination to the centre pad: B2/package pin5, already modeled as GND. Previous B1/B3 annotation was wrong. Independent earlier D-E low-resistance evidence for the outer-pad join is retained.",
       "modeled_nets": [
-        "H_RF_OUT_CAND"
+        "H_GND"
       ],
-      "conflict": "User GND conflicts with Q8 outer joined-pad/output model. Check direct resistance to GND; component-net merge held."
+      "excluded_endpoints": [
+        "Q8.B1",
+        "Q8.B3"
+      ]
     },
     {
       "rear_xy": [
@@ -3443,12 +3532,19 @@
       "endpoints": [],
       "net": null,
       "confidence": "rear visible; global front projection approximate",
-      "note": "Separate strip/antenna region or ambiguous copper boundary; do not assume GND.",
+      "note": "User rejects V117 as a recognition error. ID retained as a tombstone; excluded from active markers.",
       "id": "V117",
-      "active": true,
-      "user_reports": [],
-      "review_status": "NOT_IN_USER_LIST",
-      "modeled_nets": []
+      "active": false,
+      "user_reports": [
+        {
+          "id": "V117",
+          "claim": "Not a via; recognition artifact",
+          "kind": "not_via"
+        }
+      ],
+      "review_status": "REJECTED_NOT_VIA",
+      "modeled_nets": [],
+      "component_crosscheck": "User rejects this detection as not a via. Stable ID retained; excluded from active markers."
     },
     {
       "rear_xy": [
@@ -3461,7 +3557,9 @@
       ],
       "rear_appearance": "OTHER_REAR_REGION",
       "front_match": "PROJECTED: inspect original front photo; may be under a component",
-      "endpoints": [],
+      "endpoints": [
+        "C7.2"
+      ],
       "net": "H_GND",
       "confidence": "User GND report; no per-site ohms supplied",
       "note": "Separate strip/antenna region or ambiguous copper boundary; do not assume GND.",
@@ -3470,12 +3568,15 @@
       "user_reports": [
         {
           "id": "V118",
-          "claim": "GND",
+          "claim": "C7; earlier GND report retained",
           "kind": "ground"
         }
       ],
       "review_status": "ASSIGNED",
-      "modeled_nets": []
+      "modeled_nets": [
+        "H_GND"
+      ],
+      "component_crosscheck": "User adds C7 to earlier GND report; lower photo return pad selected."
     },
     {
       "rear_xy": [
@@ -3488,63 +3589,82 @@
       ],
       "rear_appearance": "OTHER_REAR_REGION",
       "front_match": "PROJECTED: inspect original front photo; may be under a component",
-      "endpoints": [],
-      "net": null,
-      "confidence": "rear visible; global front projection approximate",
+      "endpoints": [
+        "C9.2"
+      ],
+      "net": "H_GND",
+      "confidence": "User component association; pad and GND inferred from photo/model",
       "note": "Separate strip/antenna region or ambiguous copper boundary; do not assume GND.",
       "id": "V119",
       "active": true,
-      "user_reports": [],
-      "review_status": "NOT_IN_USER_LIST",
-      "modeled_nets": []
-    },
-    {
-      "rear_xy": [
-        10704,
-        2372
-      ],
-      "front_xy": [
-        10704,
-        2372
-      ],
-      "rear_appearance": "OTHER_REAR_REGION",
-      "front_match": "PROJECTED: inspect original front photo; may be under a component",
-      "endpoints": [],
-      "net": null,
-      "confidence": "rear visible; global front projection approximate",
-      "note": "Separate strip/antenna region or ambiguous copper boundary; do not assume GND.",
-      "id": "V120",
-      "active": true,
-      "user_reports": [],
-      "review_status": "NOT_IN_USER_LIST",
-      "modeled_nets": []
-    },
-    {
-      "rear_xy": [
-        10880,
-        2390
-      ],
-      "front_xy": [
-        10880,
-        2390
-      ],
-      "rear_appearance": "OTHER_REAR_REGION",
-      "front_match": "PROJECTED: inspect original front photo; may be under a component",
-      "endpoints": [],
-      "net": "H_GND",
-      "confidence": "User GND report; no per-site ohms supplied",
-      "note": "Separate strip/antenna region or ambiguous copper boundary; do not assume GND.",
-      "id": "V121",
-      "active": true,
       "user_reports": [
         {
-          "id": "V121",
-          "claim": "GND",
-          "kind": "ground"
+          "id": "V119",
+          "claim": "C9",
+          "kind": "component_or_issue"
         }
       ],
       "review_status": "ASSIGNED",
-      "modeled_nets": []
+      "modeled_nets": [
+        "H_GND"
+      ],
+      "component_crosscheck": "User identifies C9; photo selects lower pad2. GND is retained as the existing photo/model inference, not a new user ground measurement."
+    },
+    {
+      "rear_xy": [
+        10704,
+        2372
+      ],
+      "front_xy": [
+        10704,
+        2372
+      ],
+      "rear_appearance": "OTHER_REAR_REGION",
+      "front_match": "PROJECTED: inspect original front photo; may be under a component",
+      "endpoints": [],
+      "net": null,
+      "confidence": "rear visible; global front projection approximate",
+      "note": "User rejects V120 as a recognition error. ID retained as a tombstone; excluded from active markers.",
+      "id": "V120",
+      "active": false,
+      "user_reports": [
+        {
+          "id": "V120",
+          "claim": "Not a via; recognition artifact",
+          "kind": "not_via"
+        }
+      ],
+      "review_status": "REJECTED_NOT_VIA",
+      "modeled_nets": [],
+      "component_crosscheck": "User rejects this detection as not a via. Stable ID retained; excluded from active markers."
+    },
+    {
+      "rear_xy": [
+        10880,
+        2390
+      ],
+      "front_xy": [
+        10880,
+        2390
+      ],
+      "rear_appearance": "OTHER_REAR_REGION",
+      "front_match": "PROJECTED: inspect original front photo; may be under a component",
+      "endpoints": [],
+      "net": null,
+      "confidence": "User GND report; no per-site ohms supplied",
+      "note": "User rejects V121 as a recognition error. ID retained as a tombstone; excluded from active markers.",
+      "id": "V121",
+      "active": false,
+      "user_reports": [
+        {
+          "id": "V121",
+          "claim": "Not a via; recognition artifact",
+          "kind": "not_via"
+        }
+      ],
+      "review_status": "REJECTED_NOT_VIA",
+      "modeled_nets": [],
+      "component_crosscheck": "User rejects this detection as not a via. Stable ID retained; excluded from active markers."
     },
     {
       "rear_xy": [
@@ -3560,12 +3680,19 @@
       "endpoints": [],
       "net": null,
       "confidence": "rear visible; global front projection approximate",
-      "note": "Separate strip/antenna region or ambiguous copper boundary; do not assume GND.",
+      "note": "User rejects V122 as a recognition error. ID retained as a tombstone; excluded from active markers.",
       "id": "V122",
-      "active": true,
-      "user_reports": [],
-      "review_status": "NOT_IN_USER_LIST",
-      "modeled_nets": []
+      "active": false,
+      "user_reports": [
+        {
+          "id": "V122",
+          "claim": "Not a via; recognition artifact",
+          "kind": "not_via"
+        }
+      ],
+      "review_status": "REJECTED_NOT_VIA",
+      "modeled_nets": [],
+      "component_crosscheck": "User rejects this detection as not a via. Stable ID retained; excluded from active markers."
     },
     {
       "rear_xy": [
@@ -3608,12 +3735,19 @@
       "endpoints": [],
       "net": null,
       "confidence": "rear visible; global front projection approximate",
-      "note": "Separate strip/antenna region or ambiguous copper boundary; do not assume GND.",
+      "note": "User rejects V124 as a recognition error. ID retained as a tombstone; excluded from active markers.",
       "id": "V124",
-      "active": true,
-      "user_reports": [],
-      "review_status": "NOT_IN_USER_LIST",
-      "modeled_nets": []
+      "active": false,
+      "user_reports": [
+        {
+          "id": "V124",
+          "claim": "Not a via; recognition artifact",
+          "kind": "not_via"
+        }
+      ],
+      "review_status": "REJECTED_NOT_VIA",
+      "modeled_nets": [],
+      "component_crosscheck": "User rejects this detection as not a via. Stable ID retained; excluded from active markers."
     },
     {
       "rear_xy": [
@@ -3711,16 +3845,16 @@
   },
   "new_model_connections": [
     {
-      "endpoint": "R42.1",
-      "old": "H_ANT_B",
-      "new": "V017_CONTROL",
-      "basis": "User V017 connects R42.1 and R44; photo selects R44 free pad1. R42 is retained literally. Earlier R42.1 antenna assignment withdrawn."
+      "endpoint": "C19.2",
+      "old": "H_RX_RF_SENSE",
+      "new": "H_GND",
+      "basis": "User explicitly confirms V077 C19-R29 junction is GND. R29.2 is opposite the confirmed PIC3 end; C19.2 assigned to the upper photo pad beside V077. Prior clamp/input guesses withdrawn."
     },
     {
-      "endpoint": "R44.1",
-      "old": "H_Q1_BIAS",
-      "new": "V017_CONTROL",
-      "basis": "User V017 connects R42.1 and R44; photo selects R44 free pad1. R42 is retained literally. Earlier R42.1 antenna assignment withdrawn."
+      "endpoint": "R29.2",
+      "old": "RX_B_PLUS",
+      "new": "H_GND",
+      "basis": "User explicitly confirms V077 C19-R29 junction is GND. R29.2 is opposite the confirmed PIC3 end; C19.2 assigned to the upper photo pad beside V077. Prior clamp/input guesses withdrawn."
     }
   ],
   "sources": [
@@ -3738,8 +3872,8 @@
   "supply_naming": "MX512H pin4 VDD is the motor supply, modeled H_VBAT. It is distinct from MX512H pin1 VCC and the regulated board H_VDD; do not merge based on the VDD word alone.",
   "review_summary": {
     "catalogued_ids": 127,
-    "active_sites": 125,
-    "user_reported_ids": 101,
+    "active_sites": 120,
+    "user_reported_ids": 111,
     "original_user_reported_ids": 97,
     "omitted_from_user_list": [
       "V016",
@@ -3756,34 +3890,28 @@
       "V047",
       "V049",
       "V053",
-      "V075",
       "V079",
-      "V080",
-      "V091",
-      "V097",
-      "V102",
-      "V108",
-      "V117",
-      "V119",
-      "V120",
-      "V122",
-      "V124"
+      "V080"
     ],
     "rejected": [
       "V033",
-      "V050"
+      "V050",
+      "V117",
+      "V120",
+      "V121",
+      "V122",
+      "V124"
     ],
     "conflicts": [
-      "V113",
-      "V115"
+      "V114"
     ],
     "statuses": {
-      "ASSIGNED": 85,
-      "USER_REPORTED": 12,
-      "NOT_IN_USER_LIST": 19,
+      "ASSIGNED": 90,
+      "USER_REPORTED": 13,
+      "NOT_IN_USER_LIST": 9,
       "PHOTO_LOCAL": 7,
-      "REJECTED_NOT_VIA": 2,
-      "CONFLICT": 2
+      "REJECTED_NOT_VIA": 7,
+      "CONFLICT": 1
     }
   }
 }

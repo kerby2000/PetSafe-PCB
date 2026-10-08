@@ -1,8 +1,29 @@
-# Via review findings - v0.9.1
+# Via review findings - v0.9.2
 
-101 distinct via IDs reviewed; 125 active sites / 127 stable IDs. V033 and V050 are rejected without renumbering; 26 IDs remain unmentioned, some already photo-matched. The latest batch corrects 21 sites. V017 joins R42.1 and R44.1 (R44 pad selected from the photo), replacing the earlier R42.1-to-ANT2 hypothesis. R43.2 is associated with V015, not V011-V014. V072-to-R22.2 is withdrawn. V073 is GND only; R19/V075 remains photo-derived. V113/V115 are the two remaining held conflicts. No new per-site ohms were supplied.
+111 distinct via IDs reviewed; 120 active sites / 127 stable IDs. The latest 19-site batch excludes V117/V120/V121/V122/V124 without renumbering. V113/V115 now correctly point to Q8 centre B2/pin5, GND; the old outer-pad annotation is withdrawn. V077 confirms C19.2/R29.2 are GND, replacing the earlier clamp/op-amp-input guesses. V091/R11, V097/R16, V102/R15 and V108/R14 identify tuning-control resistor ends, with onward GPIOs unknown. V114 reaches the opposite centre T2/pin2, but its earlier GND assignment versus source-supply hypothesis remains unresolved. V075 identifies Q7; exact terminal remains unspecified.
 
-## Latest 21-site corrections
+## Latest 19-site corrections
+
+| Via | Updated destination | Qualification |
+|---|---|---|
+| V075 | Q7 | Terminal not specified; Q7.R and former R19.2 association are photo candidates only |
+| V077 | C19.2 / R29.2 / GND | User explicitly confirms junction GND; R29 opposite PIC3 end, C19 upper photo pad selected |
+| V078 | C17.2 / GND | Component added to earlier GND report |
+| V083 | C40.2 / GND | Component added to earlier GND report |
+| V091 | R11.1 / H_TUNE_5 | Free upper pad photo-selected; onward GPIO unknown |
+| V097 | R16.1 / H_TUNE_4 | Free upper pad photo-selected; onward GPIO unknown |
+| V102 | R15.1 / H_TUNE_3 | Free upper pad photo-selected; onward GPIO unknown |
+| V108 | R14.1 / H_TUNE_2 | Free upper pad photo-selected; onward GPIO unknown |
+| V112 | C8.2 / GND | Component added to earlier GND report |
+| V113, V115 | Q8.B2 / pin5 / GND | Centre-pad clarification replaces incorrect outer B1/B3 annotations |
+| V114 | Q8.T2 / pin2; net unresolved | Follow-up confirms opposite-side second pin; GND versus supply not answered |
+| V118 | C7.2 / GND | Component added to earlier GND report |
+| V119 | C9.2; GND photo/model inference | User identifies component only |
+| V117, V120, V121, V122, V124 | Rejected; not vias | Stable IDs retained; excluded from active markers |
+
+Two native pad assignments change: C19.2 and R29.2 become GND. R29.1 stays on PIC3/TP7/R28, and the independent U3.5/C18.1 fragment remains. Q8 centre pin5 was already grounded in the schematic; its via annotations are corrected without grounding the outer drains or opposite source. V114 is the only held site conflict.
+
+## Prior v0.9.1 corrections
 
 | Via | Current association | Evidence qualification |
 |---|---|---|
@@ -24,7 +45,7 @@
 | V072 | Not R22.2; destination unresolved | Rejected via association; prior independent receiver-bias hypothesis still unverified |
 | V073 | GND only | User explicitly resolves duplicate; no R19 ground merge |
 
-Only two component-pad net assignments change in this batch: R42.1 and R44.1 join `V017_CONTROL`. The other entries correct via metadata or corroborate existing qualified pad assignments. The original `V_Q1_LEFT` fragment (Q1.L to R43.2) remains; the user corrected the via location, not this independent local trace. V075/R19.2 remains a photo association, not a newly confirmed user mapping.
+Only two component-pad net assignments change in this batch: R42.1 and R44.1 join `V017_CONTROL`. The other entries correct via metadata or corroborate existing qualified pad assignments. The original `V_Q1_LEFT` fragment (Q1.L to R43.2) remains; the user corrected the via location, not this independent local trace. Superseded in v0.9.2: V075 now identifies Q7; exact terminal and possible R19 continuation remain photo candidates.
 
 ## Prior v0.9 endpoint corrections retained
 
@@ -63,7 +84,7 @@ Only two component-pad net assignments change in this batch: R42.1 and R44.1 joi
 
 - Resolved by user: V025=GND; V026=PIC21/RB0. The onward RB0 destination is still unknown.
 - Resolved by user: V073 is GND only. R19/V075 remains a photo association, not user-confirmed.
-- V113/V115: reported GND; front island appears to join Q8 outer pads, modeled as output. Keep this contradiction visible; confirm resistance to GND before changing the output topology.
+- Resolved in v0.9.2: V113/V115 reach centre Q8.B2/pin5 GND. The earlier outer-pad annotation was wrong. V114 opposite T2/pin2 net remains unresolved.
 
 ## What a component association establishes
 
@@ -75,7 +96,7 @@ MX512H **pin4 VDD** is the motor supply net H_VBAT. Its **pin1 VCC** and the reg
 
 ## IDs not yet mentioned across the user reviews
 
-V016, V019, V027, V028, V030, V035, V036, V037, V038, V039, V042, V047, V049, V053, V075, V079, V080, V091, V097, V102, V108, V117, V119, V120, V122, V124.
+V016, V019, V027, V028, V030, V035, V036, V037, V038, V039, V042, V047, V049, V053, V079, V080.
 
 These are not all unresolved: V027/V028/V030/V038/V042 already had local photo matches, and V035/V053 now have additional local associations. No need to recheck every ground site. The interactive viewer distinguishes user-reported assignment, photo-local assignment, unresolved report, held conflict and rejected detection.
 

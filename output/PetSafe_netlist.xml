@@ -2,13 +2,13 @@
 <export version="E">
   <design>
     <source>C:\Users\lukin\Documents\ChatGPT\PetSafe-PCB\schematic\PetSafe_1001339.kicad_sch</source>
-    <date>2026-10-08T18:38:38</date>
+    <date>2026-10-08T19:06:29</date>
     <tool>Eeschema 10.0.5</tool>
     <sheet number="1" name="/" tstamps="/">
       <title_block>
         <title>PetSafe 100-1339 R03 A | single-sheet reconstruction</title>
         <company>KiCad 10 libraries + four datasheet symbols | MCP authoring</company>
-        <rev>0.9.1</rev>
+        <rev>0.9.2</rev>
         <date>2026-10-08</date>
         <source>PetSafe_1001339.kicad_sch</source>
         <comment number="1" value="User via review + component cross-checks; Q8 conflict and hidden routes remain open."/>
@@ -260,6 +260,7 @@
       <footprint>Capacitor_SMD:C_0805_2012Metric</footprint>
       <description>Unpolarized capacitor</description>
       <fields>
+        <field name="ViaEvidence">v0.9.2: V118 associated with C7; earlier GND report retained for photo-selected return pad2.</field>
         <field name="OriginalReference">C7</field>
         <field name="Evidence">Photo reconstruction; topology inferred</field>
         <field name="LibraryPolicy">Unmodified KiCad 10 stock symbol</field>
@@ -271,6 +272,7 @@
         <field name="Description">Unpolarized capacitor</field>
       </fields>
       <libsource lib="Device" part="C" description="Unpolarized capacitor"/>
+      <property name="ViaEvidence" value="v0.9.2: V118 associated with C7; earlier GND report retained for photo-selected return pad2."/>
       <property name="OriginalReference" value="C7"/>
       <property name="Evidence" value="Photo reconstruction; topology inferred"/>
       <property name="LibraryPolicy" value="Unmodified KiCad 10 stock symbol"/>
@@ -297,6 +299,7 @@
       <footprint>Capacitor_SMD:C_0805_2012Metric</footprint>
       <description>Unpolarized capacitor</description>
       <fields>
+        <field name="ViaEvidence">v0.9.2: V112 associated with C8; earlier GND report retained for photo-selected return pad2.</field>
         <field name="OriginalReference">C8</field>
         <field name="Evidence">Photo reconstruction; topology inferred</field>
         <field name="LibraryPolicy">Unmodified KiCad 10 stock symbol</field>
@@ -308,6 +311,7 @@
         <field name="Description">Unpolarized capacitor</field>
       </fields>
       <libsource lib="Device" part="C" description="Unpolarized capacitor"/>
+      <property name="ViaEvidence" value="v0.9.2: V112 associated with C8; earlier GND report retained for photo-selected return pad2."/>
       <property name="OriginalReference" value="C8"/>
       <property name="Evidence" value="Photo reconstruction; topology inferred"/>
       <property name="LibraryPolicy" value="Unmodified KiCad 10 stock symbol"/>
@@ -334,6 +338,7 @@
       <footprint>Capacitor_SMD:C_0805_2012Metric</footprint>
       <description>Unpolarized capacitor</description>
       <fields>
+        <field name="ViaEvidence">v0.9.2: V119 associated with C9; lower pad2/GND remains photo-model inference, not a new ground measurement.</field>
         <field name="OriginalReference">C9</field>
         <field name="Evidence">Photo reconstruction; topology inferred</field>
         <field name="LibraryPolicy">Unmodified KiCad 10 stock symbol</field>
@@ -345,6 +350,7 @@
         <field name="Description">Unpolarized capacitor</field>
       </fields>
       <libsource lib="Device" part="C" description="Unpolarized capacitor"/>
+      <property name="ViaEvidence" value="v0.9.2: V119 associated with C9; lower pad2/GND remains photo-model inference, not a new ground measurement."/>
       <property name="OriginalReference" value="C9"/>
       <property name="Evidence" value="Photo reconstruction; topology inferred"/>
       <property name="LibraryPolicy" value="Unmodified KiCad 10 stock symbol"/>
@@ -638,6 +644,7 @@
       <footprint>Capacitor_SMD:C_0805_2012Metric</footprint>
       <description>Unpolarized capacitor</description>
       <fields>
+        <field name="ViaEvidence">v0.9.2: V078 associated with C17; earlier GND report retained for photo-selected return pad2.</field>
         <field name="OriginalReference">C17</field>
         <field name="Evidence">Photo reconstruction; topology inferred</field>
         <field name="LibraryPolicy">Unmodified KiCad 10 stock symbol</field>
@@ -649,6 +656,7 @@
         <field name="Description">Unpolarized capacitor</field>
       </fields>
       <libsource lib="Device" part="C" description="Unpolarized capacitor"/>
+      <property name="ViaEvidence" value="v0.9.2: V078 associated with C17; earlier GND report retained for photo-selected return pad2."/>
       <property name="OriginalReference" value="C17"/>
       <property name="Evidence" value="Photo reconstruction; topology inferred"/>
       <property name="LibraryPolicy" value="Unmodified KiCad 10 stock symbol"/>
@@ -712,6 +720,7 @@
       <footprint>Capacitor_SMD:C_0805_2012Metric</footprint>
       <description>Unpolarized capacitor</description>
       <fields>
+        <field name="ViaEvidence">v0.9.2: V077 C19-R29 junction explicitly confirmed GND. Model C19.2 assigned to upper photo pad beside via; former clamp connection withdrawn; opposite-pad route remains inferred.</field>
         <field name="OriginalReference">C19</field>
         <field name="Evidence">Photo reconstruction; topology inferred</field>
         <field name="LibraryPolicy">Unmodified KiCad 10 stock symbol</field>
@@ -723,6 +732,7 @@
         <field name="Description">Unpolarized capacitor</field>
       </fields>
       <libsource lib="Device" part="C" description="Unpolarized capacitor"/>
+      <property name="ViaEvidence" value="v0.9.2: V077 C19-R29 junction explicitly confirmed GND. Model C19.2 assigned to upper photo pad beside via; former clamp connection withdrawn; opposite-pad route remains inferred."/>
       <property name="OriginalReference" value="C19"/>
       <property name="Evidence" value="Photo reconstruction; topology inferred"/>
       <property name="LibraryPolicy" value="Unmodified KiCad 10 stock symbol"/>
@@ -1495,6 +1505,7 @@
       <footprint>Capacitor_SMD:C_0805_2012Metric</footprint>
       <description>Unpolarized capacitor</description>
       <fields>
+        <field name="ViaEvidence">v0.9.2: V083 associated with C40; earlier GND report retained for photo-selected return pad2.</field>
         <field name="OriginalReference">C40</field>
         <field name="Evidence">Photo reconstruction; topology inferred</field>
         <field name="LibraryPolicy">Unmodified KiCad 10 stock symbol</field>
@@ -1506,6 +1517,7 @@
         <field name="Description">Unpolarized capacitor</field>
       </fields>
       <libsource lib="Device" part="C" description="Unpolarized capacitor"/>
+      <property name="ViaEvidence" value="v0.9.2: V083 associated with C40; earlier GND report retained for photo-selected return pad2."/>
       <property name="OriginalReference" value="C40"/>
       <property name="Evidence" value="Photo reconstruction; topology inferred"/>
       <property name="LibraryPolicy" value="Unmodified KiCad 10 stock symbol"/>
@@ -2687,6 +2699,7 @@
       <datasheet>https://www.onsemi.com/pub/Collateral/BC860-D.pdf</datasheet>
       <description>0.1A Ic, 45V Vce, PNP Transistor, SOT-23</description>
       <fields>
+        <field name="ViaEvidence">v0.9.2: user identifies V075 as Q7. Exact terminal is not specified; prior R19.2 continuation and Q7.R are photo candidates only.</field>
         <field name="OriginalReference">Q7</field>
         <field name="Evidence">Photo reconstruction; topology inferred</field>
         <field name="LibraryPolicy">Unmodified KiCad 10 stock symbol</field>
@@ -2698,6 +2711,7 @@
         <field name="Description">0.1A Ic, 45V Vce, PNP Transistor, SOT-23</field>
       </fields>
       <libsource lib="Transistor_BJT" part="BC857" description="0.1A Ic, 45V Vce, PNP Transistor, SOT-23"/>
+      <property name="ViaEvidence" value="v0.9.2: user identifies V075 as Q7. Exact terminal is not specified; prior R19.2 continuation and Q7.R are photo candidates only."/>
       <property name="OriginalReference" value="Q7"/>
       <property name="Evidence" value="Photo reconstruction; topology inferred"/>
       <property name="LibraryPolicy" value="Unmodified KiCad 10 stock symbol"/>
@@ -2732,13 +2746,13 @@
         <field name="FootprintConfidence">datasheet/package candidate</field>
         <field name="FootprintBasis">Existing assignment; see component identity evidence.</field>
         <field name="PinMapping">See evidence/pin_crosswalk.json; physical orientation may be provisional</field>
-        <field name="ViaEvidence">v0.9 HOLD: V113/V115 reported GND but front island appears to join outer joined-drain pads; conflict with existing output topology. Await continuity reconciliation.</field>
+        <field name="ViaEvidence">v0.9.2: V113/V115 connect centre B2/pin5 to GND; earlier outer B1/B3 via annotation withdrawn. V114 reaches opposite centre T2/pin2, with GND versus source supply unresolved. Outer drain join retains earlier D-E resistance evidence.</field>
         <field name="Footprint">Package_TO_SOT_SMD:SOT-23-6</field>
         <field name="Datasheet">https://static.chipdip.ru/lib/761/DOC050761871.pdf</field>
         <field name="Description">MCC SIL3724A dual N/P MOSFET, marking 3724A; candidate for Q8, fitted manufacturer unconfirmed. Pin map verified from manufacturer page 1. KiCad generic MOSFET artwork imported through MCP.</field>
       </fields>
       <libsource lib="PetSafe_Datasheet" part="SIL3724A" description="MCC SIL3724A dual N/P MOSFET, marking 3724A; candidate for Q8, fitted manufacturer unconfirmed. Pin map verified from manufacturer page 1. KiCad generic MOSFET artwork imported through MCP."/>
-      <property name="ViaEvidence" value="v0.9 HOLD: V113/V115 reported GND but front island appears to join outer joined-drain pads; conflict with existing output topology. Await continuity reconciliation."/>
+      <property name="ViaEvidence" value="v0.9.2: V113/V115 connect centre B2/pin5 to GND; earlier outer B1/B3 via annotation withdrawn. V114 reaches opposite centre T2/pin2, with GND versus source supply unresolved. Outer drain join retains earlier D-E resistance evidence."/>
       <property name="OriginalReference" value="Q8"/>
       <property name="Evidence" value="Photo reconstruction; topology inferred"/>
       <property name="LibraryPolicy" value="User-authorized datasheet symbol created through KiCad MCP"/>
@@ -3231,6 +3245,7 @@
       <footprint>Resistor_SMD:R_0603_1608Metric</footprint>
       <description>Resistor</description>
       <fields>
+        <field name="ViaEvidence">v0.9.2: V091 reaches R11; free pad1 selected from photo. Onward GPIO unknown.</field>
         <field name="OriginalReference">R11</field>
         <field name="Evidence">Photo reconstruction; topology inferred</field>
         <field name="LibraryPolicy">Unmodified KiCad 10 stock symbol</field>
@@ -3242,6 +3257,7 @@
         <field name="Description">Resistor</field>
       </fields>
       <libsource lib="Device" part="R" description="Resistor"/>
+      <property name="ViaEvidence" value="v0.9.2: V091 reaches R11; free pad1 selected from photo. Onward GPIO unknown."/>
       <property name="OriginalReference" value="R11"/>
       <property name="Evidence" value="Photo reconstruction; topology inferred"/>
       <property name="LibraryPolicy" value="Unmodified KiCad 10 stock symbol"/>
@@ -3305,6 +3321,7 @@
       <footprint>Resistor_SMD:R_0603_1608Metric</footprint>
       <description>Resistor</description>
       <fields>
+        <field name="ViaEvidence">v0.9.2: V108 reaches R14; free pad1 selected from photo. Onward GPIO unknown.</field>
         <field name="OriginalReference">R14</field>
         <field name="Evidence">Photo reconstruction; topology inferred</field>
         <field name="LibraryPolicy">Unmodified KiCad 10 stock symbol</field>
@@ -3316,6 +3333,7 @@
         <field name="Description">Resistor</field>
       </fields>
       <libsource lib="Device" part="R" description="Resistor"/>
+      <property name="ViaEvidence" value="v0.9.2: V108 reaches R14; free pad1 selected from photo. Onward GPIO unknown."/>
       <property name="OriginalReference" value="R14"/>
       <property name="Evidence" value="Photo reconstruction; topology inferred"/>
       <property name="LibraryPolicy" value="Unmodified KiCad 10 stock symbol"/>
@@ -3342,6 +3360,7 @@
       <footprint>Resistor_SMD:R_0603_1608Metric</footprint>
       <description>Resistor</description>
       <fields>
+        <field name="ViaEvidence">v0.9.2: V102 reaches R15; free pad1 selected from photo. Onward GPIO unknown.</field>
         <field name="OriginalReference">R15</field>
         <field name="Evidence">Photo reconstruction; topology inferred</field>
         <field name="LibraryPolicy">Unmodified KiCad 10 stock symbol</field>
@@ -3353,6 +3372,7 @@
         <field name="Description">Resistor</field>
       </fields>
       <libsource lib="Device" part="R" description="Resistor"/>
+      <property name="ViaEvidence" value="v0.9.2: V102 reaches R15; free pad1 selected from photo. Onward GPIO unknown."/>
       <property name="OriginalReference" value="R15"/>
       <property name="Evidence" value="Photo reconstruction; topology inferred"/>
       <property name="LibraryPolicy" value="Unmodified KiCad 10 stock symbol"/>
@@ -3379,6 +3399,7 @@
       <footprint>Resistor_SMD:R_0603_1608Metric</footprint>
       <description>Resistor</description>
       <fields>
+        <field name="ViaEvidence">v0.9.2: V097 reaches R16; free pad1 selected from photo. Onward GPIO unknown.</field>
         <field name="OriginalReference">R16</field>
         <field name="Evidence">Photo reconstruction; topology inferred</field>
         <field name="LibraryPolicy">Unmodified KiCad 10 stock symbol</field>
@@ -3390,6 +3411,7 @@
         <field name="Description">Resistor</field>
       </fields>
       <libsource lib="Device" part="R" description="Resistor"/>
+      <property name="ViaEvidence" value="v0.9.2: V097 reaches R16; free pad1 selected from photo. Onward GPIO unknown."/>
       <property name="OriginalReference" value="R16"/>
       <property name="Evidence" value="Photo reconstruction; topology inferred"/>
       <property name="LibraryPolicy" value="Unmodified KiCad 10 stock symbol"/>
@@ -3825,6 +3847,7 @@
       <footprint>Resistor_SMD:R_0603_1608Metric</footprint>
       <description>Resistor</description>
       <fields>
+        <field name="ViaEvidence">v0.9.2: R29.1 retains user PIC3/R28/TP7 mapping. Opposite R29.2 joins C19 at V077, explicitly confirmed GND; prior U3.5 connection withdrawn.</field>
         <field name="OriginalReference">R29</field>
         <field name="Evidence">Photo reconstruction; topology inferred</field>
         <field name="LibraryPolicy">Unmodified KiCad 10 stock symbol</field>
@@ -3836,6 +3859,7 @@
         <field name="Description">Resistor</field>
       </fields>
       <libsource lib="Device" part="R" description="Resistor"/>
+      <property name="ViaEvidence" value="v0.9.2: R29.1 retains user PIC3/R28/TP7 mapping. Opposite R29.2 joins C19 at V077, explicitly confirmed GND; prior U3.5 connection withdrawn."/>
       <property name="OriginalReference" value="R29"/>
       <property name="Evidence" value="Photo reconstruction; topology inferred"/>
       <property name="LibraryPolicy" value="Unmodified KiCad 10 stock symbol"/>
@@ -5399,7 +5423,7 @@
       <property name="ki_keywords" value="Dual Gate NOT Schmitt LVC CMOS"/>
       <property name="ki_fp_filters" value="SG-* SOT*"/>
       <sheetpath names="/" tstamps="/"/>
-      <tstamps>c2038b9c-b36c-4670-ab94-21c1a9753278 d0ce7cd7-6c1d-460b-bc83-44a9736c68fd 3fee6f3a-8cd1-4f78-bc72-965c744b6fd1</tstamps>
+      <tstamps>d0ce7cd7-6c1d-460b-bc83-44a9736c68fd c2038b9c-b36c-4670-ab94-21c1a9753278 3fee6f3a-8cd1-4f78-bc72-965c744b6fd1</tstamps>
       <units>
         <unit name="A">
           <pins>
@@ -6315,6 +6339,7 @@
       <node ref="C14" pin="1" pintype="passive"/>
       <node ref="C15" pin="1" pintype="passive"/>
       <node ref="C17" pin="2" pintype="passive"/>
+      <node ref="C19" pin="2" pintype="passive"/>
       <node ref="C2" pin="2" pintype="passive"/>
       <node ref="C20" pin="1" pintype="passive"/>
       <node ref="C24" pin="2" pintype="passive"/>
@@ -6362,6 +6387,7 @@
       <node ref="R2" pin="1" pintype="passive"/>
       <node ref="R22" pin="1" pintype="passive"/>
       <node ref="R25" pin="2" pintype="passive"/>
+      <node ref="R29" pin="2" pintype="passive"/>
       <node ref="R32" pin="1" pintype="passive"/>
       <node ref="R43" pin="1" pintype="passive"/>
       <node ref="S1" pin="1" pinfunction="1_1" pintype="passive"/>
@@ -6572,32 +6598,31 @@
       <node ref="R27" pin="1" pintype="passive"/>
       <node ref="TP6" pin="1" pinfunction="1_1" pintype="passive"/>
     </net>
-    <net code="48" name="Net-(C19-Pad2)" class="Default">
-      <node ref="C19" pin="2" pintype="passive"/>
-      <node ref="D3" pin="3" pinfunction="K_3" pintype="passive"/>
-      <node ref="R42" pin="2" pintype="passive"/>
-    </net>
-    <net code="49" name="Net-(C21-Pad1)" class="Default">
+    <net code="48" name="Net-(C21-Pad1)" class="Default">
       <node ref="C21" pin="1" pintype="passive"/>
       <node ref="C23" pin="1" pintype="passive"/>
       <node ref="R24" pin="1" pintype="passive"/>
       <node ref="U3" pin="7" pintype="output"/>
     </net>
-    <net code="50" name="Net-(C22-Pad1)" class="Default">
+    <net code="49" name="Net-(C22-Pad1)" class="Default">
       <node ref="C22" pin="1" pintype="passive"/>
       <node ref="R26" pin="1" pintype="passive"/>
       <node ref="R27" pin="2" pintype="passive"/>
       <node ref="U3" pin="1" pintype="output"/>
     </net>
-    <net code="51" name="Net-(C43-Pad2)" class="Default">
+    <net code="50" name="Net-(C43-Pad2)" class="Default">
       <node ref="C43" pin="2" pintype="passive"/>
       <node ref="C44" pin="2" pintype="passive"/>
       <node ref="C45" pin="2" pintype="passive"/>
     </net>
-    <net code="52" name="Net-(C46-Pad2)" class="Default">
+    <net code="51" name="Net-(C46-Pad2)" class="Default">
       <node ref="C46" pin="2" pintype="passive"/>
       <node ref="C47" pin="2" pintype="passive"/>
       <node ref="C48" pin="2" pintype="passive"/>
+    </net>
+    <net code="52" name="Net-(D3-K-Pad3)" class="Default">
+      <node ref="D3" pin="3" pinfunction="K_3" pintype="passive"/>
+      <node ref="R42" pin="2" pintype="passive"/>
     </net>
     <net code="53" name="Net-(J3-Pin_3)" class="Default">
       <node ref="J3" pin="3" pinfunction="Pin_3_3" pintype="passive"/>
@@ -6736,7 +6761,6 @@
     </net>
     <net code="84" name="Net-(U3B-+)" class="Default">
       <node ref="C18" pin="1" pintype="passive"/>
-      <node ref="R29" pin="2" pintype="passive"/>
       <node ref="U3" pin="5" pinfunction="+_5" pintype="input"/>
     </net>
     <net code="85" name="Net-(U3B--)" class="Default">

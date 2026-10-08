@@ -18,16 +18,15 @@ def apply(out):
     current_ids=set(by)
     membership={e:n['net'] for n in model['nets'] for e in n['endpoints']}
     sites={s['id']:s for s in out['sites']}
-    conflicts={
-        'V113':'User GND conflicts with Q8 outer joined-pad/output model. Check direct resistance to GND; component-net merge held.',
-        'V115':'User GND conflicts with Q8 outer joined-pad/output model. Check direct resistance to GND; component-net merge held.'}
+    conflicts={'V114':'User identifies the opposite centre pad, Q8.T2/package pin2. The follow-up repeats the pad location but does not settle the earlier GND claim versus the existing source-supply hypothesis. No supply-to-ground merge applied.'}
+    rejected=['V033','V050','V117','V120','V121','V122','V124']
     def annotate(ids,ends,note,net=None):
         for i in ids:
             s=sites[f'V{i:03d}'];s['endpoints']=ends;s['component_crosscheck']=note
             if net:s['net']=net
     for s in out['sites']:
         s.pop('conflict',None)
-        s.update(active=s['id'] not in ['V033','V050'],user_reports=by[s['id']],review_status='USER_REPORTED' if by[s['id']] else 'NOT_IN_USER_LIST')
+        s.update(active=s['id'] not in rejected,user_reports=by[s['id']],review_status='USER_REPORTED' if by[s['id']] else 'NOT_IN_USER_LIST')
         kinds={r['kind'] for r in by[s['id']]}
         if 'ground' in kinds:s['net']='H_GND';s['confidence']='User GND report; no per-site ohms supplied'
         if any('MX512' in r['claim'] or (r['kind']=='motor_supply') for r in by[s['id']]):
@@ -73,10 +72,16 @@ def apply(out):
     annotate([70],['R18.1'],'R18 free end; former supply assignment remains an inference, not established by component association alone.')
     annotate([71],['R21.2'],'R21 left/free end in receiver photo; shared bias hypothesis not confirmed by this via report.')
     sites['V072'].update(net=None,endpoints=[],excluded_endpoints=['R22.2'],confidence='User explicitly excludes R22.2; destination unresolved',component_crosscheck='Incorrect R22.2 via association withdrawn. Existing receiver bias connections remain separately unverified; this negative via result does not establish an alternative bias net.')
-    sites['V073'].update(net='H_GND',endpoints=[],component_crosscheck='User correction: GND only. R19 association removed; no R19 ground merge. Any R19-to-V075 relation remains photo-derived.')
-    annotate([75],['R19.2'],'R19 right/free pad photo association only; user has not confirmed this site. V073 is separately confirmed GND only.')
+    sites['V073'].update(net='H_GND',endpoints=[],component_crosscheck='User correction: GND only. R19 association removed; no R19 ground merge. V075 is now user-associated with Q7; its exact terminal is unresolved.')
+    sites['V075'].update(net=None,endpoints=[],component_refs=['Q7'],candidate_endpoints=['Q7.R','R19.2'],component_crosscheck='User identifies Q7 but not its terminal. Q7.R and the previous R19.2 continuation are photo candidates only; do not promote an inferred supply/control net to confirmed.')
     annotate([76],['R22.1'],'R22 opposite/right photo pad; user GND corroborates return.','H_GND')
+    annotate([77],['C19.2','R29.2'],'User explicitly confirms the C19-R29 junction is GND. R29 opposite the PIC3/TP7 end is pad2; C19 pad2 is assigned to the upper photo pad beside the via. Earlier C19-to-clamp and R29-to-U3.5 guesses withdrawn.','H_GND')
+    annotate([78],['C17.2'],'User adds C17 to earlier GND report; return pad selected from existing photo/model.','H_GND')
     annotate([82],[],'User associates D3; exact terminal on three-lead package still requires local confirmation.')
+    sites['V082']['component_refs']=['D3']
+    annotate([83],['C40.2'],'User adds C40 to earlier GND report; return pad selected from existing photo/model.','H_GND')
+    for i,r,n in [(91,'R11',5),(97,'R16',4),(102,'R15',3),(108,'R14',2)]:
+        annotate([i],[r+'.1'],'User identifies resistor; free upper photo pad1 selected. Tuning control role remains a hypothesis and onward GPIO is not identified.',f'H_TUNE_{n}')
     for i,q in [(89,'Q11'),(94,'Q6'),(99,'Q5'),(104,'Q4')]:
         annotate([i],[q+'.L'],'Photo left transistor pad to user GND via; assumed emitter role not confirmed.','H_GND')
     annotate([87,88],[c+'.1' for c in ['C47','C44','C29','C14','C11']],'Shared lower front-capacitor band; old antenna rail assumption withdrawn.','H_GND')
@@ -84,19 +89,27 @@ def apply(out):
         annotate([i],[c+'.1'],'Rear capacitor ground-side land; other pad joins local tuning midpoint.','H_GND')
     for i,n,cs in [(90,5,['C46','C47','C48']),(95,4,['C43','C44','C45']),(100,3,['C16','C29','C38']),(103,2,['C13','C14','C15']),(107,1,['C10','C11','C12'])]:
         annotate([i],[c+'.2' for c in cs],'User front-pair junction plus rear-land photo pairing; onward hidden connection to antenna remains unknown.',f'TUNE_{n}_MID')
-    annotate([113,115],['Q8.B1','Q8.B3'],'Outer joined Q8 pads appear on this front island; GND report conflicts with old output hypothesis. No GND merge applied.')
+    annotate([112],['C8.2'],'User adds C8 to earlier GND report; lower photo return pad selected.','H_GND')
+    annotate([113,115],['Q8.B2'],'User corrects island destination to the centre pad: B2/package pin5, already modeled as GND. Previous B1/B3 annotation was wrong. Independent earlier D-E low-resistance evidence for the outer-pad join is retained.','H_GND')
+    for i in [113,115]:
+        sites[f'V{i:03d}'].update(excluded_endpoints=['Q8.B1','Q8.B3'],confidence='User centre-pad/GND clarification; corroborates earlier S-G low resistance')
+    annotate([114],['Q8.T2'],'User: second pin on the opposite side of the package, mapped as T2/package pin2. Follow-up does not establish GND versus source supply; existing supply hypothesis retained separately.')
     annotate([116],['R10.2'],'R10 free end; no longer singleton monitor hypothesis.','H_GND')
+    annotate([118],['C7.2'],'User adds C7 to earlier GND report; lower photo return pad selected.','H_GND')
+    annotate([119],['C9.2'],'User identifies C9; photo selects lower pad2. GND is retained as the existing photo/model inference, not a new user ground measurement.','H_GND')
+    sites['V119']['confidence']='User component association; pad and GND inferred from photo/model'
     for s in out['sites']:
         s['modeled_nets']=sorted({membership[e] for e in s['endpoints'] if e in membership})
-        if not s['active']:s['review_status']='REJECTED_NOT_VIA'
+        if not s['active']:
+            s.update(review_status='REJECTED_NOT_VIA',net=None,endpoints=[],modeled_nets=[],component_crosscheck='User rejects this detection as not a via. Stable ID retained; excluded from active markers.')
         elif s['user_reports'] and s['net'] and s['review_status']!='CONFLICT':s['review_status']='ASSIGNED'
         elif not s['user_reports'] and s['net']:s['review_status']='PHOTO_LOCAL'
-    out.update(revision='v0.9.1',user_review_source='evidence/via_user_review.json',
+    out.update(revision='v0.9.2',user_review_source='evidence/via_user_review.json',
         user_review_method=review['method'],supply_naming=review['supply_naming'],
         review_summary=dict(catalogued_ids=len(sites),active_sites=sum(s['active'] for s in sites.values()),user_reported_ids=len(current_ids),original_user_reported_ids=len(original_ids),
-            omitted_from_user_list=sorted(set(sites)-current_ids),rejected=['V033','V050'],conflicts=list(conflicts),
+            omitted_from_user_list=sorted(set(sites)-current_ids),rejected=rejected,conflicts=list(conflicts),
             statuses=dict(Counter(s['review_status'] for s in sites.values()))),
-        new_model_connections=json.loads((R/'evidence/v091_net_changes.json').read_text())['changes'])
+        new_model_connections=json.loads((R/'evidence/v092_net_changes.json').read_text())['changes'])
     return out
 
 if __name__=='__main__':

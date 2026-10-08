@@ -102,3 +102,7 @@ User assignments and ambiguities are preserved in `evidence/via_user_review.json
 ## v0.9.1 incremental user corrections
 
 The user supplied 21 site corrections on 2026-10-08, preserved verbatim apart from capitalization/spacing normalization in `via_user_review.json` follow-up corrections. Component-only reports retain earlier ground/supply claims with separate provenance. Pad selections use the existing photos; notably R44.1 at V017 is photo-selected, while R42.1 is explicitly user-supplied. No new per-site resistance, datasheet, part identity or value was supplied. See `v091_net_changes.json` and `VIA_REVIEW_RESULTS.md`.
+
+## v0.9.2 incremental review and clarifications
+
+Nineteen user site entries and the two follow-up answers are preserved in `via_user_review.json`. The user explicitly confirms V077 C19-R29 is GND. The V114 answer repeats the opposite-side second-pin location without confirming or withdrawing the older GND claim. The Q8 photo pad convention and existing datasheet mapping identify centre B2=pin5 and T2=pin2. No new IC identity or pin-number reassignment is inferred. C19/R29, Q7 and tuning-resistor pad selections use IMG_2434/2433; the Q8/C7/C8/C9 area uses IMG_2431 and the registered mosaic. No new per-site ohms supplied.

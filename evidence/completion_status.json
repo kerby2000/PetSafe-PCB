@@ -1,6 +1,6 @@
 {
   "date": "2026-10-08",
-  "revision": "v0.9.1",
+  "revision": "v0.9.2",
   "known_identified_ICs_needing_new_symbols": [],
   "completed": [
     "U1 S-1200B45-M5T1 datasheet symbol",
@@ -23,7 +23,8 @@
     "v0.8: five user GPIO destinations added; RB5-TP10 corroborated; conflicting old net hypotheses removed",
     "v0.8: D4/D5/C41 ground connections from manually matched front/rear vias; photo-based rather than meter-confirmed",
     "v0.9: 28 endpoint corrections from user via review and component-pad cross-checks; 37 open pads, eight GPIO pads",
-    "v0.9.1: 21 via-site corrections; V017 joins R42.1/R44.1; V033 rejected; V073 GND-only conflict resolved"
+    "v0.9.1: 21 via-site corrections; V017 joins R42.1/R44.1; V033 rejected; V073 GND-only conflict resolved",
+    "v0.9.2: 19 site corrections; Q8 centre-ground annotation corrected; V077 C19/R29 grounded; five further artifacts rejected"
   ],
   "catalog_entries": 150,
   "physical_pins": 352,
@@ -69,7 +70,7 @@
       "priority": 1,
       "gap": "Exact fitted manufacturer and external connections",
       "candidate": "3724A complementary N/P MOSFET; MCC SIL3724A datasheet candidate",
-      "detail": "D-E=2ohm and S-G=2ohm support joined drains and ground source. E-F=400kohm refutes C6 output tie. F-P=10ohm and F-G=300kohm suggest supply-related C6; exact path unresolved. P-source supply and output continuation inferred. v0.9 HOLD: V113/V115 user GND conflicts with output hypothesis; no ground merge applied.",
+      "detail": "v0.9.2: V113/V115 centre B2/pin5 GND resolved. Outer drain join keeps earlier D-E resistance evidence. V114 opposite T2/pin2 assignment known; GND versus source-supply net unresolved. C6 route and fitted maker remain uncertain.",
       "source": "docs/U6_Q8_MARKING_UPDATE.md"
     },
     {
@@ -236,17 +237,17 @@
     },
     {
       "area": "Q8 / RF output / C6",
-      "gap": "V113/V115 reported GND conflicts with the outer-pad output hypothesis. C6.1 path unresolved despite 10 ohm to P.",
-      "method": "Clarify whether GND was measured; compare outer pads to the same GND hole."
+      "gap": "V113/V115 resolved as centre pin5 GND. V114 reaches opposite pin2; its net and C6.1 route remain unresolved.",
+      "method": "Separate V114 pad identity from its earlier GND claim; retain supply as a hypothesis."
     },
     {
       "area": "Tuning bank",
-      "gap": "Ground returns corrected. Five local capacitor midpoints are known; connections onward to the antenna are not established.",
+      "gap": "V091/R11, V097/R16, V102/R15, V108/R14 control ends identified; onward GPIOs and midpoint-to-antenna links unknown.",
       "method": "Check V090/V095/V100/V103/V107 to ANT1 and ANT2."
     },
     {
       "area": "Auxiliary / receiver",
-      "gap": "V063 feed unknown. V017 joins R42.1/R44.1; circuit role unknown. V011-V014 and V072 destinations are unresolved after rejected associations.",
+      "gap": "V077 grounds C19/R29. V075 reaches Q7, terminal unknown. V063 feed and V017 role remain unknown; V011-V014/V072 destinations unresolved.",
       "method": "Identify these remote nets; R44.1 is a photo-selected pad. Receiver bias is still inferred."
     },
     {
@@ -272,8 +273,8 @@
   ],
   "via_review": {
     "catalogued_ids": 127,
-    "active_sites": 125,
-    "user_reported_ids": 101,
+    "active_sites": 120,
+    "user_reported_ids": 111,
     "original_user_reported_ids": 97,
     "omitted_from_user_list": [
       "V016",
@@ -290,34 +291,28 @@
       "V047",
       "V049",
       "V053",
-      "V075",
       "V079",
-      "V080",
-      "V091",
-      "V097",
-      "V102",
-      "V108",
-      "V117",
-      "V119",
-      "V120",
-      "V122",
-      "V124"
+      "V080"
     ],
     "rejected": [
       "V033",
-      "V050"
+      "V050",
+      "V117",
+      "V120",
+      "V121",
+      "V122",
+      "V124"
     ],
     "conflicts": [
-      "V113",
-      "V115"
+      "V114"
     ],
     "statuses": {
-      "ASSIGNED": 85,
-      "USER_REPORTED": 12,
-      "NOT_IN_USER_LIST": 19,
+      "ASSIGNED": 90,
+      "USER_REPORTED": 13,
+      "NOT_IN_USER_LIST": 9,
       "PHOTO_LOCAL": 7,
-      "REJECTED_NOT_VIA": 2,
-      "CONFLICT": 2
+      "REJECTED_NOT_VIA": 7,
+      "CONFLICT": 1
     }
   },
   "complete_symbols_for_selected_candidates": true

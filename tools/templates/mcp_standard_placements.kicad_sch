@@ -9486,6 +9486,9 @@
 				)
 			)
 		)
+    (property "ViaEvidence" "v0.9.2: V118 associated with C7; earlier GND report retained for photo-selected return pad2." (at 190.5 179.07 0)
+      (effects (font (size 1.27 1.27)) (hide yes))
+    )
 		(pin "1"
 			(uuid "9428dd13-4326-4de8-a8a3-132b748f952c")
 		)
@@ -9567,6 +9570,9 @@
 				)
 			)
 		)
+    (property "ViaEvidence" "v0.9.2: V112 associated with C8; earlier GND report retained for photo-selected return pad2." (at 67.31 229.87 0)
+      (effects (font (size 1.27 1.27)) (hide yes))
+    )
 		(pin "1"
 			(uuid "ec2c96d5-9736-4837-a8a0-85a5b39c80c9")
 		)
@@ -9648,6 +9654,9 @@
 				)
 			)
 		)
+    (property "ViaEvidence" "v0.9.2: V119 associated with C9; lower pad2/GND remains photo-model inference, not a new ground measurement." (at 67.31 198.12 0)
+      (effects (font (size 1.27 1.27)) (hide yes))
+    )
 		(pin "1"
 			(uuid "3b3a8f81-bdbf-42ce-a95d-a0c6897e0b58")
 		)
@@ -12139,6 +12148,9 @@
 				)
 			)
 		)
+    (property "ViaEvidence" "v0.9.2: V083 associated with C40; earlier GND report retained for photo-selected return pad2." (at 542.29 215.9 0)
+      (effects (font (size 1.27 1.27)) (hide yes))
+    )
 		(pin "1"
 			(uuid "7a1cac56-b7f8-44ed-a21a-25caf88ae66a")
 		)
@@ -12300,6 +12312,9 @@
 				)
 			)
 		)
+    (property "ViaEvidence" "v0.9.2: R29.1 retains user PIC3/R28/TP7 mapping. Opposite R29.2 joins C19 at V077, explicitly confirmed GND; prior U3.5 connection withdrawn." (at 453.39 184.15 0)
+      (effects (font (size 1.27 1.27)) (hide yes))
+    )
 		(pin "1"
 			(uuid "a17466cb-2a12-40b3-a311-78da007f3eab")
 		)
@@ -12460,6 +12475,9 @@
 				)
 			)
 		)
+    (property "ViaEvidence" "v0.9.2: V077 C19-R29 junction explicitly confirmed GND. Model C19.2 assigned to upper photo pad beside via; former clamp connection withdrawn; opposite-pad route remains inferred." (at 466.09 250.19 0)
+      (effects (font (size 1.27 1.27)) (hide yes))
+    )
 		(pin "1"
 			(uuid "9688fe5a-7342-4360-920c-daeef8ce23c3")
 		)
@@ -12701,6 +12719,9 @@
 				)
 			)
 		)
+    (property "ViaEvidence" "v0.9.2: user identifies V075 as Q7. Exact terminal is not specified; prior R19.2 continuation and Q7.R are photo candidates only." (at 313.69 182.88 0)
+      (effects (font (size 1.27 1.27)) (hide yes))
+    )
 		(pin "1"
 			(uuid "5be2578f-0ca9-42ae-80f4-6404c6626448")
 		)
@@ -13022,6 +13043,9 @@
 				)
 			)
 		)
+    (property "ViaEvidence" "v0.9.2: V078 associated with C17; earlier GND report retained for photo-selected return pad2." (at 340.36 200.66 0)
+      (effects (font (size 1.27 1.27)) (hide yes))
+    )
 		(pin "1"
 			(uuid "fc764a8c-43e1-4e5f-be68-4ee16b6aa7cf")
 		)
@@ -14331,6 +14355,9 @@
 				)
 			)
 		)
+    (property "ViaEvidence" "v0.9.2: V108 reaches R14; free pad1 selected from photo. Onward GPIO unknown." (at 88.9 347.98 0)
+      (effects (font (size 1.27 1.27)) (hide yes))
+    )
 		(pin "1"
 			(uuid "19b01b6a-a9e8-4ade-8248-2d6eb3c9b5b4")
 		)
@@ -14764,6 +14791,9 @@
 				)
 			)
 		)
+    (property "ViaEvidence" "v0.9.2: V102 reaches R15; free pad1 selected from photo. Onward GPIO unknown." (at 142.24 347.98 0)
+      (effects (font (size 1.27 1.27)) (hide yes))
+    )
 		(pin "1"
 			(uuid "84ce3ab8-9c35-497d-a14c-80dc0e8a3a28")
 		)
@@ -15197,6 +15227,9 @@
 				)
 			)
 		)
+    (property "ViaEvidence" "v0.9.2: V097 reaches R16; free pad1 selected from photo. Onward GPIO unknown." (at 195.58 347.98 0)
+      (effects (font (size 1.27 1.27)) (hide yes))
+    )
 		(pin "1"
 			(uuid "37ad83a0-a4d1-4489-8236-19a9ff05ae9a")
 		)
@@ -15630,6 +15663,9 @@
 				)
 			)
 		)
+    (property "ViaEvidence" "v0.9.2: V091 reaches R11; free pad1 selected from photo. Onward GPIO unknown." (at 248.92 347.98 0)
+      (effects (font (size 1.27 1.27)) (hide yes))
+    )
 		(pin "1"
 			(uuid "ffda68dd-7175-4d0b-b4dc-672fd2f1737c")
 		)
@@ -18491,7 +18527,7 @@
 				(hide yes)
 			)
 		)
-		(property "ViaEvidence" "v0.9 HOLD: V113/V115 reported GND but front island appears to join outer joined-drain pads; conflict with existing output topology. Await continuity reconciliation."
+		(property "ViaEvidence" "v0.9.2: V113/V115 connect centre B2/pin5 to GND; earlier outer B1/B3 via annotation withdrawn. V114 reaches opposite centre T2/pin2, with GND versus source supply unresolved. Outer drain join retains earlier D-E resistance evidence."
 			(at 162.56 231.14 0)
 			(effects
 				(font

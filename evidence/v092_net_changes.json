@@ -1,0 +1,53 @@
+{
+  "revision": "v0.9.2",
+  "changes": [
+    {
+      "endpoint": "C19.2",
+      "old": "H_RX_RF_SENSE",
+      "new": "H_GND",
+      "basis": "User explicitly confirms V077 C19-R29 junction is GND. R29.2 is opposite the confirmed PIC3 end; C19.2 assigned to the upper photo pad beside V077. Prior clamp/input guesses withdrawn."
+    },
+    {
+      "endpoint": "R29.2",
+      "old": "RX_B_PLUS",
+      "new": "H_GND",
+      "basis": "User explicitly confirms V077 C19-R29 junction is GND. R29.2 is opposite the confirmed PIC3 end; C19.2 assigned to the upper photo pad beside V077. Prior clamp/input guesses withdrawn."
+    }
+  ],
+  "corrected_via_ids": [
+    "V075",
+    "V077",
+    "V078",
+    "V083",
+    "V091",
+    "V097",
+    "V102",
+    "V108",
+    "V112",
+    "V113",
+    "V114",
+    "V115",
+    "V117",
+    "V118",
+    "V119",
+    "V120",
+    "V121",
+    "V122",
+    "V124"
+  ],
+  "rejected_now": [
+    "V117",
+    "V120",
+    "V121",
+    "V122",
+    "V124"
+  ],
+  "resolved_conflicts": [
+    "V113",
+    "V115"
+  ],
+  "held_conflicts": [
+    "V114"
+  ],
+  "qualification": "V075 Q7 terminal unspecified. V114 follow-up identifies pad location, not net. Component-only reports use explicit photo-selected pad qualifications. No new numerical resistance supplied."
+}

@@ -1,4 +1,4 @@
-# PetSafe functional reconstruction, v0.9.1
+# PetSafe functional reconstruction, v0.9.2
 
 The deliverable is one editable KiCad schematic sheet with all 150 entries in the original main-board catalog. It uses wires inside functional blocks and labels between blocks. The 150 entries include named pads, test points and unpopulated footprints; they are not 150 fitted components. The separate PIR daughterboard appears in the photos, but only its main-board connector and interface are modeled here.
 
@@ -171,3 +171,9 @@ Read [via review results](VIA_REVIEW_RESULTS.md) for all 28 endpoint corrections
 101 distinct via IDs reviewed; 125 active sites / 127 stable IDs. V033 and V050 are rejected without renumbering; 26 IDs remain unmentioned, some already photo-matched. The latest batch corrects 21 sites. V017 joins R42.1 and R44.1 (R44 pad selected from the photo), replacing the earlier R42.1-to-ANT2 hypothesis. R43.2 is associated with V015, not V011-V014. V072-to-R22.2 is withdrawn. V073 is GND only; R19/V075 remains photo-derived. V113/V115 are the two remaining held conflicts.
 
 R42.1/R44.1 share the new `V017_CONTROL` net; its function is unknown. The independent original Q1.L/R43.2 local fragment is retained at V015. Removing V072 from R22.2 does not validate or replace the earlier receiver-bias hypothesis. Further review is deferred at the user's request.
+
+## v0.9.2 RF and receiver via review
+
+111 distinct via IDs reviewed; 120 active sites / 127 stable IDs. The latest 19-site batch excludes V117/V120/V121/V122/V124 without renumbering. V113/V115 now correctly point to Q8 centre B2/pin5, GND; the old outer-pad annotation is withdrawn. V077 confirms C19.2/R29.2 are GND, replacing the earlier clamp/op-amp-input guesses. V091/R11, V097/R16, V102/R15 and V108/R14 identify tuning-control resistor ends, with onward GPIOs unknown. V114 reaches the opposite centre T2/pin2, but its earlier GND assignment versus source-supply hypothesis remains unresolved. V075 identifies Q7; exact terminal remains unspecified.
+
+C19 pad2 is assigned to the upper pad beside V077 in IMG_2434; its other-pad routing remains inferred. R29.1 retains the PIC3/R28/TP7 user mapping; R29.2 becomes GND. The old R29-to-U3.5 and C19-to-clamp branches are withdrawn, while the original U3.5/C18.1 visual fragment remains joined. V114 is kept as a pad association with unknown net; Q8.T2 supply remains a separate hypothesis. The two Q8 outer drain pads remain joined from the earlier D-E reading, independently of the corrected centre-ground via association.

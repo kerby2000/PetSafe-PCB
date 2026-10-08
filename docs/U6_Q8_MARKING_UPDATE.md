@@ -2,6 +2,10 @@
 
 The sharper user photographs read **C2NM on U6** and **3724A on Q8**. The earlier WN23 and 372A readings were incorrect. This report supersedes the candidate ranking in the historical U6/Q8 investigation.
 
+## Current copper correction - v0.9.2
+
+V113/V115 were incorrectly annotated as Q8 outer drain pads. The user identifies the centre B2/package pin5 instead, connected to GND, consistent with the earlier S-G reading. This resolves those two site conflicts without changing the datasheet pin map or the independent outer-drain join. V114 is the opposite centre T2/package pin2; its older GND report versus the source-supply hypothesis remains unresolved after a location-only follow-up.
+
 ## U6: ABLIC S-812C33AMC-C2NT2x, strong candidate
 
 The [ABLIC S-812C datasheet](https://www.ablic.com/en/doc/datasheet/voltage_regulator/S812C_E.pdf), Table 1 on printed page 8, maps product code **C2N** to the **3.3 V S-812C33AMC** in SOT-23-5. The [MP005-A package marking drawing](https://www.ablic.com/en/doc/package/MP005-A.pdf), PDF page 5, specifies three product-code characters followed by an assembly-month character. Thus M is an assembly code; its month has not been decoded here. This is a manufacturer-code match, reinforced by package and ground evidence, rather than a typical-application guess alone.
