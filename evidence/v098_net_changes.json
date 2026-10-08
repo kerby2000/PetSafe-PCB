@@ -48,6 +48,36 @@
       "old": "V017_CONTROL",
       "new": "PIC_TP4_C41",
       "basis": "v0.9.8: User confirms V017-TP4. Prior V017-R42.1/R44.1 local junction now joins TP4 and PIC25/RB4. R42.1 explicitly user-named; R44 pad1 and C41 branch retain earlier photo selection. No numeric resistance supplied; circuit operating role remains inferred."
+    },
+    {
+      "endpoint": "R21.2",
+      "old": "H_RX_BIAS",
+      "new": "PIC_RB0_VREF",
+      "basis": "v0.9.8: User confirms V071-VREF. Earlier V071-R21.2 and V026-VREF-PIC21/RB0 associations retained. R21.2 joins PIC_RB0_VREF. Existing R22.2/R23.2/R48.2 receiver-bias branches remain prior photo/circuit hypotheses, not new measured connections. VREF remains separate from H_VDD and RC1/V053. No voltage or numeric resistance supplied."
+    },
+    {
+      "endpoint": "R22.2",
+      "old": "H_RX_BIAS",
+      "new": "PIC_RB0_VREF",
+      "basis": "v0.9.8: User confirms V071-VREF. Earlier V071-R21.2 and V026-VREF-PIC21/RB0 associations retained. R21.2 joins PIC_RB0_VREF. Existing R22.2/R23.2/R48.2 receiver-bias branches remain prior photo/circuit hypotheses, not new measured connections. VREF remains separate from H_VDD and RC1/V053. No voltage or numeric resistance supplied."
+    },
+    {
+      "endpoint": "R23.2",
+      "old": "H_RX_BIAS",
+      "new": "PIC_RB0_VREF",
+      "basis": "v0.9.8: User confirms V071-VREF. Earlier V071-R21.2 and V026-VREF-PIC21/RB0 associations retained. R21.2 joins PIC_RB0_VREF. Existing R22.2/R23.2/R48.2 receiver-bias branches remain prior photo/circuit hypotheses, not new measured connections. VREF remains separate from H_VDD and RC1/V053. No voltage or numeric resistance supplied."
+    },
+    {
+      "endpoint": "R48.2",
+      "old": "H_RX_BIAS",
+      "new": "PIC_RB0_VREF",
+      "basis": "v0.9.8: User confirms V071-VREF. Earlier V071-R21.2 and V026-VREF-PIC21/RB0 associations retained. R21.2 joins PIC_RB0_VREF. Existing R22.2/R23.2/R48.2 receiver-bias branches remain prior photo/circuit hypotheses, not new measured connections. VREF remains separate from H_VDD and RC1/V053. No voltage or numeric resistance supplied."
+    },
+    {
+      "endpoint": "Q1.L",
+      "old": null,
+      "new": "H_VBAT",
+      "basis": "v0.9.8: User explicitly confirms V011/V012/V013/V014 share the MX512H pin4 VDD motor supply. Earlier Q1.L association retained, now H_VBAT, not regulated TP103/H_VDD. Q1.L-R43.2 remains rejected. Q1 device identity, polarity and function remain candidate assumptions; this connection does not validate them."
     }
   ],
   "confirmed_via_endpoint_pairs": [
@@ -92,13 +122,43 @@
         "U4.25"
       ],
       "reading": null
+    },
+    {
+      "via": "V082",
+      "endpoints": [
+        "VDD.1"
+      ],
+      "reading": null,
+      "qualification": "D3 component association retained separately; no exact D3 pad confirmed."
+    },
+    {
+      "via": "V071",
+      "endpoints": [
+        "R21.2",
+        "VREF.1",
+        "U4.21"
+      ],
+      "reading": null
+    },
+    {
+      "vias": [
+        "V011",
+        "V012",
+        "V013",
+        "V014"
+      ],
+      "endpoints": [
+        "Q1.L",
+        "U5.4"
+      ],
+      "reading": null
     }
   ],
   "component_evidence": {
-    "U4": "v0.9.8: User confirms RC2/PIC13-V049-TP3, RB0/PIC21-V026-VREF (native TP104), and RC1/PIC12-V053-V070-R18.1. User explicitly rejects V053-VREF, superseding the old photo assumption. No numerical resistance supplied for these connections. All PIC pads have modeled local destinations; other inferred branches still need review. RB4/PIC25-TP4 now also reaches V017/R42.1/R44.1.",
+    "U4": "v0.9.8: User confirms RC2/PIC13-V049-TP3, RB0/PIC21-V026-VREF (native TP104), and RC1/PIC12-V053-V070-R18.1. User explicitly rejects V053-VREF, superseding the old photo assumption. No numerical resistance supplied for these connections. All PIC pads have modeled local destinations; other inferred branches still need review. RB4/PIC25-TP4 now also reaches V017/R42.1/R44.1. RB0/VREF also reaches V071/R21.2 by user report.",
     "TP3": "v0.9.8: User reports V049 = TP03, interpreted as board TP3. V049 already confirmed to PIC13/RC2. Existing local TP3-R10.1 association retained as photo-derived, not a new user measurement.",
     "R10": "v0.9.8: RF_MONITOR_PAD now reaches PIC13/RC2 via user V049-TP3 report. R10.1-to-TP3 remains the existing local photo/model association; 10k value is marking-derived and R10.2 ground comes from earlier via review.",
-    "VREF": "v0.9.8: Board silk VREF, native TP104. User confirms V026-VREF (PIC21/RB0) and explicitly rejects V053-VREF. Old RC1 photo association withdrawn. VREF is a board label, not an established voltage or IC function.",
+    "VREF": "v0.9.8: Board silk VREF, native TP104. User confirms V026-VREF (PIC21/RB0) and explicitly rejects V053-VREF. Old RC1 photo association withdrawn. VREF is a board label, not an established voltage or IC function. User also confirms V071/R21.2 to this VREF point; existing receiver-bias branches retain prior inference status.",
     "R18": "v0.9.8: User confirms V053-V070, mapping PIC12/RC1 to existing V070/R18.1 control input. Local R18.2-Q7.L-R19.1 topology remains photo/resistance-supported inference from v0.9.7; 11.2 kohm V064-V070 retained. No direct VDD tie.",
     "U6A": "v0.9.8: User confirms V067-J3 pin1 (red wire), on modeled H_PIR_VDD. Prior V067-U6A.R1 local pad association retained. Empty U6A option remains DNP; this does not identify an IC or confirm every other H_PIR_VDD branch.",
     "J3": "v0.9.8: User confirms V067-J3 pin1 (red wire), on modeled H_PIR_VDD. Prior V067-U6A.R1 local pad association retained. Empty U6A option remains DNP; this does not identify an IC or confirm every other H_PIR_VDD branch.",
@@ -106,7 +166,13 @@
     "TP14": "v0.9.8: User confirms V015-TP14. Earlier V015-R43.2 lower-pad association retained. R43.2 joins TP14 on H_BAT_DETECT, whose existing Q1.S branch and functional name remain photo/circuit hypotheses. Q1.L-R43.2 remains explicitly rejected. No numeric resistance supplied.",
     "R42": "v0.9.8: User confirms V017-TP4. Prior V017-R42.1/R44.1 local junction now joins TP4 and PIC25/RB4. R42.1 explicitly user-named; R44 pad1 and C41 branch retain earlier photo selection. No numeric resistance supplied; circuit operating role remains inferred.",
     "R44": "v0.9.8: User confirms V017-TP4. Prior V017-R42.1/R44.1 local junction now joins TP4 and PIC25/RB4. R42.1 explicitly user-named; R44 pad1 and C41 branch retain earlier photo selection. No numeric resistance supplied; circuit operating role remains inferred.",
-    "TP4": "v0.9.8: User confirms V017-TP4. Prior V017-R42.1/R44.1 local junction now joins TP4 and PIC25/RB4. R42.1 explicitly user-named; R44 pad1 and C41 branch retain earlier photo selection. No numeric resistance supplied; circuit operating role remains inferred."
+    "TP4": "v0.9.8: User confirms V017-TP4. Prior V017-R42.1/R44.1 local junction now joins TP4 and PIC25/RB4. R42.1 explicitly user-named; R44 pad1 and C41 branch retain earlier photo selection. No numeric resistance supplied; circuit operating role remains inferred.",
+    "VDD": "v0.9.8 follow-up: User confirms V082 reaches the board VDD test point, native TP103 / H_VDD regulated logic rail. This is distinct from MX512H pin4 VDD / H_VBAT motor supply; MX512H pin1 VCC is modeled on H_VDD. V082 was associated with D3 but its exact package terminal remains unconfirmed. Do not merge H_RX_VDD or choose a D3 pin from this report alone.",
+    "R21": "v0.9.8: User confirms V071-VREF. Earlier V071-R21.2 and V026-VREF-PIC21/RB0 associations retained. R21.2 joins PIC_RB0_VREF. Existing R22.2/R23.2/R48.2 receiver-bias branches remain prior photo/circuit hypotheses, not new measured connections. VREF remains separate from H_VDD and RC1/V053. No voltage or numeric resistance supplied.",
+    "R22": "v0.9.8: User confirms V071-VREF. Earlier V071-R21.2 and V026-VREF-PIC21/RB0 associations retained. R21.2 joins PIC_RB0_VREF. Existing R22.2/R23.2/R48.2 receiver-bias branches remain prior photo/circuit hypotheses, not new measured connections. VREF remains separate from H_VDD and RC1/V053. No voltage or numeric resistance supplied.",
+    "R23": "v0.9.8: User confirms V071-VREF. Earlier V071-R21.2 and V026-VREF-PIC21/RB0 associations retained. R21.2 joins PIC_RB0_VREF. Existing R22.2/R23.2/R48.2 receiver-bias branches remain prior photo/circuit hypotheses, not new measured connections. VREF remains separate from H_VDD and RC1/V053. No voltage or numeric resistance supplied.",
+    "R48": "v0.9.8: User confirms V071-VREF. Earlier V071-R21.2 and V026-VREF-PIC21/RB0 associations retained. R21.2 joins PIC_RB0_VREF. Existing R22.2/R23.2/R48.2 receiver-bias branches remain prior photo/circuit hypotheses, not new measured connections. VREF remains separate from H_VDD and RC1/V053. No voltage or numeric resistance supplied.",
+    "Q1": "v0.9.8: User explicitly confirms V011/V012/V013/V014 share the MX512H pin4 VDD motor supply. Earlier Q1.L association retained, now H_VBAT, not regulated TP103/H_VDD. Q1.L-R43.2 remains rejected. Q1 device identity, polarity and function remain candidate assumptions; this connection does not validate them."
   },
   "qualification": "No numerical ohms supplied for new continuity reports. TP3-R10.1 and Q7 local topology remain qualified prior photo/circuit inferences. V049-V070 variable high resistance remains inconclusive evidence, not a measured OL.",
   "pending_associations": [],
@@ -118,6 +184,10 @@
     [
       "V053",
       "V070"
+    ],
+    [
+      "V071",
+      "V026"
     ]
   ],
   "rejected_pairs": [
@@ -132,6 +202,16 @@
       ],
       "reading": "NOT connected (user report; no numeric reading)",
       "status": "USER_REJECTED_DIRECT_CONNECTION"
+    }
+  ],
+  "source_photos": [
+    {
+      "path": "photos/user/2026-10-08/VREF_user_locator.png",
+      "sha256": "f601fddf46692105cc6bbc678b88bc451fd2178a3b5bda5fc9bfa84147f6a01d"
+    },
+    {
+      "path": "photos/user/2026-10-08/VDD_user_locator.png",
+      "sha256": "962d15b377986fa7c81bb8d5e7e47d08e65c9dc99fa424c37c1df43b12411e16"
     }
   ]
 }

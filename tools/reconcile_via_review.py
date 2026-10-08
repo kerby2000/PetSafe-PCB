@@ -42,7 +42,7 @@ def apply(out):
     annotate([6],['C33.2'],'User adds C33 to earlier GND report; pad2 selected from photo/model.','H_GND')
     annotate([7],['C34.2'],'User adds C34 to earlier GND report; pad2 selected from photo/model.','H_GND')
     for i in [11,12,13,14]:
-        s=sites[f'V{i:03d}'];s.update(net=None,endpoints=['Q1.L'],excluded_endpoints=['R43.2'],reported_supply='VDD (regulated versus motor rail unresolved)',confidence='User Q1.L/VDD report; which supply rail remains unresolved',component_crosscheck='V011-V014 reach Q1.L and user reports VDD. Distinguish regulated V064 from motor-supply V001 before merging. R43.2 remains explicitly excluded; transistor function is not established.')
+        sites[f'V{i:03d}'].update(net='H_VBAT',endpoints=['Q1.L'],excluded_endpoints=['R43.2'],reported_supply='MX512H pin4 VDD / motor supply H_VBAT',confidence='User confirms motor rail; Q1 identity/polarity remains inferred',component_crosscheck='User explicitly confirms same rail as MX512H pin4. Q1.L reaches motor H_VBAT, distinct from regulated H_VDD/TP103. R43.2 remains excluded.')
     sites['V015'].update(endpoints=['R43.2','TP14.1'],net='H_BAT_DETECT',excluded_endpoints=['Q1.L'],component_crosscheck='User confirms V015-TP14 and earlier R43 lower pad2 association. Q1.L remains excluded. Existing TP14-Q1.S branch and battery-detect role remain inferred.')
     annotate([16,22],['U5.2','U4.15'],'User confirms V016-V022 joins U5 INA pin2 to PIC15 RC4.','MOTOR_INA')
     annotate([19,23],['U5.3','U4.16'],'User confirms V019-V023 joins U5 INB pin3 to PIC16 RC5.','MOTOR_INB')
@@ -76,7 +76,8 @@ def apply(out):
     annotate([70],['R18.1'],'User V064-V070 = 11.2 kohm excludes direct VDD. Nominal R18 1.2k + R19 10k fits the measured path; base-input topology supported by photo/circuit inference. Onward control source unknown.','H_RX_ENABLE_CTL')
     annotate([53,70],['U4.12','R18.1'],'User confirms V053-V070 and excludes V053-VREF. PIC12/RC1 reaches R18 input; Q7 local operating role remains inferred. No numeric ohms supplied.','H_RX_ENABLE_CTL')
     for i in [53,70]:sites[f'V{i:03d}'].update(joined_vias=['V053','V070'],confidence='User continuity report; no numerical resistance supplied')
-    annotate([71],['R21.2'],'R21 left/free end in receiver photo; shared bias hypothesis not confirmed by this via report.')
+    annotate([71],['R21.2','VREF.1','U4.21'],'User confirms V071-VREF, previously mapped to PIC21/RB0 via V026. Other receiver-bias branches remain photo/circuit hypotheses.','PIC_RB0_VREF')
+    for i in [26,71]:sites[f'V{i:03d}']['joined_vias']=['V026','V071']
     sites['V072'].update(net='RX_A_FILTER',endpoints=['TP6.1'],excluded_endpoints=['R22.2'],confidence='User identifies TP6 and explicitly excludes R22.2',component_crosscheck='User identifies TP6. Existing C18.2/R27.1 branches on RX_A_FILTER remain hypotheses; the via report does not certify the whole modeled net. TP6 remains separate from U3.5 across C18.')
     sites['V073'].update(net='H_GND',endpoints=[],component_crosscheck='User correction: GND only. R19 association removed; no R19 ground merge. V075 is now user-associated with Q7; its exact terminal is unresolved.')
     sites['V075'].update(net='H_VDD',endpoints=['Q7.R','R19.2'],component_refs=['Q7','R19'],candidate_endpoints=[],confidence='Rail measured via V064; local terminals selected from IMG_2434 and 11.2 kohm R18+R19 path, not separate pad measurements.',component_crosscheck='V064-V075 confirms regulated VDD. IMG_2434 shows the R19/Q7 paired-pad continuation; V064-V070 11.2 kohm supports R18+R19 base-input/pull-up arrangement. Q7.R/native2 and R19.2 now modeled on VDD as a supported reconstruction, not user-probed exact terminal proof.')
@@ -85,7 +86,8 @@ def apply(out):
     annotate([78],['C17.2'],'User adds C17 to earlier GND report; return pad selected from existing photo/model.','H_GND')
     annotate([79,80],['U3.5'],'User identifies SGM8542 pin5 for both vias. Existing original C18.1 local fragment retained on RX_B_PLUS; TP6 lies on the opposite side of C18 and is not merged.','RX_B_PLUS')
     for i in [79,80]:sites[f'V{i:03d}']['confidence']='User explicit U3 pin5 association; no new per-site ohms supplied'
-    annotate([82],[],'User associates D3; exact terminal on three-lead package still requires local confirmation.')
+    annotate([82],['VDD.1'],'User confirms V082-board VDD test point (native TP103), regulated logic H_VDD. D3 exact terminal unconfirmed; no H_RX_VDD merge implied.','H_VDD')
+    sites['V082']['confidence']='User continuity report to TP103; D3 terminal unresolved'
     sites['V082']['component_refs']=['D3']
     annotate([83],['C40.2'],'User adds C40 to earlier GND report; return pad selected from existing photo/model.','H_GND')
     for i,r,n in [(91,'R11',5),(97,'R16',4),(102,'R15',3),(108,'R14',2)]:

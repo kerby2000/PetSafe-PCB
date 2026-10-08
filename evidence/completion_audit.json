@@ -12,7 +12,7 @@
   ],
   "fitted_capacitors": 45,
   "fitted_resistors": 38,
-  "unresolved_physical_pins": 29,
+  "unresolved_physical_pins": 28,
   "warning": "Open-pad counts do not include every inferred route. Assigned footprints are candidates, not measured reproductions.",
   "components": [
     {
@@ -1616,8 +1616,8 @@
       "footprint": "Package_TO_SOT_SMD:SOT-23",
       "footprint_confidence": "datasheet/package candidate",
       "footprint_basis": "Existing assignment; see component identity evidence.",
-      "open_pads": 1,
-      "next_method": "Candidate identity: confirm pin functions/routing; a short top code may not identify one manufacturer; Targeted continuity for 1 open physical pads",
+      "open_pads": 0,
+      "next_method": "Candidate identity: confirm pin functions/routing; a short top code may not identify one manufacturer",
       "photos": "IMG_2438.jpg"
     },
     {
@@ -2180,7 +2180,7 @@
       "native_ref": "TP103",
       "population": "populated",
       "observed": "VDD",
-      "displayed": "VDD pad",
+      "displayed": "VDD (logic supply)",
       "marking": "",
       "value_or_identity": "Board pad: no component value required",
       "footprint": "TestPoint:TestPoint_THTPad_D2.0mm_Drill1.0mm",

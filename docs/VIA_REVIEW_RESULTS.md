@@ -10,7 +10,7 @@
 
 No numerical resistance was supplied for these new connections. V049–V070 variable 200–300 kΩ remains recorded as contact-dependent, not definite OL. D2 V070–V026 was unmeasured and withdrawn, not rejected. Q7/R19 local topology remains photo/resistance-supported inference.
 
-**No PIC pads remain open in the model.** Remaining work is not zero: other partial local nets, candidate identities, 44 unmarked ceramic values, L1/L2 values and three exact package geometries remain. **85 modeled net partitions PASS; 37 ERC findings = 29 open pads (11 populated-entry, 18 DNP) + 3 isolated labels + 5 power findings.** All 26 original photo checksums retained. Current status and numbered map rebuilt; the pair guide shows a completed result with no repeat request.
+**No PIC pads remain open in the model.** Remaining work is not zero: other partial local nets, candidate identities, 44 unmarked ceramic values, L1/L2 values and three exact package geometries remain. **84 modeled net partitions PASS; 36 ERC findings = 28 open pads (10 populated-entry, 18 DNP) + 3 isolated labels + 5 power findings.** All 26 original photo checksums retained. Current status and numbered map rebuilt; the pair guide shows a completed result with no repeat request.
 
 The sections below are historical snapshots; later user corrections above take precedence.
 
@@ -27,7 +27,7 @@ The sections below are historical snapshots; later user corrections above take p
 
 Those local pad assignments are explicitly **photo/circuit inferences supported by the resistance**, not new user-probed terminal confirmations. Candidate BC857C identity and operating function remain qualified. No MCU connection is guessed into the schematic. The initial RC2 candidate has now been tested with a variable high reading; see the latest update above.
 
-KiCad 10.0.5 native/model validation: **85 partitions PASS; 42 ERC findings (33 open pads, four isolated labels, five power findings)**. All 26 original photo checksums remain intact. See [search reasoning and current test](VIA_PAIR_SEARCH.md).
+KiCad 10.0.5 native/model validation: **84 partitions PASS; 42 ERC findings (33 open pads, four isolated labels, five power findings)**. All 26 original photo checksums remain intact. See [search reasoning and current test](VIA_PAIR_SEARCH.md).
 
 ## Historical continuity follow-up before v0.9.7
 
@@ -200,3 +200,9 @@ The PIC under-body candidates V036/37/39/47/49 align approximately with pins5/6/
 Latest v0.9.8 report: **V015-TP14 confirmed**, joining R43.2 to TP14. Q1.L remains excluded. Existing TP14-Q1.S branch and H_BAT_DETECT functional name remain hypotheses; no numeric resistance supplied.
 
 Latest v0.9.8 report: **V017-TP4 confirmed**, joining R42.1/R44.1 to TP4 and PIC25/RB4. Existing C41 branch and R44 pad selection retain their photo-derived basis. No numeric resistance supplied.
+
+V082 follow-up: user confirms board VDD test point = TP103/H_VDD logic supply. H-bridge pin1 VCC shares logic supply; pin4 VDD is separate H_VBAT motor supply. V082 exact D3 terminal remains unresolved: no D3.R or receiver-rail merge. TP103 relabelled VDD (logic supply). Search pool now 16 sites/12 groups.
+
+V071 follow-up: user confirms V071–VREF, mapping R21.2 to TP104/VREF/PIC21/RB0. Prior R22.2/R23.2/R48.2 bias branches are retained hypotheses; the new report does not independently confirm them. H_RX_BIAS net name is merged into PIC_RB0_VREF. VREF remains separate from VDD and RC1.
+
+Q1 rail resolved by user: V011–V014/Q1.L connects to MX512H pin4 VDD, modeled H_VBAT motor supply. Distinct from TP103/H_VDD logic rail. No rail question remains pending. Q1 identity/polarity remains unverified; retain explicit Q1.L–R43.2 exclusion.

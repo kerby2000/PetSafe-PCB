@@ -23,7 +23,7 @@ assert all(sites[s]['joined_vias']==['V063','V064','V075'] for s in ['V063','V06
 for dest in ['V100','V103','V107']:
  assert dest in sites['V095']['excluded_vias'] and 'V095' in sites[dest]['excluded_vias']
 assert all('V103' not in sites[s].get('excluded_vias',[]) for s in ['V100','V107']), 'Untested pairs cannot be inferred negative'
-assert len(p['reported_results']['confirmed_via_pairs'])==7
+assert len(p['reported_results']['confirmed_via_pairs'])==8
 assert len(p['reported_results']['rejected_pairs'])==11
 assert sites['V049']['excluded_vias']==['V071'] and 'V049' in sites['V071']['excluded_vias']
 assert sites['V049']['resistive_measurements'][0]['resistance_ohms']==20000
@@ -43,7 +43,7 @@ assert p['count_basis']['local_candidate_groups']==len(p['local_groups'])
 assert p['count_basis']['nonrail_candidate_sites']==sum(len(g['vias']) for g in p['local_groups'])
 assert not any('V114' in g['vias'] for g in p['local_groups']), 'Resolved U2 ground re-entered search'
 assert not any('V075' in g['vias'] for g in p['local_groups']), 'Known V075 rail re-entered unknown-net search'
-assert p['count_basis']['local_candidate_groups']==13 and p['count_basis']['nonrail_candidate_sites']==17
+assert p['count_basis']['local_candidate_groups']==10 and p['count_basis']['nonrail_candidate_sites']==11
 html=(R/'docs/VIA_PAIR_TESTS.html').read_text(encoding='utf-8')
 assert 'const plan='+json.dumps(p).replace('</','<\\/')+',audit=' in html
 assert all(x not in html for x in ['PLAN_DATA','AUDIT_DATA','SITE_COUNT','GROUP_COUNT','BASIS_REV'])

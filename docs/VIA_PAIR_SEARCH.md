@@ -1,6 +1,6 @@
 # Targeted via-to-via search — current round
 
-Basis: **v0.9.8**. The remaining search pool has **17 sites in 13 local endpoint groups**. These are not 13 proven missing nets. V067/U6A is now mapped to J3.1/PIR supply; no generic GPIO batch remains pending.
+Basis: **v0.9.8**. The remaining search pool has **11 sites in 10 local endpoint groups**. These are not 10 proven missing nets. V067/U6A is now mapped to J3.1/PIR supply; no generic GPIO batch remains pending.
 
 ## Results applied
 
@@ -59,14 +59,14 @@ The user then explicitly excluded V053 from VREF and confirmed **V053–V070**. 
 
 The [photo locator](VIA_PAIR_TESTS.html) and [printable guide](../output/pdf/PetSafe_via_pair_next_check.pdf) now show the completed V053–V070 route. No repeat reading is requested. Earlier browser storage and round-2/3/4/5 evidence are preserved. New reports are in `v098_net_changes.json` and `via_user_review.json`.
 
-Validation: **85 native/model net partitions PASS; 37 ERC findings = 29 open pads + 3 isolated labels + 5 power findings**. The 29 open pads comprise 11 populated-entry and 18 empty-option pads. Local modeled connections can still have missing remote continuations or inferred branches.
+Validation: **84 native/model net partitions PASS; 36 ERC findings = 28 open pads + 3 isolated labels + 5 power findings**. The 28 open pads comprise 10 populated-entry and 18 empty-option pads. Local modeled connections can still have missing remote continuations or inferred branches.
 
 ## Remaining decisions
 
-- Q1.L / V011–V014 is user-reported VDD, but regulated V064 versus motor-supply V001 remains unanswered. The two rails remain separate. Q1.L remains separate from explicitly excluded R43.2/V015.
+- Q1.L / V011–V014 is user-confirmed to motor VDD/U5 pin4. The logic and motor rails remain separate. Q1.L remains separate from explicitly excluded R43.2/V015.
 - V114 is resolved as U2.T2/pin2 GND and removed from the candidate pool. It is not Q8.T2.
 - B3 is complete at 11.2 kΩ. Do not repeat it or start a blind rail sweep. V064–V063 and V064–V075 remain confirmed.
-- For V071/R21, V053 is rejected. V031/RA0 and V035/RA2 are alternative reference/filter candidates, not confirmed connections.
+- V071/R21 is now confirmed to VREF/TP104 and PIC21/RB0. V053/RC1 remains explicitly rejected; no further V071 GPIO search is needed.
 - The formerly open GPIO list is complete. Prioritize remote continuations of already-local nodes, receiver/PIR/button interfaces, Q7 identity/function qualifications and the D3 terminal at V082. V067/U6A is now mapped to J3.1.
 
 The [complete via-group inventory and hypotheses](../evidence/via_pair_plan.json) retains each local endpoint association separately. No proposed next pair has been added as a schematic connection.
@@ -74,3 +74,9 @@ The [complete via-group inventory and hypotheses](../evidence/via_pair_plan.json
 Latest v0.9.8 report: **V015-TP14 confirmed**, joining R43.2 to TP14. Q1.L remains excluded. Existing TP14-Q1.S branch and H_BAT_DETECT functional name remain hypotheses; no numeric resistance supplied.
 
 Latest v0.9.8 report: **V017-TP4 confirmed**, joining R42.1/R44.1 to TP4 and PIC25/RB4. Existing C41 branch and R44 pad selection retain their photo-derived basis. No numeric resistance supplied.
+
+V082 follow-up: user confirms board VDD test point = TP103/H_VDD logic supply. H-bridge pin1 VCC shares logic supply; pin4 VDD is separate H_VBAT motor supply. V082 exact D3 terminal remains unresolved: no D3.R or receiver-rail merge. TP103 relabelled VDD (logic supply). Search pool now 16 sites/12 groups.
+
+V071 follow-up: user confirms V071–VREF, mapping R21.2 to TP104/VREF/PIC21/RB0. Prior R22.2/R23.2/R48.2 bias branches are retained hypotheses; the new report does not independently confirm them. H_RX_BIAS net name is merged into PIC_RB0_VREF. VREF remains separate from VDD and RC1.
+
+Q1 rail resolved by user: V011–V014/Q1.L connects to MX512H pin4 VDD, modeled H_VBAT motor supply. Distinct from TP103/H_VDD logic rail. No rail question remains pending. Q1 identity/polarity remains unverified; retain explicit Q1.L–R43.2 exclusion.

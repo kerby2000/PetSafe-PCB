@@ -4,8 +4,8 @@
   "scope": "Completed RC1-R18 locator; RC2-TP3, RB0-VREF and V067-J3.1 recorded; RC1-VREF explicitly rejected",
   "proposed_tests": 0,
   "completed_tests": 1,
-  "local_groups": 13,
-  "nonrail_sites": 17,
+  "local_groups": 10,
+  "nonrail_sites": 11,
   "confirmed_via_pairs": [
     [
       "V036",
@@ -34,6 +34,10 @@
     [
       "V053",
       "V070"
+    ],
+    [
+      "V071",
+      "V026"
     ]
   ],
   "rejected_pairs": [
@@ -151,7 +155,7 @@
     }
   ],
   "active_endpoints": "PASS",
-  "schematic_sha256": "554bb00610238e173655df56b44e5ba7eeff4b3c52a2770017956a0df5283d84",
+  "schematic_sha256": "276832fac5fd4ca0e1208e949a524acc7ab85ac7c523e8569f3afbc84fb1f30e",
   "photo_sha256": {
     "front": "3f0198e7c1097bcf76b550354ec6de137a5b2abf73b56780069663804f801498",
     "rear": "37c6cc20f12b380290f1b5e7c336ce67c649d6333faed55749c243b53a8537d4"
@@ -167,8 +171,8 @@
   "pdf": {
     "path": "output/pdf/PetSafe_via_pair_next_check.pdf",
     "pages": 1,
-    "sha256": "cf92fa0323d02dd7d53b9110427aec6c3ee7536a7497ed6e2491b311a3cadfbd",
+    "sha256": "bcde8d18af9669115ca5afcd12ed0d4630f7f77dea4e27e81e3c8f496b93810f",
     "text_check": "PASS",
-    "visual_review": "PASS: inspected rendered completed-result page; V053 and V070 markers and leaders readable, no repeat measurement requested."
+    "visual_review": "PASS: completed V053-V070 locator rendered and inspected; latest rebuild retains the same page content. No new measurement request."
   }
 }

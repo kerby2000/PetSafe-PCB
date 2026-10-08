@@ -217,6 +217,7 @@ stub('R35_Q9','Q9.L',-4)
 stub('H_GND','Q9.R',4)
 stub('H_GND','R32.1',3)
 
+stub('H_VBAT','Q1.L',0,5) # User V011-V014 to MX512H pin4 motor supply.
 wire('H_BAT_DETECT','R43.2',(367,102),(379,102),(379,82),'TP14.1') # V015-TP14
 # MX512H physical pin numbering, not a DRV8837 pin substitution.
 wire('H_VBAT','C33.1',(339,33),(361,33),'U5.4');label('H_VBAT',(339,33))
@@ -279,11 +280,13 @@ for n in layout['notes']:
     if t.startswith('C27 role unresolved'):t='C27: motor-supply bypass; value unmeasured.'
     if t.startswith('Optional R1/R2/C3/C4'):t='Empty options: R1/C3 free ends join regulated VDD; R2/C4 free ends join GND.'
     if t.startswith('H04:'):t='User: PIC15/RC4 -> INA pin2; PIC16/RC5 -> INB pin3. Motor output polarity remains inferred.'
-    if t.startswith('H05:'):t='Q1.L -> V011-V014: user VDD. Rail choice pending; R43.2 -> TP14, separate from Q1.L.'
+    if t.startswith('H05:'):t='Q1.L -> V011-V014 -> motor H_VBAT / U5 pin4. Q1 identity/polarity still unverified.'
     if t.startswith('29 original local'):t='28 original local photo fragments retained; Q1.L-R43.2 withdrawn by user.'
     if t.startswith('H03:'):t='R3/R4 sensing candidate; R4 returns to RB3. C28 value estimated.';n['y']=106
     text(t,n['x'],n['y'],1.27 if n['size']>=1 else max(.762,n['size']*1.27))
-text('U5 datasheet symbol: separate logic VCC and motor VDD; both ground pins retained.',320,77,.762)
+text('Board VDD / TP103 = H_VDD logic rail -> U5 pin1 VCC. U5 pin4 VDD = H_VBAT motor rail.',320,77,.762)
+text('VDD / TP103: regulated logic supply H_VDD; candidate 4.5V, not measured. V082 confirmed here.',13,76,.762)
+text('V082 -> H_VDD / TP103. D3 terminal unresolved; existing H_RX_VDD branch remains inferred.',330,126,.762)
 text('D2: 4P unidentified; old BAV99 clamp ties withdrawn.',350,201,.762)
 text('User: V072 = TP6, not R22.2. V079/V080 = U3 pin5; separate from TP6 across C18.',288,211,.762)
 text('U3 alternative: MCP6002-I/SN; same pin roles, electrical suitability to verify.',288,208,.762)

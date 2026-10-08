@@ -50,18 +50,19 @@ assert net('Q8.B1')==net('Q8.B3')!=net('Q8.B2')
 assert net('TP6.1')==net('C18.2')!=net('U3.5')
 assert net('U3.5')==net('C18.1')
 assert len({net('TP6.1'),net('U3.5'),net('R22.2'),net('U4.8')})==4
-assert net('Q1.L')!=net('R43.2') and 'Q1.L' in m['unresolved_pins'] and net('R43.2')==net('TP14.1')
-assert all(sites[f'V{i:03d}']['net'] is None for i in [11,12,13,14]), 'Unanswered VDD rail question must not merge rails'
+assert net('Q1.L')!=net('R43.2') and net('Q1.L')==net('U5.4') and net('R43.2')==net('TP14.1')
+assert all(sites[f'V{i:03d}']['net']=='H_VBAT' for i in [11,12,13,14])
+assert net('Q1.L')!=net('VDD.1'), 'Motor and logic rails must remain separate'
 assert a==apply(copy.deepcopy(a)), 'Review replay revived old evidence'
 assert not a['review_summary']['conflicts']
 gpio=sorted(int(e.split('.')[1]) for e in m['unresolved_pins'] if e.startswith('U4.'))
 request=read('evidence/pic_gpio_request.json');assert gpio==request['missing_gpio_pins']==[]
 for entry in request['source_photos']:assert sha(entry['path'])==entry['sha256']
-assert v['netlist_partition_comparison']=='PASS' and v['proposed_net_partitions']==85 and v['erc_total']==37
-assert v['unresolved_physical_pins']==29 and v['schematic_sha256']==sha('schematic/PetSafe_1001339.kicad_sch')
+assert v['netlist_partition_comparison']=='PASS' and v['proposed_net_partitions']==84 and v['erc_total']==36
+assert v['unresolved_physical_pins']==28 and v['schematic_sha256']==sha('schematic/PetSafe_1001339.kicad_sch')
 assert v['retained_original_visual_fragments']==28 and v['withdrawn_original_visual_fragments']==['V_Q1_LEFT']
 placements=read('evidence/library_placements.json')
-for ref in ['U4','R11','R14','R15','R16','R37','R39','Q1','U2','Q8','C5','LED1','R18','R19','Q7','TP3','TP104','U106','J3','R43','TP14','R42','R44','TP4']:
+for ref in ['U4','R11','R14','R15','R16','R37','R39','Q1','U2','Q8','C5','LED1','R18','R19','Q7','TP3','TP104','U106','J3','R43','TP14','R42','R44','TP4','TP103','R21','R22','R23','R48']:
  expected=next(c for c in placements['components'] if c['reference']==ref)['properties']['ViaEvidence']
  assert xml.findtext(f'./components/comp[@ref="{ref}"]/fields/field[@name="ViaEvidence"]')==expected,ref
 pdfs={'output/pdf/PetSafe_single_sheet.pdf':1,'output/pdf/PetSafe_completion_status.pdf':2,'output/pdf/PetSafe_PIC_GPIO_pin_map.pdf':1}
@@ -77,9 +78,15 @@ assert ch7['inference']['nominal_series_ohms']==1200+10000
 assert sites['V070']['net']=='H_RX_ENABLE_CTL' and sites['V075']['net']=='H_VDD'
 assert sites['V075']['endpoints']==['Q7.R','R19.2']
 assert sites['V070']['resistive_measurements'][0]['resistance_ohms']==11200
+assert sites['V082']['net']=='H_VDD' and sites['V082']['endpoints']==['VDD.1']
+assert net('VDD.1')==net('U5.1')!=net('U5.4')
+assert net('D3.R')!=net('VDD.1'), 'Unconfirmed D3 terminal or receiver rail merged'
+assert xml.findtext('./components/comp[@ref="TP103"]/value')=='VDD (logic supply)'
 assert net('U4.12')==net('R18.1')=='H_RX_ENABLE_CTL'
 assert net('U4.13')==net('TP3.1')==net('R10.1')=='RF_MONITOR_PAD'
 assert net('U4.21')==net('VREF.1')=='PIC_RB0_VREF'
+assert net('R21.2')==net('VREF.1')==net('U4.21')!=net('VDD.1')
+assert sites['V071']['net']=='PIC_RB0_VREF'
 assert net('R42.1')==net('R44.1')==net('TP4.1')==net('U4.25')
 assert net('U6A.R1')==net('J3.1')=='H_PIR_VDD'
 assert net('U4.12')!=net('VREF.1') and net('U4.12')!=net('VDD.1')
@@ -88,6 +95,6 @@ assert sites['V067']['endpoints']==['U6A.R1','J3.1']
 assert xml.findtext('./components/comp[@ref="TP104"]/value')=='VREF'
 assert sites['V049']['inconclusive_vias']==['V070']
 assert sites['V070']['resistive_measurements'][-1]['resistance_range_ohms']==[200000,300000]
-out=dict(revision=m['revision'],result='PASS',schematic_sha256=v['schematic_sha256'],modeled_nets=85,open_pads=29,erc_total=37,gpio_pins_still_open=gpio,recorded_resistance_ohms=11200,qualified_q7_topology='R18 input - base; R19 base-emitter pull-up; emitter VDD; collector R20. Photo/resistance-supported inference.',unmeasured_gpio_connections='None introduced',prior_independent_electrical_contracts='PASS',review_replay='PASS',mcp_properties_match='PASS',original_photo_checksums=v['original_photo_checksums'],pdfs={k:dict(pages=n,sha256=sha(k)) for k,n in pdfs.items()},pic_map_basis='Updated v0.9.8: zero open PIC pads; qualified local connections remain. Original photo pixels retained.')
+out=dict(revision=m['revision'],result='PASS',schematic_sha256=v['schematic_sha256'],modeled_nets=84,open_pads=28,erc_total=36,gpio_pins_still_open=gpio,recorded_resistance_ohms=11200,qualified_q7_topology='R18 input - base; R19 base-emitter pull-up; emitter VDD; collector R20. Photo/resistance-supported inference.',unmeasured_gpio_connections='None introduced',prior_independent_electrical_contracts='PASS',review_replay='PASS',mcp_properties_match='PASS',original_photo_checksums=v['original_photo_checksums'],pdfs={k:dict(pages=n,sha256=sha(k)) for k,n in pdfs.items()},pic_map_basis='Updated v0.9.8: zero open PIC pads; qualified local connections remain. Original photo pixels retained.')
 (R/'evidence/v098_verification.json').write_text(json.dumps(out,indent=2)+'\n',encoding='utf-8')
 print('PASS: RC1-R18, RC2-TP3, RB0-VREF, U6A-J3.1; rejected RC1-VREF; prior independent contracts; native/model and MCP properties.')

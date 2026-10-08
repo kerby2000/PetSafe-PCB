@@ -409,7 +409,7 @@
         "y": 42,
         "unit": 1,
         "lid": "PetSafe_Working:RE_VDD",
-        "value": "VDD / VDD pad",
+        "value": "VDD (logic supply)",
         "rx": 117,
         "ry": 38.5,
         "vx": 117,
@@ -431,15 +431,19 @@
       "placement": {
         "symbol": "Connector:TestPoint",
         "reference": "TP103",
-        "value": "VDD / VDD pad",
+        "value": "VDD (logic supply)",
         "position": {
           "x": 146.05,
           "y": 53.34
         },
         "rotation": 270,
         "includePins": true,
-        "footprint": "TestPoint:TestPoint_THTPad_D2.0mm_Drill1.0mm"
-      }
+        "footprint": "TestPoint:TestPoint_THTPad_D2.0mm_Drill1.0mm",
+        "properties": {
+          "ViaEvidence": "v0.9.8 follow-up: User confirms V082 reaches the board VDD test point, native TP103 / H_VDD regulated logic rail. This is distinct from MX512H pin4 VDD / H_VBAT motor supply; MX512H pin1 VCC is modeled on H_VDD. V082 was associated with D3 but its exact package terminal remains unconfirmed. Do not merge H_RX_VDD or choose a D3 pin from this report alone."
+        }
+      },
+      "via_evidence": "v0.9.8 follow-up: User confirms V082 reaches the board VDD test point, native TP103 / H_VDD regulated logic rail. This is distinct from MX512H pin4 VDD / H_VBAT motor supply; MX512H pin1 VCC is modeled on H_VDD. V082 was associated with D3 but its exact package terminal remains unconfirmed. Do not merge H_RX_VDD or choose a D3 pin from this report alone."
     },
     {
       "original_ref": "GND",
@@ -989,10 +993,10 @@
         "includePins": true,
         "footprint": "Package_SO:SOIC-28W_7.5x17.9mm_P1.27mm",
         "properties": {
-          "ViaEvidence": "v0.9.8: User confirms RC2/PIC13-V049-TP3, RB0/PIC21-V026-VREF (native TP104), and RC1/PIC12-V053-V070-R18.1. User explicitly rejects V053-VREF, superseding the old photo assumption. No numerical resistance supplied for these connections. All PIC pads have modeled local destinations; other inferred branches still need review. RB4/PIC25-TP4 now also reaches V017/R42.1/R44.1."
+          "ViaEvidence": "v0.9.8: User confirms RC2/PIC13-V049-TP3, RB0/PIC21-V026-VREF (native TP104), and RC1/PIC12-V053-V070-R18.1. User explicitly rejects V053-VREF, superseding the old photo assumption. No numerical resistance supplied for these connections. All PIC pads have modeled local destinations; other inferred branches still need review. RB4/PIC25-TP4 now also reaches V017/R42.1/R44.1. RB0/VREF also reaches V071/R21.2 by user report."
         }
       },
-      "via_evidence": "v0.9.8: User confirms RC2/PIC13-V049-TP3, RB0/PIC21-V026-VREF (native TP104), and RC1/PIC12-V053-V070-R18.1. User explicitly rejects V053-VREF, superseding the old photo assumption. No numerical resistance supplied for these connections. All PIC pads have modeled local destinations; other inferred branches still need review. RB4/PIC25-TP4 now also reaches V017/R42.1/R44.1."
+      "via_evidence": "v0.9.8: User confirms RC2/PIC13-V049-TP3, RB0/PIC21-V026-VREF (native TP104), and RC1/PIC12-V053-V070-R18.1. User explicitly rejects V053-VREF, superseding the old photo assumption. No numerical resistance supplied for these connections. All PIC pads have modeled local destinations; other inferred branches still need review. RB4/PIC25-TP4 now also reaches V017/R42.1/R44.1. RB0/VREF also reaches V071/R21.2 by user report."
     },
     {
       "original_ref": "J1",
@@ -2364,9 +2368,10 @@
         "includePins": true,
         "footprint": "Package_TO_SOT_SMD:SOT-23",
         "properties": {
-          "ViaEvidence": "v0.9.4: V011-V014 reach Q1.L. User explicitly requests removal of old photo-derived Q1.L-R43.2 connection. Q1.L onward destination and physical transistor role remain unresolved."
+          "ViaEvidence": "v0.9.8: User explicitly confirms V011/V012/V013/V014 share the MX512H pin4 VDD motor supply. Earlier Q1.L association retained, now H_VBAT, not regulated TP103/H_VDD. Q1.L-R43.2 remains rejected. Q1 device identity, polarity and function remain candidate assumptions; this connection does not validate them."
         }
-      }
+      },
+      "via_evidence": "v0.9.8: User explicitly confirms V011/V012/V013/V014 share the MX512H pin4 VDD motor supply. Earlier Q1.L association retained, now H_VBAT, not regulated TP103/H_VDD. Q1.L-R43.2 remains rejected. Q1 device identity, polarity and function remain candidate assumptions; this connection does not validate them."
     },
     {
       "original_ref": "R44",
@@ -4271,8 +4276,12 @@
         },
         "rotation": 0,
         "includePins": true,
-        "footprint": "Resistor_SMD:R_0603_1608Metric"
-      }
+        "footprint": "Resistor_SMD:R_0603_1608Metric",
+        "properties": {
+          "ViaEvidence": "v0.9.8: User confirms V071-VREF. Earlier V071-R21.2 and V026-VREF-PIC21/RB0 associations retained. R21.2 joins PIC_RB0_VREF. Existing R22.2/R23.2/R48.2 receiver-bias branches remain prior photo/circuit hypotheses, not new measured connections. VREF remains separate from H_VDD and RC1/V053. No voltage or numeric resistance supplied."
+        }
+      },
+      "via_evidence": "v0.9.8: User confirms V071-VREF. Earlier V071-R21.2 and V026-VREF-PIC21/RB0 associations retained. R21.2 joins PIC_RB0_VREF. Existing R22.2/R23.2/R48.2 receiver-bias branches remain prior photo/circuit hypotheses, not new measured connections. VREF remains separate from H_VDD and RC1/V053. No voltage or numeric resistance supplied."
     },
     {
       "original_ref": "R27",
@@ -4535,8 +4544,12 @@
         },
         "rotation": 0,
         "includePins": true,
-        "footprint": "Resistor_SMD:R_0603_1608Metric"
-      }
+        "footprint": "Resistor_SMD:R_0603_1608Metric",
+        "properties": {
+          "ViaEvidence": "v0.9.8: User confirms V071-VREF. Earlier V071-R21.2 and V026-VREF-PIC21/RB0 associations retained. R21.2 joins PIC_RB0_VREF. Existing R22.2/R23.2/R48.2 receiver-bias branches remain prior photo/circuit hypotheses, not new measured connections. VREF remains separate from H_VDD and RC1/V053. No voltage or numeric resistance supplied."
+        }
+      },
+      "via_evidence": "v0.9.8: User confirms V071-VREF. Earlier V071-R21.2 and V026-VREF-PIC21/RB0 associations retained. R21.2 joins PIC_RB0_VREF. Existing R22.2/R23.2/R48.2 receiver-bias branches remain prior photo/circuit hypotheses, not new measured connections. VREF remains separate from H_VDD and RC1/V053. No voltage or numeric resistance supplied."
     },
     {
       "original_ref": "C18",
@@ -5588,8 +5601,12 @@
         },
         "rotation": 0,
         "includePins": true,
-        "footprint": "Resistor_SMD:R_0603_1608Metric"
-      }
+        "footprint": "Resistor_SMD:R_0603_1608Metric",
+        "properties": {
+          "ViaEvidence": "v0.9.8: User confirms V071-VREF. Earlier V071-R21.2 and V026-VREF-PIC21/RB0 associations retained. R21.2 joins PIC_RB0_VREF. Existing R22.2/R23.2/R48.2 receiver-bias branches remain prior photo/circuit hypotheses, not new measured connections. VREF remains separate from H_VDD and RC1/V053. No voltage or numeric resistance supplied."
+        }
+      },
+      "via_evidence": "v0.9.8: User confirms V071-VREF. Earlier V071-R21.2 and V026-VREF-PIC21/RB0 associations retained. R21.2 joins PIC_RB0_VREF. Existing R22.2/R23.2/R48.2 receiver-bias branches remain prior photo/circuit hypotheses, not new measured connections. VREF remains separate from H_VDD and RC1/V053. No voltage or numeric resistance supplied."
     },
     {
       "original_ref": "R22",
@@ -5644,10 +5661,10 @@
         "includePins": true,
         "footprint": "Resistor_SMD:R_0603_1608Metric",
         "properties": {
-          "ViaEvidence": "v0.9.3 V072 reaches TP6, explicitly not R22.2. Independent H_RX_BIAS hypothesis remains unverified; no receiver bias net merge."
+          "ViaEvidence": "v0.9.8: User confirms V071-VREF. Earlier V071-R21.2 and V026-VREF-PIC21/RB0 associations retained. R21.2 joins PIC_RB0_VREF. Existing R22.2/R23.2/R48.2 receiver-bias branches remain prior photo/circuit hypotheses, not new measured connections. VREF remains separate from H_VDD and RC1/V053. No voltage or numeric resistance supplied."
         }
       },
-      "via_evidence": "v0.9.1 user rejects V072-to-R22.2 association. Receiver bias net remains an independent unverified hypothesis."
+      "via_evidence": "v0.9.8: User confirms V071-VREF. Earlier V071-R21.2 and V026-VREF-PIC21/RB0 associations retained. R21.2 joins PIC_RB0_VREF. Existing R22.2/R23.2/R48.2 receiver-bias branches remain prior photo/circuit hypotheses, not new measured connections. VREF remains separate from H_VDD and RC1/V053. No voltage or numeric resistance supplied."
     },
     {
       "original_ref": "C42",
@@ -8806,10 +8823,10 @@
         "includePins": true,
         "footprint": "TestPoint:TestPoint_THTPad_D2.0mm_Drill1.0mm",
         "properties": {
-          "ViaEvidence": "v0.9.8: Board silk VREF, native TP104. User confirms V026-VREF (PIC21/RB0) and explicitly rejects V053-VREF. Old RC1 photo association withdrawn. VREF is a board label, not an established voltage or IC function."
+          "ViaEvidence": "v0.9.8: Board silk VREF, native TP104. User confirms V026-VREF (PIC21/RB0) and explicitly rejects V053-VREF. Old RC1 photo association withdrawn. VREF is a board label, not an established voltage or IC function. User also confirms V071/R21.2 to this VREF point; existing receiver-bias branches retain prior inference status."
         }
       },
-      "via_evidence": "v0.9.8: Board silk VREF, native TP104. User confirms V026-VREF (PIC21/RB0) and explicitly rejects V053-VREF. Old RC1 photo association withdrawn. VREF is a board label, not an established voltage or IC function."
+      "via_evidence": "v0.9.8: Board silk VREF, native TP104. User confirms V026-VREF (PIC21/RB0) and explicitly rejects V053-VREF. Old RC1 photo association withdrawn. VREF is a board label, not an established voltage or IC function. User also confirms V071/R21.2 to this VREF point; existing receiver-bias branches retain prior inference status."
     },
     {
       "original_ref": "Q8",
@@ -11699,7 +11716,7 @@
       ]
     },
     {
-      "net": "H_RX_BIAS",
+      "net": "PIC_RB0_VREF",
       "a": [
         281,
         179
@@ -11710,7 +11727,7 @@
       ]
     },
     {
-      "net": "H_RX_BIAS",
+      "net": "PIC_RB0_VREF",
       "a": [
         279,
         179
@@ -11897,7 +11914,7 @@
       ]
     },
     {
-      "net": "H_RX_BIAS",
+      "net": "PIC_RB0_VREF",
       "a": [
         363,
         179
@@ -12392,7 +12409,7 @@
       ]
     },
     {
-      "net": "H_RX_BIAS",
+      "net": "PIC_RB0_VREF",
       "a": [
         242,
         184
@@ -12403,7 +12420,7 @@
       ]
     },
     {
-      "net": "H_RX_BIAS",
+      "net": "PIC_RB0_VREF",
       "a": [
         242,
         188
@@ -12414,7 +12431,7 @@
       ]
     },
     {
-      "net": "H_RX_BIAS",
+      "net": "PIC_RB0_VREF",
       "a": [
         257,
         188
@@ -13862,14 +13879,14 @@
       ]
     },
     {
-      "net": "H_RX_BIAS",
+      "net": "PIC_RB0_VREF",
       "p": [
         279,
         183
       ]
     },
     {
-      "net": "H_RX_BIAS",
+      "net": "PIC_RB0_VREF",
       "p": [
         363,
         183
@@ -13967,7 +13984,7 @@
       ]
     },
     {
-      "net": "H_RX_BIAS",
+      "net": "PIC_RB0_VREF",
       "p": [
         247,
         188

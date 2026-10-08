@@ -6449,7 +6449,7 @@
 				)
 			)
 		)
-		(property "Value" "VDD / VDD pad"
+		(property "Value" "VDD (logic supply)"
 			(at 140.97 53.34 0)
 			(show_name no)
 			(do_not_autoplace no)
@@ -6492,6 +6492,9 @@
 				)
 			)
 		)
+    (property "ViaEvidence" "v0.9.8 follow-up: User confirms V082 reaches the board VDD test point, native TP103 / H_VDD regulated logic rail. This is distinct from MX512H pin4 VDD / H_VBAT motor supply; MX512H pin1 VCC is modeled on H_VDD. V082 was associated with D3 but its exact package terminal remains unconfirmed. Do not merge H_RX_VDD or choose a D3 pin from this report alone." (at 146.05 53.34 0)
+      (effects (font (size 1.27 1.27)) (hide yes))
+    )
 		(pin "1"
 			(uuid "f79b18d4-7886-47cb-9e27-6a4bc27a40f6")
 		)
@@ -7009,7 +7012,7 @@
 				(hide yes)
 			)
 		)
-		(property "ViaEvidence" "v0.9.8: User confirms RC2/PIC13-V049-TP3, RB0/PIC21-V026-VREF (native TP104), and RC1/PIC12-V053-V070-R18.1. User explicitly rejects V053-VREF, superseding the old photo assumption. No numerical resistance supplied for these connections. All PIC pads have modeled local destinations; other inferred branches still need review. RB4/PIC25-TP4 now also reaches V017/R42.1/R44.1."
+		(property "ViaEvidence" "v0.9.8: User confirms RC2/PIC13-V049-TP3, RB0/PIC21-V026-VREF (native TP104), and RC1/PIC12-V053-V070-R18.1. User explicitly rejects V053-VREF, superseding the old photo assumption. No numerical resistance supplied for these connections. All PIC pads have modeled local destinations; other inferred branches still need review. RB4/PIC25-TP4 now also reaches V017/R42.1/R44.1. RB0/VREF also reaches V071/R21.2 by user report."
 			(at 262.89 78.74 0)
 			(effects
 				(font
@@ -9092,7 +9095,7 @@
 				)
 			)
 		)
-		(property "ViaEvidence" "v0.9.5: V011-V014 reach Q1.L and user reports VDD. Which VDD rail remains to be distinguished (V064 regulated versus V001 motor supply). R43.2/V015 remains explicitly separate. No transistor polarity inferred from the supply report."
+		(property "ViaEvidence" "v0.9.8: User explicitly confirms V011/V012/V013/V014 share the MX512H pin4 VDD motor supply. Earlier Q1.L association retained, now H_VBAT, not regulated TP103/H_VDD. Q1.L-R43.2 remains rejected. Q1 device identity, polarity and function remain candidate assumptions; this connection does not validate them."
 			(at 453.39 111.76 0)
 			(effects
 				(font
@@ -11522,6 +11525,9 @@
 				)
 			)
 		)
+    (property "ViaEvidence" "v0.9.8: User confirms V071-VREF. Earlier V071-R21.2 and V026-VREF-PIC21/RB0 associations retained. R21.2 joins PIC_RB0_VREF. Existing R22.2/R23.2/R48.2 receiver-bias branches remain prior photo/circuit hypotheses, not new measured connections. VREF remains separate from H_VDD and RC1/V053. No voltage or numeric resistance supplied." (at 356.87 223.52 0)
+      (effects (font (size 1.27 1.27)) (hide yes))
+    )
 		(pin "1"
 			(uuid "5d121715-3676-4ccb-98aa-33a43155b56a")
 		)
@@ -11925,6 +11931,9 @@
 				)
 			)
 		)
+    (property "ViaEvidence" "v0.9.8: User confirms V071-VREF. Earlier V071-R21.2 and V026-VREF-PIC21/RB0 associations retained. R21.2 joins PIC_RB0_VREF. Existing R22.2/R23.2/R48.2 receiver-bias branches remain prior photo/circuit hypotheses, not new measured connections. VREF remains separate from H_VDD and RC1/V053. No voltage or numeric resistance supplied." (at 461.01 223.52 0)
+      (effects (font (size 1.27 1.27)) (hide yes))
+    )
 		(pin "1"
 			(uuid "efad3cc0-193a-4ba1-873f-6932f3f554e8")
 		)
@@ -13342,6 +13351,9 @@
 				)
 			)
 		)
+    (property "ViaEvidence" "v0.9.8: User confirms V071-VREF. Earlier V071-R21.2 and V026-VREF-PIC21/RB0 associations retained. R21.2 joins PIC_RB0_VREF. Existing R22.2/R23.2/R48.2 receiver-bias branches remain prior photo/circuit hypotheses, not new measured connections. VREF remains separate from H_VDD and RC1/V053. No voltage or numeric resistance supplied." (at 307.34 229.87 0)
+      (effects (font (size 1.27 1.27)) (hide yes))
+    )
 		(pin "1"
 			(uuid "cdcb5dd5-ac2e-42ef-8894-1b4844de1f92")
 		)
@@ -13421,7 +13433,7 @@
 				)
 			)
 		)
-		(property "ViaEvidence" "v0.9.3 V072 reaches TP6, explicitly not R22.2. Independent H_RX_BIAS hypothesis remains unverified; no receiver bias net merge."
+		(property "ViaEvidence" "v0.9.8: User confirms V071-VREF. Earlier V071-R21.2 and V026-VREF-PIC21/RB0 associations retained. R21.2 joins PIC_RB0_VREF. Existing R22.2/R23.2/R48.2 receiver-bias branches remain prior photo/circuit hypotheses, not new measured connections. VREF remains separate from H_VDD and RC1/V053. No voltage or numeric resistance supplied."
 			(at 326.39 229.87 0)
 			(effects
 				(font
@@ -17911,7 +17923,7 @@
 				)
 			)
 		)
-    (property "ViaEvidence" "v0.9.8: Board silk VREF, native TP104. User confirms V026-VREF (PIC21/RB0) and explicitly rejects V053-VREF. Old RC1 photo association withdrawn. VREF is a board label, not an established voltage or IC function." (at 478.79 382.27 0)
+    (property "ViaEvidence" "v0.9.8: Board silk VREF, native TP104. User confirms V026-VREF (PIC21/RB0) and explicitly rejects V053-VREF. Old RC1 photo association withdrawn. VREF is a board label, not an established voltage or IC function. User also confirms V071/R21.2 to this VREF point; existing receiver-bias branches retain prior inference status." (at 478.79 382.27 0)
       (effects (font (size 1.27 1.27)) (hide yes))
     )
 		(pin "1"

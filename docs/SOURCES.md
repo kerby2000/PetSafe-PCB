@@ -132,3 +132,9 @@ User reports V049–TP03 (TP3), V026–VREF, explicitly rejects V053–VREF, con
 These supersede the older photo-only RC1–VREF interpretation. TP104 is the existing native VREF test-point reference. The printed VREF label does not establish measured voltage or circuit function. Previous Q7 local topology and TP3–R10.1 photo association remain qualified. Variable V049–V070 200–300 kΩ is inconclusive/contact-dependent and does not establish OL or a discrete resistance value.
 
 Further same-session reports: V015–TP14 and V017–TP4. Existing V015–R43.2 and V017–R42.1/R44.1 associations retained. TP4 already reaches PIC25/RB4. Numerical ohms not supplied; TP14–Q1.S branch and circuit function remain prior hypotheses.
+
+User V082–board VDD test-point report: marked photograph preserved at `photos/user/2026-10-08/VDD_user_locator.png`, hash in v098_net_changes.json. V082 assigned to TP103/H_VDD only; D3 pin remains unconfirmed. MX512H manufacturer pinout distinguishes pin1 VCC (logic) from pin4 VDD (motor). S-1200B45 suggests nominal 4.5V but no output voltage measurement is recorded.
+
+User V071–VREF follow-up confirms the R21.2/V071 node reaches TP104/VREF/PIC21/RB0. Other prior receiver-bias branches retain their inference status. No numeric ohms or voltage supplied.
+
+User explicitly resolves V011–V014/Q1.L supply to the MX512H pin4 motor rail. Q1 device identity, polarity and function are still hypotheses; this report establishes the rail, not transistor behavior.

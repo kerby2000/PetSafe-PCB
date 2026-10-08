@@ -352,25 +352,27 @@
       "endpoints": [
         "Q1.L"
       ],
-      "net": null,
-      "confidence": "User Q1.L/VDD report; which supply rail remains unresolved",
+      "net": "H_VBAT",
+      "confidence": "User confirms motor rail; Q1 identity/polarity remains inferred",
       "note": "Visible clearance separates this site from the surrounding rear copper; this alone does not identify an internal net.",
       "id": "V011",
       "active": true,
       "user_reports": [
         {
           "id": "V011",
-          "claim": "Q1.L, clearly VDD; regulated versus motor VDD not yet distinguished; not R43.2",
-          "kind": "supply_unspecified"
+          "kind": "motor_supply",
+          "claim": "v0.9.8: User explicitly confirms V011/V012/V013/V014 share the MX512H pin4 VDD motor supply. Earlier Q1.L association retained, now H_VBAT, not regulated TP103/H_VDD. Q1.L-R43.2 remains rejected. Q1 device identity, polarity and function remain candidate assumptions; this connection does not validate them."
         }
       ],
-      "review_status": "USER_REPORTED",
-      "component_crosscheck": "V011-V014 reach Q1.L and user reports VDD. Distinguish regulated V064 from motor-supply V001 before merging. R43.2 remains explicitly excluded; transistor function is not established.",
-      "modeled_nets": [],
+      "review_status": "ASSIGNED",
+      "component_crosscheck": "User explicitly confirms same rail as MX512H pin4. Q1.L reaches motor H_VBAT, distinct from regulated H_VDD/TP103. R43.2 remains excluded.",
+      "modeled_nets": [
+        "H_VBAT"
+      ],
       "excluded_endpoints": [
         "R43.2"
       ],
-      "reported_supply": "VDD (regulated versus motor rail unresolved)"
+      "reported_supply": "MX512H pin4 VDD / motor supply H_VBAT"
     },
     {
       "rear_xy": [
@@ -386,25 +388,27 @@
       "endpoints": [
         "Q1.L"
       ],
-      "net": null,
-      "confidence": "User Q1.L/VDD report; which supply rail remains unresolved",
+      "net": "H_VBAT",
+      "confidence": "User confirms motor rail; Q1 identity/polarity remains inferred",
       "note": "Visible clearance separates this site from the surrounding rear copper; this alone does not identify an internal net.",
       "id": "V012",
       "active": true,
       "user_reports": [
         {
           "id": "V012",
-          "claim": "Q1.L, clearly VDD; regulated versus motor VDD not yet distinguished; not R43.2",
-          "kind": "supply_unspecified"
+          "kind": "motor_supply",
+          "claim": "v0.9.8: User explicitly confirms V011/V012/V013/V014 share the MX512H pin4 VDD motor supply. Earlier Q1.L association retained, now H_VBAT, not regulated TP103/H_VDD. Q1.L-R43.2 remains rejected. Q1 device identity, polarity and function remain candidate assumptions; this connection does not validate them."
         }
       ],
-      "review_status": "USER_REPORTED",
-      "component_crosscheck": "V011-V014 reach Q1.L and user reports VDD. Distinguish regulated V064 from motor-supply V001 before merging. R43.2 remains explicitly excluded; transistor function is not established.",
-      "modeled_nets": [],
+      "review_status": "ASSIGNED",
+      "component_crosscheck": "User explicitly confirms same rail as MX512H pin4. Q1.L reaches motor H_VBAT, distinct from regulated H_VDD/TP103. R43.2 remains excluded.",
+      "modeled_nets": [
+        "H_VBAT"
+      ],
       "excluded_endpoints": [
         "R43.2"
       ],
-      "reported_supply": "VDD (regulated versus motor rail unresolved)"
+      "reported_supply": "MX512H pin4 VDD / motor supply H_VBAT"
     },
     {
       "rear_xy": [
@@ -420,25 +424,27 @@
       "endpoints": [
         "Q1.L"
       ],
-      "net": null,
-      "confidence": "User Q1.L/VDD report; which supply rail remains unresolved",
+      "net": "H_VBAT",
+      "confidence": "User confirms motor rail; Q1 identity/polarity remains inferred",
       "note": "Visible clearance separates this site from the surrounding rear copper; this alone does not identify an internal net.",
       "id": "V013",
       "active": true,
       "user_reports": [
         {
           "id": "V013",
-          "claim": "Q1.L, clearly VDD; regulated versus motor VDD not yet distinguished; not R43.2",
-          "kind": "supply_unspecified"
+          "kind": "motor_supply",
+          "claim": "v0.9.8: User explicitly confirms V011/V012/V013/V014 share the MX512H pin4 VDD motor supply. Earlier Q1.L association retained, now H_VBAT, not regulated TP103/H_VDD. Q1.L-R43.2 remains rejected. Q1 device identity, polarity and function remain candidate assumptions; this connection does not validate them."
         }
       ],
-      "review_status": "USER_REPORTED",
-      "component_crosscheck": "V011-V014 reach Q1.L and user reports VDD. Distinguish regulated V064 from motor-supply V001 before merging. R43.2 remains explicitly excluded; transistor function is not established.",
-      "modeled_nets": [],
+      "review_status": "ASSIGNED",
+      "component_crosscheck": "User explicitly confirms same rail as MX512H pin4. Q1.L reaches motor H_VBAT, distinct from regulated H_VDD/TP103. R43.2 remains excluded.",
+      "modeled_nets": [
+        "H_VBAT"
+      ],
       "excluded_endpoints": [
         "R43.2"
       ],
-      "reported_supply": "VDD (regulated versus motor rail unresolved)"
+      "reported_supply": "MX512H pin4 VDD / motor supply H_VBAT"
     },
     {
       "rear_xy": [
@@ -454,25 +460,27 @@
       "endpoints": [
         "Q1.L"
       ],
-      "net": null,
-      "confidence": "User Q1.L/VDD report; which supply rail remains unresolved",
+      "net": "H_VBAT",
+      "confidence": "User confirms motor rail; Q1 identity/polarity remains inferred",
       "note": "Visible clearance separates this site from the surrounding rear copper; this alone does not identify an internal net.",
       "id": "V014",
       "active": true,
       "user_reports": [
         {
           "id": "V014",
-          "claim": "Q1.L, clearly VDD; regulated versus motor VDD not yet distinguished; not R43.2",
-          "kind": "supply_unspecified"
+          "kind": "motor_supply",
+          "claim": "v0.9.8: User explicitly confirms V011/V012/V013/V014 share the MX512H pin4 VDD motor supply. Earlier Q1.L association retained, now H_VBAT, not regulated TP103/H_VDD. Q1.L-R43.2 remains rejected. Q1 device identity, polarity and function remain candidate assumptions; this connection does not validate them."
         }
       ],
-      "review_status": "USER_REPORTED",
-      "component_crosscheck": "V011-V014 reach Q1.L and user reports VDD. Distinguish regulated V064 from motor-supply V001 before merging. R43.2 remains explicitly excluded; transistor function is not established.",
-      "modeled_nets": [],
+      "review_status": "ASSIGNED",
+      "component_crosscheck": "User explicitly confirms same rail as MX512H pin4. Q1.L reaches motor H_VBAT, distinct from regulated H_VDD/TP103. R43.2 remains excluded.",
+      "modeled_nets": [
+        "H_VBAT"
+      ],
       "excluded_endpoints": [
         "R43.2"
       ],
-      "reported_supply": "VDD (regulated versus motor rail unresolved)"
+      "reported_supply": "MX512H pin4 VDD / motor supply H_VBAT"
     },
     {
       "rear_xy": [
@@ -888,6 +896,10 @@
       ],
       "excluded_vias": [
         "V053"
+      ],
+      "joined_vias": [
+        "V026",
+        "V071"
       ]
     },
     {
@@ -2341,9 +2353,11 @@
       "rear_appearance": "REAR_CLEARANCE",
       "front_match": "PROJECTED: inspect original front photo; may be under a component",
       "endpoints": [
-        "R21.2"
+        "R21.2",
+        "VREF.1",
+        "U4.21"
       ],
-      "net": null,
+      "net": "PIC_RB0_VREF",
       "confidence": "rear visible; global front projection approximate",
       "note": "Visible clearance separates this site from the surrounding rear copper; this alone does not identify an internal net.",
       "id": "V071",
@@ -2351,14 +2365,14 @@
       "user_reports": [
         {
           "id": "V071",
-          "claim": "R21",
-          "kind": "component_or_issue"
+          "kind": "signal",
+          "claim": "v0.9.8: User confirms V071-VREF. Earlier V071-R21.2 and V026-VREF-PIC21/RB0 associations retained. R21.2 joins PIC_RB0_VREF. Existing R22.2/R23.2/R48.2 receiver-bias branches remain prior photo/circuit hypotheses, not new measured connections. VREF remains separate from H_VDD and RC1/V053. No voltage or numeric resistance supplied."
         }
       ],
-      "review_status": "USER_REPORTED",
-      "component_crosscheck": "R21 left/free end in receiver photo; shared bias hypothesis not confirmed by this via report.",
+      "review_status": "ASSIGNED",
+      "component_crosscheck": "User confirms V071-VREF, previously mapped to PIC21/RB0 via V026. Other receiver-bias branches remain photo/circuit hypotheses.",
       "modeled_nets": [
-        "H_RX_BIAS"
+        "PIC_RB0_VREF"
       ],
       "excluded_vias": [
         "V053",
@@ -2374,6 +2388,10 @@
           "resistance_ohms": 20000,
           "reverse_reading": null
         }
+      ],
+      "joined_vias": [
+        "V026",
+        "V071"
       ]
     },
     {
@@ -2713,22 +2731,26 @@
       ],
       "rear_appearance": "REAR_CLEARANCE",
       "front_match": "PROJECTED: inspect original front photo; may be under a component",
-      "endpoints": [],
-      "net": null,
-      "confidence": "rear visible; global front projection approximate",
+      "endpoints": [
+        "VDD.1"
+      ],
+      "net": "H_VDD",
+      "confidence": "User continuity report to TP103; D3 terminal unresolved",
       "note": "Visible clearance separates this site from the surrounding rear copper; this alone does not identify an internal net.",
       "id": "V082",
       "active": true,
       "user_reports": [
         {
           "id": "V082",
-          "claim": "D3",
-          "kind": "component_or_issue"
+          "kind": "signal",
+          "claim": "v0.9.8 follow-up: User confirms V082 reaches the board VDD test point, native TP103 / H_VDD regulated logic rail. This is distinct from MX512H pin4 VDD / H_VBAT motor supply; MX512H pin1 VCC is modeled on H_VDD. V082 was associated with D3 but its exact package terminal remains unconfirmed. Do not merge H_RX_VDD or choose a D3 pin from this report alone."
         }
       ],
-      "review_status": "USER_REPORTED",
-      "component_crosscheck": "User associates D3; exact terminal on three-lead package still requires local confirmation.",
-      "modeled_nets": [],
+      "review_status": "ASSIGNED",
+      "component_crosscheck": "User confirms V082-board VDD test point (native TP103), regulated logic H_VDD. D3 exact terminal unconfirmed; no H_RX_VDD merge implied.",
+      "modeled_nets": [
+        "H_VDD"
+      ],
       "component_refs": [
         "D3"
       ]
@@ -4238,6 +4260,36 @@
       "old": "V017_CONTROL",
       "new": "PIC_TP4_C41",
       "basis": "v0.9.8: User confirms V017-TP4. Prior V017-R42.1/R44.1 local junction now joins TP4 and PIC25/RB4. R42.1 explicitly user-named; R44 pad1 and C41 branch retain earlier photo selection. No numeric resistance supplied; circuit operating role remains inferred."
+    },
+    {
+      "endpoint": "R21.2",
+      "old": "H_RX_BIAS",
+      "new": "PIC_RB0_VREF",
+      "basis": "v0.9.8: User confirms V071-VREF. Earlier V071-R21.2 and V026-VREF-PIC21/RB0 associations retained. R21.2 joins PIC_RB0_VREF. Existing R22.2/R23.2/R48.2 receiver-bias branches remain prior photo/circuit hypotheses, not new measured connections. VREF remains separate from H_VDD and RC1/V053. No voltage or numeric resistance supplied."
+    },
+    {
+      "endpoint": "R22.2",
+      "old": "H_RX_BIAS",
+      "new": "PIC_RB0_VREF",
+      "basis": "v0.9.8: User confirms V071-VREF. Earlier V071-R21.2 and V026-VREF-PIC21/RB0 associations retained. R21.2 joins PIC_RB0_VREF. Existing R22.2/R23.2/R48.2 receiver-bias branches remain prior photo/circuit hypotheses, not new measured connections. VREF remains separate from H_VDD and RC1/V053. No voltage or numeric resistance supplied."
+    },
+    {
+      "endpoint": "R23.2",
+      "old": "H_RX_BIAS",
+      "new": "PIC_RB0_VREF",
+      "basis": "v0.9.8: User confirms V071-VREF. Earlier V071-R21.2 and V026-VREF-PIC21/RB0 associations retained. R21.2 joins PIC_RB0_VREF. Existing R22.2/R23.2/R48.2 receiver-bias branches remain prior photo/circuit hypotheses, not new measured connections. VREF remains separate from H_VDD and RC1/V053. No voltage or numeric resistance supplied."
+    },
+    {
+      "endpoint": "R48.2",
+      "old": "H_RX_BIAS",
+      "new": "PIC_RB0_VREF",
+      "basis": "v0.9.8: User confirms V071-VREF. Earlier V071-R21.2 and V026-VREF-PIC21/RB0 associations retained. R21.2 joins PIC_RB0_VREF. Existing R22.2/R23.2/R48.2 receiver-bias branches remain prior photo/circuit hypotheses, not new measured connections. VREF remains separate from H_VDD and RC1/V053. No voltage or numeric resistance supplied."
+    },
+    {
+      "endpoint": "Q1.L",
+      "old": null,
+      "new": "H_VBAT",
+      "basis": "v0.9.8: User explicitly confirms V011/V012/V013/V014 share the MX512H pin4 VDD motor supply. Earlier Q1.L association retained, now H_VBAT, not regulated TP103/H_VDD. Q1.L-R43.2 remains rejected. Q1 device identity, polarity and function remain candidate assumptions; this connection does not validate them."
     }
   ],
   "sources": [
@@ -4277,8 +4329,7 @@
     ],
     "conflicts": [],
     "statuses": {
-      "ASSIGNED": 108,
-      "USER_REPORTED": 6,
+      "ASSIGNED": 114,
       "PHOTO_LOCAL": 6,
       "REJECTED_NOT_VIA": 7
     }

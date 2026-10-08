@@ -30,13 +30,14 @@
     "v0.9.5: V114 corrected to U2 ground; C5 negative confirmed; LED common grounded; Q1 VDD rail choice pending",
     "v0.9.6: four tuning-control via pairs confirmed; V053-V071 rejected; only RC2 and RB0 remain open GPIOs",
     "v0.9.7: V064-V070 = 11.2 kohm; R18 supply tie removed and Q7/R19 pull-up reconstructed as supported inference",
-    "v0.9.8: RC2/V049 to TP3 and RB0/V026 to VREF confirmed; RC1/V053-V070-R18 confirmed; old VREF join rejected"
+    "v0.9.8: RC2/V049 to TP3 and RB0/V026 to VREF confirmed; RC1/V053-V070-R18 confirmed; old VREF join rejected",
+    "v0.9.5: V114 corrected to U2 ground; C5 negative confirmed; LED common grounded; Q1 rail choice later resolved as motor VDD in v0.9.8"
   ],
   "catalog_entries": 150,
   "physical_pins": 352,
-  "unresolved_physical_pins": 29,
+  "unresolved_physical_pins": 28,
   "unresolved_pins_by_population": {
-    "populated": 11,
+    "populated": 10,
     "DNP": 18
   },
   "population_note": "Open pad counts include DNP entries, test pads and internally open IC pins; they are not missing component counts.",
@@ -48,7 +49,6 @@
     "D2": 3,
     "D6": 2,
     "J6": 2,
-    "Q1": 1,
     "Q9": 1,
     "R36": 2,
     "R46": 2,
@@ -193,7 +193,6 @@
     "D2.S",
     "D6.1",
     "D6.2",
-    "Q1.L",
     "TP9.1",
     "U6.L1",
     "U6.L2"
@@ -236,12 +235,12 @@
     },
     {
       "area": "Auxiliary / receiver",
-      "gap": "V077 grounds C19/R29. V075 supply plus V064-V070 = 11.2k supports Q7 emitter/VDD, R19 pull-up and R18 base input; topology inferred. V067 joins J3.1/PIR supply; U6A remains DNP. V063 feed now joins regulated VDD; V017/R42.1/R44.1 now joins TP4/PIC25; Q1.L via V011-V014 is VDD-reported, rail choice pending; R43.2/V015 joins TP14, separate from Q1.L.",
-      "method": "RC1 now reaches R18 via V053-V070; no further generic GPIO sweep needed. Q7 topology and receiver bias remain inferred; V053-V071 is rejected."
+      "gap": "V077 grounds C19/R29. V075 supply plus V064-V070 = 11.2k supports Q7 emitter/VDD, R19 pull-up and R18 base input; topology inferred. V067 joins J3.1/PIR supply; U6A remains DNP. V063 feed now joins regulated VDD; V017/R42.1/R44.1 now joins TP4/PIC25; Q1.L/V011-V014 motor rail confirmed; Q1 polarity/function unverified; R43.2/V015 joins TP14, separate from Q1.L.",
+      "method": "RC1 now reaches R18 via V053-V070; no further generic GPIO sweep needed. V071/R21.2 reaches VREF/RB0; other receiver-bias branches and Q7 topology remain inferred. V053-V071 is rejected."
     },
     {
       "area": "D2 / D6 / candidate parts",
-      "gap": "D2/4P identity and all three pad routes remain open. D6 has two open pads. U6/Q8 and small BJTs/diodes retain candidate identities/polarities.",
+      "gap": "D2/4P identity and all three pad routes remain open. D6 has two open pads. V082 reaches logic VDD/TP103; its D3 terminal remains unresolved. U6/Q8 and small BJTs/diodes retain candidate identities/polarities.",
       "method": "D2 diode-mode guide; D6 continuity; targeted candidate pin checks."
     },
     {
@@ -284,8 +283,7 @@
     ],
     "conflicts": [],
     "statuses": {
-      "ASSIGNED": 108,
-      "USER_REPORTED": 6,
+      "ASSIGNED": 114,
       "PHOTO_LOCAL": 6,
       "REJECTED_NOT_VIA": 7
     }

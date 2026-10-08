@@ -1226,6 +1226,58 @@
           "claim": "v0.9.8: User confirms V017-TP4. Prior V017-R42.1/R44.1 local junction now joins TP4 and PIC25/RB4. R42.1 explicitly user-named; R44 pad1 and C41 branch retain earlier photo selection. No numeric resistance supplied; circuit operating role remains inferred."
         }
       ]
+    },
+    {
+      "source": "User continuity report and marked photograph 2026-10-08",
+      "revision": "v0.9.8",
+      "answer": "v082 connects to this VDD TP",
+      "assignments": [
+        {
+          "id": "V082",
+          "kind": "signal",
+          "claim": "v0.9.8 follow-up: User confirms V082 reaches the board VDD test point, native TP103 / H_VDD regulated logic rail. This is distinct from MX512H pin4 VDD / H_VBAT motor supply; MX512H pin1 VCC is modeled on H_VDD. V082 was associated with D3 but its exact package terminal remains unconfirmed. Do not merge H_RX_VDD or choose a D3 pin from this report alone."
+        }
+      ],
+      "source_photo": "photos/user/2026-10-08/VDD_user_locator.png"
+    },
+    {
+      "source": "User continuity follow-up 2026-10-08",
+      "revision": "v0.9.8",
+      "answer": "v071 is connected to VREF TP as well.",
+      "assignments": [
+        {
+          "id": "V071",
+          "kind": "signal",
+          "claim": "v0.9.8: User confirms V071-VREF. Earlier V071-R21.2 and V026-VREF-PIC21/RB0 associations retained. R21.2 joins PIC_RB0_VREF. Existing R22.2/R23.2/R48.2 receiver-bias branches remain prior photo/circuit hypotheses, not new measured connections. VREF remains separate from H_VDD and RC1/V053. No voltage or numeric resistance supplied."
+        }
+      ]
+    },
+    {
+      "source": "User explicit motor-rail confirmation 2026-10-08",
+      "revision": "v0.9.8",
+      "answer": "v011,12,13,14 are connected to same rails as VDD of the H-bridge (pin 4)",
+      "assignments": [
+        {
+          "id": "V011",
+          "kind": "motor_supply",
+          "claim": "v0.9.8: User explicitly confirms V011/V012/V013/V014 share the MX512H pin4 VDD motor supply. Earlier Q1.L association retained, now H_VBAT, not regulated TP103/H_VDD. Q1.L-R43.2 remains rejected. Q1 device identity, polarity and function remain candidate assumptions; this connection does not validate them."
+        },
+        {
+          "id": "V012",
+          "kind": "motor_supply",
+          "claim": "v0.9.8: User explicitly confirms V011/V012/V013/V014 share the MX512H pin4 VDD motor supply. Earlier Q1.L association retained, now H_VBAT, not regulated TP103/H_VDD. Q1.L-R43.2 remains rejected. Q1 device identity, polarity and function remain candidate assumptions; this connection does not validate them."
+        },
+        {
+          "id": "V013",
+          "kind": "motor_supply",
+          "claim": "v0.9.8: User explicitly confirms V011/V012/V013/V014 share the MX512H pin4 VDD motor supply. Earlier Q1.L association retained, now H_VBAT, not regulated TP103/H_VDD. Q1.L-R43.2 remains rejected. Q1 device identity, polarity and function remain candidate assumptions; this connection does not validate them."
+        },
+        {
+          "id": "V014",
+          "kind": "motor_supply",
+          "claim": "v0.9.8: User explicitly confirms V011/V012/V013/V014 share the MX512H pin4 VDD motor supply. Earlier Q1.L association retained, now H_VBAT, not regulated TP103/H_VDD. Q1.L-R43.2 remains rejected. Q1 device identity, polarity and function remain candidate assumptions; this connection does not validate them."
+        }
+      ]
     }
   ],
   "review_in_progress": true,
@@ -1283,6 +1335,8 @@
       "H_VDD": "V064 / regulated board VDD",
       "H_VBAT": "V001 / MX512H motor VDD"
     },
-    "status": "AWAITING_USER_CLARIFICATION"
+    "status": "RESOLVED_BY_USER",
+    "resolved_net": "H_VBAT",
+    "answer": "Same rail as H-bridge VDD pin4"
   }
 }
