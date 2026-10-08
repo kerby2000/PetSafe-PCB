@@ -1,0 +1,164 @@
+{
+  "date": "2026-10-08",
+  "revision": "v0.7",
+  "previous_commit": "3e4d3c1",
+  "schematic_sha256": "5ce6e72d287693524ab2d2e53674e20cc42617b22ffea5db0d51051326fcf3f4",
+  "source": "Existing board photographs and user C5/C11/R8 observations. No new continuity measurements this revision.",
+  "new_local_PIC_routes": [
+    [
+      "U4.2",
+      "C25.1"
+    ],
+    [
+      "U4.4",
+      "C39.1"
+    ],
+    [
+      "U4.24",
+      "R4.2"
+    ],
+    [
+      "U4.18",
+      "TP17.1"
+    ],
+    [
+      "U4.26",
+      "TP10.1",
+      "R35.1"
+    ]
+  ],
+  "native_export_assertions": "PASS: ten connected endpoint groups, six intentionally separate endpoint pairs, C5 value/voltage, C11/R8 footprints and withdrawn capacitor estimates",
+  "caveat": "Assertions validate model implementation, not physical continuity. RC7/TP17 continuation to R13 remains probable; other remote endpoints remain inferred where documented.",
+  "open_pic_gpio_before": 19,
+  "open_pic_gpio_after": 14,
+  "newly_modeled_pads": [
+    "C41.1",
+    "D4.1",
+    "D5.1",
+    "Q9.L",
+    "R35.1",
+    "R35.2",
+    "TP10.1",
+    "U4.18",
+    "U4.2",
+    "U4.24",
+    "U4.26",
+    "U4.4"
+  ],
+  "newly_open_pads": [
+    "C26.1"
+  ],
+  "endpoint_net_changes": [
+    {
+      "endpoint": "C25.1",
+      "before": "H_VDD",
+      "after": "PIC_RA0_FILTER"
+    },
+    {
+      "endpoint": "C26.1",
+      "before": "H_VDD",
+      "after": null
+    },
+    {
+      "endpoint": "C32.1",
+      "before": "H_PIR_VDD",
+      "after": "H_VDD"
+    },
+    {
+      "endpoint": "C39.1",
+      "before": "H_VDD",
+      "after": "PIC_RA2_FILTER"
+    },
+    {
+      "endpoint": "C41.1",
+      "before": null,
+      "after": "PIC_TP4_C41"
+    },
+    {
+      "endpoint": "D4.1",
+      "before": null,
+      "after": "ICSP_CLK"
+    },
+    {
+      "endpoint": "D5.1",
+      "before": null,
+      "after": "ICSP_DAT"
+    },
+    {
+      "endpoint": "Q9.L",
+      "before": null,
+      "after": "R35_Q9"
+    },
+    {
+      "endpoint": "R32.2",
+      "before": "H_PIR_VDD",
+      "after": "ICSP_CLK"
+    },
+    {
+      "endpoint": "R35.1",
+      "before": null,
+      "after": "RB5_OPT"
+    },
+    {
+      "endpoint": "R35.2",
+      "before": null,
+      "after": "R35_Q9"
+    },
+    {
+      "endpoint": "R4.2",
+      "before": "H_GND",
+      "after": "PIC_RB3_RETURN"
+    },
+    {
+      "endpoint": "R40.1",
+      "before": "H_VDD",
+      "after": "ICSP_DAT"
+    },
+    {
+      "endpoint": "TP10.1",
+      "before": null,
+      "after": "RB5_OPT"
+    },
+    {
+      "endpoint": "TP17.1",
+      "before": "H_BAT_SENSE",
+      "after": "H_TUNE_1"
+    },
+    {
+      "endpoint": "TP4.1",
+      "before": "H_ANT_A",
+      "after": "PIC_TP4_C41"
+    },
+    {
+      "endpoint": "U4.18",
+      "before": null,
+      "after": "H_TUNE_1"
+    },
+    {
+      "endpoint": "U4.2",
+      "before": null,
+      "after": "PIC_RA0_FILTER"
+    },
+    {
+      "endpoint": "U4.24",
+      "before": null,
+      "after": "PIC_RB3_RETURN"
+    },
+    {
+      "endpoint": "U4.26",
+      "before": null,
+      "after": "RB5_OPT"
+    },
+    {
+      "endpoint": "U4.4",
+      "before": null,
+      "after": "PIC_RA2_FILTER"
+    }
+  ],
+  "passive_updates": {
+    "C5": "470uF / 16V from sleeve; can dimensions unresolved",
+    "C11": "User 3.2 x 1.5 mm supports 1206",
+    "R8": "User 1.6 x 0.77 mm supports 0603 provisionally pending end-cap clarification",
+    "other_fitted_resistors": "Provisional 0603 family; not individually measured"
+  }
+}

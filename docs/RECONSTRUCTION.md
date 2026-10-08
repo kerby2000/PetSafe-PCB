@@ -1,4 +1,4 @@
-# PetSafe functional reconstruction, v0.6
+# PetSafe functional reconstruction, v0.7
 
 The deliverable is one editable KiCad schematic sheet with all 150 entries in the original main-board catalog. It uses wires inside functional blocks and labels between blocks. The 150 entries include named pads, test points and unpopulated footprints; they are not 150 fitted components. The separate PIR daughterboard appears in the photos, but only its main-board connector and interface are modeled here.
 
@@ -108,15 +108,15 @@ Resonant total capacitance is C=1/((2*pi*f)^2*L). Neither antenna inductance nor
 
 The corrected C2NM marking supports an S-812C33AMC regulator: R37 feeds pin2 VIN, C36 bypasses the input, pin3 VOUT feeds C37 and the PIR rail, and pin1 VSS is ground. The user reports C/R3 to G at 2.7 ohm, B/R2 at 34 kohm and A/R1 at 4.2 kohm; shorted tips later read 0.5 ohm. C is likely ground, with contact resistance uncertainty. 3.3 V is the candidate rating, not a measured voltage. NC4/5 remain open in the drawing because their board ties are unknown.
 
-Q2 is a proposed NPN input stage with base resistance, pull-down and collector pull-up. J3 power/ground/signal assignments remain inferred; daughterboard internals are not traced. D4/D5 now carry SD05 5 V TVS candidates; D6 is a provisional MMSZ5228BS 3.9 V Zener, with PZU2.4B as a 2.4 V alternative; polarity and all six routes remain unresolved.
+Q2 is a proposed NPN input stage with base resistance, pull-down and collector pull-up. J3 power/ground/signal assignments remain inferred; daughterboard internals are not traced. D4/D5 carry SD05 5 V TVS candidates; their lower pads are now photo-traced to PIC pins 27/28 respectively. Their opposite pads remain unresolved. D6 is a provisional MMSZ5228BS 3.9 V Zener, with PZU2.4B as a 2.4 V alternative; both routes remain unresolved. These candidate identities and polarities are not electrically verified.
 
 ## Validation and limits
 
-Native KiCad 10.0.5 exports one A2 sheet with 150 references, 155 symbol units and 352 physical pads. The final native pin partitions match all 81 modeled nets. All 29 original visual fragments and all 26 original photo checksums are retained. Twenty stock definitions and four project-local definitions match their registered library graphics and pins. Manufacturer pin-table contracts independently check U1/U5/U6/Q8 in the exported netlist.
+Native KiCad 10.0.5 exports one A2 sheet with 150 references, 155 symbol units and 352 physical pads. The final native pin partitions match all 87 modeled nets. All 29 original visual fragments and all 26 original photo checksums are retained. Twenty stock definitions and four project-local definitions match their registered library graphics and pins. Manufacturer pin-table contracts independently check U1/U5/U6/Q8 in the exported netlist.
 
-ERC reports 86 open findings: 65 unconnected pins, 14 isolated labels, five undriven power checks and two undriven motor-control inputs. No off-grid endpoints, dangling wire ends or unintended multi-pin net merges remain. U6 and Q8 unpowered resistance readings are recorded; C6 exact path remains unresolved. Functional tests, voltage measurements, exact GPIO tracing, physical PCB reconstruction and firmware recovery remain undone.
+ERC reports 74 open findings: 54 unconnected pins, 13 isolated labels, five undriven power checks and two undriven motor-control inputs. No off-grid endpoints, dangling wire ends or unintended multi-pin net merges remain. U6 and Q8 unpowered resistance readings are recorded; C6 exact path remains unresolved. Functional tests, voltage measurements, completion of GPIO tracing, physical PCB reconstruction and firmware recovery remain undone.
 
-## Remaining completion items, v0.6
+## Remaining completion items, v0.7
 
 All 150 main-board catalog entries are represented. **No further exact-symbol files are missing for the confidently identified ICs.** U1/U5 are now completed from datasheets through MCP. U6/Q8 candidates are also implemented. The remaining work is identity confirmation, values and hidden connectivity:
 
@@ -126,15 +126,25 @@ All 150 main-board catalog entries are represented. **No further exact-symbol fi
 | Q8, 3724A | Fitted maker and external source/drain connections | SIL3724A? implemented, drain join and ground return supported by resistance; C6 measured as supply-related; exact path unresolved. |
 | D3 / A7 | Physical orientation and clamp routing | BAV99 series-dual candidate supported by user-confirmed A7. |
 | D2 / 4P | Identity, pin functions and routing | FMMT2907R is a code/package lead only; numbered stock placeholder with all three pads open. |
-| D4/D5/D6 | Diode type, polarity and connections | SD05 TVS / MMSZ5228BS Zener candidates assigned; all six pads remain unresolved. |
+| D4/D5/D6 | Diode type, polarity and connections | SD05 TVS / MMSZ5228BS Zener candidates assigned; D4/D5 lower pads photo-traced to ICSP clock/data; four other pads remain unresolved. |
 | LED1 / S1 | LED emitter configuration/polarity; switch common pairs | Standard symbols present, physical mapping provisional. |
 | Q1/Q2/Q7 and repeated 2H transistors | Candidate identity and orientation | Existing stock BJT symbols; identity strength varies and is documented above. |
 | L1/L2, unmarked capacitors | Bead versus inductor, capacitance and package sizes | Standard passive symbols present. Proposed decoupling values are estimates; RF filter/tuning values remain unknown. C27/C41 also lack a circuit role. |
-| PIC and block interfaces | Exact GPIO destinations and hidden tracks | 19 PIC pads remain open. Net names indicate intended functions, not recovered MCU assignments. |
+| PIC and block interfaces | Exact GPIO destinations and hidden tracks | 14 PIC pads remain open. Five local GPIO routes recovered in v0.7; remote signal roles remain partly inferred. See pic_trace_audit.json. |
 | PIR daughterboard | Internal components and routes | Only the J3 interface is represented; daughterboard internals are outside the current main-board revision. |
 
-The 65 open physical pins include 27 on unpopulated/DNP entries; the other 38 include named test pads and two internally open U6 pins. They are not 65 missing parts. U7/U6A/Q9 and other DNP entries do not require identifying a fitted chip. The machine-readable list is `evidence/completion_status.json`. Further photo/datasheet inference can continue without a broad measurement campaign. A completely confirmed schematic cannot be claimed from missing identity, value and buried-trace evidence.
+The 54 open physical pins include 24 on unpopulated/DNP entries; the other 30 include named test pads and two internally open U6 pins. They are not 54 missing parts. U7/U6A/Q9 and other DNP entries do not require identifying a fitted chip. The machine-readable list is `evidence/completion_status.json`. Further photo/datasheet inference can continue without a broad measurement campaign. A completely confirmed schematic cannot be claimed from missing identity, value and buried-trace evidence.
 
 ## Package and value audit, v0.6
 
 R29 and R44 both read 18C in the original photos (IMG_2434 and IMG_2438 respectively), yielding nominal 15 kohm using EIA-96. This resolves their value question marks without new measurements. 126 stock footprints were assigned using MCP, leaving C5/S1/LED1 for dimensions and pad mapping. FootprintConfidence and FootprintBasis properties retain the distinction between photo estimates and measured geometry. No net partitions were changed. The detailed per-part [completion audit](FINISHING_CHECKLIST.html) separates value, identity, package and routing gaps.
+
+## Superseding v0.7 photo audit
+
+The earlier generic PIC supply and battery-divider interpretation is partly contradicted by visible copper. This section takes precedence over those v0.6 descriptions. New direct GPIO routes: U4.2 to C25 right pad; U4.4 to C39 left pad; U4.24 to R4 lower pad; U4.26 to TP10 and R35 upper pad; U4.18 to TP17, with probable top-edge continuation to R13 upper pad. C32 visibly bridges U4.20 and U4.19, not the PIR rail. R35 is empty: its lower pad/Q9 lower-left are a separate local net.
+
+D4 lower cathode candidate/R32 lower pad connect U4.27; D5 lower cathode candidate/R40 upper pad connect U4.28. Their old R32/PIR-supply and R40/VDD ties are withdrawn. C41 right pad connects TP4; its under-U4 continuation is unknown, so TP4 is removed from the antenna net. C26 no longer has the unsupported VDD tie. C25/C39 no longer have generic 100n bypass values. Ground assignments at their opposite pads and remote interface roles remain inferred.
+
+C5 is 470uF/16V from the user. C11 dimensions support 1206; R8 dimensions support 0603, revising the repeated fitted resistor package family provisionally. All 147 assigned footprint files remain standard-library candidates. C5 body/lead geometry, S1 and LED1 remain unassigned.
+
+The v0.7 model has 87 net partitions, 54 open physical pads and 14 open PIC GPIOs. See evidence/pic_trace_audit.json and the annotated PDF. Existing photo resolution is enough for the direct local changes above; unresolved pad exits/top-edge continuations benefit from sharper, overlapping straight-on photos. Hidden copper still may need targeted continuity.

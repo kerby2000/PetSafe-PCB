@@ -1,4 +1,4 @@
-# PetSafe PCB reverse engineering - v0.6
+# PetSafe PCB reverse engineering - v0.7
 
 One editable **A2 KiCad 10 sheet**, with all 150 main-board catalog entries grouped into functional blocks. Wires connect parts within blocks; named nets connect blocks. This revision uses the installed **KiCad 10.0.5** and **KiCad MCP Server**, with **20 unmodified stock symbol definitions and four explicitly authorized datasheet symbols**.
 
@@ -20,15 +20,15 @@ All symbol definitions are embedded, so the drawing is self-contained. Standard 
 
 ## What is complete and what remains provisional
 
-All 150 catalog entries, 352 photographed pads and 29 original visual fragments are retained. The native KiCad 10.0.5 netlist matches all 81 authored net partitions. All 26 original photos retain their checksums. The schematic is a functional reconstruction from photographs and datasheets, not a continuity-verified production design.
+All 150 catalog entries, 352 photographed pads and 29 original visual fragments are retained. The native KiCad 10.0.5 netlist matches all 87 authored net partitions. All 26 original photos retain their checksums. The schematic is a functional reconstruction from photographs and datasheets, not a continuity-verified production design.
 
 U1 (probable S-1200B45) and U5 (MX512H) now use datasheet-derived symbols created through MCP at the user's request. Their standard footprints are SOT-23-5 and SOIC-8 3.9 x 4.9 mm / 1.27 mm pitch. No custom footprint was needed. U6 and Q8 now have candidate datasheet pin maps, including both Q8 MOSFET units on this sheet. U3 uses KiCad's generic dual op-amp with its actual SGM8542XS value and pinout.
 
 Western alternatives are documented separately: **MCP6002-I/SN** for SGM8542 and **DRV8212PDSGR** for an MX512H redesign. The motor driver has a different package and pinout; it has not been substituted into the reconstructed board. Both alternatives have standard KiCad symbols and footprints. Pin-compatible does not mean electrically interchangeable.
 
-ERC retains **86 findings**: 65 unconnected pins, 14 isolated pin labels, five undriven power checks and two undriven motor-control inputs. There are no off-grid endpoints or dangling wire ends. No artificial no-connect or power flags hide missing evidence. The 65 open pads include 27 on DNP entries and 38 others, including two internally open U6 pins with unresolved external ties. Exact GPIO assignments, some filter routes/values and candidate identities remain open. PIR daughterboard internals and a routed PCB are outside this revision.
+ERC retains **74 findings**: 54 unconnected pins, 13 isolated pin labels, five undriven power checks and two undriven motor-control inputs. There are no off-grid endpoints or dangling wire ends. No artificial no-connect or power flags hide missing evidence. The 54 open pads include 24 on DNP entries and 30 others, including two internally open U6 pins with unresolved external ties. Fourteen PIC GPIO destinations, some filter routes/values and candidate identities remain open. PIR daughterboard internals and a routed PCB are outside this revision.
 
-See [remaining completion items](docs/RECONSTRUCTION.md#remaining-completion-items-v05). No further symbol files are needed for the current chosen candidates; a complete hardware-verified circuit still requires resolving hidden wiring and values.
+See [remaining completion items](docs/RECONSTRUCTION.md#remaining-completion-items-v07). No further symbol files are needed for the current chosen candidates; a complete hardware-verified circuit still requires resolving hidden wiring and values.
 
 ## Repository contents
 
@@ -64,4 +64,8 @@ Regeneration requires `sexpdata` and the installed MCP server's formatter. It ov
 
 126 stock footprints were assigned through KiCad MCP; 147 of 150 catalog entries now have footprints. Photo-based family choices carry separate confidence and evidence properties. C5, S1 and LED1 still need dimensional/pad details. Connector and test-pad assignments remain approximate. All 38 fitted resistor nominal values are recovered, including R29/R44 = 15 kohm from visible 18C markings. No new copper connections were assumed.
 
-See [the searchable finishing checklist](docs/FINISHING_CHECKLIST.html) and [the next annotated checks](output/pdf/PetSafe_next_checks.pdf). The user has an LCR meter and multimeter. Start with the six D2 diode-mode readings, C5 sleeve text/dimensions and one resistor body measurement; use small LCR rounds afterward. All 45 fitted capacitor values remain unknown or estimated.
+The v0.6 round requested D2 diode-mode readings, C5 sleeve text/dimensions and one resistor body measurement. C5's value and the R8/C11 body measurements are now recorded in v0.7; do not repeat those requests. See [the current finishing checklist](docs/FINISHING_CHECKLIST.html). The user has an LCR meter and multimeter; 44 fitted capacitor values remain unknown or estimated.
+
+## v0.7 user measurements and PIC tracing
+
+C5 is 470 uF / 16 V from the sleeve. C11 measures approximately 3.2 x 1.5 mm (1206); R8 approximately 1.6 x 0.77 mm (0603, subject to end-cap clarification). The fitted resistor family is revised provisionally to 0603. Earlier v0.6 0805 inference is superseded. Five more PIC local connections were recovered from existing photos, leaving 14 open GPIO pads. See [annotated photo review](output/pdf/PetSafe_PIC_trace_review.pdf) and [pin-by-pin evidence](evidence/pic_trace_audit.json). C32 moved to the PIC VDD/VSS; C25/C39 are signal filters, R4 returns to RB3, TP17 belongs to RC7, D4/D5 attach to ICSP, and TP4/C41 are no longer tied to the antenna hypothesis. C26 VDD tie was withdrawn.

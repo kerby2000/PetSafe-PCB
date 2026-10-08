@@ -81,3 +81,7 @@ User reports D2=4P, D3=A7 and R41=331 (nominal 330 ohm). These supersede the old
 ## v0.6 resistor and package audit
 
 [Bourns CRP0603 marking table](https://www.bourns.com/pdfs/CRP0603.pdf), page 3: EIA-96 18=150 and C=100, therefore 18C=15 kohm. Used only for code decoding, not to identify the fitted manufacturer, package or tolerance. Existing photos IMG_2434.jpg (R29) and IMG_2438.jpg (R44) supply the markings. Package-size candidates use relative body/land proportions against neighboring known IC pitches and the installed KiCad 10 stock footprint descriptions. No calibrated dimensional measurements were supplied.
+
+## v0.7 PIC photo tracing
+
+Microchip DS40001802H, page 4 supplies the SOIC pin numbering and port names. Board connections come from IMG_2436/2437/2438 and the overlapping IMG_2435/2434/2433 top-edge photos, not from a typical application. Five GPIO local routes were added. The RC7/TP17-to-R13 continuation is explicitly probable; vias/body-covered routes remain open. User reports C5 470uF/16V, C11 3.2x1.5mm, R8 1.6x0.77mm. These reports supersede conflicting photo estimates.

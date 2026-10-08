@@ -169,7 +169,12 @@ wire('U1_ALT_PAD','R1.2',(48,87),(48,81),(80,81));wire('U1_ALT_PAD','C3.2',(72,8
 label('U1_ALT_PAD',(80,81))
 
 # PIC: official SOIC symbol; both ground pins share the library endpoint.
-bus('H_VDD',32,['U4.20','C25.1','C26.1','C39.1']);bus('H_GND',44,['C25.2','C26.2','C39.2'])
+bus('H_VDD',32,['U4.20','C32.1']);bus('H_GND',44,['C32.2','C26.2'])
+# IMG_2436: RA0/C25 and RA2/C39 are signal nodes, not supply bypasses.
+wire('PIC_RA0_FILTER','U4.2','C25.1')
+wire('PIC_RA2_FILTER','U4.4','C39.1')
+bus('H_GND',66,['C25.2','C39.2'])
+wire('PIC_TP4_C41','TP4.1','C41.1')
 wire('ICSP_CLK','U4.27',(228,76),(228,43),'J1.CLK');label('ICSP_CLK',(230,43))
 wire('ICSP_DAT','U4.28',(231,78),(231,45),'J1.DAT');label('ICSP_DAT',(233,45))
 stub('MCLR_VPP','U4.1',-12);stub('MCLR_VPP','J1.VPP',-12)
@@ -178,7 +183,14 @@ wire('H_GND','J1.GND',(263,51),(263,104));wire('H_GND','U4.8',(207,104),(263,104
 wire('OSC1','U4.9',(233,60),(233,85),(238,85),(238,89),'Y1.1');wire('OSC1','C30.1',(238,89))
 wire('OSC2','U4.10',(235,58),(235,83),(254,83),(254,89),'Y1.2');wire('OSC2','C31.2',(254,89))
 wire('H_GND','C30.2',(238,104));wire('H_GND','C31.1',(254,104));wire('PIC_RC3','U4.14','TP11.1')
-stub('H_VBAT','R3.1',0,-4);wire('H_BAT_SENSE','R3.2',(280,75),'R4.1');wire('H_BAT_SENSE',(280,75),'TP17.1');wire('H_BAT_SENSE','C28.1',(296,75));label('H_BAT_SENSE',(284,75));bus('H_GND',94,['R4.2','C28.2'])
+stub('H_VBAT','R3.1',0,-4);wire('H_BAT_SENSE','R3.2',(280,75),'R4.1');wire('H_BAT_SENSE','C28.1',(296,75));label('H_BAT_SENSE',(284,75));stub('H_GND','C28.2',0,6)
+stub('PIC_RB3_RETURN','U4.24',14);stub('PIC_RB3_RETURN','R4.2',0,6)
+wire('H_TUNE_1','U4.18','TP17.1');label('H_TUNE_1','TP17.1')
+stub('ICSP_CLK','D4.1',-4);stub('ICSP_CLK','R32.2',3)
+stub('ICSP_DAT','D5.1',-4);stub('ICSP_DAT','R40.1',0,-5)
+stub('RB5_OPT','U4.26',14);stub('RB5_OPT','TP10.1',0,4)
+stub('RB5_OPT','R35.1',-3);stub('R35_Q9','R35.2',0,4)
+stub('R35_Q9','Q9.L',-4)
 
 # MX512H physical pin numbering, not a DRV8837 pin substitution.
 wire('H_VBAT','C33.1',(339,33),(361,33),'U5.4');label('H_VBAT',(339,33))
@@ -196,9 +208,8 @@ wire('H_AUX_IN','C36.1',(237,238),(248,238));label('H_AUX_IN',(237,238))
 wire('H_GND','U6.R3',(260,257));bus('H_GND',257,['C36.2','C37.2'])
 wire('H_PIR_VDD','U6.R1',(280,240),'C37.1')
 wire('H_PIR_VDD',(280,240),(280,241))
-wire('H_PIR_VDD',(280,241),(290,241),(290,232),(313,232),'C32.1')
+wire('H_PIR_VDD',(280,241),(290,241),(290,232))
 wire('H_PIR_VDD',(290,241),(290,256),'J3.1');label('H_PIR_VDD',(290,232))
-wire('H_GND','C32.2',(323,244))
 
 # Q8: 3724A marking supports SIL3724A pinout; manufacturer and routing provisional.
 wire('Q8_DRIVE_A','R9.2',(111,146),(111,182),'Q8.T3')
@@ -226,13 +237,14 @@ for n in layout['notes']:
         t='U1 datasheet symbol: S-1200B45 SOT-23-5. Pin 4 is internally open; option pads retained.'
     if 'Original photographed pad names remain' in t:
         t='Library pin numbers are mapped to photo pads in evidence/pin_crosswalk.json.'
-    if t.startswith('v0.2'):t='v0.6 | KiCad 10.0.5 | 2026-10-08';n['y']=292
+    if t.startswith('v0.2'):t='v0.7 | KiCad 10.0.5 | 2026-10-08';n['y']=292
     if t.startswith('H14-H15:'):t='H14-H15: C2N supports S-812C33AMC 3.3V LDO. C/R3 ground supported by resistance.'
     if t.startswith('H09:'):t='H09: 3724A matches SIL3724A N/P MOSFET pair. Both units share one package.'
     if t.startswith('Q8 T2/B1/B2'):t='Measured: D-E 2 ohm, S-G 2 ohm; E-F 400 kohm refutes the proposed C6 output tie.'
     if t.startswith('H07:'):t='H07: C14R inverter candidate. Q8 source rail inferred; C6 destination unresolved.'
-    if t.startswith('No invented ties'):t='D4/D5: 5U -> SD05 TVS? D6: G3 -> 3.9V Zener? (2.4V alternative). Routing open.'
-    if t.startswith('H03:'):n['y']=106
+    if t.startswith('No invented ties'):t='D4/D5 cathodes traced to ICSP; opposite vias open. D6 type and routes uncertain.'
+    if t.startswith('H02:'):t='PIC local photo traces added; 14 GPIO pads open. Remote destinations partly inferred.'
+    if t.startswith('H03:'):t='R3/R4 sensing candidate; R4 returns to RB3. C28 value estimated.';n['y']=106
     text(t,n['x'],n['y'],1.27 if n['size']>=1 else max(.762,n['size']*1.27))
 text('U5 datasheet symbol: separate logic VCC and motor VDD; both ground pins retained.',320,77,.762)
 text('D2: 4P unidentified; old BAV99 clamp ties withdrawn.',350,201,.762)
@@ -293,13 +305,13 @@ for net,edges in adj.items():
 for l in L:
     x,y=l['p'];G.append(expr(f'(label {q(l["net"])} (at {x} {y} 0) (effects (font (size .762 .762)) (justify left bottom)) (uuid {q(uid())}))'))
 tree.extend(G)
-tree.append(expr('(title_block (title "PetSafe 100-1339 R03 A | single-sheet reconstruction") (date "2026-10-08") (rev "0.6") (company "KiCad 10 libraries + four datasheet symbols | MCP authoring") (comment 1 "Photo-based package candidates assigned. Values and routing retain explicit uncertainty."))'))
+tree.append(expr('(title_block (title "PetSafe 100-1339 R03 A | single-sheet reconstruction") (date "2026-10-08") (rev "0.7") (company "KiCad 10 libraries + four datasheet symbols | MCP authoring") (comment 1 "PIC photo traces corrected; C5 470uF / 16V. Remaining hypotheses documented."))'))
 # Canonical pretty printer supplied by the installed MCP server.
 sys.path.insert(0,str(Path.home()/'Documents/VS.Code.Projects/KiCAD-MCP-Server/python'))
 from utils.sexpr_format import prettify
 out=R/'schematic/PetSafe_1001339.kicad_sch'
 out.write_text(prettify(sx.dumps(tree)),encoding='utf-8',newline='\n')
-model.update(revision='v0.6',coordinate_units='mm',native_pin_crosswalk=layout['crosswalk'],pin_positions={e:list(p) for e,p in P.items()},
+model.update(revision='v0.7',coordinate_units='mm',native_pin_crosswalk=layout['crosswalk'],pin_positions={e:list(p) for e,p in P.items()},
              geometric_wires=[dict(net=n,a=a,b=b) for n,a,b in segments],library_policy='KiCad 10 stock symbols plus four explicitly authorized MCP-authored datasheet symbols for U1/U5/U6/Q8')
 for c in model['components']:
     entry=next(x for x in layout['catalog'] if x['original_ref']==c['ref'])

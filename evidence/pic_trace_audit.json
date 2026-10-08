@@ -1,0 +1,346 @@
+{
+  "revision": "v0.7",
+  "pin_number_source": "Microchip DS40001802H p4; top-view pin1 dot",
+  "source_url": "https://ww1.microchip.com/downloads/aemDocuments/documents/MCU08/ProductDocuments/DataSheets/PIC16(L)F18855-75-Data-Sheet-40001802H.pdf",
+  "open_gpio_pins_before": 19,
+  "open_gpio_pins_after": 14,
+  "interpretation": "Local visible connections and qualified top-edge inference; remote endpoints and existing inferred nets remain partly unverified.",
+  "pins": [
+    {
+      "pin": 1,
+      "function": "RE3/MCLR",
+      "net": "MCLR_VPP",
+      "status": "MODELED: see evidence strength",
+      "evidence": "ICSP VPP inferred; nearby D6 routing unresolved",
+      "photos": [
+        "IMG_2436.jpg",
+        "IMG_2437.jpg",
+        "IMG_2438.jpg"
+      ]
+    },
+    {
+      "pin": 2,
+      "function": "RA0",
+      "net": "PIC_RA0_FILTER",
+      "status": "MODELED: see evidence strength",
+      "evidence": "Visible to C25 right pad; external continuation hidden",
+      "photos": [
+        "IMG_2436.jpg",
+        "IMG_2437.jpg",
+        "IMG_2438.jpg"
+      ]
+    },
+    {
+      "pin": 3,
+      "function": "RA1",
+      "net": null,
+      "status": "OPEN",
+      "evidence": "Runs down beside C25/C26; destination unresolved",
+      "photos": [
+        "IMG_2436.jpg",
+        "IMG_2437.jpg",
+        "IMG_2438.jpg"
+      ]
+    },
+    {
+      "pin": 4,
+      "function": "RA2",
+      "net": "PIC_RA2_FILTER",
+      "status": "MODELED: see evidence strength",
+      "evidence": "Visible to C39 left pad; external continuation hidden",
+      "photos": [
+        "IMG_2436.jpg",
+        "IMG_2437.jpg",
+        "IMG_2438.jpg"
+      ]
+    },
+    {
+      "pin": 5,
+      "function": "RA3",
+      "net": null,
+      "status": "OPEN",
+      "evidence": "Trace exit obscured by body/pad",
+      "photos": [
+        "IMG_2436.jpg",
+        "IMG_2437.jpg",
+        "IMG_2438.jpg"
+      ]
+    },
+    {
+      "pin": 6,
+      "function": "RA4",
+      "net": null,
+      "status": "OPEN",
+      "evidence": "Trace exit obscured by body/pad",
+      "photos": [
+        "IMG_2436.jpg",
+        "IMG_2437.jpg",
+        "IMG_2438.jpg"
+      ]
+    },
+    {
+      "pin": 7,
+      "function": "RA5",
+      "net": null,
+      "status": "OPEN",
+      "evidence": "Trace exit obscured by body/pad",
+      "photos": [
+        "IMG_2436.jpg",
+        "IMG_2437.jpg",
+        "IMG_2438.jpg"
+      ]
+    },
+    {
+      "pin": 8,
+      "function": "VSS",
+      "net": "H_GND",
+      "status": "MODELED: see evidence strength",
+      "evidence": "VSS datasheet; local ground-via candidate",
+      "photos": [
+        "IMG_2436.jpg",
+        "IMG_2437.jpg",
+        "IMG_2438.jpg"
+      ]
+    },
+    {
+      "pin": 9,
+      "function": "RA7/OSC1",
+      "net": "OSC1",
+      "status": "MODELED: see evidence strength",
+      "evidence": "Visible crystal and C30 fragment retained",
+      "photos": [
+        "IMG_2436.jpg",
+        "IMG_2437.jpg",
+        "IMG_2438.jpg"
+      ]
+    },
+    {
+      "pin": 10,
+      "function": "RA6/OSC2",
+      "net": "OSC2",
+      "status": "MODELED: see evidence strength",
+      "evidence": "Visible crystal and C31 fragment retained",
+      "photos": [
+        "IMG_2436.jpg",
+        "IMG_2437.jpg",
+        "IMG_2438.jpg"
+      ]
+    },
+    {
+      "pin": 11,
+      "function": "RC0",
+      "net": null,
+      "status": "OPEN",
+      "evidence": "Pad exit/continuation unresolved",
+      "photos": [
+        "IMG_2436.jpg",
+        "IMG_2437.jpg",
+        "IMG_2438.jpg"
+      ]
+    },
+    {
+      "pin": 12,
+      "function": "RC1",
+      "net": null,
+      "status": "OPEN",
+      "evidence": "Visible rightward trace ends at via; final destination unresolved",
+      "photos": [
+        "IMG_2436.jpg",
+        "IMG_2437.jpg",
+        "IMG_2438.jpg"
+      ]
+    },
+    {
+      "pin": 13,
+      "function": "RC2",
+      "net": null,
+      "status": "OPEN",
+      "evidence": "Pad exit/continuation unresolved",
+      "photos": [
+        "IMG_2436.jpg",
+        "IMG_2437.jpg",
+        "IMG_2438.jpg"
+      ]
+    },
+    {
+      "pin": 14,
+      "function": "RC3",
+      "net": "PIC_RC3",
+      "status": "MODELED: see evidence strength",
+      "evidence": "Visible TP11 fragment retained",
+      "photos": [
+        "IMG_2436.jpg",
+        "IMG_2437.jpg",
+        "IMG_2438.jpg"
+      ]
+    },
+    {
+      "pin": 15,
+      "function": "RC4",
+      "net": null,
+      "status": "OPEN",
+      "evidence": "Pad exit/continuation unresolved",
+      "photos": [
+        "IMG_2436.jpg",
+        "IMG_2437.jpg",
+        "IMG_2438.jpg"
+      ]
+    },
+    {
+      "pin": 16,
+      "function": "RC5",
+      "net": null,
+      "status": "OPEN",
+      "evidence": "Pad exit/continuation unresolved",
+      "photos": [
+        "IMG_2436.jpg",
+        "IMG_2437.jpg",
+        "IMG_2438.jpg"
+      ]
+    },
+    {
+      "pin": 17,
+      "function": "RC6",
+      "net": null,
+      "status": "OPEN",
+      "evidence": "Trace runs right into a copper area; final destination unassigned",
+      "photos": [
+        "IMG_2436.jpg",
+        "IMG_2437.jpg",
+        "IMG_2438.jpg"
+      ]
+    },
+    {
+      "pin": 18,
+      "function": "RC7",
+      "net": "H_TUNE_1",
+      "status": "MODELED: see evidence strength",
+      "evidence": "Direct to TP17; probable top-edge continuation to R13 upper pad",
+      "photos": [
+        "IMG_2436.jpg",
+        "IMG_2437.jpg",
+        "IMG_2438.jpg"
+      ]
+    },
+    {
+      "pin": 19,
+      "function": "VSS",
+      "net": "H_GND",
+      "status": "MODELED: see evidence strength",
+      "evidence": "Visible C32 right pad; VSS from datasheet",
+      "photos": [
+        "IMG_2436.jpg",
+        "IMG_2437.jpg",
+        "IMG_2438.jpg"
+      ]
+    },
+    {
+      "pin": 20,
+      "function": "VDD",
+      "net": "H_VDD",
+      "status": "MODELED: see evidence strength",
+      "evidence": "Visible C32 left pad; VDD from datasheet",
+      "photos": [
+        "IMG_2436.jpg",
+        "IMG_2437.jpg",
+        "IMG_2438.jpg"
+      ]
+    },
+    {
+      "pin": 21,
+      "function": "RB0",
+      "net": null,
+      "status": "OPEN",
+      "evidence": "Pad exit/continuation unresolved",
+      "photos": [
+        "IMG_2436.jpg",
+        "IMG_2437.jpg",
+        "IMG_2438.jpg"
+      ]
+    },
+    {
+      "pin": 22,
+      "function": "RB1",
+      "net": null,
+      "status": "OPEN",
+      "evidence": "Visible diagonal to top-edge track; remote endpoint not established",
+      "photos": [
+        "IMG_2436.jpg",
+        "IMG_2437.jpg",
+        "IMG_2438.jpg"
+      ]
+    },
+    {
+      "pin": 23,
+      "function": "RB2",
+      "net": null,
+      "status": "OPEN",
+      "evidence": "Visible diagonal to top-edge track; remote endpoint not established",
+      "photos": [
+        "IMG_2436.jpg",
+        "IMG_2437.jpg",
+        "IMG_2438.jpg"
+      ]
+    },
+    {
+      "pin": 24,
+      "function": "RB3",
+      "net": "PIC_RB3_RETURN",
+      "status": "MODELED: see evidence strength",
+      "evidence": "Direct visible trace to R4 lower pad",
+      "photos": [
+        "IMG_2436.jpg",
+        "IMG_2437.jpg",
+        "IMG_2438.jpg"
+      ]
+    },
+    {
+      "pin": 25,
+      "function": "RB4",
+      "net": null,
+      "status": "OPEN",
+      "evidence": "Pad exit under R3/R4 area unclear",
+      "photos": [
+        "IMG_2436.jpg",
+        "IMG_2437.jpg",
+        "IMG_2438.jpg"
+      ]
+    },
+    {
+      "pin": 26,
+      "function": "RB5",
+      "net": "RB5_OPT",
+      "status": "MODELED: see evidence strength",
+      "evidence": "Visible long loop to TP10 and R35 upper pad; Q9 is separated by empty R35",
+      "photos": [
+        "IMG_2436.jpg",
+        "IMG_2437.jpg",
+        "IMG_2438.jpg"
+      ]
+    },
+    {
+      "pin": 27,
+      "function": "RB6/ICSPCLK",
+      "net": "ICSP_CLK",
+      "status": "MODELED: see evidence strength",
+      "evidence": "Visible D4 lower cathode candidate/R32 lower node; programming connector destination inferred",
+      "photos": [
+        "IMG_2436.jpg",
+        "IMG_2437.jpg",
+        "IMG_2438.jpg"
+      ]
+    },
+    {
+      "pin": 28,
+      "function": "RB7/ICSPDAT",
+      "net": "ICSP_DAT",
+      "status": "MODELED: see evidence strength",
+      "evidence": "Visible D5 lower cathode candidate/R40 upper node; programming connector destination inferred",
+      "photos": [
+        "IMG_2436.jpg",
+        "IMG_2437.jpg",
+        "IMG_2438.jpg"
+      ]
+    }
+  ]
+}

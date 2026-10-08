@@ -25,5 +25,24 @@
     ],
     "result": "PASS: rendered full sheet and next-check page visually inspected; callouts land on D2 solder pads; no clipped guide text",
     "layout": "One A2 schematic unchanged; R29/R44 value fields shortened to 15k; new footprint evidence fields hidden"
+  },
+  "v07": {
+    "schematic_sha256": "5ce6e72d287693524ab2d2e53674e20cc42617b22ffea5db0d51051326fcf3f4",
+    "pdfs_reviewed": [
+      {
+        "path": "output/pdf/PetSafe_single_sheet.pdf",
+        "sha256": "c6e11127b6d3c1fd7e0083ff351b22fa9ccb578daa009670f2215f78323b2b81",
+        "pages": 1
+      },
+      {
+        "path": "output/pdf/PetSafe_PIC_trace_review.pdf",
+        "sha256": "11f721a93603d4488c487bab64e49190e03f9d04d652e68a84190b8eb1a583a0",
+        "pages": 2
+      }
+    ],
+    "result": "PASS: final rendered whole A2 sheet and enlarged PIC region reviewed; both photo-guide pages reviewed. Text and endpoint callouts readable, no clipping; no new orphan wire segments.",
+    "source_pixels": "Original photographs with vector callouts only",
+    "guide": "Local visible routes distinguished from probable long continuation. Two precise photo areas requested.",
+    "layout": "Single A2 sheet; C32 moved into PIC block; direct wires for C25/C39, labeled R4 return and ICSP protection nets."
   }
 }

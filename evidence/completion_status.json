@@ -1,6 +1,6 @@
 {
   "date": "2026-10-08",
-  "revision": "v0.6",
+  "revision": "v0.7",
   "known_identified_ICs_needing_new_symbols": [],
   "completed": [
     "U1 S-1200B45-M5T1 datasheet symbol",
@@ -15,39 +15,42 @@
     "All U6/Q8/C6 resistance readings recorded; C6 output wire withdrawn",
     "R41 331 marking decoded as nominal 330 ohm",
     "R29/R44 18C recovered from existing photographs: nominal 15 kohm",
-    "126 stock footprint assignments via KiCad MCP; total 147 of 150 assigned"
+    "126 stock footprint assignments via KiCad MCP; total 147 of 150 assigned",
+    "C5 user sleeve reading: 470uF / 16V",
+    "C11 user dimensions match 1206; R8 match 0603 provisionally including end caps",
+    "Five additional PIC local routes from existing photos; 14 GPIO pins remain open",
+    "C32 rail corrected; C25/C39 signal nodes, R4 GPIO return, TP17 tune net, D4/D5 ICSP nodes, R32/R40 ties and TP4/C41 corrected"
   ],
   "catalog_entries": 150,
   "physical_pins": 352,
-  "unresolved_physical_pins": 65,
+  "unresolved_physical_pins": 54,
   "unresolved_pins_by_population": {
-    "populated": 38,
-    "DNP": 27
+    "populated": 30,
+    "DNP": 24
   },
   "population_note": "Open pad counts include DNP entries, test pads and internally open IC pins; they are not missing component counts.",
   "unresolved_pins_by_reference": {
+    "C26": 1,
     "C27": 2,
     "C3": 1,
     "C4": 1,
-    "C41": 2,
+    "C41": 1,
     "C42": 2,
     "C49": 2,
     "C6": 1,
     "D2": 3,
-    "D4": 2,
-    "D5": 2,
+    "D4": 1,
+    "D5": 1,
     "D6": 2,
     "J6": 2,
-    "Q9": 3,
+    "Q9": 2,
     "R1": 1,
     "R2": 1,
-    "R35": 2,
     "R36": 2,
     "R46": 2,
     "R47": 2,
-    "TP10": 1,
     "TP9": 1,
-    "U4": 19,
+    "U4": 14,
     "U6": 2,
     "U6A": 3,
     "U7": 3,
@@ -101,7 +104,7 @@
       "priority": 2,
       "gap": "Exact diode identity, polarity mapping and routing",
       "candidate": "D4/D5 SD05? / 5V TVS; D6 MMSZ5228BS? / 3.9V Zener (PZU2.4B / 2.4V alternative)",
-      "detail": "User reads 5U/5U/G3. Manufacturer marking tables support candidates; fitted makers unconfirmed. All six pads remain open; old 1N4148WS interpretation withdrawn."
+      "detail": "D4/D5 candidate cathodes now traced to ICSP_CLK/DAT respectively. Opposite via destinations and both D6 pads unresolved. Exact manufacturers remain uncertain."
     },
     {
       "refs": [
@@ -138,7 +141,7 @@
       "priority": 2,
       "gap": "Values and passive part/package details",
       "candidate": null,
-      "detail": "R41 is now resolved as nominal 330 ohm from user-read 331. L1/L2 may be ferrite beads or inductors. Unmarked capacitor values remain unknown or explicitly estimated; C27/C41 also lack an established circuit role."
+      "detail": "C5 is now user-confirmed 470uF/16V. 44 fitted ceramic capacitor values remain unrecovered. L1/L2 type/value uncertain. C25/C39 are GPIO filters; their 100n bypass guesses were withdrawn."
     },
     {
       "refs": [
@@ -149,7 +152,7 @@
       "priority": 1,
       "gap": "Hidden routing and MCU destinations",
       "candidate": null,
-      "detail": "19 PIC pads remain unresolved. Existing functional net labels do not establish their GPIO destinations. PIR daughterboard is represented only by its interface; internals are outside the main-board reconstruction."
+      "detail": "14 PIC pads remain open after v0.7 photo tracing. See evidence/pic_trace_audit.json. Several connected pins still lack final remote destinations."
     },
     {
       "refs": [
@@ -177,6 +180,6 @@
       "S1",
       "LED1"
     ],
-    "qualification": "Photo-based package families and lower-confidence connector/test-pad approximations; see footprint_evidence.json"
+    "qualification": "R8 user measurement revises fitted resistor family to 0603 candidates; C11 dimensions support 1206. End-cap interpretation recorded separately. C5/S1/LED1 geometry still needed."
   }
 }
