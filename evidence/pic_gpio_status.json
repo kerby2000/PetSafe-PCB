@@ -1,5 +1,5 @@
 {
-  "revision": "v0.9.7",
+  "revision": "v0.9.8",
   "pins": [
     {
       "pin": 1,
@@ -81,16 +81,16 @@
     {
       "pin": 12,
       "gpio": "RC1",
-      "net": "PIC_RC1_VREF",
+      "net": "H_RX_ENABLE_CTL",
       "open_pad": false,
-      "evidence": "VREF board pad / V053; visible local route, remote net unknown"
+      "evidence": "R18.1 via V053-V070; user-confirmed; VREF link explicitly rejected"
     },
     {
       "pin": 13,
       "gpio": "RC2",
-      "net": null,
-      "open_pad": true,
-      "evidence": "V049; user confirms pin-to-via; onward destination unknown"
+      "net": "RF_MONITOR_PAD",
+      "open_pad": false,
+      "evidence": "TP3 via V049; user-confirmed; existing R10 branch photo-derived"
     },
     {
       "pin": 14,
@@ -144,9 +144,9 @@
     {
       "pin": 21,
       "gpio": "RB0",
-      "net": null,
-      "open_pad": true,
-      "evidence": "V026; user correction. Onward destination unknown"
+      "net": "PIC_RB0_VREF",
+      "open_pad": false,
+      "evidence": "VREF test point (native TP104) via V026; user-confirmed"
     },
     {
       "pin": 22,
@@ -174,7 +174,7 @@
       "gpio": "RB4",
       "net": "PIC_TP4_C41",
       "open_pad": false,
-      "evidence": "TP4 / C41; user meter / visible trace"
+      "evidence": "TP4 / V017 / R42.1 / R44.1; user continuity; C41 photo-derived"
     },
     {
       "pin": 26,
@@ -198,9 +198,6 @@
       "evidence": "ICSP DAT / D5 / R40; photo-derived"
     }
   ],
-  "open_gpio_pins": [
-    13,
-    21
-  ],
+  "open_gpio_pins": [],
   "qualification": "A modeled local net does not certify its remote role or all attached inferred branches."
 }

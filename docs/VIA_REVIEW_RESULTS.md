@@ -1,14 +1,33 @@
-# Via review findings - v0.9.7
+# Via review findings - v0.9.8
 
-## Current v0.9.7: resistive path and Q7 reconstruction
+## Current v0.9.8: GPIO destinations and PIR option supply
+
+- User confirms **V053–V070**: PIC12/RC1 reaches R18.1 (`H_RX_ENABLE_CTL`).
+- User explicitly says **V053 is NOT connected to VREF**. Old photo-only RC1–VREF association is rejected.
+- **V026–VREF**: PIC21/RB0 reaches native TP104, now labelled simply `VREF`. The label does not establish its voltage/function.
+- **V049–TP03**: interpreted as photographed TP3, establishing PIC13/RC2–TP3. Existing TP3–R10.1 local branch stays photo-derived.
+- **V067–J3 pin 1/red wire**: earlier U6A.R1 pad association joins `H_PIR_VDD`. U6A remains DNP; other supply branches retain their existing confidence.
+
+No numerical resistance was supplied for these new connections. V049–V070 variable 200–300 kΩ remains recorded as contact-dependent, not definite OL. D2 V070–V026 was unmeasured and withdrawn, not rejected. Q7/R19 local topology remains photo/resistance-supported inference.
+
+**No PIC pads remain open in the model.** Remaining work is not zero: other partial local nets, candidate identities, 44 unmarked ceramic values, L1/L2 values and three exact package geometries remain. **85 modeled net partitions PASS; 37 ERC findings = 29 open pads (11 populated-entry, 18 DNP) + 3 isolated labels + 5 power findings.** All 26 original photo checksums retained. Current status and numbered map rebuilt; the pair guide shows a completed result with no repeat request.
+
+The sections below are historical snapshots; later user corrections above take precedence.
+
+
+## Latest evidence-only update: D1 variable high resistance
+
+**V049–V070 = 200–300 kΩ depending on probe placement.** No direct continuity demonstrated. The result is kept as contact-dependent/inconclusive, distinct from a definite rejected pair or OL. Native v0.9.7 wiring remains unchanged; no RC2-to-R18 link is added. The next candidate is V070–V026 (PIC21/RB0); if also high, check known-pair and local-pad contact before further searching.
+
+## Historical v0.9.7: resistive path and Q7 reconstruction
 
 **V064–V070 = 11.2 kΩ**, with no reverse reading supplied. This rejects the direct R18 input-to-VDD assumption. It matches the nominal **1.2k R18 + 10k R19** series path. Together with IMG_2434 and the confirmed V064–V075 supply link, it supports a PNP supply-switch reconstruction: Q7.R/native2 emitter at VDD; Q7.L/native1 base joined to R18.2 and R19.1; R19.2 pulled to VDD; R18.1/V070 remains an unknown control source. Q7.S/native3 retains its collector path through R20.
 
 **Additional reading: V049–V071 = 20 kΩ.** Recorded as a resistive path, not a direct RC2/R21 tie. V071 differs from V070; the pending V070–V049 check is still unmeasured. No path through specific resistors is inferred from this reading alone.
 
-Those local pad assignments are explicitly **photo/circuit inferences supported by the resistance**, not new user-probed terminal confirmations. Candidate BC857C identity and operating function remain qualified. No MCU connection is guessed into the schematic. Next unmeasured candidate: V070–V049 (PIC13/RC2); then V026/RB0 only if needed.
+Those local pad assignments are explicitly **photo/circuit inferences supported by the resistance**, not new user-probed terminal confirmations. Candidate BC857C identity and operating function remain qualified. No MCU connection is guessed into the schematic. The initial RC2 candidate has now been tested with a variable high reading; see the latest update above.
 
-KiCad 10.0.5 native/model validation: **86 partitions PASS; 42 ERC findings (33 open pads, four isolated labels, five power findings)**. All 26 original photo checksums remain intact. See [search reasoning and current test](VIA_PAIR_SEARCH.md).
+KiCad 10.0.5 native/model validation: **85 partitions PASS; 42 ERC findings (33 open pads, four isolated labels, five power findings)**. All 26 original photo checksums remain intact. See [search reasoning and current test](VIA_PAIR_SEARCH.md).
 
 ## Historical continuity follow-up before v0.9.7
 
@@ -177,3 +196,7 @@ These are not all unresolved: V027/V028/V030/V038/V042 already had local photo m
 See [complete status report](../output/pdf/PetSafe_completion_status.pdf), [all PIC pins](../evidence/pic_gpio_status.csv), and [per-component audit](FINISHING_CHECKLIST.html). Current native file: 37 open pads (18 populated-entry, 19 DNP), six GPIO pads open; 44 capacitor values and L1/L2 type/value unknown; three blank footprints. Existing drawn hypotheses are additional work and are not counted as open pads.
 
 The PIC under-body candidates V036/37/39/47/49 align approximately with pins5/6/7/11/13; they are targets for continuity, not recovered buried traces. Surface photographs cannot uniquely identify an inner layer or its function.
+
+Latest v0.9.8 report: **V015-TP14 confirmed**, joining R43.2 to TP14. Q1.L remains excluded. Existing TP14-Q1.S branch and H_BAT_DETECT functional name remain hypotheses; no numeric resistance supplied.
+
+Latest v0.9.8 report: **V017-TP4 confirmed**, joining R42.1/R44.1 to TP4 and PIC25/RB4. Existing C41 branch and R44 pad selection retain their photo-derived basis. No numeric resistance supplied.

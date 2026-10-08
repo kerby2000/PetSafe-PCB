@@ -1,10 +1,11 @@
 {
   "status": "PASS",
-  "basis_revision": "v0.9.7",
-  "scope": "11.2 kohm recorded; Q7 topology inferred with R18 input separate from VDD; one proposed GPIO candidate",
-  "proposed_tests": 1,
-  "local_groups": 19,
-  "nonrail_sites": 23,
+  "basis_revision": "v0.9.8",
+  "scope": "Completed RC1-R18 locator; RC2-TP3, RB0-VREF and V067-J3.1 recorded; RC1-VREF explicitly rejected",
+  "proposed_tests": 0,
+  "completed_tests": 1,
+  "local_groups": 13,
+  "nonrail_sites": 17,
   "confirmed_via_pairs": [
     [
       "V036",
@@ -29,6 +30,10 @@
     [
       "V064",
       "V075"
+    ],
+    [
+      "V053",
+      "V070"
     ]
   ],
   "rejected_pairs": [
@@ -115,10 +120,38 @@
       "reading": "20 kohm",
       "resistance_ohms": 20000,
       "reverse_reading": null
+    },
+    {
+      "vias": [
+        "V053",
+        "V026"
+      ],
+      "endpoints": [
+        "U4.12",
+        "VREF.1"
+      ],
+      "reading": "NOT connected (user report; no numeric reading)",
+      "status": "USER_REJECTED_DIRECT_CONNECTION"
+    }
+  ],
+  "inconclusive_pairs": [
+    {
+      "vias": [
+        "V049",
+        "V070"
+      ],
+      "status": "USER_VARIABLE_HIGH_RESISTANCE_NO_CONTINUITY",
+      "reading": "200-300 kohm, varies with probe placement",
+      "resistance_range_ohms": [
+        200000,
+        300000
+      ],
+      "reverse_reading": null,
+      "qualification": "No direct continuity demonstrated. Probe contact is variable; do not convert to OL, a fixed resistor value, or a definitive permanent open."
     }
   ],
   "active_endpoints": "PASS",
-  "schematic_sha256": "c645b585bc1cec1f7a5899ff9edbfe17bd98cd553a33aea490b14d8f44ab2ea4",
+  "schematic_sha256": "554bb00610238e173655df56b44e5ba7eeff4b3c52a2770017956a0df5283d84",
   "photo_sha256": {
     "front": "3f0198e7c1097bcf76b550354ec6de137a5b2abf73b56780069663804f801498",
     "rear": "37c6cc20f12b380290f1b5e7c336ce67c649d6333faed55749c243b53a8537d4"
@@ -134,8 +167,8 @@
   "pdf": {
     "path": "output/pdf/PetSafe_via_pair_next_check.pdf",
     "pages": 1,
-    "sha256": "91093286f0dffbe2ee363fd30028f21703abbfae1c7f755182a334de5be2a688",
+    "sha256": "cf92fa0323d02dd7d53b9110427aec6c3ee7536a7497ed6e2491b311a3cadfbd",
     "text_check": "PASS",
-    "visual_review": "Rendered page inspected; targets, leaders and table readable"
+    "visual_review": "PASS: inspected rendered completed-result page; V053 and V070 markers and leaders readable, no repeat measurement requested."
   }
 }

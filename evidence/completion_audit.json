@@ -1,5 +1,5 @@
 {
-  "revision": "v0.9.7",
+  "revision": "v0.9.8",
   "instruments": [
     "LCR meter",
     "multimeter"
@@ -12,7 +12,7 @@
   ],
   "fitted_capacitors": 45,
   "fitted_resistors": 38,
-  "unresolved_physical_pins": 33,
+  "unresolved_physical_pins": 29,
   "warning": "Open-pad counts do not include every inferred route. Assigned footprints are candidates, not measured reproductions.",
   "components": [
     {
@@ -551,8 +551,8 @@
       "footprint": "Resistor_SMD:R_0603_1608Metric",
       "footprint_confidence": "medium - revised family estimate",
       "footprint_basis": "User reports R8 approximately 1.6 x 0.77 mm, consistent with 0603 (1608 metric). Repeated fitted resistor family revised using R8 as a scale reference. This individual body has not been measured; earlier 0805 estimate superseded.",
-      "open_pads": 1,
-      "next_method": "Targeted continuity for 1 open physical pads",
+      "open_pads": 0,
+      "next_method": "No immediate measurement requested",
       "photos": "IMG_2436.jpg;IMG_2437.jpg;IMG_2438.jpg"
     },
     {
@@ -1496,8 +1496,8 @@
       "footprint": "Package_SO:SOIC-28W_7.5x17.9mm_P1.27mm",
       "footprint_confidence": "datasheet/package candidate",
       "footprint_basis": "Existing assignment; see component identity evidence.",
-      "open_pads": 2,
-      "next_method": "Targeted continuity for 2 open physical pads",
+      "open_pads": 0,
+      "next_method": "No immediate measurement requested",
       "photos": "IMG_2424.jpg"
     },
     {
@@ -1586,7 +1586,7 @@
       "footprint": "Package_TO_SOT_SMD:SOT-23",
       "footprint_confidence": "medium",
       "footprint_basis": "Empty three-pad SMD option beside U6; package-family estimate only.",
-      "open_pads": 3,
+      "open_pads": 2,
       "next_method": "No immediate measurement requested",
       "photos": "IMG_2435.jpg"
     },
@@ -2195,7 +2195,7 @@
       "native_ref": "TP104",
       "population": "populated",
       "observed": "VREF",
-      "displayed": "VREF pad / net ?",
+      "displayed": "VREF",
       "marking": "",
       "value_or_identity": "Board pad: no component value required",
       "footprint": "TestPoint:TestPoint_THTPad_D2.0mm_Drill1.0mm",

@@ -8,7 +8,10 @@ def read(p):return json.loads((R/p).read_text(encoding='utf-8'))
 def sha(p):return hashlib.sha256((R/p).read_bytes()).hexdigest()
 p=read('evidence/via_pair_plan.json');a=read('evidence/via_audit.json');m=read('evidence/reconstruction.json')
 sites={s['id']:s for s in a['sites']};tests=p['tests']
-assert [(t['id'],t['left'],t['right']) for t in tests]==[('D1','V070','V049')]
+assert [(t['id'],t['left'],t['right']) for t in tests]==[('F1','V053','V070')]
+assert sites['V049']['inconclusive_vias']==['V070'] and sites['V070']['inconclusive_vias']==['V049']
+assert sites['V049']['resistive_measurements'][-1]['resistance_range_ohms']==[200000,300000]
+assert 'V070' not in sites['V049']['excluded_vias'], 'Variable contact must not become a definitive rejected pair'
 assert sites['V075']['net']==sites['V064']['net']=='H_VDD'
 assert sites['V075']['endpoints']==['Q7.R','R19.2']
 assert 'not separate pad measurements' in sites['V075']['confidence']
@@ -20,25 +23,27 @@ assert all(sites[s]['joined_vias']==['V063','V064','V075'] for s in ['V063','V06
 for dest in ['V100','V103','V107']:
  assert dest in sites['V095']['excluded_vias'] and 'V095' in sites[dest]['excluded_vias']
 assert all('V103' not in sites[s].get('excluded_vias',[]) for s in ['V100','V107']), 'Untested pairs cannot be inferred negative'
-assert len(p['reported_results']['confirmed_via_pairs'])==6
-assert len(p['reported_results']['rejected_pairs'])==10
+assert len(p['reported_results']['confirmed_via_pairs'])==7
+assert len(p['reported_results']['rejected_pairs'])==11
 assert sites['V049']['excluded_vias']==['V071'] and 'V049' in sites['V071']['excluded_vias']
 assert sites['V049']['resistive_measurements'][0]['resistance_ohms']==20000
 measured={tuple(sorted(pair)) for pair in p['reported_results']['confirmed_via_pairs']}
 measured|={tuple(sorted(item['vias'])) for item in p['reported_results']['rejected_pairs']}
-assert all(tuple(sorted([t['left'],t['right']])) not in measured for t in tests), 'Completed pair re-entered queue'
+measured|={tuple(sorted(item['vias'])) for item in p['reported_results']['inconclusive_pairs']}
+assert all(tuple(sorted([t['left'],t['right']])) not in measured for t in tests if t['status']=='PROPOSED_UNMEASURED'), 'Completed pair re-entered queue'
 assert all(sites[t[k]]['active'] for t in tests for k in ['left','right'])
-assert all(t['status']=='PROPOSED_UNMEASURED' for t in tests)
+assert all(t['status']=='USER_CONFIRMED' for t in tests)
+assert p['status']=='CURRENT_GPIO_BATCH_COMPLETE'
 assert not any(set([t['left'],t['right']])==set(pair) for t in tests for pair in p['known_controls'])
 assert p['basis_revision']==m['revision']
 assert p['schematic_sha256']==sha('schematic/PetSafe_1001339.kicad_sch')
 assert p['schematic_sha256']==read('evidence/validation.json')['schematic_sha256']
-assert m['revision']=='v0.9.7'
+assert m['revision']=='v0.9.8'
 assert p['count_basis']['local_candidate_groups']==len(p['local_groups'])
 assert p['count_basis']['nonrail_candidate_sites']==sum(len(g['vias']) for g in p['local_groups'])
 assert not any('V114' in g['vias'] for g in p['local_groups']), 'Resolved U2 ground re-entered search'
 assert not any('V075' in g['vias'] for g in p['local_groups']), 'Known V075 rail re-entered unknown-net search'
-assert p['count_basis']['local_candidate_groups']==19 and p['count_basis']['nonrail_candidate_sites']==23
+assert p['count_basis']['local_candidate_groups']==13 and p['count_basis']['nonrail_candidate_sites']==17
 html=(R/'docs/VIA_PAIR_TESTS.html').read_text(encoding='utf-8')
 assert 'const plan='+json.dumps(p).replace('</','<\\/')+',audit=' in html
 assert all(x not in html for x in ['PLAN_DATA','AUDIT_DATA','SITE_COUNT','GROUP_COUNT','BASIS_REV'])
@@ -57,6 +62,8 @@ assert all(r['reading']=='OL' for r in previous if r['test_id'] in ['C5','C6','C
 assert len(previous)==4
 with (R/'evidence/via_pair_round3_readings.csv').open(encoding='utf-8',newline='') as f:third=list(csv.DictReader(f))
 assert third[0]['reading']=='11.2 kohm' and third[0]['test_id']=='B3'
+with (R/'evidence/via_pair_round4_readings.csv').open(encoding='utf-8',newline='') as f:fourth=list(csv.DictReader(f))
+assert fourth[0]['reading']=='200-300 kohm, varies with probe placement' and fourth[0]['test_id']=='D1'
 pdfpath=p['pdf_path'];pdf=PdfReader(R/pdfpath)
 assert len(pdf.pages)==1
 pdftext='\n'.join(page.extract_text() for page in pdf.pages)
@@ -65,6 +72,6 @@ assert p['basis_revision'] in pdftext
 photos={k:sha(p['photos'][k]) for k in ['front','rear']}
 for entry in read('evidence/original_photo_manifest.json'):assert sha('photos/originals/'+entry['file'])==entry['sha256']
 assert (R/'docs/VIA_PAIR_SEARCH.md').exists()
-result=dict(status='PASS',basis_revision=p['basis_revision'],scope='11.2 kohm recorded; Q7 topology inferred with R18 input separate from VDD; one proposed GPIO candidate',proposed_tests=len(tests),local_groups=len(p['local_groups']),nonrail_sites=p['count_basis']['nonrail_candidate_sites'],confirmed_via_pairs=p['reported_results']['confirmed_via_pairs'],rejected_pairs=p['reported_results']['rejected_pairs'],active_endpoints='PASS',schematic_sha256=p['schematic_sha256'],photo_sha256=photos,original_photos='26 checksums PASS',html_embedded_plan='PASS',local_html_links='PASS',javascript_syntax=syntax,browser_interaction='NOT_TESTED',pdf=dict(path=pdfpath,pages=1,sha256=sha(pdfpath),text_check='PASS',visual_review='Rendered page inspected; targets, leaders and table readable'))
+result=dict(status='PASS',basis_revision=p['basis_revision'],scope='Completed RC1-R18 locator; RC2-TP3, RB0-VREF and V067-J3.1 recorded; RC1-VREF explicitly rejected',proposed_tests=0,completed_tests=len(tests),local_groups=len(p['local_groups']),nonrail_sites=p['count_basis']['nonrail_candidate_sites'],confirmed_via_pairs=p['reported_results']['confirmed_via_pairs'],rejected_pairs=p['reported_results']['rejected_pairs'],inconclusive_pairs=p['reported_results']['inconclusive_pairs'],active_endpoints='PASS',schematic_sha256=p['schematic_sha256'],photo_sha256=photos,original_photos='26 checksums PASS',html_embedded_plan='PASS',local_html_links='PASS',javascript_syntax=syntax,browser_interaction='NOT_TESTED',pdf=dict(path=pdfpath,pages=1,sha256=sha(pdfpath),text_check='PASS',visual_review='See evidence/v098_verification.json for the saved visual review of this revision; inspect again after changing the PDF.'))
 (R/'evidence/via_pair_plan_validation.json').write_text(json.dumps(result,indent=2)+'\n',encoding='utf-8')
-print('PASS: 11.2 kohm non-direct rail result, preserved readings, Q7 inferred topology, one unmeasured GPIO test, current native hash, HTML data/links/JS, one-page guide and original photo checksums.')
+print('PASS: 11.2 kohm non-direct rail result, preserved readings, Q7 inferred topology, completed GPIO batch, current native hash, HTML data/links/JS, one-page guide and original photo checksums.')

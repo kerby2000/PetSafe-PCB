@@ -1116,6 +1116,116 @@
         }
       ],
       "qualification": "V071 is R21, distinct from V070/R18. This is not the pending D1 V070-V049 result. In-circuit path not identified."
+    },
+    {
+      "source": "User variable-resistance follow-up 2026-10-08",
+      "revision": "v0.9.7 evidence follow-up",
+      "answer": "v049 - v070 shows all kind of high resistance 200kOhm - 300kOhm depending on how I place the probes",
+      "assignments": [],
+      "inconclusive_pairs": [
+        {
+          "vias": [
+            "V049",
+            "V070"
+          ],
+          "status": "USER_VARIABLE_HIGH_RESISTANCE_NO_CONTINUITY",
+          "reading": "200-300 kohm, varies with probe placement",
+          "resistance_range_ohms": [
+            200000,
+            300000
+          ],
+          "reverse_reading": null,
+          "qualification": "No direct continuity demonstrated. Probe contact is variable; do not convert to OL, a fixed resistor value, or a definitive permanent open."
+        }
+      ]
+    },
+    {
+      "source": "User TP03 destination follow-up 2026-10-08",
+      "revision": "v0.9.8",
+      "answer": "I found it v049 is a TP03",
+      "assignments": [
+        {
+          "id": "V049",
+          "kind": "signal",
+          "claim": "V049 reaches TP03, interpreted as board TP3. Earlier user V049-PIC13/RC2 association retained."
+        }
+      ],
+      "confirmed_via_endpoint_pairs": [
+        {
+          "via": "V049",
+          "endpoints": [
+            "U4.13",
+            "TP3.1"
+          ],
+          "reading": null
+        }
+      ]
+    },
+    {
+      "source": "User VREF endpoint follow-up and marked photo 2026-10-08",
+      "revision": "v0.9.8",
+      "answer": "v026 is connected to VREF TP. Is VREF TP in our schematics?",
+      "assignments": [
+        {
+          "id": "V026",
+          "kind": "signal",
+          "claim": "V026 reaches the VREF test point (native TP104). Earlier PIC21/RB0 association retained."
+        }
+      ],
+      "source_photo": "photos/user/2026-10-08/VREF_user_locator.png"
+    },
+    {
+      "source": "User continuity follow-up 2026-10-08",
+      "revision": "v0.9.8",
+      "answer": "V053 is NOT connected to VREF. just checked v053 is connected to v070",
+      "assignments": [
+        {
+          "id": "V053",
+          "kind": "signal",
+          "claim": "User confirms V053-V070 (PIC12/RC1 to R18); V053 explicitly NOT connected to VREF. No numeric reading supplied."
+        },
+        {
+          "id": "V070",
+          "kind": "signal",
+          "claim": "User confirms V053-V070 (PIC12/RC1 to R18); V053 explicitly NOT connected to VREF. No numeric reading supplied."
+        }
+      ]
+    },
+    {
+      "source": "User continuity follow-up 2026-10-08",
+      "revision": "v0.9.8",
+      "answer": "V067 is connected to pin 1 of the J3 (red wire or H_PIR_VDD)",
+      "assignments": [
+        {
+          "id": "V067",
+          "kind": "signal",
+          "claim": "v0.9.8: User confirms V067-J3 pin1 (red wire), on modeled H_PIR_VDD. Prior V067-U6A.R1 local pad association retained. Empty U6A option remains DNP; this does not identify an IC or confirm every other H_PIR_VDD branch."
+        }
+      ]
+    },
+    {
+      "source": "User continuity follow-up 2026-10-08",
+      "revision": "v0.9.8",
+      "answer": "v015 - TP14 are also connected",
+      "assignments": [
+        {
+          "id": "V015",
+          "kind": "signal",
+          "claim": "v0.9.8: User confirms V015-TP14. Earlier V015-R43.2 lower-pad association retained. R43.2 joins TP14 on H_BAT_DETECT, whose existing Q1.S branch and functional name remain photo/circuit hypotheses. Q1.L-R43.2 remains explicitly rejected. No numeric resistance supplied."
+        }
+      ]
+    },
+    {
+      "source": "User continuity follow-up 2026-10-08",
+      "revision": "v0.9.8",
+      "answer": "another connection found v017 - TP4",
+      "assignments": [
+        {
+          "id": "V017",
+          "kind": "signal",
+          "claim": "v0.9.8: User confirms V017-TP4. Prior V017-R42.1/R44.1 local junction now joins TP4 and PIC25/RB4. R42.1 explicitly user-named; R44 pad1 and C41 branch retain earlier photo selection. No numeric resistance supplied; circuit operating role remains inferred."
+        }
+      ]
     }
   ],
   "review_in_progress": true,
@@ -1157,8 +1267,7 @@
     "V030",
     "V035",
     "V038",
-    "V042",
-    "V053"
+    "V042"
   ],
   "remaining_model_conflicts": [],
   "pending_supply_disambiguation": {

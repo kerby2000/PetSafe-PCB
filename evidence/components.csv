@@ -34,7 +34,7 @@ R39,R39,10k,10k,01C,populated,IMG_2435.jpg,v0.9: pin2 joins R37.1 at V063; earli
 R40,R40,10k,10k,01C,populated,IMG_2436.jpg;IMG_2437.jpg;IMG_2438.jpg,v0.7: upper photo pad/model pin1 visibly joins D5 cathode and U4.28 / ICSP data. Withdraw VDD tie. Opposite-end button hypothesis remains unverified.,0,Device:R,Resistor_SMD:R_0603_1608Metric
 R41,R41,330,330,331,populated,IMG_2436.jpg;IMG_2437.jpg;IMG_2438.jpg,"Observed marking 331 establishes nominal 330 ohm. Tolerance, power rating, package dimensions and external connections are not established by the code.",0,Device:R,Resistor_SMD:R_0603_1608Metric
 R42,R42,1.2k,1.2k,122,populated,IMG_2429.jpg;IMG_2434.jpg,See reconstruction notes; added connectivity inferred,0,Device:R,Resistor_SMD:R_0603_1608Metric
-R43,R43,6.8k,6.8k,682,populated,IMG_2436.jpg;IMG_2437.jpg;IMG_2438.jpg,See reconstruction notes; added connectivity inferred,1,Device:R,Resistor_SMD:R_0603_1608Metric
+R43,R43,6.8k,6.8k,682,populated,IMG_2436.jpg;IMG_2437.jpg;IMG_2438.jpg,See reconstruction notes; added connectivity inferred,0,Device:R,Resistor_SMD:R_0603_1608Metric
 R44,R44,15k,15k,18C,populated,IMG_2436.jpg;IMG_2437.jpg;IMG_2438.jpg,"Re-read existing photo crop: 18C is legible. EIA-96 code18=150, multiplierC=100: nominal15kohm. No electrical value measurement.",0,Device:R,Resistor_SMD:R_0603_1608Metric
 R48,R48,5.6k,5.6k,562,populated,IMG_2429.jpg;IMG_2434.jpg,See reconstruction notes; added connectivity inferred,0,Device:R,Resistor_SMD:R_0603_1608Metric
 R1,R1,DNP,DNP,,DNP,IMG_2430.jpg;IMG_2434.jpg;IMG_2438.jpg,See reconstruction notes; added connectivity inferred,0,Device:R,Resistor_SMD:R_0603_1608Metric
@@ -97,13 +97,13 @@ C2A,C102,DNP,DNP,,DNP,IMG_2430.jpg,See reconstruction notes; added connectivity 
 L1,L1,UNKNOWN,bead / L ?,,populated,IMG_2432.jpg,See reconstruction notes; added connectivity inferred,0,Device:L,Inductor_SMD:L_0805_2012Metric
 L2,L2,UNKNOWN,bead / L ?,,populated,IMG_2430.jpg,See reconstruction notes; added connectivity inferred,0,Device:L,Inductor_SMD:L_0805_2012Metric
 Y1,Y1,20MHz,20 MHz,JH20.000,populated,IMG_2436.jpg,See reconstruction notes; added connectivity inferred,0,Device:Crystal,Crystal:Crystal_SMD_HC49-SD
-U4,U4,PIC16F18855,PIC16F18855,PIC16F18855 /SO,populated,IMG_2424.jpg,See reconstruction notes; added connectivity inferred,2,MCU_Microchip_PIC16:PIC16F18855-xSO,Package_SO:SOIC-28W_7.5x17.9mm_P1.27mm
+U4,U4,PIC16F18855,PIC16F18855,PIC16F18855 /SO,populated,IMG_2424.jpg,See reconstruction notes; added connectivity inferred,0,MCU_Microchip_PIC16:PIC16F18855-xSO,Package_SO:SOIC-28W_7.5x17.9mm_P1.27mm
 U5,U5,MX512H,MX512H,MX512H,populated,IMG_2424.jpg;IMG_2438.jpg,See reconstruction notes; added connectivity inferred,0,PetSafe_Datasheet:MX512H,Package_SO:SOIC-8_3.9x4.9mm_P1.27mm
 U3,U3,SGM8542XS,SGM8542XS,SGM8542XS / 2531C,populated,IMG_2429.jpg,See reconstruction notes; added connectivity inferred,0,Amplifier_Operational:Opamp_Dual,Package_SO:SOIC-8_3.9x4.9mm_P1.27mm
 U1,U1,UNKNOWN_5PIN,S-1200B45?,PPEK,populated,IMG_2430.jpg,H01: ABLIC S1200 Rev6 page23 maps PPE to S-1200B45-M5T1x and fourth character to lot. Strong identity candidate; board-wide connections remain inferred.,0,PetSafe_Datasheet:S-1200B45-M5T1,Package_TO_SOT_SMD:SOT-23-5
 U2,U2,UNKNOWN_6PIN,74LVC2G14?,C14R?,populated,IMG_2431.jpg,"H07: exact TI C14R marking and 6-pin DBV package match. Photo top row left to right = 3,2,1; bottom = 4,5,6.",0,74xGxx:74LVC2G14,Package_TO_SOT_SMD:SOT-23-6
 U6,U6,UNKNOWN_5PIN,S-812C33AMC? / 3.3V,C2NM,populated,IMG_2435.jpg,"H14v05: C2N product code matches ABLIC S-812C33AMC (Table 1); fourth character assembly month per MP005-A marking drawing. Pin1=VSS matches C=2.7ohm to G (shorted tips later 0.5ohm). Input/output routing inferred, 3.3V not measured. RT9818 supervisor hypothesis withdrawn.",2,PetSafe_Datasheet:S-812C33AMC,Package_TO_SOT_SMD:SOT-23-5
-U6A,U106,DNP,DNP,,DNP,IMG_2435.jpg,See reconstruction notes; added connectivity inferred,3,Connector_Generic:Conn_01x03,Package_TO_SOT_SMD:SOT-23
+U6A,U106,DNP,DNP,,DNP,IMG_2435.jpg,See reconstruction notes; added connectivity inferred,2,Connector_Generic:Conn_01x03,Package_TO_SOT_SMD:SOT-23
 U7,U7,DNP,DNP,,DNP,IMG_2441.jpg,See reconstruction notes; added connectivity inferred,3,Connector_Generic:Conn_01x03,Connector_PinHeader_2.54mm:PinHeader_1x03_P2.54mm_Vertical
 Q1,Q1,UNKNOWN,MMBT3904?,R1A,populated,IMG_2438.jpg,"H05: R1A mark suggests MMBT3904; B=R, E=L, C=S inferred from SOT23 orientation.",1,Transistor_BJT:MMBT3904,Package_TO_SOT_SMD:SOT-23
 Q2,Q2,UNKNOWN,BC847B?,1FW / 56,populated,IMG_2435.jpg,H15: 1FW suggests BC847B. B=R E=L C=S. PIR interface role and J3 order inferred.,0,Transistor_BJT:BC847,Package_TO_SOT_SMD:SOT-23
@@ -144,7 +144,7 @@ TP17,TP17,test point,test point,,populated,IMG_2436.jpg;IMG_2437.jpg;IMG_2438.jp
 GND,TP101,GND,GND pad,,populated,IMG_2430.jpg;IMG_2433.jpg;IMG_2435.jpg;IMG_2438.jpg,See reconstruction notes; added connectivity inferred,0,Connector:TestPoint,TestPoint:TestPoint_THTPad_D2.0mm_Drill1.0mm
 GND_RF,TP102,GND (RF end),GND pad,,populated,IMG_2432.jpg,See reconstruction notes; added connectivity inferred,0,Connector:TestPoint,TestPoint:TestPoint_THTPad_D2.0mm_Drill1.0mm
 VDD,TP103,VDD,VDD pad,,populated,IMG_2430.jpg;IMG_2433.jpg;IMG_2435.jpg;IMG_2438.jpg,See reconstruction notes; added connectivity inferred,0,Connector:TestPoint,TestPoint:TestPoint_THTPad_D2.0mm_Drill1.0mm
-VREF,TP104,VREF,VREF pad / net ?,,populated,IMG_2430.jpg;IMG_2433.jpg;IMG_2435.jpg;IMG_2438.jpg,See reconstruction notes; added connectivity inferred,0,Connector:TestPoint,TestPoint:TestPoint_THTPad_D2.0mm_Drill1.0mm
+VREF,TP104,VREF,VREF,,populated,IMG_2430.jpg;IMG_2433.jpg;IMG_2435.jpg;IMG_2438.jpg,See reconstruction notes; added connectivity inferred,0,Connector:TestPoint,TestPoint:TestPoint_THTPad_D2.0mm_Drill1.0mm
 ANT1,TP105,ANT1,ANTENNA A,,populated,IMG_2430.jpg;IMG_2433.jpg;IMG_2435.jpg;IMG_2438.jpg,See reconstruction notes; added connectivity inferred,0,Connector:TestPoint,TestPoint:TestPoint_THTPad_D2.0mm_Drill1.0mm
 ANT2,TP106,ANT2,ANTENNA B,,populated,IMG_2430.jpg;IMG_2433.jpg;IMG_2435.jpg;IMG_2438.jpg,See reconstruction notes; added connectivity inferred,0,Connector:TestPoint,TestPoint:TestPoint_THTPad_D2.0mm_Drill1.0mm
 BATP,TP107,BATP,BATTERY +,,populated,IMG_2430.jpg;IMG_2433.jpg;IMG_2435.jpg;IMG_2438.jpg,See reconstruction notes; added connectivity inferred,0,Connector:TestPoint,TestPoint:TestPoint_THTPad_2.5x2.5mm_Drill1.2mm

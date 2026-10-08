@@ -2,16 +2,16 @@
 <export version="E">
   <design>
     <source>C:\Users\lukin\Documents\ChatGPT\PetSafe-PCB\schematic\PetSafe_1001339.kicad_sch</source>
-    <date>2026-10-08T21:10:05</date>
+    <date>2026-10-08T21:50:06</date>
     <tool>Eeschema 10.0.5</tool>
     <sheet number="1" name="/" tstamps="/">
       <title_block>
         <title>PetSafe 100-1339 R03 A | single-sheet reconstruction</title>
         <company>KiCad 10 libraries + four datasheet symbols | MCP authoring</company>
-        <rev>0.9.7</rev>
+        <rev>0.9.8</rev>
         <date>2026-10-08</date>
         <source>PetSafe_1001339.kicad_sch</source>
-        <comment number="1" value="Q7 switch inferred from photo and 11.2kohm path; V070 control source unknown."/>
+        <comment number="1" value="RC1-R18, RC2-TP3, RB0-VREF confirmed; RC1-VREF rejected."/>
         <comment number="2" value=""/>
         <comment number="3" value=""/>
         <comment number="4" value=""/>
@@ -2241,6 +2241,7 @@
       <footprint>Connector_PinHeader_2.54mm:PinHeader_1x03_P2.54mm_Vertical</footprint>
       <description>Generic connector, single row, 01x03, script generated (kicad-library-utils/schlib/autogen/connector/)</description>
       <fields>
+        <field name="ViaEvidence">v0.9.8: User confirms V067-J3 pin1 (red wire), on modeled H_PIR_VDD. Prior V067-U6A.R1 local pad association retained. Empty U6A option remains DNP; this does not identify an IC or confirm every other H_PIR_VDD branch.</field>
         <field name="OriginalReference">J3</field>
         <field name="Evidence">Photo reconstruction; topology inferred</field>
         <field name="LibraryPolicy">Unmodified KiCad 10 stock symbol</field>
@@ -2252,6 +2253,7 @@
         <field name="Description">Generic connector, single row, 01x03, script generated (kicad-library-utils/schlib/autogen/connector/)</field>
       </fields>
       <libsource lib="Connector_Generic" part="Conn_01x03" description="Generic connector, single row, 01x03, script generated (kicad-library-utils/schlib/autogen/connector/)"/>
+      <property name="ViaEvidence" value="v0.9.8: User confirms V067-J3 pin1 (red wire), on modeled H_PIR_VDD. Prior V067-U6A.R1 local pad association retained. Empty U6A option remains DNP; this does not identify an IC or confirm every other H_PIR_VDD branch."/>
       <property name="OriginalReference" value="J3"/>
       <property name="Evidence" value="Photo reconstruction; topology inferred"/>
       <property name="LibraryPolicy" value="Unmodified KiCad 10 stock symbol"/>
@@ -3212,7 +3214,7 @@
       <footprint>Resistor_SMD:R_0603_1608Metric</footprint>
       <description>Resistor</description>
       <fields>
-        <field name="ViaEvidence">v0.9: pin2 photo free end to V116 user GND.</field>
+        <field name="ViaEvidence">v0.9.8: RF_MONITOR_PAD now reaches PIC13/RC2 via user V049-TP3 report. R10.1-to-TP3 remains the existing local photo/model association; 10k value is marking-derived and R10.2 ground comes from earlier via review.</field>
         <field name="OriginalReference">R10</field>
         <field name="Evidence">Photo reconstruction; topology inferred</field>
         <field name="LibraryPolicy">Unmodified KiCad 10 stock symbol</field>
@@ -3224,7 +3226,7 @@
         <field name="Description">Resistor</field>
       </fields>
       <libsource lib="Device" part="R" description="Resistor"/>
-      <property name="ViaEvidence" value="v0.9: pin2 photo free end to V116 user GND."/>
+      <property name="ViaEvidence" value="v0.9.8: RF_MONITOR_PAD now reaches PIC13/RC2 via user V049-TP3 report. R10.1-to-TP3 remains the existing local photo/model association; 10k value is marking-derived and R10.2 ground comes from earlier via review."/>
       <property name="OriginalReference" value="R10"/>
       <property name="Evidence" value="Photo reconstruction; topology inferred"/>
       <property name="LibraryPolicy" value="Unmodified KiCad 10 stock symbol"/>
@@ -3444,7 +3446,7 @@
       <footprint>Resistor_SMD:R_0603_1608Metric</footprint>
       <description>Resistor</description>
       <fields>
-        <field name="ViaEvidence">v0.9.7: V070/free pad1 to V064 measured 11.2 kohm, not direct VDD. 1.2k R18 plus 10k R19 fits series path to VDD. Pad2 moved to Q7 base by photo/circuit inference; pad1 control source remains unknown.</field>
+        <field name="ViaEvidence">v0.9.8: User confirms V053-V070, mapping PIC12/RC1 to existing V070/R18.1 control input. Local R18.2-Q7.L-R19.1 topology remains photo/resistance-supported inference from v0.9.7; 11.2 kohm V064-V070 retained. No direct VDD tie.</field>
         <field name="OriginalReference">R18</field>
         <field name="Evidence">Photo reconstruction; topology inferred</field>
         <field name="LibraryPolicy">Unmodified KiCad 10 stock symbol</field>
@@ -3456,7 +3458,7 @@
         <field name="Description">Resistor</field>
       </fields>
       <libsource lib="Device" part="R" description="Resistor"/>
-      <property name="ViaEvidence" value="v0.9.7: V070/free pad1 to V064 measured 11.2 kohm, not direct VDD. 1.2k R18 plus 10k R19 fits series path to VDD. Pad2 moved to Q7 base by photo/circuit inference; pad1 control source remains unknown."/>
+      <property name="ViaEvidence" value="v0.9.8: User confirms V053-V070, mapping PIC12/RC1 to existing V070/R18.1 control input. Local R18.2-Q7.L-R19.1 topology remains photo/resistance-supported inference from v0.9.7; 11.2 kohm V064-V070 retained. No direct VDD tie."/>
       <property name="OriginalReference" value="R18"/>
       <property name="Evidence" value="Photo reconstruction; topology inferred"/>
       <property name="LibraryPolicy" value="Unmodified KiCad 10 stock symbol"/>
@@ -4311,7 +4313,7 @@
       <footprint>Resistor_SMD:R_0603_1608Metric</footprint>
       <description>Resistor</description>
       <fields>
-        <field name="ViaEvidence">v0.9.1 user V017: R42.1 joins R44; R44.1 chosen from photo. Earlier R42.1-to-ANT2 hypothesis withdrawn.</field>
+        <field name="ViaEvidence">v0.9.8: User confirms V017-TP4. Prior V017-R42.1/R44.1 local junction now joins TP4 and PIC25/RB4. R42.1 explicitly user-named; R44 pad1 and C41 branch retain earlier photo selection. No numeric resistance supplied; circuit operating role remains inferred.</field>
         <field name="OriginalReference">R42</field>
         <field name="Evidence">Photo reconstruction; topology inferred</field>
         <field name="LibraryPolicy">Unmodified KiCad 10 stock symbol</field>
@@ -4323,7 +4325,7 @@
         <field name="Description">Resistor</field>
       </fields>
       <libsource lib="Device" part="R" description="Resistor"/>
-      <property name="ViaEvidence" value="v0.9.1 user V017: R42.1 joins R44; R44.1 chosen from photo. Earlier R42.1-to-ANT2 hypothesis withdrawn."/>
+      <property name="ViaEvidence" value="v0.9.8: User confirms V017-TP4. Prior V017-R42.1/R44.1 local junction now joins TP4 and PIC25/RB4. R42.1 explicitly user-named; R44 pad1 and C41 branch retain earlier photo selection. No numeric resistance supplied; circuit operating role remains inferred."/>
       <property name="OriginalReference" value="R42"/>
       <property name="Evidence" value="Photo reconstruction; topology inferred"/>
       <property name="LibraryPolicy" value="Unmodified KiCad 10 stock symbol"/>
@@ -4350,7 +4352,7 @@
       <footprint>Resistor_SMD:R_0603_1608Metric</footprint>
       <description>Resistor</description>
       <fields>
-        <field name="ViaEvidence">v0.9.4: lower pad2 reaches V015, not V011-V014. User explicitly rejects the old Q1.L-R43.2 photo-derived connection; withdrawn in native schematic and retained only as historical evidence.</field>
+        <field name="ViaEvidence">v0.9.8: User confirms V015-TP14. Earlier V015-R43.2 lower-pad association retained. R43.2 joins TP14 on H_BAT_DETECT, whose existing Q1.S branch and functional name remain photo/circuit hypotheses. Q1.L-R43.2 remains explicitly rejected. No numeric resistance supplied.</field>
         <field name="OriginalReference">R43</field>
         <field name="Evidence">Photo reconstruction; topology inferred</field>
         <field name="LibraryPolicy">Unmodified KiCad 10 stock symbol</field>
@@ -4362,7 +4364,7 @@
         <field name="Description">Resistor</field>
       </fields>
       <libsource lib="Device" part="R" description="Resistor"/>
-      <property name="ViaEvidence" value="v0.9.4: lower pad2 reaches V015, not V011-V014. User explicitly rejects the old Q1.L-R43.2 photo-derived connection; withdrawn in native schematic and retained only as historical evidence."/>
+      <property name="ViaEvidence" value="v0.9.8: User confirms V015-TP14. Earlier V015-R43.2 lower-pad association retained. R43.2 joins TP14 on H_BAT_DETECT, whose existing Q1.S branch and functional name remain photo/circuit hypotheses. Q1.L-R43.2 remains explicitly rejected. No numeric resistance supplied."/>
       <property name="OriginalReference" value="R43"/>
       <property name="Evidence" value="Photo reconstruction; topology inferred"/>
       <property name="LibraryPolicy" value="Unmodified KiCad 10 stock symbol"/>
@@ -4389,7 +4391,7 @@
       <footprint>Resistor_SMD:R_0603_1608Metric</footprint>
       <description>Resistor</description>
       <fields>
-        <field name="ViaEvidence">v0.9.1 V017 joins R42.1 and R44 free pad (pad1 from photo); pad2 local Q1 connection retained.</field>
+        <field name="ViaEvidence">v0.9.8: User confirms V017-TP4. Prior V017-R42.1/R44.1 local junction now joins TP4 and PIC25/RB4. R42.1 explicitly user-named; R44 pad1 and C41 branch retain earlier photo selection. No numeric resistance supplied; circuit operating role remains inferred.</field>
         <field name="OriginalReference">R44</field>
         <field name="Evidence">Photo reconstruction; topology inferred</field>
         <field name="LibraryPolicy">Unmodified KiCad 10 stock symbol</field>
@@ -4401,7 +4403,7 @@
         <field name="Description">Resistor</field>
       </fields>
       <libsource lib="Device" part="R" description="Resistor"/>
-      <property name="ViaEvidence" value="v0.9.1 V017 joins R42.1 and R44 free pad (pad1 from photo); pad2 local Q1 connection retained."/>
+      <property name="ViaEvidence" value="v0.9.8: User confirms V017-TP4. Prior V017-R42.1/R44.1 local junction now joins TP4 and PIC25/RB4. R42.1 explicitly user-named; R44 pad1 and C41 branch retain earlier photo selection. No numeric resistance supplied; circuit operating role remains inferred."/>
       <property name="OriginalReference" value="R44"/>
       <property name="Evidence" value="Photo reconstruction; topology inferred"/>
       <property name="LibraryPolicy" value="Unmodified KiCad 10 stock symbol"/>
@@ -4650,6 +4652,7 @@
       <footprint>TestPoint:TestPoint_THTPad_D2.0mm_Drill1.0mm</footprint>
       <description>test point</description>
       <fields>
+        <field name="ViaEvidence">v0.9.8: User reports V049 = TP03, interpreted as board TP3. V049 already confirmed to PIC13/RC2. Existing local TP3-R10.1 association retained as photo-derived, not a new user measurement.</field>
         <field name="OriginalReference">TP3</field>
         <field name="Evidence">Photo reconstruction; topology inferred</field>
         <field name="LibraryPolicy">Unmodified KiCad 10 stock symbol</field>
@@ -4661,6 +4664,7 @@
         <field name="Description">test point</field>
       </fields>
       <libsource lib="Connector" part="TestPoint" description="test point"/>
+      <property name="ViaEvidence" value="v0.9.8: User reports V049 = TP03, interpreted as board TP3. V049 already confirmed to PIC13/RC2. Existing local TP3-R10.1 association retained as photo-derived, not a new user measurement."/>
       <property name="OriginalReference" value="TP3"/>
       <property name="Evidence" value="Photo reconstruction; topology inferred"/>
       <property name="LibraryPolicy" value="Unmodified KiCad 10 stock symbol"/>
@@ -4686,6 +4690,7 @@
       <footprint>TestPoint:TestPoint_THTPad_D2.0mm_Drill1.0mm</footprint>
       <description>test point</description>
       <fields>
+        <field name="ViaEvidence">v0.9.8: User confirms V017-TP4. Prior V017-R42.1/R44.1 local junction now joins TP4 and PIC25/RB4. R42.1 explicitly user-named; R44 pad1 and C41 branch retain earlier photo selection. No numeric resistance supplied; circuit operating role remains inferred.</field>
         <field name="OriginalReference">TP4</field>
         <field name="Evidence">Photo reconstruction; topology inferred</field>
         <field name="LibraryPolicy">Unmodified KiCad 10 stock symbol</field>
@@ -4697,6 +4702,7 @@
         <field name="Description">test point</field>
       </fields>
       <libsource lib="Connector" part="TestPoint" description="test point"/>
+      <property name="ViaEvidence" value="v0.9.8: User confirms V017-TP4. Prior V017-R42.1/R44.1 local junction now joins TP4 and PIC25/RB4. R42.1 explicitly user-named; R44 pad1 and C41 branch retain earlier photo selection. No numeric resistance supplied; circuit operating role remains inferred."/>
       <property name="OriginalReference" value="TP4"/>
       <property name="Evidence" value="Photo reconstruction; topology inferred"/>
       <property name="LibraryPolicy" value="Unmodified KiCad 10 stock symbol"/>
@@ -4940,6 +4946,7 @@
       <footprint>TestPoint:TestPoint_THTPad_D2.0mm_Drill1.0mm</footprint>
       <description>test point</description>
       <fields>
+        <field name="ViaEvidence">v0.9.8: User confirms V015-TP14. Earlier V015-R43.2 lower-pad association retained. R43.2 joins TP14 on H_BAT_DETECT, whose existing Q1.S branch and functional name remain photo/circuit hypotheses. Q1.L-R43.2 remains explicitly rejected. No numeric resistance supplied.</field>
         <field name="OriginalReference">TP14</field>
         <field name="Evidence">Photo reconstruction; topology inferred</field>
         <field name="LibraryPolicy">Unmodified KiCad 10 stock symbol</field>
@@ -4951,6 +4958,7 @@
         <field name="Description">test point</field>
       </fields>
       <libsource lib="Connector" part="TestPoint" description="test point"/>
+      <property name="ViaEvidence" value="v0.9.8: User confirms V015-TP14. Earlier V015-R43.2 lower-pad association retained. R43.2 joins TP14 on H_BAT_DETECT, whose existing Q1.S branch and functional name remain photo/circuit hypotheses. Q1.L-R43.2 remains explicitly rejected. No numeric resistance supplied."/>
       <property name="OriginalReference" value="TP14"/>
       <property name="Evidence" value="Photo reconstruction; topology inferred"/>
       <property name="LibraryPolicy" value="Unmodified KiCad 10 stock symbol"/>
@@ -5188,10 +5196,11 @@
       </units>
     </comp>
     <comp ref="TP104">
-      <value>VREF / VREF pad / net ?</value>
+      <value>VREF</value>
       <footprint>TestPoint:TestPoint_THTPad_D2.0mm_Drill1.0mm</footprint>
       <description>test point</description>
       <fields>
+        <field name="ViaEvidence">v0.9.8: Board silk VREF, native TP104. User confirms V026-VREF (PIC21/RB0) and explicitly rejects V053-VREF. Old RC1 photo association withdrawn. VREF is a board label, not an established voltage or IC function.</field>
         <field name="OriginalReference">VREF</field>
         <field name="Evidence">Photo reconstruction; topology inferred</field>
         <field name="LibraryPolicy">Unmodified KiCad 10 stock symbol</field>
@@ -5203,6 +5212,7 @@
         <field name="Description">test point</field>
       </fields>
       <libsource lib="Connector" part="TestPoint" description="test point"/>
+      <property name="ViaEvidence" value="v0.9.8: Board silk VREF, native TP104. User confirms V026-VREF (PIC21/RB0) and explicitly rejects V053-VREF. Old RC1 photo association withdrawn. VREF is a board label, not an established voltage or IC function."/>
       <property name="OriginalReference" value="VREF"/>
       <property name="Evidence" value="Photo reconstruction; topology inferred"/>
       <property name="LibraryPolicy" value="Unmodified KiCad 10 stock symbol"/>
@@ -5413,13 +5423,13 @@
       <datasheet>https://www.ti.com/lit/ds/symlink/sn74lvc2g14.pdf</datasheet>
       <description>Dual NOT Gate, Schmitt Triggered, Low-Voltage CMOS</description>
       <fields>
+        <field name="ViaEvidence">v0.9.5: V114 reaches U2.T2, not Q8.T2. Earlier user GND assignment retained; native U2 pin2 already GND. This resolves the via annotation conflict.</field>
         <field name="OriginalReference">U2</field>
         <field name="Evidence">Photo reconstruction; topology inferred</field>
         <field name="LibraryPolicy">Unmodified KiCad 10 stock symbol</field>
         <field name="FootprintConfidence">datasheet/package candidate</field>
         <field name="FootprintBasis">Existing assignment; see component identity evidence.</field>
         <field name="PinMapping">See evidence/pin_crosswalk.json; physical orientation may be provisional</field>
-        <field name="ViaEvidence">v0.9.5: V114 reaches U2.T2, not Q8.T2. Earlier user GND assignment retained; native U2 pin2 already GND. This resolves the via annotation conflict.</field>
         <field name="Footprint">Package_TO_SOT_SMD:SOT-23-6</field>
         <field name="Datasheet">https://www.ti.com/lit/ds/symlink/sn74lvc2g14.pdf</field>
         <field name="Description">Dual NOT Gate, Schmitt Triggered, Low-Voltage CMOS</field>
@@ -5436,7 +5446,7 @@
       <property name="ki_keywords" value="Dual Gate NOT Schmitt LVC CMOS"/>
       <property name="ki_fp_filters" value="SG-* SOT*"/>
       <sheetpath names="/" tstamps="/"/>
-      <tstamps>d0ce7cd7-6c1d-460b-bc83-44a9736c68fd c2038b9c-b36c-4670-ab94-21c1a9753278 3fee6f3a-8cd1-4f78-bc72-965c744b6fd1</tstamps>
+      <tstamps>c2038b9c-b36c-4670-ab94-21c1a9753278 d0ce7cd7-6c1d-460b-bc83-44a9736c68fd 3fee6f3a-8cd1-4f78-bc72-965c744b6fd1</tstamps>
       <units>
         <unit name="A">
           <pins>
@@ -5517,7 +5527,7 @@
       <description>8-bit Flash MCU, 32MHz, 14KB Flash, 1024B RAM 256B EEPROM, SOIC-28</description>
       <fields>
         <field name="UserGPIOEvidence">v0.8: user confirms multimeter + visual trace. 3-TP7/R28/R29; 17-R13; 22-TP2; 23-TP1; 25-TP4; 26-TP10. No numerical resistance values supplied. Nine GPIO destinations remain unresolved.</field>
-        <field name="ViaEvidence">v0.9.6 user working pairs: 5/RA3 V036-V108 R14; 6/RA4 V037-V102 R15; 7/RA5 V039-V097 R16; 11/RC0 V047-V091 R11. Existing RC6-R13 retained. Only 13/RC2 and 21/RB0 remain without modeled onward routes.</field>
+        <field name="ViaEvidence">v0.9.8: User confirms RC2/PIC13-V049-TP3, RB0/PIC21-V026-VREF (native TP104), and RC1/PIC12-V053-V070-R18.1. User explicitly rejects V053-VREF, superseding the old photo assumption. No numerical resistance supplied for these connections. All PIC pads have modeled local destinations; other inferred branches still need review. RB4/PIC25-TP4 now also reaches V017/R42.1/R44.1.</field>
         <field name="OriginalReference">U4</field>
         <field name="Evidence">Photo reconstruction; topology inferred</field>
         <field name="LibraryPolicy">Unmodified KiCad 10 stock symbol</field>
@@ -5530,7 +5540,7 @@
       </fields>
       <libsource lib="MCU_Microchip_PIC16" part="PIC16F18855-xSO" description="8-bit Flash MCU, 32MHz, 14KB Flash, 1024B RAM 256B EEPROM, SOIC-28"/>
       <property name="UserGPIOEvidence" value="v0.8: user confirms multimeter + visual trace. 3-TP7/R28/R29; 17-R13; 22-TP2; 23-TP1; 25-TP4; 26-TP10. No numerical resistance values supplied. Nine GPIO destinations remain unresolved."/>
-      <property name="ViaEvidence" value="v0.9.6 user working pairs: 5/RA3 V036-V108 R14; 6/RA4 V037-V102 R15; 7/RA5 V039-V097 R16; 11/RC0 V047-V091 R11. Existing RC6-R13 retained. Only 13/RC2 and 21/RB0 remain without modeled onward routes."/>
+      <property name="ViaEvidence" value="v0.9.8: User confirms RC2/PIC13-V049-TP3, RB0/PIC21-V026-VREF (native TP104), and RC1/PIC12-V053-V070-R18.1. User explicitly rejects V053-VREF, superseding the old photo assumption. No numerical resistance supplied for these connections. All PIC pads have modeled local destinations; other inferred branches still need review. RB4/PIC25-TP4 now also reaches V017/R42.1/R44.1."/>
       <property name="OriginalReference" value="U4"/>
       <property name="Evidence" value="Photo reconstruction; topology inferred"/>
       <property name="LibraryPolicy" value="Unmodified KiCad 10 stock symbol"/>
@@ -5707,6 +5717,7 @@
       <footprint>Package_TO_SOT_SMD:SOT-23</footprint>
       <description>Generic connector, single row, 01x03, script generated (kicad-library-utils/schlib/autogen/connector/)</description>
       <fields>
+        <field name="ViaEvidence">v0.9.8: User confirms V067-J3 pin1 (red wire), on modeled H_PIR_VDD. Prior V067-U6A.R1 local pad association retained. Empty U6A option remains DNP; this does not identify an IC or confirm every other H_PIR_VDD branch.</field>
         <field name="OriginalReference">U6A</field>
         <field name="Evidence">Photo reconstruction; topology inferred</field>
         <field name="LibraryPolicy">Unmodified KiCad 10 stock symbol</field>
@@ -5718,6 +5729,7 @@
         <field name="Description">Generic connector, single row, 01x03, script generated (kicad-library-utils/schlib/autogen/connector/)</field>
       </fields>
       <libsource lib="Connector_Generic" part="Conn_01x03" description="Generic connector, single row, 01x03, script generated (kicad-library-utils/schlib/autogen/connector/)"/>
+      <property name="ViaEvidence" value="v0.9.8: User confirms V067-J3 pin1 (red wire), on modeled H_PIR_VDD. Prior V067-U6A.R1 local pad association retained. Empty U6A option remains DNP; this does not identify an IC or confirm every other H_PIR_VDD branch."/>
       <property name="OriginalReference" value="U6A"/>
       <property name="Evidence" value="Photo reconstruction; topology inferred"/>
       <property name="LibraryPolicy" value="Unmodified KiCad 10 stock symbol"/>
@@ -6436,6 +6448,7 @@
       <node ref="C37" pin="1" pintype="passive"/>
       <node ref="J3" pin="1" pinfunction="Pin_1_1" pintype="passive"/>
       <node ref="R33" pin="2" pintype="passive"/>
+      <node ref="U106" pin="2" pinfunction="Pin_2_2" pintype="passive"/>
       <node ref="U6" pin="3" pinfunction="VOUT_3" pintype="power_out"/>
     </net>
     <net code="13" name="/H_RF_CONTROL" class="Default">
@@ -6460,6 +6473,7 @@
     </net>
     <net code="17" name="/H_RX_ENABLE_CTL" class="Default">
       <node ref="R18" pin="1" pintype="passive"/>
+      <node ref="U4" pin="12" pinfunction="RC1_12" pintype="bidirectional"/>
     </net>
     <net code="18" name="/H_RX_VDD" class="Default">
       <node ref="C17" pin="1" pintype="passive"/>
@@ -6548,13 +6562,13 @@
       <node ref="TP7" pin="1" pinfunction="1_1" pintype="passive"/>
       <node ref="U4" pin="3" pinfunction="RA1_3" pintype="bidirectional"/>
     </net>
-    <net code="32" name="/PIC_RB3_RETURN" class="Default">
+    <net code="32" name="/PIC_RB0_VREF" class="Default">
+      <node ref="TP104" pin="1" pinfunction="1_1" pintype="passive"/>
+      <node ref="U4" pin="21" pinfunction="RB0_21" pintype="bidirectional"/>
+    </net>
+    <net code="33" name="/PIC_RB3_RETURN" class="Default">
       <node ref="R4" pin="2" pintype="passive"/>
       <node ref="U4" pin="24" pinfunction="RB3_24" pintype="bidirectional"/>
-    </net>
-    <net code="33" name="/PIC_RC1_VREF" class="Default">
-      <node ref="TP104" pin="1" pinfunction="1_1" pintype="passive"/>
-      <node ref="U4" pin="12" pinfunction="RC1_12" pintype="bidirectional"/>
     </net>
     <net code="34" name="/PIC_RC7_TP17" class="Default">
       <node ref="TP17" pin="1" pinfunction="1_1" pintype="passive"/>
@@ -6562,6 +6576,8 @@
     </net>
     <net code="35" name="/PIC_TP4_C41" class="Default">
       <node ref="C41" pin="1" pintype="passive"/>
+      <node ref="R42" pin="1" pintype="passive"/>
+      <node ref="R44" pin="1" pintype="passive"/>
       <node ref="TP4" pin="1" pinfunction="1_1" pintype="passive"/>
       <node ref="U4" pin="25" pinfunction="RB4_25" pintype="bidirectional"/>
     </net>
@@ -6574,16 +6590,17 @@
       <node ref="TP10" pin="1" pinfunction="1_1" pintype="passive"/>
       <node ref="U4" pin="26" pinfunction="RB5_26" pintype="bidirectional"/>
     </net>
-    <net code="38" name="/U1_ALT_PAD" class="Default">
+    <net code="38" name="/RF_MONITOR_PAD" class="Default">
+      <node ref="R10" pin="1" pintype="passive"/>
+      <node ref="TP3" pin="1" pinfunction="1_1" pintype="passive"/>
+      <node ref="U4" pin="13" pinfunction="RC2_13" pintype="bidirectional"/>
+    </net>
+    <net code="39" name="/U1_ALT_PAD" class="Default">
       <node ref="C3" pin="2" pintype="passive"/>
       <node ref="C4" pin="2" pintype="passive"/>
       <node ref="R1" pin="2" pintype="passive"/>
       <node ref="R2" pin="2" pintype="passive"/>
       <node ref="U1" pin="4" pinfunction="NC_4" pintype="passive"/>
-    </net>
-    <net code="39" name="/V017_CONTROL" class="Default">
-      <node ref="R42" pin="1" pintype="passive"/>
-      <node ref="R44" pin="1" pintype="passive"/>
     </net>
     <net code="40" name="Net-(C8-Pad1)" class="Default">
       <node ref="C8" pin="1" pintype="passive"/>
@@ -6671,6 +6688,7 @@
     </net>
     <net code="57" name="Net-(Q1-C)" class="Default">
       <node ref="Q1" pin="3" pinfunction="C_3" pintype="passive"/>
+      <node ref="R43" pin="2" pintype="passive"/>
       <node ref="TP14" pin="1" pinfunction="1_1" pintype="passive"/>
     </net>
     <net code="58" name="Net-(Q2-B)" class="Default">
@@ -6748,158 +6766,142 @@
       <node ref="R9" pin="1" pintype="passive"/>
       <node ref="U2" pin="6" pintype="output"/>
     </net>
-    <net code="76" name="Net-(R10-Pad1)" class="Default">
-      <node ref="R10" pin="1" pintype="passive"/>
-      <node ref="TP3" pin="1" pinfunction="1_1" pintype="passive"/>
-    </net>
-    <net code="77" name="Net-(U1-ON/OFF)" class="Default">
+    <net code="76" name="Net-(U1-ON/OFF)" class="Default">
       <node ref="C1" pin="1" pintype="passive"/>
       <node ref="C101" pin="1" pintype="passive"/>
       <node ref="L2" pin="2" pinfunction="2_2" pintype="passive"/>
       <node ref="U1" pin="1" pinfunction="VIN_1" pintype="power_in"/>
       <node ref="U1" pin="3" pinfunction="ON/OFF_3" pintype="input"/>
     </net>
-    <net code="78" name="Net-(U3A-+)" class="Default">
+    <net code="77" name="Net-(U3A-+)" class="Default">
       <node ref="C19" pin="1" pintype="passive"/>
       <node ref="C20" pin="2" pintype="passive"/>
       <node ref="R28" pin="2" pintype="passive"/>
       <node ref="U3" pin="3" pinfunction="+_3" pintype="input"/>
     </net>
-    <net code="79" name="Net-(U3A--)" class="Default">
+    <net code="78" name="Net-(U3A--)" class="Default">
       <node ref="C22" pin="2" pintype="passive"/>
       <node ref="R26" pin="2" pintype="passive"/>
       <node ref="R48" pin="1" pintype="passive"/>
       <node ref="U3" pin="2" pinfunction="-_2" pintype="input"/>
     </net>
-    <net code="80" name="Net-(U3B-+)" class="Default">
+    <net code="79" name="Net-(U3B-+)" class="Default">
       <node ref="C18" pin="1" pintype="passive"/>
       <node ref="U3" pin="5" pinfunction="+_5" pintype="input"/>
     </net>
-    <net code="81" name="Net-(U3B--)" class="Default">
+    <net code="80" name="Net-(U3B--)" class="Default">
       <node ref="C21" pin="2" pintype="passive"/>
       <node ref="R23" pin="1" pintype="passive"/>
       <node ref="R24" pin="2" pintype="passive"/>
       <node ref="U3" pin="6" pinfunction="-_6" pintype="input"/>
     </net>
-    <net code="82" name="Net-(U4-RA0)" class="Default">
+    <net code="81" name="Net-(U4-RA0)" class="Default">
       <node ref="C25" pin="1" pintype="passive"/>
       <node ref="U4" pin="2" pinfunction="RA0_2" pintype="bidirectional"/>
     </net>
-    <net code="83" name="Net-(U4-RA2)" class="Default">
+    <net code="82" name="Net-(U4-RA2)" class="Default">
       <node ref="C39" pin="1" pintype="passive"/>
       <node ref="U4" pin="4" pinfunction="RA2_4" pintype="bidirectional"/>
     </net>
-    <net code="84" name="Net-(U4-RA6)" class="Default">
+    <net code="83" name="Net-(U4-RA6)" class="Default">
       <node ref="C31" pin="2" pintype="passive"/>
       <node ref="U4" pin="10" pinfunction="RA6_10" pintype="bidirectional"/>
       <node ref="Y1" pin="2" pinfunction="2_2" pintype="passive"/>
     </net>
-    <net code="85" name="Net-(U4-RA7)" class="Default">
+    <net code="84" name="Net-(U4-RA7)" class="Default">
       <node ref="C30" pin="1" pintype="passive"/>
       <node ref="U4" pin="9" pinfunction="RA7_9" pintype="bidirectional"/>
       <node ref="Y1" pin="1" pinfunction="1_1" pintype="passive"/>
     </net>
-    <net code="86" name="Net-(U4-RC3)" class="Default">
+    <net code="85" name="Net-(U4-RC3)" class="Default">
       <node ref="TP11" pin="1" pinfunction="1_1" pintype="passive"/>
       <node ref="U4" pin="14" pinfunction="RC3_14" pintype="bidirectional"/>
     </net>
-    <net code="87" name="unconnected-(C6-Pad1)" class="Default">
+    <net code="86" name="unconnected-(C6-Pad1)" class="Default">
       <node ref="C6" pin="1" pintype="passive"/>
     </net>
-    <net code="88" name="unconnected-(C26-Pad1)" class="Default">
+    <net code="87" name="unconnected-(C26-Pad1)" class="Default">
       <node ref="C26" pin="1" pintype="passive"/>
     </net>
-    <net code="89" name="unconnected-(C42-Pad1)" class="Default">
+    <net code="88" name="unconnected-(C42-Pad1)" class="Default">
       <node ref="C42" pin="1" pintype="passive"/>
     </net>
-    <net code="90" name="unconnected-(C42-Pad2)" class="Default">
+    <net code="89" name="unconnected-(C42-Pad2)" class="Default">
       <node ref="C42" pin="2" pintype="passive"/>
     </net>
-    <net code="91" name="unconnected-(C49-Pad1)" class="Default">
+    <net code="90" name="unconnected-(C49-Pad1)" class="Default">
       <node ref="C49" pin="1" pintype="passive"/>
     </net>
-    <net code="92" name="unconnected-(C49-Pad2)" class="Default">
+    <net code="91" name="unconnected-(C49-Pad2)" class="Default">
       <node ref="C49" pin="2" pintype="passive"/>
     </net>
-    <net code="93" name="unconnected-(D2-Pin_1-Pad1)" class="Default">
+    <net code="92" name="unconnected-(D2-Pin_1-Pad1)" class="Default">
       <node ref="D2" pin="1" pinfunction="Pin_1_1" pintype="passive"/>
     </net>
-    <net code="94" name="unconnected-(D2-Pin_2-Pad2)" class="Default">
+    <net code="93" name="unconnected-(D2-Pin_2-Pad2)" class="Default">
       <node ref="D2" pin="2" pinfunction="Pin_2_2" pintype="passive"/>
     </net>
-    <net code="95" name="unconnected-(D2-Pin_3-Pad3)" class="Default">
+    <net code="94" name="unconnected-(D2-Pin_3-Pad3)" class="Default">
       <node ref="D2" pin="3" pinfunction="Pin_3_3" pintype="passive"/>
     </net>
-    <net code="96" name="unconnected-(D6-A-Pad2)" class="Default">
+    <net code="95" name="unconnected-(D6-A-Pad2)" class="Default">
       <node ref="D6" pin="2" pinfunction="A_2" pintype="passive"/>
     </net>
-    <net code="97" name="unconnected-(D6-K-Pad1)" class="Default">
+    <net code="96" name="unconnected-(D6-K-Pad1)" class="Default">
       <node ref="D6" pin="1" pinfunction="K_1" pintype="passive"/>
     </net>
-    <net code="98" name="unconnected-(J6-Pin_1-Pad1)" class="Default">
+    <net code="97" name="unconnected-(J6-Pin_1-Pad1)" class="Default">
       <node ref="J6" pin="1" pinfunction="Pin_1_1" pintype="passive"/>
     </net>
-    <net code="99" name="unconnected-(J6-Pin_2-Pad2)" class="Default">
+    <net code="98" name="unconnected-(J6-Pin_2-Pad2)" class="Default">
       <node ref="J6" pin="2" pinfunction="Pin_2_2" pintype="passive"/>
     </net>
-    <net code="100" name="unconnected-(Q1-E-Pad2)" class="Default">
+    <net code="99" name="unconnected-(Q1-E-Pad2)" class="Default">
       <node ref="Q1" pin="2" pinfunction="E_2" pintype="passive"/>
     </net>
-    <net code="101" name="unconnected-(Q9-Pin_3-Pad3)" class="Default">
+    <net code="100" name="unconnected-(Q9-Pin_3-Pad3)" class="Default">
       <node ref="Q9" pin="3" pinfunction="Pin_3_3" pintype="passive"/>
     </net>
-    <net code="102" name="unconnected-(R36-Pad1)" class="Default">
+    <net code="101" name="unconnected-(R36-Pad1)" class="Default">
       <node ref="R36" pin="1" pintype="passive"/>
     </net>
-    <net code="103" name="unconnected-(R36-Pad2)" class="Default">
+    <net code="102" name="unconnected-(R36-Pad2)" class="Default">
       <node ref="R36" pin="2" pintype="passive"/>
     </net>
-    <net code="104" name="unconnected-(R43-Pad2)" class="Default">
-      <node ref="R43" pin="2" pintype="passive"/>
-    </net>
-    <net code="105" name="unconnected-(R46-Pad1)" class="Default">
+    <net code="103" name="unconnected-(R46-Pad1)" class="Default">
       <node ref="R46" pin="1" pintype="passive"/>
     </net>
-    <net code="106" name="unconnected-(R46-Pad2)" class="Default">
+    <net code="104" name="unconnected-(R46-Pad2)" class="Default">
       <node ref="R46" pin="2" pintype="passive"/>
     </net>
-    <net code="107" name="unconnected-(R47-Pad1)" class="Default">
+    <net code="105" name="unconnected-(R47-Pad1)" class="Default">
       <node ref="R47" pin="1" pintype="passive"/>
     </net>
-    <net code="108" name="unconnected-(R47-Pad2)" class="Default">
+    <net code="106" name="unconnected-(R47-Pad2)" class="Default">
       <node ref="R47" pin="2" pintype="passive"/>
     </net>
-    <net code="109" name="unconnected-(TP9-Pad1)" class="Default">
+    <net code="107" name="unconnected-(TP9-Pad1)" class="Default">
       <node ref="TP9" pin="1" pinfunction="1_1" pintype="passive"/>
     </net>
-    <net code="110" name="unconnected-(U4-RB0-Pad21)" class="Default">
-      <node ref="U4" pin="21" pinfunction="RB0_21" pintype="bidirectional"/>
-    </net>
-    <net code="111" name="unconnected-(U4-RC2-Pad13)" class="Default">
-      <node ref="U4" pin="13" pinfunction="RC2_13" pintype="bidirectional"/>
-    </net>
-    <net code="112" name="unconnected-(U6-NC-Pad4)" class="Default">
+    <net code="108" name="unconnected-(U6-NC-Pad4)" class="Default">
       <node ref="U6" pin="4" pinfunction="NC_4" pintype="passive"/>
     </net>
-    <net code="113" name="unconnected-(U6-NC-Pad5)" class="Default">
+    <net code="109" name="unconnected-(U6-NC-Pad5)" class="Default">
       <node ref="U6" pin="5" pinfunction="NC_5" pintype="passive"/>
     </net>
-    <net code="114" name="unconnected-(U7-Pin_1-Pad1)" class="Default">
+    <net code="110" name="unconnected-(U7-Pin_1-Pad1)" class="Default">
       <node ref="U7" pin="1" pinfunction="Pin_1_1" pintype="passive"/>
     </net>
-    <net code="115" name="unconnected-(U7-Pin_2-Pad2)" class="Default">
+    <net code="111" name="unconnected-(U7-Pin_2-Pad2)" class="Default">
       <node ref="U7" pin="2" pinfunction="Pin_2_2" pintype="passive"/>
     </net>
-    <net code="116" name="unconnected-(U7-Pin_3-Pad3)" class="Default">
+    <net code="112" name="unconnected-(U7-Pin_3-Pad3)" class="Default">
       <node ref="U7" pin="3" pinfunction="Pin_3_3" pintype="passive"/>
     </net>
-    <net code="117" name="unconnected-(U106-Pin_1-Pad1)" class="Default">
+    <net code="113" name="unconnected-(U106-Pin_1-Pad1)" class="Default">
       <node ref="U106" pin="1" pinfunction="Pin_1_1" pintype="passive"/>
     </net>
-    <net code="118" name="unconnected-(U106-Pin_2-Pad2)" class="Default">
-      <node ref="U106" pin="2" pinfunction="Pin_2_2" pintype="passive"/>
-    </net>
-    <net code="119" name="unconnected-(U106-Pin_3-Pad3)" class="Default">
+    <net code="114" name="unconnected-(U106-Pin_3-Pad3)" class="Default">
       <node ref="U106" pin="3" pinfunction="Pin_3_3" pintype="passive"/>
     </net>
   </nets>

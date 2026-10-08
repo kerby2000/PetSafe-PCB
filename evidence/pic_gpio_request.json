@@ -1,7 +1,7 @@
 {
   "date": "2026-10-08",
-  "basis_revision": "v0.9.6",
-  "status": "AWAITING_ONWARD_DESTINATIONS",
+  "basis_revision": "v0.9.8",
+  "status": "LOCAL_GPIO_DESTINATIONS_MAPPED",
   "source_photos": [
     {
       "path": "photos/user/2026-10-08/board_full.png",
@@ -17,6 +17,11 @@
       "path": "photos/user/2026-10-08/pic_closeup.png",
       "bytes": 3872543,
       "sha256": "4548a1a9cad7f29dc376f7faff68be3c6c206437c8e4a0db8f322822a703e376"
+    },
+    {
+      "path": "photos/user/2026-10-08/VREF_user_locator.png",
+      "bytes": 762680,
+      "sha256": "f601fddf46692105cc6bbc678b88bc451fd2178a3b5bda5fc9bfa84147f6a01d"
     }
   ],
   "annotation_photo": "photos/user/2026-10-08/pic_closeup.png",
@@ -32,30 +37,10 @@
   ],
   "pin_number_source": "https://ww1.microchip.com/downloads/en/DeviceDoc/40001802G.pdf#page=4",
   "orientation": "Top view; pin-1 dot lower right. Right bottom-to-top 1..14; left top-to-bottom 15..28.",
-  "missing_gpio_pins": [
-    13,
-    21
-  ],
-  "missing_count": 2,
-  "definition": "These two GPIOs have user-identified local vias but no modeled onward component connection. They are not unused pins. Other modeled nets may still be partial or inferred.",
-  "targets": [
-    {
-      "pin": 13,
-      "gpio": "RC2",
-      "xy": [
-        833,
-        111
-      ]
-    },
-    {
-      "pin": 21,
-      "gpio": "RB0",
-      "xy": [
-        452,
-        348
-      ]
-    }
-  ],
+  "missing_gpio_pins": [],
+  "missing_count": 0,
+  "definition": "RC1/PIC12 reaches R18 via user-confirmed V053-V070. Old V053-VREF join explicitly rejected. This is not an unused-pin claim; other nets may be partial or inferred.",
+  "targets": [],
   "all_pad_targets": [
     {
       "pin": 1,
@@ -172,7 +157,7 @@
         833,
         111
       ],
-      "missing": true
+      "missing": false
     },
     {
       "pin": 14,
@@ -244,7 +229,7 @@
         452,
         348
       ],
-      "missing": true
+      "missing": false
     },
     {
       "pin": 22,
@@ -311,30 +296,7 @@
     }
   ],
   "reply_format": "U4.<pin> -> <component reference> <exact pad/pin> -> <ohms or visual trace>. List every destination found.",
-  "measurements": [
-    {
-      "pin": 13,
-      "gpio": "RC2",
-      "photo_side": "right",
-      "position": "from bottom: 13",
-      "destination_reference": "V049",
-      "destination_pad_or_pin": "onward destination unknown",
-      "resistance_ohms": "",
-      "method": "User pin-to-via report; no new numeric reading",
-      "notes": "V049; onward destination unknown"
-    },
-    {
-      "pin": 21,
-      "gpio": "RB0",
-      "photo_side": "left",
-      "position": "from top: 7",
-      "destination_reference": "V026",
-      "destination_pad_or_pin": "onward destination unknown",
-      "resistance_ohms": "",
-      "method": "User pin-to-via report; no new numeric reading",
-      "notes": "V026; onward destination unknown"
-    }
-  ],
+  "measurements": [],
   "supplementary_local_nets": {
     "1": "ICSP VPP inferred; nearby D6 routing unresolved",
     "2": "Visible to C25 right pad; external continuation hidden",
@@ -349,6 +311,6 @@
   "notes": [
     "No guessed destination is presented as a measurement.",
     "All 28 pads are visible in the close-up although the top of the plastic body is cropped.",
-    "v0.9.6: two highlighted GPIOs have unknown onward destinations. PIC15/RC4 -> U5.2 INA via V022-V016; PIC16/RC5 -> U5.3 INB via V023-V019 are now resolved. RC1/pin12 reaches VREF/V053 separately."
+    "v0.9.8: RC2/V049-TP3 and RB0/V026-VREF are confirmed. RC1/PIC12-V053-V070-R18 is confirmed; old VREF join rejected. PIC15/RC4 -> U5.2 INA via V022-V016; PIC16/RC5 -> U5.3 INB via V023-V019 are now resolved. No PIC pads remain open; local-net remote roles and inferred branches remain qualified."
   ]
 }

@@ -1,0 +1,22 @@
+{
+  "id": "via-pairs-followup-20261008-rc2",
+  "basis_revision": "v0.9.7",
+  "changes": [],
+  "inconclusive_pairs": [
+    {
+      "vias": [
+        "V049",
+        "V070"
+      ],
+      "status": "USER_VARIABLE_HIGH_RESISTANCE_NO_CONTINUITY",
+      "reading": "200-300 kohm, varies with probe placement",
+      "resistance_range_ohms": [
+        200000,
+        300000
+      ],
+      "reverse_reading": null,
+      "qualification": "No direct continuity demonstrated. Probe contact is variable; do not convert to OL, a fixed resistor value, or a definitive permanent open."
+    }
+  ],
+  "interpretation": "RC2-to-R18 control candidate is not supported by the current reading. Keep native nets separate. Next test V070-V026/RB0; do not assign by elimination."
+}

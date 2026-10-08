@@ -1,16 +1,16 @@
 {
-  "id": "via-pairs-round-6-completed",
+  "id": "via-pairs-round-4",
   "pdf_path": "output/pdf/PetSafe_via_pair_next_check.pdf",
   "date": "2026-10-08",
-  "basis_revision": "v0.9.8",
-  "schematic_sha256": "554bb00610238e173655df56b44e5ba7eeff4b3c52a2770017956a0df5283d84",
-  "status": "CURRENT_GPIO_BATCH_COMPLETE",
-  "scope": "Completed result locator. No repeat measurement requested; no unmeasured pair is added to accepted connectivity.",
+  "basis_revision": "v0.9.7",
+  "schematic_sha256": "c645b585bc1cec1f7a5899ff9edbfe17bd98cd553a33aea490b14d8f44ab2ea4",
+  "status": "AWAITING_USER_READINGS",
+  "scope": "Proposed continuity work only. No unmeasured pair is added to the native schematic or accepted connectivity.",
   "count_basis": {
     "active_via_sites": 120,
-    "nonrail_candidate_sites": 17,
-    "local_candidate_groups": 13,
-    "dnp_group": "V067/U6A now mapped to J3.1/PIR supply; excluded from search pool",
+    "nonrail_candidate_sites": 23,
+    "local_candidate_groups": 19,
+    "dnp_group": "V067 / U6A",
     "qualification": "Groups are local endpoint associations, not a count of proven missing nets. Some modeled local nets need no additional hidden connection. Seven unmentioned IDs are already photo-matched; they are not the full work queue."
   },
   "local_groups": [
@@ -30,8 +30,24 @@
         "V015"
       ],
       "endpoints": [
-        "R43.2",
-        "TP14.1"
+        "R43.2"
+      ]
+    },
+    {
+      "vias": [
+        "V017"
+      ],
+      "endpoints": [
+        "R42.1",
+        "R44.1"
+      ]
+    },
+    {
+      "vias": [
+        "V026"
+      ],
+      "endpoints": [
+        "U4.21"
       ]
     },
     {
@@ -50,6 +66,39 @@
       "endpoints": [
         "U4.4",
         "C39.1"
+      ]
+    },
+    {
+      "vias": [
+        "V049"
+      ],
+      "endpoints": [
+        "U4.13"
+      ]
+    },
+    {
+      "vias": [
+        "V053"
+      ],
+      "endpoints": [
+        "U4.12",
+        "VREF.1"
+      ]
+    },
+    {
+      "vias": [
+        "V067"
+      ],
+      "endpoints": [
+        "U6A.R1"
+      ]
+    },
+    {
+      "vias": [
+        "V070"
+      ],
+      "endpoints": [
+        "R18.1"
       ]
     },
     {
@@ -152,22 +201,22 @@
     "A stable reading close to the known connected-pair baseline supports a DC connection. Recheck near-zero hits with probes reversed; do not rely on a beep alone.",
     "Record actual ohms, kohms, OL, or a changing reading. Tens/hundreds of ohms, one-way conduction or a changing reading are not direct-copper confirmation.",
     "A very low-resistance path can include a zero-ohm link or an inductor; continuity maps electrical connectivity, not exact buried-layer track geometry.",
-    "B3 V064-V070 returned 11.2 kohm: a resistive path, not a direct rail tie. D1 V070-V049 gave variable 200-300 kohm; no continuity demonstrated. RB0/V026 now reaches VREF; D2 was unmeasured and is withdrawn from this batch. E1 was resolved by the user: V053 is NOT connected to VREF. F1 V053-V070 is confirmed; V067-J3.1 also confirmed. All seven capacitor comparisons returned OL; broad capacitor-pair testing is retired."
+    "B3 V064-V070 returned 11.2 kohm: a resistive path, not a direct rail tie. D1 V070-V049 is the next unmeasured control candidate. All seven capacitor comparisons returned OL; broad capacitor-pair testing is retired."
   ],
   "tests": [
     {
-      "id": "F1",
-      "group": "Completed - RC1 to R18",
-      "left": "V053",
-      "right": "V070",
-      "left_endpoint": "U4.12, R18.1",
-      "right_endpoint": "U4.12, R18.1",
-      "reason": "User checked V053-V070 and confirmed connection. Existing local mappings place PIC12/RC1 at V053 and R18.1 at V070. This completes the formerly open GPIO checklist.",
-      "confidence": "User continuity report; no numerical resistance supplied. Q7 local topology/function remains inferred.",
-      "positive_action": "Recorded in the schematic as H_RX_ENABLE_CTL. No repeat measurement requested.",
-      "negative_action": "V053-VREF was explicitly rejected; RC1 and RB0/VREF remain separate.",
-      "status": "USER_CONFIRMED",
-      "reading": "Connected; no numeric resistance supplied"
+      "id": "D1",
+      "group": "D - receiver enable candidate",
+      "left": "V070",
+      "right": "V049",
+      "left_endpoint": "R18.1",
+      "right_endpoint": "U4.13",
+      "reason": "V070 now fits the control side of R18: its 11.2 kohm path to VDD equals R18 1.2k plus R19 10k. V049 is PIC pin13/RC2, one of the two GPIOs whose onward destination remains unknown. Test whether RC2 drives this proposed receiver supply switch.",
+      "confidence": "Plausible functional candidate; there is no visible buried trace proving RC2 rather than RB0 or another signal.",
+      "positive_action": "After checking a near-baseline reading, join R18 input to PIC13/RC2 and resolve one open GPIO. The Q7 switch function still remains an inferred role.",
+      "negative_action": "Do not connect RC2. Next compare V070 with V026/PIC21 RB0; if both fail, review already-local PIC signals rather than assuming an unused pin.",
+      "status": "PROPOSED_UNMEASURED",
+      "reading": ""
     }
   ],
   "reported_results": {
@@ -234,10 +283,6 @@
       [
         "V064",
         "V075"
-      ],
-      [
-        "V053",
-        "V070"
       ]
     ],
     "rejected_pairs": [
@@ -324,18 +369,6 @@
         "reading": "20 kohm",
         "resistance_ohms": 20000,
         "reverse_reading": null
-      },
-      {
-        "vias": [
-          "V053",
-          "V026"
-        ],
-        "endpoints": [
-          "U4.12",
-          "VREF.1"
-        ],
-        "reading": "NOT connected (user report; no numeric reading)",
-        "status": "USER_REJECTED_DIRECT_CONNECTION"
       }
     ],
     "component_evidence": {
@@ -407,7 +440,7 @@
       ],
       "retired_search": "Stop broad pairwise capacitor-junction tests. Seven OL pairs reject tested direct links, not capacitive coupling or untested relationships."
     },
-    "previous_schematic_update": {
+    "latest_schematic_update": {
       "revision": "v0.9.7",
       "changes": [
         {
@@ -488,169 +521,16 @@
         "https://assets.nexperia.com/documents/data-sheet/BC856_BC857_BC858.pdf"
       ],
       "additional_resistance_note": "V049/PIC13 to V071/R21 measures 20 kohm. No direct GPIO-bias link added, no resistor path inferred from magnitude alone, and D1 V070-V049 remains unmeasured."
-    },
-    "latest_schematic_update": {
-      "revision": "v0.9.8",
-      "changes": [
-        {
-          "endpoint": "U4.13",
-          "old": null,
-          "new": "RF_MONITOR_PAD",
-          "basis": "User: I found it v049 is a TP03. Earlier V049-to-PIC13/RC2 was user-confirmed; TP03 interpreted as photographed TP3."
-        },
-        {
-          "endpoint": "U4.21",
-          "old": null,
-          "new": "PIC_RB0_VREF",
-          "basis": "User confirms V026 reaches VREF test point; prior V026-RB0/PIC21 mapping confirmed."
-        },
-        {
-          "endpoint": "VREF.1",
-          "old": "PIC_RC1_VREF",
-          "new": "PIC_RB0_VREF",
-          "basis": "New user V026-VREF route supersedes unverified photo-only RC1 assignment."
-        },
-        {
-          "endpoint": "U4.12",
-          "old": "PIC_RC1_VREF",
-          "new": "H_RX_ENABLE_CTL",
-          "basis": "User explicitly excludes V053 from VREF and confirms V053-V070. Prior V053-PIC12/RC1 and V070-R18.1 associations retained; no numerical resistance supplied."
-        },
-        {
-          "endpoint": "U6A.R1",
-          "old": null,
-          "new": "H_PIR_VDD",
-          "basis": "v0.9.8: User confirms V067-J3 pin1 (red wire), on modeled H_PIR_VDD. Prior V067-U6A.R1 local pad association retained. Empty U6A option remains DNP; this does not identify an IC or confirm every other H_PIR_VDD branch."
-        },
-        {
-          "endpoint": "R43.2",
-          "old": null,
-          "new": "H_BAT_DETECT",
-          "basis": "v0.9.8: User confirms V015-TP14. Earlier V015-R43.2 lower-pad association retained. R43.2 joins TP14 on H_BAT_DETECT, whose existing Q1.S branch and functional name remain photo/circuit hypotheses. Q1.L-R43.2 remains explicitly rejected. No numeric resistance supplied."
-        },
-        {
-          "endpoint": "R42.1",
-          "old": "V017_CONTROL",
-          "new": "PIC_TP4_C41",
-          "basis": "v0.9.8: User confirms V017-TP4. Prior V017-R42.1/R44.1 local junction now joins TP4 and PIC25/RB4. R42.1 explicitly user-named; R44 pad1 and C41 branch retain earlier photo selection. No numeric resistance supplied; circuit operating role remains inferred."
-        },
-        {
-          "endpoint": "R44.1",
-          "old": "V017_CONTROL",
-          "new": "PIC_TP4_C41",
-          "basis": "v0.9.8: User confirms V017-TP4. Prior V017-R42.1/R44.1 local junction now joins TP4 and PIC25/RB4. R42.1 explicitly user-named; R44 pad1 and C41 branch retain earlier photo selection. No numeric resistance supplied; circuit operating role remains inferred."
-        }
-      ],
-      "confirmed_via_endpoint_pairs": [
-        {
-          "via": "V049",
-          "endpoints": [
-            "U4.13",
-            "TP3.1"
-          ],
-          "reading": null
-        },
-        {
-          "via": "V026",
-          "endpoints": [
-            "U4.21",
-            "VREF.1"
-          ],
-          "reading": null
-        },
-        {
-          "via": "V067",
-          "endpoints": [
-            "U6A.R1",
-            "J3.1"
-          ],
-          "reading": null
-        },
-        {
-          "via": "V015",
-          "endpoints": [
-            "R43.2",
-            "TP14.1"
-          ],
-          "reading": null
-        },
-        {
-          "via": "V017",
-          "endpoints": [
-            "R42.1",
-            "R44.1",
-            "TP4.1",
-            "U4.25"
-          ],
-          "reading": null
-        }
-      ],
-      "component_evidence": {
-        "U4": "v0.9.8: User confirms RC2/PIC13-V049-TP3, RB0/PIC21-V026-VREF (native TP104), and RC1/PIC12-V053-V070-R18.1. User explicitly rejects V053-VREF, superseding the old photo assumption. No numerical resistance supplied for these connections. All PIC pads have modeled local destinations; other inferred branches still need review. RB4/PIC25-TP4 now also reaches V017/R42.1/R44.1.",
-        "TP3": "v0.9.8: User reports V049 = TP03, interpreted as board TP3. V049 already confirmed to PIC13/RC2. Existing local TP3-R10.1 association retained as photo-derived, not a new user measurement.",
-        "R10": "v0.9.8: RF_MONITOR_PAD now reaches PIC13/RC2 via user V049-TP3 report. R10.1-to-TP3 remains the existing local photo/model association; 10k value is marking-derived and R10.2 ground comes from earlier via review.",
-        "VREF": "v0.9.8: Board silk VREF, native TP104. User confirms V026-VREF (PIC21/RB0) and explicitly rejects V053-VREF. Old RC1 photo association withdrawn. VREF is a board label, not an established voltage or IC function.",
-        "R18": "v0.9.8: User confirms V053-V070, mapping PIC12/RC1 to existing V070/R18.1 control input. Local R18.2-Q7.L-R19.1 topology remains photo/resistance-supported inference from v0.9.7; 11.2 kohm V064-V070 retained. No direct VDD tie.",
-        "U6A": "v0.9.8: User confirms V067-J3 pin1 (red wire), on modeled H_PIR_VDD. Prior V067-U6A.R1 local pad association retained. Empty U6A option remains DNP; this does not identify an IC or confirm every other H_PIR_VDD branch.",
-        "J3": "v0.9.8: User confirms V067-J3 pin1 (red wire), on modeled H_PIR_VDD. Prior V067-U6A.R1 local pad association retained. Empty U6A option remains DNP; this does not identify an IC or confirm every other H_PIR_VDD branch.",
-        "R43": "v0.9.8: User confirms V015-TP14. Earlier V015-R43.2 lower-pad association retained. R43.2 joins TP14 on H_BAT_DETECT, whose existing Q1.S branch and functional name remain photo/circuit hypotheses. Q1.L-R43.2 remains explicitly rejected. No numeric resistance supplied.",
-        "TP14": "v0.9.8: User confirms V015-TP14. Earlier V015-R43.2 lower-pad association retained. R43.2 joins TP14 on H_BAT_DETECT, whose existing Q1.S branch and functional name remain photo/circuit hypotheses. Q1.L-R43.2 remains explicitly rejected. No numeric resistance supplied.",
-        "R42": "v0.9.8: User confirms V017-TP4. Prior V017-R42.1/R44.1 local junction now joins TP4 and PIC25/RB4. R42.1 explicitly user-named; R44 pad1 and C41 branch retain earlier photo selection. No numeric resistance supplied; circuit operating role remains inferred.",
-        "R44": "v0.9.8: User confirms V017-TP4. Prior V017-R42.1/R44.1 local junction now joins TP4 and PIC25/RB4. R42.1 explicitly user-named; R44 pad1 and C41 branch retain earlier photo selection. No numeric resistance supplied; circuit operating role remains inferred.",
-        "TP4": "v0.9.8: User confirms V017-TP4. Prior V017-R42.1/R44.1 local junction now joins TP4 and PIC25/RB4. R42.1 explicitly user-named; R44 pad1 and C41 branch retain earlier photo selection. No numeric resistance supplied; circuit operating role remains inferred."
-      },
-      "qualification": "No numerical ohms supplied for new continuity reports. TP3-R10.1 and Q7 local topology remain qualified prior photo/circuit inferences. V049-V070 variable high resistance remains inconclusive evidence, not a measured OL.",
-      "pending_associations": [],
-      "source_photo": {
-        "path": "photos/user/2026-10-08/VREF_user_locator.png",
-        "sha256": "f601fddf46692105cc6bbc678b88bc451fd2178a3b5bda5fc9bfa84147f6a01d"
-      },
-      "confirmed_via_pairs": [
-        [
-          "V053",
-          "V070"
-        ]
-      ],
-      "rejected_pairs": [
-        {
-          "vias": [
-            "V053",
-            "V026"
-          ],
-          "endpoints": [
-            "U4.12",
-            "VREF.1"
-          ],
-          "reading": "NOT connected (user report; no numeric reading)",
-          "status": "USER_REJECTED_DIRECT_CONNECTION"
-        }
-      ]
-    },
-    "inconclusive_pairs": [
-      {
-        "vias": [
-          "V049",
-          "V070"
-        ],
-        "status": "USER_VARIABLE_HIGH_RESISTANCE_NO_CONTINUITY",
-        "reading": "200-300 kohm, varies with probe placement",
-        "resistance_range_ohms": [
-          200000,
-          300000
-        ],
-        "reverse_reading": null,
-        "qualification": "No direct continuity demonstrated. Probe contact is variable; do not convert to OL, a fixed resistor value, or a definitive permanent open."
-      }
-    ]
+    }
   },
   "staged_followups": [
     {
       "stage": "Q7 and R18",
-      "action": "The 11.2 kohm result matches R18+R19 nominal resistance. With V075 at VDD and IMG_2434, this supports R19 as a base-emitter pull-up and R18 as a series base-drive resistor. The native v0.9.8 reconstruction uses this qualified topology; in-circuit resistance alone does not uniquely prove it."
+      "action": "The 11.2 kohm result matches R18+R19 nominal resistance. With V075 at VDD and IMG_2434, this supports R19 as a base-emitter pull-up and R18 as a series base-drive resistor. The native v0.9.7 reconstruction uses this qualified topology; in-circuit resistance alone does not uniquely prove it."
     },
     {
-      "stage": "PIC updates and reference",
-      "action": "User confirms RC2/V049 to TP3 and RB0/V026 to VREF (native TP104). RC1/PIC12 now reaches R18 via V053-V070; old V053-VREF link rejected. No PIC pads remain open in the model. Other inferred branches and remote roles still need review."
+      "stage": "Remaining GPIOs and reference",
+      "action": "D1 tests V070 to PIC13/RC2 via V049 first. If not direct, compare V070 with V026/PIC21/RB0. Either GPIO can serve an input or output; their order is a search priority, not a pin-function proof. Other local PIC nets may also have missing continuations. V053-V071 remains rejected."
     },
     {
       "stage": "Capacitor search stopped",
@@ -658,11 +538,11 @@
     },
     {
       "stage": "Remaining functional endpoints",
-      "action": "Distinguish Q1.L/V011 user-reported VDD between regulated V064 and motor V001 when the user answers the pending question. V015/R43.2 now reaches TP14; V017/R42.1/R44.1 reaches TP4/PIC25. Target V082/D3 after narrowing its terminal. V075 has a confirmed rail and photo/resistance-supported Q7/R19 terminal assignments; Q7 identity, orientation and function remain qualified. V011-V015 is explicitly excluded."
+      "action": "Distinguish Q1.L/V011 user-reported VDD between regulated V064 and motor V001 when the user answers the pending question. Target R43.2/V015, V017 and V082/D3 after narrowing their roles. V075 has a confirmed rail and photo/resistance-supported Q7/R19 terminal assignments; Q7 identity, orientation and function remain qualified. V011-V015 is explicitly excluded."
     },
     {
       "stage": "Low priority",
-      "action": "V067 now connects J3.1/PIR supply to the earlier U6A pad association. U6A remains DNP; this does not identify an IC. Do not repeat established grounds, motor pairs, Q1 duplicate vias or V079/V080."
+      "action": "V067 belongs to empty U6A; defer unless it helps another live route. Do not repeat established grounds, motor pairs, Q1 duplicate vias or V079/V080."
     }
   ],
   "photos": {

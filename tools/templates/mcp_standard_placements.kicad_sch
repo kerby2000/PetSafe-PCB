@@ -7009,7 +7009,7 @@
 				(hide yes)
 			)
 		)
-		(property "ViaEvidence" "v0.9.6 user working pairs: 5/RA3 V036-V108 R14; 6/RA4 V037-V102 R15; 7/RA5 V039-V097 R16; 11/RC0 V047-V091 R11. Existing RC6-R13 retained. Only 13/RC2 and 21/RB0 remain without modeled onward routes."
+		(property "ViaEvidence" "v0.9.8: User confirms RC2/PIC13-V049-TP3, RB0/PIC21-V026-VREF (native TP104), and RC1/PIC12-V053-V070-R18.1. User explicitly rejects V053-VREF, superseding the old photo assumption. No numerical resistance supplied for these connections. All PIC pads have modeled local destinations; other inferred branches still need review. RB4/PIC25-TP4 now also reaches V017/R42.1/R44.1."
 			(at 262.89 78.74 0)
 			(effects
 				(font
@@ -9183,7 +9183,7 @@
 				)
 			)
 		)
-		(property "ViaEvidence" "v0.9.1 V017 joins R42.1 and R44 free pad (pad1 from photo); pad2 local Q1 connection retained."
+		(property "ViaEvidence" "v0.9.8: User confirms V017-TP4. Prior V017-R42.1/R44.1 local junction now joins TP4 and PIC25/RB4. R42.1 explicitly user-named; R44 pad1 and C41 branch retain earlier photo selection. No numeric resistance supplied; circuit operating role remains inferred."
 			(at 431.8 111.76 0)
 			(effects
 				(font
@@ -9271,7 +9271,7 @@
 				)
 			)
 		)
-		(property "ViaEvidence" "v0.9.4: lower pad2 reaches V015, not V011-V014. User explicitly rejects the old Q1.L-R43.2 photo-derived connection; withdrawn in native schematic and retained only as historical evidence."
+		(property "ViaEvidence" "v0.9.8: User confirms V015-TP14. Earlier V015-R43.2 lower-pad association retained. R43.2 joins TP14 on H_BAT_DETECT, whose existing Q1.S branch and functional name remain photo/circuit hypotheses. Q1.L-R43.2 remains explicitly rejected. No numeric resistance supplied."
 			(at 462.28 124.46 0)
 			(effects
 				(font
@@ -9359,6 +9359,9 @@
 				)
 			)
 		)
+    (property "ViaEvidence" "v0.9.8: User confirms V015-TP14. Earlier V015-R43.2 lower-pad association retained. R43.2 joins TP14 on H_BAT_DETECT, whose existing Q1.S branch and functional name remain photo/circuit hypotheses. Q1.L-R43.2 remains explicitly rejected. No numeric resistance supplied." (at 486.41 104.14 0)
+      (effects (font (size 1.27 1.27)) (hide yes))
+    )
 		(pin "1"
 			(uuid "3090f941-9fbd-41e7-89c4-f26733175ad2")
 		)
@@ -10690,7 +10693,7 @@
 				)
 			)
 		)
-		(property "ViaEvidence" "v0.9: pin2 photo free end to V116 user GND."
+		(property "ViaEvidence" "v0.9.8: RF_MONITOR_PAD now reaches PIC13/RC2 via user V049-TP3 report. R10.1-to-TP3 remains the existing local photo/model association; 10k value is marking-derived and R10.2 ground comes from earlier via review."
 			(at 34.29 251.46 0)
 			(effects
 				(font
@@ -10778,6 +10781,9 @@
 				)
 			)
 		)
+    (property "ViaEvidence" "v0.9.8: User reports V049 = TP03, interpreted as board TP3. V049 already confirmed to PIC13/RC2. Existing local TP3-R10.1 association retained as photo-derived, not a new user measurement." (at 52.07 251.46 0)
+      (effects (font (size 1.27 1.27)) (hide yes))
+    )
 		(pin "1"
 			(uuid "b9ddde4c-ce8c-4aba-a89a-9500681a45b9")
 		)
@@ -12329,7 +12335,7 @@
 				)
 			)
 		)
-		(property "ViaEvidence" "v0.9.1 user V017: R42.1 joins R44; R44.1 chosen from photo. Earlier R42.1-to-ANT2 hypothesis withdrawn."
+		(property "ViaEvidence" "v0.9.8: User confirms V017-TP4. Prior V017-R42.1/R44.1 local junction now joins TP4 and PIC25/RB4. R42.1 explicitly user-named; R44 pad1 and C41 branch retain earlier photo selection. No numeric resistance supplied; circuit operating role remains inferred."
 			(at 511.81 237.49 0)
 			(effects
 				(font
@@ -13009,7 +13015,7 @@
 				)
 			)
 		)
-    (property "ViaEvidence" "v0.9.7: V070/free pad1 to V064 measured 11.2 kohm, not direct VDD. 1.2k R18 plus 10k R19 fits series path to VDD. Pad2 moved to Q7 base by photo/circuit inference; pad1 control source remains unknown." (at 295.91 182.88 0)
+    (property "ViaEvidence" "v0.9.8: User confirms V053-V070, mapping PIC12/RC1 to existing V070/R18.1 control input. Local R18.2-Q7.L-R19.1 topology remains photo/resistance-supported inference from v0.9.7; 11.2 kohm V064-V070 retained. No direct VDD tie." (at 295.91 182.88 0)
       (effects (font (size 1.27 1.27)) (hide yes))
     )
 		(pin "1"
@@ -13894,6 +13900,9 @@
 				)
 			)
 		)
+    (property "ViaEvidence" "v0.9.8: User confirms V017-TP4. Prior V017-R42.1/R44.1 local junction now joins TP4 and PIC25/RB4. R42.1 explicitly user-named; R44 pad1 and C41 branch retain earlier photo selection. No numeric resistance supplied; circuit operating role remains inferred." (at 198.12 76.2 0)
+      (effects (font (size 1.27 1.27)) (hide yes))
+    )
 		(pin "1"
 			(uuid "6c30c03d-54ee-4323-b523-3d3157a827f1")
 		)
@@ -16502,6 +16511,9 @@
 				)
 			)
 		)
+    (property "ViaEvidence" "v0.9.8: User confirms V067-J3 pin1 (red wire), on modeled H_PIR_VDD. Prior V067-U6A.R1 local pad association retained. Empty U6A option remains DNP; this does not identify an IC or confirm every other H_PIR_VDD branch." (at 405.13 327.66 0)
+      (effects (font (size 1.27 1.27)) (hide yes))
+    )
 		(pin "1"
 			(uuid "4a9aa7de-2512-460d-ac9f-c75ebd830f3e")
 		)
@@ -17410,6 +17422,9 @@
 				)
 			)
 		)
+    (property "ViaEvidence" "v0.9.8: User confirms V067-J3 pin1 (red wire), on modeled H_PIR_VDD. Prior V067-U6A.R1 local pad association retained. Empty U6A option remains DNP; this does not identify an IC or confirm every other H_PIR_VDD branch." (at 440.69 361.95 0)
+      (effects (font (size 1.27 1.27)) (hide yes))
+    )
 		(pin "1"
 			(uuid "1e8a2c08-0b3d-46f7-a374-da58d4bec8fc")
 		)
@@ -17853,7 +17868,7 @@
 				)
 			)
 		)
-		(property "Value" "VREF / VREF pad / net ?"
+		(property "Value" "VREF"
 			(at 473.71 382.27 0)
 			(show_name no)
 			(do_not_autoplace no)
@@ -17896,6 +17911,9 @@
 				)
 			)
 		)
+    (property "ViaEvidence" "v0.9.8: Board silk VREF, native TP104. User confirms V026-VREF (PIC21/RB0) and explicitly rejects V053-VREF. Old RC1 photo association withdrawn. VREF is a board label, not an established voltage or IC function." (at 478.79 382.27 0)
+      (effects (font (size 1.27 1.27)) (hide yes))
+    )
 		(pin "1"
 			(uuid "82c658ae-36a3-4237-b93c-9b0227a44f0b")
 		)

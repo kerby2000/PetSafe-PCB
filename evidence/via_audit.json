@@ -1,6 +1,6 @@
 {
   "date": "2026-10-08",
-  "revision": "v0.9.7",
+  "revision": "v0.9.8",
   "source_front": "photos/front_registered.jpg",
   "source_rear": "photos/back_mirrored_registered.jpg",
   "images_are_original_photographic_mosaics": true,
@@ -486,9 +486,10 @@
       "rear_appearance": "REAR_CLEARANCE",
       "front_match": "PROJECTED: inspect original front photo; may be under a component",
       "endpoints": [
-        "R43.2"
+        "R43.2",
+        "TP14.1"
       ],
-      "net": null,
+      "net": "H_BAT_DETECT",
       "confidence": "rear visible; global front projection approximate",
       "note": "Visible clearance separates this site from the surrounding rear copper; this alone does not identify an internal net.",
       "id": "V015",
@@ -496,13 +497,15 @@
       "user_reports": [
         {
           "id": "V015",
-          "claim": "R43.2 lower pad",
-          "kind": "component_or_issue"
+          "kind": "signal",
+          "claim": "v0.9.8: User confirms V015-TP14. Earlier V015-R43.2 lower-pad association retained. R43.2 joins TP14 on H_BAT_DETECT, whose existing Q1.S branch and functional name remain photo/circuit hypotheses. Q1.L-R43.2 remains explicitly rejected. No numeric resistance supplied."
         }
       ],
-      "review_status": "USER_REPORTED",
-      "modeled_nets": [],
-      "component_crosscheck": "User identifies R43 lower pad2. Earlier photo-derived Q1.L join explicitly withdrawn; R43.2 onward destination unknown.",
+      "review_status": "ASSIGNED",
+      "modeled_nets": [
+        "H_BAT_DETECT"
+      ],
+      "component_crosscheck": "User confirms V015-TP14 and earlier R43 lower pad2 association. Q1.L remains excluded. Existing TP14-Q1.S branch and battery-detect role remain inferred.",
       "excluded_endpoints": [
         "Q1.L"
       ]
@@ -557,9 +560,11 @@
       "front_match": "PROJECTED: inspect original front photo; may be under a component",
       "endpoints": [
         "R42.1",
-        "R44.1"
+        "R44.1",
+        "TP4.1",
+        "U4.25"
       ],
-      "net": "V017_CONTROL",
+      "net": "PIC_TP4_C41",
       "confidence": "rear visible; global front projection approximate",
       "note": "Visible clearance separates this site from the surrounding rear copper; this alone does not identify an internal net.",
       "id": "V017",
@@ -567,15 +572,15 @@
       "user_reports": [
         {
           "id": "V017",
-          "claim": "R42.1, R44",
-          "kind": "component_or_issue"
+          "kind": "signal",
+          "claim": "v0.9.8: User confirms V017-TP4. Prior V017-R42.1/R44.1 local junction now joins TP4 and PIC25/RB4. R42.1 explicitly user-named; R44 pad1 and C41 branch retain earlier photo selection. No numeric resistance supplied; circuit operating role remains inferred."
         }
       ],
       "review_status": "ASSIGNED",
       "modeled_nets": [
-        "V017_CONTROL"
+        "PIC_TP4_C41"
       ],
-      "component_crosscheck": "User explicitly names R42.1 and R44; photo selects R44 free pad1. Literal R42 retained; old R42.1-to-ANT2 hypothesis withdrawn."
+      "component_crosscheck": "User confirms V017-TP4, previously mapped to PIC25/RB4. R42.1 explicitly named; R44 free pad1 photo-selected. Old ANT2 hypothesis remains withdrawn."
     },
     {
       "rear_xy": [
@@ -861,9 +866,10 @@
       "rear_appearance": "REAR_CLEARANCE",
       "front_match": "MANUALLY MATCHED",
       "endpoints": [
-        "U4.21"
+        "U4.21",
+        "VREF.1"
       ],
-      "net": null,
+      "net": "PIC_RB0_VREF",
       "confidence": "photo-derived, not continuity measured",
       "note": "Via beside/under the PIC body near D6. Rear annular clearance is visible; external endpoints require more tracing.",
       "id": "V026",
@@ -871,13 +877,18 @@
       "user_reports": [
         {
           "id": "V026",
-          "claim": "PIC pin21/RB0; onward destination unknown",
-          "kind": "component_or_issue"
+          "kind": "signal",
+          "claim": "V026 reaches the VREF test point (native TP104). Earlier PIC21/RB0 association retained."
         }
       ],
-      "review_status": "USER_REPORTED",
-      "component_crosscheck": "User correction: V026 goes to PIC21/RB0; remote destination remains unknown.",
-      "modeled_nets": []
+      "review_status": "ASSIGNED",
+      "component_crosscheck": "User V026-VREF report with prior V026-PIC21/RB0 mapping. VREF is native TP104; voltage/function not established.",
+      "modeled_nets": [
+        "PIC_RB0_VREF"
+      ],
+      "excluded_vias": [
+        "V053"
+      ]
     },
     {
       "rear_xy": [
@@ -1552,23 +1563,26 @@
       "rear_appearance": "REAR_CLEARANCE",
       "front_match": "PROJECTED: inspect original front photo; may be under a component",
       "endpoints": [
-        "U4.13"
+        "U4.13",
+        "TP3.1"
       ],
-      "net": null,
-      "confidence": "User-confirmed PIC pin-to-via association; no new per-site ohms supplied",
+      "net": "RF_MONITOR_PAD",
+      "confidence": "User endpoint association; no numerical resistance for TP3 route",
       "note": "Visible clearance separates this site from the surrounding rear copper; this alone does not identify an internal net.",
       "id": "V049",
       "active": true,
       "user_reports": [
         {
           "id": "V049",
-          "claim": "PIC U4 pin 13 / RC2",
-          "kind": "component_or_issue"
+          "kind": "signal",
+          "claim": "V049 reaches TP03, interpreted as board TP3. Earlier user V049-PIC13/RC2 association retained."
         }
       ],
-      "review_status": "USER_REPORTED",
-      "component_crosscheck": "User confirms this PIC pin-to-via connection. Earlier under-body alignment hypothesis superseded. Onward destination remains unknown; not NC. Front marker coordinates remain projected.",
-      "modeled_nets": [],
+      "review_status": "ASSIGNED",
+      "component_crosscheck": "User confirms V049 reaches TP03 (board TP3), with earlier PIC13/RC2 association. Existing TP3-R10.1 local branch remains photo-derived; no new resistance supplied.",
+      "modeled_nets": [
+        "RF_MONITOR_PAD"
+      ],
       "excluded_vias": [
         "V071"
       ],
@@ -1581,7 +1595,24 @@
           "reading": "20 kohm",
           "resistance_ohms": 20000,
           "reverse_reading": null
+        },
+        {
+          "vias": [
+            "V049",
+            "V070"
+          ],
+          "status": "USER_VARIABLE_HIGH_RESISTANCE_NO_CONTINUITY",
+          "reading": "200-300 kohm, varies with probe placement",
+          "resistance_range_ohms": [
+            200000,
+            300000
+          ],
+          "reverse_reading": null,
+          "qualification": "No direct continuity demonstrated. Probe contact is variable; do not convert to OL, a fixed resistor value, or a definitive permanent open."
         }
+      ],
+      "inconclusive_vias": [
+        "V070"
       ]
     },
     {
@@ -1679,21 +1710,35 @@
       "front_match": "MANUALLY MATCHED",
       "endpoints": [
         "U4.12",
-        "VREF.1"
+        "R18.1"
       ],
-      "net": "PIC_RC1_VREF",
-      "confidence": "photo-derived, not continuity measured",
+      "net": "H_RX_ENABLE_CTL",
+      "confidence": "User continuity report; no numerical resistance supplied",
       "note": "PIC RC1 pin 12 reaches this site. Rear clearance and no visible onward surface trace; hidden continuation remains unresolved. Do not call it GND or VDD.",
       "id": "V053",
       "active": true,
-      "user_reports": [],
-      "review_status": "PHOTO_LOCAL",
-      "component_crosscheck": "Visible trace reaches VREF board pad. This local pad connection does not identify an onward buried net.",
+      "user_reports": [
+        {
+          "id": "V053",
+          "kind": "signal",
+          "claim": "User confirms V053-V070 (PIC12/RC1 to R18); V053 explicitly NOT connected to VREF. No numeric reading supplied."
+        }
+      ],
+      "review_status": "ASSIGNED",
+      "component_crosscheck": "User confirms V053-V070 and excludes V053-VREF. PIC12/RC1 reaches R18 input; Q7 local operating role remains inferred. No numeric ohms supplied.",
       "modeled_nets": [
-        "PIC_RC1_VREF"
+        "H_RX_ENABLE_CTL"
       ],
       "excluded_vias": [
-        "V071"
+        "V071",
+        "V026"
+      ],
+      "joined_vias": [
+        "V053",
+        "V070"
+      ],
+      "excluded_endpoints": [
+        "VREF.1"
       ]
     },
     {
@@ -2133,9 +2178,10 @@
       "rear_appearance": "REAR_CLEARANCE",
       "front_match": "PROJECTED: inspect original front photo; may be under a component",
       "endpoints": [
-        "U6A.R1"
+        "U6A.R1",
+        "J3.1"
       ],
-      "net": null,
+      "net": "H_PIR_VDD",
       "confidence": "rear visible; global front projection approximate",
       "note": "Visible clearance separates this site from the surrounding rear copper; this alone does not identify an internal net.",
       "id": "V067",
@@ -2143,13 +2189,15 @@
       "user_reports": [
         {
           "id": "V067",
-          "claim": "U6A",
-          "kind": "component_or_issue"
+          "kind": "signal",
+          "claim": "v0.9.8: User confirms V067-J3 pin1 (red wire), on modeled H_PIR_VDD. Prior V067-U6A.R1 local pad association retained. Empty U6A option remains DNP; this does not identify an IC or confirm every other H_PIR_VDD branch."
         }
       ],
-      "review_status": "USER_REPORTED",
-      "component_crosscheck": "Unpopulated U6A upper-right pad to via; remote destination unknown.",
-      "modeled_nets": []
+      "review_status": "ASSIGNED",
+      "component_crosscheck": "User confirms V067-J3 pin1/red wire; retain earlier local U6A.R1 pad association. Other H_PIR_VDD branches remain qualified.",
+      "modeled_nets": [
+        "H_PIR_VDD"
+      ]
     },
     {
       "rear_xy": [
@@ -2225,22 +2273,23 @@
       "rear_appearance": "REAR_CLEARANCE",
       "front_match": "PROJECTED: inspect original front photo; may be under a component",
       "endpoints": [
+        "U4.12",
         "R18.1"
       ],
       "net": "H_RX_ENABLE_CTL",
-      "confidence": "Measured resistive path; control role inferred, GPIO source unmeasured",
+      "confidence": "User continuity report; no numerical resistance supplied",
       "note": "Visible clearance separates this site from the surrounding rear copper; this alone does not identify an internal net.",
       "id": "V070",
       "active": true,
       "user_reports": [
         {
           "id": "V070",
-          "kind": "resistive_path",
-          "claim": "V064-V070 measures 11.2 kohm, not a direct rail connection. V070 reaches the free end of R18."
+          "kind": "signal",
+          "claim": "User confirms V053-V070 (PIC12/RC1 to R18); V053 explicitly NOT connected to VREF. No numeric reading supplied."
         }
       ],
       "review_status": "ASSIGNED",
-      "component_crosscheck": "User V064-V070 = 11.2 kohm excludes direct VDD. Nominal R18 1.2k + R19 10k fits the measured path; base-input topology supported by photo/circuit inference. Onward control source unknown.",
+      "component_crosscheck": "User confirms V053-V070 and excludes V053-VREF. PIC12/RC1 reaches R18 input; Q7 local operating role remains inferred. No numeric ohms supplied.",
       "modeled_nets": [
         "H_RX_ENABLE_CTL"
       ],
@@ -2256,7 +2305,28 @@
           "reading": "11.2 kohm",
           "resistance_ohms": 11200,
           "reverse_reading": null
+        },
+        {
+          "vias": [
+            "V049",
+            "V070"
+          ],
+          "status": "USER_VARIABLE_HIGH_RESISTANCE_NO_CONTINUITY",
+          "reading": "200-300 kohm, varies with probe placement",
+          "resistance_range_ohms": [
+            200000,
+            300000
+          ],
+          "reverse_reading": null,
+          "qualification": "No direct continuity demonstrated. Probe contact is variable; do not convert to OL, a fixed resistor value, or a definitive permanent open."
         }
+      ],
+      "inconclusive_vias": [
+        "V049"
+      ],
+      "joined_vias": [
+        "V053",
+        "V070"
       ]
     },
     {
@@ -4122,32 +4192,52 @@
   },
   "new_model_connections": [
     {
-      "endpoint": "Q7.R",
-      "old": "H_RX_SUPPLY_FEED",
-      "new": "H_VDD",
-      "basis": "v0.9.7: V064-V075 confirmed; V064-V070 measured 11.2 kohm. IMG_2434 plus R18 1.2k + R19 10k supports PNP supply switch: E/R pin2 at VDD, B/L pin1 through R18 control and R19 pull-up. Terminal selection is a supported photo/circuit inference, not a separate user pad measurement.",
-      "evidence_class": "Photo + measured resistance supports circuit inference; exact local pad not separately probed"
+      "endpoint": "U4.13",
+      "old": null,
+      "new": "RF_MONITOR_PAD",
+      "basis": "User: I found it v049 is a TP03. Earlier V049-to-PIC13/RC2 was user-confirmed; TP03 interpreted as photographed TP3."
     },
     {
-      "endpoint": "R19.2",
-      "old": "H_RX_ENABLE_CTL",
-      "new": "H_VDD",
-      "basis": "v0.9.7: 10k pull-up candidate between Q7 base/pad1 and emitter/VDD/pad2. IMG_2434 and V064-V075 plus measured V064-V070 11.2 kohm support this reconstruction; not an isolated-resistor measurement.",
-      "evidence_class": "Photo + measured resistance supports circuit inference; exact local pad not separately probed"
+      "endpoint": "U4.21",
+      "old": null,
+      "new": "PIC_RB0_VREF",
+      "basis": "User confirms V026 reaches VREF test point; prior V026-RB0/PIC21 mapping confirmed."
     },
     {
-      "endpoint": "R18.1",
-      "old": "H_VDD",
+      "endpoint": "VREF.1",
+      "old": "PIC_RC1_VREF",
+      "new": "PIC_RB0_VREF",
+      "basis": "New user V026-VREF route supersedes unverified photo-only RC1 assignment."
+    },
+    {
+      "endpoint": "U4.12",
+      "old": "PIC_RC1_VREF",
       "new": "H_RX_ENABLE_CTL",
-      "basis": "v0.9.7: V070/free pad1 to V064 measured 11.2 kohm, not direct VDD. 1.2k R18 plus 10k R19 fits series path to VDD. Pad2 moved to Q7 base by photo/circuit inference; pad1 control source remains unknown.",
-      "evidence_class": "Photo + measured resistance supports circuit inference; exact local pad not separately probed"
+      "basis": "User explicitly excludes V053 from VREF and confirms V053-V070. Prior V053-PIC12/RC1 and V070-R18.1 associations retained; no numerical resistance supplied."
     },
     {
-      "endpoint": "R18.2",
-      "old": "H_RX_SUPPLY_FEED",
-      "new": "H_RX_ENABLE",
-      "basis": "v0.9.7: V070/free pad1 to V064 measured 11.2 kohm, not direct VDD. 1.2k R18 plus 10k R19 fits series path to VDD. Pad2 moved to Q7 base by photo/circuit inference; pad1 control source remains unknown.",
-      "evidence_class": "Photo + measured resistance supports circuit inference; exact local pad not separately probed"
+      "endpoint": "U6A.R1",
+      "old": null,
+      "new": "H_PIR_VDD",
+      "basis": "v0.9.8: User confirms V067-J3 pin1 (red wire), on modeled H_PIR_VDD. Prior V067-U6A.R1 local pad association retained. Empty U6A option remains DNP; this does not identify an IC or confirm every other H_PIR_VDD branch."
+    },
+    {
+      "endpoint": "R43.2",
+      "old": null,
+      "new": "H_BAT_DETECT",
+      "basis": "v0.9.8: User confirms V015-TP14. Earlier V015-R43.2 lower-pad association retained. R43.2 joins TP14 on H_BAT_DETECT, whose existing Q1.S branch and functional name remain photo/circuit hypotheses. Q1.L-R43.2 remains explicitly rejected. No numeric resistance supplied."
+    },
+    {
+      "endpoint": "R42.1",
+      "old": "V017_CONTROL",
+      "new": "PIC_TP4_C41",
+      "basis": "v0.9.8: User confirms V017-TP4. Prior V017-R42.1/R44.1 local junction now joins TP4 and PIC25/RB4. R42.1 explicitly user-named; R44 pad1 and C41 branch retain earlier photo selection. No numeric resistance supplied; circuit operating role remains inferred."
+    },
+    {
+      "endpoint": "R44.1",
+      "old": "V017_CONTROL",
+      "new": "PIC_TP4_C41",
+      "basis": "v0.9.8: User confirms V017-TP4. Prior V017-R42.1/R44.1 local junction now joins TP4 and PIC25/RB4. R42.1 explicitly user-named; R44 pad1 and C41 branch retain earlier photo selection. No numeric resistance supplied; circuit operating role remains inferred."
     }
   ],
   "sources": [
@@ -4166,7 +4256,7 @@
   "review_summary": {
     "catalogued_ids": 127,
     "active_sites": 120,
-    "user_reported_ids": 120,
+    "user_reported_ids": 121,
     "original_user_reported_ids": 97,
     "omitted_from_user_list": [
       "V027",
@@ -4174,8 +4264,7 @@
       "V030",
       "V035",
       "V038",
-      "V042",
-      "V053"
+      "V042"
     ],
     "rejected": [
       "V033",
@@ -4188,11 +4277,11 @@
     ],
     "conflicts": [],
     "statuses": {
-      "ASSIGNED": 103,
-      "USER_REPORTED": 10,
-      "PHOTO_LOCAL": 7,
+      "ASSIGNED": 108,
+      "USER_REPORTED": 6,
+      "PHOTO_LOCAL": 6,
       "REJECTED_NOT_VIA": 7
     }
   },
-  "review_update_id": "q7-resistive-path-11200-ohm"
+  "review_update_id": "pic-rc1-r18-rc2-tp3-rb0-vref-confirmed"
 }

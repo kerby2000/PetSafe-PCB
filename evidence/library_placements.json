@@ -168,8 +168,9 @@
       "includePins": true,
       "footprint": "Package_SO:SOIC-28W_7.5x17.9mm_P1.27mm",
       "properties": {
-        "ViaEvidence": "v0.9.6 user working pairs: 5/RA3 V036-V108 R14; 6/RA4 V037-V102 R15; 7/RA5 V039-V097 R16; 11/RC0 V047-V091 R11. Existing RC6-R13 retained. Only 13/RC2 and 21/RB0 remain without modeled onward routes."
-      }
+        "ViaEvidence": "v0.9.8: User confirms RC2/PIC13-V049-TP3, RB0/PIC21-V026-VREF (native TP104), and RC1/PIC12-V053-V070-R18.1. User explicitly rejects V053-VREF, superseding the old photo assumption. No numerical resistance supplied for these connections. All PIC pads have modeled local destinations; other inferred branches still need review. RB4/PIC25-TP4 now also reaches V017/R42.1/R44.1."
+      },
+      "via_evidence": "v0.9.8: User confirms RC2/PIC13-V049-TP3, RB0/PIC21-V026-VREF (native TP104), and RC1/PIC12-V053-V070-R18.1. User explicitly rejects V053-VREF, superseding the old photo assumption. No numerical resistance supplied for these connections. All PIC pads have modeled local destinations; other inferred branches still need review. RB4/PIC25-TP4 now also reaches V017/R42.1/R44.1."
     },
     {
       "symbol": "Connector_Generic:Conn_01x05",
@@ -477,8 +478,9 @@
       "includePins": true,
       "footprint": "Resistor_SMD:R_0603_1608Metric",
       "properties": {
-        "ViaEvidence": "v0.9.1 V017 joins R42.1 and R44 free pad (pad1 from photo); pad2 local Q1 connection retained."
-      }
+        "ViaEvidence": "v0.9.8: User confirms V017-TP4. Prior V017-R42.1/R44.1 local junction now joins TP4 and PIC25/RB4. R42.1 explicitly user-named; R44 pad1 and C41 branch retain earlier photo selection. No numeric resistance supplied; circuit operating role remains inferred."
+      },
+      "via_evidence": "v0.9.8: User confirms V017-TP4. Prior V017-R42.1/R44.1 local junction now joins TP4 and PIC25/RB4. R42.1 explicitly user-named; R44 pad1 and C41 branch retain earlier photo selection. No numeric resistance supplied; circuit operating role remains inferred."
     },
     {
       "symbol": "Device:R",
@@ -492,8 +494,9 @@
       "includePins": true,
       "footprint": "Resistor_SMD:R_0603_1608Metric",
       "properties": {
-        "ViaEvidence": "v0.9.4: lower pad2 reaches V015, not V011-V014. User explicitly rejects the old Q1.L-R43.2 photo-derived connection; withdrawn in native schematic and retained only as historical evidence."
-      }
+        "ViaEvidence": "v0.9.8: User confirms V015-TP14. Earlier V015-R43.2 lower-pad association retained. R43.2 joins TP14 on H_BAT_DETECT, whose existing Q1.S branch and functional name remain photo/circuit hypotheses. Q1.L-R43.2 remains explicitly rejected. No numeric resistance supplied."
+      },
+      "via_evidence": "v0.9.8: User confirms V015-TP14. Earlier V015-R43.2 lower-pad association retained. R43.2 joins TP14 on H_BAT_DETECT, whose existing Q1.S branch and functional name remain photo/circuit hypotheses. Q1.L-R43.2 remains explicitly rejected. No numeric resistance supplied."
     },
     {
       "symbol": "Connector:TestPoint",
@@ -505,7 +508,11 @@
       },
       "rotation": 270,
       "includePins": true,
-      "footprint": "TestPoint:TestPoint_THTPad_D2.0mm_Drill1.0mm"
+      "footprint": "TestPoint:TestPoint_THTPad_D2.0mm_Drill1.0mm",
+      "via_evidence": "v0.9.8: User confirms V015-TP14. Earlier V015-R43.2 lower-pad association retained. R43.2 joins TP14 on H_BAT_DETECT, whose existing Q1.S branch and functional name remain photo/circuit hypotheses. Q1.L-R43.2 remains explicitly rejected. No numeric resistance supplied.",
+      "properties": {
+        "ViaEvidence": "v0.9.8: User confirms V015-TP14. Earlier V015-R43.2 lower-pad association retained. R43.2 joins TP14 on H_BAT_DETECT, whose existing Q1.S branch and functional name remain photo/circuit hypotheses. Q1.L-R43.2 remains explicitly rejected. No numeric resistance supplied."
+      }
     },
     {
       "symbol": "74xGxx:74LVC2G14",
@@ -728,7 +735,10 @@
       },
       "rotation": 90,
       "includePins": true,
-      "footprint": "Resistor_SMD:R_0603_1608Metric"
+      "footprint": "Resistor_SMD:R_0603_1608Metric",
+      "properties": {
+        "ViaEvidence": "v0.9.8: RF_MONITOR_PAD now reaches PIC13/RC2 via user V049-TP3 report. R10.1-to-TP3 remains the existing local photo/model association; 10k value is marking-derived and R10.2 ground comes from earlier via review."
+      }
     },
     {
       "symbol": "Connector:TestPoint",
@@ -740,7 +750,10 @@
       },
       "rotation": 270,
       "includePins": true,
-      "footprint": "TestPoint:TestPoint_THTPad_D2.0mm_Drill1.0mm"
+      "footprint": "TestPoint:TestPoint_THTPad_D2.0mm_Drill1.0mm",
+      "properties": {
+        "ViaEvidence": "v0.9.8: User reports V049 = TP03, interpreted as board TP3. V049 already confirmed to PIC13/RC2. Existing local TP3-R10.1 association retained as photo-derived, not a new user measurement."
+      }
     },
     {
       "symbol": "Device:LED_Dual_AAKK",
@@ -982,8 +995,9 @@
       "includePins": true,
       "footprint": "Resistor_SMD:R_0603_1608Metric",
       "properties": {
-        "ViaEvidence": "v0.9.1 user V017: R42.1 joins R44; R44.1 chosen from photo. Earlier R42.1-to-ANT2 hypothesis withdrawn."
-      }
+        "ViaEvidence": "v0.9.8: User confirms V017-TP4. Prior V017-R42.1/R44.1 local junction now joins TP4 and PIC25/RB4. R42.1 explicitly user-named; R44 pad1 and C41 branch retain earlier photo selection. No numeric resistance supplied; circuit operating role remains inferred."
+      },
+      "via_evidence": "v0.9.8: User confirms V017-TP4. Prior V017-R42.1/R44.1 local junction now joins TP4 and PIC25/RB4. R42.1 explicitly user-named; R44 pad1 and C41 branch retain earlier photo selection. No numeric resistance supplied; circuit operating role remains inferred."
     },
     {
       "symbol": "Diode:BAV99",
@@ -1119,7 +1133,7 @@
       "includePins": true,
       "footprint": "Resistor_SMD:R_0603_1608Metric",
       "properties": {
-        "ViaEvidence": "v0.9.7: V070/free pad1 to V064 measured 11.2 kohm, not direct VDD. 1.2k R18 plus 10k R19 fits series path to VDD. Pad2 moved to Q7 base by photo/circuit inference; pad1 control source remains unknown."
+        "ViaEvidence": "v0.9.8: User confirms V053-V070, mapping PIC12/RC1 to existing V070/R18.1 control input. Local R18.2-Q7.L-R19.1 topology remains photo/resistance-supported inference from v0.9.7; 11.2 kohm V064-V070 retained. No direct VDD tie."
       }
     },
     {
@@ -1258,7 +1272,11 @@
       },
       "rotation": 270,
       "includePins": true,
-      "footprint": "TestPoint:TestPoint_THTPad_D2.0mm_Drill1.0mm"
+      "footprint": "TestPoint:TestPoint_THTPad_D2.0mm_Drill1.0mm",
+      "via_evidence": "v0.9.8: User confirms V017-TP4. Prior V017-R42.1/R44.1 local junction now joins TP4 and PIC25/RB4. R42.1 explicitly user-named; R44 pad1 and C41 branch retain earlier photo selection. No numeric resistance supplied; circuit operating role remains inferred.",
+      "properties": {
+        "ViaEvidence": "v0.9.8: User confirms V017-TP4. Prior V017-R42.1/R44.1 local junction now joins TP4 and PIC25/RB4. R42.1 explicitly user-named; R44 pad1 and C41 branch retain earlier photo selection. No numeric resistance supplied; circuit operating role remains inferred."
+      }
     },
     {
       "symbol": "Transistor_BJT:Q_PNP_BEC",
@@ -1646,7 +1664,11 @@
       },
       "rotation": 0,
       "includePins": true,
-      "footprint": "Connector_PinHeader_2.54mm:PinHeader_1x03_P2.54mm_Vertical"
+      "footprint": "Connector_PinHeader_2.54mm:PinHeader_1x03_P2.54mm_Vertical",
+      "via_evidence": "v0.9.8: User confirms V067-J3 pin1 (red wire), on modeled H_PIR_VDD. Prior V067-U6A.R1 local pad association retained. Empty U6A option remains DNP; this does not identify an IC or confirm every other H_PIR_VDD branch.",
+      "properties": {
+        "ViaEvidence": "v0.9.8: User confirms V067-J3 pin1 (red wire), on modeled H_PIR_VDD. Prior V067-U6A.R1 local pad association retained. Empty U6A option remains DNP; this does not identify an IC or confirm every other H_PIR_VDD branch."
+      }
     },
     {
       "symbol": "Transistor_BJT:BC847",
@@ -1820,7 +1842,10 @@
       },
       "rotation": 0,
       "includePins": true,
-      "footprint": "Package_TO_SOT_SMD:SOT-23"
+      "footprint": "Package_TO_SOT_SMD:SOT-23",
+      "properties": {
+        "ViaEvidence": "v0.9.8: User confirms V067-J3 pin1 (red wire), on modeled H_PIR_VDD. Prior V067-U6A.R1 local pad association retained. Empty U6A option remains DNP; this does not identify an IC or confirm every other H_PIR_VDD branch."
+      }
     },
     {
       "symbol": "Connector_Generic:Conn_01x03",
@@ -1885,14 +1910,17 @@
     {
       "symbol": "Connector:TestPoint",
       "reference": "TP104",
-      "value": "VREF / VREF pad / net ?",
+      "value": "VREF",
       "position": {
         "x": 478.79,
         "y": 382.27
       },
       "rotation": 270,
       "includePins": true,
-      "footprint": "TestPoint:TestPoint_THTPad_D2.0mm_Drill1.0mm"
+      "footprint": "TestPoint:TestPoint_THTPad_D2.0mm_Drill1.0mm",
+      "properties": {
+        "ViaEvidence": "v0.9.8: Board silk VREF, native TP104. User confirms V026-VREF (PIC21/RB0) and explicitly rejects V053-VREF. Old RC1 photo association withdrawn. VREF is a board label, not an established voltage or IC function."
+      }
     }
   ],
   "extra_units": [
