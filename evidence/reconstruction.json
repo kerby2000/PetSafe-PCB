@@ -1,6 +1,6 @@
 {
   "board": "100-1339 R03 A",
-  "revision": "v0.9.8",
+  "revision": "v0.9.9",
   "status": "INFERRED WORKING CIRCUIT / NOT CONTINUITY VERIFIED",
   "components": [
     {
@@ -21,7 +21,8 @@
       "library_symbol": "Device:R",
       "footprint": "Resistor_SMD:R_0603_1608Metric",
       "footprint_confidence": "medium - revised family estimate",
-      "footprint_basis": "User reports R8 approximately 1.6 x 0.77 mm, consistent with 0603 (1608 metric). Repeated fitted resistor family revised using R8 as a scale reference. This individual body has not been measured; earlier 0805 estimate superseded."
+      "footprint_basis": "User reports R8 approximately 1.6 x 0.77 mm, consistent with 0603 (1608 metric). Repeated fitted resistor family revised using R8 as a scale reference. This individual body has not been measured; earlier 0805 estimate superseded.",
+      "via_evidence": "v0.9.9: User corrects raw battery+ versus post-Q1 rail. BATP -> Q1.S (single physical pad/native3, candidate drain); Q1.L/native2 (candidate source) -> U5.4/V011-V014. These are distinct copper nets, connected through Q1. IMG_2438 also supports TP14 on battery+; V015/R43.2-TP14 user confirmation retained. Q1.R/native1 is candidate gate at R44.2. Photo S means SINGLE, not MOSFET source."
     },
     {
       "ref": "R4",
@@ -363,7 +364,7 @@
       "footprint": "Resistor_SMD:R_0603_1608Metric",
       "footprint_confidence": "medium - revised family estimate",
       "footprint_basis": "User reports R8 approximately 1.6 x 0.77 mm, consistent with 0603 (1608 metric). Repeated fitted resistor family revised using R8 as a scale reference. This individual body has not been measured; earlier 0805 estimate superseded.",
-      "via_evidence": "v0.9.8: User confirms V071-VREF. Earlier V071-R21.2 and V026-VREF-PIC21/RB0 associations retained. R21.2 joins PIC_RB0_VREF. Existing R22.2/R23.2/R48.2 receiver-bias branches remain prior photo/circuit hypotheses, not new measured connections. VREF remains separate from H_VDD and RC1/V053. No voltage or numeric resistance supplied."
+      "via_evidence": "v0.9.8: User confirms V071-VREF. Earlier V071-R21.2 and V026-VREF-PIC21/RB0 associations retained. R21.2 joins VREF. Existing R22.2/R23.2/R48.2 receiver-bias branches remain prior photo/circuit hypotheses, not new measured connections. VREF remains separate from VDD and RC1/V053. No voltage or numeric resistance supplied."
     },
     {
       "ref": "R22",
@@ -384,7 +385,7 @@
       "footprint": "Resistor_SMD:R_0603_1608Metric",
       "footprint_confidence": "medium - revised family estimate",
       "footprint_basis": "User reports R8 approximately 1.6 x 0.77 mm, consistent with 0603 (1608 metric). Repeated fitted resistor family revised using R8 as a scale reference. This individual body has not been measured; earlier 0805 estimate superseded.",
-      "via_evidence": "v0.9.8: User confirms V071-VREF. Earlier V071-R21.2 and V026-VREF-PIC21/RB0 associations retained. R21.2 joins PIC_RB0_VREF. Existing R22.2/R23.2/R48.2 receiver-bias branches remain prior photo/circuit hypotheses, not new measured connections. VREF remains separate from H_VDD and RC1/V053. No voltage or numeric resistance supplied.",
+      "via_evidence": "v0.9.8: User confirms V071-VREF. Earlier V071-R21.2 and V026-VREF-PIC21/RB0 associations retained. R21.2 joins VREF. Existing R22.2/R23.2/R48.2 receiver-bias branches remain prior photo/circuit hypotheses, not new measured connections. VREF remains separate from VDD and RC1/V053. No voltage or numeric resistance supplied.",
       "v093_summary": "v0.9.3 V072 reaches TP6, explicitly not R22.2. Independent H_RX_BIAS hypothesis remains unverified; no receiver bias net merge."
     },
     {
@@ -406,7 +407,7 @@
       "footprint": "Resistor_SMD:R_0603_1608Metric",
       "footprint_confidence": "medium - revised family estimate",
       "footprint_basis": "User reports R8 approximately 1.6 x 0.77 mm, consistent with 0603 (1608 metric). Repeated fitted resistor family revised using R8 as a scale reference. This individual body has not been measured; earlier 0805 estimate superseded.",
-      "via_evidence": "v0.9.8: User confirms V071-VREF. Earlier V071-R21.2 and V026-VREF-PIC21/RB0 associations retained. R21.2 joins PIC_RB0_VREF. Existing R22.2/R23.2/R48.2 receiver-bias branches remain prior photo/circuit hypotheses, not new measured connections. VREF remains separate from H_VDD and RC1/V053. No voltage or numeric resistance supplied."
+      "via_evidence": "v0.9.8: User confirms V071-VREF. Earlier V071-R21.2 and V026-VREF-PIC21/RB0 associations retained. R21.2 joins VREF. Existing R22.2/R23.2/R48.2 receiver-bias branches remain prior photo/circuit hypotheses, not new measured connections. VREF remains separate from VDD and RC1/V053. No voltage or numeric resistance supplied."
     },
     {
       "ref": "R24",
@@ -637,7 +638,7 @@
       "footprint_confidence": "medium - revised family estimate",
       "footprint_basis": "User reports R8 approximately 1.6 x 0.77 mm, consistent with 0603 (1608 metric). Repeated fitted resistor family revised using R8 as a scale reference. This individual body has not been measured; earlier 0805 estimate superseded.",
       "v09_evidence": {
-        "R37.1": "User V063 joins R37 and R39; photo identifies their lower ends. Withdraw conflicting H_VDD and GND guesses. Remote feed unknown."
+        "R37.1": "User V063 joins R37 and R39; photo identifies their lower ends. Withdraw conflicting VDD and GND guesses. Remote feed unknown."
       },
       "hypothesis": "v0.9: pin1 joins R39.2 at V063; remote feed unknown. Pin2 to U6 VIN remains a local routing hypothesis.",
       "via_evidence": "v0.9.6: User confirms V064-V063. R37.1/R39.2 feed junction is regulated board VDD, not motor VDD.",
@@ -683,7 +684,7 @@
       "footprint_confidence": "medium - revised family estimate",
       "footprint_basis": "User reports R8 approximately 1.6 x 0.77 mm, consistent with 0603 (1608 metric). Repeated fitted resistor family revised using R8 as a scale reference. This individual body has not been measured; earlier 0805 estimate superseded.",
       "v09_evidence": {
-        "R39.2": "User V063 joins R37 and R39; photo identifies their lower ends. Withdraw conflicting H_VDD and GND guesses. Remote feed unknown."
+        "R39.2": "User V063 joins R37 and R39; photo identifies their lower ends. Withdraw conflicting VDD and GND guesses. Remote feed unknown."
       },
       "hypothesis": "v0.9: pin2 joins R37.1 at V063; earlier ground guess withdrawn. Pin1 retained on PIR_BASE candidate net.",
       "via_evidence": "v0.9.6: User confirms V064-V063. R37.1/R39.2 feed junction is regulated board VDD, not motor VDD.",
@@ -772,7 +773,7 @@
       "footprint": "Resistor_SMD:R_0603_1608Metric",
       "footprint_confidence": "medium - revised family estimate",
       "footprint_basis": "User reports R8 approximately 1.6 x 0.77 mm, consistent with 0603 (1608 metric). Repeated fitted resistor family revised using R8 as a scale reference. This individual body has not been measured; earlier 0805 estimate superseded.",
-      "via_evidence": "v0.9.8: User confirms V015-TP14. Earlier V015-R43.2 lower-pad association retained. R43.2 joins TP14 on H_BAT_DETECT, whose existing Q1.S branch and functional name remain photo/circuit hypotheses. Q1.L-R43.2 remains explicitly rejected. No numeric resistance supplied.",
+      "via_evidence": "v0.9.9: User corrects raw battery+ versus post-Q1 rail. BATP -> Q1.S (single physical pad/native3, candidate drain); Q1.L/native2 (candidate source) -> U5.4/V011-V014. These are distinct copper nets, connected through Q1. IMG_2438 also supports TP14 on battery+; V015/R43.2-TP14 user confirmation retained. Q1.R/native1 is candidate gate at R44.2. Photo S means SINGLE, not MOSFET source.",
       "v094_summary": "v0.9.4: lower pad2 reaches V015, not V011-V014. User explicitly rejects the old Q1.L-R43.2 photo-derived connection; withdrawn in native schematic and retained only as historical evidence."
     },
     {
@@ -796,7 +797,7 @@
       "hypothesis": "Re-read existing photo crop: 18C is legible. EIA-96 code18=150, multiplierC=100: nominal15kohm. No electrical value measurement.",
       "footprint_confidence": "medium - revised family estimate",
       "footprint_basis": "User reports R8 approximately 1.6 x 0.77 mm, consistent with 0603 (1608 metric). Repeated fitted resistor family revised using R8 as a scale reference. This individual body has not been measured; earlier 0805 estimate superseded.",
-      "via_evidence": "v0.9.8: User confirms V017-TP4. Prior V017-R42.1/R44.1 local junction now joins TP4 and PIC25/RB4. R42.1 explicitly user-named; R44 pad1 and C41 branch retain earlier photo selection. No numeric resistance supplied; circuit operating role remains inferred."
+      "via_evidence": "v0.9.9: User corrects raw battery+ versus post-Q1 rail. BATP -> Q1.S (single physical pad/native3, candidate drain); Q1.L/native2 (candidate source) -> U5.4/V011-V014. These are distinct copper nets, connected through Q1. IMG_2438 also supports TP14 on battery+; V015/R43.2-TP14 user confirmation retained. Q1.R/native1 is candidate gate at R44.2. Photo S means SINGLE, not MOSFET source."
     },
     {
       "ref": "R48",
@@ -817,7 +818,7 @@
       "footprint": "Resistor_SMD:R_0603_1608Metric",
       "footprint_confidence": "medium - revised family estimate",
       "footprint_basis": "User reports R8 approximately 1.6 x 0.77 mm, consistent with 0603 (1608 metric). Repeated fitted resistor family revised using R8 as a scale reference. This individual body has not been measured; earlier 0805 estimate superseded.",
-      "via_evidence": "v0.9.8: User confirms V071-VREF. Earlier V071-R21.2 and V026-VREF-PIC21/RB0 associations retained. R21.2 joins PIC_RB0_VREF. Existing R22.2/R23.2/R48.2 receiver-bias branches remain prior photo/circuit hypotheses, not new measured connections. VREF remains separate from H_VDD and RC1/V053. No voltage or numeric resistance supplied."
+      "via_evidence": "v0.9.8: User confirms V071-VREF. Earlier V071-R21.2 and V026-VREF-PIC21/RB0 associations retained. R21.2 joins VREF. Existing R22.2/R23.2/R48.2 receiver-bias branches remain prior photo/circuit hypotheses, not new measured connections. VREF remains separate from VDD and RC1/V053. No voltage or numeric resistance supplied."
     },
     {
       "ref": "R1",
@@ -1540,7 +1541,8 @@
         "C27.1": "C27 photo left pad to V003/V004; user ties these to MX512H pin4 motor VDD.",
         "C27.2": "C27 photo right pad to V008/V009/V010 user GND."
       },
-      "hypothesis": "v0.9: photo left pad/pin1 to motor VDD via V003/V004; right pad/pin2 to GND via V008/V009/V010. Capacitance still unknown."
+      "hypothesis": "v0.9: photo left pad/pin1 to motor VDD via V003/V004; right pad/pin2 to GND via V008/V009/V010. Capacitance still unknown.",
+      "via_evidence": "v0.9.9: User corrects raw battery+ versus post-Q1 rail. BATP -> Q1.S (single physical pad/native3, candidate drain); Q1.L/native2 (candidate source) -> U5.4/V011-V014. These are distinct copper nets, connected through Q1. IMG_2438 also supports TP14 on battery+; V015/R43.2-TP14 user confirmation retained. Q1.R/native1 is candidate gate at R44.2. Photo S means SINGLE, not MOSFET source."
     },
     {
       "ref": "C28",
@@ -1649,7 +1651,8 @@
       "footprint": "Capacitor_SMD:C_0805_2012Metric",
       "footprint_confidence": "medium",
       "footprint_basis": "Photo family and body/land proportions compared with adjacent known IC lead pitch. Size is independent of capacitance, dielectric and voltage rating.",
-      "hypothesis": "v0.7: visible local copper joins left pad/model pin1 to U4.20 VDD and right pad/model pin2 to U4.19 VSS. Withdraw old PIR-supply tie. 100n remains a value estimate."
+      "hypothesis": "v0.7: visible local copper joins left pad/model pin1 to U4.20 VDD and right pad/model pin2 to U4.19 VSS. Withdraw old PIR-supply tie. 100n remains a value estimate.",
+      "via_evidence": "v0.9.9: V042 user-confirmed to board VDD test point TP103/VDD. Prior C32.1/PIC20 local photo association retained."
     },
     {
       "ref": "C33",
@@ -1670,7 +1673,8 @@
       "library_symbol": "Device:C",
       "footprint": "Capacitor_SMD:C_0805_2012Metric",
       "footprint_confidence": "medium",
-      "footprint_basis": "Photo family and body/land proportions compared with adjacent known IC lead pitch. Size is independent of capacitance, dielectric and voltage rating."
+      "footprint_basis": "Photo family and body/land proportions compared with adjacent known IC lead pitch. Size is independent of capacitance, dielectric and voltage rating.",
+      "via_evidence": "v0.9.9: User corrects raw battery+ versus post-Q1 rail. BATP -> Q1.S (single physical pad/native3, candidate drain); Q1.L/native2 (candidate source) -> U5.4/V011-V014. These are distinct copper nets, connected through Q1. IMG_2438 also supports TP14 on battery+; V015/R43.2-TP14 user confirmation retained. Q1.R/native1 is candidate gate at R44.2. Photo S means SINGLE, not MOSFET source."
     },
     {
       "ref": "C34",
@@ -1801,7 +1805,8 @@
       "footprint": "Capacitor_SMD:C_0805_2012Metric",
       "footprint_confidence": "medium",
       "footprint_basis": "Photo family and body/land proportions compared with adjacent known IC lead pitch. Size is independent of capacitance, dielectric and voltage rating.",
-      "hypothesis": "v0.7 photo review withdraws the generic 100n bypass assumption. Left photo pad (model pin1) visibly connects U4 pin4 / RA2."
+      "hypothesis": "v0.7 photo review withdraws the generic 100n bypass assumption. Left photo pad (model pin1) visibly connects U4 pin4 / RA2.",
+      "via_evidence": "v0.9.9: User checked V035-VREF TP. Prior photo association V035-PIC4/RA2-C39.1 retained; joins the already confirmed RB0/V026/R21.2/V071 VREF node. No voltage or numerical resistance supplied. Other modeled bias branches retain earlier inferred status."
     },
     {
       "ref": "C40",
@@ -2082,7 +2087,8 @@
       "library_symbol": "Device:L",
       "footprint": "Inductor_SMD:L_0805_2012Metric",
       "footprint_confidence": "medium",
-      "footprint_basis": "Two-terminal dark chip with approximately 0805 body proportions. Could be a ferrite bead; material and impedance/inductance remain unresolved."
+      "footprint_basis": "Two-terminal dark chip with approximately 0805 body proportions. Could be a ferrite bead; material and impedance/inductance remain unresolved.",
+      "via_evidence": "v0.9.9: User confirms L1 and L2 connect to the same VSYS after Q1. Existing supply-side pad1 selections retained from photos/model; opposite terminals are separate across each component. The report does not identify inductance/ferrite type or measured values."
     },
     {
       "ref": "L2",
@@ -2103,7 +2109,8 @@
       "library_symbol": "Device:L",
       "footprint": "Inductor_SMD:L_0805_2012Metric",
       "footprint_confidence": "medium",
-      "footprint_basis": "Two-terminal dark chip with approximately 0805 body proportions. Could be a ferrite bead; material and impedance/inductance remain unresolved."
+      "footprint_basis": "Two-terminal dark chip with approximately 0805 body proportions. Could be a ferrite bead; material and impedance/inductance remain unresolved.",
+      "via_evidence": "v0.9.9: User confirms L1 and L2 connect to the same VSYS after Q1. Existing supply-side pad1 selections retained from photos/model; opposite terminals are separate across each component. The report does not identify inductance/ferrite type or measured values."
     },
     {
       "ref": "Y1",
@@ -2178,7 +2185,7 @@
       "v093_summary": "v0.9.3 user confirms 5/RA3-V036, 6/RA4-V037, 7/RA5-V039, 11/RC0-V047, 13/RC2-V049. Earlier 15-V022, 16-V023, 21-V026 retained. All eight via routes have unknown onward destinations; no NC inferred.",
       "v094_summary": "v0.9.4: user confirms pin15/RC4 via V022-V016 to MX512H U5 pin2/INA, and pin16/RC5 via V023-V019 to U5 pin3/INB. Remaining via-only GPIOs: 5/V036, 6/V037, 7/V039, 11/V047, 13/V049, 21/V026.",
       "v096_summary": "v0.9.6 user working pairs: 5/RA3 V036-V108 R14; 6/RA4 V037-V102 R15; 7/RA5 V039-V097 R16; 11/RC0 V047-V091 R11. Existing RC6-R13 retained. Only 13/RC2 and 21/RB0 remain without modeled onward routes.",
-      "via_evidence": "v0.9.8: User confirms RC2/PIC13-V049-TP3, RB0/PIC21-V026-VREF (native TP104), and RC1/PIC12-V053-V070-R18.1. User explicitly rejects V053-VREF, superseding the old photo assumption. No numerical resistance supplied for these connections. All PIC pads have modeled local destinations; other inferred branches still need review. RB4/PIC25-TP4 now also reaches V017/R42.1/R44.1. RB0/VREF also reaches V071/R21.2 by user report."
+      "via_evidence": "v0.9.9: User checked V035-VREF TP. Prior photo association V035-PIC4/RA2-C39.1 retained; joins the already confirmed RB0/V026/R21.2/V071 VREF node. No voltage or numerical resistance supplied. Other modeled bias branches retain earlier inferred status. V042-PIC20 supply now user-confirmed to board VDD/TP103, not motor VDD."
     },
     {
       "ref": "U5",
@@ -2205,7 +2212,8 @@
       "footprint": "Package_SO:SOIC-8_3.9x4.9mm_P1.27mm",
       "footprint_confidence": "datasheet/package candidate",
       "footprint_basis": "Existing assignment; see component identity evidence.",
-      "v094_summary": "v0.9.4: user confirms INA pin2 via V016-V022 to PIC15/RC4 and INB pin3 via V019-V023 to PIC16/RC5. Control mapping established; logic VCC and motor VDD remain separate."
+      "v094_summary": "v0.9.4: user confirms INA pin2 via V016-V022 to PIC15/RC4 and INB pin3 via V019-V023 to PIC16/RC5. Control mapping established; logic VCC and motor VDD remain separate.",
+      "via_evidence": "v0.9.9: User corrects raw battery+ versus post-Q1 rail. BATP -> Q1.S (single physical pad/native3, candidate drain); Q1.L/native2 (candidate source) -> U5.4/V011-V014. These are distinct copper nets, connected through Q1. IMG_2438 also supports TP14 on battery+; V015/R43.2-TP14 user confirmation retained. Q1.R/native1 is candidate gate at R44.2. Photo S means SINGLE, not MOSFET source."
     },
     {
       "ref": "U3",
@@ -2371,18 +2379,19 @@
         "R",
         "S"
       ],
-      "note": "Physical-pad symbol, not transistor pin-function assignment. L/R = upper pair, S = lower single pad in upright detail photograph.",
+      "note": "Photo pad names L/R are upper pair; S means single lower pad, not source. Candidate functions L=source, R=gate, single S=drain. Number crosswalk unchanged.",
       "side": "front",
       "traced_pin_count": 2,
-      "proposed_value": "MMBT3904?",
-      "hypothesis": "H05: R1A mark suggests MMBT3904; B=R, E=L, C=S inferred from SOT23 orientation.",
-      "library_symbol": "Transistor_BJT:MMBT3904",
+      "proposed_value": "FMOS3401A?",
+      "hypothesis": "R1A marking matches Formosa FMOS3401A datasheet p5; SOT-23 PMOS with G=1 (photo R), S=2 (photo L), D=3 (photo single S). Candidate identification, not manufacturer proof. Drain at battery+ and source at load support reverse-polarity protection; gate-control behavior not verified. Earlier MMBT3904 NPN hypothesis withdrawn.",
+      "library_symbol": "Transistor_FET:Q_PMOS_GSD",
       "footprint": "Package_TO_SOT_SMD:SOT-23",
       "footprint_confidence": "datasheet/package candidate",
-      "footprint_basis": "Existing assignment; see component identity evidence.",
+      "footprint_basis": "SOT-23 photo and FMOS3401A datasheet package agree. Manufacturer identity remains a candidate.",
       "v094_summary": "v0.9.4: V011-V014 reach Q1.L. User explicitly requests removal of old photo-derived Q1.L-R43.2 connection. Q1.L onward destination and physical transistor role remain unresolved.",
-      "via_evidence": "v0.9.8: User explicitly confirms V011/V012/V013/V014 share the MX512H pin4 VDD motor supply. Earlier Q1.L association retained, now H_VBAT, not regulated TP103/H_VDD. Q1.L-R43.2 remains rejected. Q1 device identity, polarity and function remain candidate assumptions; this connection does not validate them.",
-      "v095_summary": "v0.9.5: V011-V014 reach Q1.L and user reports VDD. Which VDD rail remains to be distinguished (V064 regulated versus V001 motor supply). R43.2/V015 remains explicitly separate. No transistor polarity inferred from the supply report."
+      "via_evidence": "v0.9.9: User corrects raw battery+ versus post-Q1 rail. BATP -> Q1.S (single physical pad/native3, candidate drain); Q1.L/native2 (candidate source) -> U5.4/V011-V014. These are distinct copper nets, connected through Q1. IMG_2438 also supports TP14 on battery+; V015/R43.2-TP14 user confirmation retained. Q1.R/native1 is candidate gate at R44.2. Photo S means SINGLE, not MOSFET source.",
+      "v095_summary": "v0.9.5: V011-V014 reach Q1.L and user reports VDD. Which VDD rail remains to be distinguished (V064 regulated versus V001 motor supply). R43.2/V015 remains explicitly separate. No transistor polarity inferred from the supply report.",
+      "datasheet": "https://www.formosams.com/upload/product/Mosfets/FMOS3401A_REV_C.pdf"
     },
     {
       "ref": "Q2",
@@ -3115,7 +3124,7 @@
       "footprint": "TestPoint:TestPoint_THTPad_D2.0mm_Drill1.0mm",
       "footprint_confidence": "low",
       "footprint_basis": "Stock plated-hole approximation from photographs. Exact drill and annular ring remain unmeasured; these are board pads, not fitted components.",
-      "via_evidence": "v0.9.8: User confirms V015-TP14. Earlier V015-R43.2 lower-pad association retained. R43.2 joins TP14 on H_BAT_DETECT, whose existing Q1.S branch and functional name remain photo/circuit hypotheses. Q1.L-R43.2 remains explicitly rejected. No numeric resistance supplied."
+      "via_evidence": "v0.9.9: User corrects raw battery+ versus post-Q1 rail. BATP -> Q1.S (single physical pad/native3, candidate drain); Q1.L/native2 (candidate source) -> U5.4/V011-V014. These are distinct copper nets, connected through Q1. IMG_2438 also supports TP14 on battery+; V015/R43.2-TP14 user confirmation retained. Q1.R/native1 is candidate gate at R44.2. Photo S means SINGLE, not MOSFET source."
     },
     {
       "ref": "TP15",
@@ -3234,7 +3243,7 @@
       "footprint": "TestPoint:TestPoint_THTPad_D2.0mm_Drill1.0mm",
       "footprint_confidence": "low",
       "footprint_basis": "Stock plated-hole approximation from photographs. Exact drill and annular ring remain unmeasured; these are board pads, not fitted components.",
-      "via_evidence": "v0.9.8 follow-up: User confirms V082 reaches the board VDD test point, native TP103 / H_VDD regulated logic rail. This is distinct from MX512H pin4 VDD / H_VBAT motor supply; MX512H pin1 VCC is modeled on H_VDD. V082 was associated with D3 but its exact package terminal remains unconfirmed. Do not merge H_RX_VDD or choose a D3 pin from this report alone."
+      "via_evidence": "v0.9.9: User confirms V042 to this board VDD TP, matching the modeled PIC20/C32.1 regulated VDD rail; distinct from VSYS and BATTERY+."
     },
     {
       "ref": "VREF",
@@ -3259,7 +3268,7 @@
         "VREF.1": "PIC pin12 visible trace reaches V053, the VREF-labelled board pad. Remote continuation/function remains unknown."
       },
       "v09_summary": "PIC pin12 visible trace reaches V053, the VREF-labelled board pad. Remote continuation/function remains unknown.",
-      "via_evidence": "v0.9.8: Board silk VREF, native TP104. User confirms V026-VREF (PIC21/RB0) and explicitly rejects V053-VREF. Old RC1 photo association withdrawn. VREF is a board label, not an established voltage or IC function. User also confirms V071/R21.2 to this VREF point; existing receiver-bias branches retain prior inference status."
+      "via_evidence": "v0.9.9: User checked V035-VREF TP. Prior photo association V035-PIC4/RA2-C39.1 retained; joins the already confirmed RB0/V026/R21.2/V071 VREF node. No voltage or numerical resistance supplied. Other modeled bias branches retain earlier inferred status."
     },
     {
       "ref": "ANT1",
@@ -3319,7 +3328,8 @@
       "library_symbol": "Connector:TestPoint",
       "footprint": "TestPoint:TestPoint_THTPad_2.5x2.5mm_Drill1.2mm",
       "footprint_confidence": "low",
-      "footprint_basis": "Stock plated-hole approximation from photographs. Exact drill and annular ring remain unmeasured; these are board pads, not fitted components."
+      "footprint_basis": "Stock plated-hole approximation from photographs. Exact drill and annular ring remain unmeasured; these are board pads, not fitted components.",
+      "via_evidence": "v0.9.9: User corrects raw battery+ versus post-Q1 rail. BATP -> Q1.S (single physical pad/native3, candidate drain); Q1.L/native2 (candidate source) -> U5.4/V011-V014. These are distinct copper nets, connected through Q1. IMG_2438 also supports TP14 on battery+; V015/R43.2-TP14 user confirmation retained. Q1.R/native1 is candidate gate at R44.2. Photo S means SINGLE, not MOSFET source."
     },
     {
       "ref": "BATN",
@@ -3371,13 +3381,14 @@
       "original_fragments": []
     },
     {
-      "net": "H_BAT_DETECT",
+      "net": "BATTERY+",
       "endpoints": [
         "Q1.S",
         "TP14.1",
-        "R43.2"
+        "R43.2",
+        "BATP.1"
       ],
-      "status": "HYPOTHESIS / retains visual fragments where listed",
+      "status": "Battery+ to Q1 single pad user/photo-confirmed; TP14 copper photo-supported; R43.2 to TP14 user-confirmed",
       "original_fragments": []
     },
     {
@@ -3419,7 +3430,7 @@
       "original_fragments": []
     },
     {
-      "net": "H_GND",
+      "net": "GND",
       "endpoints": [
         "BATN.1",
         "C1.2",
@@ -3500,7 +3511,7 @@
       "original_fragments": [
         "V_XTAL_CAP_COMMON"
       ],
-      "v08_evidence": "D4.2/V030, D5.2/V027, C41.2/V025: front/rear photo matches into main rear copper anchored by PIC VSS8/19. Photo-supported, not meter verified; does not verify every H_GND endpoint.",
+      "v08_evidence": "D4.2/V030, D5.2/V027, C41.2/V025: front/rear photo matches into main rear copper anchored by PIC VSS8/19. Photo-supported, not meter verified; does not verify every GND endpoint.",
       "v09_evidence": [
         "C27 photo right pad to V008/V009/V010 user GND.",
         "DNP free pads lie on front ground copper shared with V057/V058.",
@@ -3800,9 +3811,8 @@
       "v096_evidence": "User reports working via pair V047-V091: PIC pin11 to R11.1; no numerical resistance supplied."
     },
     {
-      "net": "H_VBAT",
+      "net": "VSYS",
       "endpoints": [
-        "BATP.1",
         "C27.1",
         "C33.1",
         "L1.1",
@@ -3811,7 +3821,7 @@
         "U5.4",
         "Q1.L"
       ],
-      "status": "HYPOTHESIS / retains visual fragments where listed",
+      "status": "User-confirmed Q1.L/U5.4 motor rail; other branches retain individual earlier evidence",
       "original_fragments": [
         "V_U5_MOTOR_CAP"
       ],
@@ -3820,7 +3830,7 @@
       ]
     },
     {
-      "net": "H_VDD",
+      "net": "VDD",
       "endpoints": [
         "C2.1",
         "C2A.1",
@@ -3931,16 +3941,6 @@
       "v08_evidence": "User: pin3 goes to R28, R29 and RP7 point, using multimeter and visible traces. RP7 interpreted as visible TP7. IMG_2434 supports common free resistor ends/model1; earlier ties to other inferred bias/detector nodes withdrawn."
     },
     {
-      "net": "PIC_RA2_FILTER",
-      "endpoints": [
-        "C39.1",
-        "U4.4"
-      ],
-      "status": "PHOTO_TRACE / not electrically measured",
-      "original_fragments": [],
-      "v07_evidence": "IMG_2436: pin4 to C39 left pad"
-    },
-    {
       "net": "PIC_RB3_RETURN",
       "endpoints": [
         "R4.2",
@@ -3951,18 +3951,20 @@
       "v07_evidence": "IMG_2436: pin24 to R4 lower pad"
     },
     {
-      "net": "PIC_RB0_VREF",
+      "net": "VREF",
       "endpoints": [
         "U4.21",
         "VREF.1",
         "R21.2",
         "R22.2",
         "R23.2",
-        "R48.2"
+        "R48.2",
+        "C39.1",
+        "U4.4"
       ],
       "status": "User-confirmed R21.2-VREF-RB0 with retained inferred receiver-bias branches",
       "original_fragments": [],
-      "v098_evidence": "v0.9.8: User confirms V071-VREF. Earlier V071-R21.2 and V026-VREF-PIC21/RB0 associations retained. R21.2 joins PIC_RB0_VREF. Existing R22.2/R23.2/R48.2 receiver-bias branches remain prior photo/circuit hypotheses, not new measured connections. VREF remains separate from H_VDD and RC1/V053. No voltage or numeric resistance supplied."
+      "v098_evidence": "v0.9.8: User confirms V071-VREF. Earlier V071-R21.2 and V026-VREF-PIC21/RB0 associations retained. R21.2 joins VREF. Existing R22.2/R23.2/R48.2 receiver-bias branches remain prior photo/circuit hypotheses, not new measured connections. VREF remains separate from VDD and RC1/V053. No voltage or numeric resistance supplied."
     },
     {
       "net": "PIC_RC3",
@@ -4011,7 +4013,7 @@
       "original_fragments": []
     },
     {
-      "net": "Q1_BASE",
+      "net": "Q1_GATE",
       "endpoints": [
         "Q1.R",
         "R44.2"
@@ -4710,1209 +4712,43 @@
   },
   "geometric_wires": [
     {
-      "net": "H_PIR_RAW",
+      "net": "H_RX_DETECT",
       "a": [
-        388.62,
-        332.74
+        527.05,
+        200.66
       ],
       "b": [
-        388.62,
-        336.55
-      ]
-    },
-    {
-      "net": "H_RF_IN_A",
-      "a": [
-        49.53,
-        185.42
-      ],
-      "b": [
-        58.42,
-        185.42
-      ]
-    },
-    {
-      "net": "H_GND",
-      "a": [
-        322.58,
-        132.08
-      ],
-      "b": [
-        334.01,
-        132.08
-      ]
-    },
-    {
-      "net": "H_PIR_VDD",
-      "a": [
-        340.36,
-        304.8
-      ],
-      "b": [
-        355.6,
-        304.8
-      ]
-    },
-    {
-      "net": "H_GND",
-      "a": [
-        246.38,
-        236.22
-      ],
-      "b": [
-        252.73,
-        236.22
-      ]
-    },
-    {
-      "net": "H_GND",
-      "a": [
-        190.5,
-        182.88
-      ],
-      "b": [
-        190.5,
-        193.04
-      ]
-    },
-    {
-      "net": "Q8_DRIVE_A",
-      "a": [
-        140.97,
-        231.14
-      ],
-      "b": [
-        157.48,
-        231.14
-      ]
-    },
-    {
-      "net": "H_GND",
-      "a": [
-        83.82,
-        68.58
-      ],
-      "b": [
-        83.82,
-        81.28
-      ]
-    },
-    {
-      "net": "H_GND",
-      "a": [
-        300.99,
-        83.82
-      ],
-      "b": [
-        312.42,
-        83.82
-      ]
-    },
-    {
-      "net": "H_LED_CTL_A",
-      "a": [
-        191.77,
-        233.68
-      ],
-      "b": [
-        194.31,
-        233.68
+        542.29,
+        200.66
       ]
     },
     {
       "net": "RX_B_OUT",
       "a": [
-        488.95,
-        180.34
-      ],
-      "b": [
         502.92,
-        180.34
-      ]
-    },
-    {
-      "net": "H_RF_IN_B",
-      "a": [
-        30.48,
-        217.17
-      ],
-      "b": [
-        38.1,
-        217.17
-      ]
-    },
-    {
-      "net": "TUNE_2_BASE",
-      "a": [
-        92.71,
-        347.98
-      ],
-      "b": [
-        99.06,
-        347.98
-      ]
-    },
-    {
-      "net": "RX_SUPPLY_SERIES",
-      "a": [
-        316.23,
-        173.99
-      ],
-      "b": [
-        316.23,
-        177.8
-      ]
-    },
-    {
-      "net": "RX_SUPPLY_SERIES",
-      "a": [
-        316.23,
-        173.99
-      ],
-      "b": [
-        335.28,
-        173.99
-      ]
-    },
-    {
-      "net": "H_RX_VDD",
-      "a": [
-        554.99,
-        172.72
-      ],
-      "b": [
-        554.99,
-        177.8
-      ]
-    },
-    {
-      "net": "H_GND",
-      "a": [
-        392.43,
-        391.16
-      ],
-      "b": [
-        392.43,
-        396.24
-      ]
-    },
-    {
-      "net": "H_LED_CTL_B",
-      "a": [
-        191.77,
-        242.57
-      ],
-      "b": [
-        191.77,
-        250.19
-      ]
-    },
-    {
-      "net": "R35_Q9",
-      "a": [
-        473.71,
-        359.41
-      ],
-      "b": [
-        478.79,
-        359.41
-      ]
-    },
-    {
-      "net": "H_TUNE_2",
-      "a": [
-        283.21,
-        66.04
-      ],
-      "b": [
-        288.29,
-        66.04
-      ]
-    },
-    {
-      "net": "H_RX_VDD",
-      "a": [
-        344.17,
-        182.88
-      ],
-      "b": [
-        349.25,
-        182.88
-      ]
-    },
-    {
-      "net": "H_TUNE_4",
-      "a": [
-        186.69,
-        347.98
-      ],
-      "b": [
-        191.77,
-        347.98
-      ]
-    },
-    {
-      "net": "OSC2",
-      "a": [
-        316.23,
-        113.03
-      ],
-      "b": [
-        322.58,
-        113.03
-      ]
-    },
-    {
-      "net": "PIC_RB3_RETURN",
-      "a": [
-        355.6,
-        109.22
-      ],
-      "b": [
-        355.6,
-        116.84
-      ]
-    },
-    {
-      "net": "RF_MONITOR_PAD",
-      "a": [
-        24.13,
-        259.08
-      ],
-      "b": [
-        52.07,
-        259.08
-      ]
-    },
-    {
-      "net": "H_RF_OUT_CAND",
-      "a": [
-        165.1,
-        220.98
-      ],
-      "b": [
-        165.1,
-        226.06
-      ]
-    },
-    {
-      "net": "H_VDD",
-      "a": [
-        168.91,
-        166.37
-      ],
-      "b": [
-        190.5,
-        166.37
-      ]
-    },
-    {
-      "net": "TUNE_3_MID",
-      "a": [
-        160.02,
-        322.58
-      ],
-      "b": [
-        167.64,
-        322.58
-      ]
-    },
-    {
-      "net": "H_RF_IN_B",
-      "a": [
-        30.48,
         200.66
-      ],
-      "b": [
-        41.91,
-        200.66
-      ]
-    },
-    {
-      "net": "H_RX_DETECT",
-      "a": [
-        542.29,
-        200.66
-      ],
-      "b": [
-        542.29,
-        207.01
-      ]
-    },
-    {
-      "net": "H_VDD",
-      "a": [
-        49.53,
-        110.49
-      ],
-      "b": [
-        49.53,
-        116.84
-      ]
-    },
-    {
-      "net": "H_VDD",
-      "a": [
-        114.3,
-        53.34
-      ],
-      "b": [
-        128.27,
-        53.34
-      ]
-    },
-    {
-      "net": "H_GND",
-      "a": [
-        67.31,
-        233.68
-      ],
-      "b": [
-        67.31,
-        241.3
-      ]
-    },
-    {
-      "net": "MOTOR_INB",
-      "a": [
-        227.33,
-        93.98
-      ],
-      "b": [
-        242.57,
-        93.98
-      ]
-    },
-    {
-      "net": "H_LDO_IN",
-      "a": [
-        55.88,
-        53.34
-      ],
-      "b": [
-        55.88,
-        62.23
-      ]
-    },
-    {
-      "net": "H_RF_CONTROL",
-      "a": [
-        30.48,
-        173.99
-      ],
-      "b": [
-        38.1,
-        173.99
-      ]
-    },
-    {
-      "net": "H_GND",
-      "a": [
-        330.2,
-        320.04
-      ],
-      "b": [
-        330.2,
-        326.39
-      ]
-    },
-    {
-      "net": "H_RX_DETECT",
-      "a": [
-        574.04,
-        207.01
-      ],
-      "b": [
-        574.04,
-        260.35
-      ]
-    },
-    {
-      "net": "H_GND",
-      "a": [
-        528.32,
-        58.42
-      ],
-      "b": [
-        532.13,
-        58.42
-      ]
-    },
-    {
-      "net": "H_GND",
-      "a": [
-        262.89,
-        132.08
-      ],
-      "b": [
-        302.26,
-        132.08
-      ]
-    },
-    {
-      "net": "H_RX_RF_SENSE",
-      "a": [
-        556.26,
-        238.76
-      ],
-      "b": [
-        556.26,
-        242.57
-      ]
-    },
-    {
-      "net": "H_RF_IN_A",
-      "a": [
-        38.1,
-        185.42
-      ],
-      "b": [
-        49.53,
-        185.42
-      ]
-    },
-    {
-      "net": "H_RX_VDD",
-      "a": [
-        554.99,
-        172.72
-      ],
-      "b": [
-        570.23,
-        172.72
-      ]
-    },
-    {
-      "net": "ICSP_DAT",
-      "a": [
-        293.37,
-        57.15
-      ],
-      "b": [
-        293.37,
-        99.06
-      ]
-    },
-    {
-      "net": "H_VBAT",
-      "a": [
-        209.55,
-        167.64
-      ],
-      "b": [
-        217.17,
-        167.64
-      ]
-    },
-    {
-      "net": "H_GND",
-      "a": [
-        114.3,
-        298.45
-      ],
-      "b": [
-        114.3,
-        309.88
-      ]
-    },
-    {
-      "net": "TUNE_4_MID",
-      "a": [
-        213.36,
-        322.58
-      ],
-      "b": [
-        220.98,
-        322.58
-      ]
-    },
-    {
-      "net": "H_MOTOR_B",
-      "a": [
-        483.87,
-        69.85
-      ],
-      "b": [
-        483.87,
-        77.47
-      ]
-    },
-    {
-      "net": "RX_B_FB",
-      "a": [
-        469.9,
-        180.34
-      ],
-      "b": [
-        481.33,
-        180.34
-      ]
-    },
-    {
-      "net": "U2_DRIVE_B",
-      "a": [
-        100.33,
-        217.17
-      ],
-      "b": [
-        111.76,
-        217.17
-      ]
-    },
-    {
-      "net": "H_TUNE_3",
-      "a": [
-        283.21,
-        68.58
-      ],
-      "b": [
-        288.29,
-        68.58
-      ]
-    },
-    {
-      "net": "RX_SUPPLY_SERIES",
-      "a": [
-        335.28,
-        182.88
-      ],
-      "b": [
-        336.55,
-        182.88
-      ]
-    },
-    {
-      "net": "H_GND",
-      "a": [
-        300.99,
-        316.23
-      ],
-      "b": [
-        300.99,
-        326.39
-      ]
-    },
-    {
-      "net": "H_GND",
-      "a": [
-        167.64,
-        298.45
-      ],
-      "b": [
-        167.64,
-        309.88
-      ]
-    },
-    {
-      "net": "H_GND",
-      "a": [
-        62.23,
-        201.93
-      ],
-      "b": [
-        67.31,
-        201.93
-      ]
-    },
-    {
-      "net": "OSC1",
-      "a": [
-        283.21,
-        76.2
-      ],
-      "b": [
-        295.91,
-        76.2
-      ]
-    },
-    {
-      "net": "H_RF_VDD",
-      "a": [
-        229.87,
-        167.64
-      ],
-      "b": [
-        237.49,
-        167.64
-      ]
-    },
-    {
-      "net": "H_GND",
-      "a": [
-        440.69,
-        237.49
-      ],
-      "b": [
-        445.77,
-        237.49
-      ]
-    },
-    {
-      "net": "Q1_BASE",
-      "a": [
-        435.61,
-        111.76
-      ],
-      "b": [
-        448.31,
-        111.76
-      ]
-    },
-    {
-      "net": "H_GND",
-      "a": [
-        256.54,
-        198.12
-      ],
-      "b": [
-        259.08,
-        198.12
-      ]
-    },
-    {
-      "net": "H_GND",
-      "a": [
-        252.73,
-        237.49
-      ],
-      "b": [
-        252.73,
-        238.76
-      ]
-    },
-    {
-      "net": "H_GND",
-      "a": [
-        455.93,
-        87.63
-      ],
-      "b": [
-        461.01,
-        87.63
-      ]
-    },
-    {
-      "net": "PIC_TP4_C41",
-      "a": [
-        497.84,
-        237.49
       ],
       "b": [
         508.0,
-        237.49
+        200.66
       ]
     },
     {
-      "net": "H_LED_A",
-      "a": [
-        220.98,
-        233.68
-      ],
-      "b": [
-        220.98,
-        236.22
-      ]
-    },
-    {
-      "net": "RX_B_FB",
-      "a": [
-        469.9,
-        180.34
-      ],
-      "b": [
-        469.9,
-        203.2
-      ]
-    },
-    {
-      "net": "ICSP_DAT",
+      "net": "VREF",
       "a": [
         283.21,
-        99.06
-      ],
-      "b": [
-        293.37,
-        99.06
-      ]
-    },
-    {
-      "net": "H_RF_IN_A",
-      "a": [
-        38.1,
-        181.61
-      ],
-      "b": [
-        38.1,
-        185.42
-      ]
-    },
-    {
-      "net": "H_RX_VDD",
-      "a": [
-        340.36,
-        196.85
-      ],
-      "b": [
-        349.25,
-        196.85
-      ]
-    },
-    {
-      "net": "H_GND",
-      "a": [
-        340.36,
-        204.47
-      ],
-      "b": [
-        340.36,
-        209.55
-      ]
-    },
-    {
-      "net": "H_GND",
-      "a": [
-        392.43,
-        327.66
-      ],
-      "b": [
-        392.43,
-        341.63
-      ]
-    },
-    {
-      "net": "OSC1",
-      "a": [
-        295.91,
-        107.95
-      ],
-      "b": [
-        302.26,
-        107.95
-      ]
-    },
-    {
-      "net": "U1_ALT_PAD",
-      "a": [
-        60.96,
-        102.87
-      ],
-      "b": [
-        91.44,
-        102.87
-      ]
-    },
-    {
-      "net": "H_GND",
-      "a": [
-        55.88,
-        81.28
-      ],
-      "b": [
-        83.82,
-        81.28
-      ]
-    },
-    {
-      "net": "H_GND",
-      "a": [
-        62.23,
-        241.3
-      ],
-      "b": [
-        67.31,
-        241.3
-      ]
-    },
-    {
-      "net": "H_GND",
-      "a": [
-        62.23,
-        201.93
-      ],
-      "b": [
-        62.23,
-        241.3
-      ]
-    },
-    {
-      "net": "U1_ALT_PAD",
-      "a": [
-        123.19,
-        102.87
-      ],
-      "b": [
-        123.19,
-        110.49
-      ]
-    },
-    {
-      "net": "H_GND",
-      "a": [
-        334.01,
-        64.77
-      ],
-      "b": [
-        339.09,
-        64.77
-      ]
-    },
-    {
-      "net": "H_RF_CONTROL",
-      "a": [
-        30.48,
-        226.06
-      ],
-      "b": [
-        38.1,
-        226.06
-      ]
-    },
-    {
-      "net": "H_VBAT",
-      "a": [
-        430.53,
-        41.91
-      ],
-      "b": [
-        458.47,
-        41.91
-      ]
-    },
-    {
-      "net": "H_BUTTON",
-      "a": [
-        548.64,
-        58.42
-      ],
-      "b": [
-        558.8,
-        58.42
-      ]
-    },
-    {
-      "net": "U1_ALT_PAD",
-      "a": [
-        101.6,
-        60.96
-      ],
-      "b": [
-        101.6,
-        102.87
-      ]
-    },
-    {
-      "net": "H_GND",
-      "a": [
-        246.38,
-        238.76
-      ],
-      "b": [
-        246.38,
-        240.03
-      ]
-    },
-    {
-      "net": "H_RX_VDD",
-      "a": [
-        307.34,
-        219.71
-      ],
-      "b": [
-        307.34,
-        226.06
-      ]
-    },
-    {
-      "net": "H_RX_VDD",
-      "a": [
-        349.25,
-        182.88
-      ],
-      "b": [
-        349.25,
-        196.85
-      ]
-    },
-    {
-      "net": "H_TUNE_5",
-      "a": [
-        240.03,
-        347.98
-      ],
-      "b": [
-        245.11,
-        347.98
-      ]
-    },
-    {
-      "net": "ICSP_DAT",
-      "a": [
-        293.37,
-        57.15
-      ],
-      "b": [
-        295.91,
-        57.15
-      ]
-    },
-    {
-      "net": "H_BAT_SENSE",
-      "a": [
-        355.6,
-        90.17
-      ],
-      "b": [
-        355.6,
-        95.25
-      ]
-    },
-    {
-      "net": "H_GND",
-      "a": [
-        55.88,
-        69.85
-      ],
-      "b": [
-        55.88,
-        81.28
-      ]
-    },
-    {
-      "net": "H_RX_RF_SENSE",
-      "a": [
-        538.48,
-        237.49
-      ],
-      "b": [
-        538.48,
-        242.57
-      ]
-    },
-    {
-      "net": "H_PIR_SIG",
-      "a": [
-        368.3,
-        335.28
-      ],
-      "b": [
-        368.3,
-        340.36
-      ]
-    },
-    {
-      "net": "H_GND",
-      "a": [
-        528.32,
         63.5
       ],
       "b": [
-        532.13,
+        300.99,
         63.5
       ]
     },
     {
-      "net": "H_GND",
+      "net": "GND",
       "a": [
-        237.49,
-        198.12
-      ],
-      "b": [
-        256.54,
-        198.12
-      ]
-    },
-    {
-      "net": "OSC1",
-      "a": [
-        302.26,
-        113.03
-      ],
-      "b": [
-        302.26,
-        120.65
-      ]
-    },
-    {
-      "net": "H_VBAT",
-      "a": [
-        20.32,
-        53.34
-      ],
-      "b": [
-        29.21,
-        53.34
-      ]
-    },
-    {
-      "net": "RX_A_OUT",
-      "a": [
-        398.78,
-        200.66
-      ],
-      "b": [
-        407.67,
-        200.66
-      ]
-    },
-    {
-      "net": "H_VDD",
-      "a": [
-        328.93,
-        62.23
-      ],
-      "b": [
-        339.09,
-        62.23
-      ]
-    },
-    {
-      "net": "H_GND",
-      "a": [
-        430.53,
-        53.34
-      ],
-      "b": [
-        430.53,
-        87.63
-      ]
-    },
-    {
-      "net": "TUNE_1_MID",
-      "a": [
-        45.72,
-        317.5
-      ],
-      "b": [
-        45.72,
-        322.58
-      ]
-    },
-    {
-      "net": "H_PIR_RAW",
-      "a": [
-        388.62,
-        332.74
-      ],
-      "b": [
-        393.7,
-        332.74
-      ]
-    },
-    {
-      "net": "H_RX_VDD",
-      "a": [
-        563.88,
-        233.68
-      ],
-      "b": [
-        567.69,
-        233.68
-      ]
-    },
-    {
-      "net": "RX_A_PLUS",
-      "a": [
-        353.06,
-        198.12
-      ],
-      "b": [
-        360.68,
-        198.12
-      ]
-    },
-    {
-      "net": "H_LDO_IN",
-      "a": [
-        48.26,
-        53.34
-      ],
-      "b": [
-        55.88,
-        53.34
-      ]
-    },
-    {
-      "net": "H_GND",
-      "a": [
-        419.1,
-        87.63
-      ],
-      "b": [
-        430.53,
-        87.63
-      ]
-    },
-    {
-      "net": "H_RF_VDD",
-      "a": [
-        237.49,
-        167.64
-      ],
-      "b": [
-        237.49,
-        177.8
-      ]
-    },
-    {
-      "net": "H_TUNE_2",
-      "a": [
-        80.01,
-        347.98
-      ],
-      "b": [
-        85.09,
-        347.98
-      ]
-    },
-    {
-      "net": "PIC_RA1_RX_REF",
-      "a": [
-        419.1,
-        233.68
-      ],
-      "b": [
-        425.45,
-        233.68
-      ]
-    },
-    {
-      "net": "H_GND",
-      "a": [
-        238.76,
-        234.95
-      ],
-      "b": [
-        246.38,
-        234.95
-      ]
-    },
-    {
-      "net": "H_GND",
-      "a": [
-        152.4,
-        298.45
-      ],
-      "b": [
-        152.4,
-        309.88
-      ]
-    },
-    {
-      "net": "H_RF_IN_A",
-      "a": [
-        49.53,
-        205.74
-      ],
-      "b": [
-        49.53,
-        209.55
-      ]
-    },
-    {
-      "net": "H_GND",
-      "a": [
-        570.23,
-        189.23
+        554.99,
+        199.39
       ],
       "b": [
         570.23,
@@ -5920,1367 +4756,14 @@
       ]
     },
     {
-      "net": "RX_B_OUT",
-      "a": [
-        502.92,
-        200.66
-      ],
-      "b": [
-        508.0,
-        200.66
-      ]
-    },
-    {
-      "net": "H_BUTTON",
-      "a": [
-        568.96,
-        39.37
-      ],
-      "b": [
-        568.96,
-        58.42
-      ]
-    },
-    {
-      "net": "RX_A_PLUS",
-      "a": [
-        346.71,
-        224.79
-      ],
-      "b": [
-        346.71,
-        229.87
-      ]
-    },
-    {
-      "net": "H_GND",
-      "a": [
-        99.06,
-        298.45
-      ],
-      "b": [
-        114.3,
-        298.45
-      ]
-    },
-    {
-      "net": "H_GND",
-      "a": [
-        368.3,
-        350.52
-      ],
-      "b": [
-        368.3,
-        359.41
-      ]
-    },
-    {
-      "net": "H_BUTTON",
-      "a": [
-        558.8,
-        58.42
-      ],
-      "b": [
-        558.8,
-        71.12
-      ]
-    },
-    {
-      "net": "H_RX_ENABLE_CTL",
-      "a": [
-        227.33,
-        83.82
-      ],
-      "b": [
-        242.57,
-        83.82
-      ]
-    },
-    {
-      "net": "H_LDO_IN",
-      "a": [
-        48.26,
-        53.34
-      ],
-      "b": [
-        48.26,
-        62.23
-      ]
-    },
-    {
-      "net": "H_GND",
-      "a": [
-        213.36,
-        364.49
-      ],
-      "b": [
-        266.7,
-        364.49
-      ]
-    },
-    {
-      "net": "RX_B_FB",
-      "a": [
-        461.01,
-        203.2
-      ],
-      "b": [
-        461.01,
-        219.71
-      ]
-    },
-    {
-      "net": "H_BUTTON",
-      "a": [
-        548.64,
-        58.42
-      ],
-      "b": [
-        548.64,
-        63.5
-      ]
-    },
-    {
-      "net": "RX_A_FB",
-      "a": [
-        363.22,
-        203.2
-      ],
-      "b": [
-        373.38,
-        203.2
-      ]
-    },
-    {
-      "net": "H_GND",
-      "a": [
-        205.74,
-        298.45
-      ],
-      "b": [
-        205.74,
-        309.88
-      ]
-    },
-    {
-      "net": "OSC2",
-      "a": [
-        283.21,
-        73.66
-      ],
-      "b": [
-        298.45,
-        73.66
-      ]
-    },
-    {
-      "net": "H_AUX_IN",
-      "a": [
-        314.96,
-        304.8
-      ],
-      "b": [
-        320.04,
-        304.8
-      ]
-    },
-    {
-      "net": "H_VDD",
-      "a": [
-        210.82,
-        40.64
-      ],
-      "b": [
-        262.89,
-        40.64
-      ]
-    },
-    {
-      "net": "H_VDD",
-      "a": [
-        347.98,
-        359.41
-      ],
-      "b": [
-        351.79,
-        359.41
-      ]
-    },
-    {
-      "net": "H_RX_DETECT",
-      "a": [
-        496.57,
-        260.35
-      ],
-      "b": [
-        556.26,
-        260.35
-      ]
-    },
-    {
-      "net": "H_GND",
-      "a": [
-        453.39,
-        187.96
-      ],
-      "b": [
-        453.39,
-        191.77
-      ]
-    },
-    {
-      "net": "H_LED_B",
-      "a": [
-        208.28,
-        242.57
-      ],
-      "b": [
-        218.44,
-        242.57
-      ]
-    },
-    {
-      "net": "H_GND",
-      "a": [
-        259.08,
-        298.45
-      ],
-      "b": [
-        274.32,
-        298.45
-      ]
-    },
-    {
-      "net": "H_GND",
-      "a": [
-        224.79,
-        52.07
-      ],
-      "b": [
-        224.79,
-        55.88
-      ]
-    },
-    {
-      "net": "RX_A_PLUS",
-      "a": [
-        360.68,
-        198.12
-      ],
-      "b": [
-        373.38,
-        198.12
-      ]
-    },
-    {
-      "net": "TUNE_3_MID",
-      "a": [
-        152.4,
-        322.58
-      ],
-      "b": [
-        160.02,
-        322.58
-      ]
-    },
-    {
-      "net": "H_GND",
-      "a": [
-        246.38,
-        238.76
-      ],
-      "b": [
-        252.73,
-        238.76
-      ]
-    },
-    {
-      "net": "H_LED_B",
-      "a": [
-        220.98,
-        238.76
-      ],
-      "b": [
-        220.98,
-        240.03
-      ]
-    },
-    {
-      "net": "H_GND",
-      "a": [
-        134.62,
-        81.28
-      ],
-      "b": [
-        148.59,
-        81.28
-      ]
-    },
-    {
-      "net": "H_PIR_VDD",
-      "a": [
-        368.3,
-        306.07
-      ],
-      "b": [
-        368.3,
-        325.12
-      ]
-    },
-    {
-      "net": "H_LED_CTL_B",
-      "a": [
-        194.31,
-        242.57
-      ],
-      "b": [
-        200.66,
-        242.57
-      ]
-    },
-    {
-      "net": "H_VDD",
-      "a": [
-        104.14,
-        53.34
-      ],
-      "b": [
-        114.3,
-        53.34
-      ]
-    },
-    {
-      "net": "U1_ALT_PAD",
-      "a": [
-        91.44,
-        102.87
-      ],
-      "b": [
-        91.44,
-        110.49
-      ]
-    },
-    {
-      "net": "TUNE_4_MID",
-      "a": [
-        213.36,
-        322.58
-      ],
-      "b": [
-        213.36,
-        328.93
-      ]
-    },
-    {
-      "net": "H_GND",
-      "a": [
-        375.92,
-        109.22
-      ],
-      "b": [
-        375.92,
-        116.84
-      ]
-    },
-    {
-      "net": "TUNE_4_MID",
-      "a": [
-        220.98,
-        317.5
-      ],
-      "b": [
-        220.98,
-        322.58
-      ]
-    },
-    {
-      "net": "H_ANT_A",
-      "a": [
-        203.2,
-        220.98
-      ],
-      "b": [
-        210.82,
-        220.98
-      ]
-    },
-    {
-      "net": "H_VDD",
-      "a": [
-        262.89,
-        40.64
-      ],
-      "b": [
-        262.89,
-        53.34
-      ]
-    },
-    {
-      "net": "H_GND",
-      "a": [
-        106.68,
-        364.49
-      ],
-      "b": [
-        160.02,
-        364.49
-      ]
-    },
-    {
-      "net": "U1_ALT_PAD",
-      "a": [
-        101.6,
-        102.87
-      ],
-      "b": [
-        123.19,
-        102.87
-      ]
-    },
-    {
-      "net": "H_BAT_DETECT",
-      "a": [
-        481.33,
-        104.14
-      ],
-      "b": [
-        481.33,
-        129.54
-      ]
-    },
-    {
-      "net": "H_VDD",
-      "a": [
-        190.5,
-        166.37
-      ],
-      "b": [
-        190.5,
-        175.26
-      ]
-    },
-    {
-      "net": "RX_A_PLUS",
-      "a": [
-        360.68,
-        236.22
-      ],
-      "b": [
-        439.42,
-        236.22
-      ]
-    },
-    {
-      "net": "H_MOTOR_B",
-      "a": [
-        471.17,
-        66.04
-      ],
-      "b": [
-        483.87,
-        66.04
-      ]
-    },
-    {
-      "net": "H_PIR_VDD",
-      "a": [
-        355.6,
-        306.07
-      ],
-      "b": [
-        368.3,
-        306.07
-      ]
-    },
-    {
-      "net": "RX_A_OUT",
-      "a": [
-        398.78,
-        168.91
-      ],
-      "b": [
-        398.78,
-        180.34
-      ]
-    },
-    {
-      "net": "H_GND",
-      "a": [
-        300.99,
-        71.12
-      ],
-      "b": [
-        300.99,
-        83.82
-      ]
-    },
-    {
-      "net": "RX_B_OUT",
-      "a": [
-        488.95,
-        168.91
-      ],
-      "b": [
-        502.92,
-        168.91
-      ]
-    },
-    {
-      "net": "H_GND",
-      "a": [
-        53.34,
-        353.06
-      ],
-      "b": [
-        53.34,
-        364.49
-      ]
-    },
-    {
-      "net": "H_AUX_IN",
-      "a": [
-        300.99,
-        302.26
-      ],
-      "b": [
-        300.99,
-        308.61
-      ]
-    },
-    {
-      "net": "H_VDD",
-      "a": [
-        316.23,
-        187.96
-      ],
-      "b": [
-        316.23,
-        210.82
-      ]
-    },
-    {
-      "net": "TUNE_2_MID",
-      "a": [
-        99.06,
-        322.58
-      ],
-      "b": [
-        106.68,
-        322.58
-      ]
-    },
-    {
-      "net": "H_GND",
-      "a": [
-        340.36,
-        80.01
-      ],
-      "b": [
-        344.17,
-        80.01
-      ]
-    },
-    {
-      "net": "H_PIR_VDD",
-      "a": [
-        368.3,
-        294.64
-      ],
-      "b": [
-        368.3,
-        306.07
-      ]
-    },
-    {
-      "net": "Q8_DRIVE_B",
-      "a": [
-        134.62,
-        207.01
-      ],
-      "b": [
-        134.62,
-        217.17
-      ]
-    },
-    {
-      "net": "ICSP_CLK",
-      "a": [
-        289.56,
-        54.61
-      ],
-      "b": [
-        289.56,
-        96.52
-      ]
-    },
-    {
-      "net": "H_BAT_DETECT",
-      "a": [
-        481.33,
-        104.14
-      ],
-      "b": [
-        486.41,
-        104.14
-      ]
-    },
-    {
-      "net": "RX_A_PLUS",
-      "a": [
-        445.77,
-        245.11
-      ],
-      "b": [
-        445.77,
-        250.19
-      ]
-    },
-    {
-      "net": "H_GND",
-      "a": [
-        214.63,
-        76.2
-      ],
-      "b": [
-        219.71,
-        76.2
-      ]
-    },
-    {
-      "net": "TUNE_5_MID",
-      "a": [
-        259.08,
-        317.5
-      ],
-      "b": [
-        259.08,
-        322.58
-      ]
-    },
-    {
-      "net": "H_PIR_VDD",
-      "a": [
-        422.91,
-        361.95
-      ],
-      "b": [
-        435.61,
-        361.95
-      ]
-    },
-    {
-      "net": "H_GND",
-      "a": [
-        237.49,
-        185.42
-      ],
-      "b": [
-        237.49,
-        198.12
-      ]
-    },
-    {
-      "net": "H_GND",
-      "a": [
-        455.93,
-        73.66
-      ],
-      "b": [
-        455.93,
-        87.63
-      ]
-    },
-    {
-      "net": "MOTOR_INA",
-      "a": [
-        227.33,
-        91.44
-      ],
-      "b": [
-        242.57,
-        91.44
-      ]
-    },
-    {
-      "net": "H_LDO_IN",
-      "a": [
-        55.88,
-        53.34
-      ],
-      "b": [
-        66.04,
-        53.34
-      ]
-    },
-    {
-      "net": "PIC_RA1_RX_REF",
-      "a": [
-        453.39,
-        175.26
-      ],
-      "b": [
-        453.39,
-        180.34
-      ]
-    },
-    {
-      "net": "TUNE_3_MID",
-      "a": [
-        152.4,
-        317.5
-      ],
-      "b": [
-        152.4,
-        322.58
-      ]
-    },
-    {
-      "net": "RX_A_OUT",
-      "a": [
-        384.81,
-        168.91
-      ],
-      "b": [
-        398.78,
-        168.91
-      ]
-    },
-    {
-      "net": "PIC_RB0_VREF",
+      "net": "GND",
       "a": [
         326.39,
-        233.68
+        220.98
       ],
       "b": [
         326.39,
-        238.76
-      ]
-    },
-    {
-      "net": "H_GND",
-      "a": [
-        114.3,
-        298.45
-      ],
-      "b": [
-        152.4,
-        298.45
-      ]
-    },
-    {
-      "net": "RX_B_OUT",
-      "a": [
-        502.92,
-        180.34
-      ],
-      "b": [
-        502.92,
-        200.66
-      ]
-    },
-    {
-      "net": "H_VDD",
-      "a": [
-        419.1,
-        54.61
-      ],
-      "b": [
-        419.1,
-        64.77
-      ]
-    },
-    {
-      "net": "H_RF_OUT_CAND",
-      "a": [
-        165.1,
-        220.98
-      ],
-      "b": [
-        195.58,
-        220.98
-      ]
-    },
-    {
-      "net": "H_PIR_VDD",
-      "a": [
-        393.7,
-        356.87
-      ],
-      "b": [
-        397.51,
-        356.87
-      ]
-    },
-    {
-      "net": "H_LED_CTL_A",
-      "a": [
-        283.21,
-        86.36
-      ],
-      "b": [
-        288.29,
-        86.36
-      ]
-    },
-    {
-      "net": "TUNE_2_MID",
-      "a": [
-        99.06,
-        317.5
-      ],
-      "b": [
-        99.06,
-        322.58
-      ]
-    },
-    {
-      "net": "RX_A_OUT",
-      "a": [
-        388.62,
-        200.66
-      ],
-      "b": [
-        398.78,
-        200.66
-      ]
-    },
-    {
-      "net": "TUNE_1_SW",
-      "a": [
-        53.34,
-        336.55
-      ],
-      "b": [
-        53.34,
-        342.9
-      ]
-    },
-    {
-      "net": "PIR_BASE",
-      "a": [
-        345.44,
-        345.44
-      ],
-      "b": [
-        351.79,
-        345.44
-      ]
-    },
-    {
-      "net": "H_GND",
-      "a": [
-        60.96,
-        298.45
-      ],
-      "b": [
-        60.96,
-        309.88
-      ]
-    },
-    {
-      "net": "ICSP_DAT",
-      "a": [
-        558.8,
-        40.64
-      ],
-      "b": [
-        558.8,
-        46.99
-      ]
-    },
-    {
-      "net": "H_RF_IN_B",
-      "a": [
-        67.31,
-        217.17
-      ],
-      "b": [
-        67.31,
         226.06
-      ]
-    },
-    {
-      "net": "Q8_DRIVE_B",
-      "a": [
-        134.62,
-        207.01
-      ],
-      "b": [
-        157.48,
-        207.01
-      ]
-    },
-    {
-      "net": "H_PIR_VDD",
-      "a": [
-        368.3,
-        325.12
-      ],
-      "b": [
-        400.05,
-        325.12
-      ]
-    },
-    {
-      "net": "RX_B_FB",
-      "a": [
-        469.9,
-        168.91
-      ],
-      "b": [
-        481.33,
-        168.91
-      ]
-    },
-    {
-      "net": "H_PIR_RAW",
-      "a": [
-        332.74,
-        336.55
-      ],
-      "b": [
-        332.74,
-        345.44
-      ]
-    },
-    {
-      "net": "PIC_RA1_RX_REF",
-      "a": [
-        283.21,
-        60.96
-      ],
-      "b": [
-        288.29,
-        60.96
-      ]
-    },
-    {
-      "net": "RX_A_FILTER",
-      "a": [
-        436.88,
-        198.12
-      ],
-      "b": [
-        436.88,
-        200.66
-      ]
-    },
-    {
-      "net": "H_RF_IN_A",
-      "a": [
-        49.53,
-        209.55
-      ],
-      "b": [
-        58.42,
-        209.55
-      ]
-    },
-    {
-      "net": "H_GND",
-      "a": [
-        419.1,
-        72.39
-      ],
-      "b": [
-        419.1,
-        87.63
-      ]
-    },
-    {
-      "net": "H_GND",
-      "a": [
-        106.68,
-        353.06
-      ],
-      "b": [
-        106.68,
-        364.49
-      ]
-    },
-    {
-      "net": "MCLR_VPP",
-      "a": [
-        323.85,
-        59.69
-      ],
-      "b": [
-        339.09,
-        59.69
-      ]
-    },
-    {
-      "net": "H_BAT_SENSE",
-      "a": [
-        355.6,
-        95.25
-      ],
-      "b": [
-        355.6,
-        101.6
-      ]
-    },
-    {
-      "net": "H_GND",
-      "a": [
-        134.62,
-        69.85
-      ],
-      "b": [
-        134.62,
-        81.28
-      ]
-    },
-    {
-      "net": "U2_DRIVE_A",
-      "a": [
-        100.33,
-        185.42
-      ],
-      "b": [
-        111.76,
-        185.42
-      ]
-    },
-    {
-      "net": "TUNE_2_MID",
-      "a": [
-        106.68,
-        322.58
-      ],
-      "b": [
-        106.68,
-        328.93
-      ]
-    },
-    {
-      "net": "U1_ALT_PAD",
-      "a": [
-        118.11,
-        110.49
-      ],
-      "b": [
-        123.19,
-        110.49
-      ]
-    },
-    {
-      "net": "H_LED_CTL_B",
-      "a": [
-        191.77,
-        242.57
-      ],
-      "b": [
-        194.31,
-        242.57
-      ]
-    },
-    {
-      "net": "H_GND",
-      "a": [
-        83.82,
-        81.28
-      ],
-      "b": [
-        114.3,
-        81.28
-      ]
-    },
-    {
-      "net": "H_RF_IN_A",
-      "a": [
-        58.42,
-        185.42
-      ],
-      "b": [
-        58.42,
-        209.55
-      ]
-    },
-    {
-      "net": "RX_A_FILTER",
-      "a": [
-        425.45,
-        200.66
-      ],
-      "b": [
-        436.88,
-        200.66
-      ]
-    },
-    {
-      "net": "TUNE_5_BASE",
-      "a": [
-        252.73,
-        347.98
-      ],
-      "b": [
-        259.08,
-        347.98
-      ]
-    },
-    {
-      "net": "H_BUTTON",
-      "a": [
-        542.29,
-        63.5
-      ],
-      "b": [
-        548.64,
-        63.5
-      ]
-    },
-    {
-      "net": "H_LED_A",
-      "a": [
-        222.25,
-        234.95
-      ],
-      "b": [
-        222.25,
-        236.22
-      ]
-    },
-    {
-      "net": "H_GND",
-      "a": [
-        210.82,
-        55.88
-      ],
-      "b": [
-        224.79,
-        55.88
-      ]
-    },
-    {
-      "net": "H_GND",
-      "a": [
-        355.6,
-        316.23
-      ],
-      "b": [
-        355.6,
-        326.39
-      ]
-    },
-    {
-      "net": "H_VDD",
-      "a": [
-        114.3,
-        53.34
-      ],
-      "b": [
-        114.3,
-        62.23
-      ]
-    },
-    {
-      "net": "RX_A_FILTER",
-      "a": [
-        415.29,
-        200.66
-      ],
-      "b": [
-        425.45,
-        200.66
-      ]
-    },
-    {
-      "net": "H_MOTOR_A",
-      "a": [
-        487.68,
-        55.88
-      ],
-      "b": [
-        487.68,
-        62.23
-      ]
-    },
-    {
-      "net": "H_VDD",
-      "a": [
-        78.74,
-        110.49
-      ],
-      "b": [
-        78.74,
-        116.84
-      ]
-    },
-    {
-      "net": "OSC1",
-      "a": [
-        302.26,
-        107.95
-      ],
-      "b": [
-        302.26,
-        113.03
-      ]
-    },
-    {
-      "net": "PIC_RB0_VREF",
-      "a": [
-        307.34,
-        233.68
-      ],
-      "b": [
-        307.34,
-        238.76
-      ]
-    },
-    {
-      "net": "H_RF_OUT_CAND",
-      "a": [
-        165.1,
-        212.09
-      ],
-      "b": [
-        165.1,
-        220.98
-      ]
-    },
-    {
-      "net": "H_RF_IN_B",
-      "a": [
-        67.31,
-        217.17
-      ],
-      "b": [
-        72.39,
-        217.17
-      ]
-    },
-    {
-      "net": "H_BAT_DETECT",
-      "a": [
-        455.93,
-        104.14
-      ],
-      "b": [
-        481.33,
-        104.14
-      ]
-    },
-    {
-      "net": "H_VDD",
-      "a": [
-        298.45,
-        295.91
-      ],
-      "b": [
-        306.07,
-        295.91
-      ]
-    },
-    {
-      "net": "RX_A_PLUS",
-      "a": [
-        346.71,
-        229.87
-      ],
-      "b": [
-        353.06,
-        229.87
-      ]
-    },
-    {
-      "net": "H_VDD",
-      "a": [
-        168.91,
-        166.37
-      ],
-      "b": [
-        168.91,
-        168.91
-      ]
-    },
-    {
-      "net": "PIR_BASE",
-      "a": [
-        351.79,
-        345.44
-      ],
-      "b": [
-        351.79,
-        351.79
-      ]
-    },
-    {
-      "net": "RB5_OPT",
-      "a": [
-        283.21,
-        93.98
-      ],
-      "b": [
-        300.99,
-        93.98
-      ]
-    },
-    {
-      "net": "H_GND",
-      "a": [
-        558.8,
-        78.74
-      ],
-      "b": [
-        558.8,
-        87.63
-      ]
-    },
-    {
-      "net": "PIR_BASE",
-      "a": [
-        351.79,
-        345.44
-      ],
-      "b": [
-        360.68,
-        345.44
-      ]
-    },
-    {
-      "net": "H_VDD",
-      "a": [
-        210.82,
-        40.64
-      ],
-      "b": [
-        210.82,
-        44.45
-      ]
-    },
-    {
-      "net": "H_RX_DETECT",
-      "a": [
-        515.62,
-        200.66
-      ],
-      "b": [
-        527.05,
-        200.66
-      ]
-    },
-    {
-      "net": "PIC_RB0_VREF",
-      "a": [
-        307.34,
-        238.76
-      ],
-      "b": [
-        313.69,
-        238.76
-      ]
-    },
-    {
-      "net": "H_D1_FREE",
-      "a": [
-        57.15,
-        200.66
-      ],
-      "b": [
-        60.96,
-        200.66
       ]
     },
     {
@@ -7295,117 +4778,29 @@
       ]
     },
     {
-      "net": "H_BAT_DETECT",
+      "net": "TUNE_4_MID",
       "a": [
-        466.09,
-        129.54
-      ],
-      "b": [
-        481.33,
-        129.54
-      ]
-    },
-    {
-      "net": "H_VDD",
-      "a": [
-        419.1,
-        54.61
-      ],
-      "b": [
-        438.15,
-        54.61
-      ]
-    },
-    {
-      "net": "H_GND",
-      "a": [
-        478.79,
-        361.95
-      ],
-      "b": [
-        483.87,
-        361.95
-      ]
-    },
-    {
-      "net": "H_LED_CTL_B",
-      "a": [
-        283.21,
-        83.82
-      ],
-      "b": [
-        288.29,
-        83.82
-      ]
-    },
-    {
-      "net": "H_MOTOR_B",
-      "a": [
-        490.22,
-        64.77
-      ],
-      "b": [
-        490.22,
-        69.85
-      ]
-    },
-    {
-      "net": "H_GND",
-      "a": [
-        300.99,
-        326.39
-      ],
-      "b": [
-        330.2,
-        326.39
-      ]
-    },
-    {
-      "net": "H_RX_DETECT",
-      "a": [
-        542.29,
-        207.01
-      ],
-      "b": [
-        574.04,
-        207.01
-      ]
-    },
-    {
-      "net": "H_GND",
-      "a": [
-        160.02,
-        364.49
+        213.36,
+        322.58
       ],
       "b": [
         213.36,
-        364.49
+        328.93
       ]
     },
     {
-      "net": "TUNE_3_MID",
+      "net": "Q8_DRIVE_B",
       "a": [
-        167.64,
-        317.5
+        119.38,
+        217.17
       ],
       "b": [
-        167.64,
-        322.58
+        134.62,
+        217.17
       ]
     },
     {
-      "net": "H_BUTTON",
-      "a": [
-        524.51,
-        50.8
-      ],
-      "b": [
-        525.78,
-        50.8
-      ]
-    },
-    {
-      "net": "PIC_RB0_VREF",
+      "net": "VREF",
       "a": [
         461.01,
         227.33
@@ -7416,146 +4811,36 @@
       ]
     },
     {
-      "net": "U1_ALT_PAD",
+      "net": "VSYS",
       "a": [
-        93.98,
-        60.96
+        29.21,
+        53.34
       ],
       "b": [
-        101.6,
-        60.96
+        38.1,
+        53.34
       ]
     },
     {
-      "net": "H_GND",
+      "net": "RX_A_OUT",
       "a": [
-        99.06,
-        298.45
+        384.81,
+        180.34
       ],
       "b": [
-        99.06,
-        309.88
-      ]
-    },
-    {
-      "net": "H_LED_A",
-      "a": [
-        220.98,
-        236.22
-      ],
-      "b": [
-        222.25,
-        236.22
-      ]
-    },
-    {
-      "net": "H_GND",
-      "a": [
-        45.72,
-        298.45
-      ],
-      "b": [
-        45.72,
-        309.88
-      ]
-    },
-    {
-      "net": "H_GND",
-      "a": [
-        114.3,
-        81.28
-      ],
-      "b": [
-        134.62,
-        81.28
-      ]
-    },
-    {
-      "net": "H_VBAT",
-      "a": [
-        458.47,
-        41.91
-      ],
-      "b": [
-        458.47,
-        48.26
-      ]
-    },
-    {
-      "net": "U1_ALT_PAD",
-      "a": [
-        86.36,
-        110.49
-      ],
-      "b": [
-        91.44,
-        110.49
-      ]
-    },
-    {
-      "net": "U1_ALT_PAD",
-      "a": [
-        123.19,
-        102.87
-      ],
-      "b": [
-        146.05,
-        102.87
-      ]
-    },
-    {
-      "net": "RX_B_FB",
-      "a": [
-        469.9,
-        168.91
-      ],
-      "b": [
-        469.9,
+        398.78,
         180.34
       ]
     },
     {
-      "net": "H_PIR_RAW",
+      "net": "TUNE_4_MID",
       "a": [
-        332.74,
-        336.55
+        220.98,
+        317.5
       ],
       "b": [
-        388.62,
-        336.55
-      ]
-    },
-    {
-      "net": "H_GND",
-      "a": [
-        528.32,
-        63.5
-      ],
-      "b": [
-        528.32,
-        87.63
-      ]
-    },
-    {
-      "net": "PIC_RA1_RX_REF",
-      "a": [
-        346.71,
-        212.09
-      ],
-      "b": [
-        346.71,
-        217.17
-      ]
-    },
-    {
-      "net": "TUNE_4_BASE",
-      "a": [
-        199.39,
-        347.98
-      ],
-      "b": [
-        205.74,
-        347.98
+        220.98,
+        322.58
       ]
     },
     {
@@ -7570,32 +4855,230 @@
       ]
     },
     {
-      "net": "H_LDO_IN",
+      "net": "GND",
       "a": [
-        66.04,
-        60.96
+        511.81,
+        83.82
       ],
       "b": [
-        73.66,
-        60.96
+        511.81,
+        88.9
       ]
     },
     {
-      "net": "H_GND",
+      "net": "TUNE_2_BASE",
       "a": [
-        330.2,
-        326.39
+        92.71,
+        347.98
       ],
       "b": [
-        355.6,
-        326.39
+        99.06,
+        347.98
+      ]
+    },
+    {
+      "net": "TUNE_5_SW",
+      "a": [
+        266.7,
+        336.55
+      ],
+      "b": [
+        266.7,
+        342.9
+      ]
+    },
+    {
+      "net": "H_PIR_VDD",
+      "a": [
+        368.3,
+        325.12
+      ],
+      "b": [
+        400.05,
+        325.12
+      ]
+    },
+    {
+      "net": "GND",
+      "a": [
+        461.01,
+        87.63
+      ],
+      "b": [
+        481.33,
+        87.63
+      ]
+    },
+    {
+      "net": "PIC_RA1_RX_REF",
+      "a": [
+        453.39,
+        175.26
+      ],
+      "b": [
+        453.39,
+        180.34
+      ]
+    },
+    {
+      "net": "H_RX_ENABLE",
+      "a": [
+        300.99,
+        182.88
+      ],
+      "b": [
+        300.99,
+        195.58
+      ]
+    },
+    {
+      "net": "GND",
+      "a": [
+        220.98,
+        298.45
+      ],
+      "b": [
+        259.08,
+        298.45
+      ]
+    },
+    {
+      "net": "RX_A_PLUS",
+      "a": [
+        439.42,
+        236.22
+      ],
+      "b": [
+        439.42,
+        250.19
+      ]
+    },
+    {
+      "net": "RX_B_FB",
+      "a": [
+        469.9,
+        203.2
+      ],
+      "b": [
+        477.52,
+        203.2
+      ]
+    },
+    {
+      "net": "H_BUTTON",
+      "a": [
+        558.8,
+        58.42
+      ],
+      "b": [
+        558.8,
+        71.12
+      ]
+    },
+    {
+      "net": "GND",
+      "a": [
+        114.3,
+        69.85
+      ],
+      "b": [
+        114.3,
+        81.28
+      ]
+    },
+    {
+      "net": "H_RX_VDD",
+      "a": [
+        344.17,
+        182.88
+      ],
+      "b": [
+        349.25,
+        182.88
+      ]
+    },
+    {
+      "net": "GND",
+      "a": [
+        322.58,
+        128.27
+      ],
+      "b": [
+        322.58,
+        132.08
+      ]
+    },
+    {
+      "net": "RF_MONITOR_PAD",
+      "a": [
+        52.07,
+        251.46
+      ],
+      "b": [
+        52.07,
+        259.08
+      ]
+    },
+    {
+      "net": "H_PIR_RAW",
+      "a": [
+        332.74,
+        336.55
+      ],
+      "b": [
+        332.74,
+        345.44
+      ]
+    },
+    {
+      "net": "GND",
+      "a": [
+        262.89,
+        104.14
+      ],
+      "b": [
+        262.89,
+        132.08
+      ]
+    },
+    {
+      "net": "PIR_BASE",
+      "a": [
+        351.79,
+        345.44
+      ],
+      "b": [
+        351.79,
+        351.79
+      ]
+    },
+    {
+      "net": "H_LED_CTL_B",
+      "a": [
+        191.77,
+        242.57
+      ],
+      "b": [
+        191.77,
+        250.19
+      ]
+    },
+    {
+      "net": "VDD",
+      "a": [
+        328.93,
+        62.23
+      ],
+      "b": [
+        339.09,
+        62.23
       ]
     },
     {
       "net": "H_AUX_IN",
       "a": [
-        314.96,
-        295.91
+        300.99,
+        302.26
       ],
       "b": [
         314.96,
@@ -7603,7 +5086,84 @@
       ]
     },
     {
-      "net": "PIC_RB0_VREF",
+      "net": "PIR_BASE",
+      "a": [
+        351.79,
+        345.44
+      ],
+      "b": [
+        360.68,
+        345.44
+      ]
+    },
+    {
+      "net": "PIC_RB3_RETURN",
+      "a": [
+        283.21,
+        88.9
+      ],
+      "b": [
+        300.99,
+        88.9
+      ]
+    },
+    {
+      "net": "TUNE_2_MID",
+      "a": [
+        106.68,
+        322.58
+      ],
+      "b": [
+        106.68,
+        328.93
+      ]
+    },
+    {
+      "net": "RF_MONITOR_PAD",
+      "a": [
+        24.13,
+        251.46
+      ],
+      "b": [
+        30.48,
+        251.46
+      ]
+    },
+    {
+      "net": "GND",
+      "a": [
+        527.05,
+        227.33
+      ],
+      "b": [
+        542.29,
+        227.33
+      ]
+    },
+    {
+      "net": "TUNE_2_MID",
+      "a": [
+        99.06,
+        317.5
+      ],
+      "b": [
+        99.06,
+        322.58
+      ]
+    },
+    {
+      "net": "H_RF_VDD",
+      "a": [
+        224.79,
+        167.64
+      ],
+      "b": [
+        229.87,
+        167.64
+      ]
+    },
+    {
+      "net": "VREF",
       "a": [
         283.21,
         81.28
@@ -7625,157 +5185,36 @@
       ]
     },
     {
-      "net": "H_GND",
+      "net": "H_D1_FREE",
       "a": [
-        138.43,
-        110.49
+        57.15,
+        200.66
       ],
       "b": [
-        138.43,
-        116.84
+        60.96,
+        200.66
       ]
     },
     {
-      "net": "RB5_OPT",
+      "net": "GND",
       "a": [
-        455.93,
-        351.79
+        302.26,
+        128.27
       ],
       "b": [
-        455.93,
-        356.87
+        302.26,
+        132.08
       ]
     },
     {
-      "net": "H_RX_DETECT",
+      "net": "VDD",
       "a": [
-        556.26,
-        260.35
-      ],
-      "b": [
-        574.04,
-        260.35
-      ]
-    },
-    {
-      "net": "H_GND",
-      "a": [
-        259.08,
-        185.42
-      ],
-      "b": [
-        259.08,
-        198.12
-      ]
-    },
-    {
-      "net": "H_BUTTON_MCU",
-      "a": [
-        506.73,
-        50.8
-      ],
-      "b": [
-        510.54,
-        50.8
-      ]
-    },
-    {
-      "net": "H_ANT_B",
-      "a": [
-        21.59,
-        298.45
-      ],
-      "b": [
-        27.94,
-        298.45
-      ]
-    },
-    {
-      "net": "RX_B_OUT",
-      "a": [
-        502.92,
-        168.91
-      ],
-      "b": [
-        502.92,
-        180.34
-      ]
-    },
-    {
-      "net": "R35_Q9",
-      "a": [
-        309.88,
-        391.16
-      ],
-      "b": [
-        309.88,
-        396.24
-      ]
-    },
-    {
-      "net": "RX_B_FB",
-      "a": [
-        461.01,
-        203.2
-      ],
-      "b": [
-        469.9,
-        203.2
-      ]
-    },
-    {
-      "net": "Q8_DRIVE_B",
-      "a": [
-        119.38,
-        217.17
-      ],
-      "b": [
-        134.62,
-        217.17
-      ]
-    },
-    {
-      "net": "TUNE_4_SW",
-      "a": [
-        213.36,
-        336.55
-      ],
-      "b": [
-        213.36,
-        342.9
-      ]
-    },
-    {
-      "net": "PIC_RA0_FILTER",
-      "a": [
-        283.21,
-        58.42
-      ],
-      "b": [
-        312.42,
-        58.42
-      ]
-    },
-    {
-      "net": "ICSP_CLK",
-      "a": [
-        292.1,
+        419.1,
         54.61
       ],
       "b": [
-        339.09,
+        438.15,
         54.61
-      ]
-    },
-    {
-      "net": "H_GND",
-      "a": [
-        168.91,
-        189.23
-      ],
-      "b": [
-        168.91,
-        193.04
       ]
     },
     {
@@ -7790,773 +5229,14 @@
       ]
     },
     {
-      "net": "H_PIR_RAW",
+      "net": "GND",
       "a": [
-        393.7,
-        330.2
-      ],
-      "b": [
-        400.05,
-        330.2
-      ]
-    },
-    {
-      "net": "RX_A_FILTER",
-      "a": [
-        436.88,
-        198.12
-      ],
-      "b": [
-        457.2,
-        198.12
-      ]
-    },
-    {
-      "net": "H_GND",
-      "a": [
-        542.29,
-        219.71
-      ],
-      "b": [
-        542.29,
-        227.33
-      ]
-    },
-    {
-      "net": "H_GND",
-      "a": [
-        266.7,
+        160.02,
         353.06
       ],
       "b": [
-        266.7,
+        160.02,
         364.49
-      ]
-    },
-    {
-      "net": "H_GND",
-      "a": [
-        375.92,
-        391.16
-      ],
-      "b": [
-        375.92,
-        396.24
-      ]
-    },
-    {
-      "net": "H_BAT_DETECT",
-      "a": [
-        466.09,
-        124.46
-      ],
-      "b": [
-        466.09,
-        129.54
-      ]
-    },
-    {
-      "net": "H_RX_RF_SENSE",
-      "a": [
-        515.62,
-        237.49
-      ],
-      "b": [
-        538.48,
-        237.49
-      ]
-    },
-    {
-      "net": "RX_A_FB",
-      "a": [
-        356.87,
-        203.2
-      ],
-      "b": [
-        356.87,
-        219.71
-      ]
-    },
-    {
-      "net": "H_GND",
-      "a": [
-        259.08,
-        298.45
-      ],
-      "b": [
-        259.08,
-        309.88
-      ]
-    },
-    {
-      "net": "H_RF_IN_B",
-      "a": [
-        38.1,
-        217.17
-      ],
-      "b": [
-        67.31,
-        217.17
-      ]
-    },
-    {
-      "net": "H_BAT_DETECT",
-      "a": [
-        455.93,
-        104.14
-      ],
-      "b": [
-        455.93,
-        106.68
-      ]
-    },
-    {
-      "net": "TUNE_1_MID",
-      "a": [
-        60.96,
-        317.5
-      ],
-      "b": [
-        60.96,
-        322.58
-      ]
-    },
-    {
-      "net": "RF_MONITOR_PAD",
-      "a": [
-        52.07,
-        251.46
-      ],
-      "b": [
-        52.07,
-        259.08
-      ]
-    },
-    {
-      "net": "H_LED_B",
-      "a": [
-        220.98,
-        240.03
-      ],
-      "b": [
-        223.52,
-        240.03
-      ]
-    },
-    {
-      "net": "H_RX_RF_SENSE",
-      "a": [
-        538.48,
-        242.57
-      ],
-      "b": [
-        556.26,
-        242.57
-      ]
-    },
-    {
-      "net": "OSC2",
-      "a": [
-        322.58,
-        105.41
-      ],
-      "b": [
-        322.58,
-        113.03
-      ]
-    },
-    {
-      "net": "MCLR_VPP",
-      "a": [
-        227.33,
-        58.42
-      ],
-      "b": [
-        242.57,
-        58.42
-      ]
-    },
-    {
-      "net": "RX_A_PLUS",
-      "a": [
-        353.06,
-        198.12
-      ],
-      "b": [
-        353.06,
-        229.87
-      ]
-    },
-    {
-      "net": "H_TUNE_5",
-      "a": [
-        227.33,
-        81.28
-      ],
-      "b": [
-        242.57,
-        81.28
-      ]
-    },
-    {
-      "net": "TUNE_2_MID",
-      "a": [
-        114.3,
-        317.5
-      ],
-      "b": [
-        114.3,
-        322.58
-      ]
-    },
-    {
-      "net": "RX_A_FB",
-      "a": [
-        356.87,
-        203.2
-      ],
-      "b": [
-        363.22,
-        203.2
-      ]
-    },
-    {
-      "net": "TUNE_5_SW",
-      "a": [
-        266.7,
-        336.55
-      ],
-      "b": [
-        266.7,
-        342.9
-      ]
-    },
-    {
-      "net": "H_VBAT",
-      "a": [
-        511.81,
-        71.12
-      ],
-      "b": [
-        511.81,
-        76.2
-      ]
-    },
-    {
-      "net": "ICSP_DAT",
-      "a": [
-        379.73,
-        391.16
-      ],
-      "b": [
-        384.81,
-        391.16
-      ]
-    },
-    {
-      "net": "H_GND",
-      "a": [
-        41.91,
-        81.28
-      ],
-      "b": [
-        55.88,
-        81.28
-      ]
-    },
-    {
-      "net": "TUNE_3_SW",
-      "a": [
-        160.02,
-        336.55
-      ],
-      "b": [
-        160.02,
-        342.9
-      ]
-    },
-    {
-      "net": "TUNE_5_MID",
-      "a": [
-        266.7,
-        322.58
-      ],
-      "b": [
-        274.32,
-        322.58
-      ]
-    },
-    {
-      "net": "H_VBAT",
-      "a": [
-        29.21,
-        53.34
-      ],
-      "b": [
-        38.1,
-        53.34
-      ]
-    },
-    {
-      "net": "H_GND",
-      "a": [
-        469.9,
-        250.19
-      ],
-      "b": [
-        476.25,
-        250.19
-      ]
-    },
-    {
-      "net": "H_PIR_RAW",
-      "a": [
-        388.62,
-        336.55
-      ],
-      "b": [
-        388.62,
-        349.25
-      ]
-    },
-    {
-      "net": "RF_MONITOR_PAD",
-      "a": [
-        24.13,
-        251.46
-      ],
-      "b": [
-        30.48,
-        251.46
-      ]
-    },
-    {
-      "net": "H_RX_DETECT",
-      "a": [
-        527.05,
-        200.66
-      ],
-      "b": [
-        527.05,
-        212.09
-      ]
-    },
-    {
-      "net": "H_GND",
-      "a": [
-        554.99,
-        193.04
-      ],
-      "b": [
-        554.99,
-        199.39
-      ]
-    },
-    {
-      "net": "RX_A_FB",
-      "a": [
-        363.22,
-        180.34
-      ],
-      "b": [
-        377.19,
-        180.34
-      ]
-    },
-    {
-      "net": "H_GND",
-      "a": [
-        165.1,
-        238.76
-      ],
-      "b": [
-        170.18,
-        238.76
-      ]
-    },
-    {
-      "net": "H_BUTTON",
-      "a": [
-        558.8,
-        58.42
-      ],
-      "b": [
-        568.96,
-        58.42
-      ]
-    },
-    {
-      "net": "OSC2",
-      "a": [
-        298.45,
-        73.66
-      ],
-      "b": [
-        298.45,
-        105.41
-      ]
-    },
-    {
-      "net": "H_RF_VDD",
-      "a": [
-        165.1,
-        201.93
-      ],
-      "b": [
-        224.79,
-        201.93
-      ]
-    },
-    {
-      "net": "H_RF_IN_A",
-      "a": [
-        67.31,
-        185.42
-      ],
-      "b": [
-        67.31,
-        194.31
-      ]
-    },
-    {
-      "net": "TUNE_2_SW",
-      "a": [
-        106.68,
-        336.55
-      ],
-      "b": [
-        106.68,
-        342.9
-      ]
-    },
-    {
-      "net": "H_BUTTON",
-      "a": [
-        558.8,
-        54.61
-      ],
-      "b": [
-        558.8,
-        58.42
-      ]
-    },
-    {
-      "net": "H_GND",
-      "a": [
-        252.73,
-        236.22
-      ],
-      "b": [
-        252.73,
-        237.49
-      ]
-    },
-    {
-      "net": "H_GND",
-      "a": [
-        302.26,
-        132.08
-      ],
-      "b": [
-        322.58,
-        132.08
-      ]
-    },
-    {
-      "net": "H_PIR_RAW",
-      "a": [
-        388.62,
-        349.25
-      ],
-      "b": [
-        393.7,
-        349.25
-      ]
-    },
-    {
-      "net": "H_GND",
-      "a": [
-        392.43,
-        327.66
-      ],
-      "b": [
-        400.05,
-        327.66
-      ]
-    },
-    {
-      "net": "PIC_RC3",
-      "a": [
-        231.14,
-        88.9
-      ],
-      "b": [
-        242.57,
-        88.9
-      ]
-    },
-    {
-      "net": "H_GND",
-      "a": [
-        312.42,
-        66.04
-      ],
-      "b": [
-        312.42,
-        83.82
-      ]
-    },
-    {
-      "net": "H_VDD",
-      "a": [
-        134.62,
-        53.34
-      ],
-      "b": [
-        146.05,
-        53.34
-      ]
-    },
-    {
-      "net": "H_GND",
-      "a": [
-        246.38,
-        234.95
-      ],
-      "b": [
-        246.38,
-        236.22
-      ]
-    },
-    {
-      "net": "H_RF_IN_A",
-      "a": [
-        58.42,
-        185.42
-      ],
-      "b": [
-        67.31,
-        185.42
-      ]
-    },
-    {
-      "net": "RX_A_FB",
-      "a": [
-        363.22,
-        168.91
-      ],
-      "b": [
-        363.22,
-        180.34
-      ]
-    },
-    {
-      "net": "MOTOR_INA",
-      "a": [
-        433.07,
-        60.96
-      ],
-      "b": [
-        445.77,
-        60.96
-      ]
-    },
-    {
-      "net": "H_LDO_IN",
-      "a": [
-        66.04,
-        53.34
-      ],
-      "b": [
-        66.04,
-        60.96
-      ]
-    },
-    {
-      "net": "H_GND",
-      "a": [
-        334.01,
-        64.77
-      ],
-      "b": [
-        334.01,
-        132.08
-      ]
-    },
-    {
-      "net": "TUNE_1_MID",
-      "a": [
-        53.34,
-        322.58
-      ],
-      "b": [
-        53.34,
-        328.93
-      ]
-    },
-    {
-      "net": "H_VDD",
-      "a": [
-        300.99,
-        203.2
-      ],
-      "b": [
-        300.99,
-        210.82
-      ]
-    },
-    {
-      "net": "RX_B_FB",
-      "a": [
-        469.9,
-        203.2
-      ],
-      "b": [
-        477.52,
-        203.2
-      ]
-    },
-    {
-      "net": "H_PIR_VDD",
-      "a": [
-        355.6,
-        306.07
-      ],
-      "b": [
-        355.6,
-        308.61
-      ]
-    },
-    {
-      "net": "H_LED_B",
-      "a": [
-        218.44,
-        238.76
-      ],
-      "b": [
-        220.98,
-        238.76
-      ]
-    },
-    {
-      "net": "H_RF_VDD",
-      "a": [
-        224.79,
-        167.64
-      ],
-      "b": [
-        224.79,
-        201.93
-      ]
-    },
-    {
-      "net": "H_PIR_SIG",
-      "a": [
-        368.3,
-        335.28
-      ],
-      "b": [
-        379.73,
-        335.28
-      ]
-    },
-    {
-      "net": "H_GND",
-      "a": [
-        38.1,
-        251.46
-      ],
-      "b": [
-        38.1,
-        256.54
-      ]
-    },
-    {
-      "net": "H_GND",
-      "a": [
-        220.98,
-        298.45
-      ],
-      "b": [
-        259.08,
-        298.45
-      ]
-    },
-    {
-      "net": "Q8_DRIVE_A",
-      "a": [
-        140.97,
-        185.42
-      ],
-      "b": [
-        140.97,
-        231.14
-      ]
-    },
-    {
-      "net": "H_GND",
-      "a": [
-        430.53,
-        87.63
-      ],
-      "b": [
-        455.93,
-        87.63
-      ]
-    },
-    {
-      "net": "H_MOTOR_B",
-      "a": [
-        483.87,
-        69.85
-      ],
-      "b": [
-        490.22,
-        69.85
-      ]
-    },
-    {
-      "net": "H_MOTOR_A",
-      "a": [
-        471.17,
-        55.88
-      ],
-      "b": [
-        487.68,
-        55.88
-      ]
-    },
-    {
-      "net": "PIC_TP4_C41",
-      "a": [
-        283.21,
-        91.44
-      ],
-      "b": [
-        288.29,
-        91.44
-      ]
-    },
-    {
-      "net": "H_MOTOR_B",
-      "a": [
-        490.22,
-        64.77
-      ],
-      "b": [
-        494.03,
-        64.77
-      ]
-    },
-    {
-      "net": "RX_B_OUT",
-      "a": [
-        492.76,
-        200.66
-      ],
-      "b": [
-        502.92,
-        200.66
       ]
     },
     {
@@ -8566,96 +5246,8 @@
         39.37
       ],
       "b": [
-        568.96,
-        39.37
-      ]
-    },
-    {
-      "net": "RF_MONITOR_PAD",
-      "a": [
-        227.33,
-        86.36
-      ],
-      "b": [
-        242.57,
-        86.36
-      ]
-    },
-    {
-      "net": "H_RF_IN_A",
-      "a": [
-        67.31,
-        185.42
-      ],
-      "b": [
-        72.39,
-        185.42
-      ]
-    },
-    {
-      "net": "RX_SUPPLY_SERIES",
-      "a": [
-        335.28,
-        173.99
-      ],
-      "b": [
-        335.28,
-        182.88
-      ]
-    },
-    {
-      "net": "H_RF_IN_B",
-      "a": [
-        30.48,
-        200.66
-      ],
-      "b": [
-        30.48,
-        217.17
-      ]
-    },
-    {
-      "net": "H_GND",
-      "a": [
-        110.49,
-        110.49
-      ],
-      "b": [
-        110.49,
-        116.84
-      ]
-    },
-    {
-      "net": "H_PIR_RAW",
-      "a": [
-        332.74,
-        345.44
-      ],
-      "b": [
-        337.82,
-        345.44
-      ]
-    },
-    {
-      "net": "RX_A_FB",
-      "a": [
-        363.22,
-        168.91
-      ],
-      "b": [
-        377.19,
-        168.91
-      ]
-    },
-    {
-      "net": "Q8_DRIVE_A",
-      "a": [
-        119.38,
-        185.42
-      ],
-      "b": [
-        140.97,
-        185.42
+        525.78,
+        50.8
       ]
     },
     {
@@ -8670,117 +5262,29 @@
       ]
     },
     {
-      "net": "H_AUX_IN",
+      "net": "H_BUTTON",
       "a": [
-        313.69,
-        295.91
+        568.96,
+        39.37
       ],
       "b": [
-        314.96,
-        295.91
+        568.96,
+        58.42
       ]
     },
     {
-      "net": "PIC_RA2_FILTER",
+      "net": "GND",
       "a": [
-        283.21,
-        63.5
+        528.32,
+        87.63
       ],
       "b": [
-        300.99,
-        63.5
+        558.8,
+        87.63
       ]
     },
     {
-      "net": "PIC_TP4_C41",
-      "a": [
-        198.12,
-        76.2
-      ],
-      "b": [
-        207.01,
-        76.2
-      ]
-    },
-    {
-      "net": "H_VBAT",
-      "a": [
-        355.6,
-        77.47
-      ],
-      "b": [
-        355.6,
-        82.55
-      ]
-    },
-    {
-      "net": "H_GND",
-      "a": [
-        554.99,
-        199.39
-      ],
-      "b": [
-        570.23,
-        199.39
-      ]
-    },
-    {
-      "net": "H_VDD",
-      "a": [
-        128.27,
-        53.34
-      ],
-      "b": [
-        134.62,
-        53.34
-      ]
-    },
-    {
-      "net": "H_GND",
-      "a": [
-        326.39,
-        220.98
-      ],
-      "b": [
-        326.39,
-        226.06
-      ]
-    },
-    {
-      "net": "PIC_RB0_VREF",
-      "a": [
-        313.69,
-        238.76
-      ],
-      "b": [
-        326.39,
-        238.76
-      ]
-    },
-    {
-      "net": "H_ANT_A",
-      "a": [
-        21.59,
-        364.49
-      ],
-      "b": [
-        27.94,
-        364.49
-      ]
-    },
-    {
-      "net": "H_TUNE_1",
-      "a": [
-        227.33,
-        96.52
-      ],
-      "b": [
-        242.57,
-        96.52
-      ]
-    },
-    {
-      "net": "H_GND",
+      "net": "GND",
       "a": [
         274.32,
         298.45
@@ -8791,18 +5295,18 @@
       ]
     },
     {
-      "net": "OSC2",
+      "net": "PIC_RA1_RX_REF",
       "a": [
-        298.45,
-        105.41
+        283.21,
+        60.96
       ],
       "b": [
-        322.58,
-        105.41
+        288.29,
+        60.96
       ]
     },
     {
-      "net": "H_GND",
+      "net": "GND",
       "a": [
         53.34,
         364.49
@@ -8810,534 +5314,6 @@
       "b": [
         106.68,
         364.49
-      ]
-    },
-    {
-      "net": "U1_ALT_PAD",
-      "a": [
-        91.44,
-        102.87
-      ],
-      "b": [
-        101.6,
-        102.87
-      ]
-    },
-    {
-      "net": "H_GND",
-      "a": [
-        511.81,
-        83.82
-      ],
-      "b": [
-        511.81,
-        88.9
-      ]
-    },
-    {
-      "net": "MOTOR_INB",
-      "a": [
-        433.07,
-        66.04
-      ],
-      "b": [
-        445.77,
-        66.04
-      ]
-    },
-    {
-      "net": "ICSP_DAT",
-      "a": [
-        295.91,
-        57.15
-      ],
-      "b": [
-        339.09,
-        57.15
-      ]
-    },
-    {
-      "net": "H_PIR_VDD",
-      "a": [
-        355.6,
-        304.8
-      ],
-      "b": [
-        355.6,
-        306.07
-      ]
-    },
-    {
-      "net": "H_GND",
-      "a": [
-        461.01,
-        87.63
-      ],
-      "b": [
-        481.33,
-        87.63
-      ]
-    },
-    {
-      "net": "TUNE_5_MID",
-      "a": [
-        266.7,
-        322.58
-      ],
-      "b": [
-        266.7,
-        328.93
-      ]
-    },
-    {
-      "net": "OSC1",
-      "a": [
-        295.91,
-        76.2
-      ],
-      "b": [
-        295.91,
-        107.95
-      ]
-    },
-    {
-      "net": "H_GND",
-      "a": [
-        114.3,
-        69.85
-      ],
-      "b": [
-        114.3,
-        81.28
-      ]
-    },
-    {
-      "net": "H_GND",
-      "a": [
-        481.33,
-        87.63
-      ],
-      "b": [
-        528.32,
-        87.63
-      ]
-    },
-    {
-      "net": "H_GND",
-      "a": [
-        220.98,
-        298.45
-      ],
-      "b": [
-        220.98,
-        309.88
-      ]
-    },
-    {
-      "net": "RX_A_PLUS",
-      "a": [
-        439.42,
-        250.19
-      ],
-      "b": [
-        445.77,
-        250.19
-      ]
-    },
-    {
-      "net": "U1_ALT_PAD",
-      "a": [
-        57.15,
-        110.49
-      ],
-      "b": [
-        60.96,
-        110.49
-      ]
-    },
-    {
-      "net": "H_GND",
-      "a": [
-        262.89,
-        104.14
-      ],
-      "b": [
-        262.89,
-        132.08
-      ]
-    },
-    {
-      "net": "H_VDD",
-      "a": [
-        438.15,
-        55.88
-      ],
-      "b": [
-        445.77,
-        55.88
-      ]
-    },
-    {
-      "net": "H_RF_VDD",
-      "a": [
-        224.79,
-        167.64
-      ],
-      "b": [
-        229.87,
-        167.64
-      ]
-    },
-    {
-      "net": "RX_A_FB",
-      "a": [
-        363.22,
-        180.34
-      ],
-      "b": [
-        363.22,
-        203.2
-      ]
-    },
-    {
-      "net": "H_RX_ENABLE",
-      "a": [
-        300.99,
-        182.88
-      ],
-      "b": [
-        300.99,
-        195.58
-      ]
-    },
-    {
-      "net": "TUNE_5_MID",
-      "a": [
-        274.32,
-        317.5
-      ],
-      "b": [
-        274.32,
-        322.58
-      ]
-    },
-    {
-      "net": "H_VDD",
-      "a": [
-        300.99,
-        210.82
-      ],
-      "b": [
-        316.23,
-        210.82
-      ]
-    },
-    {
-      "net": "H_RX_ENABLE_CTL",
-      "a": [
-        292.1,
-        165.1
-      ],
-      "b": [
-        292.1,
-        182.88
-      ]
-    },
-    {
-      "net": "H_GND",
-      "a": [
-        527.05,
-        227.33
-      ],
-      "b": [
-        542.29,
-        227.33
-      ]
-    },
-    {
-      "net": "RX_A_OUT",
-      "a": [
-        398.78,
-        180.34
-      ],
-      "b": [
-        398.78,
-        200.66
-      ]
-    },
-    {
-      "net": "ICSP_CLK",
-      "a": [
-        340.36,
-        87.63
-      ],
-      "b": [
-        344.17,
-        87.63
-      ]
-    },
-    {
-      "net": "H_RX_DETECT",
-      "a": [
-        542.29,
-        207.01
-      ],
-      "b": [
-        542.29,
-        212.09
-      ]
-    },
-    {
-      "net": "PIC_RB0_VREF",
-      "a": [
-        354.33,
-        227.33
-      ],
-      "b": [
-        356.87,
-        227.33
-      ]
-    },
-    {
-      "net": "H_VDD",
-      "a": [
-        93.98,
-        53.34
-      ],
-      "b": [
-        104.14,
-        53.34
-      ]
-    },
-    {
-      "net": "H_GND",
-      "a": [
-        302.26,
-        128.27
-      ],
-      "b": [
-        302.26,
-        132.08
-      ]
-    },
-    {
-      "net": "H_BUTTON",
-      "a": [
-        542.29,
-        58.42
-      ],
-      "b": [
-        548.64,
-        58.42
-      ]
-    },
-    {
-      "net": "H_GND",
-      "a": [
-        160.02,
-        353.06
-      ],
-      "b": [
-        160.02,
-        364.49
-      ]
-    },
-    {
-      "net": "TUNE_5_MID",
-      "a": [
-        259.08,
-        322.58
-      ],
-      "b": [
-        266.7,
-        322.58
-      ]
-    },
-    {
-      "net": "H_TUNE_3",
-      "a": [
-        133.35,
-        347.98
-      ],
-      "b": [
-        138.43,
-        347.98
-      ]
-    },
-    {
-      "net": "H_RX_VDD",
-      "a": [
-        349.25,
-        182.88
-      ],
-      "b": [
-        355.6,
-        182.88
-      ]
-    },
-    {
-      "net": "H_VDD",
-      "a": [
-        134.62,
-        53.34
-      ],
-      "b": [
-        134.62,
-        62.23
-      ]
-    },
-    {
-      "net": "H_GND",
-      "a": [
-        322.58,
-        128.27
-      ],
-      "b": [
-        322.58,
-        132.08
-      ]
-    },
-    {
-      "net": "PIC_RB3_RETURN",
-      "a": [
-        283.21,
-        88.9
-      ],
-      "b": [
-        300.99,
-        88.9
-      ]
-    },
-    {
-      "net": "OSC1",
-      "a": [
-        302.26,
-        113.03
-      ],
-      "b": [
-        308.61,
-        113.03
-      ]
-    },
-    {
-      "net": "H_VDD",
-      "a": [
-        438.15,
-        54.61
-      ],
-      "b": [
-        438.15,
-        55.88
-      ]
-    },
-    {
-      "net": "RX_A_PLUS",
-      "a": [
-        439.42,
-        236.22
-      ],
-      "b": [
-        439.42,
-        250.19
-      ]
-    },
-    {
-      "net": "H_GND",
-      "a": [
-        45.72,
-        298.45
-      ],
-      "b": [
-        60.96,
-        298.45
-      ]
-    },
-    {
-      "net": "ICSP_CLK",
-      "a": [
-        363.22,
-        391.16
-      ],
-      "b": [
-        368.3,
-        391.16
-      ]
-    },
-    {
-      "net": "H_GND",
-      "a": [
-        238.76,
-        240.03
-      ],
-      "b": [
-        246.38,
-        240.03
-      ]
-    },
-    {
-      "net": "RF_MONITOR_PAD",
-      "a": [
-        24.13,
-        251.46
-      ],
-      "b": [
-        24.13,
-        259.08
-      ]
-    },
-    {
-      "net": "PIC_RB0_VREF",
-      "a": [
-        354.33,
-        227.33
-      ],
-      "b": [
-        354.33,
-        232.41
-      ]
-    },
-    {
-      "net": "TUNE_4_MID",
-      "a": [
-        205.74,
-        317.5
-      ],
-      "b": [
-        205.74,
-        322.58
-      ]
-    },
-    {
-      "net": "RX_A_PLUS",
-      "a": [
-        445.77,
-        250.19
-      ],
-      "b": [
-        462.28,
-        250.19
-      ]
-    },
-    {
-      "net": "H_AUX_IN",
-      "a": [
-        300.99,
-        302.26
-      ],
-      "b": [
-        314.96,
-        302.26
-      ]
-    },
-    {
-      "net": "TUNE_1_MID",
-      "a": [
-        53.34,
-        322.58
-      ],
-      "b": [
-        60.96,
-        322.58
       ]
     },
     {
@@ -9352,18 +5328,106 @@
       ]
     },
     {
-      "net": "H_VBAT",
+      "net": "H_RF_IN_B",
       "a": [
-        455.93,
-        116.84
+        38.1,
+        217.17
       ],
       "b": [
-        455.93,
-        123.19
+        67.31,
+        217.17
       ]
     },
     {
-      "net": "H_GND",
+      "net": "U1_ALT_PAD",
+      "a": [
+        57.15,
+        110.49
+      ],
+      "b": [
+        60.96,
+        110.49
+      ]
+    },
+    {
+      "net": "H_RX_VDD",
+      "a": [
+        554.99,
+        172.72
+      ],
+      "b": [
+        570.23,
+        172.72
+      ]
+    },
+    {
+      "net": "GND",
+      "a": [
+        45.72,
+        298.45
+      ],
+      "b": [
+        60.96,
+        298.45
+      ]
+    },
+    {
+      "net": "PIC_RB3_RETURN",
+      "a": [
+        355.6,
+        109.22
+      ],
+      "b": [
+        355.6,
+        116.84
+      ]
+    },
+    {
+      "net": "RX_A_FB",
+      "a": [
+        363.22,
+        180.34
+      ],
+      "b": [
+        363.22,
+        203.2
+      ]
+    },
+    {
+      "net": "GND",
+      "a": [
+        238.76,
+        240.03
+      ],
+      "b": [
+        246.38,
+        240.03
+      ]
+    },
+    {
+      "net": "RX_A_FB",
+      "a": [
+        363.22,
+        168.91
+      ],
+      "b": [
+        377.19,
+        168.91
+      ]
+    },
+    {
+      "net": "GND",
+      "a": [
+        220.98,
+        298.45
+      ],
+      "b": [
+        220.98,
+        309.88
+      ]
+    },
+    {
+      "net": "GND",
       "a": [
         213.36,
         353.06
@@ -9374,14 +5438,1059 @@
       ]
     },
     {
-      "net": "H_LDO_IN",
+      "net": "TUNE_4_BASE",
       "a": [
-        45.72,
+        199.39,
+        347.98
+      ],
+      "b": [
+        205.74,
+        347.98
+      ]
+    },
+    {
+      "net": "ICSP_CLK",
+      "a": [
+        292.1,
+        54.61
+      ],
+      "b": [
+        339.09,
+        54.61
+      ]
+    },
+    {
+      "net": "RX_A_PLUS",
+      "a": [
+        353.06,
+        198.12
+      ],
+      "b": [
+        353.06,
+        229.87
+      ]
+    },
+    {
+      "net": "GND",
+      "a": [
+        461.01,
+        73.66
+      ],
+      "b": [
+        461.01,
+        87.63
+      ]
+    },
+    {
+      "net": "VSYS",
+      "a": [
+        355.6,
+        77.47
+      ],
+      "b": [
+        355.6,
+        82.55
+      ]
+    },
+    {
+      "net": "RX_B_OUT",
+      "a": [
+        488.95,
+        168.91
+      ],
+      "b": [
+        502.92,
+        168.91
+      ]
+    },
+    {
+      "net": "OSC1",
+      "a": [
+        302.26,
+        107.95
+      ],
+      "b": [
+        302.26,
+        113.03
+      ]
+    },
+    {
+      "net": "H_RX_ENABLE",
+      "a": [
+        300.99,
+        182.88
+      ],
+      "b": [
+        308.61,
+        182.88
+      ]
+    },
+    {
+      "net": "VDD",
+      "a": [
+        104.14,
         53.34
       ],
       "b": [
-        48.26,
+        114.3,
         53.34
+      ]
+    },
+    {
+      "net": "GND",
+      "a": [
+        544.83,
+        233.68
+      ],
+      "b": [
+        548.64,
+        233.68
+      ]
+    },
+    {
+      "net": "Q1_GATE",
+      "a": [
+        435.61,
+        111.76
+      ],
+      "b": [
+        448.31,
+        111.76
+      ]
+    },
+    {
+      "net": "U1_ALT_PAD",
+      "a": [
+        91.44,
+        102.87
+      ],
+      "b": [
+        101.6,
+        102.87
+      ]
+    },
+    {
+      "net": "RX_A_PLUS",
+      "a": [
+        360.68,
+        198.12
+      ],
+      "b": [
+        360.68,
+        236.22
+      ]
+    },
+    {
+      "net": "OSC1",
+      "a": [
+        295.91,
+        76.2
+      ],
+      "b": [
+        295.91,
+        107.95
+      ]
+    },
+    {
+      "net": "RF_MONITOR_PAD",
+      "a": [
+        227.33,
+        86.36
+      ],
+      "b": [
+        242.57,
+        86.36
+      ]
+    },
+    {
+      "net": "GND",
+      "a": [
+        167.64,
+        298.45
+      ],
+      "b": [
+        205.74,
+        298.45
+      ]
+    },
+    {
+      "net": "GND",
+      "a": [
+        168.91,
+        193.04
+      ],
+      "b": [
+        190.5,
+        193.04
+      ]
+    },
+    {
+      "net": "H_RF_OUT_CAND",
+      "a": [
+        165.1,
+        212.09
+      ],
+      "b": [
+        165.1,
+        220.98
+      ]
+    },
+    {
+      "net": "GND",
+      "a": [
+        60.96,
+        298.45
+      ],
+      "b": [
+        99.06,
+        298.45
+      ]
+    },
+    {
+      "net": "RX_B_OUT",
+      "a": [
+        502.92,
+        180.34
+      ],
+      "b": [
+        502.92,
+        200.66
+      ]
+    },
+    {
+      "net": "H_RF_IN_A",
+      "a": [
+        67.31,
+        185.42
+      ],
+      "b": [
+        67.31,
+        194.31
+      ]
+    },
+    {
+      "net": "RB5_OPT",
+      "a": [
+        283.21,
+        93.98
+      ],
+      "b": [
+        300.99,
+        93.98
+      ]
+    },
+    {
+      "net": "H_RX_RF_SENSE",
+      "a": [
+        556.26,
+        238.76
+      ],
+      "b": [
+        556.26,
+        242.57
+      ]
+    },
+    {
+      "net": "PIC_TP4_C41",
+      "a": [
+        283.21,
+        91.44
+      ],
+      "b": [
+        288.29,
+        91.44
+      ]
+    },
+    {
+      "net": "GND",
+      "a": [
+        252.73,
+        236.22
+      ],
+      "b": [
+        252.73,
+        237.49
+      ]
+    },
+    {
+      "net": "GND",
+      "a": [
+        152.4,
+        298.45
+      ],
+      "b": [
+        167.64,
+        298.45
+      ]
+    },
+    {
+      "net": "GND",
+      "a": [
+        392.43,
+        327.66
+      ],
+      "b": [
+        400.05,
+        327.66
+      ]
+    },
+    {
+      "net": "GND",
+      "a": [
+        454.66,
+        124.46
+      ],
+      "b": [
+        458.47,
+        124.46
+      ]
+    },
+    {
+      "net": "GND",
+      "a": [
+        322.58,
+        132.08
+      ],
+      "b": [
+        334.01,
+        132.08
+      ]
+    },
+    {
+      "net": "H_LED_B",
+      "a": [
+        220.98,
+        240.03
+      ],
+      "b": [
+        223.52,
+        240.03
+      ]
+    },
+    {
+      "net": "GND",
+      "a": [
+        190.5,
+        182.88
+      ],
+      "b": [
+        190.5,
+        193.04
+      ]
+    },
+    {
+      "net": "H_LDO_IN",
+      "a": [
+        66.04,
+        53.34
+      ],
+      "b": [
+        73.66,
+        53.34
+      ]
+    },
+    {
+      "net": "GND",
+      "a": [
+        83.82,
+        68.58
+      ],
+      "b": [
+        83.82,
+        81.28
+      ]
+    },
+    {
+      "net": "H_LDO_IN",
+      "a": [
+        66.04,
+        60.96
+      ],
+      "b": [
+        73.66,
+        60.96
+      ]
+    },
+    {
+      "net": "H_LED_CTL_A",
+      "a": [
+        194.31,
+        233.68
+      ],
+      "b": [
+        200.66,
+        233.68
+      ]
+    },
+    {
+      "net": "H_PIR_RAW",
+      "a": [
+        332.74,
+        336.55
+      ],
+      "b": [
+        388.62,
+        336.55
+      ]
+    },
+    {
+      "net": "H_PIR_SIG",
+      "a": [
+        368.3,
+        335.28
+      ],
+      "b": [
+        368.3,
+        340.36
+      ]
+    },
+    {
+      "net": "GND",
+      "a": [
+        330.2,
+        326.39
+      ],
+      "b": [
+        355.6,
+        326.39
+      ]
+    },
+    {
+      "net": "H_RX_DETECT",
+      "a": [
+        542.29,
+        200.66
+      ],
+      "b": [
+        542.29,
+        207.01
+      ]
+    },
+    {
+      "net": "PIC_TP4_C41",
+      "a": [
+        198.12,
+        76.2
+      ],
+      "b": [
+        207.01,
+        76.2
+      ]
+    },
+    {
+      "net": "H_RX_VDD",
+      "a": [
+        349.25,
+        182.88
+      ],
+      "b": [
+        349.25,
+        196.85
+      ]
+    },
+    {
+      "net": "GND",
+      "a": [
+        165.1,
+        236.22
+      ],
+      "b": [
+        165.1,
+        238.76
+      ]
+    },
+    {
+      "net": "GND",
+      "a": [
+        41.91,
+        69.85
+      ],
+      "b": [
+        41.91,
+        81.28
+      ]
+    },
+    {
+      "net": "RX_A_OUT",
+      "a": [
+        398.78,
+        180.34
+      ],
+      "b": [
+        398.78,
+        200.66
+      ]
+    },
+    {
+      "net": "H_AUX_IN",
+      "a": [
+        314.96,
+        302.26
+      ],
+      "b": [
+        314.96,
+        304.8
+      ]
+    },
+    {
+      "net": "TUNE_5_MID",
+      "a": [
+        259.08,
+        317.5
+      ],
+      "b": [
+        259.08,
+        322.58
+      ]
+    },
+    {
+      "net": "H_RX_ENABLE_CTL",
+      "a": [
+        292.1,
+        165.1
+      ],
+      "b": [
+        292.1,
+        182.88
+      ]
+    },
+    {
+      "net": "VDD",
+      "a": [
+        134.62,
+        53.34
+      ],
+      "b": [
+        146.05,
+        53.34
+      ]
+    },
+    {
+      "net": "OSC1",
+      "a": [
+        302.26,
+        113.03
+      ],
+      "b": [
+        308.61,
+        113.03
+      ]
+    },
+    {
+      "net": "H_RF_IN_B",
+      "a": [
+        30.48,
+        200.66
+      ],
+      "b": [
+        30.48,
+        217.17
+      ]
+    },
+    {
+      "net": "ICSP_DAT",
+      "a": [
+        293.37,
+        57.15
+      ],
+      "b": [
+        293.37,
+        99.06
+      ]
+    },
+    {
+      "net": "H_LDO_IN",
+      "a": [
+        41.91,
+        62.23
+      ],
+      "b": [
+        48.26,
+        62.23
+      ]
+    },
+    {
+      "net": "H_RF_IN_A",
+      "a": [
+        49.53,
+        209.55
+      ],
+      "b": [
+        58.42,
+        209.55
+      ]
+    },
+    {
+      "net": "OSC2",
+      "a": [
+        322.58,
+        105.41
+      ],
+      "b": [
+        322.58,
+        113.03
+      ]
+    },
+    {
+      "net": "H_BUTTON",
+      "a": [
+        542.29,
+        63.5
+      ],
+      "b": [
+        548.64,
+        63.5
+      ]
+    },
+    {
+      "net": "VDD",
+      "a": [
+        190.5,
+        166.37
+      ],
+      "b": [
+        190.5,
+        175.26
+      ]
+    },
+    {
+      "net": "GND",
+      "a": [
+        527.05,
+        219.71
+      ],
+      "b": [
+        527.05,
+        227.33
+      ]
+    },
+    {
+      "net": "H_RF_IN_A",
+      "a": [
+        67.31,
+        185.42
+      ],
+      "b": [
+        72.39,
+        185.42
+      ]
+    },
+    {
+      "net": "H_RX_DETECT",
+      "a": [
+        574.04,
+        207.01
+      ],
+      "b": [
+        574.04,
+        260.35
+      ]
+    },
+    {
+      "net": "U1_ALT_PAD",
+      "a": [
+        86.36,
+        110.49
+      ],
+      "b": [
+        91.44,
+        110.49
+      ]
+    },
+    {
+      "net": "R35_Q9",
+      "a": [
+        309.88,
+        391.16
+      ],
+      "b": [
+        309.88,
+        396.24
+      ]
+    },
+    {
+      "net": "VDD",
+      "a": [
+        316.23,
+        187.96
+      ],
+      "b": [
+        316.23,
+        210.82
+      ]
+    },
+    {
+      "net": "GND",
+      "a": [
+        246.38,
+        236.22
+      ],
+      "b": [
+        252.73,
+        236.22
+      ]
+    },
+    {
+      "net": "VDD",
+      "a": [
+        347.98,
+        359.41
+      ],
+      "b": [
+        351.79,
+        359.41
+      ]
+    },
+    {
+      "net": "H_RF_VDD",
+      "a": [
+        165.1,
+        201.93
+      ],
+      "b": [
+        224.79,
+        201.93
+      ]
+    },
+    {
+      "net": "VSYS",
+      "a": [
+        430.53,
+        41.91
+      ],
+      "b": [
+        430.53,
+        45.72
+      ]
+    },
+    {
+      "net": "H_LDO_IN",
+      "a": [
+        66.04,
+        53.34
+      ],
+      "b": [
+        66.04,
+        60.96
+      ]
+    },
+    {
+      "net": "GND",
+      "a": [
+        300.99,
+        83.82
+      ],
+      "b": [
+        312.42,
+        83.82
+      ]
+    },
+    {
+      "net": "PIC_RA1_RX_REF",
+      "a": [
+        346.71,
+        212.09
+      ],
+      "b": [
+        346.71,
+        217.17
+      ]
+    },
+    {
+      "net": "MCLR_VPP",
+      "a": [
+        323.85,
+        59.69
+      ],
+      "b": [
+        339.09,
+        59.69
+      ]
+    },
+    {
+      "net": "MOTOR_INB",
+      "a": [
+        227.33,
+        93.98
+      ],
+      "b": [
+        242.57,
+        93.98
+      ]
+    },
+    {
+      "net": "U1_ALT_PAD",
+      "a": [
+        60.96,
+        102.87
+      ],
+      "b": [
+        60.96,
+        110.49
+      ]
+    },
+    {
+      "net": "RX_B_PLUS",
+      "a": [
+        464.82,
+        198.12
+      ],
+      "b": [
+        477.52,
+        198.12
+      ]
+    },
+    {
+      "net": "VREF",
+      "a": [
+        313.69,
+        238.76
+      ],
+      "b": [
+        326.39,
+        238.76
+      ]
+    },
+    {
+      "net": "H_RX_VDD",
+      "a": [
+        307.34,
+        219.71
+      ],
+      "b": [
+        307.34,
+        226.06
+      ]
+    },
+    {
+      "net": "GND",
+      "a": [
+        392.43,
+        391.16
+      ],
+      "b": [
+        392.43,
+        396.24
+      ]
+    },
+    {
+      "net": "H_LED_CTL_A",
+      "a": [
+        191.77,
+        224.79
+      ],
+      "b": [
+        191.77,
+        233.68
+      ]
+    },
+    {
+      "net": "TUNE_2_SW",
+      "a": [
+        106.68,
+        336.55
+      ],
+      "b": [
+        106.68,
+        342.9
+      ]
+    },
+    {
+      "net": "PIC_RC7_TP17",
+      "a": [
+        222.25,
+        99.06
+      ],
+      "b": [
+        242.57,
+        99.06
+      ]
+    },
+    {
+      "net": "GND",
+      "a": [
+        114.3,
+        298.45
+      ],
+      "b": [
+        114.3,
+        309.88
+      ]
+    },
+    {
+      "net": "RX_A_FB",
+      "a": [
+        363.22,
+        180.34
+      ],
+      "b": [
+        377.19,
+        180.34
+      ]
+    },
+    {
+      "net": "RX_B_FB",
+      "a": [
+        461.01,
+        203.2
+      ],
+      "b": [
+        461.01,
+        219.71
+      ]
+    },
+    {
+      "net": "H_PIR_VDD",
+      "a": [
+        422.91,
+        361.95
+      ],
+      "b": [
+        435.61,
+        361.95
+      ]
+    },
+    {
+      "net": "TUNE_1_SW",
+      "a": [
+        53.34,
+        336.55
+      ],
+      "b": [
+        53.34,
+        342.9
+      ]
+    },
+    {
+      "net": "VDD",
+      "a": [
+        128.27,
+        53.34
+      ],
+      "b": [
+        134.62,
+        53.34
+      ]
+    },
+    {
+      "net": "H_ANT_A",
+      "a": [
+        203.2,
+        220.98
+      ],
+      "b": [
+        210.82,
+        220.98
+      ]
+    },
+    {
+      "net": "VDD",
+      "a": [
+        78.74,
+        110.49
+      ],
+      "b": [
+        78.74,
+        116.84
+      ]
+    },
+    {
+      "net": "TUNE_1_MID",
+      "a": [
+        60.96,
+        317.5
+      ],
+      "b": [
+        60.96,
+        322.58
+      ]
+    },
+    {
+      "net": "GND",
+      "a": [
+        67.31,
+        233.68
+      ],
+      "b": [
+        67.31,
+        241.3
+      ]
+    },
+    {
+      "net": "H_PIR_VDD",
+      "a": [
+        368.3,
+        306.07
+      ],
+      "b": [
+        368.3,
+        325.12
+      ]
+    },
+    {
+      "net": "H_PIR_RAW",
+      "a": [
+        393.7,
+        330.2
+      ],
+      "b": [
+        400.05,
+        330.2
+      ]
+    },
+    {
+      "net": "H_RX_DETECT",
+      "a": [
+        542.29,
+        207.01
+      ],
+      "b": [
+        542.29,
+        212.09
+      ]
+    },
+    {
+      "net": "H_LDO_IN",
+      "a": [
+        55.88,
+        53.34
+      ],
+      "b": [
+        55.88,
+        62.23
+      ]
+    },
+    {
+      "net": "ICSP_CLK",
+      "a": [
+        363.22,
+        391.16
+      ],
+      "b": [
+        368.3,
+        391.16
+      ]
+    },
+    {
+      "net": "H_PIR_VDD",
+      "a": [
+        393.7,
+        356.87
+      ],
+      "b": [
+        397.51,
+        356.87
+      ]
+    },
+    {
+      "net": "H_BUTTON",
+      "a": [
+        524.51,
+        50.8
+      ],
+      "b": [
+        525.78,
+        50.8
       ]
     },
     {
@@ -9396,113 +6505,245 @@
       ]
     },
     {
-      "net": "PIC_RB0_VREF",
+      "net": "H_RF_OUT_CAND",
       "a": [
-        478.79,
-        351.79
+        165.1,
+        220.98
       ],
       "b": [
-        478.79,
-        356.87
+        195.58,
+        220.98
       ]
     },
     {
-      "net": "H_LED_A",
-      "a": [
-        208.28,
-        233.68
-      ],
-      "b": [
-        220.98,
-        233.68
-      ]
-    },
-    {
-      "net": "TUNE_3_MID",
-      "a": [
-        160.02,
-        322.58
-      ],
-      "b": [
-        160.02,
-        328.93
-      ]
-    },
-    {
-      "net": "H_VDD",
+      "net": "VDD",
       "a": [
         298.45,
-        288.29
+        295.91
       ],
       "b": [
-        298.45,
+        306.07,
         295.91
       ]
     },
     {
-      "net": "H_GND",
+      "net": "ICSP_DAT",
       "a": [
-        41.91,
-        69.85
+        283.21,
+        99.06
       ],
       "b": [
-        41.91,
-        81.28
+        293.37,
+        99.06
       ]
     },
     {
-      "net": "H_GND",
+      "net": "H_RF_IN_A",
       "a": [
-        167.64,
-        298.45
+        58.42,
+        185.42
       ],
       "b": [
-        205.74,
-        298.45
+        58.42,
+        209.55
       ]
     },
     {
-      "net": "H_LED_A",
+      "net": "VDD",
       "a": [
-        222.25,
-        234.95
+        168.91,
+        166.37
       ],
       "b": [
-        223.52,
-        234.95
+        168.91,
+        168.91
       ]
     },
     {
-      "net": "H_GND",
+      "net": "H_LED_CTL_B",
       "a": [
-        544.83,
-        233.68
+        194.31,
+        242.57
       ],
       "b": [
-        548.64,
-        233.68
+        200.66,
+        242.57
       ]
     },
     {
-      "net": "H_GND",
+      "net": "VSYS",
+      "a": [
+        511.81,
+        71.12
+      ],
+      "b": [
+        511.81,
+        76.2
+      ]
+    },
+    {
+      "net": "VREF",
+      "a": [
+        354.33,
+        227.33
+      ],
+      "b": [
+        356.87,
+        227.33
+      ]
+    },
+    {
+      "net": "RX_A_FB",
+      "a": [
+        356.87,
+        203.2
+      ],
+      "b": [
+        363.22,
+        203.2
+      ]
+    },
+    {
+      "net": "H_MOTOR_B",
+      "a": [
+        471.17,
+        66.04
+      ],
+      "b": [
+        483.87,
+        66.04
+      ]
+    },
+    {
+      "net": "H_PIR_RAW",
+      "a": [
+        388.62,
+        349.25
+      ],
+      "b": [
+        393.7,
+        349.25
+      ]
+    },
+    {
+      "net": "OSC2",
+      "a": [
+        298.45,
+        73.66
+      ],
+      "b": [
+        298.45,
+        105.41
+      ]
+    },
+    {
+      "net": "GND",
+      "a": [
+        262.89,
+        132.08
+      ],
+      "b": [
+        302.26,
+        132.08
+      ]
+    },
+    {
+      "net": "GND",
+      "a": [
+        392.43,
+        327.66
+      ],
+      "b": [
+        392.43,
+        341.63
+      ]
+    },
+    {
+      "net": "H_PIR_VDD",
+      "a": [
+        355.6,
+        306.07
+      ],
+      "b": [
+        368.3,
+        306.07
+      ]
+    },
+    {
+      "net": "TUNE_2_MID",
+      "a": [
+        114.3,
+        317.5
+      ],
+      "b": [
+        114.3,
+        322.58
+      ]
+    },
+    {
+      "net": "GND",
+      "a": [
+        300.99,
+        316.23
+      ],
+      "b": [
+        300.99,
+        326.39
+      ]
+    },
+    {
+      "net": "GND",
       "a": [
         528.32,
-        87.63
+        58.42
+      ],
+      "b": [
+        532.13,
+        58.42
+      ]
+    },
+    {
+      "net": "H_BUTTON",
+      "a": [
+        548.64,
+        58.42
       ],
       "b": [
         558.8,
+        58.42
+      ]
+    },
+    {
+      "net": "ICSP_CLK",
+      "a": [
+        340.36,
+        87.63
+      ],
+      "b": [
+        344.17,
         87.63
       ]
     },
     {
-      "net": "H_RX_DETECT",
+      "net": "U1_ALT_PAD",
       "a": [
-        527.05,
-        200.66
+        146.05,
+        102.87
       ],
       "b": [
-        542.29,
-        200.66
+        146.05,
+        110.49
+      ]
+    },
+    {
+      "net": "GND",
+      "a": [
+        62.23,
+        201.93
+      ],
+      "b": [
+        67.31,
+        201.93
       ]
     },
     {
@@ -9528,124 +6769,531 @@
       ]
     },
     {
-      "net": "H_VBAT",
+      "net": "H_PIR_RAW",
       "a": [
-        430.53,
-        41.91
+        388.62,
+        336.55
       ],
       "b": [
-        430.53,
-        45.72
+        388.62,
+        349.25
       ]
     },
     {
-      "net": "H_RX_ENABLE",
+      "net": "PIC_RA0_FILTER",
       "a": [
-        300.99,
-        182.88
+        283.21,
+        58.42
       ],
       "b": [
-        308.61,
-        182.88
+        312.42,
+        58.42
       ]
     },
     {
-      "net": "H_TUNE_1",
+      "net": "VREF",
       "a": [
-        26.67,
-        347.98
+        354.33,
+        227.33
       ],
       "b": [
-        31.75,
-        347.98
+        354.33,
+        232.41
       ]
     },
     {
-      "net": "H_BUTTON",
+      "net": "GND",
       "a": [
-        525.78,
-        39.37
+        256.54,
+        198.12
       ],
       "b": [
-        525.78,
-        50.8
+        259.08,
+        198.12
       ]
     },
     {
-      "net": "H_LED_CTL_A",
+      "net": "H_MOTOR_B",
       "a": [
-        194.31,
-        233.68
+        483.87,
+        69.85
       ],
       "b": [
-        200.66,
-        233.68
+        483.87,
+        77.47
+      ]
+    },
+    {
+      "net": "GND",
+      "a": [
+        252.73,
+        237.49
+      ],
+      "b": [
+        252.73,
+        238.76
+      ]
+    },
+    {
+      "net": "GND",
+      "a": [
+        455.93,
+        87.63
+      ],
+      "b": [
+        461.01,
+        87.63
+      ]
+    },
+    {
+      "net": "U2_DRIVE_A",
+      "a": [
+        100.33,
+        185.42
+      ],
+      "b": [
+        111.76,
+        185.42
+      ]
+    },
+    {
+      "net": "VDD",
+      "a": [
+        114.3,
+        53.34
+      ],
+      "b": [
+        114.3,
+        62.23
+      ]
+    },
+    {
+      "net": "TUNE_3_MID",
+      "a": [
+        160.02,
+        322.58
+      ],
+      "b": [
+        167.64,
+        322.58
+      ]
+    },
+    {
+      "net": "H_RX_DETECT",
+      "a": [
+        496.57,
+        260.35
+      ],
+      "b": [
+        556.26,
+        260.35
+      ]
+    },
+    {
+      "net": "H_PIR_RAW",
+      "a": [
+        332.74,
+        345.44
+      ],
+      "b": [
+        337.82,
+        345.44
+      ]
+    },
+    {
+      "net": "RX_SUPPLY_SERIES",
+      "a": [
+        316.23,
+        173.99
+      ],
+      "b": [
+        335.28,
+        173.99
+      ]
+    },
+    {
+      "net": "VREF",
+      "a": [
+        478.79,
+        351.79
+      ],
+      "b": [
+        478.79,
+        356.87
+      ]
+    },
+    {
+      "net": "RX_A_FB",
+      "a": [
+        363.22,
+        168.91
+      ],
+      "b": [
+        363.22,
+        180.34
+      ]
+    },
+    {
+      "net": "OSC2",
+      "a": [
+        298.45,
+        105.41
+      ],
+      "b": [
+        322.58,
+        105.41
       ]
     },
     {
       "net": "TUNE_1_MID",
       "a": [
-        45.72,
+        53.34,
         322.58
       ],
       "b": [
         53.34,
-        322.58
+        328.93
       ]
     },
     {
-      "net": "H_GND",
+      "net": "RX_A_OUT",
       "a": [
-        168.91,
-        193.04
+        398.78,
+        168.91
       ],
       "b": [
-        190.5,
-        193.04
+        398.78,
+        180.34
       ]
     },
     {
-      "net": "H_GND",
+      "net": "GND",
       "a": [
-        60.96,
-        298.45
+        330.2,
+        320.04
       ],
       "b": [
-        99.06,
-        298.45
+        330.2,
+        326.39
       ]
     },
     {
-      "net": "H_GND",
+      "net": "GND",
       "a": [
+        55.88,
+        81.28
+      ],
+      "b": [
+        83.82,
+        81.28
+      ]
+    },
+    {
+      "net": "GND",
+      "a": [
+        62.23,
+        241.3
+      ],
+      "b": [
+        67.31,
+        241.3
+      ]
+    },
+    {
+      "net": "H_TUNE_2",
+      "a": [
+        283.21,
+        66.04
+      ],
+      "b": [
+        288.29,
+        66.04
+      ]
+    },
+    {
+      "net": "GND",
+      "a": [
+        62.23,
+        201.93
+      ],
+      "b": [
+        62.23,
+        241.3
+      ]
+    },
+    {
+      "net": "VSYS",
+      "a": [
+        447.04,
+        119.38
+      ],
+      "b": [
+        455.93,
+        119.38
+      ]
+    },
+    {
+      "net": "BATTERY+",
+      "a": [
+        466.09,
+        129.54
+      ],
+      "b": [
+        481.33,
+        129.54
+      ]
+    },
+    {
+      "net": "H_BUTTON_MCU",
+      "a": [
+        506.73,
+        50.8
+      ],
+      "b": [
+        510.54,
+        50.8
+      ]
+    },
+    {
+      "net": "VDD",
+      "a": [
+        210.82,
+        40.64
+      ],
+      "b": [
+        210.82,
+        44.45
+      ]
+    },
+    {
+      "net": "GND",
+      "a": [
+        334.01,
+        64.77
+      ],
+      "b": [
+        339.09,
+        64.77
+      ]
+    },
+    {
+      "net": "RX_SUPPLY_SERIES",
+      "a": [
+        335.28,
+        173.99
+      ],
+      "b": [
+        335.28,
+        182.88
+      ]
+    },
+    {
+      "net": "R35_Q9",
+      "a": [
+        473.71,
+        359.41
+      ],
+      "b": [
+        478.79,
+        359.41
+      ]
+    },
+    {
+      "net": "RX_A_PLUS",
+      "a": [
+        353.06,
+        198.12
+      ],
+      "b": [
+        360.68,
+        198.12
+      ]
+    },
+    {
+      "net": "RX_A_PLUS",
+      "a": [
+        445.77,
+        250.19
+      ],
+      "b": [
+        462.28,
+        250.19
+      ]
+    },
+    {
+      "net": "H_PIR_VDD",
+      "a": [
+        355.6,
+        304.8
+      ],
+      "b": [
+        355.6,
+        306.07
+      ]
+    },
+    {
+      "net": "H_RF_VDD",
+      "a": [
+        237.49,
+        167.64
+      ],
+      "b": [
+        237.49,
+        177.8
+      ]
+    },
+    {
+      "net": "RX_A_PLUS",
+      "a": [
+        346.71,
+        224.79
+      ],
+      "b": [
+        346.71,
+        229.87
+      ]
+    },
+    {
+      "net": "RX_A_OUT",
+      "a": [
+        384.81,
+        168.91
+      ],
+      "b": [
+        398.78,
+        168.91
+      ]
+    },
+    {
+      "net": "GND",
+      "a": [
+        55.88,
+        69.85
+      ],
+      "b": [
+        55.88,
+        81.28
+      ]
+    },
+    {
+      "net": "RX_A_FILTER",
+      "a": [
+        415.29,
+        200.66
+      ],
+      "b": [
+        425.45,
+        200.66
+      ]
+    },
+    {
+      "net": "RX_B_FB",
+      "a": [
+        469.9,
+        180.34
+      ],
+      "b": [
+        481.33,
+        180.34
+      ]
+    },
+    {
+      "net": "H_LED_A",
+      "a": [
+        222.25,
+        234.95
+      ],
+      "b": [
+        222.25,
+        236.22
+      ]
+    },
+    {
+      "net": "GND",
+      "a": [
+        481.33,
+        87.63
+      ],
+      "b": [
         528.32,
-        58.42
+        87.63
+      ]
+    },
+    {
+      "net": "VSYS",
+      "a": [
+        209.55,
+        167.64
       ],
       "b": [
-        528.32,
-        63.5
+        217.17,
+        167.64
       ]
     },
     {
       "net": "H_LDO_IN",
       "a": [
-        41.91,
-        62.23
+        45.72,
+        53.34
       ],
       "b": [
         48.26,
-        62.23
+        53.34
       ]
     },
     {
-      "net": "TUNE_1_BASE",
+      "net": "VSYS",
       "a": [
-        39.37,
-        347.98
+        455.93,
+        116.84
       ],
       "b": [
-        45.72,
-        347.98
+        455.93,
+        119.38
+      ]
+    },
+    {
+      "net": "H_BUTTON",
+      "a": [
+        548.64,
+        58.42
+      ],
+      "b": [
+        548.64,
+        63.5
+      ]
+    },
+    {
+      "net": "GND",
+      "a": [
+        237.49,
+        198.12
+      ],
+      "b": [
+        256.54,
+        198.12
+      ]
+    },
+    {
+      "net": "VDD",
+      "a": [
+        93.98,
+        53.34
+      ],
+      "b": [
+        104.14,
+        53.34
+      ]
+    },
+    {
+      "net": "U1_ALT_PAD",
+      "a": [
+        60.96,
+        102.87
+      ],
+      "b": [
+        91.44,
+        102.87
       ]
     },
     {
@@ -9660,29 +7308,7 @@
       ]
     },
     {
-      "net": "H_GND",
-      "a": [
-        461.01,
-        73.66
-      ],
-      "b": [
-        461.01,
-        87.63
-      ]
-    },
-    {
-      "net": "PIC_RC7_TP17",
-      "a": [
-        222.25,
-        99.06
-      ],
-      "b": [
-        242.57,
-        99.06
-      ]
-    },
-    {
-      "net": "H_GND",
+      "net": "GND",
       "a": [
         210.82,
         52.07
@@ -9693,36 +7319,498 @@
       ]
     },
     {
-      "net": "H_GND",
+      "net": "GND",
+      "a": [
+        205.74,
+        298.45
+      ],
+      "b": [
+        205.74,
+        309.88
+      ]
+    },
+    {
+      "net": "GND",
+      "a": [
+        430.53,
+        53.34
+      ],
+      "b": [
+        430.53,
+        87.63
+      ]
+    },
+    {
+      "net": "H_BUTTON",
+      "a": [
+        558.8,
+        58.42
+      ],
+      "b": [
+        568.96,
+        58.42
+      ]
+    },
+    {
+      "net": "RF_MONITOR_PAD",
+      "a": [
+        24.13,
+        259.08
+      ],
+      "b": [
+        52.07,
+        259.08
+      ]
+    },
+    {
+      "net": "H_LED_CTL_B",
+      "a": [
+        191.77,
+        242.57
+      ],
+      "b": [
+        194.31,
+        242.57
+      ]
+    },
+    {
+      "net": "RX_B_FB",
+      "a": [
+        469.9,
+        180.34
+      ],
+      "b": [
+        469.9,
+        203.2
+      ]
+    },
+    {
+      "net": "VDD",
+      "a": [
+        438.15,
+        54.61
+      ],
+      "b": [
+        438.15,
+        55.88
+      ]
+    },
+    {
+      "net": "U1_ALT_PAD",
+      "a": [
+        101.6,
+        60.96
+      ],
+      "b": [
+        101.6,
+        102.87
+      ]
+    },
+    {
+      "net": "OSC1",
+      "a": [
+        283.21,
+        76.2
+      ],
+      "b": [
+        295.91,
+        76.2
+      ]
+    },
+    {
+      "net": "GND",
+      "a": [
+        205.74,
+        298.45
+      ],
+      "b": [
+        220.98,
+        298.45
+      ]
+    },
+    {
+      "net": "H_LDO_IN",
+      "a": [
+        48.26,
+        53.34
+      ],
+      "b": [
+        55.88,
+        53.34
+      ]
+    },
+    {
+      "net": "BATTERY+",
+      "a": [
+        481.33,
+        104.14
+      ],
+      "b": [
+        481.33,
+        129.54
+      ]
+    },
+    {
+      "net": "GND",
+      "a": [
+        419.1,
+        87.63
+      ],
+      "b": [
+        430.53,
+        87.63
+      ]
+    },
+    {
+      "net": "MOTOR_INA",
+      "a": [
+        433.07,
+        60.96
+      ],
+      "b": [
+        445.77,
+        60.96
+      ]
+    },
+    {
+      "net": "RX_A_PLUS",
+      "a": [
+        360.68,
+        236.22
+      ],
+      "b": [
+        439.42,
+        236.22
+      ]
+    },
+    {
+      "net": "H_TUNE_3",
+      "a": [
+        133.35,
+        347.98
+      ],
+      "b": [
+        138.43,
+        347.98
+      ]
+    },
+    {
+      "net": "H_TUNE_5",
+      "a": [
+        240.03,
+        347.98
+      ],
+      "b": [
+        245.11,
+        347.98
+      ]
+    },
+    {
+      "net": "GND",
+      "a": [
+        238.76,
+        234.95
+      ],
+      "b": [
+        246.38,
+        234.95
+      ]
+    },
+    {
+      "net": "GND",
       "a": [
         152.4,
         298.45
       ],
       "b": [
-        167.64,
+        152.4,
+        309.88
+      ]
+    },
+    {
+      "net": "GND",
+      "a": [
+        246.38,
+        238.76
+      ],
+      "b": [
+        246.38,
+        240.03
+      ]
+    },
+    {
+      "net": "GND",
+      "a": [
+        570.23,
+        189.23
+      ],
+      "b": [
+        570.23,
+        199.39
+      ]
+    },
+    {
+      "net": "GND",
+      "a": [
+        106.68,
+        364.49
+      ],
+      "b": [
+        160.02,
+        364.49
+      ]
+    },
+    {
+      "net": "H_LDO_IN",
+      "a": [
+        48.26,
+        53.34
+      ],
+      "b": [
+        48.26,
+        62.23
+      ]
+    },
+    {
+      "net": "H_RF_IN_B",
+      "a": [
+        30.48,
+        217.17
+      ],
+      "b": [
+        38.1,
+        217.17
+      ]
+    },
+    {
+      "net": "TUNE_3_SW",
+      "a": [
+        160.02,
+        336.55
+      ],
+      "b": [
+        160.02,
+        342.9
+      ]
+    },
+    {
+      "net": "GND",
+      "a": [
+        213.36,
+        364.49
+      ],
+      "b": [
+        266.7,
+        364.49
+      ]
+    },
+    {
+      "net": "BATTERY+",
+      "a": [
+        481.33,
+        104.14
+      ],
+      "b": [
+        486.41,
+        104.14
+      ]
+    },
+    {
+      "net": "RX_A_FB",
+      "a": [
+        363.22,
+        203.2
+      ],
+      "b": [
+        373.38,
+        203.2
+      ]
+    },
+    {
+      "net": "GND",
+      "a": [
+        528.32,
+        58.42
+      ],
+      "b": [
+        528.32,
+        63.5
+      ]
+    },
+    {
+      "net": "H_AUX_IN",
+      "a": [
+        314.96,
+        304.8
+      ],
+      "b": [
+        320.04,
+        304.8
+      ]
+    },
+    {
+      "net": "RX_A_PLUS",
+      "a": [
+        445.77,
+        245.11
+      ],
+      "b": [
+        445.77,
+        250.19
+      ]
+    },
+    {
+      "net": "VSYS",
+      "a": [
+        430.53,
+        41.91
+      ],
+      "b": [
+        458.47,
+        41.91
+      ]
+    },
+    {
+      "net": "H_MOTOR_B",
+      "a": [
+        490.22,
+        64.77
+      ],
+      "b": [
+        490.22,
+        69.85
+      ]
+    },
+    {
+      "net": "TUNE_5_MID",
+      "a": [
+        266.7,
+        322.58
+      ],
+      "b": [
+        274.32,
+        322.58
+      ]
+    },
+    {
+      "net": "GND",
+      "a": [
+        453.39,
+        187.96
+      ],
+      "b": [
+        453.39,
+        191.77
+      ]
+    },
+    {
+      "net": "GND",
+      "a": [
+        259.08,
+        298.45
+      ],
+      "b": [
+        274.32,
         298.45
       ]
     },
     {
-      "net": "H_GND",
+      "net": "GND",
       "a": [
-        454.66,
-        124.46
+        224.79,
+        52.07
       ],
       "b": [
-        458.47,
-        124.46
+        224.79,
+        55.88
       ]
     },
     {
-      "net": "RX_A_OUT",
+      "net": "MCLR_VPP",
       "a": [
-        384.81,
-        180.34
+        227.33,
+        58.42
       ],
       "b": [
-        398.78,
-        180.34
+        242.57,
+        58.42
+      ]
+    },
+    {
+      "net": "U1_ALT_PAD",
+      "a": [
+        123.19,
+        102.87
+      ],
+      "b": [
+        123.19,
+        110.49
+      ]
+    },
+    {
+      "net": "H_RF_IN_B",
+      "a": [
+        30.48,
+        200.66
+      ],
+      "b": [
+        41.91,
+        200.66
+      ]
+    },
+    {
+      "net": "GND",
+      "a": [
+        134.62,
+        81.28
+      ],
+      "b": [
+        148.59,
+        81.28
+      ]
+    },
+    {
+      "net": "H_LED_A",
+      "a": [
+        220.98,
+        236.22
+      ],
+      "b": [
+        222.25,
+        236.22
+      ]
+    },
+    {
+      "net": "Q8_DRIVE_A",
+      "a": [
+        119.38,
+        185.42
+      ],
+      "b": [
+        140.97,
+        185.42
+      ]
+    },
+    {
+      "net": "H_LED_CTL_B",
+      "a": [
+        283.21,
+        83.82
+      ],
+      "b": [
+        288.29,
+        83.82
+      ]
+    },
+    {
+      "net": "GND",
+      "a": [
+        375.92,
+        109.22
+      ],
+      "b": [
+        375.92,
+        116.84
       ]
     },
     {
@@ -9737,14 +7825,234 @@
       ]
     },
     {
-      "net": "H_PIR_RAW",
+      "net": "VDD",
       "a": [
-        393.7,
-        330.2
+        298.45,
+        288.29
       ],
       "b": [
-        393.7,
+        298.45,
+        295.91
+      ]
+    },
+    {
+      "net": "GND",
+      "a": [
+        114.3,
+        298.45
+      ],
+      "b": [
+        152.4,
+        298.45
+      ]
+    },
+    {
+      "net": "TUNE_1_MID",
+      "a": [
+        53.34,
+        322.58
+      ],
+      "b": [
+        60.96,
+        322.58
+      ]
+    },
+    {
+      "net": "TUNE_1_BASE",
+      "a": [
+        39.37,
+        347.98
+      ],
+      "b": [
+        45.72,
+        347.98
+      ]
+    },
+    {
+      "net": "GND",
+      "a": [
+        99.06,
+        298.45
+      ],
+      "b": [
+        114.3,
+        298.45
+      ]
+    },
+    {
+      "net": "H_PIR_RAW",
+      "a": [
+        388.62,
         332.74
+      ],
+      "b": [
+        388.62,
+        336.55
+      ]
+    },
+    {
+      "net": "GND",
+      "a": [
+        300.99,
+        71.12
+      ],
+      "b": [
+        300.99,
+        83.82
+      ]
+    },
+    {
+      "net": "GND",
+      "a": [
+        53.34,
+        353.06
+      ],
+      "b": [
+        53.34,
+        364.49
+      ]
+    },
+    {
+      "net": "GND",
+      "a": [
+        340.36,
+        80.01
+      ],
+      "b": [
+        344.17,
+        80.01
+      ]
+    },
+    {
+      "net": "H_RF_IN_A",
+      "a": [
+        58.42,
+        185.42
+      ],
+      "b": [
+        67.31,
+        185.42
+      ]
+    },
+    {
+      "net": "VDD",
+      "a": [
+        168.91,
+        166.37
+      ],
+      "b": [
+        190.5,
+        166.37
+      ]
+    },
+    {
+      "net": "H_RX_DETECT",
+      "a": [
+        515.62,
+        200.66
+      ],
+      "b": [
+        527.05,
+        200.66
+      ]
+    },
+    {
+      "net": "PIC_TP4_C41",
+      "a": [
+        497.84,
+        237.49
+      ],
+      "b": [
+        508.0,
+        237.49
+      ]
+    },
+    {
+      "net": "Q8_DRIVE_A",
+      "a": [
+        140.97,
+        185.42
+      ],
+      "b": [
+        140.97,
+        231.14
+      ]
+    },
+    {
+      "net": "GND",
+      "a": [
+        214.63,
+        76.2
+      ],
+      "b": [
+        219.71,
+        76.2
+      ]
+    },
+    {
+      "net": "GND",
+      "a": [
+        237.49,
+        185.42
+      ],
+      "b": [
+        237.49,
+        198.12
+      ]
+    },
+    {
+      "net": "H_LDO_IN",
+      "a": [
+        55.88,
+        53.34
+      ],
+      "b": [
+        66.04,
+        53.34
+      ]
+    },
+    {
+      "net": "H_BAT_SENSE",
+      "a": [
+        355.6,
+        95.25
+      ],
+      "b": [
+        355.6,
+        101.6
+      ]
+    },
+    {
+      "net": "H_BUTTON",
+      "a": [
+        525.78,
+        39.37
+      ],
+      "b": [
+        568.96,
+        39.37
+      ]
+    },
+    {
+      "net": "RX_A_OUT",
+      "a": [
+        398.78,
+        200.66
+      ],
+      "b": [
+        407.67,
+        200.66
+      ]
+    },
+    {
+      "net": "TUNE_1_MID",
+      "a": [
+        45.72,
+        322.58
+      ],
+      "b": [
+        53.34,
+        322.58
       ]
     },
     {
@@ -9759,135 +8067,465 @@
       ]
     },
     {
+      "net": "H_RX_ENABLE_CTL",
+      "a": [
+        227.33,
+        83.82
+      ],
+      "b": [
+        242.57,
+        83.82
+      ]
+    },
+    {
+      "net": "TUNE_3_MID",
+      "a": [
+        152.4,
+        322.58
+      ],
+      "b": [
+        160.02,
+        322.58
+      ]
+    },
+    {
       "net": "H_MOTOR_A",
       "a": [
         487.68,
+        55.88
+      ],
+      "b": [
+        487.68,
         62.23
-      ],
-      "b": [
-        494.03,
-        62.23
-      ]
-    },
-    {
-      "net": "RB5_OPT",
-      "a": [
-        298.45,
-        391.16
-      ],
-      "b": [
-        302.26,
-        391.16
-      ]
-    },
-    {
-      "net": "H_LDO_IN",
-      "a": [
-        66.04,
-        53.34
-      ],
-      "b": [
-        73.66,
-        53.34
       ]
     },
     {
       "net": "U1_ALT_PAD",
       "a": [
-        60.96,
+        101.6,
         102.87
       ],
       "b": [
-        60.96,
-        110.49
+        123.19,
+        102.87
       ]
     },
     {
-      "net": "H_GND",
+      "net": "H_RF_CONTROL",
       "a": [
-        205.74,
-        298.45
+        30.48,
+        173.99
       ],
       "b": [
-        220.98,
-        298.45
+        38.1,
+        173.99
       ]
     },
     {
-      "net": "RX_B_PLUS",
+      "net": "RX_B_FB",
       "a": [
-        464.82,
-        198.12
+        461.01,
+        203.2
       ],
       "b": [
-        477.52,
-        198.12
+        469.9,
+        203.2
       ]
     },
     {
-      "net": "H_GND",
+      "net": "PIC_RA1_RX_REF",
       "a": [
-        165.1,
-        236.22
+        419.1,
+        233.68
       ],
       "b": [
-        165.1,
-        238.76
+        425.45,
+        233.68
       ]
     },
     {
-      "net": "H_AUX_IN",
+      "net": "H_BAT_SENSE",
       "a": [
-        314.96,
-        302.26
+        355.6,
+        90.17
       ],
       "b": [
-        314.96,
-        304.8
-      ]
-    },
-    {
-      "net": "H_RX_VDD",
-      "a": [
-        570.23,
-        172.72
-      ],
-      "b": [
-        570.23,
-        181.61
+        355.6,
+        95.25
       ]
     },
     {
       "net": "H_LED_CTL_A",
       "a": [
         191.77,
-        224.79
+        233.68
       ],
       "b": [
-        191.77,
+        194.31,
         233.68
       ]
     },
     {
-      "net": "RX_A_PLUS",
+      "net": "VDD",
       "a": [
-        360.68,
-        198.12
+        300.99,
+        203.2
       ],
       "b": [
-        360.68,
-        236.22
+        300.99,
+        210.82
       ]
     },
     {
-      "net": "U1_ALT_PAD",
+      "net": "OSC2",
       "a": [
-        146.05,
-        102.87
+        316.23,
+        113.03
       ],
       "b": [
-        146.05,
+        322.58,
+        113.03
+      ]
+    },
+    {
+      "net": "GND",
+      "a": [
+        355.6,
+        316.23
+      ],
+      "b": [
+        355.6,
+        326.39
+      ]
+    },
+    {
+      "net": "ICSP_DAT",
+      "a": [
+        293.37,
+        57.15
+      ],
+      "b": [
+        295.91,
+        57.15
+      ]
+    },
+    {
+      "net": "H_RF_IN_A",
+      "a": [
+        38.1,
+        181.61
+      ],
+      "b": [
+        38.1,
+        185.42
+      ]
+    },
+    {
+      "net": "GND",
+      "a": [
+        60.96,
+        298.45
+      ],
+      "b": [
+        60.96,
+        309.88
+      ]
+    },
+    {
+      "net": "TUNE_4_MID",
+      "a": [
+        205.74,
+        317.5
+      ],
+      "b": [
+        205.74,
+        322.58
+      ]
+    },
+    {
+      "net": "H_PIR_RAW",
+      "a": [
+        393.7,
+        330.2
+      ],
+      "b": [
+        393.7,
+        332.74
+      ]
+    },
+    {
+      "net": "GND",
+      "a": [
+        419.1,
+        72.39
+      ],
+      "b": [
+        419.1,
+        87.63
+      ]
+    },
+    {
+      "net": "GND",
+      "a": [
+        106.68,
+        353.06
+      ],
+      "b": [
+        106.68,
+        364.49
+      ]
+    },
+    {
+      "net": "GND",
+      "a": [
+        455.93,
+        73.66
+      ],
+      "b": [
+        455.93,
+        87.63
+      ]
+    },
+    {
+      "net": "H_TUNE_1",
+      "a": [
+        227.33,
+        96.52
+      ],
+      "b": [
+        242.57,
+        96.52
+      ]
+    },
+    {
+      "net": "RX_A_FILTER",
+      "a": [
+        425.45,
+        200.66
+      ],
+      "b": [
+        436.88,
+        200.66
+      ]
+    },
+    {
+      "net": "TUNE_5_MID",
+      "a": [
+        266.7,
+        322.58
+      ],
+      "b": [
+        266.7,
+        328.93
+      ]
+    },
+    {
+      "net": "RX_B_OUT",
+      "a": [
+        502.92,
+        168.91
+      ],
+      "b": [
+        502.92,
+        180.34
+      ]
+    },
+    {
+      "net": "H_LED_CTL_A",
+      "a": [
+        283.21,
+        86.36
+      ],
+      "b": [
+        288.29,
+        86.36
+      ]
+    },
+    {
+      "net": "VDD",
+      "a": [
+        49.53,
         110.49
+      ],
+      "b": [
+        49.53,
+        116.84
+      ]
+    },
+    {
+      "net": "VDD",
+      "a": [
+        114.3,
+        53.34
+      ],
+      "b": [
+        128.27,
+        53.34
+      ]
+    },
+    {
+      "net": "GND",
+      "a": [
+        134.62,
+        69.85
+      ],
+      "b": [
+        134.62,
+        81.28
+      ]
+    },
+    {
+      "net": "H_TUNE_4",
+      "a": [
+        186.69,
+        347.98
+      ],
+      "b": [
+        191.77,
+        347.98
+      ]
+    },
+    {
+      "net": "GND",
+      "a": [
+        558.8,
+        78.74
+      ],
+      "b": [
+        558.8,
+        87.63
+      ]
+    },
+    {
+      "net": "H_RF_OUT_CAND",
+      "a": [
+        165.1,
+        220.98
+      ],
+      "b": [
+        165.1,
+        226.06
+      ]
+    },
+    {
+      "net": "GND",
+      "a": [
+        83.82,
+        81.28
+      ],
+      "b": [
+        114.3,
+        81.28
+      ]
+    },
+    {
+      "net": "GND",
+      "a": [
+        167.64,
+        298.45
+      ],
+      "b": [
+        167.64,
+        309.88
+      ]
+    },
+    {
+      "net": "RB5_OPT",
+      "a": [
+        455.93,
+        351.79
+      ],
+      "b": [
+        455.93,
+        356.87
+      ]
+    },
+    {
+      "net": "TUNE_5_MID",
+      "a": [
+        274.32,
+        317.5
+      ],
+      "b": [
+        274.32,
+        322.58
+      ]
+    },
+    {
+      "net": "H_RF_VDD",
+      "a": [
+        229.87,
+        167.64
+      ],
+      "b": [
+        237.49,
+        167.64
+      ]
+    },
+    {
+      "net": "GND",
+      "a": [
+        210.82,
+        55.88
+      ],
+      "b": [
+        224.79,
+        55.88
+      ]
+    },
+    {
+      "net": "BATTERY+",
+      "a": [
+        455.93,
+        104.14
+      ],
+      "b": [
+        481.33,
+        104.14
+      ]
+    },
+    {
+      "net": "H_MOTOR_B",
+      "a": [
+        483.87,
+        69.85
+      ],
+      "b": [
+        490.22,
+        69.85
+      ]
+    },
+    {
+      "net": "RX_SUPPLY_SERIES",
+      "a": [
+        316.23,
+        173.99
+      ],
+      "b": [
+        316.23,
+        177.8
+      ]
+    },
+    {
+      "net": "PIC_RC3",
+      "a": [
+        231.14,
+        88.9
+      ],
+      "b": [
+        242.57,
+        88.9
+      ]
+    },
+    {
+      "net": "H_RF_CONTROL",
+      "a": [
+        30.48,
+        226.06
+      ],
+      "b": [
+        38.1,
+        226.06
       ]
     },
     {
@@ -9902,14 +8540,839 @@
       ]
     },
     {
-      "net": "H_GND",
+      "net": "RX_A_FILTER",
+      "a": [
+        436.88,
+        198.12
+      ],
+      "b": [
+        436.88,
+        200.66
+      ]
+    },
+    {
+      "net": "VDD",
+      "a": [
+        134.62,
+        53.34
+      ],
+      "b": [
+        134.62,
+        62.23
+      ]
+    },
+    {
+      "net": "H_PIR_VDD",
+      "a": [
+        340.36,
+        304.8
+      ],
+      "b": [
+        355.6,
+        304.8
+      ]
+    },
+    {
+      "net": "TUNE_5_MID",
+      "a": [
+        259.08,
+        322.58
+      ],
+      "b": [
+        266.7,
+        322.58
+      ]
+    },
+    {
+      "net": "H_ANT_A",
+      "a": [
+        21.59,
+        364.49
+      ],
+      "b": [
+        27.94,
+        364.49
+      ]
+    },
+    {
+      "net": "TUNE_3_MID",
+      "a": [
+        152.4,
+        317.5
+      ],
+      "b": [
+        152.4,
+        322.58
+      ]
+    },
+    {
+      "net": "H_RX_RF_SENSE",
+      "a": [
+        538.48,
+        242.57
+      ],
+      "b": [
+        556.26,
+        242.57
+      ]
+    },
+    {
+      "net": "H_RX_VDD",
+      "a": [
+        554.99,
+        172.72
+      ],
+      "b": [
+        554.99,
+        177.8
+      ]
+    },
+    {
+      "net": "H_PIR_VDD",
+      "a": [
+        355.6,
+        306.07
+      ],
+      "b": [
+        355.6,
+        308.61
+      ]
+    },
+    {
+      "net": "H_PIR_SIG",
+      "a": [
+        368.3,
+        335.28
+      ],
+      "b": [
+        379.73,
+        335.28
+      ]
+    },
+    {
+      "net": "RB5_OPT",
+      "a": [
+        298.45,
+        391.16
+      ],
+      "b": [
+        302.26,
+        391.16
+      ]
+    },
+    {
+      "net": "VDD",
+      "a": [
+        438.15,
+        55.88
+      ],
+      "b": [
+        445.77,
+        55.88
+      ]
+    },
+    {
+      "net": "U2_DRIVE_B",
+      "a": [
+        100.33,
+        217.17
+      ],
+      "b": [
+        111.76,
+        217.17
+      ]
+    },
+    {
+      "net": "RX_B_FB",
+      "a": [
+        469.9,
+        168.91
+      ],
+      "b": [
+        481.33,
+        168.91
+      ]
+    },
+    {
+      "net": "GND",
+      "a": [
+        440.69,
+        237.49
+      ],
+      "b": [
+        445.77,
+        237.49
+      ]
+    },
+    {
+      "net": "VDD",
+      "a": [
+        300.99,
+        210.82
+      ],
+      "b": [
+        316.23,
+        210.82
+      ]
+    },
+    {
+      "net": "H_MOTOR_B",
+      "a": [
+        490.22,
+        64.77
+      ],
+      "b": [
+        494.03,
+        64.77
+      ]
+    },
+    {
+      "net": "MOTOR_INA",
+      "a": [
+        227.33,
+        91.44
+      ],
+      "b": [
+        242.57,
+        91.44
+      ]
+    },
+    {
+      "net": "TUNE_5_BASE",
+      "a": [
+        252.73,
+        347.98
+      ],
+      "b": [
+        259.08,
+        347.98
+      ]
+    },
+    {
+      "net": "H_RF_IN_A",
+      "a": [
+        49.53,
+        205.74
+      ],
+      "b": [
+        49.53,
+        209.55
+      ]
+    },
+    {
+      "net": "GND",
+      "a": [
+        478.79,
+        361.95
+      ],
+      "b": [
+        483.87,
+        361.95
+      ]
+    },
+    {
+      "net": "H_RX_DETECT",
       "a": [
         527.05,
-        219.71
+        200.66
       ],
       "b": [
         527.05,
+        212.09
+      ]
+    },
+    {
+      "net": "H_RX_DETECT",
+      "a": [
+        556.26,
+        260.35
+      ],
+      "b": [
+        574.04,
+        260.35
+      ]
+    },
+    {
+      "net": "BATTERY+",
+      "a": [
+        20.32,
+        53.34
+      ],
+      "b": [
+        20.32,
+        62.23
+      ]
+    },
+    {
+      "net": "GND",
+      "a": [
+        160.02,
+        364.49
+      ],
+      "b": [
+        213.36,
+        364.49
+      ]
+    },
+    {
+      "net": "OSC1",
+      "a": [
+        295.91,
+        107.95
+      ],
+      "b": [
+        302.26,
+        107.95
+      ]
+    },
+    {
+      "net": "GND",
+      "a": [
+        528.32,
+        63.5
+      ],
+      "b": [
+        532.13,
+        63.5
+      ]
+    },
+    {
+      "net": "RX_A_OUT",
+      "a": [
+        388.62,
+        200.66
+      ],
+      "b": [
+        398.78,
+        200.66
+      ]
+    },
+    {
+      "net": "GND",
+      "a": [
+        340.36,
+        204.47
+      ],
+      "b": [
+        340.36,
+        209.55
+      ]
+    },
+    {
+      "net": "RX_A_PLUS",
+      "a": [
+        360.68,
+        198.12
+      ],
+      "b": [
+        373.38,
+        198.12
+      ]
+    },
+    {
+      "net": "GND",
+      "a": [
+        302.26,
+        132.08
+      ],
+      "b": [
+        322.58,
+        132.08
+      ]
+    },
+    {
+      "net": "GND",
+      "a": [
+        138.43,
+        110.49
+      ],
+      "b": [
+        138.43,
+        116.84
+      ]
+    },
+    {
+      "net": "ICSP_DAT",
+      "a": [
+        379.73,
+        391.16
+      ],
+      "b": [
+        384.81,
+        391.16
+      ]
+    },
+    {
+      "net": "H_RX_RF_SENSE",
+      "a": [
+        515.62,
+        237.49
+      ],
+      "b": [
+        538.48,
+        237.49
+      ]
+    },
+    {
+      "net": "H_LED_B",
+      "a": [
+        208.28,
+        242.57
+      ],
+      "b": [
+        218.44,
+        242.57
+      ]
+    },
+    {
+      "net": "GND",
+      "a": [
+        45.72,
+        298.45
+      ],
+      "b": [
+        45.72,
+        309.88
+      ]
+    },
+    {
+      "net": "U1_ALT_PAD",
+      "a": [
+        118.11,
+        110.49
+      ],
+      "b": [
+        123.19,
+        110.49
+      ]
+    },
+    {
+      "net": "H_TUNE_1",
+      "a": [
+        26.67,
+        347.98
+      ],
+      "b": [
+        31.75,
+        347.98
+      ]
+    },
+    {
+      "net": "H_LED_B",
+      "a": [
+        220.98,
+        238.76
+      ],
+      "b": [
+        220.98,
+        240.03
+      ]
+    },
+    {
+      "net": "H_PIR_RAW",
+      "a": [
+        388.62,
+        332.74
+      ],
+      "b": [
+        393.7,
+        332.74
+      ]
+    },
+    {
+      "net": "Q8_DRIVE_A",
+      "a": [
+        140.97,
+        231.14
+      ],
+      "b": [
+        157.48,
+        231.14
+      ]
+    },
+    {
+      "net": "GND",
+      "a": [
+        114.3,
+        81.28
+      ],
+      "b": [
+        134.62,
+        81.28
+      ]
+    },
+    {
+      "net": "RX_B_OUT",
+      "a": [
+        492.76,
+        200.66
+      ],
+      "b": [
+        502.92,
+        200.66
+      ]
+    },
+    {
+      "net": "GND",
+      "a": [
+        542.29,
+        219.71
+      ],
+      "b": [
+        542.29,
         227.33
+      ]
+    },
+    {
+      "net": "H_LED_A",
+      "a": [
+        220.98,
+        233.68
+      ],
+      "b": [
+        220.98,
+        236.22
+      ]
+    },
+    {
+      "net": "GND",
+      "a": [
+        266.7,
+        353.06
+      ],
+      "b": [
+        266.7,
+        364.49
+      ]
+    },
+    {
+      "net": "TUNE_4_MID",
+      "a": [
+        213.36,
+        322.58
+      ],
+      "b": [
+        220.98,
+        322.58
+      ]
+    },
+    {
+      "net": "RX_B_OUT",
+      "a": [
+        488.95,
+        180.34
+      ],
+      "b": [
+        502.92,
+        180.34
+      ]
+    },
+    {
+      "net": "RX_SUPPLY_SERIES",
+      "a": [
+        335.28,
+        182.88
+      ],
+      "b": [
+        336.55,
+        182.88
+      ]
+    },
+    {
+      "net": "H_AUX_IN",
+      "a": [
+        314.96,
+        295.91
+      ],
+      "b": [
+        314.96,
+        302.26
+      ]
+    },
+    {
+      "net": "U1_ALT_PAD",
+      "a": [
+        93.98,
+        60.96
+      ],
+      "b": [
+        101.6,
+        60.96
+      ]
+    },
+    {
+      "net": "GND",
+      "a": [
+        528.32,
+        63.5
+      ],
+      "b": [
+        528.32,
+        87.63
+      ]
+    },
+    {
+      "net": "GND",
+      "a": [
+        300.99,
+        326.39
+      ],
+      "b": [
+        330.2,
+        326.39
+      ]
+    },
+    {
+      "net": "H_AUX_IN",
+      "a": [
+        300.99,
+        302.26
+      ],
+      "b": [
+        300.99,
+        308.61
+      ]
+    },
+    {
+      "net": "GND",
+      "a": [
+        259.08,
+        185.42
+      ],
+      "b": [
+        259.08,
+        198.12
+      ]
+    },
+    {
+      "net": "VDD",
+      "a": [
+        262.89,
+        40.64
+      ],
+      "b": [
+        262.89,
+        53.34
+      ]
+    },
+    {
+      "net": "BATTERY+",
+      "a": [
+        466.09,
+        124.46
+      ],
+      "b": [
+        466.09,
+        129.54
+      ]
+    },
+    {
+      "net": "H_RX_VDD",
+      "a": [
+        340.36,
+        196.85
+      ],
+      "b": [
+        349.25,
+        196.85
+      ]
+    },
+    {
+      "net": "TUNE_3_MID",
+      "a": [
+        167.64,
+        317.5
+      ],
+      "b": [
+        167.64,
+        322.58
+      ]
+    },
+    {
+      "net": "BATTERY+",
+      "a": [
+        455.93,
+        104.14
+      ],
+      "b": [
+        455.93,
+        106.68
+      ]
+    },
+    {
+      "net": "ICSP_DAT",
+      "a": [
+        558.8,
+        40.64
+      ],
+      "b": [
+        558.8,
+        46.99
+      ]
+    },
+    {
+      "net": "GND",
+      "a": [
+        99.06,
+        298.45
+      ],
+      "b": [
+        99.06,
+        309.88
+      ]
+    },
+    {
+      "net": "GND",
+      "a": [
+        168.91,
+        189.23
+      ],
+      "b": [
+        168.91,
+        193.04
+      ]
+    },
+    {
+      "net": "VREF",
+      "a": [
+        326.39,
+        233.68
+      ],
+      "b": [
+        326.39,
+        238.76
+      ]
+    },
+    {
+      "net": "ICSP_CLK",
+      "a": [
+        289.56,
+        54.61
+      ],
+      "b": [
+        289.56,
+        96.52
+      ]
+    },
+    {
+      "net": "GND",
+      "a": [
+        375.92,
+        391.16
+      ],
+      "b": [
+        375.92,
+        396.24
+      ]
+    },
+    {
+      "net": "GND",
+      "a": [
+        259.08,
+        298.45
+      ],
+      "b": [
+        259.08,
+        309.88
+      ]
+    },
+    {
+      "net": "VDD",
+      "a": [
+        210.82,
+        40.64
+      ],
+      "b": [
+        262.89,
+        40.64
+      ]
+    },
+    {
+      "net": "VREF",
+      "a": [
+        307.34,
+        233.68
+      ],
+      "b": [
+        307.34,
+        238.76
+      ]
+    },
+    {
+      "net": "OSC1",
+      "a": [
+        302.26,
+        113.03
+      ],
+      "b": [
+        302.26,
+        120.65
+      ]
+    },
+    {
+      "net": "H_TUNE_5",
+      "a": [
+        227.33,
+        81.28
+      ],
+      "b": [
+        242.57,
+        81.28
+      ]
+    },
+    {
+      "net": "H_RF_IN_B",
+      "a": [
+        67.31,
+        217.17
+      ],
+      "b": [
+        67.31,
+        226.06
+      ]
+    },
+    {
+      "net": "H_LED_A",
+      "a": [
+        208.28,
+        233.68
+      ],
+      "b": [
+        220.98,
+        233.68
+      ]
+    },
+    {
+      "net": "Q8_DRIVE_B",
+      "a": [
+        134.62,
+        207.01
+      ],
+      "b": [
+        134.62,
+        217.17
+      ]
+    },
+    {
+      "net": "H_RF_IN_A",
+      "a": [
+        49.53,
+        185.42
+      ],
+      "b": [
+        58.42,
+        185.42
+      ]
+    },
+    {
+      "net": "GND",
+      "a": [
+        368.3,
+        350.52
+      ],
+      "b": [
+        368.3,
+        359.41
       ]
     },
     {
@@ -9921,6 +9384,556 @@
       "b": [
         152.4,
         347.98
+      ]
+    },
+    {
+      "net": "H_MOTOR_A",
+      "a": [
+        471.17,
+        55.88
+      ],
+      "b": [
+        487.68,
+        55.88
+      ]
+    },
+    {
+      "net": "H_RX_VDD",
+      "a": [
+        349.25,
+        182.88
+      ],
+      "b": [
+        355.6,
+        182.88
+      ]
+    },
+    {
+      "net": "GND",
+      "a": [
+        41.91,
+        81.28
+      ],
+      "b": [
+        55.88,
+        81.28
+      ]
+    },
+    {
+      "net": "TUNE_3_MID",
+      "a": [
+        160.02,
+        322.58
+      ],
+      "b": [
+        160.02,
+        328.93
+      ]
+    },
+    {
+      "net": "H_LED_A",
+      "a": [
+        222.25,
+        234.95
+      ],
+      "b": [
+        223.52,
+        234.95
+      ]
+    },
+    {
+      "net": "RX_B_FB",
+      "a": [
+        469.9,
+        168.91
+      ],
+      "b": [
+        469.9,
+        180.34
+      ]
+    },
+    {
+      "net": "TUNE_1_MID",
+      "a": [
+        45.72,
+        317.5
+      ],
+      "b": [
+        45.72,
+        322.58
+      ]
+    },
+    {
+      "net": "GND",
+      "a": [
+        469.9,
+        250.19
+      ],
+      "b": [
+        476.25,
+        250.19
+      ]
+    },
+    {
+      "net": "H_LED_B",
+      "a": [
+        218.44,
+        238.76
+      ],
+      "b": [
+        220.98,
+        238.76
+      ]
+    },
+    {
+      "net": "VSYS",
+      "a": [
+        458.47,
+        41.91
+      ],
+      "b": [
+        458.47,
+        48.26
+      ]
+    },
+    {
+      "net": "H_BUTTON",
+      "a": [
+        558.8,
+        54.61
+      ],
+      "b": [
+        558.8,
+        58.42
+      ]
+    },
+    {
+      "net": "RX_A_FILTER",
+      "a": [
+        436.88,
+        198.12
+      ],
+      "b": [
+        457.2,
+        198.12
+      ]
+    },
+    {
+      "net": "GND",
+      "a": [
+        554.99,
+        193.04
+      ],
+      "b": [
+        554.99,
+        199.39
+      ]
+    },
+    {
+      "net": "GND",
+      "a": [
+        165.1,
+        238.76
+      ],
+      "b": [
+        170.18,
+        238.76
+      ]
+    },
+    {
+      "net": "GND",
+      "a": [
+        246.38,
+        238.76
+      ],
+      "b": [
+        252.73,
+        238.76
+      ]
+    },
+    {
+      "net": "OSC2",
+      "a": [
+        283.21,
+        73.66
+      ],
+      "b": [
+        298.45,
+        73.66
+      ]
+    },
+    {
+      "net": "ICSP_DAT",
+      "a": [
+        295.91,
+        57.15
+      ],
+      "b": [
+        339.09,
+        57.15
+      ]
+    },
+    {
+      "net": "U1_ALT_PAD",
+      "a": [
+        123.19,
+        102.87
+      ],
+      "b": [
+        146.05,
+        102.87
+      ]
+    },
+    {
+      "net": "GND",
+      "a": [
+        312.42,
+        66.04
+      ],
+      "b": [
+        312.42,
+        83.82
+      ]
+    },
+    {
+      "net": "GND",
+      "a": [
+        246.38,
+        234.95
+      ],
+      "b": [
+        246.38,
+        236.22
+      ]
+    },
+    {
+      "net": "H_RX_VDD",
+      "a": [
+        563.88,
+        233.68
+      ],
+      "b": [
+        567.69,
+        233.68
+      ]
+    },
+    {
+      "net": "H_RF_IN_B",
+      "a": [
+        67.31,
+        217.17
+      ],
+      "b": [
+        72.39,
+        217.17
+      ]
+    },
+    {
+      "net": "GND",
+      "a": [
+        334.01,
+        64.77
+      ],
+      "b": [
+        334.01,
+        132.08
+      ]
+    },
+    {
+      "net": "H_BUTTON",
+      "a": [
+        542.29,
+        58.42
+      ],
+      "b": [
+        548.64,
+        58.42
+      ]
+    },
+    {
+      "net": "H_TUNE_2",
+      "a": [
+        80.01,
+        347.98
+      ],
+      "b": [
+        85.09,
+        347.98
+      ]
+    },
+    {
+      "net": "Q8_DRIVE_B",
+      "a": [
+        134.62,
+        207.01
+      ],
+      "b": [
+        157.48,
+        207.01
+      ]
+    },
+    {
+      "net": "VDD",
+      "a": [
+        419.1,
+        54.61
+      ],
+      "b": [
+        419.1,
+        64.77
+      ]
+    },
+    {
+      "net": "GND",
+      "a": [
+        38.1,
+        251.46
+      ],
+      "b": [
+        38.1,
+        256.54
+      ]
+    },
+    {
+      "net": "RF_MONITOR_PAD",
+      "a": [
+        24.13,
+        251.46
+      ],
+      "b": [
+        24.13,
+        259.08
+      ]
+    },
+    {
+      "net": "H_PIR_VDD",
+      "a": [
+        368.3,
+        294.64
+      ],
+      "b": [
+        368.3,
+        306.07
+      ]
+    },
+    {
+      "net": "RX_A_PLUS",
+      "a": [
+        346.71,
+        229.87
+      ],
+      "b": [
+        353.06,
+        229.87
+      ]
+    },
+    {
+      "net": "H_RX_RF_SENSE",
+      "a": [
+        538.48,
+        237.49
+      ],
+      "b": [
+        538.48,
+        242.57
+      ]
+    },
+    {
+      "net": "TUNE_2_MID",
+      "a": [
+        99.06,
+        322.58
+      ],
+      "b": [
+        106.68,
+        322.58
+      ]
+    },
+    {
+      "net": "H_RF_VDD",
+      "a": [
+        224.79,
+        167.64
+      ],
+      "b": [
+        224.79,
+        201.93
+      ]
+    },
+    {
+      "net": "H_RF_IN_A",
+      "a": [
+        38.1,
+        185.42
+      ],
+      "b": [
+        49.53,
+        185.42
+      ]
+    },
+    {
+      "net": "GND",
+      "a": [
+        430.53,
+        87.63
+      ],
+      "b": [
+        455.93,
+        87.63
+      ]
+    },
+    {
+      "net": "PIR_BASE",
+      "a": [
+        345.44,
+        345.44
+      ],
+      "b": [
+        351.79,
+        345.44
+      ]
+    },
+    {
+      "net": "H_ANT_B",
+      "a": [
+        21.59,
+        298.45
+      ],
+      "b": [
+        27.94,
+        298.45
+      ]
+    },
+    {
+      "net": "U1_ALT_PAD",
+      "a": [
+        91.44,
+        102.87
+      ],
+      "b": [
+        91.44,
+        110.49
+      ]
+    },
+    {
+      "net": "MOTOR_INB",
+      "a": [
+        433.07,
+        66.04
+      ],
+      "b": [
+        445.77,
+        66.04
+      ]
+    },
+    {
+      "net": "RX_A_PLUS",
+      "a": [
+        439.42,
+        250.19
+      ],
+      "b": [
+        445.77,
+        250.19
+      ]
+    },
+    {
+      "net": "VREF",
+      "a": [
+        307.34,
+        238.76
+      ],
+      "b": [
+        313.69,
+        238.76
+      ]
+    },
+    {
+      "net": "H_MOTOR_A",
+      "a": [
+        487.68,
+        62.23
+      ],
+      "b": [
+        494.03,
+        62.23
+      ]
+    },
+    {
+      "net": "TUNE_4_SW",
+      "a": [
+        213.36,
+        336.55
+      ],
+      "b": [
+        213.36,
+        342.9
+      ]
+    },
+    {
+      "net": "RX_A_FB",
+      "a": [
+        356.87,
+        203.2
+      ],
+      "b": [
+        356.87,
+        219.71
+      ]
+    },
+    {
+      "net": "GND",
+      "a": [
+        110.49,
+        110.49
+      ],
+      "b": [
+        110.49,
+        116.84
+      ]
+    },
+    {
+      "net": "H_RX_DETECT",
+      "a": [
+        542.29,
+        207.01
+      ],
+      "b": [
+        574.04,
+        207.01
+      ]
+    },
+    {
+      "net": "H_TUNE_3",
+      "a": [
+        283.21,
+        68.58
+      ],
+      "b": [
+        288.29,
+        68.58
+      ]
+    },
+    {
+      "net": "H_RX_VDD",
+      "a": [
+        570.23,
+        172.72
+      ],
+      "b": [
+        570.23,
+        181.61
+      ]
+    },
+    {
+      "net": "H_AUX_IN",
+      "a": [
+        313.69,
+        295.91
+      ],
+      "b": [
+        314.96,
+        295.91
       ]
     }
   ],
@@ -11337,7 +11350,8 @@
   "sources": {
     "SGM8542": "https://www.sg-micro.com/product/SGM8542",
     "PIC16F18855": "https://ww1.microchip.com/downloads/aemDocuments/documents/MCU08/ProductDocuments/DataSheets/PIC16%28L%29F18855-75-Data-Sheet-40001802H.pdf",
-    "MX512H": "https://jlcpcb.com/partdetail/Mixic-MX512H/C5119047"
+    "MX512H": "https://jlcpcb.com/partdetail/Mixic-MX512H/C5119047",
+    "FMOS3401A": "https://www.formosams.com/upload/product/Mosfets/FMOS3401A_REV_C.pdf"
   },
   "native_pin_crosswalk": {
     "BATP.1": "TP107.1",

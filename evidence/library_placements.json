@@ -3,14 +3,17 @@
     {
       "symbol": "Connector:TestPoint",
       "reference": "TP107",
-      "value": "BATP / BATTERY +",
+      "value": "BATTERY (+)",
       "position": {
         "x": 20.32,
         "y": 53.34
       },
       "rotation": 270,
       "includePins": true,
-      "footprint": "TestPoint:TestPoint_THTPad_2.5x2.5mm_Drill1.2mm"
+      "footprint": "TestPoint:TestPoint_THTPad_2.5x2.5mm_Drill1.2mm",
+      "properties": {
+        "ViaEvidence": "v0.9.9: User corrects raw battery+ versus post-Q1 rail. BATP -> Q1.S (single physical pad/native3, candidate drain); Q1.L/native2 (candidate source) -> U5.4/V011-V014. These are distinct copper nets, connected through Q1. IMG_2438 also supports TP14 on battery+; V015/R43.2-TP14 user confirmation retained. Q1.R/native1 is candidate gate at R44.2. Photo S means SINGLE, not MOSFET source."
+      }
     },
     {
       "symbol": "Device:L",
@@ -22,7 +25,10 @@
       },
       "rotation": 90,
       "includePins": true,
-      "footprint": "Inductor_SMD:L_0805_2012Metric"
+      "footprint": "Inductor_SMD:L_0805_2012Metric",
+      "properties": {
+        "ViaEvidence": "v0.9.9: User confirms L1 and L2 connect to the same VSYS after Q1. Existing supply-side pad1 selections retained from photos/model; opposite terminals are separate across each component. The report does not identify inductance/ferrite type or measured values."
+      }
     },
     {
       "symbol": "Device:C",
@@ -87,7 +93,7 @@
     {
       "symbol": "Connector:TestPoint",
       "reference": "TP103",
-      "value": "VDD (logic supply)",
+      "value": "VDD",
       "position": {
         "x": 146.05,
         "y": 53.34
@@ -95,15 +101,15 @@
       "rotation": 270,
       "includePins": true,
       "footprint": "TestPoint:TestPoint_THTPad_D2.0mm_Drill1.0mm",
-      "via_evidence": "v0.9.8 follow-up: User confirms V082 reaches the board VDD test point, native TP103 / H_VDD regulated logic rail. This is distinct from MX512H pin4 VDD / H_VBAT motor supply; MX512H pin1 VCC is modeled on H_VDD. V082 was associated with D3 but its exact package terminal remains unconfirmed. Do not merge H_RX_VDD or choose a D3 pin from this report alone.",
+      "via_evidence": "v0.9.8 follow-up: User confirms V082 reaches the board VDD test point, native TP103 / VDD regulated logic rail. This is distinct from MX512H pin4 VDD / H_VBAT motor supply; MX512H pin1 VCC is modeled on VDD. V082 was associated with D3 but its exact package terminal remains unconfirmed. Do not merge H_RX_VDD or choose a D3 pin from this report alone.",
       "properties": {
-        "ViaEvidence": "v0.9.8 follow-up: User confirms V082 reaches the board VDD test point, native TP103 / H_VDD regulated logic rail. This is distinct from MX512H pin4 VDD / H_VBAT motor supply; MX512H pin1 VCC is modeled on H_VDD. V082 was associated with D3 but its exact package terminal remains unconfirmed. Do not merge H_RX_VDD or choose a D3 pin from this report alone."
+        "ViaEvidence": "v0.9.9: User confirms V042 to this board VDD TP, matching the modeled PIC20/C32.1 regulated VDD rail; distinct from VSYS and BATTERY+."
       }
     },
     {
       "symbol": "Connector:TestPoint",
       "reference": "TP101",
-      "value": "GND / GND pad",
+      "value": "GND",
       "position": {
         "x": 148.59,
         "y": 81.28
@@ -172,7 +178,7 @@
       "includePins": true,
       "footprint": "Package_SO:SOIC-28W_7.5x17.9mm_P1.27mm",
       "properties": {
-        "ViaEvidence": "v0.9.8: User confirms RC2/PIC13-V049-TP3, RB0/PIC21-V026-VREF (native TP104), and RC1/PIC12-V053-V070-R18.1. User explicitly rejects V053-VREF, superseding the old photo assumption. No numerical resistance supplied for these connections. All PIC pads have modeled local destinations; other inferred branches still need review. RB4/PIC25-TP4 now also reaches V017/R42.1/R44.1. RB0/VREF also reaches V071/R21.2 by user report."
+        "ViaEvidence": "v0.9.9: User checked V035-VREF TP. Prior photo association V035-PIC4/RA2-C39.1 retained; joins the already confirmed RB0/V026/R21.2/V071 VREF node. No voltage or numerical resistance supplied. Other modeled bias branches retain earlier inferred status. V042-PIC20 supply now user-confirmed to board VDD/TP103, not motor VDD."
       },
       "via_evidence": "v0.9.8: User confirms RC2/PIC13-V049-TP3, RB0/PIC21-V026-VREF (native TP104), and RC1/PIC12-V053-V070-R18.1. User explicitly rejects V053-VREF, superseding the old photo assumption. No numerical resistance supplied for these connections. All PIC pads have modeled local destinations; other inferred branches still need review. RB4/PIC25-TP4 now also reaches V017/R42.1/R44.1. RB0/VREF also reaches V071/R21.2 by user report."
     },
@@ -222,7 +228,10 @@
       },
       "rotation": 0,
       "includePins": true,
-      "footprint": "Capacitor_SMD:C_0805_2012Metric"
+      "footprint": "Capacitor_SMD:C_0805_2012Metric",
+      "properties": {
+        "ViaEvidence": "v0.9.9: User checked V035-VREF TP. Prior photo association V035-PIC4/RA2-C39.1 retained; joins the already confirmed RB0/V026/R21.2/V071 VREF node. No voltage or numerical resistance supplied. Other modeled bias branches retain earlier inferred status."
+      }
     },
     {
       "symbol": "Device:Crystal",
@@ -282,7 +291,10 @@
       },
       "rotation": 0,
       "includePins": true,
-      "footprint": "Resistor_SMD:R_0603_1608Metric"
+      "footprint": "Resistor_SMD:R_0603_1608Metric",
+      "properties": {
+        "ViaEvidence": "v0.9.9: User corrects raw battery+ versus post-Q1 rail. BATP -> Q1.S (single physical pad/native3, candidate drain); Q1.L/native2 (candidate source) -> U5.4/V011-V014. These are distinct copper nets, connected through Q1. IMG_2438 also supports TP14 on battery+; V015/R43.2-TP14 user confirmation retained. Q1.R/native1 is candidate gate at R44.2. Photo S means SINGLE, not MOSFET source."
+      }
     },
     {
       "symbol": "Device:R",
@@ -332,7 +344,7 @@
       "includePins": true,
       "footprint": "Package_SO:SOIC-8_3.9x4.9mm_P1.27mm",
       "properties": {
-        "ViaEvidence": "v0.9.4: user confirms INA pin2 via V016-V022 to PIC15/RC4 and INB pin3 via V019-V023 to PIC16/RC5. Control mapping established; logic VCC and motor VDD remain separate."
+        "ViaEvidence": "v0.9.9: User corrects raw battery+ versus post-Q1 rail. BATP -> Q1.S (single physical pad/native3, candidate drain); Q1.L/native2 (candidate source) -> U5.4/V011-V014. These are distinct copper nets, connected through Q1. IMG_2438 also supports TP14 on battery+; V015/R43.2-TP14 user confirmation retained. Q1.R/native1 is candidate gate at R44.2. Photo S means SINGLE, not MOSFET source."
       }
     },
     {
@@ -345,7 +357,10 @@
       },
       "rotation": 0,
       "includePins": true,
-      "footprint": "Capacitor_SMD:C_0805_2012Metric"
+      "footprint": "Capacitor_SMD:C_0805_2012Metric",
+      "properties": {
+        "ViaEvidence": "v0.9.9: User corrects raw battery+ versus post-Q1 rail. BATP -> Q1.S (single physical pad/native3, candidate drain); Q1.L/native2 (candidate source) -> U5.4/V011-V014. These are distinct copper nets, connected through Q1. IMG_2438 also supports TP14 on battery+; V015/R43.2-TP14 user confirmation retained. Q1.R/native1 is candidate gate at R44.2. Photo S means SINGLE, not MOSFET source."
+      }
     },
     {
       "symbol": "Device:C",
@@ -386,7 +401,7 @@
     {
       "symbol": "Connector:TestPoint",
       "reference": "TP108",
-      "value": "BATN / BATTERY -",
+      "value": "BATTERY (-)",
       "position": {
         "x": 481.33,
         "y": 87.63
@@ -453,12 +468,15 @@
       },
       "rotation": 0,
       "includePins": true,
-      "footprint": "Capacitor_SMD:C_1206_3216Metric"
+      "footprint": "Capacitor_SMD:C_1206_3216Metric",
+      "properties": {
+        "ViaEvidence": "v0.9.9: User corrects raw battery+ versus post-Q1 rail. BATP -> Q1.S (single physical pad/native3, candidate drain); Q1.L/native2 (candidate source) -> U5.4/V011-V014. These are distinct copper nets, connected through Q1. IMG_2438 also supports TP14 on battery+; V015/R43.2-TP14 user confirmation retained. Q1.R/native1 is candidate gate at R44.2. Photo S means SINGLE, not MOSFET source."
+      }
     },
     {
-      "symbol": "Transistor_BJT:MMBT3904",
+      "symbol": "Transistor_FET:Q_PMOS_GSD",
       "reference": "Q1",
-      "value": "MMBT3904?",
+      "value": "FMOS3401A?",
       "position": {
         "x": 453.39,
         "y": 111.76
@@ -467,9 +485,11 @@
       "includePins": true,
       "footprint": "Package_TO_SOT_SMD:SOT-23",
       "properties": {
-        "ViaEvidence": "v0.9.8: User explicitly confirms V011/V012/V013/V014 share the MX512H pin4 VDD motor supply. Earlier Q1.L association retained, now H_VBAT, not regulated TP103/H_VDD. Q1.L-R43.2 remains rejected. Q1 device identity, polarity and function remain candidate assumptions; this connection does not validate them."
+        "ViaEvidence": "v0.9.9: User corrects raw battery+ versus post-Q1 rail. BATP -> Q1.S (single physical pad/native3, candidate drain); Q1.L/native2 (candidate source) -> U5.4/V011-V014. These are distinct copper nets, connected through Q1. IMG_2438 also supports TP14 on battery+; V015/R43.2-TP14 user confirmation retained. Q1.R/native1 is candidate gate at R44.2. Photo S means SINGLE, not MOSFET source.",
+        "Datasheet": "https://www.formosams.com/upload/product/Mosfets/FMOS3401A_REV_C.pdf",
+        "IdentityEvidence": "R1A marking matches Formosa FMOS3401A datasheet p5; SOT-23 PMOS with G=1 (photo R), S=2 (photo L), D=3 (photo single S). Candidate identification, not manufacturer proof. Drain at battery+ and source at load support reverse-polarity protection; gate-control behavior not verified. Earlier MMBT3904 NPN hypothesis withdrawn."
       },
-      "via_evidence": "v0.9.8: User explicitly confirms V011/V012/V013/V014 share the MX512H pin4 VDD motor supply. Earlier Q1.L association retained, now H_VBAT, not regulated TP103/H_VDD. Q1.L-R43.2 remains rejected. Q1 device identity, polarity and function remain candidate assumptions; this connection does not validate them."
+      "via_evidence": "v0.9.8: User explicitly confirms V011/V012/V013/V014 share the MX512H pin4 VDD motor supply. Earlier Q1.L association retained, now H_VBAT, not regulated TP103/VDD. Q1.L-R43.2 remains rejected. Q1 device identity, polarity and function remain candidate assumptions; this connection does not validate them."
     },
     {
       "symbol": "Device:R",
@@ -483,7 +503,7 @@
       "includePins": true,
       "footprint": "Resistor_SMD:R_0603_1608Metric",
       "properties": {
-        "ViaEvidence": "v0.9.8: User confirms V017-TP4. Prior V017-R42.1/R44.1 local junction now joins TP4 and PIC25/RB4. R42.1 explicitly user-named; R44 pad1 and C41 branch retain earlier photo selection. No numeric resistance supplied; circuit operating role remains inferred."
+        "ViaEvidence": "v0.9.9: User corrects raw battery+ versus post-Q1 rail. BATP -> Q1.S (single physical pad/native3, candidate drain); Q1.L/native2 (candidate source) -> U5.4/V011-V014. These are distinct copper nets, connected through Q1. IMG_2438 also supports TP14 on battery+; V015/R43.2-TP14 user confirmation retained. Q1.R/native1 is candidate gate at R44.2. Photo S means SINGLE, not MOSFET source."
       },
       "via_evidence": "v0.9.8: User confirms V017-TP4. Prior V017-R42.1/R44.1 local junction now joins TP4 and PIC25/RB4. R42.1 explicitly user-named; R44 pad1 and C41 branch retain earlier photo selection. No numeric resistance supplied; circuit operating role remains inferred."
     },
@@ -499,7 +519,7 @@
       "includePins": true,
       "footprint": "Resistor_SMD:R_0603_1608Metric",
       "properties": {
-        "ViaEvidence": "v0.9.8: User confirms V015-TP14. Earlier V015-R43.2 lower-pad association retained. R43.2 joins TP14 on H_BAT_DETECT, whose existing Q1.S branch and functional name remain photo/circuit hypotheses. Q1.L-R43.2 remains explicitly rejected. No numeric resistance supplied."
+        "ViaEvidence": "v0.9.9: User corrects raw battery+ versus post-Q1 rail. BATP -> Q1.S (single physical pad/native3, candidate drain); Q1.L/native2 (candidate source) -> U5.4/V011-V014. These are distinct copper nets, connected through Q1. IMG_2438 also supports TP14 on battery+; V015/R43.2-TP14 user confirmation retained. Q1.R/native1 is candidate gate at R44.2. Photo S means SINGLE, not MOSFET source."
       },
       "via_evidence": "v0.9.8: User confirms V015-TP14. Earlier V015-R43.2 lower-pad association retained. R43.2 joins TP14 on H_BAT_DETECT, whose existing Q1.S branch and functional name remain photo/circuit hypotheses. Q1.L-R43.2 remains explicitly rejected. No numeric resistance supplied."
     },
@@ -516,7 +536,7 @@
       "footprint": "TestPoint:TestPoint_THTPad_D2.0mm_Drill1.0mm",
       "via_evidence": "v0.9.8: User confirms V015-TP14. Earlier V015-R43.2 lower-pad association retained. R43.2 joins TP14 on H_BAT_DETECT, whose existing Q1.S branch and functional name remain photo/circuit hypotheses. Q1.L-R43.2 remains explicitly rejected. No numeric resistance supplied.",
       "properties": {
-        "ViaEvidence": "v0.9.8: User confirms V015-TP14. Earlier V015-R43.2 lower-pad association retained. R43.2 joins TP14 on H_BAT_DETECT, whose existing Q1.S branch and functional name remain photo/circuit hypotheses. Q1.L-R43.2 remains explicitly rejected. No numeric resistance supplied."
+        "ViaEvidence": "v0.9.9: User corrects raw battery+ versus post-Q1 rail. BATP -> Q1.S (single physical pad/native3, candidate drain); Q1.L/native2 (candidate source) -> U5.4/V011-V014. These are distinct copper nets, connected through Q1. IMG_2438 also supports TP14 on battery+; V015/R43.2-TP14 user confirmation retained. Q1.R/native1 is candidate gate at R44.2. Photo S means SINGLE, not MOSFET source."
       }
     },
     {
@@ -665,7 +685,10 @@
       },
       "rotation": 90,
       "includePins": true,
-      "footprint": "Inductor_SMD:L_0805_2012Metric"
+      "footprint": "Inductor_SMD:L_0805_2012Metric",
+      "properties": {
+        "ViaEvidence": "v0.9.9: User confirms L1 and L2 connect to the same VSYS after Q1. Existing supply-side pad1 selections retained from photos/model; opposite terminals are separate across each component. The report does not identify inductance/ferrite type or measured values."
+      }
     },
     {
       "symbol": "Device:C_Polarized",
@@ -873,9 +896,9 @@
       "rotation": 0,
       "includePins": true,
       "footprint": "Resistor_SMD:R_0603_1608Metric",
-      "via_evidence": "v0.9.8: User confirms V071-VREF. Earlier V071-R21.2 and V026-VREF-PIC21/RB0 associations retained. R21.2 joins PIC_RB0_VREF. Existing R22.2/R23.2/R48.2 receiver-bias branches remain prior photo/circuit hypotheses, not new measured connections. VREF remains separate from H_VDD and RC1/V053. No voltage or numeric resistance supplied.",
+      "via_evidence": "v0.9.8: User confirms V071-VREF. Earlier V071-R21.2 and V026-VREF-PIC21/RB0 associations retained. R21.2 joins VREF. Existing R22.2/R23.2/R48.2 receiver-bias branches remain prior photo/circuit hypotheses, not new measured connections. VREF remains separate from VDD and RC1/V053. No voltage or numeric resistance supplied.",
       "properties": {
-        "ViaEvidence": "v0.9.8: User confirms V071-VREF. Earlier V071-R21.2 and V026-VREF-PIC21/RB0 associations retained. R21.2 joins PIC_RB0_VREF. Existing R22.2/R23.2/R48.2 receiver-bias branches remain prior photo/circuit hypotheses, not new measured connections. VREF remains separate from H_VDD and RC1/V053. No voltage or numeric resistance supplied."
+        "ViaEvidence": "v0.9.8: User confirms V071-VREF. Earlier V071-R21.2 and V026-VREF-PIC21/RB0 associations retained. R21.2 joins VREF. Existing R22.2/R23.2/R48.2 receiver-bias branches remain prior photo/circuit hypotheses, not new measured connections. VREF remains separate from VDD and RC1/V053. No voltage or numeric resistance supplied."
       }
     },
     {
@@ -940,9 +963,9 @@
       "rotation": 0,
       "includePins": true,
       "footprint": "Resistor_SMD:R_0603_1608Metric",
-      "via_evidence": "v0.9.8: User confirms V071-VREF. Earlier V071-R21.2 and V026-VREF-PIC21/RB0 associations retained. R21.2 joins PIC_RB0_VREF. Existing R22.2/R23.2/R48.2 receiver-bias branches remain prior photo/circuit hypotheses, not new measured connections. VREF remains separate from H_VDD and RC1/V053. No voltage or numeric resistance supplied.",
+      "via_evidence": "v0.9.8: User confirms V071-VREF. Earlier V071-R21.2 and V026-VREF-PIC21/RB0 associations retained. R21.2 joins VREF. Existing R22.2/R23.2/R48.2 receiver-bias branches remain prior photo/circuit hypotheses, not new measured connections. VREF remains separate from VDD and RC1/V053. No voltage or numeric resistance supplied.",
       "properties": {
-        "ViaEvidence": "v0.9.8: User confirms V071-VREF. Earlier V071-R21.2 and V026-VREF-PIC21/RB0 associations retained. R21.2 joins PIC_RB0_VREF. Existing R22.2/R23.2/R48.2 receiver-bias branches remain prior photo/circuit hypotheses, not new measured connections. VREF remains separate from H_VDD and RC1/V053. No voltage or numeric resistance supplied."
+        "ViaEvidence": "v0.9.8: User confirms V071-VREF. Earlier V071-R21.2 and V026-VREF-PIC21/RB0 associations retained. R21.2 joins VREF. Existing R22.2/R23.2/R48.2 receiver-bias branches remain prior photo/circuit hypotheses, not new measured connections. VREF remains separate from VDD and RC1/V053. No voltage or numeric resistance supplied."
       }
     },
     {
@@ -1199,9 +1222,9 @@
       "rotation": 0,
       "includePins": true,
       "footprint": "Resistor_SMD:R_0603_1608Metric",
-      "via_evidence": "v0.9.8: User confirms V071-VREF. Earlier V071-R21.2 and V026-VREF-PIC21/RB0 associations retained. R21.2 joins PIC_RB0_VREF. Existing R22.2/R23.2/R48.2 receiver-bias branches remain prior photo/circuit hypotheses, not new measured connections. VREF remains separate from H_VDD and RC1/V053. No voltage or numeric resistance supplied.",
+      "via_evidence": "v0.9.8: User confirms V071-VREF. Earlier V071-R21.2 and V026-VREF-PIC21/RB0 associations retained. R21.2 joins VREF. Existing R22.2/R23.2/R48.2 receiver-bias branches remain prior photo/circuit hypotheses, not new measured connections. VREF remains separate from VDD and RC1/V053. No voltage or numeric resistance supplied.",
       "properties": {
-        "ViaEvidence": "v0.9.8: User confirms V071-VREF. Earlier V071-R21.2 and V026-VREF-PIC21/RB0 associations retained. R21.2 joins PIC_RB0_VREF. Existing R22.2/R23.2/R48.2 receiver-bias branches remain prior photo/circuit hypotheses, not new measured connections. VREF remains separate from H_VDD and RC1/V053. No voltage or numeric resistance supplied."
+        "ViaEvidence": "v0.9.8: User confirms V071-VREF. Earlier V071-R21.2 and V026-VREF-PIC21/RB0 associations retained. R21.2 joins VREF. Existing R22.2/R23.2/R48.2 receiver-bias branches remain prior photo/circuit hypotheses, not new measured connections. VREF remains separate from VDD and RC1/V053. No voltage or numeric resistance supplied."
       }
     },
     {
@@ -1216,9 +1239,9 @@
       "includePins": true,
       "footprint": "Resistor_SMD:R_0603_1608Metric",
       "properties": {
-        "ViaEvidence": "v0.9.8: User confirms V071-VREF. Earlier V071-R21.2 and V026-VREF-PIC21/RB0 associations retained. R21.2 joins PIC_RB0_VREF. Existing R22.2/R23.2/R48.2 receiver-bias branches remain prior photo/circuit hypotheses, not new measured connections. VREF remains separate from H_VDD and RC1/V053. No voltage or numeric resistance supplied."
+        "ViaEvidence": "v0.9.8: User confirms V071-VREF. Earlier V071-R21.2 and V026-VREF-PIC21/RB0 associations retained. R21.2 joins VREF. Existing R22.2/R23.2/R48.2 receiver-bias branches remain prior photo/circuit hypotheses, not new measured connections. VREF remains separate from VDD and RC1/V053. No voltage or numeric resistance supplied."
       },
-      "via_evidence": "v0.9.8: User confirms V071-VREF. Earlier V071-R21.2 and V026-VREF-PIC21/RB0 associations retained. R21.2 joins PIC_RB0_VREF. Existing R22.2/R23.2/R48.2 receiver-bias branches remain prior photo/circuit hypotheses, not new measured connections. VREF remains separate from H_VDD and RC1/V053. No voltage or numeric resistance supplied."
+      "via_evidence": "v0.9.8: User confirms V071-VREF. Earlier V071-R21.2 and V026-VREF-PIC21/RB0 associations retained. R21.2 joins VREF. Existing R22.2/R23.2/R48.2 receiver-bias branches remain prior photo/circuit hypotheses, not new measured connections. VREF remains separate from VDD and RC1/V053. No voltage or numeric resistance supplied."
     },
     {
       "symbol": "Device:C",
@@ -1670,7 +1693,10 @@
       },
       "rotation": 0,
       "includePins": true,
-      "footprint": "Capacitor_SMD:C_0805_2012Metric"
+      "footprint": "Capacitor_SMD:C_0805_2012Metric",
+      "properties": {
+        "ViaEvidence": "v0.9.9: V042 user-confirmed to board VDD test point TP103/VDD. Prior C32.1/PIC20 local photo association retained."
+      }
     },
     {
       "symbol": "Connector_Generic:Conn_01x03",
@@ -1937,7 +1963,7 @@
       "includePins": true,
       "footprint": "TestPoint:TestPoint_THTPad_D2.0mm_Drill1.0mm",
       "properties": {
-        "ViaEvidence": "v0.9.8: Board silk VREF, native TP104. User confirms V026-VREF (PIC21/RB0) and explicitly rejects V053-VREF. Old RC1 photo association withdrawn. VREF is a board label, not an established voltage or IC function. User also confirms V071/R21.2 to this VREF point; existing receiver-bias branches retain prior inference status."
+        "ViaEvidence": "v0.9.9: User checked V035-VREF TP. Prior photo association V035-PIC4/RA2-C39.1 retained; joins the already confirmed RB0/V026/R21.2/V071 VREF node. No voltage or numerical resistance supplied. Other modeled bias branches retain earlier inferred status."
       },
       "via_evidence": "v0.9.8: Board silk VREF, native TP104. User confirms V026-VREF (PIC21/RB0) and explicitly rejects V053-VREF. Old RC1 photo association withdrawn. VREF is a board label, not an established voltage or IC function. User also confirms V071/R21.2 to this VREF point; existing receiver-bias branches retain prior inference status."
     }

@@ -1,4 +1,8 @@
-# PetSafe functional reconstruction, v0.9.4
+# PetSafe functional reconstruction, v0.9.9
+
+Current correction: **BATTERY+ -> Q1 -> VSYS**, with **L1/L2 supply sides and MX512H pin4 on VSYS**. Board **VDD** is the separate regulated test-point rail; **VREF** now includes V035/RA2/C39 as well as V026/RB0 and V071/R21. V042 confirms PIC20/C32.1 on VDD. Ground uses the printed **GND** name; battery negative joins it. Q1 is now a marking-backed **FMOS3401A PMOS candidate**, installed using the stock KiCad symbol through MCP. See [current power-path evidence](VIA_REVIEW_RESULTS.md) and [manufacturer sources](SOURCES.md).
+
+Current checks: 83 native/model partitions; 36 ERC findings (28 open pads, 3 isolated labels, 5 power findings). Zero open PIC pads in the model; partial nets and hypotheses remain. The explanatory sections below originated in earlier revisions; the current via findings and completion report supersede old counts and connection hypotheses.
 
 The deliverable is one editable KiCad schematic sheet with all 150 entries in the original main-board catalog. It uses wires inside functional blocks and labels between blocks. The 150 entries include named pads, test points and unpopulated footprints; they are not 150 fitted components. The separate PIR daughterboard appears in the photos, but only its main-board connector and interface are modeled here.
 
@@ -32,7 +36,7 @@ Confidence describes identification, not confidence in every connected wire. Pri
 | U5 / MX512H | Mixic dual-input H-bridge | Strong, readable marking and manufacturer pin diagram. | J5 A/B order and MCU control destinations are not visible enough to establish. |
 | Q2 / 1FW56 | BC847B NPN | Good candidate; Nexperia identifies 1F plus a manufacturing-site character. | Manufacturer, lot interpretation and physical orientation still need corroboration. |
 | Q7 / 3GW54 | BC857C PNP | Good candidate; Nexperia identifies 3G plus a manufacturing-site character. | Switched receiver supply role is inferred. |
-| Q1 / R1A | MMBT3904-class NPN | Tentative. Common NPN function and 1A-family marking are compatible. | Current Diodes datasheet does not uniquely establish the full R1A mark. Keep exact identity provisional. |
+| Q1 / R1A | FMOS3401A-class PMOS | Formosa datasheet p5 explicitly lists R1A and matches the package/power path. | Exact fitted maker unconfirmed; reverse-polarity-protection role inferred. Earlier MMBT3904 NPN hypothesis withdrawn. |
 | Q3/Q4/Q5/Q6/Q11 / 2H | MMBTA55/FMMTA55-family PNP | Plausible. Taitron's manufacturer catalog lists MMBTA55 with 2H marking. Five repeated cells suggest switched capacitance. | PBSS5140T is another PNP candidate; the short code is not globally unique. Neither exact part nor B/C/E orientation is certain. |
 | D1 / A7 | BAV99 series dual diode | Good candidate. Nexperia lists A7 and the expected SOT23 dual-series topology. | Photo-to-pin orientation remains inferred. |
 | D3 / A7 | BAV99 series dual diode candidate | User-confirmed A7; manufacturer marking match. | Board orientation and clamp routes remain inferred. |
@@ -50,7 +54,8 @@ Original physical identifiers are kept so an identity correction does not silent
 | U2 | T1=3 2A, T2=2 GND, T3=1 1A, B1=4 2Y, B2=5 VCC, B3=6 1Y |
 | U3 | 1 OUTA, 2 -A, 3 +A, 4 VSS, 5 +B, 6 -B, 7 OUTB, 8 VDD |
 | U5 | 1 logic VCC, 2 INA, 3 INB, 4 motor VDD, 5 OUTB, 6/7 GND, 8 OUTA |
-| Q1/Q2 and tuning PNPs | R=base, L=emitter, S=collector, provisional |
+| Q1 | R=gate1, L=source2, single S=drain3 for the FMOS3401A candidate; photo S means single pad |
+| Q2 and tuning PNPs | R=base, L=emitter, S=collector, provisional |
 | Q7 | L=base, R=emitter, S=collector, provisional |
 | D1 | L=pin 1/anode 1, R=pin 2/cathode 2, S=pin 3/midpoint, provisional |
 | U6 | R3=1 VSS (probe C), R2=2 VIN (B), R1=3 VOUT (A), L1=4 NC, L2=5 NC |
@@ -128,7 +133,8 @@ All 150 main-board catalog entries are represented. **No further exact-symbol fi
 | D2 / 4P | Identity, pin functions and routing | FMMT2907R is a code/package lead only; numbered stock placeholder with all three pads open. |
 | D4/D5/D6 | Diode type, polarity and connections | SD05 TVS / MMSZ5228BS Zener candidates assigned; D4/D5 lower pads photo-traced to ICSP clock/data; D4/D5 opposite pads now join photo-supported ground; the two D6 pads remain unresolved. |
 | LED1 / S1 | LED emitter configuration/polarity; switch common pairs | Standard symbols present, physical mapping provisional. |
-| Q1/Q2/Q7 and repeated 2H transistors | Candidate identity and orientation | Existing stock BJT symbols; identity strength varies and is documented above. |
+| Q1 | FMOS3401A candidate | Existing stock PMOS symbol; R1A marking and package evidence, exact maker unproved. |
+| Q2/Q7 and repeated 2H transistors | Candidate identity and orientation | Existing stock BJT symbols; identity strength varies and is documented above. |
 | L1/L2, unmarked capacitors | Bead versus inductor, capacitance and package sizes | Standard passive symbols present. Proposed decoupling values are estimates; RF filter/tuning values remain unknown. C27 is now across motor supply and GND; C41 now shunts the TP4/RB4 net to photo-supported ground. |
 | PIC and block interfaces | Exact GPIO destinations and hidden tracks | 6 PIC pads remain open: 5,6,7,11,13,21. PIC15/16 now reach MX512H INA/INB. RC1/pin12 now reaches VREF/V053; remote roles remain partly inferred. See pic_gpio_status.json. |
 | PIR daughterboard | Internal components and routes | Only the J3 interface is represented; daughterboard internals are outside the current main-board revision. |

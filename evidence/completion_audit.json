@@ -1,5 +1,5 @@
 {
-  "revision": "v0.9.8",
+  "revision": "v0.9.9",
   "instruments": [
     "LCR meter",
     "multimeter"
@@ -1610,12 +1610,12 @@
       "native_ref": "Q1",
       "population": "populated",
       "observed": "UNKNOWN",
-      "displayed": "MMBT3904?",
+      "displayed": "FMOS3401A?",
       "marking": "R1A",
-      "value_or_identity": "H05: R1A mark suggests MMBT3904; B=R, E=L, C=S inferred from SOT23 orientation.",
+      "value_or_identity": "R1A marking matches Formosa FMOS3401A datasheet p5; SOT-23 PMOS with G=1 (photo R), S=2 (photo L), D=3 (photo single S). Candidate identification, not manufacturer proof. Drain at battery+ and source at load support reverse-polarity protection; gate-control behavior not verified. Earlier MMBT3904 NPN hypothesis withdrawn.",
       "footprint": "Package_TO_SOT_SMD:SOT-23",
       "footprint_confidence": "datasheet/package candidate",
-      "footprint_basis": "Existing assignment; see component identity evidence.",
+      "footprint_basis": "SOT-23 photo and FMOS3401A datasheet package agree. Manufacturer identity remains a candidate.",
       "open_pads": 0,
       "next_method": "Candidate identity: confirm pin functions/routing; a short top code may not identify one manufacturer",
       "photos": "IMG_2438.jpg"

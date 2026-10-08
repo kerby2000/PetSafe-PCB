@@ -35,15 +35,19 @@
       "placement": {
         "symbol": "Connector:TestPoint",
         "reference": "TP107",
-        "value": "BATP / BATTERY +",
+        "value": "BATTERY (+)",
         "position": {
           "x": 20.32,
           "y": 53.34
         },
         "rotation": 270,
         "includePins": true,
-        "footprint": "TestPoint:TestPoint_THTPad_2.5x2.5mm_Drill1.2mm"
-      }
+        "footprint": "TestPoint:TestPoint_THTPad_2.5x2.5mm_Drill1.2mm",
+        "properties": {
+          "ViaEvidence": "v0.9.9: User corrects raw battery+ versus post-Q1 rail. BATP -> Q1.S (single physical pad/native3, candidate drain); Q1.L/native2 (candidate source) -> U5.4/V011-V014. These are distinct copper nets, connected through Q1. IMG_2438 also supports TP14 on battery+; V015/R43.2-TP14 user confirmation retained. Q1.R/native1 is candidate gate at R44.2. Photo S means SINGLE, not MOSFET source."
+        }
+      },
+      "via_evidence": "v0.9.9: User corrects raw battery+ versus post-Q1 rail. BATP -> Q1.S (single physical pad/native3, candidate drain); Q1.L/native2 (candidate source) -> U5.4/V011-V014. These are distinct copper nets, connected through Q1. IMG_2438 also supports TP14 on battery+; V015/R43.2-TP14 user confirmation retained. Q1.R/native1 is candidate gate at R44.2. Photo S means SINGLE, not MOSFET source."
     },
     {
       "original_ref": "L2",
@@ -96,8 +100,12 @@
         },
         "rotation": 90,
         "includePins": true,
-        "footprint": "Inductor_SMD:L_0805_2012Metric"
-      }
+        "footprint": "Inductor_SMD:L_0805_2012Metric",
+        "properties": {
+          "ViaEvidence": "v0.9.9: User confirms L1 and L2 connect to the same VSYS after Q1. Existing supply-side pad1 selections retained from photos/model; opposite terminals are separate across each component. The report does not identify inductance/ferrite type or measured values."
+        }
+      },
+      "via_evidence": "v0.9.9: User confirms L1 and L2 connect to the same VSYS after Q1. Existing supply-side pad1 selections retained from photos/model; opposite terminals are separate across each component. The report does not identify inductance/ferrite type or measured values."
     },
     {
       "original_ref": "C1",
@@ -431,7 +439,7 @@
       "placement": {
         "symbol": "Connector:TestPoint",
         "reference": "TP103",
-        "value": "VDD (logic supply)",
+        "value": "VDD",
         "position": {
           "x": 146.05,
           "y": 53.34
@@ -440,10 +448,10 @@
         "includePins": true,
         "footprint": "TestPoint:TestPoint_THTPad_D2.0mm_Drill1.0mm",
         "properties": {
-          "ViaEvidence": "v0.9.8 follow-up: User confirms V082 reaches the board VDD test point, native TP103 / H_VDD regulated logic rail. This is distinct from MX512H pin4 VDD / H_VBAT motor supply; MX512H pin1 VCC is modeled on H_VDD. V082 was associated with D3 but its exact package terminal remains unconfirmed. Do not merge H_RX_VDD or choose a D3 pin from this report alone."
+          "ViaEvidence": "v0.9.9: User confirms V042 to this board VDD TP, matching the modeled PIC20/C32.1 regulated VDD rail; distinct from VSYS and BATTERY+."
         }
       },
-      "via_evidence": "v0.9.8 follow-up: User confirms V082 reaches the board VDD test point, native TP103 / H_VDD regulated logic rail. This is distinct from MX512H pin4 VDD / H_VBAT motor supply; MX512H pin1 VCC is modeled on H_VDD. V082 was associated with D3 but its exact package terminal remains unconfirmed. Do not merge H_RX_VDD or choose a D3 pin from this report alone."
+      "via_evidence": "v0.9.9: User confirms V042 to this board VDD TP, matching the modeled PIC20/C32.1 regulated VDD rail; distinct from VSYS and BATTERY+."
     },
     {
       "original_ref": "GND",
@@ -480,7 +488,7 @@
       "placement": {
         "symbol": "Connector:TestPoint",
         "reference": "TP101",
-        "value": "GND / GND pad",
+        "value": "GND",
         "position": {
           "x": 148.59,
           "y": 81.28
@@ -993,10 +1001,10 @@
         "includePins": true,
         "footprint": "Package_SO:SOIC-28W_7.5x17.9mm_P1.27mm",
         "properties": {
-          "ViaEvidence": "v0.9.8: User confirms RC2/PIC13-V049-TP3, RB0/PIC21-V026-VREF (native TP104), and RC1/PIC12-V053-V070-R18.1. User explicitly rejects V053-VREF, superseding the old photo assumption. No numerical resistance supplied for these connections. All PIC pads have modeled local destinations; other inferred branches still need review. RB4/PIC25-TP4 now also reaches V017/R42.1/R44.1. RB0/VREF also reaches V071/R21.2 by user report."
+          "ViaEvidence": "v0.9.9: User checked V035-VREF TP. Prior photo association V035-PIC4/RA2-C39.1 retained; joins the already confirmed RB0/V026/R21.2/V071 VREF node. No voltage or numerical resistance supplied. Other modeled bias branches retain earlier inferred status. V042-PIC20 supply now user-confirmed to board VDD/TP103, not motor VDD."
         }
       },
-      "via_evidence": "v0.9.8: User confirms RC2/PIC13-V049-TP3, RB0/PIC21-V026-VREF (native TP104), and RC1/PIC12-V053-V070-R18.1. User explicitly rejects V053-VREF, superseding the old photo assumption. No numerical resistance supplied for these connections. All PIC pads have modeled local destinations; other inferred branches still need review. RB4/PIC25-TP4 now also reaches V017/R42.1/R44.1. RB0/VREF also reaches V071/R21.2 by user report."
+      "via_evidence": "v0.9.9: User checked V035-VREF TP. Prior photo association V035-PIC4/RA2-C39.1 retained; joins the already confirmed RB0/V026/R21.2/V071 VREF node. No voltage or numerical resistance supplied. Other modeled bias branches retain earlier inferred status. V042-PIC20 supply now user-confirmed to board VDD/TP103, not motor VDD."
     },
     {
       "original_ref": "J1",
@@ -1238,8 +1246,12 @@
         },
         "rotation": 0,
         "includePins": true,
-        "footprint": "Capacitor_SMD:C_0805_2012Metric"
-      }
+        "footprint": "Capacitor_SMD:C_0805_2012Metric",
+        "properties": {
+          "ViaEvidence": "v0.9.9: User checked V035-VREF TP. Prior photo association V035-PIC4/RA2-C39.1 retained; joins the already confirmed RB0/V026/R21.2/V071 VREF node. No voltage or numerical resistance supplied. Other modeled bias branches retain earlier inferred status."
+        }
+      },
+      "via_evidence": "v0.9.9: User checked V035-VREF TP. Prior photo association V035-PIC4/RA2-C39.1 retained; joins the already confirmed RB0/V026/R21.2/V071 VREF node. No voltage or numerical resistance supplied. Other modeled bias branches retain earlier inferred status."
     },
     {
       "original_ref": "Y1",
@@ -1499,8 +1511,12 @@
         },
         "rotation": 0,
         "includePins": true,
-        "footprint": "Resistor_SMD:R_0603_1608Metric"
-      }
+        "footprint": "Resistor_SMD:R_0603_1608Metric",
+        "properties": {
+          "ViaEvidence": "v0.9.9: User corrects raw battery+ versus post-Q1 rail. BATP -> Q1.S (single physical pad/native3, candidate drain); Q1.L/native2 (candidate source) -> U5.4/V011-V014. These are distinct copper nets, connected through Q1. IMG_2438 also supports TP14 on battery+; V015/R43.2-TP14 user confirmation retained. Q1.R/native1 is candidate gate at R44.2. Photo S means SINGLE, not MOSFET source."
+        }
+      },
+      "via_evidence": "v0.9.9: User corrects raw battery+ versus post-Q1 rail. BATP -> Q1.S (single physical pad/native3, candidate drain); Q1.L/native2 (candidate source) -> U5.4/V011-V014. These are distinct copper nets, connected through Q1. IMG_2438 also supports TP14 on battery+; V015/R43.2-TP14 user confirmation retained. Q1.R/native1 is candidate gate at R44.2. Photo S means SINGLE, not MOSFET source."
     },
     {
       "original_ref": "R4",
@@ -1762,9 +1778,10 @@
         "includePins": true,
         "footprint": "Package_SO:SOIC-8_3.9x4.9mm_P1.27mm",
         "properties": {
-          "ViaEvidence": "v0.9.4: user confirms INA pin2 via V016-V022 to PIC15/RC4 and INB pin3 via V019-V023 to PIC16/RC5. Control mapping established; logic VCC and motor VDD remain separate."
+          "ViaEvidence": "v0.9.9: User corrects raw battery+ versus post-Q1 rail. BATP -> Q1.S (single physical pad/native3, candidate drain); Q1.L/native2 (candidate source) -> U5.4/V011-V014. These are distinct copper nets, connected through Q1. IMG_2438 also supports TP14 on battery+; V015/R43.2-TP14 user confirmation retained. Q1.R/native1 is candidate gate at R44.2. Photo S means SINGLE, not MOSFET source."
         }
-      }
+      },
+      "via_evidence": "v0.9.9: User corrects raw battery+ versus post-Q1 rail. BATP -> Q1.S (single physical pad/native3, candidate drain); Q1.L/native2 (candidate source) -> U5.4/V011-V014. These are distinct copper nets, connected through Q1. IMG_2438 also supports TP14 on battery+; V015/R43.2-TP14 user confirmation retained. Q1.R/native1 is candidate gate at R44.2. Photo S means SINGLE, not MOSFET source."
     },
     {
       "original_ref": "C33",
@@ -1817,8 +1834,12 @@
         },
         "rotation": 0,
         "includePins": true,
-        "footprint": "Capacitor_SMD:C_0805_2012Metric"
-      }
+        "footprint": "Capacitor_SMD:C_0805_2012Metric",
+        "properties": {
+          "ViaEvidence": "v0.9.9: User corrects raw battery+ versus post-Q1 rail. BATP -> Q1.S (single physical pad/native3, candidate drain); Q1.L/native2 (candidate source) -> U5.4/V011-V014. These are distinct copper nets, connected through Q1. IMG_2438 also supports TP14 on battery+; V015/R43.2-TP14 user confirmation retained. Q1.R/native1 is candidate gate at R44.2. Photo S means SINGLE, not MOSFET source."
+        }
+      },
+      "via_evidence": "v0.9.9: User corrects raw battery+ versus post-Q1 rail. BATP -> Q1.S (single physical pad/native3, candidate drain); Q1.L/native2 (candidate source) -> U5.4/V011-V014. These are distinct copper nets, connected through Q1. IMG_2438 also supports TP14 on battery+; V015/R43.2-TP14 user confirmation retained. Q1.R/native1 is candidate gate at R44.2. Photo S means SINGLE, not MOSFET source."
     },
     {
       "original_ref": "C34",
@@ -2008,7 +2029,7 @@
       "placement": {
         "symbol": "Connector:TestPoint",
         "reference": "TP108",
-        "value": "BATN / BATTERY -",
+        "value": "BATTERY (-)",
         "position": {
           "x": 481.33,
           "y": 87.63
@@ -2303,14 +2324,18 @@
         },
         "rotation": 0,
         "includePins": true,
-        "footprint": "Capacitor_SMD:C_1206_3216Metric"
-      }
+        "footprint": "Capacitor_SMD:C_1206_3216Metric",
+        "properties": {
+          "ViaEvidence": "v0.9.9: User corrects raw battery+ versus post-Q1 rail. BATP -> Q1.S (single physical pad/native3, candidate drain); Q1.L/native2 (candidate source) -> U5.4/V011-V014. These are distinct copper nets, connected through Q1. IMG_2438 also supports TP14 on battery+; V015/R43.2-TP14 user confirmation retained. Q1.R/native1 is candidate gate at R44.2. Photo S means SINGLE, not MOSFET source."
+        }
+      },
+      "via_evidence": "v0.9.9: User corrects raw battery+ versus post-Q1 rail. BATP -> Q1.S (single physical pad/native3, candidate drain); Q1.L/native2 (candidate source) -> U5.4/V011-V014. These are distinct copper nets, connected through Q1. IMG_2438 also supports TP14 on battery+; V015/R43.2-TP14 user confirmation retained. Q1.R/native1 is candidate gate at R44.2. Photo S means SINGLE, not MOSFET source."
     },
     {
       "original_ref": "Q1",
       "reference": "Q1",
       "unit": 1,
-      "symbol": "Transistor_BJT:MMBT3904",
+      "symbol": "Transistor_FET:Q_PMOS_GSD",
       "footprint": "Package_TO_SOT_SMD:SOT-23",
       "legacy": {
         "ref": "Q1",
@@ -2319,7 +2344,7 @@
         "y": 88,
         "unit": 1,
         "lid": "PetSafe_Working:RE_Q1",
-        "value": "MMBT3904?",
+        "value": "FMOS3401A?",
         "rx": 355,
         "ry": 81.5,
         "vx": 355,
@@ -2328,7 +2353,7 @@
         "pins": [
           {
             "p": "R",
-            "name": "B?",
+            "name": "G?",
             "x": -4,
             "y": 0,
             "side": 0,
@@ -2337,7 +2362,7 @@
           },
           {
             "p": "S",
-            "name": "C?",
+            "name": "D?",
             "x": 2,
             "y": -4,
             "side": 270,
@@ -2346,7 +2371,7 @@
           },
           {
             "p": "L",
-            "name": "E?",
+            "name": "S?",
             "x": 2,
             "y": 4,
             "side": 90,
@@ -2354,12 +2379,12 @@
             "length": 2
           }
         ],
-        "kind": "NPN"
+        "kind": "PMOS"
       },
       "placement": {
-        "symbol": "Transistor_BJT:MMBT3904",
+        "symbol": "Transistor_FET:Q_PMOS_GSD",
         "reference": "Q1",
-        "value": "MMBT3904?",
+        "value": "FMOS3401A?",
         "position": {
           "x": 453.39,
           "y": 111.76
@@ -2368,10 +2393,12 @@
         "includePins": true,
         "footprint": "Package_TO_SOT_SMD:SOT-23",
         "properties": {
-          "ViaEvidence": "v0.9.8: User explicitly confirms V011/V012/V013/V014 share the MX512H pin4 VDD motor supply. Earlier Q1.L association retained, now H_VBAT, not regulated TP103/H_VDD. Q1.L-R43.2 remains rejected. Q1 device identity, polarity and function remain candidate assumptions; this connection does not validate them."
+          "ViaEvidence": "v0.9.9: User corrects raw battery+ versus post-Q1 rail. BATP -> Q1.S (single physical pad/native3, candidate drain); Q1.L/native2 (candidate source) -> U5.4/V011-V014. These are distinct copper nets, connected through Q1. IMG_2438 also supports TP14 on battery+; V015/R43.2-TP14 user confirmation retained. Q1.R/native1 is candidate gate at R44.2. Photo S means SINGLE, not MOSFET source.",
+          "Datasheet": "https://www.formosams.com/upload/product/Mosfets/FMOS3401A_REV_C.pdf",
+          "IdentityEvidence": "R1A marking matches Formosa FMOS3401A datasheet p5; SOT-23 PMOS with G=1 (photo R), S=2 (photo L), D=3 (photo single S). Candidate identification, not manufacturer proof. Drain at battery+ and source at load support reverse-polarity protection; gate-control behavior not verified. Earlier MMBT3904 NPN hypothesis withdrawn."
         }
       },
-      "via_evidence": "v0.9.8: User explicitly confirms V011/V012/V013/V014 share the MX512H pin4 VDD motor supply. Earlier Q1.L association retained, now H_VBAT, not regulated TP103/H_VDD. Q1.L-R43.2 remains rejected. Q1 device identity, polarity and function remain candidate assumptions; this connection does not validate them."
+      "via_evidence": "v0.9.9: User corrects raw battery+ versus post-Q1 rail. BATP -> Q1.S (single physical pad/native3, candidate drain); Q1.L/native2 (candidate source) -> U5.4/V011-V014. These are distinct copper nets, connected through Q1. IMG_2438 also supports TP14 on battery+; V015/R43.2-TP14 user confirmation retained. Q1.R/native1 is candidate gate at R44.2. Photo S means SINGLE, not MOSFET source."
     },
     {
       "original_ref": "R44",
@@ -2426,10 +2453,10 @@
         "includePins": true,
         "footprint": "Resistor_SMD:R_0603_1608Metric",
         "properties": {
-          "ViaEvidence": "v0.9.8: User confirms V017-TP4. Prior V017-R42.1/R44.1 local junction now joins TP4 and PIC25/RB4. R42.1 explicitly user-named; R44 pad1 and C41 branch retain earlier photo selection. No numeric resistance supplied; circuit operating role remains inferred."
+          "ViaEvidence": "v0.9.9: User corrects raw battery+ versus post-Q1 rail. BATP -> Q1.S (single physical pad/native3, candidate drain); Q1.L/native2 (candidate source) -> U5.4/V011-V014. These are distinct copper nets, connected through Q1. IMG_2438 also supports TP14 on battery+; V015/R43.2-TP14 user confirmation retained. Q1.R/native1 is candidate gate at R44.2. Photo S means SINGLE, not MOSFET source."
         }
       },
-      "via_evidence": "v0.9.8: User confirms V017-TP4. Prior V017-R42.1/R44.1 local junction now joins TP4 and PIC25/RB4. R42.1 explicitly user-named; R44 pad1 and C41 branch retain earlier photo selection. No numeric resistance supplied; circuit operating role remains inferred."
+      "via_evidence": "v0.9.9: User corrects raw battery+ versus post-Q1 rail. BATP -> Q1.S (single physical pad/native3, candidate drain); Q1.L/native2 (candidate source) -> U5.4/V011-V014. These are distinct copper nets, connected through Q1. IMG_2438 also supports TP14 on battery+; V015/R43.2-TP14 user confirmation retained. Q1.R/native1 is candidate gate at R44.2. Photo S means SINGLE, not MOSFET source."
     },
     {
       "original_ref": "R43",
@@ -2484,10 +2511,10 @@
         "includePins": true,
         "footprint": "Resistor_SMD:R_0603_1608Metric",
         "properties": {
-          "ViaEvidence": "v0.9.8: User confirms V015-TP14. Earlier V015-R43.2 lower-pad association retained. R43.2 joins TP14 on H_BAT_DETECT, whose existing Q1.S branch and functional name remain photo/circuit hypotheses. Q1.L-R43.2 remains explicitly rejected. No numeric resistance supplied."
+          "ViaEvidence": "v0.9.9: User corrects raw battery+ versus post-Q1 rail. BATP -> Q1.S (single physical pad/native3, candidate drain); Q1.L/native2 (candidate source) -> U5.4/V011-V014. These are distinct copper nets, connected through Q1. IMG_2438 also supports TP14 on battery+; V015/R43.2-TP14 user confirmation retained. Q1.R/native1 is candidate gate at R44.2. Photo S means SINGLE, not MOSFET source."
         }
       },
-      "via_evidence": "v0.9.8: User confirms V015-TP14. Earlier V015-R43.2 lower-pad association retained. R43.2 joins TP14 on H_BAT_DETECT, whose existing Q1.S branch and functional name remain photo/circuit hypotheses. Q1.L-R43.2 remains explicitly rejected. No numeric resistance supplied."
+      "via_evidence": "v0.9.9: User corrects raw battery+ versus post-Q1 rail. BATP -> Q1.S (single physical pad/native3, candidate drain); Q1.L/native2 (candidate source) -> U5.4/V011-V014. These are distinct copper nets, connected through Q1. IMG_2438 also supports TP14 on battery+; V015/R43.2-TP14 user confirmation retained. Q1.R/native1 is candidate gate at R44.2. Photo S means SINGLE, not MOSFET source."
     },
     {
       "original_ref": "TP14",
@@ -2533,10 +2560,10 @@
         "includePins": true,
         "footprint": "TestPoint:TestPoint_THTPad_D2.0mm_Drill1.0mm",
         "properties": {
-          "ViaEvidence": "v0.9.8: User confirms V015-TP14. Earlier V015-R43.2 lower-pad association retained. R43.2 joins TP14 on H_BAT_DETECT, whose existing Q1.S branch and functional name remain photo/circuit hypotheses. Q1.L-R43.2 remains explicitly rejected. No numeric resistance supplied."
+          "ViaEvidence": "v0.9.9: User corrects raw battery+ versus post-Q1 rail. BATP -> Q1.S (single physical pad/native3, candidate drain); Q1.L/native2 (candidate source) -> U5.4/V011-V014. These are distinct copper nets, connected through Q1. IMG_2438 also supports TP14 on battery+; V015/R43.2-TP14 user confirmation retained. Q1.R/native1 is candidate gate at R44.2. Photo S means SINGLE, not MOSFET source."
         }
       },
-      "via_evidence": "v0.9.8: User confirms V015-TP14. Earlier V015-R43.2 lower-pad association retained. R43.2 joins TP14 on H_BAT_DETECT, whose existing Q1.S branch and functional name remain photo/circuit hypotheses. Q1.L-R43.2 remains explicitly rejected. No numeric resistance supplied."
+      "via_evidence": "v0.9.9: User corrects raw battery+ versus post-Q1 rail. BATP -> Q1.S (single physical pad/native3, candidate drain); Q1.L/native2 (candidate source) -> U5.4/V011-V014. These are distinct copper nets, connected through Q1. IMG_2438 also supports TP14 on battery+; V015/R43.2-TP14 user confirmation retained. Q1.R/native1 is candidate gate at R44.2. Photo S means SINGLE, not MOSFET source."
     },
     {
       "original_ref": "U2",
@@ -3287,8 +3314,12 @@
         },
         "rotation": 90,
         "includePins": true,
-        "footprint": "Inductor_SMD:L_0805_2012Metric"
-      }
+        "footprint": "Inductor_SMD:L_0805_2012Metric",
+        "properties": {
+          "ViaEvidence": "v0.9.9: User confirms L1 and L2 connect to the same VSYS after Q1. Existing supply-side pad1 selections retained from photos/model; opposite terminals are separate across each component. The report does not identify inductance/ferrite type or measured values."
+        }
+      },
+      "via_evidence": "v0.9.9: User confirms L1 and L2 connect to the same VSYS after Q1. Existing supply-side pad1 selections retained from photos/model; opposite terminals are separate across each component. The report does not identify inductance/ferrite type or measured values."
     },
     {
       "original_ref": "C5",
@@ -4278,10 +4309,10 @@
         "includePins": true,
         "footprint": "Resistor_SMD:R_0603_1608Metric",
         "properties": {
-          "ViaEvidence": "v0.9.8: User confirms V071-VREF. Earlier V071-R21.2 and V026-VREF-PIC21/RB0 associations retained. R21.2 joins PIC_RB0_VREF. Existing R22.2/R23.2/R48.2 receiver-bias branches remain prior photo/circuit hypotheses, not new measured connections. VREF remains separate from H_VDD and RC1/V053. No voltage or numeric resistance supplied."
+          "ViaEvidence": "v0.9.8: User confirms V071-VREF. Earlier V071-R21.2 and V026-VREF-PIC21/RB0 associations retained. R21.2 joins VREF. Existing R22.2/R23.2/R48.2 receiver-bias branches remain prior photo/circuit hypotheses, not new measured connections. VREF remains separate from VDD and RC1/V053. No voltage or numeric resistance supplied."
         }
       },
-      "via_evidence": "v0.9.8: User confirms V071-VREF. Earlier V071-R21.2 and V026-VREF-PIC21/RB0 associations retained. R21.2 joins PIC_RB0_VREF. Existing R22.2/R23.2/R48.2 receiver-bias branches remain prior photo/circuit hypotheses, not new measured connections. VREF remains separate from H_VDD and RC1/V053. No voltage or numeric resistance supplied."
+      "via_evidence": "v0.9.8: User confirms V071-VREF. Earlier V071-R21.2 and V026-VREF-PIC21/RB0 associations retained. R21.2 joins VREF. Existing R22.2/R23.2/R48.2 receiver-bias branches remain prior photo/circuit hypotheses, not new measured connections. VREF remains separate from VDD and RC1/V053. No voltage or numeric resistance supplied."
     },
     {
       "original_ref": "R27",
@@ -4546,10 +4577,10 @@
         "includePins": true,
         "footprint": "Resistor_SMD:R_0603_1608Metric",
         "properties": {
-          "ViaEvidence": "v0.9.8: User confirms V071-VREF. Earlier V071-R21.2 and V026-VREF-PIC21/RB0 associations retained. R21.2 joins PIC_RB0_VREF. Existing R22.2/R23.2/R48.2 receiver-bias branches remain prior photo/circuit hypotheses, not new measured connections. VREF remains separate from H_VDD and RC1/V053. No voltage or numeric resistance supplied."
+          "ViaEvidence": "v0.9.8: User confirms V071-VREF. Earlier V071-R21.2 and V026-VREF-PIC21/RB0 associations retained. R21.2 joins VREF. Existing R22.2/R23.2/R48.2 receiver-bias branches remain prior photo/circuit hypotheses, not new measured connections. VREF remains separate from VDD and RC1/V053. No voltage or numeric resistance supplied."
         }
       },
-      "via_evidence": "v0.9.8: User confirms V071-VREF. Earlier V071-R21.2 and V026-VREF-PIC21/RB0 associations retained. R21.2 joins PIC_RB0_VREF. Existing R22.2/R23.2/R48.2 receiver-bias branches remain prior photo/circuit hypotheses, not new measured connections. VREF remains separate from H_VDD and RC1/V053. No voltage or numeric resistance supplied."
+      "via_evidence": "v0.9.8: User confirms V071-VREF. Earlier V071-R21.2 and V026-VREF-PIC21/RB0 associations retained. R21.2 joins VREF. Existing R22.2/R23.2/R48.2 receiver-bias branches remain prior photo/circuit hypotheses, not new measured connections. VREF remains separate from VDD and RC1/V053. No voltage or numeric resistance supplied."
     },
     {
       "original_ref": "C18",
@@ -5603,10 +5634,10 @@
         "includePins": true,
         "footprint": "Resistor_SMD:R_0603_1608Metric",
         "properties": {
-          "ViaEvidence": "v0.9.8: User confirms V071-VREF. Earlier V071-R21.2 and V026-VREF-PIC21/RB0 associations retained. R21.2 joins PIC_RB0_VREF. Existing R22.2/R23.2/R48.2 receiver-bias branches remain prior photo/circuit hypotheses, not new measured connections. VREF remains separate from H_VDD and RC1/V053. No voltage or numeric resistance supplied."
+          "ViaEvidence": "v0.9.8: User confirms V071-VREF. Earlier V071-R21.2 and V026-VREF-PIC21/RB0 associations retained. R21.2 joins VREF. Existing R22.2/R23.2/R48.2 receiver-bias branches remain prior photo/circuit hypotheses, not new measured connections. VREF remains separate from VDD and RC1/V053. No voltage or numeric resistance supplied."
         }
       },
-      "via_evidence": "v0.9.8: User confirms V071-VREF. Earlier V071-R21.2 and V026-VREF-PIC21/RB0 associations retained. R21.2 joins PIC_RB0_VREF. Existing R22.2/R23.2/R48.2 receiver-bias branches remain prior photo/circuit hypotheses, not new measured connections. VREF remains separate from H_VDD and RC1/V053. No voltage or numeric resistance supplied."
+      "via_evidence": "v0.9.8: User confirms V071-VREF. Earlier V071-R21.2 and V026-VREF-PIC21/RB0 associations retained. R21.2 joins VREF. Existing R22.2/R23.2/R48.2 receiver-bias branches remain prior photo/circuit hypotheses, not new measured connections. VREF remains separate from VDD and RC1/V053. No voltage or numeric resistance supplied."
     },
     {
       "original_ref": "R22",
@@ -5661,10 +5692,10 @@
         "includePins": true,
         "footprint": "Resistor_SMD:R_0603_1608Metric",
         "properties": {
-          "ViaEvidence": "v0.9.8: User confirms V071-VREF. Earlier V071-R21.2 and V026-VREF-PIC21/RB0 associations retained. R21.2 joins PIC_RB0_VREF. Existing R22.2/R23.2/R48.2 receiver-bias branches remain prior photo/circuit hypotheses, not new measured connections. VREF remains separate from H_VDD and RC1/V053. No voltage or numeric resistance supplied."
+          "ViaEvidence": "v0.9.8: User confirms V071-VREF. Earlier V071-R21.2 and V026-VREF-PIC21/RB0 associations retained. R21.2 joins VREF. Existing R22.2/R23.2/R48.2 receiver-bias branches remain prior photo/circuit hypotheses, not new measured connections. VREF remains separate from VDD and RC1/V053. No voltage or numeric resistance supplied."
         }
       },
-      "via_evidence": "v0.9.8: User confirms V071-VREF. Earlier V071-R21.2 and V026-VREF-PIC21/RB0 associations retained. R21.2 joins PIC_RB0_VREF. Existing R22.2/R23.2/R48.2 receiver-bias branches remain prior photo/circuit hypotheses, not new measured connections. VREF remains separate from H_VDD and RC1/V053. No voltage or numeric resistance supplied."
+      "via_evidence": "v0.9.8: User confirms V071-VREF. Earlier V071-R21.2 and V026-VREF-PIC21/RB0 associations retained. R21.2 joins VREF. Existing R22.2/R23.2/R48.2 receiver-bias branches remain prior photo/circuit hypotheses, not new measured connections. VREF remains separate from VDD and RC1/V053. No voltage or numeric resistance supplied."
     },
     {
       "original_ref": "C42",
@@ -7661,8 +7692,12 @@
         },
         "rotation": 0,
         "includePins": true,
-        "footprint": "Capacitor_SMD:C_0805_2012Metric"
-      }
+        "footprint": "Capacitor_SMD:C_0805_2012Metric",
+        "properties": {
+          "ViaEvidence": "v0.9.9: V042 user-confirmed to board VDD test point TP103/VDD. Prior C32.1/PIC20 local photo association retained."
+        }
+      },
+      "via_evidence": "v0.9.9: V042 user-confirmed to board VDD test point TP103/VDD. Prior C32.1/PIC20 local photo association retained."
     },
     {
       "original_ref": "J3",
@@ -8823,10 +8858,10 @@
         "includePins": true,
         "footprint": "TestPoint:TestPoint_THTPad_D2.0mm_Drill1.0mm",
         "properties": {
-          "ViaEvidence": "v0.9.8: Board silk VREF, native TP104. User confirms V026-VREF (PIC21/RB0) and explicitly rejects V053-VREF. Old RC1 photo association withdrawn. VREF is a board label, not an established voltage or IC function. User also confirms V071/R21.2 to this VREF point; existing receiver-bias branches retain prior inference status."
+          "ViaEvidence": "v0.9.9: User checked V035-VREF TP. Prior photo association V035-PIC4/RA2-C39.1 retained; joins the already confirmed RB0/V026/R21.2/V071 VREF node. No voltage or numerical resistance supplied. Other modeled bias branches retain earlier inferred status."
         }
       },
-      "via_evidence": "v0.9.8: Board silk VREF, native TP104. User confirms V026-VREF (PIC21/RB0) and explicitly rejects V053-VREF. Old RC1 photo association withdrawn. VREF is a board label, not an established voltage or IC function. User also confirms V071/R21.2 to this VREF point; existing receiver-bias branches retain prior inference status."
+      "via_evidence": "v0.9.9: User checked V035-VREF TP. Prior photo association V035-PIC4/RA2-C39.1 retained; joins the already confirmed RB0/V026/R21.2/V071 VREF node. No voltage or numerical resistance supplied. Other modeled bias branches retain earlier inferred status."
     },
     {
       "original_ref": "Q8",
@@ -9538,7 +9573,7 @@
   ],
   "wires": [
     {
-      "net": "H_VBAT",
+      "net": "VSYS",
       "a": [
         16,
         42
@@ -9615,7 +9650,7 @@
       ]
     },
     {
-      "net": "H_VDD",
+      "net": "VDD",
       "a": [
         75,
         42
@@ -9626,7 +9661,7 @@
       ]
     },
     {
-      "net": "H_VDD",
+      "net": "VDD",
       "a": [
         90,
         49
@@ -9637,7 +9672,7 @@
       ]
     },
     {
-      "net": "H_VDD",
+      "net": "VDD",
       "a": [
         106,
         49
@@ -9648,7 +9683,7 @@
       ]
     },
     {
-      "net": "H_GND",
+      "net": "GND",
       "a": [
         33,
         64
@@ -9659,7 +9694,7 @@
       ]
     },
     {
-      "net": "H_GND",
+      "net": "GND",
       "a": [
         44,
         55
@@ -9670,7 +9705,7 @@
       ]
     },
     {
-      "net": "H_GND",
+      "net": "GND",
       "a": [
         33,
         55
@@ -9681,7 +9716,7 @@
       ]
     },
     {
-      "net": "H_GND",
+      "net": "GND",
       "a": [
         66,
         55
@@ -9692,7 +9727,7 @@
       ]
     },
     {
-      "net": "H_GND",
+      "net": "GND",
       "a": [
         90,
         55
@@ -9703,7 +9738,7 @@
       ]
     },
     {
-      "net": "H_GND",
+      "net": "GND",
       "a": [
         106,
         55
@@ -9835,7 +9870,7 @@
       ]
     },
     {
-      "net": "H_VDD",
+      "net": "VDD",
       "a": [
         166,
         32
@@ -9846,7 +9881,7 @@
       ]
     },
     {
-      "net": "H_VDD",
+      "net": "VDD",
       "a": [
         207,
         37
@@ -9857,7 +9892,7 @@
       ]
     },
     {
-      "net": "H_VDD",
+      "net": "VDD",
       "a": [
         166,
         35
@@ -9868,7 +9903,7 @@
       ]
     },
     {
-      "net": "H_VDD",
+      "net": "VDD",
       "a": [
         177,
         35
@@ -9879,7 +9914,7 @@
       ]
     },
     {
-      "net": "H_VDD",
+      "net": "VDD",
       "a": [
         188,
         35
@@ -9890,7 +9925,7 @@
       ]
     },
     {
-      "net": "H_GND",
+      "net": "GND",
       "a": [
         166,
         44
@@ -9901,7 +9936,7 @@
       ]
     },
     {
-      "net": "H_GND",
+      "net": "GND",
       "a": [
         166,
         41
@@ -9912,7 +9947,7 @@
       ]
     },
     {
-      "net": "H_GND",
+      "net": "GND",
       "a": [
         177,
         41
@@ -9923,7 +9958,7 @@
       ]
     },
     {
-      "net": "H_GND",
+      "net": "GND",
       "a": [
         188,
         41
@@ -10066,7 +10101,7 @@
       ]
     },
     {
-      "net": "H_VDD",
+      "net": "VDD",
       "a": [
         266,
         50
@@ -10077,7 +10112,7 @@
       ]
     },
     {
-      "net": "H_GND",
+      "net": "GND",
       "a": [
         266,
         53
@@ -10088,7 +10123,7 @@
       ]
     },
     {
-      "net": "H_GND",
+      "net": "GND",
       "a": [
         263,
         53
@@ -10099,7 +10134,7 @@
       ]
     },
     {
-      "net": "H_GND",
+      "net": "GND",
       "a": [
         204,
         91
@@ -10110,7 +10145,7 @@
       ]
     },
     {
-      "net": "H_GND",
+      "net": "GND",
       "a": [
         204,
         87
@@ -10121,7 +10156,7 @@
       ]
     },
     {
-      "net": "H_GND",
+      "net": "GND",
       "a": [
         210,
         87
@@ -10297,7 +10332,7 @@
       ]
     },
     {
-      "net": "H_GND",
+      "net": "GND",
       "a": [
         164,
         91
@@ -10308,7 +10343,7 @@
       ]
     },
     {
-      "net": "H_GND",
+      "net": "GND",
       "a": [
         164,
         98
@@ -10319,7 +10354,7 @@
       ]
     },
     {
-      "net": "H_GND",
+      "net": "GND",
       "a": [
         175,
         98
@@ -10330,7 +10365,7 @@
       ]
     },
     {
-      "net": "H_GND",
+      "net": "GND",
       "a": [
         175,
         85
@@ -10352,7 +10387,7 @@
       ]
     },
     {
-      "net": "H_VBAT",
+      "net": "VSYS",
       "a": [
         280,
         65
@@ -10407,7 +10442,7 @@
       ]
     },
     {
-      "net": "H_GND",
+      "net": "GND",
       "a": [
         280,
         94
@@ -10418,7 +10453,7 @@
       ]
     },
     {
-      "net": "H_GND",
+      "net": "GND",
       "a": [
         280,
         86
@@ -10429,7 +10464,7 @@
       ]
     },
     {
-      "net": "H_GND",
+      "net": "GND",
       "a": [
         296,
         86
@@ -10440,7 +10475,7 @@
       ]
     },
     {
-      "net": "H_VBAT",
+      "net": "VSYS",
       "a": [
         339,
         33
@@ -10451,7 +10486,7 @@
       ]
     },
     {
-      "net": "H_VBAT",
+      "net": "VSYS",
       "a": [
         361,
         36
@@ -10462,7 +10497,7 @@
       ]
     },
     {
-      "net": "H_VBAT",
+      "net": "VSYS",
       "a": [
         339,
         36
@@ -10473,7 +10508,7 @@
       ]
     },
     {
-      "net": "H_VDD",
+      "net": "VDD",
       "a": [
         351,
         43
@@ -10484,7 +10519,7 @@
       ]
     },
     {
-      "net": "H_VDD",
+      "net": "VDD",
       "a": [
         330,
         43
@@ -10495,7 +10530,7 @@
       ]
     },
     {
-      "net": "H_GND",
+      "net": "GND",
       "a": [
         339,
         42
@@ -10506,7 +10541,7 @@
       ]
     },
     {
-      "net": "H_GND",
+      "net": "GND",
       "a": [
         330,
         69
@@ -10517,7 +10552,7 @@
       ]
     },
     {
-      "net": "H_GND",
+      "net": "GND",
       "a": [
         330,
         57
@@ -10528,7 +10563,7 @@
       ]
     },
     {
-      "net": "H_GND",
+      "net": "GND",
       "a": [
         359,
         60
@@ -10539,7 +10574,7 @@
       ]
     },
     {
-      "net": "H_GND",
+      "net": "GND",
       "a": [
         363,
         60
@@ -10715,7 +10750,7 @@
       ]
     },
     {
-      "net": "H_GND",
+      "net": "GND",
       "a": [
         418,
         46
@@ -10726,7 +10761,7 @@
       ]
     },
     {
-      "net": "H_GND",
+      "net": "GND",
       "a": [
         416,
         46
@@ -10737,7 +10772,7 @@
       ]
     },
     {
-      "net": "H_GND",
+      "net": "GND",
       "a": [
         416,
         50
@@ -10748,7 +10783,7 @@
       ]
     },
     {
-      "net": "H_GND",
+      "net": "GND",
       "a": [
         416,
         50
@@ -10759,7 +10794,7 @@
       ]
     },
     {
-      "net": "H_GND",
+      "net": "GND",
       "a": [
         440,
         62
@@ -10770,7 +10805,7 @@
       ]
     },
     {
-      "net": "H_GND",
+      "net": "GND",
       "a": [
         440,
         69
@@ -10781,7 +10816,7 @@
       ]
     },
     {
-      "net": "H_GND",
+      "net": "GND",
       "a": [
         379,
         69
@@ -10803,7 +10838,7 @@
       ]
     },
     {
-      "net": "Q1_BASE",
+      "net": "Q1_GATE",
       "a": [
         343,
         88
@@ -10814,7 +10849,7 @@
       ]
     },
     {
-      "net": "H_BAT_DETECT",
+      "net": "BATTERY+",
       "a": [
         359,
         84
@@ -10825,7 +10860,7 @@
       ]
     },
     {
-      "net": "H_BAT_DETECT",
+      "net": "BATTERY+",
       "a": [
         359,
         82
@@ -10847,7 +10882,7 @@
       ]
     },
     {
-      "net": "H_GND",
+      "net": "GND",
       "a": [
         361,
         98
@@ -11122,7 +11157,7 @@
       ]
     },
     {
-      "net": "H_GND",
+      "net": "GND",
       "a": [
         53,
         159
@@ -11133,7 +11168,7 @@
       ]
     },
     {
-      "net": "H_GND",
+      "net": "GND",
       "a": [
         57,
         159
@@ -11144,7 +11179,7 @@
       ]
     },
     {
-      "net": "H_GND",
+      "net": "GND",
       "a": [
         53,
         184
@@ -11155,7 +11190,7 @@
       ]
     },
     {
-      "net": "H_GND",
+      "net": "GND",
       "a": [
         53,
         190
@@ -11166,7 +11201,7 @@
       ]
     },
     {
-      "net": "H_VDD",
+      "net": "VDD",
       "a": [
         133,
         131
@@ -11177,7 +11212,7 @@
       ]
     },
     {
-      "net": "H_VDD",
+      "net": "VDD",
       "a": [
         133,
         136
@@ -11188,7 +11223,7 @@
       ]
     },
     {
-      "net": "H_VDD",
+      "net": "VDD",
       "a": [
         150,
         138
@@ -11199,7 +11234,7 @@
       ]
     },
     {
-      "net": "H_GND",
+      "net": "GND",
       "a": [
         133,
         152
@@ -11210,7 +11245,7 @@
       ]
     },
     {
-      "net": "H_GND",
+      "net": "GND",
       "a": [
         133,
         146
@@ -11221,7 +11256,7 @@
       ]
     },
     {
-      "net": "H_GND",
+      "net": "GND",
       "a": [
         150,
         144
@@ -11232,7 +11267,7 @@
       ]
     },
     {
-      "net": "H_VBAT",
+      "net": "VSYS",
       "a": [
         171,
         132
@@ -11276,7 +11311,7 @@
       ]
     },
     {
-      "net": "H_GND",
+      "net": "GND",
       "a": [
         187,
         156
@@ -11287,7 +11322,7 @@
       ]
     },
     {
-      "net": "H_GND",
+      "net": "GND",
       "a": [
         187,
         146
@@ -11298,7 +11333,7 @@
       ]
     },
     {
-      "net": "H_GND",
+      "net": "GND",
       "a": [
         204,
         146
@@ -11320,7 +11355,7 @@
       ]
     },
     {
-      "net": "H_GND",
+      "net": "GND",
       "a": [
         30,
         198
@@ -11463,7 +11498,7 @@
       ]
     },
     {
-      "net": "H_GND",
+      "net": "GND",
       "a": [
         189,
         186.0
@@ -11474,7 +11509,7 @@
       ]
     },
     {
-      "net": "H_GND",
+      "net": "GND",
       "a": [
         199,
         186
@@ -11485,7 +11520,7 @@
       ]
     },
     {
-      "net": "H_GND",
+      "net": "GND",
       "a": [
         189,
         188.0
@@ -11496,7 +11531,7 @@
       ]
     },
     {
-      "net": "H_GND",
+      "net": "GND",
       "a": [
         199,
         188
@@ -11540,7 +11575,7 @@
       ]
     },
     {
-      "net": "H_GND",
+      "net": "GND",
       "a": [
         437,
         157
@@ -11551,7 +11586,7 @@
       ]
     },
     {
-      "net": "H_GND",
+      "net": "GND",
       "a": [
         437,
         151
@@ -11562,7 +11597,7 @@
       ]
     },
     {
-      "net": "H_GND",
+      "net": "GND",
       "a": [
         449,
         149
@@ -11716,7 +11751,7 @@
       ]
     },
     {
-      "net": "PIC_RB0_VREF",
+      "net": "VREF",
       "a": [
         281,
         179
@@ -11727,7 +11762,7 @@
       ]
     },
     {
-      "net": "PIC_RB0_VREF",
+      "net": "VREF",
       "a": [
         279,
         179
@@ -11914,7 +11949,7 @@
       ]
     },
     {
-      "net": "PIC_RB0_VREF",
+      "net": "VREF",
       "a": [
         363,
         179
@@ -11980,7 +12015,7 @@
       ]
     },
     {
-      "net": "H_GND",
+      "net": "GND",
       "a": [
         415,
         179
@@ -11991,7 +12026,7 @@
       ]
     },
     {
-      "net": "H_GND",
+      "net": "GND",
       "a": [
         415,
         173
@@ -12002,7 +12037,7 @@
       ]
     },
     {
-      "net": "H_GND",
+      "net": "GND",
       "a": [
         427,
         173
@@ -12079,7 +12114,7 @@
       ]
     },
     {
-      "net": "H_GND",
+      "net": "GND",
       "a": [
         432,
         184
@@ -12244,7 +12279,7 @@
       ]
     },
     {
-      "net": "H_GND",
+      "net": "GND",
       "a": [
         351,
         187
@@ -12387,7 +12422,7 @@
       ]
     },
     {
-      "net": "H_GND",
+      "net": "GND",
       "a": [
         268,
         161
@@ -12409,7 +12444,7 @@
       ]
     },
     {
-      "net": "PIC_RB0_VREF",
+      "net": "VREF",
       "a": [
         242,
         184
@@ -12420,7 +12455,7 @@
       ]
     },
     {
-      "net": "PIC_RB0_VREF",
+      "net": "VREF",
       "a": [
         242,
         188
@@ -12431,7 +12466,7 @@
       ]
     },
     {
-      "net": "PIC_RB0_VREF",
+      "net": "VREF",
       "a": [
         257,
         188
@@ -12442,7 +12477,7 @@
       ]
     },
     {
-      "net": "H_GND",
+      "net": "GND",
       "a": [
         257,
         178
@@ -12453,7 +12488,7 @@
       ]
     },
     {
-      "net": "H_GND",
+      "net": "GND",
       "a": [
         36,
         235
@@ -12464,7 +12499,7 @@
       ]
     },
     {
-      "net": "H_GND",
+      "net": "GND",
       "a": [
         42,
         287
@@ -12508,7 +12543,7 @@
       ]
     },
     {
-      "net": "H_GND",
+      "net": "GND",
       "a": [
         42,
         278
@@ -12574,7 +12609,7 @@
       ]
     },
     {
-      "net": "H_GND",
+      "net": "GND",
       "a": [
         36,
         244
@@ -12585,7 +12620,7 @@
       ]
     },
     {
-      "net": "H_GND",
+      "net": "GND",
       "a": [
         48,
         244
@@ -12629,7 +12664,7 @@
       ]
     },
     {
-      "net": "H_GND",
+      "net": "GND",
       "a": [
         84,
         278
@@ -12695,7 +12730,7 @@
       ]
     },
     {
-      "net": "H_GND",
+      "net": "GND",
       "a": [
         78,
         244
@@ -12706,7 +12741,7 @@
       ]
     },
     {
-      "net": "H_GND",
+      "net": "GND",
       "a": [
         90,
         244
@@ -12750,7 +12785,7 @@
       ]
     },
     {
-      "net": "H_GND",
+      "net": "GND",
       "a": [
         126,
         278
@@ -12816,7 +12851,7 @@
       ]
     },
     {
-      "net": "H_GND",
+      "net": "GND",
       "a": [
         120,
         244
@@ -12827,7 +12862,7 @@
       ]
     },
     {
-      "net": "H_GND",
+      "net": "GND",
       "a": [
         132,
         244
@@ -12871,7 +12906,7 @@
       ]
     },
     {
-      "net": "H_GND",
+      "net": "GND",
       "a": [
         168,
         278
@@ -12937,7 +12972,7 @@
       ]
     },
     {
-      "net": "H_GND",
+      "net": "GND",
       "a": [
         162,
         244
@@ -12948,7 +12983,7 @@
       ]
     },
     {
-      "net": "H_GND",
+      "net": "GND",
       "a": [
         174,
         244
@@ -12992,7 +13027,7 @@
       ]
     },
     {
-      "net": "H_GND",
+      "net": "GND",
       "a": [
         210,
         278
@@ -13058,7 +13093,7 @@
       ]
     },
     {
-      "net": "H_GND",
+      "net": "GND",
       "a": [
         204,
         244
@@ -13069,7 +13104,7 @@
       ]
     },
     {
-      "net": "H_GND",
+      "net": "GND",
       "a": [
         216,
         244
@@ -13080,7 +13115,7 @@
       ]
     },
     {
-      "net": "H_VDD",
+      "net": "VDD",
       "a": [
         241,
         233
@@ -13256,7 +13291,7 @@
       ]
     },
     {
-      "net": "H_GND",
+      "net": "GND",
       "a": [
         237,
         257
@@ -13267,7 +13302,7 @@
       ]
     },
     {
-      "net": "H_GND",
+      "net": "GND",
       "a": [
         237,
         249
@@ -13278,7 +13313,7 @@
       ]
     },
     {
-      "net": "H_GND",
+      "net": "GND",
       "a": [
         260,
         251
@@ -13289,7 +13324,7 @@
       ]
     },
     {
-      "net": "H_GND",
+      "net": "GND",
       "a": [
         280,
         249
@@ -13300,7 +13335,7 @@
       ]
     },
     {
-      "net": "H_GND",
+      "net": "GND",
       "a": [
         313,
         244
@@ -13311,7 +13346,7 @@
       ]
     },
     {
-      "net": "H_GND",
+      "net": "GND",
       "a": [
         309,
         269
@@ -13322,7 +13357,7 @@
       ]
     },
     {
-      "net": "H_GND",
+      "net": "GND",
       "a": [
         309,
         258
@@ -13355,7 +13390,7 @@
       ]
     },
     {
-      "net": "H_VDD",
+      "net": "VDD",
       "a": [
         277,
         283
@@ -13366,7 +13401,7 @@
       ]
     },
     {
-      "net": "H_GND",
+      "net": "GND",
       "a": [
         290,
         276
@@ -13498,7 +13533,7 @@
       ]
     },
     {
-      "net": "H_GND",
+      "net": "GND",
       "a": [
         370,
         197
@@ -13509,7 +13544,7 @@
       ]
     },
     {
-      "net": "H_GND",
+      "net": "GND",
       "a": [
         357,
         148
@@ -13564,7 +13599,7 @@
       ]
     },
     {
-      "net": "H_VDD",
+      "net": "VDD",
       "a": [
         249,
         148
@@ -13575,7 +13610,7 @@
       ]
     },
     {
-      "net": "H_VDD",
+      "net": "VDD",
       "a": [
         249,
         166
@@ -13586,7 +13621,7 @@
       ]
     },
     {
-      "net": "H_VDD",
+      "net": "VDD",
       "a": [
         237,
         166
@@ -13599,21 +13634,21 @@
   ],
   "labels": [
     {
-      "net": "H_VBAT",
+      "net": "VSYS",
       "p": [
         23,
         42
       ]
     },
     {
-      "net": "H_VDD",
+      "net": "VDD",
       "p": [
         101,
         42
       ]
     },
     {
-      "net": "H_GND",
+      "net": "GND",
       "p": [
         33,
         64
@@ -13627,14 +13662,14 @@
       ]
     },
     {
-      "net": "H_VDD",
+      "net": "VDD",
       "p": [
         166,
         32
       ]
     },
     {
-      "net": "H_GND",
+      "net": "GND",
       "p": [
         166,
         44
@@ -13669,14 +13704,14 @@
       ]
     },
     {
-      "net": "H_VDD",
+      "net": "VDD",
       "p": [
         263,
         50
       ]
     },
     {
-      "net": "H_GND",
+      "net": "GND",
       "p": [
         204,
         91
@@ -13690,14 +13725,14 @@
       ]
     },
     {
-      "net": "H_GND",
+      "net": "GND",
       "p": [
         164,
         98
       ]
     },
     {
-      "net": "H_VBAT",
+      "net": "VSYS",
       "p": [
         280,
         61
@@ -13711,28 +13746,28 @@
       ]
     },
     {
-      "net": "H_GND",
+      "net": "GND",
       "p": [
         280,
         94
       ]
     },
     {
-      "net": "H_VBAT",
+      "net": "VSYS",
       "p": [
         339,
         33
       ]
     },
     {
-      "net": "H_VDD",
+      "net": "VDD",
       "p": [
         330,
         43
       ]
     },
     {
-      "net": "H_GND",
+      "net": "GND",
       "p": [
         330,
         69
@@ -13774,7 +13809,7 @@
       ]
     },
     {
-      "net": "H_GND",
+      "net": "GND",
       "p": [
         358.0,
         98
@@ -13802,28 +13837,28 @@
       ]
     },
     {
-      "net": "H_GND",
+      "net": "GND",
       "p": [
         53,
         190
       ]
     },
     {
-      "net": "H_VDD",
+      "net": "VDD",
       "p": [
         133,
         131
       ]
     },
     {
-      "net": "H_GND",
+      "net": "GND",
       "p": [
         133,
         152
       ]
     },
     {
-      "net": "H_VBAT",
+      "net": "VSYS",
       "p": [
         165,
         132
@@ -13837,14 +13872,14 @@
       ]
     },
     {
-      "net": "H_GND",
+      "net": "GND",
       "p": [
         187,
         156
       ]
     },
     {
-      "net": "H_GND",
+      "net": "GND",
       "p": [
         30,
         202
@@ -13872,28 +13907,28 @@
       ]
     },
     {
-      "net": "H_GND",
+      "net": "GND",
       "p": [
         437,
         157
       ]
     },
     {
-      "net": "PIC_RB0_VREF",
+      "net": "VREF",
       "p": [
         279,
         183
       ]
     },
     {
-      "net": "PIC_RB0_VREF",
+      "net": "VREF",
       "p": [
         363,
         183
       ]
     },
     {
-      "net": "H_GND",
+      "net": "GND",
       "p": [
         415,
         179
@@ -13914,7 +13949,7 @@
       ]
     },
     {
-      "net": "H_GND",
+      "net": "GND",
       "p": [
         429,
         184
@@ -13928,7 +13963,7 @@
       ]
     },
     {
-      "net": "H_GND",
+      "net": "GND",
       "p": [
         429,
         198
@@ -13949,7 +13984,7 @@
       ]
     },
     {
-      "net": "H_GND",
+      "net": "GND",
       "p": [
         347,
         187
@@ -13970,7 +14005,7 @@
       ]
     },
     {
-      "net": "H_GND",
+      "net": "GND",
       "p": [
         268,
         165
@@ -13984,28 +14019,28 @@
       ]
     },
     {
-      "net": "PIC_RB0_VREF",
+      "net": "VREF",
       "p": [
         247,
         188
       ]
     },
     {
-      "net": "H_GND",
+      "net": "GND",
       "p": [
         257,
         174
       ]
     },
     {
-      "net": "H_GND",
+      "net": "GND",
       "p": [
         36,
         235
       ]
     },
     {
-      "net": "H_GND",
+      "net": "GND",
       "p": [
         42,
         287
@@ -14047,7 +14082,7 @@
       ]
     },
     {
-      "net": "H_VDD",
+      "net": "VDD",
       "p": [
         237,
         233
@@ -14061,28 +14096,28 @@
       ]
     },
     {
-      "net": "H_GND",
+      "net": "GND",
       "p": [
         237,
         257
       ]
     },
     {
-      "net": "H_GND",
+      "net": "GND",
       "p": [
         309,
         269
       ]
     },
     {
-      "net": "H_GND",
+      "net": "GND",
       "p": [
         274,
         283
       ]
     },
     {
-      "net": "H_GND",
+      "net": "GND",
       "p": [
         290,
         283
@@ -14117,14 +14152,14 @@
       ]
     },
     {
-      "net": "H_GND",
+      "net": "GND",
       "p": [
         375,
         197
       ]
     },
     {
-      "net": "H_GND",
+      "net": "GND",
       "p": [
         357,
         151
@@ -14138,7 +14173,7 @@
       ]
     },
     {
-      "net": "H_VDD",
+      "net": "VDD",
       "p": [
         249,
         166

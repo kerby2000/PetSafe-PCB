@@ -2,11 +2,11 @@ pin,gpio,net,open_pad,evidence
 1,RE3/MCLR,MCLR_VPP,False,J1 VPP; mapping inferred; D6 route missing
 2,RA0,PIC_RA0_FILTER,False,C25 signal pad / V031; onward destination unknown
 3,RA1,PIC_RA1_RX_REF,False,R28 + R29 + TP7; user meter / visible trace
-4,RA2,PIC_RA2_FILTER,False,C39 signal pad / V035; onward destination unknown
+4,RA2,VREF,False,VREF TP via V035; user confirms via-to-TP; C39.1 local photo route
 5,RA3,H_TUNE_2,False,V036-V108 to R14; user continuity report
 6,RA4,H_TUNE_3,False,V037-V102 to R15; user continuity report
 7,RA5,H_TUNE_4,False,V039-V097 to R16; user continuity report
-8,VSS,H_GND,False,GND / V041 photo anchor
+8,VSS,GND,False,GND / V041 photo anchor
 9,RA7/OSC1,OSC1,False,Y1 oscillator; photo-derived
 10,RA6/OSC2,OSC2,False,Y1 oscillator; photo-derived
 11,RC0,H_TUNE_5,False,V047-V091 to R11; user continuity report
@@ -17,9 +17,9 @@ pin,gpio,net,open_pad,evidence
 16,RC5,MOTOR_INB,False,V023-V019 to U5 pin3 / INB; user-confirmed
 17,RC6,H_TUNE_1,False,R13; user meter / visible trace
 18,RC7,PIC_RC7_TP17,False,TP17; visible route; old R13 guess withdrawn
-19,VSS,H_GND,False,GND / C32 / V045 photo anchor
-20,VDD,H_VDD,False,Regulated VDD / C32 / V042 photo anchor
-21,RB0,PIC_RB0_VREF,False,"VREF (TP104), V026 and V071/R21.2; user-confirmed"
+19,VSS,GND,False,GND / C32 / V045 photo anchor
+20,VDD,VDD,False,V042 to board VDD TP user-confirmed; C32.1 local photo route
+21,RB0,VREF,False,"VREF (TP104), V026 and V071/R21.2; user-confirmed"
 22,RB1,H_LED_CTL_B,False,TP2 / R31; user meter / visible trace
 23,RB2,H_LED_CTL_A,False,TP1 / R30; user meter / visible trace
 24,RB3,PIC_RB3_RETURN,False,R4; photo-derived; sensing role remains inferred

@@ -1,5 +1,5 @@
 {
-  "revision": "v0.9.8",
+  "revision": "v0.9.9",
   "pins": [
     {
       "pin": 1,
@@ -25,9 +25,9 @@
     {
       "pin": 4,
       "gpio": "RA2",
-      "net": "PIC_RA2_FILTER",
+      "net": "VREF",
       "open_pad": false,
-      "evidence": "C39 signal pad / V035; onward destination unknown"
+      "evidence": "VREF TP via V035; user confirms via-to-TP; C39.1 local photo route"
     },
     {
       "pin": 5,
@@ -53,7 +53,7 @@
     {
       "pin": 8,
       "gpio": "VSS",
-      "net": "H_GND",
+      "net": "GND",
       "open_pad": false,
       "evidence": "GND / V041 photo anchor"
     },
@@ -130,21 +130,21 @@
     {
       "pin": 19,
       "gpio": "VSS",
-      "net": "H_GND",
+      "net": "GND",
       "open_pad": false,
       "evidence": "GND / C32 / V045 photo anchor"
     },
     {
       "pin": 20,
       "gpio": "VDD",
-      "net": "H_VDD",
+      "net": "VDD",
       "open_pad": false,
-      "evidence": "Regulated VDD / C32 / V042 photo anchor"
+      "evidence": "V042 to board VDD TP user-confirmed; C32.1 local photo route"
     },
     {
       "pin": 21,
       "gpio": "RB0",
-      "net": "PIC_RB0_VREF",
+      "net": "VREF",
       "open_pad": false,
       "evidence": "VREF (TP104), V026 and V071/R21.2; user-confirmed"
     },

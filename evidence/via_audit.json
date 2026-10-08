@@ -1,6 +1,6 @@
 {
   "date": "2026-10-08",
-  "revision": "v0.9.8",
+  "revision": "v0.9.9",
   "source_front": "photos/front_registered.jpg",
   "source_rear": "photos/back_mirrored_registered.jpg",
   "images_are_original_photographic_mosaics": true,
@@ -33,7 +33,7 @@
       "endpoints": [
         "U5.4"
       ],
-      "net": "H_VBAT",
+      "net": "VSYS",
       "confidence": "User common-net report to MX512H pin4; no per-site ohms supplied",
       "note": "Visible clearance separates this site from the surrounding rear copper; this alone does not identify an internal net.",
       "id": "V001",
@@ -48,7 +48,7 @@
       "review_status": "ASSIGNED",
       "component_crosscheck": "MX512H motor VDD, distinct from logic VCC pin1.",
       "modeled_nets": [
-        "H_VBAT"
+        "VSYS"
       ]
     },
     {
@@ -65,7 +65,7 @@
       "endpoints": [
         "U5.4"
       ],
-      "net": "H_VBAT",
+      "net": "VSYS",
       "confidence": "User common-net report to MX512H pin4; no per-site ohms supplied",
       "note": "Visible clearance separates this site from the surrounding rear copper; this alone does not identify an internal net.",
       "id": "V002",
@@ -80,7 +80,7 @@
       "review_status": "ASSIGNED",
       "component_crosscheck": "MX512H motor VDD, distinct from logic VCC pin1.",
       "modeled_nets": [
-        "H_VBAT"
+        "VSYS"
       ]
     },
     {
@@ -97,7 +97,7 @@
       "endpoints": [
         "C27.1"
       ],
-      "net": "H_VBAT",
+      "net": "VSYS",
       "confidence": "User common-net report to MX512H pin4; no per-site ohms supplied",
       "note": "Visible clearance separates this site from the surrounding rear copper; this alone does not identify an internal net.",
       "id": "V003",
@@ -112,7 +112,7 @@
       "review_status": "ASSIGNED",
       "component_crosscheck": "C27 left photo pad on user motor-supply island.",
       "modeled_nets": [
-        "H_VBAT"
+        "VSYS"
       ]
     },
     {
@@ -129,7 +129,7 @@
       "endpoints": [
         "C27.1"
       ],
-      "net": "H_VBAT",
+      "net": "VSYS",
       "confidence": "User common-net report to MX512H pin4; no per-site ohms supplied",
       "note": "Visible clearance separates this site from the surrounding rear copper; this alone does not identify an internal net.",
       "id": "V004",
@@ -144,7 +144,7 @@
       "review_status": "ASSIGNED",
       "component_crosscheck": "C27 left photo pad on user motor-supply island.",
       "modeled_nets": [
-        "H_VBAT"
+        "VSYS"
       ]
     },
     {
@@ -159,7 +159,7 @@
       "rear_appearance": "REAR_CLEARANCE",
       "front_match": "PROJECTED: inspect original front photo; may be under a component",
       "endpoints": [],
-      "net": "H_VBAT",
+      "net": "VSYS",
       "confidence": "User common-net report to MX512H pin4; no per-site ohms supplied",
       "note": "Visible clearance separates this site from the surrounding rear copper; this alone does not identify an internal net.",
       "id": "V005",
@@ -188,7 +188,7 @@
       "endpoints": [
         "C33.2"
       ],
-      "net": "H_GND",
+      "net": "GND",
       "confidence": "User GND report; no per-site ohms supplied",
       "note": "No isolating rear clearance apparent. Main copper is associated with PIC VSS through the reviewed anchors. Individual front endpoint not yet assigned.",
       "id": "V006",
@@ -204,7 +204,7 @@
       ],
       "review_status": "ASSIGNED",
       "modeled_nets": [
-        "H_GND"
+        "GND"
       ],
       "component_crosscheck": "User adds C33 to earlier GND report; pad2 selected from photo/model."
     },
@@ -222,7 +222,7 @@
       "endpoints": [
         "C34.2"
       ],
-      "net": "H_GND",
+      "net": "GND",
       "confidence": "User GND report; no per-site ohms supplied",
       "note": "Visible clearance separates this site from the surrounding rear copper; this alone does not identify an internal net.",
       "id": "V007",
@@ -238,7 +238,7 @@
       ],
       "review_status": "ASSIGNED",
       "modeled_nets": [
-        "H_GND"
+        "GND"
       ],
       "component_crosscheck": "User adds C34 to earlier GND report; pad2 selected from photo/model."
     },
@@ -256,7 +256,7 @@
       "endpoints": [
         "C27.2"
       ],
-      "net": "H_GND",
+      "net": "GND",
       "confidence": "User GND report; no per-site ohms supplied",
       "note": "No isolating rear clearance apparent. Main copper is associated with PIC VSS through the reviewed anchors. Individual front endpoint not yet assigned.",
       "id": "V008",
@@ -271,7 +271,7 @@
       "review_status": "ASSIGNED",
       "component_crosscheck": "C27 right photo pad on user GND island.",
       "modeled_nets": [
-        "H_GND"
+        "GND"
       ]
     },
     {
@@ -288,7 +288,7 @@
       "endpoints": [
         "C27.2"
       ],
-      "net": "H_GND",
+      "net": "GND",
       "confidence": "User GND report; no per-site ohms supplied",
       "note": "No isolating rear clearance apparent. Main copper is associated with PIC VSS through the reviewed anchors. Individual front endpoint not yet assigned.",
       "id": "V009",
@@ -303,7 +303,7 @@
       "review_status": "ASSIGNED",
       "component_crosscheck": "C27 right photo pad on user GND island.",
       "modeled_nets": [
-        "H_GND"
+        "GND"
       ]
     },
     {
@@ -320,7 +320,7 @@
       "endpoints": [
         "C27.2"
       ],
-      "net": "H_GND",
+      "net": "GND",
       "confidence": "User GND report; no per-site ohms supplied",
       "note": "No isolating rear clearance apparent. Main copper is associated with PIC VSS through the reviewed anchors. Individual front endpoint not yet assigned.",
       "id": "V010",
@@ -335,7 +335,7 @@
       "review_status": "ASSIGNED",
       "component_crosscheck": "C27 right photo pad on user GND island.",
       "modeled_nets": [
-        "H_GND"
+        "GND"
       ]
     },
     {
@@ -352,8 +352,8 @@
       "endpoints": [
         "Q1.L"
       ],
-      "net": "H_VBAT",
-      "confidence": "User confirms motor rail; Q1 identity/polarity remains inferred",
+      "net": "VSYS",
+      "confidence": "User confirms post-Q1 motor rail; candidate PMOS function from R1A datasheet and photo",
       "note": "Visible clearance separates this site from the surrounding rear copper; this alone does not identify an internal net.",
       "id": "V011",
       "active": true,
@@ -361,18 +361,18 @@
         {
           "id": "V011",
           "kind": "motor_supply",
-          "claim": "v0.9.8: User explicitly confirms V011/V012/V013/V014 share the MX512H pin4 VDD motor supply. Earlier Q1.L association retained, now H_VBAT, not regulated TP103/H_VDD. Q1.L-R43.2 remains rejected. Q1 device identity, polarity and function remain candidate assumptions; this connection does not validate them."
+          "claim": "v0.9.9: User corrects raw battery+ versus post-Q1 rail. BATP -> Q1.S (single physical pad/native3, candidate drain); Q1.L/native2 (candidate source) -> U5.4/V011-V014. These are distinct copper nets, connected through Q1. IMG_2438 also supports TP14 on battery+; V015/R43.2-TP14 user confirmation retained. Q1.R/native1 is candidate gate at R44.2. Photo S means SINGLE, not MOSFET source."
         }
       ],
       "review_status": "ASSIGNED",
-      "component_crosscheck": "User explicitly confirms same rail as MX512H pin4. Q1.L reaches motor H_VBAT, distinct from regulated H_VDD/TP103. R43.2 remains excluded.",
+      "component_crosscheck": "User explicitly confirms same rail as MX512H pin4. Q1.L reaches motor VSYS, distinct from regulated VDD/TP103. R43.2 remains excluded.",
       "modeled_nets": [
-        "H_VBAT"
+        "VSYS"
       ],
       "excluded_endpoints": [
         "R43.2"
       ],
-      "reported_supply": "MX512H pin4 VDD / motor supply H_VBAT"
+      "reported_supply": "MX512H pin4 VDD / motor supply VSYS"
     },
     {
       "rear_xy": [
@@ -388,8 +388,8 @@
       "endpoints": [
         "Q1.L"
       ],
-      "net": "H_VBAT",
-      "confidence": "User confirms motor rail; Q1 identity/polarity remains inferred",
+      "net": "VSYS",
+      "confidence": "User confirms post-Q1 motor rail; candidate PMOS function from R1A datasheet and photo",
       "note": "Visible clearance separates this site from the surrounding rear copper; this alone does not identify an internal net.",
       "id": "V012",
       "active": true,
@@ -397,18 +397,18 @@
         {
           "id": "V012",
           "kind": "motor_supply",
-          "claim": "v0.9.8: User explicitly confirms V011/V012/V013/V014 share the MX512H pin4 VDD motor supply. Earlier Q1.L association retained, now H_VBAT, not regulated TP103/H_VDD. Q1.L-R43.2 remains rejected. Q1 device identity, polarity and function remain candidate assumptions; this connection does not validate them."
+          "claim": "v0.9.9: User corrects raw battery+ versus post-Q1 rail. BATP -> Q1.S (single physical pad/native3, candidate drain); Q1.L/native2 (candidate source) -> U5.4/V011-V014. These are distinct copper nets, connected through Q1. IMG_2438 also supports TP14 on battery+; V015/R43.2-TP14 user confirmation retained. Q1.R/native1 is candidate gate at R44.2. Photo S means SINGLE, not MOSFET source."
         }
       ],
       "review_status": "ASSIGNED",
-      "component_crosscheck": "User explicitly confirms same rail as MX512H pin4. Q1.L reaches motor H_VBAT, distinct from regulated H_VDD/TP103. R43.2 remains excluded.",
+      "component_crosscheck": "User explicitly confirms same rail as MX512H pin4. Q1.L reaches motor VSYS, distinct from regulated VDD/TP103. R43.2 remains excluded.",
       "modeled_nets": [
-        "H_VBAT"
+        "VSYS"
       ],
       "excluded_endpoints": [
         "R43.2"
       ],
-      "reported_supply": "MX512H pin4 VDD / motor supply H_VBAT"
+      "reported_supply": "MX512H pin4 VDD / motor supply VSYS"
     },
     {
       "rear_xy": [
@@ -424,8 +424,8 @@
       "endpoints": [
         "Q1.L"
       ],
-      "net": "H_VBAT",
-      "confidence": "User confirms motor rail; Q1 identity/polarity remains inferred",
+      "net": "VSYS",
+      "confidence": "User confirms post-Q1 motor rail; candidate PMOS function from R1A datasheet and photo",
       "note": "Visible clearance separates this site from the surrounding rear copper; this alone does not identify an internal net.",
       "id": "V013",
       "active": true,
@@ -433,18 +433,18 @@
         {
           "id": "V013",
           "kind": "motor_supply",
-          "claim": "v0.9.8: User explicitly confirms V011/V012/V013/V014 share the MX512H pin4 VDD motor supply. Earlier Q1.L association retained, now H_VBAT, not regulated TP103/H_VDD. Q1.L-R43.2 remains rejected. Q1 device identity, polarity and function remain candidate assumptions; this connection does not validate them."
+          "claim": "v0.9.9: User corrects raw battery+ versus post-Q1 rail. BATP -> Q1.S (single physical pad/native3, candidate drain); Q1.L/native2 (candidate source) -> U5.4/V011-V014. These are distinct copper nets, connected through Q1. IMG_2438 also supports TP14 on battery+; V015/R43.2-TP14 user confirmation retained. Q1.R/native1 is candidate gate at R44.2. Photo S means SINGLE, not MOSFET source."
         }
       ],
       "review_status": "ASSIGNED",
-      "component_crosscheck": "User explicitly confirms same rail as MX512H pin4. Q1.L reaches motor H_VBAT, distinct from regulated H_VDD/TP103. R43.2 remains excluded.",
+      "component_crosscheck": "User explicitly confirms same rail as MX512H pin4. Q1.L reaches motor VSYS, distinct from regulated VDD/TP103. R43.2 remains excluded.",
       "modeled_nets": [
-        "H_VBAT"
+        "VSYS"
       ],
       "excluded_endpoints": [
         "R43.2"
       ],
-      "reported_supply": "MX512H pin4 VDD / motor supply H_VBAT"
+      "reported_supply": "MX512H pin4 VDD / motor supply VSYS"
     },
     {
       "rear_xy": [
@@ -460,8 +460,8 @@
       "endpoints": [
         "Q1.L"
       ],
-      "net": "H_VBAT",
-      "confidence": "User confirms motor rail; Q1 identity/polarity remains inferred",
+      "net": "VSYS",
+      "confidence": "User confirms post-Q1 motor rail; candidate PMOS function from R1A datasheet and photo",
       "note": "Visible clearance separates this site from the surrounding rear copper; this alone does not identify an internal net.",
       "id": "V014",
       "active": true,
@@ -469,18 +469,18 @@
         {
           "id": "V014",
           "kind": "motor_supply",
-          "claim": "v0.9.8: User explicitly confirms V011/V012/V013/V014 share the MX512H pin4 VDD motor supply. Earlier Q1.L association retained, now H_VBAT, not regulated TP103/H_VDD. Q1.L-R43.2 remains rejected. Q1 device identity, polarity and function remain candidate assumptions; this connection does not validate them."
+          "claim": "v0.9.9: User corrects raw battery+ versus post-Q1 rail. BATP -> Q1.S (single physical pad/native3, candidate drain); Q1.L/native2 (candidate source) -> U5.4/V011-V014. These are distinct copper nets, connected through Q1. IMG_2438 also supports TP14 on battery+; V015/R43.2-TP14 user confirmation retained. Q1.R/native1 is candidate gate at R44.2. Photo S means SINGLE, not MOSFET source."
         }
       ],
       "review_status": "ASSIGNED",
-      "component_crosscheck": "User explicitly confirms same rail as MX512H pin4. Q1.L reaches motor H_VBAT, distinct from regulated H_VDD/TP103. R43.2 remains excluded.",
+      "component_crosscheck": "User explicitly confirms same rail as MX512H pin4. Q1.L reaches motor VSYS, distinct from regulated VDD/TP103. R43.2 remains excluded.",
       "modeled_nets": [
-        "H_VBAT"
+        "VSYS"
       ],
       "excluded_endpoints": [
         "R43.2"
       ],
-      "reported_supply": "MX512H pin4 VDD / motor supply H_VBAT"
+      "reported_supply": "MX512H pin4 VDD / motor supply VSYS"
     },
     {
       "rear_xy": [
@@ -497,7 +497,7 @@
         "R43.2",
         "TP14.1"
       ],
-      "net": "H_BAT_DETECT",
+      "net": "BATTERY+",
       "confidence": "rear visible; global front projection approximate",
       "note": "Visible clearance separates this site from the surrounding rear copper; this alone does not identify an internal net.",
       "id": "V015",
@@ -511,9 +511,9 @@
       ],
       "review_status": "ASSIGNED",
       "modeled_nets": [
-        "H_BAT_DETECT"
+        "BATTERY+"
       ],
-      "component_crosscheck": "User confirms V015-TP14 and earlier R43 lower pad2 association. Q1.L remains excluded. Existing TP14-Q1.S branch and battery-detect role remain inferred.",
+      "component_crosscheck": "User confirms V015-TP14 and R43.2. IMG_2438 places TP14 on battery-positive copper to Q1 single pad3. Raw battery stays separate from post-Q1 motor VDD; the former battery-detect net name is withdrawn.",
       "excluded_endpoints": [
         "Q1.L"
       ]
@@ -604,7 +604,7 @@
       "endpoints": [
         "C35.2"
       ],
-      "net": "H_GND",
+      "net": "GND",
       "confidence": "User GND report; no per-site ohms supplied",
       "note": "No isolating rear clearance apparent. Main copper is associated with PIC VSS through the reviewed anchors. Individual front endpoint not yet assigned.",
       "id": "V018",
@@ -620,7 +620,7 @@
       ],
       "review_status": "ASSIGNED",
       "modeled_nets": [
-        "H_GND"
+        "GND"
       ],
       "component_crosscheck": "User adds C35 to earlier GND report; pad2 selected from photo/model."
     },
@@ -707,7 +707,7 @@
       "endpoints": [
         "Q9.R"
       ],
-      "net": "H_GND",
+      "net": "GND",
       "confidence": "User GND report; no per-site ohms supplied",
       "note": "No isolating rear clearance apparent. Main copper is associated with PIC VSS through the reviewed anchors. Individual front endpoint not yet assigned.",
       "id": "V021",
@@ -722,7 +722,7 @@
       "review_status": "ASSIGNED",
       "component_crosscheck": "Q9 DNP lower-right pad; stock pin2.",
       "modeled_nets": [
-        "H_GND"
+        "GND"
       ]
     },
     {
@@ -813,7 +813,7 @@
       "endpoints": [
         "R32.1"
       ],
-      "net": "H_GND",
+      "net": "GND",
       "confidence": "User GND report; no per-site ohms supplied",
       "note": "No isolating rear clearance apparent. Main copper is associated with PIC VSS through the reviewed anchors. Individual front endpoint not yet assigned.",
       "id": "V024",
@@ -828,7 +828,7 @@
       "review_status": "ASSIGNED",
       "component_crosscheck": "R32 upper photo pad. Old PIR assignment withdrawn.",
       "modeled_nets": [
-        "H_GND"
+        "GND"
       ]
     },
     {
@@ -845,7 +845,7 @@
       "endpoints": [
         "C41.2"
       ],
-      "net": "H_GND",
+      "net": "GND",
       "confidence": "User GND report; no per-site ohms supplied",
       "note": "C41 left pad in front mosaic joins this via; rear side joins main VSS-associated copper. Opposite capacitor pad remains the TP4 net.",
       "id": "V025",
@@ -859,7 +859,7 @@
       ],
       "review_status": "ASSIGNED",
       "modeled_nets": [
-        "H_GND"
+        "GND"
       ]
     },
     {
@@ -877,7 +877,7 @@
         "U4.21",
         "VREF.1"
       ],
-      "net": "PIC_RB0_VREF",
+      "net": "VREF",
       "confidence": "photo-derived, not continuity measured",
       "note": "Via beside/under the PIC body near D6. Rear annular clearance is visible; external endpoints require more tracing.",
       "id": "V026",
@@ -892,7 +892,7 @@
       "review_status": "ASSIGNED",
       "component_crosscheck": "User V026-VREF report with prior V026-PIC21/RB0 mapping. VREF is native TP104; voltage/function not established.",
       "modeled_nets": [
-        "PIC_RB0_VREF"
+        "VREF"
       ],
       "excluded_vias": [
         "V053"
@@ -916,7 +916,7 @@
       "endpoints": [
         "D5.2"
       ],
-      "net": "H_GND",
+      "net": "GND",
       "confidence": "photo-derived, not continuity measured",
       "note": "D5 anode-side via matches the same rear copper region as the PIC VSS anchors.",
       "id": "V027",
@@ -924,7 +924,7 @@
       "user_reports": [],
       "review_status": "PHOTO_LOCAL",
       "modeled_nets": [
-        "H_GND"
+        "GND"
       ]
     },
     {
@@ -941,7 +941,7 @@
       "endpoints": [
         "C26.2"
       ],
-      "net": "H_GND",
+      "net": "GND",
       "confidence": "photo-derived, not continuity measured",
       "note": "C26 ground-side pad matches a rear plane site; does not resolve its other pad.",
       "id": "V028",
@@ -949,7 +949,7 @@
       "user_reports": [],
       "review_status": "PHOTO_LOCAL",
       "modeled_nets": [
-        "H_GND"
+        "GND"
       ]
     },
     {
@@ -967,7 +967,7 @@
         "C25.2",
         "C26.2"
       ],
-      "net": "H_GND",
+      "net": "GND",
       "confidence": "User GND report; no per-site ohms supplied",
       "note": "No isolating rear clearance apparent. Main copper is associated with PIC VSS through the reviewed anchors. Individual front endpoint not yet assigned.",
       "id": "V029",
@@ -983,7 +983,7 @@
       ],
       "review_status": "ASSIGNED",
       "modeled_nets": [
-        "H_GND"
+        "GND"
       ],
       "component_crosscheck": "User adds both capacitors to earlier GND report; return pads selected from photos/model. C26.1 remains unresolved."
     },
@@ -1001,7 +1001,7 @@
       "endpoints": [
         "D4.2"
       ],
-      "net": "H_GND",
+      "net": "GND",
       "confidence": "photo-derived, not continuity measured",
       "note": "D4 anode-side via matches a rear site without clearance in the main VSS-associated copper.",
       "id": "V030",
@@ -1009,7 +1009,7 @@
       "user_reports": [],
       "review_status": "PHOTO_LOCAL",
       "modeled_nets": [
-        "H_GND"
+        "GND"
       ]
     },
     {
@@ -1057,7 +1057,7 @@
       "rear_appearance": "MAIN_REAR_COPPER",
       "front_match": "PROJECTED: inspect original front photo; may be under a component",
       "endpoints": [],
-      "net": "H_GND",
+      "net": "GND",
       "confidence": "User GND report; no per-site ohms supplied",
       "note": "No isolating rear clearance apparent. Main copper is associated with PIC VSS through the reviewed anchors. Individual front endpoint not yet assigned.",
       "id": "V032",
@@ -1114,7 +1114,7 @@
       "endpoints": [
         "R3.1"
       ],
-      "net": "H_VBAT",
+      "net": "VSYS",
       "confidence": "User common-net report to MX512H pin4; no per-site ohms supplied",
       "note": "Separate strip/antenna region or ambiguous copper boundary; do not assume GND.",
       "id": "V034",
@@ -1128,9 +1128,9 @@
       ],
       "review_status": "ASSIGNED",
       "modeled_nets": [
-        "H_VBAT"
+        "VSYS"
       ],
-      "component_crosscheck": "User VDD/R3, previously explicitly the same net as V001 and MX512H pin4. This is motor supply H_VBAT, not regulated H_VDD."
+      "component_crosscheck": "User VDD/R3, previously explicitly the same net as V001 and MX512H pin4. This is motor supply VSYS, not regulated VDD."
     },
     {
       "rear_xy": [
@@ -1145,18 +1145,25 @@
       "front_match": "PROJECTED: inspect original front photo; may be under a component",
       "endpoints": [
         "U4.4",
-        "C39.1"
+        "C39.1",
+        "VREF.1"
       ],
-      "net": "PIC_RA2_FILTER",
-      "confidence": "rear visible; global front projection approximate",
+      "net": "VREF",
+      "confidence": "User V035-VREF continuity; PIC4/C39 pad association from earlier photo trace",
       "note": "Visible clearance separates this site from the surrounding rear copper; this alone does not identify an internal net.",
       "id": "V035",
       "active": true,
-      "user_reports": [],
-      "review_status": "PHOTO_LOCAL",
-      "component_crosscheck": "Visible local C39 signal-pad route to PIC RA2; remote net unverified.",
+      "user_reports": [
+        {
+          "id": "V035",
+          "kind": "signal",
+          "claim": "v0.9.9: User checked V035-VREF TP. Prior photo association V035-PIC4/RA2-C39.1 retained; joins the already confirmed RB0/V026/R21.2/V071 VREF node. No voltage or numerical resistance supplied. Other modeled bias branches retain earlier inferred status."
+        }
+      ],
+      "review_status": "ASSIGNED",
+      "component_crosscheck": "User confirms V035-VREF TP; earlier local PIC4/RA2-C39.1 photo route retained. Same VREF node as V026/RB0 and V071/R21.2.",
       "modeled_nets": [
-        "PIC_RA2_FILTER"
+        "VREF"
       ]
     },
     {
@@ -1247,7 +1254,7 @@
       "endpoints": [
         "C39.2"
       ],
-      "net": "H_GND",
+      "net": "GND",
       "confidence": "photo-derived, not continuity measured",
       "note": "C39 opposite pad via supports the existing GND estimate using the matching rear copper.",
       "id": "V038",
@@ -1255,7 +1262,7 @@
       "user_reports": [],
       "review_status": "PHOTO_LOCAL",
       "modeled_nets": [
-        "H_GND"
+        "GND"
       ]
     },
     {
@@ -1309,7 +1316,7 @@
       "endpoints": [
         "C28.2"
       ],
-      "net": "H_GND",
+      "net": "GND",
       "confidence": "User GND report; no per-site ohms supplied",
       "note": "No isolating rear clearance apparent. Main copper is associated with PIC VSS through the reviewed anchors. Individual front endpoint not yet assigned.",
       "id": "V040",
@@ -1325,7 +1332,7 @@
       ],
       "review_status": "ASSIGNED",
       "modeled_nets": [
-        "H_GND"
+        "GND"
       ],
       "component_crosscheck": "User adds C28 to earlier GND report; return pad selected from photo/model."
     },
@@ -1343,7 +1350,7 @@
       "endpoints": [
         "U4.8"
       ],
-      "net": "H_GND",
+      "net": "GND",
       "confidence": "User GND report; no per-site ohms supplied",
       "note": "Ground anchor: PIC VSS pin 8 visibly joins this non-isolated rear via.",
       "id": "V041",
@@ -1357,7 +1364,7 @@
       ],
       "review_status": "ASSIGNED",
       "modeled_nets": [
-        "H_GND"
+        "GND"
       ]
     },
     {
@@ -1373,18 +1380,26 @@
       "front_match": "MANUALLY MATCHED",
       "endpoints": [
         "U4.20",
-        "C32.1"
+        "C32.1",
+        "VDD.1"
       ],
-      "net": "H_VDD",
-      "confidence": "photo-derived, not continuity measured",
+      "net": "VDD",
+      "confidence": "User continuity to board VDD; PIC20/C32.1 local association from photo",
       "note": "Contrast anchor: PIC VDD pin 20 / C32 supply pad. Rear annular clearance is visible; the rear plane is not this supply net.",
       "id": "V042",
       "active": true,
-      "user_reports": [],
-      "review_status": "PHOTO_LOCAL",
+      "user_reports": [
+        {
+          "id": "V042",
+          "kind": "logic_supply",
+          "claim": "User confirms V042-board VDD TP/TP103. Retain PIC20/C32.1 local photo route on H_VDD."
+        }
+      ],
+      "review_status": "ASSIGNED",
       "modeled_nets": [
-        "H_VDD"
-      ]
+        "VDD"
+      ],
+      "component_crosscheck": "User confirms V042-board VDD TP, matching prior PIC20/C32.1 photo mapping. Regulated VDD, not motor VDD or raw battery."
     },
     {
       "rear_xy": [
@@ -1398,7 +1413,7 @@
       "rear_appearance": "MAIN_REAR_COPPER",
       "front_match": "PROJECTED: inspect original front photo; may be under a component",
       "endpoints": [],
-      "net": "H_GND",
+      "net": "GND",
       "confidence": "User GND report; no per-site ohms supplied",
       "note": "No isolating rear clearance apparent. Main copper is associated with PIC VSS through the reviewed anchors. Individual front endpoint not yet assigned.",
       "id": "V043",
@@ -1425,7 +1440,7 @@
       "rear_appearance": "MAIN_REAR_COPPER",
       "front_match": "PROJECTED: inspect original front photo; may be under a component",
       "endpoints": [],
-      "net": "H_GND",
+      "net": "GND",
       "confidence": "User GND report; no per-site ohms supplied",
       "note": "No isolating rear clearance apparent. Main copper is associated with PIC VSS through the reviewed anchors. Individual front endpoint not yet assigned.",
       "id": "V044",
@@ -1455,7 +1470,7 @@
         "U4.19",
         "C32.2"
       ],
-      "net": "H_GND",
+      "net": "GND",
       "confidence": "User GND report; no per-site ohms supplied",
       "note": "Ground anchor: C32 pad visibly joins PIC VSS pin 19 and this non-isolated rear via.",
       "id": "V045",
@@ -1469,7 +1484,7 @@
       ],
       "review_status": "ASSIGNED",
       "modeled_nets": [
-        "H_GND"
+        "GND"
       ]
     },
     {
@@ -1484,7 +1499,7 @@
       "rear_appearance": "MAIN_REAR_COPPER",
       "front_match": "PROJECTED: inspect original front photo; may be under a component",
       "endpoints": [],
-      "net": "H_GND",
+      "net": "GND",
       "confidence": "User GND report; no per-site ohms supplied",
       "note": "No isolating rear clearance apparent. Main copper is associated with PIC VSS through the reviewed anchors. Individual front endpoint not yet assigned.",
       "id": "V046",
@@ -1548,7 +1563,7 @@
       "rear_appearance": "MAIN_REAR_COPPER",
       "front_match": "PROJECTED: inspect original front photo; may be under a component",
       "endpoints": [],
-      "net": "H_GND",
+      "net": "GND",
       "confidence": "User GND report; no per-site ohms supplied",
       "note": "No isolating rear clearance apparent. Main copper is associated with PIC VSS through the reviewed anchors. Individual front endpoint not yet assigned.",
       "id": "V048",
@@ -1667,7 +1682,7 @@
       "rear_appearance": "MAIN_REAR_COPPER",
       "front_match": "PROJECTED: inspect original front photo; may be under a component",
       "endpoints": [],
-      "net": "H_GND",
+      "net": "GND",
       "confidence": "User GND report; no per-site ohms supplied",
       "note": "No isolating rear clearance apparent. Main copper is associated with PIC VSS through the reviewed anchors. Individual front endpoint not yet assigned.",
       "id": "V051",
@@ -1694,7 +1709,7 @@
       "rear_appearance": "MAIN_REAR_COPPER",
       "front_match": "PROJECTED: inspect original front photo; may be under a component",
       "endpoints": [],
-      "net": "H_GND",
+      "net": "GND",
       "confidence": "User GND report; no per-site ohms supplied",
       "note": "No isolating rear clearance apparent. Main copper is associated with PIC VSS through the reviewed anchors. Individual front endpoint not yet assigned.",
       "id": "V052",
@@ -1765,7 +1780,7 @@
       "rear_appearance": "MAIN_REAR_COPPER",
       "front_match": "PROJECTED: inspect original front photo; may be under a component",
       "endpoints": [],
-      "net": "H_GND",
+      "net": "GND",
       "confidence": "User GND report; no per-site ohms supplied",
       "note": "No isolating rear clearance apparent. Main copper is associated with PIC VSS through the reviewed anchors. Individual front endpoint not yet assigned.",
       "id": "V054",
@@ -1792,7 +1807,7 @@
       "rear_appearance": "MAIN_REAR_COPPER",
       "front_match": "PROJECTED: inspect original front photo; may be under a component",
       "endpoints": [],
-      "net": "H_GND",
+      "net": "GND",
       "confidence": "User GND report; no per-site ohms supplied",
       "note": "No isolating rear clearance apparent. Main copper is associated with PIC VSS through the reviewed anchors. Individual front endpoint not yet assigned.",
       "id": "V055",
@@ -1819,7 +1834,7 @@
       "rear_appearance": "OTHER_REAR_REGION",
       "front_match": "PROJECTED: inspect original front photo; may be under a component",
       "endpoints": [],
-      "net": "H_VBAT",
+      "net": "VSYS",
       "confidence": "User common-net report to MX512H pin4; no per-site ohms supplied",
       "note": "Separate strip/antenna region or ambiguous copper boundary; do not assume GND.",
       "id": "V056",
@@ -1849,7 +1864,7 @@
         "R2.1",
         "C4.1"
       ],
-      "net": "H_GND",
+      "net": "GND",
       "confidence": "User GND report; no per-site ohms supplied",
       "note": "No isolating rear clearance apparent. Main copper is associated with PIC VSS through the reviewed anchors. Individual front endpoint not yet assigned.",
       "id": "V057",
@@ -1864,7 +1879,7 @@
       "review_status": "ASSIGNED",
       "component_crosscheck": "DNP option free pads in the front ground copper.",
       "modeled_nets": [
-        "H_GND"
+        "GND"
       ]
     },
     {
@@ -1882,7 +1897,7 @@
         "R2.1",
         "C4.1"
       ],
-      "net": "H_GND",
+      "net": "GND",
       "confidence": "User GND report; no per-site ohms supplied",
       "note": "No isolating rear clearance apparent. Main copper is associated with PIC VSS through the reviewed anchors. Individual front endpoint not yet assigned.",
       "id": "V058",
@@ -1897,7 +1912,7 @@
       "review_status": "ASSIGNED",
       "component_crosscheck": "DNP option free pads in the front ground copper.",
       "modeled_nets": [
-        "H_GND"
+        "GND"
       ]
     },
     {
@@ -1914,7 +1929,7 @@
       "endpoints": [
         "L2.1"
       ],
-      "net": "H_VBAT",
+      "net": "VSYS",
       "confidence": "User common-net report to MX512H pin4; no per-site ohms supplied",
       "note": "Separate strip/antenna region or ambiguous copper boundary; do not assume GND.",
       "id": "V059",
@@ -1928,7 +1943,7 @@
       ],
       "review_status": "ASSIGNED",
       "modeled_nets": [
-        "H_VBAT"
+        "VSYS"
       ],
       "component_crosscheck": "User adds L2 to the earlier common motor-supply report; source/right pad1 selected from photo/model."
     },
@@ -1946,7 +1961,7 @@
       "endpoints": [
         "Q2.L"
       ],
-      "net": "H_GND",
+      "net": "GND",
       "confidence": "User GND report; no per-site ohms supplied",
       "note": "No isolating rear clearance apparent. Main copper is associated with PIC VSS through the reviewed anchors. Individual front endpoint not yet assigned.",
       "id": "V060",
@@ -1962,7 +1977,7 @@
       ],
       "review_status": "ASSIGNED",
       "modeled_nets": [
-        "H_GND"
+        "GND"
       ],
       "component_crosscheck": "User adds Q2 to earlier GND report; local ground-side pad selected from photo/model."
     },
@@ -1980,7 +1995,7 @@
       "endpoints": [
         "L2.1"
       ],
-      "net": "H_VBAT",
+      "net": "VSYS",
       "confidence": "User common-net report to MX512H pin4; no per-site ohms supplied",
       "note": "No isolating rear clearance apparent. Main copper is associated with PIC VSS through the reviewed anchors. Individual front endpoint not yet assigned.",
       "id": "V061",
@@ -1994,7 +2009,7 @@
       ],
       "review_status": "ASSIGNED",
       "modeled_nets": [
-        "H_VBAT"
+        "VSYS"
       ],
       "component_crosscheck": "User adds L2 to the earlier common motor-supply report; source/right pad1 selected from photo/model."
     },
@@ -2010,7 +2025,7 @@
       "rear_appearance": "MAIN_REAR_COPPER",
       "front_match": "PROJECTED: inspect original front photo; may be under a component",
       "endpoints": [],
-      "net": "H_GND",
+      "net": "GND",
       "confidence": "User GND report; no per-site ohms supplied",
       "note": "No isolating rear clearance apparent. Main copper is associated with PIC VSS through the reviewed anchors. Individual front endpoint not yet assigned.",
       "id": "V062",
@@ -2040,7 +2055,7 @@
         "R37.1",
         "R39.2"
       ],
-      "net": "H_VDD",
+      "net": "VDD",
       "confidence": "rear visible; global front projection approximate",
       "note": "Visible clearance separates this site from the surrounding rear copper; this alone does not identify an internal net.",
       "id": "V063",
@@ -2055,7 +2070,7 @@
       "review_status": "ASSIGNED",
       "component_crosscheck": "User V064-V063 confirms R37/R39 feed on regulated board VDD. Motor supply remains separate.",
       "modeled_nets": [
-        "H_VDD"
+        "VDD"
       ],
       "joined_vias": [
         "V063",
@@ -2080,7 +2095,7 @@
         "VDD.1",
         "U1.R1"
       ],
-      "net": "H_VDD",
+      "net": "VDD",
       "confidence": "rear visible; global front projection approximate",
       "note": "Visible clearance separates this site from the surrounding rear copper; this alone does not identify an internal net.",
       "id": "V064",
@@ -2095,7 +2110,7 @@
       "review_status": "ASSIGNED",
       "component_crosscheck": "Regulated board VDD island. Do not equate this use of VDD with MX512H motor pin4.",
       "modeled_nets": [
-        "H_VDD"
+        "VDD"
       ],
       "joined_vias": [
         "V063",
@@ -2131,7 +2146,7 @@
       "endpoints": [
         "C2.2"
       ],
-      "net": "H_GND",
+      "net": "GND",
       "confidence": "User GND report; no per-site ohms supplied",
       "note": "No isolating rear clearance apparent. Main copper is associated with PIC VSS through the reviewed anchors. Individual front endpoint not yet assigned.",
       "id": "V065",
@@ -2147,7 +2162,7 @@
       ],
       "review_status": "ASSIGNED",
       "modeled_nets": [
-        "H_GND"
+        "GND"
       ],
       "component_crosscheck": "User adds C2 to earlier GND report; return pad selected from photo/model."
     },
@@ -2163,7 +2178,7 @@
       "rear_appearance": "MAIN_REAR_COPPER",
       "front_match": "PROJECTED: inspect original front photo; may be under a component",
       "endpoints": [],
-      "net": "H_GND",
+      "net": "GND",
       "confidence": "User GND report; no per-site ohms supplied",
       "note": "No isolating rear clearance apparent. Main copper is associated with PIC VSS through the reviewed anchors. Individual front endpoint not yet assigned.",
       "id": "V066",
@@ -2226,7 +2241,7 @@
         "C37.2",
         "C36.2"
       ],
-      "net": "H_GND",
+      "net": "GND",
       "confidence": "User GND report; no per-site ohms supplied",
       "note": "No isolating rear clearance apparent. Main copper is associated with PIC VSS through the reviewed anchors. Individual front endpoint not yet assigned.",
       "id": "V068",
@@ -2242,7 +2257,7 @@
       ],
       "review_status": "ASSIGNED",
       "modeled_nets": [
-        "H_GND"
+        "GND"
       ],
       "component_crosscheck": "User adds both capacitors to earlier GND report; return pads selected from photos/model."
     },
@@ -2258,7 +2273,7 @@
       "rear_appearance": "MAIN_REAR_COPPER",
       "front_match": "PROJECTED: inspect original front photo; may be under a component",
       "endpoints": [],
-      "net": "H_GND",
+      "net": "GND",
       "confidence": "User GND report; no per-site ohms supplied",
       "note": "No isolating rear clearance apparent. Main copper is associated with PIC VSS through the reviewed anchors. Individual front endpoint not yet assigned.",
       "id": "V069",
@@ -2357,7 +2372,7 @@
         "VREF.1",
         "U4.21"
       ],
-      "net": "PIC_RB0_VREF",
+      "net": "VREF",
       "confidence": "rear visible; global front projection approximate",
       "note": "Visible clearance separates this site from the surrounding rear copper; this alone does not identify an internal net.",
       "id": "V071",
@@ -2372,7 +2387,7 @@
       "review_status": "ASSIGNED",
       "component_crosscheck": "User confirms V071-VREF, previously mapped to PIC21/RB0 via V026. Other receiver-bias branches remain photo/circuit hypotheses.",
       "modeled_nets": [
-        "PIC_RB0_VREF"
+        "VREF"
       ],
       "excluded_vias": [
         "V053",
@@ -2441,7 +2456,7 @@
       "rear_appearance": "MAIN_REAR_COPPER",
       "front_match": "PROJECTED: inspect original front photo; may be under a component",
       "endpoints": [],
-      "net": "H_GND",
+      "net": "GND",
       "confidence": "User GND report; no per-site ohms supplied",
       "note": "No isolating rear clearance apparent. Main copper is associated with PIC VSS through the reviewed anchors. Individual front endpoint not yet assigned.",
       "id": "V073",
@@ -2469,7 +2484,7 @@
       "rear_appearance": "MAIN_REAR_COPPER",
       "front_match": "PROJECTED: inspect original front photo; may be under a component",
       "endpoints": [],
-      "net": "H_GND",
+      "net": "GND",
       "confidence": "User GND report; no per-site ohms supplied",
       "note": "No isolating rear clearance apparent. Main copper is associated with PIC VSS through the reviewed anchors. Individual front endpoint not yet assigned.",
       "id": "V074",
@@ -2499,7 +2514,7 @@
         "Q7.R",
         "R19.2"
       ],
-      "net": "H_VDD",
+      "net": "VDD",
       "confidence": "Rail measured via V064; local terminals selected from IMG_2434 and 11.2 kohm R18+R19 path, not separate pad measurements.",
       "note": "Visible clearance separates this site from the surrounding rear copper; this alone does not identify an internal net.",
       "id": "V075",
@@ -2514,7 +2529,7 @@
       "review_status": "ASSIGNED",
       "component_crosscheck": "V064-V075 confirms regulated VDD. IMG_2434 shows the R19/Q7 paired-pad continuation; V064-V070 11.2 kohm supports R18+R19 base-input/pull-up arrangement. Q7.R/native2 and R19.2 now modeled on VDD as a supported reconstruction, not user-probed exact terminal proof.",
       "modeled_nets": [
-        "H_VDD"
+        "VDD"
       ],
       "component_refs": [
         "Q7",
@@ -2541,7 +2556,7 @@
       "endpoints": [
         "R22.1"
       ],
-      "net": "H_GND",
+      "net": "GND",
       "confidence": "User GND report; no per-site ohms supplied",
       "note": "No isolating rear clearance apparent. Main copper is associated with PIC VSS through the reviewed anchors. Individual front endpoint not yet assigned.",
       "id": "V076",
@@ -2561,7 +2576,7 @@
       "review_status": "ASSIGNED",
       "component_crosscheck": "R22 opposite/right photo pad; user GND corroborates return.",
       "modeled_nets": [
-        "H_GND"
+        "GND"
       ]
     },
     {
@@ -2579,7 +2594,7 @@
         "C19.2",
         "R29.2"
       ],
-      "net": "H_GND",
+      "net": "GND",
       "confidence": "User GND report; no per-site ohms supplied",
       "note": "No isolating rear clearance apparent. Main copper is associated with PIC VSS through the reviewed anchors. Individual front endpoint not yet assigned.",
       "id": "V077",
@@ -2593,7 +2608,7 @@
       ],
       "review_status": "ASSIGNED",
       "modeled_nets": [
-        "H_GND"
+        "GND"
       ],
       "component_crosscheck": "User explicitly confirms the C19-R29 junction is GND. R29 opposite the PIC3/TP7 end is pad2; C19 pad2 is assigned to the upper photo pad beside the via. Earlier C19-to-clamp and R29-to-U3.5 guesses withdrawn."
     },
@@ -2611,7 +2626,7 @@
       "endpoints": [
         "C17.2"
       ],
-      "net": "H_GND",
+      "net": "GND",
       "confidence": "User GND report; no per-site ohms supplied",
       "note": "No isolating rear clearance apparent. Main copper is associated with PIC VSS through the reviewed anchors. Individual front endpoint not yet assigned.",
       "id": "V078",
@@ -2625,7 +2640,7 @@
       ],
       "review_status": "ASSIGNED",
       "modeled_nets": [
-        "H_GND"
+        "GND"
       ],
       "component_crosscheck": "User adds C17 to earlier GND report; return pad selected from existing photo/model."
     },
@@ -2705,7 +2720,7 @@
       "rear_appearance": "MAIN_REAR_COPPER",
       "front_match": "PROJECTED: inspect original front photo; may be under a component",
       "endpoints": [],
-      "net": "H_GND",
+      "net": "GND",
       "confidence": "User GND report; no per-site ohms supplied",
       "note": "No isolating rear clearance apparent. Main copper is associated with PIC VSS through the reviewed anchors. Individual front endpoint not yet assigned.",
       "id": "V081",
@@ -2734,7 +2749,7 @@
       "endpoints": [
         "VDD.1"
       ],
-      "net": "H_VDD",
+      "net": "VDD",
       "confidence": "User continuity report to TP103; D3 terminal unresolved",
       "note": "Visible clearance separates this site from the surrounding rear copper; this alone does not identify an internal net.",
       "id": "V082",
@@ -2747,9 +2762,9 @@
         }
       ],
       "review_status": "ASSIGNED",
-      "component_crosscheck": "User confirms V082-board VDD test point (native TP103), regulated logic H_VDD. D3 exact terminal unconfirmed; no H_RX_VDD merge implied.",
+      "component_crosscheck": "User confirms V082-board VDD test point (native TP103), regulated logic VDD. D3 exact terminal unconfirmed; no H_RX_VDD merge implied.",
       "modeled_nets": [
-        "H_VDD"
+        "VDD"
       ],
       "component_refs": [
         "D3"
@@ -2769,7 +2784,7 @@
       "endpoints": [
         "C40.2"
       ],
-      "net": "H_GND",
+      "net": "GND",
       "confidence": "User GND report; no per-site ohms supplied",
       "note": "No isolating rear clearance apparent. Main copper is associated with PIC VSS through the reviewed anchors. Individual front endpoint not yet assigned.",
       "id": "V083",
@@ -2783,7 +2798,7 @@
       ],
       "review_status": "ASSIGNED",
       "modeled_nets": [
-        "H_GND"
+        "GND"
       ],
       "component_crosscheck": "User adds C40 to earlier GND report; return pad selected from existing photo/model."
     },
@@ -2799,7 +2814,7 @@
       "rear_appearance": "MAIN_REAR_COPPER",
       "front_match": "PROJECTED: inspect original front photo; may be under a component",
       "endpoints": [],
-      "net": "H_GND",
+      "net": "GND",
       "confidence": "User GND report; no per-site ohms supplied",
       "note": "No isolating rear clearance apparent. Main copper is associated with PIC VSS through the reviewed anchors. Individual front endpoint not yet assigned.",
       "id": "V084",
@@ -2826,7 +2841,7 @@
       "rear_appearance": "MAIN_REAR_COPPER",
       "front_match": "PROJECTED: inspect original front photo; may be under a component",
       "endpoints": [],
-      "net": "H_GND",
+      "net": "GND",
       "confidence": "User GND report; no per-site ohms supplied",
       "note": "No isolating rear clearance apparent. Main copper is associated with PIC VSS through the reviewed anchors. Individual front endpoint not yet assigned.",
       "id": "V085",
@@ -2853,7 +2868,7 @@
       "rear_appearance": "MAIN_REAR_COPPER",
       "front_match": "PROJECTED: inspect original front photo; may be under a component",
       "endpoints": [],
-      "net": "H_GND",
+      "net": "GND",
       "confidence": "User GND report; no per-site ohms supplied",
       "note": "No isolating rear clearance apparent. Main copper is associated with PIC VSS through the reviewed anchors. Individual front endpoint not yet assigned.",
       "id": "V086",
@@ -2886,7 +2901,7 @@
         "C14.1",
         "C11.1"
       ],
-      "net": "H_GND",
+      "net": "GND",
       "confidence": "User GND report; no per-site ohms supplied",
       "note": "No isolating rear clearance apparent. Main copper is associated with PIC VSS through the reviewed anchors. Individual front endpoint not yet assigned.",
       "id": "V087",
@@ -2901,7 +2916,7 @@
       "review_status": "ASSIGNED",
       "component_crosscheck": "Shared lower front-capacitor band; old antenna rail assumption withdrawn.",
       "modeled_nets": [
-        "H_GND"
+        "GND"
       ]
     },
     {
@@ -2922,7 +2937,7 @@
         "C14.1",
         "C11.1"
       ],
-      "net": "H_GND",
+      "net": "GND",
       "confidence": "User GND report; no per-site ohms supplied",
       "note": "No isolating rear clearance apparent. Main copper is associated with PIC VSS through the reviewed anchors. Individual front endpoint not yet assigned.",
       "id": "V088",
@@ -2937,7 +2952,7 @@
       "review_status": "ASSIGNED",
       "component_crosscheck": "Shared lower front-capacitor band; old antenna rail assumption withdrawn.",
       "modeled_nets": [
-        "H_GND"
+        "GND"
       ]
     },
     {
@@ -2954,7 +2969,7 @@
       "endpoints": [
         "Q11.L"
       ],
-      "net": "H_GND",
+      "net": "GND",
       "confidence": "User GND report; no per-site ohms supplied",
       "note": "Separate strip/antenna region or ambiguous copper boundary; do not assume GND.",
       "id": "V089",
@@ -2969,7 +2984,7 @@
       "review_status": "ASSIGNED",
       "component_crosscheck": "Photo left transistor pad to user GND via; assumed emitter role not confirmed.",
       "modeled_nets": [
-        "H_GND"
+        "GND"
       ]
     },
     {
@@ -3061,7 +3076,7 @@
       "rear_appearance": "OTHER_REAR_REGION",
       "front_match": "PROJECTED: inspect original front photo; may be under a component",
       "endpoints": [],
-      "net": "H_GND",
+      "net": "GND",
       "confidence": "User GND report; no per-site ohms supplied",
       "note": "Separate strip/antenna region or ambiguous copper boundary; do not assume GND.",
       "id": "V092",
@@ -3090,7 +3105,7 @@
       "endpoints": [
         "C48.1"
       ],
-      "net": "H_GND",
+      "net": "GND",
       "confidence": "User GND report; no per-site ohms supplied",
       "note": "Separate strip/antenna region or ambiguous copper boundary; do not assume GND.",
       "id": "V093",
@@ -3105,7 +3120,7 @@
       "review_status": "ASSIGNED",
       "component_crosscheck": "Rear capacitor ground-side land; other pad joins local tuning midpoint.",
       "modeled_nets": [
-        "H_GND"
+        "GND"
       ]
     },
     {
@@ -3122,7 +3137,7 @@
       "endpoints": [
         "Q6.L"
       ],
-      "net": "H_GND",
+      "net": "GND",
       "confidence": "User GND report; no per-site ohms supplied",
       "note": "Separate strip/antenna region or ambiguous copper boundary; do not assume GND.",
       "id": "V094",
@@ -3137,7 +3152,7 @@
       "review_status": "ASSIGNED",
       "component_crosscheck": "Photo left transistor pad to user GND via; assumed emitter role not confirmed.",
       "modeled_nets": [
-        "H_GND"
+        "GND"
       ]
     },
     {
@@ -3194,7 +3209,7 @@
       "endpoints": [
         "C45.1"
       ],
-      "net": "H_GND",
+      "net": "GND",
       "confidence": "User GND report; no per-site ohms supplied",
       "note": "Separate strip/antenna region or ambiguous copper boundary; do not assume GND.",
       "id": "V096",
@@ -3209,7 +3224,7 @@
       "review_status": "ASSIGNED",
       "component_crosscheck": "Rear capacitor ground-side land; other pad joins local tuning midpoint.",
       "modeled_nets": [
-        "H_GND"
+        "GND"
       ]
     },
     {
@@ -3261,7 +3276,7 @@
       "rear_appearance": "OTHER_REAR_REGION",
       "front_match": "PROJECTED: inspect original front photo; may be under a component",
       "endpoints": [],
-      "net": "H_GND",
+      "net": "GND",
       "confidence": "User GND report; no per-site ohms supplied",
       "note": "Separate strip/antenna region or ambiguous copper boundary; do not assume GND.",
       "id": "V098",
@@ -3290,7 +3305,7 @@
       "endpoints": [
         "Q5.L"
       ],
-      "net": "H_GND",
+      "net": "GND",
       "confidence": "User GND report; no per-site ohms supplied",
       "note": "Separate strip/antenna region or ambiguous copper boundary; do not assume GND.",
       "id": "V099",
@@ -3305,7 +3320,7 @@
       "review_status": "ASSIGNED",
       "component_crosscheck": "Photo left transistor pad to user GND via; assumed emitter role not confirmed.",
       "modeled_nets": [
-        "H_GND"
+        "GND"
       ]
     },
     {
@@ -3360,7 +3375,7 @@
       "endpoints": [
         "C38.1"
       ],
-      "net": "H_GND",
+      "net": "GND",
       "confidence": "User GND report; no per-site ohms supplied",
       "note": "Separate strip/antenna region or ambiguous copper boundary; do not assume GND.",
       "id": "V101",
@@ -3375,7 +3390,7 @@
       "review_status": "ASSIGNED",
       "component_crosscheck": "Rear capacitor ground-side land; other pad joins local tuning midpoint.",
       "modeled_nets": [
-        "H_GND"
+        "GND"
       ]
     },
     {
@@ -3467,7 +3482,7 @@
       "endpoints": [
         "Q4.L"
       ],
-      "net": "H_GND",
+      "net": "GND",
       "confidence": "User GND report; no per-site ohms supplied",
       "note": "Separate strip/antenna region or ambiguous copper boundary; do not assume GND.",
       "id": "V104",
@@ -3482,7 +3497,7 @@
       "review_status": "ASSIGNED",
       "component_crosscheck": "Photo left transistor pad to user GND via; assumed emitter role not confirmed.",
       "modeled_nets": [
-        "H_GND"
+        "GND"
       ]
     },
     {
@@ -3499,7 +3514,7 @@
       "endpoints": [
         "C15.1"
       ],
-      "net": "H_GND",
+      "net": "GND",
       "confidence": "User GND report; no per-site ohms supplied",
       "note": "Separate strip/antenna region or ambiguous copper boundary; do not assume GND.",
       "id": "V105",
@@ -3514,7 +3529,7 @@
       "review_status": "ASSIGNED",
       "component_crosscheck": "Rear capacitor ground-side land; other pad joins local tuning midpoint.",
       "modeled_nets": [
-        "H_GND"
+        "GND"
       ]
     },
     {
@@ -3529,7 +3544,7 @@
       "rear_appearance": "OTHER_REAR_REGION",
       "front_match": "PROJECTED: inspect original front photo; may be under a component",
       "endpoints": [],
-      "net": "H_GND",
+      "net": "GND",
       "confidence": "User GND report; no per-site ohms supplied",
       "note": "Separate strip/antenna region or ambiguous copper boundary; do not assume GND.",
       "id": "V106",
@@ -3631,7 +3646,7 @@
       "rear_appearance": "OTHER_REAR_REGION",
       "front_match": "PROJECTED: inspect original front photo; may be under a component",
       "endpoints": [],
-      "net": "H_GND",
+      "net": "GND",
       "confidence": "User GND report; no per-site ohms supplied",
       "note": "Separate strip/antenna region or ambiguous copper boundary; do not assume GND.",
       "id": "V109",
@@ -3658,7 +3673,7 @@
       "rear_appearance": "OTHER_REAR_REGION",
       "front_match": "PROJECTED: inspect original front photo; may be under a component",
       "endpoints": [],
-      "net": "H_GND",
+      "net": "GND",
       "confidence": "User GND report; no per-site ohms supplied",
       "note": "Separate strip/antenna region or ambiguous copper boundary; do not assume GND.",
       "id": "V110",
@@ -3685,7 +3700,7 @@
       "rear_appearance": "OTHER_REAR_REGION",
       "front_match": "PROJECTED: inspect original front photo; may be under a component",
       "endpoints": [],
-      "net": "H_GND",
+      "net": "GND",
       "confidence": "User GND report; no per-site ohms supplied",
       "note": "Separate strip/antenna region or ambiguous copper boundary; do not assume GND.",
       "id": "V111",
@@ -3714,7 +3729,7 @@
       "endpoints": [
         "C8.2"
       ],
-      "net": "H_GND",
+      "net": "GND",
       "confidence": "User GND report; no per-site ohms supplied",
       "note": "Separate strip/antenna region or ambiguous copper boundary; do not assume GND.",
       "id": "V112",
@@ -3728,7 +3743,7 @@
       ],
       "review_status": "ASSIGNED",
       "modeled_nets": [
-        "H_GND"
+        "GND"
       ],
       "component_crosscheck": "User adds C8 to earlier GND report; lower photo return pad selected."
     },
@@ -3746,7 +3761,7 @@
       "endpoints": [
         "Q8.B2"
       ],
-      "net": "H_GND",
+      "net": "GND",
       "confidence": "User centre-pad/GND clarification; corroborates earlier S-G low resistance",
       "note": "Separate strip/antenna region or ambiguous copper boundary; do not assume GND.",
       "id": "V113",
@@ -3761,7 +3776,7 @@
       "review_status": "ASSIGNED",
       "component_crosscheck": "User corrects island destination to the centre pad: B2/package pin5, already modeled as GND. Previous B1/B3 annotation was wrong. Independent earlier D-E low-resistance evidence for the outer-pad join is retained.",
       "modeled_nets": [
-        "H_GND"
+        "GND"
       ],
       "excluded_endpoints": [
         "Q8.B1",
@@ -3782,7 +3797,7 @@
       "endpoints": [
         "U2.T2"
       ],
-      "net": "H_GND",
+      "net": "GND",
       "confidence": "User U2.T2 correction plus earlier GND report; consistent with existing U2 pin2 ground",
       "note": "Separate strip/antenna region or ambiguous copper boundary; do not assume GND.",
       "id": "V114",
@@ -3796,7 +3811,7 @@
       ],
       "review_status": "ASSIGNED",
       "modeled_nets": [
-        "H_GND"
+        "GND"
       ],
       "component_crosscheck": "User corrects the component to U2.T2, native pin2, not Q8.T2. Earlier GND report retained; confirms existing U2 ground. No evidence for the Q8 supply rail.",
       "excluded_endpoints": [
@@ -3817,7 +3832,7 @@
       "endpoints": [
         "Q8.B2"
       ],
-      "net": "H_GND",
+      "net": "GND",
       "confidence": "User centre-pad/GND clarification; corroborates earlier S-G low resistance",
       "note": "Separate strip/antenna region or ambiguous copper boundary; do not assume GND.",
       "id": "V115",
@@ -3832,7 +3847,7 @@
       "review_status": "ASSIGNED",
       "component_crosscheck": "User corrects island destination to the centre pad: B2/package pin5, already modeled as GND. Previous B1/B3 annotation was wrong. Independent earlier D-E low-resistance evidence for the outer-pad join is retained.",
       "modeled_nets": [
-        "H_GND"
+        "GND"
       ],
       "excluded_endpoints": [
         "Q8.B1",
@@ -3853,7 +3868,7 @@
       "endpoints": [
         "R10.2"
       ],
-      "net": "H_GND",
+      "net": "GND",
       "confidence": "User GND report; no per-site ohms supplied",
       "note": "Separate strip/antenna region or ambiguous copper boundary; do not assume GND.",
       "id": "V116",
@@ -3868,7 +3883,7 @@
       "review_status": "ASSIGNED",
       "component_crosscheck": "R10 free end; no longer singleton monitor hypothesis.",
       "modeled_nets": [
-        "H_GND"
+        "GND"
       ]
     },
     {
@@ -3913,7 +3928,7 @@
       "endpoints": [
         "C7.2"
       ],
-      "net": "H_GND",
+      "net": "GND",
       "confidence": "User GND report; no per-site ohms supplied",
       "note": "Separate strip/antenna region or ambiguous copper boundary; do not assume GND.",
       "id": "V118",
@@ -3927,7 +3942,7 @@
       ],
       "review_status": "ASSIGNED",
       "modeled_nets": [
-        "H_GND"
+        "GND"
       ],
       "component_crosscheck": "User adds C7 to earlier GND report; lower photo return pad selected."
     },
@@ -3945,7 +3960,7 @@
       "endpoints": [
         "C9.2"
       ],
-      "net": "H_GND",
+      "net": "GND",
       "confidence": "User component association; pad and GND inferred from photo/model",
       "note": "Separate strip/antenna region or ambiguous copper boundary; do not assume GND.",
       "id": "V119",
@@ -3959,7 +3974,7 @@
       ],
       "review_status": "ASSIGNED",
       "modeled_nets": [
-        "H_GND"
+        "GND"
       ],
       "component_crosscheck": "User identifies C9; photo selects lower pad2. GND is retained as the existing photo/model inference, not a new user ground measurement."
     },
@@ -4059,7 +4074,7 @@
       "rear_appearance": "OTHER_REAR_REGION",
       "front_match": "PROJECTED: inspect original front photo; may be under a component",
       "endpoints": [],
-      "net": "H_GND",
+      "net": "GND",
       "confidence": "User GND report; no per-site ohms supplied",
       "note": "Separate strip/antenna region or ambiguous copper boundary; do not assume GND.",
       "id": "V123",
@@ -4116,7 +4131,7 @@
       "endpoints": [
         "C5.2"
       ],
-      "net": "H_GND",
+      "net": "GND",
       "confidence": "User GND report; no per-site ohms supplied",
       "note": "Separate strip/antenna region or ambiguous copper boundary; do not assume GND.",
       "id": "V125",
@@ -4130,7 +4145,7 @@
       ],
       "review_status": "ASSIGNED",
       "modeled_nets": [
-        "H_GND"
+        "GND"
       ],
       "component_crosscheck": "User identifies C5 negative terminal and earlier GND; native capacitor pad2 already grounded."
     },
@@ -4148,7 +4163,7 @@
       "endpoints": [
         "C5.2"
       ],
-      "net": "H_GND",
+      "net": "GND",
       "confidence": "User GND report; no per-site ohms supplied",
       "note": "Separate strip/antenna region or ambiguous copper boundary; do not assume GND.",
       "id": "V126",
@@ -4162,7 +4177,7 @@
       ],
       "review_status": "ASSIGNED",
       "modeled_nets": [
-        "H_GND"
+        "GND"
       ],
       "component_crosscheck": "User identifies C5 negative terminal and earlier GND; native capacitor pad2 already grounded."
     },
@@ -4181,7 +4196,7 @@
         "LED1.BL",
         "LED1.BR"
       ],
-      "net": "H_GND",
+      "net": "GND",
       "confidence": "User GND/component report; common pair selected from photograph and existing model",
       "note": "Separate strip/antenna region or ambiguous copper boundary; do not assume GND.",
       "id": "V127",
@@ -4195,7 +4210,7 @@
       ],
       "review_status": "ASSIGNED",
       "modeled_nets": [
-        "H_GND"
+        "GND"
       ],
       "component_crosscheck": "User GND/LED1 report. IMG_2432 common pair opposite resistor-fed pads selected as existing BL/BR (stock3/4); physical/internal LED mapping remains provisional."
     }
@@ -4214,82 +4229,676 @@
   },
   "new_model_connections": [
     {
-      "endpoint": "U4.13",
-      "old": null,
-      "new": "RF_MONITOR_PAD",
-      "basis": "User: I found it v049 is a TP03. Earlier V049-to-PIC13/RC2 was user-confirmed; TP03 interpreted as photographed TP3."
+      "endpoint": "Q1.S",
+      "old": "H_BAT_DETECT",
+      "new": "BATTERY+",
+      "basis": "v0.9.9: User corrects raw battery+ versus post-Q1 rail. BATP -> Q1.S (single physical pad/native3, candidate drain); Q1.L/native2 (candidate source) -> U5.4/V011-V014. These are distinct copper nets, connected through Q1. IMG_2438 also supports TP14 on battery+; V015/R43.2-TP14 user confirmation retained. Q1.R/native1 is candidate gate at R44.2. Photo S means SINGLE, not MOSFET source."
     },
     {
-      "endpoint": "U4.21",
-      "old": null,
-      "new": "PIC_RB0_VREF",
-      "basis": "User confirms V026 reaches VREF test point; prior V026-RB0/PIC21 mapping confirmed."
-    },
-    {
-      "endpoint": "VREF.1",
-      "old": "PIC_RC1_VREF",
-      "new": "PIC_RB0_VREF",
-      "basis": "New user V026-VREF route supersedes unverified photo-only RC1 assignment."
-    },
-    {
-      "endpoint": "U4.12",
-      "old": "PIC_RC1_VREF",
-      "new": "H_RX_ENABLE_CTL",
-      "basis": "User explicitly excludes V053 from VREF and confirms V053-V070. Prior V053-PIC12/RC1 and V070-R18.1 associations retained; no numerical resistance supplied."
-    },
-    {
-      "endpoint": "U6A.R1",
-      "old": null,
-      "new": "H_PIR_VDD",
-      "basis": "v0.9.8: User confirms V067-J3 pin1 (red wire), on modeled H_PIR_VDD. Prior V067-U6A.R1 local pad association retained. Empty U6A option remains DNP; this does not identify an IC or confirm every other H_PIR_VDD branch."
+      "endpoint": "TP14.1",
+      "old": "H_BAT_DETECT",
+      "new": "BATTERY+",
+      "basis": "v0.9.9: User corrects raw battery+ versus post-Q1 rail. BATP -> Q1.S (single physical pad/native3, candidate drain); Q1.L/native2 (candidate source) -> U5.4/V011-V014. These are distinct copper nets, connected through Q1. IMG_2438 also supports TP14 on battery+; V015/R43.2-TP14 user confirmation retained. Q1.R/native1 is candidate gate at R44.2. Photo S means SINGLE, not MOSFET source."
     },
     {
       "endpoint": "R43.2",
-      "old": null,
-      "new": "H_BAT_DETECT",
-      "basis": "v0.9.8: User confirms V015-TP14. Earlier V015-R43.2 lower-pad association retained. R43.2 joins TP14 on H_BAT_DETECT, whose existing Q1.S branch and functional name remain photo/circuit hypotheses. Q1.L-R43.2 remains explicitly rejected. No numeric resistance supplied."
+      "old": "H_BAT_DETECT",
+      "new": "BATTERY+",
+      "basis": "v0.9.9: User corrects raw battery+ versus post-Q1 rail. BATP -> Q1.S (single physical pad/native3, candidate drain); Q1.L/native2 (candidate source) -> U5.4/V011-V014. These are distinct copper nets, connected through Q1. IMG_2438 also supports TP14 on battery+; V015/R43.2-TP14 user confirmation retained. Q1.R/native1 is candidate gate at R44.2. Photo S means SINGLE, not MOSFET source."
     },
     {
-      "endpoint": "R42.1",
-      "old": "V017_CONTROL",
-      "new": "PIC_TP4_C41",
-      "basis": "v0.9.8: User confirms V017-TP4. Prior V017-R42.1/R44.1 local junction now joins TP4 and PIC25/RB4. R42.1 explicitly user-named; R44 pad1 and C41 branch retain earlier photo selection. No numeric resistance supplied; circuit operating role remains inferred."
+      "endpoint": "BATP.1",
+      "old": "H_VBAT",
+      "new": "BATTERY+",
+      "basis": "v0.9.9: User corrects raw battery+ versus post-Q1 rail. BATP -> Q1.S (single physical pad/native3, candidate drain); Q1.L/native2 (candidate source) -> U5.4/V011-V014. These are distinct copper nets, connected through Q1. IMG_2438 also supports TP14 on battery+; V015/R43.2-TP14 user confirmation retained. Q1.R/native1 is candidate gate at R44.2. Photo S means SINGLE, not MOSFET source."
     },
     {
-      "endpoint": "R44.1",
-      "old": "V017_CONTROL",
-      "new": "PIC_TP4_C41",
-      "basis": "v0.9.8: User confirms V017-TP4. Prior V017-R42.1/R44.1 local junction now joins TP4 and PIC25/RB4. R42.1 explicitly user-named; R44 pad1 and C41 branch retain earlier photo selection. No numeric resistance supplied; circuit operating role remains inferred."
+      "endpoint": "C27.1",
+      "old": "H_VBAT",
+      "new": "VSYS",
+      "basis": "v0.9.9: User corrects raw battery+ versus post-Q1 rail. BATP -> Q1.S (single physical pad/native3, candidate drain); Q1.L/native2 (candidate source) -> U5.4/V011-V014. These are distinct copper nets, connected through Q1. IMG_2438 also supports TP14 on battery+; V015/R43.2-TP14 user confirmation retained. Q1.R/native1 is candidate gate at R44.2. Photo S means SINGLE, not MOSFET source."
     },
     {
-      "endpoint": "R21.2",
-      "old": "H_RX_BIAS",
-      "new": "PIC_RB0_VREF",
-      "basis": "v0.9.8: User confirms V071-VREF. Earlier V071-R21.2 and V026-VREF-PIC21/RB0 associations retained. R21.2 joins PIC_RB0_VREF. Existing R22.2/R23.2/R48.2 receiver-bias branches remain prior photo/circuit hypotheses, not new measured connections. VREF remains separate from H_VDD and RC1/V053. No voltage or numeric resistance supplied."
+      "endpoint": "C33.1",
+      "old": "H_VBAT",
+      "new": "VSYS",
+      "basis": "v0.9.9: User corrects raw battery+ versus post-Q1 rail. BATP -> Q1.S (single physical pad/native3, candidate drain); Q1.L/native2 (candidate source) -> U5.4/V011-V014. These are distinct copper nets, connected through Q1. IMG_2438 also supports TP14 on battery+; V015/R43.2-TP14 user confirmation retained. Q1.R/native1 is candidate gate at R44.2. Photo S means SINGLE, not MOSFET source."
     },
     {
-      "endpoint": "R22.2",
-      "old": "H_RX_BIAS",
-      "new": "PIC_RB0_VREF",
-      "basis": "v0.9.8: User confirms V071-VREF. Earlier V071-R21.2 and V026-VREF-PIC21/RB0 associations retained. R21.2 joins PIC_RB0_VREF. Existing R22.2/R23.2/R48.2 receiver-bias branches remain prior photo/circuit hypotheses, not new measured connections. VREF remains separate from H_VDD and RC1/V053. No voltage or numeric resistance supplied."
+      "endpoint": "L1.1",
+      "old": "H_VBAT",
+      "new": "VSYS",
+      "basis": "v0.9.9: User corrects raw battery+ versus post-Q1 rail. BATP -> Q1.S (single physical pad/native3, candidate drain); Q1.L/native2 (candidate source) -> U5.4/V011-V014. These are distinct copper nets, connected through Q1. IMG_2438 also supports TP14 on battery+; V015/R43.2-TP14 user confirmation retained. Q1.R/native1 is candidate gate at R44.2. Photo S means SINGLE, not MOSFET source."
     },
     {
-      "endpoint": "R23.2",
-      "old": "H_RX_BIAS",
-      "new": "PIC_RB0_VREF",
-      "basis": "v0.9.8: User confirms V071-VREF. Earlier V071-R21.2 and V026-VREF-PIC21/RB0 associations retained. R21.2 joins PIC_RB0_VREF. Existing R22.2/R23.2/R48.2 receiver-bias branches remain prior photo/circuit hypotheses, not new measured connections. VREF remains separate from H_VDD and RC1/V053. No voltage or numeric resistance supplied."
+      "endpoint": "L2.1",
+      "old": "H_VBAT",
+      "new": "VSYS",
+      "basis": "v0.9.9: User corrects raw battery+ versus post-Q1 rail. BATP -> Q1.S (single physical pad/native3, candidate drain); Q1.L/native2 (candidate source) -> U5.4/V011-V014. These are distinct copper nets, connected through Q1. IMG_2438 also supports TP14 on battery+; V015/R43.2-TP14 user confirmation retained. Q1.R/native1 is candidate gate at R44.2. Photo S means SINGLE, not MOSFET source."
     },
     {
-      "endpoint": "R48.2",
-      "old": "H_RX_BIAS",
-      "new": "PIC_RB0_VREF",
-      "basis": "v0.9.8: User confirms V071-VREF. Earlier V071-R21.2 and V026-VREF-PIC21/RB0 associations retained. R21.2 joins PIC_RB0_VREF. Existing R22.2/R23.2/R48.2 receiver-bias branches remain prior photo/circuit hypotheses, not new measured connections. VREF remains separate from H_VDD and RC1/V053. No voltage or numeric resistance supplied."
+      "endpoint": "R3.1",
+      "old": "H_VBAT",
+      "new": "VSYS",
+      "basis": "v0.9.9: User corrects raw battery+ versus post-Q1 rail. BATP -> Q1.S (single physical pad/native3, candidate drain); Q1.L/native2 (candidate source) -> U5.4/V011-V014. These are distinct copper nets, connected through Q1. IMG_2438 also supports TP14 on battery+; V015/R43.2-TP14 user confirmation retained. Q1.R/native1 is candidate gate at R44.2. Photo S means SINGLE, not MOSFET source."
+    },
+    {
+      "endpoint": "U5.4",
+      "old": "H_VBAT",
+      "new": "VSYS",
+      "basis": "v0.9.9: User corrects raw battery+ versus post-Q1 rail. BATP -> Q1.S (single physical pad/native3, candidate drain); Q1.L/native2 (candidate source) -> U5.4/V011-V014. These are distinct copper nets, connected through Q1. IMG_2438 also supports TP14 on battery+; V015/R43.2-TP14 user confirmation retained. Q1.R/native1 is candidate gate at R44.2. Photo S means SINGLE, not MOSFET source."
     },
     {
       "endpoint": "Q1.L",
-      "old": null,
-      "new": "H_VBAT",
-      "basis": "v0.9.8: User explicitly confirms V011/V012/V013/V014 share the MX512H pin4 VDD motor supply. Earlier Q1.L association retained, now H_VBAT, not regulated TP103/H_VDD. Q1.L-R43.2 remains rejected. Q1 device identity, polarity and function remain candidate assumptions; this connection does not validate them."
+      "old": "H_VBAT",
+      "new": "VSYS",
+      "basis": "v0.9.9: User corrects raw battery+ versus post-Q1 rail. BATP -> Q1.S (single physical pad/native3, candidate drain); Q1.L/native2 (candidate source) -> U5.4/V011-V014. These are distinct copper nets, connected through Q1. IMG_2438 also supports TP14 on battery+; V015/R43.2-TP14 user confirmation retained. Q1.R/native1 is candidate gate at R44.2. Photo S means SINGLE, not MOSFET source."
+    },
+    {
+      "endpoint": "Q1.R",
+      "old": "Q1_BASE",
+      "new": "Q1_GATE",
+      "basis": "v0.9.9: User corrects raw battery+ versus post-Q1 rail. BATP -> Q1.S (single physical pad/native3, candidate drain); Q1.L/native2 (candidate source) -> U5.4/V011-V014. These are distinct copper nets, connected through Q1. IMG_2438 also supports TP14 on battery+; V015/R43.2-TP14 user confirmation retained. Q1.R/native1 is candidate gate at R44.2. Photo S means SINGLE, not MOSFET source."
+    },
+    {
+      "endpoint": "R44.2",
+      "old": "Q1_BASE",
+      "new": "Q1_GATE",
+      "basis": "v0.9.9: User corrects raw battery+ versus post-Q1 rail. BATP -> Q1.S (single physical pad/native3, candidate drain); Q1.L/native2 (candidate source) -> U5.4/V011-V014. These are distinct copper nets, connected through Q1. IMG_2438 also supports TP14 on battery+; V015/R43.2-TP14 user confirmation retained. Q1.R/native1 is candidate gate at R44.2. Photo S means SINGLE, not MOSFET source."
+    },
+    {
+      "endpoint": "C39.1",
+      "old": "PIC_RA2_FILTER",
+      "new": "VREF",
+      "basis": "v0.9.9: User checked V035-VREF TP. Prior photo association V035-PIC4/RA2-C39.1 retained; joins the already confirmed RB0/V026/R21.2/V071 VREF node. No voltage or numerical resistance supplied. Other modeled bias branches retain earlier inferred status."
+    },
+    {
+      "endpoint": "U4.4",
+      "old": "PIC_RA2_FILTER",
+      "new": "VREF",
+      "basis": "v0.9.9: User checked V035-VREF TP. Prior photo association V035-PIC4/RA2-C39.1 retained; joins the already confirmed RB0/V026/R21.2/V071 VREF node. No voltage or numerical resistance supplied. Other modeled bias branches retain earlier inferred status."
+    },
+    {
+      "endpoint": "BATN.1",
+      "old": "H_GND",
+      "new": "GND",
+      "basis": "User requests actual board labels BATTERY (+/-), VDD, VREF and GND. Name change only; endpoint membership unchanged."
+    },
+    {
+      "endpoint": "C1.2",
+      "old": "H_GND",
+      "new": "GND",
+      "basis": "User requests actual board labels BATTERY (+/-), VDD, VREF and GND. Name change only; endpoint membership unchanged."
+    },
+    {
+      "endpoint": "C11.1",
+      "old": "H_GND",
+      "new": "GND",
+      "basis": "User requests actual board labels BATTERY (+/-), VDD, VREF and GND. Name change only; endpoint membership unchanged."
+    },
+    {
+      "endpoint": "C12.1",
+      "old": "H_GND",
+      "new": "GND",
+      "basis": "User requests actual board labels BATTERY (+/-), VDD, VREF and GND. Name change only; endpoint membership unchanged."
+    },
+    {
+      "endpoint": "C14.1",
+      "old": "H_GND",
+      "new": "GND",
+      "basis": "User requests actual board labels BATTERY (+/-), VDD, VREF and GND. Name change only; endpoint membership unchanged."
+    },
+    {
+      "endpoint": "C15.1",
+      "old": "H_GND",
+      "new": "GND",
+      "basis": "User requests actual board labels BATTERY (+/-), VDD, VREF and GND. Name change only; endpoint membership unchanged."
+    },
+    {
+      "endpoint": "C17.2",
+      "old": "H_GND",
+      "new": "GND",
+      "basis": "User requests actual board labels BATTERY (+/-), VDD, VREF and GND. Name change only; endpoint membership unchanged."
+    },
+    {
+      "endpoint": "C19.2",
+      "old": "H_GND",
+      "new": "GND",
+      "basis": "User requests actual board labels BATTERY (+/-), VDD, VREF and GND. Name change only; endpoint membership unchanged."
+    },
+    {
+      "endpoint": "C1A.2",
+      "old": "H_GND",
+      "new": "GND",
+      "basis": "User requests actual board labels BATTERY (+/-), VDD, VREF and GND. Name change only; endpoint membership unchanged."
+    },
+    {
+      "endpoint": "C2.2",
+      "old": "H_GND",
+      "new": "GND",
+      "basis": "User requests actual board labels BATTERY (+/-), VDD, VREF and GND. Name change only; endpoint membership unchanged."
+    },
+    {
+      "endpoint": "C20.1",
+      "old": "H_GND",
+      "new": "GND",
+      "basis": "User requests actual board labels BATTERY (+/-), VDD, VREF and GND. Name change only; endpoint membership unchanged."
+    },
+    {
+      "endpoint": "C24.2",
+      "old": "H_GND",
+      "new": "GND",
+      "basis": "User requests actual board labels BATTERY (+/-), VDD, VREF and GND. Name change only; endpoint membership unchanged."
+    },
+    {
+      "endpoint": "C25.2",
+      "old": "H_GND",
+      "new": "GND",
+      "basis": "User requests actual board labels BATTERY (+/-), VDD, VREF and GND. Name change only; endpoint membership unchanged."
+    },
+    {
+      "endpoint": "C26.2",
+      "old": "H_GND",
+      "new": "GND",
+      "basis": "User requests actual board labels BATTERY (+/-), VDD, VREF and GND. Name change only; endpoint membership unchanged."
+    },
+    {
+      "endpoint": "C27.2",
+      "old": "H_GND",
+      "new": "GND",
+      "basis": "User requests actual board labels BATTERY (+/-), VDD, VREF and GND. Name change only; endpoint membership unchanged."
+    },
+    {
+      "endpoint": "C28.2",
+      "old": "H_GND",
+      "new": "GND",
+      "basis": "User requests actual board labels BATTERY (+/-), VDD, VREF and GND. Name change only; endpoint membership unchanged."
+    },
+    {
+      "endpoint": "C29.1",
+      "old": "H_GND",
+      "new": "GND",
+      "basis": "User requests actual board labels BATTERY (+/-), VDD, VREF and GND. Name change only; endpoint membership unchanged."
+    },
+    {
+      "endpoint": "C2A.2",
+      "old": "H_GND",
+      "new": "GND",
+      "basis": "User requests actual board labels BATTERY (+/-), VDD, VREF and GND. Name change only; endpoint membership unchanged."
+    },
+    {
+      "endpoint": "C30.2",
+      "old": "H_GND",
+      "new": "GND",
+      "basis": "User requests actual board labels BATTERY (+/-), VDD, VREF and GND. Name change only; endpoint membership unchanged."
+    },
+    {
+      "endpoint": "C31.1",
+      "old": "H_GND",
+      "new": "GND",
+      "basis": "User requests actual board labels BATTERY (+/-), VDD, VREF and GND. Name change only; endpoint membership unchanged."
+    },
+    {
+      "endpoint": "C32.2",
+      "old": "H_GND",
+      "new": "GND",
+      "basis": "User requests actual board labels BATTERY (+/-), VDD, VREF and GND. Name change only; endpoint membership unchanged."
+    },
+    {
+      "endpoint": "C33.2",
+      "old": "H_GND",
+      "new": "GND",
+      "basis": "User requests actual board labels BATTERY (+/-), VDD, VREF and GND. Name change only; endpoint membership unchanged."
+    },
+    {
+      "endpoint": "C34.2",
+      "old": "H_GND",
+      "new": "GND",
+      "basis": "User requests actual board labels BATTERY (+/-), VDD, VREF and GND. Name change only; endpoint membership unchanged."
+    },
+    {
+      "endpoint": "C35.2",
+      "old": "H_GND",
+      "new": "GND",
+      "basis": "User requests actual board labels BATTERY (+/-), VDD, VREF and GND. Name change only; endpoint membership unchanged."
+    },
+    {
+      "endpoint": "C36.2",
+      "old": "H_GND",
+      "new": "GND",
+      "basis": "User requests actual board labels BATTERY (+/-), VDD, VREF and GND. Name change only; endpoint membership unchanged."
+    },
+    {
+      "endpoint": "C37.2",
+      "old": "H_GND",
+      "new": "GND",
+      "basis": "User requests actual board labels BATTERY (+/-), VDD, VREF and GND. Name change only; endpoint membership unchanged."
+    },
+    {
+      "endpoint": "C38.1",
+      "old": "H_GND",
+      "new": "GND",
+      "basis": "User requests actual board labels BATTERY (+/-), VDD, VREF and GND. Name change only; endpoint membership unchanged."
+    },
+    {
+      "endpoint": "C39.2",
+      "old": "H_GND",
+      "new": "GND",
+      "basis": "User requests actual board labels BATTERY (+/-), VDD, VREF and GND. Name change only; endpoint membership unchanged."
+    },
+    {
+      "endpoint": "C4.1",
+      "old": "H_GND",
+      "new": "GND",
+      "basis": "User requests actual board labels BATTERY (+/-), VDD, VREF and GND. Name change only; endpoint membership unchanged."
+    },
+    {
+      "endpoint": "C40.2",
+      "old": "H_GND",
+      "new": "GND",
+      "basis": "User requests actual board labels BATTERY (+/-), VDD, VREF and GND. Name change only; endpoint membership unchanged."
+    },
+    {
+      "endpoint": "C41.2",
+      "old": "H_GND",
+      "new": "GND",
+      "basis": "User requests actual board labels BATTERY (+/-), VDD, VREF and GND. Name change only; endpoint membership unchanged."
+    },
+    {
+      "endpoint": "C44.1",
+      "old": "H_GND",
+      "new": "GND",
+      "basis": "User requests actual board labels BATTERY (+/-), VDD, VREF and GND. Name change only; endpoint membership unchanged."
+    },
+    {
+      "endpoint": "C45.1",
+      "old": "H_GND",
+      "new": "GND",
+      "basis": "User requests actual board labels BATTERY (+/-), VDD, VREF and GND. Name change only; endpoint membership unchanged."
+    },
+    {
+      "endpoint": "C47.1",
+      "old": "H_GND",
+      "new": "GND",
+      "basis": "User requests actual board labels BATTERY (+/-), VDD, VREF and GND. Name change only; endpoint membership unchanged."
+    },
+    {
+      "endpoint": "C48.1",
+      "old": "H_GND",
+      "new": "GND",
+      "basis": "User requests actual board labels BATTERY (+/-), VDD, VREF and GND. Name change only; endpoint membership unchanged."
+    },
+    {
+      "endpoint": "C5.2",
+      "old": "H_GND",
+      "new": "GND",
+      "basis": "User requests actual board labels BATTERY (+/-), VDD, VREF and GND. Name change only; endpoint membership unchanged."
+    },
+    {
+      "endpoint": "C6.2",
+      "old": "H_GND",
+      "new": "GND",
+      "basis": "User requests actual board labels BATTERY (+/-), VDD, VREF and GND. Name change only; endpoint membership unchanged."
+    },
+    {
+      "endpoint": "C7.2",
+      "old": "H_GND",
+      "new": "GND",
+      "basis": "User requests actual board labels BATTERY (+/-), VDD, VREF and GND. Name change only; endpoint membership unchanged."
+    },
+    {
+      "endpoint": "C8.2",
+      "old": "H_GND",
+      "new": "GND",
+      "basis": "User requests actual board labels BATTERY (+/-), VDD, VREF and GND. Name change only; endpoint membership unchanged."
+    },
+    {
+      "endpoint": "C9.2",
+      "old": "H_GND",
+      "new": "GND",
+      "basis": "User requests actual board labels BATTERY (+/-), VDD, VREF and GND. Name change only; endpoint membership unchanged."
+    },
+    {
+      "endpoint": "D3.L",
+      "old": "H_GND",
+      "new": "GND",
+      "basis": "User requests actual board labels BATTERY (+/-), VDD, VREF and GND. Name change only; endpoint membership unchanged."
+    },
+    {
+      "endpoint": "D4.2",
+      "old": "H_GND",
+      "new": "GND",
+      "basis": "User requests actual board labels BATTERY (+/-), VDD, VREF and GND. Name change only; endpoint membership unchanged."
+    },
+    {
+      "endpoint": "D5.2",
+      "old": "H_GND",
+      "new": "GND",
+      "basis": "User requests actual board labels BATTERY (+/-), VDD, VREF and GND. Name change only; endpoint membership unchanged."
+    },
+    {
+      "endpoint": "GND.1",
+      "old": "H_GND",
+      "new": "GND",
+      "basis": "User requests actual board labels BATTERY (+/-), VDD, VREF and GND. Name change only; endpoint membership unchanged."
+    },
+    {
+      "endpoint": "GND_RF.1",
+      "old": "H_GND",
+      "new": "GND",
+      "basis": "User requests actual board labels BATTERY (+/-), VDD, VREF and GND. Name change only; endpoint membership unchanged."
+    },
+    {
+      "endpoint": "J1.GND",
+      "old": "H_GND",
+      "new": "GND",
+      "basis": "User requests actual board labels BATTERY (+/-), VDD, VREF and GND. Name change only; endpoint membership unchanged."
+    },
+    {
+      "endpoint": "J3.2",
+      "old": "H_GND",
+      "new": "GND",
+      "basis": "User requests actual board labels BATTERY (+/-), VDD, VREF and GND. Name change only; endpoint membership unchanged."
+    },
+    {
+      "endpoint": "LED1.BL",
+      "old": "H_GND",
+      "new": "GND",
+      "basis": "User requests actual board labels BATTERY (+/-), VDD, VREF and GND. Name change only; endpoint membership unchanged."
+    },
+    {
+      "endpoint": "LED1.BR",
+      "old": "H_GND",
+      "new": "GND",
+      "basis": "User requests actual board labels BATTERY (+/-), VDD, VREF and GND. Name change only; endpoint membership unchanged."
+    },
+    {
+      "endpoint": "Q11.L",
+      "old": "H_GND",
+      "new": "GND",
+      "basis": "User requests actual board labels BATTERY (+/-), VDD, VREF and GND. Name change only; endpoint membership unchanged."
+    },
+    {
+      "endpoint": "Q2.L",
+      "old": "H_GND",
+      "new": "GND",
+      "basis": "User requests actual board labels BATTERY (+/-), VDD, VREF and GND. Name change only; endpoint membership unchanged."
+    },
+    {
+      "endpoint": "Q3.L",
+      "old": "H_GND",
+      "new": "GND",
+      "basis": "User requests actual board labels BATTERY (+/-), VDD, VREF and GND. Name change only; endpoint membership unchanged."
+    },
+    {
+      "endpoint": "Q4.L",
+      "old": "H_GND",
+      "new": "GND",
+      "basis": "User requests actual board labels BATTERY (+/-), VDD, VREF and GND. Name change only; endpoint membership unchanged."
+    },
+    {
+      "endpoint": "Q5.L",
+      "old": "H_GND",
+      "new": "GND",
+      "basis": "User requests actual board labels BATTERY (+/-), VDD, VREF and GND. Name change only; endpoint membership unchanged."
+    },
+    {
+      "endpoint": "Q6.L",
+      "old": "H_GND",
+      "new": "GND",
+      "basis": "User requests actual board labels BATTERY (+/-), VDD, VREF and GND. Name change only; endpoint membership unchanged."
+    },
+    {
+      "endpoint": "Q8.B2",
+      "old": "H_GND",
+      "new": "GND",
+      "basis": "User requests actual board labels BATTERY (+/-), VDD, VREF and GND. Name change only; endpoint membership unchanged."
+    },
+    {
+      "endpoint": "Q9.R",
+      "old": "H_GND",
+      "new": "GND",
+      "basis": "User requests actual board labels BATTERY (+/-), VDD, VREF and GND. Name change only; endpoint membership unchanged."
+    },
+    {
+      "endpoint": "R10.2",
+      "old": "H_GND",
+      "new": "GND",
+      "basis": "User requests actual board labels BATTERY (+/-), VDD, VREF and GND. Name change only; endpoint membership unchanged."
+    },
+    {
+      "endpoint": "R2.1",
+      "old": "H_GND",
+      "new": "GND",
+      "basis": "User requests actual board labels BATTERY (+/-), VDD, VREF and GND. Name change only; endpoint membership unchanged."
+    },
+    {
+      "endpoint": "R22.1",
+      "old": "H_GND",
+      "new": "GND",
+      "basis": "User requests actual board labels BATTERY (+/-), VDD, VREF and GND. Name change only; endpoint membership unchanged."
+    },
+    {
+      "endpoint": "R25.2",
+      "old": "H_GND",
+      "new": "GND",
+      "basis": "User requests actual board labels BATTERY (+/-), VDD, VREF and GND. Name change only; endpoint membership unchanged."
+    },
+    {
+      "endpoint": "R29.2",
+      "old": "H_GND",
+      "new": "GND",
+      "basis": "User requests actual board labels BATTERY (+/-), VDD, VREF and GND. Name change only; endpoint membership unchanged."
+    },
+    {
+      "endpoint": "R32.1",
+      "old": "H_GND",
+      "new": "GND",
+      "basis": "User requests actual board labels BATTERY (+/-), VDD, VREF and GND. Name change only; endpoint membership unchanged."
+    },
+    {
+      "endpoint": "R43.1",
+      "old": "H_GND",
+      "new": "GND",
+      "basis": "User requests actual board labels BATTERY (+/-), VDD, VREF and GND. Name change only; endpoint membership unchanged."
+    },
+    {
+      "endpoint": "S1.BL",
+      "old": "H_GND",
+      "new": "GND",
+      "basis": "User requests actual board labels BATTERY (+/-), VDD, VREF and GND. Name change only; endpoint membership unchanged."
+    },
+    {
+      "endpoint": "S1.TL",
+      "old": "H_GND",
+      "new": "GND",
+      "basis": "User requests actual board labels BATTERY (+/-), VDD, VREF and GND. Name change only; endpoint membership unchanged."
+    },
+    {
+      "endpoint": "U1.L2",
+      "old": "H_GND",
+      "new": "GND",
+      "basis": "User requests actual board labels BATTERY (+/-), VDD, VREF and GND. Name change only; endpoint membership unchanged."
+    },
+    {
+      "endpoint": "U2.T2",
+      "old": "H_GND",
+      "new": "GND",
+      "basis": "User requests actual board labels BATTERY (+/-), VDD, VREF and GND. Name change only; endpoint membership unchanged."
+    },
+    {
+      "endpoint": "U3.4",
+      "old": "H_GND",
+      "new": "GND",
+      "basis": "User requests actual board labels BATTERY (+/-), VDD, VREF and GND. Name change only; endpoint membership unchanged."
+    },
+    {
+      "endpoint": "U4.19",
+      "old": "H_GND",
+      "new": "GND",
+      "basis": "User requests actual board labels BATTERY (+/-), VDD, VREF and GND. Name change only; endpoint membership unchanged."
+    },
+    {
+      "endpoint": "U4.8",
+      "old": "H_GND",
+      "new": "GND",
+      "basis": "User requests actual board labels BATTERY (+/-), VDD, VREF and GND. Name change only; endpoint membership unchanged."
+    },
+    {
+      "endpoint": "U5.6",
+      "old": "H_GND",
+      "new": "GND",
+      "basis": "User requests actual board labels BATTERY (+/-), VDD, VREF and GND. Name change only; endpoint membership unchanged."
+    },
+    {
+      "endpoint": "U5.7",
+      "old": "H_GND",
+      "new": "GND",
+      "basis": "User requests actual board labels BATTERY (+/-), VDD, VREF and GND. Name change only; endpoint membership unchanged."
+    },
+    {
+      "endpoint": "U6.R3",
+      "old": "H_GND",
+      "new": "GND",
+      "basis": "User requests actual board labels BATTERY (+/-), VDD, VREF and GND. Name change only; endpoint membership unchanged."
+    },
+    {
+      "endpoint": "C2.1",
+      "old": "H_VDD",
+      "new": "VDD",
+      "basis": "User requests actual board labels BATTERY (+/-), VDD, VREF and GND. Name change only; endpoint membership unchanged."
+    },
+    {
+      "endpoint": "C2A.1",
+      "old": "H_VDD",
+      "new": "VDD",
+      "basis": "User requests actual board labels BATTERY (+/-), VDD, VREF and GND. Name change only; endpoint membership unchanged."
+    },
+    {
+      "endpoint": "C3.1",
+      "old": "H_VDD",
+      "new": "VDD",
+      "basis": "User requests actual board labels BATTERY (+/-), VDD, VREF and GND. Name change only; endpoint membership unchanged."
+    },
+    {
+      "endpoint": "C32.1",
+      "old": "H_VDD",
+      "new": "VDD",
+      "basis": "User requests actual board labels BATTERY (+/-), VDD, VREF and GND. Name change only; endpoint membership unchanged."
+    },
+    {
+      "endpoint": "C34.1",
+      "old": "H_VDD",
+      "new": "VDD",
+      "basis": "User requests actual board labels BATTERY (+/-), VDD, VREF and GND. Name change only; endpoint membership unchanged."
+    },
+    {
+      "endpoint": "C7.1",
+      "old": "H_VDD",
+      "new": "VDD",
+      "basis": "User requests actual board labels BATTERY (+/-), VDD, VREF and GND. Name change only; endpoint membership unchanged."
+    },
+    {
+      "endpoint": "J1.VDD",
+      "old": "H_VDD",
+      "new": "VDD",
+      "basis": "User requests actual board labels BATTERY (+/-), VDD, VREF and GND. Name change only; endpoint membership unchanged."
+    },
+    {
+      "endpoint": "Q7.R",
+      "old": "H_VDD",
+      "new": "VDD",
+      "basis": "User requests actual board labels BATTERY (+/-), VDD, VREF and GND. Name change only; endpoint membership unchanged."
+    },
+    {
+      "endpoint": "R1.1",
+      "old": "H_VDD",
+      "new": "VDD",
+      "basis": "User requests actual board labels BATTERY (+/-), VDD, VREF and GND. Name change only; endpoint membership unchanged."
+    },
+    {
+      "endpoint": "R19.2",
+      "old": "H_VDD",
+      "new": "VDD",
+      "basis": "User requests actual board labels BATTERY (+/-), VDD, VREF and GND. Name change only; endpoint membership unchanged."
+    },
+    {
+      "endpoint": "R37.1",
+      "old": "H_VDD",
+      "new": "VDD",
+      "basis": "User requests actual board labels BATTERY (+/-), VDD, VREF and GND. Name change only; endpoint membership unchanged."
+    },
+    {
+      "endpoint": "R39.2",
+      "old": "H_VDD",
+      "new": "VDD",
+      "basis": "User requests actual board labels BATTERY (+/-), VDD, VREF and GND. Name change only; endpoint membership unchanged."
+    },
+    {
+      "endpoint": "U1.R1",
+      "old": "H_VDD",
+      "new": "VDD",
+      "basis": "User requests actual board labels BATTERY (+/-), VDD, VREF and GND. Name change only; endpoint membership unchanged."
+    },
+    {
+      "endpoint": "U2.B2",
+      "old": "H_VDD",
+      "new": "VDD",
+      "basis": "User requests actual board labels BATTERY (+/-), VDD, VREF and GND. Name change only; endpoint membership unchanged."
+    },
+    {
+      "endpoint": "U4.20",
+      "old": "H_VDD",
+      "new": "VDD",
+      "basis": "User requests actual board labels BATTERY (+/-), VDD, VREF and GND. Name change only; endpoint membership unchanged."
+    },
+    {
+      "endpoint": "U5.1",
+      "old": "H_VDD",
+      "new": "VDD",
+      "basis": "User requests actual board labels BATTERY (+/-), VDD, VREF and GND. Name change only; endpoint membership unchanged."
+    },
+    {
+      "endpoint": "VDD.1",
+      "old": "H_VDD",
+      "new": "VDD",
+      "basis": "User requests actual board labels BATTERY (+/-), VDD, VREF and GND. Name change only; endpoint membership unchanged."
+    },
+    {
+      "endpoint": "U4.21",
+      "old": "PIC_RB0_VREF",
+      "new": "VREF",
+      "basis": "User requests actual board labels BATTERY (+/-), VDD, VREF and GND. Name change only; endpoint membership unchanged."
+    },
+    {
+      "endpoint": "VREF.1",
+      "old": "PIC_RB0_VREF",
+      "new": "VREF",
+      "basis": "User requests actual board labels BATTERY (+/-), VDD, VREF and GND. Name change only; endpoint membership unchanged."
+    },
+    {
+      "endpoint": "R21.2",
+      "old": "PIC_RB0_VREF",
+      "new": "VREF",
+      "basis": "User requests actual board labels BATTERY (+/-), VDD, VREF and GND. Name change only; endpoint membership unchanged."
+    },
+    {
+      "endpoint": "R22.2",
+      "old": "PIC_RB0_VREF",
+      "new": "VREF",
+      "basis": "User requests actual board labels BATTERY (+/-), VDD, VREF and GND. Name change only; endpoint membership unchanged."
+    },
+    {
+      "endpoint": "R23.2",
+      "old": "PIC_RB0_VREF",
+      "new": "VREF",
+      "basis": "User requests actual board labels BATTERY (+/-), VDD, VREF and GND. Name change only; endpoint membership unchanged."
+    },
+    {
+      "endpoint": "R48.2",
+      "old": "PIC_RB0_VREF",
+      "new": "VREF",
+      "basis": "User requests actual board labels BATTERY (+/-), VDD, VREF and GND. Name change only; endpoint membership unchanged."
     }
   ],
   "sources": [
@@ -4304,19 +4913,17 @@
   "interpretation_source": "https://www.altium.com/documentation/altium-designer/pcb/design-rule-types/plane",
   "user_review_source": "evidence/via_user_review.json",
   "user_review_method": "User-reported classifications and associations. Earlier GPIO round explicitly used multimeter and photos; no per-via resistance values supplied in this round.",
-  "supply_naming": "MX512H pin4 VDD is the motor supply, modeled H_VBAT. It is distinct from MX512H pin1 VCC and the regulated board H_VDD; do not merge based on the VDD word alone.",
+  "supply_naming": "PCB labels: BATTERY (+/-), VDD, VREF, GND. Battery (-) is on GND. VSYS is the user-approved added name for Q1 output / H-bridge pin4 / L1 and L2 supply sides. BATTERY+ (before Q1), VSYS (after Q1), and VDD (regulated board test point/TP103) are separate nets. VREF is another measured connectivity node; none of these voltages is measured.",
   "review_summary": {
     "catalogued_ids": 127,
     "active_sites": 120,
-    "user_reported_ids": 121,
+    "user_reported_ids": 123,
     "original_user_reported_ids": 97,
     "omitted_from_user_list": [
       "V027",
       "V028",
       "V030",
-      "V035",
-      "V038",
-      "V042"
+      "V038"
     ],
     "rejected": [
       "V033",
@@ -4329,10 +4936,10 @@
     ],
     "conflicts": [],
     "statuses": {
-      "ASSIGNED": 114,
-      "PHOTO_LOCAL": 6,
+      "ASSIGNED": 116,
+      "PHOTO_LOCAL": 4,
       "REJECTED_NOT_VIA": 7
     }
   },
-  "review_update_id": "pic-rc1-r18-rc2-tp3-rb0-vref-confirmed"
+  "review_update_id": "battery-q1-post-q1-supply-separated"
 }

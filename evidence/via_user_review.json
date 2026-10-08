@@ -506,7 +506,7 @@
     }
   ],
   "conflicts": [],
-  "supply_naming": "MX512H pin4 VDD is the motor supply, modeled H_VBAT. It is distinct from MX512H pin1 VCC and the regulated board H_VDD; do not merge based on the VDD word alone.",
+  "supply_naming": "PCB labels: BATTERY (+/-), VDD, VREF, GND. Battery (-) is on GND. VSYS is the user-approved added name for Q1 output / H-bridge pin4 / L1 and L2 supply sides. BATTERY+ (before Q1), VSYS (after Q1), and VDD (regulated board test point/TP103) are separate nets. VREF is another measured connectivity node; none of these voltages is measured.",
   "corrections_pending": true,
   "followup_corrections": [
     {
@@ -1278,6 +1278,56 @@
           "claim": "v0.9.8: User explicitly confirms V011/V012/V013/V014 share the MX512H pin4 VDD motor supply. Earlier Q1.L association retained, now H_VBAT, not regulated TP103/H_VDD. Q1.L-R43.2 remains rejected. Q1 device identity, polarity and function remain candidate assumptions; this connection does not validate them."
         }
       ]
+    },
+    {
+      "revision": "v0.9.9",
+      "source": "User battery/Q1 correction and IMG_2438 reinspection",
+      "answer": "Battery plus goes to Q1; Q1.L shares the rail of H-bridge pin4; VBAT is not directly VDD.",
+      "assignments": [
+        {
+          "id": "V011",
+          "kind": "motor_supply",
+          "claim": "v0.9.9: User corrects raw battery+ versus post-Q1 rail. BATP -> Q1.S (single physical pad/native3, candidate drain); Q1.L/native2 (candidate source) -> U5.4/V011-V014. These are distinct copper nets, connected through Q1. IMG_2438 also supports TP14 on battery+; V015/R43.2-TP14 user confirmation retained. Q1.R/native1 is candidate gate at R44.2. Photo S means SINGLE, not MOSFET source."
+        },
+        {
+          "id": "V012",
+          "kind": "motor_supply",
+          "claim": "v0.9.9: User corrects raw battery+ versus post-Q1 rail. BATP -> Q1.S (single physical pad/native3, candidate drain); Q1.L/native2 (candidate source) -> U5.4/V011-V014. These are distinct copper nets, connected through Q1. IMG_2438 also supports TP14 on battery+; V015/R43.2-TP14 user confirmation retained. Q1.R/native1 is candidate gate at R44.2. Photo S means SINGLE, not MOSFET source."
+        },
+        {
+          "id": "V013",
+          "kind": "motor_supply",
+          "claim": "v0.9.9: User corrects raw battery+ versus post-Q1 rail. BATP -> Q1.S (single physical pad/native3, candidate drain); Q1.L/native2 (candidate source) -> U5.4/V011-V014. These are distinct copper nets, connected through Q1. IMG_2438 also supports TP14 on battery+; V015/R43.2-TP14 user confirmation retained. Q1.R/native1 is candidate gate at R44.2. Photo S means SINGLE, not MOSFET source."
+        },
+        {
+          "id": "V014",
+          "kind": "motor_supply",
+          "claim": "v0.9.9: User corrects raw battery+ versus post-Q1 rail. BATP -> Q1.S (single physical pad/native3, candidate drain); Q1.L/native2 (candidate source) -> U5.4/V011-V014. These are distinct copper nets, connected through Q1. IMG_2438 also supports TP14 on battery+; V015/R43.2-TP14 user confirmation retained. Q1.R/native1 is candidate gate at R44.2. Photo S means SINGLE, not MOSFET source."
+        }
+      ]
+    },
+    {
+      "revision": "v0.9.9",
+      "source": "User additional meter checks",
+      "answer": "V035-VREF TP; V042-VDD TP",
+      "assignments": [
+        {
+          "id": "V035",
+          "kind": "signal",
+          "claim": "v0.9.9: User checked V035-VREF TP. Prior photo association V035-PIC4/RA2-C39.1 retained; joins the already confirmed RB0/V026/R21.2/V071 VREF node. No voltage or numerical resistance supplied. Other modeled bias branches retain earlier inferred status."
+        },
+        {
+          "id": "V042",
+          "kind": "logic_supply",
+          "claim": "User confirms V042-board VDD TP/TP103. Retain PIC20/C32.1 local photo route on H_VDD."
+        }
+      ]
+    },
+    {
+      "revision": "v0.9.9",
+      "source": "User naming authorization and L1/L2 common supply report",
+      "answer": "Give Q1 output a name: VSYS. L1/L2 connect to the same VSYS.",
+      "assignments": []
     }
   ],
   "review_in_progress": true,
@@ -1336,7 +1386,7 @@
       "H_VBAT": "V001 / MX512H motor VDD"
     },
     "status": "RESOLVED_BY_USER",
-    "resolved_net": "H_VBAT",
+    "resolved_net": "VSYS",
     "answer": "Same rail as H-bridge VDD pin4"
   }
 }

@@ -1,6 +1,6 @@
 # KiCad 10 libraries and device alternatives
 
-Revision 0.7 uses the existing KiCad MCP Server and the installed KiCad 10.0.5 at `%LOCALAPPDATA%/Programs/KiCad/10.0`. Both its Python backend (`pcbnew.GetBuildVersion()`) and native CLI reported 10.0.5. The MCP created the blank native schematic and placed all 150 components plus five additional units from standard libraries. The checked-in routing adapter reconnects those stock symbols and adds the block frames and annotations. Native KiCad checks the resulting connectivity. MCP PDF/SVG export was also exercised successfully.
+Revision 0.9.9 uses the existing KiCad MCP Server and the installed KiCad 10.0.5 at `%LOCALAPPDATA%/Programs/KiCad/10.0`. Both its Python backend (`pcbnew.GetBuildVersion()`) and native CLI reported 10.0.5. The MCP created the blank native schematic and placed all 150 components plus five additional units from standard libraries. The checked-in routing adapter reconnects those stock symbols and adds the block frames and annotations. Native KiCad checks the resulting connectivity. MCP PDF/SVG export was also exercised successfully.
 
 The user authorized U1/U5 after vendor files could not be found, and subsequently authorized U6/Q8 datasheet reconstruction. MCP `create_symbol`, `register_symbol_library` and `replace_schematic_component` created and installed U1/U5 from the manufacturer pin tables. The other 20 definitions retain unmodified KiCad stock artwork and numbering. `tools/templates/mcp_standard_placements.kicad_sch` is the MCP placement output; `evidence/library_placements.json` is the replay manifest. `evidence/pin_crosswalk.json` maps all 352 photographed pads to their library pin numbers. Pin mapping can be provisional even when the underlying part symbol is exact.
 
@@ -11,7 +11,7 @@ The user authorized U1/U5 after vendor files could not be found, and subsequentl
 | U4 | `MCU_Microchip_PIC16:PIC16F18855-xSO` | Exact SOIC family symbol; default SOIC-28W footprint. |
 | U2 A/B/C | `74xGxx:74LVC2G14` | Standard multi-unit Schmitt inverter, value `SN74LVC2G14DBV?`, SOT-23-6 footprint. This preserves separate readable gates and supply unit. The exact monolithic `SN74LVC2G14DBV` also exists. |
 | U3 A/B/C | `Amplifier_Operational:Opamp_Dual` | Standard generic dual op-amp with matching 1-8 pin functions; value remains SGM8542XS. No modified or custom op-amp symbol. |
-| Q1 | `Transistor_BJT:MMBT3904` | Candidate identity; physical orientation still inferred. |
+| Q1 | `Transistor_FET:Q_PMOS_GSD` | v0.9.9: FMOS3401A candidate, matching manufacturer R1A marking and SOT-23 G1/S2/D3 pinout. Photo R=gate, L=source, single S=drain. Original NPN hypothesis withdrawn. Exact fitted maker unconfirmed. |
 | Q2, Q7 | `Transistor_BJT:BC847`, `Transistor_BJT:BC857` | Standard family symbols; values preserve the B/C gain-bin candidates. |
 | Q3/Q4/Q5/Q6/Q11 | `Transistor_BJT:Q_PNP_BEC` | Standard generic PNP with B=1, E=2, C=3; value MMBTA55? preserves the uncertain 2H identification. |
 | D1/D3 | `Diode:BAV99` | A7 marking candidates; D3 marking now confirmed by the user. Physical orientation and external clamp routes remain inferred. |

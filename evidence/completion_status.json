@@ -1,6 +1,6 @@
 {
   "date": "2026-10-08",
-  "revision": "v0.9.8",
+  "revision": "v0.9.9",
   "known_identified_ICs_needing_new_symbols": [],
   "completed": [
     "U1 S-1200B45-M5T1 datasheet symbol",
@@ -31,7 +31,8 @@
     "v0.9.6: four tuning-control via pairs confirmed; V053-V071 rejected; only RC2 and RB0 remain open GPIOs",
     "v0.9.7: V064-V070 = 11.2 kohm; R18 supply tie removed and Q7/R19 pull-up reconstructed as supported inference",
     "v0.9.8: RC2/V049 to TP3 and RB0/V026 to VREF confirmed; RC1/V053-V070-R18 confirmed; old VREF join rejected",
-    "v0.9.5: V114 corrected to U2 ground; C5 negative confirmed; LED common grounded; Q1 rail choice later resolved as motor VDD in v0.9.8"
+    "v0.9.5: V114 corrected to U2 ground; C5 negative confirmed; LED common grounded; Q1 rail choice later resolved as motor VDD in v0.9.8",
+    "v0.9.9: raw battery separated from post-Q1 supply; R1A PMOS candidate replaces unsupported NPN."
   ],
   "catalog_entries": 150,
   "physical_pins": 352,
@@ -235,7 +236,7 @@
     },
     {
       "area": "Auxiliary / receiver",
-      "gap": "V077 grounds C19/R29. V075 supply plus V064-V070 = 11.2k supports Q7 emitter/VDD, R19 pull-up and R18 base input; topology inferred. V067 joins J3.1/PIR supply; U6A remains DNP. V063 feed now joins regulated VDD; V017/R42.1/R44.1 now joins TP4/PIC25; Q1.L/V011-V014 motor rail confirmed; Q1 polarity/function unverified; R43.2/V015 joins TP14, separate from Q1.L.",
+      "gap": "V077 grounds C19/R29. V075 supply plus V064-V070 = 11.2k supports Q7 emitter/VDD, R19 pull-up and R18 base input; topology inferred. V067 joins J3.1/PIR supply; U6A remains DNP. V063 feed now joins regulated VDD; V017/R42.1/R44.1 now joins TP4/PIC25; Q1.L/V011-V014 post-Q1 VSYS confirmed; BATTERY+ is separate; R1A supports FMOS3401A PMOS candidate; R43.2/V015 joins TP14, separate from Q1.L.",
       "method": "RC1 now reaches R18 via V053-V070; no further generic GPIO sweep needed. V071/R21.2 reaches VREF/RB0; other receiver-bias branches and Q7 topology remain inferred. V053-V071 is rejected."
     },
     {
@@ -262,15 +263,13 @@
   "via_review": {
     "catalogued_ids": 127,
     "active_sites": 120,
-    "user_reported_ids": 121,
+    "user_reported_ids": 123,
     "original_user_reported_ids": 97,
     "omitted_from_user_list": [
       "V027",
       "V028",
       "V030",
-      "V035",
-      "V038",
-      "V042"
+      "V038"
     ],
     "rejected": [
       "V033",
@@ -283,8 +282,8 @@
     ],
     "conflicts": [],
     "statuses": {
-      "ASSIGNED": 114,
-      "PHOTO_LOCAL": 6,
+      "ASSIGNED": 116,
+      "PHOTO_LOCAL": 4,
       "REJECTED_NOT_VIA": 7
     }
   },

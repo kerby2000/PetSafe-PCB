@@ -1,6 +1,6 @@
 {
   "date": "2026-10-08",
-  "basis_revision": "v0.9.8",
+  "basis_revision": "v0.9.9",
   "status": "LOCAL_GPIO_DESTINATIONS_MAPPED",
   "source_photos": [
     {
@@ -17,6 +17,11 @@
       "path": "photos/user/2026-10-08/pic_closeup.png",
       "bytes": 3872543,
       "sha256": "4548a1a9cad7f29dc376f7faff68be3c6c206437c8e4a0db8f322822a703e376"
+    },
+    {
+      "path": "photos/user/2026-10-08/VDD_user_locator.png",
+      "bytes": 848257,
+      "sha256": "962d15b377986fa7c81bb8d5e7e47d08e65c9dc99fa424c37c1df43b12411e16"
     },
     {
       "path": "photos/user/2026-10-08/VREF_user_locator.png",
@@ -300,7 +305,7 @@
   "supplementary_local_nets": {
     "1": "ICSP VPP inferred; nearby D6 routing unresolved",
     "2": "Visible to C25 right pad; external continuation hidden",
-    "4": "Visible to C39 left pad; external continuation hidden",
+    "4": "VREF via V035; user confirmed via-to-TP, C39 local photo route",
     "14": "Visible TP11 fragment retained",
     "18": "Direct to TP17; prior onward R13 guess withdrawn",
     "24": "Direct visible trace to R4 lower pad",
@@ -311,6 +316,6 @@
   "notes": [
     "No guessed destination is presented as a measurement.",
     "All 28 pads are visible in the close-up although the top of the plastic body is cropped.",
-    "v0.9.8: RC2/V049-TP3 and RB0/V026-VREF are confirmed. RC1/PIC12-V053-V070-R18 is confirmed; old VREF join rejected. PIC15/RC4 -> U5.2 INA via V022-V016; PIC16/RC5 -> U5.3 INB via V023-V019 are now resolved. No PIC pads remain open; local-net remote roles and inferred branches remain qualified."
+    "v0.9.9: V035/RA2/C39 reaches VREF; V042/PIC20 reaches board VDD. Earlier RC2/V049-TP3 and RB0/V026-VREF are confirmed. RC1/PIC12-V053-V070-R18 is confirmed; old VREF join rejected. PIC15/RC4 -> U5.2 INA via V022-V016; PIC16/RC5 -> U5.3 INB via V023-V019 are now resolved. No PIC pads remain open; local-net remote roles and inferred branches remain qualified."
   ]
 }

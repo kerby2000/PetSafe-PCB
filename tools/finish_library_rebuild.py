@@ -74,6 +74,7 @@ for inst in instances:
     if ref=='U6':rx=vx=x+15.24;ry=y-8.89;vy=y-6.985
     if ref=='Q8':rx=vx=x+12.7;ry=y-1.27;vy=y+0.635
     if ref in ['J1','J3','J5']:rx=vx=x+2.54;ry=y-3.81;vy=y-1.905
+    if ref=='Q1':rx=vx=x+11.43;ry=y-5.08;vy=y-3.175;just='left'
     if ref=='Y1':rx=vx=x;ry=y-5.08;vy=y-3.175
     if ref in ['C30','C31']:rx=vx=x+2.54;ry=y-0.635;vy=y+1.27
     if ref=='TP11':rx=vx=x-12.7;ry=y-1.27;vy=y+0.635
@@ -88,7 +89,7 @@ for inst in instances:
         effects=one(prop,'effects')
         if effects:prop.remove(effects)
         just=old.get('just','')
-        if ref in ['J1','J3','J5','C30','C31','Q8','U6','TP1','TP2']:just='left'
+        if ref in ['J1','J3','J5','C30','C31','Q8','U6','Q1','TP1','TP2']:just='left'
         if rot==180:just=''
         prop.append(expr(f'(effects (font (size 1.016 1.016)){" (justify "+just+")" if just else ""})'))
     evidence=next(cc for cc in model['components'] if cc['ref']==old['ref'])
@@ -136,7 +137,7 @@ def excluded(w):
 for w in layout['wires']:
     if excluded(w):continue
     if w['net'] in ['Q8_DRIVE_A','Q8_DRIVE_B','H_RF_OUT_CAND','H_RF_VDD']:continue
-    if w['net']=='H_GND' and (w['a']==[57,159] or w['b']==[57,159] or w['a']==[57,190] or w['b']==[57,190]):continue
+    if w['net']=='GND' and (w['a']==[57,159] or w['b']==[57,159] or w['a']==[57,190] or w['b']==[57,190]):continue
     a,b=mm(w['a']),mm(w['b']); aa=oldpoints.get(a,a);bb=oldpoints.get(b,b)
     # Adapt short symbol leads; preserve authored route corridors.
     path=[aa]
@@ -157,28 +158,29 @@ for l in L:
     if l['net']=='H_BUTTON_MCU':
         x,y=l['p'];start=(rnd(x-3.81),y)
         W.append(dict(net=l['net'],a=start,b=l['p']));l['p']=start
-wire('H_GND','C9.2',(49,159),(49,190),(53,190))
+wire('GND','C9.2',(49,159),(49,190),(53,190))
 
 # Datasheet S-1200B45 symbol: input/enable left, output/NC right, ground below.
-wire('H_VBAT','BATP.1','L2.1');label('H_VBAT',(23,42))
+stub('BATTERY+','BATP.1',0,7)
+stub('VSYS','L2.1',-7,0) # Post-Q1 feed; BATP is on the other side of Q1.
 wire('H_LDO_IN','L2.2','U1.L1');wire('H_LDO_IN','C1.1',(44,42))
 wire('H_LDO_IN','C1A.1',(38,49),(38,42));wire('H_LDO_IN','U1.L3',(52,48),(52,42))
-wire('H_GND','U1.L2',(66,64));bus('H_GND',64,['C1.2','C1A.2','C2.2','C2A.2','GND.1'])
-wire('H_VDD','U1.R1',(82,42),'VDD.1')
-wire('H_VDD','C2.1',(90,42));wire('H_VDD','C2A.1',(106,42));label('H_VDD',(101,42))
+wire('GND','U1.L2',(66,64));bus('GND',64,['C1.2','C1A.2','C2.2','C2A.2','GND.1'])
+wire('VDD','U1.R1',(82,42),'VDD.1')
+wire('VDD','C2.1',(90,42));wire('VDD','C2A.1',(106,42));label('VDD',(101,42))
 wire('U1_ALT_PAD','U1.R2',(80,48),(80,81),(115,81),'C4.2')
 wire('U1_ALT_PAD','R1.2',(48,87),(48,81),(80,81));wire('U1_ALT_PAD','C3.2',(72,87),(72,81));wire('U1_ALT_PAD','R2.2',(97,87),(97,81))
 label('U1_ALT_PAD',(80,81))
-stub('H_VDD','R1.1',0,5);stub('H_VDD','C3.1',0,5)
-stub('H_GND','R2.1',0,5);stub('H_GND','C4.1',0,5)
+stub('VDD','R1.1',0,5);stub('VDD','C3.1',0,5)
+stub('GND','R2.1',0,5);stub('GND','C4.1',0,5)
 
 # PIC: official SOIC symbol; both ground pins share the library endpoint.
-bus('H_VDD',32,['U4.20','C32.1']);bus('H_GND',44,['C32.2','C26.2'])
+bus('VDD',32,['U4.20','C32.1']);bus('GND',44,['C32.2','C26.2'])
 # IMG_2436: RA0/C25 and RA2/C39 are signal nodes, not supply bypasses.
 wire('PIC_RA0_FILTER','U4.2','C25.1')
-wire('PIC_RA2_FILTER','U4.4','C39.1')
-bus('H_GND',66,['C25.2','C39.2'])
-wire('PIC_TP4_C41','TP4.1','C41.1');stub('H_GND','C41.2',4)
+wire('VREF','U4.4','C39.1');label('VREF','C39.1') # User V035-VREF
+bus('GND',66,['C25.2','C39.2'])
+wire('PIC_TP4_C41','TP4.1','C41.1');stub('GND','C41.2',4)
 stub('PIC_RA1_RX_REF','U4.3',4)
 stub('H_TUNE_2','U4.5',4)
 stub('H_TUNE_3','U4.6',4)
@@ -186,8 +188,8 @@ stub('H_TUNE_4','U4.7',4)
 stub('H_TUNE_5','U4.11',-12)
 stub('H_RX_ENABLE_CTL','U4.12',-12) # User V053-V070; old VREF join rejected.
 stub('RF_MONITOR_PAD','U4.13',-12)
-stub('PIC_RB0_VREF','VREF.1',0,4)
-stub('PIC_RB0_VREF','U4.21',4)
+stub('VREF','VREF.1',0,4)
+stub('VREF','U4.21',4)
 stub('MOTOR_INA','U4.15',-12)
 stub('MOTOR_INB','U4.16',-12)
 stub('H_TUNE_1','U4.17',-12)
@@ -197,43 +199,43 @@ stub('PIC_TP4_C41','U4.25',4)
 wire('ICSP_CLK','U4.27',(228,76),(228,43),'J1.CLK');label('ICSP_CLK',(230,43))
 wire('ICSP_DAT','U4.28',(231,78),(231,45),'J1.DAT');label('ICSP_DAT',(233,45))
 stub('MCLR_VPP','U4.1',-12);stub('MCLR_VPP','J1.VPP',-12)
-stub('H_VDD','J1.VDD',-8)
-wire('H_GND','J1.GND',(263,51),(263,104));wire('H_GND','U4.8',(207,104),(263,104));label('H_GND',(207,104))
+stub('VDD','J1.VDD',-8)
+wire('GND','J1.GND',(263,51),(263,104));wire('GND','U4.8',(207,104),(263,104));label('GND',(207,104))
 wire('OSC1','U4.9',(233,60),(233,85),(238,85),(238,89),'Y1.1');wire('OSC1','C30.1',(238,89))
 wire('OSC2','U4.10',(235,58),(235,83),(254,83),(254,89),'Y1.2');wire('OSC2','C31.2',(254,89))
-wire('H_GND','C30.2',(238,104));wire('H_GND','C31.1',(254,104));wire('PIC_RC3','U4.14','TP11.1')
-stub('H_VBAT','R3.1',0,-4);wire('H_BAT_SENSE','R3.2',(280,75),'R4.1');wire('H_BAT_SENSE','C28.1',(296,75));label('H_BAT_SENSE',(284,75));stub('H_GND','C28.2',0,6)
+wire('GND','C30.2',(238,104));wire('GND','C31.1',(254,104));wire('PIC_RC3','U4.14','TP11.1')
+stub('VSYS','R3.1',0,-4);wire('H_BAT_SENSE','R3.2',(280,75),'R4.1');wire('H_BAT_SENSE','C28.1',(296,75));label('H_BAT_SENSE',(284,75));stub('GND','C28.2',0,6)
 stub('PIC_RB3_RETURN','U4.24',14);stub('PIC_RB3_RETURN','R4.2',0,6)
 wire('PIC_RC7_TP17','U4.18','TP17.1');label('PIC_RC7_TP17','TP17.1')
 stub('ICSP_CLK','D4.1',-4);stub('ICSP_CLK','R32.2',3)
 stub('ICSP_DAT','D5.1',-4);stub('ICSP_DAT','R40.1',0,-5)
-stub('H_GND','D4.2',0,4);stub('H_GND','D5.2',0,4)
+stub('GND','D4.2',0,4);stub('GND','D5.2',0,4)
 wire('H_LED_CTL_A','TP1.1',(151,184),'R30.1')
 wire('H_LED_CTL_B','TP2.1',(151,191),'R31.1')
-label('H_GND',(199,187))
+label('GND',(199,187))
 stub('RB5_OPT','U4.26',14);stub('RB5_OPT','TP10.1',0,4)
 stub('RB5_OPT','R35.1',-3);stub('R35_Q9','R35.2',0,4)
 stub('R35_Q9','Q9.L',-4)
-stub('H_GND','Q9.R',4)
-stub('H_GND','R32.1',3)
+stub('GND','Q9.R',4)
+stub('GND','R32.1',3)
 
-stub('H_VBAT','Q1.L',0,5) # User V011-V014 to MX512H pin4 motor supply.
-wire('H_BAT_DETECT','R43.2',(367,102),(379,102),(379,82),'TP14.1') # V015-TP14
+wire('VSYS','Q1.L',(359,94),(352,94));label('VSYS',(352,94));label('BATTERY+',(359,82)) # User post-Q1 supply; keep its label clear of R43 ground.
+wire('BATTERY+','R43.2',(367,102),(379,102),(379,82),'TP14.1') # V015-TP14
 # MX512H physical pin numbering, not a DRV8837 pin substitution.
-wire('H_VBAT','C33.1',(339,33),(361,33),'U5.4');label('H_VBAT',(339,33))
-wire('H_VDD','U5.1',(345,44),(345,43),(330,43),'C34.1');label('H_VDD',(330,43))
-wire('H_GND','C33.2',(339,69));bus('H_GND',69,['C34.2','BATN.1'])
-wire('H_GND','U5.6',(359,69));wire('H_GND','U5.7',(363,69));wire('H_GND',(359,69),(363,69))
+wire('VSYS','C33.1',(339,33),(361,33),'U5.4');label('VSYS',(339,33))
+wire('VDD','U5.1',(345,44),(345,43),(330,43),'C34.1');label('VDD',(330,43))
+wire('GND','C33.2',(339,69));bus('GND',69,['C34.2','BATN.1'])
+wire('GND','U5.6',(359,69));wire('GND','U5.7',(363,69));wire('GND',(359,69),(363,69))
 wire('H_MOTOR_A','U5.8',(384,44),(384,49),'J5.A')
 wire('H_MOTOR_B','U5.5',(381,52),(381,55),(386,55),(386,51),'J5.B');wire('H_MOTOR_B','TP15.1',(381,55))
 stub('MOTOR_INA','U5.2',-10);stub('MOTOR_INB','U5.3',-10)
-stub('H_VBAT','C27.1',0,-4);stub('H_GND','C27.2',0,4)
+stub('VSYS','C27.1',0,-4);stub('GND','C27.2',0,4)
 
 # S-812C33AMC candidate: C2N code and measured ground support pin assignment.
-wire('H_VDD','R37.1',(235,233),(235,227));label('H_VDD',(235,227))
+wire('VDD','R37.1',(235,233),(235,227));label('VDD',(235,227))
 wire('H_AUX_IN','R37.2',(248,233),(248,240),'U6.R2')
 wire('H_AUX_IN','C36.1',(237,238),(248,238));label('H_AUX_IN',(237,238))
-wire('H_GND','U6.R3',(260,257));bus('H_GND',257,['C36.2','C37.2'])
+wire('GND','U6.R3',(260,257));bus('GND',257,['C36.2','C37.2'])
 stub('H_PIR_VDD','U6A.R1',-10) # V067-J3.1 confirmed; option remains DNP.
 wire('H_PIR_VDD','U6.R1',(280,240),'C37.1')
 wire('H_PIR_VDD',(280,240),(280,241))
@@ -245,7 +247,7 @@ wire('Q8_DRIVE_A','R9.2',(111,146),(111,182),'Q8.T3')
 wire('Q8_DRIVE_B','R8.2',(106,171),(106,163),'Q8.T1')
 wire('H_RF_OUT_CAND','Q8.B1',(130,174),'Q8.B3')
 wire('H_RF_OUT_CAND',(130,174),'R5.1')
-wire('H_GND','Q8.B2',(130,188),(134,188));label('H_GND',(134,188))
+wire('GND','Q8.B2',(130,188),(134,188));label('GND',(134,188))
 wire('H_RF_VDD','Q8.T2',(177,159),(177,132),'L1.2')
 wire('H_RF_VDD','L1.2',(187,132),'C5.1')
 label('H_RF_VDD',(181,132))
@@ -267,7 +269,7 @@ for n in layout['notes']:
         t='U1 datasheet symbol: S-1200B45 SOT-23-5. Pin 4 is internally open; option pads retained.'
     if 'Original photographed pad names remain' in t:
         t='Library pin numbers are mapped to photo pads in evidence/pin_crosswalk.json.'
-    if t.startswith('v0.2'):t='v0.9.8 | KiCad 10.0.5 | 2026-10-08';n['y']=292
+    if t.startswith('v0.2'):t='v0.9.9 | KiCad 10.0.5 | 2026-10-08';n['y']=292
     if t.startswith('H14-H15:'):t='H14-H15: C2N supports S-812C33AMC 3.3V LDO. C/R3 ground supported by resistance.'
     if t.startswith('H09:'):t='H09: 3724A matches SIL3724A N/P MOSFET pair. Both units share one package.'
     if t.startswith('Q8 T2/B1/B2'):t='V113/V115: Q8 centre pin5 GND. V114 is U2 pin2 GND, not Q8 pin2.'
@@ -280,13 +282,13 @@ for n in layout['notes']:
     if t.startswith('C27 role unresolved'):t='C27: motor-supply bypass; value unmeasured.'
     if t.startswith('Optional R1/R2/C3/C4'):t='Empty options: R1/C3 free ends join regulated VDD; R2/C4 free ends join GND.'
     if t.startswith('H04:'):t='User: PIC15/RC4 -> INA pin2; PIC16/RC5 -> INB pin3. Motor output polarity remains inferred.'
-    if t.startswith('H05:'):t='Q1.L -> V011-V014 -> motor H_VBAT / U5 pin4. Q1 identity/polarity still unverified.'
+    if t.startswith('H05:'):t='Q1: R1A -> FMOS3401A PMOS candidate. Battery+ at D3; post-Q1 supply at S2; G1 via R44.'
     if t.startswith('29 original local'):t='28 original local photo fragments retained; Q1.L-R43.2 withdrawn by user.'
     if t.startswith('H03:'):t='R3/R4 sensing candidate; R4 returns to RB3. C28 value estimated.';n['y']=106
     text(t,n['x'],n['y'],1.27 if n['size']>=1 else max(.762,n['size']*1.27))
-text('Board VDD / TP103 = H_VDD logic rail -> U5 pin1 VCC. U5 pin4 VDD = H_VBAT motor rail.',320,77,.762)
-text('VDD / TP103: regulated logic supply H_VDD; candidate 4.5V, not measured. V082 confirmed here.',13,76,.762)
-text('V082 -> H_VDD / TP103. D3 terminal unresolved; existing H_RX_VDD branch remains inferred.',330,126,.762)
+text('BATTERY+ -> Q1 -> VSYS / U5 pin4. Board VDD / TP103 = VDD -> U5 pin1.',320,77,.762)
+text('VDD / TP103: regulated logic supply VDD; candidate 4.5V, not measured. V082 confirmed here.',13,76,.762)
+text('V082 -> VDD / TP103. D3 terminal unresolved; existing H_RX_VDD branch remains inferred.',330,126,.762)
 text('D2: 4P unidentified; old BAV99 clamp ties withdrawn.',350,201,.762)
 text('User: V072 = TP6, not R22.2. V079/V080 = U3 pin5; separate from TP6 across C18.',288,211,.762)
 text('U3 alternative: MCP6002-I/SN; same pin roles, electrical suitability to verify.',288,208,.762)
@@ -348,13 +350,13 @@ for net,edges in adj.items():
 for l in L:
     x,y=l['p'];G.append(expr(f'(label {q(l["net"])} (at {x} {y} 0) (effects (font (size .762 .762)) (justify left bottom)) (uuid {q(uid())}))'))
 tree.extend(G)
-tree.append(expr('(title_block (title "PetSafe 100-1339 R03 A | single-sheet reconstruction") (date "2026-10-08") (rev "0.9.8") (company "KiCad 10 libraries + four datasheet symbols | MCP authoring") (comment 1 "RC1-R18, RC2-TP3, RB0-VREF confirmed; RC1-VREF rejected."))'))
+tree.append(expr('(title_block (title "PetSafe 100-1339 R03 A | single-sheet reconstruction") (date "2026-10-08") (rev "0.9.9") (company "KiCad 10 libraries + four datasheet symbols | MCP authoring") (comment 1 "Raw battery separated from post-Q1 supply; R1A PMOS candidate. GPIO routes retained."))'))
 # Canonical pretty printer supplied by the installed MCP server.
 sys.path.insert(0,str(Path.home()/'Documents/VS.Code.Projects/KiCAD-MCP-Server/python'))
 from utils.sexpr_format import prettify
 out=R/'schematic/PetSafe_1001339.kicad_sch'
 out.write_text(prettify(sx.dumps(tree)),encoding='utf-8',newline='\n')
-model.update(revision='v0.9.8',coordinate_units='mm',native_pin_crosswalk=layout['crosswalk'],pin_positions={e:list(p) for e,p in P.items()},
+model.update(revision='v0.9.9',coordinate_units='mm',native_pin_crosswalk=layout['crosswalk'],pin_positions={e:list(p) for e,p in P.items()},
              geometric_wires=[dict(net=n,a=a,b=b) for n,a,b in segments],library_policy='KiCad 10 stock symbols plus four explicitly authorized MCP-authored datasheet symbols for U1/U5/U6/Q8')
 for c in model['components']:
     entry=next(x for x in layout['catalog'] if x['original_ref']==c['ref'])

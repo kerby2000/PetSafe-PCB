@@ -1,6 +1,30 @@
-# Via review findings - v0.9.8
+# Via review findings - v0.9.9
 
-## Current v0.9.8: GPIO destinations and PIR option supply
+## Current v0.9.9: battery path, board labels and two new via checks
+
+The earlier `H_VBAT` reconstruction incorrectly connected battery positive directly to the post-Q1 supply. This is corrected, not just renamed. User-authorized **VSYS** now names the previously unlabelled post-Q1 node. Printed board names are retained everywhere else.
+
+| Name | Physical connection | Evidence |
+|---|---|---|
+| BATTERY (+) / net BATTERY+ | Battery positive to Q1 single pad3; TP14 and V015/R43.2 on this side | User battery/Q1 report, visible copper in IMG_2438, user V015-TP14 check |
+| BATTERY (-) / GND | Battery negative, common ground | Existing board/ground review |
+| VSYS | Q1.L/pad2, V011-V014, MX512H U5 pin4, L1/L2 supply sides | User reports; L1/L2 pad1 selections retained from photos |
+| VDD | Board VDD test point TP103, PIC20/C32.1/V042, U5 pin1 VCC | Existing reconstruction; user V042-VDD and V082-VDD checks |
+| VREF | Board VREF test point TP104, V026/PIC21, V071/R21.2, now V035/PIC4/C39.1 | User via-to-test-point checks; local pad selections from photos |
+
+Battery+ and VSYS are **different copper nets connected through Q1**, not completely isolated circuits. L1 and L2 remain components between VSYS and their downstream nodes: their two terminals are not shorted together by this update. VREF is a connectivity label, not a measured reference voltage. No supply voltages have been measured.
+
+Q1's old **MMBT3904 NPN hypothesis is withdrawn**. [Formosa FMOS3401A manufacturer datasheet](https://www.formosams.com/upload/product/Mosfets/FMOS3401A_REV_C.pdf), page 5, explicitly lists R1A / 3401 / R1 and shows a P-channel MOSFET: gate on the photo right paired pad (pin1), source on left paired pad (pin2), drain on single pad (pin3). Thus **photo Q1.S means single pad, not source**. The stock `Transistor_FET:Q_PMOS_GSD` symbol was installed through KiCad MCP. Exact fitted maker remains unverified. Drain-to-battery/source-to-load is consistent with reverse-polarity protection; gate behavior and powered operation remain unverified. [TI's explanation](https://e2e.ti.com/support/power-management-group/power-management/f/power-management-forum/944817/mc33063a-q1-reverse-polarity-protection-using-p-mosfet) supports that topology, not this board's identity.
+
+The additional downstream supply branches are L2-to-U1 input, L1-to-RF/Q8, Q7-to-receiver, and U6-to-PIR. These are component-separated nodes; some routing and function are still inferred. They are not all independently regulated rails. Candidate 4.5 V / 3.3 V ratings are not measurements.
+
+**V035-VREF** joins the previous RA2/C39 local node to VREF. **V042-VDD** confirms the existing PIC supply connection. These reports do not certify every prior inferred branch on the enlarged VREF net. RC1/V053 remains separate from VREF.
+
+Current verification: **83 native/model net partitions; 36 ERC findings = 28 open pads + 3 isolated labels + 5 power findings**. No PIC pads are open in the model. All 26 original photo checksums retained. 123 reviewed IDs, 120 active via sites, no unresolved numbering conflicts. The remaining search pool is 9 sites in 8 local groups, not eight proven missing nets. No new measurement is queued.
+
+Earlier sections below are historical snapshots; old net names and hypotheses are superseded by this section.
+
+## Historical v0.9.8: GPIO destinations and PIR option supply
 
 - User confirms **V053–V070**: PIC12/RC1 reaches R18.1 (`H_RX_ENABLE_CTL`).
 - User explicitly says **V053 is NOT connected to VREF**. Old photo-only RC1–VREF association is rejected.

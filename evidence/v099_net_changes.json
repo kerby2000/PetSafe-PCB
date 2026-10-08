@@ -1,0 +1,718 @@
+{
+  "revision": "v0.9.9",
+  "changes": [
+    {
+      "endpoint": "Q1.S",
+      "old": "H_BAT_DETECT",
+      "new": "BATTERY+",
+      "basis": "v0.9.9: User corrects raw battery+ versus post-Q1 rail. BATP -> Q1.S (single physical pad/native3, candidate drain); Q1.L/native2 (candidate source) -> U5.4/V011-V014. These are distinct copper nets, connected through Q1. IMG_2438 also supports TP14 on battery+; V015/R43.2-TP14 user confirmation retained. Q1.R/native1 is candidate gate at R44.2. Photo S means SINGLE, not MOSFET source."
+    },
+    {
+      "endpoint": "TP14.1",
+      "old": "H_BAT_DETECT",
+      "new": "BATTERY+",
+      "basis": "v0.9.9: User corrects raw battery+ versus post-Q1 rail. BATP -> Q1.S (single physical pad/native3, candidate drain); Q1.L/native2 (candidate source) -> U5.4/V011-V014. These are distinct copper nets, connected through Q1. IMG_2438 also supports TP14 on battery+; V015/R43.2-TP14 user confirmation retained. Q1.R/native1 is candidate gate at R44.2. Photo S means SINGLE, not MOSFET source."
+    },
+    {
+      "endpoint": "R43.2",
+      "old": "H_BAT_DETECT",
+      "new": "BATTERY+",
+      "basis": "v0.9.9: User corrects raw battery+ versus post-Q1 rail. BATP -> Q1.S (single physical pad/native3, candidate drain); Q1.L/native2 (candidate source) -> U5.4/V011-V014. These are distinct copper nets, connected through Q1. IMG_2438 also supports TP14 on battery+; V015/R43.2-TP14 user confirmation retained. Q1.R/native1 is candidate gate at R44.2. Photo S means SINGLE, not MOSFET source."
+    },
+    {
+      "endpoint": "BATP.1",
+      "old": "H_VBAT",
+      "new": "BATTERY+",
+      "basis": "v0.9.9: User corrects raw battery+ versus post-Q1 rail. BATP -> Q1.S (single physical pad/native3, candidate drain); Q1.L/native2 (candidate source) -> U5.4/V011-V014. These are distinct copper nets, connected through Q1. IMG_2438 also supports TP14 on battery+; V015/R43.2-TP14 user confirmation retained. Q1.R/native1 is candidate gate at R44.2. Photo S means SINGLE, not MOSFET source."
+    },
+    {
+      "endpoint": "C27.1",
+      "old": "H_VBAT",
+      "new": "VSYS",
+      "basis": "v0.9.9: User corrects raw battery+ versus post-Q1 rail. BATP -> Q1.S (single physical pad/native3, candidate drain); Q1.L/native2 (candidate source) -> U5.4/V011-V014. These are distinct copper nets, connected through Q1. IMG_2438 also supports TP14 on battery+; V015/R43.2-TP14 user confirmation retained. Q1.R/native1 is candidate gate at R44.2. Photo S means SINGLE, not MOSFET source."
+    },
+    {
+      "endpoint": "C33.1",
+      "old": "H_VBAT",
+      "new": "VSYS",
+      "basis": "v0.9.9: User corrects raw battery+ versus post-Q1 rail. BATP -> Q1.S (single physical pad/native3, candidate drain); Q1.L/native2 (candidate source) -> U5.4/V011-V014. These are distinct copper nets, connected through Q1. IMG_2438 also supports TP14 on battery+; V015/R43.2-TP14 user confirmation retained. Q1.R/native1 is candidate gate at R44.2. Photo S means SINGLE, not MOSFET source."
+    },
+    {
+      "endpoint": "L1.1",
+      "old": "H_VBAT",
+      "new": "VSYS",
+      "basis": "v0.9.9: User corrects raw battery+ versus post-Q1 rail. BATP -> Q1.S (single physical pad/native3, candidate drain); Q1.L/native2 (candidate source) -> U5.4/V011-V014. These are distinct copper nets, connected through Q1. IMG_2438 also supports TP14 on battery+; V015/R43.2-TP14 user confirmation retained. Q1.R/native1 is candidate gate at R44.2. Photo S means SINGLE, not MOSFET source."
+    },
+    {
+      "endpoint": "L2.1",
+      "old": "H_VBAT",
+      "new": "VSYS",
+      "basis": "v0.9.9: User corrects raw battery+ versus post-Q1 rail. BATP -> Q1.S (single physical pad/native3, candidate drain); Q1.L/native2 (candidate source) -> U5.4/V011-V014. These are distinct copper nets, connected through Q1. IMG_2438 also supports TP14 on battery+; V015/R43.2-TP14 user confirmation retained. Q1.R/native1 is candidate gate at R44.2. Photo S means SINGLE, not MOSFET source."
+    },
+    {
+      "endpoint": "R3.1",
+      "old": "H_VBAT",
+      "new": "VSYS",
+      "basis": "v0.9.9: User corrects raw battery+ versus post-Q1 rail. BATP -> Q1.S (single physical pad/native3, candidate drain); Q1.L/native2 (candidate source) -> U5.4/V011-V014. These are distinct copper nets, connected through Q1. IMG_2438 also supports TP14 on battery+; V015/R43.2-TP14 user confirmation retained. Q1.R/native1 is candidate gate at R44.2. Photo S means SINGLE, not MOSFET source."
+    },
+    {
+      "endpoint": "U5.4",
+      "old": "H_VBAT",
+      "new": "VSYS",
+      "basis": "v0.9.9: User corrects raw battery+ versus post-Q1 rail. BATP -> Q1.S (single physical pad/native3, candidate drain); Q1.L/native2 (candidate source) -> U5.4/V011-V014. These are distinct copper nets, connected through Q1. IMG_2438 also supports TP14 on battery+; V015/R43.2-TP14 user confirmation retained. Q1.R/native1 is candidate gate at R44.2. Photo S means SINGLE, not MOSFET source."
+    },
+    {
+      "endpoint": "Q1.L",
+      "old": "H_VBAT",
+      "new": "VSYS",
+      "basis": "v0.9.9: User corrects raw battery+ versus post-Q1 rail. BATP -> Q1.S (single physical pad/native3, candidate drain); Q1.L/native2 (candidate source) -> U5.4/V011-V014. These are distinct copper nets, connected through Q1. IMG_2438 also supports TP14 on battery+; V015/R43.2-TP14 user confirmation retained. Q1.R/native1 is candidate gate at R44.2. Photo S means SINGLE, not MOSFET source."
+    },
+    {
+      "endpoint": "Q1.R",
+      "old": "Q1_BASE",
+      "new": "Q1_GATE",
+      "basis": "v0.9.9: User corrects raw battery+ versus post-Q1 rail. BATP -> Q1.S (single physical pad/native3, candidate drain); Q1.L/native2 (candidate source) -> U5.4/V011-V014. These are distinct copper nets, connected through Q1. IMG_2438 also supports TP14 on battery+; V015/R43.2-TP14 user confirmation retained. Q1.R/native1 is candidate gate at R44.2. Photo S means SINGLE, not MOSFET source."
+    },
+    {
+      "endpoint": "R44.2",
+      "old": "Q1_BASE",
+      "new": "Q1_GATE",
+      "basis": "v0.9.9: User corrects raw battery+ versus post-Q1 rail. BATP -> Q1.S (single physical pad/native3, candidate drain); Q1.L/native2 (candidate source) -> U5.4/V011-V014. These are distinct copper nets, connected through Q1. IMG_2438 also supports TP14 on battery+; V015/R43.2-TP14 user confirmation retained. Q1.R/native1 is candidate gate at R44.2. Photo S means SINGLE, not MOSFET source."
+    },
+    {
+      "endpoint": "C39.1",
+      "old": "PIC_RA2_FILTER",
+      "new": "VREF",
+      "basis": "v0.9.9: User checked V035-VREF TP. Prior photo association V035-PIC4/RA2-C39.1 retained; joins the already confirmed RB0/V026/R21.2/V071 VREF node. No voltage or numerical resistance supplied. Other modeled bias branches retain earlier inferred status."
+    },
+    {
+      "endpoint": "U4.4",
+      "old": "PIC_RA2_FILTER",
+      "new": "VREF",
+      "basis": "v0.9.9: User checked V035-VREF TP. Prior photo association V035-PIC4/RA2-C39.1 retained; joins the already confirmed RB0/V026/R21.2/V071 VREF node. No voltage or numerical resistance supplied. Other modeled bias branches retain earlier inferred status."
+    },
+    {
+      "endpoint": "BATN.1",
+      "old": "H_GND",
+      "new": "GND",
+      "basis": "User requests actual board labels BATTERY (+/-), VDD, VREF and GND. Name change only; endpoint membership unchanged."
+    },
+    {
+      "endpoint": "C1.2",
+      "old": "H_GND",
+      "new": "GND",
+      "basis": "User requests actual board labels BATTERY (+/-), VDD, VREF and GND. Name change only; endpoint membership unchanged."
+    },
+    {
+      "endpoint": "C11.1",
+      "old": "H_GND",
+      "new": "GND",
+      "basis": "User requests actual board labels BATTERY (+/-), VDD, VREF and GND. Name change only; endpoint membership unchanged."
+    },
+    {
+      "endpoint": "C12.1",
+      "old": "H_GND",
+      "new": "GND",
+      "basis": "User requests actual board labels BATTERY (+/-), VDD, VREF and GND. Name change only; endpoint membership unchanged."
+    },
+    {
+      "endpoint": "C14.1",
+      "old": "H_GND",
+      "new": "GND",
+      "basis": "User requests actual board labels BATTERY (+/-), VDD, VREF and GND. Name change only; endpoint membership unchanged."
+    },
+    {
+      "endpoint": "C15.1",
+      "old": "H_GND",
+      "new": "GND",
+      "basis": "User requests actual board labels BATTERY (+/-), VDD, VREF and GND. Name change only; endpoint membership unchanged."
+    },
+    {
+      "endpoint": "C17.2",
+      "old": "H_GND",
+      "new": "GND",
+      "basis": "User requests actual board labels BATTERY (+/-), VDD, VREF and GND. Name change only; endpoint membership unchanged."
+    },
+    {
+      "endpoint": "C19.2",
+      "old": "H_GND",
+      "new": "GND",
+      "basis": "User requests actual board labels BATTERY (+/-), VDD, VREF and GND. Name change only; endpoint membership unchanged."
+    },
+    {
+      "endpoint": "C1A.2",
+      "old": "H_GND",
+      "new": "GND",
+      "basis": "User requests actual board labels BATTERY (+/-), VDD, VREF and GND. Name change only; endpoint membership unchanged."
+    },
+    {
+      "endpoint": "C2.2",
+      "old": "H_GND",
+      "new": "GND",
+      "basis": "User requests actual board labels BATTERY (+/-), VDD, VREF and GND. Name change only; endpoint membership unchanged."
+    },
+    {
+      "endpoint": "C20.1",
+      "old": "H_GND",
+      "new": "GND",
+      "basis": "User requests actual board labels BATTERY (+/-), VDD, VREF and GND. Name change only; endpoint membership unchanged."
+    },
+    {
+      "endpoint": "C24.2",
+      "old": "H_GND",
+      "new": "GND",
+      "basis": "User requests actual board labels BATTERY (+/-), VDD, VREF and GND. Name change only; endpoint membership unchanged."
+    },
+    {
+      "endpoint": "C25.2",
+      "old": "H_GND",
+      "new": "GND",
+      "basis": "User requests actual board labels BATTERY (+/-), VDD, VREF and GND. Name change only; endpoint membership unchanged."
+    },
+    {
+      "endpoint": "C26.2",
+      "old": "H_GND",
+      "new": "GND",
+      "basis": "User requests actual board labels BATTERY (+/-), VDD, VREF and GND. Name change only; endpoint membership unchanged."
+    },
+    {
+      "endpoint": "C27.2",
+      "old": "H_GND",
+      "new": "GND",
+      "basis": "User requests actual board labels BATTERY (+/-), VDD, VREF and GND. Name change only; endpoint membership unchanged."
+    },
+    {
+      "endpoint": "C28.2",
+      "old": "H_GND",
+      "new": "GND",
+      "basis": "User requests actual board labels BATTERY (+/-), VDD, VREF and GND. Name change only; endpoint membership unchanged."
+    },
+    {
+      "endpoint": "C29.1",
+      "old": "H_GND",
+      "new": "GND",
+      "basis": "User requests actual board labels BATTERY (+/-), VDD, VREF and GND. Name change only; endpoint membership unchanged."
+    },
+    {
+      "endpoint": "C2A.2",
+      "old": "H_GND",
+      "new": "GND",
+      "basis": "User requests actual board labels BATTERY (+/-), VDD, VREF and GND. Name change only; endpoint membership unchanged."
+    },
+    {
+      "endpoint": "C30.2",
+      "old": "H_GND",
+      "new": "GND",
+      "basis": "User requests actual board labels BATTERY (+/-), VDD, VREF and GND. Name change only; endpoint membership unchanged."
+    },
+    {
+      "endpoint": "C31.1",
+      "old": "H_GND",
+      "new": "GND",
+      "basis": "User requests actual board labels BATTERY (+/-), VDD, VREF and GND. Name change only; endpoint membership unchanged."
+    },
+    {
+      "endpoint": "C32.2",
+      "old": "H_GND",
+      "new": "GND",
+      "basis": "User requests actual board labels BATTERY (+/-), VDD, VREF and GND. Name change only; endpoint membership unchanged."
+    },
+    {
+      "endpoint": "C33.2",
+      "old": "H_GND",
+      "new": "GND",
+      "basis": "User requests actual board labels BATTERY (+/-), VDD, VREF and GND. Name change only; endpoint membership unchanged."
+    },
+    {
+      "endpoint": "C34.2",
+      "old": "H_GND",
+      "new": "GND",
+      "basis": "User requests actual board labels BATTERY (+/-), VDD, VREF and GND. Name change only; endpoint membership unchanged."
+    },
+    {
+      "endpoint": "C35.2",
+      "old": "H_GND",
+      "new": "GND",
+      "basis": "User requests actual board labels BATTERY (+/-), VDD, VREF and GND. Name change only; endpoint membership unchanged."
+    },
+    {
+      "endpoint": "C36.2",
+      "old": "H_GND",
+      "new": "GND",
+      "basis": "User requests actual board labels BATTERY (+/-), VDD, VREF and GND. Name change only; endpoint membership unchanged."
+    },
+    {
+      "endpoint": "C37.2",
+      "old": "H_GND",
+      "new": "GND",
+      "basis": "User requests actual board labels BATTERY (+/-), VDD, VREF and GND. Name change only; endpoint membership unchanged."
+    },
+    {
+      "endpoint": "C38.1",
+      "old": "H_GND",
+      "new": "GND",
+      "basis": "User requests actual board labels BATTERY (+/-), VDD, VREF and GND. Name change only; endpoint membership unchanged."
+    },
+    {
+      "endpoint": "C39.2",
+      "old": "H_GND",
+      "new": "GND",
+      "basis": "User requests actual board labels BATTERY (+/-), VDD, VREF and GND. Name change only; endpoint membership unchanged."
+    },
+    {
+      "endpoint": "C4.1",
+      "old": "H_GND",
+      "new": "GND",
+      "basis": "User requests actual board labels BATTERY (+/-), VDD, VREF and GND. Name change only; endpoint membership unchanged."
+    },
+    {
+      "endpoint": "C40.2",
+      "old": "H_GND",
+      "new": "GND",
+      "basis": "User requests actual board labels BATTERY (+/-), VDD, VREF and GND. Name change only; endpoint membership unchanged."
+    },
+    {
+      "endpoint": "C41.2",
+      "old": "H_GND",
+      "new": "GND",
+      "basis": "User requests actual board labels BATTERY (+/-), VDD, VREF and GND. Name change only; endpoint membership unchanged."
+    },
+    {
+      "endpoint": "C44.1",
+      "old": "H_GND",
+      "new": "GND",
+      "basis": "User requests actual board labels BATTERY (+/-), VDD, VREF and GND. Name change only; endpoint membership unchanged."
+    },
+    {
+      "endpoint": "C45.1",
+      "old": "H_GND",
+      "new": "GND",
+      "basis": "User requests actual board labels BATTERY (+/-), VDD, VREF and GND. Name change only; endpoint membership unchanged."
+    },
+    {
+      "endpoint": "C47.1",
+      "old": "H_GND",
+      "new": "GND",
+      "basis": "User requests actual board labels BATTERY (+/-), VDD, VREF and GND. Name change only; endpoint membership unchanged."
+    },
+    {
+      "endpoint": "C48.1",
+      "old": "H_GND",
+      "new": "GND",
+      "basis": "User requests actual board labels BATTERY (+/-), VDD, VREF and GND. Name change only; endpoint membership unchanged."
+    },
+    {
+      "endpoint": "C5.2",
+      "old": "H_GND",
+      "new": "GND",
+      "basis": "User requests actual board labels BATTERY (+/-), VDD, VREF and GND. Name change only; endpoint membership unchanged."
+    },
+    {
+      "endpoint": "C6.2",
+      "old": "H_GND",
+      "new": "GND",
+      "basis": "User requests actual board labels BATTERY (+/-), VDD, VREF and GND. Name change only; endpoint membership unchanged."
+    },
+    {
+      "endpoint": "C7.2",
+      "old": "H_GND",
+      "new": "GND",
+      "basis": "User requests actual board labels BATTERY (+/-), VDD, VREF and GND. Name change only; endpoint membership unchanged."
+    },
+    {
+      "endpoint": "C8.2",
+      "old": "H_GND",
+      "new": "GND",
+      "basis": "User requests actual board labels BATTERY (+/-), VDD, VREF and GND. Name change only; endpoint membership unchanged."
+    },
+    {
+      "endpoint": "C9.2",
+      "old": "H_GND",
+      "new": "GND",
+      "basis": "User requests actual board labels BATTERY (+/-), VDD, VREF and GND. Name change only; endpoint membership unchanged."
+    },
+    {
+      "endpoint": "D3.L",
+      "old": "H_GND",
+      "new": "GND",
+      "basis": "User requests actual board labels BATTERY (+/-), VDD, VREF and GND. Name change only; endpoint membership unchanged."
+    },
+    {
+      "endpoint": "D4.2",
+      "old": "H_GND",
+      "new": "GND",
+      "basis": "User requests actual board labels BATTERY (+/-), VDD, VREF and GND. Name change only; endpoint membership unchanged."
+    },
+    {
+      "endpoint": "D5.2",
+      "old": "H_GND",
+      "new": "GND",
+      "basis": "User requests actual board labels BATTERY (+/-), VDD, VREF and GND. Name change only; endpoint membership unchanged."
+    },
+    {
+      "endpoint": "GND.1",
+      "old": "H_GND",
+      "new": "GND",
+      "basis": "User requests actual board labels BATTERY (+/-), VDD, VREF and GND. Name change only; endpoint membership unchanged."
+    },
+    {
+      "endpoint": "GND_RF.1",
+      "old": "H_GND",
+      "new": "GND",
+      "basis": "User requests actual board labels BATTERY (+/-), VDD, VREF and GND. Name change only; endpoint membership unchanged."
+    },
+    {
+      "endpoint": "J1.GND",
+      "old": "H_GND",
+      "new": "GND",
+      "basis": "User requests actual board labels BATTERY (+/-), VDD, VREF and GND. Name change only; endpoint membership unchanged."
+    },
+    {
+      "endpoint": "J3.2",
+      "old": "H_GND",
+      "new": "GND",
+      "basis": "User requests actual board labels BATTERY (+/-), VDD, VREF and GND. Name change only; endpoint membership unchanged."
+    },
+    {
+      "endpoint": "LED1.BL",
+      "old": "H_GND",
+      "new": "GND",
+      "basis": "User requests actual board labels BATTERY (+/-), VDD, VREF and GND. Name change only; endpoint membership unchanged."
+    },
+    {
+      "endpoint": "LED1.BR",
+      "old": "H_GND",
+      "new": "GND",
+      "basis": "User requests actual board labels BATTERY (+/-), VDD, VREF and GND. Name change only; endpoint membership unchanged."
+    },
+    {
+      "endpoint": "Q11.L",
+      "old": "H_GND",
+      "new": "GND",
+      "basis": "User requests actual board labels BATTERY (+/-), VDD, VREF and GND. Name change only; endpoint membership unchanged."
+    },
+    {
+      "endpoint": "Q2.L",
+      "old": "H_GND",
+      "new": "GND",
+      "basis": "User requests actual board labels BATTERY (+/-), VDD, VREF and GND. Name change only; endpoint membership unchanged."
+    },
+    {
+      "endpoint": "Q3.L",
+      "old": "H_GND",
+      "new": "GND",
+      "basis": "User requests actual board labels BATTERY (+/-), VDD, VREF and GND. Name change only; endpoint membership unchanged."
+    },
+    {
+      "endpoint": "Q4.L",
+      "old": "H_GND",
+      "new": "GND",
+      "basis": "User requests actual board labels BATTERY (+/-), VDD, VREF and GND. Name change only; endpoint membership unchanged."
+    },
+    {
+      "endpoint": "Q5.L",
+      "old": "H_GND",
+      "new": "GND",
+      "basis": "User requests actual board labels BATTERY (+/-), VDD, VREF and GND. Name change only; endpoint membership unchanged."
+    },
+    {
+      "endpoint": "Q6.L",
+      "old": "H_GND",
+      "new": "GND",
+      "basis": "User requests actual board labels BATTERY (+/-), VDD, VREF and GND. Name change only; endpoint membership unchanged."
+    },
+    {
+      "endpoint": "Q8.B2",
+      "old": "H_GND",
+      "new": "GND",
+      "basis": "User requests actual board labels BATTERY (+/-), VDD, VREF and GND. Name change only; endpoint membership unchanged."
+    },
+    {
+      "endpoint": "Q9.R",
+      "old": "H_GND",
+      "new": "GND",
+      "basis": "User requests actual board labels BATTERY (+/-), VDD, VREF and GND. Name change only; endpoint membership unchanged."
+    },
+    {
+      "endpoint": "R10.2",
+      "old": "H_GND",
+      "new": "GND",
+      "basis": "User requests actual board labels BATTERY (+/-), VDD, VREF and GND. Name change only; endpoint membership unchanged."
+    },
+    {
+      "endpoint": "R2.1",
+      "old": "H_GND",
+      "new": "GND",
+      "basis": "User requests actual board labels BATTERY (+/-), VDD, VREF and GND. Name change only; endpoint membership unchanged."
+    },
+    {
+      "endpoint": "R22.1",
+      "old": "H_GND",
+      "new": "GND",
+      "basis": "User requests actual board labels BATTERY (+/-), VDD, VREF and GND. Name change only; endpoint membership unchanged."
+    },
+    {
+      "endpoint": "R25.2",
+      "old": "H_GND",
+      "new": "GND",
+      "basis": "User requests actual board labels BATTERY (+/-), VDD, VREF and GND. Name change only; endpoint membership unchanged."
+    },
+    {
+      "endpoint": "R29.2",
+      "old": "H_GND",
+      "new": "GND",
+      "basis": "User requests actual board labels BATTERY (+/-), VDD, VREF and GND. Name change only; endpoint membership unchanged."
+    },
+    {
+      "endpoint": "R32.1",
+      "old": "H_GND",
+      "new": "GND",
+      "basis": "User requests actual board labels BATTERY (+/-), VDD, VREF and GND. Name change only; endpoint membership unchanged."
+    },
+    {
+      "endpoint": "R43.1",
+      "old": "H_GND",
+      "new": "GND",
+      "basis": "User requests actual board labels BATTERY (+/-), VDD, VREF and GND. Name change only; endpoint membership unchanged."
+    },
+    {
+      "endpoint": "S1.BL",
+      "old": "H_GND",
+      "new": "GND",
+      "basis": "User requests actual board labels BATTERY (+/-), VDD, VREF and GND. Name change only; endpoint membership unchanged."
+    },
+    {
+      "endpoint": "S1.TL",
+      "old": "H_GND",
+      "new": "GND",
+      "basis": "User requests actual board labels BATTERY (+/-), VDD, VREF and GND. Name change only; endpoint membership unchanged."
+    },
+    {
+      "endpoint": "U1.L2",
+      "old": "H_GND",
+      "new": "GND",
+      "basis": "User requests actual board labels BATTERY (+/-), VDD, VREF and GND. Name change only; endpoint membership unchanged."
+    },
+    {
+      "endpoint": "U2.T2",
+      "old": "H_GND",
+      "new": "GND",
+      "basis": "User requests actual board labels BATTERY (+/-), VDD, VREF and GND. Name change only; endpoint membership unchanged."
+    },
+    {
+      "endpoint": "U3.4",
+      "old": "H_GND",
+      "new": "GND",
+      "basis": "User requests actual board labels BATTERY (+/-), VDD, VREF and GND. Name change only; endpoint membership unchanged."
+    },
+    {
+      "endpoint": "U4.19",
+      "old": "H_GND",
+      "new": "GND",
+      "basis": "User requests actual board labels BATTERY (+/-), VDD, VREF and GND. Name change only; endpoint membership unchanged."
+    },
+    {
+      "endpoint": "U4.8",
+      "old": "H_GND",
+      "new": "GND",
+      "basis": "User requests actual board labels BATTERY (+/-), VDD, VREF and GND. Name change only; endpoint membership unchanged."
+    },
+    {
+      "endpoint": "U5.6",
+      "old": "H_GND",
+      "new": "GND",
+      "basis": "User requests actual board labels BATTERY (+/-), VDD, VREF and GND. Name change only; endpoint membership unchanged."
+    },
+    {
+      "endpoint": "U5.7",
+      "old": "H_GND",
+      "new": "GND",
+      "basis": "User requests actual board labels BATTERY (+/-), VDD, VREF and GND. Name change only; endpoint membership unchanged."
+    },
+    {
+      "endpoint": "U6.R3",
+      "old": "H_GND",
+      "new": "GND",
+      "basis": "User requests actual board labels BATTERY (+/-), VDD, VREF and GND. Name change only; endpoint membership unchanged."
+    },
+    {
+      "endpoint": "C2.1",
+      "old": "H_VDD",
+      "new": "VDD",
+      "basis": "User requests actual board labels BATTERY (+/-), VDD, VREF and GND. Name change only; endpoint membership unchanged."
+    },
+    {
+      "endpoint": "C2A.1",
+      "old": "H_VDD",
+      "new": "VDD",
+      "basis": "User requests actual board labels BATTERY (+/-), VDD, VREF and GND. Name change only; endpoint membership unchanged."
+    },
+    {
+      "endpoint": "C3.1",
+      "old": "H_VDD",
+      "new": "VDD",
+      "basis": "User requests actual board labels BATTERY (+/-), VDD, VREF and GND. Name change only; endpoint membership unchanged."
+    },
+    {
+      "endpoint": "C32.1",
+      "old": "H_VDD",
+      "new": "VDD",
+      "basis": "User requests actual board labels BATTERY (+/-), VDD, VREF and GND. Name change only; endpoint membership unchanged."
+    },
+    {
+      "endpoint": "C34.1",
+      "old": "H_VDD",
+      "new": "VDD",
+      "basis": "User requests actual board labels BATTERY (+/-), VDD, VREF and GND. Name change only; endpoint membership unchanged."
+    },
+    {
+      "endpoint": "C7.1",
+      "old": "H_VDD",
+      "new": "VDD",
+      "basis": "User requests actual board labels BATTERY (+/-), VDD, VREF and GND. Name change only; endpoint membership unchanged."
+    },
+    {
+      "endpoint": "J1.VDD",
+      "old": "H_VDD",
+      "new": "VDD",
+      "basis": "User requests actual board labels BATTERY (+/-), VDD, VREF and GND. Name change only; endpoint membership unchanged."
+    },
+    {
+      "endpoint": "Q7.R",
+      "old": "H_VDD",
+      "new": "VDD",
+      "basis": "User requests actual board labels BATTERY (+/-), VDD, VREF and GND. Name change only; endpoint membership unchanged."
+    },
+    {
+      "endpoint": "R1.1",
+      "old": "H_VDD",
+      "new": "VDD",
+      "basis": "User requests actual board labels BATTERY (+/-), VDD, VREF and GND. Name change only; endpoint membership unchanged."
+    },
+    {
+      "endpoint": "R19.2",
+      "old": "H_VDD",
+      "new": "VDD",
+      "basis": "User requests actual board labels BATTERY (+/-), VDD, VREF and GND. Name change only; endpoint membership unchanged."
+    },
+    {
+      "endpoint": "R37.1",
+      "old": "H_VDD",
+      "new": "VDD",
+      "basis": "User requests actual board labels BATTERY (+/-), VDD, VREF and GND. Name change only; endpoint membership unchanged."
+    },
+    {
+      "endpoint": "R39.2",
+      "old": "H_VDD",
+      "new": "VDD",
+      "basis": "User requests actual board labels BATTERY (+/-), VDD, VREF and GND. Name change only; endpoint membership unchanged."
+    },
+    {
+      "endpoint": "U1.R1",
+      "old": "H_VDD",
+      "new": "VDD",
+      "basis": "User requests actual board labels BATTERY (+/-), VDD, VREF and GND. Name change only; endpoint membership unchanged."
+    },
+    {
+      "endpoint": "U2.B2",
+      "old": "H_VDD",
+      "new": "VDD",
+      "basis": "User requests actual board labels BATTERY (+/-), VDD, VREF and GND. Name change only; endpoint membership unchanged."
+    },
+    {
+      "endpoint": "U4.20",
+      "old": "H_VDD",
+      "new": "VDD",
+      "basis": "User requests actual board labels BATTERY (+/-), VDD, VREF and GND. Name change only; endpoint membership unchanged."
+    },
+    {
+      "endpoint": "U5.1",
+      "old": "H_VDD",
+      "new": "VDD",
+      "basis": "User requests actual board labels BATTERY (+/-), VDD, VREF and GND. Name change only; endpoint membership unchanged."
+    },
+    {
+      "endpoint": "VDD.1",
+      "old": "H_VDD",
+      "new": "VDD",
+      "basis": "User requests actual board labels BATTERY (+/-), VDD, VREF and GND. Name change only; endpoint membership unchanged."
+    },
+    {
+      "endpoint": "U4.21",
+      "old": "PIC_RB0_VREF",
+      "new": "VREF",
+      "basis": "User requests actual board labels BATTERY (+/-), VDD, VREF and GND. Name change only; endpoint membership unchanged."
+    },
+    {
+      "endpoint": "VREF.1",
+      "old": "PIC_RB0_VREF",
+      "new": "VREF",
+      "basis": "User requests actual board labels BATTERY (+/-), VDD, VREF and GND. Name change only; endpoint membership unchanged."
+    },
+    {
+      "endpoint": "R21.2",
+      "old": "PIC_RB0_VREF",
+      "new": "VREF",
+      "basis": "User requests actual board labels BATTERY (+/-), VDD, VREF and GND. Name change only; endpoint membership unchanged."
+    },
+    {
+      "endpoint": "R22.2",
+      "old": "PIC_RB0_VREF",
+      "new": "VREF",
+      "basis": "User requests actual board labels BATTERY (+/-), VDD, VREF and GND. Name change only; endpoint membership unchanged."
+    },
+    {
+      "endpoint": "R23.2",
+      "old": "PIC_RB0_VREF",
+      "new": "VREF",
+      "basis": "User requests actual board labels BATTERY (+/-), VDD, VREF and GND. Name change only; endpoint membership unchanged."
+    },
+    {
+      "endpoint": "R48.2",
+      "old": "PIC_RB0_VREF",
+      "new": "VREF",
+      "basis": "User requests actual board labels BATTERY (+/-), VDD, VREF and GND. Name change only; endpoint membership unchanged."
+    }
+  ],
+  "confirmed_via_pairs": [],
+  "rejected_pairs": [],
+  "user_report": "Battery plus goes to Q1; Q1.L reaches H-bridge pin4 VDD. VBAT is not directly connected to VDD.",
+  "interpretation": "Separate copper nets across a semiconductor; not a claim of complete electrical isolation or a diode-mode result.",
+  "candidate_q1": {
+    "part": "FMOS3401A",
+    "marking": "R1A",
+    "source": "https://www.formosams.com/upload/product/Mosfets/FMOS3401A_REV_C.pdf",
+    "page": 5,
+    "symbol": "Transistor_FET:Q_PMOS_GSD",
+    "pins": {
+      "1": "gate / Q1.R",
+      "2": "source / Q1.L",
+      "3": "drain / Q1.S (single pad)"
+    },
+    "status": "R1A marking matches Formosa FMOS3401A datasheet p5; SOT-23 PMOS with G=1 (photo R), S=2 (photo L), D=3 (photo single S). Candidate identification, not manufacturer proof. Drain at battery+ and source at load support reverse-polarity protection; gate-control behavior not verified. Earlier MMBT3904 NPN hypothesis withdrawn."
+  },
+  "retained_hypotheses": [
+    "TP14 battery-side copper is photo-supported; latest user report explicitly probes the battery/Q1/output path.",
+    "Other inferred gate-control and sensing branches are not certified by this correction."
+  ],
+  "additional_user_reports": [
+    "V035 is connected to VREF TP",
+    "V042 is connected to VDD TP",
+    "User authorizes naming the unlabelled Q1-output rail VSYS.",
+    "L1/L2 are connected to the same VSYS."
+  ],
+  "confirmed_existing_net": "V042-PIC20 VDD-C32.1 is confirmed to TP103 VDD; no new net merge.",
+  "naming_policy": "User requested the printed labels BATTERY (+/-), VDD, VREF and GND, then explicitly authorized naming the unlabelled post-Q1 supply. VSYS is that new name: Q1.L/native2, MX512H pin4, L1 and L2 supply sides. Battery (-) is on GND.",
+  "net_name_migration": {
+    "H_VBAT": "VSYS",
+    "H_BAT_DETECT": "BATTERY+",
+    "Q1_BASE": "Q1_GATE",
+    "VBAT_RAW": "BATTERY+",
+    "VDD_MOTOR": "VSYS",
+    "H_VDD": "VDD",
+    "H_GND": "GND",
+    "PIC_RB0_VREF": "VREF",
+    "U5.VDD": "VSYS"
+  },
+  "l1_l2_confirmation": "v0.9.9: User confirms L1 and L2 connect to the same VSYS after Q1. Existing supply-side pad1 selections retained from photos/model; opposite terminals are separate across each component. The report does not identify inductance/ferrite type or measured values."
+}

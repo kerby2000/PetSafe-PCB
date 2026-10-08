@@ -1,6 +1,8 @@
 # Targeted via-to-via search — current round
 
-Basis: **v0.9.8**. The remaining search pool has **11 sites in 10 local endpoint groups**. These are not 10 proven missing nets. V067/U6A is now mapped to J3.1/PIR supply; no generic GPIO batch remains pending.
+Basis: **v0.9.9**. The remaining search pool has **9 sites in 8 local endpoint groups**. These are not 8 proven missing nets. V067/U6A is now mapped to J3.1/PIR supply; no generic GPIO batch remains pending.
+
+V035 now reaches VREF, V042 reaches board VDD. VSYS names the separate post-Q1 supply; L1/L2 share it. V015/TP14 is on battery+ by photo. See [current power evidence](VIA_REVIEW_RESULTS.md). Later v0.9.8 notes below are retained as historical context.
 
 ## Results applied
 
@@ -59,7 +61,7 @@ The user then explicitly excluded V053 from VREF and confirmed **V053–V070**. 
 
 The [photo locator](VIA_PAIR_TESTS.html) and [printable guide](../output/pdf/PetSafe_via_pair_next_check.pdf) now show the completed V053–V070 route. No repeat reading is requested. Earlier browser storage and round-2/3/4/5 evidence are preserved. New reports are in `v098_net_changes.json` and `via_user_review.json`.
 
-Validation: **84 native/model net partitions PASS; 36 ERC findings = 28 open pads + 3 isolated labels + 5 power findings**. The 28 open pads comprise 10 populated-entry and 18 empty-option pads. Local modeled connections can still have missing remote continuations or inferred branches.
+Validation: **83 native/model net partitions PASS; 36 ERC findings = 28 open pads + 3 isolated labels + 5 power findings**. The 28 open pads comprise 10 populated-entry and 18 empty-option pads. Local modeled connections can still have missing remote continuations or inferred branches.
 
 ## Remaining decisions
 
