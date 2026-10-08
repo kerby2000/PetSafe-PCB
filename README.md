@@ -11,6 +11,7 @@ One editable **A2 KiCad 10 sheet**, with all 150 main-board catalog entries grou
 - `index.html`: zoomable offline viewer, searchable inventory and photo links.
 - `schematic/PetSafe_1001339.kicad_pro`: open the single native schematic in KiCad 10.
 - `output/pdf/PetSafe_single_sheet.pdf`: one-page vector drawing.
+- `output/pdf/PetSafe_PIC_GPIO_pin_map.pdf`: new close-up with all 28 PIC pins numbered and 14 unresolved GPIOs highlighted; fill `evidence/PIC_GPIO_missing.csv` or reply with pin, destination pad and reading.
 - `output/pdf/PetSafe_measurement_round1.pdf`: annotated photos, recorded U6/Q8 readings and targeted C6 follow-up.
 - `docs/LIBRARIES_AND_ALTERNATIVES.md`: library choices, datasheet symbol provenance, footprints and Western alternatives.
 - `docs/RECONSTRUCTION.md`: circuit hypotheses, identifications and calculations.
@@ -69,3 +70,5 @@ The v0.6 round requested D2 diode-mode readings, C5 sleeve text/dimensions and o
 ## v0.7 user measurements and PIC tracing
 
 C5 is 470 uF / 16 V from the sleeve. C11 measures approximately 3.2 x 1.5 mm (1206); R8 approximately 1.6 x 0.77 mm (0603; user confirms both metal end caps included). The fitted resistor family is revised provisionally to 0603. Earlier v0.6 0805 inference is superseded. Five more PIC local connections were recovered from existing photos, leaving 14 open GPIO pads. See [annotated photo review](output/pdf/PetSafe_PIC_trace_review.pdf) and [pin-by-pin evidence](evidence/pic_trace_audit.json). C32 moved to the PIC VDD/VSS; C25/C39 are signal filters, R4 returns to RB3, TP17 belongs to RC7, D4/D5 attach to ICSP, and TP4/C41 are no longer tied to the antenna hypothesis. C26 VDD tie was withdrawn.
+
+The subsequent three user photos are preserved in `photos/user/2026-10-08/`. The [complete GPIO map](output/pdf/PetSafe_PIC_GPIO_pin_map.pdf) highlights pins 3, 5, 6, 7, 11, 12, 13, 15, 16, 17, 21, 22, 23 and 25. Pin 1 is at the lower right beside the moulded dot in this photo. All 28 leads are visible despite the top of the plastic body being cropped. Existing local connections remain partly inferred; preparing this tracing request did not change schematic connectivity. Photo hashes, pin coordinates and the reply format are in `evidence/pic_gpio_request.json`.
