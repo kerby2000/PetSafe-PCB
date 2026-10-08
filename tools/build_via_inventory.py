@@ -63,4 +63,3 @@ with (R/'evidence/via_inventory.csv').open('w',newline='',encoding='utf-8') as h
  w=csv.DictWriter(h,fieldnames=fields);w.writeheader()
  for v in sites:w.writerow(dict(id=v['id'],rear_x=v['rear_xy'][0],rear_y=v['rear_xy'][1],front_x=v['front_xy'][0],front_y=v['front_xy'][1],rear_appearance=v['rear_appearance'],front_match=v['front_match'],endpoints=';'.join(v['endpoints']),net=v['net'] or '',note=v['note']))
 print(len(sites),'rear-visible sites;',len(ids),'manually matched anchors;',ids)
-
