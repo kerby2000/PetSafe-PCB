@@ -93,3 +93,8 @@ User 2026-10-08 replies confirm both multimeter and visible traces for the GPIO 
 Registered original mosaics `photos/front_registered.jpg` and `photos/back_mirrored_registered.jpg`, original rear IMG_2439-2443, existing cross-side registration records, and Microchip's SOIC VSS8/VSS19/VDD20 pin identities support the via comparison. Rear is already mirrored; do not mirror twice. Front projection errors up to approximately 46 pixels on the full mosaic require local verification. Detailed manually chosen coordinates and limitations are in `evidence/via_audit.json`.
 
 [Altium plane-rule documentation](https://www.altium.com/documentation/altium-designer/pcb/design-rule-types/plane) explains clearance/antipad versus plane connection as general PCB terminology. It does not identify this board's hidden nets or layer count.
+
+
+## v0.9 user via review and cross-checks
+
+User assignments and ambiguities are preserved in `evidence/via_user_review.json`; the supplied MX512H application image is preserved unchanged at `photos/user/via_review/MX512H_pin4_supply.png`. No manufacturer source is inferred from the screenshot beyond its displayed application diagram. Site-to-component cross-checks use the original front/rear photographic mosaics and IMG_2431 through IMG_2443; see `via_audit.json` and `v09_net_changes.json`. Rear appearance, user assignment, model hypothesis and held conflicts remain separate. No new per-via ohms or operating voltages were supplied.

@@ -1,18 +1,22 @@
-# PetSafe PCB reverse engineering - v0.8
+# PetSafe PCB reverse engineering - v0.9
 
 One editable **A2 KiCad 10 sheet**, with all 150 main-board catalog entries grouped into functional blocks. Wires connect parts within blocks; named nets connect blocks. This revision uses the installed **KiCad 10.0.5** and **KiCad MCP Server**, with **20 unmodified stock symbol definitions and four explicitly authorized datasheet symbols**.
 
+## Current via review (v0.9)
+
+The user reviewed 98 distinct IDs including the V026 correction; V050 is a rejected recognition, and 29 IDs were not mentioned (some already have photo matches). Twenty-eight pad assignments changed. C27 is placed across motor supply/GND; regulator option pads are connected; R10/R32 returns become GND; R37/R39 share V063 with its remote supply unknown; capacitor-bank ground returns replace the old antenna-rail guesses; RC1/pin12 reaches VREF/V053. Hidden tuning-midpoint/antenna connections remain unresolved. MX512H pin4 motor VDD is distinct from pin1 logic VCC and the regulated board VDD pad.
+
 ## Corrected markings and measured evidence (2026-10-08)
 
-[U6 / Q8 marking update](docs/U6_Q8_MARKING_UPDATE.md) identifies **U6 C2NM as a strong S-812C33AMC 3.3 V regulator candidate** and **Q8 3724A as a complementary N/P MOSFET pair, with SIL3724A as the datasheet candidate**. This replaces the earlier misread WN23/372A hypotheses. U6 ground, joined Q8 drains and the N-source return are supported by resistance readings; the proposed C6 output tie was refuted and removed; other routes and actual rail voltage remain unverified. U1/U5/U6/Q8 now use MCP-authored datasheet symbols with standard KiCad footprints. D3 uses a BAV99 candidate (A7); D2 is an unidentified 4P stock placeholder with its old clamp ties withdrawn. R41 is 330 ohm from the user-read 331 marking; D4/D5 use SD05 TVS candidates and D6 uses a provisional MMSZ5228BS 3.9 V Zener (2.4 V alternative).
+[U6 / Q8 marking update](docs/U6_Q8_MARKING_UPDATE.md) identifies **U6 C2NM as a strong S-812C33AMC 3.3 V regulator candidate** and **Q8 3724A as a complementary N/P MOSFET pair, with SIL3724A as the datasheet candidate**. This replaces the earlier misread WN23/372A hypotheses. U6 ground, joined Q8 outer pads and the source-return candidate are supported by earlier resistance readings; the new V113/V115 ground reports now require reconciling Q8 output wiring; the proposed C6 output tie was refuted and removed; other routes and actual rail voltage remain unverified. U1/U5/U6/Q8 now use MCP-authored datasheet symbols with standard KiCad footprints. D3 uses a BAV99 candidate (A7); D2 is an unidentified 4P stock placeholder with its old clamp ties withdrawn. R41 is 330 ohm from the user-read 331 marking; D4/D5 use SD05 TVS candidates and D6 uses a provisional MMSZ5228BS 3.9 V Zener (2.4 V alternative).
 
 ## Open the result
 
-- `docs/VIA_REVIEW.html`: interactive front/rear comparison, 127 rear-visible sites and 10 manually matched anchors.
+- `docs/VIA_REVIEW.html`: interactive front/rear comparison, 126 active sites / 127 stable IDs; 98 user-reviewed IDs including correction, conflicts and component cross-checks.
 - `index.html`: zoomable offline viewer, searchable inventory and photo links.
 - `schematic/PetSafe_1001339.kicad_pro`: open the single native schematic in KiCad 10.
 - `output/pdf/PetSafe_single_sheet.pdf`: one-page vector drawing.
-- `output/pdf/PetSafe_PIC_GPIO_pin_map.pdf`: updated close-up with all 28 PIC pins numbered and 9 unresolved GPIOs highlighted; fill `evidence/PIC_GPIO_missing.csv` or reply with pin, destination pad and reading.
+- `output/pdf/PetSafe_PIC_GPIO_pin_map.pdf`: updated close-up with all 28 PIC pins numbered and 8 unresolved GPIOs highlighted; fill `evidence/PIC_GPIO_missing.csv` or reply with pin, destination pad and reading.
 - `output/pdf/PetSafe_measurement_round1.pdf`: annotated photos, recorded U6/Q8 readings and targeted C6 follow-up.
 - `docs/LIBRARIES_AND_ALTERNATIVES.md`: library choices, datasheet symbol provenance, footprints and Western alternatives.
 - `docs/RECONSTRUCTION.md`: circuit hypotheses, identifications and calculations.
@@ -22,15 +26,15 @@ All symbol definitions are embedded, so the drawing is self-contained. Standard 
 
 ## What is complete and what remains provisional
 
-All 150 catalog entries, 352 photographed pads and 29 original visual fragments are retained. The native KiCad 10.0.5 netlist matches all 89 authored net partitions. All 26 original photos retain their checksums. The schematic is a functional reconstruction from photographs and datasheets, not a continuity-verified production design.
+All 150 catalog entries, 352 photographed pads and 29 original visual fragments are retained. The native KiCad 10.0.5 netlist matches all 90 authored net partitions. All 26 original photos retain their checksums. The schematic is a functional reconstruction from photographs and datasheets, not a continuity-verified production design.
 
 U1 (probable S-1200B45) and U5 (MX512H) now use datasheet-derived symbols created through MCP at the user's request. Their standard footprints are SOT-23-5 and SOIC-8 3.9 x 4.9 mm / 1.27 mm pitch. No custom footprint was needed. U6 and Q8 now have candidate datasheet pin maps, including both Q8 MOSFET units on this sheet. U3 uses KiCad's generic dual op-amp with its actual SGM8542XS value and pinout.
 
 Western alternatives are documented separately: **MCP6002-I/SN** for SGM8542 and **DRV8212PDSGR** for an MX512H redesign. The motor driver has a different package and pinout; it has not been substituted into the reconstructed board. Both alternatives have standard KiCad symbols and footprints. Pin-compatible does not mean electrically interchangeable.
 
-ERC retains **65 findings**: 46 unconnected pins, 11 isolated pin labels, five undriven power checks and three undriven inputs (two motor-control inputs and the still-inferred LED common). There are no off-grid endpoints or dangling wire ends. No artificial no-connect or power flags hide missing evidence. The 46 open pads include 24 on DNP entries and 22 others, including two internally open U6 pins with unresolved external ties. Nine PIC GPIO destinations, some filter routes/values and candidate identities remain open. PIR daughterboard internals and a routed PCB are outside this revision.
+ERC retains **55 findings**: 37 unconnected pins, 10 isolated pin labels, five undriven power checks and three undriven inputs (two motor-control inputs and the still-inferred LED common). There are no off-grid endpoints or dangling wire ends. No artificial no-connect or power flags hide missing evidence. The 37 open pads include 19 on DNP entries and 18 others, including two internally open U6 pins with unresolved external ties. Eight PIC GPIO pads remain open. Existing local nets can still have uncertain onward routes.
 
-See [remaining completion items](docs/RECONSTRUCTION.md#remaining-completion-items-v08). No further symbol files are needed for the current chosen candidates; a complete hardware-verified circuit still requires resolving hidden wiring and values.
+Read the [complete status report](output/pdf/PetSafe_completion_status.pdf) for every remaining area and all 28 PIC pins, and the [via review findings](docs/VIA_REVIEW_RESULTS.md) for each changed endpoint. **Q8 V113/V115 ground reports conflict with the current output hypothesis; those merges are held.** V025=GND and V026=PIC21/RB0 are now corrected. V073 still has duplicate assignments awaiting correction. No further symbol files are missing for the chosen candidates. PIR daughterboard internals and a routed PCB remain outside this main-board revision.
 
 ## Repository contents
 
@@ -74,7 +78,7 @@ C5 is 470 uF / 16 V from the sleeve. C11 measures approximately 3.2 x 1.5 mm (12
 
 The subsequent three user photos are preserved in `photos/user/2026-10-08/`. The [complete GPIO map](output/pdf/PetSafe_PIC_GPIO_pin_map.pdf) highlights pins 3, 5, 6, 7, 11, 12, 13, 15, 16, 17, 21, 22, 23 and 25. Pin 1 is at the lower right beside the moulded dot in this photo. All 28 leads are visible despite the top of the plastic body being cropped. Existing local connections remain partly inferred; preparing this tracing request did not change schematic connectivity. Photo hashes, pin coordinates and the reply format are in `evidence/pic_gpio_request.json`.
 
-## v0.8 user GPIO mapping and rear-via audit
+## Historical v0.8 user GPIO mapping and rear-via audit
 
 The user explicitly confirmed both multimeter and visual tracing: RA1/pin3 joins R28, R29 and TP7 (reported as RP7, interpreted from the photographed label); RC6/pin17 joins R13; RB1/pin22 joins TP2; RB2/pin23 joins TP1; RB4/pin25 joins TP4; RB5/pin26 to TP10 is corroborated. Numerical resistance values were not supplied. Resistor-pad identities use local photographs.
 
@@ -82,4 +86,4 @@ Conflicting old guesses are withdrawn: R13 is not assigned to RC7; TP2 is not as
 
 Matching front and rear photos supports D4.2, D5.2 and C41.2 on main rear copper anchored by PIC VSS pins8/19. These three additions are photo-derived, not meter measurements. The [via viewer](docs/VIA_REVIEW.html) catalogues 127 rear-visible sites, with 10 individually matched front anchors; other front positions are approximate projections. Four layers are plausible but unverified. A rear clearance does not reveal the name or function of an internal net. Separate edge/antenna copper is not automatically GND.
 
-Nine GPIO destinations remain: 12/RC1, 15/RC4, 16/RC5 and 21/RB0 reach vias; 5/RA3, 6/RA4, 7/RA5, 11/RC0 and 13/RC2 have no visible continuation. None is marked NC. Pin12's via is V053 in the viewer. The other three need exact via association before hidden destinations can be targeted. Current evidence: `evidence/pic_gpio_user_mapping.json`, `evidence/via_audit.json`, `evidence/v08_net_changes.json`.
+At v0.8, nine GPIO destinations remained (superseded by the v0.9 status above): 12/RC1, 15/RC4, 16/RC5 and 21/RB0 reach vias; 5/RA3, 6/RA4, 7/RA5, 11/RC0 and 13/RC2 have no visible continuation. None is marked NC. Pin12's via is V053 in the viewer. The other three need exact via association before hidden destinations can be targeted. Historical mapping evidence: `evidence/pic_gpio_user_mapping.json`, `evidence/via_audit.json`, `evidence/v08_net_changes.json`.

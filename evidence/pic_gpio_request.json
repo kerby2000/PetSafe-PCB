@@ -1,6 +1,6 @@
 {
   "date": "2026-10-08",
-  "basis_revision": "v0.8",
+  "basis_revision": "v0.9",
   "status": "AWAITING_USER_TRACING",
   "source_photos": [
     {
@@ -37,13 +37,12 @@
     6,
     7,
     11,
-    12,
     13,
     15,
     16,
     21
   ],
-  "missing_count": 9,
+  "missing_count": 8,
   "definition": "No connection is currently modeled on these GPIO pads. Other modeled nets may still be partial or inferred.",
   "targets": [
     {
@@ -76,14 +75,6 @@
       "xy": [
         833,
         199
-      ]
-    },
-    {
-      "pin": 12,
-      "gpio": "RC1",
-      "xy": [
-        833,
-        154
       ]
     },
     {
@@ -226,7 +217,7 @@
         833,
         154
       ],
-      "missing": true
+      "missing": false
     },
     {
       "pin": 13,
@@ -420,17 +411,6 @@
       "notes": "No visible trace; possible hidden trace/via"
     },
     {
-      "pin": 12,
-      "gpio": "RC1",
-      "photo_side": "right",
-      "position": "from bottom: 12",
-      "destination_reference": "",
-      "destination_pad_or_pin": "",
-      "resistance_ohms": "",
-      "method": "User visual trace and multimeter; no numeric reading",
-      "notes": "Via; user suspects internal layer"
-    },
-    {
       "pin": 13,
       "gpio": "RC2",
       "photo_side": "right",
@@ -489,6 +469,6 @@
   "notes": [
     "No guessed destination is presented as a measurement.",
     "All 28 pads are visible in the close-up although the top of the plastic body is cropped.",
-    "v0.8: five user-reported GPIO destinations added; RB5/TP10 corroborated. See pic_gpio_user_mapping.json."
+    "v0.9: RC1/pin12 now reaches VREF/V053. V022=RC4, V023=RC5; V026=RB0 confirmed by user correction. See pic_gpio_status.json."
   ]
 }

@@ -1,5 +1,5 @@
 {
-  "revision": "v0.8",
+  "revision": "v0.9",
   "instruments": [
     "LCR meter",
     "multimeter"
@@ -12,7 +12,7 @@
   ],
   "fitted_capacitors": 45,
   "fitted_resistors": 38,
-  "unresolved_physical_pins": 46,
+  "unresolved_physical_pins": 37,
   "warning": "Open-pad counts do not include every inferred route. Assigned footprints are candidates, not measured reproductions.",
   "components": [
     {
@@ -596,7 +596,7 @@
       "footprint": "Resistor_SMD:R_0603_1608Metric",
       "footprint_confidence": "medium",
       "footprint_basis": "Body/land proportions compared with nearby 1.27-mm SOIC and 0.95-mm SOT lead pitch. Populated resistor family appears 0805; smaller empty option lands appear 0603.",
-      "open_pads": 1,
+      "open_pads": 0,
       "next_method": "No immediate measurement requested",
       "photos": "IMG_2430.jpg;IMG_2434.jpg;IMG_2438.jpg"
     },
@@ -611,7 +611,7 @@
       "footprint": "Resistor_SMD:R_0603_1608Metric",
       "footprint_confidence": "medium",
       "footprint_basis": "Body/land proportions compared with nearby 1.27-mm SOIC and 0.95-mm SOT lead pitch. Populated resistor family appears 0805; smaller empty option lands appear 0603.",
-      "open_pads": 1,
+      "open_pads": 0,
       "next_method": "No immediate measurement requested",
       "photos": "IMG_2430.jpg;IMG_2434.jpg;IMG_2438.jpg"
     },
@@ -716,7 +716,7 @@
       "footprint": "Capacitor_SMD:C_0603_1608Metric",
       "footprint_confidence": "medium",
       "footprint_basis": "Photo family and body/land proportions compared with adjacent known IC lead pitch. Size is independent of capacitance, dielectric and voltage rating.",
-      "open_pads": 1,
+      "open_pads": 0,
       "next_method": "No immediate measurement requested",
       "photos": "IMG_2430.jpg;IMG_2435.jpg"
     },
@@ -731,7 +731,7 @@
       "footprint": "Capacitor_SMD:C_0603_1608Metric",
       "footprint_confidence": "medium",
       "footprint_basis": "Photo family and body/land proportions compared with adjacent known IC lead pitch. Size is independent of capacitance, dielectric and voltage rating.",
-      "open_pads": 1,
+      "open_pads": 0,
       "next_method": "No immediate measurement requested",
       "photos": "IMG_2430.jpg;IMG_2435.jpg"
     },
@@ -1076,8 +1076,8 @@
       "footprint": "Capacitor_SMD:C_1206_3216Metric",
       "footprint_confidence": "medium",
       "footprint_basis": "Photo family and body/land proportions compared with adjacent known IC lead pitch. Size is independent of capacitance, dielectric and voltage rating.",
-      "open_pads": 2,
-      "next_method": "LCR: in-circuit screening first; isolate one terminal if an individual value is needed; Targeted continuity for 2 open physical pads",
+      "open_pads": 0,
+      "next_method": "LCR: in-circuit screening first; isolate one terminal if an individual value is needed",
       "photos": "IMG_2436.jpg;IMG_2437.jpg;IMG_2438.jpg"
     },
     {
@@ -1496,8 +1496,8 @@
       "footprint": "Package_SO:SOIC-28W_7.5x17.9mm_P1.27mm",
       "footprint_confidence": "datasheet/package candidate",
       "footprint_basis": "Existing assignment; see component identity evidence.",
-      "open_pads": 9,
-      "next_method": "Targeted continuity for 9 open physical pads",
+      "open_pads": 8,
+      "next_method": "Targeted continuity for 8 open physical pads",
       "photos": "IMG_2424.jpg"
     },
     {
@@ -1717,7 +1717,7 @@
       "observed": "UNKNOWN",
       "displayed": "SIL3724A?",
       "marking": "3724A",
-      "value_or_identity": "H09v05: 3724A matches MCC SIL3724A N/P pair and six-pin map; fitted maker unconfirmed. D-E=2ohm supports joined drains; S-G=2ohm supports N source ground. P-source supply and R5 continuation inferred. E-F=400kohm refutes the proposed C6 output tie.",
+      "value_or_identity": "v0.9 HOLD: 3724A supports SIL3724A candidate; V113/V115 user GND reports conflict with the outer joined-pad/output model. Earlier D-E2ohm and S-G2ohm retained, but external topology requires reconciliation. C6 exact route remains unresolved.",
       "footprint": "Package_TO_SOT_SMD:SOT-23-6",
       "footprint_confidence": "datasheet/package candidate",
       "footprint_basis": "Existing assignment; see component identity evidence.",
@@ -1736,7 +1736,7 @@
       "footprint": "Package_TO_SOT_SMD:SOT-23",
       "footprint_confidence": "medium",
       "footprint_basis": "Empty three-pad transistor-size option; no fitted identity.",
-      "open_pads": 2,
+      "open_pads": 1,
       "next_method": "No immediate measurement requested",
       "photos": "IMG_2438.jpg"
     },
@@ -2201,8 +2201,8 @@
       "footprint": "TestPoint:TestPoint_THTPad_D2.0mm_Drill1.0mm",
       "footprint_confidence": "low",
       "footprint_basis": "Stock plated-hole approximation from photographs. Exact drill and annular ring remain unmeasured; these are board pads, not fitted components.",
-      "open_pads": 1,
-      "next_method": "Targeted continuity for 1 open physical pads",
+      "open_pads": 0,
+      "next_method": "No immediate measurement requested",
       "photos": "IMG_2430.jpg;IMG_2433.jpg;IMG_2435.jpg;IMG_2438.jpg"
     },
     {

@@ -1,14 +1,12 @@
 {
   "date": "2026-10-08",
-  "revision": "v0.8",
-  "missing_gpio_count": 9,
+  "revision": "v0.9",
+  "missing_gpio_count": 8,
   "pin_list_matches_native_netlist": "PASS",
-  "new_endpoint_contracts": "PASS: 11 pairs, including photo-supported grounds",
-  "superseded_net_separations": "PASS: 5 conflicting old assignments remain separate",
-  "original_photo_bytes_preserved": "PASS: all three attachments; 26 originals independently checked by validate_native.py",
-  "schematic_sha256": "dd282261fbffb27dc2c295a6a2458f26cc011c9d4b2fa38f5afe2d012d440dd2",
-  "pdf_sha256": "c34e05148ee44300cba4800290e7b1a71d36d03836e874c15f0b03c67fdfb076",
-  "png_sha256": "6c809d943754464ae19dd75719efc77ed88c2567bddcd3bc9de556e0bb5ba1c4",
-  "visual_review": "PASS: 28 callouts retain real solder-pad positions; 9 orange targets match current checklist. Remaining notes and user mapping fit without clipping.",
-  "warning": "Nine GPIO destinations unresolved. Five have no visible route, which is not proof of NC. Grey pins have different evidence strengths; see mapping JSON."
+  "original_photo_bytes_preserved": "PASS",
+  "schematic_sha256": "26e0a02056dd05e32a0d71ce7d86fd8106bc1f9422b349fd0d07eee1068381c0",
+  "pdf_sha256": "058c701f84fa40733b2929a8899a5d988117d60770ba16d1908aa8a6b9ba4a95",
+  "png_sha256": "65b3392784adc97ca7496529583822495bf00cb19fac022dacd53189546c93ab",
+  "visual_review": "PASS: 28 real pad callouts, eight orange targets; V022/V023/V026 associations and RC1/VREF update shown.",
+  "warning": "Eight GPIO onward destinations unresolved; five have no visible exit. No NC inferred. Local modeled nets can still have hidden or inferred continuations."
 }

@@ -76,7 +76,8 @@ for inst in instances:
     if ref in ['J1','J3','J5']:rx=vx=x+2.54;ry=y-3.81;vy=y-1.905
     if ref=='Y1':rx=vx=x;ry=y-5.08;vy=y-3.175
     if ref in ['C30','C31']:rx=vx=x+2.54;ry=y-0.635;vy=y+1.27
-    if ref=='TP11':rx=vx=x-1.27;ry=y-5.08;vy=y-3.175
+    if ref=='TP11':rx=vx=x-12.7;ry=y-1.27;vy=y+0.635
+    if ref=='R32':rx=vx=x+4.445;ry=y-0.635;vy=y+1.27
     if ref in ['TP1','TP2']:rx=vx=x+7.62;ry=y-1.27;vy=y+0.635
     if ref=='S1':rx=vx=x;ry=y-10.16;vy=y-8.255
     if ref=='C18':rx=vx=x-6.35;ry=y+3.81;vy=y+5.715
@@ -168,6 +169,8 @@ wire('H_VDD','C2.1',(90,42));wire('H_VDD','C2A.1',(106,42));label('H_VDD',(101,4
 wire('U1_ALT_PAD','U1.R2',(80,48),(80,81),(115,81),'C4.2')
 wire('U1_ALT_PAD','R1.2',(48,87),(48,81),(80,81));wire('U1_ALT_PAD','C3.2',(72,87),(72,81));wire('U1_ALT_PAD','R2.2',(97,87),(97,81))
 label('U1_ALT_PAD',(80,81))
+stub('H_VDD','R1.1',0,5);stub('H_VDD','C3.1',0,5)
+stub('H_GND','R2.1',0,5);stub('H_GND','C4.1',0,5)
 
 # PIC: official SOIC symbol; both ground pins share the library endpoint.
 bus('H_VDD',32,['U4.20','C32.1']);bus('H_GND',44,['C32.2','C26.2'])
@@ -177,6 +180,8 @@ wire('PIC_RA2_FILTER','U4.4','C39.1')
 bus('H_GND',66,['C25.2','C39.2'])
 wire('PIC_TP4_C41','TP4.1','C41.1');stub('H_GND','C41.2',4)
 stub('PIC_RA1_RX_REF','U4.3',4)
+stub('PIC_RC1_VREF','U4.12',-12)
+stub('PIC_RC1_VREF','VREF.1',0,4)
 stub('H_TUNE_1','U4.17',-12)
 stub('H_LED_CTL_B','U4.22',4)
 stub('H_LED_CTL_A','U4.23',4)
@@ -201,6 +206,8 @@ label('H_LED_COMMON',(199,187))
 stub('RB5_OPT','U4.26',14);stub('RB5_OPT','TP10.1',0,4)
 stub('RB5_OPT','R35.1',-3);stub('R35_Q9','R35.2',0,4)
 stub('R35_Q9','Q9.L',-4)
+stub('H_GND','Q9.R',4)
+stub('H_GND','R32.1',3)
 
 # MX512H physical pin numbering, not a DRV8837 pin substitution.
 wire('H_VBAT','C33.1',(339,33),(361,33),'U5.4');label('H_VBAT',(339,33))
@@ -210,9 +217,10 @@ wire('H_GND','U5.6',(359,69));wire('H_GND','U5.7',(363,69));wire('H_GND',(359,69
 wire('H_MOTOR_A','U5.8',(384,44),(384,49),'J5.A')
 wire('H_MOTOR_B','U5.5',(381,52),(381,55),(386,55),(386,51),'J5.B');wire('H_MOTOR_B','TP15.1',(381,55))
 stub('H_MOTOR_INA','U5.2',-10);stub('H_MOTOR_INB','U5.3',-10)
+stub('H_VBAT','C27.1',0,-4);stub('H_GND','C27.2',0,4)
 
 # S-812C33AMC candidate: C2N code and measured ground support pin assignment.
-stub('H_VDD','R37.1',-4)
+wire('AUX_FEED_V063','R37.1',(235,233),(235,227));label('AUX_FEED_V063',(235,227))
 wire('H_AUX_IN','R37.2',(248,233),(248,240),'U6.R2')
 wire('H_AUX_IN','C36.1',(237,238),(248,238));label('H_AUX_IN',(237,238))
 wire('H_GND','U6.R3',(260,257));bus('H_GND',257,['C36.2','C37.2'])
@@ -231,6 +239,7 @@ wire('H_RF_VDD','Q8.T2',(177,159),(177,132),'L1.2')
 wire('H_RF_VDD','L1.2',(187,132),'C5.1')
 label('H_RF_VDD',(181,132))
 # C6.1 to output was refuted by 400 kohm E-F; leave its destination unresolved.
+stub('H_ANT_A','ANT1.1',5);stub('H_ANT_B','ANT2.1',5)
 
 # Preserve original frame geometry at half scale, using normal readable text sizes.
 for g in layout['graphics']:
@@ -247,13 +256,18 @@ for n in layout['notes']:
         t='U1 datasheet symbol: S-1200B45 SOT-23-5. Pin 4 is internally open; option pads retained.'
     if 'Original photographed pad names remain' in t:
         t='Library pin numbers are mapped to photo pads in evidence/pin_crosswalk.json.'
-    if t.startswith('v0.2'):t='v0.8 | KiCad 10.0.5 | 2026-10-08';n['y']=292
+    if t.startswith('v0.2'):t='v0.9 | KiCad 10.0.5 | 2026-10-08';n['y']=292
     if t.startswith('H14-H15:'):t='H14-H15: C2N supports S-812C33AMC 3.3V LDO. C/R3 ground supported by resistance.'
     if t.startswith('H09:'):t='H09: 3724A matches SIL3724A N/P MOSFET pair. Both units share one package.'
-    if t.startswith('Q8 T2/B1/B2'):t='Measured: D-E 2 ohm, S-G 2 ohm; E-F 400 kohm refutes the proposed C6 output tie.'
+    if t.startswith('Q8 T2/B1/B2'):t='HOLD: V113/V115 reported GND conflicts with output model; verify before finalizing.'
     if t.startswith('H07:'):t='H07: C14R inverter candidate. Q8 source rail inferred; C6 destination unresolved.'
     if t.startswith('No invented ties'):t='D4/D5 opposite vias join rear GND copper. D6 type and routes remain uncertain.'
-    if t.startswith('H02:'):t='User GPIO mapping added; 9 GPIO pads open. Hidden destinations remain unresolved.'
+    if t.startswith('H02:'):t='8 GPIO pads open; RC1 joins VREF pad. RC4/RC5 reach V022/V023; onward routes unknown.'
+    if t.startswith('Selected working hypothesis:'):t='v0.9: user-reviewed GND returns replace previous antenna rails on this capacitor bank.'
+    if t.startswith('Ceff ='):t='Local three-capacitor junctions retained. Hidden links from these midpoints to antenna remain unknown.'
+    if t.startswith('All-parallel'):t='Do not infer complete tuning topology from local connections. Transistor identity/orientation remains provisional.'
+    if t.startswith('C27 role unresolved'):t='C27: motor-supply bypass; value unmeasured.'
+    if t.startswith('Optional R1/R2/C3/C4'):t='Empty options: R1/C3 free ends join regulated VDD; R2/C4 free ends join GND.'
     if t.startswith('H03:'):t='R3/R4 sensing candidate; R4 returns to RB3. C28 value estimated.';n['y']=106
     text(t,n['x'],n['y'],1.27 if n['size']>=1 else max(.762,n['size']*1.27))
 text('U5 datasheet symbol: separate logic VCC and motor VDD; both ground pins retained.',320,77,.762)
@@ -262,6 +276,7 @@ text('U3 alternative: MCP6002-I/SN; same pin roles, electrical suitability to ve
 text('U5 alternative: DRV8212PDSGR. Different package/pins; redesign required.',320,81,.762)
 text('U6: 3.3V is the candidate rating, not a voltage measurement. NC4/5 board ties unresolved.',234,284,.762)
 text('C6: F-P 10 ohm, F-G 300 kohm suggests a supply-related node; exact path unresolved.',90,202,.762)
+text('V063 joins R37/R39; its remote supply is unknown. Old supply/GND guesses withdrawn.',234,287,.762)
 
 def on(p,w):
     a,b=w['a'],w['b']
@@ -315,13 +330,13 @@ for net,edges in adj.items():
 for l in L:
     x,y=l['p'];G.append(expr(f'(label {q(l["net"])} (at {x} {y} 0) (effects (font (size .762 .762)) (justify left bottom)) (uuid {q(uid())}))'))
 tree.extend(G)
-tree.append(expr('(title_block (title "PetSafe 100-1339 R03 A | single-sheet reconstruction") (date "2026-10-08") (rev "0.8") (company "KiCad 10 libraries + four datasheet symbols | MCP authoring") (comment 1 "User GPIO mapping + front/rear via audit. Remaining hypotheses documented."))'))
+tree.append(expr('(title_block (title "PetSafe 100-1339 R03 A | single-sheet reconstruction") (date "2026-10-08") (rev "0.9") (company "KiCad 10 libraries + four datasheet symbols | MCP authoring") (comment 1 "User via review + component cross-checks; Q8 conflict and hidden routes remain open."))'))
 # Canonical pretty printer supplied by the installed MCP server.
 sys.path.insert(0,str(Path.home()/'Documents/VS.Code.Projects/KiCAD-MCP-Server/python'))
 from utils.sexpr_format import prettify
 out=R/'schematic/PetSafe_1001339.kicad_sch'
 out.write_text(prettify(sx.dumps(tree)),encoding='utf-8',newline='\n')
-model.update(revision='v0.8',coordinate_units='mm',native_pin_crosswalk=layout['crosswalk'],pin_positions={e:list(p) for e,p in P.items()},
+model.update(revision='v0.9',coordinate_units='mm',native_pin_crosswalk=layout['crosswalk'],pin_positions={e:list(p) for e,p in P.items()},
              geometric_wires=[dict(net=n,a=a,b=b) for n,a,b in segments],library_policy='KiCad 10 stock symbols plus four explicitly authorized MCP-authored datasheet symbols for U1/U5/U6/Q8')
 for c in model['components']:
     entry=next(x for x in layout['catalog'] if x['original_ref']==c['ref'])

@@ -1,0 +1,176 @@
+{
+  "revision": "v0.9",
+  "result": "PASS",
+  "native_schematic_sha256": "26e0a02056dd05e32a0d71ce7d86fd8106bc1f9422b349fd0d07eee1068381c0",
+  "changed_endpoint_checks": 28,
+  "required_same_net_pairs": [
+    [
+      "R37.1",
+      "R39.2"
+    ],
+    [
+      "C27.1",
+      "U5.4"
+    ],
+    [
+      "C27.2",
+      "U4.8"
+    ],
+    [
+      "R1.1",
+      "U1.R1"
+    ],
+    [
+      "C3.1",
+      "U1.R1"
+    ],
+    [
+      "R2.1",
+      "U4.8"
+    ],
+    [
+      "C4.1",
+      "U4.8"
+    ],
+    [
+      "R10.2",
+      "U4.8"
+    ],
+    [
+      "R32.1",
+      "U4.8"
+    ],
+    [
+      "Q9.R",
+      "U4.8"
+    ],
+    [
+      "U4.12",
+      "VREF.1"
+    ]
+  ],
+  "required_separate_net_pairs": [
+    [
+      "U5.4",
+      "U5.1"
+    ],
+    [
+      "U5.4",
+      "U4.8"
+    ],
+    [
+      "U5.1",
+      "U4.8"
+    ],
+    [
+      "R37.1",
+      "U5.1"
+    ],
+    [
+      "R37.1",
+      "U4.8"
+    ],
+    [
+      "Q8.B1",
+      "U4.8"
+    ],
+    [
+      "Q8.B3",
+      "U4.8"
+    ],
+    [
+      "R32.1",
+      "Q2.S"
+    ],
+    [
+      "ANT1.1",
+      "U4.8"
+    ],
+    [
+      "ANT2.1",
+      "U4.8"
+    ]
+  ],
+  "retained_v08_contracts": "PASS",
+  "via_summary": {
+    "catalogued_ids": 127,
+    "active_sites": 126,
+    "user_reported_ids": 98,
+    "original_user_reported_ids": 97,
+    "omitted_from_user_list": [
+      "V016",
+      "V017",
+      "V019",
+      "V020",
+      "V027",
+      "V028",
+      "V030",
+      "V033",
+      "V035",
+      "V036",
+      "V037",
+      "V038",
+      "V039",
+      "V042",
+      "V047",
+      "V049",
+      "V053",
+      "V075",
+      "V079",
+      "V080",
+      "V091",
+      "V097",
+      "V102",
+      "V108",
+      "V117",
+      "V119",
+      "V120",
+      "V122",
+      "V124"
+    ],
+    "rejected": [
+      "V050"
+    ],
+    "conflicts": [
+      "V073",
+      "V113",
+      "V115"
+    ],
+    "statuses": {
+      "ASSIGNED": 85,
+      "USER_REPORTED": 9,
+      "NOT_IN_USER_LIST": 22,
+      "PHOTO_LOCAL": 7,
+      "REJECTED_NOT_VIA": 1,
+      "CONFLICT": 3
+    }
+  },
+  "missing_gpio_pins": [
+    5,
+    6,
+    7,
+    11,
+    13,
+    15,
+    16,
+    21
+  ],
+  "original_attachment_hashes": "PASS",
+  "pdfs": {
+    "output/pdf/PetSafe_single_sheet.pdf": {
+      "pages": 1,
+      "sha256": "3a2985abccb5685a40d45fbda879b2defe64d08cecedd7c26eca3a4969edda2a"
+    },
+    "output/pdf/PetSafe_completion_status.pdf": {
+      "pages": 2,
+      "sha256": "3a76830fb4aa12f5748f49a4c598da08781ecbc79fa86fac11e75fc74ce3dfad"
+    },
+    "output/pdf/PetSafe_PIC_GPIO_pin_map.pdf": {
+      "pages": 1,
+      "sha256": "058c701f84fa40733b2929a8899a5d988117d60770ba16d1908aa8a6b9ba4a95"
+    }
+  },
+  "visual_review": "PASS: latest schematic full page and modified power/PIC/PIR/bank regions; both status pages; all 28 PIC callouts.",
+  "html_review": "Embedded JavaScript syntax checked with node --check; browser interaction not tested because file navigation was policy-denied earlier. No workaround used.",
+  "hardware_limit": "Electrical assignments remain evidence-qualified; V073 and Q8 conflicts held. No new voltage or functional measurements."
+}

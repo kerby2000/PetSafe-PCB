@@ -6644,6 +6644,15 @@
 				)
 			)
 		)
+		(property "ViaEvidence" "v0.9 DNP free pad/pin1 via V064 to regulated board VDD; distinct from motor MX512H pin4 VDD."
+			(at 53.34 110.49 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
 		(pin "1"
 			(uuid "fa9b216d-86e1-4db5-a32d-696111c17b6d")
 		)
@@ -6725,6 +6734,15 @@
 				)
 			)
 		)
+		(property "ViaEvidence" "v0.9 DNP free pad/pin1 via V064 to regulated board VDD."
+			(at 82.55 110.49 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
 		(pin "1"
 			(uuid "9d1bbdc0-fe52-44fd-a4b7-4b2c88b62024")
 		)
@@ -6802,6 +6820,15 @@
 				(font
 					(size 1.27 1.27)
 				)
+			)
+		)
+		(property "ViaEvidence" "v0.9 DNP free pad/pin1 in front GND copper shared with V057/V058."
+			(at 114.3 110.49 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
 			)
 		)
 		(pin "1"
@@ -6885,6 +6912,15 @@
 				)
 			)
 		)
+		(property "ViaEvidence" "v0.9 DNP free pad/pin1 in front GND copper shared with V057/V058."
+			(at 142.24 110.49 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
 		(pin "1"
 			(uuid "29710bd7-f79a-458c-a312-7142f038a248")
 		)
@@ -6965,6 +7001,15 @@
 			)
 		)
 		(property "UserGPIOEvidence" "v0.8: user confirms multimeter + visual trace. 3-TP7/R28/R29; 17-R13; 22-TP2; 23-TP1; 25-TP4; 26-TP10. No numerical resistance values supplied. Nine GPIO destinations remain unresolved."
+			(at 262.89 78.74 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "ViaEvidence" "v0.9: RC1/pin12 photo trace to VREF pad (V053); RC4 pin15 to V022; RC5 pin16 to V023; user corrected V026=RB0 pin21 and V025=GND. Eight GPIO pads remain open because onward destinations are unknown."
 			(at 262.89 78.74 0)
 			(effects
 				(font
@@ -8945,6 +8990,15 @@
 				)
 			)
 		)
+		(property "ViaEvidence" "v0.9: photo left pad/pin1 to V003/004 motor VDD (MX512H.4); opposite pad/pin2 to V008/009/010 user GND."
+			(at 511.81 80.01 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
 		(pin "1"
 			(uuid "b563e1b1-5537-48a0-8e83-9374e03fdb22")
 		)
@@ -10553,6 +10607,15 @@
 				(font
 					(size 1.27 1.27)
 				)
+			)
+		)
+		(property "ViaEvidence" "v0.9: pin2 photo free end to V116 user GND."
+			(at 34.29 251.46 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
 			)
 		)
 		(pin "1"
@@ -13732,6 +13795,15 @@
 				)
 			)
 		)
+		(property "ViaEvidence" "v0.9: physical L pad to user-reviewed ground copper; old antenna-A rail withdrawn. Device identity/orientation remains candidate."
+			(at 50.8 347.98 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
 		(pin "1"
 			(uuid "11eeede7-757d-4755-b98c-e74ce21b9e4b")
 		)
@@ -13976,6 +14048,15 @@
 				)
 			)
 		)
+		(property "ViaEvidence" "v0.9: pin1 ground return from user-reviewed via/photo comparison. Pin2 retains local tuning midpoint. Hidden antenna links remain unresolved; earlier complete series-bank hypothesis withdrawn."
+			(at 45.72 313.69 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
 		(pin "1"
 			(uuid "3f81fb2a-2d1e-4df8-881e-b6e4a5fd2082")
 		)
@@ -14057,6 +14138,15 @@
 				)
 			)
 		)
+		(property "ViaEvidence" "v0.9: pin1 ground return from user-reviewed via/photo comparison. Pin2 retains local tuning midpoint. Hidden antenna links remain unresolved; earlier complete series-bank hypothesis withdrawn."
+			(at 60.96 313.69 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
 		(pin "1"
 			(uuid "17f5021b-4eb2-4332-bafc-acaa8a80c0a5")
 		)
@@ -14136,6 +14226,15 @@
 				(font
 					(size 1.27 1.27)
 				)
+			)
+		)
+		(property "ViaEvidence" "v0.9: physical L pad to user-reviewed ground copper; old antenna-A rail withdrawn. Device identity/orientation remains candidate."
+			(at 104.14 347.98 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
 			)
 		)
 		(pin "1"
@@ -14382,6 +14481,15 @@
 				)
 			)
 		)
+		(property "ViaEvidence" "v0.9: pin1 ground return from user-reviewed via/photo comparison. Pin2 retains local tuning midpoint. Hidden antenna links remain unresolved; earlier complete series-bank hypothesis withdrawn."
+			(at 99.06 313.69 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
 		(pin "1"
 			(uuid "49a42c17-81b5-4670-b5e5-f31018d5fb4b")
 		)
@@ -14463,6 +14571,15 @@
 				)
 			)
 		)
+		(property "ViaEvidence" "v0.9: pin1 ground return from user-reviewed via/photo comparison. Pin2 retains local tuning midpoint. Hidden antenna links remain unresolved; earlier complete series-bank hypothesis withdrawn."
+			(at 114.3 313.69 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
 		(pin "1"
 			(uuid "29585f51-71ec-4c09-9b97-05d5b188dde0")
 		)
@@ -14542,6 +14659,15 @@
 				(font
 					(size 1.27 1.27)
 				)
+			)
+		)
+		(property "ViaEvidence" "v0.9: physical L pad to user-reviewed ground copper; old antenna-A rail withdrawn. Device identity/orientation remains candidate."
+			(at 157.48 347.98 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
 			)
 		)
 		(pin "1"
@@ -14788,6 +14914,15 @@
 				)
 			)
 		)
+		(property "ViaEvidence" "v0.9: pin1 ground return from user-reviewed via/photo comparison. Pin2 retains local tuning midpoint. Hidden antenna links remain unresolved; earlier complete series-bank hypothesis withdrawn."
+			(at 152.4 313.69 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
 		(pin "1"
 			(uuid "fdaeb56e-fe73-4a49-a21a-565ee5705456")
 		)
@@ -14869,6 +15004,15 @@
 				)
 			)
 		)
+		(property "ViaEvidence" "v0.9: pin1 ground return from user-reviewed via/photo comparison. Pin2 retains local tuning midpoint. Hidden antenna links remain unresolved; earlier complete series-bank hypothesis withdrawn."
+			(at 167.64 313.69 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
 		(pin "1"
 			(uuid "6ebb17aa-6b8d-47ca-a100-fa50349505e7")
 		)
@@ -14948,6 +15092,15 @@
 				(font
 					(size 1.27 1.27)
 				)
+			)
+		)
+		(property "ViaEvidence" "v0.9: physical L pad to user-reviewed ground copper; old antenna-A rail withdrawn. Device identity/orientation remains candidate."
+			(at 210.82 347.98 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
 			)
 		)
 		(pin "1"
@@ -15194,6 +15347,15 @@
 				)
 			)
 		)
+		(property "ViaEvidence" "v0.9: pin1 ground return from user-reviewed via/photo comparison. Pin2 retains local tuning midpoint. Hidden antenna links remain unresolved; earlier complete series-bank hypothesis withdrawn."
+			(at 205.74 313.69 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
 		(pin "1"
 			(uuid "d728a53d-eb95-4d96-a7d0-935636cdada0")
 		)
@@ -15275,6 +15437,15 @@
 				)
 			)
 		)
+		(property "ViaEvidence" "v0.9: pin1 ground return from user-reviewed via/photo comparison. Pin2 retains local tuning midpoint. Hidden antenna links remain unresolved; earlier complete series-bank hypothesis withdrawn."
+			(at 220.98 313.69 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
 		(pin "1"
 			(uuid "4e9e800a-8c61-49b1-aff9-1bd2d3131c65")
 		)
@@ -15354,6 +15525,15 @@
 				(font
 					(size 1.27 1.27)
 				)
+			)
+		)
+		(property "ViaEvidence" "v0.9: physical L pad to user-reviewed ground copper; old antenna-A rail withdrawn. Device identity/orientation remains candidate."
+			(at 264.16 347.98 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
 			)
 		)
 		(pin "1"
@@ -15600,6 +15780,15 @@
 				)
 			)
 		)
+		(property "ViaEvidence" "v0.9: pin1 ground return from user-reviewed via/photo comparison. Pin2 retains local tuning midpoint. Hidden antenna links remain unresolved; earlier complete series-bank hypothesis withdrawn."
+			(at 259.08 313.69 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
 		(pin "1"
 			(uuid "1715bfa4-0c78-45ff-9f30-ed28fdc1cb9a")
 		)
@@ -15681,6 +15870,15 @@
 				)
 			)
 		)
+		(property "ViaEvidence" "v0.9: pin1 ground return from user-reviewed via/photo comparison. Pin2 retains local tuning midpoint. Hidden antenna links remain unresolved; earlier complete series-bank hypothesis withdrawn."
+			(at 274.32 313.69 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
 		(pin "1"
 			(uuid "77a6f84b-05e5-4a77-a5bb-b31c87943950")
 		)
@@ -15758,6 +15956,15 @@
 				(font
 					(size 1.27 1.27)
 				)
+			)
+		)
+		(property "ViaEvidence" "v0.9: R37.1 and R39.2 share V063. Withdraw assumed regulated VDD feed; remote supply unresolved."
+			(at 309.88 295.91 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
 			)
 		)
 		(pin "1"
@@ -16330,6 +16537,15 @@
 				)
 			)
 		)
+		(property "ViaEvidence" "v0.9: R39.2 joins R37.1 at V063, not a demonstrated GND connection."
+			(at 351.79 355.6 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
 		(pin "1"
 			(uuid "0ae52e52-4f86-4d96-8414-5f0a3a479561")
 		)
@@ -16347,7 +16563,7 @@
 	)
 	(symbol
 		(lib_id "Device:R")
-		(at 382.27 342.9 0)
+		(at 340.36 83.82 0)
 		(unit 1)
 		(body_style 1)
 		(exclude_from_sim no)
@@ -16357,7 +16573,7 @@
 		(dnp no)
 		(uuid "8e37b39c-a0ce-4bf1-9568-ebf572c6c617")
 		(property "Reference" "R32"
-			(at 384.302 342.9 90)
+			(at 342.39200000000005 83.82 90)
 			(show_name no)
 			(do_not_autoplace no)
 			(effects
@@ -16367,7 +16583,7 @@
 			)
 		)
 		(property "Value" "10k"
-			(at 382.27 342.9 90)
+			(at 340.36 83.82 90)
 			(show_name no)
 			(do_not_autoplace no)
 			(effects
@@ -16377,7 +16593,7 @@
 			)
 		)
 		(property "Footprint" "Resistor_SMD:R_0603_1608Metric"
-			(at 380.492 342.9 90)
+			(at 338.58200000000005 83.82 90)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -16388,7 +16604,7 @@
 			)
 		)
 		(property "Datasheet" ""
-			(at 382.27 342.9 0)
+			(at 340.36 83.82 0)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -16399,7 +16615,7 @@
 			)
 		)
 		(property "Description" "Resistor"
-			(at 382.27 342.9 0)
+			(at 340.36 83.82 0)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -16407,6 +16623,15 @@
 				(font
 					(size 1.27 1.27)
 				)
+			)
+		)
+		(property "ViaEvidence" "v0.9: pin1 photo upper end to V024 user GND; withdraw guessed PIR-signal connection."
+			(at 340.36 83.82 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
 			)
 		)
 		(pin "1"
@@ -17134,6 +17359,15 @@
 				(font
 					(size 1.27 1.27)
 				)
+			)
+		)
+		(property "ViaEvidence" "v0.9 DNP: right pad/pin2 to V021 user GND; no fitted transistor identification required."
+			(at 483.87 361.95 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
 			)
 		)
 		(pin "1"
@@ -18237,6 +18471,15 @@
 			)
 		)
 		(property "PinMapping" "See evidence/pin_crosswalk.json; physical orientation may be provisional"
+			(at 162.56 231.14 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "ViaEvidence" "v0.9 HOLD: V113/V115 reported GND but front island appears to join outer joined-drain pads; conflict with existing output topology. Await continuity reconciliation."
 			(at 162.56 231.14 0)
 			(effects
 				(font

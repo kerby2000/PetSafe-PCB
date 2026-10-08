@@ -1,6 +1,6 @@
 {
   "date": "2026-10-08",
-  "revision": "v0.8",
+  "revision": "v0.9",
   "known_identified_ICs_needing_new_symbols": [],
   "completed": [
     "U1 S-1200B45-M5T1 datasheet symbol",
@@ -18,42 +18,37 @@
     "126 stock footprint assignments via KiCad MCP; total 147 of 150 assigned",
     "C5 user sleeve reading: 470uF / 16V",
     "C11 user dimensions match 1206; R8 full-body measurement including both metal end caps confirms 0603 size",
-    "Five additional PIC local routes from existing photos; 14 GPIO pins remain open",
+    "v0.7 historical: five additional PIC local routes recovered; current GPIO count below",
     "C32 rail corrected; C25/C39 signal nodes, R4 GPIO return, TP17 tune net, D4/D5 ICSP nodes, R32/R40 ties and TP4/C41 corrected",
     "v0.8: five user GPIO destinations added; RB5-TP10 corroborated; conflicting old net hypotheses removed",
-    "v0.8: D4/D5/C41 ground connections from manually matched front/rear vias; photo-based rather than meter-confirmed"
+    "v0.8: D4/D5/C41 ground connections from manually matched front/rear vias; photo-based rather than meter-confirmed",
+    "v0.9: 28 endpoint corrections from user via review and component-pad cross-checks; 37 open pads, eight GPIO pads"
   ],
   "catalog_entries": 150,
   "physical_pins": 352,
-  "unresolved_physical_pins": 46,
+  "unresolved_physical_pins": 37,
   "unresolved_pins_by_population": {
-    "populated": 22,
-    "DNP": 24
+    "populated": 18,
+    "DNP": 19
   },
   "population_note": "Open pad counts include DNP entries, test pads and internally open IC pins; they are not missing component counts.",
   "unresolved_pins_by_reference": {
     "C26": 1,
-    "C27": 2,
-    "C3": 1,
-    "C4": 1,
     "C42": 2,
     "C49": 2,
     "C6": 1,
     "D2": 3,
     "D6": 2,
     "J6": 2,
-    "Q9": 2,
-    "R1": 1,
-    "R2": 1,
+    "Q9": 1,
     "R36": 2,
     "R46": 2,
     "R47": 2,
     "TP9": 1,
-    "U4": 9,
+    "U4": 8,
     "U6": 2,
     "U6A": 3,
-    "U7": 3,
-    "VREF": 1
+    "U7": 3
   },
   "items": [
     {
@@ -63,7 +58,7 @@
       "priority": 1,
       "gap": "Input/output copper routing and operating voltage",
       "candidate": "ABLIC S-812C33AMC-C2NT2x, strong C2N marking/package/ground match",
-      "detail": "C2NM replaces misread WN23. Pin1=C/R3 likely ground from 2.7 ohm reading; later shorted probes 0.5 ohm. RT9818 withdrawn. VIN/VOUT wiring inferred; 3.3V not measured.",
+      "detail": "C2NM replaces misread WN23. Pin1=C/R3 likely ground from 2.7 ohm reading; later shorted probes 0.5 ohm. RT9818 withdrawn. VIN/VOUT wiring inferred; 3.3V not measured. v0.9: R37/R39 share V063; remote feed unknown, previous rail assignments withdrawn.",
       "source": "docs/U6_Q8_MARKING_UPDATE.md"
     },
     {
@@ -73,7 +68,7 @@
       "priority": 1,
       "gap": "Exact fitted manufacturer and external connections",
       "candidate": "3724A complementary N/P MOSFET; MCC SIL3724A datasheet candidate",
-      "detail": "D-E=2ohm and S-G=2ohm support joined drains and ground source. E-F=400kohm refutes C6 output tie. F-P=10ohm and F-G=300kohm suggest supply-related C6; exact path unresolved. P-source supply and output continuation inferred.",
+      "detail": "D-E=2ohm and S-G=2ohm support joined drains and ground source. E-F=400kohm refutes C6 output tie. F-P=10ohm and F-G=300kohm suggest supply-related C6; exact path unresolved. P-source supply and output continuation inferred. v0.9 HOLD: V113/V115 user GND conflicts with output hypothesis; no ground merge applied.",
       "source": "docs/U6_Q8_MARKING_UPDATE.md"
     },
     {
@@ -151,7 +146,7 @@
       "priority": 1,
       "gap": "Hidden routing and MCU destinations",
       "candidate": null,
-      "detail": "Nine GPIO destinations remain: 12/15/16/21 via-only; 5/6/7/11/13 no visible continuation. No NC flags. Five destinations user-checked with meter and visual trace; read pic_gpio_user_mapping.json."
+      "detail": "Eight GPIO pads open: 5,6,7,11,13,15,16,21. RC1/pin12 now locally connected to VREF/V053; remote continuations are separately unresolved. See pic_gpio_status.json."
     },
     {
       "refs": [
@@ -180,5 +175,152 @@
       "LED1"
     ],
     "qualification": "R8 user measurement revises fitted resistor family to 0603 candidates; C11 dimensions support 1206. R8 end-cap inclusion confirmed by user; other resistor bodies remain individually unmeasured. C5/S1/LED1 geometry still needed."
-  }
+  },
+  "current_gpio_pins": [
+    5,
+    6,
+    7,
+    11,
+    13,
+    15,
+    16,
+    21
+  ],
+  "current_fitted_open_pads": [
+    "C26.1",
+    "C6.1",
+    "D2.L",
+    "D2.R",
+    "D2.S",
+    "D6.1",
+    "D6.2",
+    "TP9.1",
+    "U4.11",
+    "U4.13",
+    "U4.15",
+    "U4.16",
+    "U4.21",
+    "U4.5",
+    "U4.6",
+    "U4.7",
+    "U6.L1",
+    "U6.L2"
+  ],
+  "current_dnp_open_pads": [
+    "C42.1",
+    "C42.2",
+    "C49.1",
+    "C49.2",
+    "J6.1",
+    "J6.2",
+    "Q9.S",
+    "R36.1",
+    "R36.2",
+    "R46.1",
+    "R46.2",
+    "R47.1",
+    "R47.2",
+    "U6A.L",
+    "U6A.R1",
+    "U6A.R2",
+    "U7.1",
+    "U7.2",
+    "U7.3"
+  ],
+  "current_gaps": [
+    {
+      "area": "PIC / block interfaces",
+      "gap": "8 GPIO pads still open: 5, 6, 7, 11, 13, 15, 16, 21. Other pins have local nets but may lack remote continuations. Motor INA/INB origins remain inferred.",
+      "method": "Continuity on the numbered PIC map; start with hidden via destinations."
+    },
+    {
+      "area": "Q8 / RF output / C6",
+      "gap": "V113/V115 reported GND conflicts with the outer-pad output hypothesis. C6.1 path unresolved despite 10 ohm to P.",
+      "method": "Clarify whether GND was measured; compare outer pads to the same GND hole."
+    },
+    {
+      "area": "Tuning bank",
+      "gap": "Ground returns corrected. Five local capacitor midpoints are known; connections onward to the antenna are not established.",
+      "method": "Check V090/V095/V100/V103/V107 to ANT1 and ANT2."
+    },
+    {
+      "area": "Auxiliary / receiver",
+      "gap": "V063 joins R37/R39, but its supply source is unknown. R18/R21/R22/R19 vias identify local pads, not a confirmed common bias or supply.",
+      "method": "Identify remote nets of V063 and the receiver control/bias vias."
+    },
+    {
+      "area": "D2 / D6 / candidate parts",
+      "gap": "D2/4P identity and all three pad routes remain open. D6 has two open pads. U6/Q8 and small BJTs/diodes retain candidate identities/polarities.",
+      "method": "D2 diode-mode guide; D6 continuity; targeted candidate pin checks."
+    },
+    {
+      "area": "Other open fitted pads",
+      "gap": "C26.1 and TP9.1; U6 NC pins 4/5 have unknown external ties. LED common and S1 leg mapping are still provisional.",
+      "method": "Targeted continuity; no need to identify chips on empty footprints."
+    },
+    {
+      "area": "Component values",
+      "gap": "44 unmarked fitted capacitor values and L1/L2 type/value remain unrecovered. C5 = 470uF / 16V is recorded; 38 fitted resistors have decoded nominal values.",
+      "method": "LCR first on RF/tuning parts, recording frequency; in-circuit results are network readings."
+    },
+    {
+      "area": "Packages",
+      "gap": "147/150 footprints assigned. C5, S1 and LED1 still need exact geometry; other photo-based package assignments remain candidates.",
+      "method": "C5 diameter/lead spacing; S1/LED1 body and pad spacing. R8/C11 sizes already recorded."
+    }
+  ],
+  "via_review": {
+    "catalogued_ids": 127,
+    "active_sites": 126,
+    "user_reported_ids": 98,
+    "original_user_reported_ids": 97,
+    "omitted_from_user_list": [
+      "V016",
+      "V017",
+      "V019",
+      "V020",
+      "V027",
+      "V028",
+      "V030",
+      "V033",
+      "V035",
+      "V036",
+      "V037",
+      "V038",
+      "V039",
+      "V042",
+      "V047",
+      "V049",
+      "V053",
+      "V075",
+      "V079",
+      "V080",
+      "V091",
+      "V097",
+      "V102",
+      "V108",
+      "V117",
+      "V119",
+      "V120",
+      "V122",
+      "V124"
+    ],
+    "rejected": [
+      "V050"
+    ],
+    "conflicts": [
+      "V073",
+      "V113",
+      "V115"
+    ],
+    "statuses": {
+      "ASSIGNED": 85,
+      "USER_REPORTED": 9,
+      "NOT_IN_USER_LIST": 22,
+      "PHOTO_LOCAL": 7,
+      "REJECTED_NOT_VIA": 1,
+      "CONFLICT": 3
+    }
+  },
+  "complete_symbols_for_selected_candidates": true
 }

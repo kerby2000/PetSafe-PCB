@@ -1,0 +1,212 @@
+{
+  "revision": "v0.9",
+  "pins": [
+    {
+      "pin": 1,
+      "gpio": "RE3/MCLR",
+      "net": "MCLR_VPP",
+      "open_pad": false,
+      "evidence": "J1 VPP; mapping inferred; D6 route missing"
+    },
+    {
+      "pin": 2,
+      "gpio": "RA0",
+      "net": "PIC_RA0_FILTER",
+      "open_pad": false,
+      "evidence": "C25 signal pad / V031; onward destination unknown"
+    },
+    {
+      "pin": 3,
+      "gpio": "RA1",
+      "net": "PIC_RA1_RX_REF",
+      "open_pad": false,
+      "evidence": "R28 + R29 + TP7; user meter / visible trace"
+    },
+    {
+      "pin": 4,
+      "gpio": "RA2",
+      "net": "PIC_RA2_FILTER",
+      "open_pad": false,
+      "evidence": "C39 signal pad / V035; onward destination unknown"
+    },
+    {
+      "pin": 5,
+      "gpio": "RA3",
+      "net": null,
+      "open_pad": true,
+      "evidence": "No visible exit; V036 under-body alignment candidate only"
+    },
+    {
+      "pin": 6,
+      "gpio": "RA4",
+      "net": null,
+      "open_pad": true,
+      "evidence": "No visible exit; V037 under-body alignment candidate only"
+    },
+    {
+      "pin": 7,
+      "gpio": "RA5",
+      "net": null,
+      "open_pad": true,
+      "evidence": "No visible exit; V039 under-body alignment candidate only"
+    },
+    {
+      "pin": 8,
+      "gpio": "VSS",
+      "net": "H_GND",
+      "open_pad": false,
+      "evidence": "GND / V041 photo anchor"
+    },
+    {
+      "pin": 9,
+      "gpio": "RA7/OSC1",
+      "net": "OSC1",
+      "open_pad": false,
+      "evidence": "Y1 oscillator; photo-derived"
+    },
+    {
+      "pin": 10,
+      "gpio": "RA6/OSC2",
+      "net": "OSC2",
+      "open_pad": false,
+      "evidence": "Y1 oscillator; photo-derived"
+    },
+    {
+      "pin": 11,
+      "gpio": "RC0",
+      "net": null,
+      "open_pad": true,
+      "evidence": "No visible exit; V047 under-body alignment candidate only"
+    },
+    {
+      "pin": 12,
+      "gpio": "RC1",
+      "net": "PIC_RC1_VREF",
+      "open_pad": false,
+      "evidence": "VREF board pad / V053; visible local route, remote net unknown"
+    },
+    {
+      "pin": 13,
+      "gpio": "RC2",
+      "net": null,
+      "open_pad": true,
+      "evidence": "No visible exit; V049 under-body alignment candidate only"
+    },
+    {
+      "pin": 14,
+      "gpio": "RC3",
+      "net": "PIC_RC3",
+      "open_pad": false,
+      "evidence": "TP11; visible route; onward destination unknown"
+    },
+    {
+      "pin": 15,
+      "gpio": "RC4",
+      "net": null,
+      "open_pad": true,
+      "evidence": "V022 user association; remote destination unknown"
+    },
+    {
+      "pin": 16,
+      "gpio": "RC5",
+      "net": null,
+      "open_pad": true,
+      "evidence": "V023 user association; remote destination unknown"
+    },
+    {
+      "pin": 17,
+      "gpio": "RC6",
+      "net": "H_TUNE_1",
+      "open_pad": false,
+      "evidence": "R13; user meter / visible trace"
+    },
+    {
+      "pin": 18,
+      "gpio": "RC7",
+      "net": "PIC_RC7_TP17",
+      "open_pad": false,
+      "evidence": "TP17; visible route; old R13 guess withdrawn"
+    },
+    {
+      "pin": 19,
+      "gpio": "VSS",
+      "net": "H_GND",
+      "open_pad": false,
+      "evidence": "GND / C32 / V045 photo anchor"
+    },
+    {
+      "pin": 20,
+      "gpio": "VDD",
+      "net": "H_VDD",
+      "open_pad": false,
+      "evidence": "Regulated VDD / C32 / V042 photo anchor"
+    },
+    {
+      "pin": 21,
+      "gpio": "RB0",
+      "net": null,
+      "open_pad": true,
+      "evidence": "V026; user correction. Onward destination unknown"
+    },
+    {
+      "pin": 22,
+      "gpio": "RB1",
+      "net": "H_LED_CTL_B",
+      "open_pad": false,
+      "evidence": "TP2 / R31; user meter / visible trace"
+    },
+    {
+      "pin": 23,
+      "gpio": "RB2",
+      "net": "H_LED_CTL_A",
+      "open_pad": false,
+      "evidence": "TP1 / R30; user meter / visible trace"
+    },
+    {
+      "pin": 24,
+      "gpio": "RB3",
+      "net": "PIC_RB3_RETURN",
+      "open_pad": false,
+      "evidence": "R4; photo-derived; sensing role remains inferred"
+    },
+    {
+      "pin": 25,
+      "gpio": "RB4",
+      "net": "PIC_TP4_C41",
+      "open_pad": false,
+      "evidence": "TP4 / C41; user meter / visible trace"
+    },
+    {
+      "pin": 26,
+      "gpio": "RB5",
+      "net": "RB5_OPT",
+      "open_pad": false,
+      "evidence": "TP10 / R35; user meter / visible trace"
+    },
+    {
+      "pin": 27,
+      "gpio": "RB6/ICSPCLK",
+      "net": "ICSP_CLK",
+      "open_pad": false,
+      "evidence": "ICSP CLK / D4 / R32; photo-derived"
+    },
+    {
+      "pin": 28,
+      "gpio": "RB7/ICSPDAT",
+      "net": "ICSP_DAT",
+      "open_pad": false,
+      "evidence": "ICSP DAT / D5 / R40; photo-derived"
+    }
+  ],
+  "open_gpio_pins": [
+    5,
+    6,
+    7,
+    11,
+    13,
+    15,
+    16,
+    21
+  ],
+  "qualification": "A modeled local net does not certify its remote role or all attached inferred branches."
+}

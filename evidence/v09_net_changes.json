@@ -1,0 +1,181 @@
+{
+  "revision": "v0.9",
+  "changes": [
+    {
+      "endpoint": "C27.1",
+      "old": null,
+      "new": "H_VBAT",
+      "basis": "C27 photo left pad to V003/V004; user ties these to MX512H pin4 motor VDD."
+    },
+    {
+      "endpoint": "C27.2",
+      "old": null,
+      "new": "H_GND",
+      "basis": "C27 photo right pad to V008/V009/V010 user GND."
+    },
+    {
+      "endpoint": "R1.1",
+      "old": null,
+      "new": "H_VDD",
+      "basis": "DNP free pads via V064 to board VDD test point / U1 output. This is distinct from MX512H pin4 motor VDD."
+    },
+    {
+      "endpoint": "C3.1",
+      "old": null,
+      "new": "H_VDD",
+      "basis": "DNP free pads via V064 to board VDD test point / U1 output. This is distinct from MX512H pin4 motor VDD."
+    },
+    {
+      "endpoint": "R2.1",
+      "old": null,
+      "new": "H_GND",
+      "basis": "DNP free pads lie on front ground copper shared with V057/V058."
+    },
+    {
+      "endpoint": "C4.1",
+      "old": null,
+      "new": "H_GND",
+      "basis": "DNP free pads lie on front ground copper shared with V057/V058."
+    },
+    {
+      "endpoint": "R37.1",
+      "old": "H_VDD",
+      "new": "AUX_FEED_V063",
+      "basis": "User V063 joins R37 and R39; photo identifies their lower ends. Withdraw conflicting H_VDD and GND guesses. Remote feed unknown."
+    },
+    {
+      "endpoint": "R39.2",
+      "old": "H_GND",
+      "new": "AUX_FEED_V063",
+      "basis": "User V063 joins R37 and R39; photo identifies their lower ends. Withdraw conflicting H_VDD and GND guesses. Remote feed unknown."
+    },
+    {
+      "endpoint": "R10.2",
+      "old": "H_RF_MONITOR",
+      "new": "H_GND",
+      "basis": "R10 free end visibly joins V116, user GND."
+    },
+    {
+      "endpoint": "R32.1",
+      "old": "H_PIR_SIG",
+      "new": "H_GND",
+      "basis": "R32 photo upper pad to V024, user GND; withdraw earlier PIR-signal guess."
+    },
+    {
+      "endpoint": "Q9.R",
+      "old": null,
+      "new": "H_GND",
+      "basis": "DNP Q9 lower-right pad to V021, user GND; pad mapping R=stock pin2."
+    },
+    {
+      "endpoint": "U4.12",
+      "old": null,
+      "new": "PIC_RC1_VREF",
+      "basis": "PIC pin12 visible trace reaches V053, the VREF-labelled board pad. Remote continuation/function remains unknown."
+    },
+    {
+      "endpoint": "VREF.1",
+      "old": null,
+      "new": "PIC_RC1_VREF",
+      "basis": "PIC pin12 visible trace reaches V053, the VREF-labelled board pad. Remote continuation/function remains unknown."
+    },
+    {
+      "endpoint": "Q11.L",
+      "old": "H_ANT_A",
+      "new": "H_GND",
+      "basis": "First four transistor L pads visibly join V089/V094/V099/V104, user GND. Q3 L joins the same front copper by photo inference. Candidate emitter functions not independently established."
+    },
+    {
+      "endpoint": "Q6.L",
+      "old": "H_ANT_A",
+      "new": "H_GND",
+      "basis": "First four transistor L pads visibly join V089/V094/V099/V104, user GND. Q3 L joins the same front copper by photo inference. Candidate emitter functions not independently established."
+    },
+    {
+      "endpoint": "Q5.L",
+      "old": "H_ANT_A",
+      "new": "H_GND",
+      "basis": "First four transistor L pads visibly join V089/V094/V099/V104, user GND. Q3 L joins the same front copper by photo inference. Candidate emitter functions not independently established."
+    },
+    {
+      "endpoint": "Q4.L",
+      "old": "H_ANT_A",
+      "new": "H_GND",
+      "basis": "First four transistor L pads visibly join V089/V094/V099/V104, user GND. Q3 L joins the same front copper by photo inference. Candidate emitter functions not independently established."
+    },
+    {
+      "endpoint": "Q3.L",
+      "old": "H_ANT_A",
+      "new": "H_GND",
+      "basis": "First four transistor L pads visibly join V089/V094/V099/V104, user GND. Q3 L joins the same front copper by photo inference. Candidate emitter functions not independently established."
+    },
+    {
+      "endpoint": "C47.1",
+      "old": "H_ANT_B",
+      "new": "H_GND",
+      "basis": "Front lower tuning-capacitor common band joins V087/V088 user GND. Withdraw antenna B assignment of these pads; midpoint antenna links remain unknown."
+    },
+    {
+      "endpoint": "C44.1",
+      "old": "H_ANT_B",
+      "new": "H_GND",
+      "basis": "Front lower tuning-capacitor common band joins V087/V088 user GND. Withdraw antenna B assignment of these pads; midpoint antenna links remain unknown."
+    },
+    {
+      "endpoint": "C29.1",
+      "old": "H_ANT_B",
+      "new": "H_GND",
+      "basis": "Front lower tuning-capacitor common band joins V087/V088 user GND. Withdraw antenna B assignment of these pads; midpoint antenna links remain unknown."
+    },
+    {
+      "endpoint": "C14.1",
+      "old": "H_ANT_B",
+      "new": "H_GND",
+      "basis": "Front lower tuning-capacitor common band joins V087/V088 user GND. Withdraw antenna B assignment of these pads; midpoint antenna links remain unknown."
+    },
+    {
+      "endpoint": "C11.1",
+      "old": "H_ANT_B",
+      "new": "H_GND",
+      "basis": "Front lower tuning-capacitor common band joins V087/V088 user GND. Withdraw antenna B assignment of these pads; midpoint antenna links remain unknown."
+    },
+    {
+      "endpoint": "C48.1",
+      "old": "H_ANT_B",
+      "new": "H_GND",
+      "basis": "Rear tuning-capacitor ground-side lands share copper around V093/V096/V101/V105. These are user-GND sites; opposite lands retain the local front/rear midpoint grouping."
+    },
+    {
+      "endpoint": "C45.1",
+      "old": "H_ANT_B",
+      "new": "H_GND",
+      "basis": "Rear tuning-capacitor ground-side lands share copper around V093/V096/V101/V105. These are user-GND sites; opposite lands retain the local front/rear midpoint grouping."
+    },
+    {
+      "endpoint": "C38.1",
+      "old": "H_ANT_B",
+      "new": "H_GND",
+      "basis": "Rear tuning-capacitor ground-side lands share copper around V093/V096/V101/V105. These are user-GND sites; opposite lands retain the local front/rear midpoint grouping."
+    },
+    {
+      "endpoint": "C15.1",
+      "old": "H_ANT_B",
+      "new": "H_GND",
+      "basis": "Rear tuning-capacitor ground-side lands share copper around V093/V096/V101/V105. These are user-GND sites; opposite lands retain the local front/rear midpoint grouping."
+    },
+    {
+      "endpoint": "C12.1",
+      "old": "H_ANT_B",
+      "new": "H_GND",
+      "basis": "Rear tuning-capacitor ground-side lands share copper around V093/V096/V101/V105. These are user-GND sites; opposite lands retain the local front/rear midpoint grouping."
+    }
+  ],
+  "held": [
+    "V073 GND / R19 duplicate number",
+    "V113/V115 GND conflicts with Q8 joined-output hypothesis"
+  ],
+  "qualification": "User via claims plus component-pad photo cross-checks. No new individual resistance or voltage measurements supplied. Existing unrelated hypotheses retained.",
+  "resolved_conflicts": [
+    "User correction: V025=GND; V026=PIC21/RB0."
+  ]
+}

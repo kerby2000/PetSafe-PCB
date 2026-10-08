@@ -1,13 +1,14 @@
 net,status,endpoints,retained_original_fragments
-H_ANT_A,HYPOTHESIS / retains visual fragments where listed,ANT1.1;Q11.L;Q3.L;Q4.L;Q5.L;Q6.L;R5.2,
-H_ANT_B,HYPOTHESIS / retains visual fragments where listed,ANT2.1;C11.1;C12.1;C14.1;C15.1;C29.1;C38.1;C44.1;C45.1;C47.1;C48.1;R42.1,
+AUX_FEED_V063,Local photo/user association; remote continuation unresolved,R37.1;R39.2,
+H_ANT_A,HYPOTHESIS / retains visual fragments where listed,ANT1.1;R5.2,
+H_ANT_B,HYPOTHESIS / retains visual fragments where listed,ANT2.1;R42.1,
 H_AUX_IN,"HYPOTHESIS: regulator input after R37, based on photo and S-812C33 pinout",C36.1;R37.2;U6.R2,
 H_BAT_DETECT,HYPOTHESIS / retains visual fragments where listed,Q1.S;TP14.1,
 H_BAT_SENSE,HYPOTHESIS / retains visual fragments where listed,C28.1;R3.2;R4.1,
 H_BUTTON,HYPOTHESIS / retains visual fragments where listed,C35.1;R40.2;R41.2;S1.BR;S1.TR,
 H_BUTTON_MCU,HYPOTHESIS / retains visual fragments where listed,R41.1,
 H_D1_FREE,HYPOTHESIS / retains visual fragments where listed,D1.R,
-H_GND,HYPOTHESIS / retains visual fragments where listed,BATN.1;C1.2;C17.2;C1A.2;C2.2;C20.1;C24.2;C25.2;C26.2;C28.2;C2A.2;C30.2;C31.1;C32.2;C33.2;C34.2;C35.2;C36.2;C37.2;C39.2;C40.2;C5.2;C6.2;C7.2;C8.2;C9.2;D3.L;GND.1;GND_RF.1;J1.GND;J3.2;Q2.L;Q8.B2;R22.1;R25.2;R39.2;R43.1;S1.BL;S1.TL;U1.L2;U2.T2;U3.4;U4.19;U4.8;U5.6;U5.7;U6.R3;D4.2;D5.2;C41.2,V_XTAL_CAP_COMMON
+H_GND,HYPOTHESIS / retains visual fragments where listed,BATN.1;C1.2;C11.1;C12.1;C14.1;C15.1;C17.2;C1A.2;C2.2;C20.1;C24.2;C25.2;C26.2;C27.2;C28.2;C29.1;C2A.2;C30.2;C31.1;C32.2;C33.2;C34.2;C35.2;C36.2;C37.2;C38.1;C39.2;C4.1;C40.2;C41.2;C44.1;C45.1;C47.1;C48.1;C5.2;C6.2;C7.2;C8.2;C9.2;D3.L;D4.2;D5.2;GND.1;GND_RF.1;J1.GND;J3.2;Q11.L;Q2.L;Q3.L;Q4.L;Q5.L;Q6.L;Q8.B2;Q9.R;R10.2;R2.1;R22.1;R25.2;R32.1;R43.1;S1.BL;S1.TL;U1.L2;U2.T2;U3.4;U4.19;U4.8;U5.6;U5.7;U6.R3,V_XTAL_CAP_COMMON
 H_LDO_IN,HYPOTHESIS / retains visual fragments where listed,C1.1;C1A.1;L2.2;U1.L1;U1.L3,V_U1_LEFT_TOP
 H_LED_A,HYPOTHESIS / retains visual fragments where listed,LED1.TL;R30.2,
 H_LED_B,HYPOTHESIS / retains visual fragments where listed,LED1.TR;R31.2,
@@ -19,13 +20,12 @@ H_MOTOR_B,HYPOTHESIS / retains visual fragments where listed,J5.B;TP15.1;U5.5,V_
 H_MOTOR_INA,HYPOTHESIS / retains visual fragments where listed,U5.2,
 H_MOTOR_INB,HYPOTHESIS / retains visual fragments where listed,U5.3,
 H_PIR_RAW,HYPOTHESIS / retains visual fragments where listed,J3.3;R33.1;R38.1,
-H_PIR_SIG,HYPOTHESIS / retains visual fragments where listed,Q2.S;R32.1;TP16.1,V_Q2_SINGLE
+H_PIR_SIG,HYPOTHESIS / retains visual fragments where listed,Q2.S;TP16.1,V_Q2_SINGLE
 H_PIR_VDD,HYPOTHESIS / retains visual fragments where listed,C37.1;J3.1;R33.2;U6.R1,
 H_Q1_BIAS,HYPOTHESIS / retains visual fragments where listed,R44.1,
 H_RF_CONTROL,HYPOTHESIS / retains visual fragments where listed,R6.2;R7.1,
 H_RF_IN_A,HYPOTHESIS / retains visual fragments where listed,C9.1;D1.S;R7.2;U2.T3,
 H_RF_IN_B,HYPOTHESIS / retains visual fragments where listed,C8.1;D1.L;R6.1;U2.T1,
-H_RF_MONITOR,HYPOTHESIS / retains visual fragments where listed,R10.2,
 H_RF_OUT_CAND,MIXED: Q8 B1-B3 supported by 2ohm D-E; R5 continuation inferred. C6 output tie refuted by 400kohm E-F.,Q8.B1;Q8.B3;R5.1,
 H_RF_VDD,HYPOTHESIS / retains visual fragments where listed,C5.1;L1.2;Q8.T2,
 H_RX_BIAS,HYPOTHESIS / retains visual fragments where listed,R21.2;R22.2;R23.2;R48.2,
@@ -40,27 +40,28 @@ H_TUNE_2,HYPOTHESIS / retains visual fragments where listed,R14.1,
 H_TUNE_3,HYPOTHESIS / retains visual fragments where listed,R15.1,
 H_TUNE_4,HYPOTHESIS / retains visual fragments where listed,R16.1,
 H_TUNE_5,HYPOTHESIS / retains visual fragments where listed,R11.1,
-H_VBAT,HYPOTHESIS / retains visual fragments where listed,BATP.1;C33.1;L1.1;L2.1;R3.1;U5.4,V_U5_MOTOR_CAP
-H_VDD,HYPOTHESIS / retains visual fragments where listed,C2.1;C2A.1;C32.1;C34.1;C7.1;J1.VDD;R18.1;R37.1;U1.R1;U2.B2;U4.20;U5.1;VDD.1,V_U5_LOGIC_CAP;V_U1_RIGHT_TOP
+H_VBAT,HYPOTHESIS / retains visual fragments where listed,BATP.1;C27.1;C33.1;L1.1;L2.1;R3.1;U5.4,V_U5_MOTOR_CAP
+H_VDD,HYPOTHESIS / retains visual fragments where listed,C2.1;C2A.1;C3.1;C32.1;C34.1;C7.1;J1.VDD;R1.1;R18.1;U1.R1;U2.B2;U4.20;U5.1;VDD.1,V_U5_LOGIC_CAP;V_U1_RIGHT_TOP
 ICSP_CLK,HYPOTHESIS / retains visual fragments where listed,D4.1;J1.CLK;R32.2;U4.27,
 ICSP_DAT,HYPOTHESIS / retains visual fragments where listed,D5.1;J1.DAT;R40.1;U4.28,
 MCLR_VPP,HYPOTHESIS / retains visual fragments where listed,J1.VPP;U4.1,
 OSC1,HYPOTHESIS / retains visual fragments where listed,C30.1;U4.9;Y1.1,V_XTAL_LEFT
 OSC2,HYPOTHESIS / retains visual fragments where listed,C31.2;U4.10;Y1.2,V_XTAL_RIGHT
 PIC_RA0_FILTER,PHOTO_TRACE / not electrically measured,C25.1;U4.2,
-PIC_RA1_RX_REF,USER_REPORTED_CONTINUITY + photo-selected resistor pads,U4.3;R28.1;R29.1;TP7.1,
+PIC_RA1_RX_REF,USER_REPORTED_CONTINUITY + photo-selected resistor pads,R28.1;R29.1;TP7.1;U4.3,
 PIC_RA2_FILTER,PHOTO_TRACE / not electrically measured,C39.1;U4.4,
 PIC_RB3_RETURN,PHOTO_TRACE / not electrically measured,R4.2;U4.24,
+PIC_RC1_VREF,Local photo/user association; remote continuation unresolved,U4.12;VREF.1,
 PIC_RC3,HYPOTHESIS / retains visual fragments where listed,TP11.1;U4.14,V_U4_RC3
-PIC_RC7_TP17,PHOTO_TRACE,U4.18;TP17.1,
+PIC_RC7_TP17,PHOTO_TRACE,TP17.1;U4.18,
 PIC_TP4_C41,USER_REPORTED_CONTINUITY + PHOTO_TRACE,C41.1;TP4.1;U4.25,
 PIR_BASE,HYPOTHESIS / retains visual fragments where listed,Q2.R;R38.2;R39.1,
 Q1_BASE,HYPOTHESIS / retains visual fragments where listed,Q1.R;R44.2,V_Q1_RIGHT
 Q1_EMITTER,HYPOTHESIS / retains visual fragments where listed,Q1.L;R43.2,V_Q1_LEFT
 Q8_DRIVE_A,HYPOTHESIS / retains visual fragments where listed,Q8.T3;R9.2,
 Q8_DRIVE_B,HYPOTHESIS / retains visual fragments where listed,Q8.T1;R8.2,
-R35_Q9,PHOTO_TRACE / not electrically measured,R35.2;Q9.L,
-RB5_OPT,PHOTO_TRACE / not electrically measured,U4.26;TP10.1;R35.1,
+R35_Q9,PHOTO_TRACE / not electrically measured,Q9.L;R35.2,
+RB5_OPT,PHOTO_TRACE / not electrically measured,R35.1;TP10.1;U4.26,
 RF_MONITOR_PAD,HYPOTHESIS / retains visual fragments where listed,R10.1;TP3.1,
 RX_A_FB,HYPOTHESIS / retains visual fragments where listed,C22.2;R26.2;R48.1;U3.2,V_U3_INA_MINUS_LOCAL
 RX_A_FILTER,HYPOTHESIS / retains visual fragments where listed,C18.2;R27.1;TP6.1,
