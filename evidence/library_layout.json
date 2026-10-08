@@ -987,7 +987,10 @@
         },
         "rotation": 0,
         "includePins": true,
-        "footprint": "Package_SO:SOIC-28W_7.5x17.9mm_P1.27mm"
+        "footprint": "Package_SO:SOIC-28W_7.5x17.9mm_P1.27mm",
+        "properties": {
+          "ViaEvidence": "v0.9.3 user confirms 5/RA3-V036, 6/RA4-V037, 7/RA5-V039, 11/RC0-V047, 13/RC2-V049. Earlier 15-V022, 16-V023, 21-V026 retained. All eight via routes have unknown onward destinations; no NC inferred."
+        }
       }
     },
     {
@@ -3901,7 +3904,10 @@
         },
         "rotation": 0,
         "includePins": true,
-        "footprint": "Package_SO:SOIC-8_3.9x4.9mm_P1.27mm"
+        "footprint": "Package_SO:SOIC-8_3.9x4.9mm_P1.27mm",
+        "properties": {
+          "ViaEvidence": "v0.9.3 user identifies both V079 and V080 as SGM8542 pin5. Existing local C18.1 fragment retained on RX_B_PLUS; separate from TP6 on the opposite side of C18."
+        }
       }
     },
     {
@@ -3964,7 +3970,10 @@
         },
         "footprint": "Package_SO:SOIC-8_3.9x4.9mm_P1.27mm",
         "angle": 0,
-        "unit": 2
+        "unit": 2,
+        "properties": {
+          "ViaEvidence": "v0.9.3 user identifies both V079 and V080 as SGM8542 pin5. Existing local C18.1 fragment retained on RX_B_PLUS; separate from TP6 on the opposite side of C18."
+        }
       }
     },
     {
@@ -4018,7 +4027,10 @@
         },
         "footprint": "Package_SO:SOIC-8_3.9x4.9mm_P1.27mm",
         "angle": 0,
-        "unit": 3
+        "unit": 3,
+        "properties": {
+          "ViaEvidence": "v0.9.3 user identifies both V079 and V080 as SGM8542 pin5. Existing local C18.1 fragment retained on RX_B_PLUS; separate from TP6 on the opposite side of C18."
+        }
       }
     },
     {
@@ -4333,7 +4345,10 @@
         },
         "rotation": 270,
         "includePins": true,
-        "footprint": "TestPoint:TestPoint_THTPad_D2.0mm_Drill1.0mm"
+        "footprint": "TestPoint:TestPoint_THTPad_D2.0mm_Drill1.0mm",
+        "properties": {
+          "ViaEvidence": "v0.9.3 user identifies V072 as TP6, explicitly not R22.2. Existing C18.2/R27.1 branches remain hypotheses; this report does not confirm the whole modeled RX_A_FILTER net."
+        }
       }
     },
     {
@@ -5594,7 +5609,10 @@
         },
         "rotation": 0,
         "includePins": true,
-        "footprint": "Resistor_SMD:R_0603_1608Metric"
+        "footprint": "Resistor_SMD:R_0603_1608Metric",
+        "properties": {
+          "ViaEvidence": "v0.9.3 V072 reaches TP6, explicitly not R22.2. Independent H_RX_BIAS hypothesis remains unverified; no receiver bias net merge."
+        }
       },
       "via_evidence": "v0.9.1 user rejects V072-to-R22.2 association. Receiver bias net remains an independent unverified hypothesis."
     },

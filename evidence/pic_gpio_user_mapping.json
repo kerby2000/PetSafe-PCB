@@ -1,6 +1,6 @@
 {
   "date": "2026-10-08",
-  "revision": "v0.8",
+  "revision": "v0.9.3",
   "method": "User explicitly confirms both multimeter and visible traces; numerical resistance values not supplied.",
   "raw_clarification": "Both multimeter and the visible traces. Pin 3 goes to R28 and R29 and RP7 point",
   "interpretation": "RP7 treated as TP7: matching photographed label beside R28/R29. Resistor pad assignment uses photographs, not an explicit numbered-pad measurement.",
@@ -15,30 +15,34 @@
     {
       "pin": 5,
       "gpio": "RA3",
-      "user_destination": "No visible trace; possible hidden trace/via",
-      "status": "UNRESOLVED",
-      "resistance_ohms": null
+      "user_destination": "V036; onward destination unknown",
+      "status": "VIA_ONLY",
+      "resistance_ohms": null,
+      "via": "V036"
     },
     {
       "pin": 6,
       "gpio": "RA4",
-      "user_destination": "No visible trace; possible hidden trace/via",
-      "status": "UNRESOLVED",
-      "resistance_ohms": null
+      "user_destination": "V037; onward destination unknown",
+      "status": "VIA_ONLY",
+      "resistance_ohms": null,
+      "via": "V037"
     },
     {
       "pin": 7,
       "gpio": "RA5",
-      "user_destination": "No visible trace; possible hidden trace/via",
-      "status": "UNRESOLVED",
-      "resistance_ohms": null
+      "user_destination": "V039; onward destination unknown",
+      "status": "VIA_ONLY",
+      "resistance_ohms": null,
+      "via": "V039"
     },
     {
       "pin": 11,
       "gpio": "RC0",
-      "user_destination": "No visible trace; possible hidden trace/via",
-      "status": "UNRESOLVED",
-      "resistance_ohms": null
+      "user_destination": "V047; onward destination unknown",
+      "status": "VIA_ONLY",
+      "resistance_ohms": null,
+      "via": "V047"
     },
     {
       "pin": 12,
@@ -50,23 +54,26 @@
     {
       "pin": 13,
       "gpio": "RC2",
-      "user_destination": "No visible trace; possible hidden trace/via",
-      "status": "UNRESOLVED",
-      "resistance_ohms": null
+      "user_destination": "V049; onward destination unknown",
+      "status": "VIA_ONLY",
+      "resistance_ohms": null,
+      "via": "V049"
     },
     {
       "pin": 15,
       "gpio": "RC4",
-      "user_destination": "Via; user suspects internal layer",
+      "user_destination": "V022; onward destination unknown",
       "status": "VIA_ONLY",
-      "resistance_ohms": null
+      "resistance_ohms": null,
+      "via": "V022"
     },
     {
       "pin": 16,
       "gpio": "RC5",
-      "user_destination": "Via; user suspects internal layer",
+      "user_destination": "V023; onward destination unknown",
       "status": "VIA_ONLY",
-      "resistance_ohms": null
+      "resistance_ohms": null,
+      "via": "V023"
     },
     {
       "pin": 17,
@@ -78,9 +85,10 @@
     {
       "pin": 21,
       "gpio": "RB0",
-      "user_destination": "Via; user suspects internal layer",
+      "user_destination": "V026; onward destination unknown",
       "status": "VIA_ONLY",
-      "resistance_ohms": null
+      "resistance_ohms": null,
+      "via": "V026"
     },
     {
       "pin": 22,
@@ -116,15 +124,19 @@
     6,
     7,
     11,
-    12,
     13,
     15,
     16,
     21
   ],
   "notes": [
-    "Four via destinations remain electrically unidentified. A via does not establish an internal power rail.",
+    "Eight GPIO pads have user-identified local vias, with onward destinations unknown. Pin12 has the separately photo-derived VREF/V053 local net. A via does not establish an internal power rail.",
     "No visible continuation is not proof of no connection; no NC flags added.",
     "Old schematic guesses for R13/RC7, TP2/RF rail, TP1/LED-common and R28/R29/TP7 other analog nodes withdrawn."
-  ]
+  ],
+  "followup_corrections": {
+    "revision": "v0.9.3",
+    "user_report": "Five previously hidden routes identified: 5-V036, 6-V037, 7-V039, 11-V047, 13-V049.",
+    "method": "User direct pin-to-via report; no new numerical resistance supplied."
+  }
 }

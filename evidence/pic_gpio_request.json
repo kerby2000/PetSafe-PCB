@@ -1,7 +1,7 @@
 {
   "date": "2026-10-08",
-  "basis_revision": "v0.9",
-  "status": "AWAITING_USER_TRACING",
+  "basis_revision": "v0.9.3",
+  "status": "AWAITING_ONWARD_DESTINATIONS",
   "source_photos": [
     {
       "path": "photos/user/2026-10-08/board_full.png",
@@ -43,7 +43,7 @@
     21
   ],
   "missing_count": 8,
-  "definition": "No connection is currently modeled on these GPIO pads. Other modeled nets may still be partial or inferred.",
+  "definition": "These eight GPIOs have user-identified local vias but no modeled onward component connection. They are not unused pins. Other modeled nets may still be partial or inferred.",
   "targets": [
     {
       "pin": 5,
@@ -371,88 +371,88 @@
       "gpio": "RA3",
       "photo_side": "right",
       "position": "from bottom: 5",
-      "destination_reference": "",
-      "destination_pad_or_pin": "",
+      "destination_reference": "V036",
+      "destination_pad_or_pin": "onward destination unknown",
       "resistance_ohms": "",
-      "method": "User visual trace and multimeter; no numeric reading",
-      "notes": "No visible trace; possible hidden trace/via"
+      "method": "User pin-to-via report; no new numeric reading",
+      "notes": "V036; onward destination unknown"
     },
     {
       "pin": 6,
       "gpio": "RA4",
       "photo_side": "right",
       "position": "from bottom: 6",
-      "destination_reference": "",
-      "destination_pad_or_pin": "",
+      "destination_reference": "V037",
+      "destination_pad_or_pin": "onward destination unknown",
       "resistance_ohms": "",
-      "method": "User visual trace and multimeter; no numeric reading",
-      "notes": "No visible trace; possible hidden trace/via"
+      "method": "User pin-to-via report; no new numeric reading",
+      "notes": "V037; onward destination unknown"
     },
     {
       "pin": 7,
       "gpio": "RA5",
       "photo_side": "right",
       "position": "from bottom: 7",
-      "destination_reference": "",
-      "destination_pad_or_pin": "",
+      "destination_reference": "V039",
+      "destination_pad_or_pin": "onward destination unknown",
       "resistance_ohms": "",
-      "method": "User visual trace and multimeter; no numeric reading",
-      "notes": "No visible trace; possible hidden trace/via"
+      "method": "User pin-to-via report; no new numeric reading",
+      "notes": "V039; onward destination unknown"
     },
     {
       "pin": 11,
       "gpio": "RC0",
       "photo_side": "right",
       "position": "from bottom: 11",
-      "destination_reference": "",
-      "destination_pad_or_pin": "",
+      "destination_reference": "V047",
+      "destination_pad_or_pin": "onward destination unknown",
       "resistance_ohms": "",
-      "method": "User visual trace and multimeter; no numeric reading",
-      "notes": "No visible trace; possible hidden trace/via"
+      "method": "User pin-to-via report; no new numeric reading",
+      "notes": "V047; onward destination unknown"
     },
     {
       "pin": 13,
       "gpio": "RC2",
       "photo_side": "right",
       "position": "from bottom: 13",
-      "destination_reference": "",
-      "destination_pad_or_pin": "",
+      "destination_reference": "V049",
+      "destination_pad_or_pin": "onward destination unknown",
       "resistance_ohms": "",
-      "method": "User visual trace and multimeter; no numeric reading",
-      "notes": "No visible trace; possible hidden trace/via"
+      "method": "User pin-to-via report; no new numeric reading",
+      "notes": "V049; onward destination unknown"
     },
     {
       "pin": 15,
       "gpio": "RC4",
       "photo_side": "left",
       "position": "from top: 1",
-      "destination_reference": "",
-      "destination_pad_or_pin": "",
+      "destination_reference": "V022",
+      "destination_pad_or_pin": "onward destination unknown",
       "resistance_ohms": "",
-      "method": "User visual trace and multimeter; no numeric reading",
-      "notes": "Via; user suspects internal layer"
+      "method": "User pin-to-via report; no new numeric reading",
+      "notes": "V022; onward destination unknown"
     },
     {
       "pin": 16,
       "gpio": "RC5",
       "photo_side": "left",
       "position": "from top: 2",
-      "destination_reference": "",
-      "destination_pad_or_pin": "",
+      "destination_reference": "V023",
+      "destination_pad_or_pin": "onward destination unknown",
       "resistance_ohms": "",
-      "method": "User visual trace and multimeter; no numeric reading",
-      "notes": "Via; user suspects internal layer"
+      "method": "User pin-to-via report; no new numeric reading",
+      "notes": "V023; onward destination unknown"
     },
     {
       "pin": 21,
       "gpio": "RB0",
       "photo_side": "left",
       "position": "from top: 7",
-      "destination_reference": "",
-      "destination_pad_or_pin": "",
+      "destination_reference": "V026",
+      "destination_pad_or_pin": "onward destination unknown",
       "resistance_ohms": "",
-      "method": "User visual trace and multimeter; no numeric reading",
-      "notes": "Via; user suspects internal layer"
+      "method": "User pin-to-via report; no new numeric reading",
+      "notes": "V026; onward destination unknown"
     }
   ],
   "supplementary_local_nets": {
@@ -469,6 +469,6 @@
   "notes": [
     "No guessed destination is presented as a measurement.",
     "All 28 pads are visible in the close-up although the top of the plastic body is cropped.",
-    "v0.9: RC1/pin12 now reaches VREF/V053. V022=RC4, V023=RC5; V026=RB0 confirmed by user correction. See pic_gpio_status.json."
+    "v0.9.3: all eight highlighted GPIOs now have user-identified vias. Continue beyond the vias; no NC inferred. RC1/pin12 reaches VREF/V053 separately. See pic_gpio_status.json."
   ]
 }

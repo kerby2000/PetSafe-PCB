@@ -7009,7 +7009,7 @@
 				(hide yes)
 			)
 		)
-		(property "ViaEvidence" "v0.9: RC1/pin12 photo trace to VREF pad (V053); RC4 pin15 to V022; RC5 pin16 to V023; user corrected V026=RB0 pin21 and V025=GND. Eight GPIO pads remain open because onward destinations are unknown."
+		(property "ViaEvidence" "v0.9.3 user confirms 5/RA3-V036, 6/RA4-V037, 7/RA5-V039, 11/RC0-V047, 13/RC2-V049. Earlier 15-V022, 16-V023, 21-V026 retained. All eight via routes have unknown onward destinations; no NC inferred."
 			(at 262.89 78.74 0)
 			(effects
 				(font
@@ -11109,6 +11109,9 @@
 				)
 			)
 		)
+    (property "ViaEvidence" "v0.9.3 user identifies both V079 and V080 as SGM8542 pin5. Existing local C18.1 fragment retained on RX_B_PLUS; separate from TP6 on the opposite side of C18." (at 381.0 200.66 0)
+      (effects (font (size 1.27 1.27)) (hide yes))
+    )
 		(pin "1"
 			(uuid "a5605f3e-d001-49c3-95d3-f2fdec0f8709")
 		)
@@ -11590,6 +11593,9 @@
 				)
 			)
 		)
+    (property "ViaEvidence" "v0.9.3 user identifies V072 as TP6, explicitly not R22.2. Existing C18.2/R27.1 branches remain hypotheses; this report does not confirm the whole modeled RX_A_FILTER net." (at 425.45 200.66 0)
+      (effects (font (size 1.27 1.27)) (hide yes))
+    )
 		(pin "1"
 			(uuid "9ed0f60d-7cc7-41d8-a95a-4bdecaa99809")
 		)
@@ -13280,7 +13286,7 @@
 				)
 			)
 		)
-    (property "ViaEvidence" "v0.9.1 user rejects V072-to-R22.2 association. Receiver bias net remains an independent unverified hypothesis." (at 326.39 229.87 0)
+    (property "ViaEvidence" "v0.9.3 V072 reaches TP6, explicitly not R22.2. Independent H_RX_BIAS hypothesis remains unverified; no receiver bias net merge." (at 326.39 229.87 0)
       (effects (font (size 1.27 1.27)) (hide yes))
     )
 		(pin "1"

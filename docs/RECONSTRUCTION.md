@@ -1,4 +1,4 @@
-# PetSafe functional reconstruction, v0.9.2
+# PetSafe functional reconstruction, v0.9.3
 
 The deliverable is one editable KiCad schematic sheet with all 150 entries in the original main-board catalog. It uses wires inside functional blocks and labels between blocks. The 150 entries include named pads, test points and unpopulated footprints; they are not 150 fitted components. The separate PIR daughterboard appears in the photos, but only its main-board connector and interface are modeled here.
 
@@ -177,3 +177,10 @@ R42.1/R44.1 share the new `V017_CONTROL` net; its function is unknown. The indep
 111 distinct via IDs reviewed; 120 active sites / 127 stable IDs. The latest 19-site batch excludes V117/V120/V121/V122/V124 without renumbering. V113/V115 now correctly point to Q8 centre B2/pin5, GND; the old outer-pad annotation is withdrawn. V077 confirms C19.2/R29.2 are GND, replacing the earlier clamp/op-amp-input guesses. V091/R11, V097/R16, V102/R15 and V108/R14 identify tuning-control resistor ends, with onward GPIOs unknown. V114 reaches the opposite centre T2/pin2, but its earlier GND assignment versus source-supply hypothesis remains unresolved. V075 identifies Q7; exact terminal remains unspecified.
 
 C19 pad2 is assigned to the upper pad beside V077 in IMG_2434; its other-pad routing remains inferred. R29.1 retains the PIC3/R28/TP7 user mapping; R29.2 becomes GND. The old R29-to-U3.5 and C19-to-clamp branches are withdrawn, while the original U3.5/C18.1 visual fragment remains joined. V114 is kept as a pad association with unknown net; Q8.T2 supply remains a separate hypothesis. The two Q8 outer drain pads remain joined from the earlier D-E reading, independently of the corrected centre-ground via association.
+
+
+## v0.9.3 PIC and receiver via confirmations
+
+118 distinct via IDs reviewed; 120 active sites / 127 stable IDs. The latest eight-site batch confirms V036=PIC5/RA3, V037=PIC6/RA4, V039=PIC7/RA5, V047=PIC11/RC0 and V049=PIC13/RC2. All eight GPIOs without modeled onward connections now have user-identified vias. V072 reaches TP6, explicitly not R22.2. V079/V080 both reach SGM8542 U3 pin5; TP6 and U3 pin5 remain separate across C18. Nine IDs are still unmentioned. Earlier Q8 and C19/R29 ground corrections remain; V114 net and V075 Q7 terminal are unresolved.
+
+This batch adds local via evidence without changing any component-to-component net partition. Native GPIO pads remain open because a via with an unknown onward destination is not a fitted component or an NC. The schematic annotations and updated numbered map show the confirmed associations. RX_A_FILTER (TP6) stays separate from RX_B_PLUS (U3.5) across C18; neither is merged into the inferred R22.2 bias network.

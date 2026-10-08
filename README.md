@@ -1,10 +1,10 @@
-# PetSafe PCB reverse engineering - v0.9.2
+# PetSafe PCB reverse engineering - v0.9.3
 
 One editable **A2 KiCad 10 sheet**, with all 150 main-board catalog entries grouped into functional blocks. Wires connect parts within blocks; named nets connect blocks. This revision uses the installed **KiCad 10.0.5** and **KiCad MCP Server**, with **20 unmodified stock symbol definitions and four explicitly authorized datasheet symbols**.
 
-## Current via review (v0.9.2)
+## Current via review (v0.9.3)
 
-111 distinct via IDs reviewed; 120 active sites / 127 stable IDs. The latest 19-site batch excludes V117/V120/V121/V122/V124 without renumbering. V113/V115 now correctly point to Q8 centre B2/pin5, GND; the old outer-pad annotation is withdrawn. V077 confirms C19.2/R29.2 are GND, replacing the earlier clamp/op-amp-input guesses. V091/R11, V097/R16, V102/R15 and V108/R14 identify tuning-control resistor ends, with onward GPIOs unknown. V114 reaches the opposite centre T2/pin2, but its earlier GND assignment versus source-supply hypothesis remains unresolved. V075 identifies Q7; exact terminal remains unspecified.
+118 distinct via IDs reviewed; 120 active sites / 127 stable IDs. The latest eight-site batch confirms V036=PIC5/RA3, V037=PIC6/RA4, V039=PIC7/RA5, V047=PIC11/RC0 and V049=PIC13/RC2. All eight GPIOs without modeled onward connections now have user-identified vias. V072 reaches TP6, explicitly not R22.2. V079/V080 both reach SGM8542 U3 pin5; TP6 and U3 pin5 remain separate across C18. Nine IDs are still unmentioned. Earlier Q8 and C19/R29 ground corrections remain; V114 net and V075 Q7 terminal are unresolved.
 
 ## Corrected markings and measured evidence (2026-10-08)
 

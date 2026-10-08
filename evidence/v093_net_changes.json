@@ -1,0 +1,60 @@
+{
+  "revision": "v0.9.3",
+  "changes": [],
+  "corrected_via_ids": [
+    "V036",
+    "V037",
+    "V039",
+    "V047",
+    "V049",
+    "V072",
+    "V079",
+    "V080"
+  ],
+  "local_associations": [
+    {
+      "id": "V036",
+      "claim": "PIC U4 pin 5 / RA3",
+      "kind": "component_or_issue"
+    },
+    {
+      "id": "V037",
+      "claim": "PIC U4 pin 6 / RA4",
+      "kind": "component_or_issue"
+    },
+    {
+      "id": "V039",
+      "claim": "PIC U4 pin 7 / RA5",
+      "kind": "component_or_issue"
+    },
+    {
+      "id": "V047",
+      "claim": "PIC U4 pin 11 / RC0",
+      "kind": "component_or_issue"
+    },
+    {
+      "id": "V049",
+      "claim": "PIC U4 pin 13 / RC2",
+      "kind": "component_or_issue"
+    },
+    {
+      "id": "V072",
+      "claim": "Not connected to R22.2; connected to TP6",
+      "kind": "component_or_issue"
+    },
+    {
+      "id": "V079",
+      "claim": "SGM8542 U3 pin 5",
+      "kind": "component_or_issue"
+    },
+    {
+      "id": "V080",
+      "claim": "SGM8542 U3 pin 5",
+      "kind": "component_or_issue"
+    }
+  ],
+  "held_conflicts": [
+    "V114"
+  ],
+  "qualification": "Eight via associations updated. No new component-to-component net merge: five PIC vias have unknown onward destinations, V072 joins existing TP6 local net, V079/V080 join existing U3.5 local net. TP6 and U3.5 stay separate across C18. No new per-site numerical resistance supplied."
+}

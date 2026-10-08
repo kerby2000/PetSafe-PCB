@@ -106,3 +106,8 @@ The user supplied 21 site corrections on 2026-10-08, preserved verbatim apart fr
 ## v0.9.2 incremental review and clarifications
 
 Nineteen user site entries and the two follow-up answers are preserved in `via_user_review.json`. The user explicitly confirms V077 C19-R29 is GND. The V114 answer repeats the opposite-side second-pin location without confirming or withdrawing the older GND claim. The Q8 photo pad convention and existing datasheet mapping identify centre B2=pin5 and T2=pin2. No new IC identity or pin-number reassignment is inferred. C19/R29, Q7 and tuning-resistor pad selections use IMG_2434/2433; the Q8/C7/C8/C9 area uses IMG_2431 and the registered mosaic. No new per-site ohms supplied.
+
+
+### 2026-10-08: v0.9.3 user via confirmations
+
+User directly identifies PIC pins 5/6/7/11/13 at V036/V037/V039/V047/V049; V072 at TP6 (not R22.2); V079/V080 at SGM8542 pin5. No new per-site numerical resistance supplied. These supersede candidate associations, not all inferred remote connections. Exact report retained in evidence/via_user_review.json.

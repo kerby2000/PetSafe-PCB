@@ -1,8 +1,22 @@
-# Via review findings - v0.9.2
+# Via review findings - v0.9.3
 
-111 distinct via IDs reviewed; 120 active sites / 127 stable IDs. The latest 19-site batch excludes V117/V120/V121/V122/V124 without renumbering. V113/V115 now correctly point to Q8 centre B2/pin5, GND; the old outer-pad annotation is withdrawn. V077 confirms C19.2/R29.2 are GND, replacing the earlier clamp/op-amp-input guesses. V091/R11, V097/R16, V102/R15 and V108/R14 identify tuning-control resistor ends, with onward GPIOs unknown. V114 reaches the opposite centre T2/pin2, but its earlier GND assignment versus source-supply hypothesis remains unresolved. V075 identifies Q7; exact terminal remains unspecified.
+118 distinct via IDs reviewed; 120 active sites / 127 stable IDs. The latest eight-site batch confirms V036=PIC5/RA3, V037=PIC6/RA4, V039=PIC7/RA5, V047=PIC11/RC0 and V049=PIC13/RC2. All eight GPIOs without modeled onward connections now have user-identified vias. V072 reaches TP6, explicitly not R22.2. V079/V080 both reach SGM8542 U3 pin5; TP6 and U3 pin5 remain separate across C18. Nine IDs are still unmentioned. Earlier Q8 and C19/R29 ground corrections remain; V114 net and V075 Q7 terminal are unresolved.
 
-## Latest 19-site corrections
+## Latest eight-site corrections
+
+| Via | User-confirmed local destination | Remaining uncertainty |
+|---|---|---|
+| V036 | U4 pin5 / RA3 | Onward destination unknown |
+| V037 | U4 pin6 / RA4 | Onward destination unknown |
+| V039 | U4 pin7 / RA5 | Onward destination unknown |
+| V047 | U4 pin11 / RC0 | Onward destination unknown |
+| V049 | U4 pin13 / RC2 | Onward destination unknown |
+| V072 | TP6.1; explicitly not R22.2 | Other RX_A_FILTER branches remain inferred |
+| V079, V080 | SGM8542 U3 pin5 | Other receiver topology remains partly inferred |
+
+These are local endpoint confirmations; no new component-to-component net merges. All eight unresolved GPIO onward routes now have identified local vias. TP6 and U3.5 remain separate across C18. Seven previously unmentioned IDs are now reviewed, leaving nine.
+
+## Prior v0.9.2 corrections
 
 | Via | Updated destination | Qualification |
 |---|---|---|
@@ -42,7 +56,7 @@ Two native pad assignments change: C19.2 and R29.2 become GND. R29.1 stays on PI
 | V060 | Q2.L / GND | User Q2; earlier GND report; local pad photo-selected |
 | V065 | C2.2 / GND | User C2; earlier GND report; return pad photo-selected |
 | V068 | C37.2 / C36.2 / GND | User pair; earlier GND report; return pads photo-selected |
-| V072 | Not R22.2; destination unresolved | Rejected via association; prior independent receiver-bias hypothesis still unverified |
+| V072 | Not R22.2; superseded by v0.9.3 TP6 assignment | Prior independent receiver-bias hypothesis still unverified |
 | V073 | GND only | User explicitly resolves duplicate; no R19 ground merge |
 
 Only two component-pad net assignments change in this batch: R42.1 and R44.1 join `V017_CONTROL`. The other entries correct via metadata or corroborate existing qualified pad assignments. The original `V_Q1_LEFT` fragment (Q1.L to R43.2) remains; the user corrected the via location, not this independent local trace. Superseded in v0.9.2: V075 now identifies Q7; exact terminal and possible R19 continuation remain photo candidates.

@@ -768,6 +768,53 @@
           "kind": "not_via"
         }
       ]
+    },
+    {
+      "source": "User incremental via review 2026-10-08",
+      "revision": "v0.9.3",
+      "answer": "V036 - 5 RA3\nV037 - 6 RA4\nV039 - 7 RA5\nV047 - 11 RC0\nV049 - 13 RC2\nV072 not connected to R22.2, but connected to TP6\nV079, V080 - pin 5 of SGM8542",
+      "assignments": [
+        {
+          "id": "V036",
+          "claim": "PIC U4 pin 5 / RA3",
+          "kind": "component_or_issue"
+        },
+        {
+          "id": "V037",
+          "claim": "PIC U4 pin 6 / RA4",
+          "kind": "component_or_issue"
+        },
+        {
+          "id": "V039",
+          "claim": "PIC U4 pin 7 / RA5",
+          "kind": "component_or_issue"
+        },
+        {
+          "id": "V047",
+          "claim": "PIC U4 pin 11 / RC0",
+          "kind": "component_or_issue"
+        },
+        {
+          "id": "V049",
+          "claim": "PIC U4 pin 13 / RC2",
+          "kind": "component_or_issue"
+        },
+        {
+          "id": "V072",
+          "claim": "Not connected to R22.2; connected to TP6",
+          "kind": "component_or_issue"
+        },
+        {
+          "id": "V079",
+          "claim": "SGM8542 U3 pin 5",
+          "kind": "component_or_issue"
+        },
+        {
+          "id": "V080",
+          "claim": "SGM8542 U3 pin 5",
+          "kind": "component_or_issue"
+        }
+      ]
     }
   ],
   "review_in_progress": true,
@@ -810,16 +857,9 @@
     "V028",
     "V030",
     "V035",
-    "V036",
-    "V037",
     "V038",
-    "V039",
     "V042",
-    "V047",
-    "V049",
-    "V053",
-    "V079",
-    "V080"
+    "V053"
   ],
   "remaining_model_conflicts": [
     "V114"
