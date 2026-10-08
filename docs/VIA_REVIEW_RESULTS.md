@@ -1,6 +1,16 @@
-# Via review findings - v0.9.6
+# Via review findings - v0.9.7
 
-## Latest continuity follow-up (native remains v0.9.6)
+## Current v0.9.7: resistive path and Q7 reconstruction
+
+**V064–V070 = 11.2 kΩ**, with no reverse reading supplied. This rejects the direct R18 input-to-VDD assumption. It matches the nominal **1.2k R18 + 10k R19** series path. Together with IMG_2434 and the confirmed V064–V075 supply link, it supports a PNP supply-switch reconstruction: Q7.R/native2 emitter at VDD; Q7.L/native1 base joined to R18.2 and R19.1; R19.2 pulled to VDD; R18.1/V070 remains an unknown control source. Q7.S/native3 retains its collector path through R20.
+
+**Additional reading: V049–V071 = 20 kΩ.** Recorded as a resistive path, not a direct RC2/R21 tie. V071 differs from V070; the pending V070–V049 check is still unmeasured. No path through specific resistors is inferred from this reading alone.
+
+Those local pad assignments are explicitly **photo/circuit inferences supported by the resistance**, not new user-probed terminal confirmations. Candidate BC857C identity and operating function remain qualified. No MCU connection is guessed into the schematic. Next unmeasured candidate: V070–V049 (PIC13/RC2); then V026/RB0 only if needed.
+
+KiCad 10.0.5 native/model validation: **86 partitions PASS; 42 ERC findings (33 open pads, four isolated labels, five power findings)**. All 26 original photo checksums remain intact. See [search reasoning and current test](VIA_PAIR_SEARCH.md).
+
+## Historical continuity follow-up before v0.9.7
 
 **V064–V075 is user-confirmed**, placing V075 on regulated VDD. No numerical resistance was supplied. V075 was previously associated with Q7, without a terminal; Q7.R/R19.2 remain photo candidates from IMG_2434. No terminal-level native merge is made from that component-only association. V064–V070/R18 is a different, unreported test.
 

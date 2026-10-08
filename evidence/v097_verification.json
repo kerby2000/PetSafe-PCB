@@ -1,0 +1,34 @@
+{
+  "revision": "v0.9.7",
+  "result": "PASS",
+  "schematic_sha256": "c645b585bc1cec1f7a5899ff9edbfe17bd98cd553a33aea490b14d8f44ab2ea4",
+  "modeled_nets": 86,
+  "open_pads": 33,
+  "erc_total": 42,
+  "gpio_pins_still_open": [
+    13,
+    21
+  ],
+  "recorded_resistance_ohms": 11200,
+  "qualified_q7_topology": "R18 input - base; R19 base-emitter pull-up; emitter VDD; collector R20. Photo/resistance-supported inference.",
+  "unmeasured_gpio_connections": "None introduced",
+  "prior_independent_electrical_contracts": "PASS",
+  "review_replay": "PASS",
+  "mcp_properties_match": "PASS",
+  "original_photo_checksums": "PASS (26 files)",
+  "pdfs": {
+    "output/pdf/PetSafe_single_sheet.pdf": {
+      "pages": 1,
+      "sha256": "6c36f249d611901e0c7946e268083c9b791703b60dda603cd2eed5efd8c75be2"
+    },
+    "output/pdf/PetSafe_completion_status.pdf": {
+      "pages": 2,
+      "sha256": "1887c63801409b36e006227474ca8a75a53f12ab414c93fa6e4303341ad21d30"
+    },
+    "output/pdf/PetSafe_PIC_GPIO_pin_map.pdf": {
+      "pages": 1,
+      "sha256": "2d71c9770311d35e832f6b031e1ddf90c438c9b7062873a2b5b5addecb8b4c87"
+    }
+  },
+  "unchanged_pic_map_basis": "Existing v0.9.6 map remains valid for the same two open GPIOs; no map PDF edit required."
+}

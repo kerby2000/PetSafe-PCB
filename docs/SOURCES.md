@@ -116,3 +116,10 @@ User directly identifies PIC pins 5/6/7/11/13 at V036/V037/V039/V047/V049; V072 
 ### 2026-10-08: v0.9.4 motor controls and Q1 correction
 
 User identifies U5.2 at V016, joined to V022 (PIC15/RC4), and U5.3 at V019, joined to V023 (PIC16/RC5). V011-V014 identify Q1.L; user explicitly answers “Remove Q1.L–R43.2 connection”. Original V_Q1_LEFT retained only as withdrawn historical evidence. No new numerical resistance supplied.
+
+
+## v0.9.7 Q7 / R18 / R19 inference
+
+User reports V064-V070 = 11.2 kΩ after confirming V064-V075. No reverse reading or isolated resistor measurement supplied. IMG_2434 shows the Q7/R19 paired-pad continuation; R18=122 and R19=01C supply the existing nominal 1.2k and 10k values. The matched series sum supports the reconstructed base-input/pull-up circuit, but does not uniquely establish the entire topology or a GPIO source.
+
+[Nexperia BC856/BC857/BC858 datasheet, Rev. 9](https://assets.nexperia.com/documents/data-sheet/BC856_BC857_BC858.pdf), accessed 8 October 2026: page 2 gives BC857 pin1 base, pin2 emitter, pin3 collector; page 3 lists BC857C marking 3G plus manufacturing-site code. This verifies the existing candidate pinout and marking interpretation, not the board manufacturer or operating role. Q7 remains a candidate BC857C using the stock KiCad BC857 symbol.

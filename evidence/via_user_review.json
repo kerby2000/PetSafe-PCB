@@ -1073,6 +1073,49 @@
           "reading": "OL"
         }
       ]
+    },
+    {
+      "source": "User resistance follow-up 2026-10-08",
+      "revision": "v0.9.7",
+      "answer": "v064-v070 shows 11.2kOhm",
+      "assignments": [
+        {
+          "id": "V070",
+          "kind": "resistive_path",
+          "claim": "V064-V070 measures 11.2 kohm, not a direct rail connection. V070 reaches the free end of R18."
+        }
+      ],
+      "rejected_pairs": [
+        {
+          "vias": [
+            "V064",
+            "V070"
+          ],
+          "status": "USER_MEASURED_RESISTIVE_PATH_NOT_DIRECT",
+          "reading": "11.2 kohm",
+          "resistance_ohms": 11200,
+          "reverse_reading": null
+        }
+      ]
+    },
+    {
+      "source": "User additional receiver resistance follow-up 2026-10-08",
+      "revision": "v0.9.7",
+      "answer": "v049 - v071 shows 20kOhm",
+      "assignments": [],
+      "rejected_pairs": [
+        {
+          "vias": [
+            "V049",
+            "V071"
+          ],
+          "status": "USER_MEASURED_RESISTIVE_PATH_NOT_DIRECT",
+          "reading": "20 kohm",
+          "resistance_ohms": 20000,
+          "reverse_reading": null
+        }
+      ],
+      "qualification": "V071 is R21, distinct from V070/R18. This is not the pending D1 V070-V049 result. In-circuit path not identified."
     }
   ],
   "review_in_progress": true,

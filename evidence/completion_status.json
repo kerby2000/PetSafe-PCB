@@ -1,6 +1,6 @@
 {
   "date": "2026-10-08",
-  "revision": "v0.9.6",
+  "revision": "v0.9.7",
   "known_identified_ICs_needing_new_symbols": [],
   "completed": [
     "U1 S-1200B45-M5T1 datasheet symbol",
@@ -28,7 +28,8 @@
     "v0.9.3: five PIC-to-via confirmations; V072 corrected to TP6; V079/V080 mapped to U3 pin5; onward GPIO nets still unresolved",
     "v0.9.4: PIC RC4/RC5 confirmed to motor INA/INB; Q1.L-R43.2 explicitly withdrawn; six GPIO onward destinations unknown",
     "v0.9.5: V114 corrected to U2 ground; C5 negative confirmed; LED common grounded; Q1 VDD rail choice pending",
-    "v0.9.6: four tuning-control via pairs confirmed; V053-V071 rejected; only RC2 and RB0 remain open GPIOs"
+    "v0.9.6: four tuning-control via pairs confirmed; V053-V071 rejected; only RC2 and RB0 remain open GPIOs",
+    "v0.9.7: V064-V070 = 11.2 kohm; R18 supply tie removed and Q7/R19 pull-up reconstructed as supported inference"
   ],
   "catalog_entries": 150,
   "physical_pins": 352,
@@ -239,12 +240,12 @@
     {
       "area": "Tuning bank",
       "gap": "All five controls mapped: RC6/R13, RA3/R14, RA4/R15, RA5/R16, RC0/R11. Capacitor-midpoint and antenna links remain unknown.",
-      "method": "V090 to all four gave OL. Next compare V095 to V100/V103/V107; then trace from confirmed groups."
+      "method": "Seven capacitor pairs gave OL. Broad pairwise tests stopped; next trace toward a specific visible/component endpoint."
     },
     {
       "area": "Auxiliary / receiver",
-      "gap": "V077 grounds C19/R29. V075 reaches Q7, terminal unknown. V063 feed now joins regulated VDD; V017 role remains unknown; Q1.L via V011-V014 is VDD-reported, rail choice pending; R43.2/V015 stays separate.",
-      "method": "Identify these remote nets; R44.1 is a photo-selected pad. Receiver bias is still inferred; V053-V071 explicitly rejected."
+      "gap": "V077 grounds C19/R29. V075 supply plus V064-V070 = 11.2k supports Q7 emitter/VDD, R19 pull-up and R18 base input; topology inferred. V063 feed now joins regulated VDD; V017 role remains unknown; Q1.L via V011-V014 is VDD-reported, rail choice pending; R43.2/V015 stays separate.",
+      "method": "Next test V070-V049 for PIC13/RC2 receiver enable. Q7 topology and receiver bias remain inferred; V053-V071 is rejected."
     },
     {
       "area": "D2 / D6 / candidate parts",
@@ -292,8 +293,8 @@
     ],
     "conflicts": [],
     "statuses": {
-      "ASSIGNED": 101,
-      "USER_REPORTED": 12,
+      "ASSIGNED": 103,
+      "USER_REPORTED": 10,
       "PHOTO_LOCAL": 7,
       "REJECTED_NOT_VIA": 7
     }

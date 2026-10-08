@@ -2,16 +2,16 @@
 <export version="E">
   <design>
     <source>C:\Users\lukin\Documents\ChatGPT\PetSafe-PCB\schematic\PetSafe_1001339.kicad_sch</source>
-    <date>2026-10-08T20:29:01</date>
+    <date>2026-10-08T21:10:05</date>
     <tool>Eeschema 10.0.5</tool>
     <sheet number="1" name="/" tstamps="/">
       <title_block>
         <title>PetSafe 100-1339 R03 A | single-sheet reconstruction</title>
         <company>KiCad 10 libraries + four datasheet symbols | MCP authoring</company>
-        <rev>0.9.6</rev>
+        <rev>0.9.7</rev>
         <date>2026-10-08</date>
         <source>PetSafe_1001339.kicad_sch</source>
-        <comment number="1" value="User via review; Q1 rail and hidden routes pending; V114 = U2 GND."/>
+        <comment number="1" value="Q7 switch inferred from photo and 11.2kohm path; V070 control source unknown."/>
         <comment number="2" value=""/>
         <comment number="3" value=""/>
         <comment number="4" value=""/>
@@ -2705,7 +2705,7 @@
       <datasheet>https://www.onsemi.com/pub/Collateral/BC860-D.pdf</datasheet>
       <description>0.1A Ic, 45V Vce, PNP Transistor, SOT-23</description>
       <fields>
-        <field name="ViaEvidence">v0.9.2: user identifies V075 as Q7. Exact terminal is not specified; prior R19.2 continuation and Q7.R are photo candidates only.</field>
+        <field name="ViaEvidence">v0.9.7: V064-V075 confirmed; V064-V070 measured 11.2 kohm. IMG_2434 plus R18 1.2k + R19 10k supports PNP supply switch: E/R pin2 at VDD, B/L pin1 through R18 control and R19 pull-up. Terminal selection is a supported photo/circuit inference, not a separate user pad measurement.</field>
         <field name="OriginalReference">Q7</field>
         <field name="Evidence">Photo reconstruction; topology inferred</field>
         <field name="LibraryPolicy">Unmodified KiCad 10 stock symbol</field>
@@ -2717,7 +2717,7 @@
         <field name="Description">0.1A Ic, 45V Vce, PNP Transistor, SOT-23</field>
       </fields>
       <libsource lib="Transistor_BJT" part="BC857" description="0.1A Ic, 45V Vce, PNP Transistor, SOT-23"/>
-      <property name="ViaEvidence" value="v0.9.2: user identifies V075 as Q7. Exact terminal is not specified; prior R19.2 continuation and Q7.R are photo candidates only."/>
+      <property name="ViaEvidence" value="v0.9.7: V064-V075 confirmed; V064-V070 measured 11.2 kohm. IMG_2434 plus R18 1.2k + R19 10k supports PNP supply switch: E/R pin2 at VDD, B/L pin1 through R18 control and R19 pull-up. Terminal selection is a supported photo/circuit inference, not a separate user pad measurement."/>
       <property name="OriginalReference" value="Q7"/>
       <property name="Evidence" value="Photo reconstruction; topology inferred"/>
       <property name="LibraryPolicy" value="Unmodified KiCad 10 stock symbol"/>
@@ -3444,6 +3444,7 @@
       <footprint>Resistor_SMD:R_0603_1608Metric</footprint>
       <description>Resistor</description>
       <fields>
+        <field name="ViaEvidence">v0.9.7: V070/free pad1 to V064 measured 11.2 kohm, not direct VDD. 1.2k R18 plus 10k R19 fits series path to VDD. Pad2 moved to Q7 base by photo/circuit inference; pad1 control source remains unknown.</field>
         <field name="OriginalReference">R18</field>
         <field name="Evidence">Photo reconstruction; topology inferred</field>
         <field name="LibraryPolicy">Unmodified KiCad 10 stock symbol</field>
@@ -3455,6 +3456,7 @@
         <field name="Description">Resistor</field>
       </fields>
       <libsource lib="Device" part="R" description="Resistor"/>
+      <property name="ViaEvidence" value="v0.9.7: V070/free pad1 to V064 measured 11.2 kohm, not direct VDD. 1.2k R18 plus 10k R19 fits series path to VDD. Pad2 moved to Q7 base by photo/circuit inference; pad1 control source remains unknown."/>
       <property name="OriginalReference" value="R18"/>
       <property name="Evidence" value="Photo reconstruction; topology inferred"/>
       <property name="LibraryPolicy" value="Unmodified KiCad 10 stock symbol"/>
@@ -3481,6 +3483,7 @@
       <footprint>Resistor_SMD:R_0603_1608Metric</footprint>
       <description>Resistor</description>
       <fields>
+        <field name="ViaEvidence">v0.9.7: 10k pull-up candidate between Q7 base/pad1 and emitter/VDD/pad2. IMG_2434 and V064-V075 plus measured V064-V070 11.2 kohm support this reconstruction; not an isolated-resistor measurement.</field>
         <field name="OriginalReference">R19</field>
         <field name="Evidence">Photo reconstruction; topology inferred</field>
         <field name="LibraryPolicy">Unmodified KiCad 10 stock symbol</field>
@@ -3492,6 +3495,7 @@
         <field name="Description">Resistor</field>
       </fields>
       <libsource lib="Device" part="R" description="Resistor"/>
+      <property name="ViaEvidence" value="v0.9.7: 10k pull-up candidate between Q7 base/pad1 and emitter/VDD/pad2. IMG_2434 and V064-V075 plus measured V064-V070 11.2 kohm support this reconstruction; not an isolated-resistor measurement."/>
       <property name="OriginalReference" value="R19"/>
       <property name="Evidence" value="Photo reconstruction; topology inferred"/>
       <property name="LibraryPolicy" value="Unmodified KiCad 10 stock symbol"/>
@@ -6455,7 +6459,7 @@
       <node ref="R25" pin="1" pintype="passive"/>
     </net>
     <net code="17" name="/H_RX_ENABLE_CTL" class="Default">
-      <node ref="R19" pin="2" pintype="passive"/>
+      <node ref="R18" pin="1" pintype="passive"/>
     </net>
     <net code="18" name="/H_RX_VDD" class="Default">
       <node ref="C17" pin="1" pintype="passive"/>
@@ -6503,8 +6507,9 @@
       <node ref="C34" pin="1" pintype="passive"/>
       <node ref="C7" pin="1" pintype="passive"/>
       <node ref="J1" pin="4" pinfunction="Pin_4_4" pintype="passive"/>
+      <node ref="Q7" pin="2" pinfunction="E_2" pintype="passive"/>
       <node ref="R1" pin="1" pintype="passive"/>
-      <node ref="R18" pin="1" pintype="passive"/>
+      <node ref="R19" pin="2" pintype="passive"/>
       <node ref="R37" pin="1" pintype="passive"/>
       <node ref="R39" pin="2" pintype="passive"/>
       <node ref="TP103" pin="1" pinfunction="1_1" pintype="passive"/>
@@ -6707,197 +6712,194 @@
     </net>
     <net code="67" name="Net-(Q7-B)" class="Default">
       <node ref="Q7" pin="1" pinfunction="B_1" pintype="input"/>
+      <node ref="R18" pin="2" pintype="passive"/>
       <node ref="R19" pin="1" pintype="passive"/>
     </net>
     <net code="68" name="Net-(Q7-C)" class="Default">
       <node ref="Q7" pin="3" pinfunction="C_3" pintype="passive"/>
       <node ref="R20" pin="1" pintype="passive"/>
     </net>
-    <net code="69" name="Net-(Q7-E)" class="Default">
-      <node ref="Q7" pin="2" pinfunction="E_2" pintype="passive"/>
-      <node ref="R18" pin="2" pintype="passive"/>
-    </net>
-    <net code="70" name="Net-(Q8NMOS-D)" class="Default">
+    <net code="69" name="Net-(Q8NMOS-D)" class="Default">
       <node ref="Q8" pin="4" pinfunction="D_4" pintype="passive"/>
       <node ref="Q8" pin="6" pinfunction="D_6" pintype="passive"/>
       <node ref="R5" pin="1" pintype="passive"/>
     </net>
-    <net code="71" name="Net-(Q8NMOS-G)" class="Default">
+    <net code="70" name="Net-(Q8NMOS-G)" class="Default">
       <node ref="Q8" pin="1" pinfunction="G_1" pintype="input"/>
       <node ref="R9" pin="2" pintype="passive"/>
     </net>
-    <net code="72" name="Net-(Q8PMOS-G)" class="Default">
+    <net code="71" name="Net-(Q8PMOS-G)" class="Default">
       <node ref="Q8" pin="3" pinfunction="G_3" pintype="input"/>
       <node ref="R8" pin="2" pintype="passive"/>
     </net>
-    <net code="73" name="Net-(Q11-B)" class="Default">
+    <net code="72" name="Net-(Q11-B)" class="Default">
       <node ref="Q11" pin="1" pinfunction="B_1" pintype="input"/>
       <node ref="R11" pin="2" pintype="passive"/>
     </net>
-    <net code="74" name="Net-(Q11-C)" class="Default">
+    <net code="73" name="Net-(Q11-C)" class="Default">
       <node ref="C46" pin="1" pintype="passive"/>
       <node ref="Q11" pin="3" pinfunction="C_3" pintype="passive"/>
     </net>
-    <net code="75" name="Net-(R8-Pad1)" class="Default">
+    <net code="74" name="Net-(R8-Pad1)" class="Default">
       <node ref="R8" pin="1" pintype="passive"/>
       <node ref="U2" pin="4" pintype="output"/>
     </net>
-    <net code="76" name="Net-(R9-Pad1)" class="Default">
+    <net code="75" name="Net-(R9-Pad1)" class="Default">
       <node ref="R9" pin="1" pintype="passive"/>
       <node ref="U2" pin="6" pintype="output"/>
     </net>
-    <net code="77" name="Net-(R10-Pad1)" class="Default">
+    <net code="76" name="Net-(R10-Pad1)" class="Default">
       <node ref="R10" pin="1" pintype="passive"/>
       <node ref="TP3" pin="1" pinfunction="1_1" pintype="passive"/>
     </net>
-    <net code="78" name="Net-(U1-ON/OFF)" class="Default">
+    <net code="77" name="Net-(U1-ON/OFF)" class="Default">
       <node ref="C1" pin="1" pintype="passive"/>
       <node ref="C101" pin="1" pintype="passive"/>
       <node ref="L2" pin="2" pinfunction="2_2" pintype="passive"/>
       <node ref="U1" pin="1" pinfunction="VIN_1" pintype="power_in"/>
       <node ref="U1" pin="3" pinfunction="ON/OFF_3" pintype="input"/>
     </net>
-    <net code="79" name="Net-(U3A-+)" class="Default">
+    <net code="78" name="Net-(U3A-+)" class="Default">
       <node ref="C19" pin="1" pintype="passive"/>
       <node ref="C20" pin="2" pintype="passive"/>
       <node ref="R28" pin="2" pintype="passive"/>
       <node ref="U3" pin="3" pinfunction="+_3" pintype="input"/>
     </net>
-    <net code="80" name="Net-(U3A--)" class="Default">
+    <net code="79" name="Net-(U3A--)" class="Default">
       <node ref="C22" pin="2" pintype="passive"/>
       <node ref="R26" pin="2" pintype="passive"/>
       <node ref="R48" pin="1" pintype="passive"/>
       <node ref="U3" pin="2" pinfunction="-_2" pintype="input"/>
     </net>
-    <net code="81" name="Net-(U3B-+)" class="Default">
+    <net code="80" name="Net-(U3B-+)" class="Default">
       <node ref="C18" pin="1" pintype="passive"/>
       <node ref="U3" pin="5" pinfunction="+_5" pintype="input"/>
     </net>
-    <net code="82" name="Net-(U3B--)" class="Default">
+    <net code="81" name="Net-(U3B--)" class="Default">
       <node ref="C21" pin="2" pintype="passive"/>
       <node ref="R23" pin="1" pintype="passive"/>
       <node ref="R24" pin="2" pintype="passive"/>
       <node ref="U3" pin="6" pinfunction="-_6" pintype="input"/>
     </net>
-    <net code="83" name="Net-(U4-RA0)" class="Default">
+    <net code="82" name="Net-(U4-RA0)" class="Default">
       <node ref="C25" pin="1" pintype="passive"/>
       <node ref="U4" pin="2" pinfunction="RA0_2" pintype="bidirectional"/>
     </net>
-    <net code="84" name="Net-(U4-RA2)" class="Default">
+    <net code="83" name="Net-(U4-RA2)" class="Default">
       <node ref="C39" pin="1" pintype="passive"/>
       <node ref="U4" pin="4" pinfunction="RA2_4" pintype="bidirectional"/>
     </net>
-    <net code="85" name="Net-(U4-RA6)" class="Default">
+    <net code="84" name="Net-(U4-RA6)" class="Default">
       <node ref="C31" pin="2" pintype="passive"/>
       <node ref="U4" pin="10" pinfunction="RA6_10" pintype="bidirectional"/>
       <node ref="Y1" pin="2" pinfunction="2_2" pintype="passive"/>
     </net>
-    <net code="86" name="Net-(U4-RA7)" class="Default">
+    <net code="85" name="Net-(U4-RA7)" class="Default">
       <node ref="C30" pin="1" pintype="passive"/>
       <node ref="U4" pin="9" pinfunction="RA7_9" pintype="bidirectional"/>
       <node ref="Y1" pin="1" pinfunction="1_1" pintype="passive"/>
     </net>
-    <net code="87" name="Net-(U4-RC3)" class="Default">
+    <net code="86" name="Net-(U4-RC3)" class="Default">
       <node ref="TP11" pin="1" pinfunction="1_1" pintype="passive"/>
       <node ref="U4" pin="14" pinfunction="RC3_14" pintype="bidirectional"/>
     </net>
-    <net code="88" name="unconnected-(C6-Pad1)" class="Default">
+    <net code="87" name="unconnected-(C6-Pad1)" class="Default">
       <node ref="C6" pin="1" pintype="passive"/>
     </net>
-    <net code="89" name="unconnected-(C26-Pad1)" class="Default">
+    <net code="88" name="unconnected-(C26-Pad1)" class="Default">
       <node ref="C26" pin="1" pintype="passive"/>
     </net>
-    <net code="90" name="unconnected-(C42-Pad1)" class="Default">
+    <net code="89" name="unconnected-(C42-Pad1)" class="Default">
       <node ref="C42" pin="1" pintype="passive"/>
     </net>
-    <net code="91" name="unconnected-(C42-Pad2)" class="Default">
+    <net code="90" name="unconnected-(C42-Pad2)" class="Default">
       <node ref="C42" pin="2" pintype="passive"/>
     </net>
-    <net code="92" name="unconnected-(C49-Pad1)" class="Default">
+    <net code="91" name="unconnected-(C49-Pad1)" class="Default">
       <node ref="C49" pin="1" pintype="passive"/>
     </net>
-    <net code="93" name="unconnected-(C49-Pad2)" class="Default">
+    <net code="92" name="unconnected-(C49-Pad2)" class="Default">
       <node ref="C49" pin="2" pintype="passive"/>
     </net>
-    <net code="94" name="unconnected-(D2-Pin_1-Pad1)" class="Default">
+    <net code="93" name="unconnected-(D2-Pin_1-Pad1)" class="Default">
       <node ref="D2" pin="1" pinfunction="Pin_1_1" pintype="passive"/>
     </net>
-    <net code="95" name="unconnected-(D2-Pin_2-Pad2)" class="Default">
+    <net code="94" name="unconnected-(D2-Pin_2-Pad2)" class="Default">
       <node ref="D2" pin="2" pinfunction="Pin_2_2" pintype="passive"/>
     </net>
-    <net code="96" name="unconnected-(D2-Pin_3-Pad3)" class="Default">
+    <net code="95" name="unconnected-(D2-Pin_3-Pad3)" class="Default">
       <node ref="D2" pin="3" pinfunction="Pin_3_3" pintype="passive"/>
     </net>
-    <net code="97" name="unconnected-(D6-A-Pad2)" class="Default">
+    <net code="96" name="unconnected-(D6-A-Pad2)" class="Default">
       <node ref="D6" pin="2" pinfunction="A_2" pintype="passive"/>
     </net>
-    <net code="98" name="unconnected-(D6-K-Pad1)" class="Default">
+    <net code="97" name="unconnected-(D6-K-Pad1)" class="Default">
       <node ref="D6" pin="1" pinfunction="K_1" pintype="passive"/>
     </net>
-    <net code="99" name="unconnected-(J6-Pin_1-Pad1)" class="Default">
+    <net code="98" name="unconnected-(J6-Pin_1-Pad1)" class="Default">
       <node ref="J6" pin="1" pinfunction="Pin_1_1" pintype="passive"/>
     </net>
-    <net code="100" name="unconnected-(J6-Pin_2-Pad2)" class="Default">
+    <net code="99" name="unconnected-(J6-Pin_2-Pad2)" class="Default">
       <node ref="J6" pin="2" pinfunction="Pin_2_2" pintype="passive"/>
     </net>
-    <net code="101" name="unconnected-(Q1-E-Pad2)" class="Default">
+    <net code="100" name="unconnected-(Q1-E-Pad2)" class="Default">
       <node ref="Q1" pin="2" pinfunction="E_2" pintype="passive"/>
     </net>
-    <net code="102" name="unconnected-(Q9-Pin_3-Pad3)" class="Default">
+    <net code="101" name="unconnected-(Q9-Pin_3-Pad3)" class="Default">
       <node ref="Q9" pin="3" pinfunction="Pin_3_3" pintype="passive"/>
     </net>
-    <net code="103" name="unconnected-(R36-Pad1)" class="Default">
+    <net code="102" name="unconnected-(R36-Pad1)" class="Default">
       <node ref="R36" pin="1" pintype="passive"/>
     </net>
-    <net code="104" name="unconnected-(R36-Pad2)" class="Default">
+    <net code="103" name="unconnected-(R36-Pad2)" class="Default">
       <node ref="R36" pin="2" pintype="passive"/>
     </net>
-    <net code="105" name="unconnected-(R43-Pad2)" class="Default">
+    <net code="104" name="unconnected-(R43-Pad2)" class="Default">
       <node ref="R43" pin="2" pintype="passive"/>
     </net>
-    <net code="106" name="unconnected-(R46-Pad1)" class="Default">
+    <net code="105" name="unconnected-(R46-Pad1)" class="Default">
       <node ref="R46" pin="1" pintype="passive"/>
     </net>
-    <net code="107" name="unconnected-(R46-Pad2)" class="Default">
+    <net code="106" name="unconnected-(R46-Pad2)" class="Default">
       <node ref="R46" pin="2" pintype="passive"/>
     </net>
-    <net code="108" name="unconnected-(R47-Pad1)" class="Default">
+    <net code="107" name="unconnected-(R47-Pad1)" class="Default">
       <node ref="R47" pin="1" pintype="passive"/>
     </net>
-    <net code="109" name="unconnected-(R47-Pad2)" class="Default">
+    <net code="108" name="unconnected-(R47-Pad2)" class="Default">
       <node ref="R47" pin="2" pintype="passive"/>
     </net>
-    <net code="110" name="unconnected-(TP9-Pad1)" class="Default">
+    <net code="109" name="unconnected-(TP9-Pad1)" class="Default">
       <node ref="TP9" pin="1" pinfunction="1_1" pintype="passive"/>
     </net>
-    <net code="111" name="unconnected-(U4-RB0-Pad21)" class="Default">
+    <net code="110" name="unconnected-(U4-RB0-Pad21)" class="Default">
       <node ref="U4" pin="21" pinfunction="RB0_21" pintype="bidirectional"/>
     </net>
-    <net code="112" name="unconnected-(U4-RC2-Pad13)" class="Default">
+    <net code="111" name="unconnected-(U4-RC2-Pad13)" class="Default">
       <node ref="U4" pin="13" pinfunction="RC2_13" pintype="bidirectional"/>
     </net>
-    <net code="113" name="unconnected-(U6-NC-Pad4)" class="Default">
+    <net code="112" name="unconnected-(U6-NC-Pad4)" class="Default">
       <node ref="U6" pin="4" pinfunction="NC_4" pintype="passive"/>
     </net>
-    <net code="114" name="unconnected-(U6-NC-Pad5)" class="Default">
+    <net code="113" name="unconnected-(U6-NC-Pad5)" class="Default">
       <node ref="U6" pin="5" pinfunction="NC_5" pintype="passive"/>
     </net>
-    <net code="115" name="unconnected-(U7-Pin_1-Pad1)" class="Default">
+    <net code="114" name="unconnected-(U7-Pin_1-Pad1)" class="Default">
       <node ref="U7" pin="1" pinfunction="Pin_1_1" pintype="passive"/>
     </net>
-    <net code="116" name="unconnected-(U7-Pin_2-Pad2)" class="Default">
+    <net code="115" name="unconnected-(U7-Pin_2-Pad2)" class="Default">
       <node ref="U7" pin="2" pinfunction="Pin_2_2" pintype="passive"/>
     </net>
-    <net code="117" name="unconnected-(U7-Pin_3-Pad3)" class="Default">
+    <net code="116" name="unconnected-(U7-Pin_3-Pad3)" class="Default">
       <node ref="U7" pin="3" pinfunction="Pin_3_3" pintype="passive"/>
     </net>
-    <net code="118" name="unconnected-(U106-Pin_1-Pad1)" class="Default">
+    <net code="117" name="unconnected-(U106-Pin_1-Pad1)" class="Default">
       <node ref="U106" pin="1" pinfunction="Pin_1_1" pintype="passive"/>
     </net>
-    <net code="119" name="unconnected-(U106-Pin_2-Pad2)" class="Default">
+    <net code="118" name="unconnected-(U106-Pin_2-Pad2)" class="Default">
       <node ref="U106" pin="2" pinfunction="Pin_2_2" pintype="passive"/>
     </net>
-    <net code="120" name="unconnected-(U106-Pin_3-Pad3)" class="Default">
+    <net code="119" name="unconnected-(U106-Pin_3-Pad3)" class="Default">
       <node ref="U106" pin="3" pinfunction="Pin_3_3" pintype="passive"/>
     </net>
   </nets>

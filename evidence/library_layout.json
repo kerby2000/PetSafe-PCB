@@ -5249,7 +5249,7 @@
         "includePins": true,
         "footprint": "Package_TO_SOT_SMD:SOT-23"
       },
-      "via_evidence": "v0.9.2: user identifies V075 as Q7. Exact terminal is not specified; prior R19.2 continuation and Q7.R are photo candidates only."
+      "via_evidence": "v0.9.7: V064-V075 confirmed; V064-V070 measured 11.2 kohm. IMG_2434 plus R18 1.2k + R19 10k supports PNP supply switch: E/R pin2 at VDD, B/L pin1 through R18 control and R19 pull-up. Terminal selection is a supported photo/circuit inference, not a separate user pad measurement."
     },
     {
       "original_ref": "R19",
@@ -5303,7 +5303,8 @@
         "rotation": 0,
         "includePins": true,
         "footprint": "Resistor_SMD:R_0603_1608Metric"
-      }
+      },
+      "via_evidence": "v0.9.7: 10k pull-up candidate between Q7 base/pad1 and emitter/VDD/pad2. IMG_2434 and V064-V075 plus measured V064-V070 11.2 kohm support this reconstruction; not an isolated-resistor measurement."
     },
     {
       "original_ref": "R18",
@@ -5314,15 +5315,15 @@
       "legacy": {
         "ref": "R18",
         "actual": "R18",
-        "x": 257,
-        "y": 134,
+        "x": 233,
+        "y": 144,
         "unit": 1,
         "lid": "PetSafe_Working:RE_R18",
         "value": "1.2k",
-        "rx": 257,
-        "ry": 129.5,
-        "vx": 257,
-        "vy": 131,
+        "rx": 233,
+        "ry": 139.5,
+        "vx": 233,
+        "vy": 141,
         "just": "",
         "pins": [
           {
@@ -5351,13 +5352,14 @@
         "reference": "R18",
         "value": "1.2k",
         "position": {
-          "x": 326.39,
-          "y": 170.18
+          "x": 295.91,
+          "y": 182.88
         },
         "rotation": 90,
         "includePins": true,
         "footprint": "Resistor_SMD:R_0603_1608Metric"
-      }
+      },
+      "via_evidence": "v0.9.7: V070/free pad1 to V064 measured 11.2 kohm, not direct VDD. 1.2k R18 plus 10k R19 fits series path to VDD. Pad2 moved to Q7 base by photo/circuit inference; pad1 control source remains unknown."
     },
     {
       "original_ref": "R20",
@@ -12341,83 +12343,6 @@
       ]
     },
     {
-      "net": "H_RX_ENABLE",
-      "a": [
-        237,
-        154
-      ],
-      "b": [
-        237,
-        144
-      ]
-    },
-    {
-      "net": "H_RX_ENABLE",
-      "a": [
-        237,
-        144
-      ],
-      "b": [
-        243,
-        144
-      ]
-    },
-    {
-      "net": "H_RX_ENABLE_CTL",
-      "a": [
-        237,
-        160
-      ],
-      "b": [
-        237,
-        164
-      ]
-    },
-    {
-      "net": "H_RX_SUPPLY_FEED",
-      "a": [
-        249,
-        148
-      ],
-      "b": [
-        249,
-        151
-      ]
-    },
-    {
-      "net": "H_RX_SUPPLY_FEED",
-      "a": [
-        249,
-        151
-      ],
-      "b": [
-        260,
-        151
-      ]
-    },
-    {
-      "net": "H_RX_SUPPLY_FEED",
-      "a": [
-        260,
-        151
-      ],
-      "b": [
-        260,
-        134
-      ]
-    },
-    {
-      "net": "H_VDD",
-      "a": [
-        254,
-        134
-      ],
-      "b": [
-        250,
-        134
-      ]
-    },
-    {
       "net": "H_RX_VDD",
       "a": [
         242,
@@ -13538,6 +13463,83 @@
         357,
         151
       ]
+    },
+    {
+      "net": "H_RX_ENABLE",
+      "a": [
+        236,
+        144
+      ],
+      "b": [
+        237,
+        144
+      ]
+    },
+    {
+      "net": "H_RX_ENABLE",
+      "a": [
+        237,
+        144
+      ],
+      "b": [
+        243,
+        144
+      ]
+    },
+    {
+      "net": "H_RX_ENABLE",
+      "a": [
+        237,
+        154
+      ],
+      "b": [
+        237,
+        144
+      ]
+    },
+    {
+      "net": "H_RX_ENABLE_CTL",
+      "a": [
+        230,
+        144
+      ],
+      "b": [
+        230,
+        130
+      ]
+    },
+    {
+      "net": "H_VDD",
+      "a": [
+        249,
+        148
+      ],
+      "b": [
+        249,
+        166
+      ]
+    },
+    {
+      "net": "H_VDD",
+      "a": [
+        249,
+        166
+      ],
+      "b": [
+        237,
+        166
+      ]
+    },
+    {
+      "net": "H_VDD",
+      "a": [
+        237,
+        166
+      ],
+      "b": [
+        237,
+        160
+      ]
     }
   ],
   "labels": [
@@ -13920,20 +13922,6 @@
       ]
     },
     {
-      "net": "H_RX_ENABLE_CTL",
-      "p": [
-        237,
-        164
-      ]
-    },
-    {
-      "net": "H_VDD",
-      "p": [
-        250,
-        134
-      ]
-    },
-    {
       "net": "H_RX_VDD",
       "p": [
         242,
@@ -14085,6 +14073,20 @@
       "p": [
         357,
         151
+      ]
+    },
+    {
+      "net": "H_RX_ENABLE_CTL",
+      "p": [
+        230,
+        130
+      ]
+    },
+    {
+      "net": "H_VDD",
+      "p": [
+        249,
+        166
       ]
     }
   ],
@@ -14974,12 +14976,12 @@
       160
     ],
     "R18.1": [
-      254,
-      134
+      230,
+      144
     ],
     "R18.2": [
-      260,
-      134
+      236,
+      144
     ],
     "R20.1": [
       265,

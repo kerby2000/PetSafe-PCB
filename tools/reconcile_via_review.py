@@ -71,11 +71,12 @@ def apply(out):
     annotate([65],['C2.2'],'User adds C2 to earlier GND report; return pad selected from photo/model.','H_GND')
     annotate([68],['C37.2','C36.2'],'User adds both capacitors to earlier GND report; return pads selected from photos/model.','H_GND')
     annotate([67],['U6A.R1'],'Unpopulated U6A upper-right pad to via; remote destination unknown.')
-    annotate([70],['R18.1'],'R18 free end; former supply assignment remains an inference, not established by component association alone.')
+    annotate([70],['R18.1'],'User V064-V070 = 11.2 kohm excludes direct VDD. Nominal R18 1.2k + R19 10k fits the measured path; base-input topology supported by photo/circuit inference. Onward control source unknown.','H_RX_ENABLE_CTL')
+    sites['V070']['confidence']='Measured resistive path; control role inferred, GPIO source unmeasured'
     annotate([71],['R21.2'],'R21 left/free end in receiver photo; shared bias hypothesis not confirmed by this via report.')
     sites['V072'].update(net='RX_A_FILTER',endpoints=['TP6.1'],excluded_endpoints=['R22.2'],confidence='User identifies TP6 and explicitly excludes R22.2',component_crosscheck='User identifies TP6. Existing C18.2/R27.1 branches on RX_A_FILTER remain hypotheses; the via report does not certify the whole modeled net. TP6 remains separate from U3.5 across C18.')
     sites['V073'].update(net='H_GND',endpoints=[],component_crosscheck='User correction: GND only. R19 association removed; no R19 ground merge. V075 is now user-associated with Q7; its exact terminal is unresolved.')
-    sites['V075'].update(net='H_VDD',endpoints=[],component_refs=['Q7'],candidate_endpoints=['Q7.R','R19.2'],confidence='User confirms V064-V075; no numerical resistance supplied. Exact Q7 terminal remains unspecified.',component_crosscheck='User confirms V064-V075, so this via is on regulated board VDD. Q7 association retained. Q7.R and R19.2 are photo candidates from IMG_2434, not yet confirmed terminal assignments. This result does not establish the separately proposed V064-V070/R18 link.')
+    sites['V075'].update(net='H_VDD',endpoints=['Q7.R','R19.2'],component_refs=['Q7','R19'],candidate_endpoints=[],confidence='Rail measured via V064; local terminals selected from IMG_2434 and 11.2 kohm R18+R19 path, not separate pad measurements.',component_crosscheck='V064-V075 confirms regulated VDD. IMG_2434 shows the R19/Q7 paired-pad continuation; V064-V070 11.2 kohm supports R18+R19 base-input/pull-up arrangement. Q7.R/native2 and R19.2 now modeled on VDD as a supported reconstruction, not user-probed exact terminal proof.')
     annotate([76],['R22.1'],'R22 opposite/right photo pad; user GND corroborates return.','H_GND')
     annotate([77],['C19.2','R29.2'],'User explicitly confirms the C19-R29 junction is GND. R29 opposite the PIC3/TP7 end is pad2; C19 pad2 is assigned to the upper photo pad beside the via. Earlier C19-to-clamp and R29-to-U3.5 guesses withdrawn.','H_GND')
     annotate([78],['C17.2'],'User adds C17 to earlier GND report; return pad selected from existing photo/model.','H_GND')
@@ -116,18 +117,22 @@ def apply(out):
     for i in [100,103,107]:
         sites['V095']['excluded_vias'].append(f'V{i:03d}')
         sites[f'V{i:03d}']['excluded_vias'].append('V095')
+    sites['V064']['excluded_vias']=['V070'];sites['V070']['excluded_vias']=['V064']
+    for i in [64,70]:sites[f'V{i:03d}']['resistive_measurements']=[dict(vias=['V064','V070'],reading='11.2 kohm',resistance_ohms=11200,reverse_reading=None)]
+    sites['V049']['excluded_vias']=['V071'];sites['V071']['excluded_vias'].append('V049')
+    for i in [49,71]:sites[f'V{i:03d}']['resistive_measurements']=[dict(vias=['V049','V071'],reading='20 kohm',resistance_ohms=20000,reverse_reading=None)]
     for s in out['sites']:
         s['modeled_nets']=sorted({membership[e] for e in s['endpoints'] if e in membership})
         if not s['active']:
             s.update(review_status='REJECTED_NOT_VIA',net=None,endpoints=[],modeled_nets=[],component_crosscheck='User rejects this detection as not a via. Stable ID retained; excluded from active markers.')
         elif s['user_reports'] and s['net'] and s['review_status']!='CONFLICT':s['review_status']='ASSIGNED'
         elif not s['user_reports'] and s['net']:s['review_status']='PHOTO_LOCAL'
-    out.update(revision='v0.9.6',review_update_id='via-pairs-followup-20261008-q7',user_review_source='evidence/via_user_review.json',
+    out.update(revision='v0.9.7',review_update_id='q7-resistive-path-11200-ohm',user_review_source='evidence/via_user_review.json',
         user_review_method=review['method'],supply_naming=review['supply_naming'],
         review_summary=dict(catalogued_ids=len(sites),active_sites=sum(s['active'] for s in sites.values()),user_reported_ids=len(current_ids),original_user_reported_ids=len(original_ids),
             omitted_from_user_list=sorted(set(sites)-current_ids),rejected=rejected,conflicts=list(conflicts),
             statuses=dict(Counter(s['review_status'] for s in sites.values()))),
-        new_model_connections=json.loads((R/'evidence/v096_net_changes.json').read_text())['changes'])
+        new_model_connections=json.loads((R/'evidence/v097_net_changes.json').read_text())['changes'])
     return out
 
 if __name__=='__main__':

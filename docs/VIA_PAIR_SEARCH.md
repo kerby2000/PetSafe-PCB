@@ -1,6 +1,6 @@
 # Targeted via-to-via search — current round
 
-Basis: **v0.9.6**. The search pool is now **23 non-rail sites in 19 local endpoint groups**, including one empty U6A option. These are not 20 proven missing nets; some local groups may need no additional connection.
+Basis: **v0.9.7**. The search pool is now **23 non-rail sites in 19 local endpoint groups**, including one empty U6A option. These are not 19 proven missing nets; some local groups may need no additional connection.
 
 ## Results applied
 
@@ -11,7 +11,9 @@ Basis: **v0.9.6**. The search pool is now **23 non-rail sites in 19 local endpoi
 | V039–V097 | Working | PIC7/RA5 → R16 |
 | V047–V091 | Working | PIC11/RC0 → R11 |
 | V064–V063 | Working | R37/R39 feed joins regulated VDD |
-| V064–V075 | Working | V075 joins regulated VDD; exact Q7 terminal still a photo candidate |
+| V064–V075 | Working | V075 joins regulated VDD; Q7/R19 local pad selection photo-derived |
+| V064–V070 | 11.2 kΩ | Resistive path; direct R18 input-to-VDD assumption withdrawn |
+| V049–V071 | 20 kΩ | Resistive path to the R21-associated node; not the pending V070/R18 test |
 | V053–V071 | Not connected | Reject proposed VREF/R21 direct link |
 | V090–V095 | OL | No measured direct connection |
 | V090–V100 | OL | No measured direct connection |
@@ -31,26 +33,36 @@ The capacitor tests were weaker: repeated neighboring cells suggested that their
 
 **Seven OL results now weaken that common-node hypothesis enough to stop broad capacitor-pair testing.** The three remaining mutual comparisons (V100–V103, V100–V107, V103–V107) are untested, not inferred negative. An OL resistance result excludes a measured direct DC path in this test; it does not exclude a signal path through capacitors. Any later test must follow a visible local route or a specific circuit endpoint.
 
-## One remaining diagnostic check
+## What the 11.2 kΩ reading changes
+
+R18 is marked 122 (1.2 kΩ) and R19 is marked 01C (10 kΩ). Their nominal sum is **11.2 kΩ**, matching the reported in-circuit reading. The measured path is not direct copper. Combined with IMG_2434 and the earlier V064–V075 supply confirmation, it supports this local reconstruction:
+
+`V070 → R18 (1.2k) → Q7 base / R19 (10k) → V075 / regulated VDD`
+
+Q7's emitter joins VDD; R19 is a base-emitter pull-up, and the collector feeds the receiver supply through R20. This is a **photo/resistance-supported circuit inference**, not proof from resistance alone. The Q7 candidate remains BC857C; the official Nexperia datasheet supplies the candidate pin roles (1=B, 2=E, 3=C), not the board wiring. No reverse-probe reading or isolated resistor measurement was supplied.
+
+Native v0.9.7 removes the old direct R18.1-to-VDD assumption, moves R18.2 to the base junction, and places Q7.R/R19.2 on VDD. No GPIO source is invented. Validation checks 86 model/native partitions; 42 ERC findings remain (33 open pads, four isolated labels, five power findings).
+
+The additional **V049–V071 = 20 kΩ** report is recorded independently. V071 reaches R21; V070 reaches R18. This reading excludes a direct RC2-to-V071 link but does not identify the resistance path through the unpowered receiver circuit. It does not answer D1 below, and no specific series-resistor path is claimed from 20 kΩ alone.
+
+## Next: one control candidate
 
 | Test | Fixed probe | Moving probe | Purpose |
 |---|---|---|---|
-| B3 | V064 | V070 | Test the older R18-to-VDD assumption |
+| D1 | V070 | V049 | Does PIC13/RC2 drive the R18 input? |
 
-**V075 and V070 are different sites.** The new positive result puts V075 on regulated VDD. IMG_2434 suggests its continuation to Q7.R/R19.2; the user has not specified a Q7 terminal. This makes a supply-switch interpretation worth reviewing, with R18 potentially carrying a control signal. B3 checks the older assumption that R18's free end is on VDD. It is a diagnostic check, not a predicted hit. A direct result supports that rail assignment; OL redirects investigation toward the local Q7 pad and a possible control endpoint. Neither result alone proves Q7 pin functions.
+RC2 is one of two PIC GPIOs whose onward destination remains unknown. The proposed receiver-enable function makes it a useful candidate, but no buried trace or datasheet establishes this particular GPIO choice. If not direct, the next alternative is V070–V026 (PIC21/RB0). Other already-local PIC nets may also have unknown continuations; neither pin is assigned by elimination.
 
-Use the [paired photo locator](VIA_PAIR_TESTS.html) or [one-page marked guide](../output/pdf/PetSafe_via_pair_next_check.pdf). Refresh the page to remove completed tests. Its existing browser-storage key is preserved, including any B3 entry; completed entries remain in storage but are not requested again. The [current CSV](../evidence/via_pair_readings.csv) contains only B3. The previous four-test plan and reported C5–C7 readings are archived in `evidence/via_pair_round2_plan.json` and `evidence/via_pair_round2_readings.csv`.
+Use the [paired photo locator](VIA_PAIR_TESTS.html) or [marked guide](../output/pdf/PetSafe_via_pair_next_check.pdf). Refresh the page; it now requests D1 only. Browser-storage entries are preserved under the existing key. The [current CSV](../evidence/via_pair_readings.csv) contains D1. The completed B3 plan and 11.2 kΩ reading are archived as `evidence/via_pair_round3_plan.json` and `evidence/via_pair_round3_readings.csv`; the earlier capacitor results remain in the round-2 archive and the user-review log.
 
 Disconnect battery and programmer. Use resistance mode; report actual ohms, OL or a changing reading. Compare low readings with good probe contact and reverse probes to check. A beep alone can include a resistor or semiconductor path. Very low resistance can include an inductor or zero-ohm link. Continuity recovers electrical connectivity, not exact inner-layer geometry or layer count.
-
-This follow-up updates the via graph and the test queue. Native schematic wiring and its validation remain **v0.9.6**; no Q7 terminal has been merged solely from an ambiguous component-level association. The old native R18/Q7 arrangement remains a hypothesis pending the targeted check.
 
 ## Remaining decisions
 
 - Q1.L / V011–V014 is user-reported VDD, but regulated V064 versus motor-supply V001 remains unanswered. The two rails remain separate. Q1.L remains separate from explicitly excluded R43.2/V015.
 - V114 is resolved as U2.T2/pin2 GND and removed from the candidate pool. It is not Q8.T2.
-- If B3 is negative, review R18 as a control input before choosing a GPIO endpoint. Do not replace the capacitor sweep with a blind rail sweep. V064–V063 and V064–V075 are already confirmed.
+- B3 is complete at 11.2 kΩ. Do not repeat it or start a blind rail sweep. V064–V063 and V064–V075 remain confirmed.
 - For V071/R21, V053 is rejected. V031/RA0 and V035/RA2 are alternative reference/filter candidates, not confirmed connections.
-- Prioritize the two remaining GPIO routes, receiver/PIR/button interfaces, the exact Q7 terminal at the now-known V075 supply via and D3 terminal at V082 after the immediate checks. Empty U6A/V067 is lower priority.
+- Prioritize the two remaining GPIO routes, receiver/PIR/button interfaces, the remaining Q7 identity/function qualifications and D3 terminal at V082 after the immediate checks. Empty U6A/V067 is lower priority.
 
 The [complete via-group inventory and hypotheses](../evidence/via_pair_plan.json) retains each local endpoint association separately. No proposed next pair has been added as a schematic connection.
