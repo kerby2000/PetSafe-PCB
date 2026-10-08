@@ -868,6 +868,167 @@
           "kind": "component_or_issue"
         }
       ]
+    },
+    {
+      "source": "User incremental via review 2026-10-08",
+      "revision": "v0.9.5",
+      "answer": "V127 - GND and LED1\nV126,125 - C5(- terminal)\nV114 - U2.T2 not Q8.T2\nV011,V012,V013,V014 - Clearly VDD",
+      "assignments": [
+        {
+          "id": "V011",
+          "claim": "Q1.L, clearly VDD; regulated versus motor VDD not yet distinguished; not R43.2",
+          "kind": "supply_unspecified"
+        },
+        {
+          "id": "V012",
+          "claim": "Q1.L, clearly VDD; regulated versus motor VDD not yet distinguished; not R43.2",
+          "kind": "supply_unspecified"
+        },
+        {
+          "id": "V013",
+          "claim": "Q1.L, clearly VDD; regulated versus motor VDD not yet distinguished; not R43.2",
+          "kind": "supply_unspecified"
+        },
+        {
+          "id": "V014",
+          "claim": "Q1.L, clearly VDD; regulated versus motor VDD not yet distinguished; not R43.2",
+          "kind": "supply_unspecified"
+        },
+        {
+          "id": "V114",
+          "claim": "U2.T2, not Q8.T2; earlier GND report retained",
+          "kind": "ground"
+        },
+        {
+          "id": "V125",
+          "claim": "C5 negative terminal; earlier GND report retained",
+          "kind": "ground"
+        },
+        {
+          "id": "V126",
+          "claim": "C5 negative terminal; earlier GND report retained",
+          "kind": "ground"
+        },
+        {
+          "id": "V127",
+          "claim": "GND and LED1; common pair selected from existing photo/model",
+          "kind": "ground"
+        }
+      ]
+    },
+    {
+      "source": "User continuity results 2026-10-08",
+      "revision": "v0.9.6",
+      "answer": "Working: V036-V108, V037-V102, V039-V097, V047-V091. Not working: V053-V071.",
+      "assignments": [
+        {
+          "id": "V036",
+          "kind": "component_or_issue",
+          "claim": "User reports working via pair V036-V108: PIC pin5 to R14.1; no numerical resistance supplied."
+        },
+        {
+          "id": "V108",
+          "kind": "component_or_issue",
+          "claim": "User reports working via pair V036-V108: PIC pin5 to R14.1; no numerical resistance supplied."
+        },
+        {
+          "id": "V037",
+          "kind": "component_or_issue",
+          "claim": "User reports working via pair V037-V102: PIC pin6 to R15.1; no numerical resistance supplied."
+        },
+        {
+          "id": "V102",
+          "kind": "component_or_issue",
+          "claim": "User reports working via pair V037-V102: PIC pin6 to R15.1; no numerical resistance supplied."
+        },
+        {
+          "id": "V039",
+          "kind": "component_or_issue",
+          "claim": "User reports working via pair V039-V097: PIC pin7 to R16.1; no numerical resistance supplied."
+        },
+        {
+          "id": "V097",
+          "kind": "component_or_issue",
+          "claim": "User reports working via pair V039-V097: PIC pin7 to R16.1; no numerical resistance supplied."
+        },
+        {
+          "id": "V047",
+          "kind": "component_or_issue",
+          "claim": "User reports working via pair V047-V091: PIC pin11 to R11.1; no numerical resistance supplied."
+        },
+        {
+          "id": "V091",
+          "kind": "component_or_issue",
+          "claim": "User reports working via pair V047-V091: PIC pin11 to R11.1; no numerical resistance supplied."
+        }
+      ],
+      "rejected_pairs": [
+        {
+          "vias": [
+            "V053",
+            "V071"
+          ],
+          "status": "USER_REJECTED_DIRECT_CONNECTION",
+          "reading": null
+        }
+      ]
+    },
+    {
+      "source": "User continuity follow-up 2026-10-08",
+      "revision": "v0.9.6",
+      "answer": "Good guess: V064-V063",
+      "assignments": [
+        {
+          "id": "V063",
+          "claim": "v0.9.6: User confirms V064-V063. R37.1/R39.2 feed junction is regulated board VDD, not motor VDD.",
+          "kind": "regulated_supply"
+        },
+        {
+          "id": "V064",
+          "claim": "v0.9.6: User confirms V064-V063. R37.1/R39.2 feed junction is regulated board VDD, not motor VDD.",
+          "kind": "regulated_supply"
+        }
+      ]
+    },
+    {
+      "source": "User continuity follow-up 2026-10-08",
+      "revision": "v0.9.6",
+      "answer": "V090-V095, V090-V100, V090-V103, V090-V107 all show OL.",
+      "assignments": [],
+      "rejected_pairs": [
+        {
+          "vias": [
+            "V090",
+            "V095"
+          ],
+          "status": "USER_REJECTED_DIRECT_CONNECTION",
+          "reading": "OL"
+        },
+        {
+          "vias": [
+            "V090",
+            "V100"
+          ],
+          "status": "USER_REJECTED_DIRECT_CONNECTION",
+          "reading": "OL"
+        },
+        {
+          "vias": [
+            "V090",
+            "V103"
+          ],
+          "status": "USER_REJECTED_DIRECT_CONNECTION",
+          "reading": "OL"
+        },
+        {
+          "vias": [
+            "V090",
+            "V107"
+          ],
+          "status": "USER_REJECTED_DIRECT_CONNECTION",
+          "reading": "OL"
+        }
+      ]
     }
   ],
   "review_in_progress": true,
@@ -912,7 +1073,20 @@
     "V042",
     "V053"
   ],
-  "remaining_model_conflicts": [
-    "V114"
-  ]
+  "remaining_model_conflicts": [],
+  "pending_supply_disambiguation": {
+    "vias": [
+      "V011",
+      "V012",
+      "V013",
+      "V014"
+    ],
+    "endpoint": "Q1.L",
+    "reported": "VDD",
+    "options": {
+      "H_VDD": "V064 / regulated board VDD",
+      "H_VBAT": "V001 / MX512H motor VDD"
+    },
+    "status": "AWAITING_USER_CLARIFICATION"
+  }
 }

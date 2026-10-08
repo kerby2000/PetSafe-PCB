@@ -1,6 +1,6 @@
 {
   "date": "2026-10-08",
-  "basis_revision": "v0.9.4",
+  "basis_revision": "v0.9.6",
   "status": "AWAITING_ONWARD_DESTINATIONS",
   "source_photos": [
     {
@@ -33,48 +33,12 @@
   "pin_number_source": "https://ww1.microchip.com/downloads/en/DeviceDoc/40001802G.pdf#page=4",
   "orientation": "Top view; pin-1 dot lower right. Right bottom-to-top 1..14; left top-to-bottom 15..28.",
   "missing_gpio_pins": [
-    5,
-    6,
-    7,
-    11,
     13,
     21
   ],
-  "missing_count": 6,
-  "definition": "These six GPIOs have user-identified local vias but no modeled onward component connection. They are not unused pins. Other modeled nets may still be partial or inferred.",
+  "missing_count": 2,
+  "definition": "These two GPIOs have user-identified local vias but no modeled onward component connection. They are not unused pins. Other modeled nets may still be partial or inferred.",
   "targets": [
-    {
-      "pin": 5,
-      "gpio": "RA3",
-      "xy": [
-        833,
-        471
-      ]
-    },
-    {
-      "pin": 6,
-      "gpio": "RA4",
-      "xy": [
-        833,
-        425
-      ]
-    },
-    {
-      "pin": 7,
-      "gpio": "RA5",
-      "xy": [
-        833,
-        380
-      ]
-    },
-    {
-      "pin": 11,
-      "gpio": "RC0",
-      "xy": [
-        833,
-        199
-      ]
-    },
     {
       "pin": 13,
       "gpio": "RC2",
@@ -136,7 +100,7 @@
         833,
         471
       ],
-      "missing": true
+      "missing": false
     },
     {
       "pin": 6,
@@ -145,7 +109,7 @@
         833,
         425
       ],
-      "missing": true
+      "missing": false
     },
     {
       "pin": 7,
@@ -154,7 +118,7 @@
         833,
         380
       ],
-      "missing": true
+      "missing": false
     },
     {
       "pin": 8,
@@ -190,7 +154,7 @@
         833,
         199
       ],
-      "missing": true
+      "missing": false
     },
     {
       "pin": 12,
@@ -349,50 +313,6 @@
   "reply_format": "U4.<pin> -> <component reference> <exact pad/pin> -> <ohms or visual trace>. List every destination found.",
   "measurements": [
     {
-      "pin": 5,
-      "gpio": "RA3",
-      "photo_side": "right",
-      "position": "from bottom: 5",
-      "destination_reference": "V036",
-      "destination_pad_or_pin": "onward destination unknown",
-      "resistance_ohms": "",
-      "method": "User pin-to-via report; no new numeric reading",
-      "notes": "V036; onward destination unknown"
-    },
-    {
-      "pin": 6,
-      "gpio": "RA4",
-      "photo_side": "right",
-      "position": "from bottom: 6",
-      "destination_reference": "V037",
-      "destination_pad_or_pin": "onward destination unknown",
-      "resistance_ohms": "",
-      "method": "User pin-to-via report; no new numeric reading",
-      "notes": "V037; onward destination unknown"
-    },
-    {
-      "pin": 7,
-      "gpio": "RA5",
-      "photo_side": "right",
-      "position": "from bottom: 7",
-      "destination_reference": "V039",
-      "destination_pad_or_pin": "onward destination unknown",
-      "resistance_ohms": "",
-      "method": "User pin-to-via report; no new numeric reading",
-      "notes": "V039; onward destination unknown"
-    },
-    {
-      "pin": 11,
-      "gpio": "RC0",
-      "photo_side": "right",
-      "position": "from bottom: 11",
-      "destination_reference": "V047",
-      "destination_pad_or_pin": "onward destination unknown",
-      "resistance_ohms": "",
-      "method": "User pin-to-via report; no new numeric reading",
-      "notes": "V047; onward destination unknown"
-    },
-    {
       "pin": 13,
       "gpio": "RC2",
       "photo_side": "right",
@@ -429,6 +349,6 @@
   "notes": [
     "No guessed destination is presented as a measurement.",
     "All 28 pads are visible in the close-up although the top of the plastic body is cropped.",
-    "v0.9.4: six highlighted GPIOs have unknown onward destinations. PIC15/RC4 -> U5.2 INA via V022-V016; PIC16/RC5 -> U5.3 INB via V023-V019 are now resolved. RC1/pin12 reaches VREF/V053 separately."
+    "v0.9.6: two highlighted GPIOs have unknown onward destinations. PIC15/RC4 -> U5.2 INA via V022-V016; PIC16/RC5 -> U5.3 INB via V023-V019 are now resolved. RC1/pin12 reaches VREF/V053 separately."
   ]
 }

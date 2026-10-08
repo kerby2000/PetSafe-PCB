@@ -1,0 +1,56 @@
+{
+  "revision": "v0.9.5",
+  "changes": [
+    {
+      "endpoint": "LED1.BL",
+      "old": "H_LED_COMMON",
+      "new": "H_GND",
+      "basis": "v0.9.5: V127 is GND and reaches LED1. IMG_2432 shows the common pair opposite the resistor-fed pads; these are the existing model BL/BR pair (stock pins3/4), now grounded. Physical orientation and internal colour/polarity mapping remain provisional."
+    },
+    {
+      "endpoint": "LED1.BR",
+      "old": "H_LED_COMMON",
+      "new": "H_GND",
+      "basis": "v0.9.5: V127 is GND and reaches LED1. IMG_2432 shows the common pair opposite the resistor-fed pads; these are the existing model BL/BR pair (stock pins3/4), now grounded. Physical orientation and internal colour/polarity mapping remain provisional."
+    }
+  ],
+  "corrected_via_ids": [
+    "V011",
+    "V012",
+    "V013",
+    "V014",
+    "V114",
+    "V125",
+    "V126",
+    "V127"
+  ],
+  "confirmed_existing_ground_pads": [
+    "U2.T2",
+    "C5.2"
+  ],
+  "resolved_conflicts": [
+    "V114"
+  ],
+  "pending_supply_disambiguation": {
+    "vias": [
+      "V011",
+      "V012",
+      "V013",
+      "V014"
+    ],
+    "endpoint": "Q1.L",
+    "reported": "VDD",
+    "options": {
+      "H_VDD": "V064 / regulated board VDD",
+      "H_VBAT": "V001 / MX512H motor VDD"
+    },
+    "status": "AWAITING_USER_CLARIFICATION"
+  },
+  "component_evidence": {
+    "Q1": "v0.9.5: V011-V014 reach Q1.L and user reports VDD. Which VDD rail remains to be distinguished (V064 regulated versus V001 motor supply). R43.2/V015 remains explicitly separate. No transistor polarity inferred from the supply report.",
+    "U2": "v0.9.5: V114 reaches U2.T2, not Q8.T2. Earlier user GND assignment retained; native U2 pin2 already GND. This resolves the via annotation conflict.",
+    "Q8": "v0.9.5: V113/V115 reach centre B2/pin5 GND. V114 belongs to U2.T2 and supplies no evidence about Q8.T2. Existing Q8.T2 supply hypothesis and outer-drain join remain independently qualified.",
+    "C5": "v0.9.5: V125/V126 reach C5 negative terminal, native pad2, GND. Confirms existing ground assignment; 470uF/16V value retained.",
+    "LED1": "v0.9.5: V127 is GND and reaches LED1. IMG_2432 shows the common pair opposite the resistor-fed pads; these are the existing model BL/BR pair (stock pins3/4), now grounded. Physical orientation and internal colour/polarity mapping remain provisional."
+  }
+}

@@ -1,5 +1,5 @@
 {
-  "revision": "v0.9.4",
+  "revision": "v0.9.6",
   "pins": [
     {
       "pin": 1,
@@ -32,23 +32,23 @@
     {
       "pin": 5,
       "gpio": "RA3",
-      "net": null,
-      "open_pad": true,
-      "evidence": "V036; user confirms pin-to-via; onward destination unknown"
+      "net": "H_TUNE_2",
+      "open_pad": false,
+      "evidence": "V036-V108 to R14; user continuity report"
     },
     {
       "pin": 6,
       "gpio": "RA4",
-      "net": null,
-      "open_pad": true,
-      "evidence": "V037; user confirms pin-to-via; onward destination unknown"
+      "net": "H_TUNE_3",
+      "open_pad": false,
+      "evidence": "V037-V102 to R15; user continuity report"
     },
     {
       "pin": 7,
       "gpio": "RA5",
-      "net": null,
-      "open_pad": true,
-      "evidence": "V039; user confirms pin-to-via; onward destination unknown"
+      "net": "H_TUNE_4",
+      "open_pad": false,
+      "evidence": "V039-V097 to R16; user continuity report"
     },
     {
       "pin": 8,
@@ -74,9 +74,9 @@
     {
       "pin": 11,
       "gpio": "RC0",
-      "net": null,
-      "open_pad": true,
-      "evidence": "V047; user confirms pin-to-via; onward destination unknown"
+      "net": "H_TUNE_5",
+      "open_pad": false,
+      "evidence": "V047-V091 to R11; user continuity report"
     },
     {
       "pin": 12,
@@ -199,10 +199,6 @@
     }
   ],
   "open_gpio_pins": [
-    5,
-    6,
-    7,
-    11,
     13,
     21
   ],

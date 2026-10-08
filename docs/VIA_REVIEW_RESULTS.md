@@ -1,8 +1,39 @@
-# Via review findings - v0.9.4
+# Via review findings - v0.9.6
+
+## Current v0.9.6 results
+
+Four tuning-control pairs are confirmed: **V036–V108 = RA3–R14**, **V037–V102 = RA4–R15**, **V039–V097 = RA5–R16**, **V047–V091 = RC0–R11**. With the earlier RC6–R13 route, all five controls are mapped. Only RC2/pin13 and RB0/pin21 remain open GPIOs.
+
+**V064–V063** confirms that the R37/R39 feed junction is regulated board VDD. The former separate `AUX_FEED_V063` hypothesis is merged into that rail. Motor VDD remains separate.
+
+**V053–V071 is rejected. V090–V095/V100/V103/V107 all measured OL.** No corresponding direct connection is introduced. The remaining capacitor junctions could still form other groups; their mutual relationships remain unmeasured.
+
+KiCad 10.0.5 validates 87 modeled net partitions. ERC: **42 findings = 33 open pins + 4 isolated labels + 5 power-drive findings**. Open pads comprise 14 populated-entry and 19 empty-option pads. All original photograph checksums pass. Q1's user-reported VDD still needs its rail distinguished.
+
+See the [current four-check plan](VIA_PAIR_SEARCH.md) and [paired photo locator](VIA_PAIR_TESTS.html).
+
+## Prior v0.9.5 state — current results above supersede its counts
+
+### v0.9.5 corrections
+
+| Via | Current association | Schematic effect |
+|---|---|---|
+| V114 | U2.T2 / native pin 2, GND; explicitly not Q8.T2 | Confirms existing U2 ground; resolves the old via conflict without grounding Q8 supply |
+| V125, V126 | C5 negative terminal / pad 2, GND | Confirms existing capacitor ground |
+| V127 | GND and LED1 | Ground the photo-selected common pair BL/BR / stock pins 3/4; internal LED mapping remains provisional |
+| V011–V014 | Q1.L, user-reported VDD | Report recorded; distinguish regulated V064 from motor-supply V001 before assigning a rail |
+
+The LED pair selection uses IMG_2432: the joined pair lies opposite the two resistor-fed terminals. The user's report establishes GND/component association; selecting the physical pair is a photo inference. Q1.L remains separate from R43.2/V015, as explicitly requested earlier. V114 supplies no evidence for the Q8 source rail, whose existing connection remains a hypothesis.
+
+KiCad 10.0.5 validates 88 modeled net partitions. ERC has 50 findings: 37 open pins, eight isolated labels and five power-drive findings. The former LED input-drive finding is resolved by its ground connection. There are still six GPIOs with unknown onward destinations. All 26 original photo checksums pass.
+
+The [targeted via-pair plan](VIA_PAIR_SEARCH.md) now has 29 local candidate groups / 33 non-rail sites, including the unresolved Q1 rail choice and one empty U6A option. Eleven proposed first-round readings remain unmeasured. [Paired photo locator](VIA_PAIR_TESTS.html).
+
+## Historical v0.9.4 state — superseded where corrected above
 
 120 distinct via IDs reviewed; 120 active sites / 127 stable IDs. PIC15/RC4 connects through V022-V016 to MX512H INA pin2; PIC16/RC5 connects through V023-V019 to INB pin3. Six GPIO onward destinations remain unknown. V011-V014 reach Q1.L. The user explicitly removes the old Q1.L-R43.2 photo-derived connection; R43.2 still reaches V015. Seven IDs remain unmentioned, some already photo-matched. V114 net remains the only held via conflict.
 
-## Latest motor and Q1 corrections
+## v0.9.4 motor and Q1 corrections
 
 | Sites | Confirmed connection | Native change |
 |---|---|---|

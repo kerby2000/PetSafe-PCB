@@ -1,0 +1,114 @@
+{
+  "revision": "v0.9.6",
+  "changes": [
+    {
+      "endpoint": "U4.5",
+      "old": null,
+      "new": "H_TUNE_2",
+      "basis": "User reports working via pair V036-V108: PIC pin5 to R14.1; no numerical resistance supplied."
+    },
+    {
+      "endpoint": "U4.6",
+      "old": null,
+      "new": "H_TUNE_3",
+      "basis": "User reports working via pair V037-V102: PIC pin6 to R15.1; no numerical resistance supplied."
+    },
+    {
+      "endpoint": "U4.7",
+      "old": null,
+      "new": "H_TUNE_4",
+      "basis": "User reports working via pair V039-V097: PIC pin7 to R16.1; no numerical resistance supplied."
+    },
+    {
+      "endpoint": "U4.11",
+      "old": null,
+      "new": "H_TUNE_5",
+      "basis": "User reports working via pair V047-V091: PIC pin11 to R11.1; no numerical resistance supplied."
+    },
+    {
+      "endpoint": "R37.1",
+      "old": "AUX_FEED_V063",
+      "new": "H_VDD",
+      "basis": "v0.9.6: User confirms V064-V063. R37.1/R39.2 feed junction is regulated board VDD, not motor VDD."
+    },
+    {
+      "endpoint": "R39.2",
+      "old": "AUX_FEED_V063",
+      "new": "H_VDD",
+      "basis": "v0.9.6: User confirms V064-V063. R37.1/R39.2 feed junction is regulated board VDD, not motor VDD."
+    }
+  ],
+  "confirmed_via_pairs": [
+    [
+      "V036",
+      "V108"
+    ],
+    [
+      "V037",
+      "V102"
+    ],
+    [
+      "V039",
+      "V097"
+    ],
+    [
+      "V047",
+      "V091"
+    ],
+    [
+      "V064",
+      "V063"
+    ]
+  ],
+  "rejected_pairs": [
+    {
+      "vias": [
+        "V053",
+        "V071"
+      ],
+      "status": "USER_REJECTED_DIRECT_CONNECTION",
+      "reading": null
+    },
+    {
+      "vias": [
+        "V090",
+        "V095"
+      ],
+      "status": "USER_REJECTED_DIRECT_CONNECTION",
+      "reading": "OL"
+    },
+    {
+      "vias": [
+        "V090",
+        "V100"
+      ],
+      "status": "USER_REJECTED_DIRECT_CONNECTION",
+      "reading": "OL"
+    },
+    {
+      "vias": [
+        "V090",
+        "V103"
+      ],
+      "status": "USER_REJECTED_DIRECT_CONNECTION",
+      "reading": "OL"
+    },
+    {
+      "vias": [
+        "V090",
+        "V107"
+      ],
+      "status": "USER_REJECTED_DIRECT_CONNECTION",
+      "reading": "OL"
+    }
+  ],
+  "component_evidence": {
+    "R14": "User reports working via pair V036-V108: PIC pin5 to R14.1; no numerical resistance supplied.",
+    "R15": "User reports working via pair V037-V102: PIC pin6 to R15.1; no numerical resistance supplied.",
+    "R16": "User reports working via pair V039-V097: PIC pin7 to R16.1; no numerical resistance supplied.",
+    "R11": "User reports working via pair V047-V091: PIC pin11 to R11.1; no numerical resistance supplied.",
+    "U4": "v0.9.6 user working pairs: 5/RA3 V036-V108 R14; 6/RA4 V037-V102 R15; 7/RA5 V039-V097 R16; 11/RC0 V047-V091 R11. Existing RC6-R13 retained. Only 13/RC2 and 21/RB0 remain without modeled onward routes.",
+    "R37": "v0.9.6: User confirms V064-V063. R37.1/R39.2 feed junction is regulated board VDD, not motor VDD.",
+    "R39": "v0.9.6: User confirms V064-V063. R37.1/R39.2 feed junction is regulated board VDD, not motor VDD."
+  }
+}

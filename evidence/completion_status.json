@@ -1,6 +1,6 @@
 {
   "date": "2026-10-08",
-  "revision": "v0.9.4",
+  "revision": "v0.9.6",
   "known_identified_ICs_needing_new_symbols": [],
   "completed": [
     "U1 S-1200B45-M5T1 datasheet symbol",
@@ -26,13 +26,15 @@
     "v0.9.1: 21 via-site corrections; V017 joins R42.1/R44.1; V033 rejected; V073 GND-only conflict resolved",
     "v0.9.2: 19 site corrections; Q8 centre-ground annotation corrected; V077 C19/R29 grounded; five further artifacts rejected",
     "v0.9.3: five PIC-to-via confirmations; V072 corrected to TP6; V079/V080 mapped to U3 pin5; onward GPIO nets still unresolved",
-    "v0.9.4: PIC RC4/RC5 confirmed to motor INA/INB; Q1.L-R43.2 explicitly withdrawn; six GPIO onward destinations unknown"
+    "v0.9.4: PIC RC4/RC5 confirmed to motor INA/INB; Q1.L-R43.2 explicitly withdrawn; six GPIO onward destinations unknown",
+    "v0.9.5: V114 corrected to U2 ground; C5 negative confirmed; LED common grounded; Q1 VDD rail choice pending",
+    "v0.9.6: four tuning-control via pairs confirmed; V053-V071 rejected; only RC2 and RB0 remain open GPIOs"
   ],
   "catalog_entries": 150,
   "physical_pins": 352,
-  "unresolved_physical_pins": 37,
+  "unresolved_physical_pins": 33,
   "unresolved_pins_by_population": {
-    "populated": 18,
+    "populated": 14,
     "DNP": 19
   },
   "population_note": "Open pad counts include DNP entries, test pads and internally open IC pins; they are not missing component counts.",
@@ -51,7 +53,7 @@
     "R46": 2,
     "R47": 2,
     "TP9": 1,
-    "U4": 6,
+    "U4": 2,
     "U6": 2,
     "U6A": 3,
     "U7": 3
@@ -74,7 +76,7 @@
       "priority": 1,
       "gap": "Exact fitted manufacturer and external connections",
       "candidate": "3724A complementary N/P MOSFET; MCC SIL3724A datasheet candidate",
-      "detail": "v0.9.2: V113/V115 centre B2/pin5 GND resolved. Outer drain join keeps earlier D-E resistance evidence. V114 opposite T2/pin2 assignment known; GND versus source-supply net unresolved. C6 route and fitted maker remain uncertain.",
+      "detail": "v0.9.2: V113/V115 centre B2/pin5 GND resolved. Outer drain join keeps earlier D-E resistance evidence. v0.9.5 corrects V114 to U2.T2/pin2 GND, not Q8.T2. Q8 source-supply assignment remains a separate hypothesis. C6 route and fitted maker remain uncertain.",
       "source": "docs/U6_Q8_MARKING_UPDATE.md"
     },
     {
@@ -152,7 +154,7 @@
       "priority": 1,
       "gap": "Hidden routing and MCU destinations",
       "candidate": null,
-      "detail": "Six GPIO onward destinations unknown: 5,6,7,11,13,21; all six local vias user-identified. PIC15/16 now reach U5 INA/INB through confirmed via pairs. RC1/pin12 now locally connected to VREF/V053; remote continuations are separately unresolved. See pic_gpio_status.json."
+      "detail": "Two GPIO onward destinations unknown: 13/RC2 at V049 and 21/RB0 at V026. Four tuning-control routes now confirmed. PIC15/16 now reach U5 INA/INB through confirmed via pairs. RC1/pin12 now locally connected to VREF/V053; remote continuations are separately unresolved. See pic_gpio_status.json."
     },
     {
       "refs": [
@@ -183,10 +185,6 @@
     "qualification": "R8 user measurement revises fitted resistor family to 0603 candidates; C11 dimensions support 1206. R8 end-cap inclusion confirmed by user; other resistor bodies remain individually unmeasured. C5/S1/LED1 geometry still needed."
   },
   "current_gpio_pins": [
-    5,
-    6,
-    7,
-    11,
     13,
     21
   ],
@@ -201,12 +199,8 @@
     "Q1.L",
     "R43.2",
     "TP9.1",
-    "U4.11",
     "U4.13",
     "U4.21",
-    "U4.5",
-    "U4.6",
-    "U4.7",
     "U6.L1",
     "U6.L2"
   ],
@@ -234,23 +228,23 @@
   "current_gaps": [
     {
       "area": "PIC / block interfaces",
-      "gap": "6 GPIO pads still open: 5, 6, 7, 11, 13, 21. Other pins have local nets but may lack remote continuations. Motor INA/INB now resolved to PIC15/16.",
+      "gap": "2 GPIO pads still open: 13, 21. Other pins have local nets but may lack remote continuations. Motor INA/INB now resolved to PIC15/16.",
       "method": "Continuity on the numbered PIC map; start with hidden via destinations."
     },
     {
       "area": "Q8 / RF output / C6",
-      "gap": "V113/V115 resolved as centre pin5 GND. V114 reaches opposite pin2; its net and C6.1 route remain unresolved.",
-      "method": "Separate V114 pad identity from its earlier GND claim; retain supply as a hypothesis."
+      "gap": "V113/V115 resolve Q8 centre pin5 GND. V114 is U2 pin2 GND; Q8 source supply and C6.1 route remain inferred/unresolved.",
+      "method": "V114 conflict resolved. Check Q8 supply independently; no inferred rail merge."
     },
     {
       "area": "Tuning bank",
-      "gap": "V091/R11, V097/R16, V102/R15, V108/R14 control ends identified; onward GPIOs and midpoint-to-antenna links unknown.",
-      "method": "Check V090/V095/V100/V103/V107 to ANT1 and ANT2."
+      "gap": "All five controls mapped: RC6/R13, RA3/R14, RA4/R15, RA5/R16, RC0/R11. Capacitor-midpoint and antenna links remain unknown.",
+      "method": "V090 to all four gave OL. Next compare V095 to V100/V103/V107; then trace from confirmed groups."
     },
     {
       "area": "Auxiliary / receiver",
-      "gap": "V077 grounds C19/R29. V075 reaches Q7, terminal unknown. V063 feed and V017 role remain unknown; Q1.L via V011-V014 is separate from R43.2/V015; onward destinations unknown.",
-      "method": "Identify these remote nets; R44.1 is a photo-selected pad. Receiver bias is still inferred."
+      "gap": "V077 grounds C19/R29. V075 reaches Q7, terminal unknown. V063 feed now joins regulated VDD; V017 role remains unknown; Q1.L via V011-V014 is VDD-reported, rail choice pending; R43.2/V015 stays separate.",
+      "method": "Identify these remote nets; R44.1 is a photo-selected pad. Receiver bias is still inferred; V053-V071 explicitly rejected."
     },
     {
       "area": "D2 / D6 / candidate parts",
@@ -259,7 +253,7 @@
     },
     {
       "area": "Other open fitted pads",
-      "gap": "C26.1 and TP9.1; U6 NC pins 4/5 have unknown external ties. LED common and S1 leg mapping are still provisional.",
+      "gap": "C26.1 and TP9.1; U6 NC pins 4/5 have unknown external ties. LED common now grounded from V127/photo; internal LED mapping and S1 legs remain provisional.",
       "method": "Targeted continuity; no need to identify chips on empty footprints."
     },
     {
@@ -296,15 +290,12 @@
       "V122",
       "V124"
     ],
-    "conflicts": [
-      "V114"
-    ],
+    "conflicts": [],
     "statuses": {
-      "ASSIGNED": 96,
-      "USER_REPORTED": 16,
+      "ASSIGNED": 101,
+      "USER_REPORTED": 12,
       "PHOTO_LOCAL": 7,
-      "REJECTED_NOT_VIA": 7,
-      "CONFLICT": 1
+      "REJECTED_NOT_VIA": 7
     }
   },
   "complete_symbols_for_selected_candidates": true

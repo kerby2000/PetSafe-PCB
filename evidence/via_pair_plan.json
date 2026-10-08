@@ -1,0 +1,414 @@
+{
+  "id": "via-pairs-round-2",
+  "pdf_path": "output/pdf/PetSafe_via_pair_round2.pdf",
+  "date": "2026-10-08",
+  "basis_revision": "v0.9.6",
+  "schematic_sha256": "897a9f20e4a7ec486fd8f6f369d9a7b53de39872337f00ddf5e7795d3c3937d3",
+  "status": "AWAITING_USER_READINGS",
+  "scope": "Proposed continuity work only. No unmeasured pair is added to the native schematic or accepted connectivity.",
+  "count_basis": {
+    "active_via_sites": 120,
+    "nonrail_candidate_sites": 24,
+    "local_candidate_groups": 20,
+    "dnp_group": "V067 / U6A",
+    "qualification": "Groups are local endpoint associations, not a count of proven missing nets. Some modeled local nets need no additional hidden connection. Seven unmentioned IDs are already photo-matched; they are not the full work queue."
+  },
+  "local_groups": [
+    {
+      "vias": [
+        "V011",
+        "V012",
+        "V013",
+        "V014"
+      ],
+      "endpoints": [
+        "Q1.L"
+      ]
+    },
+    {
+      "vias": [
+        "V015"
+      ],
+      "endpoints": [
+        "R43.2"
+      ]
+    },
+    {
+      "vias": [
+        "V017"
+      ],
+      "endpoints": [
+        "R42.1",
+        "R44.1"
+      ]
+    },
+    {
+      "vias": [
+        "V026"
+      ],
+      "endpoints": [
+        "U4.21"
+      ]
+    },
+    {
+      "vias": [
+        "V031"
+      ],
+      "endpoints": [
+        "U4.2",
+        "C25.1"
+      ]
+    },
+    {
+      "vias": [
+        "V035"
+      ],
+      "endpoints": [
+        "U4.4",
+        "C39.1"
+      ]
+    },
+    {
+      "vias": [
+        "V049"
+      ],
+      "endpoints": [
+        "U4.13"
+      ]
+    },
+    {
+      "vias": [
+        "V053"
+      ],
+      "endpoints": [
+        "U4.12",
+        "VREF.1"
+      ]
+    },
+    {
+      "vias": [
+        "V067"
+      ],
+      "endpoints": [
+        "U6A.R1"
+      ]
+    },
+    {
+      "vias": [
+        "V070"
+      ],
+      "endpoints": [
+        "R18.1"
+      ]
+    },
+    {
+      "vias": [
+        "V071"
+      ],
+      "endpoints": [
+        "R21.2"
+      ]
+    },
+    {
+      "vias": [
+        "V072"
+      ],
+      "endpoints": [
+        "TP6.1"
+      ]
+    },
+    {
+      "vias": [
+        "V075"
+      ],
+      "endpoints": [
+        "V075"
+      ]
+    },
+    {
+      "vias": [
+        "V079",
+        "V080"
+      ],
+      "endpoints": [
+        "U3.5"
+      ]
+    },
+    {
+      "vias": [
+        "V082"
+      ],
+      "endpoints": [
+        "V082"
+      ]
+    },
+    {
+      "vias": [
+        "V090"
+      ],
+      "endpoints": [
+        "C46.2",
+        "C47.2",
+        "C48.2"
+      ]
+    },
+    {
+      "vias": [
+        "V095"
+      ],
+      "endpoints": [
+        "C43.2",
+        "C44.2",
+        "C45.2"
+      ]
+    },
+    {
+      "vias": [
+        "V100"
+      ],
+      "endpoints": [
+        "C16.2",
+        "C29.2",
+        "C38.2"
+      ]
+    },
+    {
+      "vias": [
+        "V103"
+      ],
+      "endpoints": [
+        "C13.2",
+        "C14.2",
+        "C15.2"
+      ]
+    },
+    {
+      "vias": [
+        "V107"
+      ],
+      "endpoints": [
+        "C10.2",
+        "C11.2",
+        "C12.2"
+      ]
+    }
+  ],
+  "known_controls": [
+    [
+      "V022",
+      "V016"
+    ],
+    [
+      "V023",
+      "V019"
+    ]
+  ],
+  "baseline": "Short the probes, then check known V022-V016 once to establish actual pad-contact resistance. Prior shorted tips were about 0.5 ohm; use today's reading.",
+  "method": [
+    "Battery and programmer disconnected; use resistance mode.",
+    "A stable reading close to the known connected-pair baseline supports a DC connection. Recheck near-zero hits with probes reversed; do not rely on a beep alone.",
+    "Record actual ohms, kohms, OL, or a changing reading. Tens/hundreds of ohms, one-way conduction or a changing reading are not direct-copper confirmation.",
+    "A very low-resistance path can include a zero-ohm link or an inductor; continuity maps electrical connectivity, not exact buried-layer track geometry.",
+    "Complete B3 and the three new C comparisons. V090-to-other-midpoint tests all returned OL. Prior tuning controls and V064-V063 are resolved; V053-V071 is explicitly rejected."
+  ],
+  "tests": [
+    {
+      "id": "B3",
+      "group": "B - reference and supply feeds",
+      "left": "V064",
+      "right": "V070",
+      "left_endpoint": "R1.1, C3.1, VDD.1, U1.R1",
+      "right_endpoint": "R18.1",
+      "reason": "V070 reaches the free end of R18 feeding the Q7/receiver region. Regulated VDD at V064 is the current plausible supply source.",
+      "confidence": "Moderate supply hypothesis; Q7 role remains provisional.",
+      "positive_action": "Record this feed association after reviewing resistance. Q7 terminal functions and receiver bias remain separate questions.",
+      "negative_action": "Next round compare V070 with V059 or a switched supply endpoint; select from the first-round results.",
+      "status": "PROPOSED_UNMEASURED",
+      "reading": ""
+    },
+    {
+      "id": "C5",
+      "group": "C - compare the remaining capacitor junctions",
+      "left": "V095",
+      "right": "V100",
+      "left_endpoint": "C43.2, C44.2, C45.2",
+      "right_endpoint": "C16.2, C29.2, C38.2",
+      "reason": "V090 gave OL to all four other junctions. These three tests check whether the remaining four share a different node; the repeated-cell hypothesis is weaker after the first results. No common antenna node is assumed.",
+      "confidence": "Moderate repeated-circuit hypothesis; no assumed antenna assignment.",
+      "positive_action": "Add this junction to the V095 group after review. Continue all three C tests; later measure one group representative to ANT1/ANT2.",
+      "negative_action": "Leave this junction outside the V095 group. Continue the other C tests; nonmatching junctions may still form another group.",
+      "status": "PROPOSED_UNMEASURED",
+      "reading": ""
+    },
+    {
+      "id": "C6",
+      "group": "C - compare the remaining capacitor junctions",
+      "left": "V095",
+      "right": "V103",
+      "left_endpoint": "C43.2, C44.2, C45.2",
+      "right_endpoint": "C13.2, C14.2, C15.2",
+      "reason": "V090 gave OL to all four other junctions. These three tests check whether the remaining four share a different node; the repeated-cell hypothesis is weaker after the first results. No common antenna node is assumed.",
+      "confidence": "Moderate repeated-circuit hypothesis; no assumed antenna assignment.",
+      "positive_action": "Add this junction to the V095 group after review. Continue all three C tests; later measure one group representative to ANT1/ANT2.",
+      "negative_action": "Leave this junction outside the V095 group. Continue the other C tests; nonmatching junctions may still form another group.",
+      "status": "PROPOSED_UNMEASURED",
+      "reading": ""
+    },
+    {
+      "id": "C7",
+      "group": "C - compare the remaining capacitor junctions",
+      "left": "V095",
+      "right": "V107",
+      "left_endpoint": "C43.2, C44.2, C45.2",
+      "right_endpoint": "C10.2, C11.2, C12.2",
+      "reason": "V090 gave OL to all four other junctions. These three tests check whether the remaining four share a different node; the repeated-cell hypothesis is weaker after the first results. No common antenna node is assumed.",
+      "confidence": "Moderate repeated-circuit hypothesis; no assumed antenna assignment.",
+      "positive_action": "Add this junction to the V095 group after review. Continue all three C tests; later measure one group representative to ANT1/ANT2.",
+      "negative_action": "Leave this junction outside the V095 group. Continue the other C tests; nonmatching junctions may still form another group.",
+      "status": "PROPOSED_UNMEASURED",
+      "reading": ""
+    }
+  ],
+  "reported_results": {
+    "revision": "v0.9.6",
+    "changes": [
+      {
+        "endpoint": "U4.5",
+        "old": null,
+        "new": "H_TUNE_2",
+        "basis": "User reports working via pair V036-V108: PIC pin5 to R14.1; no numerical resistance supplied."
+      },
+      {
+        "endpoint": "U4.6",
+        "old": null,
+        "new": "H_TUNE_3",
+        "basis": "User reports working via pair V037-V102: PIC pin6 to R15.1; no numerical resistance supplied."
+      },
+      {
+        "endpoint": "U4.7",
+        "old": null,
+        "new": "H_TUNE_4",
+        "basis": "User reports working via pair V039-V097: PIC pin7 to R16.1; no numerical resistance supplied."
+      },
+      {
+        "endpoint": "U4.11",
+        "old": null,
+        "new": "H_TUNE_5",
+        "basis": "User reports working via pair V047-V091: PIC pin11 to R11.1; no numerical resistance supplied."
+      },
+      {
+        "endpoint": "R37.1",
+        "old": "AUX_FEED_V063",
+        "new": "H_VDD",
+        "basis": "v0.9.6: User confirms V064-V063. R37.1/R39.2 feed junction is regulated board VDD, not motor VDD."
+      },
+      {
+        "endpoint": "R39.2",
+        "old": "AUX_FEED_V063",
+        "new": "H_VDD",
+        "basis": "v0.9.6: User confirms V064-V063. R37.1/R39.2 feed junction is regulated board VDD, not motor VDD."
+      }
+    ],
+    "confirmed_via_pairs": [
+      [
+        "V036",
+        "V108"
+      ],
+      [
+        "V037",
+        "V102"
+      ],
+      [
+        "V039",
+        "V097"
+      ],
+      [
+        "V047",
+        "V091"
+      ],
+      [
+        "V064",
+        "V063"
+      ]
+    ],
+    "rejected_pairs": [
+      {
+        "vias": [
+          "V053",
+          "V071"
+        ],
+        "status": "USER_REJECTED_DIRECT_CONNECTION",
+        "reading": null
+      },
+      {
+        "vias": [
+          "V090",
+          "V095"
+        ],
+        "status": "USER_REJECTED_DIRECT_CONNECTION",
+        "reading": "OL"
+      },
+      {
+        "vias": [
+          "V090",
+          "V100"
+        ],
+        "status": "USER_REJECTED_DIRECT_CONNECTION",
+        "reading": "OL"
+      },
+      {
+        "vias": [
+          "V090",
+          "V103"
+        ],
+        "status": "USER_REJECTED_DIRECT_CONNECTION",
+        "reading": "OL"
+      },
+      {
+        "vias": [
+          "V090",
+          "V107"
+        ],
+        "status": "USER_REJECTED_DIRECT_CONNECTION",
+        "reading": "OL"
+      }
+    ],
+    "component_evidence": {
+      "R14": "User reports working via pair V036-V108: PIC pin5 to R14.1; no numerical resistance supplied.",
+      "R15": "User reports working via pair V037-V102: PIC pin6 to R15.1; no numerical resistance supplied.",
+      "R16": "User reports working via pair V039-V097: PIC pin7 to R16.1; no numerical resistance supplied.",
+      "R11": "User reports working via pair V047-V091: PIC pin11 to R11.1; no numerical resistance supplied.",
+      "U4": "v0.9.6 user working pairs: 5/RA3 V036-V108 R14; 6/RA4 V037-V102 R15; 7/RA5 V039-V097 R16; 11/RC0 V047-V091 R11. Existing RC6-R13 retained. Only 13/RC2 and 21/RB0 remain without modeled onward routes.",
+      "R37": "v0.9.6: User confirms V064-V063. R37.1/R39.2 feed junction is regulated board VDD, not motor VDD.",
+      "R39": "v0.9.6: User confirms V064-V063. R37.1/R39.2 feed junction is regulated board VDD, not motor VDD."
+    }
+  },
+  "staged_followups": [
+    {
+      "stage": "After the remaining supply test",
+      "action": "If V064-V070 is not direct, compare V070 with motor supply V059 or a switched feed. V064-V063 is already confirmed."
+    },
+    {
+      "stage": "Remaining GPIOs and reference",
+      "action": "Only PIC13/RC2 via V049 and PIC21/RB0 via V026 remain open. Prioritize receiver/PIR/button endpoints once the remaining group checks return. V053-V071 is rejected; consider V071-V031 or V071-V035 as separate reference/filter hypotheses, not new assignments."
+    },
+    {
+      "stage": "Capacitor bank after C",
+      "action": "Partition any confirmed groups. If the new C sweep is also all OL, stop broad pairwise testing and trace a junction toward antenna/component endpoints. Check local probe contact against its known capacitor junction before interpreting repeated OL as topology. The four original OL readings exclude V090 direct ties; they do not prove all other junctions isolated."
+    },
+    {
+      "stage": "Remaining functional endpoints",
+      "action": "Distinguish Q1.L/V011 user-reported VDD between regulated V064 and motor V001 when the user answers the pending question. Target R43.2/V015, V017, V075/Q7 and V082/D3 after narrowing their roles. V114 is now resolved as U2 ground and is excluded. Use TP16/PIR, the receiver output and button pad where no catalogued via is known. V011-V015 is already explicitly excluded; do not repeat it."
+    },
+    {
+      "stage": "Low priority",
+      "action": "V067 belongs to empty U6A; defer unless it helps another live route. Do not repeat established grounds, motor pairs, Q1 duplicate vias or V079/V080."
+    }
+  ],
+  "photos": {
+    "front": "photos/front_registered.jpg",
+    "rear": "photos/back_mirrored_registered.jpg",
+    "orientation": "Rear mosaic is already mirrored to match front orientation; compare using landmarks before probing.",
+    "marker_basis": "Rear coordinates are the established via IDs. Front coordinates are mostly projections; no new trace route is claimed."
+  }
+}

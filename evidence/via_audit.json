@@ -1,6 +1,6 @@
 {
   "date": "2026-10-08",
-  "revision": "v0.9.4",
+  "revision": "v0.9.6",
   "source_front": "photos/front_registered.jpg",
   "source_rear": "photos/back_mirrored_registered.jpg",
   "images_are_original_photographic_mosaics": true,
@@ -353,23 +353,24 @@
         "Q1.L"
       ],
       "net": null,
-      "confidence": "User explicitly identifies Q1.L and excludes R43.2",
+      "confidence": "User Q1.L/VDD report; which supply rail remains unresolved",
       "note": "Visible clearance separates this site from the surrounding rear copper; this alone does not identify an internal net.",
       "id": "V011",
       "active": true,
       "user_reports": [
         {
           "id": "V011",
-          "claim": "Q1.L; earlier R43.2 exclusion retained; user explicitly removes old Q1.L-R43.2 connection",
-          "kind": "component_or_issue"
+          "claim": "Q1.L, clearly VDD; regulated versus motor VDD not yet distinguished; not R43.2",
+          "kind": "supply_unspecified"
         }
       ],
       "review_status": "USER_REPORTED",
-      "component_crosscheck": "V011-V014 reach Q1.L. User explicitly removes the earlier photo-derived Q1.L-R43.2 connection. Q1.L onward destination remains unknown; no physical transistor function inferred.",
+      "component_crosscheck": "V011-V014 reach Q1.L and user reports VDD. Distinguish regulated V064 from motor-supply V001 before merging. R43.2 remains explicitly excluded; transistor function is not established.",
       "modeled_nets": [],
       "excluded_endpoints": [
         "R43.2"
-      ]
+      ],
+      "reported_supply": "VDD (regulated versus motor rail unresolved)"
     },
     {
       "rear_xy": [
@@ -386,23 +387,24 @@
         "Q1.L"
       ],
       "net": null,
-      "confidence": "User explicitly identifies Q1.L and excludes R43.2",
+      "confidence": "User Q1.L/VDD report; which supply rail remains unresolved",
       "note": "Visible clearance separates this site from the surrounding rear copper; this alone does not identify an internal net.",
       "id": "V012",
       "active": true,
       "user_reports": [
         {
           "id": "V012",
-          "claim": "Q1.L; earlier R43.2 exclusion retained; user explicitly removes old Q1.L-R43.2 connection",
-          "kind": "component_or_issue"
+          "claim": "Q1.L, clearly VDD; regulated versus motor VDD not yet distinguished; not R43.2",
+          "kind": "supply_unspecified"
         }
       ],
       "review_status": "USER_REPORTED",
-      "component_crosscheck": "V011-V014 reach Q1.L. User explicitly removes the earlier photo-derived Q1.L-R43.2 connection. Q1.L onward destination remains unknown; no physical transistor function inferred.",
+      "component_crosscheck": "V011-V014 reach Q1.L and user reports VDD. Distinguish regulated V064 from motor-supply V001 before merging. R43.2 remains explicitly excluded; transistor function is not established.",
       "modeled_nets": [],
       "excluded_endpoints": [
         "R43.2"
-      ]
+      ],
+      "reported_supply": "VDD (regulated versus motor rail unresolved)"
     },
     {
       "rear_xy": [
@@ -419,23 +421,24 @@
         "Q1.L"
       ],
       "net": null,
-      "confidence": "User explicitly identifies Q1.L and excludes R43.2",
+      "confidence": "User Q1.L/VDD report; which supply rail remains unresolved",
       "note": "Visible clearance separates this site from the surrounding rear copper; this alone does not identify an internal net.",
       "id": "V013",
       "active": true,
       "user_reports": [
         {
           "id": "V013",
-          "claim": "Q1.L; earlier R43.2 exclusion retained; user explicitly removes old Q1.L-R43.2 connection",
-          "kind": "component_or_issue"
+          "claim": "Q1.L, clearly VDD; regulated versus motor VDD not yet distinguished; not R43.2",
+          "kind": "supply_unspecified"
         }
       ],
       "review_status": "USER_REPORTED",
-      "component_crosscheck": "V011-V014 reach Q1.L. User explicitly removes the earlier photo-derived Q1.L-R43.2 connection. Q1.L onward destination remains unknown; no physical transistor function inferred.",
+      "component_crosscheck": "V011-V014 reach Q1.L and user reports VDD. Distinguish regulated V064 from motor-supply V001 before merging. R43.2 remains explicitly excluded; transistor function is not established.",
       "modeled_nets": [],
       "excluded_endpoints": [
         "R43.2"
-      ]
+      ],
+      "reported_supply": "VDD (regulated versus motor rail unresolved)"
     },
     {
       "rear_xy": [
@@ -452,23 +455,24 @@
         "Q1.L"
       ],
       "net": null,
-      "confidence": "User explicitly identifies Q1.L and excludes R43.2",
+      "confidence": "User Q1.L/VDD report; which supply rail remains unresolved",
       "note": "Visible clearance separates this site from the surrounding rear copper; this alone does not identify an internal net.",
       "id": "V014",
       "active": true,
       "user_reports": [
         {
           "id": "V014",
-          "claim": "Q1.L; earlier R43.2 exclusion retained; user explicitly removes old Q1.L-R43.2 connection",
-          "kind": "component_or_issue"
+          "claim": "Q1.L, clearly VDD; regulated versus motor VDD not yet distinguished; not R43.2",
+          "kind": "supply_unspecified"
         }
       ],
       "review_status": "USER_REPORTED",
-      "component_crosscheck": "V011-V014 reach Q1.L. User explicitly removes the earlier photo-derived Q1.L-R43.2 connection. Q1.L onward destination remains unknown; no physical transistor function inferred.",
+      "component_crosscheck": "V011-V014 reach Q1.L and user reports VDD. Distinguish regulated V064 from motor-supply V001 before merging. R43.2 remains explicitly excluded; transistor function is not established.",
       "modeled_nets": [],
       "excluded_endpoints": [
         "R43.2"
-      ]
+      ],
+      "reported_supply": "VDD (regulated versus motor rail unresolved)"
     },
     {
       "rear_xy": [
@@ -1144,23 +1148,30 @@
       "rear_appearance": "REAR_CLEARANCE",
       "front_match": "PROJECTED: inspect original front photo; may be under a component",
       "endpoints": [
-        "U4.5"
+        "U4.5",
+        "R14.1"
       ],
-      "net": null,
-      "confidence": "User-confirmed PIC pin-to-via association; no new per-site ohms supplied",
+      "net": "H_TUNE_2",
+      "confidence": "User continuity report; exact resistance not supplied",
       "note": "Visible clearance separates this site from the surrounding rear copper; this alone does not identify an internal net.",
       "id": "V036",
       "active": true,
       "user_reports": [
         {
           "id": "V036",
-          "claim": "PIC U4 pin 5 / RA3",
-          "kind": "component_or_issue"
+          "kind": "component_or_issue",
+          "claim": "User reports working via pair V036-V108: PIC pin5 to R14.1; no numerical resistance supplied."
         }
       ],
-      "review_status": "USER_REPORTED",
-      "component_crosscheck": "User confirms this PIC pin-to-via connection. Earlier under-body alignment hypothesis superseded. Onward destination remains unknown; not NC. Front marker coordinates remain projected.",
-      "modeled_nets": []
+      "review_status": "ASSIGNED",
+      "component_crosscheck": "User working via pair V036-V108; PIC control to resistor confirmed. No numerical ohms supplied.",
+      "modeled_nets": [
+        "H_TUNE_2"
+      ],
+      "joined_vias": [
+        "V036",
+        "V108"
+      ]
     },
     {
       "rear_xy": [
@@ -1174,23 +1185,30 @@
       "rear_appearance": "REAR_CLEARANCE",
       "front_match": "PROJECTED: inspect original front photo; may be under a component",
       "endpoints": [
-        "U4.6"
+        "U4.6",
+        "R15.1"
       ],
-      "net": null,
-      "confidence": "User-confirmed PIC pin-to-via association; no new per-site ohms supplied",
+      "net": "H_TUNE_3",
+      "confidence": "User continuity report; exact resistance not supplied",
       "note": "Visible clearance separates this site from the surrounding rear copper; this alone does not identify an internal net.",
       "id": "V037",
       "active": true,
       "user_reports": [
         {
           "id": "V037",
-          "claim": "PIC U4 pin 6 / RA4",
-          "kind": "component_or_issue"
+          "kind": "component_or_issue",
+          "claim": "User reports working via pair V037-V102: PIC pin6 to R15.1; no numerical resistance supplied."
         }
       ],
-      "review_status": "USER_REPORTED",
-      "component_crosscheck": "User confirms this PIC pin-to-via connection. Earlier under-body alignment hypothesis superseded. Onward destination remains unknown; not NC. Front marker coordinates remain projected.",
-      "modeled_nets": []
+      "review_status": "ASSIGNED",
+      "component_crosscheck": "User working via pair V037-V102; PIC control to resistor confirmed. No numerical ohms supplied.",
+      "modeled_nets": [
+        "H_TUNE_3"
+      ],
+      "joined_vias": [
+        "V037",
+        "V102"
+      ]
     },
     {
       "rear_xy": [
@@ -1229,23 +1247,30 @@
       "rear_appearance": "REAR_CLEARANCE",
       "front_match": "PROJECTED: inspect original front photo; may be under a component",
       "endpoints": [
-        "U4.7"
+        "U4.7",
+        "R16.1"
       ],
-      "net": null,
-      "confidence": "User-confirmed PIC pin-to-via association; no new per-site ohms supplied",
+      "net": "H_TUNE_4",
+      "confidence": "User continuity report; exact resistance not supplied",
       "note": "Visible clearance separates this site from the surrounding rear copper; this alone does not identify an internal net.",
       "id": "V039",
       "active": true,
       "user_reports": [
         {
           "id": "V039",
-          "claim": "PIC U4 pin 7 / RA5",
-          "kind": "component_or_issue"
+          "kind": "component_or_issue",
+          "claim": "User reports working via pair V039-V097: PIC pin7 to R16.1; no numerical resistance supplied."
         }
       ],
-      "review_status": "USER_REPORTED",
-      "component_crosscheck": "User confirms this PIC pin-to-via connection. Earlier under-body alignment hypothesis superseded. Onward destination remains unknown; not NC. Front marker coordinates remain projected.",
-      "modeled_nets": []
+      "review_status": "ASSIGNED",
+      "component_crosscheck": "User working via pair V039-V097; PIC control to resistor confirmed. No numerical ohms supplied.",
+      "modeled_nets": [
+        "H_TUNE_4"
+      ],
+      "joined_vias": [
+        "V039",
+        "V097"
+      ]
     },
     {
       "rear_xy": [
@@ -1463,23 +1488,30 @@
       "rear_appearance": "REAR_CLEARANCE",
       "front_match": "PROJECTED: inspect original front photo; may be under a component",
       "endpoints": [
-        "U4.11"
+        "U4.11",
+        "R11.1"
       ],
-      "net": null,
-      "confidence": "User-confirmed PIC pin-to-via association; no new per-site ohms supplied",
+      "net": "H_TUNE_5",
+      "confidence": "User continuity report; exact resistance not supplied",
       "note": "Visible clearance separates this site from the surrounding rear copper; this alone does not identify an internal net.",
       "id": "V047",
       "active": true,
       "user_reports": [
         {
           "id": "V047",
-          "claim": "PIC U4 pin 11 / RC0",
-          "kind": "component_or_issue"
+          "kind": "component_or_issue",
+          "claim": "User reports working via pair V047-V091: PIC pin11 to R11.1; no numerical resistance supplied."
         }
       ],
-      "review_status": "USER_REPORTED",
-      "component_crosscheck": "User confirms this PIC pin-to-via connection. Earlier under-body alignment hypothesis superseded. Onward destination remains unknown; not NC. Front marker coordinates remain projected.",
-      "modeled_nets": []
+      "review_status": "ASSIGNED",
+      "component_crosscheck": "User working via pair V047-V091; PIC control to resistor confirmed. No numerical ohms supplied.",
+      "modeled_nets": [
+        "H_TUNE_5"
+      ],
+      "joined_vias": [
+        "V047",
+        "V091"
+      ]
     },
     {
       "rear_xy": [
@@ -1645,6 +1677,9 @@
       "component_crosscheck": "Visible trace reaches VREF board pad. This local pad connection does not identify an onward buried net.",
       "modeled_nets": [
         "PIC_RC1_VREF"
+      ],
+      "excluded_vias": [
+        "V071"
       ]
     },
     {
@@ -1934,7 +1969,7 @@
         "R37.1",
         "R39.2"
       ],
-      "net": "AUX_FEED_V063",
+      "net": "H_VDD",
       "confidence": "rear visible; global front projection approximate",
       "note": "Visible clearance separates this site from the surrounding rear copper; this alone does not identify an internal net.",
       "id": "V063",
@@ -1942,14 +1977,18 @@
       "user_reports": [
         {
           "id": "V063",
-          "claim": "R39 and R37",
-          "kind": "component_or_issue"
+          "claim": "v0.9.6: User confirms V064-V063. R37.1/R39.2 feed junction is regulated board VDD, not motor VDD.",
+          "kind": "regulated_supply"
         }
       ],
       "review_status": "ASSIGNED",
-      "component_crosscheck": "Common lower ends in IMG_2435. Feed voltage/source unknown; old separate VDD/GND guesses withdrawn.",
+      "component_crosscheck": "User V064-V063 confirms R37/R39 feed on regulated board VDD. Motor supply remains separate.",
       "modeled_nets": [
-        "AUX_FEED_V063"
+        "H_VDD"
+      ],
+      "joined_vias": [
+        "V063",
+        "V064"
       ]
     },
     {
@@ -1977,14 +2016,18 @@
       "user_reports": [
         {
           "id": "V064",
-          "claim": "VDD and R1/C3 (supply identity to distinguish)",
-          "kind": "component_or_issue"
+          "claim": "v0.9.6: User confirms V064-V063. R37.1/R39.2 feed junction is regulated board VDD, not motor VDD.",
+          "kind": "regulated_supply"
         }
       ],
       "review_status": "ASSIGNED",
       "component_crosscheck": "Regulated board VDD island. Do not equate this use of VDD with MX512H motor pin4.",
       "modeled_nets": [
         "H_VDD"
+      ],
+      "joined_vias": [
+        "V063",
+        "V064"
       ]
     },
     {
@@ -2202,6 +2245,9 @@
       "component_crosscheck": "R21 left/free end in receiver photo; shared bias hypothesis not confirmed by this via report.",
       "modeled_nets": [
         "H_RX_BIAS"
+      ],
+      "excluded_vias": [
+        "V053"
       ]
     },
     {
@@ -2802,6 +2848,12 @@
       "component_crosscheck": "User front-pair junction plus rear-land photo pairing; onward hidden connection to antenna remains unknown.",
       "modeled_nets": [
         "TUNE_5_MID"
+      ],
+      "excluded_vias": [
+        "V095",
+        "V100",
+        "V103",
+        "V107"
       ]
     },
     {
@@ -2816,25 +2868,30 @@
       "rear_appearance": "OTHER_REAR_REGION",
       "front_match": "PROJECTED: inspect original front photo; may be under a component",
       "endpoints": [
+        "U4.11",
         "R11.1"
       ],
       "net": "H_TUNE_5",
-      "confidence": "rear visible; global front projection approximate",
+      "confidence": "User continuity report; exact resistance not supplied",
       "note": "Separate strip/antenna region or ambiguous copper boundary; do not assume GND.",
       "id": "V091",
       "active": true,
       "user_reports": [
         {
           "id": "V091",
-          "claim": "R11",
-          "kind": "component_or_issue"
+          "kind": "component_or_issue",
+          "claim": "User reports working via pair V047-V091: PIC pin11 to R11.1; no numerical resistance supplied."
         }
       ],
       "review_status": "ASSIGNED",
       "modeled_nets": [
         "H_TUNE_5"
       ],
-      "component_crosscheck": "User identifies resistor; free upper photo pad1 selected. Tuning control role remains a hypothesis and onward GPIO is not identified."
+      "component_crosscheck": "User working via pair V047-V091; PIC control to resistor confirmed. No numerical ohms supplied.",
+      "joined_vias": [
+        "V047",
+        "V091"
+      ]
     },
     {
       "rear_xy": [
@@ -2959,6 +3016,9 @@
       "component_crosscheck": "User front-pair junction plus rear-land photo pairing; onward hidden connection to antenna remains unknown.",
       "modeled_nets": [
         "TUNE_4_MID"
+      ],
+      "excluded_vias": [
+        "V090"
       ]
     },
     {
@@ -3005,25 +3065,30 @@
       "rear_appearance": "OTHER_REAR_REGION",
       "front_match": "PROJECTED: inspect original front photo; may be under a component",
       "endpoints": [
+        "U4.7",
         "R16.1"
       ],
       "net": "H_TUNE_4",
-      "confidence": "rear visible; global front projection approximate",
+      "confidence": "User continuity report; exact resistance not supplied",
       "note": "Separate strip/antenna region or ambiguous copper boundary; do not assume GND.",
       "id": "V097",
       "active": true,
       "user_reports": [
         {
           "id": "V097",
-          "claim": "R16",
-          "kind": "component_or_issue"
+          "kind": "component_or_issue",
+          "claim": "User reports working via pair V039-V097: PIC pin7 to R16.1; no numerical resistance supplied."
         }
       ],
       "review_status": "ASSIGNED",
       "modeled_nets": [
         "H_TUNE_4"
       ],
-      "component_crosscheck": "User identifies resistor; free upper photo pad1 selected. Tuning control role remains a hypothesis and onward GPIO is not identified."
+      "component_crosscheck": "User working via pair V039-V097; PIC control to resistor confirmed. No numerical ohms supplied.",
+      "joined_vias": [
+        "V039",
+        "V097"
+      ]
     },
     {
       "rear_xy": [
@@ -3116,6 +3181,9 @@
       "component_crosscheck": "User front-pair junction plus rear-land photo pairing; onward hidden connection to antenna remains unknown.",
       "modeled_nets": [
         "TUNE_3_MID"
+      ],
+      "excluded_vias": [
+        "V090"
       ]
     },
     {
@@ -3162,25 +3230,30 @@
       "rear_appearance": "OTHER_REAR_REGION",
       "front_match": "PROJECTED: inspect original front photo; may be under a component",
       "endpoints": [
+        "U4.6",
         "R15.1"
       ],
       "net": "H_TUNE_3",
-      "confidence": "rear visible; global front projection approximate",
+      "confidence": "User continuity report; exact resistance not supplied",
       "note": "Separate strip/antenna region or ambiguous copper boundary; do not assume GND.",
       "id": "V102",
       "active": true,
       "user_reports": [
         {
           "id": "V102",
-          "claim": "R15",
-          "kind": "component_or_issue"
+          "kind": "component_or_issue",
+          "claim": "User reports working via pair V037-V102: PIC pin6 to R15.1; no numerical resistance supplied."
         }
       ],
       "review_status": "ASSIGNED",
       "modeled_nets": [
         "H_TUNE_3"
       ],
-      "component_crosscheck": "User identifies resistor; free upper photo pad1 selected. Tuning control role remains a hypothesis and onward GPIO is not identified."
+      "component_crosscheck": "User working via pair V037-V102; PIC control to resistor confirmed. No numerical ohms supplied.",
+      "joined_vias": [
+        "V037",
+        "V102"
+      ]
     },
     {
       "rear_xy": [
@@ -3214,6 +3287,9 @@
       "component_crosscheck": "User front-pair junction plus rear-land photo pairing; onward hidden connection to antenna remains unknown.",
       "modeled_nets": [
         "TUNE_2_MID"
+      ],
+      "excluded_vias": [
+        "V090"
       ]
     },
     {
@@ -3339,6 +3415,9 @@
       "component_crosscheck": "User front-pair junction plus rear-land photo pairing; onward hidden connection to antenna remains unknown.",
       "modeled_nets": [
         "TUNE_1_MID"
+      ],
+      "excluded_vias": [
+        "V090"
       ]
     },
     {
@@ -3353,25 +3432,30 @@
       "rear_appearance": "OTHER_REAR_REGION",
       "front_match": "PROJECTED: inspect original front photo; may be under a component",
       "endpoints": [
+        "U4.5",
         "R14.1"
       ],
       "net": "H_TUNE_2",
-      "confidence": "rear visible; global front projection approximate",
+      "confidence": "User continuity report; exact resistance not supplied",
       "note": "Separate strip/antenna region or ambiguous copper boundary; do not assume GND.",
       "id": "V108",
       "active": true,
       "user_reports": [
         {
           "id": "V108",
-          "claim": "R14",
-          "kind": "component_or_issue"
+          "kind": "component_or_issue",
+          "claim": "User reports working via pair V036-V108: PIC pin5 to R14.1; no numerical resistance supplied."
         }
       ],
       "review_status": "ASSIGNED",
       "modeled_nets": [
         "H_TUNE_2"
       ],
-      "component_crosscheck": "User identifies resistor; free upper photo pad1 selected. Tuning control role remains a hypothesis and onward GPIO is not identified."
+      "component_crosscheck": "User working via pair V036-V108; PIC control to resistor confirmed. No numerical ohms supplied.",
+      "joined_vias": [
+        "V036",
+        "V108"
+      ]
     },
     {
       "rear_xy": [
@@ -3534,26 +3618,28 @@
       "rear_appearance": "OTHER_REAR_REGION",
       "front_match": "PROJECTED: inspect original front photo; may be under a component",
       "endpoints": [
-        "Q8.T2"
+        "U2.T2"
       ],
-      "net": null,
-      "confidence": "User GND report; no per-site ohms supplied",
+      "net": "H_GND",
+      "confidence": "User U2.T2 correction plus earlier GND report; consistent with existing U2 pin2 ground",
       "note": "Separate strip/antenna region or ambiguous copper boundary; do not assume GND.",
       "id": "V114",
       "active": true,
       "user_reports": [
         {
           "id": "V114",
-          "claim": "Second pin on the other side of the package; earlier GND versus supply assignment not answered by the follow-up",
-          "kind": "component_or_issue"
+          "claim": "U2.T2, not Q8.T2; earlier GND report retained",
+          "kind": "ground"
         }
       ],
-      "review_status": "CONFLICT",
+      "review_status": "ASSIGNED",
       "modeled_nets": [
-        "H_RF_VDD"
+        "H_GND"
       ],
-      "component_crosscheck": "User: second pin on the opposite side of the package, mapped as T2/package pin2. Follow-up does not establish GND versus source supply; existing supply hypothesis retained separately.",
-      "conflict": "User identifies the opposite centre pad, Q8.T2/package pin2. The follow-up repeats the pad location but does not settle the earlier GND claim versus the existing source-supply hypothesis. No supply-to-ground merge applied."
+      "component_crosscheck": "User corrects the component to U2.T2, native pin2, not Q8.T2. Earlier GND report retained; confirms existing U2 ground. No evidence for the Q8 supply rail.",
+      "excluded_endpoints": [
+        "Q8.T2"
+      ]
     },
     {
       "rear_xy": [
@@ -3865,7 +3951,9 @@
       ],
       "rear_appearance": "OTHER_REAR_REGION",
       "front_match": "PROJECTED: inspect original front photo; may be under a component",
-      "endpoints": [],
+      "endpoints": [
+        "C5.2"
+      ],
       "net": "H_GND",
       "confidence": "User GND report; no per-site ohms supplied",
       "note": "Separate strip/antenna region or ambiguous copper boundary; do not assume GND.",
@@ -3874,12 +3962,15 @@
       "user_reports": [
         {
           "id": "V125",
-          "claim": "GND",
+          "claim": "C5 negative terminal; earlier GND report retained",
           "kind": "ground"
         }
       ],
       "review_status": "ASSIGNED",
-      "modeled_nets": []
+      "modeled_nets": [
+        "H_GND"
+      ],
+      "component_crosscheck": "User identifies C5 negative terminal and earlier GND; native capacitor pad2 already grounded."
     },
     {
       "rear_xy": [
@@ -3892,7 +3983,9 @@
       ],
       "rear_appearance": "OTHER_REAR_REGION",
       "front_match": "PROJECTED: inspect original front photo; may be under a component",
-      "endpoints": [],
+      "endpoints": [
+        "C5.2"
+      ],
       "net": "H_GND",
       "confidence": "User GND report; no per-site ohms supplied",
       "note": "Separate strip/antenna region or ambiguous copper boundary; do not assume GND.",
@@ -3901,12 +3994,15 @@
       "user_reports": [
         {
           "id": "V126",
-          "claim": "GND",
+          "claim": "C5 negative terminal; earlier GND report retained",
           "kind": "ground"
         }
       ],
       "review_status": "ASSIGNED",
-      "modeled_nets": []
+      "modeled_nets": [
+        "H_GND"
+      ],
+      "component_crosscheck": "User identifies C5 negative terminal and earlier GND; native capacitor pad2 already grounded."
     },
     {
       "rear_xy": [
@@ -3919,21 +4015,27 @@
       ],
       "rear_appearance": "OTHER_REAR_REGION",
       "front_match": "PROJECTED: inspect original front photo; may be under a component",
-      "endpoints": [],
+      "endpoints": [
+        "LED1.BL",
+        "LED1.BR"
+      ],
       "net": "H_GND",
-      "confidence": "User GND report; no per-site ohms supplied",
+      "confidence": "User GND/component report; common pair selected from photograph and existing model",
       "note": "Separate strip/antenna region or ambiguous copper boundary; do not assume GND.",
       "id": "V127",
       "active": true,
       "user_reports": [
         {
           "id": "V127",
-          "claim": "GND",
+          "claim": "GND and LED1; common pair selected from existing photo/model",
           "kind": "ground"
         }
       ],
       "review_status": "ASSIGNED",
-      "modeled_nets": []
+      "modeled_nets": [
+        "H_GND"
+      ],
+      "component_crosscheck": "User GND/LED1 report. IMG_2432 common pair opposite resistor-fed pads selected as existing BL/BR (stock3/4); physical/internal LED mapping remains provisional."
     }
   ],
   "reviewed_anchors": {
@@ -3950,40 +4052,40 @@
   },
   "new_model_connections": [
     {
-      "endpoint": "U4.15",
+      "endpoint": "U4.5",
       "old": null,
-      "new": "MOTOR_INA",
-      "basis": "User V016=U5.2 joins V022=PIC15 RC4"
+      "new": "H_TUNE_2",
+      "basis": "User reports working via pair V036-V108: PIC pin5 to R14.1; no numerical resistance supplied."
     },
     {
-      "endpoint": "U4.16",
+      "endpoint": "U4.6",
       "old": null,
-      "new": "MOTOR_INB",
-      "basis": "User V019=U5.3 joins V023=PIC16 RC5"
+      "new": "H_TUNE_3",
+      "basis": "User reports working via pair V037-V102: PIC pin6 to R15.1; no numerical resistance supplied."
     },
     {
-      "endpoint": "U5.2",
-      "old": "H_MOTOR_INA",
-      "new": "MOTOR_INA",
-      "basis": "Hypothesis name replaced by confirmed user pin-to-pin mapping"
+      "endpoint": "U4.7",
+      "old": null,
+      "new": "H_TUNE_4",
+      "basis": "User reports working via pair V039-V097: PIC pin7 to R16.1; no numerical resistance supplied."
     },
     {
-      "endpoint": "U5.3",
-      "old": "H_MOTOR_INB",
-      "new": "MOTOR_INB",
-      "basis": "Hypothesis name replaced by confirmed user pin-to-pin mapping"
+      "endpoint": "U4.11",
+      "old": null,
+      "new": "H_TUNE_5",
+      "basis": "User reports working via pair V047-V091: PIC pin11 to R11.1; no numerical resistance supplied."
     },
     {
-      "endpoint": "Q1.L",
-      "old": "Q1_EMITTER",
-      "new": null,
-      "basis": "User explicitly removes Q1.L-R43.2; Q1.L still reaches V011-V014"
+      "endpoint": "R37.1",
+      "old": "AUX_FEED_V063",
+      "new": "H_VDD",
+      "basis": "v0.9.6: User confirms V064-V063. R37.1/R39.2 feed junction is regulated board VDD, not motor VDD."
     },
     {
-      "endpoint": "R43.2",
-      "old": "Q1_EMITTER",
-      "new": null,
-      "basis": "User explicitly removes Q1.L-R43.2; R43.2 still reaches V015"
+      "endpoint": "R39.2",
+      "old": "AUX_FEED_V063",
+      "new": "H_VDD",
+      "basis": "v0.9.6: User confirms V064-V063. R37.1/R39.2 feed junction is regulated board VDD, not motor VDD."
     }
   ],
   "sources": [
@@ -4022,15 +4124,12 @@
       "V122",
       "V124"
     ],
-    "conflicts": [
-      "V114"
-    ],
+    "conflicts": [],
     "statuses": {
-      "ASSIGNED": 96,
-      "USER_REPORTED": 16,
+      "ASSIGNED": 101,
+      "USER_REPORTED": 12,
       "PHOTO_LOCAL": 7,
-      "REJECTED_NOT_VIA": 7,
-      "CONFLICT": 1
+      "REJECTED_NOT_VIA": 7
     }
   }
 }

@@ -1,22 +1,26 @@
-# PetSafe PCB reverse engineering - v0.9.4
+# PetSafe PCB reverse engineering - v0.9.6
 
 One editable **A2 KiCad 10 sheet**, with all 150 main-board catalog entries grouped into functional blocks. Wires connect parts within blocks; named nets connect blocks. This revision uses the installed **KiCad 10.0.5** and **KiCad MCP Server**, with **20 unmodified stock symbol definitions and four explicitly authorized datasheet symbols**.
 
-## Current via review (v0.9.4)
+## Current via review (v0.9.6)
 
-120 distinct via IDs reviewed; 120 active sites / 127 stable IDs. PIC15/RC4 connects through V022-V016 to MX512H INA pin2; PIC16/RC5 connects through V023-V019 to INB pin3. Six GPIO onward destinations remain unknown. V011-V014 reach Q1.L. The user explicitly removes the old Q1.L-R43.2 photo-derived connection; R43.2 still reaches V015. Seven IDs remain unmentioned, some already photo-matched. V114 net remains the only held via conflict.
+120 IDs reviewed; 120 active sites. User confirms V036-V108 (RA3-R14), V037-V102 (RA4-R15), V039-V097 (RA5-R16) and V047-V091 (RC0-R11). All five tuning-control GPIOs are now mapped, including earlier RC6-R13. Only RC2/V049 and RB0/V026 remain open PIC GPIOs. V053-V071 is rejected. V064-V063 confirms the regulated R37/R39 feed. V090 to V095/V100/V103/V107 all returned OL. V114 is U2.T2 GND, C5 negative and LED common are grounded. Q1.L is reported VDD; regulated versus motor rail choice remains pending.
+
+## Next measurement round
+
+Use the [paired photo locator](docs/VIA_PAIR_TESTS.html) or [one-page guide](output/pdf/PetSafe_via_pair_round2.pdf). Four next checks: V064–V070 and V095 against V100/V103/V107. The four tuning routes and V064–V063 are confirmed; V053–V071 and V090 to the other four capacitor junctions are rejected. [Search rationale and results](docs/VIA_PAIR_SEARCH.md), [readings CSV](evidence/via_pair_readings.csv).
 
 ## Corrected markings and measured evidence (2026-10-08)
 
-[U6 / Q8 marking update](docs/U6_Q8_MARKING_UPDATE.md) identifies **U6 C2NM as a strong S-812C33AMC 3.3 V regulator candidate** and **Q8 3724A as a complementary N/P MOSFET pair, with SIL3724A as the datasheet candidate**. This replaces the earlier misread WN23/372A hypotheses. U6 ground, joined Q8 outer pads and the source-return candidate are supported by earlier resistance readings; the centre-pad correction now resolves V113/V115, while V114 still needs its net identified; the proposed C6 output tie was refuted and removed; other routes and actual rail voltage remain unverified. U1/U5/U6/Q8 now use MCP-authored datasheet symbols with standard KiCad footprints. D3 uses a BAV99 candidate (A7); D2 is an unidentified 4P stock placeholder with its old clamp ties withdrawn. R41 is 330 ohm from the user-read 331 marking; D4/D5 use SD05 TVS candidates and D6 uses a provisional MMSZ5228BS 3.9 V Zener (2.4 V alternative).
+[U6 / Q8 marking update](docs/U6_Q8_MARKING_UPDATE.md) identifies **U6 C2NM as a strong S-812C33AMC 3.3 V regulator candidate** and **Q8 3724A as a complementary N/P MOSFET pair, with SIL3724A as the datasheet candidate**. This replaces the earlier misread WN23/372A hypotheses. U6 ground, joined Q8 outer pads and the source-return candidate are supported by earlier resistance readings; the centre-pad correction now resolves V113/V115, and V114 is now corrected to U2.T2 GND; the proposed C6 output tie was refuted and removed; other routes and actual rail voltage remain unverified. U1/U5/U6/Q8 now use MCP-authored datasheet symbols with standard KiCad footprints. D3 uses a BAV99 candidate (A7); D2 is an unidentified 4P stock placeholder with its old clamp ties withdrawn. R41 is 330 ohm from the user-read 331 marking; D4/D5 use SD05 TVS candidates and D6 uses a provisional MMSZ5228BS 3.9 V Zener (2.4 V alternative).
 
 ## Open the result
 
-- `docs/VIA_REVIEW.html`: interactive front/rear comparison, 120 active sites / 127 stable IDs; 111 user-reviewed IDs including corrections, conflicts and component cross-checks.
+- `docs/VIA_REVIEW.html`: interactive front/rear comparison, 120 active sites / 127 stable IDs; 120 user-reviewed IDs including corrections, conflicts and component cross-checks.
 - `index.html`: zoomable offline viewer, searchable inventory and photo links.
 - `schematic/PetSafe_1001339.kicad_pro`: open the single native schematic in KiCad 10.
 - `output/pdf/PetSafe_single_sheet.pdf`: one-page vector drawing.
-- `output/pdf/PetSafe_PIC_GPIO_pin_map.pdf`: updated close-up with all 28 PIC pins numbered and 6 unresolved GPIOs highlighted; fill `evidence/PIC_GPIO_missing.csv` or reply with pin, destination pad and reading.
+- `output/pdf/PetSafe_PIC_GPIO_pin_map.pdf`: updated close-up with all 28 PIC pins numbered and 2 unresolved GPIOs highlighted; fill `evidence/PIC_GPIO_missing.csv` or reply with pin, destination pad and reading.
 - `output/pdf/PetSafe_measurement_round1.pdf`: annotated photos, recorded U6/Q8 readings and targeted C6 follow-up.
 - `docs/LIBRARIES_AND_ALTERNATIVES.md`: library choices, datasheet symbol provenance, footprints and Western alternatives.
 - `docs/RECONSTRUCTION.md`: circuit hypotheses, identifications and calculations.
@@ -32,9 +36,9 @@ U1 (probable S-1200B45) and U5 (MX512H) now use datasheet-derived symbols create
 
 Western alternatives are documented separately: **MCP6002-I/SN** for SGM8542 and **DRV8212PDSGR** for an MX512H redesign. The motor driver has a different package and pinout; it has not been substituted into the reconstructed board. Both alternatives have standard KiCad symbols and footprints. Pin-compatible does not mean electrically interchangeable.
 
-ERC retains **51 findings**: 37 unconnected pins, 8 isolated pin labels, five undriven power checks and one undriven input (the still-inferred LED common). There are no off-grid endpoints or dangling wire ends. No artificial no-connect or power flags hide missing evidence. The 37 open pads include 19 on DNP entries and 18 others, including two internally open U6 pins with unresolved external ties. Six PIC GPIO pads remain open; both motor-control GPIOs are now mapped. Existing local nets can still have uncertain onward routes.
+ERC retains **42 findings**: 33 unconnected pins, four isolated pin labels and five undriven power checks. The LED input-drive finding is resolved. No artificial no-connect or power flags hide missing evidence. Open pads include 19 on DNP entries and 14 populated-entry pads, including two internally open U6 pins with unresolved external ties. Only PIC13/RC2 and PIC21/RB0 remain open GPIOs; all five tuning-control GPIOs and both motor controls are mapped. Existing local nets can still have uncertain onward routes.
 
-Read the [complete status report](output/pdf/PetSafe_completion_status.pdf) for every remaining area and all 28 PIC pins, and the [via review findings](docs/VIA_REVIEW_RESULTS.md) for each changed endpoint. **Q8 V113/V115 are resolved as centre pin5 GND. V114 opposite pin2 has an unresolved net assignment.** V025=GND and V026=PIC21/RB0 are now corrected. V073 is now GND only; its duplicate R19 report is resolved. No further symbol files are missing for the chosen candidates. PIR daughterboard internals and a routed PCB remain outside this main-board revision.
+Read the [complete status report](output/pdf/PetSafe_completion_status.pdf) for every remaining area and all 28 PIC pins, and the [via review findings](docs/VIA_REVIEW_RESULTS.md) for each changed endpoint. **Q8 V113/V115 are resolved as centre pin5 GND. V114 is corrected to U2.T2/pin2 GND; it is not Q8.** V025=GND and V026=PIC21/RB0 are now corrected. V073 is now GND only; its duplicate R19 report is resolved. No further symbol files are missing for the chosen candidates. PIR daughterboard internals and a routed PCB remain outside this main-board revision.
 
 ## Repository contents
 

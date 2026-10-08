@@ -1,13 +1,13 @@
 {
   "date": "2026-10-08",
-  "revision": "v0.9.4",
-  "missing_gpio_count": 6,
+  "revision": "v0.9.6",
+  "missing_gpio_count": 2,
   "pin_list_matches_native_netlist": "PASS",
   "original_photo_bytes_preserved": "PASS",
-  "schematic_sha256": "a51edb2f66189e4f4a7eaab3536ed5f5b44b98e664c1303055244141e290edff",
-  "pdf_sha256": "5a872a67faa4339b4a8f55202773ec581f9320fd546157db539f375f80b062d9",
-  "png_sha256": "75820ea4bf75722f00de10fc4e1d80a806cc33342118f90464c60e741f07516f",
-  "visual_review": "PASS: all 28 physical leads numbered; six orange GPIOs with their confirmed local via identifiers. Original source photographs preserved.",
-  "warning": "Six GPIO onward destinations unresolved; each has an identified local via. PIC15/16 reach motor INA/INB. No NC inferred. Local modeled nets can still have inferred continuations.",
-  "current_revision_check": "v0.9.4: map regenerated with six unresolved GPIOs; pins15/16 are now grey and map to motor INA/INB."
+  "schematic_sha256": "897a9f20e4a7ec486fd8f6f369d9a7b53de39872337f00ddf5e7795d3c3937d3",
+  "pdf_sha256": "2d71c9770311d35e832f6b031e1ddf90c438c9b7062873a2b5b5addecb8b4c87",
+  "png_sha256": "88103ea682d2acd1c4c62bb61f183f054004e0f5dc46ddbf831eaa28edcc0bdc",
+  "visual_review": "PASS: all 28 physical leads numbered; only RC2/13 and RB0/21 orange. Original photographs preserved.",
+  "warning": "Local or inferred nets may still lack remote connections; no NC assumed.",
+  "current_revision_check": "v0.9.6: only RC2/pin13 and RB0/pin21 remain highlighted."
 }

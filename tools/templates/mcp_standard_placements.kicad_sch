@@ -7009,7 +7009,7 @@
 				(hide yes)
 			)
 		)
-		(property "ViaEvidence" "v0.9.4: user confirms pin15/RC4 via V022-V016 to MX512H U5 pin2/INA, and pin16/RC5 via V023-V019 to U5 pin3/INB. Remaining via-only GPIOs: 5/V036, 6/V037, 7/V039, 11/V047, 13/V049, 21/V026."
+		(property "ViaEvidence" "v0.9.6 user working pairs: 5/RA3 V036-V108 R14; 6/RA4 V037-V102 R15; 7/RA5 V039-V097 R16; 11/RC0 V047-V091 R11. Existing RC6-R13 retained. Only 13/RC2 and 21/RB0 remain without modeled onward routes."
 			(at 262.89 78.74 0)
 			(effects
 				(font
@@ -9086,7 +9086,7 @@
 				)
 			)
 		)
-    (property "ViaEvidence" "v0.9.4: V011-V014 reach Q1.L. User explicitly requests removal of old photo-derived Q1.L-R43.2 connection. Q1.L onward destination and physical transistor role remain unresolved." (at 453.39 111.76 0)
+    (property "ViaEvidence" "v0.9.5: V011-V014 reach Q1.L and user reports VDD. Which VDD rail remains to be distinguished (V064 regulated versus V001 motor supply). R43.2/V015 remains explicitly separate. No transistor polarity inferred from the supply report." (at 453.39 111.76 0)
       (effects (font (size 1.27 1.27)) (hide yes))
     )
 		(pin "1"
@@ -9411,6 +9411,9 @@
 				)
 			)
 		)
+    (property "ViaEvidence" "v0.9.5: V114 reaches U2.T2, not Q8.T2. Earlier user GND assignment retained; native U2 pin2 already GND. This resolves the via annotation conflict." (at 87.63 185.42 0)
+      (effects (font (size 1.27 1.27)) (hide yes))
+    )
 		(pin "1"
 			(uuid "b12d478f-8efc-45ae-b85b-1e819f80563f")
 		)
@@ -10239,6 +10242,9 @@
 				(hide yes)
 			)
 		)
+    (property "ViaEvidence" "v0.9.5: V125/V126 reach C5 negative terminal, native pad2, GND. Confirms existing ground assignment; 470uF/16V value retained." (at 237.49 181.61 0)
+      (effects (font (size 1.27 1.27)) (hide yes))
+    )
 		(pin "1"
 			(uuid "1f0a9396-2967-444b-97f0-8b5ec6729161")
 		)
@@ -10794,6 +10800,9 @@
 				)
 			)
 		)
+    (property "ViaEvidence" "v0.9.5: V127 is GND and reaches LED1. IMG_2432 shows the common pair opposite the resistor-fed pads; these are the existing model BL/BR pair (stock pins3/4), now grounded. Physical orientation and internal colour/polarity mapping remain provisional." (at 231.14 237.49 0)
+      (effects (font (size 1.27 1.27)) (hide yes))
+    )
 		(pin "1"
 			(uuid "e17bbd08-da1b-4440-abe8-ef09d84db2d3")
 		)
@@ -14367,7 +14376,7 @@
 				)
 			)
 		)
-    (property "ViaEvidence" "v0.9.2: V108 reaches R14; free pad1 selected from photo. Onward GPIO unknown." (at 88.9 347.98 0)
+    (property "ViaEvidence" "User reports working via pair V036-V108: PIC pin5 to R14.1; no numerical resistance supplied." (at 88.9 347.98 0)
       (effects (font (size 1.27 1.27)) (hide yes))
     )
 		(pin "1"
@@ -14803,7 +14812,7 @@
 				)
 			)
 		)
-    (property "ViaEvidence" "v0.9.2: V102 reaches R15; free pad1 selected from photo. Onward GPIO unknown." (at 142.24 347.98 0)
+    (property "ViaEvidence" "User reports working via pair V037-V102: PIC pin6 to R15.1; no numerical resistance supplied." (at 142.24 347.98 0)
       (effects (font (size 1.27 1.27)) (hide yes))
     )
 		(pin "1"
@@ -15239,7 +15248,7 @@
 				)
 			)
 		)
-    (property "ViaEvidence" "v0.9.2: V097 reaches R16; free pad1 selected from photo. Onward GPIO unknown." (at 195.58 347.98 0)
+    (property "ViaEvidence" "User reports working via pair V039-V097: PIC pin7 to R16.1; no numerical resistance supplied." (at 195.58 347.98 0)
       (effects (font (size 1.27 1.27)) (hide yes))
     )
 		(pin "1"
@@ -15675,7 +15684,7 @@
 				)
 			)
 		)
-    (property "ViaEvidence" "v0.9.2: V091 reaches R11; free pad1 selected from photo. Onward GPIO unknown." (at 248.92 347.98 0)
+    (property "ViaEvidence" "User reports working via pair V047-V091: PIC pin11 to R11.1; no numerical resistance supplied." (at 248.92 347.98 0)
       (effects (font (size 1.27 1.27)) (hide yes))
     )
 		(pin "1"
@@ -16018,7 +16027,7 @@
 				)
 			)
 		)
-		(property "ViaEvidence" "v0.9: R37.1 and R39.2 share V063. Withdraw assumed regulated VDD feed; remote supply unresolved."
+		(property "ViaEvidence" "v0.9.6: User confirms V064-V063. R37.1/R39.2 feed junction is regulated board VDD, not motor VDD."
 			(at 309.88 295.91 0)
 			(effects
 				(font
@@ -16597,7 +16606,7 @@
 				)
 			)
 		)
-		(property "ViaEvidence" "v0.9: R39.2 joins R37.1 at V063, not a demonstrated GND connection."
+		(property "ViaEvidence" "v0.9.6: User confirms V064-V063. R37.1/R39.2 feed junction is regulated board VDD, not motor VDD."
 			(at 351.79 355.6 0)
 			(effects
 				(font
@@ -18539,7 +18548,7 @@
 				(hide yes)
 			)
 		)
-		(property "ViaEvidence" "v0.9.2: V113/V115 connect centre B2/pin5 to GND; earlier outer B1/B3 via annotation withdrawn. V114 reaches opposite centre T2/pin2, with GND versus source supply unresolved. Outer drain join retains earlier D-E resistance evidence."
+		(property "ViaEvidence" "v0.9.5: V113/V115 reach centre B2/pin5 GND. V114 belongs to U2.T2 and supplies no evidence about Q8.T2. Existing Q8.T2 supply hypothesis and outer-drain join remain independently qualified."
 			(at 162.56 231.14 0)
 			(effects
 				(font
