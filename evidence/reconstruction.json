@@ -2258,7 +2258,7 @@
         "R1",
         "R2"
       ],
-      "note": "Physical pads in IMG_2430 upright: left top/middle/bottom, right top/bottom. No assumed LDO pinout.",
+      "note": "Photo pads in IMG_2430 upright: left top/middle/bottom and right top/bottom. Selected S-1200B45 candidate pinout is datasheet-derived; fitted identity and all external branches are not thereby proven.",
       "side": "front",
       "traced_pin_count": 3,
       "proposed_value": "S-1200B45?",
@@ -2406,11 +2406,11 @@
         "R",
         "S"
       ],
-      "note": "Physical-pad symbol, not transistor pin-function assignment. L/R = upper pair, S = lower single pad in upright detail photograph.",
+      "note": "Photo pad identifiers L/R denote the pair and S the single pad; candidate BC847 pin functions use B=R, E=L, C=S. Orientation and circuit role remain inferred.",
       "side": "front",
       "traced_pin_count": 1,
       "proposed_value": "BC847B?",
-      "hypothesis": "H15: 1FW suggests BC847B. B=R E=L C=S. PIR interface role and J3 order inferred.",
+      "hypothesis": "1FW supports BC847B. Candidate B=R, E=L, C=S and PIR interface role remain inferred. J3.1/red supply is user-confirmed; J3.2/.3 functions still require cross-check.",
       "library_symbol": "Transistor_BJT:BC847",
       "footprint": "Package_TO_SOT_SMD:SOT-23",
       "footprint_confidence": "datasheet/package candidate",
@@ -2429,7 +2429,7 @@
         "R",
         "S"
       ],
-      "note": "Physical-pad symbol, not transistor pin-function assignment. L/R = upper pair, S = lower single pad in upright detail photograph.",
+      "note": "Photo L/R denote the paired pads, S the single pad. Standard PNP symbol uses provisional B=R, E=L, C=S; actual terminal functions remain to be verified.",
       "side": "front",
       "traced_pin_count": 2,
       "proposed_value": "MMBTA55?",
@@ -2456,7 +2456,7 @@
         "R",
         "S"
       ],
-      "note": "Physical-pad symbol, not transistor pin-function assignment. L/R = upper pair, S = lower single pad in upright detail photograph.",
+      "note": "Photo L/R denote the paired pads, S the single pad. Standard PNP symbol uses provisional B=R, E=L, C=S; actual terminal functions remain to be verified.",
       "side": "front",
       "traced_pin_count": 2,
       "proposed_value": "MMBTA55?",
@@ -2483,7 +2483,7 @@
         "R",
         "S"
       ],
-      "note": "Physical-pad symbol, not transistor pin-function assignment. L/R = upper pair, S = lower single pad in upright detail photograph.",
+      "note": "Photo L/R denote the paired pads, S the single pad. Standard PNP symbol uses provisional B=R, E=L, C=S; actual terminal functions remain to be verified.",
       "side": "front",
       "traced_pin_count": 2,
       "proposed_value": "MMBTA55?",
@@ -2510,7 +2510,7 @@
         "R",
         "S"
       ],
-      "note": "Physical-pad symbol, not transistor pin-function assignment. L/R = upper pair, S = lower single pad in upright detail photograph.",
+      "note": "Photo L/R denote the paired pads, S the single pad. Standard PNP symbol uses provisional B=R, E=L, C=S; actual terminal functions remain to be verified.",
       "side": "front",
       "traced_pin_count": 2,
       "proposed_value": "MMBTA55?",
@@ -2546,7 +2546,7 @@
         "C": "S"
       },
       "proposed_value": "BC857C?",
-      "hypothesis": "H11: 3GW fits BC857C PNP. v0.9.7: photo plus 11.2kohm R18+R19 path supports emitter at regulated VDD, base pull-up R19 and series base input R18. Control origin unknown; physical B=L E=R C=S remains a supported inference.",
+      "hypothesis": "3GW supports BC857C PNP. Photo and 11.2 kohm R18+R19 path support B=L, E=R/VDD, C=S/R20; terminal selection and switching role remain inferred. Control input R18.1 is now user-confirmed to PIC12/RC1 via V053-V070.",
       "library_symbol": "Transistor_BJT:BC857",
       "footprint": "Package_TO_SOT_SMD:SOT-23",
       "footprint_confidence": "datasheet/package candidate",
@@ -2573,7 +2573,7 @@
       "side": "front",
       "traced_pin_count": 0,
       "proposed_value": "SIL3724A?",
-      "hypothesis": "v0.9 HOLD: 3724A supports SIL3724A candidate; V113/V115 user GND reports conflict with the outer joined-pad/output model. Earlier D-E2ohm and S-G2ohm retained, but external topology requires reconciliation. C6 exact route remains unresolved.",
+      "hypothesis": "3724A supports the SIL3724A complementary MOSFET candidate; fitted maker unconfirmed. V113/V115 centre B2/native5 GND is resolved; outer-drain join retains D-E low-resistance evidence. V114 belongs to U2.T2 GND, not Q8. Q8 supply path and C6.1 remain incomplete; no current centre-ground conflict.",
       "library_symbol": "PetSafe_Datasheet:SIL3724A",
       "footprint": "Package_TO_SOT_SMD:SOT-23-6",
       "previous_marking": "372A (missing digit)",
@@ -2621,7 +2621,7 @@
         "R",
         "S"
       ],
-      "note": "Physical-pad symbol, not transistor pin-function assignment. L/R = upper pair, S = lower single pad in upright detail photograph.",
+      "note": "Photo L/R denote the paired pads, S the single pad. Standard PNP symbol uses provisional B=R, E=L, C=S; actual terminal functions remain to be verified.",
       "side": "front",
       "traced_pin_count": 2,
       "proposed_value": "MMBTA55?",
@@ -2787,7 +2787,7 @@
         "BL",
         "BR"
       ],
-      "note": "Four physical leads retained. Internal common pairs require meter check; no invented terminal shorting.",
+      "note": "Four physical leads retained. The model provisionally groups TL/BL and TR/BR as common sides; this normal tactile-switch assumption requires a released/pressed continuity check.",
       "side": "front",
       "traced_pin_count": 0,
       "library_symbol": "Switch:SW_Push_Dual",
@@ -2832,7 +2832,7 @@
         "2",
         "3"
       ],
-      "note": "1 red, 2 blue, 3 black from rear photo. Electrical meaning still to verify.",
+      "note": "Rear-photo colour association: 1 red, 2 blue, 3 black. User confirms pin1/red PIR supply. Model assigns pin2=GND and pin3=raw signal provisionally; verify physical order and functions, not by wire colour alone.",
       "side": "front",
       "traced_pin_count": 0,
       "proposed_value": "PIR BOARD",

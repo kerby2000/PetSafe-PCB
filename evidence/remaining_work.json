@@ -1,264 +1,48 @@
 {
   "date": "2026-10-08",
-  "revision": "v0.9.9",
   "review_revision": "cleanup-1",
-  "interpretation": "Every catalog entry is drawn. Hardware connectivity, values and identities are only partially verified. No routed PCB exists.",
-  "catalog_entries": 150,
-  "physical_pins": 352,
-  "unresolved_physical_pins": 28,
-  "unresolved_pins_by_population": {
-    "populated": 10,
-    "DNP": 18
-  },
-  "unresolved_pins_by_reference": {
-    "C26": 1,
-    "C42": 2,
-    "C49": 2,
-    "C6": 1,
-    "D2": 3,
-    "D6": 2,
-    "J6": 2,
-    "Q9": 1,
-    "R36": 2,
-    "R46": 2,
-    "R47": 2,
-    "TP9": 1,
-    "U6": 2,
-    "U6A": 2,
-    "U7": 3
-  },
-  "current_gpio_pins": [],
-  "current_fitted_open_pads": [
-    "C26.1",
-    "C6.1",
-    "D2.L",
-    "D2.R",
-    "D2.S",
-    "D6.1",
-    "D6.2",
-    "TP9.1",
-    "U6.L1",
-    "U6.L2"
-  ],
-  "current_dnp_open_pads": [
-    "C42.1",
-    "C42.2",
-    "C49.1",
-    "C49.2",
-    "J6.1",
-    "J6.2",
-    "Q9.S",
-    "R36.1",
-    "R36.2",
-    "R46.1",
-    "R46.2",
-    "R47.1",
-    "R47.2",
-    "U6A.L",
-    "U6A.R2",
-    "U7.1",
-    "U7.2",
-    "U7.3"
-  ],
-  "unknown_ceramic_values": [
-    "C1",
-    "C2",
-    "C6",
-    "C7",
-    "C8",
-    "C9",
-    "C10",
-    "C11",
-    "C12",
-    "C13",
-    "C14",
-    "C15",
-    "C16",
-    "C17",
-    "C18",
-    "C19",
-    "C20",
-    "C21",
-    "C22",
-    "C23",
-    "C24",
-    "C25",
-    "C26",
-    "C27",
-    "C28",
-    "C29",
-    "C30",
-    "C31",
-    "C32",
-    "C33",
-    "C34",
-    "C35",
-    "C36",
-    "C37",
-    "C38",
-    "C39",
-    "C40",
-    "C41",
-    "C43",
-    "C44",
-    "C45",
-    "C46",
-    "C47",
-    "C48"
-  ],
-  "unknown_magnetic_values": [
-    "L1",
-    "L2"
-  ],
-  "footprints": {
-    "assigned": 147,
-    "unassigned": [
-      "C5",
-      "LED1",
-      "S1"
-    ],
-    "qualification": "Assigned is not the same as measured. R8 and C11 anchor photo-based package families."
-  },
-  "erc_total": 36,
-  "erc_by_type": {
-    "power_pin_not_driven": 5,
-    "pin_not_connected": 28,
-    "isolated_pin_label": 3
-  },
-  "modeled_nets": 83,
-  "schematic_sha256": "82e726dcbfc1dcad72cfe59cf4f342af0eba7867529473be2bcb66c36851ad5b",
-  "known_identified_ICs_needing_new_symbols": [],
-  "complete_symbols_for_selected_candidates": true,
-  "available_instruments": [
-    "LCR meter",
-    "multimeter"
-  ],
-  "via_review": {
-    "catalogued_ids": 127,
-    "active_sites": 120,
-    "user_reported_ids": 123,
-    "original_user_reported_ids": 97,
-    "omitted_from_user_list": [
-      "V027",
-      "V028",
-      "V030",
-      "V038"
-    ],
-    "rejected": [
-      "V033",
-      "V050",
-      "V117",
-      "V120",
-      "V121",
-      "V122",
-      "V124"
-    ],
-    "conflicts": [],
-    "statuses": {
-      "ASSIGNED": 116,
-      "PHOTO_LOCAL": 4,
-      "REJECTED_NOT_VIA": 7
-    }
-  },
-  "current_gaps": [
+  "basis_revision": "v0.9.9",
+  "scope": "All presently known main-board uncertainties. Issue groups are not missing-net counts. No new electrical guesses were promoted during cleanup.",
+  "rails": [
     {
-      "id": "E01",
-      "area": "D2 / marking 4P",
-      "gap": "Identity, internal pin functions and all three external connections. The earlier BAV99 clamp assumption is withdrawn.",
-      "method": "With power disconnected, take the six directed diode-mode readings between D2 pads shown in the existing D2 guide. Then trace only the terminal indicated by the result."
+      "name": "BATTERY+",
+      "board_label": "BATTERY (+)",
+      "path": "Battery positive -> Q1 single pad/native3 (candidate drain); TP14/R43.2 on the raw side.",
+      "basis": "User battery-path report; TP14 raw-side placement from photo plus V015-TP14/R43.2 confirmation."
     },
     {
-      "id": "E02",
-      "area": "D3 / V082 supply association",
-      "gap": "Which physical D3 terminal reaches V082. Current D3.L=GND, D3.R=H_RX_VDD and D3.S=H_RX_RF_SENSE are provisional; none is presently assigned to VDD.",
-      "method": "Measure V082 to each of D3's three pads. Record low-ohm continuity separately from diode/resistive readings."
+      "name": "VSYS",
+      "board_label": "No printed net name; user-approved name",
+      "path": "Q1.L/native2 -> U5/MX512H pin4; L1.1 and L2.1 supply sides.",
+      "basis": "User-confirmed shared supply; filter terminal numbering is photo-derived. Do not join their opposite ends."
     },
     {
-      "id": "E03",
-      "area": "RF supply / Q8 / C6",
-      "gap": "C6.1 route and Q8 source-supply path. F-P=10 ohm supports a supply-related path but does not establish a direct copper join. Exact Q8 maker remains a candidate.",
-      "method": "Start with C6's non-ground pad and the L1 output/Q8 supply node; record resistance both ways. Use the existing labelled Q8 photo, not the withdrawn C6-to-output wire."
+      "name": "VDD",
+      "board_label": "VDD test point",
+      "path": "TP103, PIC20/C32, U5 pin1/VCC, V064/V063/V075/V082.",
+      "basis": "User via/test-point continuity. Distinct from VSYS and BATTERY+."
     },
     {
-      "id": "E04",
-      "area": "Antenna / five tuning cells",
-      "gap": "Remote paths of the five capacitor midpoints and ANT2; the modeled tuning network is not yet a verified closed antenna circuit. Transistor orientation is provisional.",
-      "method": "Follow one cell at a time from ANT1/ANT2 toward a visible capacitor pad or via. Choose the next specific pair from the photographs; do not repeat a broad midpoint sweep."
+      "name": "VREF",
+      "board_label": "VREF test point",
+      "path": "TP104, PIC21/RB0/V026, PIC4/RA2/V035/C39, R21.2/V071.",
+      "basis": "User-confirmed core. R22/R23/R48 branches remain inferred."
     },
     {
-      "id": "E05",
-      "area": "Button circuit",
-      "gap": "R41.1/H_BUTTON_MCU has no destination. S1 common lead pairs are currently assumed from a normal tactile switch.",
-      "method": "With power disconnected, determine S1 common pairs released/pressed; then trace R41.1 toward the MCU side."
-    },
-    {
-      "id": "E06",
-      "area": "Local-only PIC / discrete nodes",
-      "gap": "Onward roles of those three nodes, D1.R/H_D1_FREE, C26.1 and TP9.1. Local connectivity is not proof that these are intentionally unused.",
-      "method": "Inspect the matching opposite-side vias first, then request only a specific continuity pair for each unresolved branch."
-    },
-    {
-      "id": "E07",
-      "area": "PIR interface / U6 / J3",
-      "gap": "U6 VIN/VOUT external branches, NC-pad external ties, actual PIR voltage, J3.2/.3 roles and Q2 signal path. The model uses J3.2=GND and J3.3=raw signal; blue/black colour alone is not confirmation or grounds to swap them.",
-      "method": "First verify J3.2 and J3.3 against GND and the modeled signal endpoint; then check U6 supply/output continuity. Powered voltage checks come after this routing audit."
-    },
-    {
-      "id": "E08",
-      "area": "Receiver / bias / Q7",
-      "gap": "Q7 terminal selection and power-switch role, receiver feedback/coupling branches, and R22.2/R23.2/R48.2 VREF ties remain inferred. TP6/V072 and U3.5/V079/V080 lack fully verified onward roles.",
-      "method": "Resolve E02 first because it may change receiver power. Then confirm the three provisional VREF bias branches and selected U3 feedback endpoints; retain C18 as a component boundary."
-    },
-    {
-      "id": "E09",
-      "area": "Power input / Q1 / rail voltages",
-      "gap": "Exact Q1 maker and gate operation, unmeasured rail voltages, and U1 enable/option branches. Reverse-polarity protection is an interpretation, not a powered test.",
-      "method": "Retain the confirmed rail split. Cross-check the Q1 gate/R44 path and U1 enable wiring before a targeted voltage test."
-    },
-    {
-      "id": "E10",
-      "area": "ICSP protection / D6 / J1",
-      "gap": "Both D6 pad routes, D6 exact voltage/polarity, and J1 physical pin-number orientation including square-pad/VPP correspondence.",
-      "method": "Measure D6 pads to the adjacent PIC/ICSP nodes. Confirm J1 pad order against the board labels before relying on connector numbering."
-    },
-    {
-      "id": "I01",
-      "area": "Candidate identities / transistor pin maps",
-      "gap": "Short markings do not uniquely prove manufacturers. Candidate choices and some B/E/C or MOSFET source/drain assignments remain qualified. Western alternatives are redesign options, not identities of fitted parts.",
-      "method": "Use electrical pad behavior and package/marking evidence for specific candidates. Do not request sharper photos where the existing marking is already legible."
-    },
-    {
-      "id": "I02",
-      "area": "LED / motor connector",
-      "gap": "LED internal polarity/colour mapping and J5 physical A/B lead polarity remain provisional.",
-      "method": "Check LED pad pairs in diode mode and record emitted colour. Match J5 wire positions to U5 outputs by continuity."
-    },
-    {
-      "id": "V01",
-      "area": "Unmarked passive values",
-      "gap": "44 fitted ceramic capacitances and L1/L2 type/value remain unrecovered. Capacitor voltage rating/dielectric and resistor tolerance/power rating are also not established by geometry.",
-      "method": "Use the LCR meter first on C6 and one tuning cell, recording frequency/mode and in-circuit status. Isolate one terminal only if an individual value is needed and the network reading cannot resolve it."
-    },
-    {
-      "id": "M01",
-      "area": "Package geometry / PCB reproduction",
-      "gap": "C5, S1 and LED1 footprints are blank. Other families, connector pitch, test-pad drills, switch lead span and exact board geometry are partly photo-based.",
-      "method": "Measure C5 can diameter/lead spacing, S1 body/lead span and LED1 body/pad pitch. Refine other footprints only where a photo scale or ruler contradicts the selected family."
-    },
-    {
-      "id": "D01",
-      "area": "Empty options",
-      "gap": "Optional-pad routing is incomplete; values and intended uses may remain unknowable without another board variant.",
-      "method": "Record option copper where visible; defer measurement unless it affects a populated net."
-    },
-    {
-      "id": "F01",
-      "area": "Function / internal layers / daughterboard",
-      "gap": "No powered functional validation, actual layer stack or routed KiCad PCB has been created. The PIR daughterboard internal circuit is not reconstructed. MCU firmware behavior and operating timing are not established.",
-      "method": "Finish priority electrical gaps first. Then test defined functions/voltages and decide whether physical PCB reproduction and daughterboard reverse engineering are needed."
+      "name": "GND",
+      "board_label": "GND / BATTERY (-)",
+      "path": "Battery negative and ground copper.",
+      "basis": "User ground reports and matched rear copper; association of every candidate branch is not thereby proved."
     }
   ],
-  "items": [
+  "confirmed_summary": [
+    "150 catalog entries on one A2 sheet, with 20 stock and 4 authorized custom symbol definitions in use.",
+    "All PIC pads have modeled local nets; user-confirmed tuning controls and H-bridge INA/INB routes are retained.",
+    "BATTERY+, VSYS, VDD, VREF and GND are distinguished; L1/L2 supply sides both connect to VSYS.",
+    "Reported continuity, resistance and negative results are preserved separately from inferred connections.",
+    "Original ZIP and 26 original photo hashes are preserved; native/model net partitions match."
+  ],
+  "issues": [
     {
       "id": "E01",
       "area": "D2 / marking 4P",
@@ -661,46 +445,5 @@
       "open_pads": [],
       "nets": []
     }
-  ],
-  "rails": [
-    {
-      "name": "BATTERY+",
-      "board_label": "BATTERY (+)",
-      "path": "Battery positive -> Q1 single pad/native3 (candidate drain); TP14/R43.2 on the raw side.",
-      "basis": "User battery-path report; TP14 raw-side placement from photo plus V015-TP14/R43.2 confirmation."
-    },
-    {
-      "name": "VSYS",
-      "board_label": "No printed net name; user-approved name",
-      "path": "Q1.L/native2 -> U5/MX512H pin4; L1.1 and L2.1 supply sides.",
-      "basis": "User-confirmed shared supply; filter terminal numbering is photo-derived. Do not join their opposite ends."
-    },
-    {
-      "name": "VDD",
-      "board_label": "VDD test point",
-      "path": "TP103, PIC20/C32, U5 pin1/VCC, V064/V063/V075/V082.",
-      "basis": "User via/test-point continuity. Distinct from VSYS and BATTERY+."
-    },
-    {
-      "name": "VREF",
-      "board_label": "VREF test point",
-      "path": "TP104, PIC21/RB0/V026, PIC4/RA2/V035/C39, R21.2/V071.",
-      "basis": "User-confirmed core. R22/R23/R48 branches remain inferred."
-    },
-    {
-      "name": "GND",
-      "board_label": "GND / BATTERY (-)",
-      "path": "Battery negative and ground copper.",
-      "basis": "User ground reports and matched rear copper; association of every candidate branch is not thereby proved."
-    }
-  ],
-  "population_note": "Open pads include empty options, test pads and internally NC pins. Zero open PIC pads does not prove every onward route.",
-  "completed": [
-    "150 catalog entries on one A2 sheet, with 20 stock and 4 authorized custom symbol definitions in use.",
-    "All PIC pads have modeled local nets; user-confirmed tuning controls and H-bridge INA/INB routes are retained.",
-    "BATTERY+, VSYS, VDD, VREF and GND are distinguished; L1/L2 supply sides both connect to VSYS.",
-    "Reported continuity, resistance and negative results are preserved separately from inferred connections.",
-    "Original ZIP and 26 original photo hashes are preserved; native/model net partitions match."
-  ],
-  "history": "docs/history/README.md"
+  ]
 }

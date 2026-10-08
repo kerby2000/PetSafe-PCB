@@ -1,5 +1,6 @@
 param([string]$KiCadCli = '', [string]$Python = 'python', [switch]$Regenerate)
 $ErrorActionPreference = 'Stop'
+$env:PYTHONUTF8 = '1'
 $projectRoot = Split-Path -Parent $PSScriptRoot
 Push-Location $projectRoot
 try {

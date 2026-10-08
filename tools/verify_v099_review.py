@@ -68,7 +68,11 @@ placements=read('evidence/library_placements.json')
 for ref in ['U4','R11','R14','R15','R16','R37','R39','Q1','U2','Q8','C5','LED1','R18','R19','Q7','TP3','TP104','U106','J3','R43','TP14','R42','R44','TP4','TP103','R21','R22','R23','R48']:
  expected=next(c for c in placements['components'] if c['reference']==ref)['properties']['ViaEvidence']
  assert xml.findtext(f'./components/comp[@ref="{ref}"]/fields/field[@name="ViaEvidence"]')==expected,ref
-pdfs={'output/pdf/PetSafe_single_sheet.pdf':1,'output/pdf/PetSafe_completion_status.pdf':2,'output/pdf/PetSafe_PIC_GPIO_pin_map.pdf':1,'output/pdf/PetSafe_via_pair_next_check.pdf':1}
+status_pdf=PdfReader(R/'output/pdf/PetSafe_completion_status.pdf')
+# Status is a living report: validate content, not the historical two-page layout.
+status_text='\n'.join(p.extract_text() for p in status_pdf.pages)
+assert 'PIC connections' in status_text and 'Every remaining open pad' in status_text
+pdfs={'output/pdf/PetSafe_single_sheet.pdf':1,'output/pdf/PetSafe_completion_status.pdf':len(status_pdf.pages),'output/pdf/PetSafe_PIC_GPIO_pin_map.pdf':1,'output/pdf/PetSafe_via_pair_next_check.pdf':1}
 for path,pages in pdfs.items():assert len(PdfReader(R/path).pages)==pages
 assert net('Q7.R')==net('R19.2')==net('VDD.1')
 assert net('R18.2')==net('R19.1')==net('Q7.L')

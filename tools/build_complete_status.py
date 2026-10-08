@@ -2,8 +2,9 @@
 from pathlib import Path
 from collections import Counter
 import json,csv
+from current_state import current_state
 from xml.sax.saxutils import escape
-from reportlab.platypus import SimpleDocTemplate,Paragraph,Spacer,Table,TableStyle,PageBreak
+from reportlab.platypus import SimpleDocTemplate,Paragraph,Spacer,Table,TableStyle,PageBreak,KeepTogether
 from reportlab.lib.styles import getSampleStyleSheet,ParagraphStyle
 from reportlab.lib.colors import HexColor,white
 from reportlab.lib.pagesizes import A4
@@ -24,44 +25,7 @@ local={1:'J1 VPP; mapping inferred; D6 route missing',2:'C25 signal pad / V031; 
 15:'V022-V016 to U5 pin2 / INA; user-confirmed',16:'V023-V019 to U5 pin3 / INB; user-confirmed',17:'R13; user meter / visible trace',18:'TP17; visible route; old R13 guess withdrawn',19:'GND / C32 / V045 photo anchor',20:'V042 to board VDD TP user-confirmed; C32.1 local photo route',
 21:'VREF (TP104), V026 and V071/R21.2; user-confirmed',22:'TP2 / R31; user meter / visible trace',23:'TP1 / R30; user meter / visible trace',24:'R4; photo-derived; sensing role remains inferred',25:'TP4 / V017 / R42.1 / R44.1; user continuity; C41 photo-derived',26:'TP10 / R35; user meter / visible trace',27:'ICSP CLK / D4 / R32; photo-derived',28:'ICSP DAT / D5 / R40; photo-derived'}
 pins=[dict(pin=n,gpio=func[n],net=member.get(f'U4.{n}'),open_pad=n in gpios,evidence=local[n]) for n in range(1,29)]
-gaps=[
-('PIC / block interfaces',f'{len(gpios)} GPIO pads open. Other pins have local nets but may lack remote continuations. Motor INA/INB now resolved to PIC15/16.', 'Review remote continuations of existing local nets; the open-GPIO checklist is complete.'),
-('Q8 / RF output / C6','V113/V115 resolve Q8 centre pin5 GND. V114 is U2 pin2 GND; Q8 source supply and C6.1 route remain inferred/unresolved.', 'V114 conflict resolved. Check Q8 supply independently; no inferred rail merge.'),
-('Tuning bank','All five controls mapped: RC6/R13, RA3/R14, RA4/R15, RA5/R16, RC0/R11. Capacitor-midpoint and antenna links remain unknown.', 'Seven capacitor pairs gave OL. Broad pairwise tests stopped; next trace toward a specific visible/component endpoint.'),
-('Auxiliary / receiver','V077 grounds C19/R29. V075 supply plus V064-V070 = 11.2k supports Q7 emitter/VDD, R19 pull-up and R18 base input; topology inferred. V067 joins J3.1/PIR supply; U6A remains DNP. V063 feed now joins regulated VDD; V017/R42.1/R44.1 now joins TP4/PIC25; Q1.L/V011-V014 post-Q1 VSYS confirmed; BATTERY+ is separate; R1A supports FMOS3401A PMOS candidate; R43.2/V015 joins TP14, separate from Q1.L.', 'RC1 now reaches R18 via V053-V070; no further generic GPIO sweep needed. V071/R21.2 reaches VREF/RB0; other receiver-bias branches and Q7 topology remain inferred. V053-V071 is rejected.'),
-('D2 / D6 / candidate parts','D2/4P identity and all three pad routes remain open. D6 has two open pads. V082 reaches logic VDD/TP103; its D3 terminal remains unresolved. U6/Q8 and small BJTs/diodes retain candidate identities/polarities.', 'D2 diode-mode guide; D6 continuity; targeted candidate pin checks.'),
-('Other open fitted pads','C26.1 and TP9.1; U6 NC pins 4/5 have unknown external ties. LED common now grounded from V127/photo; internal LED mapping and S1 legs remain provisional.', 'Targeted continuity; no need to identify chips on empty footprints.'),
-('Component values','44 unmarked fitted capacitor values and L1/L2 type/value remain unrecovered. C5 = 470uF / 16V is recorded; 38 fitted resistors have decoded nominal values.', 'LCR first on RF/tuning parts, recording frequency; in-circuit results are network readings.'),
-('Packages','147/150 footprints assigned. C5, S1 and LED1 still need exact geometry; other photo-based package assignments remain candidates.', 'C5 diameter/lead spacing; S1/LED1 body and pad spacing. R8/C11 sizes already recorded.'),
-]
-status=read('evidence/completion_status.json')
-status.update(revision=m['revision'],unresolved_physical_pins=len(m['unresolved_pins']),unresolved_pins_by_population=dict(counts),
-    current_gpio_pins=gpios,current_fitted_open_pads=fitted,current_dnp_open_pads=dnp,current_gaps=[dict(area=x,gap=y,method=z) for x,y,z in gaps],
-    via_review=a['review_summary'],complete_symbols_for_selected_candidates=True)
-status['completed']=[s.replace('Five additional PIC local routes from existing photos; 14 GPIO pins remain open','v0.7 historical: five additional PIC local routes recovered; current GPIO count below') for s in status['completed']]
-entry='v0.9: 28 endpoint corrections from user via review and component-pad cross-checks; 37 open pads, eight GPIO pads'
-if entry not in status['completed']:status['completed'].append(entry)
-entry='v0.9.1: 21 via-site corrections; V017 joins R42.1/R44.1; V033 rejected; V073 GND-only conflict resolved'
-if entry not in status['completed']:status['completed'].append(entry)
-entry='v0.9.4: PIC RC4/RC5 confirmed to motor INA/INB; Q1.L-R43.2 explicitly withdrawn; six GPIO onward destinations unknown'
-if entry not in status['completed']:status['completed'].append(entry)
-entry='v0.9.3: five PIC-to-via confirmations; V072 corrected to TP6; V079/V080 mapped to U3 pin5; onward GPIO nets still unresolved'
-if entry not in status['completed']:status['completed'].append(entry)
-entry='v0.9.2: 19 site corrections; Q8 centre-ground annotation corrected; V077 C19/R29 grounded; five further artifacts rejected'
-if entry not in status['completed']:status['completed'].append(entry)
-for item in status['items']:
-    if item['refs']==['U6']:item['detail']='C2NM supports candidate S-812C33AMC; VIN/VOUT roles remain inferred, 3.3V not measured. V063/R37/R39 feed now confirmed to regulated VDD via V064. V067 reaches J3.1/PIR supply and the prior U6A option pad; this does not prove all U6 local branches.'
-    if item['refs']==['Q8']:item['detail']='v0.9.2: V113/V115 centre B2/pin5 GND resolved. Outer drain join keeps earlier D-E resistance evidence. v0.9.5 corrects V114 to U2.T2/pin2 GND, not Q8.T2. Q8 source-supply assignment remains a separate hypothesis. C6 route and fitted maker remain uncertain.'
-    if 'U4' in item['refs']:item['detail']='All PIC pads have modeled local destinations. RC1/PIC12 reaches R18 via V053-V070. User confirms 13/RC2 to TP3 and 21/RB0 to VREF. Four tuning-control routes now confirmed. PIC15/16 now reach U5 INA/INB through confirmed via pairs. Old RC1/V053-to-VREF photo join explicitly rejected by user. See pic_gpio_status.json.'
-entry='v0.9.5: V114 corrected to U2 ground; C5 negative confirmed; LED common grounded; Q1 rail choice later resolved as motor VDD in v0.9.8'
-if entry not in status['completed']:status['completed'].append(entry)
-entry='v0.9.6: four tuning-control via pairs confirmed; V053-V071 rejected; only RC2 and RB0 remain open GPIOs'
-if entry not in status['completed']:status['completed'].append(entry)
-entry='v0.9.7: V064-V070 = 11.2 kohm; R18 supply tie removed and Q7/R19 pull-up reconstructed as supported inference'
-if entry not in status['completed']:status['completed'].append(entry)
-entry='v0.9.8: RC2/V049 to TP3 and RB0/V026 to VREF confirmed; RC1/V053-V070-R18 confirmed; old VREF join rejected'
-if entry not in status['completed']:status['completed'].append(entry)
-status['completed'].append('v0.9.9: raw battery separated from post-Q1 supply; R1A PMOS candidate replaces unsupported NPN.') if not any(s.startswith('v0.9.9:') for s in status['completed']) else None
+status=current_state()
 save('evidence/completion_status.json',status)
 save('evidence/pic_gpio_status.json',dict(revision=m['revision'],pins=pins,open_gpio_pins=gpios,qualification='A modeled local net does not certify its remote role or all attached inferred branches.'))
 with (R/'evidence/pic_gpio_status.csv').open('w',newline='',encoding='utf-8') as f:
@@ -82,21 +46,26 @@ def table(rows,widths):
 out=R/'output/pdf/PetSafe_completion_status.pdf'
 doc=SimpleDocTemplate(str(out),pagesize=A4,rightMargin=32,leftMargin=32,topMargin=30,bottomMargin=32,title=f'PetSafe {m["revision"]} - complete schematic status',author='PetSafe PCB reverse-engineering project')
 W=A4[0]-64
-story=[P('What remains to finish','TitlePS'),P(f'PetSafe 100-1339 R03 A | {m["revision"]} | 8 October 2026'),
-P('<b>All 150 catalog entries are drawn on one KiCad sheet.</b> This includes empty options and test pads. The drawing is structurally complete; hidden wiring, candidate identities and component values still need evidence.'),
-table([['Drawing / libraries','Electrical gaps','Packages / values'],['1 A2 sheet; 20 stock + 4 authorized custom symbol definitions; no missing library files for selected candidates.',f'{len(m["unresolved_pins"])} open pads = {counts["populated"]} populated-entry pads + {counts["DNP"]} DNP pads. {len(gpios)} GPIO pads open.','147/150 footprints; 44 capacitor values and 2 magnetic-part values unknown.']],[W/3]*3),
-P('What your via review changed','HeadPS'),
-P('User confirms V035/RA2/C39.1 to VREF and V042/PIC20/C32.1 to board VDD. Earlier RC2/V049-TP3 and RB0/V026-VREF retained. RC1/V053-V070-R18 confirmed; old RC1/VREF photo assumption explicitly rejected. Also confirmed: RA3-R14, RA4-R15, RA5-R16 and RC0-R11; V053-V071 rejected. 123 IDs reviewed; 120 active sites. PIC15/RC4 now reaches U5.2/INA via V022-V016; PIC16/RC5 reaches U5.3/INB via V023-V019. V011-V014/Q1.L now confirmed to motor VDD/U5 pin4, distinct from logic VDD. R43.2 joins TP14, separate from Q1.L. Four IDs remain unmentioned, some photo-matched. Raw battery BATTERY+ reaches Q1 single pad3; Q1.L/pad2 supplies VSYS. TP14 stays on the raw side (photo). Both are separate from regulated board VDD. R1A supports the FMOS3401A PMOS candidate.'),
-table([['Remaining area','What is missing','How to resolve']]+gaps,[87,257,W-344]),
-P('Remaining conflicts for later review','HeadPS'),
-P('<b>Resolved:</b> V025, V026, V073 and Q8 V113/V115. <b>V114 resolved:</b> U2.T2/pin2 GND, not Q8. C5 negative confirmed by V125/V126. V127 grounds the photo-selected LED common pair. <b>V075:</b> regulated VDD measured. Q7/R19 terminal selection inferred from IMG_2434 and the new 11.2 kohm V064-V070 result. No functional test supplied.'),
-P(f'<b>Validation:</b> KiCad 10.0.5 exports pass; {v["proposed_net_partitions"]} modeled nets match the native file. {v["erc_total"]} ERC findings remain: 28 open pins, 3 isolated labels and 5 power findings. This checks the file, not hardware correctness. No artificial NC or power flags were added.'),PageBreak(),
-P('PIC connections: complete picture','TitlePS'),P('Physical package pins, top view. Use the separate numbered close-up to locate them. OPEN means no modeled pad connection; a local connection can still have an unknown onward destination.'),
-table([['Pin','Function','State','Local destination / evidence']]+[[p['pin'],{27:'RB6/CLK',28:'RB7/DAT'}.get(p['pin'],p['gpio']),'OPEN' if p['open_pad'] else 'Local net',p['evidence']] for p in pins],[30,64,52,W-146]),
-P('Every remaining open pad','HeadPS'),
-P(f'<b>Populated entries ({len(fitted)}):</b> '+escape(', '.join(fitted))+f'.<br/><b>Empty options ({len(dnp)}):</b> '+escape(', '.join(dnp))+'.','SmallPS'),
-Spacer(1,6),P('Pad names above are photo-model names; U6.L1/L2 map to its internal NC pins 4/5. DNP pads do not block understanding of the fitted circuit. Vias with a component association do not automatically prove a connection to every other pad on a previously inferred net.','SmallPS'),
-Spacer(1,6),P('Evidence: user via review and supplied MX512H diagram; original front/rear photographs; reconstruction.json, via_audit.json, v09_net_changes.json, v091_net_changes.json, v092_net_changes.json, v093_net_changes.json, v094_net_changes.json, v095_net_changes.json, v096_net_changes.json, v097_net_changes.json, v098_net_changes.json, v099_net_changes.json and native KiCad validation. Pin names follow the existing Microchip datasheet audit. The via viewer retains reports and conflicts.','SmallPS')]
+story=[P('Schematic completion status','TitlePS'),P(f'PetSafe 100-1339 R03 A | {m["revision"]} | {status["date"]}'),
+P('<b>All catalog entries are drawn on one sheet.</b> The remaining questions are listed explicitly below. This is a partially verified reconstruction, not a completed hardware validation or a routed PCB.'),
+table([['Coverage','Open connections','Values / packages'],[f'{status["catalog_entries"]} entries; 1 A2 sheet; 20 stock + 4 custom symbol definitions.',f'{len(fitted)} populated-entry pads + {len(dnp)} DNP pads. {len(gpios)} open PIC pads in the model.',f'{len(status["unknown_ceramic_values"])} ceramic values and L1/L2 unknown; {status["footprints"]["assigned"]}/{status["catalog_entries"]} footprints assigned.']],[W/3]*3),
+P('Power rails - current names','HeadPS'),table([['Name','Known path']]+[[r['name'],r['path']] for r in status['rails']],[80,W-80]),
+P('L1/L2 share the VSYS supply side. Their opposite ends are not shorted together. H_RF_VDD, H_LDO_IN, H_RX_VDD and H_PIR_VDD describe local branches; these are not additional confirmed independent supplies. Rail voltages have not been measured.'),
+P('Recommended next checks','HeadPS'),P('1. Identify which D3 pad joins V082/VDD (E02).<br/>2. Resolve D2, C6/Q8, and the isolated button/antenna paths.<br/>3. Cross-check receiver/PIR branches and candidate pin functions.<br/>4. Recover RF/tuning values, then other passives and missing package geometry.'),
+P('Validation and limits','HeadPS'),P(f'{v["proposed_net_partitions"]} modeled net partitions match KiCad 10.0.5. ERC retains {v["erc_total"]} findings: 28 open pins, 3 isolated labels and 5 undriven power checks. No artificial NC/power flags hide gaps. All 26 original photo hashes are unchanged. This proves file consistency, not all physical connections.'),
+P('The three isolated labels are H_ANT_B (ANT2), H_D1_FREE (D1.R) and H_BUTTON_MCU (R41.1). A PIC pin can have a local net and still lack an onward destination. Question-mark count is not a completion metric.'),PageBreak()]
+for title,ids in [('Priority circuit gaps',['E01','E02','E03','E04','E05','E06']),('Other routing and identity gaps',['E07','E08','E09','E10','I01','I02']),('Values, mechanics and scope',['V01','M01','D01','F01'])]:
+    story.append(P(title,'TitlePS'))
+    for i in status['items']:
+        if i['id'] not in ids:continue
+        story.append(KeepTogether([P(escape(i['id']+' - '+i['area']),'HeadPS'),P('<b>Known:</b> '+escape(i['known'])),P('<b>Uncertain:</b> '+escape(i['unknown'])),P('<b>Next:</b> '+escape(i['next_action']))]))
+    if 'V01' in ids:
+        story.extend([P('Every unrecovered ceramic value','HeadPS'),P(escape(', '.join(status['unknown_ceramic_values']))),P('C5 is already 470 uF / 16 V. In-circuit LCR readings may include parallel components and semiconductor paths; record frequency, mode and whether a lead was isolated. Geometry cannot establish capacitance, dielectric or voltage rating.')])
+    story.append(PageBreak())
+story.extend([P('PIC connections','TitlePS'),P('Physical package pins. All have modeled local nets; the evidence column distinguishes confirmed endpoints from photo-derived or incomplete branches. Use the separate numbered photo guide for physical locations.'),
+table([['Pin','Function','Local destination / evidence']]+[[p['pin'],{27:'RB6/CLK',28:'RB7/DAT'}.get(p['pin'],p['gpio']),p['evidence']] for p in pins],[30,64,W-94]),
+P('Every remaining open pad','HeadPS'),P('<b>Populated entries:</b> '+escape(', '.join(fitted))+'.<br/><b>Empty options:</b> '+escape(', '.join(dnp))+'.','SmallPS'),
+P('U6.L1/L2 are candidate internal NC pins 4/5; external ties remain unknown. Photo pad S means single pad, not necessarily source. Current completion checklist includes closure criteria and the full per-component audit. Sources: reconstruction.json, remaining_work.json, via_audit.json, v099_net_changes.json, native validation and the preserved earlier measurement records.','SmallPS')])
 def footer(c,d):
     c.setFillColor(ink);c.setFont('Helvetica',8);c.drawString(32,17,'PetSafe | Evidence-qualified reconstruction | '+m['revision']);c.drawRightString(A4[0]-32,17,str(d.page))
 doc.build(story,onFirstPage=footer,onLaterPages=footer)
