@@ -77,6 +77,7 @@ for inst in instances:
     if ref=='Y1':rx=vx=x;ry=y-5.08;vy=y-3.175
     if ref in ['C30','C31']:rx=vx=x+2.54;ry=y-0.635;vy=y+1.27
     if ref=='TP11':rx=vx=x-1.27;ry=y-5.08;vy=y-3.175
+    if ref in ['TP1','TP2']:rx=vx=x+7.62;ry=y-1.27;vy=y+0.635
     if ref=='S1':rx=vx=x;ry=y-10.16;vy=y-8.255
     if ref=='C18':rx=vx=x-6.35;ry=y+3.81;vy=y+5.715
     if ref in ['TP9','TP10','TP104']:ry-=24*1.27;vy-=24*1.27
@@ -86,7 +87,7 @@ for inst in instances:
         effects=one(prop,'effects')
         if effects:prop.remove(effects)
         just=old.get('just','')
-        if ref in ['J1','J3','J5','C30','C31','Q8','U6']:just='left'
+        if ref in ['J1','J3','J5','C30','C31','Q8','U6','TP1','TP2']:just='left'
         if rot==180:just=''
         prop.append(expr(f'(effects (font (size 1.016 1.016)){" (justify "+just+")" if just else ""})'))
     evidence=next(cc for cc in model['components'] if cc['ref']==old['ref'])
@@ -174,7 +175,12 @@ bus('H_VDD',32,['U4.20','C32.1']);bus('H_GND',44,['C32.2','C26.2'])
 wire('PIC_RA0_FILTER','U4.2','C25.1')
 wire('PIC_RA2_FILTER','U4.4','C39.1')
 bus('H_GND',66,['C25.2','C39.2'])
-wire('PIC_TP4_C41','TP4.1','C41.1')
+wire('PIC_TP4_C41','TP4.1','C41.1');stub('H_GND','C41.2',4)
+stub('PIC_RA1_RX_REF','U4.3',4)
+stub('H_TUNE_1','U4.17',-12)
+stub('H_LED_CTL_B','U4.22',4)
+stub('H_LED_CTL_A','U4.23',4)
+stub('PIC_TP4_C41','U4.25',4)
 wire('ICSP_CLK','U4.27',(228,76),(228,43),'J1.CLK');label('ICSP_CLK',(230,43))
 wire('ICSP_DAT','U4.28',(231,78),(231,45),'J1.DAT');label('ICSP_DAT',(233,45))
 stub('MCLR_VPP','U4.1',-12);stub('MCLR_VPP','J1.VPP',-12)
@@ -185,9 +191,13 @@ wire('OSC2','U4.10',(235,58),(235,83),(254,83),(254,89),'Y1.2');wire('OSC2','C31
 wire('H_GND','C30.2',(238,104));wire('H_GND','C31.1',(254,104));wire('PIC_RC3','U4.14','TP11.1')
 stub('H_VBAT','R3.1',0,-4);wire('H_BAT_SENSE','R3.2',(280,75),'R4.1');wire('H_BAT_SENSE','C28.1',(296,75));label('H_BAT_SENSE',(284,75));stub('H_GND','C28.2',0,6)
 stub('PIC_RB3_RETURN','U4.24',14);stub('PIC_RB3_RETURN','R4.2',0,6)
-wire('H_TUNE_1','U4.18','TP17.1');label('H_TUNE_1','TP17.1')
+wire('PIC_RC7_TP17','U4.18','TP17.1');label('PIC_RC7_TP17','TP17.1')
 stub('ICSP_CLK','D4.1',-4);stub('ICSP_CLK','R32.2',3)
 stub('ICSP_DAT','D5.1',-4);stub('ICSP_DAT','R40.1',0,-5)
+stub('H_GND','D4.2',0,4);stub('H_GND','D5.2',0,4)
+wire('H_LED_CTL_A','TP1.1',(151,184),'R30.1')
+wire('H_LED_CTL_B','TP2.1',(151,191),'R31.1')
+label('H_LED_COMMON',(199,187))
 stub('RB5_OPT','U4.26',14);stub('RB5_OPT','TP10.1',0,4)
 stub('RB5_OPT','R35.1',-3);stub('R35_Q9','R35.2',0,4)
 stub('R35_Q9','Q9.L',-4)
@@ -219,7 +229,7 @@ wire('H_RF_OUT_CAND',(130,174),'R5.1')
 wire('H_GND','Q8.B2',(130,188),(134,188));label('H_GND',(134,188))
 wire('H_RF_VDD','Q8.T2',(177,159),(177,132),'L1.2')
 wire('H_RF_VDD','L1.2',(187,132),'C5.1')
-wire('H_RF_VDD',(187,132),'TP2.1');label('H_RF_VDD',(181,132))
+label('H_RF_VDD',(181,132))
 # C6.1 to output was refuted by 400 kohm E-F; leave its destination unresolved.
 
 # Preserve original frame geometry at half scale, using normal readable text sizes.
@@ -237,13 +247,13 @@ for n in layout['notes']:
         t='U1 datasheet symbol: S-1200B45 SOT-23-5. Pin 4 is internally open; option pads retained.'
     if 'Original photographed pad names remain' in t:
         t='Library pin numbers are mapped to photo pads in evidence/pin_crosswalk.json.'
-    if t.startswith('v0.2'):t='v0.7 | KiCad 10.0.5 | 2026-10-08';n['y']=292
+    if t.startswith('v0.2'):t='v0.8 | KiCad 10.0.5 | 2026-10-08';n['y']=292
     if t.startswith('H14-H15:'):t='H14-H15: C2N supports S-812C33AMC 3.3V LDO. C/R3 ground supported by resistance.'
     if t.startswith('H09:'):t='H09: 3724A matches SIL3724A N/P MOSFET pair. Both units share one package.'
     if t.startswith('Q8 T2/B1/B2'):t='Measured: D-E 2 ohm, S-G 2 ohm; E-F 400 kohm refutes the proposed C6 output tie.'
     if t.startswith('H07:'):t='H07: C14R inverter candidate. Q8 source rail inferred; C6 destination unresolved.'
-    if t.startswith('No invented ties'):t='D4/D5 cathodes traced to ICSP; opposite vias open. D6 type and routes uncertain.'
-    if t.startswith('H02:'):t='PIC local photo traces added; 14 GPIO pads open. Remote destinations partly inferred.'
+    if t.startswith('No invented ties'):t='D4/D5 opposite vias join rear GND copper. D6 type and routes remain uncertain.'
+    if t.startswith('H02:'):t='User GPIO mapping added; 9 GPIO pads open. Hidden destinations remain unresolved.'
     if t.startswith('H03:'):t='R3/R4 sensing candidate; R4 returns to RB3. C28 value estimated.';n['y']=106
     text(t,n['x'],n['y'],1.27 if n['size']>=1 else max(.762,n['size']*1.27))
 text('U5 datasheet symbol: separate logic VCC and motor VDD; both ground pins retained.',320,77,.762)
@@ -305,13 +315,13 @@ for net,edges in adj.items():
 for l in L:
     x,y=l['p'];G.append(expr(f'(label {q(l["net"])} (at {x} {y} 0) (effects (font (size .762 .762)) (justify left bottom)) (uuid {q(uid())}))'))
 tree.extend(G)
-tree.append(expr('(title_block (title "PetSafe 100-1339 R03 A | single-sheet reconstruction") (date "2026-10-08") (rev "0.7") (company "KiCad 10 libraries + four datasheet symbols | MCP authoring") (comment 1 "PIC photo traces corrected; C5 470uF / 16V. Remaining hypotheses documented."))'))
+tree.append(expr('(title_block (title "PetSafe 100-1339 R03 A | single-sheet reconstruction") (date "2026-10-08") (rev "0.8") (company "KiCad 10 libraries + four datasheet symbols | MCP authoring") (comment 1 "User GPIO mapping + front/rear via audit. Remaining hypotheses documented."))'))
 # Canonical pretty printer supplied by the installed MCP server.
 sys.path.insert(0,str(Path.home()/'Documents/VS.Code.Projects/KiCAD-MCP-Server/python'))
 from utils.sexpr_format import prettify
 out=R/'schematic/PetSafe_1001339.kicad_sch'
 out.write_text(prettify(sx.dumps(tree)),encoding='utf-8',newline='\n')
-model.update(revision='v0.7',coordinate_units='mm',native_pin_crosswalk=layout['crosswalk'],pin_positions={e:list(p) for e,p in P.items()},
+model.update(revision='v0.8',coordinate_units='mm',native_pin_crosswalk=layout['crosswalk'],pin_positions={e:list(p) for e,p in P.items()},
              geometric_wires=[dict(net=n,a=a,b=b) for n,a,b in segments],library_policy='KiCad 10 stock symbols plus four explicitly authorized MCP-authored datasheet symbols for U1/U5/U6/Q8')
 for c in model['components']:
     entry=next(x for x in layout['catalog'] if x['original_ref']==c['ref'])

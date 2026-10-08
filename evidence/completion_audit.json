@@ -1,5 +1,5 @@
 {
-  "revision": "v0.7",
+  "revision": "v0.8",
   "instruments": [
     "LCR meter",
     "multimeter"
@@ -12,7 +12,7 @@
   ],
   "fitted_capacitors": 45,
   "fitted_resistors": 38,
-  "unresolved_physical_pins": 54,
+  "unresolved_physical_pins": 46,
   "warning": "Open-pad counts do not include every inferred route. Assigned footprints are candidates, not measured reproductions.",
   "components": [
     {
@@ -1286,8 +1286,8 @@
       "footprint": "Capacitor_SMD:C_0805_2012Metric",
       "footprint_confidence": "medium",
       "footprint_basis": "Photo family and body/land proportions compared with adjacent known IC lead pitch. Size is independent of capacitance, dielectric and voltage rating.",
-      "open_pads": 1,
-      "next_method": "LCR: in-circuit screening first; isolate one terminal if an individual value is needed; Targeted continuity for 1 open physical pads",
+      "open_pads": 0,
+      "next_method": "LCR: in-circuit screening first; isolate one terminal if an individual value is needed",
       "photos": "IMG_2436.jpg;IMG_2437.jpg;IMG_2438.jpg"
     },
     {
@@ -1496,8 +1496,8 @@
       "footprint": "Package_SO:SOIC-28W_7.5x17.9mm_P1.27mm",
       "footprint_confidence": "datasheet/package candidate",
       "footprint_basis": "Existing assignment; see component identity evidence.",
-      "open_pads": 14,
-      "next_method": "Targeted continuity for 14 open physical pads",
+      "open_pads": 9,
+      "next_method": "Targeted continuity for 9 open physical pads",
       "photos": "IMG_2424.jpg"
     },
     {
@@ -1807,12 +1807,12 @@
       "observed": "UNKNOWN",
       "displayed": "SD05? / TVS 5V",
       "marking": "5U",
-      "value_or_identity": "H17v05: New sharp user marking supersedes T4/1N4148WS guess. Semtech SD05 datasheet explicitly maps 5U to 5V unidirectional TVS, SOD323. Stronger candidate; fitted maker unconfirmed. Cathode band visible; photo-pad numbering and external routes still unresolved. v0.7: lower pad in IMG_2437, candidate cathode/model pin1, joins U4.27. Opposite via destination remains unresolved.",
+      "value_or_identity": "v0.8: cathode/model1 to ICSP clock retained. Anode/model2 via V030 joins VSS-associated rear copper (photo inference). 5U/SD05 remains a candidate identification.",
       "footprint": "Diode_SMD:D_SOD-323",
       "footprint_confidence": "datasheet/package candidate",
       "footprint_basis": "Existing assignment; see component identity evidence.",
-      "open_pads": 1,
-      "next_method": "Diode-mode readings and continuity; markings are already recorded; check PIC trace audit before requesting continuity; Targeted continuity for 1 open physical pads",
+      "open_pads": 0,
+      "next_method": "Diode-mode readings and continuity; markings are already recorded; check PIC trace audit before requesting continuity",
       "photos": "IMG_2437.jpg"
     },
     {
@@ -1822,12 +1822,12 @@
       "observed": "UNKNOWN",
       "displayed": "SD05? / TVS 5V",
       "marking": "5U",
-      "value_or_identity": "H17v05: New sharp user marking supersedes T4/1N4148WS guess. Semtech SD05 datasheet explicitly maps 5U to 5V unidirectional TVS, SOD323. Stronger candidate; fitted maker unconfirmed. Cathode band visible; photo-pad numbering and external routes still unresolved. v0.7: lower pad in IMG_2437, candidate cathode/model pin1, joins U4.28. Opposite via destination remains unresolved.",
+      "value_or_identity": "v0.8: cathode/model1 to ICSP data retained. Anode/model2 via V027 joins VSS-associated rear copper (photo inference). 5U/SD05 remains a candidate identification.",
       "footprint": "Diode_SMD:D_SOD-323",
       "footprint_confidence": "datasheet/package candidate",
       "footprint_basis": "Existing assignment; see component identity evidence.",
-      "open_pads": 1,
-      "next_method": "Diode-mode readings and continuity; markings are already recorded; check PIC trace audit before requesting continuity; Targeted continuity for 1 open physical pads",
+      "open_pads": 0,
+      "next_method": "Diode-mode readings and continuity; markings are already recorded; check PIC trace audit before requesting continuity",
       "photos": "IMG_2437.jpg"
     },
     {

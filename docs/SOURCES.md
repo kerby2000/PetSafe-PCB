@@ -85,3 +85,11 @@ User reports D2=4P, D3=A7 and R41=331 (nominal 330 ohm). These supersede the old
 ## v0.7 PIC photo tracing
 
 Microchip DS40001802H, page 4 supplies the SOIC pin numbering and port names. Board connections come from IMG_2436/2437/2438 and the overlapping IMG_2435/2434/2433 top-edge photos, not from a typical application. Five GPIO local routes were added. The RC7/TP17-to-R13 continuation is explicitly probable; vias/body-covered routes remain open. User reports C5 470uF/16V, C11 3.2x1.5mm, R8 1.6x0.77mm. These reports supersede conflicting photo estimates.
+
+## v0.8 continuity and front/rear via evidence
+
+User 2026-10-08 replies confirm both multimeter and visible traces for the GPIO destinations in `evidence/pic_gpio_user_mapping.json`; no numerical resistances supplied in this round. RP7 is interpreted as TP7 from IMG_2434. R13 free-end geometry uses IMG_2433; R28/R29/TP7 use IMG_2434; TP1/TP2 resistor tracks use IMG_2432. This supersedes the previous RC7-to-R13 speculation.
+
+Registered original mosaics `photos/front_registered.jpg` and `photos/back_mirrored_registered.jpg`, original rear IMG_2439-2443, existing cross-side registration records, and Microchip's SOIC VSS8/VSS19/VDD20 pin identities support the via comparison. Rear is already mirrored; do not mirror twice. Front projection errors up to approximately 46 pixels on the full mosaic require local verification. Detailed manually chosen coordinates and limitations are in `evidence/via_audit.json`.
+
+[Altium plane-rule documentation](https://www.altium.com/documentation/altium-designer/pcb/design-rule-types/plane) explains clearance/antipad versus plane connection as general PCB terminology. It does not identify this board's hidden nets or layer count.

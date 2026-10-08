@@ -1,6 +1,6 @@
 {
   "date": "2026-10-08",
-  "revision": "v0.7",
+  "revision": "v0.8",
   "known_identified_ICs_needing_new_symbols": [],
   "completed": [
     "U1 S-1200B45-M5T1 datasheet symbol",
@@ -19,13 +19,15 @@
     "C5 user sleeve reading: 470uF / 16V",
     "C11 user dimensions match 1206; R8 full-body measurement including both metal end caps confirms 0603 size",
     "Five additional PIC local routes from existing photos; 14 GPIO pins remain open",
-    "C32 rail corrected; C25/C39 signal nodes, R4 GPIO return, TP17 tune net, D4/D5 ICSP nodes, R32/R40 ties and TP4/C41 corrected"
+    "C32 rail corrected; C25/C39 signal nodes, R4 GPIO return, TP17 tune net, D4/D5 ICSP nodes, R32/R40 ties and TP4/C41 corrected",
+    "v0.8: five user GPIO destinations added; RB5-TP10 corroborated; conflicting old net hypotheses removed",
+    "v0.8: D4/D5/C41 ground connections from manually matched front/rear vias; photo-based rather than meter-confirmed"
   ],
   "catalog_entries": 150,
   "physical_pins": 352,
-  "unresolved_physical_pins": 54,
+  "unresolved_physical_pins": 46,
   "unresolved_pins_by_population": {
-    "populated": 30,
+    "populated": 22,
     "DNP": 24
   },
   "population_note": "Open pad counts include DNP entries, test pads and internally open IC pins; they are not missing component counts.",
@@ -34,13 +36,10 @@
     "C27": 2,
     "C3": 1,
     "C4": 1,
-    "C41": 1,
     "C42": 2,
     "C49": 2,
     "C6": 1,
     "D2": 3,
-    "D4": 1,
-    "D5": 1,
     "D6": 2,
     "J6": 2,
     "Q9": 2,
@@ -50,7 +49,7 @@
     "R46": 2,
     "R47": 2,
     "TP9": 1,
-    "U4": 14,
+    "U4": 9,
     "U6": 2,
     "U6A": 3,
     "U7": 3,
@@ -104,7 +103,7 @@
       "priority": 2,
       "gap": "Exact diode identity, polarity mapping and routing",
       "candidate": "D4/D5 SD05? / 5V TVS; D6 MMSZ5228BS? / 3.9V Zener (PZU2.4B / 2.4V alternative)",
-      "detail": "D4/D5 candidate cathodes now traced to ICSP_CLK/DAT respectively. Opposite via destinations and both D6 pads unresolved. Exact manufacturers remain uncertain."
+      "detail": "D4/D5 cathodes traced to ICSP; opposite pads join photo-matched main rear ground copper. Both D6 routes and exact diode makers remain unresolved."
     },
     {
       "refs": [
@@ -152,7 +151,7 @@
       "priority": 1,
       "gap": "Hidden routing and MCU destinations",
       "candidate": null,
-      "detail": "14 PIC pads remain open after v0.7 photo tracing. See evidence/pic_trace_audit.json. Several connected pins still lack final remote destinations."
+      "detail": "Nine GPIO destinations remain: 12/15/16/21 via-only; 5/6/7/11/13 no visible continuation. No NC flags. Five destinations user-checked with meter and visual trace; read pic_gpio_user_mapping.json."
     },
     {
       "refs": [

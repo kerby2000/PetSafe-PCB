@@ -1,0 +1,130 @@
+{
+  "date": "2026-10-08",
+  "revision": "v0.8",
+  "method": "User explicitly confirms both multimeter and visible traces; numerical resistance values not supplied.",
+  "raw_clarification": "Both multimeter and the visible traces. Pin 3 goes to R28 and R29 and RP7 point",
+  "interpretation": "RP7 treated as TP7: matching photographed label beside R28/R29. Resistor pad assignment uses photographs, not an explicit numbered-pad measurement.",
+  "pins": [
+    {
+      "pin": 3,
+      "gpio": "RA1",
+      "user_destination": "R28, R29, RP7 point",
+      "status": "DESTINATION_REPORTED",
+      "resistance_ohms": null
+    },
+    {
+      "pin": 5,
+      "gpio": "RA3",
+      "user_destination": "No visible trace; possible hidden trace/via",
+      "status": "UNRESOLVED",
+      "resistance_ohms": null
+    },
+    {
+      "pin": 6,
+      "gpio": "RA4",
+      "user_destination": "No visible trace; possible hidden trace/via",
+      "status": "UNRESOLVED",
+      "resistance_ohms": null
+    },
+    {
+      "pin": 7,
+      "gpio": "RA5",
+      "user_destination": "No visible trace; possible hidden trace/via",
+      "status": "UNRESOLVED",
+      "resistance_ohms": null
+    },
+    {
+      "pin": 11,
+      "gpio": "RC0",
+      "user_destination": "No visible trace; possible hidden trace/via",
+      "status": "UNRESOLVED",
+      "resistance_ohms": null
+    },
+    {
+      "pin": 12,
+      "gpio": "RC1",
+      "user_destination": "Via; user suspects internal layer",
+      "status": "VIA_ONLY",
+      "resistance_ohms": null
+    },
+    {
+      "pin": 13,
+      "gpio": "RC2",
+      "user_destination": "No visible trace; possible hidden trace/via",
+      "status": "UNRESOLVED",
+      "resistance_ohms": null
+    },
+    {
+      "pin": 15,
+      "gpio": "RC4",
+      "user_destination": "Via; user suspects internal layer",
+      "status": "VIA_ONLY",
+      "resistance_ohms": null
+    },
+    {
+      "pin": 16,
+      "gpio": "RC5",
+      "user_destination": "Via; user suspects internal layer",
+      "status": "VIA_ONLY",
+      "resistance_ohms": null
+    },
+    {
+      "pin": 17,
+      "gpio": "RC6",
+      "user_destination": "R13",
+      "status": "DESTINATION_REPORTED",
+      "resistance_ohms": null
+    },
+    {
+      "pin": 21,
+      "gpio": "RB0",
+      "user_destination": "Via; user suspects internal layer",
+      "status": "VIA_ONLY",
+      "resistance_ohms": null
+    },
+    {
+      "pin": 22,
+      "gpio": "RB1",
+      "user_destination": "TP2",
+      "status": "DESTINATION_REPORTED",
+      "resistance_ohms": null
+    },
+    {
+      "pin": 23,
+      "gpio": "RB2",
+      "user_destination": "TP1",
+      "status": "DESTINATION_REPORTED",
+      "resistance_ohms": null
+    },
+    {
+      "pin": 25,
+      "gpio": "RB4",
+      "user_destination": "TP4",
+      "status": "DESTINATION_REPORTED",
+      "resistance_ohms": null
+    },
+    {
+      "pin": 26,
+      "gpio": "RB5",
+      "user_destination": "TP10",
+      "status": "CORROBORATED",
+      "resistance_ohms": null
+    }
+  ],
+  "remaining_gpio": [
+    5,
+    6,
+    7,
+    11,
+    12,
+    13,
+    15,
+    16,
+    21
+  ],
+  "notes": [
+    "Four via destinations remain electrically unidentified. A via does not establish an internal power rail.",
+    "No visible continuation is not proof of no connection; no NC flags added.",
+    "Old schematic guesses for R13/RC7, TP2/RF rail, TP1/LED-common and R28/R29/TP7 other analog nodes withdrawn."
+  ]
+}

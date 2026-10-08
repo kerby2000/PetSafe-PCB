@@ -14,7 +14,9 @@ audit=json.loads((R/'evidence/pic_trace_audit.json').read_text())
 model=json.loads((R/'evidence/reconstruction.json').read_text())
 pins={p['pin']:p for p in audit['pins']}
 missing=sorted(int(ep.split('.')[1]) for ep in model['unresolved_pins'] if ep.startswith('U4.'))
-assert missing==[3,5,6,7,11,12,13,15,16,17,21,22,23,25]
+assert all(1 <= n <= 28 for n in missing)
+user=json.loads((R/'evidence/pic_gpio_user_mapping.json').read_text())
+reported={p['pin']:p for p in user['pins']}
 # Coordinates are on the 1469 x 1958 original, not its resized chat preview.
 left_y=[84,128,173,217,260,304,348,392,437,480,525,570,614,659]
 right_y=[65,111,154,199,245,290,335,380,425,471,516,562,608,653]
@@ -24,7 +26,7 @@ rows=[]
 for n in missing:
  rows.append(dict(pin=n,gpio=pins[n]['function'],photo_side='right' if n<=14 else 'left',
    position=('from bottom: '+str(n)) if n<=14 else ('from top: '+str(n-14)),
-   destination_reference='',destination_pad_or_pin='',resistance_ohms='',method='',notes=''))
+   destination_reference='',destination_pad_or_pin='',resistance_ohms='',method='User visual trace and multimeter; no numeric reading',notes=reported.get(n,{}).get('user_destination','')))
 with (R/'evidence/PIC_GPIO_missing.csv').open('w',newline='',encoding='utf-8') as f:
  w=csv.DictWriter(f,fieldnames=list(rows[0]));w.writeheader();w.writerows(rows)
 photo_manifest=[]
@@ -41,15 +43,15 @@ request=dict(date='2026-10-08',basis_revision=model['revision'],status='AWAITING
  all_pad_targets=[dict(pin=n,function=pins[n]['function'],xy=xy[n],missing=n in missing) for n in range(1,29)],
  reply_format='U4.<pin> -> <component reference> <exact pad/pin> -> <ohms or visual trace>. List every destination found.',
  measurements=rows,
- supplementary_local_nets={str(n):pins[n]['evidence'] for n in [1,2,4,14,18,24,26,27,28]},
+ supplementary_local_nets={str(n):('Direct to TP17; prior onward R13 guess withdrawn' if n==18 else pins[n]['evidence']) for n in [1,2,4,14,18,24,26,27,28]},
  notes=['No guessed destination is presented as a measurement.',
         'All 28 pads are visible in the close-up although the top of the plastic body is cropped.',
-        'No native schematic connectivity changed when preparing this request.'])
+        'v0.8: five user-reported GPIO destinations added; RB5/TP10 corroborated. See pic_gpio_user_mapping.json.'])
 (R/'evidence/pic_gpio_request.json').write_text(json.dumps(request,indent=2)+'\n',encoding='utf-8')
 
 W,H=1191,842
 c=canvas.Canvas(str(OUT),pagesize=(W,H))
-c.setTitle('PetSafe - all 14 unresolved PIC GPIOs and physical pin map')
+c.setTitle(f'PetSafe - {len(missing)} unresolved PIC GPIOs and physical pin map')
 c.setAuthor('PetSafe PCB reverse-engineering project')
 ink=HexColor('#173C3A');muted=HexColor('#5A706E');accent=HexColor('#BF402E')
 gray=HexColor('#EDF1F1');paper=HexColor('#F5F7F5')
@@ -65,7 +67,7 @@ def paragraph(x,y,s,width,size=12,leading=17):
  if line:text(x,y,line,size);y-=leading
  return y
 c.setFillColor(paper);c.rect(0,0,W,H,fill=1,stroke=0)
-text(30,798,'PIC GPIO: 14 destinations still missing',29,True)
+text(30,798,f'PIC GPIO: {len(missing)} destinations still missing',29,True)
 text(30,773,'U4 / PIC16F18855 / 28-pin SOIC | Pin numbers are physical package numbers, not schematic drawing order.',13)
 c.setFillColor(accent);c.roundRect(30,739,16,16,3,fill=1,stroke=0)
 text(54,742,'Orange = unresolved GPIO to trace',12,True)
@@ -98,24 +100,25 @@ text(30,124,'Right row: bottom to top 1-14. Left row: top to bottom 15-28. Do no
 
 tx=815;tw=346
 text(tx,705,'Connection checklist',20,True)
-text(tx,684,'Fill one or more destinations for each orange pin.',10)
+text(tx,684,'Four via-only routes; five without visible continuation.',10)
 c.setFillColor(ink);c.rect(tx,651,tw,23,fill=1,stroke=0)
-text(tx+8,658,'Pin',11,True,white);text(tx+46,658,'GPIO',11,True,white);text(tx+100,658,'Destination / pad / reading',11,True,white)
+text(tx+8,658,'Pin',11,True,white);text(tx+46,658,'GPIO',11,True,white);text(tx+100,658,'Current observation',11,True,white)
 for i,r in enumerate(rows):
  y=651-(i+1)*29
  c.setFillColor(white if i%2==0 else HexColor('#E9EFEC'));c.rect(tx,y,tw,29,fill=1,stroke=0)
  text(tx+9,y+10,str(r['pin']),13,True,accent);text(tx+47,y+10,r['gpio'],12,True)
  c.setStrokeColor(HexColor('#B2C1BC'));c.setLineWidth(.45);c.line(tx+102,y+7,tx+tw-8,y+7)
-y=221
-y=paragraph(tx,y,'Already has a local connection, but the complete net may still need tracing:',tw,11,15)
+ text(tx+102,y+11,'Via; destination unknown' if reported[r['pin']]['status']=='VIA_ONLY' else 'Hidden route or unused?',10)
+y=350
+y=paragraph(tx,y,'User meter + visual trace: 3-R28/R29/TP7; 17-R13; 22-TP2; 23-TP1; 25-TP4. 26-TP10 corroborated. Numerical ohms not supplied.',tw,11,15)
 y=paragraph(tx,y-4,'2: C25 | 4: C39 | 14: TP11 | 18: TP17 | 24: R4 | 26: TP10/R35 | 27/28: ICSP nodes.',tw,11,15)
-paragraph(tx,y-5,'These are not included in the 14 orange pins. MCLR and crystal pins are already represented too.',tw,10,14)
+paragraph(tx,y-5,'These are not included in the orange pins. No visible route is not proof of NC. No no-connect flags were added. RP7 wording interpreted as photographed TP7.',tw,10,14)
 
 c.setStrokeColor(HexColor('#C2D1CB'));c.line(30,108,1161,108)
 text(30,87,'Unpowered checks: disconnect battery and programmer. Compare low readings with your shorted-probe baseline (about 0.5 ohm).',12,True)
 text(30,67,'Reply example: U4.3 -> Rxx, left pad -> 0.7 ohm. A visual trace is useful too. Give exact pads and actual ohms, rather than only a beep.',11)
 text(30,48,'Orange lines are callout leaders, not traced copper. Source: your new close-up; original photograph pixels retained.',10,color=muted)
-text(30,27,'Pinout: Microchip DS40001802G, page 4. Current schematic: v0.7. Date: 2026-10-08. Full details: evidence/pic_gpio_request.json.',10,color=muted)
+text(30,27,'Pinout: Microchip DS40001802G, page 4. Current schematic: v0.8. Date: 2026-10-08. Full details: evidence/pic_gpio_request.json.',10,color=muted)
 c.linkURL(SOURCE+'#page=4',(30,23,290,38),relative=0)
 c.showPage();c.save()
 print(f'{OUT}: 1 page, {len(missing)} unresolved GPIOs, all 28 physical pads numbered')

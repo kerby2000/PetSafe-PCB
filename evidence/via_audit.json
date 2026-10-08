@@ -1,0 +1,2229 @@
+{
+  "date": "2026-10-08",
+  "revision": "v0.8",
+  "source_front": "photos/front_registered.jpg",
+  "source_rear": "photos/back_mirrored_registered.jpg",
+  "images_are_original_photographic_mosaics": true,
+  "coordinate_size": [
+    12000,
+    2600
+  ],
+  "coverage": "Board-wide rear-visible site inventory; not an exhaustive count of every physical via. Sticker, components, solder, image edges and ambiguous tiny features hide sites. Projected front markers are not confirmed net matches.",
+  "layers": "Four-layer construction is a plausible working hypothesis supplied by the user, not verified by the surface photos. Inner planes and signal layers cannot be distinguished by an isolated outer pad alone.",
+  "ground_basis": "Two independent visible PIC VSS anchors (pins 8 and 19) join the main rear copper. Supply pin 20 has a contrasting isolated rear pad.",
+  "registration": "Existing mirrored registration, max recorded control-point residual 5.77 pixels at 1500-pixel width (~46 pixels on this 12000-pixel canvas). Selected PIC endpoints corrected manually. No metric accuracy claimed.",
+  "categories": {
+    "MAIN_REAR_COPPER": "Main VSS-associated rear copper candidate",
+    "REAR_CLEARANCE": "Rear isolated pad; onward net unknown unless independently known",
+    "OTHER_REAR_REGION": "Other/ambiguous region; not automatically GND",
+    "REAR_COMPONENT_PAD": "Rear component land connection"
+  },
+  "sites": [
+    {
+      "rear_xy": [
+        66,
+        1706
+      ],
+      "front_xy": [
+        66,
+        1706
+      ],
+      "rear_appearance": "REAR_CLEARANCE",
+      "front_match": "PROJECTED: inspect original front photo; may be under a component",
+      "endpoints": [],
+      "net": null,
+      "confidence": "rear visible; global front projection approximate",
+      "note": "Visible clearance separates this site from the surrounding rear copper; this alone does not identify an internal net.",
+      "id": "V001"
+    },
+    {
+      "rear_xy": [
+        66,
+        1828
+      ],
+      "front_xy": [
+        66,
+        1828
+      ],
+      "rear_appearance": "REAR_CLEARANCE",
+      "front_match": "PROJECTED: inspect original front photo; may be under a component",
+      "endpoints": [],
+      "net": null,
+      "confidence": "rear visible; global front projection approximate",
+      "note": "Visible clearance separates this site from the surrounding rear copper; this alone does not identify an internal net.",
+      "id": "V002"
+    },
+    {
+      "rear_xy": [
+        178,
+        506
+      ],
+      "front_xy": [
+        178,
+        506
+      ],
+      "rear_appearance": "REAR_CLEARANCE",
+      "front_match": "PROJECTED: inspect original front photo; may be under a component",
+      "endpoints": [],
+      "net": null,
+      "confidence": "rear visible; global front projection approximate",
+      "note": "Visible clearance separates this site from the surrounding rear copper; this alone does not identify an internal net.",
+      "id": "V003"
+    },
+    {
+      "rear_xy": [
+        178,
+        630
+      ],
+      "front_xy": [
+        178,
+        630
+      ],
+      "rear_appearance": "REAR_CLEARANCE",
+      "front_match": "PROJECTED: inspect original front photo; may be under a component",
+      "endpoints": [],
+      "net": null,
+      "confidence": "rear visible; global front projection approximate",
+      "note": "Visible clearance separates this site from the surrounding rear copper; this alone does not identify an internal net.",
+      "id": "V004"
+    },
+    {
+      "rear_xy": [
+        186,
+        1708
+      ],
+      "front_xy": [
+        186,
+        1708
+      ],
+      "rear_appearance": "REAR_CLEARANCE",
+      "front_match": "PROJECTED: inspect original front photo; may be under a component",
+      "endpoints": [],
+      "net": null,
+      "confidence": "rear visible; global front projection approximate",
+      "note": "Visible clearance separates this site from the surrounding rear copper; this alone does not identify an internal net.",
+      "id": "V005"
+    },
+    {
+      "rear_xy": [
+        208,
+        2096
+      ],
+      "front_xy": [
+        208,
+        2096
+      ],
+      "rear_appearance": "MAIN_REAR_COPPER",
+      "front_match": "PROJECTED: inspect original front photo; may be under a component",
+      "endpoints": [],
+      "net": null,
+      "confidence": "rear visible; global front projection approximate",
+      "note": "No isolating rear clearance apparent. Main copper is associated with PIC VSS through the reviewed anchors. Individual front endpoint not yet assigned.",
+      "id": "V006"
+    },
+    {
+      "rear_xy": [
+        682,
+        1794
+      ],
+      "front_xy": [
+        682,
+        1794
+      ],
+      "rear_appearance": "REAR_CLEARANCE",
+      "front_match": "PROJECTED: inspect original front photo; may be under a component",
+      "endpoints": [],
+      "net": null,
+      "confidence": "rear visible; global front projection approximate",
+      "note": "Visible clearance separates this site from the surrounding rear copper; this alone does not identify an internal net.",
+      "id": "V007"
+    },
+    {
+      "rear_xy": [
+        750,
+        430
+      ],
+      "front_xy": [
+        750,
+        430
+      ],
+      "rear_appearance": "MAIN_REAR_COPPER",
+      "front_match": "PROJECTED: inspect original front photo; may be under a component",
+      "endpoints": [],
+      "net": null,
+      "confidence": "rear visible; global front projection approximate",
+      "note": "No isolating rear clearance apparent. Main copper is associated with PIC VSS through the reviewed anchors. Individual front endpoint not yet assigned.",
+      "id": "V008"
+    },
+    {
+      "rear_xy": [
+        750,
+        580
+      ],
+      "front_xy": [
+        750,
+        580
+      ],
+      "rear_appearance": "MAIN_REAR_COPPER",
+      "front_match": "PROJECTED: inspect original front photo; may be under a component",
+      "endpoints": [],
+      "net": null,
+      "confidence": "rear visible; global front projection approximate",
+      "note": "No isolating rear clearance apparent. Main copper is associated with PIC VSS through the reviewed anchors. Individual front endpoint not yet assigned.",
+      "id": "V009"
+    },
+    {
+      "rear_xy": [
+        750,
+        714
+      ],
+      "front_xy": [
+        750,
+        714
+      ],
+      "rear_appearance": "MAIN_REAR_COPPER",
+      "front_match": "PROJECTED: inspect original front photo; may be under a component",
+      "endpoints": [],
+      "net": null,
+      "confidence": "rear visible; global front projection approximate",
+      "note": "No isolating rear clearance apparent. Main copper is associated with PIC VSS through the reviewed anchors. Individual front endpoint not yet assigned.",
+      "id": "V010"
+    },
+    {
+      "rear_xy": [
+        892,
+        1826
+      ],
+      "front_xy": [
+        892,
+        1826
+      ],
+      "rear_appearance": "REAR_CLEARANCE",
+      "front_match": "PROJECTED: inspect original front photo; may be under a component",
+      "endpoints": [],
+      "net": null,
+      "confidence": "rear visible; global front projection approximate",
+      "note": "Visible clearance separates this site from the surrounding rear copper; this alone does not identify an internal net.",
+      "id": "V011"
+    },
+    {
+      "rear_xy": [
+        894,
+        1672
+      ],
+      "front_xy": [
+        894,
+        1672
+      ],
+      "rear_appearance": "REAR_CLEARANCE",
+      "front_match": "PROJECTED: inspect original front photo; may be under a component",
+      "endpoints": [],
+      "net": null,
+      "confidence": "rear visible; global front projection approximate",
+      "note": "Visible clearance separates this site from the surrounding rear copper; this alone does not identify an internal net.",
+      "id": "V012"
+    },
+    {
+      "rear_xy": [
+        1042,
+        1678
+      ],
+      "front_xy": [
+        1042,
+        1678
+      ],
+      "rear_appearance": "REAR_CLEARANCE",
+      "front_match": "PROJECTED: inspect original front photo; may be under a component",
+      "endpoints": [],
+      "net": null,
+      "confidence": "rear visible; global front projection approximate",
+      "note": "Visible clearance separates this site from the surrounding rear copper; this alone does not identify an internal net.",
+      "id": "V013"
+    },
+    {
+      "rear_xy": [
+        1046,
+        1826
+      ],
+      "front_xy": [
+        1046,
+        1826
+      ],
+      "rear_appearance": "REAR_CLEARANCE",
+      "front_match": "PROJECTED: inspect original front photo; may be under a component",
+      "endpoints": [],
+      "net": null,
+      "confidence": "rear visible; global front projection approximate",
+      "note": "Visible clearance separates this site from the surrounding rear copper; this alone does not identify an internal net.",
+      "id": "V014"
+    },
+    {
+      "rear_xy": [
+        1218,
+        1862
+      ],
+      "front_xy": [
+        1218,
+        1862
+      ],
+      "rear_appearance": "REAR_CLEARANCE",
+      "front_match": "PROJECTED: inspect original front photo; may be under a component",
+      "endpoints": [],
+      "net": null,
+      "confidence": "rear visible; global front projection approximate",
+      "note": "Visible clearance separates this site from the surrounding rear copper; this alone does not identify an internal net.",
+      "id": "V015"
+    },
+    {
+      "rear_xy": [
+        1224,
+        1224
+      ],
+      "front_xy": [
+        1224,
+        1224
+      ],
+      "rear_appearance": "REAR_CLEARANCE",
+      "front_match": "PROJECTED: inspect original front photo; may be under a component",
+      "endpoints": [],
+      "net": null,
+      "confidence": "rear visible; global front projection approximate",
+      "note": "Visible clearance separates this site from the surrounding rear copper; this alone does not identify an internal net.",
+      "id": "V016"
+    },
+    {
+      "rear_xy": [
+        1232,
+        1520
+      ],
+      "front_xy": [
+        1232,
+        1520
+      ],
+      "rear_appearance": "REAR_CLEARANCE",
+      "front_match": "PROJECTED: inspect original front photo; may be under a component",
+      "endpoints": [],
+      "net": null,
+      "confidence": "rear visible; global front projection approximate",
+      "note": "Visible clearance separates this site from the surrounding rear copper; this alone does not identify an internal net.",
+      "id": "V017"
+    },
+    {
+      "rear_xy": [
+        1290,
+        840
+      ],
+      "front_xy": [
+        1290,
+        840
+      ],
+      "rear_appearance": "MAIN_REAR_COPPER",
+      "front_match": "PROJECTED: inspect original front photo; may be under a component",
+      "endpoints": [],
+      "net": null,
+      "confidence": "rear visible; global front projection approximate",
+      "note": "No isolating rear clearance apparent. Main copper is associated with PIC VSS through the reviewed anchors. Individual front endpoint not yet assigned.",
+      "id": "V018"
+    },
+    {
+      "rear_xy": [
+        1302,
+        1112
+      ],
+      "front_xy": [
+        1302,
+        1112
+      ],
+      "rear_appearance": "REAR_CLEARANCE",
+      "front_match": "PROJECTED: inspect original front photo; may be under a component",
+      "endpoints": [],
+      "net": null,
+      "confidence": "rear visible; global front projection approximate",
+      "note": "Visible clearance separates this site from the surrounding rear copper; this alone does not identify an internal net.",
+      "id": "V019"
+    },
+    {
+      "rear_xy": [
+        1640,
+        826
+      ],
+      "front_xy": [
+        1640,
+        826
+      ],
+      "rear_appearance": "REAR_CLEARANCE",
+      "front_match": "PROJECTED: inspect original front photo; may be under a component",
+      "endpoints": [],
+      "net": null,
+      "confidence": "rear visible; global front projection approximate",
+      "note": "Visible clearance separates this site from the surrounding rear copper; this alone does not identify an internal net.",
+      "id": "V020"
+    },
+    {
+      "rear_xy": [
+        1650,
+        614
+      ],
+      "front_xy": [
+        1650,
+        614
+      ],
+      "rear_appearance": "MAIN_REAR_COPPER",
+      "front_match": "PROJECTED: inspect original front photo; may be under a component",
+      "endpoints": [],
+      "net": null,
+      "confidence": "rear visible; global front projection approximate",
+      "note": "No isolating rear clearance apparent. Main copper is associated with PIC VSS through the reviewed anchors. Individual front endpoint not yet assigned.",
+      "id": "V021"
+    },
+    {
+      "rear_xy": [
+        1956,
+        1032
+      ],
+      "front_xy": [
+        1956,
+        1032
+      ],
+      "rear_appearance": "REAR_CLEARANCE",
+      "front_match": "PROJECTED: inspect original front photo; may be under a component",
+      "endpoints": [],
+      "net": null,
+      "confidence": "rear visible; global front projection approximate",
+      "note": "Visible clearance separates this site from the surrounding rear copper; this alone does not identify an internal net.",
+      "id": "V022"
+    },
+    {
+      "rear_xy": [
+        1958,
+        876
+      ],
+      "front_xy": [
+        1958,
+        876
+      ],
+      "rear_appearance": "REAR_CLEARANCE",
+      "front_match": "PROJECTED: inspect original front photo; may be under a component",
+      "endpoints": [],
+      "net": null,
+      "confidence": "rear visible; global front projection approximate",
+      "note": "Visible clearance separates this site from the surrounding rear copper; this alone does not identify an internal net.",
+      "id": "V023"
+    },
+    {
+      "rear_xy": [
+        1970,
+        398
+      ],
+      "front_xy": [
+        1970,
+        398
+      ],
+      "rear_appearance": "MAIN_REAR_COPPER",
+      "front_match": "PROJECTED: inspect original front photo; may be under a component",
+      "endpoints": [],
+      "net": null,
+      "confidence": "rear visible; global front projection approximate",
+      "note": "No isolating rear clearance apparent. Main copper is associated with PIC VSS through the reviewed anchors. Individual front endpoint not yet assigned.",
+      "id": "V024"
+    },
+    {
+      "rear_xy": [
+        2134,
+        890
+      ],
+      "front_xy": [
+        2125,
+        900
+      ],
+      "rear_appearance": "MAIN_REAR_COPPER",
+      "front_match": "MANUALLY MATCHED",
+      "endpoints": [
+        "C41.2"
+      ],
+      "net": "H_GND",
+      "confidence": "photo-derived, not continuity measured",
+      "note": "C41 left pad in front mosaic joins this via; rear side joins main VSS-associated copper. Opposite capacitor pad remains the TP4 net.",
+      "id": "V025"
+    },
+    {
+      "rear_xy": [
+        2646,
+        1030
+      ],
+      "front_xy": [
+        2658,
+        1055
+      ],
+      "rear_appearance": "REAR_CLEARANCE",
+      "front_match": "MANUALLY MATCHED",
+      "endpoints": [],
+      "net": null,
+      "confidence": "photo-derived, not continuity measured",
+      "note": "Via beside/under the PIC body near D6. Rear annular clearance is visible; external endpoints require more tracing.",
+      "id": "V026"
+    },
+    {
+      "rear_xy": [
+        2688,
+        522
+      ],
+      "front_xy": [
+        2685,
+        542
+      ],
+      "rear_appearance": "MAIN_REAR_COPPER",
+      "front_match": "MANUALLY MATCHED",
+      "endpoints": [
+        "D5.2"
+      ],
+      "net": "H_GND",
+      "confidence": "photo-derived, not continuity measured",
+      "note": "D5 anode-side via matches the same rear copper region as the PIC VSS anchors.",
+      "id": "V027"
+    },
+    {
+      "rear_xy": [
+        2732,
+        2278
+      ],
+      "front_xy": [
+        2738,
+        2262
+      ],
+      "rear_appearance": "MAIN_REAR_COPPER",
+      "front_match": "MANUALLY MATCHED",
+      "endpoints": [
+        "C26.2"
+      ],
+      "net": "H_GND",
+      "confidence": "photo-derived, not continuity measured",
+      "note": "C26 ground-side pad matches a rear plane site; does not resolve its other pad.",
+      "id": "V028"
+    },
+    {
+      "rear_xy": [
+        2736,
+        1932
+      ],
+      "front_xy": [
+        2736,
+        1932
+      ],
+      "rear_appearance": "MAIN_REAR_COPPER",
+      "front_match": "PROJECTED: inspect original front photo; may be under a component",
+      "endpoints": [],
+      "net": null,
+      "confidence": "rear visible; global front projection approximate",
+      "note": "No isolating rear clearance apparent. Main copper is associated with PIC VSS through the reviewed anchors. Individual front endpoint not yet assigned.",
+      "id": "V029"
+    },
+    {
+      "rear_xy": [
+        2760,
+        262
+      ],
+      "front_xy": [
+        2752,
+        292
+      ],
+      "rear_appearance": "MAIN_REAR_COPPER",
+      "front_match": "MANUALLY MATCHED",
+      "endpoints": [
+        "D4.2"
+      ],
+      "net": "H_GND",
+      "confidence": "photo-derived, not continuity measured",
+      "note": "D4 anode-side via matches a rear site without clearance in the main VSS-associated copper.",
+      "id": "V030"
+    },
+    {
+      "rear_xy": [
+        2852,
+        1848
+      ],
+      "front_xy": [
+        2852,
+        1848
+      ],
+      "rear_appearance": "REAR_CLEARANCE",
+      "front_match": "PROJECTED: inspect original front photo; may be under a component",
+      "endpoints": [],
+      "net": null,
+      "confidence": "rear visible; global front projection approximate",
+      "note": "Visible clearance separates this site from the surrounding rear copper; this alone does not identify an internal net.",
+      "id": "V031"
+    },
+    {
+      "rear_xy": [
+        2906,
+        1342
+      ],
+      "front_xy": [
+        2906,
+        1342
+      ],
+      "rear_appearance": "MAIN_REAR_COPPER",
+      "front_match": "PROJECTED: inspect original front photo; may be under a component",
+      "endpoints": [],
+      "net": null,
+      "confidence": "rear visible; global front projection approximate",
+      "note": "No isolating rear clearance apparent. Main copper is associated with PIC VSS through the reviewed anchors. Individual front endpoint not yet assigned.",
+      "id": "V032"
+    },
+    {
+      "rear_xy": [
+        2910,
+        1612
+      ],
+      "front_xy": [
+        2910,
+        1612
+      ],
+      "rear_appearance": "MAIN_REAR_COPPER",
+      "front_match": "PROJECTED: inspect original front photo; may be under a component",
+      "endpoints": [],
+      "net": null,
+      "confidence": "rear visible; global front projection approximate",
+      "note": "No isolating rear clearance apparent. Main copper is associated with PIC VSS through the reviewed anchors. Individual front endpoint not yet assigned.",
+      "id": "V033"
+    },
+    {
+      "rear_xy": [
+        3028,
+        80
+      ],
+      "front_xy": [
+        3028,
+        80
+      ],
+      "rear_appearance": "OTHER_REAR_REGION",
+      "front_match": "PROJECTED: inspect original front photo; may be under a component",
+      "endpoints": [],
+      "net": null,
+      "confidence": "rear visible; global front projection approximate",
+      "note": "Separate strip/antenna region or ambiguous copper boundary; do not assume GND.",
+      "id": "V034"
+    },
+    {
+      "rear_xy": [
+        3056,
+        1848
+      ],
+      "front_xy": [
+        3056,
+        1848
+      ],
+      "rear_appearance": "REAR_CLEARANCE",
+      "front_match": "PROJECTED: inspect original front photo; may be under a component",
+      "endpoints": [],
+      "net": null,
+      "confidence": "rear visible; global front projection approximate",
+      "note": "Visible clearance separates this site from the surrounding rear copper; this alone does not identify an internal net.",
+      "id": "V035"
+    },
+    {
+      "rear_xy": [
+        3166,
+        1296
+      ],
+      "front_xy": [
+        3166,
+        1296
+      ],
+      "rear_appearance": "REAR_CLEARANCE",
+      "front_match": "PROJECTED: inspect original front photo; may be under a component",
+      "endpoints": [],
+      "net": null,
+      "confidence": "rear visible; global front projection approximate",
+      "note": "Visible clearance separates this site from the surrounding rear copper; this alone does not identify an internal net.",
+      "id": "V036"
+    },
+    {
+      "rear_xy": [
+        3264,
+        1384
+      ],
+      "front_xy": [
+        3264,
+        1384
+      ],
+      "rear_appearance": "REAR_CLEARANCE",
+      "front_match": "PROJECTED: inspect original front photo; may be under a component",
+      "endpoints": [],
+      "net": null,
+      "confidence": "rear visible; global front projection approximate",
+      "note": "Visible clearance separates this site from the surrounding rear copper; this alone does not identify an internal net.",
+      "id": "V037"
+    },
+    {
+      "rear_xy": [
+        3274,
+        1750
+      ],
+      "front_xy": [
+        3288,
+        1760
+      ],
+      "rear_appearance": "MAIN_REAR_COPPER",
+      "front_match": "MANUALLY MATCHED",
+      "endpoints": [
+        "C39.2"
+      ],
+      "net": "H_GND",
+      "confidence": "photo-derived, not continuity measured",
+      "note": "C39 opposite pad via supports the existing GND estimate using the matching rear copper.",
+      "id": "V038"
+    },
+    {
+      "rear_xy": [
+        3370,
+        1296
+      ],
+      "front_xy": [
+        3370,
+        1296
+      ],
+      "rear_appearance": "REAR_CLEARANCE",
+      "front_match": "PROJECTED: inspect original front photo; may be under a component",
+      "endpoints": [],
+      "net": null,
+      "confidence": "rear visible; global front projection approximate",
+      "note": "Visible clearance separates this site from the surrounding rear copper; this alone does not identify an internal net.",
+      "id": "V039"
+    },
+    {
+      "rear_xy": [
+        3428,
+        202
+      ],
+      "front_xy": [
+        3428,
+        202
+      ],
+      "rear_appearance": "MAIN_REAR_COPPER",
+      "front_match": "PROJECTED: inspect original front photo; may be under a component",
+      "endpoints": [],
+      "net": null,
+      "confidence": "rear visible; global front projection approximate",
+      "note": "No isolating rear clearance apparent. Main copper is associated with PIC VSS through the reviewed anchors. Individual front endpoint not yet assigned.",
+      "id": "V040"
+    },
+    {
+      "rear_xy": [
+        3476,
+        1694
+      ],
+      "front_xy": [
+        3485,
+        1698
+      ],
+      "rear_appearance": "MAIN_REAR_COPPER",
+      "front_match": "MANUALLY MATCHED",
+      "endpoints": [
+        "U4.8"
+      ],
+      "net": "H_GND",
+      "confidence": "photo-derived, not continuity measured",
+      "note": "Ground anchor: PIC VSS pin 8 visibly joins this non-isolated rear via.",
+      "id": "V041"
+    },
+    {
+      "rear_xy": [
+        3480,
+        506
+      ],
+      "front_xy": [
+        3492,
+        540
+      ],
+      "rear_appearance": "REAR_CLEARANCE",
+      "front_match": "MANUALLY MATCHED",
+      "endpoints": [
+        "U4.20",
+        "C32.1"
+      ],
+      "net": "H_VDD",
+      "confidence": "photo-derived, not continuity measured",
+      "note": "Contrast anchor: PIC VDD pin 20 / C32 supply pad. Rear annular clearance is visible; the rear plane is not this supply net.",
+      "id": "V042"
+    },
+    {
+      "rear_xy": [
+        3480,
+        1396
+      ],
+      "front_xy": [
+        3480,
+        1396
+      ],
+      "rear_appearance": "MAIN_REAR_COPPER",
+      "front_match": "PROJECTED: inspect original front photo; may be under a component",
+      "endpoints": [],
+      "net": null,
+      "confidence": "rear visible; global front projection approximate",
+      "note": "No isolating rear clearance apparent. Main copper is associated with PIC VSS through the reviewed anchors. Individual front endpoint not yet assigned.",
+      "id": "V043"
+    },
+    {
+      "rear_xy": [
+        3694,
+        852
+      ],
+      "front_xy": [
+        3694,
+        852
+      ],
+      "rear_appearance": "MAIN_REAR_COPPER",
+      "front_match": "PROJECTED: inspect original front photo; may be under a component",
+      "endpoints": [],
+      "net": null,
+      "confidence": "rear visible; global front projection approximate",
+      "note": "No isolating rear clearance apparent. Main copper is associated with PIC VSS through the reviewed anchors. Individual front endpoint not yet assigned.",
+      "id": "V044"
+    },
+    {
+      "rear_xy": [
+        3700,
+        404
+      ],
+      "front_xy": [
+        3715,
+        432
+      ],
+      "rear_appearance": "MAIN_REAR_COPPER",
+      "front_match": "MANUALLY MATCHED",
+      "endpoints": [
+        "U4.19",
+        "C32.2"
+      ],
+      "net": "H_GND",
+      "confidence": "photo-derived, not continuity measured",
+      "note": "Ground anchor: C32 pad visibly joins PIC VSS pin 19 and this non-isolated rear via.",
+      "id": "V045"
+    },
+    {
+      "rear_xy": [
+        3728,
+        2342
+      ],
+      "front_xy": [
+        3728,
+        2342
+      ],
+      "rear_appearance": "MAIN_REAR_COPPER",
+      "front_match": "PROJECTED: inspect original front photo; may be under a component",
+      "endpoints": [],
+      "net": null,
+      "confidence": "rear visible; global front projection approximate",
+      "note": "No isolating rear clearance apparent. Main copper is associated with PIC VSS through the reviewed anchors. Individual front endpoint not yet assigned.",
+      "id": "V046"
+    },
+    {
+      "rear_xy": [
+        3790,
+        1378
+      ],
+      "front_xy": [
+        3790,
+        1378
+      ],
+      "rear_appearance": "REAR_CLEARANCE",
+      "front_match": "PROJECTED: inspect original front photo; may be under a component",
+      "endpoints": [],
+      "net": null,
+      "confidence": "rear visible; global front projection approximate",
+      "note": "Visible clearance separates this site from the surrounding rear copper; this alone does not identify an internal net.",
+      "id": "V047"
+    },
+    {
+      "rear_xy": [
+        3790,
+        1712
+      ],
+      "front_xy": [
+        3790,
+        1712
+      ],
+      "rear_appearance": "MAIN_REAR_COPPER",
+      "front_match": "PROJECTED: inspect original front photo; may be under a component",
+      "endpoints": [],
+      "net": null,
+      "confidence": "rear visible; global front projection approximate",
+      "note": "No isolating rear clearance apparent. Main copper is associated with PIC VSS through the reviewed anchors. Individual front endpoint not yet assigned.",
+      "id": "V048"
+    },
+    {
+      "rear_xy": [
+        4000,
+        1378
+      ],
+      "front_xy": [
+        4000,
+        1378
+      ],
+      "rear_appearance": "REAR_CLEARANCE",
+      "front_match": "PROJECTED: inspect original front photo; may be under a component",
+      "endpoints": [],
+      "net": null,
+      "confidence": "rear visible; global front projection approximate",
+      "note": "Visible clearance separates this site from the surrounding rear copper; this alone does not identify an internal net.",
+      "id": "V049"
+    },
+    {
+      "rear_xy": [
+        4002,
+        1710
+      ],
+      "front_xy": [
+        4002,
+        1710
+      ],
+      "rear_appearance": "MAIN_REAR_COPPER",
+      "front_match": "PROJECTED: inspect original front photo; may be under a component",
+      "endpoints": [],
+      "net": null,
+      "confidence": "rear visible; global front projection approximate",
+      "note": "No isolating rear clearance apparent. Main copper is associated with PIC VSS through the reviewed anchors. Individual front endpoint not yet assigned.",
+      "id": "V050"
+    },
+    {
+      "rear_xy": [
+        4264,
+        700
+      ],
+      "front_xy": [
+        4264,
+        700
+      ],
+      "rear_appearance": "MAIN_REAR_COPPER",
+      "front_match": "PROJECTED: inspect original front photo; may be under a component",
+      "endpoints": [],
+      "net": null,
+      "confidence": "rear visible; global front projection approximate",
+      "note": "No isolating rear clearance apparent. Main copper is associated with PIC VSS through the reviewed anchors. Individual front endpoint not yet assigned.",
+      "id": "V051"
+    },
+    {
+      "rear_xy": [
+        4440,
+        1114
+      ],
+      "front_xy": [
+        4440,
+        1114
+      ],
+      "rear_appearance": "MAIN_REAR_COPPER",
+      "front_match": "PROJECTED: inspect original front photo; may be under a component",
+      "endpoints": [],
+      "net": null,
+      "confidence": "rear visible; global front projection approximate",
+      "note": "No isolating rear clearance apparent. Main copper is associated with PIC VSS through the reviewed anchors. Individual front endpoint not yet assigned.",
+      "id": "V052"
+    },
+    {
+      "rear_xy": [
+        4568,
+        1694
+      ],
+      "front_xy": [
+        4592,
+        1698
+      ],
+      "rear_appearance": "REAR_CLEARANCE",
+      "front_match": "MANUALLY MATCHED",
+      "endpoints": [
+        "U4.12"
+      ],
+      "net": null,
+      "confidence": "photo-derived, not continuity measured",
+      "note": "PIC RC1 pin 12 reaches this site. Rear clearance and no visible onward surface trace; hidden continuation remains unresolved. Do not call it GND or VDD.",
+      "id": "V053"
+    },
+    {
+      "rear_xy": [
+        4620,
+        338
+      ],
+      "front_xy": [
+        4620,
+        338
+      ],
+      "rear_appearance": "MAIN_REAR_COPPER",
+      "front_match": "PROJECTED: inspect original front photo; may be under a component",
+      "endpoints": [],
+      "net": null,
+      "confidence": "rear visible; global front projection approximate",
+      "note": "No isolating rear clearance apparent. Main copper is associated with PIC VSS through the reviewed anchors. Individual front endpoint not yet assigned.",
+      "id": "V054"
+    },
+    {
+      "rear_xy": [
+        4630,
+        2274
+      ],
+      "front_xy": [
+        4630,
+        2274
+      ],
+      "rear_appearance": "MAIN_REAR_COPPER",
+      "front_match": "PROJECTED: inspect original front photo; may be under a component",
+      "endpoints": [],
+      "net": null,
+      "confidence": "rear visible; global front projection approximate",
+      "note": "No isolating rear clearance apparent. Main copper is associated with PIC VSS through the reviewed anchors. Individual front endpoint not yet assigned.",
+      "id": "V055"
+    },
+    {
+      "rear_xy": [
+        4768,
+        168
+      ],
+      "front_xy": [
+        4768,
+        168
+      ],
+      "rear_appearance": "OTHER_REAR_REGION",
+      "front_match": "PROJECTED: inspect original front photo; may be under a component",
+      "endpoints": [],
+      "net": null,
+      "confidence": "rear visible; global front projection approximate",
+      "note": "Separate strip/antenna region or ambiguous copper boundary; do not assume GND.",
+      "id": "V056"
+    },
+    {
+      "rear_xy": [
+        5056,
+        956
+      ],
+      "front_xy": [
+        5056,
+        956
+      ],
+      "rear_appearance": "MAIN_REAR_COPPER",
+      "front_match": "PROJECTED: inspect original front photo; may be under a component",
+      "endpoints": [],
+      "net": null,
+      "confidence": "rear visible; global front projection approximate",
+      "note": "No isolating rear clearance apparent. Main copper is associated with PIC VSS through the reviewed anchors. Individual front endpoint not yet assigned.",
+      "id": "V057"
+    },
+    {
+      "rear_xy": [
+        5060,
+        840
+      ],
+      "front_xy": [
+        5060,
+        840
+      ],
+      "rear_appearance": "MAIN_REAR_COPPER",
+      "front_match": "PROJECTED: inspect original front photo; may be under a component",
+      "endpoints": [],
+      "net": null,
+      "confidence": "rear visible; global front projection approximate",
+      "note": "No isolating rear clearance apparent. Main copper is associated with PIC VSS through the reviewed anchors. Individual front endpoint not yet assigned.",
+      "id": "V058"
+    },
+    {
+      "rear_xy": [
+        5168,
+        584
+      ],
+      "front_xy": [
+        5168,
+        584
+      ],
+      "rear_appearance": "OTHER_REAR_REGION",
+      "front_match": "PROJECTED: inspect original front photo; may be under a component",
+      "endpoints": [],
+      "net": null,
+      "confidence": "rear visible; global front projection approximate",
+      "note": "Separate strip/antenna region or ambiguous copper boundary; do not assume GND.",
+      "id": "V059"
+    },
+    {
+      "rear_xy": [
+        5168,
+        1424
+      ],
+      "front_xy": [
+        5168,
+        1424
+      ],
+      "rear_appearance": "MAIN_REAR_COPPER",
+      "front_match": "PROJECTED: inspect original front photo; may be under a component",
+      "endpoints": [],
+      "net": null,
+      "confidence": "rear visible; global front projection approximate",
+      "note": "No isolating rear clearance apparent. Main copper is associated with PIC VSS through the reviewed anchors. Individual front endpoint not yet assigned.",
+      "id": "V060"
+    },
+    {
+      "rear_xy": [
+        5170,
+        454
+      ],
+      "front_xy": [
+        5170,
+        454
+      ],
+      "rear_appearance": "MAIN_REAR_COPPER",
+      "front_match": "PROJECTED: inspect original front photo; may be under a component",
+      "endpoints": [],
+      "net": null,
+      "confidence": "rear visible; global front projection approximate",
+      "note": "No isolating rear clearance apparent. Main copper is associated with PIC VSS through the reviewed anchors. Individual front endpoint not yet assigned.",
+      "id": "V061"
+    },
+    {
+      "rear_xy": [
+        5238,
+        2274
+      ],
+      "front_xy": [
+        5238,
+        2274
+      ],
+      "rear_appearance": "MAIN_REAR_COPPER",
+      "front_match": "PROJECTED: inspect original front photo; may be under a component",
+      "endpoints": [],
+      "net": null,
+      "confidence": "rear visible; global front projection approximate",
+      "note": "No isolating rear clearance apparent. Main copper is associated with PIC VSS through the reviewed anchors. Individual front endpoint not yet assigned.",
+      "id": "V062"
+    },
+    {
+      "rear_xy": [
+        5306,
+        2070
+      ],
+      "front_xy": [
+        5306,
+        2070
+      ],
+      "rear_appearance": "REAR_CLEARANCE",
+      "front_match": "PROJECTED: inspect original front photo; may be under a component",
+      "endpoints": [],
+      "net": null,
+      "confidence": "rear visible; global front projection approximate",
+      "note": "Visible clearance separates this site from the surrounding rear copper; this alone does not identify an internal net.",
+      "id": "V063"
+    },
+    {
+      "rear_xy": [
+        5376,
+        582
+      ],
+      "front_xy": [
+        5376,
+        582
+      ],
+      "rear_appearance": "REAR_CLEARANCE",
+      "front_match": "PROJECTED: inspect original front photo; may be under a component",
+      "endpoints": [],
+      "net": null,
+      "confidence": "rear visible; global front projection approximate",
+      "note": "Visible clearance separates this site from the surrounding rear copper; this alone does not identify an internal net.",
+      "id": "V064"
+    },
+    {
+      "rear_xy": [
+        6032,
+        538
+      ],
+      "front_xy": [
+        6032,
+        538
+      ],
+      "rear_appearance": "MAIN_REAR_COPPER",
+      "front_match": "PROJECTED: inspect original front photo; may be under a component",
+      "endpoints": [],
+      "net": null,
+      "confidence": "rear visible; global front projection approximate",
+      "note": "No isolating rear clearance apparent. Main copper is associated with PIC VSS through the reviewed anchors. Individual front endpoint not yet assigned.",
+      "id": "V065"
+    },
+    {
+      "rear_xy": [
+        6032,
+        682
+      ],
+      "front_xy": [
+        6032,
+        682
+      ],
+      "rear_appearance": "MAIN_REAR_COPPER",
+      "front_match": "PROJECTED: inspect original front photo; may be under a component",
+      "endpoints": [],
+      "net": null,
+      "confidence": "rear visible; global front projection approximate",
+      "note": "No isolating rear clearance apparent. Main copper is associated with PIC VSS through the reviewed anchors. Individual front endpoint not yet assigned.",
+      "id": "V066"
+    },
+    {
+      "rear_xy": [
+        6154,
+        1902
+      ],
+      "front_xy": [
+        6154,
+        1902
+      ],
+      "rear_appearance": "REAR_CLEARANCE",
+      "front_match": "PROJECTED: inspect original front photo; may be under a component",
+      "endpoints": [],
+      "net": null,
+      "confidence": "rear visible; global front projection approximate",
+      "note": "Visible clearance separates this site from the surrounding rear copper; this alone does not identify an internal net.",
+      "id": "V067"
+    },
+    {
+      "rear_xy": [
+        6354,
+        1674
+      ],
+      "front_xy": [
+        6354,
+        1674
+      ],
+      "rear_appearance": "MAIN_REAR_COPPER",
+      "front_match": "PROJECTED: inspect original front photo; may be under a component",
+      "endpoints": [],
+      "net": null,
+      "confidence": "rear visible; global front projection approximate",
+      "note": "No isolating rear clearance apparent. Main copper is associated with PIC VSS through the reviewed anchors. Individual front endpoint not yet assigned.",
+      "id": "V068"
+    },
+    {
+      "rear_xy": [
+        6354,
+        2096
+      ],
+      "front_xy": [
+        6354,
+        2096
+      ],
+      "rear_appearance": "MAIN_REAR_COPPER",
+      "front_match": "PROJECTED: inspect original front photo; may be under a component",
+      "endpoints": [],
+      "net": null,
+      "confidence": "rear visible; global front projection approximate",
+      "note": "No isolating rear clearance apparent. Main copper is associated with PIC VSS through the reviewed anchors. Individual front endpoint not yet assigned.",
+      "id": "V069"
+    },
+    {
+      "rear_xy": [
+        6362,
+        702
+      ],
+      "front_xy": [
+        6362,
+        702
+      ],
+      "rear_appearance": "REAR_CLEARANCE",
+      "front_match": "PROJECTED: inspect original front photo; may be under a component",
+      "endpoints": [],
+      "net": null,
+      "confidence": "rear visible; global front projection approximate",
+      "note": "Visible clearance separates this site from the surrounding rear copper; this alone does not identify an internal net.",
+      "id": "V070"
+    },
+    {
+      "rear_xy": [
+        6528,
+        966
+      ],
+      "front_xy": [
+        6528,
+        966
+      ],
+      "rear_appearance": "REAR_CLEARANCE",
+      "front_match": "PROJECTED: inspect original front photo; may be under a component",
+      "endpoints": [],
+      "net": null,
+      "confidence": "rear visible; global front projection approximate",
+      "note": "Visible clearance separates this site from the surrounding rear copper; this alone does not identify an internal net.",
+      "id": "V071"
+    },
+    {
+      "rear_xy": [
+        6540,
+        1178
+      ],
+      "front_xy": [
+        6540,
+        1178
+      ],
+      "rear_appearance": "REAR_CLEARANCE",
+      "front_match": "PROJECTED: inspect original front photo; may be under a component",
+      "endpoints": [],
+      "net": null,
+      "confidence": "rear visible; global front projection approximate",
+      "note": "Visible clearance separates this site from the surrounding rear copper; this alone does not identify an internal net.",
+      "id": "V072"
+    },
+    {
+      "rear_xy": [
+        6650,
+        1362
+      ],
+      "front_xy": [
+        6650,
+        1362
+      ],
+      "rear_appearance": "MAIN_REAR_COPPER",
+      "front_match": "PROJECTED: inspect original front photo; may be under a component",
+      "endpoints": [],
+      "net": null,
+      "confidence": "rear visible; global front projection approximate",
+      "note": "No isolating rear clearance apparent. Main copper is associated with PIC VSS through the reviewed anchors. Individual front endpoint not yet assigned.",
+      "id": "V073"
+    },
+    {
+      "rear_xy": [
+        6668,
+        328
+      ],
+      "front_xy": [
+        6668,
+        328
+      ],
+      "rear_appearance": "MAIN_REAR_COPPER",
+      "front_match": "PROJECTED: inspect original front photo; may be under a component",
+      "endpoints": [],
+      "net": null,
+      "confidence": "rear visible; global front projection approximate",
+      "note": "No isolating rear clearance apparent. Main copper is associated with PIC VSS through the reviewed anchors. Individual front endpoint not yet assigned.",
+      "id": "V074"
+    },
+    {
+      "rear_xy": [
+        6750,
+        834
+      ],
+      "front_xy": [
+        6750,
+        834
+      ],
+      "rear_appearance": "REAR_CLEARANCE",
+      "front_match": "PROJECTED: inspect original front photo; may be under a component",
+      "endpoints": [],
+      "net": null,
+      "confidence": "rear visible; global front projection approximate",
+      "note": "Visible clearance separates this site from the surrounding rear copper; this alone does not identify an internal net.",
+      "id": "V075"
+    },
+    {
+      "rear_xy": [
+        6880,
+        1148
+      ],
+      "front_xy": [
+        6880,
+        1148
+      ],
+      "rear_appearance": "MAIN_REAR_COPPER",
+      "front_match": "PROJECTED: inspect original front photo; may be under a component",
+      "endpoints": [],
+      "net": null,
+      "confidence": "rear visible; global front projection approximate",
+      "note": "No isolating rear clearance apparent. Main copper is associated with PIC VSS through the reviewed anchors. Individual front endpoint not yet assigned.",
+      "id": "V076"
+    },
+    {
+      "rear_xy": [
+        7118,
+        2258
+      ],
+      "front_xy": [
+        7118,
+        2258
+      ],
+      "rear_appearance": "MAIN_REAR_COPPER",
+      "front_match": "PROJECTED: inspect original front photo; may be under a component",
+      "endpoints": [],
+      "net": null,
+      "confidence": "rear visible; global front projection approximate",
+      "note": "No isolating rear clearance apparent. Main copper is associated with PIC VSS through the reviewed anchors. Individual front endpoint not yet assigned.",
+      "id": "V077"
+    },
+    {
+      "rear_xy": [
+        7122,
+        334
+      ],
+      "front_xy": [
+        7122,
+        334
+      ],
+      "rear_appearance": "MAIN_REAR_COPPER",
+      "front_match": "PROJECTED: inspect original front photo; may be under a component",
+      "endpoints": [],
+      "net": null,
+      "confidence": "rear visible; global front projection approximate",
+      "note": "No isolating rear clearance apparent. Main copper is associated with PIC VSS through the reviewed anchors. Individual front endpoint not yet assigned.",
+      "id": "V078"
+    },
+    {
+      "rear_xy": [
+        7364,
+        1296
+      ],
+      "front_xy": [
+        7364,
+        1296
+      ],
+      "rear_appearance": "REAR_CLEARANCE",
+      "front_match": "PROJECTED: inspect original front photo; may be under a component",
+      "endpoints": [],
+      "net": null,
+      "confidence": "rear visible; global front projection approximate",
+      "note": "Visible clearance separates this site from the surrounding rear copper; this alone does not identify an internal net.",
+      "id": "V079"
+    },
+    {
+      "rear_xy": [
+        7462,
+        1126
+      ],
+      "front_xy": [
+        7462,
+        1126
+      ],
+      "rear_appearance": "REAR_CLEARANCE",
+      "front_match": "PROJECTED: inspect original front photo; may be under a component",
+      "endpoints": [],
+      "net": null,
+      "confidence": "rear visible; global front projection approximate",
+      "note": "Visible clearance separates this site from the surrounding rear copper; this alone does not identify an internal net.",
+      "id": "V080"
+    },
+    {
+      "rear_xy": [
+        7568,
+        328
+      ],
+      "front_xy": [
+        7568,
+        328
+      ],
+      "rear_appearance": "MAIN_REAR_COPPER",
+      "front_match": "PROJECTED: inspect original front photo; may be under a component",
+      "endpoints": [],
+      "net": null,
+      "confidence": "rear visible; global front projection approximate",
+      "note": "No isolating rear clearance apparent. Main copper is associated with PIC VSS through the reviewed anchors. Individual front endpoint not yet assigned.",
+      "id": "V081"
+    },
+    {
+      "rear_xy": [
+        7890,
+        1890
+      ],
+      "front_xy": [
+        7890,
+        1890
+      ],
+      "rear_appearance": "REAR_CLEARANCE",
+      "front_match": "PROJECTED: inspect original front photo; may be under a component",
+      "endpoints": [],
+      "net": null,
+      "confidence": "rear visible; global front projection approximate",
+      "note": "Visible clearance separates this site from the surrounding rear copper; this alone does not identify an internal net.",
+      "id": "V082"
+    },
+    {
+      "rear_xy": [
+        8010,
+        334
+      ],
+      "front_xy": [
+        8010,
+        334
+      ],
+      "rear_appearance": "MAIN_REAR_COPPER",
+      "front_match": "PROJECTED: inspect original front photo; may be under a component",
+      "endpoints": [],
+      "net": null,
+      "confidence": "rear visible; global front projection approximate",
+      "note": "No isolating rear clearance apparent. Main copper is associated with PIC VSS through the reviewed anchors. Individual front endpoint not yet assigned.",
+      "id": "V083"
+    },
+    {
+      "rear_xy": [
+        8012,
+        822
+      ],
+      "front_xy": [
+        8012,
+        822
+      ],
+      "rear_appearance": "MAIN_REAR_COPPER",
+      "front_match": "PROJECTED: inspect original front photo; may be under a component",
+      "endpoints": [],
+      "net": null,
+      "confidence": "rear visible; global front projection approximate",
+      "note": "No isolating rear clearance apparent. Main copper is associated with PIC VSS through the reviewed anchors. Individual front endpoint not yet assigned.",
+      "id": "V084"
+    },
+    {
+      "rear_xy": [
+        8022,
+        1322
+      ],
+      "front_xy": [
+        8022,
+        1322
+      ],
+      "rear_appearance": "MAIN_REAR_COPPER",
+      "front_match": "PROJECTED: inspect original front photo; may be under a component",
+      "endpoints": [],
+      "net": null,
+      "confidence": "rear visible; global front projection approximate",
+      "note": "No isolating rear clearance apparent. Main copper is associated with PIC VSS through the reviewed anchors. Individual front endpoint not yet assigned.",
+      "id": "V085"
+    },
+    {
+      "rear_xy": [
+        8032,
+        1604
+      ],
+      "front_xy": [
+        8032,
+        1604
+      ],
+      "rear_appearance": "MAIN_REAR_COPPER",
+      "front_match": "PROJECTED: inspect original front photo; may be under a component",
+      "endpoints": [],
+      "net": null,
+      "confidence": "rear visible; global front projection approximate",
+      "note": "No isolating rear clearance apparent. Main copper is associated with PIC VSS through the reviewed anchors. Individual front endpoint not yet assigned.",
+      "id": "V086"
+    },
+    {
+      "rear_xy": [
+        8036,
+        2166
+      ],
+      "front_xy": [
+        8036,
+        2166
+      ],
+      "rear_appearance": "MAIN_REAR_COPPER",
+      "front_match": "PROJECTED: inspect original front photo; may be under a component",
+      "endpoints": [],
+      "net": null,
+      "confidence": "rear visible; global front projection approximate",
+      "note": "No isolating rear clearance apparent. Main copper is associated with PIC VSS through the reviewed anchors. Individual front endpoint not yet assigned.",
+      "id": "V087"
+    },
+    {
+      "rear_xy": [
+        8038,
+        1888
+      ],
+      "front_xy": [
+        8038,
+        1888
+      ],
+      "rear_appearance": "MAIN_REAR_COPPER",
+      "front_match": "PROJECTED: inspect original front photo; may be under a component",
+      "endpoints": [],
+      "net": null,
+      "confidence": "rear visible; global front projection approximate",
+      "note": "No isolating rear clearance apparent. Main copper is associated with PIC VSS through the reviewed anchors. Individual front endpoint not yet assigned.",
+      "id": "V088"
+    },
+    {
+      "rear_xy": [
+        8150,
+        494
+      ],
+      "front_xy": [
+        8150,
+        494
+      ],
+      "rear_appearance": "OTHER_REAR_REGION",
+      "front_match": "PROJECTED: inspect original front photo; may be under a component",
+      "endpoints": [],
+      "net": null,
+      "confidence": "rear visible; global front projection approximate",
+      "note": "Separate strip/antenna region or ambiguous copper boundary; do not assume GND.",
+      "id": "V089"
+    },
+    {
+      "rear_xy": [
+        8254,
+        1460
+      ],
+      "front_xy": [
+        8254,
+        1460
+      ],
+      "rear_appearance": "REAR_COMPONENT_PAD",
+      "front_match": "PROJECTED: inspect original front photo; may be under a component",
+      "endpoints": [],
+      "net": null,
+      "confidence": "rear visible; global front projection approximate",
+      "note": "Rear via/pad joins a tuning-capacitor land; not a direct GND assignment.",
+      "id": "V090"
+    },
+    {
+      "rear_xy": [
+        8394,
+        232
+      ],
+      "front_xy": [
+        8394,
+        232
+      ],
+      "rear_appearance": "OTHER_REAR_REGION",
+      "front_match": "PROJECTED: inspect original front photo; may be under a component",
+      "endpoints": [],
+      "net": null,
+      "confidence": "rear visible; global front projection approximate",
+      "note": "Separate strip/antenna region or ambiguous copper boundary; do not assume GND.",
+      "id": "V091"
+    },
+    {
+      "rear_xy": [
+        8394,
+        798
+      ],
+      "front_xy": [
+        8394,
+        798
+      ],
+      "rear_appearance": "OTHER_REAR_REGION",
+      "front_match": "PROJECTED: inspect original front photo; may be under a component",
+      "endpoints": [],
+      "net": null,
+      "confidence": "rear visible; global front projection approximate",
+      "note": "Separate strip/antenna region or ambiguous copper boundary; do not assume GND.",
+      "id": "V092"
+    },
+    {
+      "rear_xy": [
+        8396,
+        1460
+      ],
+      "front_xy": [
+        8396,
+        1460
+      ],
+      "rear_appearance": "OTHER_REAR_REGION",
+      "front_match": "PROJECTED: inspect original front photo; may be under a component",
+      "endpoints": [],
+      "net": null,
+      "confidence": "rear visible; global front projection approximate",
+      "note": "Separate strip/antenna region or ambiguous copper boundary; do not assume GND.",
+      "id": "V093"
+    },
+    {
+      "rear_xy": [
+        8466,
+        494
+      ],
+      "front_xy": [
+        8466,
+        494
+      ],
+      "rear_appearance": "OTHER_REAR_REGION",
+      "front_match": "PROJECTED: inspect original front photo; may be under a component",
+      "endpoints": [],
+      "net": null,
+      "confidence": "rear visible; global front projection approximate",
+      "note": "Separate strip/antenna region or ambiguous copper boundary; do not assume GND.",
+      "id": "V094"
+    },
+    {
+      "rear_xy": [
+        8528,
+        1460
+      ],
+      "front_xy": [
+        8528,
+        1460
+      ],
+      "rear_appearance": "REAR_COMPONENT_PAD",
+      "front_match": "PROJECTED: inspect original front photo; may be under a component",
+      "endpoints": [],
+      "net": null,
+      "confidence": "rear visible; global front projection approximate",
+      "note": "Rear via/pad joins a tuning-capacitor land; not a direct GND assignment.",
+      "id": "V095"
+    },
+    {
+      "rear_xy": [
+        8656,
+        1460
+      ],
+      "front_xy": [
+        8656,
+        1460
+      ],
+      "rear_appearance": "OTHER_REAR_REGION",
+      "front_match": "PROJECTED: inspect original front photo; may be under a component",
+      "endpoints": [],
+      "net": null,
+      "confidence": "rear visible; global front projection approximate",
+      "note": "Separate strip/antenna region or ambiguous copper boundary; do not assume GND.",
+      "id": "V096"
+    },
+    {
+      "rear_xy": [
+        8706,
+        232
+      ],
+      "front_xy": [
+        8706,
+        232
+      ],
+      "rear_appearance": "OTHER_REAR_REGION",
+      "front_match": "PROJECTED: inspect original front photo; may be under a component",
+      "endpoints": [],
+      "net": null,
+      "confidence": "rear visible; global front projection approximate",
+      "note": "Separate strip/antenna region or ambiguous copper boundary; do not assume GND.",
+      "id": "V097"
+    },
+    {
+      "rear_xy": [
+        8706,
+        800
+      ],
+      "front_xy": [
+        8706,
+        800
+      ],
+      "rear_appearance": "OTHER_REAR_REGION",
+      "front_match": "PROJECTED: inspect original front photo; may be under a component",
+      "endpoints": [],
+      "net": null,
+      "confidence": "rear visible; global front projection approximate",
+      "note": "Separate strip/antenna region or ambiguous copper boundary; do not assume GND.",
+      "id": "V098"
+    },
+    {
+      "rear_xy": [
+        8790,
+        494
+      ],
+      "front_xy": [
+        8790,
+        494
+      ],
+      "rear_appearance": "OTHER_REAR_REGION",
+      "front_match": "PROJECTED: inspect original front photo; may be under a component",
+      "endpoints": [],
+      "net": null,
+      "confidence": "rear visible; global front projection approximate",
+      "note": "Separate strip/antenna region or ambiguous copper boundary; do not assume GND.",
+      "id": "V099"
+    },
+    {
+      "rear_xy": [
+        8800,
+        1456
+      ],
+      "front_xy": [
+        8800,
+        1456
+      ],
+      "rear_appearance": "REAR_COMPONENT_PAD",
+      "front_match": "PROJECTED: inspect original front photo; may be under a component",
+      "endpoints": [],
+      "net": null,
+      "confidence": "rear visible; global front projection approximate",
+      "note": "Rear via/pad joins a tuning-capacitor land; not a direct GND assignment.",
+      "id": "V100"
+    },
+    {
+      "rear_xy": [
+        8928,
+        1460
+      ],
+      "front_xy": [
+        8928,
+        1460
+      ],
+      "rear_appearance": "OTHER_REAR_REGION",
+      "front_match": "PROJECTED: inspect original front photo; may be under a component",
+      "endpoints": [],
+      "net": null,
+      "confidence": "rear visible; global front projection approximate",
+      "note": "Separate strip/antenna region or ambiguous copper boundary; do not assume GND.",
+      "id": "V101"
+    },
+    {
+      "rear_xy": [
+        9030,
+        232
+      ],
+      "front_xy": [
+        9030,
+        232
+      ],
+      "rear_appearance": "OTHER_REAR_REGION",
+      "front_match": "PROJECTED: inspect original front photo; may be under a component",
+      "endpoints": [],
+      "net": null,
+      "confidence": "rear visible; global front projection approximate",
+      "note": "Separate strip/antenna region or ambiguous copper boundary; do not assume GND.",
+      "id": "V102"
+    },
+    {
+      "rear_xy": [
+        9060,
+        1460
+      ],
+      "front_xy": [
+        9060,
+        1460
+      ],
+      "rear_appearance": "REAR_COMPONENT_PAD",
+      "front_match": "PROJECTED: inspect original front photo; may be under a component",
+      "endpoints": [],
+      "net": null,
+      "confidence": "rear visible; global front projection approximate",
+      "note": "Rear via/pad joins a tuning-capacitor land; not a direct GND assignment.",
+      "id": "V103"
+    },
+    {
+      "rear_xy": [
+        9100,
+        496
+      ],
+      "front_xy": [
+        9100,
+        496
+      ],
+      "rear_appearance": "OTHER_REAR_REGION",
+      "front_match": "PROJECTED: inspect original front photo; may be under a component",
+      "endpoints": [],
+      "net": null,
+      "confidence": "rear visible; global front projection approximate",
+      "note": "Separate strip/antenna region or ambiguous copper boundary; do not assume GND.",
+      "id": "V104"
+    },
+    {
+      "rear_xy": [
+        9192,
+        1460
+      ],
+      "front_xy": [
+        9192,
+        1460
+      ],
+      "rear_appearance": "OTHER_REAR_REGION",
+      "front_match": "PROJECTED: inspect original front photo; may be under a component",
+      "endpoints": [],
+      "net": null,
+      "confidence": "rear visible; global front projection approximate",
+      "note": "Separate strip/antenna region or ambiguous copper boundary; do not assume GND.",
+      "id": "V105"
+    },
+    {
+      "rear_xy": [
+        9200,
+        2282
+      ],
+      "front_xy": [
+        9200,
+        2282
+      ],
+      "rear_appearance": "OTHER_REAR_REGION",
+      "front_match": "PROJECTED: inspect original front photo; may be under a component",
+      "endpoints": [],
+      "net": null,
+      "confidence": "rear visible; global front projection approximate",
+      "note": "Separate strip/antenna region or ambiguous copper boundary; do not assume GND.",
+      "id": "V106"
+    },
+    {
+      "rear_xy": [
+        9338,
+        1460
+      ],
+      "front_xy": [
+        9338,
+        1460
+      ],
+      "rear_appearance": "REAR_COMPONENT_PAD",
+      "front_match": "PROJECTED: inspect original front photo; may be under a component",
+      "endpoints": [],
+      "net": null,
+      "confidence": "rear visible; global front projection approximate",
+      "note": "Rear via/pad joins a tuning-capacitor land; not a direct GND assignment.",
+      "id": "V107"
+    },
+    {
+      "rear_xy": [
+        9340,
+        232
+      ],
+      "front_xy": [
+        9340,
+        232
+      ],
+      "rear_appearance": "OTHER_REAR_REGION",
+      "front_match": "PROJECTED: inspect original front photo; may be under a component",
+      "endpoints": [],
+      "net": null,
+      "confidence": "rear visible; global front projection approximate",
+      "note": "Separate strip/antenna region or ambiguous copper boundary; do not assume GND.",
+      "id": "V108"
+    },
+    {
+      "rear_xy": [
+        9480,
+        2282
+      ],
+      "front_xy": [
+        9480,
+        2282
+      ],
+      "rear_appearance": "OTHER_REAR_REGION",
+      "front_match": "PROJECTED: inspect original front photo; may be under a component",
+      "endpoints": [],
+      "net": null,
+      "confidence": "rear visible; global front projection approximate",
+      "note": "Separate strip/antenna region or ambiguous copper boundary; do not assume GND.",
+      "id": "V109"
+    },
+    {
+      "rear_xy": [
+        9688,
+        954
+      ],
+      "front_xy": [
+        9688,
+        954
+      ],
+      "rear_appearance": "OTHER_REAR_REGION",
+      "front_match": "PROJECTED: inspect original front photo; may be under a component",
+      "endpoints": [],
+      "net": null,
+      "confidence": "rear visible; global front projection approximate",
+      "note": "Separate strip/antenna region or ambiguous copper boundary; do not assume GND.",
+      "id": "V110"
+    },
+    {
+      "rear_xy": [
+        9702,
+        1676
+      ],
+      "front_xy": [
+        9702,
+        1676
+      ],
+      "rear_appearance": "OTHER_REAR_REGION",
+      "front_match": "PROJECTED: inspect original front photo; may be under a component",
+      "endpoints": [],
+      "net": null,
+      "confidence": "rear visible; global front projection approximate",
+      "note": "Separate strip/antenna region or ambiguous copper boundary; do not assume GND.",
+      "id": "V111"
+    },
+    {
+      "rear_xy": [
+        10112,
+        1436
+      ],
+      "front_xy": [
+        10112,
+        1436
+      ],
+      "rear_appearance": "OTHER_REAR_REGION",
+      "front_match": "PROJECTED: inspect original front photo; may be under a component",
+      "endpoints": [],
+      "net": null,
+      "confidence": "rear visible; global front projection approximate",
+      "note": "Separate strip/antenna region or ambiguous copper boundary; do not assume GND.",
+      "id": "V112"
+    },
+    {
+      "rear_xy": [
+        10336,
+        2420
+      ],
+      "front_xy": [
+        10336,
+        2420
+      ],
+      "rear_appearance": "OTHER_REAR_REGION",
+      "front_match": "PROJECTED: inspect original front photo; may be under a component",
+      "endpoints": [],
+      "net": null,
+      "confidence": "rear visible; global front projection approximate",
+      "note": "Separate strip/antenna region or ambiguous copper boundary; do not assume GND.",
+      "id": "V113"
+    },
+    {
+      "rear_xy": [
+        10346,
+        1270
+      ],
+      "front_xy": [
+        10346,
+        1270
+      ],
+      "rear_appearance": "OTHER_REAR_REGION",
+      "front_match": "PROJECTED: inspect original front photo; may be under a component",
+      "endpoints": [],
+      "net": null,
+      "confidence": "rear visible; global front projection approximate",
+      "note": "Separate strip/antenna region or ambiguous copper boundary; do not assume GND.",
+      "id": "V114"
+    },
+    {
+      "rear_xy": [
+        10440,
+        2420
+      ],
+      "front_xy": [
+        10440,
+        2420
+      ],
+      "rear_appearance": "OTHER_REAR_REGION",
+      "front_match": "PROJECTED: inspect original front photo; may be under a component",
+      "endpoints": [],
+      "net": null,
+      "confidence": "rear visible; global front projection approximate",
+      "note": "Separate strip/antenna region or ambiguous copper boundary; do not assume GND.",
+      "id": "V115"
+    },
+    {
+      "rear_xy": [
+        10500,
+        764
+      ],
+      "front_xy": [
+        10500,
+        764
+      ],
+      "rear_appearance": "OTHER_REAR_REGION",
+      "front_match": "PROJECTED: inspect original front photo; may be under a component",
+      "endpoints": [],
+      "net": null,
+      "confidence": "rear visible; global front projection approximate",
+      "note": "Separate strip/antenna region or ambiguous copper boundary; do not assume GND.",
+      "id": "V116"
+    },
+    {
+      "rear_xy": [
+        10604,
+        2390
+      ],
+      "front_xy": [
+        10604,
+        2390
+      ],
+      "rear_appearance": "OTHER_REAR_REGION",
+      "front_match": "PROJECTED: inspect original front photo; may be under a component",
+      "endpoints": [],
+      "net": null,
+      "confidence": "rear visible; global front projection approximate",
+      "note": "Separate strip/antenna region or ambiguous copper boundary; do not assume GND.",
+      "id": "V117"
+    },
+    {
+      "rear_xy": [
+        10610,
+        1728
+      ],
+      "front_xy": [
+        10610,
+        1728
+      ],
+      "rear_appearance": "OTHER_REAR_REGION",
+      "front_match": "PROJECTED: inspect original front photo; may be under a component",
+      "endpoints": [],
+      "net": null,
+      "confidence": "rear visible; global front projection approximate",
+      "note": "Separate strip/antenna region or ambiguous copper boundary; do not assume GND.",
+      "id": "V118"
+    },
+    {
+      "rear_xy": [
+        10612,
+        1348
+      ],
+      "front_xy": [
+        10612,
+        1348
+      ],
+      "rear_appearance": "OTHER_REAR_REGION",
+      "front_match": "PROJECTED: inspect original front photo; may be under a component",
+      "endpoints": [],
+      "net": null,
+      "confidence": "rear visible; global front projection approximate",
+      "note": "Separate strip/antenna region or ambiguous copper boundary; do not assume GND.",
+      "id": "V119"
+    },
+    {
+      "rear_xy": [
+        10704,
+        2372
+      ],
+      "front_xy": [
+        10704,
+        2372
+      ],
+      "rear_appearance": "OTHER_REAR_REGION",
+      "front_match": "PROJECTED: inspect original front photo; may be under a component",
+      "endpoints": [],
+      "net": null,
+      "confidence": "rear visible; global front projection approximate",
+      "note": "Separate strip/antenna region or ambiguous copper boundary; do not assume GND.",
+      "id": "V120"
+    },
+    {
+      "rear_xy": [
+        10880,
+        2390
+      ],
+      "front_xy": [
+        10880,
+        2390
+      ],
+      "rear_appearance": "OTHER_REAR_REGION",
+      "front_match": "PROJECTED: inspect original front photo; may be under a component",
+      "endpoints": [],
+      "net": null,
+      "confidence": "rear visible; global front projection approximate",
+      "note": "Separate strip/antenna region or ambiguous copper boundary; do not assume GND.",
+      "id": "V121"
+    },
+    {
+      "rear_xy": [
+        10974,
+        2222
+      ],
+      "front_xy": [
+        10974,
+        2222
+      ],
+      "rear_appearance": "OTHER_REAR_REGION",
+      "front_match": "PROJECTED: inspect original front photo; may be under a component",
+      "endpoints": [],
+      "net": null,
+      "confidence": "rear visible; global front projection approximate",
+      "note": "Separate strip/antenna region or ambiguous copper boundary; do not assume GND.",
+      "id": "V122"
+    },
+    {
+      "rear_xy": [
+        10980,
+        2520
+      ],
+      "front_xy": [
+        10980,
+        2520
+      ],
+      "rear_appearance": "OTHER_REAR_REGION",
+      "front_match": "PROJECTED: inspect original front photo; may be under a component",
+      "endpoints": [],
+      "net": null,
+      "confidence": "rear visible; global front projection approximate",
+      "note": "Separate strip/antenna region or ambiguous copper boundary; do not assume GND.",
+      "id": "V123"
+    },
+    {
+      "rear_xy": [
+        11200,
+        2102
+      ],
+      "front_xy": [
+        11200,
+        2102
+      ],
+      "rear_appearance": "OTHER_REAR_REGION",
+      "front_match": "PROJECTED: inspect original front photo; may be under a component",
+      "endpoints": [],
+      "net": null,
+      "confidence": "rear visible; global front projection approximate",
+      "note": "Separate strip/antenna region or ambiguous copper boundary; do not assume GND.",
+      "id": "V124"
+    },
+    {
+      "rear_xy": [
+        11398,
+        2394
+      ],
+      "front_xy": [
+        11398,
+        2394
+      ],
+      "rear_appearance": "OTHER_REAR_REGION",
+      "front_match": "PROJECTED: inspect original front photo; may be under a component",
+      "endpoints": [],
+      "net": null,
+      "confidence": "rear visible; global front projection approximate",
+      "note": "Separate strip/antenna region or ambiguous copper boundary; do not assume GND.",
+      "id": "V125"
+    },
+    {
+      "rear_xy": [
+        11600,
+        2152
+      ],
+      "front_xy": [
+        11600,
+        2152
+      ],
+      "rear_appearance": "OTHER_REAR_REGION",
+      "front_match": "PROJECTED: inspect original front photo; may be under a component",
+      "endpoints": [],
+      "net": null,
+      "confidence": "rear visible; global front projection approximate",
+      "note": "Separate strip/antenna region or ambiguous copper boundary; do not assume GND.",
+      "id": "V126"
+    },
+    {
+      "rear_xy": [
+        11634,
+        248
+      ],
+      "front_xy": [
+        11634,
+        248
+      ],
+      "rear_appearance": "OTHER_REAR_REGION",
+      "front_match": "PROJECTED: inspect original front photo; may be under a component",
+      "endpoints": [],
+      "net": null,
+      "confidence": "rear visible; global front projection approximate",
+      "note": "Separate strip/antenna region or ambiguous copper boundary; do not assume GND.",
+      "id": "V127"
+    }
+  ],
+  "reviewed_anchors": {
+    "D4": "V030",
+    "D5": "V027",
+    "C41": "V025",
+    "VSS19": "V045",
+    "VSS8": "V041",
+    "VDD20": "V042",
+    "RC1": "V053",
+    "C39": "V038",
+    "C26": "V028",
+    "D6": "V026"
+  },
+  "new_model_connections": [
+    "D4.2",
+    "D5.2",
+    "C41.2"
+  ],
+  "sources": [
+    "photos/originals/IMG_2436.jpg",
+    "photos/originals/IMG_2437.jpg",
+    "photos/originals/IMG_2439.jpg",
+    "photos/originals/IMG_2440.jpg",
+    "photos/originals/IMG_2441.jpg",
+    "photos/originals/IMG_2442.jpg",
+    "photos/originals/IMG_2443.jpg"
+  ],
+  "interpretation_source": "https://www.altium.com/documentation/altium-designer/pcb/design-rule-types/plane"
+}

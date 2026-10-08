@@ -36,7 +36,7 @@
     "Q8 exact manufacturer remains unconfirmed; SIL3724A candidate fits 3724A",
     "D2 4P: numbered stock placeholder, functions unresolved"
   ],
-  "revision": "v0.7",
+  "revision": "v0.8",
   "datasheet_symbol_authoring": "evidence/datasheet_symbol_authoring.json",
   "candidate_identifications": [
     "U6 C2NM: S-812C33AMC-C2NT2x",
@@ -71,5 +71,12 @@
     "tool": "KiCad MCP edit_schematic_component",
     "schematic_sha256": "313b4ec9a86cf2bcaf2bc2a1b22f1ed3fd1feb56df17eea325aa0a601a121a52",
     "validation": "Only R8 hidden FootprintBasis property changed; parsed schematic otherwise identical. Existing drawing exports and visual review still apply."
+  },
+  "v08_updates": {
+    "batch_edit_schematic_components": 5,
+    "move_schematic_component": 3,
+    "errors": 0,
+    "properties": "D4/D5/C41 ViaEvidence and U4 UserGPIOEvidence",
+    "routing": "Checked-in adapter; evidence/v08_net_changes.json. TP1/TP2 moved beside their LED resistors and wired locally."
   }
 }

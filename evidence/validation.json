@@ -8,24 +8,24 @@
   "physical_pins": 352,
   "stock_library_symbols": 20,
   "custom_symbols": 4,
-  "proposed_net_partitions": 87,
+  "proposed_net_partitions": 89,
   "netlist_partition_comparison": "PASS",
   "unintended_multi_pin_nets": 0,
   "retained_original_visual_fragments": 29,
   "original_photo_checksums": "PASS (26 files)",
-  "unresolved_physical_pins": 54,
-  "erc_total": 74,
+  "unresolved_physical_pins": 46,
+  "erc_total": 65,
   "erc_by_type": {
-    "pin_not_connected": 54,
+    "pin_not_connected": 46,
     "power_pin_not_driven": 5,
-    "pin_not_driven": 2,
-    "isolated_pin_label": 13
+    "pin_not_driven": 3,
+    "isolated_pin_label": 11
   },
   "erc_status": "OPEN FINDINGS - candidate IC pin types checked; unknown board routing remains",
   "gui_open": "NOT_TESTED (native CLI validated)",
-  "hardware_verification": "PARTIAL: user U6 and Q8 unpowered resistance; no functional or voltage test",
+  "hardware_verification": "PARTIAL: user U6/Q8 resistance and selected PIC destinations confirmed by multimeter/visual trace; no functional or voltage test",
   "physical_pcb_layout": "NOT_CREATED",
-  "schematic_sha256": "313b4ec9a86cf2bcaf2bc2a1b22f1ed3fd1feb56df17eea325aa0a601a121a52",
+  "schematic_sha256": "dd282261fbffb27dc2c295a6a2458f26cc011c9d4b2fa38f5afe2d012d440dd2",
   "input_zip_sha256": "151a5d246b051c6ee7edf50bac941261d3d87defedf9590f2ce442158552b52d",
   "datasheet_symbol_pin_contracts": "PASS (U1: 5 pins; U5: 8 pins; U6: 5 pins; Q8: 6 pins; types, footprints and source properties)"
 }

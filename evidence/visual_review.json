@@ -52,5 +52,23 @@
     "tool": "KiCad MCP edit_schematic_component",
     "schematic_sha256": "313b4ec9a86cf2bcaf2bc2a1b22f1ed3fd1feb56df17eea325aa0a601a121a52",
     "validation": "Only R8 hidden FootprintBasis property changed; parsed schematic otherwise identical. Existing drawing exports and visual review still apply."
+  },
+  "v08": {
+    "schematic_sha256": "dd282261fbffb27dc2c295a6a2458f26cc011c9d4b2fa38f5afe2d012d440dd2",
+    "pdfs_reviewed": [
+      {
+        "path": "output/pdf/PetSafe_single_sheet.pdf",
+        "sha256": "847e6681d218ebf5a446f178810a9c8fb99424e86ca90778234a35ad97db542c",
+        "pages": 1
+      },
+      {
+        "path": "output/pdf/PetSafe_PIC_GPIO_pin_map.pdf",
+        "sha256": "c34e05148ee44300cba4800290e7b1a71d36d03836e874c15f0b03c67fdfb076",
+        "pages": 1
+      }
+    ],
+    "result": "PASS: final full-sheet render and enlarged PIC/receiver/LED/diode regions inspected; final TP1/TP2 field positions clear of wires; 9-PIC map inspected.",
+    "via_viewer": "JavaScript syntax, data counts and image paths checked. Interactive browser visual QA unavailable: local file URL blocked by browser policy; no workaround attempted.",
+    "hardware": "User selected GPIO continuity, existing U6/Q8 readings; new via-ground assignments photo-derived."
   }
 }
