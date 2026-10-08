@@ -36,13 +36,17 @@ def main():
     assert '(lib_id "PetSafe_Working:' not in sch.read_text()
     definitions={(p.attrib['lib'],p.attrib['part']) for p in native.findall('./libparts/libpart')}
     custom=sum(lib=='PetSafe_Datasheet' for lib,part in definitions)
-    assert custom==2 and len(definitions)==23,definitions
+    assert custom==4 and len(definitions)==24,definitions
     # Independent manufacturer pin-table contracts, checked in native KiCad output.
     contracts={
         'U1':('S-1200B45-M5T1','Package_TO_SOT_SMD:SOT-23-5',
               [('VIN','power_in'),('VSS','power_in'),('ON/OFF','input'),('NC','passive'),('VOUT','power_out')]),
         'U5':('MX512H','Package_SO:SOIC-8_3.9x4.9mm_P1.27mm',
-              [('VCC','power_in'),('INA','input'),('INB','input'),('VDD','power_in'),('OUTB','tri_state'),('GND','power_in'),('GND','power_in'),('OUTA','tri_state')])}
+              [('VCC','power_in'),('INA','input'),('INB','input'),('VDD','power_in'),('OUTB','tri_state'),('GND','power_in'),('GND','power_in'),('OUTA','tri_state')]),
+        'U6':('S-812C33AMC','Package_TO_SOT_SMD:SOT-23-5',
+              [('VSS','power_in'),('VIN','power_in'),('VOUT','power_out'),('NC','passive'),('NC','passive')]),
+        'Q8':('SIL3724A','Package_TO_SOT_SMD:SOT-23-6',
+              [('G','input'),('S','passive'),('G','input'),('D','passive'),('S','passive'),('D','passive')])}
     for ref,(part,footprint,pins) in contracts.items():
         lib=native.find(f'./libparts/libpart[@lib="PetSafe_Datasheet"][@part="{part}"]')
         actual_pins={p.attrib['num']:(p.attrib['name'],p.attrib['type']) for p in lib.findall('./pins/pin')}
@@ -51,8 +55,8 @@ def main():
         assert comp.findtext('footprint')==footprint
         assert comp.findtext('datasheet')==lib.findtext('docs')
         assert comp.findtext('description')==lib.findtext('description')
-    report=dict(date='2026-10-08',native_tool=native.findtext('./design/tool'),native_load_and_export='PASS',single_sheet='PASS',catalog_components=150,symbol_units=154,physical_pins=352,stock_library_symbols=len(definitions)-custom,custom_symbols=custom,proposed_net_partitions=len(expected),netlist_partition_comparison='PASS',unintended_multi_pin_nets=0,retained_original_visual_fragments=len(old['nets']),original_photo_checksums=f'PASS ({len(manifest)} files)',unresolved_physical_pins=len(m['unresolved_pins']),erc_total=len(violations),erc_by_type=dict(counts),erc_status='OPEN FINDINGS - U1/U5 now have datasheet pin types; unidentified placeholders still have passive pins with limited checking',gui_open='NOT_TESTED (native CLI validated)',hardware_verification='NOT_PERFORMED',physical_pcb_layout='NOT_CREATED',schematic_sha256=sha(sch),input_zip_sha256=sha(ROOT/'input/PetSafe_KiCad_RE_v01.zip'))
-    report['datasheet_symbol_pin_contracts']='PASS (U1: 5 pins; U5: 8 pins; types, footprints and source properties)'
+    report=dict(date='2026-10-08',native_tool=native.findtext('./design/tool'),native_load_and_export='PASS',single_sheet='PASS',catalog_components=150,symbol_units=155,physical_pins=352,stock_library_symbols=len(definitions)-custom,custom_symbols=custom,proposed_net_partitions=len(expected),netlist_partition_comparison='PASS',unintended_multi_pin_nets=0,retained_original_visual_fragments=len(old['nets']),original_photo_checksums=f'PASS ({len(manifest)} files)',unresolved_physical_pins=len(m['unresolved_pins']),erc_total=len(violations),erc_by_type=dict(counts),erc_status='OPEN FINDINGS - candidate IC pin types checked; unknown board routing remains',gui_open='NOT_TESTED (native CLI validated)',hardware_verification='PARTIAL: user U6 and Q8 unpowered resistance; no functional or voltage test',physical_pcb_layout='NOT_CREATED',schematic_sha256=sha(sch),input_zip_sha256=sha(ROOT/'input/PetSafe_KiCad_RE_v01.zip'))
+    report['datasheet_symbol_pin_contracts']='PASS (U1: 5 pins; U5: 8 pins; U6: 5 pins; Q8: 6 pins; types, footprints and source properties)'
     (ROOT/'evidence/validation.json').write_text(json.dumps(report,indent=2),encoding='utf-8',newline='\n')
     (ROOT/'evidence/validation_log.txt').write_text('Native KiCad model/netlist cross-check: PASS\n'+json.dumps(report,indent=2)+'\n',encoding='utf-8',newline='\n')
     print(json.dumps(report,indent=2))

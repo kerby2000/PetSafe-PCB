@@ -391,7 +391,7 @@
     {
       "symbol": "Device:R",
       "reference": "R41",
-      "value": "mark 33...?",
+      "value": "330",
       "position": {
         "x": 520.7,
         "y": 50.8
@@ -557,15 +557,17 @@
       "footprint": "Package_TO_SOT_SMD:SOT-23"
     },
     {
-      "symbol": "Connector_Generic:Conn_02x03_Counter_Clockwise",
+      "symbol": "PetSafe_Datasheet:SIL3724A",
       "reference": "Q8",
-      "value": "372A? [pads]",
+      "value": "SIL3724A?",
       "position": {
-        "x": 149.86,
-        "y": 214.63
+        "x": 162.56,
+        "y": 231.14
       },
       "rotation": 0,
-      "includePins": true
+      "includePins": true,
+      "footprint": "Package_TO_SOT_SMD:SOT-23-6",
+      "unit": 1
     },
     {
       "symbol": "Device:L",
@@ -868,26 +870,28 @@
     {
       "symbol": "Diode:BAV99",
       "reference": "D3",
-      "value": "clamp?",
+      "value": "BAV99? (A7)",
       "position": {
         "x": 556.26,
         "y": 233.68
       },
       "rotation": 0,
       "includePins": true,
-      "footprint": "Package_TO_SOT_SMD:SOT-23"
+      "footprint": "Package_TO_SOT_SMD:SOT-23",
+      "unit": 1
     },
     {
-      "symbol": "Diode:BAV99",
+      "symbol": "Connector_Generic:Conn_01x03",
       "reference": "D2",
-      "value": "clamp?",
+      "value": "4P / unidentified",
       "position": {
         "x": 556.26,
         "y": 251.46
       },
       "rotation": 0,
       "includePins": true,
-      "footprint": "Package_TO_SOT_SMD:SOT-23"
+      "footprint": "Package_TO_SOT_SMD:SOT-23",
+      "unit": 1
     },
     {
       "symbol": "Device:R",
@@ -1380,15 +1384,17 @@
       "includePins": true
     },
     {
-      "symbol": "Connector_Generic:Conn_01x05",
+      "symbol": "PetSafe_Datasheet:S-812C33AMC",
       "reference": "U6",
-      "value": "WN23? [pins]",
+      "value": "S-812C33AMC? / 3.3V",
       "position": {
         "x": 330.2,
         "y": 309.88
       },
       "rotation": 0,
-      "includePins": true
+      "includePins": true,
+      "footprint": "Package_TO_SOT_SMD:SOT-23-5",
+      "unit": 1
     },
     {
       "symbol": "Device:R",
@@ -1557,37 +1563,43 @@
       "includePins": true
     },
     {
-      "symbol": "Device:D",
+      "symbol": "Device:D_Zener",
       "reference": "D4",
-      "value": "?",
+      "value": "SD05? / TVS 5V",
       "position": {
         "x": 372.11,
         "y": 391.16
       },
       "rotation": 0,
-      "includePins": true
+      "includePins": true,
+      "footprint": "Diode_SMD:D_SOD-323",
+      "unit": 1
     },
     {
-      "symbol": "Device:D",
+      "symbol": "Device:D_Zener",
       "reference": "D5",
-      "value": "?",
+      "value": "SD05? / TVS 5V",
       "position": {
         "x": 388.62,
         "y": 391.16
       },
       "rotation": 0,
-      "includePins": true
+      "includePins": true,
+      "footprint": "Diode_SMD:D_SOD-323",
+      "unit": 1
     },
     {
-      "symbol": "Device:D",
+      "symbol": "Device:D_Zener",
       "reference": "D6",
-      "value": "?",
+      "value": "MMSZ5228BS? / 3.9V",
       "position": {
         "x": 405.13,
         "y": 391.16
       },
       "rotation": 0,
-      "includePins": true
+      "includePins": true,
+      "footprint": "Diode_SMD:D_SOD-323",
+      "unit": 1
     },
     {
       "symbol": "Connector_Generic:Conn_01x03",
@@ -1715,6 +1727,22 @@
       "footprint": "Package_SO:SOIC-8_3.9x4.9mm_P1.27mm",
       "angle": 0,
       "unit": 3
+    },
+    {
+      "symbol": "PetSafe_Datasheet:SIL3724A",
+      "reference": "Q8",
+      "value": "SIL3724A?",
+      "position": {
+        "x": 162.56,
+        "y": 207.01
+      },
+      "footprint": "Package_TO_SOT_SMD:SOT-23-6",
+      "unit": 2,
+      "mirror": "x",
+      "angle": 0,
+      "rotation": 0,
+      "includePins": true
     }
-  ]
+  ],
+  "replay_note": "Q8 unit2 mirror=x is applied in saved template; add_schematic_component only supports mirrorY. See template for exact final pose."
 }

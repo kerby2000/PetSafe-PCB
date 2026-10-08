@@ -1,13 +1,20 @@
 {
   "date": "2026-10-08",
-  "revision": "v0.4",
+  "revision": "v0.5",
   "pdf": "output/pdf/PetSafe_single_sheet.pdf",
   "pages": 1,
   "renderer": "Poppler pdftoppm, 4500 px long edge",
-  "inspection": "Full single sheet and enlarged power/motor blocks visually inspected after final export; symbol pins, fields, wire paths, labels and block boundaries are readable. R41 label spacing corrected.",
-  "pdf_sha256": "1fc20e30871da68bdee86ad2ec13d58b9de7035d55cb65e00e65ddc4ad852afd",
-  "schematic_sha256": "24d86fb7e77c4680d4db696210c334a1a9744124edd2ab5cff9ca03b6c6490aa",
-  "pin_contracts": "U1 5 pins and U5 8 pins: PASS in native export",
-  "v03_to_v04_native_net_partitions": "IDENTICAL",
-  "library_comparison": "23 definitions match registered sources (21 stock, 2 datasheet-created)"
+  "inspection": "Single A2 sheet inspected at full view and enlarged RF, receiver, U6/auxiliary, diode candidates, motor and R41 regions. D2 annotation moved clear of detector label. All changed symbols, fields and annotations are readable.",
+  "pdf_sha256": "c832cf52bb60f75e5a6ab8086ca3476ca1b9ab7a11c9d3993f68773279e7734c",
+  "schematic_sha256": "b9d5da062bfb01bce45f8fcdd79ae4d5268fbe00ceb32566fcd058062ce12fa7",
+  "pin_contracts": "PASS: U1 5, U5 8, U6 5 and Q8 6 pins in native export",
+  "v04_to_v05_native_net_partitions": "Intentional changes recorded in evidence/v05_net_changes.json; final native/model comparison PASS for 81 modeled partitions",
+  "library_comparison": "24 embedded definitions match registered sources: 20 stock, four authorized datasheet symbols",
+  "measurement_guide": {
+    "pdf": "output/pdf/PetSafe_measurement_round1.pdf",
+    "pages": 2,
+    "pdf_sha256": "3983cf35aad251ae141003be238cf50bde003705bea4bcdb0dc884d417ea6e0d",
+    "inspection": "Both rendered pages inspected. All A/B/C/G and D/E/F/S/P targets are visible; all reported resistance results fit without clipping.",
+    "source_pixels": "Original photographs with vector callouts only"
+  }
 }

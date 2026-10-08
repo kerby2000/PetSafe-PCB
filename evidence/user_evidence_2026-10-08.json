@@ -1,0 +1,67 @@
+{
+  "photos": [
+    {
+      "file": "photos/user_updates/D4_5U.png",
+      "bytes": 1515353,
+      "sha256": "6d8a5666cc3483c4c5fe82933b46241589c9dbde90c18765d1fd08068aac77e0"
+    },
+    {
+      "file": "photos/user_updates/D4_D5_5U.png",
+      "bytes": 2629741,
+      "sha256": "2130fca10cf580fcfcbd154e51853cb3786eccc3c571624809d731a13e8b61ed"
+    },
+    {
+      "file": "photos/user_updates/D6_G3.png",
+      "bytes": 1410848,
+      "sha256": "cac95e0aa99f1f3ebc8db30e10ca9fede4b7859f36b130f5a144e055e1762439"
+    },
+    {
+      "file": "photos/user_updates/Q8_3724A.png",
+      "bytes": 2675176,
+      "sha256": "6d1ee6c9918ae6200c5858e456a882427e8d1de3fd76c040de329e82ccb2900c"
+    },
+    {
+      "file": "photos/user_updates/U6_new_mark.png",
+      "bytes": 2074209,
+      "sha256": "d999da47eed0d687916cb0b94b1986428a7e9704c1f7c7351dc8af5be106719b"
+    }
+  ],
+  "markings": {
+    "U6": "C2NM",
+    "Q8": "3724A",
+    "D2": "4P",
+    "D3": "A7",
+    "D4": "5U",
+    "D5": "5U",
+    "D6": "G3",
+    "R41": "331"
+  },
+  "measurements": [
+    {
+      "date": "2026-10-08",
+      "source": "user report",
+      "G_to_C_ohms": 2.7,
+      "G_to_B_ohms": 34000,
+      "G_to_A_ohms": 4200,
+      "probe_baseline": "User clarified tips touching: repeat 0.5 ohm; earlier 2-5 ohm pressure-dependent contact",
+      "interpretation": "C is likely ground; 2.7 ohm versus later 0.5 ohm baseline is consistent with contact resistance but does not prove a direct copper tie. Matches S-812C33AMC pin1; prior RT9818 prediction withdrawn.",
+      "shorted_probe_ohms": 0.5
+    },
+    {
+      "date": "2026-10-08",
+      "source": "user report",
+      "D_to_E_ohms": 2,
+      "E_to_F_ohms": 400000,
+      "S_to_G_ohms": 2,
+      "interpretation": "Supports joined drain pads and N-source ground. E-F 400kohm refutes direct C6.1 output tie; that wire was removed. Follow-up F-P/F-G results are recorded below."
+    },
+    {
+      "date": "2026-10-08",
+      "source": "user report",
+      "F_to_P_ohms": 10,
+      "F_to_G_ohms": 300000,
+      "interpretation": "Supply-related C6 node supported; exact F-P path unresolved. 10ohm exceeds roughly 2ohm contact readings. Do not equate to a proven direct net or invent a 10ohm resistor. C6.1 remains unresolved."
+    }
+  ],
+  "interpretation": "U6 is a strong regulator candidate, without measured rail voltage. Q8 is a complementary MOSFET candidate with joined drains and grounded N-source supported by resistance. C6 output tie withdrawn; supply-related path remains unresolved. D3 BAV99 and D4/D5 SD05 candidates strengthened; D6 G3 is not a unique voltage code. D2 4P is unidentified, previous BAV99 withdrawn. R41 nominal 330 ohm decoded from user-read 331."
+}

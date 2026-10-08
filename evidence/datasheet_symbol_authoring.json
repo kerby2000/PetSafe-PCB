@@ -1,6 +1,6 @@
 {
   "date": "2026-10-08",
-  "authorization": "User explicitly authorized creating S-1200B45 and MX512H from datasheets using KiCad MCP after vendor files could not be found.",
+  "authorization": "User explicitly authorized creating S-1200B45 and MX512H from datasheets using KiCad MCP after vendor files could not be found. User subsequently authorized U6 and Q8 creation from datasheets; sharper photos supersede provisional RT9818/372A readings.",
   "kicad_runtime": "10.0.5",
   "server_generator_note": "MCP create_symbol emits a legacy generator_version 9.0 metadata string; runtime and validation use installed KiCad 10.0.5.",
   "tools_used": [
@@ -8,7 +8,10 @@
     "register_symbol_library",
     "replace_schematic_component",
     "batch_list_symbol_pins",
-    "get_footprint_info"
+    "get_footprint_info",
+    "import_symbol",
+    "delete_symbol",
+    "batch_edit_schematic_components"
   ],
   "create_symbol_requests": [
     {
@@ -207,5 +210,46 @@
   },
   "pin4_rationale": "S-1200 pin4 is internally open and explicitly allowed tied to VIN/VSS (Table3 note). Represented as passive NC so original optional-pad copper is retained; no hidden power role.",
   "motor_output_types": "tri_state reflects the documented high-impedance standby mode; both output pads remain separate.",
-  "footprints": "Unmodified standard KiCad footprints; no custom footprint created."
+  "footprints": "Unmodified standard KiCad footprints; no custom footprint created.",
+  "v05": {
+    "U6": {
+      "symbol": "S-812C33AMC",
+      "tool": "create_symbol",
+      "pins": {
+        "1": "VSS / power_in",
+        "2": "VIN / power_in",
+        "3": "VOUT / power_out",
+        "4": "NC / passive",
+        "5": "NC / passive"
+      },
+      "source": "S812C.pdf Table1 p8 and Table5 p11; ABLIC_MP005-A.pdf p5 markings",
+      "geometry": "rectangle +/-7.62mm; pins1 (0,-10.16,90); 2 (-10.16,5.08,0); 3 (10.16,5.08,180); 4 (-10.16,-2.54,0); 5 (10.16,-2.54,180)",
+      "nc_policy": "ABLIC allows internally open NC pins tied to VIN/VSS. Passive, no board ties invented."
+    },
+    "Q8": {
+      "symbol": "SIL3724A",
+      "tool": "import_symbol",
+      "source_symbol": "Transistor_FET:Q_Dual_NMOS_PMOS_G1S2G2D2S1D1",
+      "source": "SIL3724A.pdf p1",
+      "pins": {
+        "1": "G_N",
+        "2": "S_P",
+        "3": "G_P",
+        "4": "D_P",
+        "5": "S_N",
+        "6": "D_N"
+      },
+      "graphics": "Unmodified imported stock generic N/P artwork, normal pin numbers; unit1 NMOS, unit2 PMOS",
+      "metadata": "Value, footprint, datasheet and description updated using a parsed S-expression after MCP property writer corrupted nested modern property syntax. The malformed intermediate was removed and generic parent was reimported; final native export and library audit pass."
+    },
+    "withdrawn": "RT9818A-33PB intermediate symbol removed through MCP after C2NM photo refuted WN reading",
+    "placements": "MCP replaced U6/Q8 and D4-D6, added Q8 PMOS unit, batch-updated candidate values; template synchronizes both Q8 units. Routing adapter assigns documented physical-pad maps."
+  },
+  "latest_stock_updates": {
+    "D2": "MCP replaced BAV99 with Connector_Generic:Conn_01x03 after user-confirmed 4P; all old guessed clamp ties removed",
+    "D3": "BAV99 candidate retained for user-confirmed A7",
+    "D4_D5": "MCP replaced 1N4148WS candidate with stock Device:D_Zener for SD05 unidirectional TVS candidate",
+    "D6": "Stock Device:D_Zener for G3 Zener candidates; voltage not uniquely identified",
+    "R41": "MCP batch edit to 330 after user clearly read 331"
+  }
 }

@@ -19,19 +19,27 @@
     "export_schematic_svg",
     "create_symbol",
     "register_symbol_library",
-    "replace_schematic_component"
+    "replace_schematic_component",
+    "import_symbol",
+    "delete_symbol",
+    "add_symbol_property",
+    "batch_edit_schematic_components"
   ],
   "placement_components": 150,
-  "extra_units": 4,
-  "stock_symbol_definitions": 21,
-  "custom_symbol_definitions": 2,
+  "extra_units": 5,
+  "stock_symbol_definitions": 20,
+  "custom_symbol_definitions": 4,
   "batch_timeout": "Batch call reached its 30-second response timeout; subsequent read confirmed all 150 symbols were placed. No blind retry.",
   "routing": "tools/finish_library_rebuild.py adapts the authored routes to MCP-placed symbol pins; it does not create symbol definitions.",
   "missing_exact_symbols": [],
   "unidentified": [
-    "U6 WN23",
-    "Q8 372A"
+    "Q8 exact manufacturer remains unconfirmed; SIL3724A candidate fits 3724A",
+    "D2 4P: numbered stock placeholder, functions unresolved"
   ],
-  "revision": "v0.4",
-  "datasheet_symbol_authoring": "evidence/datasheet_symbol_authoring.json"
+  "revision": "v0.5",
+  "datasheet_symbol_authoring": "evidence/datasheet_symbol_authoring.json",
+  "candidate_identifications": [
+    "U6 C2NM: S-812C33AMC-C2NT2x",
+    "Q8 3724A: complementary N/P pair, SIL3724A candidate"
+  ]
 }

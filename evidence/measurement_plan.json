@@ -1,0 +1,192 @@
+{
+  "date": "2026-10-08",
+  "status": "TARGETED_ROUND_COMPLETE_C6_ROUTE_UNRESOLVED",
+  "method": "Unpowered resistance; compare with shorted-probe reading",
+  "photo_callouts": [
+    {
+      "id": "U6",
+      "source": "photos/originals/IMG_2435.jpg",
+      "crop": [
+        300,
+        1030,
+        1320,
+        1850
+      ],
+      "points": {
+        "A": {
+          "point": [
+            1025,
+            1248
+          ],
+          "label": [
+            1180,
+            1220
+          ]
+        },
+        "B": {
+          "point": [
+            1025,
+            1305
+          ],
+          "label": [
+            1180,
+            1320
+          ]
+        },
+        "C": {
+          "point": [
+            1025,
+            1357
+          ],
+          "label": [
+            1170,
+            1420
+          ]
+        },
+        "G": {
+          "point": [
+            404,
+            1720
+          ],
+          "label": [
+            540,
+            1800
+          ]
+        }
+      },
+      "tests": [
+        {
+          "id": "U6-1",
+          "from": "G",
+          "to": "A"
+        },
+        {
+          "id": "U6-2",
+          "from": "G",
+          "to": "B"
+        },
+        {
+          "id": "U6-3",
+          "from": "G",
+          "to": "C"
+        }
+      ]
+    },
+    {
+      "id": "Q8",
+      "source": "photos/originals/IMG_2431.jpg",
+      "crop": [
+        280,
+        1040,
+        1130,
+        1930
+      ],
+      "points": {
+        "D": {
+          "point": [
+            540,
+            1662
+          ],
+          "label": [
+            340,
+            1630
+          ]
+        },
+        "E": {
+          "point": [
+            698,
+            1662
+          ],
+          "label": [
+            770,
+            1720
+          ]
+        },
+        "F": {
+          "point": [
+            990,
+            1530
+          ],
+          "label": [
+            1040,
+            1370
+          ]
+        },
+        "S": {
+          "point": [
+            618,
+            1667
+          ],
+          "label": [
+            610,
+            1840
+          ]
+        },
+        "P": {
+          "point": [
+            618,
+            1440
+          ],
+          "label": [
+            820,
+            1420
+          ]
+        }
+      },
+      "tests": [
+        {
+          "id": "Q8-1",
+          "from": "D",
+          "to": "E"
+        },
+        {
+          "id": "Q8-2",
+          "from": "E",
+          "to": "F"
+        },
+        {
+          "id": "Q8-3",
+          "from": "S",
+          "to": "G (U6 photo)"
+        },
+        {
+          "id": "Q8-4",
+          "from": "F",
+          "to": "P"
+        },
+        {
+          "id": "Q8-5",
+          "from": "F",
+          "to": "G (U6 photo)"
+        }
+      ]
+    }
+  ],
+  "results": [
+    {
+      "date": "2026-10-08",
+      "source": "user report",
+      "G_to_C_ohms": 2.7,
+      "G_to_B_ohms": 34000,
+      "G_to_A_ohms": 4200,
+      "probe_baseline": "User clarified tips touching: repeat 0.5 ohm; earlier 2-5 ohm pressure-dependent contact",
+      "interpretation": "C is likely ground; 2.7 ohm versus later 0.5 ohm baseline is consistent with contact resistance but does not prove a direct copper tie. Matches S-812C33AMC pin1; prior RT9818 prediction withdrawn.",
+      "shorted_probe_ohms": 0.5
+    },
+    {
+      "date": "2026-10-08",
+      "source": "user report",
+      "D_to_E_ohms": 2,
+      "E_to_F_ohms": 400000,
+      "S_to_G_ohms": 2,
+      "interpretation": "Supports joined drain pads and N-source ground. E-F 400kohm refutes direct C6.1 output tie; that wire was removed. Follow-up F-P/F-G results are recorded below."
+    },
+    {
+      "date": "2026-10-08",
+      "source": "user report",
+      "F_to_P_ohms": 10,
+      "F_to_G_ohms": 300000,
+      "interpretation": "Supply-related C6 node supported; exact F-P path unresolved. 10ohm exceeds roughly 2ohm contact readings. Do not equate to a proven direct net or invent a 10ohm resistor. C6.1 remains unresolved."
+    }
+  ]
+}

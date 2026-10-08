@@ -2199,7 +2199,7 @@
       "placement": {
         "symbol": "Device:R",
         "reference": "R41",
-        "value": "mark 33...?",
+        "value": "330",
         "position": {
           "x": 520.7,
           "y": 50.8
@@ -3074,8 +3074,8 @@
       "original_ref": "Q8",
       "reference": "Q8",
       "unit": 1,
-      "symbol": "Connector_Generic:Conn_02x03_Counter_Clockwise",
-      "footprint": "",
+      "symbol": "PetSafe_Datasheet:SIL3724A",
+      "footprint": "Package_TO_SOT_SMD:SOT-23-6",
       "legacy": {
         "ref": "Q8",
         "actual": "Q8",
@@ -3148,15 +3148,17 @@
         "kind": "IC"
       },
       "placement": {
-        "symbol": "Connector_Generic:Conn_02x03_Counter_Clockwise",
+        "symbol": "PetSafe_Datasheet:SIL3724A",
         "reference": "Q8",
-        "value": "372A? [pads]",
+        "value": "SIL3724A?",
         "position": {
-          "x": 149.86,
-          "y": 214.63
+          "x": 162.56,
+          "y": 231.14
         },
         "rotation": 0,
-        "includePins": true
+        "includePins": true,
+        "footprint": "Package_TO_SOT_SMD:SOT-23-6",
+        "unit": 1
       }
     },
     {
@@ -4743,21 +4745,22 @@
       "placement": {
         "symbol": "Diode:BAV99",
         "reference": "D3",
-        "value": "clamp?",
+        "value": "BAV99? (A7)",
         "position": {
           "x": 556.26,
           "y": 233.68
         },
         "rotation": 0,
         "includePins": true,
-        "footprint": "Package_TO_SOT_SMD:SOT-23"
+        "footprint": "Package_TO_SOT_SMD:SOT-23",
+        "unit": 1
       }
     },
     {
       "original_ref": "D2",
       "reference": "D2",
       "unit": 1,
-      "symbol": "Diode:BAV99",
+      "symbol": "Connector_Generic:Conn_01x03",
       "footprint": "Package_TO_SOT_SMD:SOT-23",
       "legacy": {
         "ref": "D2",
@@ -4804,17 +4807,20 @@
         "kind": "DUALD"
       },
       "placement": {
-        "symbol": "Diode:BAV99",
+        "symbol": "Connector_Generic:Conn_01x03",
         "reference": "D2",
-        "value": "clamp?",
+        "value": "4P / unidentified",
         "position": {
           "x": 556.26,
           "y": 251.46
         },
         "rotation": 0,
         "includePins": true,
-        "footprint": "Package_TO_SOT_SMD:SOT-23"
-      }
+        "footprint": "Package_TO_SOT_SMD:SOT-23",
+        "unit": 1
+      },
+      "description": "Unidentified three-terminal part marked 4P. Numbered stock placeholder; pin functions unresolved.",
+      "datasheet": ""
     },
     {
       "original_ref": "R29",
@@ -7167,8 +7173,8 @@
       "original_ref": "U6",
       "reference": "U6",
       "unit": 1,
-      "symbol": "Connector_Generic:Conn_01x05",
-      "footprint": "",
+      "symbol": "PetSafe_Datasheet:S-812C33AMC",
+      "footprint": "Package_TO_SOT_SMD:SOT-23-5",
       "legacy": {
         "ref": "U6",
         "actual": "U6",
@@ -7232,15 +7238,17 @@
         "kind": "IC"
       },
       "placement": {
-        "symbol": "Connector_Generic:Conn_01x05",
+        "symbol": "PetSafe_Datasheet:S-812C33AMC",
         "reference": "U6",
-        "value": "WN23? [pins]",
+        "value": "S-812C33AMC? / 3.3V",
         "position": {
           "x": 330.2,
           "y": 309.88
         },
         "rotation": 0,
-        "includePins": true
+        "includePins": true,
+        "footprint": "Package_TO_SOT_SMD:SOT-23-5",
+        "unit": 1
       }
     },
     {
@@ -8052,8 +8060,8 @@
       "original_ref": "D4",
       "reference": "D4",
       "unit": 1,
-      "symbol": "Device:D",
-      "footprint": "",
+      "symbol": "Device:D_Zener",
+      "footprint": "Diode_SMD:D_SOD-323",
       "legacy": {
         "ref": "D4",
         "actual": "D4",
@@ -8090,23 +8098,27 @@
         "kind": "D2"
       },
       "placement": {
-        "symbol": "Device:D",
+        "symbol": "Device:D_Zener",
         "reference": "D4",
-        "value": "?",
+        "value": "SD05? / TVS 5V",
         "position": {
           "x": 372.11,
           "y": 391.16
         },
         "rotation": 0,
-        "includePins": true
-      }
+        "includePins": true,
+        "footprint": "Diode_SMD:D_SOD-323",
+        "unit": 1
+      },
+      "datasheet": "https://www.tme.eu/Document/7ef0e55cabc749c01c5f7eae977e91a5/SD05.pdf",
+      "description": "5U: SD05 5V unidirectional TVS candidate; actual maker and board connections unconfirmed. Standard avalanche diode symbol."
     },
     {
       "original_ref": "D5",
       "reference": "D5",
       "unit": 1,
-      "symbol": "Device:D",
-      "footprint": "",
+      "symbol": "Device:D_Zener",
+      "footprint": "Diode_SMD:D_SOD-323",
       "legacy": {
         "ref": "D5",
         "actual": "D5",
@@ -8143,23 +8155,27 @@
         "kind": "D2"
       },
       "placement": {
-        "symbol": "Device:D",
+        "symbol": "Device:D_Zener",
         "reference": "D5",
-        "value": "?",
+        "value": "SD05? / TVS 5V",
         "position": {
           "x": 388.62,
           "y": 391.16
         },
         "rotation": 0,
-        "includePins": true
-      }
+        "includePins": true,
+        "footprint": "Diode_SMD:D_SOD-323",
+        "unit": 1
+      },
+      "datasheet": "https://www.tme.eu/Document/7ef0e55cabc749c01c5f7eae977e91a5/SD05.pdf",
+      "description": "5U: SD05 5V unidirectional TVS candidate; actual maker and board connections unconfirmed. Standard avalanche diode symbol."
     },
     {
       "original_ref": "D6",
       "reference": "D6",
       "unit": 1,
-      "symbol": "Device:D",
-      "footprint": "",
+      "symbol": "Device:D_Zener",
+      "footprint": "Diode_SMD:D_SOD-323",
       "legacy": {
         "ref": "D6",
         "actual": "D6",
@@ -8196,16 +8212,20 @@
         "kind": "D2"
       },
       "placement": {
-        "symbol": "Device:D",
+        "symbol": "Device:D_Zener",
         "reference": "D6",
-        "value": "?",
+        "value": "MMSZ5228BS? / 3.9V",
         "position": {
           "x": 405.13,
           "y": 391.16
         },
         "rotation": 0,
-        "includePins": true
-      }
+        "includePins": true,
+        "footprint": "Diode_SMD:D_SOD-323",
+        "unit": 1
+      },
+      "datasheet": "https://www.diodes.com/datasheet/download/MMSZ5228BS.pdf",
+      "description": "G3: MMSZ5228BS 3.9V Zener candidate. PZU2.4B 2.4V alternative; exact fitted part unconfirmed."
     },
     {
       "original_ref": "U6A",
@@ -8577,6 +8597,98 @@
         "rotation": 270,
         "includePins": true
       }
+    },
+    {
+      "original_ref": "Q8",
+      "reference": "Q8",
+      "unit": 2,
+      "symbol": "PetSafe_Datasheet:SIL3724A",
+      "footprint": "Package_TO_SOT_SMD:SOT-23-6",
+      "legacy": {
+        "ref": "Q8",
+        "actual": "Q8",
+        "x": 118,
+        "y": 169,
+        "unit": 2,
+        "lid": "PetSafe_Working:RE_Q8",
+        "value": "dual switch? / 372A",
+        "rx": 118,
+        "ry": 159.5,
+        "vx": 118,
+        "vy": 161,
+        "just": "",
+        "pins": [
+          {
+            "p": "T3",
+            "name": "drive A?",
+            "x": -7,
+            "y": -5,
+            "side": 0,
+            "typ": "passive",
+            "length": 2
+          },
+          {
+            "p": "T1",
+            "name": "drive B?",
+            "x": -7,
+            "y": 2,
+            "side": 0,
+            "typ": "passive",
+            "length": 2
+          },
+          {
+            "p": "T2",
+            "name": "T2",
+            "x": 7,
+            "y": -5,
+            "side": 180,
+            "typ": "passive",
+            "length": 2
+          },
+          {
+            "p": "B1",
+            "name": "B1",
+            "x": -3,
+            "y": 9,
+            "side": 90,
+            "typ": "passive",
+            "length": 2
+          },
+          {
+            "p": "B2",
+            "name": "B2",
+            "x": 1,
+            "y": 9,
+            "side": 90,
+            "typ": "passive",
+            "length": 2
+          },
+          {
+            "p": "B3",
+            "name": "B3",
+            "x": 7,
+            "y": 5,
+            "side": 180,
+            "typ": "passive",
+            "length": 2
+          }
+        ],
+        "kind": "IC"
+      },
+      "placement": {
+        "symbol": "PetSafe_Datasheet:SIL3724A",
+        "reference": "Q8",
+        "value": "SIL3724A?",
+        "position": {
+          "x": 162.56,
+          "y": 207.01
+        },
+        "rotation": 0,
+        "includePins": true,
+        "footprint": "Package_TO_SOT_SMD:SOT-23-6",
+        "unit": 2,
+        "mirror": "x"
+      }
     }
   ],
   "crosswalk": {
@@ -8718,12 +8830,12 @@
     "D1.L": "D1.1",
     "D1.R": "D1.2",
     "D1.S": "D1.3",
-    "Q8.T3": "Q8.3",
-    "Q8.T1": "Q8.1",
+    "Q8.T3": "Q8.1",
+    "Q8.T1": "Q8.3",
     "Q8.T2": "Q8.2",
-    "Q8.B1": "Q8.6",
+    "Q8.B1": "Q8.4",
     "Q8.B2": "Q8.5",
-    "Q8.B3": "Q8.4",
+    "Q8.B3": "Q8.6",
     "L1.1": "L1.1",
     "L1.2": "L1.2",
     "C5.1": "C5.1",
@@ -8876,11 +8988,11 @@
     "C47.2": "C47.2",
     "C48.1": "C48.1",
     "C48.2": "C48.2",
-    "U6.R1": "U6.1",
+    "U6.R1": "U6.3",
     "U6.R2": "U6.2",
-    "U6.R3": "U6.3",
-    "U6.L1": "U6.5",
-    "U6.L2": "U6.4",
+    "U6.R3": "U6.1",
+    "U6.L1": "U6.4",
+    "U6.L2": "U6.5",
     "R37.1": "R37.1",
     "R37.2": "R37.2",
     "C36.1": "C36.1",
@@ -11909,39 +12021,6 @@
       "b": [
         447,
         184
-      ]
-    },
-    {
-      "net": "H_GND",
-      "a": [
-        432,
-        198
-      ],
-      "b": [
-        429,
-        198
-      ]
-    },
-    {
-      "net": "H_RX_VDD",
-      "a": [
-        444,
-        198
-      ],
-      "b": [
-        447,
-        198
-      ]
-    },
-    {
-      "net": "H_RX_DETECT",
-      "a": [
-        438,
-        202
-      ],
-      "b": [
-        438,
-        205
       ]
     },
     {

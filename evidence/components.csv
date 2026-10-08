@@ -32,7 +32,7 @@ R37,R37,22,22,220,populated,IMG_2435.jpg,See reconstruction notes; added connect
 R38,R38,10k,10k,01C,populated,IMG_2435.jpg,See reconstruction notes; added connectivity inferred,0,Device:R,
 R39,R39,10k,10k,01C,populated,IMG_2435.jpg,See reconstruction notes; added connectivity inferred,0,Device:R,
 R40,R40,10k,10k,01C,populated,IMG_2436.jpg;IMG_2437.jpg;IMG_2438.jpg,See reconstruction notes; added connectivity inferred,0,Device:R,
-R41,R41,UNKNOWN,mark 33...?,33?,populated,IMG_2436.jpg;IMG_2437.jpg;IMG_2438.jpg,See reconstruction notes; added connectivity inferred,0,Device:R,
+R41,R41,330,330,331,populated,IMG_2436.jpg;IMG_2437.jpg;IMG_2438.jpg,"Observed marking 331 establishes nominal 330 ohm. Tolerance, power rating, package dimensions and external connections are not established by the code.",0,Device:R,
 R42,R42,1.2k,1.2k,122,populated,IMG_2429.jpg;IMG_2434.jpg,See reconstruction notes; added connectivity inferred,0,Device:R,
 R43,R43,6.8k,6.8k,682,populated,IMG_2436.jpg;IMG_2437.jpg;IMG_2438.jpg,See reconstruction notes; added connectivity inferred,0,Device:R,
 R44,R44,UNKNOWN,15k?,18C?,populated,IMG_2436.jpg;IMG_2437.jpg;IMG_2438.jpg,See reconstruction notes; added connectivity inferred,0,Device:R,
@@ -48,7 +48,7 @@ C2,C2,UNKNOWN,4.7u?,,populated,IMG_2430.jpg;IMG_2435.jpg,See reconstruction note
 C3,C3,DNP,DNP,,DNP,IMG_2430.jpg;IMG_2435.jpg,See reconstruction notes; added connectivity inferred,1,Device:C,
 C4,C4,DNP,DNP,,DNP,IMG_2430.jpg;IMG_2435.jpg,See reconstruction notes; added connectivity inferred,1,Device:C,
 C5,C5,UNKNOWN,electrolytic ?,,populated,IMG_2431.jpg;IMG_2432.jpg,See reconstruction notes; added connectivity inferred,0,Device:C_Polarized,
-C6,C6,UNKNOWN,UNKNOWN,,populated,IMG_2431.jpg;IMG_2432.jpg,See reconstruction notes; added connectivity inferred,0,Device:C,
+C6,C6,UNKNOWN,UNKNOWN,,populated,IMG_2431.jpg;IMG_2432.jpg,"E-F=400kohm refutes direct output tie. F-P=10ohm and F-G=300kohm support supply-related upper pad. Exact path unresolved; no new 10ohm resistor invented. C6.1 open, C6.2 ground still inferred.",1,Device:C,
 C7,C7,UNKNOWN,100n?,,populated,IMG_2431.jpg;IMG_2432.jpg,See reconstruction notes; added connectivity inferred,0,Device:C,
 C8,C8,UNKNOWN,UNKNOWN,,populated,IMG_2431.jpg;IMG_2432.jpg,See reconstruction notes; added connectivity inferred,0,Device:C,
 C9,C9,UNKNOWN,UNKNOWN,,populated,IMG_2431.jpg;IMG_2432.jpg,See reconstruction notes; added connectivity inferred,0,Device:C,
@@ -102,7 +102,7 @@ U5,U5,MX512H,MX512H,MX512H,populated,IMG_2424.jpg;IMG_2438.jpg,See reconstructio
 U3,U3,SGM8542XS,SGM8542XS,SGM8542XS / 2531C,populated,IMG_2429.jpg,See reconstruction notes; added connectivity inferred,0,Amplifier_Operational:Opamp_Dual,Package_SO:SOIC-8_3.9x4.9mm_P1.27mm
 U1,U1,UNKNOWN_5PIN,S-1200B45?,PPEK,populated,IMG_2430.jpg,H01: ABLIC S1200 Rev6 page23 maps PPE to S-1200B45-M5T1x and fourth character to lot. Strong identity candidate; board-wide connections remain inferred.,0,PetSafe_Datasheet:S-1200B45-M5T1,Package_TO_SOT_SMD:SOT-23-5
 U2,U2,UNKNOWN_6PIN,74LVC2G14?,C14R?,populated,IMG_2431.jpg,"H07: exact TI C14R marking and 6-pin DBV package match. Photo top row left to right = 3,2,1; bottom = 4,5,6.",0,74xGxx:74LVC2G14,Package_TO_SOT_SMD:SOT-23-6
-U6,U6,UNKNOWN_5PIN,LDO? / WN23,WN23?,populated,IMG_2435.jpg,H14: earlier LDO topology retained as an explicitly low-confidence circuit hypothesis. Follow-up investigation favors RT9818A-33PB supervisor; the placeholder crosswalk is mirrored and cannot be reused as that supervisor pin map. See docs/U6_Q8_INVESTIGATION.html.,1,Connector_Generic:Conn_01x05,
+U6,U6,UNKNOWN_5PIN,S-812C33AMC? / 3.3V,C2NM,populated,IMG_2435.jpg,"H14v05: C2N product code matches ABLIC S-812C33AMC (Table 1); fourth character assembly month per MP005-A marking drawing. Pin1=VSS matches C=2.7ohm to G (shorted tips later 0.5ohm). Input/output routing inferred, 3.3V not measured. RT9818 supervisor hypothesis withdrawn.",2,PetSafe_Datasheet:S-812C33AMC,Package_TO_SOT_SMD:SOT-23-5
 U6A,U106,DNP,DNP,,DNP,IMG_2435.jpg,See reconstruction notes; added connectivity inferred,3,Connector_Generic:Conn_01x03,
 U7,U7,DNP,DNP,,DNP,IMG_2441.jpg,See reconstruction notes; added connectivity inferred,3,Connector_Generic:Conn_01x03,
 Q1,Q1,UNKNOWN,MMBT3904?,R1A,populated,IMG_2438.jpg,"H05: R1A mark suggests MMBT3904; B=R, E=L, C=S inferred from SOT23 orientation.",0,Transistor_BJT:MMBT3904,Package_TO_SOT_SMD:SOT-23
@@ -112,15 +112,15 @@ Q4,Q4,UNKNOWN,MMBTA55?,2H,populated,IMG_2433.jpg,H13: 2H marking suggests PNP MM
 Q5,Q5,UNKNOWN,MMBTA55?,2H,populated,IMG_2433.jpg,H13: 2H marking suggests PNP MMBTA55/FMMTA55 family; PBSS5140T alternative. B=R E=L C=S assumed.,0,Transistor_BJT:Q_PNP_BEC,Package_TO_SOT_SMD:SOT-23
 Q6,Q6,UNKNOWN,MMBTA55?,2H,populated,IMG_2433.jpg,H13: 2H marking suggests PNP MMBTA55/FMMTA55 family; PBSS5140T alternative. B=R E=L C=S assumed.,0,Transistor_BJT:Q_PNP_BEC,Package_TO_SOT_SMD:SOT-23
 Q7,Q7,UNKNOWN,BC857C?,3GW / 54,populated,IMG_2434.jpg,H11: 3GW fits BC857C. Physical B=L E=R C=S orientation and switched supply role inferred.,0,Transistor_BJT:BC857,Package_TO_SOT_SMD:SOT-23
-Q8,Q8,UNKNOWN,dual switch? / 372A,372A,populated,IMG_2431.jpg,H09: paired 220-ohm inputs from U2 suggest complementary RF switching device; exact type and supply-pad assignment unknown.,3,Connector_Generic:Conn_02x03_Counter_Clockwise,
+Q8,Q8,UNKNOWN,SIL3724A?,3724A,populated,IMG_2431.jpg,H09v05: 3724A matches MCC SIL3724A N/P pair and six-pin map; fitted maker unconfirmed. D-E=2ohm supports joined drains; S-G=2ohm supports N source ground. P-source supply and R5 continuation inferred. E-F=400kohm refutes the proposed C6 output tie.,0,PetSafe_Datasheet:SIL3724A,Package_TO_SOT_SMD:SOT-23-6
 Q9,Q9,DNP,DNP,,DNP,IMG_2438.jpg,See reconstruction notes; added connectivity inferred,3,Connector_Generic:Conn_01x03,
 Q11,Q11,UNKNOWN,MMBTA55?,2H,populated,IMG_2433.jpg,H13: 2H marking suggests PNP MMBTA55/FMMTA55 family; PBSS5140T alternative. B=R E=L C=S assumed.,0,Transistor_BJT:Q_PNP_BEC,Package_TO_SOT_SMD:SOT-23
 D1,D1,UNKNOWN,BAV99?,A7,populated,IMG_2431.jpg,H08: A7 mark + SOT23 fits BAV99 series dual diode. Photo pad mapping is provisional.,0,Diode:BAV99,Package_TO_SOT_SMD:SOT-23
-D2,D2,UNKNOWN,clamp?,,populated,IMG_2434.jpg,See reconstruction notes; added connectivity inferred,0,Diode:BAV99,Package_TO_SOT_SMD:SOT-23
-D3,D3,UNKNOWN,clamp?,,populated,IMG_2434.jpg,See reconstruction notes; added connectivity inferred,0,Diode:BAV99,Package_TO_SOT_SMD:SOT-23
-D4,D4,UNKNOWN,UNKNOWN,,populated,IMG_2437.jpg,See reconstruction notes; added connectivity inferred,2,Device:D,
-D5,D5,UNKNOWN,UNKNOWN,,populated,IMG_2437.jpg,See reconstruction notes; added connectivity inferred,2,Device:D,
-D6,D6,UNKNOWN,UNKNOWN,,populated,IMG_2437.jpg,See reconstruction notes; added connectivity inferred,2,Device:D,
+D2,D2,UNKNOWN,4P / unidentified,4P,populated,IMG_2434.jpg,User clearly reads 4P. Withdraw BAV99 identity and all three guessed rail-clamp ties. Zetex FMMT2907R PNP is an exact code/package match but not established as the fitted part. Stock numbered placeholder retains L=1/R=2/S=3 as pad identifiers only; internal functions and routing unresolved.,3,Connector_Generic:Conn_01x03,Package_TO_SOT_SMD:SOT-23
+D3,D3,UNKNOWN,BAV99?,A7,populated,IMG_2434.jpg,User clearly reads A7. Nexperia BAV99 manufacturer marking table and SOT-23 series-dual pin map support this candidate. Physical orientation and external rail-clamp routing remain inferred.,0,Diode:BAV99,Package_TO_SOT_SMD:SOT-23
+D4,D4,UNKNOWN,SD05? / TVS 5V,5U,populated,IMG_2437.jpg,"H17v05: New sharp user marking supersedes T4/1N4148WS guess. Semtech SD05 datasheet explicitly maps 5U to 5V unidirectional TVS, SOD323. Stronger candidate; fitted maker unconfirmed. Cathode band visible; photo-pad numbering and external routes still unresolved.",2,Device:D_Zener,Diode_SMD:D_SOD-323
+D5,D5,UNKNOWN,SD05? / TVS 5V,5U,populated,IMG_2437.jpg,"H17v05: New sharp user marking supersedes T4/1N4148WS guess. Semtech SD05 datasheet explicitly maps 5U to 5V unidirectional TVS, SOD323. Stronger candidate; fitted maker unconfirmed. Cathode band visible; photo-pad numbering and external routes still unresolved.",2,Device:D_Zener,Diode_SMD:D_SOD-323
+D6,D6,UNKNOWN,MMSZ5228BS? / 3.9V,G3,populated,IMG_2437.jpg,H17v05: New sharp user marking supersedes T4/1N4148WS guess. Diodes table maps G3 to MMSZ5228BS 3.9V SOD323; Nexperia PZU2.4B 2.4V SOD323F also uses G3. Selected first as provisional; voltage not confirmed. Cathode band visible; photo-pad numbering and external routes still unresolved.,2,Device:D_Zener,Diode_SMD:D_SOD-323
 S1,S1,pushbutton,pushbutton,,populated,IMG_2438.jpg,See reconstruction notes; added connectivity inferred,0,Switch:SW_Push_Dual,
 J1,J1,ICSP header,ICSP,,populated,IMG_2437.jpg,See reconstruction notes; added connectivity inferred,0,Connector_Generic:Conn_01x05,
 J3,J3,PIR daughterboard,PIR BOARD,,populated,IMG_2435.jpg;IMG_2441.jpg,See reconstruction notes; added connectivity inferred,0,Connector_Generic:Conn_01x03,

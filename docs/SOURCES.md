@@ -15,7 +15,7 @@ Manufacturer pinouts and application examples establish plausible functions, not
 | Tuning Qs | [Taitron semiconductor catalog](https://www.taitroncomponents.com/docs/2007%20Semiconductor%20Catalog.pdf) | Manufacturer table lists MMBTA55 / 2H / PNP. Exact fitted manufacturer is unknown. |
 | Tuning alternative | [Nexperia PBSS5140T](https://assets.nexperia.com/documents/data-sheet/PBSS5140T.pdf) | Alternative PNP candidate; short-code identification remains ambiguous. |
 | D1 | [Nexperia BAV99](https://assets.nexperia.com/documents/data-sheet/BAV99.pdf) | A7 marking, SOT23 dual-series diode and pin map. Current Diodes-branded BAV99 uses a different marking; do not use that to prove A7. |
-| U6 alternative | [Richtek RT9818](https://www.richtek.com/assets/product_file/RT9818/DS9818-12.pdf) | Voltage-supervisor family exists in a five-pin package. The WN association comes from historical Richtek marking material [mirrored here](https://www.rom.by/files/Richtek_Marking_Code.PDF); it is a lead, not an exact identification. |
+| U6 withdrawn WN hypothesis | [Richtek RT9818](https://www.richtek.com/assets/product_file/RT9818/DS9818-12.pdf) | Voltage-supervisor family exists in a five-pin package. The WN association comes from historical Richtek marking material [mirrored here](https://www.rom.by/files/Richtek_Marking_Code.PDF); it is a lead, not an exact identification. |
 | Native format | [KiCad schematic format](https://dev-docs.kicad.org/en/file-formats/sexpr-schematic/) | Embedded library, symbol units, wires, junctions, instances and labels. Native validation uses the installed 10.0.5 CLI. |
 
 ## Photographs used for circuit decisions
@@ -23,7 +23,7 @@ Manufacturer pinouts and application examples establish plausible functions, not
 | Photo | Main content |
 |---|---|
 | IMG_2430 | U1/PPEK, regulator capacitors and empty option network |
-| IMG_2431, IMG_2432 | U2/C14R, Q8/372A, D1, RF drive resistors |
+| IMG_2431, IMG_2432 | U2/C14R, Q8/3724A (sharper follow-up), D1, RF drive resistors |
 | IMG_2433, IMG_2442 | Repeated tuning cells and corresponding rear capacitor/via arrangement |
 | IMG_2429, IMG_2434 | U3, feedback resistors, receiver components |
 | IMG_2435 | U6, Q2 and daughterboard interface |
@@ -42,7 +42,7 @@ Full provenance remains in the original component model and photo manifest. Exis
 
 Library existence and footprint names were verified against the user's installed KiCad 10 libraries through MCP, not inferred from online search results. See LIBRARIES_AND_ALTERNATIVES.md for compatibility boundaries.
 
-## U6 / Q8 investigation (2026-10-08)
+## Historical U6 / Q8 investigation (superseded marking interpretation)
 
 - [Richtek RT9818 DS9818-12](https://www.richtek.com/assets/product_file/RT9818/DS9818-12.pdf), saved as `RT9818.pdf`: page 3 top-view package numbering and reset/supply/NC functions.
 - [Richtek marking information, mirrored by Jotrin](https://www.jotrin.it/userfiles/downloadfile/202003111510585708.pdf), saved as `Richtek_Marking_2008.pdf`: actual document MI-080418, printed C-39 / PDF page 39 maps RT9818A-33PB to WN-. This is the inspected local marking source for the follow-up.
@@ -50,10 +50,30 @@ Library existence and footprint names were verified against the user's installed
 - [Diodes DMC3071LVT](https://www.diodes.com/datasheet/download/DMC3071LVT.pdf) and [DMC2053UVT](https://www.diodes.com/datasheet/download/DMC2053UVT.pdf), saved under those names: page 1 complementary-pair pin maps, TSOT26 packages and C71 / AR2 markings. Topology comparisons only.
 - [SYNC Power SPP3437](https://www.syncpower.com/datasheet/SPP3437.pdf), saved as `SPP3437.pdf`: pages 1-2 show 37 marking but a single P-channel device with multiple drain pins, not the leading two-gate hypothesis.
 
-The [investigation report](U6_Q8_INVESTIGATION.html) separates manufacturer facts from new photo interpretations and the earlier native v0.3 circuit. The U6/Q8 hypotheses remain unchanged in v0.4; U1/U5 symbol creation is recorded below. The derivative crops are reproducible from crop bounds/rotations in `evidence/u6_q8_investigation.json`; source photographs remain untouched.
+The [investigation report](U6_Q8_INVESTIGATION.html) separates manufacturer facts from new photo interpretations and the earlier native v0.3 circuit. Those hypotheses were retained in v0.4; v0.5 supersedes them with the new photographs and sources below. The derivative crops are reproducible from crop bounds/rotations in `evidence/u6_q8_investigation.json`; source photographs remain untouched.
 
 ## Authorized datasheet symbols, v0.4 (2026-10-08)
 
 - ABLIC S1200.pdf page 5 / Table 3 provides the five-pin SOT-23-5 map. The internally open pin 4 may be tied to VIN/VSS. The B option uses active-high ON/OFF; the 45 option is nominally 4.5 V.
 - Mixic MX512H.pdf page 2 provides the eight-pin functions; the truth table supports tri-state outputs in standby. Page 9 gives SOP-8 nominal 3.9 x 4.9 mm body, 6.0 mm overall span and 1.27 mm pitch, matching the selected stock narrow SOIC footprint.
 - Actual MCP authoring requests, user authorization and footprint choices are preserved in `evidence/datasheet_symbol_authoring.json`. The MCP library writer retains a legacy generator-version metadata string; creation, native export and checks used installed KiCad 10.0.5.
+
+## Corrected markings and diode candidates, v0.5
+
+- [ABLIC S-812C](https://www.ablic.com/en/doc/datasheet/voltage_regulator/S812C_E.pdf), saved as S812C.pdf: printed p8 Table1 C2N = S-812C33AMC 3.3 V; p11 Table5 pins 1 VSS, 2 VIN, 3 VOUT, 4/5 NC for A variant.
+- [ABLIC MP005-A package](https://www.ablic.com/en/doc/package/MP005-A.pdf), saved as ABLIC_MP005-A.pdf: PDF p5 three product-code characters, fourth assembly month, dot positions assembly year/week. Supports C2NM interpretation; M's exact month not decoded.
+- [MCC SIL3724A manufacturer PDF, Chipdip mirror](https://static.chipdip.ru/lib/761/DOC050761871.pdf), saved as SIL3724A.pdf: p1 explicit 3724A marking, N/P pair, pin diagram and SOT23-6L dimensions. Same primary document was read via Mouser; direct Mouser download returned HTML, which was replaced with this valid PDF.
+- [Nexperia BAV99](https://assets.nexperia.com/documents/data-sheet/BAV99.pdf), saved as BAV99.pdf: A7 marking and dual-series topology support D3 (user-confirmed A7) and D1. D2 was withdrawn after user-confirmed 4P.
+- **Withdrawn D4-D6 candidate:** [Diotec 1N4148WS](https://diotec.com/tl_files/diotec/files/pdf/datasheets/1n4148ws.pdf), saved as 1N4148WS.pdf: T4/W2 mark and SOD-323F switching diode. Earlier photos were misread as T4; newer 5U/G3 readings supersede that guess. The PDF is retained as source history.
+- New user photographs are copied unchanged to photos/user_updates/ and checksummed separately in evidence/user_evidence_2026-10-08.json. Measurements and the 0.5-ohm shorted-probe clarification are recorded in evidence/measurement_plan.json. The original 26-image manifest is unchanged.
+
+## Sharp 5U / G3 photographs and final measurements
+
+- [Semtech SD05/SD12, manufacturer PDF mirrored by TME](https://www.tme.eu/Document/7ef0e55cabc749c01c5f7eae977e91a5/SD05.pdf), saved as SD05.pdf: page 6 5U marking; pages 1-2 unidirectional SOD-323 TVS with 5 V standoff. D4/D5 candidate.
+- [Diodes MMSZ5228BS](https://www.diodes.com/datasheet/download/MMSZ5228BS.pdf), saved as MMSZ5228BS.pdf: page 2 G3 = 3.9 V SOD-323 Zener. D6 provisional first candidate.
+- [Nexperia PZUxB](https://assets.nexperia.com/documents/data-sheet/PZUXB_SER.pdf), saved as PZUXB_SER.pdf: page 2 G3 = PZU2.4B 2.4 V SOD323F. D6 alternative; the marking is not unique.
+- New D4/D5/D6 user images are preserved in photos/user_updates. Q8 D-E=2 ohm and S-G=2 ohm support joined drains/ground source. E-F=400 kohm refutes direct C6/output copper; F-P=10 ohm and F-G=300 kohm support a supply-related C6 node, with exact path unresolved.
+
+## Latest direct readings: D2, D3 and R41
+
+User reports D2=4P, D3=A7 and R41=331 (nominal 330 ohm). These supersede the older ambiguous photo readings. D3 is supported by Nexperia BAV99 page 2. D2 remains unidentified: [Zetex FMMT2907(A), Issue 3, February 1996](https://media.digikey.com/pdf/Data%20Sheets/Zetex%20PDFs/FMMT2907%28A%29.pdf), page 1, lists FMMT2907R=4P in SOT-23; this is a candidate lead only, without a selected pin map. Local copy: `docs/datasheets/FMMT2907.pdf`. D2 uses an open numbered stock placeholder.

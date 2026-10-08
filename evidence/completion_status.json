@@ -1,20 +1,28 @@
 {
   "date": "2026-10-08",
-  "revision": "v0.4",
+  "revision": "v0.5",
   "known_identified_ICs_needing_new_symbols": [],
   "completed": [
     "U1 S-1200B45-M5T1 datasheet symbol",
     "U5 MX512H datasheet symbol",
-    "Stock footprints for both"
+    "Stock footprints for both",
+    "U6 S-812C33AMC candidate symbol from ABLIC pin table via MCP",
+    "Q8 SIL3724A candidate, normal MOSFET artwork imported via MCP and verified pin map",
+    "U6 user resistance readings and shorted-probe baseline recorded",
+    "D3 BAV99 candidate supported by user-confirmed A7 marking",
+    "D4/D5 5U SD05 TVS and D6 G3 Zener candidates use stock symbols",
+    "D2 4P kept as a numbered stock placeholder after withdrawing unsupported BAV99 clamp hypothesis",
+    "All U6/Q8/C6 resistance readings recorded; C6 output wire withdrawn",
+    "R41 331 marking decoded as nominal 330 ohm"
   ],
   "catalog_entries": 150,
   "physical_pins": 352,
-  "unresolved_physical_pins": 63,
+  "unresolved_physical_pins": 65,
   "unresolved_pins_by_population": {
-    "populated": 36,
+    "populated": 38,
     "DNP": 27
   },
-  "population_note": "Catalog populated entries include named pads/testpoints. 63 open pins are not 63 missing components; 27 are on DNP entries.",
+  "population_note": "Open pad counts include DNP entries, test pads and internally open IC pins; they are not missing component counts.",
   "unresolved_pins_by_reference": {
     "C27": 2,
     "C3": 1,
@@ -22,11 +30,12 @@
     "C41": 2,
     "C42": 2,
     "C49": 2,
+    "C6": 1,
+    "D2": 3,
     "D4": 2,
     "D5": 2,
     "D6": 2,
     "J6": 2,
-    "Q8": 3,
     "Q9": 3,
     "R1": 1,
     "R2": 1,
@@ -37,7 +46,7 @@
     "TP10": 1,
     "TP9": 1,
     "U4": 19,
-    "U6": 1,
+    "U6": 2,
     "U6A": 3,
     "U7": 3,
     "VREF": 1
@@ -48,30 +57,38 @@
         "U6"
       ],
       "priority": 1,
-      "gap": "Identity, physical pin numbering and circuit function",
-      "candidate": "Richtek RT9818A-33PB voltage supervisor, moderate confidence at most",
-      "detail": "Historical WN marking and two apparently unused leads support supervisor. Earlier LDO drawing and mirrored surrogate crosswalk are not a valid RT9818 implementation. Supply/reset routing remains unresolved.",
-      "source": "docs/U6_Q8_INVESTIGATION.html"
+      "gap": "Input/output copper routing and operating voltage",
+      "candidate": "ABLIC S-812C33AMC-C2NT2x, strong C2N marking/package/ground match",
+      "detail": "C2NM replaces misread WN23. Pin1=C/R3 likely ground from 2.7 ohm reading; later shorted probes 0.5 ohm. RT9818 withdrawn. VIN/VOUT wiring inferred; 3.3V not measured.",
+      "source": "docs/U6_Q8_MARKING_UPDATE.md"
     },
     {
       "refs": [
         "Q8"
       ],
       "priority": 1,
-      "gap": "Exact identity and six-pin assignment",
-      "candidate": "Complementary N/P MOSFET pair; dual BJT remains possible",
-      "detail": "372A has no confirmed manufacturer match. DMC3071LVT is a standard-library topology comparison only, not a fitted identity or drop-in replacement. Three physical pads remain open.",
-      "source": "docs/U6_Q8_INVESTIGATION.html"
+      "gap": "Exact fitted manufacturer and external connections",
+      "candidate": "3724A complementary N/P MOSFET; MCC SIL3724A datasheet candidate",
+      "detail": "D-E=2ohm and S-G=2ohm support joined drains and ground source. E-F=400kohm refutes C6 output tie. F-P=10ohm and F-G=300kohm suggest supply-related C6; exact path unresolved. P-source supply and output continuation inferred.",
+      "source": "docs/U6_Q8_MARKING_UPDATE.md"
     },
     {
       "refs": [
-        "D2",
+        "D2"
+      ],
+      "priority": 2,
+      "gap": "Identity, pin functions and routing",
+      "candidate": null,
+      "detail": "User clearly reads 4P. Withdraw BAV99 identity and all three guessed rail-clamp ties. Zetex FMMT2907R PNP is an exact code/package match but not established as the fitted part. Stock numbered placeholder retains L=1/R=2/S=3 as pad identifiers only; internal functions and routing unresolved."
+    },
+    {
+      "refs": [
         "D3"
       ],
       "priority": 2,
-      "gap": "Internal diode configuration and polarity",
-      "candidate": "Dual diode clamp networks",
-      "detail": "BAV99 symbols currently express a circuit hypothesis, not exact identifications."
+      "gap": "Physical orientation and external connections",
+      "candidate": "BAV99?",
+      "detail": "User clearly reads A7. Nexperia BAV99 manufacturer marking table and SOT-23 series-dual pin map support this candidate. Physical orientation and external rail-clamp routing remain inferred."
     },
     {
       "refs": [
@@ -80,9 +97,9 @@
         "D6"
       ],
       "priority": 2,
-      "gap": "Diode type, polarity and routing",
-      "candidate": null,
-      "detail": "All six pads remain unresolved; standard diode symbols already represent them."
+      "gap": "Exact diode identity, polarity mapping and routing",
+      "candidate": "D4/D5 SD05? / 5V TVS; D6 MMSZ5228BS? / 3.9V Zener (PZU2.4B / 2.4V alternative)",
+      "detail": "User reads 5U/5U/G3. Manufacturer marking tables support candidates; fitted makers unconfirmed. All six pads remain open; old 1N4148WS interpretation withdrawn."
     },
     {
       "refs": [
@@ -112,7 +129,6 @@
     },
     {
       "refs": [
-        "R41",
         "L1",
         "L2",
         "capacitors"
@@ -120,7 +136,7 @@
       "priority": 2,
       "gap": "Values and passive part/package details",
       "candidate": null,
-      "detail": "R41 marking is ambiguous; L1/L2 may be ferrite beads or inductors. Unmarked capacitor values are unknown or explicitly estimated, especially RF tuning/filters. C27/C41 also lack a circuit role. No new symbol libraries are required."
+      "detail": "R41 is now resolved as nominal 330 ohm from user-read 331. L1/L2 may be ferrite beads or inductors. Unmarked capacitor values remain unknown or explicitly estimated; C27/C41 also lack an established circuit role."
     },
     {
       "refs": [

@@ -1,0 +1,63 @@
+{
+  "from": "v0.4",
+  "to": "v0.5",
+  "basis": "Sharper marks, reported unpowered resistance and manufacturer pin tables; uncertain routes remain explicitly inferred",
+  "changes": [
+    {
+      "physical_pad": "C6.1",
+      "before": "H_RF_VDD",
+      "after": null
+    },
+    {
+      "physical_pad": "D2.L",
+      "before": "H_GND",
+      "after": null
+    },
+    {
+      "physical_pad": "D2.R",
+      "before": "H_RX_VDD",
+      "after": null
+    },
+    {
+      "physical_pad": "D2.S",
+      "before": "H_RX_DETECT",
+      "after": null
+    },
+    {
+      "physical_pad": "Q8.B1",
+      "before": null,
+      "after": "H_RF_OUT_CAND"
+    },
+    {
+      "physical_pad": "Q8.B2",
+      "before": null,
+      "after": "H_GND"
+    },
+    {
+      "physical_pad": "Q8.T2",
+      "before": null,
+      "after": "H_RF_VDD"
+    },
+    {
+      "physical_pad": "U6.L1",
+      "before": "H_PIR_VDD",
+      "after": null
+    },
+    {
+      "physical_pad": "U6.R1",
+      "before": "H_AUX_IN",
+      "after": "H_PIR_VDD"
+    },
+    {
+      "physical_pad": "U6.R2",
+      "before": "H_GND",
+      "after": "H_AUX_IN"
+    },
+    {
+      "physical_pad": "U6.R3",
+      "before": "H_AUX_IN",
+      "after": "H_GND"
+    }
+  ],
+  "note": "81 modeled net partitions retained, with intentional changes. C6.1 and all three D2 pads are unresolved. No direct C6 supply tie or 10-ohm resistor is asserted."
+}

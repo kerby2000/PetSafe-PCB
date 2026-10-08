@@ -30,7 +30,7 @@ if not template.exists():
 tree=sx.loads(template.read_text())
 one(tree,'paper')[1]='A2'
 libs={x[1]:x for x in children(one(tree,'lib_symbols'),'symbol')}
-instances=children(tree,'symbol'); assert len(instances)==154
+instances=children(tree,'symbol'); assert len(instances)==155
 catalog={(i['reference'],i['unit']):i for i in layout['catalog']}
 P={}; PIN_ANGLE={}; BYREF={}; ALL_NATIVE={}
 for inst in instances:
@@ -45,18 +45,22 @@ for inst in instances:
         if u not in (0,unit) or style not in (0,1):continue
         for p in children(sub,'pin'):
             pn=str(one(p,'number')[1]);px,py,angle=map(float,one(p,'at')[1:])
+            mirror=one(inst,'mirror')
+            if mirror:
+                if str(mirror[1])=='x':py=-py
+                if str(mirror[1])=='y':px=-px
             xx=x+px*math.cos(rad)-py*math.sin(rad)
             yy=y-(px*math.sin(rad)+py*math.cos(rad))
             ALL_NATIVE[ref+'.'+pn]=xy((xx,yy))
             PIN_ANGLE[ref+'.'+pn]=int((angle+rot)%360)
     # Use legible, horizontal 1 mm fields; retaining library definitions intact.
     props={p[1]:p for p in children(inst,'property')}
-    if ref in ['U1','U5']:
+    if ref in ['U1','U5','U6','Q8','D2','D3','D4','D5','D6','R41']:
         props['Value'][2]=c['placement']['value']
         props['Footprint'][2]=c['footprint']
         library_properties={p[1]:p[2] for p in children(libs[lid],'property')}
         for name in ['Datasheet','Description']:
-            props[name][2]=library_properties[name]
+            props[name][2]=c.get(name.lower(),library_properties[name])
     rx,ry,vx,vy=(old[k]*1.27 for k in ['rx','ry','vx','vy'])
     # Standard symbol bodies have different extents from the earlier sketches.
     if ref=='U4':rx=vx=x;ry=y-29.21;vy=y-27.305
@@ -65,6 +69,8 @@ for inst in instances:
     if ref in ['U1','U5','U6','Q8']:rx=vx=x;ry=y-10.16;vy=y-8.255
     if ref=='U1':ry=y-12.7;vy=y-10.795
     if ref=='U5':ry=y-22.86;vy=y-20.955
+    if ref=='U6':rx=vx=x+15.24;ry=y-8.89;vy=y-6.985
+    if ref=='Q8':rx=vx=x+12.7;ry=y-1.27;vy=y+0.635
     if ref in ['J1','J3','J5']:rx=vx=x+2.54;ry=y-3.81;vy=y-1.905
     if ref=='Y1':rx=vx=x;ry=y-5.08;vy=y-3.175
     if ref in ['C30','C31']:rx=vx=x+2.54;ry=y-0.635;vy=y+1.27
@@ -78,7 +84,7 @@ for inst in instances:
         effects=one(prop,'effects')
         if effects:prop.remove(effects)
         just=old.get('just','')
-        if ref in ['J1','J3','J5','C30','C31']:just='left'
+        if ref in ['J1','J3','J5','C30','C31','Q8','U6']:just='left'
         if rot==180:just=''
         prop.append(expr(f'(effects (font (size 1.016 1.016)){" (justify "+just+")" if just else ""})'))
     pop=next(cc['value'] for cc in model['components'] if cc['ref']==old['ref'])
@@ -122,6 +128,7 @@ def excluded(w):
         or 230<=a[0]<=331 and 230<=b[0]<=331 and 215<=a[1]<=257 and 215<=b[1]<=257)
 for w in layout['wires']:
     if excluded(w):continue
+    if w['net'] in ['Q8_DRIVE_A','Q8_DRIVE_B','H_RF_OUT_CAND','H_RF_VDD']:continue
     if w['net']=='H_GND' and (w['a']==[57,159] or w['b']==[57,159] or w['a']==[57,190] or w['b']==[57,190]):continue
     a,b=mm(w['a']),mm(w['b']); aa=oldpoints.get(a,a);bb=oldpoints.get(b,b)
     # Adapt short symbol leads; preserve authored route corridors.
@@ -135,6 +142,7 @@ for w in layout['wires']:
     for aa,bb in zip(path,path[1:]):
         if aa!=bb:W.append(dict(net=w['net'],a=xy(aa),b=xy(bb)))
 for l in layout['labels']:
+    if l['net'] in ['Q8_DRIVE_A','Q8_DRIVE_B','H_RF_OUT_CAND','H_RF_VDD']:continue
     w=dict(a=l['p'],b=l['p'])
     if not excluded(w):L.append(dict(net=l['net'],p=oldpoints.get(mm(l['p']),mm(l['p']))))
 # Give the button-control label enough room before the horizontal resistor body.
@@ -176,16 +184,27 @@ wire('H_MOTOR_A','U5.8',(384,44),(384,49),'J5.A')
 wire('H_MOTOR_B','U5.5',(381,52),(381,55),(386,55),(386,51),'J5.B');wire('H_MOTOR_B','TP15.1',(381,55))
 stub('H_MOTOR_INA','U5.2',-10);stub('H_MOTOR_INB','U5.3',-10)
 
-# WN23 unidentified five-pin package; provisional functional roles remain explicit.
+# S-812C33AMC candidate: C2N code and measured ground support pin assignment.
 stub('H_VDD','R37.1',-4)
-wire('H_AUX_IN','R37.2',(249,233),(249,240),'U6.R1')
-wire('H_AUX_IN','C36.1',(237,240),(249,240));wire('H_AUX_IN','U6.R3',(249,244),(249,240))
-wire('H_GND','U6.R2',(247,242),(247,257));bus('H_GND',257,['C36.2','C37.2'])
-wire('H_PIR_VDD','U6.L1',(252,248))
-wire('H_PIR_VDD',(252,248),(252,250),(284,250),(284,241),(280,241),'C37.1')
+wire('H_AUX_IN','R37.2',(248,233),(248,240),'U6.R2')
+wire('H_AUX_IN','C36.1',(237,238),(248,238));label('H_AUX_IN',(237,238))
+wire('H_GND','U6.R3',(260,257));bus('H_GND',257,['C36.2','C37.2'])
+wire('H_PIR_VDD','U6.R1',(280,240),'C37.1')
+wire('H_PIR_VDD',(280,240),(280,241))
 wire('H_PIR_VDD',(280,241),(290,241),(290,232),(313,232),'C32.1')
 wire('H_PIR_VDD',(290,241),(290,256),'J3.1');label('H_PIR_VDD',(290,232))
 wire('H_GND','C32.2',(323,244))
+
+# Q8: 3724A marking supports SIL3724A pinout; manufacturer and routing provisional.
+wire('Q8_DRIVE_A','R9.2',(111,146),(111,182),'Q8.T3')
+wire('Q8_DRIVE_B','R8.2',(106,171),(106,163),'Q8.T1')
+wire('H_RF_OUT_CAND','Q8.B1',(130,174),'Q8.B3')
+wire('H_RF_OUT_CAND',(130,174),'R5.1')
+wire('H_GND','Q8.B2',(130,188),(134,188));label('H_GND',(134,188))
+wire('H_RF_VDD','Q8.T2',(177,159),(177,132),'L1.2')
+wire('H_RF_VDD','L1.2',(187,132),'C5.1')
+wire('H_RF_VDD',(187,132),'TP2.1');label('H_RF_VDD',(181,132))
+# C6.1 to output was refuted by 400 kohm E-F; leave its destination unresolved.
 
 # Preserve original frame geometry at half scale, using normal readable text sizes.
 for g in layout['graphics']:
@@ -202,14 +221,20 @@ for n in layout['notes']:
         t='U1 datasheet symbol: S-1200B45 SOT-23-5. Pin 4 is internally open; option pads retained.'
     if 'Original photographed pad names remain' in t:
         t='Library pin numbers are mapped to photo pads in evidence/pin_crosswalk.json.'
-    if t.startswith('v0.2'):t='v0.4 | KiCad 10.0.5 | 2026-10-08';n['y']=292
+    if t.startswith('v0.2'):t='v0.5 | KiCad 10.0.5 | 2026-10-08';n['y']=292
+    if t.startswith('H14-H15:'):t='H14-H15: C2N supports S-812C33AMC 3.3V LDO. C/R3 ground supported by resistance.'
+    if t.startswith('H09:'):t='H09: 3724A matches SIL3724A N/P MOSFET pair. Both units share one package.'
+    if t.startswith('Q8 T2/B1/B2'):t='Measured: D-E 2 ohm, S-G 2 ohm; E-F 400 kohm refutes the proposed C6 output tie.'
+    if t.startswith('H07:'):t='H07: C14R inverter candidate. Q8 source rail inferred; C6 destination unresolved.'
+    if t.startswith('No invented ties'):t='D4/D5: 5U -> SD05 TVS? D6: G3 -> 3.9V Zener? (2.4V alternative). Routing open.'
     if t.startswith('H03:'):n['y']=106
     text(t,n['x'],n['y'],1.27 if n['size']>=1 else max(.762,n['size']*1.27))
 text('U5 datasheet symbol: separate logic VCC and motor VDD; both ground pins retained.',320,77,.762)
+text('D2: 4P unidentified; old BAV99 clamp ties withdrawn.',350,201,.762)
 text('U3 alternative: MCP6002-I/SN; same pin roles, electrical suitability to verify.',288,208,.762)
 text('U5 alternative: DRV8212PDSGR. Different package/pins; redesign required.',320,81,.762)
-text('U6: earlier LDO hypothesis retained; supervisor candidate and pin-map conflict in report.',234,284,.762)
-text('Q8 indices: 1=T1, 2=T2, 3=T3, 4=B3, 5=B2, 6=B1. Identity open.',90,202,.762)
+text('U6: 3.3V is the candidate rating, not a voltage measurement. NC4/5 board ties unresolved.',234,284,.762)
+text('C6: F-P 10 ohm, F-G 300 kohm suggests a supply-related node; exact path unresolved.',90,202,.762)
 
 def on(p,w):
     a,b=w['a'],w['b']
@@ -263,16 +288,16 @@ for net,edges in adj.items():
 for l in L:
     x,y=l['p'];G.append(expr(f'(label {q(l["net"])} (at {x} {y} 0) (effects (font (size .762 .762)) (justify left bottom)) (uuid {q(uid())}))'))
 tree.extend(G)
-tree.append(expr('(title_block (title "PetSafe 100-1339 R03 A | single-sheet reconstruction") (date "2026-10-08") (rev "0.4") (company "KiCad 10 libraries + two datasheet symbols | MCP authoring") (comment 1 "Inferred circuit. U1/U5 datasheet symbols; U6/Q8 unidentified. Not hardware verified."))'))
+tree.append(expr('(title_block (title "PetSafe 100-1339 R03 A | single-sheet reconstruction") (date "2026-10-08") (rev "0.5") (company "KiCad 10 libraries + four datasheet symbols | MCP authoring") (comment 1 "U6 C2NM and Q8 3724A candidates. Inferred wiring; targeted resistance evidence recorded."))'))
 # Canonical pretty printer supplied by the installed MCP server.
 sys.path.insert(0,str(Path.home()/'Documents/VS.Code.Projects/KiCAD-MCP-Server/python'))
 from utils.sexpr_format import prettify
 out=R/'schematic/PetSafe_1001339.kicad_sch'
 out.write_text(prettify(sx.dumps(tree)),encoding='utf-8',newline='\n')
-model.update(revision='v0.4',coordinate_units='mm',native_pin_crosswalk=layout['crosswalk'],pin_positions={e:list(p) for e,p in P.items()},
-             geometric_wires=[dict(net=n,a=a,b=b) for n,a,b in segments],library_policy='KiCad 10 stock symbols plus two explicitly authorized MCP-created datasheet symbols for U1/U5')
+model.update(revision='v0.5',coordinate_units='mm',native_pin_crosswalk=layout['crosswalk'],pin_positions={e:list(p) for e,p in P.items()},
+             geometric_wires=[dict(net=n,a=a,b=b) for n,a,b in segments],library_policy='KiCad 10 stock symbols plus four explicitly authorized MCP-authored datasheet symbols for U1/U5/U6/Q8')
 for c in model['components']:
     entry=next(x for x in layout['catalog'] if x['original_ref']==c['ref'])
     c['library_symbol']=entry['symbol'];c['footprint']=entry['footprint']
 (R/'evidence/reconstruction.json').write_text(json.dumps(model,indent=2),encoding='utf-8',newline='\n')
-print(f'Routed {len(segments)} segments. Preserved {len(expected)} connected pads, {len(P)-len(expected)} unresolved pads. {len(libs)} library definitions including two MCP-created datasheet symbols.')
+print(f'Routed {len(segments)} segments. Model has {len(expected)} connected pads, {len(P)-len(expected)} unresolved pads. {len(libs)} library definitions including four MCP-authored datasheet symbols.')
