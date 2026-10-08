@@ -17,7 +17,7 @@
     "R29/R44 18C recovered from existing photographs: nominal 15 kohm",
     "126 stock footprint assignments via KiCad MCP; total 147 of 150 assigned",
     "C5 user sleeve reading: 470uF / 16V",
-    "C11 user dimensions match 1206; R8 match 0603 provisionally including end caps",
+    "C11 user dimensions match 1206; R8 full-body measurement including both metal end caps confirms 0603 size",
     "Five additional PIC local routes from existing photos; 14 GPIO pins remain open",
     "C32 rail corrected; C25/C39 signal nodes, R4 GPIO return, TP17 tune net, D4/D5 ICSP nodes, R32/R40 ties and TP4/C41 corrected"
   ],
@@ -180,6 +180,6 @@
       "S1",
       "LED1"
     ],
-    "qualification": "R8 user measurement revises fitted resistor family to 0603 candidates; C11 dimensions support 1206. End-cap interpretation recorded separately. C5/S1/LED1 geometry still needed."
+    "qualification": "R8 user measurement revises fitted resistor family to 0603 candidates; C11 dimensions support 1206. R8 end-cap inclusion confirmed by user; other resistor bodies remain individually unmeasured. C5/S1/LED1 geometry still needed."
   }
 }

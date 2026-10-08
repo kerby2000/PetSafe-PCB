@@ -145,6 +145,6 @@ The earlier generic PIC supply and battery-divider interpretation is partly cont
 
 D4 lower cathode candidate/R32 lower pad connect U4.27; D5 lower cathode candidate/R40 upper pad connect U4.28. Their old R32/PIR-supply and R40/VDD ties are withdrawn. C41 right pad connects TP4; its under-U4 continuation is unknown, so TP4 is removed from the antenna net. C26 no longer has the unsupported VDD tie. C25/C39 no longer have generic 100n bypass values. Ground assignments at their opposite pads and remote interface roles remain inferred.
 
-C5 is 470uF/16V from the user. C11 dimensions support 1206; R8 dimensions support 0603, revising the repeated fitted resistor package family provisionally. All 147 assigned footprint files remain standard-library candidates. C5 body/lead geometry, S1 and LED1 remain unassigned.
+C5 is 470uF/16V from the user. C11 dimensions support 1206; R8 complete-body dimensions including both metal end caps confirm the 0603 size match, revising the repeated fitted resistor package family provisionally. All 147 assigned footprint files remain standard-library candidates. C5 body/lead geometry, S1 and LED1 remain unassigned.
 
 The v0.7 model has 87 net partitions, 54 open physical pads and 14 open PIC GPIOs. See evidence/pic_trace_audit.json and the annotated PDF. Existing photo resolution is enough for the direct local changes above; unresolved pad exits/top-edge continuations benefit from sharper, overlapping straight-on photos. Hidden copper still may need targeted continuity.

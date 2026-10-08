@@ -71,4 +71,4 @@ The U1/U5 pin contracts in `evidence/vendor_symbol_requirements.json` are fulfil
 
 ## v0.7 package correction
 
-The user reports R8 approximately 1.6 x 0.77 mm, supporting 0603. This supersedes v0.6's 0805 fitted-resistor-family estimate; other resistors are revised as provisional 0603 family candidates. C11 approximately 3.2 x 1.5 mm supports its 1206 assignment. C5 value/voltage are now 470uF/16V; its package remains unset pending dimensions.
+The user reports R8 approximately 1.6 x 0.77 mm including both metal end caps, confirming the 0603 body-size match. This supersedes v0.6's 0805 fitted-resistor-family estimate; other resistors are revised as provisional 0603 family candidates. C11 approximately 3.2 x 1.5 mm supports its 1206 assignment. C5 value/voltage are now 470uF/16V; its package remains unset pending dimensions.
