@@ -1,6 +1,6 @@
 {
   "date": "2026-10-08",
-  "revision": "v0.5",
+  "revision": "v0.6",
   "known_identified_ICs_needing_new_symbols": [],
   "completed": [
     "U1 S-1200B45-M5T1 datasheet symbol",
@@ -13,7 +13,9 @@
     "D4/D5 5U SD05 TVS and D6 G3 Zener candidates use stock symbols",
     "D2 4P kept as a numbered stock placeholder after withdrawing unsupported BAV99 clamp hypothesis",
     "All U6/Q8/C6 resistance readings recorded; C6 output wire withdrawn",
-    "R41 331 marking decoded as nominal 330 ohm"
+    "R41 331 marking decoded as nominal 330 ohm",
+    "R29/R44 18C recovered from existing photographs: nominal 15 kohm",
+    "126 stock footprint assignments via KiCad MCP; total 147 of 150 assigned"
   ],
   "catalog_entries": 150,
   "physical_pins": 352,
@@ -148,7 +150,33 @@
       "gap": "Hidden routing and MCU destinations",
       "candidate": null,
       "detail": "19 PIC pads remain unresolved. Existing functional net labels do not establish their GPIO destinations. PIR daughterboard is represented only by its interface; internals are outside the main-board reconstruction."
+    },
+    {
+      "refs": [
+        "C5",
+        "S1",
+        "LED1",
+        "J1",
+        "J5",
+        "test pads"
+      ],
+      "priority": 2,
+      "gap": "Mechanical dimensions and physical pad orientation",
+      "detail": "C5/S1/LED1 remain blank. J1 square-pad/VPP mapping and J5 pitch/latch need confirmation; test-pad drills approximate."
     }
   ],
-  "interpretation": "Every main-board catalog entry is drawn. Complete drawing coverage is distinct from confirmed component identity, values and electrical connectivity."
+  "interpretation": "Every main-board catalog entry is drawn. Complete drawing coverage is distinct from confirmed component identity, values and electrical connectivity.",
+  "available_instruments": [
+    "LCR meter",
+    "multimeter"
+  ],
+  "footprints": {
+    "assigned": 147,
+    "unassigned": [
+      "C5",
+      "S1",
+      "LED1"
+    ],
+    "qualification": "Photo-based package families and lower-confidence connector/test-pad approximations; see footprint_evidence.json"
+  }
 }

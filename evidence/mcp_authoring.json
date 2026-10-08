@@ -36,10 +36,26 @@
     "Q8 exact manufacturer remains unconfirmed; SIL3724A candidate fits 3724A",
     "D2 4P: numbered stock placeholder, functions unresolved"
   ],
-  "revision": "v0.5",
+  "revision": "v0.6",
   "datasheet_symbol_authoring": "evidence/datasheet_symbol_authoring.json",
   "candidate_identifications": [
     "U6 C2NM: S-812C33AMC-C2NT2x",
     "Q8 3724A: complementary N/P pair, SIL3724A candidate"
-  ]
+  ],
+  "footprint_assignment_v06": {
+    "tool": "batch_edit_schematic_components",
+    "target": "tools/templates/mcp_standard_placements.kicad_sch",
+    "batches": [
+      32,
+      32,
+      32,
+      30
+    ],
+    "updated": 126,
+    "errors": 0,
+    "also_updated_values": [
+      "R29",
+      "R44"
+    ]
+  }
 }

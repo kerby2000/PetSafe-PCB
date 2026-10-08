@@ -55,6 +55,8 @@ for inst in instances:
             PIN_ANGLE[ref+'.'+pn]=int((angle+rot)%360)
     # Use legible, horizontal 1 mm fields; retaining library definitions intact.
     props={p[1]:p for p in children(inst,'property')}
+    props['Value'][2]=c['placement']['value']
+    props['Footprint'][2]=c['footprint']
     if ref in ['U1','U5','U6','Q8','D2','D3','D4','D5','D6','R41']:
         props['Value'][2]=c['placement']['value']
         props['Footprint'][2]=c['footprint']
@@ -87,11 +89,14 @@ for inst in instances:
         if ref in ['J1','J3','J5','C30','C31','Q8','U6']:just='left'
         if rot==180:just=''
         prop.append(expr(f'(effects (font (size 1.016 1.016)){" (justify "+just+")" if just else ""})'))
-    pop=next(cc['value'] for cc in model['components'] if cc['ref']==old['ref'])
+    evidence=next(cc for cc in model['components'] if cc['ref']==old['ref'])
+    pop=evidence['value']
     one(inst,'dnp')[1]=S('yes' if pop=='DNP' else 'no')
     policy='User-authorized datasheet symbol created through KiCad MCP' if lid.startswith('PetSafe_Datasheet:') else 'Unmodified KiCad 10 stock symbol'
     for name,val in [('OriginalReference',old['ref']),('Evidence','Photo reconstruction; topology inferred'),
                      ('LibraryPolicy',policy),
+                     ('FootprintConfidence',evidence.get('footprint_confidence','unresolved')),
+                     ('FootprintBasis',evidence.get('footprint_basis','')),
                      ('PinMapping','See evidence/pin_crosswalk.json; physical orientation may be provisional')]:
         for existing in children(inst,'property'):
             if existing[1]==name:inst.remove(existing)
@@ -221,7 +226,7 @@ for n in layout['notes']:
         t='U1 datasheet symbol: S-1200B45 SOT-23-5. Pin 4 is internally open; option pads retained.'
     if 'Original photographed pad names remain' in t:
         t='Library pin numbers are mapped to photo pads in evidence/pin_crosswalk.json.'
-    if t.startswith('v0.2'):t='v0.5 | KiCad 10.0.5 | 2026-10-08';n['y']=292
+    if t.startswith('v0.2'):t='v0.6 | KiCad 10.0.5 | 2026-10-08';n['y']=292
     if t.startswith('H14-H15:'):t='H14-H15: C2N supports S-812C33AMC 3.3V LDO. C/R3 ground supported by resistance.'
     if t.startswith('H09:'):t='H09: 3724A matches SIL3724A N/P MOSFET pair. Both units share one package.'
     if t.startswith('Q8 T2/B1/B2'):t='Measured: D-E 2 ohm, S-G 2 ohm; E-F 400 kohm refutes the proposed C6 output tie.'
@@ -288,13 +293,13 @@ for net,edges in adj.items():
 for l in L:
     x,y=l['p'];G.append(expr(f'(label {q(l["net"])} (at {x} {y} 0) (effects (font (size .762 .762)) (justify left bottom)) (uuid {q(uid())}))'))
 tree.extend(G)
-tree.append(expr('(title_block (title "PetSafe 100-1339 R03 A | single-sheet reconstruction") (date "2026-10-08") (rev "0.5") (company "KiCad 10 libraries + four datasheet symbols | MCP authoring") (comment 1 "U6 C2NM and Q8 3724A candidates. Inferred wiring; targeted resistance evidence recorded."))'))
+tree.append(expr('(title_block (title "PetSafe 100-1339 R03 A | single-sheet reconstruction") (date "2026-10-08") (rev "0.6") (company "KiCad 10 libraries + four datasheet symbols | MCP authoring") (comment 1 "Photo-based package candidates assigned. Values and routing retain explicit uncertainty."))'))
 # Canonical pretty printer supplied by the installed MCP server.
 sys.path.insert(0,str(Path.home()/'Documents/VS.Code.Projects/KiCAD-MCP-Server/python'))
 from utils.sexpr_format import prettify
 out=R/'schematic/PetSafe_1001339.kicad_sch'
 out.write_text(prettify(sx.dumps(tree)),encoding='utf-8',newline='\n')
-model.update(revision='v0.5',coordinate_units='mm',native_pin_crosswalk=layout['crosswalk'],pin_positions={e:list(p) for e,p in P.items()},
+model.update(revision='v0.6',coordinate_units='mm',native_pin_crosswalk=layout['crosswalk'],pin_positions={e:list(p) for e,p in P.items()},
              geometric_wires=[dict(net=n,a=a,b=b) for n,a,b in segments],library_policy='KiCad 10 stock symbols plus four explicitly authorized MCP-authored datasheet symbols for U1/U5/U6/Q8')
 for c in model['components']:
     entry=next(x for x in layout['catalog'] if x['original_ref']==c['ref'])

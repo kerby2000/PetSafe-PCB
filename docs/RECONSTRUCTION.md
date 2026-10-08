@@ -1,4 +1,4 @@
-# PetSafe functional reconstruction, v0.5
+# PetSafe functional reconstruction, v0.6
 
 The deliverable is one editable KiCad schematic sheet with all 150 entries in the original main-board catalog. It uses wires inside functional blocks and labels between blocks. The 150 entries include named pads, test points and unpopulated footprints; they are not 150 fitted components. The separate PIR daughterboard appears in the photos, but only its main-board connector and interface are modeled here.
 
@@ -116,7 +116,7 @@ Native KiCad 10.0.5 exports one A2 sheet with 150 references, 155 symbol units a
 
 ERC reports 86 open findings: 65 unconnected pins, 14 isolated labels, five undriven power checks and two undriven motor-control inputs. No off-grid endpoints, dangling wire ends or unintended multi-pin net merges remain. U6 and Q8 unpowered resistance readings are recorded; C6 exact path remains unresolved. Functional tests, voltage measurements, exact GPIO tracing, physical PCB reconstruction and firmware recovery remain undone.
 
-## Remaining completion items, v0.5
+## Remaining completion items, v0.6
 
 All 150 main-board catalog entries are represented. **No further exact-symbol files are missing for the confidently identified ICs.** U1/U5 are now completed from datasheets through MCP. U6/Q8 candidates are also implemented. The remaining work is identity confirmation, values and hidden connectivity:
 
@@ -134,3 +134,7 @@ All 150 main-board catalog entries are represented. **No further exact-symbol fi
 | PIR daughterboard | Internal components and routes | Only the J3 interface is represented; daughterboard internals are outside the current main-board revision. |
 
 The 65 open physical pins include 27 on unpopulated/DNP entries; the other 38 include named test pads and two internally open U6 pins. They are not 65 missing parts. U7/U6A/Q9 and other DNP entries do not require identifying a fitted chip. The machine-readable list is `evidence/completion_status.json`. Further photo/datasheet inference can continue without a broad measurement campaign. A completely confirmed schematic cannot be claimed from missing identity, value and buried-trace evidence.
+
+## Package and value audit, v0.6
+
+R29 and R44 both read 18C in the original photos (IMG_2434 and IMG_2438 respectively), yielding nominal 15 kohm using EIA-96. This resolves their value question marks without new measurements. 126 stock footprints were assigned using MCP, leaving C5/S1/LED1 for dimensions and pad mapping. FootprintConfidence and FootprintBasis properties retain the distinction between photo estimates and measured geometry. No net partitions were changed. The detailed per-part [completion audit](FINISHING_CHECKLIST.html) separates value, identity, package and routing gaps.

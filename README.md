@@ -1,4 +1,4 @@
-# PetSafe PCB reverse engineering - v0.5
+# PetSafe PCB reverse engineering - v0.6
 
 One editable **A2 KiCad 10 sheet**, with all 150 main-board catalog entries grouped into functional blocks. Wires connect parts within blocks; named nets connect blocks. This revision uses the installed **KiCad 10.0.5** and **KiCad MCP Server**, with **20 unmodified stock symbol definitions and four explicitly authorized datasheet symbols**.
 
@@ -59,3 +59,9 @@ To explicitly recreate the checked-in routing around the saved MCP placement tem
 ```
 
 Regeneration requires `sexpdata` and the installed MCP server's formatter. It overwrites manual native edits; transfer those changes to the template/routing source first. `tools/prepare_library_rebuild.py` records the original conversion manifest from the archived v0.2 topology; it does not create symbol artwork. For additional parts or changed library definitions, use MCP library search/placement and update the saved template and crosswalk before rerouting.
+
+## v0.6 completion audit
+
+126 stock footprints were assigned through KiCad MCP; 147 of 150 catalog entries now have footprints. Photo-based family choices carry separate confidence and evidence properties. C5, S1 and LED1 still need dimensional/pad details. Connector and test-pad assignments remain approximate. All 38 fitted resistor nominal values are recovered, including R29/R44 = 15 kohm from visible 18C markings. No new copper connections were assumed.
+
+See [the searchable finishing checklist](docs/FINISHING_CHECKLIST.html) and [the next annotated checks](output/pdf/PetSafe_next_checks.pdf). The user has an LCR meter and multimeter. Start with the six D2 diode-mode readings, C5 sleeve text/dimensions and one resistor body measurement; use small LCR rounds afterward. All 45 fitted capacitor values remain unknown or estimated.

@@ -77,3 +77,7 @@ The [investigation report](U6_Q8_INVESTIGATION.html) separates manufacturer fact
 ## Latest direct readings: D2, D3 and R41
 
 User reports D2=4P, D3=A7 and R41=331 (nominal 330 ohm). These supersede the older ambiguous photo readings. D3 is supported by Nexperia BAV99 page 2. D2 remains unidentified: [Zetex FMMT2907(A), Issue 3, February 1996](https://media.digikey.com/pdf/Data%20Sheets/Zetex%20PDFs/FMMT2907%28A%29.pdf), page 1, lists FMMT2907R=4P in SOT-23; this is a candidate lead only, without a selected pin map. Local copy: `docs/datasheets/FMMT2907.pdf`. D2 uses an open numbered stock placeholder.
+
+## v0.6 resistor and package audit
+
+[Bourns CRP0603 marking table](https://www.bourns.com/pdfs/CRP0603.pdf), page 3: EIA-96 18=150 and C=100, therefore 18C=15 kohm. Used only for code decoding, not to identify the fitted manufacturer, package or tolerance. Existing photos IMG_2434.jpg (R29) and IMG_2438.jpg (R44) supply the markings. Package-size candidates use relative body/land proportions against neighboring known IC pitches and the installed KiCad 10 stock footprint descriptions. No calibrated dimensional measurements were supplied.

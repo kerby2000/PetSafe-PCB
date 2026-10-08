@@ -33,6 +33,10 @@ try {
     if ($LASTEXITCODE) { throw 'Native ERC process failed.' }
     & $Python tools/validate_native.py
     if ($LASTEXITCODE) { throw 'Native connectivity validation failed.' }
+    & $Python tools/verify_footprints.py
+    if ($LASTEXITCODE) { throw 'Stock footprint validation failed.' }
     & $Python tools/build_review.py
     if ($LASTEXITCODE) { throw 'Review generation failed.' }
+    & $Python tools/build_completion_audit.py
+    if ($LASTEXITCODE) { throw 'Completion audit generation failed.' }
 } finally { Pop-Location }
