@@ -1,0 +1,60 @@
+{
+  "id": "via-pairs-followup-20261008-q7",
+  "date": "2026-10-08",
+  "basis_revision": "v0.9.6",
+  "scope": "Via evidence and test queue update; native component-terminal assignments unchanged.",
+  "changes": [],
+  "confirmed_via_pairs": [
+    [
+      "V064",
+      "V075"
+    ]
+  ],
+  "confirmed_pair_readings": [
+    {
+      "vias": [
+        "V064",
+        "V075"
+      ],
+      "status": "USER_CONFIRMED_CONNECTION",
+      "reading": null,
+      "basis": "User: Another good guess v064 - v075. No numerical resistance supplied."
+    }
+  ],
+  "rejected_pairs": [
+    {
+      "vias": [
+        "V095",
+        "V100"
+      ],
+      "status": "USER_REJECTED_DIRECT_CONNECTION",
+      "reading": "OL"
+    },
+    {
+      "vias": [
+        "V095",
+        "V103"
+      ],
+      "status": "USER_REJECTED_DIRECT_CONNECTION",
+      "reading": "OL"
+    },
+    {
+      "vias": [
+        "V095",
+        "V107"
+      ],
+      "status": "USER_REJECTED_DIRECT_CONNECTION",
+      "reading": "OL"
+    }
+  ],
+  "component_evidence": {
+    "Q7": "V075 now confirmed on regulated VDD via V064. User previously associated V075 with Q7 without a terminal. Q7.R / R19.2 are photo candidates from IMG_2434, not a confirmed terminal assignment. R18 supply/control role needs review."
+  },
+  "unmeasured_pairs": [
+    [
+      "V064",
+      "V070"
+    ]
+  ],
+  "retired_search": "Stop broad pairwise capacitor-junction tests. Seven OL pairs reject tested direct links, not capacitive coupling or untested relationships."
+}

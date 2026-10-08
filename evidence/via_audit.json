@@ -1988,7 +1988,8 @@
       ],
       "joined_vias": [
         "V063",
-        "V064"
+        "V064",
+        "V075"
       ]
     },
     {
@@ -2027,7 +2028,8 @@
       ],
       "joined_vias": [
         "V063",
-        "V064"
+        "V064",
+        "V075"
       ]
     },
     {
@@ -2352,20 +2354,20 @@
       "rear_appearance": "REAR_CLEARANCE",
       "front_match": "PROJECTED: inspect original front photo; may be under a component",
       "endpoints": [],
-      "net": null,
-      "confidence": "rear visible; global front projection approximate",
+      "net": "H_VDD",
+      "confidence": "User confirms V064-V075; no numerical resistance supplied. Exact Q7 terminal remains unspecified.",
       "note": "Visible clearance separates this site from the surrounding rear copper; this alone does not identify an internal net.",
       "id": "V075",
       "active": true,
       "user_reports": [
         {
           "id": "V075",
-          "claim": "Q7, terminal not specified",
-          "kind": "component_or_issue"
+          "kind": "regulated_supply",
+          "claim": "V075 connects to V064 regulated board VDD. Earlier Q7 association retained; exact terminal not specified."
         }
       ],
-      "review_status": "USER_REPORTED",
-      "component_crosscheck": "User identifies Q7 but not its terminal. Q7.R and the previous R19.2 continuation are photo candidates only; do not promote an inferred supply/control net to confirmed.",
+      "review_status": "ASSIGNED",
+      "component_crosscheck": "User confirms V064-V075, so this via is on regulated board VDD. Q7 association retained. Q7.R and R19.2 are photo candidates from IMG_2434, not yet confirmed terminal assignments. This result does not establish the separately proposed V064-V070/R18 link.",
       "modeled_nets": [],
       "component_refs": [
         "Q7"
@@ -2373,6 +2375,11 @@
       "candidate_endpoints": [
         "Q7.R",
         "R19.2"
+      ],
+      "joined_vias": [
+        "V063",
+        "V064",
+        "V075"
       ]
     },
     {
@@ -3018,7 +3025,10 @@
         "TUNE_4_MID"
       ],
       "excluded_vias": [
-        "V090"
+        "V090",
+        "V100",
+        "V103",
+        "V107"
       ]
     },
     {
@@ -3183,7 +3193,8 @@
         "TUNE_3_MID"
       ],
       "excluded_vias": [
-        "V090"
+        "V090",
+        "V095"
       ]
     },
     {
@@ -3289,7 +3300,8 @@
         "TUNE_2_MID"
       ],
       "excluded_vias": [
-        "V090"
+        "V090",
+        "V095"
       ]
     },
     {
@@ -3417,7 +3429,8 @@
         "TUNE_1_MID"
       ],
       "excluded_vias": [
-        "V090"
+        "V090",
+        "V095"
       ]
     },
     {
@@ -4126,10 +4139,11 @@
     ],
     "conflicts": [],
     "statuses": {
-      "ASSIGNED": 101,
-      "USER_REPORTED": 12,
+      "ASSIGNED": 102,
+      "USER_REPORTED": 11,
       "PHOTO_LOCAL": 7,
       "REJECTED_NOT_VIA": 7
     }
-  }
+  },
+  "review_update_id": "via-pairs-followup-20261008-q7"
 }

@@ -1,6 +1,12 @@
 # Via review findings - v0.9.6
 
-## Current v0.9.6 results
+## Latest continuity follow-up (native remains v0.9.6)
+
+**V064–V075 is user-confirmed**, placing V075 on regulated VDD. No numerical resistance was supplied. V075 was previously associated with Q7, without a terminal; Q7.R/R19.2 remain photo candidates from IMG_2434. No terminal-level native merge is made from that component-only association. V064–V070/R18 is a different, unreported test.
+
+**V095–V100, V095–V103 and V095–V107 all measured OL.** Together with the earlier V090 sweep there are seven excluded capacitor pairs. Stop the broad shared-node search; the three untested mutual pairs remain unknown. The [updated reasoning and single next check](VIA_PAIR_SEARCH.md) explain the changed search direction. Via graph now includes the V063/V064/V075 supply group and symmetric negative-pair records.
+
+## Prior v0.9.6 results, retained
 
 Four tuning-control pairs are confirmed: **V036–V108 = RA3–R14**, **V037–V102 = RA4–R15**, **V039–V097 = RA5–R16**, **V047–V091 = RC0–R11**. With the earlier RC6–R13 route, all five controls are mapped. Only RC2/pin13 and RB0/pin21 remain open GPIOs.
 
@@ -10,7 +16,7 @@ Four tuning-control pairs are confirmed: **V036–V108 = RA3–R14**, **V037–V
 
 KiCad 10.0.5 validates 87 modeled net partitions. ERC: **42 findings = 33 open pins + 4 isolated labels + 5 power-drive findings**. Open pads comprise 14 populated-entry and 19 empty-option pads. All original photograph checksums pass. Q1's user-reported VDD still needs its rail distinguished.
 
-See the [current four-check plan](VIA_PAIR_SEARCH.md) and [paired photo locator](VIA_PAIR_TESTS.html).
+See the [current targeted plan](VIA_PAIR_SEARCH.md) and [paired photo locator](VIA_PAIR_TESTS.html).
 
 ## Prior v0.9.5 state — current results above supersede its counts
 

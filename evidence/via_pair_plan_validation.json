@@ -1,10 +1,102 @@
 {
   "status": "PASS",
   "basis_revision": "v0.9.6",
-  "scope": "Measurement proposals only; v0.9.6 results independently recorded",
-  "proposed_tests": 4,
-  "local_groups": 20,
-  "nonrail_sites": 24,
+  "scope": "V075 confirmed regulated rail, three new OL results, one unreported diagnostic pair; native component-terminal wiring unchanged",
+  "proposed_tests": 1,
+  "local_groups": 19,
+  "nonrail_sites": 23,
+  "confirmed_via_pairs": [
+    [
+      "V036",
+      "V108"
+    ],
+    [
+      "V037",
+      "V102"
+    ],
+    [
+      "V039",
+      "V097"
+    ],
+    [
+      "V047",
+      "V091"
+    ],
+    [
+      "V064",
+      "V063"
+    ],
+    [
+      "V064",
+      "V075"
+    ]
+  ],
+  "rejected_pairs": [
+    {
+      "vias": [
+        "V053",
+        "V071"
+      ],
+      "status": "USER_REJECTED_DIRECT_CONNECTION",
+      "reading": null
+    },
+    {
+      "vias": [
+        "V090",
+        "V095"
+      ],
+      "status": "USER_REJECTED_DIRECT_CONNECTION",
+      "reading": "OL"
+    },
+    {
+      "vias": [
+        "V090",
+        "V100"
+      ],
+      "status": "USER_REJECTED_DIRECT_CONNECTION",
+      "reading": "OL"
+    },
+    {
+      "vias": [
+        "V090",
+        "V103"
+      ],
+      "status": "USER_REJECTED_DIRECT_CONNECTION",
+      "reading": "OL"
+    },
+    {
+      "vias": [
+        "V090",
+        "V107"
+      ],
+      "status": "USER_REJECTED_DIRECT_CONNECTION",
+      "reading": "OL"
+    },
+    {
+      "vias": [
+        "V095",
+        "V100"
+      ],
+      "status": "USER_REJECTED_DIRECT_CONNECTION",
+      "reading": "OL"
+    },
+    {
+      "vias": [
+        "V095",
+        "V103"
+      ],
+      "status": "USER_REJECTED_DIRECT_CONNECTION",
+      "reading": "OL"
+    },
+    {
+      "vias": [
+        "V095",
+        "V107"
+      ],
+      "status": "USER_REJECTED_DIRECT_CONNECTION",
+      "reading": "OL"
+    }
+  ],
   "active_endpoints": "PASS",
   "schematic_sha256": "897a9f20e4a7ec486fd8f6f369d9a7b53de39872337f00ddf5e7795d3c3937d3",
   "photo_sha256": {
@@ -20,9 +112,9 @@
   },
   "browser_interaction": "NOT_TESTED",
   "pdf": {
-    "path": "output/pdf/PetSafe_via_pair_round2.pdf",
+    "path": "output/pdf/PetSafe_via_pair_next_check.pdf",
     "pages": 1,
-    "sha256": "48c97edeb6af5e7cc8ed955936fd975a42022d21c15f6b42f7322955f96d92b1",
+    "sha256": "42cc27b62629497d760c261cf339abda9d5f18865761477196837b3928eada42",
     "text_check": "PASS",
     "visual_review": "Rendered page inspected; targets, leaders and table readable"
   }

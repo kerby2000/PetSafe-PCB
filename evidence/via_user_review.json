@@ -1029,6 +1029,50 @@
           "reading": "OL"
         }
       ]
+    },
+    {
+      "source": "User continuity follow-up 2026-10-08, V075 and second capacitor sweep",
+      "revision": "v0.9.6 evidence follow-up",
+      "answer": "Another good guess v064 - v075. OL for all of them V095-V100, V095-V103, V095-V107.",
+      "assignments": [
+        {
+          "id": "V075",
+          "kind": "regulated_supply",
+          "claim": "V075 connects to V064 regulated board VDD. Earlier Q7 association retained; exact terminal not specified."
+        }
+      ],
+      "confirmed_via_pairs": [
+        [
+          "V064",
+          "V075"
+        ]
+      ],
+      "rejected_pairs": [
+        {
+          "vias": [
+            "V095",
+            "V100"
+          ],
+          "status": "USER_REJECTED_DIRECT_CONNECTION",
+          "reading": "OL"
+        },
+        {
+          "vias": [
+            "V095",
+            "V103"
+          ],
+          "status": "USER_REJECTED_DIRECT_CONNECTION",
+          "reading": "OL"
+        },
+        {
+          "vias": [
+            "V095",
+            "V107"
+          ],
+          "status": "USER_REJECTED_DIRECT_CONNECTION",
+          "reading": "OL"
+        }
+      ]
     }
   ],
   "review_in_progress": true,

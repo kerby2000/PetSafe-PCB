@@ -75,7 +75,7 @@ def apply(out):
     annotate([71],['R21.2'],'R21 left/free end in receiver photo; shared bias hypothesis not confirmed by this via report.')
     sites['V072'].update(net='RX_A_FILTER',endpoints=['TP6.1'],excluded_endpoints=['R22.2'],confidence='User identifies TP6 and explicitly excludes R22.2',component_crosscheck='User identifies TP6. Existing C18.2/R27.1 branches on RX_A_FILTER remain hypotheses; the via report does not certify the whole modeled net. TP6 remains separate from U3.5 across C18.')
     sites['V073'].update(net='H_GND',endpoints=[],component_crosscheck='User correction: GND only. R19 association removed; no R19 ground merge. V075 is now user-associated with Q7; its exact terminal is unresolved.')
-    sites['V075'].update(net=None,endpoints=[],component_refs=['Q7'],candidate_endpoints=['Q7.R','R19.2'],component_crosscheck='User identifies Q7 but not its terminal. Q7.R and the previous R19.2 continuation are photo candidates only; do not promote an inferred supply/control net to confirmed.')
+    sites['V075'].update(net='H_VDD',endpoints=[],component_refs=['Q7'],candidate_endpoints=['Q7.R','R19.2'],confidence='User confirms V064-V075; no numerical resistance supplied. Exact Q7 terminal remains unspecified.',component_crosscheck='User confirms V064-V075, so this via is on regulated board VDD. Q7 association retained. Q7.R and R19.2 are photo candidates from IMG_2434, not yet confirmed terminal assignments. This result does not establish the separately proposed V064-V070/R18 link.')
     annotate([76],['R22.1'],'R22 opposite/right photo pad; user GND corroborates return.','H_GND')
     annotate([77],['C19.2','R29.2'],'User explicitly confirms the C19-R29 junction is GND. R29 opposite the PIC3/TP7 end is pad2; C19 pad2 is assigned to the upper photo pad beside the via. Earlier C19-to-clamp and R29-to-U3.5 guesses withdrawn.','H_GND')
     annotate([78],['C17.2'],'User adds C17 to earlier GND report; return pad selected from existing photo/model.','H_GND')
@@ -109,17 +109,20 @@ def apply(out):
     for va,vb,pin,res,n in [(36,108,5,'R14',2),(37,102,6,'R15',3),(39,97,7,'R16',4),(47,91,11,'R11',5)]:
         annotate([va,vb],[f'U4.{pin}',res+'.1'],f'User working via pair V{va:03d}-V{vb:03d}; PIC control to resistor confirmed. No numerical ohms supplied.',f'H_TUNE_{n}')
         for i in [va,vb]:sites[f'V{i:03d}'].update(joined_vias=[f'V{va:03d}',f'V{vb:03d}'],confidence='User continuity report; exact resistance not supplied')
-    sites['V063']['joined_vias']=['V063','V064'];sites['V064']['joined_vias']=['V063','V064']
+    for i in [63,64,75]:sites[f'V{i:03d}']['joined_vias']=['V063','V064','V075']
     sites['V053']['excluded_vias']=['V071'];sites['V071']['excluded_vias']=['V053']
     sites['V090']['excluded_vias']=['V095','V100','V103','V107']
     for i in [95,100,103,107]:sites[f'V{i:03d}']['excluded_vias']=['V090']
+    for i in [100,103,107]:
+        sites['V095']['excluded_vias'].append(f'V{i:03d}')
+        sites[f'V{i:03d}']['excluded_vias'].append('V095')
     for s in out['sites']:
         s['modeled_nets']=sorted({membership[e] for e in s['endpoints'] if e in membership})
         if not s['active']:
             s.update(review_status='REJECTED_NOT_VIA',net=None,endpoints=[],modeled_nets=[],component_crosscheck='User rejects this detection as not a via. Stable ID retained; excluded from active markers.')
         elif s['user_reports'] and s['net'] and s['review_status']!='CONFLICT':s['review_status']='ASSIGNED'
         elif not s['user_reports'] and s['net']:s['review_status']='PHOTO_LOCAL'
-    out.update(revision='v0.9.6',user_review_source='evidence/via_user_review.json',
+    out.update(revision='v0.9.6',review_update_id='via-pairs-followup-20261008-q7',user_review_source='evidence/via_user_review.json',
         user_review_method=review['method'],supply_naming=review['supply_naming'],
         review_summary=dict(catalogued_ids=len(sites),active_sites=sum(s['active'] for s in sites.values()),user_reported_ids=len(current_ids),original_user_reported_ids=len(original_ids),
             omitted_from_user_list=sorted(set(sites)-current_ids),rejected=rejected,conflicts=list(conflicts),
