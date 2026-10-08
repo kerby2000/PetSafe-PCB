@@ -7,24 +7,26 @@ Native KiCad model/netlist cross-check: PASS
   "catalog_components": 150,
   "symbol_units": 154,
   "physical_pins": 352,
-  "stock_library_symbols": 22,
-  "custom_symbols": 0,
+  "stock_library_symbols": 21,
+  "custom_symbols": 2,
   "proposed_net_partitions": 81,
   "netlist_partition_comparison": "PASS",
   "unintended_multi_pin_nets": 0,
   "retained_original_visual_fragments": 29,
   "original_photo_checksums": "PASS (26 files)",
   "unresolved_physical_pins": 63,
-  "erc_total": 80,
+  "erc_total": 83,
   "erc_by_type": {
     "pin_not_connected": 63,
-    "power_pin_not_driven": 3,
+    "power_pin_not_driven": 4,
+    "pin_not_driven": 2,
     "isolated_pin_label": 14
   },
-  "erc_status": "OPEN FINDINGS - see ERC report; placeholders have passive pins and cannot check IC drive rules",
+  "erc_status": "OPEN FINDINGS - U1/U5 now have datasheet pin types; unidentified placeholders still have passive pins with limited checking",
   "gui_open": "NOT_TESTED (native CLI validated)",
   "hardware_verification": "NOT_PERFORMED",
   "physical_pcb_layout": "NOT_CREATED",
-  "schematic_sha256": "16073e7f02458c681e5a5203e9ba3b643f111a01af4b6f3b8565ab83d8d6c6a6",
-  "input_zip_sha256": "151a5d246b051c6ee7edf50bac941261d3d87defedf9590f2ce442158552b52d"
+  "schematic_sha256": "24d86fb7e77c4680d4db696210c334a1a9744124edd2ab5cff9ca03b6c6490aa",
+  "input_zip_sha256": "151a5d246b051c6ee7edf50bac941261d3d87defedf9590f2ce442158552b52d",
+  "datasheet_symbol_pin_contracts": "PASS (U1: 5 pins; U5: 8 pins; types, footprints and source properties)"
 }

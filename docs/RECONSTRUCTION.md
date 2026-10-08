@@ -1,4 +1,4 @@
-# PetSafe functional reconstruction, v0.3
+# PetSafe functional reconstruction, v0.4
 
 The deliverable is one editable KiCad schematic sheet with all 150 entries in the original main-board catalog. It uses wires inside functional blocks and labels between blocks. The 150 entries include named pads, test points and unpopulated footprints; they are not 150 fitted components. The separate PIR daughterboard appears in the photos, but only its main-board connector and interface are modeled here.
 
@@ -6,7 +6,7 @@ The user's instruction to make calculated guesses governs this revision. The imp
 
 ## Follow-up identity review
 
-The [U6 / Q8 investigation](U6_Q8_INVESTIGATION.html) supersedes the candidate ranking below, but has not changed the v0.3 native circuit. RT9818A-33PB is now the leading named U6 candidate; a complementary N/P MOSFET pair is the leading Q8 role. The U6 crosswalk below is the current placeholder mapping, **not conventional SOT-23-5 numbering**: for the photographed three-lead right side, conventional numbers are R3=1, R2=2, R1=3, L1=4, L2=5. The old LDO role assignments cannot be carried into a supervisor replacement. Conditional Q8 pin numbering and comparison parts are recorded separately.
+The [U6 / Q8 investigation](U6_Q8_INVESTIGATION.html) supersedes the candidate ranking below, while v0.4 retains the same U6/Q8 electrical hypotheses. RT9818A-33PB is now the leading named U6 candidate; a complementary N/P MOSFET pair is the leading Q8 role. The U6 crosswalk below is the current placeholder mapping, **not conventional SOT-23-5 numbering**: for the photographed three-lead right side, conventional numbers are R3=1, R2=2, R1=3, L1=4, L2=5. The old LDO role assignments cannot be carried into a supervisor replacement. Conditional Q8 pin numbering and comparison parts are recorded separately.
 
 ## How to read the drawing
 
@@ -15,8 +15,8 @@ The [U6 / Q8 investigation](U6_Q8_INVESTIGATION.html) supersedes the candidate r
 - All 29 original `VISUAL_LOCAL` fragments remain joined in the new model. Their source photographs remain in `original_visual_fragments` in the JSON. Even these fragments are photographic evidence, not continuity results.
 - Every added link is provisional. `evidence/proposed_nets.csv` distinguishes each proposed net and the original fragments it contains. Merging several visual fragments into one net is an inference.
 - Open pins mean unresolved; they do not carry fabricated no-connect flags. No power flags were added just to silence ERC.
-- U2 and U3 have separate functional and supply units on this same A2 sheet. All 22 distinct symbol definitions come from the installed KiCad 10 libraries, placed through the KiCad MCP server. Library pin numbers are mapped to photographed pad IDs in `evidence/pin_crosswalk.json`.
-- U1 and U5 use temporary numbered stock connector symbols because exact vendor symbols are absent. U6 and Q8 use numbered placeholders because identity is unresolved. These are package-pin placeholders, not assertions that the physical parts are connectors. The user was asked for vendor/SnapEDA symbols; none have been fabricated.
+- U2 and U3 have separate functional and supply units on this same A2 sheet. There are 21 stock definitions from the installed KiCad 10 libraries plus two user-authorized datasheet definitions, all placed or replaced through the KiCad MCP server. Library pin numbers are mapped to photographed pad IDs in `evidence/pin_crosswalk.json`.
+- U1 and U5 now have datasheet-derived symbols created through MCP after explicit user authorization. Their 13 numbered pins and standard footprints were checked. U6 and Q8 still use numbered placeholders because identity is unresolved; these do not assert that the fitted parts are connectors.
 - [LIBRARIES_AND_ALTERNATIVES.md](LIBRARIES_AND_ALTERNATIVES.md) records stock symbols, package choices and Western alternatives. The fitted identities remain in the reconstruction. Selecting an alternative does not authorize changing the board pin map.
 
 ## Identity candidates
@@ -110,6 +110,24 @@ U6 is shown in a generic LDO application with input/output capacitors, explicitl
 
 Native KiCad 10.0.5 loaded the schematic and exported one-page A2 vector PDF, SVG and XML netlist. All 150 references and 352 physical pins are retained; 154 drawn symbol units represent the same 150 entries. The validator translates the documented physical-pad crosswalk and compares entire pin-set partitions against the native netlist, checks all 29 original fragments and verifies all 26 source-photo checksums. It found no unintended multi-pin merges or missing proposed net partitions.
 
-ERC has 80 findings: 63 unconnected physical pins, 14 isolated pin labels, and three undriven power checks. No off-grid endpoints or dangling wire ends remain. These findings are reported, not excluded by settings. Placeholder pins are passive, so the reduced count does not indicate stronger electrical verification: their actual input/output/power rules cannot yet be checked. The native file has not been opened in the GUI. Hardware verification, exact layer count, dimensioned footprint placement, routed PCB generation and firmware recovery were not performed.
+ERC has 83 findings: 63 unconnected physical pins, 14 isolated pin labels, four undriven power checks and two undriven motor-control inputs. No off-grid endpoints or dangling wire ends remain. These findings are reported, not excluded by settings. U1/U5 now carry datasheet pin types. The three additional findings versus v0.3 are exposed by those pin types; all 81 net partitions remain unchanged. U6/Q8 placeholder pins remain passive with limited electrical checking. The native file has not been opened in the GUI. Hardware verification, exact layer count, dimensioned footprint placement, routed PCB generation and firmware recovery were not performed.
 
 This is a reviewable reconstruction hypothesis, not a confirmed replacement-board design. The remaining high-value questions are the exact Q8 and U6 identities and the hidden PIC-to-block routes. No broad measurement campaign is required to review the work already completed.
+
+## Remaining completion items, v0.4
+
+All 150 main-board catalog entries are represented. **No further exact-symbol files are missing for the confidently identified ICs.** U1/U5 are now completed from datasheets through MCP. The remaining work is identification, values and hidden connectivity:
+
+| Parts / area | Remaining uncertainty | Current working choice |
+|---|---|---|
+| U6, WN23 | Function, physical numbering and reset/supply routes | RT9818A-33PB supervisor leads the candidates. The retained old LDO drawing and mirrored placeholder map require revision before a supervisor is inserted. |
+| Q8, 372A | Exact device and six-pin assignment | Complementary MOSFET pair leads; DMC3071LVT is only a topology comparison. Three pads remain unresolved. |
+| D2/D3 | Internal diode arrangement and polarity | BAV99-style clamp network is an assumption. |
+| D4/D5/D6 | Diode type, polarity and connections | Standard diode symbols present; all six pads remain unresolved. |
+| LED1 / S1 | LED emitter configuration/polarity; switch common pairs | Standard symbols present, physical mapping provisional. |
+| Q1/Q2/Q7 and repeated 2H transistors | Candidate identity and orientation | Existing stock BJT symbols; identity strength varies and is documented above. |
+| R41, L1/L2, unmarked capacitors | Ambiguous resistor code, bead versus inductor, capacitance and package sizes | Standard passive symbols present. Proposed decoupling values are estimates; RF filter/tuning values remain unknown. C27/C41 also lack a circuit role. |
+| PIC and block interfaces | Exact GPIO destinations and hidden tracks | 19 PIC pads remain open. Net names indicate intended functions, not recovered MCU assignments. |
+| PIR daughterboard | Internal components and routes | Only the J3 interface is represented; daughterboard internals are outside the current main-board revision. |
+
+The 63 open physical pins include 27 on unpopulated/DNP entries; the other 36 include named test pads. They are not 63 missing parts. U7/U6A/Q9 and other DNP entries do not require identifying a fitted chip. The machine-readable list is `evidence/completion_status.json`. Further photo/datasheet inference can continue without a broad measurement campaign. A completely confirmed schematic cannot be claimed from missing identity, value and buried-trace evidence.

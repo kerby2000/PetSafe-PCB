@@ -1,12 +1,12 @@
 # KiCad 10 libraries and device alternatives
 
-Revision 0.3 uses the existing KiCad MCP Server and the installed KiCad 10.0.5 at `%LOCALAPPDATA%/Programs/KiCad/10.0`. Both its Python backend (`pcbnew.GetBuildVersion()`) and native CLI reported 10.0.5. The MCP created the blank native schematic and placed all 150 components plus four additional units from standard libraries. The checked-in routing adapter reconnects those stock symbols and adds the block frames and annotations. Native KiCad checks the resulting connectivity. MCP PDF/SVG export was also exercised successfully.
+Revision 0.4 uses the existing KiCad MCP Server and the installed KiCad 10.0.5 at `%LOCALAPPDATA%/Programs/KiCad/10.0`. Both its Python backend (`pcbnew.GetBuildVersion()`) and native CLI reported 10.0.5. The MCP created the blank native schematic and placed all 150 components plus four additional units from standard libraries. The checked-in routing adapter reconnects those stock symbols and adds the block frames and annotations. Native KiCad checks the resulting connectivity. MCP PDF/SVG export was also exercised successfully.
 
-No active symbol library was drawn from scratch. Stock symbol artwork and pin numbering remain unchanged. `tools/templates/mcp_standard_placements.kicad_sch` is the MCP placement output; `evidence/library_placements.json` is the replay manifest. `evidence/pin_crosswalk.json` maps all 352 photographed pads to their library pin numbers. Pin mapping can be provisional even when the underlying part symbol is exact.
+The user authorized two missing symbols after vendor files could not be found. MCP `create_symbol`, `register_symbol_library` and `replace_schematic_component` created and installed U1/U5 from the manufacturer pin tables. The other 21 definitions retain unmodified KiCad stock artwork and numbering. `tools/templates/mcp_standard_placements.kicad_sch` is the MCP placement output; `evidence/library_placements.json` is the replay manifest. `evidence/pin_crosswalk.json` maps all 352 photographed pads to their library pin numbers. Pin mapping can be provisional even when the underlying part symbol is exact.
 
 ## Library choices
 
-| References | Standard symbol | Reason / status |
+| References | Library symbol | Reason / status |
 |---|---|---|
 | U4 | `MCU_Microchip_PIC16:PIC16F18855-xSO` | Exact SOIC family symbol; default SOIC-28W footprint. |
 | U2 A/B/C | `74xGxx:74LVC2G14` | Standard multi-unit Schmitt inverter, value `SN74LVC2G14DBV?`, SOT-23-6 footprint. This preserves separate readable gates and supply unit. The exact monolithic `SN74LVC2G14DBV` also exists. |
@@ -17,8 +17,8 @@ No active symbol library was drawn from scratch. Stock symbol artwork and pin nu
 | D1/D2/D3 | `Diode:BAV99` | D1 identification candidate; D2/D3 retain `clamp?`, so their use of this series-diode topology is an assumption. |
 | LED1, S1 | `Device:LED_Dual_AAKK`, `Switch:SW_Push_Dual` | Stock four-pin symbols; photographed pad mapping remains provisional. |
 | R/C/L/Y/TP | `Device:R`, `Device:C`, `Device:C_Polarized`, `Device:L`, `Device:Crystal`, `Connector:TestPoint` | Existing conventional library parts. C5 polarity is inferred from the selected rail topology. |
-| U1 | `Connector_Generic:Conn_01x05` | Temporary numbered placeholder for probable S-1200B45. Functions printed on the sheet: 1 VIN, 2 GND, 3 EN, 4 NC, 5 OUT. Exact vendor symbol requested. |
-| U5 | `Connector_Generic:Conn_02x04_Counter_Clockwise` | Temporary numbered MX512H placeholder, actual data-sheet pin numbers retained. Exact vendor symbol requested. |
+| U1 | `PetSafe_Datasheet:S-1200B45-M5T1` | MCP-created from ABLIC Rev.6 page 5: 1 VIN, 2 VSS, 3 ON/OFF, 4 NC, 5 VOUT. B option has active-high enable. The fitted part remains a strong identification candidate, not a measured fact. |
+| U5 | `PetSafe_Datasheet:MX512H` | MCP-created from Mixic Rev.1.2 page 2: 1 VCC, 2 INA, 3 INB, 4 VDD, 5 OUTB, 6/7 GND, 8 OUTA. Logic/motor supplies and both ground pins retained. |
 | U6, Q8 | Stock 1x5 and 2x3 numbered placeholders | Identity unknown. U6 numbers follow the selected LDO hypothesis. Q8 numbers are surrogate indices, **not verified package numbers**. Do not assign a replacement or physical footprint from these indices. |
 | J connectors / empty pads | `Connector_Generic` family | Unknown pitches and empty package identities stay unspecified. These entries preserve the source catalog. |
 
@@ -51,14 +51,14 @@ DRV8212P covers the inferred battery range with its motor supply and has a 1.65-
 
 This table matches functions, not physical pad locations. Motor polarity and truth-table behavior still require review before implementing a redesign. U6 and Q8 have no responsibly selected Western replacement yet because their functions are not established. ABLIC S-1200B45 is a Japanese regulator, not a Chinese device needing a geographical substitution.
 
-## Footprints and outstanding library requests
+## Footprints and completed datasheet symbols
 
 Standard SOT-23, SOT-23-5, SOT-23-6 and SOIC footprints are assigned only for identified/candidate packages. Assignment is a package-family hypothesis, not a measurement of the photographed land pattern. Passive sizes, connector pitches, Q8, U6 and unusual LED/button pads remain unassigned where the photographs do not establish dimensions.
 
-The remaining exact-symbol requests are **S-1200B45-M5T1x** and **MX512H (SOP-8)**. Vendor or SnapEDA files can replace their temporary stock placeholders after checking pin maps. SGM8542 does not need a custom drawing: the stock generic dual op-amp already represents its actual pinout. Q8 and U6 need identity clarification before sourcing exact symbols. The old custom library and generator are archived in `reference/v02/`; they are not registered in the active project.
+The two exact-symbol requests are now resolved through authorized MCP creation. U1 uses stock `Package_TO_SOT_SMD:SOT-23-5`. U5 uses stock `Package_SO:SOIC-8_3.9x4.9mm_P1.27mm`, matching the nominal package dimensions on MX512H page 9. Pad numbers were checked through MCP. Land-pattern fit on the photographed PCB remains unmeasured. SGM8542 does not need a custom drawing: the stock generic dual op-amp already represents its actual pinout. Q8 and U6 need identity clarification before sourcing exact symbols. The old custom library and generator are archived in `reference/v02/`; they are not registered in the active project.
 
 ## U6 / Q8 follow-up (2026-10-08)
 
 See the [photo and pin-map investigation](U6_Q8_INVESTIGATION.html). MCP found no exact RT9818 symbol. It confirmed `Transistor_FET:DMC3071LVT` and `Transistor_FET:DMC2053UVT`, including their two-unit six-pin definitions; DMC3071LVT has the standard `Package_TO_SOT_SMD:TSOT-23-6` footprint. These are Western MOSFET topology comparisons, not identified fitted parts or approved substitutes. Their C71 / AR2 markings do not match Q8's 372A. U6 still has no selected Western equivalent. The native placeholders are unchanged, and their provisional numbers must be translated using the investigation before any replacement.
 
-The pending U1/U5 vendor imports now have explicit manufacturer pin contracts in `evidence/vendor_symbol_requirements.json`. No vendor files were received and no custom symbol was created.
+The U1/U5 pin contracts in `evidence/vendor_symbol_requirements.json` are fulfilled. `evidence/datasheet_symbol_authoring.json` records the actual MCP requests and sources. No vendor files were imported. The library URI uses `${KIPRJMOD}`, so the repository is portable. U1 pin 4 is passive and named NC because ABLIC explicitly permits this internally open pad to connect to VIN/VSS; it preserves the existing optional-pad copper. MX512H outputs use tri-state pin types to reflect high-impedance standby. These changes enable additional ERC checks without hiding unresolved nets.

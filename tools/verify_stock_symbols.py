@@ -14,10 +14,12 @@ audit=[]
 for embedded in children(one(tree,'lib_symbols'),'symbol'):
     lid=embedded[1]; lib,name=lid.split(':')
     source=loader.find_library_file(lib)
-    assert '/10.0/' in source.as_posix(),source
+    custom=lib=='PetSafe_Datasheet'
+    if custom:assert source.resolve()==(R/'schematic/PetSafe_Datasheet.kicad_sym').resolve(),source
+    else:assert '/10.0/' in source.as_posix(),source
     stock=sx.loads(loader.extract_symbol_from_library(lib,name))
     # Root library-name prefix may differ, but every subunit and its pins must match.
     assert children(embedded,'symbol')==children(stock,'symbol'),lid
-    audit.append(dict(symbol=lid,source_file=str(source),source_sha256=hashlib.sha256(source.read_bytes()).hexdigest(),graphics_and_pins='IDENTICAL'))
+    audit.append(dict(symbol=lid,source_type='MCP-created datasheet symbol' if custom else 'KiCad 10 stock',source_file=str(source),source_sha256=hashlib.sha256(source.read_bytes()).hexdigest(),graphics_and_pins='IDENTICAL'))
 (R/'evidence/stock_library_audit.json').write_text(json.dumps(audit,indent=2),encoding='utf-8',newline='\n')
-print(f'PASS: {len(audit)} embedded graphical/pin definitions identical to installed KiCad 10 stock libraries.')
+print(f'PASS: {len(audit)} embedded definitions match their registered libraries ({sum(a["source_type"]=="KiCad 10 stock" for a in audit)} stock, 2 authorized datasheet symbols).')

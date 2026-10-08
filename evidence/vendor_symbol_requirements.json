@@ -1,7 +1,7 @@
 {
   "date": "2026-10-08",
-  "status": "awaiting_user_vendor_files_or_links",
-  "custom_symbols_created": false,
+  "status": "completed_via_user_authorized_MCP_datasheet_creation",
+  "custom_symbols_created": true,
   "parts": [
     {
       "ref": "U1",
@@ -25,15 +25,16 @@
       "checks": [
         "M5 five-pin variant, not six-pin SNT",
         "Active-high ON/OFF for B option",
-        "Preserve vendor source and hash",
+        "Preserve manufacturer PDF source and hash; no vendor library received",
         "Verify footprint pad numbers and native net partitions"
-      ]
+      ],
+      "status": "pin_contract_verified_and_placeholder_replaced"
     },
     {
       "ref": "U5",
       "part": "MX512H",
       "package": "SOP-8",
-      "source": "docs/datasheets/MX512H.pdf, pages 1-2",
+      "source": "docs/datasheets/MX512H.pdf, page 2 pinout and page 9 package",
       "pins": {
         "1": "VCC_logic",
         "2": "INA",
@@ -59,10 +60,13 @@
         "Separate logic and motor supply pins",
         "Exact MX512H variant",
         "Verify footprint pad numbers and native net partitions"
-      ]
+      ],
+      "status": "pin_contract_verified_and_placeholder_replaced"
     }
   ],
-  "next_tools": [
+  "vendor_files_imported": false,
+  "authoring_record": "evidence/datasheet_symbol_authoring.json",
+  "completed_tools": [
     "register_symbol_library(scope=project)",
     "replace_schematic_component",
     "get_schematic_pin_locations",

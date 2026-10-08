@@ -54,13 +54,13 @@
 </tbody></table></div>
 <p><b>Replacement boundary:</b> a stock symbol is not evidence of equivalence. MOSFET gate charge, on-resistance, voltage margin, body-diode behavior and possible simultaneous conduction matter in this circuit. For example, a 4.5 V drive across 220 ohms has an ideal initial current ceiling of about 20 mA before the logic output's own impedance. The drive waveform and resonant loading remain unknown. No replacement is approved and no arbitrary rail connections are added.</p>
 
-<h2>Vendor symbol import: ready checks, pending files</h2>
-<p>No new vendor library was attached or located in Downloads during this follow-up. The old generated PetSafe_Working entries returned by a global library search are not vendor symbols. U1 and U5 remain placeholders until the requested local file paths or vendor/SnapEDA links arrive.</p>
+<h2>U1 / U5 pin contracts: completed in v0.4</h2>
+<p>At the time of the investigation, vendor files were unavailable. The user subsequently authorized datasheet creation. In v0.4, MCP-created symbols replace U1/U5, using the verified pin contracts below and standard KiCad footprints. No vendor files were imported.</p>
 <div class="scroll"><table><thead><tr><th>Device</th><th>Manufacturer pin contract</th><th>Import checks</th></tr></thead><tbody>
 <tr><td>U1: S-1200B45-M5T1x</td><td>1 VIN; 2 VSS; 3 ON/OFF; 4 NC; 5 VOUT. SOT-23-5, 4.5 V option.</td><td>Use the five-pin M5 package variant. The six-pin SNT variant has a different map. Check active-high control, all five pads and unchanged physical-pad correspondence.</td></tr>
 <tr><td>U5: MX512H</td><td>1 VCC (logic); 2 INA; 3 INB; 4 VDD (motor); 5 OUTB; 6 GND; 7 GND; 8 OUTA. SOP-8.</td><td>Keep both ground pads. Keep logic and motor supplies distinct. Verify the footprint pad numbers; do not accept an unrelated MX512 variant.</td></tr>
 </tbody></table></div>
-<p>When the files are available: preserve the vendor source and its hash, inspect every numbered pin and electrical type, register a project-local library through MCP, replace the placeholders, adapt wires to the actual library pin positions, and run KiCad 10 native export/connectivity checks plus visual review. No custom symbol creation is required for this preparation.</p>
+<p>Completed in v0.4: project-local symbol creation/registration/replacement through MCP, all 13 pin functions checked, routing adapted, and KiCad 10 native connectivity/export plus visual review. The 81 proposed net partitions are unchanged. See the <a href="../evidence/datasheet_symbol_authoring.json">authoring record</a>. U6/Q8 identity and pin-map conflicts above remain open.</p>
 
 <h2>Sources and reproducibility</h2>
 <p>Primary documents below support device specifications and pin maps. The board observations come only from the supplied photographs. Secondary code indexes were used for search leads, not final identity claims.</p>
@@ -71,7 +71,7 @@
 <li><a href="https://www.diodes.com/datasheet/download/DMC3071LVT.pdf">Diodes DMC3071LVT DS40062 Rev.2-2</a>, May 2018, pages 1, 3 and 6. <a href="datasheets/DMC3071LVT.pdf">Saved PDF</a>.</li>
 <li><a href="https://www.diodes.com/datasheet/download/DMC2053UVT.pdf">Diodes DMC2053UVT DS40560</a>, page 1. <a href="datasheets/DMC2053UVT.pdf">Saved PDF</a>.</li>
 <li><a href="https://www.syncpower.com/datasheet/SPP3437.pdf">SYNC Power SPP3437 Ver.1</a>, May 2021, pages 1-2. <a href="datasheets/SPP3437.pdf">Saved PDF</a>.</li>
-<li><a href="https://www.ablic.com/en/doc/datasheet/voltage_regulator/S1200_E.pdf">ABLIC S-1200 Rev.6</a>, page 5; <a href="https://static.chipdip.ru/lib/203/DOC045203539.pdf">Mixic MX512H Rev.1.2</a>, pages 1-2. These are the pin contracts for the pending imports.</li>
+<li><a href="https://www.ablic.com/en/doc/datasheet/voltage_regulator/S1200_E.pdf">ABLIC S-1200 Rev.6</a>, page 5; <a href="https://static.chipdip.ru/lib/203/DOC045203539.pdf">Mixic MX512H Rev.1.2</a>, pages 1-2. These are the pin contracts used for the authorized datasheet symbols.</li>
 </ol>
-<p>Machine-readable findings: <a href="../evidence/u6_q8_investigation.json">candidate and observation record</a>. Import contract: <a href="../evidence/vendor_symbol_requirements.json">vendor symbol requirements</a>. All saved PDFs are included in <a href="../evidence/datasheet_manifest.json">the checksum manifest</a>. Original photo hashes and the native schematic hash remain unchanged.</p>
+<p>Machine-readable findings: <a href="../evidence/u6_q8_investigation.json">candidate and observation record</a>. Import contract: <a href="../evidence/vendor_symbol_requirements.json">vendor symbol requirements</a>. All saved PDFs are included in <a href="../evidence/datasheet_manifest.json">the checksum manifest</a>. Original photo hashes remain unchanged. The investigation record retains its historical v0.3 schematic hash; the current v0.4 hash is in <a href="../evidence/validation.json">validation.json</a>.</p>
 </main></body></html>

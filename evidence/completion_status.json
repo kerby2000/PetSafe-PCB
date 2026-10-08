@@ -1,0 +1,138 @@
+{
+  "date": "2026-10-08",
+  "revision": "v0.4",
+  "known_identified_ICs_needing_new_symbols": [],
+  "completed": [
+    "U1 S-1200B45-M5T1 datasheet symbol",
+    "U5 MX512H datasheet symbol",
+    "Stock footprints for both"
+  ],
+  "catalog_entries": 150,
+  "physical_pins": 352,
+  "unresolved_physical_pins": 63,
+  "unresolved_pins_by_population": {
+    "populated": 36,
+    "DNP": 27
+  },
+  "population_note": "Catalog populated entries include named pads/testpoints. 63 open pins are not 63 missing components; 27 are on DNP entries.",
+  "unresolved_pins_by_reference": {
+    "C27": 2,
+    "C3": 1,
+    "C4": 1,
+    "C41": 2,
+    "C42": 2,
+    "C49": 2,
+    "D4": 2,
+    "D5": 2,
+    "D6": 2,
+    "J6": 2,
+    "Q8": 3,
+    "Q9": 3,
+    "R1": 1,
+    "R2": 1,
+    "R35": 2,
+    "R36": 2,
+    "R46": 2,
+    "R47": 2,
+    "TP10": 1,
+    "TP9": 1,
+    "U4": 19,
+    "U6": 1,
+    "U6A": 3,
+    "U7": 3,
+    "VREF": 1
+  },
+  "items": [
+    {
+      "refs": [
+        "U6"
+      ],
+      "priority": 1,
+      "gap": "Identity, physical pin numbering and circuit function",
+      "candidate": "Richtek RT9818A-33PB voltage supervisor, moderate confidence at most",
+      "detail": "Historical WN marking and two apparently unused leads support supervisor. Earlier LDO drawing and mirrored surrogate crosswalk are not a valid RT9818 implementation. Supply/reset routing remains unresolved.",
+      "source": "docs/U6_Q8_INVESTIGATION.html"
+    },
+    {
+      "refs": [
+        "Q8"
+      ],
+      "priority": 1,
+      "gap": "Exact identity and six-pin assignment",
+      "candidate": "Complementary N/P MOSFET pair; dual BJT remains possible",
+      "detail": "372A has no confirmed manufacturer match. DMC3071LVT is a standard-library topology comparison only, not a fitted identity or drop-in replacement. Three physical pads remain open.",
+      "source": "docs/U6_Q8_INVESTIGATION.html"
+    },
+    {
+      "refs": [
+        "D2",
+        "D3"
+      ],
+      "priority": 2,
+      "gap": "Internal diode configuration and polarity",
+      "candidate": "Dual diode clamp networks",
+      "detail": "BAV99 symbols currently express a circuit hypothesis, not exact identifications."
+    },
+    {
+      "refs": [
+        "D4",
+        "D5",
+        "D6"
+      ],
+      "priority": 2,
+      "gap": "Diode type, polarity and routing",
+      "candidate": null,
+      "detail": "All six pads remain unresolved; standard diode symbols already represent them."
+    },
+    {
+      "refs": [
+        "LED1",
+        "S1"
+      ],
+      "priority": 3,
+      "gap": "Internal LED arrangement/polarity and switch common pairs",
+      "candidate": "Two-colour LED and four-leg pushbutton",
+      "detail": "Stock symbols are present; their photographed pad mappings remain provisional."
+    },
+    {
+      "refs": [
+        "Q1",
+        "Q2",
+        "Q7",
+        "Q3",
+        "Q4",
+        "Q5",
+        "Q6",
+        "Q11"
+      ],
+      "priority": 3,
+      "gap": "Candidate identity/orientation confidence",
+      "candidate": "MMBT3904, BC847B, BC857C and MMBTA55-family PNP candidates",
+      "detail": "Standard symbols are already present. These are less certain than a fully legible part number and must not be called confirmed."
+    },
+    {
+      "refs": [
+        "R41",
+        "L1",
+        "L2",
+        "capacitors"
+      ],
+      "priority": 2,
+      "gap": "Values and passive part/package details",
+      "candidate": null,
+      "detail": "R41 marking is ambiguous; L1/L2 may be ferrite beads or inductors. Unmarked capacitor values are unknown or explicitly estimated, especially RF tuning/filters. C27/C41 also lack a circuit role. No new symbol libraries are required."
+    },
+    {
+      "refs": [
+        "U4",
+        "J3",
+        "inter-block nets"
+      ],
+      "priority": 1,
+      "gap": "Hidden routing and MCU destinations",
+      "candidate": null,
+      "detail": "19 PIC pads remain unresolved. Existing functional net labels do not establish their GPIO destinations. PIR daughterboard is represented only by its interface; internals are outside the main-board reconstruction."
+    }
+  ],
+  "interpretation": "Every main-board catalog entry is drawn. Complete drawing coverage is distinct from confirmed component identity, values and electrical connectivity."
+}

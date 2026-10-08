@@ -1,4 +1,4 @@
-"""Route the MCP-placed stock symbols, keeping the physical-pad crosswalk explicit.
+"""Route MCP-placed library symbols, keeping the physical-pad crosswalk explicit.
 
 Requires sexpdata (available in the KiCad MCP virtual environment). Symbol artwork,
 pin definitions and numbering are never generated or changed by this script.
@@ -51,12 +51,20 @@ for inst in instances:
             PIN_ANGLE[ref+'.'+pn]=int((angle+rot)%360)
     # Use legible, horizontal 1 mm fields; retaining library definitions intact.
     props={p[1]:p for p in children(inst,'property')}
+    if ref in ['U1','U5']:
+        props['Value'][2]=c['placement']['value']
+        props['Footprint'][2]=c['footprint']
+        library_properties={p[1]:p[2] for p in children(libs[lid],'property')}
+        for name in ['Datasheet','Description']:
+            props[name][2]=library_properties[name]
     rx,ry,vx,vy=(old[k]*1.27 for k in ['rx','ry','vx','vy'])
     # Standard symbol bodies have different extents from the earlier sketches.
     if ref=='U4':rx=vx=x;ry=y-29.21;vy=y-27.305
     if ref in ['U2','U3'] and unit==3:rx=vx=x-12.7;ry=y-1.27;vy=y+0.635
     if ref=='U2' and unit in [1,2]:rx=vx=x;ry=y-12.065;vy=y-10.16
     if ref in ['U1','U5','U6','Q8']:rx=vx=x;ry=y-10.16;vy=y-8.255
+    if ref=='U1':ry=y-12.7;vy=y-10.795
+    if ref=='U5':ry=y-22.86;vy=y-20.955
     if ref in ['J1','J3','J5']:rx=vx=x+2.54;ry=y-3.81;vy=y-1.905
     if ref=='Y1':rx=vx=x;ry=y-5.08;vy=y-3.175
     if ref in ['C30','C31']:rx=vx=x+2.54;ry=y-0.635;vy=y+1.27
@@ -75,9 +83,12 @@ for inst in instances:
         prop.append(expr(f'(effects (font (size 1.016 1.016)){" (justify "+just+")" if just else ""})'))
     pop=next(cc['value'] for cc in model['components'] if cc['ref']==old['ref'])
     one(inst,'dnp')[1]=S('yes' if pop=='DNP' else 'no')
+    policy='User-authorized datasheet symbol created through KiCad MCP' if lid.startswith('PetSafe_Datasheet:') else 'Unmodified KiCad 10 stock symbol'
     for name,val in [('OriginalReference',old['ref']),('Evidence','Photo reconstruction; topology inferred'),
-                     ('LibraryPolicy','Unmodified KiCad 10 stock symbol'),
+                     ('LibraryPolicy',policy),
                      ('PinMapping','See evidence/pin_crosswalk.json; physical orientation may be provisional')]:
+        for existing in children(inst,'property'):
+            if existing[1]==name:inst.remove(existing)
         inst.append(expr(f'(property {q(name)} {q(val)} (at {x} {y} 0) (effects (font (size 1 1)) hide))'))
 for ep,target in layout['crosswalk'].items():P[ep]=ALL_NATIVE[target]
 assert len(P)==352
@@ -126,17 +137,22 @@ for w in layout['wires']:
 for l in layout['labels']:
     w=dict(a=l['p'],b=l['p'])
     if not excluded(w):L.append(dict(net=l['net'],p=oldpoints.get(mm(l['p']),mm(l['p']))))
+# Give the button-control label enough room before the horizontal resistor body.
+for l in L:
+    if l['net']=='H_BUTTON_MCU':
+        x,y=l['p'];start=(rnd(x-3.81),y)
+        W.append(dict(net=l['net'],a=start,b=l['p']));l['p']=start
 wire('H_GND','C9.2',(49,159),(49,190),(53,190))
 
-# U1 remains a numbered, explicitly temporary stock placeholder.
+# Datasheet S-1200B45 symbol: input/enable left, output/NC right, ground below.
 wire('H_VBAT','BATP.1','L2.1');label('H_VBAT',(23,42))
 wire('H_LDO_IN','L2.2','U1.L1');wire('H_LDO_IN','C1.1',(44,42))
-wire('H_LDO_IN','C1A.1',(38,49),(38,42));wire('H_LDO_IN','U1.L3',(52,46),(52,42))
-wire('H_GND','U1.L2',(50,44),(50,64));bus('H_GND',64,['C1.2','C1A.2','C2.2','C2A.2','GND.1'])
-wire('H_VDD','U1.R1',(56,50),(56,60),(82,60),(82,42),'VDD.1')
+wire('H_LDO_IN','C1A.1',(38,49),(38,42));wire('H_LDO_IN','U1.L3',(52,48),(52,42))
+wire('H_GND','U1.L2',(66,64));bus('H_GND',64,['C1.2','C1A.2','C2.2','C2A.2','GND.1'])
+wire('H_VDD','U1.R1',(82,42),'VDD.1')
 wire('H_VDD','C2.1',(90,42));wire('H_VDD','C2A.1',(106,42));label('H_VDD',(101,42))
-wire('U1_ALT_PAD','U1.R2',(54,48),(54,81),(115,81),'C4.2')
-wire('U1_ALT_PAD','R1.2',(48,87),(48,81),(54,81));wire('U1_ALT_PAD','C3.2',(72,87),(72,81));wire('U1_ALT_PAD','R2.2',(97,87),(97,81))
+wire('U1_ALT_PAD','U1.R2',(80,48),(80,81),(115,81),'C4.2')
+wire('U1_ALT_PAD','R1.2',(48,87),(48,81),(80,81));wire('U1_ALT_PAD','C3.2',(72,87),(72,81));wire('U1_ALT_PAD','R2.2',(97,87),(97,81))
 label('U1_ALT_PAD',(80,81))
 
 # PIC: official SOIC symbol; both ground pins share the library endpoint.
@@ -152,12 +168,12 @@ wire('H_GND','C30.2',(238,104));wire('H_GND','C31.1',(254,104));wire('PIC_RC3','
 stub('H_VBAT','R3.1',0,-4);wire('H_BAT_SENSE','R3.2',(280,75),'R4.1');wire('H_BAT_SENSE',(280,75),'TP17.1');wire('H_BAT_SENSE','C28.1',(296,75));label('H_BAT_SENSE',(284,75));bus('H_GND',94,['R4.2','C28.2'])
 
 # MX512H physical pin numbering, not a DRV8837 pin substitution.
-wire('H_VBAT','C33.1',(339,33),(350,33),(350,52),'U5.4');label('H_VBAT',(339,33))
-wire('H_VDD','U5.1',(345,46),(345,43),(330,43),'C34.1');label('H_VDD',(330,43))
+wire('H_VBAT','C33.1',(339,33),(361,33),'U5.4');label('H_VBAT',(339,33))
+wire('H_VDD','U5.1',(345,44),(345,43),(330,43),'C34.1');label('H_VDD',(330,43))
 wire('H_GND','C33.2',(339,69));bus('H_GND',69,['C34.2','BATN.1'])
-wire('H_GND','U5.6',(376,50),(376,69));wire('H_GND','U5.7',(378,48),(378,69))
-wire('H_MOTOR_A','U5.8',(372,46),(372,43),(384,43),(384,49),'J5.A')
-wire('H_MOTOR_B','U5.5',(370,52),(370,55),(386,55),(386,51),'J5.B');wire('H_MOTOR_B','TP15.1',(381,55))
+wire('H_GND','U5.6',(359,69));wire('H_GND','U5.7',(363,69));wire('H_GND',(359,69),(363,69))
+wire('H_MOTOR_A','U5.8',(384,44),(384,49),'J5.A')
+wire('H_MOTOR_B','U5.5',(381,52),(381,55),(386,55),(386,51),'J5.B');wire('H_MOTOR_B','TP15.1',(381,55))
 stub('H_MOTOR_INA','U5.2',-10);stub('H_MOTOR_INB','U5.3',-10)
 
 # WN23 unidentified five-pin package; provisional functional roles remain explicit.
@@ -183,16 +199,16 @@ for g in layout['graphics']:
 for n in layout['notes']:
     t=n['text']
     if t.startswith('Original pad IDs on U1.'):
-        t='U1 stock placeholder: 1 VIN, 2 GND, 3 EN, 4 NC, 5 OUT. Exact symbol pending.'
+        t='U1 datasheet symbol: S-1200B45 SOT-23-5. Pin 4 is internally open; option pads retained.'
     if 'Original photographed pad names remain' in t:
         t='Library pin numbers are mapped to photo pads in evidence/pin_crosswalk.json.'
-    if t.startswith('v0.2'):t='v0.3 | KiCad 10.0.5 | 2026-10-08';n['y']=292
+    if t.startswith('v0.2'):t='v0.4 | KiCad 10.0.5 | 2026-10-08';n['y']=292
     if t.startswith('H03:'):n['y']=106
     text(t,n['x'],n['y'],1.27 if n['size']>=1 else max(.762,n['size']*1.27))
-text('U5 placeholder: 1 VCC, 2 INA, 3 INB, 4 VDD, 5 OUTB, 6/7 GND, 8 OUTA.',320,77,.762)
+text('U5 datasheet symbol: separate logic VCC and motor VDD; both ground pins retained.',320,77,.762)
 text('U3 alternative: MCP6002-I/SN; same pin roles, electrical suitability to verify.',288,208,.762)
 text('U5 alternative: DRV8212PDSGR. Different package/pins; redesign required.',320,81,.762)
-text('U6 placeholder: 1 VIN?, 2 GND?, 3 EN?, 4 NC?, 5 OUT?.',234,284,.762)
+text('U6: earlier LDO hypothesis retained; supervisor candidate and pin-map conflict in report.',234,284,.762)
 text('Q8 indices: 1=T1, 2=T2, 3=T3, 4=B3, 5=B2, 6=B1. Identity open.',90,202,.762)
 
 def on(p,w):
@@ -247,16 +263,16 @@ for net,edges in adj.items():
 for l in L:
     x,y=l['p'];G.append(expr(f'(label {q(l["net"])} (at {x} {y} 0) (effects (font (size .762 .762)) (justify left bottom)) (uuid {q(uid())}))'))
 tree.extend(G)
-tree.append(expr('(title_block (title "PetSafe 100-1339 R03 A | single-sheet reconstruction") (date "2026-10-08") (rev "0.3") (company "KiCad 10 standard libraries | MCP authoring") (comment 1 "Inferred circuit. Numbered placeholders pending vendor symbols; not hardware verified."))'))
+tree.append(expr('(title_block (title "PetSafe 100-1339 R03 A | single-sheet reconstruction") (date "2026-10-08") (rev "0.4") (company "KiCad 10 libraries + two datasheet symbols | MCP authoring") (comment 1 "Inferred circuit. U1/U5 datasheet symbols; U6/Q8 unidentified. Not hardware verified."))'))
 # Canonical pretty printer supplied by the installed MCP server.
 sys.path.insert(0,str(Path.home()/'Documents/VS.Code.Projects/KiCAD-MCP-Server/python'))
 from utils.sexpr_format import prettify
 out=R/'schematic/PetSafe_1001339.kicad_sch'
 out.write_text(prettify(sx.dumps(tree)),encoding='utf-8',newline='\n')
-model.update(revision='v0.3',coordinate_units='mm',native_pin_crosswalk=layout['crosswalk'],pin_positions={e:list(p) for e,p in P.items()},
-             geometric_wires=[dict(net=n,a=a,b=b) for n,a,b in segments],library_policy='KiCad 10 stock symbols, MCP placed; no custom symbol definitions')
+model.update(revision='v0.4',coordinate_units='mm',native_pin_crosswalk=layout['crosswalk'],pin_positions={e:list(p) for e,p in P.items()},
+             geometric_wires=[dict(net=n,a=a,b=b) for n,a,b in segments],library_policy='KiCad 10 stock symbols plus two explicitly authorized MCP-created datasheet symbols for U1/U5')
 for c in model['components']:
     entry=next(x for x in layout['catalog'] if x['original_ref']==c['ref'])
     c['library_symbol']=entry['symbol'];c['footprint']=entry['footprint']
 (R/'evidence/reconstruction.json').write_text(json.dumps(model,indent=2),encoding='utf-8',newline='\n')
-print(f'Routed {len(segments)} segments. Preserved {len(expected)} connected pads, {len(P)-len(expected)} unresolved pads. {len(libs)} stock symbols, zero custom symbols.')
+print(f'Routed {len(segments)} segments. Preserved {len(expected)} connected pads, {len(P)-len(expected)} unresolved pads. {len(libs)} library definitions including two MCP-created datasheet symbols.')

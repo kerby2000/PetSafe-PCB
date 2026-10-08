@@ -16,20 +16,22 @@
     "get_schematic_pin_locations",
     "get_footprint_info",
     "export_schematic_pdf",
-    "export_schematic_svg"
+    "export_schematic_svg",
+    "create_symbol",
+    "register_symbol_library",
+    "replace_schematic_component"
   ],
   "placement_components": 150,
   "extra_units": 4,
-  "stock_symbol_definitions": 22,
-  "custom_symbol_definitions": 0,
+  "stock_symbol_definitions": 21,
+  "custom_symbol_definitions": 2,
   "batch_timeout": "Batch call reached its 30-second response timeout; subsequent read confirmed all 150 symbols were placed. No blind retry.",
   "routing": "tools/finish_library_rebuild.py adapts the authored routes to MCP-placed symbol pins; it does not create symbol definitions.",
-  "missing_exact_symbols": [
-    "S-1200B45",
-    "MX512H"
-  ],
+  "missing_exact_symbols": [],
   "unidentified": [
     "U6 WN23",
     "Q8 372A"
-  ]
+  ],
+  "revision": "v0.4",
+  "datasheet_symbol_authoring": "evidence/datasheet_symbol_authoring.json"
 }

@@ -98,11 +98,11 @@ L1,L1,UNKNOWN,bead / L ?,,populated,IMG_2432.jpg,See reconstruction notes; added
 L2,L2,UNKNOWN,bead / L ?,,populated,IMG_2430.jpg,See reconstruction notes; added connectivity inferred,0,Device:L,
 Y1,Y1,20MHz,20 MHz,JH20.000,populated,IMG_2436.jpg,See reconstruction notes; added connectivity inferred,0,Device:Crystal,
 U4,U4,PIC16F18855,PIC16F18855,PIC16F18855 /SO,populated,IMG_2424.jpg,See reconstruction notes; added connectivity inferred,19,MCU_Microchip_PIC16:PIC16F18855-xSO,Package_SO:SOIC-28W_7.5x17.9mm_P1.27mm
-U5,U5,MX512H,MX512H,MX512H,populated,IMG_2424.jpg;IMG_2438.jpg,See reconstruction notes; added connectivity inferred,0,Connector_Generic:Conn_02x04_Counter_Clockwise,Package_SO:SOIC-8_3.9x4.9mm_P1.27mm
+U5,U5,MX512H,MX512H,MX512H,populated,IMG_2424.jpg;IMG_2438.jpg,See reconstruction notes; added connectivity inferred,0,PetSafe_Datasheet:MX512H,Package_SO:SOIC-8_3.9x4.9mm_P1.27mm
 U3,U3,SGM8542XS,SGM8542XS,SGM8542XS / 2531C,populated,IMG_2429.jpg,See reconstruction notes; added connectivity inferred,0,Amplifier_Operational:Opamp_Dual,Package_SO:SOIC-8_3.9x4.9mm_P1.27mm
-U1,U1,UNKNOWN_5PIN,S-1200B45?,PPEK,populated,IMG_2430.jpg,H01: ABLIC S1200 Rev6 page23 maps PPE to S-1200B45-M5T1x and fourth character to lot. Strong identity candidate; board-wide connections remain inferred.,0,Connector_Generic:Conn_01x05,Package_TO_SOT_SMD:SOT-23-5
+U1,U1,UNKNOWN_5PIN,S-1200B45?,PPEK,populated,IMG_2430.jpg,H01: ABLIC S1200 Rev6 page23 maps PPE to S-1200B45-M5T1x and fourth character to lot. Strong identity candidate; board-wide connections remain inferred.,0,PetSafe_Datasheet:S-1200B45-M5T1,Package_TO_SOT_SMD:SOT-23-5
 U2,U2,UNKNOWN_6PIN,74LVC2G14?,C14R?,populated,IMG_2431.jpg,"H07: exact TI C14R marking and 6-pin DBV package match. Photo top row left to right = 3,2,1; bottom = 4,5,6.",0,74xGxx:74LVC2G14,Package_TO_SOT_SMD:SOT-23-6
-U6,U6,UNKNOWN_5PIN,LDO? / WN23,WN23?,populated,IMG_2435.jpg,"H14: selected SOT23-5 LDO topology from two adjacent capacitors; WN can also identify RT9818 supervisor, so all role assignments remain provisional.",1,Connector_Generic:Conn_01x05,
+U6,U6,UNKNOWN_5PIN,LDO? / WN23,WN23?,populated,IMG_2435.jpg,H14: earlier LDO topology retained as an explicitly low-confidence circuit hypothesis. Follow-up investigation favors RT9818A-33PB supervisor; the placeholder crosswalk is mirrored and cannot be reused as that supervisor pin map. See docs/U6_Q8_INVESTIGATION.html.,1,Connector_Generic:Conn_01x05,
 U6A,U106,DNP,DNP,,DNP,IMG_2435.jpg,See reconstruction notes; added connectivity inferred,3,Connector_Generic:Conn_01x03,
 U7,U7,DNP,DNP,,DNP,IMG_2441.jpg,See reconstruction notes; added connectivity inferred,3,Connector_Generic:Conn_01x03,
 Q1,Q1,UNKNOWN,MMBT3904?,R1A,populated,IMG_2438.jpg,"H05: R1A mark suggests MMBT3904; B=R, E=L, C=S inferred from SOT23 orientation.",0,Transistor_BJT:MMBT3904,Package_TO_SOT_SMD:SOT-23

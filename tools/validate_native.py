@@ -34,7 +34,25 @@ def main():
     sch=ROOT/'schematic/PetSafe_1001339.kicad_sch'
     assert '(no_connect ' not in sch.read_text()
     assert '(lib_id "PetSafe_Working:' not in sch.read_text()
-    report=dict(date='2026-10-08',native_tool=native.findtext('./design/tool'),native_load_and_export='PASS',single_sheet='PASS',catalog_components=150,symbol_units=154,physical_pins=352,stock_library_symbols=22,custom_symbols=0,proposed_net_partitions=len(expected),netlist_partition_comparison='PASS',unintended_multi_pin_nets=0,retained_original_visual_fragments=len(old['nets']),original_photo_checksums=f'PASS ({len(manifest)} files)',unresolved_physical_pins=len(m['unresolved_pins']),erc_total=len(violations),erc_by_type=dict(counts),erc_status='OPEN FINDINGS - see ERC report; placeholders have passive pins and cannot check IC drive rules',gui_open='NOT_TESTED (native CLI validated)',hardware_verification='NOT_PERFORMED',physical_pcb_layout='NOT_CREATED',schematic_sha256=sha(sch),input_zip_sha256=sha(ROOT/'input/PetSafe_KiCad_RE_v01.zip'))
+    definitions={(p.attrib['lib'],p.attrib['part']) for p in native.findall('./libparts/libpart')}
+    custom=sum(lib=='PetSafe_Datasheet' for lib,part in definitions)
+    assert custom==2 and len(definitions)==23,definitions
+    # Independent manufacturer pin-table contracts, checked in native KiCad output.
+    contracts={
+        'U1':('S-1200B45-M5T1','Package_TO_SOT_SMD:SOT-23-5',
+              [('VIN','power_in'),('VSS','power_in'),('ON/OFF','input'),('NC','passive'),('VOUT','power_out')]),
+        'U5':('MX512H','Package_SO:SOIC-8_3.9x4.9mm_P1.27mm',
+              [('VCC','power_in'),('INA','input'),('INB','input'),('VDD','power_in'),('OUTB','tri_state'),('GND','power_in'),('GND','power_in'),('OUTA','tri_state')])}
+    for ref,(part,footprint,pins) in contracts.items():
+        lib=native.find(f'./libparts/libpart[@lib="PetSafe_Datasheet"][@part="{part}"]')
+        actual_pins={p.attrib['num']:(p.attrib['name'],p.attrib['type']) for p in lib.findall('./pins/pin')}
+        assert actual_pins=={str(i):p for i,p in enumerate(pins,1)},(ref,actual_pins)
+        comp=native.find(f'./components/comp[@ref="{ref}"]')
+        assert comp.findtext('footprint')==footprint
+        assert comp.findtext('datasheet')==lib.findtext('docs')
+        assert comp.findtext('description')==lib.findtext('description')
+    report=dict(date='2026-10-08',native_tool=native.findtext('./design/tool'),native_load_and_export='PASS',single_sheet='PASS',catalog_components=150,symbol_units=154,physical_pins=352,stock_library_symbols=len(definitions)-custom,custom_symbols=custom,proposed_net_partitions=len(expected),netlist_partition_comparison='PASS',unintended_multi_pin_nets=0,retained_original_visual_fragments=len(old['nets']),original_photo_checksums=f'PASS ({len(manifest)} files)',unresolved_physical_pins=len(m['unresolved_pins']),erc_total=len(violations),erc_by_type=dict(counts),erc_status='OPEN FINDINGS - U1/U5 now have datasheet pin types; unidentified placeholders still have passive pins with limited checking',gui_open='NOT_TESTED (native CLI validated)',hardware_verification='NOT_PERFORMED',physical_pcb_layout='NOT_CREATED',schematic_sha256=sha(sch),input_zip_sha256=sha(ROOT/'input/PetSafe_KiCad_RE_v01.zip'))
+    report['datasheet_symbol_pin_contracts']='PASS (U1: 5 pins; U5: 8 pins; types, footprints and source properties)'
     (ROOT/'evidence/validation.json').write_text(json.dumps(report,indent=2),encoding='utf-8',newline='\n')
     (ROOT/'evidence/validation_log.txt').write_text('Native KiCad model/netlist cross-check: PASS\n'+json.dumps(report,indent=2)+'\n',encoding='utf-8',newline='\n')
     print(json.dumps(report,indent=2))

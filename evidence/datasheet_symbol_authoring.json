@@ -1,0 +1,211 @@
+{
+  "date": "2026-10-08",
+  "authorization": "User explicitly authorized creating S-1200B45 and MX512H from datasheets using KiCad MCP after vendor files could not be found.",
+  "kicad_runtime": "10.0.5",
+  "server_generator_note": "MCP create_symbol emits a legacy generator_version 9.0 metadata string; runtime and validation use installed KiCad 10.0.5.",
+  "tools_used": [
+    "create_symbol",
+    "register_symbol_library",
+    "replace_schematic_component",
+    "batch_list_symbol_pins",
+    "get_footprint_info"
+  ],
+  "create_symbol_requests": [
+    {
+      "libraryPath": "C:/Users/lukin/Documents/ChatGPT/PetSafe-PCB/schematic/PetSafe_Datasheet.kicad_sym",
+      "name": "S-1200B45-M5T1",
+      "referencePrefix": "U",
+      "description": "ABLIC S-1200B45 4.5 V LDO, active-high enable, SOT-23-5. Datasheet Rev6 Table3. Pin4 internally open; permitted tied to VIN or VSS.",
+      "keywords": "ABLIC LDO 4.5V S1200",
+      "datasheet": "https://www.ablic.com/en/doc/datasheet/voltage_regulator/S1200_E.pdf",
+      "footprint": "Package_TO_SOT_SMD:SOT-23-5",
+      "pins": [
+        {
+          "number": "1",
+          "name": "VIN",
+          "type": "power_in",
+          "at": {
+            "x": -10.16,
+            "y": 5.08,
+            "angle": 0
+          },
+          "length": 2.54
+        },
+        {
+          "number": "2",
+          "name": "VSS",
+          "type": "power_in",
+          "at": {
+            "x": 0,
+            "y": -10.16,
+            "angle": 90
+          },
+          "length": 2.54
+        },
+        {
+          "number": "3",
+          "name": "ON/OFF",
+          "type": "input",
+          "at": {
+            "x": -10.16,
+            "y": -2.54,
+            "angle": 0
+          },
+          "length": 2.54
+        },
+        {
+          "number": "4",
+          "name": "NC",
+          "type": "passive",
+          "at": {
+            "x": 10.16,
+            "y": -2.54,
+            "angle": 180
+          },
+          "length": 2.54
+        },
+        {
+          "number": "5",
+          "name": "VOUT",
+          "type": "power_out",
+          "at": {
+            "x": 10.16,
+            "y": 5.08,
+            "angle": 180
+          },
+          "length": 2.54
+        }
+      ],
+      "rectangles": [
+        {
+          "x1": -7.62,
+          "y1": 7.62,
+          "x2": 7.62,
+          "y2": -7.62,
+          "fill": "background",
+          "width": 0.254
+        }
+      ]
+    },
+    {
+      "libraryPath": "C:/Users/lukin/Documents/ChatGPT/PetSafe-PCB/schematic/PetSafe_Datasheet.kicad_sym",
+      "name": "MX512H",
+      "referencePrefix": "U",
+      "description": "Mixic MX512H dual-input H-bridge, SOP8. Separate VCC logic and VDD motor supplies. Pin map from Rev1.2 2020-12-11 page2.",
+      "keywords": "Mixic motor H-bridge MX512H SOP8",
+      "datasheet": "https://static.chipdip.ru/lib/203/DOC045203539.pdf",
+      "footprint": "Package_SO:SOIC-8_3.9x4.9mm_P1.27mm",
+      "pins": [
+        {
+          "number": "1",
+          "name": "VCC",
+          "type": "power_in",
+          "at": {
+            "x": -12.7,
+            "y": 5.08,
+            "angle": 0
+          },
+          "length": 2.54
+        },
+        {
+          "number": "2",
+          "name": "INA",
+          "type": "input",
+          "at": {
+            "x": -12.7,
+            "y": 0,
+            "angle": 0
+          },
+          "length": 2.54
+        },
+        {
+          "number": "3",
+          "name": "INB",
+          "type": "input",
+          "at": {
+            "x": -12.7,
+            "y": -5.08,
+            "angle": 0
+          },
+          "length": 2.54
+        },
+        {
+          "number": "4",
+          "name": "VDD",
+          "type": "power_in",
+          "at": {
+            "x": 0,
+            "y": 12.7,
+            "angle": 270
+          },
+          "length": 2.54
+        },
+        {
+          "number": "5",
+          "name": "OUTB",
+          "type": "tri_state",
+          "at": {
+            "x": 12.7,
+            "y": -5.08,
+            "angle": 180
+          },
+          "length": 2.54
+        },
+        {
+          "number": "6",
+          "name": "GND",
+          "type": "power_in",
+          "at": {
+            "x": -2.54,
+            "y": -12.7,
+            "angle": 90
+          },
+          "length": 2.54
+        },
+        {
+          "number": "7",
+          "name": "GND",
+          "type": "power_in",
+          "at": {
+            "x": 2.54,
+            "y": -12.7,
+            "angle": 90
+          },
+          "length": 2.54
+        },
+        {
+          "number": "8",
+          "name": "OUTA",
+          "type": "tri_state",
+          "at": {
+            "x": 12.7,
+            "y": 5.08,
+            "angle": 180
+          },
+          "length": 2.54
+        }
+      ],
+      "rectangles": [
+        {
+          "x1": -10.16,
+          "y1": 10.16,
+          "x2": 10.16,
+          "y2": -10.16,
+          "fill": "background",
+          "width": 0.254
+        }
+      ]
+    }
+  ],
+  "replacement_calls": {
+    "schematicPath": "C:/Users/lukin/Documents/ChatGPT/PetSafe-PCB/schematic/PetSafe_1001339.kicad_sch",
+    "references": [
+      "U1",
+      "U5"
+    ],
+    "tool": "replace_schematic_component"
+  },
+  "pin4_rationale": "S-1200 pin4 is internally open and explicitly allowed tied to VIN/VSS (Table3 note). Represented as passive NC so original optional-pad copper is retained; no hidden power role.",
+  "motor_output_types": "tri_state reflects the documented high-impedance standby mode; both output pads remain separate.",
+  "footprints": "Unmodified standard KiCad footprints; no custom footprint created."
+}

@@ -50,4 +50,10 @@ Library existence and footprint names were verified against the user's installed
 - [Diodes DMC3071LVT](https://www.diodes.com/datasheet/download/DMC3071LVT.pdf) and [DMC2053UVT](https://www.diodes.com/datasheet/download/DMC2053UVT.pdf), saved under those names: page 1 complementary-pair pin maps, TSOT26 packages and C71 / AR2 markings. Topology comparisons only.
 - [SYNC Power SPP3437](https://www.syncpower.com/datasheet/SPP3437.pdf), saved as `SPP3437.pdf`: pages 1-2 show 37 marking but a single P-channel device with multiple drain pins, not the leading two-gate hypothesis.
 
-The [investigation report](U6_Q8_INVESTIGATION.html) separates manufacturer facts from new photo interpretations and the unchanged native v0.3 circuit. The derivative crops are reproducible from crop bounds/rotations in `evidence/u6_q8_investigation.json`; source photographs remain untouched.
+The [investigation report](U6_Q8_INVESTIGATION.html) separates manufacturer facts from new photo interpretations and the earlier native v0.3 circuit. The U6/Q8 hypotheses remain unchanged in v0.4; U1/U5 symbol creation is recorded below. The derivative crops are reproducible from crop bounds/rotations in `evidence/u6_q8_investigation.json`; source photographs remain untouched.
+
+## Authorized datasheet symbols, v0.4 (2026-10-08)
+
+- ABLIC S1200.pdf page 5 / Table 3 provides the five-pin SOT-23-5 map. The internally open pin 4 may be tied to VIN/VSS. The B option uses active-high ON/OFF; the 45 option is nominally 4.5 V.
+- Mixic MX512H.pdf page 2 provides the eight-pin functions; the truth table supports tri-state outputs in standby. Page 9 gives SOP-8 nominal 3.9 x 4.9 mm body, 6.0 mm overall span and 1.27 mm pitch, matching the selected stock narrow SOIC footprint.
+- Actual MCP authoring requests, user authorization and footprint choices are preserved in `evidence/datasheet_symbol_authoring.json`. The MCP library writer retains a legacy generator-version metadata string; creation, native export and checks used installed KiCad 10.0.5.
