@@ -98,3 +98,7 @@ Registered original mosaics `photos/front_registered.jpg` and `photos/back_mirro
 ## v0.9 user via review and cross-checks
 
 User assignments and ambiguities are preserved in `evidence/via_user_review.json`; the supplied MX512H application image is preserved unchanged at `photos/user/via_review/MX512H_pin4_supply.png`. No manufacturer source is inferred from the screenshot beyond its displayed application diagram. Site-to-component cross-checks use the original front/rear photographic mosaics and IMG_2431 through IMG_2443; see `via_audit.json` and `v09_net_changes.json`. Rear appearance, user assignment, model hypothesis and held conflicts remain separate. No new per-via ohms or operating voltages were supplied.
+
+## v0.9.1 incremental user corrections
+
+The user supplied 21 site corrections on 2026-10-08, preserved verbatim apart from capitalization/spacing normalization in `via_user_review.json` follow-up corrections. Component-only reports retain earlier ground/supply claims with separate provenance. Pad selections use the existing photos; notably R44.1 at V017 is photo-selected, while R42.1 is explicitly user-supplied. No new per-site resistance, datasheet, part identity or value was supplied. See `v091_net_changes.json` and `VIA_REVIEW_RESULTS.md`.

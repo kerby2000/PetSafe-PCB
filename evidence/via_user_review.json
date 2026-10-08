@@ -505,7 +505,159 @@
       "kind": "component_or_issue"
     }
   ],
-  "unmentioned_ids": [
+  "conflicts": [],
+  "supply_naming": "MX512H pin4 VDD is the motor supply, modeled H_VBAT. It is distinct from MX512H pin1 VCC and the regulated board H_VDD; do not merge based on the VDD word alone.",
+  "corrections_pending": false,
+  "followup_corrections": [
+    {
+      "source": "User reply to duplicate-ID question",
+      "answer": "v025 is a GND; v026 is PIC pin21/RB0",
+      "assignments": [
+        {
+          "id": "V025",
+          "claim": "GND",
+          "kind": "ground"
+        },
+        {
+          "id": "V026",
+          "claim": "PIC pin21/RB0; onward destination unknown",
+          "kind": "component_or_issue"
+        }
+      ],
+      "does_not_resolve": "V073/R19 duplicate; no answer supplied for that part"
+    },
+    {
+      "source": "User 2026-10-08 incremental via corrections; rest to be reviewed later",
+      "revision": "v0.9.1",
+      "answer": "V006 C33\nV007 C34\nV011,V012,V013,V014 are not connected to R43.2 lower pad\nV015 R43.2\nV017 R42.1, R44\nV018 C35\nV020 R40\nV029 C25,C26\nV033 not a via - recognition artifact\nV034 clearly VDD, R3\nV040 C28\nV059 L2\nV060 Q2\nV061 L2\nV065 C2\nV068 C37,C36\nV072 is not connected to R22.2\nV073 only GND",
+      "assignments": [
+        {
+          "id": "V006",
+          "claim": "C33; earlier user GND report retained",
+          "kind": "ground",
+          "component_claim": "C33",
+          "ground_basis": "Previous user list; no new resistance supplied"
+        },
+        {
+          "id": "V007",
+          "claim": "C34; earlier user GND report retained",
+          "kind": "ground",
+          "component_claim": "C34",
+          "ground_basis": "Previous user list; no new resistance supplied"
+        },
+        {
+          "id": "V011",
+          "claim": "NOT connected to R43.2 lower pad; exact island destination unresolved",
+          "kind": "negative_connection"
+        },
+        {
+          "id": "V012",
+          "claim": "NOT connected to R43.2 lower pad; exact island destination unresolved",
+          "kind": "negative_connection"
+        },
+        {
+          "id": "V013",
+          "claim": "NOT connected to R43.2 lower pad; exact island destination unresolved",
+          "kind": "negative_connection"
+        },
+        {
+          "id": "V014",
+          "claim": "NOT connected to R43.2 lower pad; exact island destination unresolved",
+          "kind": "negative_connection"
+        },
+        {
+          "id": "V015",
+          "claim": "R43.2 lower pad",
+          "kind": "component_or_issue"
+        },
+        {
+          "id": "V017",
+          "claim": "R42.1, R44",
+          "kind": "component_or_issue"
+        },
+        {
+          "id": "V018",
+          "claim": "C35; earlier user GND report retained",
+          "kind": "ground",
+          "component_claim": "C35",
+          "ground_basis": "Previous user list; no new resistance supplied"
+        },
+        {
+          "id": "V020",
+          "claim": "R40",
+          "kind": "component_or_issue"
+        },
+        {
+          "id": "V029",
+          "claim": "C25/C26; earlier user GND report retained",
+          "kind": "ground",
+          "component_claim": "C25/C26",
+          "ground_basis": "Previous user list; no new resistance supplied"
+        },
+        {
+          "id": "V033",
+          "claim": "Not a via; recognition artifact",
+          "kind": "not_via"
+        },
+        {
+          "id": "V034",
+          "claim": "Clearly VDD, R3; earlier MX512H pin4 common-supply report retained",
+          "kind": "motor_supply"
+        },
+        {
+          "id": "V040",
+          "claim": "C28; earlier user GND report retained",
+          "kind": "ground",
+          "component_claim": "C28",
+          "ground_basis": "Previous user list; no new resistance supplied"
+        },
+        {
+          "id": "V059",
+          "claim": "L2; earlier MX512H pin4 common-supply report retained",
+          "kind": "motor_supply"
+        },
+        {
+          "id": "V060",
+          "claim": "Q2; earlier user GND report retained",
+          "kind": "ground",
+          "component_claim": "Q2",
+          "ground_basis": "Previous user list; no new resistance supplied"
+        },
+        {
+          "id": "V061",
+          "claim": "L2; earlier MX512H pin4 common-supply report retained",
+          "kind": "motor_supply"
+        },
+        {
+          "id": "V065",
+          "claim": "C2; earlier user GND report retained",
+          "kind": "ground",
+          "component_claim": "C2",
+          "ground_basis": "Previous user list; no new resistance supplied"
+        },
+        {
+          "id": "V068",
+          "claim": "C37/C36; earlier user GND report retained",
+          "kind": "ground",
+          "component_claim": "C37/C36",
+          "ground_basis": "Previous user list; no new resistance supplied"
+        },
+        {
+          "id": "V072",
+          "claim": "NOT connected to R22.2",
+          "kind": "negative_connection"
+        },
+        {
+          "id": "V073",
+          "claim": "GND only; supersedes earlier duplicate R19 report",
+          "kind": "ground"
+        }
+      ],
+      "qualification": "Terminal numbers absent from the user report are selected from photos/model and explicitly identified as such in the overlay. No new per-site ohms supplied."
+    }
+  ],
+  "review_in_progress": true,
+  "historical_unmentioned_ids": [
     "V016",
     "V017",
     "V019",
@@ -537,28 +689,36 @@
     "V122",
     "V124"
   ],
-  "conflicts": [
-    "V073 GND versus R19; possible V075 typo"
+  "unmentioned_ids": [
+    "V016",
+    "V019",
+    "V027",
+    "V028",
+    "V030",
+    "V035",
+    "V036",
+    "V037",
+    "V038",
+    "V039",
+    "V042",
+    "V047",
+    "V049",
+    "V053",
+    "V075",
+    "V079",
+    "V080",
+    "V091",
+    "V097",
+    "V102",
+    "V108",
+    "V117",
+    "V119",
+    "V120",
+    "V122",
+    "V124"
   ],
-  "supply_naming": "MX512H pin4 VDD is the motor supply, modeled H_VBAT. It is distinct from MX512H pin1 VCC and the regulated board H_VDD; do not merge based on the VDD word alone.",
-  "corrections_pending": true,
-  "followup_corrections": [
-    {
-      "source": "User reply to duplicate-ID question",
-      "answer": "v025 is a GND; v026 is PIC pin21/RB0",
-      "assignments": [
-        {
-          "id": "V025",
-          "claim": "GND",
-          "kind": "ground"
-        },
-        {
-          "id": "V026",
-          "claim": "PIC pin21/RB0; onward destination unknown",
-          "kind": "component_or_issue"
-        }
-      ],
-      "does_not_resolve": "V073/R19 duplicate; no answer supplied for that part"
-    }
+  "remaining_model_conflicts": [
+    "V113",
+    "V115"
   ]
 }

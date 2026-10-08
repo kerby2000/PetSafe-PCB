@@ -1,4 +1,4 @@
-# PetSafe functional reconstruction, v0.9
+# PetSafe functional reconstruction, v0.9.1
 
 The deliverable is one editable KiCad schematic sheet with all 150 entries in the original main-board catalog. It uses wires inside functional blocks and labels between blocks. The 150 entries include named pads, test points and unpopulated footprints; they are not 150 fitted components. The separate PIR daughterboard appears in the photos, but only its main-board connector and interface are modeled here.
 
@@ -165,3 +165,9 @@ GPIOs 12,15,16,21 have reported vias with unknown onward nets. GPIOs 5,6,7,11,13
 ## Superseding v0.9 via evidence
 
 Read [via review results](VIA_REVIEW_RESULTS.md) for all 28 endpoint corrections, held conflicts and component associations. The [complete status PDF](../output/pdf/PetSafe_completion_status.pdf) lists every current gap and every PIC pin. The updated viewer retains rear appearance separately from reported electrical identity. V050 is excluded without renumbering. No per-via resistance values or measured rail voltages were supplied in this review. The four-layer hypothesis remains unverified by surface photographs.
+
+## v0.9.1 incremental via correction
+
+101 distinct via IDs reviewed; 125 active sites / 127 stable IDs. V033 and V050 are rejected without renumbering; 26 IDs remain unmentioned, some already photo-matched. The latest batch corrects 21 sites. V017 joins R42.1 and R44.1 (R44 pad selected from the photo), replacing the earlier R42.1-to-ANT2 hypothesis. R43.2 is associated with V015, not V011-V014. V072-to-R22.2 is withdrawn. V073 is GND only; R19/V075 remains photo-derived. V113/V115 are the two remaining held conflicts.
+
+R42.1/R44.1 share the new `V017_CONTROL` net; its function is unknown. The independent original Q1.L/R43.2 local fragment is retained at V015. Removing V072 from R22.2 does not validate or replace the earlier receiver-bias hypothesis. Further review is deferred at the user's request.

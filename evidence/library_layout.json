@@ -2410,7 +2410,8 @@
         "rotation": 90,
         "includePins": true,
         "footprint": "Resistor_SMD:R_0603_1608Metric"
-      }
+      },
+      "via_evidence": "v0.9.1 V017 joins R42.1 and R44 free pad (pad1 from photo); pad2 local Q1 connection retained."
     },
     {
       "original_ref": "R43",
@@ -2464,7 +2465,8 @@
         "rotation": 90,
         "includePins": true,
         "footprint": "Resistor_SMD:R_0603_1608Metric"
-      }
+      },
+      "via_evidence": "v0.9.1 user: lower pad2 reaches V015, NOT V011-V014. Independent original Q1.L-to-R43.2 fragment retained."
     },
     {
       "original_ref": "TP14",
@@ -4760,7 +4762,8 @@
         "rotation": 90,
         "includePins": true,
         "footprint": "Resistor_SMD:R_0603_1608Metric"
-      }
+      },
+      "via_evidence": "v0.9.1 user V017: R42.1 joins R44; R44.1 chosen from photo. Earlier R42.1-to-ANT2 hypothesis withdrawn."
     },
     {
       "original_ref": "D3",
@@ -5583,7 +5586,8 @@
         "rotation": 0,
         "includePins": true,
         "footprint": "Resistor_SMD:R_0603_1608Metric"
-      }
+      },
+      "via_evidence": "v0.9.1 user rejects V072-to-R22.2 association. Receiver bias net remains an independent unverified hypothesis."
     },
     {
       "original_ref": "C42",
@@ -10778,13 +10782,13 @@
       ]
     },
     {
-      "net": "H_Q1_BIAS",
+      "net": "V017_CONTROL",
       "a": [
         337,
         88
       ],
       "b": [
-        332.5,
+        328,
         88
       ]
     },
@@ -12087,13 +12091,13 @@
       ]
     },
     {
-      "net": "H_ANT_B",
+      "net": "V017_CONTROL",
       "a": [
         400,
         187
       ],
       "b": [
-        396,
+        392,
         187
       ]
     },
@@ -13764,9 +13768,9 @@
       ]
     },
     {
-      "net": "H_Q1_BIAS",
+      "net": "V017_CONTROL",
       "p": [
-        332.5,
+        328,
         88
       ]
     },
@@ -13904,9 +13908,9 @@
       ]
     },
     {
-      "net": "H_ANT_B",
+      "net": "V017_CONTROL",
       "p": [
-        396,
+        392,
         187
       ]
     },

@@ -1,6 +1,6 @@
 {
   "date": "2026-10-08",
-  "revision": "v0.9",
+  "revision": "v0.9.1",
   "source_front": "photos/front_registered.jpg",
   "source_rear": "photos/back_mirrored_registered.jpg",
   "images_are_original_photographic_mosaics": true,
@@ -185,7 +185,9 @@
       ],
       "rear_appearance": "MAIN_REAR_COPPER",
       "front_match": "PROJECTED: inspect original front photo; may be under a component",
-      "endpoints": [],
+      "endpoints": [
+        "C33.2"
+      ],
       "net": "H_GND",
       "confidence": "User GND report; no per-site ohms supplied",
       "note": "No isolating rear clearance apparent. Main copper is associated with PIC VSS through the reviewed anchors. Individual front endpoint not yet assigned.",
@@ -194,12 +196,17 @@
       "user_reports": [
         {
           "id": "V006",
-          "claim": "GND",
-          "kind": "ground"
+          "claim": "C33; earlier user GND report retained",
+          "kind": "ground",
+          "component_claim": "C33",
+          "ground_basis": "Previous user list; no new resistance supplied"
         }
       ],
       "review_status": "ASSIGNED",
-      "modeled_nets": []
+      "modeled_nets": [
+        "H_GND"
+      ],
+      "component_crosscheck": "User adds C33 to earlier GND report; pad2 selected from photo/model."
     },
     {
       "rear_xy": [
@@ -212,7 +219,9 @@
       ],
       "rear_appearance": "REAR_CLEARANCE",
       "front_match": "PROJECTED: inspect original front photo; may be under a component",
-      "endpoints": [],
+      "endpoints": [
+        "C34.2"
+      ],
       "net": "H_GND",
       "confidence": "User GND report; no per-site ohms supplied",
       "note": "Visible clearance separates this site from the surrounding rear copper; this alone does not identify an internal net.",
@@ -221,12 +230,17 @@
       "user_reports": [
         {
           "id": "V007",
-          "claim": "GND",
-          "kind": "ground"
+          "claim": "C34; earlier user GND report retained",
+          "kind": "ground",
+          "component_claim": "C34",
+          "ground_basis": "Previous user list; no new resistance supplied"
         }
       ],
       "review_status": "ASSIGNED",
-      "modeled_nets": []
+      "modeled_nets": [
+        "H_GND"
+      ],
+      "component_crosscheck": "User adds C34 to earlier GND report; pad2 selected from photo/model."
     },
     {
       "rear_xy": [
@@ -335,26 +349,24 @@
       ],
       "rear_appearance": "REAR_CLEARANCE",
       "front_match": "PROJECTED: inspect original front photo; may be under a component",
-      "endpoints": [
-        "Q1.L",
-        "R43.2"
-      ],
-      "net": "Q1_EMITTER",
-      "confidence": "rear visible; global front projection approximate",
+      "endpoints": [],
+      "net": null,
+      "confidence": "User explicitly excludes R43.2; island destination unresolved",
       "note": "Visible clearance separates this site from the surrounding rear copper; this alone does not identify an internal net.",
       "id": "V011",
       "active": true,
       "user_reports": [
         {
           "id": "V011",
-          "claim": "Q1 pin; exact terminal to derive",
-          "kind": "component_or_issue"
+          "claim": "NOT connected to R43.2 lower pad; exact island destination unresolved",
+          "kind": "negative_connection"
         }
       ],
-      "review_status": "ASSIGNED",
-      "component_crosscheck": "Photo common island to Q1 left pad and R43 lower pad; transistor pin function still a candidate.",
-      "modeled_nets": [
-        "Q1_EMITTER"
+      "review_status": "USER_REPORTED",
+      "component_crosscheck": "Previous Q1.L/R43.2 island association withdrawn. Earlier user reference to a Q1 pin does not specify its terminal. The separate original local Q1.L-to-R43.2 fragment is retained at V015.",
+      "modeled_nets": [],
+      "excluded_endpoints": [
+        "R43.2"
       ]
     },
     {
@@ -368,26 +380,24 @@
       ],
       "rear_appearance": "REAR_CLEARANCE",
       "front_match": "PROJECTED: inspect original front photo; may be under a component",
-      "endpoints": [
-        "Q1.L",
-        "R43.2"
-      ],
-      "net": "Q1_EMITTER",
-      "confidence": "rear visible; global front projection approximate",
+      "endpoints": [],
+      "net": null,
+      "confidence": "User explicitly excludes R43.2; island destination unresolved",
       "note": "Visible clearance separates this site from the surrounding rear copper; this alone does not identify an internal net.",
       "id": "V012",
       "active": true,
       "user_reports": [
         {
           "id": "V012",
-          "claim": "Q1 pin; exact terminal to derive",
-          "kind": "component_or_issue"
+          "claim": "NOT connected to R43.2 lower pad; exact island destination unresolved",
+          "kind": "negative_connection"
         }
       ],
-      "review_status": "ASSIGNED",
-      "component_crosscheck": "Photo common island to Q1 left pad and R43 lower pad; transistor pin function still a candidate.",
-      "modeled_nets": [
-        "Q1_EMITTER"
+      "review_status": "USER_REPORTED",
+      "component_crosscheck": "Previous Q1.L/R43.2 island association withdrawn. Earlier user reference to a Q1 pin does not specify its terminal. The separate original local Q1.L-to-R43.2 fragment is retained at V015.",
+      "modeled_nets": [],
+      "excluded_endpoints": [
+        "R43.2"
       ]
     },
     {
@@ -401,26 +411,24 @@
       ],
       "rear_appearance": "REAR_CLEARANCE",
       "front_match": "PROJECTED: inspect original front photo; may be under a component",
-      "endpoints": [
-        "Q1.L",
-        "R43.2"
-      ],
-      "net": "Q1_EMITTER",
-      "confidence": "rear visible; global front projection approximate",
+      "endpoints": [],
+      "net": null,
+      "confidence": "User explicitly excludes R43.2; island destination unresolved",
       "note": "Visible clearance separates this site from the surrounding rear copper; this alone does not identify an internal net.",
       "id": "V013",
       "active": true,
       "user_reports": [
         {
           "id": "V013",
-          "claim": "Q1 pin; exact terminal to derive",
-          "kind": "component_or_issue"
+          "claim": "NOT connected to R43.2 lower pad; exact island destination unresolved",
+          "kind": "negative_connection"
         }
       ],
-      "review_status": "ASSIGNED",
-      "component_crosscheck": "Photo common island to Q1 left pad and R43 lower pad; transistor pin function still a candidate.",
-      "modeled_nets": [
-        "Q1_EMITTER"
+      "review_status": "USER_REPORTED",
+      "component_crosscheck": "Previous Q1.L/R43.2 island association withdrawn. Earlier user reference to a Q1 pin does not specify its terminal. The separate original local Q1.L-to-R43.2 fragment is retained at V015.",
+      "modeled_nets": [],
+      "excluded_endpoints": [
+        "R43.2"
       ]
     },
     {
@@ -434,26 +442,24 @@
       ],
       "rear_appearance": "REAR_CLEARANCE",
       "front_match": "PROJECTED: inspect original front photo; may be under a component",
-      "endpoints": [
-        "Q1.L",
-        "R43.2"
-      ],
-      "net": "Q1_EMITTER",
-      "confidence": "rear visible; global front projection approximate",
+      "endpoints": [],
+      "net": null,
+      "confidence": "User explicitly excludes R43.2; island destination unresolved",
       "note": "Visible clearance separates this site from the surrounding rear copper; this alone does not identify an internal net.",
       "id": "V014",
       "active": true,
       "user_reports": [
         {
           "id": "V014",
-          "claim": "Q1 pin; exact terminal to derive",
-          "kind": "component_or_issue"
+          "claim": "NOT connected to R43.2 lower pad; exact island destination unresolved",
+          "kind": "negative_connection"
         }
       ],
-      "review_status": "ASSIGNED",
-      "component_crosscheck": "Photo common island to Q1 left pad and R43 lower pad; transistor pin function still a candidate.",
-      "modeled_nets": [
-        "Q1_EMITTER"
+      "review_status": "USER_REPORTED",
+      "component_crosscheck": "Previous Q1.L/R43.2 island association withdrawn. Earlier user reference to a Q1 pin does not specify its terminal. The separate original local Q1.L-to-R43.2 fragment is retained at V015.",
+      "modeled_nets": [],
+      "excluded_endpoints": [
+        "R43.2"
       ]
     },
     {
@@ -467,8 +473,11 @@
       ],
       "rear_appearance": "REAR_CLEARANCE",
       "front_match": "PROJECTED: inspect original front photo; may be under a component",
-      "endpoints": [],
-      "net": null,
+      "endpoints": [
+        "R43.2",
+        "Q1.L"
+      ],
+      "net": "Q1_EMITTER",
       "confidence": "rear visible; global front projection approximate",
       "note": "Visible clearance separates this site from the surrounding rear copper; this alone does not identify an internal net.",
       "id": "V015",
@@ -476,12 +485,15 @@
       "user_reports": [
         {
           "id": "V015",
-          "claim": "Not clear",
+          "claim": "R43.2 lower pad",
           "kind": "component_or_issue"
         }
       ],
-      "review_status": "USER_REPORTED",
-      "modeled_nets": []
+      "review_status": "ASSIGNED",
+      "modeled_nets": [
+        "Q1_EMITTER"
+      ],
+      "component_crosscheck": "User identifies R43 lower pad2. Q1.L is the retained original local photo fragment, not an additional user measurement."
     },
     {
       "rear_xy": [
@@ -515,15 +527,27 @@
       ],
       "rear_appearance": "REAR_CLEARANCE",
       "front_match": "PROJECTED: inspect original front photo; may be under a component",
-      "endpoints": [],
-      "net": null,
+      "endpoints": [
+        "R42.1",
+        "R44.1"
+      ],
+      "net": "V017_CONTROL",
       "confidence": "rear visible; global front projection approximate",
       "note": "Visible clearance separates this site from the surrounding rear copper; this alone does not identify an internal net.",
       "id": "V017",
       "active": true,
-      "user_reports": [],
-      "review_status": "NOT_IN_USER_LIST",
-      "modeled_nets": []
+      "user_reports": [
+        {
+          "id": "V017",
+          "claim": "R42.1, R44",
+          "kind": "component_or_issue"
+        }
+      ],
+      "review_status": "ASSIGNED",
+      "modeled_nets": [
+        "V017_CONTROL"
+      ],
+      "component_crosscheck": "User explicitly names R42.1 and R44; photo selects R44 free pad1. Literal R42 retained; old R42.1-to-ANT2 hypothesis withdrawn."
     },
     {
       "rear_xy": [
@@ -536,7 +560,9 @@
       ],
       "rear_appearance": "MAIN_REAR_COPPER",
       "front_match": "PROJECTED: inspect original front photo; may be under a component",
-      "endpoints": [],
+      "endpoints": [
+        "C35.2"
+      ],
       "net": "H_GND",
       "confidence": "User GND report; no per-site ohms supplied",
       "note": "No isolating rear clearance apparent. Main copper is associated with PIC VSS through the reviewed anchors. Individual front endpoint not yet assigned.",
@@ -545,12 +571,17 @@
       "user_reports": [
         {
           "id": "V018",
-          "claim": "GND",
-          "kind": "ground"
+          "claim": "C35; earlier user GND report retained",
+          "kind": "ground",
+          "component_claim": "C35",
+          "ground_basis": "Previous user list; no new resistance supplied"
         }
       ],
       "review_status": "ASSIGNED",
-      "modeled_nets": []
+      "modeled_nets": [
+        "H_GND"
+      ],
+      "component_crosscheck": "User adds C35 to earlier GND report; pad2 selected from photo/model."
     },
     {
       "rear_xy": [
@@ -584,15 +615,26 @@
       ],
       "rear_appearance": "REAR_CLEARANCE",
       "front_match": "PROJECTED: inspect original front photo; may be under a component",
-      "endpoints": [],
-      "net": null,
+      "endpoints": [
+        "R40.1"
+      ],
+      "net": "ICSP_DAT",
       "confidence": "rear visible; global front projection approximate",
       "note": "Visible clearance separates this site from the surrounding rear copper; this alone does not identify an internal net.",
       "id": "V020",
       "active": true,
-      "user_reports": [],
-      "review_status": "NOT_IN_USER_LIST",
-      "modeled_nets": []
+      "user_reports": [
+        {
+          "id": "V020",
+          "claim": "R40",
+          "kind": "component_or_issue"
+        }
+      ],
+      "review_status": "ASSIGNED",
+      "modeled_nets": [
+        "ICSP_DAT"
+      ],
+      "component_crosscheck": "User identifies R40; photo selects upper/free pad1 on the existing ICSP DAT node."
     },
     {
       "rear_xy": [
@@ -840,7 +882,10 @@
       ],
       "rear_appearance": "MAIN_REAR_COPPER",
       "front_match": "PROJECTED: inspect original front photo; may be under a component",
-      "endpoints": [],
+      "endpoints": [
+        "C25.2",
+        "C26.2"
+      ],
       "net": "H_GND",
       "confidence": "User GND report; no per-site ohms supplied",
       "note": "No isolating rear clearance apparent. Main copper is associated with PIC VSS through the reviewed anchors. Individual front endpoint not yet assigned.",
@@ -849,12 +894,17 @@
       "user_reports": [
         {
           "id": "V029",
-          "claim": "GND",
-          "kind": "ground"
+          "claim": "C25/C26; earlier user GND report retained",
+          "kind": "ground",
+          "component_claim": "C25/C26",
+          "ground_basis": "Previous user list; no new resistance supplied"
         }
       ],
       "review_status": "ASSIGNED",
-      "modeled_nets": []
+      "modeled_nets": [
+        "H_GND"
+      ],
+      "component_crosscheck": "User adds both capacitors to earlier GND report; return pads selected from photos/model. C26.1 remains unresolved."
     },
     {
       "rear_xy": [
@@ -955,11 +1005,17 @@
       "endpoints": [],
       "net": null,
       "confidence": "rear visible; global front projection approximate",
-      "note": "No isolating rear clearance apparent. Main copper is associated with PIC VSS through the reviewed anchors. Individual front endpoint not yet assigned.",
+      "note": "User rejects V033 as a recognition error. ID retained as a tombstone; excluded from active markers.",
       "id": "V033",
-      "active": true,
-      "user_reports": [],
-      "review_status": "NOT_IN_USER_LIST",
+      "active": false,
+      "user_reports": [
+        {
+          "id": "V033",
+          "claim": "Not a via; recognition artifact",
+          "kind": "not_via"
+        }
+      ],
+      "review_status": "REJECTED_NOT_VIA",
       "modeled_nets": []
     },
     {
@@ -973,7 +1029,9 @@
       ],
       "rear_appearance": "OTHER_REAR_REGION",
       "front_match": "PROJECTED: inspect original front photo; may be under a component",
-      "endpoints": [],
+      "endpoints": [
+        "R3.1"
+      ],
       "net": "H_VBAT",
       "confidence": "User common-net report to MX512H pin4; no per-site ohms supplied",
       "note": "Separate strip/antenna region or ambiguous copper boundary; do not assume GND.",
@@ -982,12 +1040,15 @@
       "user_reports": [
         {
           "id": "V034",
-          "claim": "Same net as MX512H/U5 pin4 VDD",
+          "claim": "Clearly VDD, R3; earlier MX512H pin4 common-supply report retained",
           "kind": "motor_supply"
         }
       ],
       "review_status": "ASSIGNED",
-      "modeled_nets": []
+      "modeled_nets": [
+        "H_VBAT"
+      ],
+      "component_crosscheck": "User VDD/R3, previously explicitly the same net as V001 and MX512H pin4. This is motor supply H_VBAT, not regulated H_VDD."
     },
     {
       "rear_xy": [
@@ -1127,7 +1188,9 @@
       ],
       "rear_appearance": "MAIN_REAR_COPPER",
       "front_match": "PROJECTED: inspect original front photo; may be under a component",
-      "endpoints": [],
+      "endpoints": [
+        "C28.2"
+      ],
       "net": "H_GND",
       "confidence": "User GND report; no per-site ohms supplied",
       "note": "No isolating rear clearance apparent. Main copper is associated with PIC VSS through the reviewed anchors. Individual front endpoint not yet assigned.",
@@ -1136,12 +1199,17 @@
       "user_reports": [
         {
           "id": "V040",
-          "claim": "GND",
-          "kind": "ground"
+          "claim": "C28; earlier user GND report retained",
+          "kind": "ground",
+          "component_claim": "C28",
+          "ground_basis": "Previous user list; no new resistance supplied"
         }
       ],
       "review_status": "ASSIGNED",
-      "modeled_nets": []
+      "modeled_nets": [
+        "H_GND"
+      ],
+      "component_crosscheck": "User adds C28 to earlier GND report; return pad selected from photo/model."
     },
     {
       "rear_xy": [
@@ -1656,7 +1724,9 @@
       ],
       "rear_appearance": "OTHER_REAR_REGION",
       "front_match": "PROJECTED: inspect original front photo; may be under a component",
-      "endpoints": [],
+      "endpoints": [
+        "L2.1"
+      ],
       "net": "H_VBAT",
       "confidence": "User common-net report to MX512H pin4; no per-site ohms supplied",
       "note": "Separate strip/antenna region or ambiguous copper boundary; do not assume GND.",
@@ -1665,12 +1735,15 @@
       "user_reports": [
         {
           "id": "V059",
-          "claim": "Same net as MX512H/U5 pin4 VDD",
+          "claim": "L2; earlier MX512H pin4 common-supply report retained",
           "kind": "motor_supply"
         }
       ],
       "review_status": "ASSIGNED",
-      "modeled_nets": []
+      "modeled_nets": [
+        "H_VBAT"
+      ],
+      "component_crosscheck": "User adds L2 to the earlier common motor-supply report; source/right pad1 selected from photo/model."
     },
     {
       "rear_xy": [
@@ -1683,7 +1756,9 @@
       ],
       "rear_appearance": "MAIN_REAR_COPPER",
       "front_match": "PROJECTED: inspect original front photo; may be under a component",
-      "endpoints": [],
+      "endpoints": [
+        "Q2.L"
+      ],
       "net": "H_GND",
       "confidence": "User GND report; no per-site ohms supplied",
       "note": "No isolating rear clearance apparent. Main copper is associated with PIC VSS through the reviewed anchors. Individual front endpoint not yet assigned.",
@@ -1692,12 +1767,17 @@
       "user_reports": [
         {
           "id": "V060",
-          "claim": "GND",
-          "kind": "ground"
+          "claim": "Q2; earlier user GND report retained",
+          "kind": "ground",
+          "component_claim": "Q2",
+          "ground_basis": "Previous user list; no new resistance supplied"
         }
       ],
       "review_status": "ASSIGNED",
-      "modeled_nets": []
+      "modeled_nets": [
+        "H_GND"
+      ],
+      "component_crosscheck": "User adds Q2 to earlier GND report; local ground-side pad selected from photo/model."
     },
     {
       "rear_xy": [
@@ -1710,7 +1790,9 @@
       ],
       "rear_appearance": "MAIN_REAR_COPPER",
       "front_match": "PROJECTED: inspect original front photo; may be under a component",
-      "endpoints": [],
+      "endpoints": [
+        "L2.1"
+      ],
       "net": "H_VBAT",
       "confidence": "User common-net report to MX512H pin4; no per-site ohms supplied",
       "note": "No isolating rear clearance apparent. Main copper is associated with PIC VSS through the reviewed anchors. Individual front endpoint not yet assigned.",
@@ -1719,12 +1801,15 @@
       "user_reports": [
         {
           "id": "V061",
-          "claim": "Same net as MX512H/U5 pin4 VDD",
+          "claim": "L2; earlier MX512H pin4 common-supply report retained",
           "kind": "motor_supply"
         }
       ],
       "review_status": "ASSIGNED",
-      "modeled_nets": []
+      "modeled_nets": [
+        "H_VBAT"
+      ],
+      "component_crosscheck": "User adds L2 to the earlier common motor-supply report; source/right pad1 selected from photo/model."
     },
     {
       "rear_xy": [
@@ -1832,7 +1917,9 @@
       ],
       "rear_appearance": "MAIN_REAR_COPPER",
       "front_match": "PROJECTED: inspect original front photo; may be under a component",
-      "endpoints": [],
+      "endpoints": [
+        "C2.2"
+      ],
       "net": "H_GND",
       "confidence": "User GND report; no per-site ohms supplied",
       "note": "No isolating rear clearance apparent. Main copper is associated with PIC VSS through the reviewed anchors. Individual front endpoint not yet assigned.",
@@ -1841,12 +1928,17 @@
       "user_reports": [
         {
           "id": "V065",
-          "claim": "GND",
-          "kind": "ground"
+          "claim": "C2; earlier user GND report retained",
+          "kind": "ground",
+          "component_claim": "C2",
+          "ground_basis": "Previous user list; no new resistance supplied"
         }
       ],
       "review_status": "ASSIGNED",
-      "modeled_nets": []
+      "modeled_nets": [
+        "H_GND"
+      ],
+      "component_crosscheck": "User adds C2 to earlier GND report; return pad selected from photo/model."
     },
     {
       "rear_xy": [
@@ -1916,7 +2008,10 @@
       ],
       "rear_appearance": "MAIN_REAR_COPPER",
       "front_match": "PROJECTED: inspect original front photo; may be under a component",
-      "endpoints": [],
+      "endpoints": [
+        "C37.2",
+        "C36.2"
+      ],
       "net": "H_GND",
       "confidence": "User GND report; no per-site ohms supplied",
       "note": "No isolating rear clearance apparent. Main copper is associated with PIC VSS through the reviewed anchors. Individual front endpoint not yet assigned.",
@@ -1925,12 +2020,17 @@
       "user_reports": [
         {
           "id": "V068",
-          "claim": "GND",
-          "kind": "ground"
+          "claim": "C37/C36; earlier user GND report retained",
+          "kind": "ground",
+          "component_claim": "C37/C36",
+          "ground_basis": "Previous user list; no new resistance supplied"
         }
       ],
       "review_status": "ASSIGNED",
-      "modeled_nets": []
+      "modeled_nets": [
+        "H_GND"
+      ],
+      "component_crosscheck": "User adds both capacitors to earlier GND report; return pads selected from photos/model."
     },
     {
       "rear_xy": [
@@ -2034,25 +2134,24 @@
       ],
       "rear_appearance": "REAR_CLEARANCE",
       "front_match": "PROJECTED: inspect original front photo; may be under a component",
-      "endpoints": [
-        "R22.2"
-      ],
+      "endpoints": [],
       "net": null,
-      "confidence": "rear visible; global front projection approximate",
+      "confidence": "User explicitly excludes R22.2; destination unresolved",
       "note": "Visible clearance separates this site from the surrounding rear copper; this alone does not identify an internal net.",
       "id": "V072",
       "active": true,
       "user_reports": [
         {
           "id": "V072",
-          "claim": "R22",
-          "kind": "component_or_issue"
+          "claim": "NOT connected to R22.2",
+          "kind": "negative_connection"
         }
       ],
       "review_status": "USER_REPORTED",
-      "component_crosscheck": "R22 left/free end in receiver photo; shared bias hypothesis not confirmed by this via report.",
-      "modeled_nets": [
-        "H_RX_BIAS"
+      "component_crosscheck": "Incorrect R22.2 via association withdrawn. Existing receiver bias connections remain separately unverified; this negative via result does not establish an alternative bias net.",
+      "modeled_nets": [],
+      "excluded_endpoints": [
+        "R22.2"
       ]
     },
     {
@@ -2067,7 +2166,7 @@
       "rear_appearance": "MAIN_REAR_COPPER",
       "front_match": "PROJECTED: inspect original front photo; may be under a component",
       "endpoints": [],
-      "net": null,
+      "net": "H_GND",
       "confidence": "User GND report; no per-site ohms supplied",
       "note": "No isolating rear clearance apparent. Main copper is associated with PIC VSS through the reviewed anchors. Individual front endpoint not yet assigned.",
       "id": "V073",
@@ -2075,18 +2174,13 @@
       "user_reports": [
         {
           "id": "V073",
-          "claim": "GND",
+          "claim": "GND only; supersedes earlier duplicate R19 report",
           "kind": "ground"
-        },
-        {
-          "id": "V073",
-          "claim": "R19 (also reported GND; possible V075)",
-          "kind": "component_or_issue"
         }
       ],
-      "review_status": "CONFLICT",
+      "review_status": "ASSIGNED",
       "modeled_nets": [],
-      "conflict": "User number duplicated: GND and R19. R19 photo endpoint appears at V075. Do not ground R19 from this duplicate."
+      "component_crosscheck": "User correction: GND only. R19 association removed; no R19 ground merge. Any R19-to-V075 relation remains photo-derived."
     },
     {
       "rear_xy": [
@@ -2136,7 +2230,7 @@
       "active": true,
       "user_reports": [],
       "review_status": "NOT_IN_USER_LIST",
-      "component_crosscheck": "R19 right/free end visibly reaches this site. Likely correction of duplicated V073; awaiting user confirmation.",
+      "component_crosscheck": "R19 right/free pad photo association only; user has not confirmed this site. V073 is separately confirmed GND only.",
       "modeled_nets": [
         "H_RX_ENABLE_CTL"
       ]
@@ -3617,172 +3711,16 @@
   },
   "new_model_connections": [
     {
-      "endpoint": "C27.1",
-      "old": null,
-      "new": "H_VBAT",
-      "basis": "C27 photo left pad to V003/V004; user ties these to MX512H pin4 motor VDD."
-    },
-    {
-      "endpoint": "C27.2",
-      "old": null,
-      "new": "H_GND",
-      "basis": "C27 photo right pad to V008/V009/V010 user GND."
-    },
-    {
-      "endpoint": "R1.1",
-      "old": null,
-      "new": "H_VDD",
-      "basis": "DNP free pads via V064 to board VDD test point / U1 output. This is distinct from MX512H pin4 motor VDD."
-    },
-    {
-      "endpoint": "C3.1",
-      "old": null,
-      "new": "H_VDD",
-      "basis": "DNP free pads via V064 to board VDD test point / U1 output. This is distinct from MX512H pin4 motor VDD."
-    },
-    {
-      "endpoint": "R2.1",
-      "old": null,
-      "new": "H_GND",
-      "basis": "DNP free pads lie on front ground copper shared with V057/V058."
-    },
-    {
-      "endpoint": "C4.1",
-      "old": null,
-      "new": "H_GND",
-      "basis": "DNP free pads lie on front ground copper shared with V057/V058."
-    },
-    {
-      "endpoint": "R37.1",
-      "old": "H_VDD",
-      "new": "AUX_FEED_V063",
-      "basis": "User V063 joins R37 and R39; photo identifies their lower ends. Withdraw conflicting H_VDD and GND guesses. Remote feed unknown."
-    },
-    {
-      "endpoint": "R39.2",
-      "old": "H_GND",
-      "new": "AUX_FEED_V063",
-      "basis": "User V063 joins R37 and R39; photo identifies their lower ends. Withdraw conflicting H_VDD and GND guesses. Remote feed unknown."
-    },
-    {
-      "endpoint": "R10.2",
-      "old": "H_RF_MONITOR",
-      "new": "H_GND",
-      "basis": "R10 free end visibly joins V116, user GND."
-    },
-    {
-      "endpoint": "R32.1",
-      "old": "H_PIR_SIG",
-      "new": "H_GND",
-      "basis": "R32 photo upper pad to V024, user GND; withdraw earlier PIR-signal guess."
-    },
-    {
-      "endpoint": "Q9.R",
-      "old": null,
-      "new": "H_GND",
-      "basis": "DNP Q9 lower-right pad to V021, user GND; pad mapping R=stock pin2."
-    },
-    {
-      "endpoint": "U4.12",
-      "old": null,
-      "new": "PIC_RC1_VREF",
-      "basis": "PIC pin12 visible trace reaches V053, the VREF-labelled board pad. Remote continuation/function remains unknown."
-    },
-    {
-      "endpoint": "VREF.1",
-      "old": null,
-      "new": "PIC_RC1_VREF",
-      "basis": "PIC pin12 visible trace reaches V053, the VREF-labelled board pad. Remote continuation/function remains unknown."
-    },
-    {
-      "endpoint": "Q11.L",
-      "old": "H_ANT_A",
-      "new": "H_GND",
-      "basis": "First four transistor L pads visibly join V089/V094/V099/V104, user GND. Q3 L joins the same front copper by photo inference. Candidate emitter functions not independently established."
-    },
-    {
-      "endpoint": "Q6.L",
-      "old": "H_ANT_A",
-      "new": "H_GND",
-      "basis": "First four transistor L pads visibly join V089/V094/V099/V104, user GND. Q3 L joins the same front copper by photo inference. Candidate emitter functions not independently established."
-    },
-    {
-      "endpoint": "Q5.L",
-      "old": "H_ANT_A",
-      "new": "H_GND",
-      "basis": "First four transistor L pads visibly join V089/V094/V099/V104, user GND. Q3 L joins the same front copper by photo inference. Candidate emitter functions not independently established."
-    },
-    {
-      "endpoint": "Q4.L",
-      "old": "H_ANT_A",
-      "new": "H_GND",
-      "basis": "First four transistor L pads visibly join V089/V094/V099/V104, user GND. Q3 L joins the same front copper by photo inference. Candidate emitter functions not independently established."
-    },
-    {
-      "endpoint": "Q3.L",
-      "old": "H_ANT_A",
-      "new": "H_GND",
-      "basis": "First four transistor L pads visibly join V089/V094/V099/V104, user GND. Q3 L joins the same front copper by photo inference. Candidate emitter functions not independently established."
-    },
-    {
-      "endpoint": "C47.1",
+      "endpoint": "R42.1",
       "old": "H_ANT_B",
-      "new": "H_GND",
-      "basis": "Front lower tuning-capacitor common band joins V087/V088 user GND. Withdraw antenna B assignment of these pads; midpoint antenna links remain unknown."
+      "new": "V017_CONTROL",
+      "basis": "User V017 connects R42.1 and R44; photo selects R44 free pad1. R42 is retained literally. Earlier R42.1 antenna assignment withdrawn."
     },
     {
-      "endpoint": "C44.1",
-      "old": "H_ANT_B",
-      "new": "H_GND",
-      "basis": "Front lower tuning-capacitor common band joins V087/V088 user GND. Withdraw antenna B assignment of these pads; midpoint antenna links remain unknown."
-    },
-    {
-      "endpoint": "C29.1",
-      "old": "H_ANT_B",
-      "new": "H_GND",
-      "basis": "Front lower tuning-capacitor common band joins V087/V088 user GND. Withdraw antenna B assignment of these pads; midpoint antenna links remain unknown."
-    },
-    {
-      "endpoint": "C14.1",
-      "old": "H_ANT_B",
-      "new": "H_GND",
-      "basis": "Front lower tuning-capacitor common band joins V087/V088 user GND. Withdraw antenna B assignment of these pads; midpoint antenna links remain unknown."
-    },
-    {
-      "endpoint": "C11.1",
-      "old": "H_ANT_B",
-      "new": "H_GND",
-      "basis": "Front lower tuning-capacitor common band joins V087/V088 user GND. Withdraw antenna B assignment of these pads; midpoint antenna links remain unknown."
-    },
-    {
-      "endpoint": "C48.1",
-      "old": "H_ANT_B",
-      "new": "H_GND",
-      "basis": "Rear tuning-capacitor ground-side lands share copper around V093/V096/V101/V105. These are user-GND sites; opposite lands retain the local front/rear midpoint grouping."
-    },
-    {
-      "endpoint": "C45.1",
-      "old": "H_ANT_B",
-      "new": "H_GND",
-      "basis": "Rear tuning-capacitor ground-side lands share copper around V093/V096/V101/V105. These are user-GND sites; opposite lands retain the local front/rear midpoint grouping."
-    },
-    {
-      "endpoint": "C38.1",
-      "old": "H_ANT_B",
-      "new": "H_GND",
-      "basis": "Rear tuning-capacitor ground-side lands share copper around V093/V096/V101/V105. These are user-GND sites; opposite lands retain the local front/rear midpoint grouping."
-    },
-    {
-      "endpoint": "C15.1",
-      "old": "H_ANT_B",
-      "new": "H_GND",
-      "basis": "Rear tuning-capacitor ground-side lands share copper around V093/V096/V101/V105. These are user-GND sites; opposite lands retain the local front/rear midpoint grouping."
-    },
-    {
-      "endpoint": "C12.1",
-      "old": "H_ANT_B",
-      "new": "H_GND",
-      "basis": "Rear tuning-capacitor ground-side lands share copper around V093/V096/V101/V105. These are user-GND sites; opposite lands retain the local front/rear midpoint grouping."
+      "endpoint": "R44.1",
+      "old": "H_Q1_BIAS",
+      "new": "V017_CONTROL",
+      "basis": "User V017 connects R42.1 and R44; photo selects R44 free pad1. R42 is retained literally. Earlier R42.1 antenna assignment withdrawn."
     }
   ],
   "sources": [
@@ -3800,18 +3738,15 @@
   "supply_naming": "MX512H pin4 VDD is the motor supply, modeled H_VBAT. It is distinct from MX512H pin1 VCC and the regulated board H_VDD; do not merge based on the VDD word alone.",
   "review_summary": {
     "catalogued_ids": 127,
-    "active_sites": 126,
-    "user_reported_ids": 98,
+    "active_sites": 125,
+    "user_reported_ids": 101,
     "original_user_reported_ids": 97,
     "omitted_from_user_list": [
       "V016",
-      "V017",
       "V019",
-      "V020",
       "V027",
       "V028",
       "V030",
-      "V033",
       "V035",
       "V036",
       "V037",
@@ -3835,20 +3770,20 @@
       "V124"
     ],
     "rejected": [
+      "V033",
       "V050"
     ],
     "conflicts": [
-      "V073",
       "V113",
       "V115"
     ],
     "statuses": {
       "ASSIGNED": 85,
-      "USER_REPORTED": 9,
-      "NOT_IN_USER_LIST": 22,
+      "USER_REPORTED": 12,
+      "NOT_IN_USER_LIST": 19,
       "PHOTO_LOCAL": 7,
-      "REJECTED_NOT_VIA": 1,
-      "CONFLICT": 3
+      "REJECTED_NOT_VIA": 2,
+      "CONFLICT": 2
     }
   }
 }

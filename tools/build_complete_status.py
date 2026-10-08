@@ -28,7 +28,7 @@ gaps=[
 ('PIC / block interfaces',f'{len(gpios)} GPIO pads still open: '+', '.join(map(str,gpios))+'. Other pins have local nets but may lack remote continuations. Motor INA/INB origins remain inferred.', 'Continuity on the numbered PIC map; start with hidden via destinations.'),
 ('Q8 / RF output / C6','V113/V115 reported GND conflicts with the outer-pad output hypothesis. C6.1 path unresolved despite 10 ohm to P.', 'Clarify whether GND was measured; compare outer pads to the same GND hole.'),
 ('Tuning bank','Ground returns corrected. Five local capacitor midpoints are known; connections onward to the antenna are not established.', 'Check V090/V095/V100/V103/V107 to ANT1 and ANT2.'),
-('Auxiliary / receiver','V063 joins R37/R39, but its supply source is unknown. R18/R21/R22/R19 vias identify local pads, not a confirmed common bias or supply.', 'Identify remote nets of V063 and the receiver control/bias vias.'),
+('Auxiliary / receiver','V063 feed unknown. V017 joins R42.1/R44.1; circuit role unknown. V011-V014 and V072 destinations are unresolved after rejected associations.', 'Identify these remote nets; R44.1 is a photo-selected pad. Receiver bias is still inferred.'),
 ('D2 / D6 / candidate parts','D2/4P identity and all three pad routes remain open. D6 has two open pads. U6/Q8 and small BJTs/diodes retain candidate identities/polarities.', 'D2 diode-mode guide; D6 continuity; targeted candidate pin checks.'),
 ('Other open fitted pads','C26.1 and TP9.1; U6 NC pins 4/5 have unknown external ties. LED common and S1 leg mapping are still provisional.', 'Targeted continuity; no need to identify chips on empty footprints.'),
 ('Component values','44 unmarked fitted capacitor values and L1/L2 type/value remain unrecovered. C5 = 470uF / 16V is recorded; 38 fitted resistors have decoded nominal values.', 'LCR first on RF/tuning parts, recording frequency; in-circuit results are network readings.'),
@@ -40,6 +40,8 @@ status.update(revision=m['revision'],unresolved_physical_pins=len(m['unresolved_
     via_review=a['review_summary'],complete_symbols_for_selected_candidates=True)
 status['completed']=[s.replace('Five additional PIC local routes from existing photos; 14 GPIO pins remain open','v0.7 historical: five additional PIC local routes recovered; current GPIO count below') for s in status['completed']]
 entry='v0.9: 28 endpoint corrections from user via review and component-pad cross-checks; 37 open pads, eight GPIO pads'
+if entry not in status['completed']:status['completed'].append(entry)
+entry='v0.9.1: 21 via-site corrections; V017 joins R42.1/R44.1; V033 rejected; V073 GND-only conflict resolved'
 if entry not in status['completed']:status['completed'].append(entry)
 for item in status['items']:
     if item['refs']==['U6']:item['detail']+=' v0.9: R37/R39 share V063; remote feed unknown, previous rail assignments withdrawn.' if 'v0.9:' not in item['detail'] else ''
@@ -63,24 +65,24 @@ def table(rows,widths):
     t.setStyle(TableStyle([('BACKGROUND',(0,0),(-1,0),ink),('ROWBACKGROUNDS',(0,1),(-1,-1),[white,HexColor('#EDF3EF')]),('VALIGN',(0,0),(-1,-1),'TOP'),('LEFTPADDING',(0,0),(-1,-1),7),('RIGHTPADDING',(0,0),(-1,-1),7),('TOPPADDING',(0,0),(-1,-1),4),('BOTTOMPADDING',(0,0),(-1,-1),4),('LINEBELOW',(0,0),(-1,-1),.35,HexColor('#CEDCD5'))]))
     return t
 out=R/'output/pdf/PetSafe_completion_status.pdf'
-doc=SimpleDocTemplate(str(out),pagesize=A4,rightMargin=32,leftMargin=32,topMargin=30,bottomMargin=32,title='PetSafe v0.9 - complete schematic status',author='PetSafe PCB reverse-engineering project')
+doc=SimpleDocTemplate(str(out),pagesize=A4,rightMargin=32,leftMargin=32,topMargin=30,bottomMargin=32,title=f'PetSafe {m["revision"]} - complete schematic status',author='PetSafe PCB reverse-engineering project')
 W=A4[0]-64
 story=[P('What remains to finish','TitlePS'),P(f'PetSafe 100-1339 R03 A | {m["revision"]} | 8 October 2026'),
 P('<b>All 150 catalog entries are drawn on one KiCad sheet.</b> This includes empty options and test pads. The drawing is structurally complete; hidden wiring, candidate identities and component values still need evidence.'),
 table([['Drawing / libraries','Electrical gaps','Packages / values'],['1 A2 sheet; 20 stock + 4 authorized custom symbol definitions; no missing library files for selected candidates.',f'{len(m["unresolved_pins"])} open pads = {counts["populated"]} populated-entry pads + {counts["DNP"]} DNP pads. {len(gpios)} GPIO pads open.','147/150 footprints; 44 capacitor values and 2 magnetic-part values unknown.']],[W/3]*3),
 P('What your via review changed','HeadPS'),
-P('98 distinct IDs reviewed including the V026 correction; 29 remain unmentioned, several already photo-matched. V050 is rejected without renumbering the catalog. 28 pad assignments changed, including C27 supply/ground, option pads, R10/R32 returns, V063 and the tuning-bank grounds. PIC12 now reaches VREF. Motor VDD (MX512H pin4) stays separate from regulated board VDD.'),
+P('101 IDs reviewed; 26 unmentioned, some photo-matched. V033/V050 rejected, leaving 125 active sites. Latest: V017 joins R42.1/R44.1; R43.2 belongs to V015, not V011-V014; V072-to-R22.2 withdrawn; V073 is GND only. Prior supply, tuning-ground and RC1/VREF corrections remain. Motor VDD stays separate from regulated board VDD.'),
 table([['Remaining area','What is missing','How to resolve']]+gaps,[87,257,W-344]),
-P('First resolve the conflicting entries','HeadPS'),
-P('<b>Resolved:</b> V025=GND; V026=PIC21/RB0. <b>V073:</b> GND and R19 were both reported; the R19 endpoint appears at V075. <b>V113/V115:</b> confirm whether GND was measured. Their apparent Q8 connection conflicts with the current output hypothesis, so that merge is held.'),
+P('Remaining conflicts for later review','HeadPS'),
+P('<b>Resolved:</b> V025=GND, V026=PIC21/RB0, V073=GND only. R19/V075 remains photo-derived. <b>V113/V115:</b> GND reports conflict with the apparent Q8 output connection; those merges remain held. The latest batch adds no resistance or functional measurements.'),
 P(f'<b>Validation:</b> KiCad 10.0.5 exports pass; {v["proposed_net_partitions"]} modeled nets match the native file. {v["erc_total"]} ERC findings remain: 37 open pins, 10 isolated labels, 5 power and 3 input drive findings. This checks the file, not hardware correctness. No artificial NC or power flags were added.'),PageBreak(),
 P('PIC connections: complete picture','TitlePS'),P('Physical package pins, top view. Use the separate numbered close-up to locate them. OPEN means no modeled pad connection; a local connection can still have an unknown onward destination.'),
 table([['Pin','Function','State','Local destination / evidence']]+[[p['pin'],{27:'RB6/CLK',28:'RB7/DAT'}.get(p['pin'],p['gpio']),'OPEN' if p['open_pad'] else 'Local net',p['evidence']] for p in pins],[30,64,52,W-146]),
 P('Every remaining open pad','HeadPS'),
 P('<b>Populated entries (18):</b> '+escape(', '.join(fitted))+'.<br/><b>Empty options (19):</b> '+escape(', '.join(dnp))+'.','SmallPS'),
 Spacer(1,6),P('Pad names above are photo-model names; U6.L1/L2 map to its internal NC pins 4/5. DNP pads do not block understanding of the fitted circuit. Vias with a component association do not automatically prove a connection to every other pad on a previously inferred net.','SmallPS'),
-Spacer(1,6),P('Evidence: user via review and supplied MX512H diagram; original front/rear photographs; reconstruction.json, via_audit.json, v09_net_changes.json and the native KiCad validation. Pin names follow the existing Microchip datasheet audit. The interactive via viewer retains each report and conflict.','SmallPS')]
+Spacer(1,6),P('Evidence: user via review and supplied MX512H diagram; original front/rear photographs; reconstruction.json, via_audit.json, v09_net_changes.json, v091_net_changes.json and native KiCad validation. Pin names follow the existing Microchip datasheet audit. The via viewer retains reports and conflicts.','SmallPS')]
 def footer(c,d):
-    c.setFillColor(ink);c.setFont('Helvetica',8);c.drawString(32,17,'PetSafe | Evidence-qualified reconstruction | v0.9');c.drawRightString(A4[0]-32,17,str(d.page))
+    c.setFillColor(ink);c.setFont('Helvetica',8);c.drawString(32,17,'PetSafe | Evidence-qualified reconstruction | '+m['revision']);c.drawRightString(A4[0]-32,17,str(d.page))
 doc.build(story,onFirstPage=footer,onLaterPages=footer)
 print(out)

@@ -1,0 +1,85 @@
+{
+  "revision": "v0.9.1",
+  "result": "PASS",
+  "native_schematic_sha256": "478bc9ef5699259202196c372977c0b5dca56c2198c7c455f4a7cde744d16e0e",
+  "corrected_sites": 21,
+  "changed_endpoint_checks": 2,
+  "prior_v08_v09_electrical_contracts": "PASS",
+  "corrected_component_via_associations": "PASS",
+  "negative_associations_removed": "PASS",
+  "reconciliation_idempotent": "PASS",
+  "mcp_properties_match_placement_replay": "PASS",
+  "via_summary": {
+    "catalogued_ids": 127,
+    "active_sites": 125,
+    "user_reported_ids": 101,
+    "original_user_reported_ids": 97,
+    "omitted_from_user_list": [
+      "V016",
+      "V019",
+      "V027",
+      "V028",
+      "V030",
+      "V035",
+      "V036",
+      "V037",
+      "V038",
+      "V039",
+      "V042",
+      "V047",
+      "V049",
+      "V053",
+      "V075",
+      "V079",
+      "V080",
+      "V091",
+      "V097",
+      "V102",
+      "V108",
+      "V117",
+      "V119",
+      "V120",
+      "V122",
+      "V124"
+    ],
+    "rejected": [
+      "V033",
+      "V050"
+    ],
+    "conflicts": [
+      "V113",
+      "V115"
+    ],
+    "statuses": {
+      "ASSIGNED": 85,
+      "USER_REPORTED": 12,
+      "NOT_IN_USER_LIST": 19,
+      "PHOTO_LOCAL": 7,
+      "REJECTED_NOT_VIA": 2,
+      "CONFLICT": 2
+    }
+  },
+  "missing_gpio_pins": [
+    5,
+    6,
+    7,
+    11,
+    13,
+    15,
+    16,
+    21
+  ],
+  "pdfs": {
+    "output/pdf/PetSafe_single_sheet.pdf": {
+      "pages": 1,
+      "sha256": "e0f350314dde0f352a79301716fe0a4b7525660df0dc11d0741f6baba7df98f6"
+    },
+    "output/pdf/PetSafe_completion_status.pdf": {
+      "pages": 2,
+      "sha256": "f5aa26b06aa81a7c17fe0f5ed255ce68d4efd688b104368ff284594ef03bde71"
+    }
+  },
+  "visual_review": "PASS: rendered latest one-page schematic and both status pages; enlarged R42/R44 label spacing inspected.",
+  "html_review": "Embedded JavaScript syntax PASS; browser interaction not tested (prior file navigation denied; no workaround).",
+  "hardware_limit": "User reports and photo-selected pads; no new resistance or functional measurements. V113/V115 held for later review."
+}

@@ -1,10 +1,10 @@
-# PetSafe PCB reverse engineering - v0.9
+# PetSafe PCB reverse engineering - v0.9.1
 
 One editable **A2 KiCad 10 sheet**, with all 150 main-board catalog entries grouped into functional blocks. Wires connect parts within blocks; named nets connect blocks. This revision uses the installed **KiCad 10.0.5** and **KiCad MCP Server**, with **20 unmodified stock symbol definitions and four explicitly authorized datasheet symbols**.
 
-## Current via review (v0.9)
+## Current via review (v0.9.1)
 
-The user reviewed 98 distinct IDs including the V026 correction; V050 is a rejected recognition, and 29 IDs were not mentioned (some already have photo matches). Twenty-eight pad assignments changed. C27 is placed across motor supply/GND; regulator option pads are connected; R10/R32 returns become GND; R37/R39 share V063 with its remote supply unknown; capacitor-bank ground returns replace the old antenna-rail guesses; RC1/pin12 reaches VREF/V053. Hidden tuning-midpoint/antenna connections remain unresolved. MX512H pin4 motor VDD is distinct from pin1 logic VCC and the regulated board VDD pad.
+101 distinct via IDs reviewed; 125 active sites / 127 stable IDs. V033 and V050 are rejected without renumbering; 26 IDs remain unmentioned, some already photo-matched. The latest batch corrects 21 sites. V017 joins R42.1 and R44.1 (R44 pad selected from the photo), replacing the earlier R42.1-to-ANT2 hypothesis. R43.2 is associated with V015, not V011-V014. V072-to-R22.2 is withdrawn. V073 is GND only; R19/V075 remains photo-derived. V113/V115 are the two remaining held conflicts. Earlier v0.9 supply, tuning-ground and RC1/VREF corrections remain in place. MX512H motor VDD and regulated board VDD remain separate.
 
 ## Corrected markings and measured evidence (2026-10-08)
 
@@ -12,7 +12,7 @@ The user reviewed 98 distinct IDs including the V026 correction; V050 is a rejec
 
 ## Open the result
 
-- `docs/VIA_REVIEW.html`: interactive front/rear comparison, 126 active sites / 127 stable IDs; 98 user-reviewed IDs including correction, conflicts and component cross-checks.
+- `docs/VIA_REVIEW.html`: interactive front/rear comparison, 125 active sites / 127 stable IDs; 101 user-reviewed IDs including corrections, conflicts and component cross-checks.
 - `index.html`: zoomable offline viewer, searchable inventory and photo links.
 - `schematic/PetSafe_1001339.kicad_pro`: open the single native schematic in KiCad 10.
 - `output/pdf/PetSafe_single_sheet.pdf`: one-page vector drawing.
@@ -34,7 +34,7 @@ Western alternatives are documented separately: **MCP6002-I/SN** for SGM8542 and
 
 ERC retains **55 findings**: 37 unconnected pins, 10 isolated pin labels, five undriven power checks and three undriven inputs (two motor-control inputs and the still-inferred LED common). There are no off-grid endpoints or dangling wire ends. No artificial no-connect or power flags hide missing evidence. The 37 open pads include 19 on DNP entries and 18 others, including two internally open U6 pins with unresolved external ties. Eight PIC GPIO pads remain open. Existing local nets can still have uncertain onward routes.
 
-Read the [complete status report](output/pdf/PetSafe_completion_status.pdf) for every remaining area and all 28 PIC pins, and the [via review findings](docs/VIA_REVIEW_RESULTS.md) for each changed endpoint. **Q8 V113/V115 ground reports conflict with the current output hypothesis; those merges are held.** V025=GND and V026=PIC21/RB0 are now corrected. V073 still has duplicate assignments awaiting correction. No further symbol files are missing for the chosen candidates. PIR daughterboard internals and a routed PCB remain outside this main-board revision.
+Read the [complete status report](output/pdf/PetSafe_completion_status.pdf) for every remaining area and all 28 PIC pins, and the [via review findings](docs/VIA_REVIEW_RESULTS.md) for each changed endpoint. **Q8 V113/V115 ground reports conflict with the current output hypothesis; those merges are held.** V025=GND and V026=PIC21/RB0 are now corrected. V073 is now GND only; its duplicate R19 report is resolved. No further symbol files are missing for the chosen candidates. PIR daughterboard internals and a routed PCB remain outside this main-board revision.
 
 ## Repository contents
 

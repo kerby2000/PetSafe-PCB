@@ -1,4 +1,4 @@
-"""Overlay the user's v0.9 review without changing stable site IDs.
+"""Overlay the user's current review without changing stable site IDs.
 
 `net` is the reviewed site assignment; `modeled_nets` is descriptive only and
 may contain an older unverified hypothesis. Neither expands to the whole net.
@@ -19,7 +19,6 @@ def apply(out):
     membership={e:n['net'] for n in model['nets'] for e in n['endpoints']}
     sites={s['id']:s for s in out['sites']}
     conflicts={
-        'V073':'User number duplicated: GND and R19. R19 photo endpoint appears at V075. Do not ground R19 from this duplicate.',
         'V113':'User GND conflicts with Q8 outer joined-pad/output model. Check direct resistance to GND; component-net merge held.',
         'V115':'User GND conflicts with Q8 outer joined-pad/output model. Check direct resistance to GND; component-net merge held.'}
     def annotate(ids,ends,note,net=None):
@@ -28,7 +27,7 @@ def apply(out):
             if net:s['net']=net
     for s in out['sites']:
         s.pop('conflict',None)
-        s.update(active=s['id']!='V050',user_reports=by[s['id']],review_status='USER_REPORTED' if by[s['id']] else 'NOT_IN_USER_LIST')
+        s.update(active=s['id'] not in ['V033','V050'],user_reports=by[s['id']],review_status='USER_REPORTED' if by[s['id']] else 'NOT_IN_USER_LIST')
         kinds={r['kind'] for r in by[s['id']]}
         if 'ground' in kinds:s['net']='H_GND';s['confidence']='User GND report; no per-site ohms supplied'
         if any('MX512' in r['claim'] or (r['kind']=='motor_supply') for r in by[s['id']]):
@@ -37,30 +36,45 @@ def apply(out):
             s['review_status']='CONFLICT';s['conflict']=conflicts[s['id']]
             if s['id']!='V025':s['net']=None
         if not s['active']:
-            s.update(review_status='REJECTED_NOT_VIA',net=None,endpoints=[],note='User rejects V050 as a recognition error. ID retained as a tombstone; excluded from active markers.')
+            s.update(review_status='REJECTED_NOT_VIA',net=None,endpoints=[],note=f"User rejects {s['id']} as a recognition error. ID retained as a tombstone; excluded from active markers.")
     annotate([1,2],['U5.4'],'MX512H motor VDD, distinct from logic VCC pin1.','H_VBAT')
     annotate([3,4],['C27.1'],'C27 left photo pad on user motor-supply island.','H_VBAT')
     annotate([8,9,10],['C27.2'],'C27 right photo pad on user GND island.','H_GND')
-    annotate([11,12,13,14],['Q1.L','R43.2'],'Photo common island to Q1 left pad and R43 lower pad; transistor pin function still a candidate.','Q1_EMITTER')
+    annotate([6],['C33.2'],'User adds C33 to earlier GND report; pad2 selected from photo/model.','H_GND')
+    annotate([7],['C34.2'],'User adds C34 to earlier GND report; pad2 selected from photo/model.','H_GND')
+    for i in [11,12,13,14]:
+        s=sites[f'V{i:03d}'];s.update(net=None,endpoints=[],excluded_endpoints=['R43.2'],confidence='User explicitly excludes R43.2; island destination unresolved',component_crosscheck='Previous Q1.L/R43.2 island association withdrawn. Earlier user reference to a Q1 pin does not specify its terminal. The separate original local Q1.L-to-R43.2 fragment is retained at V015.')
+    annotate([15],['R43.2','Q1.L'],'User identifies R43 lower pad2. Q1.L is the retained original local photo fragment, not an additional user measurement.','Q1_EMITTER')
+    annotate([17],['R42.1','R44.1'],'User explicitly names R42.1 and R44; photo selects R44 free pad1. Literal R42 retained; old R42.1-to-ANT2 hypothesis withdrawn.','V017_CONTROL')
+    annotate([18],['C35.2'],'User adds C35 to earlier GND report; pad2 selected from photo/model.','H_GND')
+    annotate([20],['R40.1'],'User identifies R40; photo selects upper/free pad1 on the existing ICSP DAT node.','ICSP_DAT')
     annotate([21],['Q9.R'],'Q9 DNP lower-right pad; stock pin2.','H_GND')
     annotate([22],['U4.15'],'User RC4 association; hidden onward destination unknown.')
     annotate([23],['U4.16'],'User RC5 association; hidden onward destination unknown.')
     annotate([24],['R32.1'],'R32 upper photo pad. Old PIR assignment withdrawn.','H_GND')
     annotate([26],['U4.21'],'User correction: V026 goes to PIC21/RB0; remote destination remains unknown.')
+    annotate([29],['C25.2','C26.2'],'User adds both capacitors to earlier GND report; return pads selected from photos/model. C26.1 remains unresolved.','H_GND')
     annotate([31],['U4.2','C25.1'],'User RA0/C25 association corroborates existing local signal node.','PIC_RA0_FILTER')
     annotate([35],['U4.4','C39.1'],'Visible local C39 signal-pad route to PIC RA2; remote net unverified.','PIC_RA2_FILTER')
+    annotate([34],['R3.1'],'User VDD/R3, previously explicitly the same net as V001 and MX512H pin4. This is motor supply H_VBAT, not regulated H_VDD.','H_VBAT')
+    annotate([40],['C28.2'],'User adds C28 to earlier GND report; return pad selected from photo/model.','H_GND')
     for i,p in [(36,5),(37,6),(39,7),(47,11),(49,13)]:
         sites[f'V{i:03d}']['candidate_endpoints']=[f'U4.{p}']
         sites[f'V{i:03d}']['component_crosscheck']='Alignment hypothesis under PIC body only; requires continuity. Not a traced connection or NC.'
     annotate([53],['U4.12','VREF.1'],'Visible trace reaches VREF board pad. This local pad connection does not identify an onward buried net.','PIC_RC1_VREF')
     annotate([57,58],['R2.1','C4.1'],'DNP option free pads in the front ground copper.','H_GND')
+    annotate([59,61],['L2.1'],'User adds L2 to the earlier common motor-supply report; source/right pad1 selected from photo/model.','H_VBAT')
+    annotate([60],['Q2.L'],'User adds Q2 to earlier GND report; local ground-side pad selected from photo/model.','H_GND')
     annotate([63],['R37.1','R39.2'],'Common lower ends in IMG_2435. Feed voltage/source unknown; old separate VDD/GND guesses withdrawn.','AUX_FEED_V063')
     annotate([64],['R1.1','C3.1','VDD.1','U1.R1'],'Regulated board VDD island. Do not equate this use of VDD with MX512H motor pin4.','H_VDD')
+    annotate([65],['C2.2'],'User adds C2 to earlier GND report; return pad selected from photo/model.','H_GND')
+    annotate([68],['C37.2','C36.2'],'User adds both capacitors to earlier GND report; return pads selected from photos/model.','H_GND')
     annotate([67],['U6A.R1'],'Unpopulated U6A upper-right pad to via; remote destination unknown.')
     annotate([70],['R18.1'],'R18 free end; former supply assignment remains an inference, not established by component association alone.')
     annotate([71],['R21.2'],'R21 left/free end in receiver photo; shared bias hypothesis not confirmed by this via report.')
-    annotate([72],['R22.2'],'R22 left/free end in receiver photo; shared bias hypothesis not confirmed by this via report.')
-    annotate([75],['R19.2'],'R19 right/free end visibly reaches this site. Likely correction of duplicated V073; awaiting user confirmation.')
+    sites['V072'].update(net=None,endpoints=[],excluded_endpoints=['R22.2'],confidence='User explicitly excludes R22.2; destination unresolved',component_crosscheck='Incorrect R22.2 via association withdrawn. Existing receiver bias connections remain separately unverified; this negative via result does not establish an alternative bias net.')
+    sites['V073'].update(net='H_GND',endpoints=[],component_crosscheck='User correction: GND only. R19 association removed; no R19 ground merge. Any R19-to-V075 relation remains photo-derived.')
+    annotate([75],['R19.2'],'R19 right/free pad photo association only; user has not confirmed this site. V073 is separately confirmed GND only.')
     annotate([76],['R22.1'],'R22 opposite/right photo pad; user GND corroborates return.','H_GND')
     annotate([82],[],'User associates D3; exact terminal on three-lead package still requires local confirmation.')
     for i,q in [(89,'Q11'),(94,'Q6'),(99,'Q5'),(104,'Q4')]:
@@ -74,14 +88,15 @@ def apply(out):
     annotate([116],['R10.2'],'R10 free end; no longer singleton monitor hypothesis.','H_GND')
     for s in out['sites']:
         s['modeled_nets']=sorted({membership[e] for e in s['endpoints'] if e in membership})
-        if s['user_reports'] and s['net'] and s['review_status']!='CONFLICT':s['review_status']='ASSIGNED'
+        if not s['active']:s['review_status']='REJECTED_NOT_VIA'
+        elif s['user_reports'] and s['net'] and s['review_status']!='CONFLICT':s['review_status']='ASSIGNED'
         elif not s['user_reports'] and s['net']:s['review_status']='PHOTO_LOCAL'
-    out.update(revision='v0.9',user_review_source='evidence/via_user_review.json',
+    out.update(revision='v0.9.1',user_review_source='evidence/via_user_review.json',
         user_review_method=review['method'],supply_naming=review['supply_naming'],
         review_summary=dict(catalogued_ids=len(sites),active_sites=sum(s['active'] for s in sites.values()),user_reported_ids=len(current_ids),original_user_reported_ids=len(original_ids),
-            omitted_from_user_list=sorted(set(sites)-current_ids),rejected=['V050'],conflicts=list(conflicts),
+            omitted_from_user_list=sorted(set(sites)-current_ids),rejected=['V033','V050'],conflicts=list(conflicts),
             statuses=dict(Counter(s['review_status'] for s in sites.values()))),
-        new_model_connections=json.loads((R/'evidence/v09_net_changes.json').read_text())['changes'])
+        new_model_connections=json.loads((R/'evidence/v091_net_changes.json').read_text())['changes'])
     return out
 
 if __name__=='__main__':

@@ -1,6 +1,6 @@
 {
   "date": "2026-10-08",
-  "revision": "v0.9",
+  "revision": "v0.9.1",
   "known_identified_ICs_needing_new_symbols": [],
   "completed": [
     "U1 S-1200B45-M5T1 datasheet symbol",
@@ -22,7 +22,8 @@
     "C32 rail corrected; C25/C39 signal nodes, R4 GPIO return, TP17 tune net, D4/D5 ICSP nodes, R32/R40 ties and TP4/C41 corrected",
     "v0.8: five user GPIO destinations added; RB5-TP10 corroborated; conflicting old net hypotheses removed",
     "v0.8: D4/D5/C41 ground connections from manually matched front/rear vias; photo-based rather than meter-confirmed",
-    "v0.9: 28 endpoint corrections from user via review and component-pad cross-checks; 37 open pads, eight GPIO pads"
+    "v0.9: 28 endpoint corrections from user via review and component-pad cross-checks; 37 open pads, eight GPIO pads",
+    "v0.9.1: 21 via-site corrections; V017 joins R42.1/R44.1; V033 rejected; V073 GND-only conflict resolved"
   ],
   "catalog_entries": 150,
   "physical_pins": 352,
@@ -245,8 +246,8 @@
     },
     {
       "area": "Auxiliary / receiver",
-      "gap": "V063 joins R37/R39, but its supply source is unknown. R18/R21/R22/R19 vias identify local pads, not a confirmed common bias or supply.",
-      "method": "Identify remote nets of V063 and the receiver control/bias vias."
+      "gap": "V063 feed unknown. V017 joins R42.1/R44.1; circuit role unknown. V011-V014 and V072 destinations are unresolved after rejected associations.",
+      "method": "Identify these remote nets; R44.1 is a photo-selected pad. Receiver bias is still inferred."
     },
     {
       "area": "D2 / D6 / candidate parts",
@@ -271,18 +272,15 @@
   ],
   "via_review": {
     "catalogued_ids": 127,
-    "active_sites": 126,
-    "user_reported_ids": 98,
+    "active_sites": 125,
+    "user_reported_ids": 101,
     "original_user_reported_ids": 97,
     "omitted_from_user_list": [
       "V016",
-      "V017",
       "V019",
-      "V020",
       "V027",
       "V028",
       "V030",
-      "V033",
       "V035",
       "V036",
       "V037",
@@ -306,20 +304,20 @@
       "V124"
     ],
     "rejected": [
+      "V033",
       "V050"
     ],
     "conflicts": [
-      "V073",
       "V113",
       "V115"
     ],
     "statuses": {
       "ASSIGNED": 85,
-      "USER_REPORTED": 9,
-      "NOT_IN_USER_LIST": 22,
+      "USER_REPORTED": 12,
+      "NOT_IN_USER_LIST": 19,
       "PHOTO_LOCAL": 7,
-      "REJECTED_NOT_VIA": 1,
-      "CONFLICT": 3
+      "REJECTED_NOT_VIA": 2,
+      "CONFLICT": 2
     }
   },
   "complete_symbols_for_selected_candidates": true

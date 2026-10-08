@@ -466,7 +466,10 @@
       },
       "rotation": 90,
       "includePins": true,
-      "footprint": "Resistor_SMD:R_0603_1608Metric"
+      "footprint": "Resistor_SMD:R_0603_1608Metric",
+      "properties": {
+        "ViaEvidence": "v0.9.1 V017 joins R42.1 and R44 free pad (pad1 from photo); pad2 local Q1 connection retained."
+      }
     },
     {
       "symbol": "Device:R",
@@ -478,7 +481,10 @@
       },
       "rotation": 90,
       "includePins": true,
-      "footprint": "Resistor_SMD:R_0603_1608Metric"
+      "footprint": "Resistor_SMD:R_0603_1608Metric",
+      "properties": {
+        "ViaEvidence": "v0.9.1 user: lower pad2 reaches V015, NOT V011-V014. Independent original Q1.L-to-R43.2 fragment retained."
+      }
     },
     {
       "symbol": "Connector:TestPoint",
@@ -935,7 +941,10 @@
       },
       "rotation": 90,
       "includePins": true,
-      "footprint": "Resistor_SMD:R_0603_1608Metric"
+      "footprint": "Resistor_SMD:R_0603_1608Metric",
+      "properties": {
+        "ViaEvidence": "v0.9.1 user V017: R42.1 joins R44; R44.1 chosen from photo. Earlier R42.1-to-ANT2 hypothesis withdrawn."
+      }
     },
     {
       "symbol": "Diode:BAV99",
@@ -1117,7 +1126,10 @@
       },
       "rotation": 0,
       "includePins": true,
-      "footprint": "Resistor_SMD:R_0603_1608Metric"
+      "footprint": "Resistor_SMD:R_0603_1608Metric",
+      "properties": {
+        "ViaEvidence": "v0.9.1 user rejects V072-to-R22.2 association. Receiver bias net remains an independent unverified hypothesis."
+      }
     },
     {
       "symbol": "Device:C",

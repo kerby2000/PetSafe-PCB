@@ -1,8 +1,32 @@
-# Via review findings - v0.9
+# Via review findings - v0.9.1
 
-The original user list supplied 97 distinct site IDs. The correction confirms V025=GND and adds V026=PIC21/RB0, bringing the reviewed count to 98. Twenty-nine catalog IDs remain unmentioned; several already have photo-derived local connections. V050 is rejected as not a via, leaving 126 active sites without renumbering the original 127 IDs. No per-via ohms were supplied. Component-endpoint assignments below combine those reports with the existing front/rear photos.
+101 distinct via IDs reviewed; 125 active sites / 127 stable IDs. V033 and V050 are rejected without renumbering; 26 IDs remain unmentioned, some already photo-matched. The latest batch corrects 21 sites. V017 joins R42.1 and R44.1 (R44 pad selected from the photo), replacing the earlier R42.1-to-ANT2 hypothesis. R43.2 is associated with V015, not V011-V014. V072-to-R22.2 is withdrawn. V073 is GND only; R19/V075 remains photo-derived. V113/V115 are the two remaining held conflicts. No new per-site ohms were supplied.
 
-## Applied corrections
+## Latest 21-site corrections
+
+| Via | Current association | Evidence qualification |
+|---|---|---|
+| V006 | C33.2 / GND | User C33; earlier GND report; pad photo-selected |
+| V007 | C34.2 / GND | User C34; earlier GND report; pad photo-selected |
+| V011-V014 | Not R43.2; destination unresolved | Incorrect Q1.L/R43.2 island association removed |
+| V015 | R43.2; local Q1.L fragment retained | User lower pad2; Q1 connection from original visual fragment |
+| V017 | R42.1 / R44.1 / V017_CONTROL | User explicitly R42.1 and R44; free R44 pad1 photo-selected; old R42-to-ANT2 guess withdrawn |
+| V018 | C35.2 / GND | User C35; earlier GND report; pad photo-selected |
+| V020 | R40.1 / ICSP_DAT | User R40; free pad1 photo-selected; existing local ICSP node |
+| V029 | C25.2 / C26.2 / GND | User capacitor pair; earlier GND report; return pads photo-selected |
+| V033 | Rejected, not a via | User recognition correction; ID preserved |
+| V034 | R3.1 / H_VBAT | User VDD/R3; previous explicit common net with V001/MX512H pin4 |
+| V040 | C28.2 / GND | User C28; earlier GND report; pad photo-selected |
+| V059, V061 | L2.1 / H_VBAT | User L2; earlier motor supply report; source/right pad photo-selected |
+| V060 | Q2.L / GND | User Q2; earlier GND report; local pad photo-selected |
+| V065 | C2.2 / GND | User C2; earlier GND report; return pad photo-selected |
+| V068 | C37.2 / C36.2 / GND | User pair; earlier GND report; return pads photo-selected |
+| V072 | Not R22.2; destination unresolved | Rejected via association; prior independent receiver-bias hypothesis still unverified |
+| V073 | GND only | User explicitly resolves duplicate; no R19 ground merge |
+
+Only two component-pad net assignments change in this batch: R42.1 and R44.1 join `V017_CONTROL`. The other entries correct via metadata or corroborate existing qualified pad assignments. The original `V_Q1_LEFT` fragment (Q1.L to R43.2) remains; the user corrected the via location, not this independent local trace. V075/R19.2 remains a photo association, not a newly confirmed user mapping.
+
+## Prior v0.9 endpoint corrections retained
 
 | Pad | Earlier net | Current net | Basis |
 |---|---|---|---|
@@ -38,20 +62,20 @@ The original user list supplied 97 distinct site IDs. The correction confirms V0
 ## Reports held for clarification
 
 - Resolved by user: V025=GND; V026=PIC21/RB0. The onward RB0 destination is still unknown.
-- V073 was reported as GND and R19. The R19 free-pad via appears to be V075. Do not use the duplicate to ground R19.
+- Resolved by user: V073 is GND only. R19/V075 remains a photo association, not user-confirmed.
 - V113/V115: reported GND; front island appears to join Q8 outer pads, modeled as output. Keep this contradiction visible; confirm resistance to GND before changing the output topology.
 
 ## What a component association establishes
 
-V063 establishes a local R37/R39 junction, not its source voltage. V070/R18, V071/R21 and V072/R22 do not establish that their remote sides share a supply or bias node. V076 corroborates the opposite R22 ground return. V067 reaches empty U6A; no fitted chip is missing there. V082 associates D3 but does not settle its exact terminal. V011-014 visibly share the Q1.L/R43.2 island, with transistor pin function still provisional.
+V063 establishes a local R37/R39 junction, not its source voltage. V070/R18 and V071/R21 do not establish that their remote sides share a supply or bias node. V076 corroborates the opposite R22 ground return. V067 reaches empty U6A; no fitted chip is missing there. V082 associates D3 but does not settle its exact terminal. V011-V014 are explicitly not connected to R43.2; their previous Q1.L/R43.2 annotation was incorrect. V015 is the corrected R43.2 association.
 
 V090/C46/C47, V095/C43/C44, V100/C16/C29, V103/C13/C14 and V107/C10/C11 corroborate local tuning junctions. Their rear capacitor partners are photo-associated. Ground returns invalidate the old complete antenna series-branch assumption; onward midpoint-to-antenna links still require tracing.
 
 MX512H **pin4 VDD** is the motor supply net H_VBAT. Its **pin1 VCC** and the regulated board VDD test point are on the separate H_VDD model net. V064 joins the latter via the R1/C3 option pads.
 
-## IDs absent from this user message
+## IDs not yet mentioned across the user reviews
 
-V016, V017, V019, V020, V027, V028, V030, V033, V035, V036, V037, V038, V039, V042, V047, V049, V053, V075, V079, V080, V091, V097, V102, V108, V117, V119, V120, V122, V124.
+V016, V019, V027, V028, V030, V035, V036, V037, V038, V039, V042, V047, V049, V053, V075, V079, V080, V091, V097, V102, V108, V117, V119, V120, V122, V124.
 
 These are not all unresolved: V027/V028/V030/V038/V042 already had local photo matches, and V035/V053 now have additional local associations. No need to recheck every ground site. The interactive viewer distinguishes user-reported assignment, photo-local assignment, unresolved report, held conflict and rejected detection.
 

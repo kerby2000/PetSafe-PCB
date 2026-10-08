@@ -1,0 +1,53 @@
+{
+  "revision": "v0.9.1",
+  "changes": [
+    {
+      "endpoint": "R42.1",
+      "old": "H_ANT_B",
+      "new": "V017_CONTROL",
+      "basis": "User V017 connects R42.1 and R44; photo selects R44 free pad1. R42 is retained literally. Earlier R42.1 antenna assignment withdrawn."
+    },
+    {
+      "endpoint": "R44.1",
+      "old": "H_Q1_BIAS",
+      "new": "V017_CONTROL",
+      "basis": "User V017 connects R42.1 and R44; photo selects R44 free pad1. R42 is retained literally. Earlier R42.1 antenna assignment withdrawn."
+    }
+  ],
+  "corrected_via_ids": [
+    "V006",
+    "V007",
+    "V011",
+    "V012",
+    "V013",
+    "V014",
+    "V015",
+    "V017",
+    "V018",
+    "V020",
+    "V029",
+    "V033",
+    "V034",
+    "V040",
+    "V059",
+    "V060",
+    "V061",
+    "V065",
+    "V068",
+    "V072",
+    "V073"
+  ],
+  "negative_via_associations": {
+    "V011-V014": "R43.2 excluded; previous Q1.L association also withdrawn as unproven.",
+    "V072": "R22.2 excluded; destination unknown."
+  },
+  "retained_independent_fragments": {
+    "Q1.L / R43.2": "Original V_Q1_LEFT direct local photo fragment retained; via association moved to V015.",
+    "R22.2 / H_RX_BIAS": "Pre-existing circuit hypothesis retained with its uncertainty; removing V072 association does not establish another net."
+  },
+  "qualifications": [
+    "User supplies R42.1 and component R44; selecting R44.1 is a photo inference.",
+    "Existing ground/supply reports retained alongside current component associations.",
+    "No new measurements, capacitances, footprints or part identities supplied in this batch."
+  ]
+}
