@@ -13,8 +13,8 @@ pin,gpio,net,open_pad,evidence
 12,RC1,PIC_RC1_VREF,False,"VREF board pad / V053; visible local route, remote net unknown"
 13,RC2,,True,V049; user confirms pin-to-via; onward destination unknown
 14,RC3,PIC_RC3,False,TP11; visible route; onward destination unknown
-15,RC4,,True,V022 user association; remote destination unknown
-16,RC5,,True,V023 user association; remote destination unknown
+15,RC4,MOTOR_INA,False,V022-V016 to U5 pin2 / INA; user-confirmed
+16,RC5,MOTOR_INB,False,V023-V019 to U5 pin3 / INB; user-confirmed
 17,RC6,H_TUNE_1,False,R13; user meter / visible trace
 18,RC7,PIC_RC7_TP17,False,TP17; visible route; old R13 guess withdrawn
 19,VSS,H_GND,False,GND / C32 / V045 photo anchor

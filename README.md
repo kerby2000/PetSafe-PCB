@@ -1,10 +1,10 @@
-# PetSafe PCB reverse engineering - v0.9.3
+# PetSafe PCB reverse engineering - v0.9.4
 
 One editable **A2 KiCad 10 sheet**, with all 150 main-board catalog entries grouped into functional blocks. Wires connect parts within blocks; named nets connect blocks. This revision uses the installed **KiCad 10.0.5** and **KiCad MCP Server**, with **20 unmodified stock symbol definitions and four explicitly authorized datasheet symbols**.
 
-## Current via review (v0.9.3)
+## Current via review (v0.9.4)
 
-118 distinct via IDs reviewed; 120 active sites / 127 stable IDs. The latest eight-site batch confirms V036=PIC5/RA3, V037=PIC6/RA4, V039=PIC7/RA5, V047=PIC11/RC0 and V049=PIC13/RC2. All eight GPIOs without modeled onward connections now have user-identified vias. V072 reaches TP6, explicitly not R22.2. V079/V080 both reach SGM8542 U3 pin5; TP6 and U3 pin5 remain separate across C18. Nine IDs are still unmentioned. Earlier Q8 and C19/R29 ground corrections remain; V114 net and V075 Q7 terminal are unresolved.
+120 distinct via IDs reviewed; 120 active sites / 127 stable IDs. PIC15/RC4 connects through V022-V016 to MX512H INA pin2; PIC16/RC5 connects through V023-V019 to INB pin3. Six GPIO onward destinations remain unknown. V011-V014 reach Q1.L. The user explicitly removes the old Q1.L-R43.2 photo-derived connection; R43.2 still reaches V015. Seven IDs remain unmentioned, some already photo-matched. V114 net remains the only held via conflict.
 
 ## Corrected markings and measured evidence (2026-10-08)
 
@@ -16,7 +16,7 @@ One editable **A2 KiCad 10 sheet**, with all 150 main-board catalog entries grou
 - `index.html`: zoomable offline viewer, searchable inventory and photo links.
 - `schematic/PetSafe_1001339.kicad_pro`: open the single native schematic in KiCad 10.
 - `output/pdf/PetSafe_single_sheet.pdf`: one-page vector drawing.
-- `output/pdf/PetSafe_PIC_GPIO_pin_map.pdf`: updated close-up with all 28 PIC pins numbered and 8 unresolved GPIOs highlighted; fill `evidence/PIC_GPIO_missing.csv` or reply with pin, destination pad and reading.
+- `output/pdf/PetSafe_PIC_GPIO_pin_map.pdf`: updated close-up with all 28 PIC pins numbered and 6 unresolved GPIOs highlighted; fill `evidence/PIC_GPIO_missing.csv` or reply with pin, destination pad and reading.
 - `output/pdf/PetSafe_measurement_round1.pdf`: annotated photos, recorded U6/Q8 readings and targeted C6 follow-up.
 - `docs/LIBRARIES_AND_ALTERNATIVES.md`: library choices, datasheet symbol provenance, footprints and Western alternatives.
 - `docs/RECONSTRUCTION.md`: circuit hypotheses, identifications and calculations.
@@ -26,13 +26,13 @@ All symbol definitions are embedded, so the drawing is self-contained. Standard 
 
 ## What is complete and what remains provisional
 
-All 150 catalog entries, 352 photographed pads and 29 original visual fragments are retained. The native KiCad 10.0.5 netlist matches all 90 authored net partitions. All 26 original photos retain their checksums. The schematic is a functional reconstruction from photographs and datasheets, not a continuity-verified production design.
+All 150 catalog entries and 352 photographed pads are retained. Of 29 original photo fragments, 28 remain electrically joined; Q1.L-R43.2 was explicitly withdrawn by the user. The native KiCad 10.0.5 netlist matches all 89 authored net partitions. All 26 original photos retain their checksums. The schematic is a functional reconstruction from photographs and datasheets, not a continuity-verified production design.
 
 U1 (probable S-1200B45) and U5 (MX512H) now use datasheet-derived symbols created through MCP at the user's request. Their standard footprints are SOT-23-5 and SOIC-8 3.9 x 4.9 mm / 1.27 mm pitch. No custom footprint was needed. U6 and Q8 now have candidate datasheet pin maps, including both Q8 MOSFET units on this sheet. U3 uses KiCad's generic dual op-amp with its actual SGM8542XS value and pinout.
 
 Western alternatives are documented separately: **MCP6002-I/SN** for SGM8542 and **DRV8212PDSGR** for an MX512H redesign. The motor driver has a different package and pinout; it has not been substituted into the reconstructed board. Both alternatives have standard KiCad symbols and footprints. Pin-compatible does not mean electrically interchangeable.
 
-ERC retains **55 findings**: 37 unconnected pins, 10 isolated pin labels, five undriven power checks and three undriven inputs (two motor-control inputs and the still-inferred LED common). There are no off-grid endpoints or dangling wire ends. No artificial no-connect or power flags hide missing evidence. The 37 open pads include 19 on DNP entries and 18 others, including two internally open U6 pins with unresolved external ties. Eight PIC GPIO pads remain open. Existing local nets can still have uncertain onward routes.
+ERC retains **51 findings**: 37 unconnected pins, 8 isolated pin labels, five undriven power checks and one undriven input (the still-inferred LED common). There are no off-grid endpoints or dangling wire ends. No artificial no-connect or power flags hide missing evidence. The 37 open pads include 19 on DNP entries and 18 others, including two internally open U6 pins with unresolved external ties. Six PIC GPIO pads remain open; both motor-control GPIOs are now mapped. Existing local nets can still have uncertain onward routes.
 
 Read the [complete status report](output/pdf/PetSafe_completion_status.pdf) for every remaining area and all 28 PIC pins, and the [via review findings](docs/VIA_REVIEW_RESULTS.md) for each changed endpoint. **Q8 V113/V115 are resolved as centre pin5 GND. V114 opposite pin2 has an unresolved net assignment.** V025=GND and V026=PIC21/RB0 are now corrected. V073 is now GND only; its duplicate R19 report is resolved. No further symbol files are missing for the chosen candidates. PIR daughterboard internals and a routed PCB remain outside this main-board revision.
 

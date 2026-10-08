@@ -1,5 +1,5 @@
 {
-  "revision": "v0.9.3",
+  "revision": "v0.9.4",
   "pins": [
     {
       "pin": 1,
@@ -102,16 +102,16 @@
     {
       "pin": 15,
       "gpio": "RC4",
-      "net": null,
-      "open_pad": true,
-      "evidence": "V022 user association; remote destination unknown"
+      "net": "MOTOR_INA",
+      "open_pad": false,
+      "evidence": "V022-V016 to U5 pin2 / INA; user-confirmed"
     },
     {
       "pin": 16,
       "gpio": "RC5",
-      "net": null,
-      "open_pad": true,
-      "evidence": "V023 user association; remote destination unknown"
+      "net": "MOTOR_INB",
+      "open_pad": false,
+      "evidence": "V023-V019 to U5 pin3 / INB; user-confirmed"
     },
     {
       "pin": 17,
@@ -204,8 +204,6 @@
     7,
     11,
     13,
-    15,
-    16,
     21
   ],
   "qualification": "A modeled local net does not certify its remote role or all attached inferred branches."

@@ -1,13 +1,13 @@
 {
   "date": "2026-10-08",
-  "revision": "v0.9.3",
-  "missing_gpio_count": 8,
+  "revision": "v0.9.4",
+  "missing_gpio_count": 6,
   "pin_list_matches_native_netlist": "PASS",
   "original_photo_bytes_preserved": "PASS",
-  "schematic_sha256": "520c03a979c1ed5c336499ceb2b5f8ecaa2790ae9c28790707a996632e0d654b",
-  "pdf_sha256": "9b5cdf691526730c5b39faba19dc7b038182e4dc68de24a6d450628ebf002172",
-  "png_sha256": "9b95b39077c5b3bd4bfa57d0c72a6dfcdf8b8bdf07349c61f2a21d0e7f08495d",
-  "visual_review": "PASS: all 28 physical leads numbered; eight orange GPIOs with their confirmed local via identifiers. Original source photographs preserved.",
-  "warning": "Eight GPIO onward destinations unresolved; all eight now have user-identified local vias. No NC inferred. Local modeled nets can still have inferred continuations.",
-  "current_revision_check": "v0.9.3: map regenerated with all eight user-identified local vias; onward GPIO destinations remain unresolved."
+  "schematic_sha256": "a51edb2f66189e4f4a7eaab3536ed5f5b44b98e664c1303055244141e290edff",
+  "pdf_sha256": "5a872a67faa4339b4a8f55202773ec581f9320fd546157db539f375f80b062d9",
+  "png_sha256": "75820ea4bf75722f00de10fc4e1d80a806cc33342118f90464c60e741f07516f",
+  "visual_review": "PASS: all 28 physical leads numbered; six orange GPIOs with their confirmed local via identifiers. Original source photographs preserved.",
+  "warning": "Six GPIO onward destinations unresolved; each has an identified local via. PIC15/16 reach motor INA/INB. No NC inferred. Local modeled nets can still have inferred continuations.",
+  "current_revision_check": "v0.9.4: map regenerated with six unresolved GPIOs; pins15/16 are now grey and map to motor INA/INB."
 }

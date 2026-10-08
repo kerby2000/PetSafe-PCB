@@ -1,8 +1,19 @@
-# Via review findings - v0.9.3
+# Via review findings - v0.9.4
 
-118 distinct via IDs reviewed; 120 active sites / 127 stable IDs. The latest eight-site batch confirms V036=PIC5/RA3, V037=PIC6/RA4, V039=PIC7/RA5, V047=PIC11/RC0 and V049=PIC13/RC2. All eight GPIOs without modeled onward connections now have user-identified vias. V072 reaches TP6, explicitly not R22.2. V079/V080 both reach SGM8542 U3 pin5; TP6 and U3 pin5 remain separate across C18. Nine IDs are still unmentioned. Earlier Q8 and C19/R29 ground corrections remain; V114 net and V075 Q7 terminal are unresolved.
+120 distinct via IDs reviewed; 120 active sites / 127 stable IDs. PIC15/RC4 connects through V022-V016 to MX512H INA pin2; PIC16/RC5 connects through V023-V019 to INB pin3. Six GPIO onward destinations remain unknown. V011-V014 reach Q1.L. The user explicitly removes the old Q1.L-R43.2 photo-derived connection; R43.2 still reaches V015. Seven IDs remain unmentioned, some already photo-matched. V114 net remains the only held via conflict.
 
-## Latest eight-site corrections
+## Latest motor and Q1 corrections
+
+| Sites | Confirmed connection | Native change |
+|---|---|---|
+| V016 - V022 | U5.2 INA - U4.15 RC4 | MOTOR_INA now driven by PIC |
+| V019 - V023 | U5.3 INB - U4.16 RC5 | MOTOR_INB now driven by PIC |
+| V011-V014 | Q1.L, explicitly not R43.2 | Withdraw old Q1.L-R43.2 link |
+| V015 | R43.2 | Withdraw inferred Q1.L association |
+
+The user explicitly answered “Remove Q1.L–R43.2 connection”. Historical fragment V_Q1_LEFT is preserved as rejected evidence, with the other 28 original fragments retained electrically. Q1.L and R43.2 now each have a known local via but unknown onward destination. This adds two open component pads while resolving two PIC pads: 37 open pads remain, of which six are PIC GPIOs.
+
+## Prior v0.9.3 corrections
 
 | Via | User-confirmed local destination | Remaining uncertainty |
 |---|---|---|
@@ -116,6 +127,6 @@ These are not all unresolved: V027/V028/V030/V038/V042 already had local photo m
 
 ## Remaining work
 
-See [complete status report](../output/pdf/PetSafe_completion_status.pdf), [all PIC pins](../evidence/pic_gpio_status.csv), and [per-component audit](FINISHING_CHECKLIST.html). Current native file: 37 open pads (18 populated-entry, 19 DNP), eight GPIO pads open; 44 capacitor values and L1/L2 type/value unknown; three blank footprints. Existing drawn hypotheses are additional work and are not counted as open pads.
+See [complete status report](../output/pdf/PetSafe_completion_status.pdf), [all PIC pins](../evidence/pic_gpio_status.csv), and [per-component audit](FINISHING_CHECKLIST.html). Current native file: 37 open pads (18 populated-entry, 19 DNP), six GPIO pads open; 44 capacitor values and L1/L2 type/value unknown; three blank footprints. Existing drawn hypotheses are additional work and are not counted as open pads.
 
 The PIC under-body candidates V036/37/39/47/49 align approximately with pins5/6/7/11/13; they are targets for continuity, not recovered buried traces. Surface photographs cannot uniquely identify an inner layer or its function.

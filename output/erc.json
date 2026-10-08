@@ -1,7 +1,7 @@
 {
     "$schema": "https://schemas.kicad.org/erc.v1.json",
     "coordinate_units": "mm",
-    "date": "2026-10-08T19:29:07",
+    "date": "2026-10-08T19:41:53",
     "ignored_checks": [
         {
             "description": "Global label only appears once in the schematic",
@@ -115,36 +115,6 @@
                                 "y": 0.8636
                             },
                             "uuid": "7e21b4fc-d75d-469d-8cde-1e7a45055bb0"
-                        }
-                    ],
-                    "severity": "error",
-                    "type": "pin_not_connected"
-                },
-                {
-                    "description": "Pin not connected",
-                    "items": [
-                        {
-                            "description": "Symbol U4 Pin 15 [RC4, Bidirectional, Line]",
-                            "pos": {
-                                "x": 2.4257,
-                                "y": 0.9144
-                            },
-                            "uuid": "f95f1cbf-6c6a-4d68-b72c-09e6a546c96b"
-                        }
-                    ],
-                    "severity": "error",
-                    "type": "pin_not_connected"
-                },
-                {
-                    "description": "Pin not connected",
-                    "items": [
-                        {
-                            "description": "Symbol U4 Pin 16 [RC5, Bidirectional, Line]",
-                            "pos": {
-                                "x": 2.4257,
-                                "y": 0.9398
-                            },
-                            "uuid": "dcafcc9a-369d-4bee-9417-a3416676272b"
                         }
                     ],
                     "severity": "error",
@@ -511,34 +481,19 @@
                     "type": "pin_not_connected"
                 },
                 {
-                    "description": "Input pin not driven by any Output pins",
+                    "description": "Pin not connected",
                     "items": [
                         {
-                            "description": "Symbol U5 Pin 2 [INA, Input, Line]",
+                            "description": "Symbol Q1 Pin 2 [E, Passive, Line]",
                             "pos": {
-                                "x": 4.4577,
-                                "y": 0.6096
+                                "x": 4.5593,
+                                "y": 1.1684
                             },
-                            "uuid": "b3089d47-27c5-419a-ad5b-62873224dc49"
+                            "uuid": "00eca1af-f0f3-435d-b963-455ca360e6cf"
                         }
                     ],
                     "severity": "error",
-                    "type": "pin_not_driven"
-                },
-                {
-                    "description": "Input pin not driven by any Output pins",
-                    "items": [
-                        {
-                            "description": "Symbol U5 Pin 3 [INB, Input, Line]",
-                            "pos": {
-                                "x": 4.4577,
-                                "y": 0.6604
-                            },
-                            "uuid": "8851b7f2-3292-4d38-887a-799e5379beaf"
-                        }
-                    ],
-                    "severity": "error",
-                    "type": "pin_not_driven"
+                    "type": "pin_not_connected"
                 },
                 {
                     "description": "Pin not connected",
@@ -599,6 +554,21 @@
                     ],
                     "severity": "error",
                     "type": "power_pin_not_driven"
+                },
+                {
+                    "description": "Pin not connected",
+                    "items": [
+                        {
+                            "description": "Symbol R43 Pin 2 [Passive, Line]",
+                            "pos": {
+                                "x": 4.6609,
+                                "y": 1.2446
+                            },
+                            "uuid": "d3cf30c7-4517-492e-a3c5-9382b48ed021"
+                        }
+                    ],
+                    "severity": "error",
+                    "type": "pin_not_connected"
                 },
                 {
                     "description": "Pin not connected",
@@ -714,7 +684,7 @@
                                 "x": 0.2794,
                                 "y": 2.9845
                             },
-                            "uuid": "c91cfde5-ebe1-4010-8234-77ef3856654c"
+                            "uuid": "0dd637eb-5f44-4557-a52c-1988bdc4e39d"
                         }
                     ],
                     "severity": "warning",
@@ -729,7 +699,7 @@
                                 "x": 0.6096,
                                 "y": 2.0066
                             },
-                            "uuid": "e0c3bf21-8aa8-434d-aa39-83efd61c2ec8"
+                            "uuid": "30bd140e-fc10-4db2-b2fa-8903bcaa6328"
                         }
                     ],
                     "severity": "warning",
@@ -744,7 +714,7 @@
                                 "x": 0.8001,
                                 "y": 3.4798
                             },
-                            "uuid": "f162423a-d54a-49d4-acc3-8a93b76a1840"
+                            "uuid": "92af75dc-41f9-4fde-a921-4ae9d7196611"
                         }
                     ],
                     "severity": "warning",
@@ -759,7 +729,7 @@
                                 "x": 1.3335,
                                 "y": 3.4798
                             },
-                            "uuid": "8e118a5e-bac6-4202-99f7-07c0a1e859d1"
+                            "uuid": "efa00505-f2c4-4af7-ad48-76f68565674f"
                         }
                     ],
                     "severity": "warning",
@@ -774,7 +744,7 @@
                                 "x": 1.8669,
                                 "y": 3.4798
                             },
-                            "uuid": "8dd33f07-645b-451f-91f4-fa1c21b86076"
+                            "uuid": "ead987e9-532e-44d6-9579-df57cab235f4"
                         }
                     ],
                     "severity": "warning",
@@ -789,7 +759,7 @@
                                 "x": 2.4003,
                                 "y": 3.4798
                             },
-                            "uuid": "fa0faaa5-2d28-4973-b07b-b72607c0ed5d"
+                            "uuid": "34ccf37a-f58b-4b72-aa8c-eddaa1af890a"
                         }
                     ],
                     "severity": "warning",
@@ -804,37 +774,7 @@
                                 "x": 3.0099,
                                 "y": 2.0828
                             },
-                            "uuid": "ccb25ef9-5ed8-4e94-b2ca-3b97cb997a81"
-                        }
-                    ],
-                    "severity": "warning",
-                    "type": "isolated_pin_label"
-                },
-                {
-                    "description": "Label connected to only one pin",
-                    "items": [
-                        {
-                            "description": "Label 'H_MOTOR_INA'",
-                            "pos": {
-                                "x": 4.3307,
-                                "y": 0.6096
-                            },
-                            "uuid": "8d3377af-af5d-4ec8-aae7-d4a95a6149ca"
-                        }
-                    ],
-                    "severity": "warning",
-                    "type": "isolated_pin_label"
-                },
-                {
-                    "description": "Label connected to only one pin",
-                    "items": [
-                        {
-                            "description": "Label 'H_MOTOR_INB'",
-                            "pos": {
-                                "x": 4.3307,
-                                "y": 0.6604
-                            },
-                            "uuid": "c66fe39b-140c-45a0-b0bb-5b448257c936"
+                            "uuid": "236ce1d3-a651-4eee-add5-497b07b0abf1"
                         }
                     ],
                     "severity": "warning",
@@ -849,7 +789,7 @@
                                 "x": 5.0673,
                                 "y": 0.508
                             },
-                            "uuid": "868c42bc-fe66-46c1-ab39-f368a500c99e"
+                            "uuid": "3d4b993c-343f-4912-99a9-51e726ca8d4c"
                         }
                     ],
                     "severity": "warning",

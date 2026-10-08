@@ -1,0 +1,82 @@
+{
+  "revision": "v0.9.4",
+  "result": "PASS",
+  "native_schematic_sha256": "a51edb2f66189e4f4a7eaab3536ed5f5b44b98e664c1303055244141e290edff",
+  "corrected_sites": 9,
+  "changed_component_net_endpoints": 6,
+  "confirmed_motor_control_pairs": [
+    [
+      "U4.15",
+      "U5.2"
+    ],
+    [
+      "U4.16",
+      "U5.3"
+    ]
+  ],
+  "withdrawn_original_fragment": "V_Q1_LEFT",
+  "prior_electrical_contracts": "PASS",
+  "receiver_filter_input_bias_ground_separation": "PASS",
+  "q8_ground_drain_supply_separation": "PASS",
+  "reconciliation_idempotent": "PASS",
+  "mcp_properties_match_placement_replay": "PASS",
+  "via_summary": {
+    "catalogued_ids": 127,
+    "active_sites": 120,
+    "user_reported_ids": 120,
+    "original_user_reported_ids": 97,
+    "omitted_from_user_list": [
+      "V027",
+      "V028",
+      "V030",
+      "V035",
+      "V038",
+      "V042",
+      "V053"
+    ],
+    "rejected": [
+      "V033",
+      "V050",
+      "V117",
+      "V120",
+      "V121",
+      "V122",
+      "V124"
+    ],
+    "conflicts": [
+      "V114"
+    ],
+    "statuses": {
+      "ASSIGNED": 96,
+      "USER_REPORTED": 16,
+      "PHOTO_LOCAL": 7,
+      "REJECTED_NOT_VIA": 7,
+      "CONFLICT": 1
+    }
+  },
+  "missing_onward_gpio_destinations": [
+    5,
+    6,
+    7,
+    11,
+    13,
+    21
+  ],
+  "pdfs": {
+    "output/pdf/PetSafe_single_sheet.pdf": {
+      "pages": 1,
+      "sha256": "f3daf47f3cd435caf1a52ee69386284d5df64310be3a7ef0c2f57e3402c4ee1a"
+    },
+    "output/pdf/PetSafe_completion_status.pdf": {
+      "pages": 2,
+      "sha256": "720d6854018719e2812c1fd52cf2daa478b969c591804acafdca1418216167c6"
+    },
+    "output/pdf/PetSafe_PIC_GPIO_pin_map.pdf": {
+      "pages": 1,
+      "sha256": "5a872a67faa4339b4a8f55202773ec581f9320fd546157db539f375f80b062d9"
+    }
+  },
+  "visual_review": "PASS: final single sheet, both status pages, numbered PIC photo map. Original source photographs preserved.",
+  "html_review": "Embedded JavaScript syntax PASS; browser interaction not tested (prior file navigation denied; no workaround).",
+  "hardware_limit": "PIC RC4/RC5 to motor INA/INB confirmed by user via reports; no numerical resistance supplied. Q1/R43 connection explicitly rejected; onward destinations unknown. V114 net unresolved."
+}

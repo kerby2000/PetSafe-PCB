@@ -7009,7 +7009,7 @@
 				(hide yes)
 			)
 		)
-		(property "ViaEvidence" "v0.9.3 user confirms 5/RA3-V036, 6/RA4-V037, 7/RA5-V039, 11/RC0-V047, 13/RC2-V049. Earlier 15-V022, 16-V023, 21-V026 retained. All eight via routes have unknown onward destinations; no NC inferred."
+		(property "ViaEvidence" "v0.9.4: user confirms pin15/RC4 via V022-V016 to MX512H U5 pin2/INA, and pin16/RC5 via V023-V019 to U5 pin3/INB. Remaining via-only GPIOs: 5/V036, 6/V037, 7/V039, 11/V047, 13/V049, 21/V026."
 			(at 262.89 78.74 0)
 			(effects
 				(font
@@ -8174,6 +8174,9 @@
 				(hide yes)
 			)
 		)
+    (property "ViaEvidence" "v0.9.4: user confirms INA pin2 via V016-V022 to PIC15/RC4 and INB pin3 via V019-V023 to PIC16/RC5. Control mapping established; logic VCC and motor VDD remain separate." (at 458.47 60.96 0)
+      (effects (font (size 1.27 1.27)) (hide yes))
+    )
 		(pin "1"
 			(uuid "511d8a12-a8c5-4de3-9ed0-71f5acd4d290")
 		)
@@ -9083,6 +9086,9 @@
 				)
 			)
 		)
+    (property "ViaEvidence" "v0.9.4: V011-V014 reach Q1.L. User explicitly requests removal of old photo-derived Q1.L-R43.2 connection. Q1.L onward destination and physical transistor role remain unresolved." (at 453.39 111.76 0)
+      (effects (font (size 1.27 1.27)) (hide yes))
+    )
 		(pin "1"
 			(uuid "60495132-e526-4976-bfc4-d41a4718ae53")
 		)
@@ -9247,7 +9253,7 @@
 				)
 			)
 		)
-    (property "ViaEvidence" "v0.9.1 user: lower pad2 reaches V015, NOT V011-V014. Independent original Q1.L-to-R43.2 fragment retained." (at 462.28 124.46 0)
+    (property "ViaEvidence" "v0.9.4: lower pad2 reaches V015, not V011-V014. User explicitly rejects the old Q1.L-R43.2 photo-derived connection; withdrawn in native schematic and retained only as historical evidence." (at 462.28 124.46 0)
       (effects (font (size 1.27 1.27)) (hide yes))
     )
 		(pin "1"

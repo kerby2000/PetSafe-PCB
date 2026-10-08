@@ -182,6 +182,8 @@ wire('PIC_TP4_C41','TP4.1','C41.1');stub('H_GND','C41.2',4)
 stub('PIC_RA1_RX_REF','U4.3',4)
 stub('PIC_RC1_VREF','U4.12',-12)
 stub('PIC_RC1_VREF','VREF.1',0,4)
+stub('MOTOR_INA','U4.15',-12)
+stub('MOTOR_INB','U4.16',-12)
 stub('H_TUNE_1','U4.17',-12)
 stub('H_LED_CTL_B','U4.22',4)
 stub('H_LED_CTL_A','U4.23',4)
@@ -216,7 +218,7 @@ wire('H_GND','C33.2',(339,69));bus('H_GND',69,['C34.2','BATN.1'])
 wire('H_GND','U5.6',(359,69));wire('H_GND','U5.7',(363,69));wire('H_GND',(359,69),(363,69))
 wire('H_MOTOR_A','U5.8',(384,44),(384,49),'J5.A')
 wire('H_MOTOR_B','U5.5',(381,52),(381,55),(386,55),(386,51),'J5.B');wire('H_MOTOR_B','TP15.1',(381,55))
-stub('H_MOTOR_INA','U5.2',-10);stub('H_MOTOR_INB','U5.3',-10)
+stub('MOTOR_INA','U5.2',-10);stub('MOTOR_INB','U5.3',-10)
 stub('H_VBAT','C27.1',0,-4);stub('H_GND','C27.2',0,4)
 
 # S-812C33AMC candidate: C2N code and measured ground support pin assignment.
@@ -256,7 +258,7 @@ for n in layout['notes']:
         t='U1 datasheet symbol: S-1200B45 SOT-23-5. Pin 4 is internally open; option pads retained.'
     if 'Original photographed pad names remain' in t:
         t='Library pin numbers are mapped to photo pads in evidence/pin_crosswalk.json.'
-    if t.startswith('v0.2'):t='v0.9.3 | KiCad 10.0.5 | 2026-10-08';n['y']=292
+    if t.startswith('v0.2'):t='v0.9.4 | KiCad 10.0.5 | 2026-10-08';n['y']=292
     if t.startswith('H14-H15:'):t='H14-H15: C2N supports S-812C33AMC 3.3V LDO. C/R3 ground supported by resistance.'
     if t.startswith('H09:'):t='H09: 3724A matches SIL3724A N/P MOSFET pair. Both units share one package.'
     if t.startswith('Q8 T2/B1/B2'):t='V113/V115: centre pin5 GND. V114: opposite pin2 net unresolved; supply remains inferred.'
@@ -268,6 +270,9 @@ for n in layout['notes']:
     if t.startswith('All-parallel'):t='Do not infer complete tuning topology from local connections. Transistor identity/orientation remains provisional.'
     if t.startswith('C27 role unresolved'):t='C27: motor-supply bypass; value unmeasured.'
     if t.startswith('Optional R1/R2/C3/C4'):t='Empty options: R1/C3 free ends join regulated VDD; R2/C4 free ends join GND.'
+    if t.startswith('H04:'):t='User: PIC15/RC4 -> INA pin2; PIC16/RC5 -> INB pin3. Motor output polarity remains inferred.'
+    if t.startswith('H05:'):t='Q1.L -> V011-V014. Old R43.2 connection withdrawn by user; onward net unknown.'
+    if t.startswith('29 original local'):t='28 original local photo fragments retained; Q1.L-R43.2 withdrawn by user.'
     if t.startswith('H03:'):t='R3/R4 sensing candidate; R4 returns to RB3. C28 value estimated.';n['y']=106
     text(t,n['x'],n['y'],1.27 if n['size']>=1 else max(.762,n['size']*1.27))
 text('U5 datasheet symbol: separate logic VCC and motor VDD; both ground pins retained.',320,77,.762)
@@ -331,13 +336,13 @@ for net,edges in adj.items():
 for l in L:
     x,y=l['p'];G.append(expr(f'(label {q(l["net"])} (at {x} {y} 0) (effects (font (size .762 .762)) (justify left bottom)) (uuid {q(uid())}))'))
 tree.extend(G)
-tree.append(expr('(title_block (title "PetSafe 100-1339 R03 A | single-sheet reconstruction") (date "2026-10-08") (rev "0.9.3") (company "KiCad 10 libraries + four datasheet symbols | MCP authoring") (comment 1 "User via review + component cross-checks; Q8 conflict and hidden routes remain open."))'))
+tree.append(expr('(title_block (title "PetSafe 100-1339 R03 A | single-sheet reconstruction") (date "2026-10-08") (rev "0.9.4") (company "KiCad 10 libraries + four datasheet symbols | MCP authoring") (comment 1 "User via review + component cross-checks; Q8 conflict and hidden routes remain open."))'))
 # Canonical pretty printer supplied by the installed MCP server.
 sys.path.insert(0,str(Path.home()/'Documents/VS.Code.Projects/KiCAD-MCP-Server/python'))
 from utils.sexpr_format import prettify
 out=R/'schematic/PetSafe_1001339.kicad_sch'
 out.write_text(prettify(sx.dumps(tree)),encoding='utf-8',newline='\n')
-model.update(revision='v0.9.3',coordinate_units='mm',native_pin_crosswalk=layout['crosswalk'],pin_positions={e:list(p) for e,p in P.items()},
+model.update(revision='v0.9.4',coordinate_units='mm',native_pin_crosswalk=layout['crosswalk'],pin_positions={e:list(p) for e,p in P.items()},
              geometric_wires=[dict(net=n,a=a,b=b) for n,a,b in segments],library_policy='KiCad 10 stock symbols plus four explicitly authorized MCP-authored datasheet symbols for U1/U5/U6/Q8')
 for c in model['components']:
     entry=next(x for x in layout['catalog'] if x['original_ref']==c['ref'])

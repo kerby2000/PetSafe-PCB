@@ -42,14 +42,16 @@ def apply(out):
     annotate([6],['C33.2'],'User adds C33 to earlier GND report; pad2 selected from photo/model.','H_GND')
     annotate([7],['C34.2'],'User adds C34 to earlier GND report; pad2 selected from photo/model.','H_GND')
     for i in [11,12,13,14]:
-        s=sites[f'V{i:03d}'];s.update(net=None,endpoints=[],excluded_endpoints=['R43.2'],confidence='User explicitly excludes R43.2; island destination unresolved',component_crosscheck='Previous Q1.L/R43.2 island association withdrawn. Earlier user reference to a Q1 pin does not specify its terminal. The separate original local Q1.L-to-R43.2 fragment is retained at V015.')
-    annotate([15],['R43.2','Q1.L'],'User identifies R43 lower pad2. Q1.L is the retained original local photo fragment, not an additional user measurement.','Q1_EMITTER')
+        s=sites[f'V{i:03d}'];s.update(net=None,endpoints=['Q1.L'],excluded_endpoints=['R43.2'],confidence='User explicitly identifies Q1.L and excludes R43.2',component_crosscheck='V011-V014 reach Q1.L. User explicitly removes the earlier photo-derived Q1.L-R43.2 connection. Q1.L onward destination remains unknown; no physical transistor function inferred.')
+    sites['V015'].update(endpoints=['R43.2'],net=None,excluded_endpoints=['Q1.L'],component_crosscheck='User identifies R43 lower pad2. Earlier photo-derived Q1.L join explicitly withdrawn; R43.2 onward destination unknown.')
+    annotate([16,22],['U5.2','U4.15'],'User confirms V016-V022 joins U5 INA pin2 to PIC15 RC4.','MOTOR_INA')
+    annotate([19,23],['U5.3','U4.16'],'User confirms V019-V023 joins U5 INB pin3 to PIC16 RC5.','MOTOR_INB')
+    for i in [16,22]:sites[f'V{i:03d}']['joined_vias']=['V016','V022']
+    for i in [19,23]:sites[f'V{i:03d}']['joined_vias']=['V019','V023']
     annotate([17],['R42.1','R44.1'],'User explicitly names R42.1 and R44; photo selects R44 free pad1. Literal R42 retained; old R42.1-to-ANT2 hypothesis withdrawn.','V017_CONTROL')
     annotate([18],['C35.2'],'User adds C35 to earlier GND report; pad2 selected from photo/model.','H_GND')
     annotate([20],['R40.1'],'User identifies R40; photo selects upper/free pad1 on the existing ICSP DAT node.','ICSP_DAT')
     annotate([21],['Q9.R'],'Q9 DNP lower-right pad; stock pin2.','H_GND')
-    annotate([22],['U4.15'],'User RC4 association; hidden onward destination unknown.')
-    annotate([23],['U4.16'],'User RC5 association; hidden onward destination unknown.')
     annotate([24],['R32.1'],'R32 upper photo pad. Old PIR assignment withdrawn.','H_GND')
     annotate([26],['U4.21'],'User correction: V026 goes to PIC21/RB0; remote destination remains unknown.')
     annotate([29],['C25.2','C26.2'],'User adds both capacitors to earlier GND report; return pads selected from photos/model. C26.1 remains unresolved.','H_GND')
@@ -106,12 +108,12 @@ def apply(out):
             s.update(review_status='REJECTED_NOT_VIA',net=None,endpoints=[],modeled_nets=[],component_crosscheck='User rejects this detection as not a via. Stable ID retained; excluded from active markers.')
         elif s['user_reports'] and s['net'] and s['review_status']!='CONFLICT':s['review_status']='ASSIGNED'
         elif not s['user_reports'] and s['net']:s['review_status']='PHOTO_LOCAL'
-    out.update(revision='v0.9.3',user_review_source='evidence/via_user_review.json',
+    out.update(revision='v0.9.4',user_review_source='evidence/via_user_review.json',
         user_review_method=review['method'],supply_naming=review['supply_naming'],
         review_summary=dict(catalogued_ids=len(sites),active_sites=sum(s['active'] for s in sites.values()),user_reported_ids=len(current_ids),original_user_reported_ids=len(original_ids),
             omitted_from_user_list=sorted(set(sites)-current_ids),rejected=rejected,conflicts=list(conflicts),
             statuses=dict(Counter(s['review_status'] for s in sites.values()))),
-        new_model_connections=json.loads((R/'evidence/v093_net_changes.json').read_text())['changes'])
+        new_model_connections=json.loads((R/'evidence/v094_net_changes.json').read_text())['changes'])
     return out
 
 if __name__=='__main__':

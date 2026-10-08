@@ -38,7 +38,7 @@ request=dict(date='2026-10-08',basis_revision=model['revision'],status='AWAITING
  source_pixels=[1469,1958],crop=[320,0,990,725],
  pin_number_source=SOURCE+'#page=4',orientation='Top view; pin-1 dot lower right. Right bottom-to-top 1..14; left top-to-bottom 15..28.',
  missing_gpio_pins=missing,missing_count=len(missing),
- definition='These eight GPIOs have user-identified local vias but no modeled onward component connection. They are not unused pins. Other modeled nets may still be partial or inferred.',
+ definition='These six GPIOs have user-identified local vias but no modeled onward component connection. They are not unused pins. Other modeled nets may still be partial or inferred.',
  targets=[dict(pin=n,gpio=pins[n]['function'],xy=xy[n]) for n in missing],
  all_pad_targets=[dict(pin=n,function=pins[n]['function'],xy=xy[n],missing=n in missing) for n in range(1,29)],
  reply_format='U4.<pin> -> <component reference> <exact pad/pin> -> <ohms or visual trace>. List every destination found.',
@@ -46,7 +46,7 @@ request=dict(date='2026-10-08',basis_revision=model['revision'],status='AWAITING
  supplementary_local_nets={str(n):('Direct to TP17; prior onward R13 guess withdrawn' if n==18 else pins[n]['evidence']) for n in [1,2,4,14,18,24,26,27,28]},
  notes=['No guessed destination is presented as a measurement.',
         'All 28 pads are visible in the close-up although the top of the plastic body is cropped.',
-        'v0.9.3: all eight highlighted GPIOs now have user-identified vias. Continue beyond the vias; no NC inferred. RC1/pin12 reaches VREF/V053 separately. See pic_gpio_status.json.'])
+        'v0.9.4: six highlighted GPIOs have unknown onward destinations. PIC15/RC4 -> U5.2 INA via V022-V016; PIC16/RC5 -> U5.3 INB via V023-V019 are now resolved. RC1/pin12 reaches VREF/V053 separately.'])
 (R/'evidence/pic_gpio_request.json').write_text(json.dumps(request,indent=2)+'\n',encoding='utf-8')
 
 W,H=1191,842
@@ -100,7 +100,7 @@ text(30,124,'Right row: bottom to top 1-14. Left row: top to bottom 15-28. Do no
 
 tx=815;tw=346
 text(tx,705,'Connection checklist',20,True)
-text(tx,684,'All eight local vias known; onward destinations missing.',10)
+text(tx,684,'Six local vias known; onward destinations missing.',10)
 c.setFillColor(ink);c.rect(tx,651,tw,23,fill=1,stroke=0)
 text(tx+8,658,'Pin',11,True,white);text(tx+46,658,'GPIO',11,True,white);text(tx+100,658,'Current observation',11,True,white)
 for i,r in enumerate(rows):
@@ -109,7 +109,8 @@ for i,r in enumerate(rows):
  text(tx+9,y+10,str(r['pin']),13,True,accent);text(tx+47,y+10,r['gpio'],12,True)
  c.setStrokeColor(HexColor('#B2C1BC'));c.setLineWidth(.45);c.line(tx+102,y+7,tx+tw-8,y+7)
  text(tx+102,y+11,(reported[r['pin']]['via']+'; onward unknown'),10)
-y=350
+y=420
+y=paragraph(tx,y,'Motor controls resolved: 15/RC4 -> U5.2 INA (V022-V016); 16/RC5 -> U5.3 INB (V023-V019). User-reported connections.',tw,11,15)
 y=paragraph(tx,y,'User meter + visual trace: 3-R28/R29/TP7; 17-R13; 22-TP2; 23-TP1; 25-TP4. 26-TP10 corroborated. Numerical ohms not supplied.',tw,11,15)
 y=paragraph(tx,y-4,'12: VREF/V053 | 2: C25 | 4: C39 | 14: TP11 | 18: TP17 | 24: R4 | 26: TP10/R35 | 27/28: ICSP nodes.',tw,11,15)
 paragraph(tx,y-5,'These are not included in the orange pins. No visible route is not proof of NC. No no-connect flags were added. RP7 wording interpreted as photographed TP7.',tw,10,14)
@@ -118,7 +119,7 @@ c.setStrokeColor(HexColor('#C2D1CB'));c.line(30,108,1161,108)
 text(30,87,'Unpowered checks: disconnect battery and programmer. Compare low readings with your shorted-probe baseline (about 0.5 ohm).',12,True)
 text(30,67,'Reply example: U4.3 -> Rxx, left pad -> 0.7 ohm. A visual trace is useful too. Give exact pads and actual ohms, rather than only a beep.',11)
 text(30,48,'Orange lines are callout leaders, not traced copper. Source: your new close-up; original photograph pixels retained.',10,color=muted)
-text(30,27,'Pinout: Microchip DS40001802G, page 4. Current schematic: v0.9.3. Date: 2026-10-08. Full details: evidence/pic_gpio_request.json.',10,color=muted)
+text(30,27,'Pinout: Microchip DS40001802G, page 4. Current schematic: v0.9.4. Date: 2026-10-08. Full details: evidence/pic_gpio_request.json.',10,color=muted)
 c.linkURL(SOURCE+'#page=4',(30,23,290,38),relative=0)
 c.showPage();c.save()
 print(f'{OUT}: 1 page, {len(missing)} unresolved GPIOs, all 28 physical pads numbered')

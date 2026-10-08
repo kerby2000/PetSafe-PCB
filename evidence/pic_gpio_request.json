@@ -1,6 +1,6 @@
 {
   "date": "2026-10-08",
-  "basis_revision": "v0.9.3",
+  "basis_revision": "v0.9.4",
   "status": "AWAITING_ONWARD_DESTINATIONS",
   "source_photos": [
     {
@@ -38,12 +38,10 @@
     7,
     11,
     13,
-    15,
-    16,
     21
   ],
-  "missing_count": 8,
-  "definition": "These eight GPIOs have user-identified local vias but no modeled onward component connection. They are not unused pins. Other modeled nets may still be partial or inferred.",
+  "missing_count": 6,
+  "definition": "These six GPIOs have user-identified local vias but no modeled onward component connection. They are not unused pins. Other modeled nets may still be partial or inferred.",
   "targets": [
     {
       "pin": 5,
@@ -83,22 +81,6 @@
       "xy": [
         833,
         111
-      ]
-    },
-    {
-      "pin": 15,
-      "gpio": "RC4",
-      "xy": [
-        452,
-        84
-      ]
-    },
-    {
-      "pin": 16,
-      "gpio": "RC5",
-      "xy": [
-        452,
-        128
       ]
     },
     {
@@ -244,7 +226,7 @@
         452,
         84
       ],
-      "missing": true
+      "missing": false
     },
     {
       "pin": 16,
@@ -253,7 +235,7 @@
         452,
         128
       ],
-      "missing": true
+      "missing": false
     },
     {
       "pin": 17,
@@ -422,28 +404,6 @@
       "notes": "V049; onward destination unknown"
     },
     {
-      "pin": 15,
-      "gpio": "RC4",
-      "photo_side": "left",
-      "position": "from top: 1",
-      "destination_reference": "V022",
-      "destination_pad_or_pin": "onward destination unknown",
-      "resistance_ohms": "",
-      "method": "User pin-to-via report; no new numeric reading",
-      "notes": "V022; onward destination unknown"
-    },
-    {
-      "pin": 16,
-      "gpio": "RC5",
-      "photo_side": "left",
-      "position": "from top: 2",
-      "destination_reference": "V023",
-      "destination_pad_or_pin": "onward destination unknown",
-      "resistance_ohms": "",
-      "method": "User pin-to-via report; no new numeric reading",
-      "notes": "V023; onward destination unknown"
-    },
-    {
       "pin": 21,
       "gpio": "RB0",
       "photo_side": "left",
@@ -469,6 +429,6 @@
   "notes": [
     "No guessed destination is presented as a measurement.",
     "All 28 pads are visible in the close-up although the top of the plastic body is cropped.",
-    "v0.9.3: all eight highlighted GPIOs now have user-identified vias. Continue beyond the vias; no NC inferred. RC1/pin12 reaches VREF/V053 separately. See pic_gpio_status.json."
+    "v0.9.4: six highlighted GPIOs have unknown onward destinations. PIC15/RC4 -> U5.2 INA via V022-V016; PIC16/RC5 -> U5.3 INB via V023-V019 are now resolved. RC1/pin12 reaches VREF/V053 separately."
   ]
 }

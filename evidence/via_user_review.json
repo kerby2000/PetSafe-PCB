@@ -815,6 +815,59 @@
           "kind": "component_or_issue"
         }
       ]
+    },
+    {
+      "source": "User incremental via review 2026-10-08",
+      "revision": "v0.9.4",
+      "answer": "V011,V012,V013,V014 - Q1.L\nV019 U5 pin3 and connects to V023\nV016 U5 pin2 and connects to V022",
+      "clarifications": [
+        {
+          "answer": "Remove Q1.L\u2013R43.2 connection",
+          "interpretation": "Explicitly withdraw the older photo-derived connection; preserve earlier R43.2 exclusion for V011-V014."
+        }
+      ],
+      "assignments": [
+        {
+          "id": "V011",
+          "claim": "Q1.L; earlier R43.2 exclusion retained; user explicitly removes old Q1.L-R43.2 connection",
+          "kind": "component_or_issue"
+        },
+        {
+          "id": "V012",
+          "claim": "Q1.L; earlier R43.2 exclusion retained; user explicitly removes old Q1.L-R43.2 connection",
+          "kind": "component_or_issue"
+        },
+        {
+          "id": "V013",
+          "claim": "Q1.L; earlier R43.2 exclusion retained; user explicitly removes old Q1.L-R43.2 connection",
+          "kind": "component_or_issue"
+        },
+        {
+          "id": "V014",
+          "claim": "Q1.L; earlier R43.2 exclusion retained; user explicitly removes old Q1.L-R43.2 connection",
+          "kind": "component_or_issue"
+        },
+        {
+          "id": "V016",
+          "claim": "U5 pin2 / INA, connected to V022 / PIC15 RC4",
+          "kind": "component_or_issue"
+        },
+        {
+          "id": "V019",
+          "claim": "U5 pin3 / INB, connected to V023 / PIC16 RC5",
+          "kind": "component_or_issue"
+        },
+        {
+          "id": "V022",
+          "claim": "Connected to V016 / U5 pin2; earlier PIC15 RC4 report retained",
+          "kind": "component_or_issue"
+        },
+        {
+          "id": "V023",
+          "claim": "Connected to V019 / U5 pin3; earlier PIC16 RC5 report retained",
+          "kind": "component_or_issue"
+        }
+      ]
     }
   ],
   "review_in_progress": true,
@@ -851,8 +904,6 @@
     "V124"
   ],
   "unmentioned_ids": [
-    "V016",
-    "V019",
     "V027",
     "V028",
     "V030",

@@ -1,6 +1,6 @@
 {
   "date": "2026-10-08",
-  "revision": "v0.9.3",
+  "revision": "v0.9.4",
   "source_front": "photos/front_registered.jpg",
   "source_rear": "photos/back_mirrored_registered.jpg",
   "images_are_original_photographic_mosaics": true,
@@ -349,21 +349,23 @@
       ],
       "rear_appearance": "REAR_CLEARANCE",
       "front_match": "PROJECTED: inspect original front photo; may be under a component",
-      "endpoints": [],
+      "endpoints": [
+        "Q1.L"
+      ],
       "net": null,
-      "confidence": "User explicitly excludes R43.2; island destination unresolved",
+      "confidence": "User explicitly identifies Q1.L and excludes R43.2",
       "note": "Visible clearance separates this site from the surrounding rear copper; this alone does not identify an internal net.",
       "id": "V011",
       "active": true,
       "user_reports": [
         {
           "id": "V011",
-          "claim": "NOT connected to R43.2 lower pad; exact island destination unresolved",
-          "kind": "negative_connection"
+          "claim": "Q1.L; earlier R43.2 exclusion retained; user explicitly removes old Q1.L-R43.2 connection",
+          "kind": "component_or_issue"
         }
       ],
       "review_status": "USER_REPORTED",
-      "component_crosscheck": "Previous Q1.L/R43.2 island association withdrawn. Earlier user reference to a Q1 pin does not specify its terminal. The separate original local Q1.L-to-R43.2 fragment is retained at V015.",
+      "component_crosscheck": "V011-V014 reach Q1.L. User explicitly removes the earlier photo-derived Q1.L-R43.2 connection. Q1.L onward destination remains unknown; no physical transistor function inferred.",
       "modeled_nets": [],
       "excluded_endpoints": [
         "R43.2"
@@ -380,21 +382,23 @@
       ],
       "rear_appearance": "REAR_CLEARANCE",
       "front_match": "PROJECTED: inspect original front photo; may be under a component",
-      "endpoints": [],
+      "endpoints": [
+        "Q1.L"
+      ],
       "net": null,
-      "confidence": "User explicitly excludes R43.2; island destination unresolved",
+      "confidence": "User explicitly identifies Q1.L and excludes R43.2",
       "note": "Visible clearance separates this site from the surrounding rear copper; this alone does not identify an internal net.",
       "id": "V012",
       "active": true,
       "user_reports": [
         {
           "id": "V012",
-          "claim": "NOT connected to R43.2 lower pad; exact island destination unresolved",
-          "kind": "negative_connection"
+          "claim": "Q1.L; earlier R43.2 exclusion retained; user explicitly removes old Q1.L-R43.2 connection",
+          "kind": "component_or_issue"
         }
       ],
       "review_status": "USER_REPORTED",
-      "component_crosscheck": "Previous Q1.L/R43.2 island association withdrawn. Earlier user reference to a Q1 pin does not specify its terminal. The separate original local Q1.L-to-R43.2 fragment is retained at V015.",
+      "component_crosscheck": "V011-V014 reach Q1.L. User explicitly removes the earlier photo-derived Q1.L-R43.2 connection. Q1.L onward destination remains unknown; no physical transistor function inferred.",
       "modeled_nets": [],
       "excluded_endpoints": [
         "R43.2"
@@ -411,21 +415,23 @@
       ],
       "rear_appearance": "REAR_CLEARANCE",
       "front_match": "PROJECTED: inspect original front photo; may be under a component",
-      "endpoints": [],
+      "endpoints": [
+        "Q1.L"
+      ],
       "net": null,
-      "confidence": "User explicitly excludes R43.2; island destination unresolved",
+      "confidence": "User explicitly identifies Q1.L and excludes R43.2",
       "note": "Visible clearance separates this site from the surrounding rear copper; this alone does not identify an internal net.",
       "id": "V013",
       "active": true,
       "user_reports": [
         {
           "id": "V013",
-          "claim": "NOT connected to R43.2 lower pad; exact island destination unresolved",
-          "kind": "negative_connection"
+          "claim": "Q1.L; earlier R43.2 exclusion retained; user explicitly removes old Q1.L-R43.2 connection",
+          "kind": "component_or_issue"
         }
       ],
       "review_status": "USER_REPORTED",
-      "component_crosscheck": "Previous Q1.L/R43.2 island association withdrawn. Earlier user reference to a Q1 pin does not specify its terminal. The separate original local Q1.L-to-R43.2 fragment is retained at V015.",
+      "component_crosscheck": "V011-V014 reach Q1.L. User explicitly removes the earlier photo-derived Q1.L-R43.2 connection. Q1.L onward destination remains unknown; no physical transistor function inferred.",
       "modeled_nets": [],
       "excluded_endpoints": [
         "R43.2"
@@ -442,21 +448,23 @@
       ],
       "rear_appearance": "REAR_CLEARANCE",
       "front_match": "PROJECTED: inspect original front photo; may be under a component",
-      "endpoints": [],
+      "endpoints": [
+        "Q1.L"
+      ],
       "net": null,
-      "confidence": "User explicitly excludes R43.2; island destination unresolved",
+      "confidence": "User explicitly identifies Q1.L and excludes R43.2",
       "note": "Visible clearance separates this site from the surrounding rear copper; this alone does not identify an internal net.",
       "id": "V014",
       "active": true,
       "user_reports": [
         {
           "id": "V014",
-          "claim": "NOT connected to R43.2 lower pad; exact island destination unresolved",
-          "kind": "negative_connection"
+          "claim": "Q1.L; earlier R43.2 exclusion retained; user explicitly removes old Q1.L-R43.2 connection",
+          "kind": "component_or_issue"
         }
       ],
       "review_status": "USER_REPORTED",
-      "component_crosscheck": "Previous Q1.L/R43.2 island association withdrawn. Earlier user reference to a Q1 pin does not specify its terminal. The separate original local Q1.L-to-R43.2 fragment is retained at V015.",
+      "component_crosscheck": "V011-V014 reach Q1.L. User explicitly removes the earlier photo-derived Q1.L-R43.2 connection. Q1.L onward destination remains unknown; no physical transistor function inferred.",
       "modeled_nets": [],
       "excluded_endpoints": [
         "R43.2"
@@ -474,10 +482,9 @@
       "rear_appearance": "REAR_CLEARANCE",
       "front_match": "PROJECTED: inspect original front photo; may be under a component",
       "endpoints": [
-        "R43.2",
-        "Q1.L"
+        "R43.2"
       ],
-      "net": "Q1_EMITTER",
+      "net": null,
       "confidence": "rear visible; global front projection approximate",
       "note": "Visible clearance separates this site from the surrounding rear copper; this alone does not identify an internal net.",
       "id": "V015",
@@ -489,11 +496,12 @@
           "kind": "component_or_issue"
         }
       ],
-      "review_status": "ASSIGNED",
-      "modeled_nets": [
-        "Q1_EMITTER"
-      ],
-      "component_crosscheck": "User identifies R43 lower pad2. Q1.L is the retained original local photo fragment, not an additional user measurement."
+      "review_status": "USER_REPORTED",
+      "modeled_nets": [],
+      "component_crosscheck": "User identifies R43 lower pad2. Earlier photo-derived Q1.L join explicitly withdrawn; R43.2 onward destination unknown.",
+      "excluded_endpoints": [
+        "Q1.L"
+      ]
     },
     {
       "rear_xy": [
@@ -506,15 +514,31 @@
       ],
       "rear_appearance": "REAR_CLEARANCE",
       "front_match": "PROJECTED: inspect original front photo; may be under a component",
-      "endpoints": [],
-      "net": null,
+      "endpoints": [
+        "U5.2",
+        "U4.15"
+      ],
+      "net": "MOTOR_INA",
       "confidence": "rear visible; global front projection approximate",
       "note": "Visible clearance separates this site from the surrounding rear copper; this alone does not identify an internal net.",
       "id": "V016",
       "active": true,
-      "user_reports": [],
-      "review_status": "NOT_IN_USER_LIST",
-      "modeled_nets": []
+      "user_reports": [
+        {
+          "id": "V016",
+          "claim": "U5 pin2 / INA, connected to V022 / PIC15 RC4",
+          "kind": "component_or_issue"
+        }
+      ],
+      "review_status": "ASSIGNED",
+      "modeled_nets": [
+        "MOTOR_INA"
+      ],
+      "component_crosscheck": "User confirms V016-V022 joins U5 INA pin2 to PIC15 RC4.",
+      "joined_vias": [
+        "V016",
+        "V022"
+      ]
     },
     {
       "rear_xy": [
@@ -594,15 +618,31 @@
       ],
       "rear_appearance": "REAR_CLEARANCE",
       "front_match": "PROJECTED: inspect original front photo; may be under a component",
-      "endpoints": [],
-      "net": null,
+      "endpoints": [
+        "U5.3",
+        "U4.16"
+      ],
+      "net": "MOTOR_INB",
       "confidence": "rear visible; global front projection approximate",
       "note": "Visible clearance separates this site from the surrounding rear copper; this alone does not identify an internal net.",
       "id": "V019",
       "active": true,
-      "user_reports": [],
-      "review_status": "NOT_IN_USER_LIST",
-      "modeled_nets": []
+      "user_reports": [
+        {
+          "id": "V019",
+          "claim": "U5 pin3 / INB, connected to V023 / PIC16 RC5",
+          "kind": "component_or_issue"
+        }
+      ],
+      "review_status": "ASSIGNED",
+      "modeled_nets": [
+        "MOTOR_INB"
+      ],
+      "component_crosscheck": "User confirms V019-V023 joins U5 INB pin3 to PIC16 RC5.",
+      "joined_vias": [
+        "V019",
+        "V023"
+      ]
     },
     {
       "rear_xy": [
@@ -680,9 +720,10 @@
       "rear_appearance": "REAR_CLEARANCE",
       "front_match": "PROJECTED: inspect original front photo; may be under a component",
       "endpoints": [
+        "U5.2",
         "U4.15"
       ],
-      "net": null,
+      "net": "MOTOR_INA",
       "confidence": "rear visible; global front projection approximate",
       "note": "Visible clearance separates this site from the surrounding rear copper; this alone does not identify an internal net.",
       "id": "V022",
@@ -690,13 +731,19 @@
       "user_reports": [
         {
           "id": "V022",
-          "claim": "PIC U4.15 / RC4",
+          "claim": "Connected to V016 / U5 pin2; earlier PIC15 RC4 report retained",
           "kind": "component_or_issue"
         }
       ],
-      "review_status": "USER_REPORTED",
-      "component_crosscheck": "User RC4 association; hidden onward destination unknown.",
-      "modeled_nets": []
+      "review_status": "ASSIGNED",
+      "component_crosscheck": "User confirms V016-V022 joins U5 INA pin2 to PIC15 RC4.",
+      "modeled_nets": [
+        "MOTOR_INA"
+      ],
+      "joined_vias": [
+        "V016",
+        "V022"
+      ]
     },
     {
       "rear_xy": [
@@ -710,9 +757,10 @@
       "rear_appearance": "REAR_CLEARANCE",
       "front_match": "PROJECTED: inspect original front photo; may be under a component",
       "endpoints": [
+        "U5.3",
         "U4.16"
       ],
-      "net": null,
+      "net": "MOTOR_INB",
       "confidence": "rear visible; global front projection approximate",
       "note": "Visible clearance separates this site from the surrounding rear copper; this alone does not identify an internal net.",
       "id": "V023",
@@ -720,13 +768,19 @@
       "user_reports": [
         {
           "id": "V023",
-          "claim": "PIC U4.16 / RC5",
+          "claim": "Connected to V019 / U5 pin3; earlier PIC16 RC5 report retained",
           "kind": "component_or_issue"
         }
       ],
-      "review_status": "USER_REPORTED",
-      "component_crosscheck": "User RC5 association; hidden onward destination unknown.",
-      "modeled_nets": []
+      "review_status": "ASSIGNED",
+      "component_crosscheck": "User confirms V019-V023 joins U5 INB pin3 to PIC16 RC5.",
+      "modeled_nets": [
+        "MOTOR_INB"
+      ],
+      "joined_vias": [
+        "V019",
+        "V023"
+      ]
     },
     {
       "rear_xy": [
@@ -3894,7 +3948,44 @@
     "C26": "V028",
     "D6": "V026"
   },
-  "new_model_connections": [],
+  "new_model_connections": [
+    {
+      "endpoint": "U4.15",
+      "old": null,
+      "new": "MOTOR_INA",
+      "basis": "User V016=U5.2 joins V022=PIC15 RC4"
+    },
+    {
+      "endpoint": "U4.16",
+      "old": null,
+      "new": "MOTOR_INB",
+      "basis": "User V019=U5.3 joins V023=PIC16 RC5"
+    },
+    {
+      "endpoint": "U5.2",
+      "old": "H_MOTOR_INA",
+      "new": "MOTOR_INA",
+      "basis": "Hypothesis name replaced by confirmed user pin-to-pin mapping"
+    },
+    {
+      "endpoint": "U5.3",
+      "old": "H_MOTOR_INB",
+      "new": "MOTOR_INB",
+      "basis": "Hypothesis name replaced by confirmed user pin-to-pin mapping"
+    },
+    {
+      "endpoint": "Q1.L",
+      "old": "Q1_EMITTER",
+      "new": null,
+      "basis": "User explicitly removes Q1.L-R43.2; Q1.L still reaches V011-V014"
+    },
+    {
+      "endpoint": "R43.2",
+      "old": "Q1_EMITTER",
+      "new": null,
+      "basis": "User explicitly removes Q1.L-R43.2; R43.2 still reaches V015"
+    }
+  ],
   "sources": [
     "photos/originals/IMG_2436.jpg",
     "photos/originals/IMG_2437.jpg",
@@ -3911,11 +4002,9 @@
   "review_summary": {
     "catalogued_ids": 127,
     "active_sites": 120,
-    "user_reported_ids": 118,
+    "user_reported_ids": 120,
     "original_user_reported_ids": 97,
     "omitted_from_user_list": [
-      "V016",
-      "V019",
       "V027",
       "V028",
       "V030",
@@ -3937,9 +4026,8 @@
       "V114"
     ],
     "statuses": {
-      "ASSIGNED": 93,
-      "USER_REPORTED": 17,
-      "NOT_IN_USER_LIST": 2,
+      "ASSIGNED": 96,
+      "USER_REPORTED": 16,
       "PHOTO_LOCAL": 7,
       "REJECTED_NOT_VIA": 7,
       "CONFLICT": 1

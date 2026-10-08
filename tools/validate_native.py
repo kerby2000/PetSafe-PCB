@@ -19,8 +19,15 @@ def main():
     assert len(native.findall('./components/comp'))==150
     assert len(native.findall('./design/sheet'))==1
     old=json.loads((ROOT/'reference/v01/evidence/reconstruction.json').read_text())
+    withdrawn={f['net']:f for f in m.get('withdrawn_original_fragments',[])}
+    assert set(withdrawn)=={'V_Q1_LEFT'}, 'Only the explicitly user-refuted original fragment may be skipped'
+    assert withdrawn['V_Q1_LEFT']['user_authorization']=='Remove Q1.L–R43.2 connection'
     for net in old['nets']:
         ep=set(map(translated,net['endpoints']))
+        if net['net'] in withdrawn:
+            assert set(net['endpoints'])==set(withdrawn[net['net']]['endpoints'])
+            assert not any(ep<=pins for pins in actual), 'Withdrawn Q1/R43 tie revived'
+            continue
         assert any(ep<=pins for pins in actual),net
     manifest=json.loads((ROOT/'evidence/original_photo_manifest.json').read_text())
     for p in manifest:
@@ -55,7 +62,7 @@ def main():
         assert comp.findtext('footprint')==footprint
         assert comp.findtext('datasheet')==lib.findtext('docs')
         assert comp.findtext('description')==lib.findtext('description')
-    report=dict(date='2026-10-08',native_tool=native.findtext('./design/tool'),native_load_and_export='PASS',single_sheet='PASS',catalog_components=150,symbol_units=155,physical_pins=352,stock_library_symbols=len(definitions)-custom,custom_symbols=custom,proposed_net_partitions=len(expected),netlist_partition_comparison='PASS',unintended_multi_pin_nets=0,retained_original_visual_fragments=len(old['nets']),original_photo_checksums=f'PASS ({len(manifest)} files)',unresolved_physical_pins=len(m['unresolved_pins']),erc_total=len(violations),erc_by_type=dict(counts),erc_status='OPEN FINDINGS - candidate IC pin types checked; unknown board routing remains',gui_open='NOT_TESTED (native CLI validated)',hardware_verification='PARTIAL: recorded U6/Q8 resistance and selected PIC meter/visual routes; v0.9 via reports plus photo cross-checks, with held conflicts; no functional or voltage test',physical_pcb_layout='NOT_CREATED',schematic_sha256=sha(sch),input_zip_sha256=sha(ROOT/'input/PetSafe_KiCad_RE_v01.zip'))
+    report=dict(date='2026-10-08',native_tool=native.findtext('./design/tool'),native_load_and_export='PASS',single_sheet='PASS',catalog_components=150,symbol_units=155,physical_pins=352,stock_library_symbols=len(definitions)-custom,custom_symbols=custom,proposed_net_partitions=len(expected),netlist_partition_comparison='PASS',unintended_multi_pin_nets=0,retained_original_visual_fragments=len(old['nets'])-len(withdrawn),withdrawn_original_visual_fragments=sorted(withdrawn),original_photo_checksums=f'PASS ({len(manifest)} files)',unresolved_physical_pins=len(m['unresolved_pins']),erc_total=len(violations),erc_by_type=dict(counts),erc_status='OPEN FINDINGS - candidate IC pin types checked; unknown board routing remains',gui_open='NOT_TESTED (native CLI validated)',hardware_verification='PARTIAL: recorded U6/Q8 resistance and selected PIC meter/visual routes; v0.9 via reports plus photo cross-checks, with held conflicts; no functional or voltage test',physical_pcb_layout='NOT_CREATED',schematic_sha256=sha(sch),input_zip_sha256=sha(ROOT/'input/PetSafe_KiCad_RE_v01.zip'))
     report['datasheet_symbol_pin_contracts']='PASS (U1: 5 pins; U5: 8 pins; U6: 5 pins; Q8: 6 pins; types, footprints and source properties)'
     (ROOT/'evidence/validation.json').write_text(json.dumps(report,indent=2),encoding='utf-8',newline='\n')
     (ROOT/'evidence/validation_log.txt').write_text('Native KiCad model/netlist cross-check: PASS\n'+json.dumps(report,indent=2)+'\n',encoding='utf-8',newline='\n')

@@ -1,0 +1,80 @@
+{
+  "revision": "v0.9.4",
+  "changes": [
+    {
+      "endpoint": "U4.15",
+      "old": null,
+      "new": "MOTOR_INA",
+      "basis": "User V016=U5.2 joins V022=PIC15 RC4"
+    },
+    {
+      "endpoint": "U4.16",
+      "old": null,
+      "new": "MOTOR_INB",
+      "basis": "User V019=U5.3 joins V023=PIC16 RC5"
+    },
+    {
+      "endpoint": "U5.2",
+      "old": "H_MOTOR_INA",
+      "new": "MOTOR_INA",
+      "basis": "Hypothesis name replaced by confirmed user pin-to-pin mapping"
+    },
+    {
+      "endpoint": "U5.3",
+      "old": "H_MOTOR_INB",
+      "new": "MOTOR_INB",
+      "basis": "Hypothesis name replaced by confirmed user pin-to-pin mapping"
+    },
+    {
+      "endpoint": "Q1.L",
+      "old": "Q1_EMITTER",
+      "new": null,
+      "basis": "User explicitly removes Q1.L-R43.2; Q1.L still reaches V011-V014"
+    },
+    {
+      "endpoint": "R43.2",
+      "old": "Q1_EMITTER",
+      "new": null,
+      "basis": "User explicitly removes Q1.L-R43.2; R43.2 still reaches V015"
+    }
+  ],
+  "corrected_via_ids": [
+    "V011",
+    "V012",
+    "V013",
+    "V014",
+    "V015",
+    "V016",
+    "V019",
+    "V022",
+    "V023"
+  ],
+  "explicit_new_site_reports": [
+    "V011",
+    "V012",
+    "V013",
+    "V014",
+    "V016",
+    "V019"
+  ],
+  "derived_crosschecks": [
+    "V015",
+    "V022",
+    "V023"
+  ],
+  "withdrawn_original_fragments": [
+    {
+      "net": "V_Q1_LEFT",
+      "endpoints": [
+        "Q1.L",
+        "R43.2"
+      ],
+      "reason": "User confirms V011-V014 to Q1.L, excludes R43.2 and explicitly requests removal of this old photo-derived connection.",
+      "user_authorization": "Remove Q1.L\u2013R43.2 connection",
+      "revision": "v0.9.4"
+    }
+  ],
+  "held_conflicts": [
+    "V114"
+  ]
+}

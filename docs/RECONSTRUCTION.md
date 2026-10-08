@@ -1,4 +1,4 @@
-# PetSafe functional reconstruction, v0.9.3
+# PetSafe functional reconstruction, v0.9.4
 
 The deliverable is one editable KiCad schematic sheet with all 150 entries in the original main-board catalog. It uses wires inside functional blocks and labels between blocks. The 150 entries include named pads, test points and unpopulated footprints; they are not 150 fitted components. The separate PIR daughterboard appears in the photos, but only its main-board connector and interface are modeled here.
 
@@ -12,7 +12,7 @@ The [corrected marking report](U6_Q8_MARKING_UPDATE.md) supersedes the historica
 
 - `H_*` names identify inferred inter-block nets. A name without this prefix is not a measurement claim: local wiring also contains hypotheses.
 - `?` marks candidate identities, pin roles and estimated values. An unknown unmarked capacitor remains `?` unless a useful conventional starting value has been selected.
-- All 29 original `VISUAL_LOCAL` fragments remain joined in the new model. Their source photographs remain in `original_visual_fragments` in the JSON. Even these fragments are photographic evidence, not continuity results.
+- 28 original `VISUAL_LOCAL` fragments remain joined. The user explicitly withdrew V_Q1_LEFT (Q1.L-R43.2) in v0.9.4; it is preserved only as rejected historical evidence. Their source photographs remain in `original_visual_fragments` in the JSON. Even these fragments are photographic evidence, not continuity results.
 - New links carry individual evidence classes; some pairwise GPIO connections are now user-reported multimeter checks. `evidence/proposed_nets.csv` distinguishes each proposed net and the original fragments it contains. Merging several visual fragments into one net is an inference.
 - Open pins mean unresolved; they do not carry fabricated no-connect flags. No power flags were added just to silence ERC.
 - U2/U3 have separate functional and supply units; Q8 has separate N/P units on this same A2 sheet. There are 20 stock definitions from the installed KiCad 10 libraries plus four user-authorized datasheet definitions, all placed or replaced through the KiCad MCP server. Library pin numbers are mapped to photographed pad IDs in `evidence/pin_crosswalk.json`.
@@ -112,9 +112,9 @@ Q2 remains a proposed NPN input stage. In v0.9, R39.2 and R37.1 join V063 with u
 
 ## Validation and limits
 
-Native KiCad 10.0.5 exports one A2 sheet with 150 references, 155 symbol units and 352 physical pads. The final native pin partitions match all 90 modeled nets. All 29 original visual fragments and all 26 original photo checksums are retained. Twenty stock definitions and four project-local definitions match their registered library graphics and pins. Manufacturer pin-table contracts independently check U1/U5/U6/Q8 in the exported netlist.
+Native KiCad 10.0.5 exports one A2 sheet with 150 references, 155 symbol units and 352 physical pads. The final native pin partitions match all 89 modeled nets. 28 original visual fragments remain joined; V_Q1_LEFT is explicitly withdrawn by the user. All 26 original photo checksums are retained. Twenty stock definitions and four project-local definitions match their registered library graphics and pins. Manufacturer pin-table contracts independently check U1/U5/U6/Q8 in the exported netlist.
 
-ERC reports 55 open findings: 37 unconnected pins, 10 isolated labels, five undriven power checks and three undriven inputs (two motor and LED common). No off-grid endpoints, dangling wire ends or unintended multi-pin net merges remain. U6 and Q8 unpowered resistance readings are recorded; C6 exact path remains unresolved. Functional tests, voltage measurements, completion of GPIO tracing, physical PCB reconstruction and firmware recovery remain undone.
+ERC reports 51 open findings: 37 unconnected pins, 8 isolated labels, five undriven power checks and one undriven input (LED common). No off-grid endpoints, dangling wire ends or unintended multi-pin net merges remain. U6 and Q8 unpowered resistance readings are recorded; C6 exact path remains unresolved. Functional tests, voltage measurements, completion of GPIO tracing, physical PCB reconstruction and firmware recovery remain undone.
 
 ## Remaining completion items, v0.9
 
@@ -130,7 +130,7 @@ All 150 main-board catalog entries are represented. **No further exact-symbol fi
 | LED1 / S1 | LED emitter configuration/polarity; switch common pairs | Standard symbols present, physical mapping provisional. |
 | Q1/Q2/Q7 and repeated 2H transistors | Candidate identity and orientation | Existing stock BJT symbols; identity strength varies and is documented above. |
 | L1/L2, unmarked capacitors | Bead versus inductor, capacitance and package sizes | Standard passive symbols present. Proposed decoupling values are estimates; RF filter/tuning values remain unknown. C27 is now across motor supply and GND; C41 now shunts the TP4/RB4 net to photo-supported ground. |
-| PIC and block interfaces | Exact GPIO destinations and hidden tracks | 8 PIC pads remain open: 5,6,7,11,13,15,16,21. RC1/pin12 now reaches VREF/V053; remote roles remain partly inferred. See pic_gpio_status.json. |
+| PIC and block interfaces | Exact GPIO destinations and hidden tracks | 6 PIC pads remain open: 5,6,7,11,13,21. PIC15/16 now reach MX512H INA/INB. RC1/pin12 now reaches VREF/V053; remote roles remain partly inferred. See pic_gpio_status.json. |
 | PIR daughterboard | Internal components and routes | Only the J3 interface is represented; daughterboard internals are outside the current main-board revision. |
 
 The 37 open physical pins include 19 on unpopulated/DNP entries; the other 18 include named test pads and two internally open U6 pins. They are not 37 missing parts. U7/U6A/Q9 and other DNP entries do not require identifying a fitted chip. The machine-readable list is `evidence/completion_status.json`. Further photo/datasheet inference can continue without a broad measurement campaign. A completely confirmed schematic cannot be claimed from missing identity, value and buried-trace evidence.
@@ -184,3 +184,10 @@ C19 pad2 is assigned to the upper pad beside V077 in IMG_2434; its other-pad rou
 118 distinct via IDs reviewed; 120 active sites / 127 stable IDs. The latest eight-site batch confirms V036=PIC5/RA3, V037=PIC6/RA4, V039=PIC7/RA5, V047=PIC11/RC0 and V049=PIC13/RC2. All eight GPIOs without modeled onward connections now have user-identified vias. V072 reaches TP6, explicitly not R22.2. V079/V080 both reach SGM8542 U3 pin5; TP6 and U3 pin5 remain separate across C18. Nine IDs are still unmentioned. Earlier Q8 and C19/R29 ground corrections remain; V114 net and V075 Q7 terminal are unresolved.
 
 This batch adds local via evidence without changing any component-to-component net partition. Native GPIO pads remain open because a via with an unknown onward destination is not a fitted component or an NC. The schematic annotations and updated numbered map show the confirmed associations. RX_A_FILTER (TP6) stays separate from RX_B_PLUS (U3.5) across C18; neither is merged into the inferred R22.2 bias network.
+
+
+## v0.9.4 confirmed motor controls and withdrawn Q1 tie
+
+120 distinct via IDs reviewed; 120 active sites / 127 stable IDs. PIC15/RC4 connects through V022-V016 to MX512H INA pin2; PIC16/RC5 connects through V023-V019 to INB pin3. Six GPIO onward destinations remain unknown. V011-V014 reach Q1.L. The user explicitly removes the old Q1.L-R43.2 photo-derived connection; R43.2 still reaches V015. Seven IDs remain unmentioned, some already photo-matched. V114 net remains the only held via conflict.
+
+MOTOR_INA and MOTOR_INB replace the H_ names because the PIC-to-driver connections are user-confirmed. This does not establish motor polarity or operating firmware states. The original V_Q1_LEFT photo fragment remains in the evidence history, explicitly withdrawn by the user; it is no longer imposed as a validation requirement. Native checks instead require Q1.L and R43.2 to be separate.

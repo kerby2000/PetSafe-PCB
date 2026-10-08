@@ -111,3 +111,8 @@ Nineteen user site entries and the two follow-up answers are preserved in `via_u
 ### 2026-10-08: v0.9.3 user via confirmations
 
 User directly identifies PIC pins 5/6/7/11/13 at V036/V037/V039/V047/V049; V072 at TP6 (not R22.2); V079/V080 at SGM8542 pin5. No new per-site numerical resistance supplied. These supersede candidate associations, not all inferred remote connections. Exact report retained in evidence/via_user_review.json.
+
+
+### 2026-10-08: v0.9.4 motor controls and Q1 correction
+
+User identifies U5.2 at V016, joined to V022 (PIC15/RC4), and U5.3 at V019, joined to V023 (PIC16/RC5). V011-V014 identify Q1.L; user explicitly answers “Remove Q1.L–R43.2 connection”. Original V_Q1_LEFT retained only as withdrawn historical evidence. No new numerical resistance supplied.

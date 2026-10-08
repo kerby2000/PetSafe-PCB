@@ -17,8 +17,6 @@ H_LED_CTL_A,USER_REPORTED_CONTINUITY + local photo trace,R30.1;TP1.1;U4.23,
 H_LED_CTL_B,USER_REPORTED_CONTINUITY + local photo trace,R31.1;TP2.1;U4.22,
 H_MOTOR_A,HYPOTHESIS / retains visual fragments where listed,J5.A;U5.8,
 H_MOTOR_B,HYPOTHESIS / retains visual fragments where listed,J5.B;TP15.1;U5.5,V_MOTOR_OUTB
-H_MOTOR_INA,HYPOTHESIS / retains visual fragments where listed,U5.2,
-H_MOTOR_INB,HYPOTHESIS / retains visual fragments where listed,U5.3,
 H_PIR_RAW,HYPOTHESIS / retains visual fragments where listed,J3.3;R33.1;R38.1,
 H_PIR_SIG,HYPOTHESIS / retains visual fragments where listed,Q2.S;TP16.1,V_Q2_SINGLE
 H_PIR_VDD,HYPOTHESIS / retains visual fragments where listed,C37.1;J3.1;R33.2;U6.R1,
@@ -44,6 +42,8 @@ H_VDD,HYPOTHESIS / retains visual fragments where listed,C2.1;C2A.1;C3.1;C32.1;C
 ICSP_CLK,HYPOTHESIS / retains visual fragments where listed,D4.1;J1.CLK;R32.2;U4.27,
 ICSP_DAT,HYPOTHESIS / retains visual fragments where listed,D5.1;J1.DAT;R40.1;U4.28,
 MCLR_VPP,HYPOTHESIS / retains visual fragments where listed,J1.VPP;U4.1,
+MOTOR_INA,USER_CONFIRMED pin-to-pin via association; no numeric ohms supplied,U5.2;U4.15,
+MOTOR_INB,USER_CONFIRMED pin-to-pin via association; no numeric ohms supplied,U5.3;U4.16,
 OSC1,HYPOTHESIS / retains visual fragments where listed,C30.1;U4.9;Y1.1,V_XTAL_LEFT
 OSC2,HYPOTHESIS / retains visual fragments where listed,C31.2;U4.10;Y1.2,V_XTAL_RIGHT
 PIC_RA0_FILTER,PHOTO_TRACE / not electrically measured,C25.1;U4.2,
@@ -56,7 +56,6 @@ PIC_RC7_TP17,PHOTO_TRACE,TP17.1;U4.18,
 PIC_TP4_C41,USER_REPORTED_CONTINUITY + PHOTO_TRACE,C41.1;TP4.1;U4.25,
 PIR_BASE,HYPOTHESIS / retains visual fragments where listed,Q2.R;R38.2;R39.1,
 Q1_BASE,HYPOTHESIS / retains visual fragments where listed,Q1.R;R44.2,V_Q1_RIGHT
-Q1_EMITTER,HYPOTHESIS / retains visual fragments where listed,Q1.L;R43.2,V_Q1_LEFT
 Q8_DRIVE_A,HYPOTHESIS / retains visual fragments where listed,Q8.T3;R9.2,
 Q8_DRIVE_B,HYPOTHESIS / retains visual fragments where listed,Q8.T1;R8.2,
 R35_Q9,PHOTO_TRACE / not electrically measured,Q9.L;R35.2,
