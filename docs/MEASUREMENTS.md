@@ -60,7 +60,9 @@ They strongly support two series junctions conducting **R -> S -> L**: R is the 
 
 This resembles the **topology** of BAV99; its exact identity, ratings and package numbering are still unproved. Nexperia's BAV99 marking is A7 plus site code, not 4P. Do not import a BAV99 symbol with the old L/R numbering or restore earlier guessed rail connections. All three external endpoints remain open in the schematic.
 
-Follow-up rail checks: **D2.R -> GND = 0.78 Mohm**, **D2.R -> VDD = 0.99 Mohm**, exactly as reported. The first does not support a direct ground connection and makes the simple ground-to-VDD clamp hypothesis unlikely. The second remains labeled R-VDD even though L-VDD was requested; pad clarification is pending. Neither high resistance is recorded as OL or used to merge nets.
+Follow-up rail checks: **D2.R -> GND = 0.78 Mohm**, **D2.R -> VDD = 0.99 Mohm**. The user explicitly confirms that the second reading is R-VDD, not L-VDD. Neither reading supports a direct rail connection. Neither high resistance is recorded as OL or used to merge nets.
+
+The [user's annotated pad photo](../photos/user_updates/D2_user_pad_labels_20261009.png) fixes the measurement labels: **R is upper-left toward C20, L is upper-right beside R46, S is the single lower pad**. These letters are user labels, not automatic left/right directions. The measured sequence R -> S -> L is unchanged. Native placeholder numbers remain bookkeeping, not a verified device pinout. Next measure L to VDD TP and GND TP with power disconnected; neither L rail reading has been supplied.
 
 ## Confirmed connections and exclusions
 

@@ -9,6 +9,15 @@
   "power_state": "Instructions specified battery/programmer disconnected and capacitors discharged; not separately restated with these readings",
   "isolation": "In circuit; no removal or lifted lead reported",
   "pad_labels": "User's physical L/R/S labels, not inferred package pin numbers",
+  "pad_orientation_confirmation": {
+    "source": "User's annotated photograph and explicit R-to-VDD clarification",
+    "photo": "photos/user_updates/D2_user_pad_labels_20261009.png",
+    "photo_sha256": "de57127b5c3b31cfbf9c0acf417a69592e34e112d505bef58fceb41625802100",
+    "R": "Upper-left pad, toward C20, in the supplied photograph",
+    "L": "Upper-right pad, toward R46, in the supplied photograph",
+    "S": "Single lower pad in the supplied photograph",
+    "caution": "These are the user's labels, not the English words left/right. Do not swap measured results to match photo position. Existing native L=1/R=2/S=3 remains placeholder bookkeeping only."
+  },
   "readings": [
     {"red": "L", "black": "R", "reported": "OL", "volts": null},
     {"red": "R", "black": "L", "reported": "1.2 V", "volts": 1.2},
@@ -30,8 +39,8 @@
       {"from": "D2.R", "to": "GND test point", "reported": "0.78 Mohm", "ohms": 780000},
       {"from": "D2.R", "to": "VDD test point", "reported": "0.99 Mohm", "ohms": 990000}
     ],
-    "interpretation": "D2.R-GND does not support a direct copper connection; the proposed simple GND-to-VDD clamp is unlikely. The second reading is preserved as R-VDD, although L-VDD was requested. Clarification pending; do not silently reassign it to L.",
-    "next_action": "Confirm whether the second measurement was R-VDD or L-VDD; if R, obtain L-VDD. Then trace local component endpoints rather than repeating diode tests or assuming rail ties."
+    "interpretation": "D2.R-GND does not support a direct copper connection; the proposed simple GND-to-VDD clamp is unlikely. User explicitly confirms the second reading is R-VDD = 0.99 Mohm, not L-VDD. R has no demonstrated direct connection to either tested rail.",
+    "next_action": "With power disconnected, measure L (upper-right pad beside R46) to VDD TP and GND TP. L rail readings remain unmeasured. Then trace local component endpoints rather than repeating diode tests or assuming rail ties."
   },
   "schematic_changes": "No net joins, pin renumbering or symbol substitution. Keep the numbered unknown-part placeholder pending external routing evidence.",
   "sources": [
