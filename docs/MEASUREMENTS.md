@@ -26,7 +26,20 @@ The measurement requests specified battery and programmer disconnected. Shorted 
 
 Lettered Q8/U6 endpoints refer to the preserved annotated measurement photos, not package pin numbers. OL does not imply the absence of capacitive coupling.
 
-The [D2 resistance record](../evidence/d2_resistance_20261009.json) does not replace the pending diode-mode test. Diode mode measures junction voltage rather than resistance: test the three pairs in both polarities (six readings). This narrows compatible junction arrangements, but in-circuit paths and shared diode/transistor patterns can prevent a unique identity. No schematic change is justified by the current resistance readings.
+The subsequent [D2 resistance record](../evidence/d2_resistance_20261009.json) supplies all six probe polarities:
+
+| Red probe | Black probe | Reported resistance |
+|---|---|---|
+| L | R | 0.5 Mohm |
+| R | L | 1.44 Mohm |
+| L | S | 272 kohm |
+| S | L | 1.75 Mohm |
+| R | S | 1.75 Mohm |
+| S | R | 272 kohm |
+
+These are in-circuit resistance readings, not junction voltages. Their asymmetry does not establish a unique device identity or pinout; no schematic change is justified.
+
+**Equipment clarification:** the user confirms a **Fluke 179**, superseding the assistant's Fluke 114 inference from a photograph. The 179 supports diode test: turn to the continuity/diode position and press the yellow button to select diode mode, then check that the diode icon is displayed. With battery/programmer disconnected and capacitors discharged, repeat the same six combinations and record voltage or OL. See the manufacturer's [selector table](https://assets.fluke.com/manuals/175_____umeng0100.pdf) and [yellow-button instructions](https://assets.fluke.com/manuals/175_____umeng0200.pdf). Even diode-mode results in circuit may not uniquely identify D2.
 
 D3 rail association is separately closed: user reports D3.L to GND and D3.R to board VDD through V082. See the [D3 measurement record](../evidence/d3_measurement_20261009.json).
 
@@ -44,4 +57,4 @@ User dimensions: C11 approximately 3.2 x 1.5 mm supports 1206; R8 approximately 
 
 ## Not yet measured
 
-No actual rail voltages, powered functional results or LCR capacitor/inductor values have been supplied. The user has an LCR meter and multimeter. Prioritize RF/tuning values; record frequency, mode and in-circuit versus isolated-lead status. Do not infer a ceramic's value, voltage rating or dielectric from package size.
+No actual rail voltages, powered functional results or LCR capacitor/inductor values have been supplied. The user has an LCR meter, a Fluke 179 and a Fluke 87 III. Both Fluke models support diode testing; see also the [87 III manual](https://assets.fluke.com/manuals/8xiii___umeng0300.pdf). Prioritize RF/tuning values; record frequency, mode and in-circuit versus isolated-lead status. Do not infer a ceramic's value, voltage rating or dielectric from package size.

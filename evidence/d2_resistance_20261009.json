@@ -12,10 +12,32 @@
   "reliability": "User reports readings depend on probe placement and are not reliable",
   "power_state": "Not restated in this report; prior measurement instructions required battery and programmer disconnected",
   "interpretation": "Inconclusive for device identity or pin functions. Does not establish OL, a defective part, or an absent copper route to other components.",
-  "next_test": "With battery/programmer disconnected and capacitors discharged, diode mode across L-R, L-S and R-S in both probe polarities. Record displayed voltage or OL, using consistent physical pad labels.",
+  "followup_measurements": {
+    "source": "User's subsequent six-polarity table in chat",
+    "mode_reported": "resistance, inferred from the supplied kohm/Mohm units; not diode-mode voltage",
+    "readings": [
+      {"red": "L", "black": "R", "reported": "0.5 MOhm", "ohms": 500000},
+      {"red": "R", "black": "L", "reported": "1.44 MOhm", "ohms": 1440000},
+      {"red": "L", "black": "S", "reported": "272 kOhm", "ohms": 272000},
+      {"red": "S", "black": "L", "reported": "1.75 Mohm", "ohms": 1750000},
+      {"red": "R", "black": "S", "reported": "1.75 Mohm", "ohms": 1750000},
+      {"red": "S", "black": "R", "reported": "272 kOhm", "ohms": 272000}
+    ],
+    "interpretation": "Polarity-dependent in-circuit resistance is not sufficient to identify the device or establish its internal pin functions. No junction-voltage readings were reported."
+  },
+  "meter_capability_review": {
+    "user_confirmed_models": ["Fluke 179", "Fluke 87 III"],
+    "superseded_inference": "Assistant inferred a Fluke 114 from an earlier photo; user clarified that they have a Fluke 179. Do not apply the 114 limitation to the user's meter.",
+    "manufacturer_evidence": "Fluke 179 supports diode testing. Select the continuity/diode rotary position, then the yellow button to select diode test. Record junction voltage or OL, not resistance.",
+    "instruction_correction": "Specify the exact Fluke 179 setting and check for the diode display icon before repeating the six combinations."
+  },
+  "next_test": "With battery and programmer disconnected and capacitors discharged, use Fluke 179 diode mode (continuity/diode selector position, then yellow button). Repeat L-R, R-L, L-S, S-L, R-S, S-R and report displayed voltage or OL. These readings can narrow junction arrangements but may not uniquely identify a part in circuit.",
   "schematic_changes": "None",
   "sources": [
     "https://www.fluke.com/en-sg/learn/blog/digital-multimeters/how-to-test-diodes",
-    "https://media.digikey.com/pdf/Data%20Sheets/Zetex%20PDFs/FMMT2907(A).pdf"
+    "https://media.digikey.com/pdf/Data%20Sheets/Zetex%20PDFs/FMMT2907(A).pdf",
+    "https://assets.fluke.com/manuals/175_____umeng0200.pdf",
+    "https://assets.fluke.com/manuals/175_____umeng0100.pdf",
+    "https://assets.fluke.com/manuals/8xiii___umeng0300.pdf"
   ]
 }
