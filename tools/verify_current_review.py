@@ -43,7 +43,7 @@ class Links(HTMLParser):
         if tag=='script':self.inscript=False
     def handle_data(self,data):
         if self.inscript:self.scripts.append(data)
-for name in ['index.html','docs/FINISHING_CHECKLIST.html','docs/VIA_REVIEW.html']:
+for name in ['index.html','docs/FINISHING_CHECKLIST.html','docs/VIA_REVIEW.html','docs/FINISHING_MEASUREMENTS.html']:
     path=ROOT/name; text=path.read_text(encoding='utf-8'); parser=Links();parser.feed(text)
     for link in parser.links:
         u=urlparse(link)

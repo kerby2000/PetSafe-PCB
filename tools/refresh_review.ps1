@@ -14,6 +14,7 @@ try {
     if ($LASTEXITCODE) { throw 'Via-pair HTML refresh failed' }
     foreach ($script in @(
         'tools/build_complete_status.py',
+        'tools/build_finishing_measurements.py',
         'tools/build_review.py',
         'tools/build_completion_audit.py',
         'tools/verify_evidence_contracts.py',

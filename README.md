@@ -19,6 +19,8 @@ Schematic revision **v0.9.12**; architect review corrections and D2 local routin
 
 The checklist gives every known issue a stable ID, supporting evidence, next useful check and closure criterion. **A question mark, an assigned footprint, or zero open PIC pads does not measure overall completeness.** D2's local destinations are now mapped: R-C20 lower, L-ANT2/R46 upper, S-R46 lower. R46 remains unpopulated; D2 exact identity remains unknown. D3 rail association is closed by the user measurement: D3.R to V082/VDD, D3.L to GND. D3.S-to-R42 is 1.2 ohm; the exact resistor pad remains photo-selected. Next priority is U3 pin 5's missing DC-bias return; the rest of the receiver supply remains separate.
 
+The next bench batch is in [the finishing photo guide](docs/FINISHING_MEASUREMENTS.html): seven resistance readings around U3's input and J3. Resolve signal paths first, then recover frequency-sensitive capacitor values with the LCR meter, check operating voltages and remaining package details, and finalize the sheet with explicit measured/assumed component evidence. This first batch does not cover every remaining circuit question. Completed D2, D3 and via tests must not be repeated.
+
 ## Power names
 
 | Name | Meaning |
