@@ -79,8 +79,15 @@ assert {k:r['resistance_ohms'] for k,r in measured2.items()}=={'B08':10000,'B09'
 assert net('R23.1')!=net('GND.1'), '400 kohm must not be rounded to a copper connection'
 assert xml.findtext('./components/comp[@ref="R38"]/value')=='10k'
 for path,digest in batch2['photos'].items():assert sha(path)==digest
-assert {r['id'] for r in queue['completed_tests']}==set(measured)|set(measured2)
-assert not (set(measured)|set(measured2))&{r['id'] for r in queue['tests']}, 'Do not repeat completed finishing readings'
+batch3=read('evidence/u3_r23_batch3_20261009.json')
+measured3={r['id']:r for r in batch3['readings']}
+assert {k:r['resistance_ohms'] for k,r in measured3.items()}=={'B13':300000,'B14':400000,'B15':600000}
+for x,y in batch3['rejected_direct_pairs']:
+ assert net(x)!=net(y), 'High measured resistance must not become a copper join: '+x+' - '+y
+for path,digest in batch3['photos'].items():assert sha(path)==digest
+completed_ids=set(measured)|set(measured2)|set(measured3)
+assert {r['id'] for r in queue['completed_tests']}==completed_ids
+assert not completed_ids&{r['id'] for r in queue['tests']}, 'Do not repeat completed finishing readings'
 for ref in ['U4','R11','R14','R15','R16','R37','R39','Q1','U2','Q8','C5','LED1','R18','R19','Q7','TP3','TP104','U106','J3','R43','TP14','R42','R44','TP4','TP103','R21','R22','R23','R48']:
  expected=next(c for c in placements['components'] if c['reference']==ref)['properties']['ViaEvidence']
  assert xml.findtext(f'./components/comp[@ref="{ref}"]/fields/field[@name="ViaEvidence"]')==expected,ref

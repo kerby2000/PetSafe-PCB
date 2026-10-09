@@ -1,8 +1,8 @@
 {
   "date": "2026-10-09",
-  "review_revision": "2026-10-09 U3/J3 finishing batch 2",
+  "review_revision": "2026-10-09 R23 finishing batch 3",
   "basis_revision": "v0.9.14",
-  "scope": "Current main-board uncertainties after the 522d235 architect review and user D3 follow-up. J1 numbering corrected from photos, R41 named neutrally; D3 rail assignment resolved by user measurement with closure history retained. D2 local destinations now have user evidence: R to C20 lower end, L to ANT2/R46 upper, S to R46 lower; R46 is DNP. Exact part identity remains open. U3.5 VREF and J3.3 ground now measured; disproven R23 and J3 role guesses withdrawn in v0.9.13. Batch2 confirms J3.2-R38 K, U3.6-R23 B and R22 E-GND; R23 C remains unresolved.",
+  "scope": "Current main-board uncertainties after the 522d235 architect review and user D3 follow-up. J1 numbering corrected from photos, R41 named neutrally; D3 rail assignment resolved by user measurement with closure history retained. D2 local destinations now have user evidence: R to C20 lower end, L to ANT2/R46 upper, S to R46 lower; R46 is DNP. Exact part identity remains open. U3.5 VREF and J3.3 ground now measured; disproven R23 and J3 role guesses withdrawn in v0.9.13. Batch2 confirms J3.2-R38 K, U3.6-R23 B and R22 E-GND; R23 C remains unresolved. Batch3 rejects direct R23 C joins to C18 M/N and TP6: 300/400/600 kohm respectively; no topology change.",
   "rails": [
     {
       "name": "BATTERY+",
@@ -279,9 +279,9 @@
       ],
       "priority": 2,
       "state": "open",
-      "known": "PIC12/RC1-R18 via V053-V070; V064-V075 continuity and V064-V070 11.2 kohm support Q7 supply-switch hypothesis. U3.5 is VREF; R22 D/left is VREF and E/right GND, 10k between. U3.6-R23 B/left 1 ohm, C/right 5.6 kohm; pin6-ground 400 kohm. Prior TP6/C18 fragment is retained separately from pin5.",
+      "known": "PIC12/RC1-R18 via V053-V070; V064-V075 continuity and V064-V070 11.2 kohm support Q7 supply-switch hypothesis. U3.5 is VREF; R22 D/left is VREF and E/right GND, 10k between. U3.6-R23 B/left 1 ohm, C/right 5.6 kohm; pin6-ground 400 kohm. Prior TP6/C18 fragment is retained separately from pin5. R23 C-right to C18 left/right and TP6 measures 300/400/600 kohm respectively, excluding direct joins.",
       "unknown": "R23 C/right/model2 onward destination; remaining feedback/coupling and R48.2 VREF hypotheses, Q7 pin roles, receiver output destination. Both R23 ends were 270-289 kohm from U3.5; the old VREF tie remains rejected. U3 pin6 is not directly ground.",
-      "next_action": "Measure R23 C/right to TP6 and to each C18 end. This tests the existing input-filter node as the most plausible continuation; none is assumed short. Keep both C18 ends distinct. Do not repeat pin6-to-R23 or R22-ground checks. Receiver output routing follows.",
+      "next_action": "Measure R23 C/right to the facing C40 lower pad (P) and R42 upper pad (Q) in IMG_2434. The visible short trace toward their gap supports this focused check; no copper join or whole-net merge is assumed. C18/TP6 candidates have been rejected; do not repeat them. Receiver output routing remains to be reconciled.",
       "closed_when": "Receiver supply, bias, gain/filter paths and interface endpoints are reconciled against evidence. U3.5 has a documented DC return or supported intentional nonstandard mechanism, and the detector output has a supported functional destination.",
       "open_pads": [
         "R23.2"
@@ -308,6 +308,11 @@
         {
           "result": "R22 ground end and U3.6-to-R23 B/left confirmed; R23 C/right destination remains open.",
           "evidence": "evidence/u3_j3_batch2_20261009.json",
+          "date": "2026-10-09"
+        },
+        {
+          "result": "R23 C/right is not directly joined to either C18 end or TP6; readings are 300/400/600 kohm. Onward destination remains open.",
+          "evidence": "evidence/u3_r23_batch3_20261009.json",
           "date": "2026-10-09"
         }
       ]

@@ -55,3 +55,9 @@ J3 pin 3 reads 1 ohm to GND, and pin 2 reads 290 kohm. The schematic now grounds
 User establishes U3 pin6 to R23 B/left/model1 at 1 ohm, with 5.6 kohm to C/right/model2. J3 pin2 to R38 K/right/model1 is 1 ohm, with 10 kohm to J/left/model2. R22 E/right/model1 is GND at 1 ohm. These support the marked resistor values and resolve the connector entry and R22 return. The additional pin6-to-R22 E reading is 400 kohm; it is preserved as an in-circuit path, not a new resistor or a direct ground tie.
 
 R23 C/right remains open. The next three checks test its relationship to TP6 and each C18 end, using the existing filter-node model and adjacent photo traces as a candidate. R33/Q2/R39 and TP16 onward routing remain qualified. All previous probe letters and results are retained in the current guide. Evidence: `evidence/u3_j3_batch2_20261009.json`.
+
+## R23 third batch, native schematic remains v0.9.14
+
+User reports C-M 300 kohm, C-N 400 kohm and C-O 600 kohm. These reject direct connections from R23 C/right to both C18 ends and TP6. The finite readings remain recorded as supplied; they are not OL, short circuits or recovered individual resistor values. R23's onward destination remains open, with no change to native wiring or the marked 5.6k value. Evidence: `evidence/u3_r23_batch3_20261009.json`.
+
+IMG_2434 shows a short trace heading from R23 right toward the gap between C40 and R42. The current guide marks P at C40's lower metal end and Q at R42's upper metal end for two local resistance checks. These are candidates only. A future local match must be reconciled against the separately inferred branches on the existing C40/R42 nets before any whole-net merge. The earlier C18/TP6 candidate checks above are complete and must not be repeated.

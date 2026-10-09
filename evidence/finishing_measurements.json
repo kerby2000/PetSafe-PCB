@@ -1,24 +1,24 @@
 {
   "date": "2026-10-09",
   "basis_revision": "v0.9.14",
-  "status": "AWAITING_THIRD_BATCH",
-  "scope": "Both previous batches and the additional 400 kohm reading are recorded. Three targeted R23 continuation checks remain in this queue.",
+  "status": "AWAITING_FOURTH_BATCH",
+  "scope": "Three R23 continuation candidates rejected by high measured resistance. Two local photo-supported candidates remain in this queue; native topology is unchanged.",
   "setup": "Battery and programmer disconnected; allow capacitors to discharge. Resistance mode. Note the shorted-probe baseline; report actual ohms, kohms, Mohms, OL or changing readings. Do not bridge or desolder anything in this batch.",
   "photos": [
     {
       "id": "receiver",
       "source": "photos/originals/IMG_2434.jpg",
       "view_box": [
-        150,
-        285,
-        1050,
-        825
+        750,
+        170,
+        580,
+        480
       ],
       "coordinate_space": [
         1368,
         1823
       ],
-      "title": "R23 onward route: C18 and TP6",
+      "title": "R23 trace toward the facing C40 and R42 pads",
       "points": {
         "A": {
           "xy": [
@@ -118,6 +118,28 @@
             1067
           ],
           "description": "TP6 plated hole below and left of U3"
+        },
+        "P": {
+          "xy": [
+            1163,
+            338
+          ],
+          "label": [
+            1284,
+            289
+          ],
+          "description": "C40 lower metal end in this photo, facing R42"
+        },
+        "Q": {
+          "xy": [
+            1163,
+            438
+          ],
+          "label": [
+            1284,
+            486
+          ],
+          "description": "R42 upper metal end in this photo, facing C40"
         }
       }
     },
@@ -207,25 +229,18 @@
   ],
   "tests": [
     {
-      "id": "B13",
+      "id": "B16",
       "from": "C",
-      "to": "M",
+      "to": "P",
       "issue": "E08",
-      "purpose": "Test R23 right end against one side of the adjacent C18 input-filter candidate."
+      "purpose": "Check the C40 lower pad beside the visible R23 trace. A local short would not by itself confirm every inferred C40 net branch."
     },
     {
-      "id": "B14",
+      "id": "B17",
       "from": "C",
-      "to": "N",
+      "to": "Q",
       "issue": "E08",
-      "purpose": "Test the other C18 end without assuming its physical numbering. A changing capacitor path is not a short."
-    },
-    {
-      "id": "B15",
-      "from": "C",
-      "to": "O",
-      "issue": "E08",
-      "purpose": "Test whether R23 takes its signal from the existing TP6/filter node. This is a candidate, not a measured join."
+      "purpose": "Check the facing R42 upper pad. Distinguish direct copper from a resistor-valued or high-resistance path; no join is assumed."
     }
   ],
   "interpretation": "Near the probe baseline supports a local low-resistance route; a beep alone is insufficient. Record finite resistance without rounding it to a short. A changing reading may involve capacitors. None of the proposed pairs is new measured evidence.",
@@ -253,7 +268,8 @@
     "Confirmed PIC/via connections",
     "Seven rejected capacitor-midpoint pairs",
     "Completed B01-B07: U3 pin5 to R22/R23/VREF and J3 pins2/3 to GND",
-    "Completed B08-B12 and X01: J3-R38, U3 pin6-R23, R22-GND, U3 pin6-R22 E"
+    "Completed B08-B12 and X01: J3-R38, U3 pin6-R23, R22-GND, U3 pin6-R22 E",
+    "Completed B13-B15: R23 C to C18 M/N and TP6 O; 300k/400k/600k exclude direct joins"
   ],
   "deferred": "The 16 open pads on empty options are recorded but are lower priority unless they affect a fitted net. U6's two candidate internal-NC pins need external-copper inspection, not an invented no-connect flag. Firmware, daughterboard internals and routed PCB are separate from main-board schematic completion.",
   "sources": [
@@ -263,7 +279,8 @@
     "photos/originals/IMG_2435.jpg",
     "https://www.sg-micro.com/rect/assets/537cce2c-8022-4ea6-97f4-6524851a35e8/SGM8541_SGM8542_SGM8544.pdf",
     "evidence/u3_j3_measurements_20261009.json",
-    "evidence/u3_j3_batch2_20261009.json"
+    "evidence/u3_j3_batch2_20261009.json",
+    "evidence/u3_r23_batch3_20261009.json"
   ],
   "completed_tests": [
     {
@@ -369,9 +386,33 @@
       "issue": "E08",
       "purpose": "Additional user check of U3 pin6 to the now measured ground end of R22.",
       "result": "400 kohm"
+    },
+    {
+      "id": "B13",
+      "from": "C",
+      "to": "M",
+      "issue": "E08",
+      "purpose": "Test R23 right end against one side of the adjacent C18 input-filter candidate.",
+      "result": "300 kohm"
+    },
+    {
+      "id": "B14",
+      "from": "C",
+      "to": "N",
+      "issue": "E08",
+      "purpose": "Test the other C18 end without assuming its physical numbering. A changing capacitor path is not a short.",
+      "result": "400 kohm"
+    },
+    {
+      "id": "B15",
+      "from": "C",
+      "to": "O",
+      "issue": "E08",
+      "purpose": "Test whether R23 takes its signal from the existing TP6/filter node. This is a candidate, not a measured join.",
+      "result": "600 kohm"
     }
   ],
-  "batch_title": "Next batch: three R23 continuation checks",
-  "instructions": "Keep one probe on C (R23 right end). Measure to M (C18 left), N (C18 right), then O (TP6). No connection is assumed; report actual resistance or a changing reading. Labels retain their earlier meanings.",
-  "result_summary": "U3 pin6 reaches R23 B/left at 1 ohm; C/right is 5.6 kohm away. J3 pin2 reaches R38 K/right at 1 ohm and J/left through 10 kohm. R22 E/right is GND at 1 ohm; U3 pin6 is 400 kohm from it. The local J3 entry and R22 return are resolved. R23 C/right still needs its onward destination."
+  "batch_title": "Next batch: two pads beside the R23 trace",
+  "instructions": "Keep one probe on C (R23 right metal end). Measure C-P (C40 lower metal end), then C-Q (R42 upper metal end). P and Q face each other across the gap beside R23. Battery and programmer remain disconnected. Report actual resistance; letters A-O keep their previous meanings.",
+  "result_summary": "C-M = 300 kohm, C-N = 400 kohm and C-O = 600 kohm. R23 C/right is not directly connected to either C18 end or TP6. R23 remains 5.6k and its onward destination remains unresolved. Previous confirmed J3, U3 pin5/pin6 and R22 connections remain recorded. No wire or new resistor was added from these readings."
 }
