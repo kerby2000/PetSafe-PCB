@@ -1,8 +1,6 @@
 # Recorded measurements and observations
 
-Current for v0.9.29, 2026-10-09. These are user reports, not measurements made by software. **No active bench batch is pending.** Dated raw JSON events and completed photo-guide contacts are preserved. Earlier requests are archived in [the previous narrative](history/cleanup_v0928/docs/MEASUREMENTS.md); do not repeat a reading just because it occurs there.
-
-Available instruments reported by the user: LCR meter, Fluke 179 and Fluke 87 III. The earlier Fluke 114 inference is superseded. No actual rail voltages or powered functional results have been supplied. The 44 fitted ceramic values remain unmeasured; L1/L2 readings are recorded below.
+Current as of 2026-10-09. These are user reports, not measurements performed by software. Full event records remain in `evidence/measurement_plan.json`, `evidence/via_audit.json`, the versioned net-change records and the [via-pair results](VIA_PAIR_TESTS.html). [The checklist](FINISHING_CHECKLIST.html) distinguishes remaining work.
 
 ## Numeric electrical results
 
@@ -24,7 +22,7 @@ The measurement requests specified battery and programmer disconnected. Shorted 
 | V090 to V095/V100/V103/V107 | OL, all four | No direct continuity in this test |
 | V095 to V100/V103/V107 | OL, all three | No direct continuity in this test |
 | D3.S to R42 | 1.2 ohm | Supports a direct connection to one R42 pad; pad2 selected from photo, not explicitly named in the reading |
-| D2, all three unordered pin pairs | Variable 1-2 Mohm | User calls readings unreliable and probe-placement-dependent. Individual values and probe polarity unspecified; initial resistance readings alone did not establish identity/pin functions |
+| D2, all three unordered pin pairs | Variable 1-2 Mohm | User calls readings unreliable and probe-placement-dependent. Individual values and probe polarity unspecified; identity/pin functions remain unresolved |
 
 Lettered Q8/U6 endpoints refer to the preserved annotated measurement photos, not package pin numbers. OL does not imply the absence of capacitive coupling.
 
@@ -39,13 +37,15 @@ The subsequent [D2 resistance record](../evidence/d2_resistance_20261009.json) s
 | R | S | 1.75 Mohm |
 | S | R | 272 kohm |
 
-These are in-circuit resistance readings, not junction voltages. Their asymmetry does not establish a unique device identity or pinout; these readings alone did not justify a schematic change.
+These are in-circuit resistance readings, not junction voltages. Their asymmetry does not establish a unique device identity or pinout; no schematic change is justified.
+
+**Equipment clarification:** the user confirms a **Fluke 179**, superseding the assistant's Fluke 114 inference from a photograph. The 179 supports diode test: turn to the continuity/diode position and press the yellow button to select diode mode, then check that the diode icon is displayed. With battery/programmer disconnected and capacitors discharged, repeat the same six combinations and record voltage or OL. See the manufacturer's [selector table](https://assets.fluke.com/manuals/175_____umeng0100.pdf) and [yellow-button instructions](https://assets.fluke.com/manuals/175_____umeng0200.pdf). Even diode-mode results in circuit may not uniquely identify D2.
 
 D3 rail association is separately closed: user reports D3.L to GND and D3.R to board VDD through V082. See the [D3 measurement record](../evidence/d3_measurement_20261009.json).
 
 ### D2 diode-mode follow-up: completed
 
-The completed [six diode readings](../evidence/d2_diode_20261009.json) are:
+The [six diode readings](../evidence/d2_diode_20261009.json) supersede the pending test request above:
 
 | Red probe | Black probe | Diode-mode reading |
 |---|---|---|
@@ -58,7 +58,7 @@ The completed [six diode readings](../evidence/d2_diode_20261009.json) are:
 
 They strongly support two series junctions conducting **R -> S -> L**: R is the outer anode, S the midpoint, and L the outer cathode in this working equivalent. The earlier simple PNP candidate is a poor fit to this pattern. In-circuit measurement does not prove that both junctions are internal to D2.
 
-This resembles the **topology** of BAV99; its exact identity, ratings and package numbering are still unproved. Nexperia's BAV99 marking is A7 plus site code, not 4P. The active D2 symbol remains an explicitly numbered unknown-device placeholder; earlier guessed rail connections are withdrawn. All three local destinations are now resolved as listed below.
+This resembles the **topology** of BAV99; its exact identity, ratings and package numbering are still unproved. Nexperia's BAV99 marking is A7 plus site code, not 4P. Do not import a BAV99 symbol with the old L/R numbering or restore earlier guessed rail connections. All three external endpoints remain open in the schematic.
 
 Follow-up rail checks: **D2.R -> GND = 0.78 Mohm**, **D2.R -> VDD = 0.99 Mohm**. The user explicitly confirms that the second reading is R-VDD, not L-VDD. Neither reading supports a direct rail connection. Neither high resistance is recorded as OL or used to merge nets.
 
@@ -80,30 +80,28 @@ The subsequent local checks resolve all three D2 destinations:
 
 The user confirms **R46 is unpopulated**. Its pads sit across the probable S-to-L junction, but there is no fitted resistor or jumper between them. Upper=1/lower=2 are model assignments for this empty nonpolar option. This establishes D2's local antenna/receiver connections; it does not identify the exact 4P component, validate package numbering, or confirm the other inferred C20/C19/R28/U3.3 branches. All local/rail tests are recorded in [the D2 evidence record](../evidence/d2_diode_20261009.json); no repeat sweep is needed.
 
-## Further completed readings and corrections
+## Confirmed connections and exclusions
 
-| Evidence | Current result |
-|---|---|
-| U3/J3 batches | U3.5-VREF/R22.2 about 1 ohm; R22.1 GND. U3.6-R23.1 about 1 ohm, 5.6k through R23. R23.2-C40.1/R42.1 about 1 ohm each. J3.3-GND about 1 ohm; J3.2-R38 about 1 ohm, 10k through R38; J3.2-GND 290k. |
-| Rejected direct joins | R23 to C18/TP6: 300k/400k/600k; TP16 to TP11/TP17: 400k each. Values are preserved as resistance, not OL or fictitious fitted resistors. |
-| PIC21/PIR | TP16-VREF 0.8 Mohm; user explicitly withdrew PIC21-VREF and confirmed PIC21-TP16/Q2.S. U7.1/2/3 connect to J3.3/2/1. |
-| D6/U6 | D6 V-GND and W-VPP about 1 ohm; V-to-W 0.7 V, reverse OL: A=GND/K=VPP. U6 pin5-pin2 about 1 ohm. Pin4 unused by user/photo evidence. |
-| Photo/user routing | C25-RA0, C26-RA1 with shared ground; C6 parallels C5; R47/C42 stage-link copper; R41-VPP; J6/Q9 options; U6A's three pads. No new numerical reading is implied by annotations. |
-| C49 | User confirms rear C49 between ANT2 and GND; existing DNP status retained. |
-| L1 / L2 | LCR readings **1.4 uH / 2.2 uH**. Frequency, mode, fixture compensation and isolation condition are unreported; exact nominal part and ratings remain qualified. |
+Reported connections without numerical resistance are recorded as **user continuity reports**, not fabricated 0.0-ohm readings. Key examples include V022-V016 (PIC15-U5.2), V023-V019 (PIC16-U5.3), V036-V108, V037-V102, V039-V097, V047-V091, V064-V063, V064-V075, and V053-V070. See the [current via summary](VIA_REVIEW_RESULTS.md) and per-site audit for all reports.
 
-See [U3/J3 batch1](../evidence/u3_j3_measurements_20261009.json), [batch2](../evidence/u3_j3_batch2_20261009.json), [R23 batch3](../evidence/u3_r23_batch3_20261009.json), [batch4](../evidence/u3_r23_batch4_20261009.json), [PIC21 correction](../evidence/pic21_tp16_followup_20261009.json), [D6/U6 results](../evidence/d6_u6_open_pad_results_20261009.json), [C49 record](../evidence/c49_connections_20261009.json) and [L1/L2 record](../evidence/l1_l2_inductance_20261009.json). The [measurement page](FINISHING_MEASUREMENTS.html) retains probe labels and all completed readings.
+V053-V071 and V053-VREF were explicitly rejected. Q1.L-R43.2 was explicitly withdrawn. Raw BATTERY+ and post-Q1 VSYS are distinct nets. V114 was corrected to U2.T2 ground, not Q8. V072 reaches TP6, not R22.2. These negative/corrective results remain constraints on future edits.
 
-## Markings and dimensions already supplied
+## Markings and dimensions
 
-U6=C2NM; Q8=3724A; D2=4P; D3=A7; D4/D5=5U; D6=G3; R41=331 (330 ohm). R29/R44=18C (15k) came from photographs, not new meter readings.
+User readings: U6=C2NM; Q8=3724A; D2=4P; D3=A7; D4/D5=5U; D6=G3; R41=331 (330 ohm); C5=470 uF / 16 V. R29/R44=18C (15 kohm) came from photographs rather than a new meter reading.
 
-| Part | Supplied observation | What remains |
-|---|---|---|
-| C5 | 470 uF / 16 V; diameter 6.33 mm, height 16 mm | Lead pitch/drill fit for PCB reproduction; stock 7 mm housing differs from actual 16 mm |
-| R8 | 1.6 x 0.77 mm including end caps | 0603 body supported; ratings/other resistors remain qualified |
-| C11 | About 3.2 x 1.5 mm | 1206 supported; capacitance unknown |
-| S1 | 6 x 6 x 4 mm body, plus 2 mm actuator | Contact behavior and exact pad fit; stock 4.3 mm model differs from actual about 6 mm height |
-| LED1 | Red and green emitters, square 1.5 x 1.5 mm | Pad geometry/numbering, channel mapping and matching footprint |
+User dimensions: C11 approximately 3.2 x 1.5 mm supports 1206; R8 approximately 1.6 x 0.77 mm, **including both metal end caps**, supports 0603. Other packages remain family/photo estimates until individually supported.
 
-Reported connections without numerical resistance remain **user continuity reports**, never fabricated 0.0-ohm readings. V053-V071/VREF and Q1.L-R43.2 are withdrawn/rejected. V114 is U2.T2 ground, not Q8; V072 is TP6, not R22.2. Raw BATTERY+ and post-Q1 VSYS remain separate. See [current via findings](VIA_REVIEW_RESULTS.md) and the [question register](../evidence/remaining_work.json).
+## Not yet measured
+
+No actual rail voltages, powered functional results or LCR capacitor/inductor values have been supplied. The user has an LCR meter, a Fluke 179 and a Fluke 87 III. Both Fluke models support diode testing; see also the [87 III manual](https://assets.fluke.com/manuals/8xiii___umeng0300.pdf). Prioritize RF/tuning values; record frequency, mode and in-circuit versus isolated-lead status. Do not infer a ceramic's value, voltage rating or dielectric from package size.
+
+
+## v0.9.27 - L1/L2 inductance readings
+
+The user reports LCR-meter readings of **L1 = 1.4 uH** and **L2 = 2.2 uH**. These replace the schematic value placeholders while retaining stock `Device:L` symbols, the existing 0805 footprint candidates and all connections. Test frequency, series/parallel mode, fixture compensation and whether the parts were isolated from the PCB have not yet been reported. These readings do not identify manufacturer nominal values, magnetic construction, tolerance, DCR or current ratings. The value checklist now has both magnetic readings recorded; 44 ceramic values remain unrecovered. See [structured measurement record](../evidence/l1_l2_inductance_20261009.json).
+
+
+## v0.9.28 - rear C49 routing resolved
+
+The user confirms that rear C49 connects between **ANT2 and GND**. The schematic now models C49.1 on `H_ANT_B` (ANT2) and C49.2 on `GND`. Since it is a nonpolar capacitor, this numbering is a schematic convention rather than a measured physical pad orientation. The existing photographed DNP classification is retained; the report supplies no capacitance or fitting change. Both previously open C49 pads are resolved. Zero open catalog pads does not prove all onward routing, candidate identities or circuit behavior. See [connection evidence](../evidence/c49_connections_20261009.json).

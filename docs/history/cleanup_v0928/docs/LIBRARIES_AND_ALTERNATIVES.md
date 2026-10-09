@@ -1,8 +1,8 @@
-# Current KiCad libraries and package qualifications
+# KiCad 10 libraries and device alternatives
 
-Current schematic v0.9.29 uses KiCad 10.0.5, the connected KiCad MCP server, **149 catalog entries / 154 symbol units / 351 physical pads**, and **22 stock plus four authorized datasheet symbol definitions**. 148 footprints are assigned candidates; only LED1 remains blank. [Current component audit](FINISHING_CHECKLIST.html) and [pin crosswalk](../evidence/pin_crosswalk.json) supersede older catalog totals and arbitrary connector numbering.
+Revision 0.9.9 uses the existing KiCad MCP Server and the installed KiCad 10.0.5 at `%LOCALAPPDATA%/Programs/KiCad/10.0`. Both its Python backend (`pcbnew.GetBuildVersion()`) and native CLI reported 10.0.5. The MCP created the blank native schematic and placed all 150 components plus five additional units from standard libraries. The checked-in routing adapter reconnects those stock symbols and adds the block frames and annotations. Native KiCad checks the resulting connectivity. MCP PDF/SVG export was also exercised successfully.
 
-Stock graphics and pin numbers are retained. U1/U5 and subsequently U6/Q8 were explicitly authorized for MCP datasheet-symbol construction. The symbol library is portable through `${KIPRJMOD}`. Candidate pinout correctness is distinct from fitted identity and actual board wiring. [The prior library narrative](history/cleanup_v0928/docs/LIBRARIES_AND_ALTERNATIVES.md) preserves intermediate authoring details and older package guesses.
+The user authorized U1/U5 after vendor files could not be found, and subsequently authorized U6/Q8 datasheet reconstruction. MCP `create_symbol`, `register_symbol_library` and `replace_schematic_component` created and installed U1/U5 from the manufacturer pin tables. The other 20 definitions retain unmodified KiCad stock artwork and numbering. `tools/templates/mcp_standard_placements.kicad_sch` is the MCP placement output; `evidence/library_placements.json` is the replay manifest. `evidence/pin_crosswalk.json` maps all 352 photographed pads to their library pin numbers. Pin mapping can be provisional even when the underlying part symbol is exact.
 
 ## Library choices
 
@@ -14,17 +14,17 @@ Stock graphics and pin numbers are retained. U1/U5 and subsequently U6/Q8 were e
 | Q1 | `Transistor_FET:Q_PMOS_GSD` | v0.9.9: FMOS3401A candidate, matching manufacturer R1A marking and SOT-23 G1/S2/D3 pinout. Photo R=gate, L=source, single S=drain. Original NPN hypothesis withdrawn. Exact fitted maker unconfirmed. |
 | Q2, Q7 | `Transistor_BJT:BC847`, `Transistor_BJT:BC857` | Standard family symbols; values preserve the B/C gain-bin candidates. |
 | Q3/Q4/Q5/Q6/Q11 | `Transistor_BJT:Q_PNP_BEC` | Standard generic PNP with B=1, E=2, C=3; value MMBTA55? preserves the uncertain 2H identification. |
-| D1/D3 | `Diode:BAV99` | A7 marking candidates; D3 marking now confirmed by the user. D3 rail terminals are user-confirmed (L GND, R VDD); exact R42 end is photo-selected. D1 still has an isolated branch. Exact fitted maker remains unproved. |
+| D1/D3 | `Diode:BAV99` | A7 marking candidates; D3 marking now confirmed by the user. Physical orientation and external clamp routes remain inferred. |
 | D2 | `Connector_Generic:Conn_01x03` | Unidentified 4P part; in-circuit readings support series junctions R -> S -> L. L=1/R=2/S=3 remain bookkeeping. User maps R-C20 lower, L-ANT2/R46 upper, S-R46 lower; R46 is empty. Exact part/ratings unknown; prior rail-clamp ties remain withdrawn. |
 | LED1 | `Device:LED_Dual_AAKK` | User-confirmed red/green dual emitter, 1.5 x 1.5 mm body; colour-to-pin mapping and footprint remain provisional. |
 | S1 | `Switch:SW_Push` | Four physical switch pads map to two repeated footprint pad numbers; see measured-body evidence below. |
-| R/C/L/Y/TP | `Device:R`, `Device:C`, `Device:C_Polarized`, `Device:L`, `Device:Crystal`, `Connector:TestPoint` | Existing conventional library parts. C5 is modeled positive on H_RF_VDD and negative on GND, retaining user/photo polarity evidence. |
+| R/C/L/Y/TP | `Device:R`, `Device:C`, `Device:C_Polarized`, `Device:L`, `Device:Crystal`, `Connector:TestPoint` | Existing conventional library parts. C5 polarity is inferred from the selected rail topology. |
 | U1 | `PetSafe_Datasheet:S-1200B45-M5T1` | MCP-created from ABLIC Rev.6 page 5: 1 VIN, 2 VSS, 3 ON/OFF, 4 NC, 5 VOUT. B option has active-high enable. The fitted part remains a strong identification candidate, not a measured fact. |
 | U5 | `PetSafe_Datasheet:MX512H` | MCP-created from Mixic Rev.1.2 page 2: 1 VCC, 2 INA, 3 INB, 4 VDD, 5 OUTB, 6/7 GND, 8 OUTA. Logic/motor supplies and both ground pins retained. |
 | U6 | `PetSafe_Datasheet:S-812C33AMC` | MCP-created from ABLIC Table 5; C2N product code and measured likely ground support identification. |
 | Q8 | `PetSafe_Datasheet:SIL3724A` | MCP-imported standard generic N/P graphics with manufacturer-verified 1 G_N, 2 S_P, 3 G_P, 4 D_P, 5 S_N, 6 D_N. Fitted maker unconfirmed. |
 | D4/D5 | `Device:D_Zener` | Standard unidirectional avalanche symbol, value SD05? / TVS 5V. Semtech maps 5U to SD05. SOD-323 candidate footprint; ICSP and ground routes are photo-derived. |
-| D6 | `Device:D_Zener` | G3 supports MMSZ5228BS? / 3.9V, but PZU2.4B / 2.4V remains an alternative. Standard SOD-323 candidate footprint; D6 routing and polarity are measured (A GND, K VPP); breakdown is unverified. |
+| D6 | `Device:D_Zener` | G3 supports MMSZ5228BS? / 3.9V, but PZU2.4B / 2.4V remains an alternative. Standard SOD-323 candidate footprint; ICSP and ground routes are photo-derived. |
 | J connectors / empty pads | `Connector_Generic` family | Unknown pitches and empty package identities stay unspecified. These entries preserve the source catalog. |
 
 The installed BAV99 symbol has hidden pin-name strings that do not agree with the Nexperia terminology for pins 1/2. Its visible diode geometry and **pin numbers** agree with the datasheet (1 A1, 2 K2, 3 K1/A2). No library modification or pin swapping was made to hide this naming issue.
@@ -62,20 +62,36 @@ Standard SOT-23, SOT-23-5, SOT-23-6 and SOIC footprints are assigned only for id
 
 The original two exact-symbol requests are now resolved through authorized MCP creation. U1 uses stock `Package_TO_SOT_SMD:SOT-23-5`. U5 uses stock `Package_SO:SOIC-8_3.9x4.9mm_P1.27mm`, matching the nominal package dimensions on MX512H page 9. Pad numbers were checked through MCP. Land-pattern fit on the photographed PCB remains unmeasured. SGM8542 does not need a custom drawing: the stock generic dual op-amp already represents its actual pinout. U6 and Q8 now have datasheet candidate symbols with normal artwork and pin numbering. The old custom library and generator are archived in `reference/v02/`; they are not registered in the active project.
 
-## Current empty-option symbols
+## U6 / Q8 follow-up (2026-10-08)
 
-Q9 uses stock `Transistor_BJT:Q_NPN_BEC`: L/base1 through R35, R/emitter2 to GND, S/collector3 to J6.1. NPN is an inferred role for an empty footprint.
+See [corrected marking and pin maps](U6_Q8_MARKING_UPDATE.md). MCP library search found no exact S-812C or 3724 symbol. U6 was created from ABLIC's pin table; Q8 reuses KiCad's `Q_Dual_NMOS_PMOS_G1S2G2D2S1D1` artwork through MCP import. The six pins match SIL3724A. Actual 3724A fitted manufacturer remains unconfirmed. The earlier RT9818 intermediate symbol was removed after the new photo corrected the marking.
 
-U6A is native **U106**, using `Regulator_Linear:MCP1700x-330xxTT` only as a regulator role template: **pin3 input, pin2 output, pin1 ground**. The earlier connector numbering is superseded. It is DNP and shares its output with U6, retaining the ERC output conflict; this does not validate simultaneous population or identify an absent original part. No new ERC suppression was added.
+MCP's property writer damaged a nested KiCad 10 property expression during the first Q8 import attempt. The malformed intermediate was removed, the generic base symbol was reimported through MCP, and metadata was repaired with a parsed S-expression. Graphics and pins were not redrawn by hand. Native export and the library audit validate the final result. Authoring details are recorded in `evidence/datasheet_symbol_authoring.json`.
 
-C49 remains stock `Device:C`, DNP between ANT2 and GND; both connections are resolved. TP9 is absent from the active inventory after the unsupported original entry was withdrawn.
+The U1/U5 pin contracts in `evidence/vendor_symbol_requirements.json` are fulfilled. `evidence/datasheet_symbol_authoring.json` records the actual MCP requests and sources. No vendor files were imported. The library URI uses `${KIPRJMOD}`, so the repository is portable. U1 pin 4 is passive and named NC because ABLIC explicitly permits this internally open pad to connect to VIN/VSS; it preserves the existing optional-pad copper. MX512H outputs use tri-state pin types to reflect high-impedance standby. These changes enable additional ERC checks without hiding unresolved nets.
 
-## Current measured geometry and values
+## v0.7 package correction
 
-- C5: 470 uF / 16 V, 6.33 mm diameter x 16 mm high. Stock `Capacitor_THT:CP_Radial_D6.3mm_P2.50mm` is assigned; 2.5 mm pitch and 0.8 mm drill remain inferred. Its 7 mm housing model is not the measured 16 mm can.
-- S1: 6 x 6 x 4 mm body plus 2 mm actuator. Stock SW_Push has two native nodes; physical TL/TR map to pin1, BL/BR to pin2. The four physical pads remain recorded. Stock PTS645 gullwing footprint is a candidate; its x43 height differs from measured about 6 mm. Contact behavior and exact fit remain unverified.
-- LED1: red/green, square 1.5 x 1.5 mm. Body dimensions do not establish pad pattern or die numbering; do not substitute an addressable LED footprint just because its body size matches. No vendor symbol/footprint has been supplied.
-- R8: 1.6 x 0.77 mm including caps supports 0603; other resistors are provisional family matches. C11 3.2 x 1.5 mm supports 1206.
-- L1/L2: 1.4/2.2 uH reported LCR readings, stock `Device:L` and existing 0805 candidates retained. Measurement conditions, magnetic construction, DCR and ratings remain unknown.
+The user reports R8 approximately 1.6 x 0.77 mm including both metal end caps, confirming the 0603 body-size match. This supersedes v0.6's 0805 fitted-resistor-family estimate; other resistors are revised as provisional 0603 family candidates. C11 approximately 3.2 x 1.5 mm supports its 1206 assignment. C5 value/voltage are now 470uF/16V; its package remains unset pending dimensions.
 
-See the [measurement summary](MEASUREMENTS.md) and structured dimension records. No repeat body measurements or completed diode/continuity sweeps are requested.
+
+## v0.9.24 - empty option device symbols
+
+Q9 uses stock `Transistor_BJT:Q_NPN_BEC` with a provisional NPN role: base through R35, emitter GND, collector J6.1. U6A (native U106) uses stock `Regulator_Linear:MCP1700x-330xxTT` as a three-pin regulator role/pin template only; its visible value says U6A / LDO option and it remains DNP. Neither symbol identifies an absent original component. U6A's footprint pin map is 1=GND, 2=output, 3=input; this follows the [Microchip MCP1700 SOT-23 pin table](https://ww1.microchip.com/downloads/aemDocuments/documents/APID/ProductDocuments/DataSheets/MCP1700-Data-Sheet-20001826F.pdf) and the photographed pad arrangement. No voltage or current rating is inferred from that library name. Do not populate the option from this schematic without selecting and validating a part.
+
+The former connector placeholders were replaced through MCP. The regulator symbol exposes a native ERC output conflict with U6; it is retained because U6A is an unpopulated alternative. C49 remains a stock capacitor symbol; its formerly unresolved copper is now confirmed between ANT2 and GND in v0.9.28. TP9 was removed after its location failed the evidence audit. There are now 149 catalog entries and 22 stock plus 4 custom definitions in use.
+
+
+## v0.9.25 - LED1 colours and dimensions
+
+LED1 contains red and green emitters in a user-measured square 1.5 x 1.5 mm body. The existing stock dual-LED symbol now displays `Red / Green`; all four physical board connections remain unchanged. Colour-to-drive assignment and exact manufacturer pin numbering remain unconfirmed. Installed KiCad10/MCP searches did not establish a matching dual-LED footprint. The similarly sized SK6812 EC15 footprint is an addressable-LED land pattern with different unverified pads/numbering, so it was not assigned merely for its body dimensions. A matching vendor drawing/footprint is still needed; no custom library part was created. See [LED evidence](../evidence/led1_dimensions_20261009.json).
+
+
+## v0.9.26 - C5 can dimensions and radial footprint
+
+The user measured C5 at 6.33 mm diameter and 16 mm high. The earlier 470 uF / 16 V identification is retained. MCP assigned stock `Capacitor_THT:CP_Radial_D6.3mm_P2.50mm` to the existing `Device:C_Polarized` symbol: native pad1 is positive/H_RF_VDD and pad2 is negative/GND. No electrical net changes were made. The diameter supports the nominal 6.3 mm family; 2.5 mm lead pitch and 0.8 mm drill are explicit candidate geometry, not measured facts. The stock footprint describes a 7 mm body, so its 3D housing must not be used as the measured 16 mm envelope. Use the recorded actual height for clearance; no custom part or housing was created. Only LED1 now lacks an assigned footprint. See [C5 dimension record](../evidence/c5_dimensions_20261009.json).
+
+
+## v0.9.27 - L1/L2 inductance readings
+
+The user reports LCR-meter readings of **L1 = 1.4 uH** and **L2 = 2.2 uH**. These replace the schematic value placeholders while retaining stock `Device:L` symbols, the existing 0805 footprint candidates and all connections. Test frequency, series/parallel mode, fixture compensation and whether the parts were isolated from the PCB have not yet been reported. These readings do not identify manufacturer nominal values, magnetic construction, tolerance, DCR or current ratings. The value checklist now has both magnetic readings recorded; 44 ceramic values remain unrecovered. See [structured measurement record](../evidence/l1_l2_inductance_20261009.json).

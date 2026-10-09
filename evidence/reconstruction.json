@@ -1,7 +1,7 @@
 {
   "board": "100-1339 R03 A",
-  "revision": "v0.9.28",
-  "status": "INFERRED WORKING CIRCUIT / NOT CONTINUITY VERIFIED",
+  "revision": "v0.9.29",
+  "status": "PARTIALLY VERIFIED RECONSTRUCTION; USER MEASUREMENTS, PHOTO TRACES AND QUALIFIED HYPOTHESES",
   "components": [
     {
       "ref": "R3",
@@ -655,9 +655,10 @@
       "v09_evidence": {
         "R37.1": "User V063 joins R37 and R39; photo identifies their lower ends. Withdraw conflicting VDD and GND guesses. Remote feed unknown."
       },
-      "hypothesis": "v0.9: pin1 joins R39.2 at V063; remote feed unknown. Pin2 to U6 VIN remains a local routing hypothesis.",
+      "hypothesis": "22 ohm from marking. Input/model1 joins printed VDD through V063/V064; output/model2 joins U6 VIN/pin2 and its externally tied pin5, C36 and the U6A input option. The old unknown remote-feed statement is superseded. Actual rail voltage is unmeasured.",
       "via_evidence": "v0.9.6: User confirms V064-V063. R37.1/R39.2 feed junction is regulated board VDD, not motor VDD.",
-      "v096_summary": "v0.9.6: User confirms V064-V063. R37.1/R39.2 feed junction is regulated board VDD, not motor VDD."
+      "v096_summary": "v0.9.6: User confirms V064-V063. R37.1/R39.2 feed junction is regulated board VDD, not motor VDD.",
+      "current_summary": "22 ohm from marking. Input/model1 joins printed VDD through V063/V064; output/model2 joins U6 VIN/pin2 and its externally tied pin5, C36 and the U6A input option. The old unknown remote-feed statement is superseded. Actual rail voltage is unmeasured."
     },
     {
       "ref": "R38",
@@ -706,9 +707,10 @@
       "v09_evidence": {
         "R39.2": "User V063 joins R37 and R39; photo identifies their lower ends. Withdraw conflicting VDD and GND guesses. Remote feed unknown."
       },
-      "hypothesis": "v0.9: pin2 joins R37.1 at V063; earlier ground guess withdrawn. Pin1 retained on PIR_BASE candidate net.",
+      "hypothesis": "10k from marking. Model2 joins printed VDD through V063/V064; model1 remains on the inferred Q2 base/R38 node. PIR output TP16/Q2.S to PIC21 is confirmed; transistor pin functions and the R33 branch remain qualified.",
       "via_evidence": "v0.9.6: User confirms V064-V063. R37.1/R39.2 feed junction is regulated board VDD, not motor VDD.",
-      "v096_summary": "v0.9.6: User confirms V064-V063. R37.1/R39.2 feed junction is regulated board VDD, not motor VDD."
+      "v096_summary": "v0.9.6: User confirms V064-V063. R37.1/R39.2 feed junction is regulated board VDD, not motor VDD.",
+      "current_summary": "10k from marking. Model2 joins printed VDD through V063/V064; model1 remains on the inferred Q2 base/R38 node. PIR output TP16/Q2.S to PIC21 is confirmed; transistor pin functions and the R33 branch remain qualified."
     },
     {
       "ref": "R40",
@@ -729,12 +731,13 @@
       "footprint": "Resistor_SMD:R_0603_1608Metric",
       "footprint_confidence": "medium - revised family estimate",
       "footprint_basis": "User reports R8 approximately 1.6 x 0.77 mm, consistent with 0603 (1608 metric). Repeated fitted resistor family revised using R8 as a scale reference. This individual body has not been measured; earlier 0805 estimate superseded.",
-      "hypothesis": "v0.9.21 user annotated S1 upper-right to C35 upper/model2 (GND via prior V018); lower-right to C35 lower/model1, R40 lower/model2 and R41 left/model2. User explicitly confirms R41 right/model1 reaches J1 VPP/MCLR. Correct physical-to-native switch mapping TL=1, TR=3, BL=2, BR=4. Top-row/bottom-row common pairs remain a tactile-switch hypothesis; released/pressed behavior has not been measured.",
+      "hypothesis": "10k from marking, between ICSP_DAT/PIC28 and H_BUTTON. H_BUTTON also joins C35.1, R41.2 and S1 bottom row (native switch pin2). The physical switch common pairs remain inferred.",
       "connection_evidence": "v0.9.21 user annotated S1 upper-right to C35 upper/model2 (GND via prior V018); lower-right to C35 lower/model1, R40 lower/model2 and R41 left/model2. User explicitly confirms R41 right/model1 reaches J1 VPP/MCLR. Correct physical-to-native switch mapping TL=1, TR=3, BL=2, BR=4. Top-row/bottom-row common pairs remain a tactile-switch hypothesis; released/pressed behavior has not been measured.",
       "photo_pad_mapping": {
         "1": "upper",
         "2": "lower"
-      }
+      },
+      "current_summary": "10k from marking, between ICSP_DAT/PIC28 and H_BUTTON. H_BUTTON also joins C35.1, R41.2 and S1 bottom row (native switch pin2). The physical switch common pairs remain inferred."
     },
     {
       "ref": "R41",
@@ -754,14 +757,15 @@
       "proposed_value": "330",
       "library_symbol": "Device:R",
       "footprint": "Resistor_SMD:R_0603_1608Metric",
-      "hypothesis": "v0.9.21 user annotated S1 upper-right to C35 upper/model2 (GND via prior V018); lower-right to C35 lower/model1, R40 lower/model2 and R41 left/model2. User explicitly confirms R41 right/model1 reaches J1 VPP/MCLR. Correct physical-to-native switch mapping TL=1, TR=3, BL=2, BR=4. Top-row/bottom-row common pairs remain a tactile-switch hypothesis; released/pressed behavior has not been measured.",
+      "hypothesis": "User reads 331: 330 ohm. Model1/right end reaches J1 VPP/MCLR by user confirmation; model2/left joins R40.2/C35.1/H_BUTTON. No isolated R41 endpoint remains. Button contact behavior and operating role remain qualified.",
       "footprint_confidence": "medium - revised family estimate",
       "footprint_basis": "User reports R8 approximately 1.6 x 0.77 mm, consistent with 0603 (1608 metric). Repeated fitted resistor family revised using R8 as a scale reference. This individual body has not been measured; earlier 0805 estimate superseded.",
       "connection_evidence": "v0.9.21 user annotated S1 upper-right to C35 upper/model2 (GND via prior V018); lower-right to C35 lower/model1, R40 lower/model2 and R41 left/model2. User explicitly confirms R41 right/model1 reaches J1 VPP/MCLR. Correct physical-to-native switch mapping TL=1, TR=3, BL=2, BR=4. Top-row/bottom-row common pairs remain a tactile-switch hypothesis; released/pressed behavior has not been measured.",
       "photo_pad_mapping": {
         "1": "right",
         "2": "left"
-      }
+      },
+      "current_summary": "User reads 331: 330 ohm. Model1/right end reaches J1 VPP/MCLR by user confirmation; model2/left joins R40.2/C35.1/H_BUTTON. No isolated R41 endpoint remains. Button contact behavior and operating role remain qualified."
     },
     {
       "ref": "R42",
@@ -1141,7 +1145,8 @@
         "value": 2.5,
         "basis": "inferred stock family, not measured"
       },
-      "measurement_evidence": "User confirms radial electrolytic C5, 6.33 mm diameter and 16 mm high; earlier sleeve reading 470 uF / 16 V retained. Standard nominal 6.3 mm footprint assigned; 2.5 mm pitch and 0.8 mm drills remain candidate geometry. Stock footprint describes a 7 mm body, so its housing model is not an exact match. Use measured 16 mm for clearance. Polarity and physical nets unchanged."
+      "measurement_evidence": "User confirms radial electrolytic C5, 6.33 mm diameter and 16 mm high; earlier sleeve reading 470 uF / 16 V retained. Standard nominal 6.3 mm footprint assigned; 2.5 mm pitch and 0.8 mm drills remain candidate geometry. Stock footprint describes a 7 mm body, so its housing model is not an exact match. Use measured 16 mm for clearance. Polarity and physical nets unchanged.",
+      "current_summary": "User confirms radial electrolytic C5, 6.33 mm diameter and 16 mm high; earlier sleeve reading 470 uF / 16 V retained. Standard nominal 6.3 mm footprint assigned; 2.5 mm pitch and 0.8 mm drills remain candidate geometry. Stock footprint describes a 7 mm body, so its housing model is not an exact match. Use measured 16 mm for clearance. Polarity and physical nets unchanged."
     },
     {
       "ref": "C6",
@@ -1709,12 +1714,13 @@
         "C27.1": "C27 photo left pad to V003/V004; user ties these to MX512H pin4 motor VDD.",
         "C27.2": "C27 photo right pad to V008/V009/V010 user GND."
       },
-      "hypothesis": "v0.9: photo left pad/pin1 to motor VDD via V003/V004; right pad/pin2 to GND via V008/V009/V010. Capacitance still unknown.",
+      "hypothesis": "Motor supply bypass across VSYS (U5 pin4 supply) and GND from user via reports/photo pad selection. VSYS is distinct from the printed VDD logic rail. Capacitance is unknown.",
       "via_evidence": "v0.9.9: User corrects raw battery+ versus post-Q1 rail. BATP -> Q1.S (single physical pad/native3, candidate drain); Q1.L/native2 (candidate source) -> U5.4/V011-V014. These are distinct copper nets, connected through Q1. IMG_2438 also supports TP14 on battery+; V015/R43.2-TP14 user confirmation retained. Q1.R/native1 is candidate gate at R44.2. Photo S means SINGLE, not MOSFET source.",
       "value_evidence": {
         "state": "unknown",
         "source": "No individual measured value supplied; any displayed estimate is a hypothesis."
-      }
+      },
+      "current_summary": "Motor supply bypass across VSYS (U5 pin4 supply) and GND from user via reports/photo pad selection. VSYS is distinct from the printed VDD logic rail. Capacitance is unknown."
     },
     {
       "ref": "C28",
@@ -1922,11 +1928,12 @@
         "source": "No individual measured value supplied; any displayed estimate is a hypothesis."
       },
       "connection_evidence": "v0.9.21 user annotated S1 upper-right to C35 upper/model2 (GND via prior V018); lower-right to C35 lower/model1, R40 lower/model2 and R41 left/model2. User explicitly confirms R41 right/model1 reaches J1 VPP/MCLR. Correct physical-to-native switch mapping TL=1, TR=3, BL=2, BR=4. Top-row/bottom-row common pairs remain a tactile-switch hypothesis; released/pressed behavior has not been measured.",
-      "hypothesis": "v0.9.21 user annotated S1 upper-right to C35 upper/model2 (GND via prior V018); lower-right to C35 lower/model1, R40 lower/model2 and R41 left/model2. User explicitly confirms R41 right/model1 reaches J1 VPP/MCLR. Correct physical-to-native switch mapping TL=1, TR=3, BL=2, BR=4. Top-row/bottom-row common pairs remain a tactile-switch hypothesis; released/pressed behavior has not been measured.",
+      "hypothesis": "Unknown capacitance. Model2/upper end is GND/S1 upper-right; model1/lower joins H_BUTTON/R40.2/R41.2/S1 lower-right. Stock switch native pins are 1 for the upper row and 2 for the lower row. R41 opposite end is VPP.",
       "photo_pad_mapping": {
         "1": "lower",
         "2": "upper"
-      }
+      },
+      "current_summary": "Unknown capacitance. Model2/upper end is GND/S1 upper-right; model1/lower joins H_BUTTON/R40.2/R41.2/S1 lower-right. Stock switch native pins are 1 for the upper row and 2 for the lower row. R41 opposite end is VPP."
     },
     {
       "ref": "C36",
@@ -2299,7 +2306,8 @@
         "state": "user-confirmed",
         "source": "evidence/c49_connections_20261009.json",
         "scope": "C49 between ANT2 and GND; nonpolar terminal numbering is conventional"
-      }
+      },
+      "current_summary": "Rear C49 footprint beside antenna wire terminations in IMG_2442.jpg; presence confirmed by user 2026-10-09. Existing DNP population retained. User confirms C49 connects between ANT2 and GND (2026-10-09). Model pin1 = H_ANT_B / ANT2, pin2 = GND. Nonpolar capacitor: pin numbering is a schematic convention, not a separately measured physical pad orientation. No capacitance value or population change reported."
     },
     {
       "ref": "C1A",
@@ -2372,7 +2380,8 @@
         "fixture_compensation": "not reported"
       },
       "hypothesis": "User LCR-meter reading: L1 = 1.4 uH. Test frequency, test mode, fixture compensation and in-circuit/isolation condition not yet reported. Recorded reading; manufacturer nominal, tolerance, DCR and current rating remain unknown.",
-      "measurement_evidence": "User LCR-meter reading: L1 = 1.4 uH. Test frequency, test mode, fixture compensation and in-circuit/isolation condition not yet reported. Recorded reading; manufacturer nominal, tolerance, DCR and current rating remain unknown."
+      "measurement_evidence": "User LCR-meter reading: L1 = 1.4 uH. Test frequency, test mode, fixture compensation and in-circuit/isolation condition not yet reported. Recorded reading; manufacturer nominal, tolerance, DCR and current rating remain unknown.",
+      "current_summary": "User LCR-meter reading: L1 = 1.4 uH. Test frequency, test mode, fixture compensation and in-circuit/isolation condition not yet reported. Recorded reading; manufacturer nominal, tolerance, DCR and current rating remain unknown."
     },
     {
       "ref": "L2",
@@ -2405,7 +2414,8 @@
         "fixture_compensation": "not reported"
       },
       "hypothesis": "User LCR-meter reading: L2 = 2.2 uH. Test frequency, test mode, fixture compensation and in-circuit/isolation condition not yet reported. Recorded reading; manufacturer nominal, tolerance, DCR and current rating remain unknown.",
-      "measurement_evidence": "User LCR-meter reading: L2 = 2.2 uH. Test frequency, test mode, fixture compensation and in-circuit/isolation condition not yet reported. Recorded reading; manufacturer nominal, tolerance, DCR and current rating remain unknown."
+      "measurement_evidence": "User LCR-meter reading: L2 = 2.2 uH. Test frequency, test mode, fixture compensation and in-circuit/isolation condition not yet reported. Recorded reading; manufacturer nominal, tolerance, DCR and current rating remain unknown.",
+      "current_summary": "User LCR-meter reading: L2 = 2.2 uH. Test frequency, test mode, fixture compensation and in-circuit/isolation condition not yet reported. Recorded reading; manufacturer nominal, tolerance, DCR and current rating remain unknown."
     },
     {
       "ref": "Y1",
@@ -2610,18 +2620,19 @@
         "R2",
         "R3"
       ],
-      "note": "Photo mapping: C/R3=pin1 VSS, B/R2=pin2 VIN, A/R1=pin3 VOUT, L1=pin4 NC, L2=pin5 NC. NC may be tied externally; no board tie established.",
+      "note": "C2NM supports candidate S-812C33AMC: pin1 VSS, pin2 VIN, pin3 VOUT, pins4/5 internally NC. Pin5 is externally tied to pin2 at 1 ohm (B28); pin4 is intentionally unused by user/photo evidence. R37 input branch and J3.1 output remain modeled; actual output voltage and fitted identity are not proved by the candidate datasheet.",
       "side": "front",
       "traced_pin_count": 0,
       "proposed_value": "S-812C33AMC? / 3.3V",
-      "hypothesis": "H14v05: C2N product code matches ABLIC S-812C33AMC (Table 1); fourth character assembly month per MP005-A marking drawing. Pin1=VSS matches C=2.7ohm to G (shorted tips later 0.5ohm). Input/output routing inferred, 3.3V not measured. RT9818 supervisor hypothesis withdrawn.",
+      "hypothesis": "C2NM supports candidate S-812C33AMC: pin1 VSS, pin2 VIN, pin3 VOUT, pins4/5 internally NC. Pin5 is externally tied to pin2 at 1 ohm (B28); pin4 is intentionally unused by user/photo evidence. R37 input branch and J3.1 output remain modeled; actual output voltage and fitted identity are not proved by the candidate datasheet.",
       "library_symbol": "PetSafe_Datasheet:S-812C33AMC",
       "footprint": "Package_TO_SOT_SMD:SOT-23-5",
       "previous_marking": "WN23? (misread; superseded by sharp photo)",
       "marking_source": "photos/user_updates/U6_new_mark.png",
       "footprint_confidence": "datasheet/package candidate",
       "footprint_basis": "Existing assignment; see component identity evidence.",
-      "connection_evidence": "v0.9.20: U6.5-U6.2 measured 1 ohm (B28). User annotation also joins physical L2/native5 to R37 upper/model2 and empty U6A single/native1. U6.4/L1 marked NC by user and appears as an isolated surface stub in original photos. Candidate pin5 is internally NC but externally tied to VIN; pin4 remains unused."
+      "connection_evidence": "v0.9.20: U6.5-U6.2 measured 1 ohm (B28). User annotation also joins physical L2/native5 to R37 upper/model2 and empty U6A single/native1. U6.4/L1 marked NC by user and appears as an isolated surface stub in original photos. Candidate pin5 is internally NC but externally tied to VIN; pin4 remains unused.",
+      "current_summary": "C2NM supports candidate S-812C33AMC: pin1 VSS, pin2 VIN, pin3 VOUT, pins4/5 internally NC. Pin5 is externally tied to pin2 at 1 ohm (B28); pin4 is intentionally unused by user/photo evidence. R37 input branch and J3.1 output remain modeled; actual output voltage and fitted identity are not proved by the candidate datasheet."
     },
     {
       "ref": "U6A",
@@ -2651,7 +2662,8 @@
         "U6A.R1": "upper-right output / native U106.2",
         "U6A.R2": "lower-right GND / native U106.1"
       },
-      "proposed_value": "U6A / LDO option"
+      "proposed_value": "U6A / LDO option",
+      "current_summary": "v0.9.24: same measured/photo-supported U6A input/output/GND nets retained. Replace the connector sketch by a three-pin regulator role template. SOT-23 single left input -> native U106.3, upper-right output -> U106.2, lower-right GND -> U106.1. The former connector pin1/pin3 assignment was arbitrary and is superseded. MCP1700 stock symbol supplies graphics/pin roles only; it does not identify a fitted device or establish voltage/current rating. U6A remains DNP and an alternative to fitted U6."
     },
     {
       "ref": "U7",
@@ -2706,7 +2718,8 @@
       "v094_summary": "v0.9.4: V011-V014 reach Q1.L. User explicitly requests removal of old photo-derived Q1.L-R43.2 connection. Q1.L onward destination and physical transistor role remain unresolved.",
       "via_evidence": "v0.9.9: User corrects raw battery+ versus post-Q1 rail. BATP -> Q1.S (single physical pad/native3, candidate drain); Q1.L/native2 (candidate source) -> U5.4/V011-V014. These are distinct copper nets, connected through Q1. IMG_2438 also supports TP14 on battery+; V015/R43.2-TP14 user confirmation retained. Q1.R/native1 is candidate gate at R44.2. Photo S means SINGLE, not MOSFET source.",
       "v095_summary": "v0.9.5: V011-V014 reach Q1.L and user reports VDD. Which VDD rail remains to be distinguished (V064 regulated versus V001 motor supply). R43.2/V015 remains explicitly separate. No transistor polarity inferred from the supply report.",
-      "datasheet": "https://www.formosams.com/upload/product/Mosfets/FMOS3401A_REV_C.pdf"
+      "datasheet": "https://www.formosams.com/upload/product/Mosfets/FMOS3401A_REV_C.pdf",
+      "current_summary": "R1A marking matches Formosa FMOS3401A datasheet p5; SOT-23 PMOS with G=1 (photo R), S=2 (photo L), D=3 (photo single S). Candidate identification, not manufacturer proof. Drain at battery+ and source at load support reverse-polarity protection; gate-control behavior not verified. Earlier MMBT3904 NPN hypothesis withdrawn."
     },
     {
       "ref": "Q2",
@@ -2729,7 +2742,8 @@
       "library_symbol": "Transistor_BJT:BC847",
       "footprint": "Package_TO_SOT_SMD:SOT-23",
       "footprint_confidence": "datasheet/package candidate",
-      "footprint_basis": "Existing assignment; see component identity evidence."
+      "footprint_basis": "Existing assignment; see component identity evidence.",
+      "current_summary": "1FW supports BC847B. Candidate B=R, E=L, C=S and interface role remain inferred. J3.1 supply, J3.3 GND and J3.2-R38 K are user-confirmed; Q2/TP16 reaches PIC21/RB0 per user, separate from VREF at 800 kohm."
     },
     {
       "ref": "Q3",
@@ -2866,7 +2880,8 @@
       "footprint": "Package_TO_SOT_SMD:SOT-23",
       "footprint_confidence": "datasheet/package candidate",
       "footprint_basis": "Existing assignment; see component identity evidence.",
-      "via_evidence": "v0.9.7: V064-V075 confirmed; V064-V070 measured 11.2 kohm. IMG_2434 plus R18 1.2k + R19 10k supports PNP supply switch: E/R pin2 at VDD, B/L pin1 through R18 control and R19 pull-up. Terminal selection is a supported photo/circuit inference, not a separate user pad measurement."
+      "via_evidence": "v0.9.7: V064-V075 confirmed; V064-V070 measured 11.2 kohm. IMG_2434 plus R18 1.2k + R19 10k supports PNP supply switch: E/R pin2 at VDD, B/L pin1 through R18 control and R19 pull-up. Terminal selection is a supported photo/circuit inference, not a separate user pad measurement.",
+      "current_summary": "3GW supports BC857C PNP. Photo and 11.2 kohm R18+R19 path support B=L, E=R/VDD, C=S/R20; terminal selection and switching role remain inferred. Control input R18.1 is now user-confirmed to PIC12/RC1 via V053-V070."
     },
     {
       "ref": "Q8",
@@ -2896,7 +2911,8 @@
       "footprint_confidence": "datasheet/package candidate",
       "footprint_basis": "Existing assignment; see component identity evidence.",
       "via_evidence": "v0.9.5: V113/V115 reach centre B2/pin5 GND. V114 belongs to U2.T2 and supplies no evidence about Q8.T2. Existing Q8.T2 supply hypothesis and outer-drain join remain independently qualified.",
-      "v095_summary": "v0.9.5: V113/V115 reach centre B2/pin5 GND. V114 belongs to U2.T2 and supplies no evidence about Q8.T2. Existing Q8.T2 supply hypothesis and outer-drain join remain independently qualified."
+      "v095_summary": "v0.9.5: V113/V115 reach centre B2/pin5 GND. V114 belongs to U2.T2 and supplies no evidence about Q8.T2. Existing Q8.T2 supply hypothesis and outer-drain join remain independently qualified.",
+      "current_summary": "3724A supports the SIL3724A complementary MOSFET candidate; fitted maker unconfirmed. V113/V115 centre B2/native5 GND is resolved; outer-drain join retains D-E low-resistance evidence. V114 belongs to U2.T2 GND, not Q8. C6 is photo-supported in parallel with C5 as of v0.9.18. Q8 source-supply path remains independently qualified; no current centre-ground conflict."
     },
     {
       "ref": "Q9",
@@ -2929,7 +2945,8 @@
         "R": "lower-right",
         "S": "single upper"
       },
-      "proposed_value": "NPN option / DNP"
+      "proposed_value": "NPN option / DNP",
+      "current_summary": "v0.9.24: use generic NPN BEC symbol for empty Q9, consistent with R35 drive into paired-left pin1/base, paired-right pin2/emitter to GND, and single pin3/collector to J6.1/R36.2. NPN device class is an inference; no fitted transistor identity or rating. All option parts remain DNP. J6.2/R36.1 onward role is still unknown."
     },
     {
       "ref": "Q11",
@@ -3002,7 +3019,8 @@
       "footprint": "Package_TO_SOT_SMD:SOT-23",
       "hypothesis": "4P exact identity unresolved. In-circuit diode readings support R -> S -> L series junctions, weakening the marking-only PNP lead. User confirms R-C20 lower end 1 ohm, L-ANT2/R46 upper, S-R46 lower. R46 is DNP. D2 L=1/R=2/S=3 are placeholder identifiers, not a verified device pinout.",
       "footprint_confidence": "datasheet/package candidate",
-      "footprint_basis": "Existing assignment; see component identity evidence."
+      "footprint_basis": "Existing assignment; see component identity evidence.",
+      "current_summary": "4P exact identity unresolved. In-circuit diode readings support R -> S -> L series junctions, weakening the marking-only PNP lead. User confirms R-C20 lower end 1 ohm, L-ANT2/R46 upper, S-R46 lower. R46 is DNP. D2 L=1/R=2/S=3 are placeholder identifiers, not a verified device pinout."
     },
     {
       "ref": "D3",
@@ -3026,7 +3044,8 @@
       "hypothesis": "A7 and the series-dual pin map support BAV99. User confirms L=GND, R=VDD via V082, and 1.2 ohm from S to R42 (end unspecified; pad2 selected from photo). Rail-clamp role is supported; manufacturer, diode behavior and signal operating function remain unverified.",
       "footprint_confidence": "datasheet/package candidate",
       "footprint_basis": "Existing assignment; see component identity evidence.",
-      "connection_evidence": "2026-10-09 user meter report: D3.L=GND; D3.R=VDD TP via V082. D3.S to R42=1.2 ohm; resistor end not explicitly named. Photo selects R42.2 nearest D3; other end already mapped to TP4/PIC25. Fitted BAV99 identity and signal function remain candidates."
+      "connection_evidence": "2026-10-09 user meter report: D3.L=GND; D3.R=VDD TP via V082. D3.S to R42=1.2 ohm; resistor end not explicitly named. Photo selects R42.2 nearest D3; other end already mapped to TP4/PIC25. Fitted BAV99 identity and signal function remain candidates.",
+      "current_summary": "A7 and the series-dual pin map support BAV99. User confirms L=GND, R=VDD via V082, and 1.2 ohm from S to R42 (end unspecified; pad2 selected from photo). Rail-clamp role is supported; manufacturer, diode behavior and signal operating function remain unverified."
     },
     {
       "ref": "D4",
@@ -3040,16 +3059,17 @@
         "1",
         "2"
       ],
-      "note": "Two-terminal diode-designated component; type/polarity not resolved.",
+      "note": "5U supports an SD05 TVS candidate. Model1/cathode reaches ICSP_CLK; model2/anode is ground through photo-selected V030. Polarity/routing are photo-supported, not a new diode test; exact device remains a candidate.",
       "side": "front",
       "traced_pin_count": 0,
       "library_symbol": "Device:D_Zener",
       "footprint": "Diode_SMD:D_SOD-323",
       "proposed_value": "SD05? / TVS 5V",
-      "hypothesis": "v0.8: cathode/model1 to ICSP clock retained. Anode/model2 via V030 joins VSS-associated rear copper (photo inference). 5U/SD05 remains a candidate identification.",
+      "hypothesis": "5U supports an SD05 TVS candidate. Model1/cathode reaches ICSP_CLK; model2/anode is ground through photo-selected V030. Polarity/routing are photo-supported, not a new diode test; exact device remains a candidate.",
       "marking_source": "photos/user_updates/D4_D5_5U.png",
       "footprint_confidence": "datasheet/package candidate",
-      "footprint_basis": "Existing assignment; see component identity evidence."
+      "footprint_basis": "Existing assignment; see component identity evidence.",
+      "current_summary": "5U supports an SD05 TVS candidate. Model1/cathode reaches ICSP_CLK; model2/anode is ground through photo-selected V030. Polarity/routing are photo-supported, not a new diode test; exact device remains a candidate."
     },
     {
       "ref": "D5",
@@ -3063,16 +3083,17 @@
         "1",
         "2"
       ],
-      "note": "Two-terminal diode-designated component; type/polarity not resolved.",
+      "note": "5U supports an SD05 TVS candidate. Model1/cathode reaches ICSP_DAT; model2/anode is ground through photo-selected V027. Polarity/routing are photo-supported, not a new diode test; exact device remains a candidate.",
       "side": "front",
       "traced_pin_count": 0,
       "library_symbol": "Device:D_Zener",
       "footprint": "Diode_SMD:D_SOD-323",
       "proposed_value": "SD05? / TVS 5V",
-      "hypothesis": "v0.8: cathode/model1 to ICSP data retained. Anode/model2 via V027 joins VSS-associated rear copper (photo inference). 5U/SD05 remains a candidate identification.",
+      "hypothesis": "5U supports an SD05 TVS candidate. Model1/cathode reaches ICSP_DAT; model2/anode is ground through photo-selected V027. Polarity/routing are photo-supported, not a new diode test; exact device remains a candidate.",
       "marking_source": "photos/user_updates/D4_D5_5U.png",
       "footprint_confidence": "datasheet/package candidate",
-      "footprint_basis": "Existing assignment; see component identity evidence."
+      "footprint_basis": "Existing assignment; see component identity evidence.",
+      "current_summary": "5U supports an SD05 TVS candidate. Model1/cathode reaches ICSP_DAT; model2/anode is ground through photo-selected V027. Polarity/routing are photo-supported, not a new diode test; exact device remains a candidate."
     },
     {
       "ref": "D6",
@@ -3086,13 +3107,13 @@
         "1",
         "2"
       ],
-      "note": "Two-terminal diode-designated component; type/polarity not resolved.",
+      "note": "G3 marking; user measurements establish anode at GND, cathode at VPP, about 0.7 V forward and OL reverse. Exact diode class/manufacturer and reverse breakdown remain unresolved; 3.9 V is a marking candidate, not a measured value.",
       "side": "front",
       "traced_pin_count": 0,
       "library_symbol": "Device:D_Zener",
       "footprint": "Diode_SMD:D_SOD-323",
       "proposed_value": "MMSZ5228BS? / 3.9V",
-      "hypothesis": "G3 permits multiple part candidates. In-circuit forward direction supports anode at GND and cathode at VPP. Exact type and reverse-breakdown voltage remain unknown; existing MMSZ5228BS/3.9V is only a candidate.",
+      "hypothesis": "G3 marking; user measurements establish anode at GND, cathode at VPP, about 0.7 V forward and OL reverse. Exact diode class/manufacturer and reverse breakdown remain unresolved; 3.9 V is a marking candidate, not a measured value.",
       "marking_source": "photos/user_updates/D6_G3.png",
       "footprint_confidence": "datasheet/package candidate",
       "footprint_basis": "Existing assignment; see component identity evidence.",
@@ -3100,7 +3121,8 @@
       "photo_pad_mapping": {
         "1": "lower contact W, cathode",
         "2": "upper contact V, anode"
-      }
+      },
+      "current_summary": "G3 marking; user measurements establish anode at GND, cathode at VPP, about 0.7 V forward and OL reverse. Exact diode class/manufacturer and reverse breakdown remain unresolved; 3.9 V is a marking candidate, not a measured value."
     },
     {
       "ref": "S1",
@@ -3124,7 +3146,7 @@
       "footprint_confidence": "medium - measured body, photo-estimated lead span",
       "footprint_basis": "User measured a 6 x 6 x 4 mm body plus 2 mm actuator (about 6 mm overall). Photo shows four SMD gullwing leads; approximate pad-centre span from photo/body ratio is about 8 mm, consistent with the stock PTS645 land pattern (7.96 x 4.50 mm centres). Dimensions select a candidate family, not an exact manufacturer. Library x43 footprint/3D model denotes 4.3 mm overall and must not be used as the measured 6 mm housing.",
       "connection_evidence": "v0.9.21 user annotated S1 upper-right to C35 upper/model2 (GND via prior V018); lower-right to C35 lower/model1, R40 lower/model2 and R41 left/model2. User explicitly confirms R41 right/model1 reaches J1 VPP/MCLR. Correct physical-to-native switch mapping TL=1, TR=3, BL=2, BR=4. Top-row/bottom-row common pairs remain a tactile-switch hypothesis; released/pressed behavior has not been measured.",
-      "hypothesis": "v0.9.21 user annotated S1 upper-right to C35 upper/model2 (GND via prior V018); lower-right to C35 lower/model1, R40 lower/model2 and R41 left/model2. User explicitly confirms R41 right/model1 reaches J1 VPP/MCLR. Correct physical-to-native switch mapping TL=1, TR=3, BL=2, BR=4. Top-row/bottom-row common pairs remain a tactile-switch hypothesis; released/pressed behavior has not been measured.",
+      "hypothesis": "Measured body 6 x 6 x 4 mm plus 2 mm actuator. Stock SW_Push has two native nodes: physical TL/TR -> pin1/GND; BL/BR -> pin2/H_BUTTON. R41 reaches J1 VPP. Internal contact pairing and released/pressed behavior remain inferred; the former four-native-pin connector numbering is superseded.",
       "photo_pad_mapping": {
         "TL": "upper-left",
         "TR": "upper-right",
@@ -3137,7 +3159,8 @@
         "body_height": 4,
         "actuator_protrusion": 2,
         "overall_height": 6
-      }
+      },
+      "current_summary": "Measured body 6 x 6 x 4 mm plus 2 mm actuator. Stock SW_Push has two native nodes: physical TL/TR -> pin1/GND; BL/BR -> pin2/H_BUTTON. R41 reaches J1 VPP. Internal contact pairing and released/pressed behavior remain inferred; the former four-native-pin connector numbering is superseded."
     },
     {
       "ref": "J1",
@@ -3183,7 +3206,7 @@
         "2",
         "3"
       ],
-      "note": "v0.9.14 user: pin1 PIR supply previously confirmed; pin2 H-R38 K/right/model1 1 ohm and H-R38 J/left/model2 10 kohm; pin3-GND 1 ohm. Pin2-GND remains 290 kohm (batch1), distinct from ground. Q2 onward/controller route remains unverified.",
+      "note": "PIR connector: pin1 supply; pin2 to R38 K/right/model1 at 1 ohm, with 10k through R38; pin3 GND at 1 ohm. The Q2 single-pad/TP16 output reaches PIC21/RB0 by user correction. PIC21-to-VREF was withdrawn after TP16-VREF measured 0.8 Mohm. Q2/R33 device behavior remains qualified.",
       "side": "front",
       "traced_pin_count": 0,
       "proposed_value": "PIR BOARD",
@@ -3193,7 +3216,8 @@
       "footprint_basis": "Three soldered wire holes; generic 2.54-mm row models the candidate land pattern, not the connector housing.",
       "via_evidence": "v0.9.14 user: pin1 PIR supply previously confirmed; pin2 H-R38 K/right/model1 1 ohm and H-R38 J/left/model2 10 kohm; pin3-GND 1 ohm. Pin2-GND remains 290 kohm (batch1), distinct from ground. Q2 onward/controller route remains unverified. v0.9.16: matching physical columns reach U7; J3.1-U7.3 supply, J3.2-U7.2 signal, J3.3-U7.1 GND.",
       "measurement_evidence": "v0.9.14 user: pin1 PIR supply previously confirmed; pin2 H-R38 K/right/model1 1 ohm and H-R38 J/left/model2 10 kohm; pin3-GND 1 ohm. Pin2-GND remains 290 kohm (batch1), distinct from ground. Q2 onward/controller route remains unverified. v0.9.16: matching physical columns reach U7; J3.1-U7.3 supply, J3.2-U7.2 signal, J3.3-U7.1 GND.",
-      "photo_pad_mapping": {}
+      "photo_pad_mapping": {},
+      "current_summary": "PIR connector: pin1 supply; pin2 to R38 K/right/model1 at 1 ohm, with 10k through R38; pin3 GND at 1 ohm. The Q2 single-pad/TP16 output reaches PIC21/RB0 by user correction. PIC21-to-VREF was withdrawn after TP16-VREF measured 0.8 Mohm. Q2/R33 device behavior remains qualified."
     },
     {
       "ref": "J5",
@@ -3278,7 +3302,8 @@
         "state": "observed",
         "source": "User report 2026-10-09; evidence/led1_dimensions_20261009.json"
       },
-      "measurement_evidence": "User confirms square 1.5 x 1.5 mm package containing red and green emitters. Four pads and existing board connections retained. Which resistor/PIC channel lights each colour, internal die pairing and exact manufacturer pad numbering remain unconfirmed. No stock land pattern assigned from body size alone."
+      "measurement_evidence": "User confirms square 1.5 x 1.5 mm package containing red and green emitters. Four pads and existing board connections retained. Which resistor/PIC channel lights each colour, internal die pairing and exact manufacturer pad numbering remain unconfirmed. No stock land pattern assigned from body size alone.",
+      "current_summary": "User confirms square 1.5 x 1.5 mm package containing red and green emitters. Four pads and existing board connections retained. Which resistor/PIC channel lights each colour, internal die pairing and exact manufacturer pad numbering remain unconfirmed. No stock land pattern assigned from body size alone."
     },
     {
       "ref": "TP1",

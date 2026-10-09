@@ -1,0 +1,76 @@
+{
+  "date": "2026-10-09",
+  "revision": "v0.9.29",
+  "baseline_commit": "6ae4eaae5c20a08986edd82a593c8a1969a96641",
+  "archived_root": "docs/history/cleanup_v0928",
+  "archived_sha256": {
+    "README.md": "13a0d10f6bd9c0fa45752830990e5a5efad45ed1ca63950f29c79df05c0d9f3e",
+    "docs/RECONSTRUCTION.md": "010ffff7c59fd5cf4553ffb13c83422a11455edfc81650f77b377d63d8377e82",
+    "docs/MEASUREMENTS.md": "26ddb904c01a317178248cd66d764e30c1723098e5a8163a8a71257b35cf90a6",
+    "docs/LIBRARIES_AND_ALTERNATIVES.md": "6b0a826ecb36dca884ef3b62ae1dd01d3b7bffdf30b20b33e7e477db6e5654b6",
+    "docs/VIA_REVIEW_RESULTS.md": "4e22f8c12913c65606c38d73f5ebbcf04d4392db72590a0f3221d86b91e083cf",
+    "evidence/remaining_work.json": "d5cd546dc1294b22c6d159a0ddcbca4f2d3ed0f7fac6cad12569bc251821ebe1",
+    "evidence/finishing_measurements.json": "334537dcb6b3965403b65d30f38fffcbe8e6890508dfc0eebe80951b9e35cd16"
+  },
+  "scope": "Current documentation, generated review and interpretation metadata only; no electrical topology/value/footprint changes.",
+  "corrections": [
+    "C5 dimensions and footprint no longer requested",
+    "R41-VPP no longer called open",
+    "D2 terminals and D6 polarity no longer called unmeasured",
+    "PIC21/TP16 correction applied to via summary; VREF separate",
+    "U6 pin5-VIN measured tie and U6A current native numbering",
+    "TP9 removal and C49 ANT2/GND reflected consistently",
+    "L1/L2 readings acknowledged in measurement and component audits",
+    "Closed questions and earlier instructions separated from active work",
+    "Receiver C23/R25 junction no longer described as an unconnected output",
+    "Resolved V026/PIC21-TP16 removed from residual via search pool; seven local groups remain"
+  ],
+  "current_summary_refs": [
+    "R37",
+    "R39",
+    "C27",
+    "U6",
+    "J3",
+    "D6",
+    "D4",
+    "D5",
+    "S1",
+    "R40",
+    "R41",
+    "C35",
+    "C5",
+    "LED1",
+    "C49",
+    "L1",
+    "L2",
+    "U6A",
+    "Q9",
+    "D2",
+    "D3",
+    "Q1",
+    "Q2",
+    "Q7",
+    "Q8"
+  ],
+  "metadata_authoring": {
+    "tool": "KiCad MCP batch_edit_schematic_components",
+    "references": 25,
+    "result": "25 updated; zero tool errors",
+    "multi_unit_repair": "MCP updates first matching unit only; copied its hidden CurrentEvidence property to Q8 unit2 using the MCP canonical S-expression formatter. Graphics, pins and other properties unchanged."
+  },
+  "verification": {
+    "model_electrical_fields": "UNCHANGED from 6ae4eaa",
+    "native_wiring_labels_and_symbol_placement": "UNCHANGED; UUIDs excluded",
+    "native_component_values_footprints_population": "UNCHANGED",
+    "current_evidence_mcp_and_native": "PASS: 25 references",
+    "historical_sources": "Archived hashes PASS; original baseline content preserved",
+    "native_validation": "PASS: 85 partitions, zero unassigned pads, 7 documented ERC findings",
+    "review_checks": "PASS: issue coverage, retained observations, links, embedded JavaScript syntax, 4 progress tests",
+    "browser_interaction": "NOT_TESTED: file:// URL blocked by browser security policy. No alternate browser surface or indirect workaround attempted.",
+    "pdf_visual_review": "PASS: one-sheet schematic and six-page status report rendered with Poppler; text/tables/footers inspected. Final rendered pixels match reviewed exports.",
+    "pdfs": {
+      "output\\pdf\\PetSafe_single_sheet.pdf": "7db9c1785d7723089843385a09f2c0363710dd3437d101d94ff8a1c1728d9dbd",
+      "output\\pdf\\PetSafe_completion_status.pdf": "9a1c71a12c12533d123ab2c94328f1db11ac49f5275b593a77d0c64485b7a185"
+    }
+  }
+}

@@ -1,9 +1,9 @@
 {
   "date": "2026-10-09",
-  "basis_revision": "v0.9.22",
-  "status": "OPEN_PAD_BATCH_RESOLVED",
-  "scope": "D6 wiring destinations and U6 input tie resolved; D6 polarity remains pending.",
-  "setup": "Battery and programmer disconnected; capacitors discharged. Switch the Fluke to diode-test mode. Report displayed volts or OL. These are not resistance measurements.",
+  "basis_revision": "v0.9.29",
+  "status": "NO_ACTIVE_MEASUREMENTS",
+  "scope": "Completed resistance/diode batches retained. No new bench measurements requested during the documentation audit.",
+  "setup": "No active measurement request.",
   "photos": [
     {
       "id": "receiver",
@@ -470,20 +470,24 @@
   "interpretation": "D6 junction direction is supported in-circuit; exact manufacturer/type and breakdown voltage remain unverified. U6 pin4 no-connect has user/photo evidence. No blind ERC suppressions were added.",
   "next_stages": [
     {
-      "stage": "1. Finish signal paths",
-      "work": "Agent completes visible copper tracing, removes unsupported assumptions and checks via matches. Priorities: receiver output, RF excitation, tuning-cell topology and the switch contact ambiguity. Only unresolved hidden destinations or behavior will be sent for targeted measurements."
+      "stage": "Resolve the remaining functional paths",
+      "work": "One complete Q3 tuning cell; RF excitation at R6/R7; D1 and local-only PIC nodes; remaining receiver/PIR hypotheses. Agent traces original photos and checks existing measurements first. Request one targeted hidden-connection or device-behavior test only when it distinguishes explicit alternatives."
     },
     {
-      "stage": "2. Recover values",
-      "work": "Use the LCR meter for frequency-sensitive antenna, RF shaping and receiver capacitors first. In-circuit parallel networks give effective values; isolate a lead only if needed for individual values. L1/L2 type and value also remain unresolved. Use documented assumptions for noncritical substitutions where justified, not a blanket capacitor value."
+      "stage": "Verify candidate devices and operating behavior",
+      "work": "Q1/Q8 and tuning-transistor pin roles, D2 identity, D6 breakdown/ICSP compatibility, S1 contacts and actual rail/gate voltages. Use existing markings and recorded tests first. Keep equivalent candidates explicit. Plan focused device/contact checks and then an appropriate powered session on the original hardware."
     },
     {
-      "stage": "3. Check operating levels and physical details",
-      "work": "Once routing is coherent, make one powered voltage session for the named rails and relevant switched supplies; any waveform question requires suitable waveform measurements. Complete LED/motor/switch orientation checks and the remaining C5/S1/LED1 package dimensions."
+      "stage": "Recover the required capacitor values",
+      "work": "44 fitted ceramic values remain unknown. C5 is 470 uF / 16 V; L1 1.4 uH and L2 2.2 uH readings are already recorded. Prioritize antenna/RF/receiver capacitances after topology. Record LCR conditions and avoid assigning a parallel-network reading to each individual capacitor."
     },
     {
-      "stage": "4. Finalize the one-sheet schematic",
-      "work": "Update wires, values, pin maps and footprints; use normal component values with measured/assumed/candidate evidence in properties and the BOM. Remove question marks only when replaced by established information or an explicit justified assumption. Run native KiCad connectivity/ERC and inspect the final sheet. Exact unknown manufacturer identity can remain documented without blocking a compatible functional reconstruction."
+      "stage": "Finish symbols and physical assignments",
+      "work": "LED1 footprint and red/green channel mapping; motor lead orientation. C5 lead pitch and S1 pad fit/3D height remain qualified. Use the measured LED1 1.5 mm square, C5 diameter 6.33 mm/height 16 mm and S1 6 mm body/overall height. Seek the missing pad map or pitch; do not repeat body measurements."
+    },
+    {
+      "stage": "Document optional and later reproduction work",
+      "work": "Empty option values/roles, J6 onward role, actual layer stack, daughterboard internals, firmware and a routed PCB. Retain DNP gaps and distinguish them from fitted circuits. These are not missing physical pad assignments; agree reproduction scope separately from finishing the main-board schematic."
     }
   ],
   "do_not_repeat": [
@@ -504,9 +508,11 @@
     "B22-B28 resistance checks: D6 V=GND, W=VPP; U6 pin5 joins VIN at 1 ohm.",
     "B29-B30 D6 diode directions: V-to-W 0.7V, reverse OL.",
     "J6/Q9/R35/R36 local annotated copper and R41-to-J1 VPP destination now applied; no repeat requested.",
-    "U6A three option pads mapped by user annotation; no measurement requested."
+    "U6A three option pads mapped by user annotation; no measurement requested.",
+    "C49 ANT2/GND routing; both pads resolved.",
+    "C5, S1 and LED1 body dimensions; L1/L2 readings already recorded."
   ],
-  "deferred": "The 8 open pads on empty options are recorded but are lower priority unless they affect a fitted net. U6 pin5 external VIN tie is measured; pin4 unused is supported by user annotation and photo inspection. Firmware, daughterboard internals and routed PCB are separate from main-board schematic completion.",
+  "deferred": "All catalog pads have modeled local nets or the supported U6 pin4 NC. Optional device identities/values and J6 role remain qualified. PCB routing, layer-stack confirmation, daughterboard internals and firmware are separate scope.",
   "sources": [
     "evidence/remaining_work.json",
     "evidence/reconstruction.json",
@@ -769,9 +775,9 @@
       "result": "OL"
     }
   ],
-  "batch_title": "D6 and U6 routing resolved",
-  "instructions": "D6: upper V is GND/anode, lower W is VPP/cathode. U6 pin5 is tied externally to VIN (pin2); pin4 is unused by user annotation and photo inspection. R47/C42 local wiring is reconstructed. No repeat measurements requested for this batch. TP9 is withdrawn from the active inventory in v0.9.24 after photo audit and user instruction.",
-  "result_summary": "B18 TP16-TP11 and B19 TP16-TP17 each read 400 kohm. B21 TP16-VREF reads 0.8 Mohm. User identifies PIC21/RB0 as TP16/Q2.S destination and explicitly withdraws PIC21-VREF. U7.1/2/3 map to J3.3/2/1. These updates are applied in the schematic. v0.9.17 user-annotated photo: C25 right pad/model1 -> PIC2/RA0; C26 right pad/model1 -> PIC3/RA1. Left pads/model2 are common, retaining earlier V029-GND evidence. No new numeric resistance or capacitance supplied. C26 joins the existing RA1/R28/R29/TP7 net, separate from RA0 and VREF. C6 now parallels C5 by photo-supported reconstruction; value unknown. v0.9.19 user annotated local copper: R47 left -> U3.1/R27 right; R47 right + C42 lower + R25 lower + R48 right share RX_STAGE_LINK. C42 upper -> GND inferred from continuous copper beside U3.4 in IMG_2429/2434. R25-GND and R48-VREF old assumptions withdrawn. R47/C42 remain DNP. No meter reading supplied. B22-B27: D6 V-GND and W-VPP each 1 ohm; other readings 44k/270k/10k are indirect paths. B28: U6 pin5-pin2 1 ohm. v0.9.20 B22-B27: upper photo contact V -> GND, lower W -> VPP, each 1 ohm. B29 red V/black W about 0.7V; B30 reverse OL. Supports A=V/GND (pin2), K=W/VPP (pin1). G3 identity and Zener breakdown remain unverified; no 3.9V measurement. v0.9.21 annotated photo: J6 left/model1 joins Q9 single/native3 and R36 right/model2. J6 right/model2 joins R36 left/model1. PIC26/RB5-TP10-R35 upper; R35 lower-Q9 paired-left; paired-right via V021 is GND. All J6/Q9/R35/R36 options remain DNP. R36 left/J6 right onward rail is not established by this annotation. v0.9.21 user annotated S1 upper-right to C35 upper/model2 (GND via prior V018); lower-right to C35 lower/model1, R40 lower/model2 and R41 left/model2. User explicitly confirms R41 right/model1 reaches J1 VPP/MCLR. Correct physical-to-native switch mapping TL=1, TR=3, BL=2, BR=4. Top-row/bottom-row common pairs remain a tactile-switch hypothesis; released/pressed behavior has not been measured. v0.9.22 user annotated U6A option: single left pad/model L/native U106.1 joins U6 pin5 and the existing input node after R37; upper-right/model R1/native2 joins J3.1 (red PIR wire); lower-right/model R2/native3 joins GND. All three external pads mapped, option remains DNP. User called the input VDD; retain VDD -> R37 (22 ohm) -> H_AUX_IN because the annotation ends at U6 pin5 and prior B28 confirms pin5-pin2, not a bypass across R37. No fitted IC identity or voltage measurement implied.",
+  "batch_title": "No active measurement request",
+  "instructions": "The previous D2/D3/D6, PIC/PIR and open-pad batches are complete. Use the current remaining-work list; completed readings below remain evidence, not requests to repeat.",
+  "result_summary": "Completed readings and photo corrections are preserved below and in their dated evidence records. Current results: D6 A=GND/K=VPP; U6 pin5=VIN; PIC21=TP16/Q2, not VREF; D2/D3 local routes and R41-VPP resolved. C49 now connects ANT2 to GND. U6A native numbering is U106.3 input, U106.2 output, U106.1 ground; old connector-number descriptions in historical annotations are superseded.",
   "cancelled_tests": [
     {
       "id": "B20",
@@ -783,7 +789,7 @@
       "reason": "User identifies PIC21/RB0 destination; reconcile the older VREF assignment instead."
     }
   ],
-  "revision": "v0.9.22",
+  "revision": "v0.9.29",
   "photo_updates": [
     {
       "evidence": "evidence/c25_c26_mapping_20261009.json",
@@ -809,7 +815,7 @@
   "batch_id": "open-pads-20261009",
   "location_review": {
     "reference": "TP9",
-    "status": "UNLOCATED_INVENTORY_ENTRY",
+    "status": "REMOVED_UNSUPPORTED_ENTRY",
     "inherited_source": "reference/v01/evidence/components.csv",
     "reviewed_photos": [
       "photos/originals/IMG_2436.jpg",
@@ -855,7 +861,7 @@
         "GND"
       ]
     ],
-    "pending_check": "U6.5 to U6.2",
+    "pending_check": null,
     "model_status": "Applied v0.9.20: pin5-VIN measured 1 ohm; R37 and U6A single-pad local joins from the annotation; pin4 explicitly unused."
   }
 }

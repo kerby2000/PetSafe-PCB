@@ -8,6 +8,7 @@ def save(p,d):(R/p).write_text(json.dumps(d,indent=2)+'\n',encoding='utf-8',newl
 a=read('evidence/via_audit.json');m=read('evidence/reconstruction.json')
 sites={s['id']:s for s in a['sites']}
 excluded={'BATTERY+','GND','VSYS','VDD','MOTOR_INA','MOTOR_INB','ICSP_DAT','H_TUNE_1','H_TUNE_2','H_TUNE_3','H_TUNE_4','H_TUNE_5','RF_MONITOR_PAD','VREF','H_RX_ENABLE_CTL','H_PIR_VDD','PIC_TP4_C41'}
+excluded.add('H_PIR_SIG') # V026/PIC21 -> TP16/Q2 was resolved by the user.
 groups=defaultdict(list)
 for s in a['sites']:
  if s['active'] and s['net'] not in excluded:

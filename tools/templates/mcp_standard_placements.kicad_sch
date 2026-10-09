@@ -6833,12 +6833,33 @@
 				(hide yes)
 			)
 		)
-(property "MeasurementEvidence" "User LCR-meter reading: L2 = 2.2 uH. Test frequency, test mode, fixture compensation and in-circuit/isolation condition not yet reported. Recorded reading; manufacturer nominal, tolerance, DCR and current rating remain unknown." (at 41.91 53.34 0)
-(effects (font (size 1.27 1.27)) (hide yes))
-)
-(property "ValueSource" "User LCR-meter measurement 2026-10-09" (at 41.91 53.34 0)
-(effects (font (size 1.27 1.27)) (hide yes))
-)
+		(property "MeasurementEvidence" "User LCR-meter reading: L2 = 2.2 uH. Test frequency, test mode, fixture compensation and in-circuit/isolation condition not yet reported. Recorded reading; manufacturer nominal, tolerance, DCR and current rating remain unknown."
+			(at 41.91 53.34 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "ValueSource" "User LCR-meter measurement 2026-10-09"
+			(at 41.91 53.34 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "CurrentEvidence" "User LCR-meter reading: L2 = 2.2 uH. Test frequency, test mode, fixture compensation and in-circuit/isolation condition not yet reported. Recorded reading; manufacturer nominal, tolerance, DCR and current rating remain unknown."
+			(at 41.91 53.34 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
 		(pin "1"
 			(uuid "231c03cf-f300-4348-a28a-931e29526232")
 		)
@@ -9639,6 +9660,15 @@
 				(hide yes)
 			)
 		)
+		(property "CurrentEvidence" "Unknown capacitance. Model2/upper end is GND/S1 upper-right; model1/lower joins H_BUTTON/R40.2/R41.2/S1 lower-right. Stock switch native pins are 1 for the upper row and 2 for the lower row. R41 opposite end is VPP."
+			(at 558.8 74.93 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
 		(pin "1"
 			(uuid "c2f55561-edf0-4e6e-a675-56e26216c889")
 		)
@@ -9719,6 +9749,15 @@
 			)
 		)
 		(property "ConnectionEvidence" "v0.9.21 user annotated S1 upper-right to C35 upper/model2 (GND via prior V018); lower-right to C35 lower/model1, R40 lower/model2 and R41 left/model2. User explicitly confirms R41 right/model1 reaches J1 VPP/MCLR. Correct physical-to-native switch mapping TL=1, TR=3, BL=2, BR=4. Top-row/bottom-row common pairs remain a tactile-switch hypothesis; released/pressed behavior has not been measured."
+			(at 558.8 50.8 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "CurrentEvidence" "10k from marking, between ICSP_DAT/PIC28 and H_BUTTON. H_BUTTON also joins C35.1, R41.2 and S1 bottom row (native switch pin2). The physical switch common pairs remain inferred."
 			(at 558.8 50.8 0)
 			(effects
 				(font
@@ -9815,6 +9854,15 @@
 				(hide yes)
 			)
 		)
+		(property "CurrentEvidence" "User reads 331: 330 ohm. Model1/right end reaches J1 VPP/MCLR by user confirmation; model2/left joins R40.2/C35.1/H_BUTTON. No isolated R41 endpoint remains. Button contact behavior and operating role remain qualified."
+			(at 520.7 50.8 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
 		(pin "1"
 			(uuid "85008363-b2f8-4e0c-9923-3147eeeb8fb1")
 		)
@@ -9897,6 +9945,15 @@
 			)
 		)
 		(property "ViaEvidence" "v0.9.9: User corrects raw battery+ versus post-Q1 rail. BATP -> Q1.S (single physical pad/native3, candidate drain); Q1.L/native2 (candidate source) -> U5.4/V011-V014. These are distinct copper nets, connected through Q1. IMG_2438 also supports TP14 on battery+; V015/R43.2-TP14 user confirmation retained. Q1.R/native1 is candidate gate at R44.2. Photo S means SINGLE, not MOSFET source."
+			(at 511.81 80.01 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "CurrentEvidence" "Motor supply bypass across VSYS (U5 pin4 supply) and GND from user via reports/photo pad selection. VSYS is distinct from the printed VDD logic rail. Capacitance is unknown."
 			(at 511.81 80.01 0)
 			(effects
 				(font
@@ -11010,12 +11067,33 @@
 				(hide yes)
 			)
 		)
-(property "MeasurementEvidence" "User LCR-meter reading: L1 = 1.4 uH. Test frequency, test mode, fixture compensation and in-circuit/isolation condition not yet reported. Recorded reading; manufacturer nominal, tolerance, DCR and current rating remain unknown." (at 220.98 167.64 0)
-(effects (font (size 1.27 1.27)) (hide yes))
-)
-(property "ValueSource" "User LCR-meter measurement 2026-10-09" (at 220.98 167.64 0)
-(effects (font (size 1.27 1.27)) (hide yes))
-)
+		(property "MeasurementEvidence" "User LCR-meter reading: L1 = 1.4 uH. Test frequency, test mode, fixture compensation and in-circuit/isolation condition not yet reported. Recorded reading; manufacturer nominal, tolerance, DCR and current rating remain unknown."
+			(at 220.98 167.64 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "ValueSource" "User LCR-meter measurement 2026-10-09"
+			(at 220.98 167.64 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "CurrentEvidence" "User LCR-meter reading: L1 = 1.4 uH. Test frequency, test mode, fixture compensation and in-circuit/isolation condition not yet reported. Recorded reading; manufacturer nominal, tolerance, DCR and current rating remain unknown."
+			(at 220.98 167.64 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
 		(pin "1"
 			(uuid "c2aad70e-0297-41b9-8d18-83c8343450e3")
 		)
@@ -11133,18 +11211,51 @@
 				(hide yes)
 			)
 		)
-(property "BodySize" "6.33 mm diameter x 16 mm height (user measurement)" (at 237.49 181.61 0)
-(effects (font (size 1.27 1.27)) (hide yes))
-)
-(property "Height" "16 mm" (at 237.49 181.61 0)
-(effects (font (size 1.27 1.27)) (hide yes))
-)
-(property "LeadPitch" "2.5 mm (inferred, not measured)" (at 237.49 181.61 0)
-(effects (font (size 1.27 1.27)) (hide yes))
-)
-(property "MeasurementEvidence" "User confirms radial electrolytic C5, 6.33 mm diameter and 16 mm high; earlier sleeve reading 470 uF / 16 V retained. Standard nominal 6.3 mm footprint assigned; 2.5 mm pitch and 0.8 mm drills remain candidate geometry. Stock footprint describes a 7 mm body, so its housing model is not an exact match. Use measured 16 mm for clearance. Polarity and physical nets unchanged." (at 237.49 181.61 0)
-(effects (font (size 1.27 1.27)) (hide yes))
-)
+		(property "BodySize" "6.33 mm diameter x 16 mm height (user measurement)"
+			(at 237.49 181.61 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Height" "16 mm"
+			(at 237.49 181.61 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "LeadPitch" "2.5 mm (inferred, not measured)"
+			(at 237.49 181.61 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "MeasurementEvidence" "User confirms radial electrolytic C5, 6.33 mm diameter and 16 mm high; earlier sleeve reading 470 uF / 16 V retained. Standard nominal 6.3 mm footprint assigned; 2.5 mm pitch and 0.8 mm drills remain candidate geometry. Stock footprint describes a 7 mm body, so its housing model is not an exact match. Use measured 16 mm for clearance. Polarity and physical nets unchanged."
+			(at 237.49 181.61 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "CurrentEvidence" "User confirms radial electrolytic C5, 6.33 mm diameter and 16 mm high; earlier sleeve reading 470 uF / 16 V retained. Standard nominal 6.3 mm footprint assigned; 2.5 mm pitch and 0.8 mm drills remain candidate geometry. Stock footprint describes a 7 mm body, so its housing model is not an exact match. Use measured 16 mm for clearance. Polarity and physical nets unchanged."
+			(at 237.49 181.61 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
 		(pin "1"
 			(uuid "1f0a9396-2967-444b-97f0-8b5ec6729161")
 		)
@@ -11727,15 +11838,42 @@
 				(hide yes)
 			)
 		)
-(property "Colour" "Red / Green" (at 231.14 237.49 0)
-(effects (font (size 1.27 1.27)) (hide yes))
-)
-(property "BodySize" "1.5 x 1.5 mm (user measurement)" (at 231.14 237.49 0)
-(effects (font (size 1.27 1.27)) (hide yes))
-)
-(property "MeasurementEvidence" "User confirms square 1.5 x 1.5 mm package containing red and green emitters. Four pads and existing board connections retained. Which resistor/PIC channel lights each colour, internal die pairing and exact manufacturer pad numbering remain unconfirmed. No stock land pattern assigned from body size alone." (at 231.14 237.49 0)
-(effects (font (size 1.27 1.27)) (hide yes))
-)
+		(property "Colour" "Red / Green"
+			(at 231.14 237.49 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "BodySize" "1.5 x 1.5 mm (user measurement)"
+			(at 231.14 237.49 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "MeasurementEvidence" "User confirms square 1.5 x 1.5 mm package containing red and green emitters. Four pads and existing board connections retained. Which resistor/PIC channel lights each colour, internal die pairing and exact manufacturer pad numbering remain unconfirmed. No stock land pattern assigned from body size alone."
+			(at 231.14 237.49 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "CurrentEvidence" "User confirms square 1.5 x 1.5 mm package containing red and green emitters. Four pads and existing board connections retained. Which resistor/PIC channel lights each colour, internal die pairing and exact manufacturer pad numbering remain unconfirmed. No stock land pattern assigned from body size alone."
+			(at 231.14 237.49 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
 		(pin "1"
 			(uuid "e17bbd08-da1b-4440-abe8-ef09d84db2d3")
 		)
@@ -13791,6 +13929,15 @@
 			)
 		)
 		(property "ViaEvidence" "v0.9.7: V064-V075 confirmed; V064-V070 measured 11.2 kohm. IMG_2434 plus R18 1.2k + R19 10k supports PNP supply switch: E/R pin2 at VDD, B/L pin1 through R18 control and R19 pull-up. Terminal selection is a supported photo/circuit inference, not a separate user pad measurement."
+			(at 313.69 182.88 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "CurrentEvidence" "3GW supports BC857C PNP. Photo and 11.2 kohm R18+R19 path support B=L, E=R/VDD, C=S/R20; terminal selection and switching role remain inferred. Control input R18.1 is now user-confirmed to PIC12/RC1 via V053-V070."
 			(at 313.69 182.88 0)
 			(effects
 				(font
@@ -17209,6 +17356,15 @@
 				(hide yes)
 			)
 		)
+		(property "CurrentEvidence" "22 ohm from marking. Input/model1 joins printed VDD through V063/V064; output/model2 joins U6 VIN/pin2 and its externally tied pin5, C36 and the U6A input option. The old unknown remote-feed statement is superseded. Actual rail voltage is unmeasured."
+			(at 309.88 295.91 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
 		(pin "1"
 			(uuid "77d1800b-1ee2-4fb0-985c-5986ed74c081")
 		)
@@ -17558,6 +17714,15 @@
 				(hide yes)
 			)
 		)
+		(property "CurrentEvidence" "PIR connector: pin1 supply; pin2 to R38 K/right/model1 at 1 ohm, with 10k through R38; pin3 GND at 1 ohm. The Q2 single-pad/TP16 output reaches PIC21/RB0 by user correction. PIC21-to-VREF was withdrawn after TP16-VREF measured 0.8 Mohm. Q2/R33 device behavior remains qualified."
+			(at 405.13 327.66 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
 		(pin "1"
 			(uuid "4a9aa7de-2512-460d-ac9f-c75ebd830f3e")
 		)
@@ -17643,6 +17808,15 @@
 				(font
 					(size 1.27 1.27)
 				)
+			)
+		)
+		(property "CurrentEvidence" "1FW supports BC847B. Candidate B=R, E=L, C=S and interface role remain inferred. J3.1 supply, J3.3 GND and J3.2-R38 K are user-confirmed; Q2/TP16 reaches PIC21/RB0 per user, separate from VREF at 800 kohm."
+			(at 365.76 345.44 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
 			)
 		)
 		(pin "1"
@@ -17816,6 +17990,15 @@
 			)
 		)
 		(property "ViaEvidence" "v0.9.6: User confirms V064-V063. R37.1/R39.2 feed junction is regulated board VDD, not motor VDD."
+			(at 351.79 355.6 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "CurrentEvidence" "10k from marking. Model2 joins printed VDD through V063/V064; model1 remains on the inferred Q2 base/R38 node. PIR output TP16/Q2.S to PIC21 is confirmed; transistor pin functions and the R33 branch remain qualified."
 			(at 351.79 355.6 0)
 			(effects
 				(font
@@ -18441,9 +18624,24 @@
 				(hide yes)
 			)
 		)
-(property "ConnectionEvidence" "User confirms C49 connects between ANT2 and GND (2026-10-09). Model pin1 = H_ANT_B / ANT2, pin2 = GND. Nonpolar capacitor: pin numbering is a schematic convention, not a separately measured physical pad orientation. No capacitance value or population change reported." (at 259.08 379.73 0)
-(effects (font (size 1.27 1.27)) (hide yes))
-)
+		(property "ConnectionEvidence" "User confirms C49 connects between ANT2 and GND (2026-10-09). Model pin1 = H_ANT_B / ANT2, pin2 = GND. Nonpolar capacitor: pin numbering is a schematic convention, not a separately measured physical pad orientation. No capacitance value or population change reported."
+			(at 259.08 379.73 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "CurrentEvidence" "Rear C49 footprint beside antenna wire terminations in IMG_2442.jpg; presence confirmed by user 2026-10-09. Existing DNP population retained. User confirms C49 connects between ANT2 and GND (2026-10-09). Model pin1 = H_ANT_B / ANT2, pin2 = GND. Nonpolar capacitor: pin numbering is a schematic convention, not a separately measured physical pad orientation. No capacitance value or population change reported."
+			(at 259.08 379.73 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
 		(pin "1"
 			(uuid "69cf24d7-7607-4e68-8ade-f4170c8b4732")
 		)
@@ -19259,6 +19457,15 @@
 				(hide yes)
 			)
 		)
+		(property "CurrentEvidence" "4P exact identity unresolved. In-circuit diode readings support R -> S -> L series junctions, weakening the marking-only PNP lead. User confirms R-C20 lower end 1 ohm, L-ANT2/R46 upper, S-R46 lower. R46 is DNP. D2 L=1/R=2/S=3 are placeholder identifiers, not a verified device pinout."
+			(at 556.26 251.46 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
 		(pin "1"
 			(uuid "933965dc-aaa7-493b-8dd5-326d52d883c3")
 		)
@@ -19353,6 +19560,15 @@
 			)
 		)
 		(property "IdentityEvidence" "R1A marking matches Formosa FMOS3401A datasheet p5; SOT-23 PMOS with G=1 (photo R), S=2 (photo L), D=3 (photo single S). Candidate identification, not manufacturer proof. Drain at battery+ and source at load support reverse-polarity protection; gate-control behavior not verified. Earlier MMBT3904 NPN hypothesis withdrawn."
+			(at 453.39 111.76 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "CurrentEvidence" "R1A marking matches Formosa FMOS3401A datasheet p5; SOT-23 PMOS with G=1 (photo R), S=2 (photo L), D=3 (photo single S). Candidate identification, not manufacturer proof. Drain at battery+ and source at load support reverse-polarity protection; gate-control behavior not verified. Earlier MMBT3904 NPN hypothesis withdrawn."
 			(at 453.39 111.76 0)
 			(effects
 				(font
@@ -19520,6 +19736,15 @@
 				(hide yes)
 			)
 		)
+		(property "CurrentEvidence" "Measured body 6 x 6 x 4 mm plus 2 mm actuator. Stock SW_Push has two native nodes: physical TL/TR -> pin1/GND; BL/BR -> pin2/H_BUTTON. R41 reaches J1 VPP. Internal contact pairing and released/pressed behavior remain inferred; the former four-native-pin connector numbering is superseded."
+			(at 537.21 60.96 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
 		(pin "1"
 			(uuid "8ccab22f-86be-43b2-9815-148d9b6bff67")
 		)
@@ -19620,6 +19845,15 @@
 			)
 		)
 		(property "DeviceRole" "v0.9.24: use generic NPN BEC symbol for empty Q9, consistent with R35 drive into paired-left pin1/base, paired-right pin2/emitter to GND, and single pin3/collector to J6.1/R36.2. NPN device class is an inference; no fitted transistor identity or rating. All option parts remain DNP. J6.2/R36.1 onward role is still unknown."
+			(at 233.68 123.19 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "CurrentEvidence" "v0.9.24: use generic NPN BEC symbol for empty Q9, consistent with R35 drive into paired-left pin1/base, paired-right pin2/emitter to GND, and single pin3/collector to J6.1/R36.2. NPN device class is an inference; no fitted transistor identity or rating. All option parts remain DNP. J6.2/R36.1 onward role is still unknown."
 			(at 233.68 123.19 0)
 			(effects
 				(font
@@ -19739,6 +19973,15 @@
 			)
 		)
 		(property "PinMapping" "Photo single-left input -> SOT23 pin3; upper-right output -> pin2; lower-right GND -> pin1. Supersedes former arbitrary connector pin1/pin3 assignment."
+			(at 330.2 373.38 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "CurrentEvidence" "v0.9.24: same measured/photo-supported U6A input/output/GND nets retained. Replace the connector sketch by a three-pin regulator role template. SOT-23 single left input -> native U106.3, upper-right output -> U106.2, lower-right GND -> U106.1. The former connector pin1/pin3 assignment was arbitrary and is superseded. MCP1700 stock symbol supplies graphics/pin roles only; it does not identify a fitted device or establish voltage/current rating. U6A remains DNP and an alternative to fitted U6."
 			(at 330.2 373.38 0)
 			(effects
 				(font
@@ -19888,6 +20131,15 @@
 				(hide yes)
 			)
 		)
+		(property "CurrentEvidence" "A7 and the series-dual pin map support BAV99. User confirms L=GND, R=VDD via V082, and 1.2 ohm from S to R42 (end unspecified; pad2 selected from photo). Rail-clamp role is supported; manufacturer, diode behavior and signal operating function remain unverified."
+			(at 556.26 233.68 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
 	)
 	(symbol
 		(lib_id "PetSafe_Datasheet:S-812C33AMC")
@@ -19990,6 +20242,15 @@
 			)
 		)
 		(property "ConnectionEvidence" "v0.9.20: U6.5-U6.2 measured 1 ohm (B28). User annotation also joins physical L2/native5 to R37 upper/model2 and empty U6A single/native1. U6.4/L1 marked NC by user and appears as an isolated surface stub in original photos. Candidate pin5 is internally NC but externally tied to VIN; pin4 remains unused."
+			(at 330.2 309.88 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "CurrentEvidence" "C2NM supports candidate S-812C33AMC: pin1 VSS, pin2 VIN, pin3 VOUT, pins4/5 internally NC. Pin5 is externally tied to pin2 at 1 ohm (B28); pin4 is intentionally unused by user/photo evidence. R37 input branch and J3.1 output remain modeled; actual output voltage and fitted identity are not proved by the candidate datasheet."
 			(at 330.2 309.88 0)
 			(effects
 				(font
@@ -20135,6 +20396,15 @@
 				(hide yes)
 			)
 		)
+		(property "CurrentEvidence" "3724A supports the SIL3724A complementary MOSFET candidate; fitted maker unconfirmed. V113/V115 centre B2/native5 GND is resolved; outer-drain join retains D-E low-resistance evidence. V114 belongs to U2.T2 GND, not Q8. C6 is photo-supported in parallel with C5 as of v0.9.18. Q8 source-supply path remains independently qualified; no current centre-ground conflict."
+			(at 162.56 231.14 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
 		(pin "1"
 			(uuid "5cd21eec-244d-4a7a-85bd-1b3672ae3df3")
 		)
@@ -20239,6 +20509,15 @@
 			)
 		)
 		(mirror x)
+		(property "CurrentEvidence" "3724A supports the SIL3724A complementary MOSFET candidate; fitted maker unconfirmed. V113/V115 centre B2/native5 GND is resolved; outer-drain join retains D-E low-resistance evidence. V114 belongs to U2.T2 GND, not Q8. C6 is photo-supported in parallel with C5 as of v0.9.18. Q8 source-supply path remains independently qualified; no current centre-ground conflict."
+			(at 162.56 207.01 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
 	)
 	(symbol
 		(lib_id "Device:D_Zener")
@@ -20342,6 +20621,15 @@
 		)
 		(property "ViaEvidence" "v0.8: D4.2 via V030 matches main rear VSS-associated copper; photo inference, not continuity measurement."
 			(at 342.9 43.18000000000001 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "CurrentEvidence" "5U supports an SD05 TVS candidate. Model1/cathode reaches ICSP_CLK; model2/anode is ground through photo-selected V030. Polarity/routing are photo-supported, not a new diode test; exact device remains a candidate."
+			(at 342.9 43.18 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -20473,6 +20761,15 @@
 				(hide yes)
 			)
 		)
+		(property "CurrentEvidence" "5U supports an SD05 TVS candidate. Model1/cathode reaches ICSP_DAT; model2/anode is ground through photo-selected V027. Polarity/routing are photo-supported, not a new diode test; exact device remains a candidate."
+			(at 374.65 43.18 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
 		(pin "1"
 			(uuid "2e14a945-3b32-484d-8eb5-84812075f98c")
 		)
@@ -20590,6 +20887,15 @@
 		)
 		(property "ConnectionEvidence" "v0.9.20 B22-B27: upper photo contact V -> GND, lower W -> VPP, each 1 ohm. B29 red V/black W about 0.7V; B30 reverse OL. Supports A=V/GND (pin2), K=W/VPP (pin1). G3 identity and Zener breakdown remain unverified; no 3.9V measurement."
 			(at 311.15 43.18000000000001 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "CurrentEvidence" "G3 marking; user measurements establish anode at GND, cathode at VPP, about 0.7 V forward and OL reverse. Exact diode class/manufacturer and reverse breakdown remain unresolved; 3.9 V is a marking candidate, not a measured value."
+			(at 311.15 43.18 0)
 			(effects
 				(font
 					(size 1.27 1.27)

@@ -1,5 +1,8 @@
 > Historical investigation: marking/pin-table sources remain useful, but later user continuity supersedes temporary wiring claims. Use [the current checklist](FINISHING_CHECKLIST.html) and [current interpretation](RECONSTRUCTION.md).
 
+> Historical dated investigation: later measurements and symbol numbering supersede earlier open questions below. Use [current circuit interpretation](RECONSTRUCTION.md), [measurement results](MEASUREMENTS.md) and [the live checklist](FINISHING_CHECKLIST.html) for present status.
+
+
 # U6 and Q8: corrected markings, v0.5
 
 The sharper user photographs read **C2NM on U6** and **3724A on Q8**. The earlier WN23 and 372A readings were incorrect. This report supersedes the candidate ranking in the historical U6/Q8 investigation.

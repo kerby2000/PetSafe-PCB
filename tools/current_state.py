@@ -18,6 +18,11 @@ def value_is_known(component):
             and component.get('value', '').upper() not in {'', 'UNKNOWN', 'TBD', 'DNP'}
             and '?' not in component.get('value', ''))
 
+
+def component_summary(component):
+    """Current interpretation, separate from preserved dated evidence events."""
+    return component.get('current_summary') or component.get('hypothesis') or component.get('note') or 'See recorded component evidence.'
+
 def validate_issue_register(model, work):
     """Require evidence for closures and cover current gaps with active issues."""
     issues = work['issues']; ids = [i['id'] for i in issues]
@@ -74,6 +79,8 @@ def current_state(model=None, validation=None, work=None):
         via_review=read('evidence/via_audit.json')['review_summary'],
         current_gaps=[dict(id=i['id'], area=i['area'], gap=i['unknown'], method=i['next_action']) for i in work['issues'] if i['state']!='closed'],
         items=[i for i in work['issues'] if i['state']!='closed'],
+        finish_plan=work.get('finish_plan', []),
+        settled_summary=work.get('settled_summary', []),
         closed_items=[i for i in work['issues'] if i['state']=='closed'], rails=work['rails'],
         milestones=work.get('milestones', []),
         population_note='Open pads include empty options, test pads and internally NC pins. Zero open PIC pads does not prove every onward route.',

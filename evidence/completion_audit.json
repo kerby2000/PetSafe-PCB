@@ -1,5 +1,5 @@
 {
-  "revision": "v0.9.28",
+  "revision": "v0.9.29",
   "instruments": [
     "LCR meter",
     "multimeter"
@@ -636,7 +636,7 @@
       "observed": "DNP",
       "displayed": "DNP",
       "marking": "",
-      "value_or_identity": "Unpopulated option: no fitted value to recover",
+      "value_or_identity": "Unpopulated option: no fitted value to recover. Empty footprint photographed; do not treat as a jumper.",
       "footprint": "Resistor_SMD:R_0603_1608Metric",
       "footprint_confidence": "medium",
       "footprint_basis": "Body/land proportions compared with nearby 1.27-mm SOIC and 0.95-mm SOT lead pitch. Populated resistor family appears 0805; smaller empty option lands appear 0603.",
@@ -651,7 +651,7 @@
       "observed": "DNP",
       "displayed": "DNP",
       "marking": "",
-      "value_or_identity": "Unpopulated option: no fitted value to recover",
+      "value_or_identity": "Unpopulated option: no fitted value to recover. Empty footprint photographed; do not treat as a jumper.",
       "footprint": "Resistor_SMD:R_0603_1608Metric",
       "footprint_confidence": "medium",
       "footprint_basis": "Body/land proportions compared with nearby 1.27-mm SOIC and 0.95-mm SOT lead pitch. Populated resistor family appears 0805; smaller empty option lands appear 0603.",
@@ -666,7 +666,7 @@
       "observed": "DNP",
       "displayed": "DNP",
       "marking": "",
-      "value_or_identity": "Unpopulated option: no fitted value to recover",
+      "value_or_identity": "Unpopulated option: no fitted value to recover. v0.9.21 annotated photo: J6 left/model1 joins Q9 single/native3 and R36 right/model2. J6 right/model2 joins R36 left/model1. PIC26/RB5-TP10-R35 upper; R35 lower-Q9 paired-left; paired-right via V021 is GND. All J6/Q9/R35/R36 options remain DNP. R36 left/J6 right onward rail is not established by this annotation.",
       "footprint": "Resistor_SMD:R_0603_1608Metric",
       "footprint_confidence": "medium",
       "footprint_basis": "Body/land proportions compared with nearby 1.27-mm SOIC and 0.95-mm SOT lead pitch. Populated resistor family appears 0805; smaller empty option lands appear 0603.",
@@ -681,7 +681,7 @@
       "observed": "DNP",
       "displayed": "DNP",
       "marking": "",
-      "value_or_identity": "Unpopulated option: no fitted value to recover",
+      "value_or_identity": "Unpopulated option: no fitted value to recover. v0.9.21 annotated photo: J6 left/model1 joins Q9 single/native3 and R36 right/model2. J6 right/model2 joins R36 left/model1. PIC26/RB5-TP10-R35 upper; R35 lower-Q9 paired-left; paired-right via V021 is GND. All J6/Q9/R35/R36 options remain DNP. R36 left/J6 right onward rail is not established by this annotation.",
       "footprint": "Resistor_SMD:R_0603_1608Metric",
       "footprint_confidence": "medium",
       "footprint_basis": "Body/land proportions compared with nearby 1.27-mm SOIC and 0.95-mm SOT lead pitch. Populated resistor family appears 0805; smaller empty option lands appear 0603.",
@@ -696,7 +696,7 @@
       "observed": "DNP",
       "displayed": "DNP",
       "marking": "",
-      "value_or_identity": "Unpopulated option: no fitted value to recover",
+      "value_or_identity": "Unpopulated option: no fitted value to recover. Empty footprint, confirmed by user. Upper photo pad=model1 joins D2.L/ANT2; lower photo pad=model2 joins D2.S. Do not treat as a jumper or install an assumed value.",
       "footprint": "Resistor_SMD:R_0603_1608Metric",
       "footprint_confidence": "medium",
       "footprint_basis": "Body/land proportions compared with nearby 1.27-mm SOIC and 0.95-mm SOT lead pitch. Populated resistor family appears 0805; smaller empty option lands appear 0603.",
@@ -711,7 +711,7 @@
       "observed": "DNP",
       "displayed": "DNP",
       "marking": "",
-      "value_or_identity": "Unpopulated option: no fitted value to recover",
+      "value_or_identity": "Unpopulated option: no fitted value to recover. Empty footprint photographed; do not treat as a jumper.",
       "footprint": "Resistor_SMD:R_0603_1608Metric",
       "footprint_confidence": "medium",
       "footprint_basis": "Body/land proportions compared with nearby 1.27-mm SOIC and 0.95-mm SOT lead pitch. Populated resistor family appears 0805; smaller empty option lands appear 0603.",
@@ -756,7 +756,7 @@
       "observed": "DNP",
       "displayed": "DNP",
       "marking": "",
-      "value_or_identity": "Unpopulated option: no fitted value to recover",
+      "value_or_identity": "Unpopulated option: no fitted value to recover. Unmarked ceramic: capacitance unknown; no default 100nF assigned.",
       "footprint": "Capacitor_SMD:C_0603_1608Metric",
       "footprint_confidence": "medium",
       "footprint_basis": "Photo family and body/land proportions compared with adjacent known IC lead pitch. Size is independent of capacitance, dielectric and voltage rating.",
@@ -771,7 +771,7 @@
       "observed": "DNP",
       "displayed": "DNP",
       "marking": "",
-      "value_or_identity": "Unpopulated option: no fitted value to recover",
+      "value_or_identity": "Unpopulated option: no fitted value to recover. Unmarked ceramic: capacitance unknown; no default 100nF assigned.",
       "footprint": "Capacitor_SMD:C_0603_1608Metric",
       "footprint_confidence": "medium",
       "footprint_basis": "Photo family and body/land proportions compared with adjacent known IC lead pitch. Size is independent of capacitance, dielectric and voltage rating.",
@@ -786,12 +786,12 @@
       "observed": "470uF",
       "displayed": "470uF / 16V",
       "marking": "470uF 16V",
-      "value_or_identity": "User sleeve reading: 470 uF / 16 V; exact can dimensions still needed",
+      "value_or_identity": "470 uF / 16 V; measured can diameter 6.33 mm and height 16 mm. Stock nominal 6.3 mm radial footprint assigned; 2.5 mm pitch remains inferred.",
       "footprint": "Capacitor_THT:CP_Radial_D6.3mm_P2.50mm",
       "footprint_confidence": "medium - measured diameter; inferred pitch",
       "footprint_basis": "User-measured diameter 6.33 mm supports stock nominal 6.3 mm radial can. Standard 2.5 mm lead pitch is inferred, not measured; actual pad spacing/drill fit remain unverified. Stock footprint description is 7 mm tall, while actual can height is 16 mm. This is a 2D land-pattern candidate, not an exact housing model.",
       "open_pads": 0,
-      "next_method": "Can diameter and lead-centre spacing for footprint",
+      "next_method": "No repeat can measurement. Verify lead pitch/drill fit only for PCB reproduction; use the measured 16 mm height.",
       "photos": "IMG_2431.jpg;IMG_2432.jpg"
     },
     {
@@ -1341,7 +1341,7 @@
       "observed": "DNP",
       "displayed": "DNP",
       "marking": "",
-      "value_or_identity": "Unpopulated option: no fitted value to recover",
+      "value_or_identity": "Unpopulated option: no fitted value to recover. Unmarked ceramic: capacitance unknown; no default 100nF assigned.",
       "footprint": "Capacitor_SMD:C_0603_1608Metric",
       "footprint_confidence": "medium",
       "footprint_basis": "Photo family and body/land proportions compared with adjacent known IC lead pitch. Size is independent of capacitance, dielectric and voltage rating.",
@@ -1446,7 +1446,7 @@
       "observed": "DNP",
       "displayed": "DNP",
       "marking": "",
-      "value_or_identity": "Unpopulated option: no fitted value to recover",
+      "value_or_identity": "Unpopulated option: no fitted value to recover. Rear C49 footprint beside antenna wire terminations in IMG_2442.jpg; presence confirmed by user 2026-10-09. Existing DNP population retained. User confirms C49 connects between ANT2 and GND (2026-10-09). Model pin1 = H_ANT_B / ANT2, pin2 = GND. Nonpolar capacitor: pin numbering is a schematic convention, not a separately measured physical pad orientation. No capacitance value or population change reported.",
       "footprint": "Capacitor_SMD:C_1206_3216Metric",
       "footprint_confidence": "medium",
       "footprint_basis": "Photo family and body/land proportions compared with adjacent known IC lead pitch. Size is independent of capacitance, dielectric and voltage rating.",
@@ -1461,7 +1461,7 @@
       "observed": "DNP",
       "displayed": "DNP",
       "marking": "",
-      "value_or_identity": "Unpopulated option: no fitted value to recover",
+      "value_or_identity": "Unpopulated option: no fitted value to recover. See recorded component evidence.",
       "footprint": "Capacitor_SMD:C_1206_3216Metric",
       "footprint_confidence": "medium",
       "footprint_basis": "Photo family and body/land proportions compared with adjacent known IC lead pitch. Size is independent of capacitance, dielectric and voltage rating.",
@@ -1476,7 +1476,7 @@
       "observed": "DNP",
       "displayed": "DNP",
       "marking": "",
-      "value_or_identity": "Unpopulated option: no fitted value to recover",
+      "value_or_identity": "Unpopulated option: no fitted value to recover. See recorded component evidence.",
       "footprint": "Capacitor_SMD:C_1206_3216Metric",
       "footprint_confidence": "medium",
       "footprint_basis": "Photo family and body/land proportions compared with adjacent known IC lead pitch. Size is independent of capacitance, dielectric and voltage rating.",
@@ -1586,7 +1586,7 @@
       "footprint_confidence": "datasheet/package candidate",
       "footprint_basis": "Existing assignment; see component identity evidence.",
       "open_pads": 0,
-      "next_method": "Candidate identity: confirm pin functions/routing; a short top code may not identify one manufacturer",
+      "next_method": "No immediate measurement requested",
       "photos": "IMG_2430.jpg"
     },
     {
@@ -1601,7 +1601,7 @@
       "footprint_confidence": "datasheet/package candidate",
       "footprint_basis": "Existing assignment; see component identity evidence.",
       "open_pads": 0,
-      "next_method": "Candidate identity: confirm pin functions/routing; a short top code may not identify one manufacturer",
+      "next_method": "No immediate measurement requested",
       "photos": "IMG_2431.jpg"
     },
     {
@@ -1611,12 +1611,12 @@
       "observed": "UNKNOWN_5PIN",
       "displayed": "S-812C33AMC? / 3.3V",
       "marking": "C2NM",
-      "value_or_identity": "H14v05: C2N product code matches ABLIC S-812C33AMC (Table 1); fourth character assembly month per MP005-A marking drawing. Pin1=VSS matches C=2.7ohm to G (shorted tips later 0.5ohm). Input/output routing inferred, 3.3V not measured. RT9818 supervisor hypothesis withdrawn.",
+      "value_or_identity": "C2NM supports candidate S-812C33AMC: pin1 VSS, pin2 VIN, pin3 VOUT, pins4/5 internally NC. Pin5 is externally tied to pin2 at 1 ohm (B28); pin4 is intentionally unused by user/photo evidence. R37 input branch and J3.1 output remain modeled; actual output voltage and fitted identity are not proved by the candidate datasheet.",
       "footprint": "Package_TO_SOT_SMD:SOT-23-5",
       "footprint_confidence": "datasheet/package candidate",
       "footprint_basis": "Existing assignment; see component identity evidence.",
       "open_pads": 0,
-      "next_method": "Candidate identity: confirm pin functions/routing; a short top code may not identify one manufacturer",
+      "next_method": "No immediate measurement requested",
       "photos": "IMG_2435.jpg"
     },
     {
@@ -1626,7 +1626,7 @@
       "observed": "DNP",
       "displayed": "U6A / LDO option",
       "marking": "",
-      "value_or_identity": "Unpopulated option: no fitted value to recover",
+      "value_or_identity": "Unpopulated option: no fitted value to recover. v0.9.24: same measured/photo-supported U6A input/output/GND nets retained. Replace the connector sketch by a three-pin regulator role template. SOT-23 single left input -> native U106.3, upper-right output -> U106.2, lower-right GND -> U106.1. The former connector pin1/pin3 assignment was arbitrary and is superseded. MCP1700 stock symbol supplies graphics/pin roles only; it does not identify a fitted device or establish voltage/current rating. U6A remains DNP and an alternative to fitted U6.",
       "footprint": "Package_TO_SOT_SMD:SOT-23",
       "footprint_confidence": "medium",
       "footprint_basis": "Empty three-pad SMD option beside U6; package-family estimate only.",
@@ -1641,7 +1641,7 @@
       "observed": "DNP",
       "displayed": "DNP",
       "marking": "",
-      "value_or_identity": "Unpopulated option: no fitted value to recover",
+      "value_or_identity": "Unpopulated option: no fitted value to recover. v0.9.16: user measured U7 square pad/model1 to J3.3/GND; middle/model2 to J3.2/H_PIR_RAW; outer round/model3 to J3.1/H_PIR_VDD. IMG_2441 confirms square-pad numbering. No numerical continuity values supplied. Empty option remains DNP.",
       "footprint": "Connector_PinHeader_2.54mm:PinHeader_1x03_P2.54mm_Vertical",
       "footprint_confidence": "low",
       "footprint_basis": "Three empty through-hole pads; generic 2.54-mm row represents candidate hole geometry, not a fitted header or identified IC.",
@@ -1661,7 +1661,7 @@
       "footprint_confidence": "datasheet/package candidate",
       "footprint_basis": "SOT-23 photo and FMOS3401A datasheet package agree. Manufacturer identity remains a candidate.",
       "open_pads": 0,
-      "next_method": "Candidate identity: confirm pin functions/routing; a short top code may not identify one manufacturer",
+      "next_method": "No immediate measurement requested",
       "photos": "IMG_2438.jpg"
     },
     {
@@ -1676,7 +1676,7 @@
       "footprint_confidence": "datasheet/package candidate",
       "footprint_basis": "Existing assignment; see component identity evidence.",
       "open_pads": 0,
-      "next_method": "Candidate identity: confirm pin functions/routing; a short top code may not identify one manufacturer",
+      "next_method": "No immediate measurement requested",
       "photos": "IMG_2435.jpg"
     },
     {
@@ -1691,7 +1691,7 @@
       "footprint_confidence": "datasheet/package candidate",
       "footprint_basis": "Existing assignment; see component identity evidence.",
       "open_pads": 0,
-      "next_method": "Candidate identity: confirm pin functions/routing; a short top code may not identify one manufacturer",
+      "next_method": "No immediate measurement requested",
       "photos": "IMG_2433.jpg"
     },
     {
@@ -1706,7 +1706,7 @@
       "footprint_confidence": "datasheet/package candidate",
       "footprint_basis": "Existing assignment; see component identity evidence.",
       "open_pads": 0,
-      "next_method": "Candidate identity: confirm pin functions/routing; a short top code may not identify one manufacturer",
+      "next_method": "No immediate measurement requested",
       "photos": "IMG_2433.jpg"
     },
     {
@@ -1721,7 +1721,7 @@
       "footprint_confidence": "datasheet/package candidate",
       "footprint_basis": "Existing assignment; see component identity evidence.",
       "open_pads": 0,
-      "next_method": "Candidate identity: confirm pin functions/routing; a short top code may not identify one manufacturer",
+      "next_method": "No immediate measurement requested",
       "photos": "IMG_2433.jpg"
     },
     {
@@ -1736,7 +1736,7 @@
       "footprint_confidence": "datasheet/package candidate",
       "footprint_basis": "Existing assignment; see component identity evidence.",
       "open_pads": 0,
-      "next_method": "Candidate identity: confirm pin functions/routing; a short top code may not identify one manufacturer",
+      "next_method": "No immediate measurement requested",
       "photos": "IMG_2433.jpg"
     },
     {
@@ -1751,7 +1751,7 @@
       "footprint_confidence": "datasheet/package candidate",
       "footprint_basis": "Existing assignment; see component identity evidence.",
       "open_pads": 0,
-      "next_method": "Candidate identity: confirm pin functions/routing; a short top code may not identify one manufacturer",
+      "next_method": "No immediate measurement requested",
       "photos": "IMG_2434.jpg"
     },
     {
@@ -1766,7 +1766,7 @@
       "footprint_confidence": "datasheet/package candidate",
       "footprint_basis": "Existing assignment; see component identity evidence.",
       "open_pads": 0,
-      "next_method": "Candidate identity: confirm pin functions/routing; a short top code may not identify one manufacturer",
+      "next_method": "No immediate measurement requested",
       "photos": "IMG_2431.jpg"
     },
     {
@@ -1776,7 +1776,7 @@
       "observed": "DNP",
       "displayed": "NPN option / DNP",
       "marking": "",
-      "value_or_identity": "Unpopulated option: no fitted value to recover",
+      "value_or_identity": "Unpopulated option: no fitted value to recover. v0.9.24: use generic NPN BEC symbol for empty Q9, consistent with R35 drive into paired-left pin1/base, paired-right pin2/emitter to GND, and single pin3/collector to J6.1/R36.2. NPN device class is an inference; no fitted transistor identity or rating. All option parts remain DNP. J6.2/R36.1 onward role is still unknown.",
       "footprint": "Package_TO_SOT_SMD:SOT-23",
       "footprint_confidence": "medium",
       "footprint_basis": "Empty three-pad transistor-size option; no fitted identity.",
@@ -1796,7 +1796,7 @@
       "footprint_confidence": "datasheet/package candidate",
       "footprint_basis": "Existing assignment; see component identity evidence.",
       "open_pads": 0,
-      "next_method": "Candidate identity: confirm pin functions/routing; a short top code may not identify one manufacturer",
+      "next_method": "No immediate measurement requested",
       "photos": "IMG_2433.jpg"
     },
     {
@@ -1811,7 +1811,7 @@
       "footprint_confidence": "datasheet/package candidate",
       "footprint_basis": "Existing assignment; see component identity evidence.",
       "open_pads": 0,
-      "next_method": "Candidate identity: confirm pin functions/routing; a short top code may not identify one manufacturer",
+      "next_method": "No immediate measurement requested",
       "photos": "IMG_2431.jpg"
     },
     {
@@ -1841,7 +1841,7 @@
       "footprint_confidence": "datasheet/package candidate",
       "footprint_basis": "Existing assignment; see component identity evidence.",
       "open_pads": 0,
-      "next_method": "Diode-mode readings and continuity; markings are already recorded; check PIC trace audit before requesting continuity",
+      "next_method": "Use electrical pad behavior and package/marking evidence for specific candidates. Do not request sharper photos where the existing marking is already legible.",
       "photos": "IMG_2434.jpg"
     },
     {
@@ -1851,12 +1851,12 @@
       "observed": "UNKNOWN",
       "displayed": "SD05? / TVS 5V",
       "marking": "5U",
-      "value_or_identity": "v0.8: cathode/model1 to ICSP clock retained. Anode/model2 via V030 joins VSS-associated rear copper (photo inference). 5U/SD05 remains a candidate identification.",
+      "value_or_identity": "5U supports an SD05 TVS candidate. Model1/cathode reaches ICSP_CLK; model2/anode is ground through photo-selected V030. Polarity/routing are photo-supported, not a new diode test; exact device remains a candidate.",
       "footprint": "Diode_SMD:D_SOD-323",
       "footprint_confidence": "datasheet/package candidate",
       "footprint_basis": "Existing assignment; see component identity evidence.",
       "open_pads": 0,
-      "next_method": "Diode-mode readings and continuity; markings are already recorded; check PIC trace audit before requesting continuity",
+      "next_method": "Use electrical pad behavior and package/marking evidence for specific candidates. Do not request sharper photos where the existing marking is already legible.",
       "photos": "IMG_2437.jpg"
     },
     {
@@ -1866,12 +1866,12 @@
       "observed": "UNKNOWN",
       "displayed": "SD05? / TVS 5V",
       "marking": "5U",
-      "value_or_identity": "v0.8: cathode/model1 to ICSP data retained. Anode/model2 via V027 joins VSS-associated rear copper (photo inference). 5U/SD05 remains a candidate identification.",
+      "value_or_identity": "5U supports an SD05 TVS candidate. Model1/cathode reaches ICSP_DAT; model2/anode is ground through photo-selected V027. Polarity/routing are photo-supported, not a new diode test; exact device remains a candidate.",
       "footprint": "Diode_SMD:D_SOD-323",
       "footprint_confidence": "datasheet/package candidate",
       "footprint_basis": "Existing assignment; see component identity evidence.",
       "open_pads": 0,
-      "next_method": "Diode-mode readings and continuity; markings are already recorded; check PIC trace audit before requesting continuity",
+      "next_method": "Use electrical pad behavior and package/marking evidence for specific candidates. Do not request sharper photos where the existing marking is already legible.",
       "photos": "IMG_2437.jpg"
     },
     {
@@ -1881,12 +1881,12 @@
       "observed": "UNKNOWN",
       "displayed": "MMSZ5228BS? / 3.9V",
       "marking": "G3",
-      "value_or_identity": "G3 permits multiple part candidates. In-circuit forward direction supports anode at GND and cathode at VPP. Exact type and reverse-breakdown voltage remain unknown; existing MMSZ5228BS/3.9V is only a candidate.",
+      "value_or_identity": "G3 marking; user measurements establish anode at GND, cathode at VPP, about 0.7 V forward and OL reverse. Exact diode class/manufacturer and reverse breakdown remain unresolved; 3.9 V is a marking candidate, not a measured value.",
       "footprint": "Diode_SMD:D_SOD-323",
       "footprint_confidence": "datasheet/package candidate",
       "footprint_basis": "Existing assignment; see component identity evidence.",
       "open_pads": 0,
-      "next_method": "Diode-mode readings and continuity; markings are already recorded; check PIC trace audit before requesting continuity",
+      "next_method": "No further D6 routing or polarity checks. Resolve actual breakdown/type only with appropriate part evidence or a controlled isolated test if required; diode mode does not measure breakdown.",
       "photos": "IMG_2437.jpg"
     },
     {
@@ -1896,12 +1896,12 @@
       "observed": "pushbutton",
       "displayed": "pushbutton",
       "marking": "",
-      "value_or_identity": "v0.9.21 user annotated S1 upper-right to C35 upper/model2 (GND via prior V018); lower-right to C35 lower/model1, R40 lower/model2 and R41 left/model2. User explicitly confirms R41 right/model1 reaches J1 VPP/MCLR. Correct physical-to-native switch mapping TL=1, TR=3, BL=2, BR=4. Top-row/bottom-row common pairs remain a tactile-switch hypothesis; released/pressed behavior has not been measured.",
+      "value_or_identity": "Measured body 6 x 6 x 4 mm plus 2 mm actuator. Stock SW_Push has two native nodes: physical TL/TR -> pin1/GND; BL/BR -> pin2/H_BUTTON. R41 reaches J1 VPP. Internal contact pairing and released/pressed behavior remain inferred; the former four-native-pin connector numbering is superseded.",
       "footprint": "Button_Switch_SMD:SW_SPST_PTS645Sx43SMTR92",
       "footprint_confidence": "medium - measured body, photo-estimated lead span",
       "footprint_basis": "User measured a 6 x 6 x 4 mm body plus 2 mm actuator (about 6 mm overall). Photo shows four SMD gullwing leads; approximate pad-centre span from photo/body ratio is about 8 mm, consistent with the stock PTS645 land pattern (7.96 x 4.50 mm centres). Dimensions select a candidate family, not an exact manufacturer. Library x43 footprint/3D model denotes 4.3 mm overall and must not be used as the measured 6 mm housing.",
       "open_pads": 0,
-      "next_method": "Measure common leg pairs with switch released and pressed",
+      "next_method": "Only verify the switch contact behavior if required: released versus pressed continuity of opposite rows. Do not repeat the annotated C35/R40/R41 joins or R41-to-VPP destination. No broad resistor-to-rail sweep.",
       "photos": "IMG_2438.jpg"
     },
     {
@@ -1926,7 +1926,7 @@
       "observed": "PIR daughterboard",
       "displayed": "PIR BOARD",
       "marking": "",
-      "value_or_identity": "v0.9.14 user: pin1 PIR supply previously confirmed; pin2 H-R38 K/right/model1 1 ohm and H-R38 J/left/model2 10 kohm; pin3-GND 1 ohm. Pin2-GND remains 290 kohm (batch1), distinct from ground. Q2 onward/controller route remains unverified.",
+      "value_or_identity": "PIR connector: pin1 supply; pin2 to R38 K/right/model1 at 1 ohm, with 10k through R38; pin3 GND at 1 ohm. The Q2 single-pad/TP16 output reaches PIC21/RB0 by user correction. PIC21-to-VREF was withdrawn after TP16-VREF measured 0.8 Mohm. Q2/R33 device behavior remains qualified.",
       "footprint": "Connector_PinHeader_2.54mm:PinHeader_1x03_P2.54mm_Vertical",
       "footprint_confidence": "medium",
       "footprint_basis": "Three soldered wire holes; generic 2.54-mm row models the candidate land pattern, not the connector housing.",
@@ -1956,7 +1956,7 @@
       "observed": "DNP",
       "displayed": "DNP",
       "marking": "",
-      "value_or_identity": "Unpopulated option: no fitted value to recover",
+      "value_or_identity": "Unpopulated option: no fitted value to recover. v0.9.21 annotated photo: J6 left/model1 joins Q9 single/native3 and R36 right/model2. J6 right/model2 joins R36 left/model1. PIC26/RB5-TP10-R35 upper; R35 lower-Q9 paired-left; paired-right via V021 is GND. All J6/Q9/R35/R36 options remain DNP. R36 left/J6 right onward rail is not established by this annotation.",
       "footprint": "Connector_PinHeader_2.54mm:PinHeader_1x02_P2.54mm_Vertical",
       "footprint_confidence": "medium",
       "footprint_basis": "Empty two-hole option; candidate 2.54-mm pitch from surrounding hole/pin scale.",
@@ -1976,7 +1976,7 @@
       "footprint_confidence": "unresolved",
       "footprint_basis": "User-measured square body 1.5 x 1.5 mm, red/green dual LED; four contacts visible in IMG_2432. Installed KiCad10/MCP search found no validated matching dual-LED footprint. LED_SK6812_EC15_1.5x1.5mm has four 0.5 x 0.5 mm pads on 0.9 mm centres for a different addressable package; body-size equality does not verify its land pattern or numbering. LED1 footprint remains unassigned pending a matching vendor drawing/part.",
       "open_pads": 0,
-      "next_method": "Diode-mode readings and continuity; markings are already recorded; check PIC trace audit before requesting continuity; Photo with ruler/body and lead measurements for exact footprint",
+      "next_method": "Only if channel identification is needed, use diode mode from each resistor-fed LED contact toward its grounded contact and record the emitted colour; do not repeat known board-routing checks. Match J5 wire positions to U5 outputs by continuity.; LED1 body is already measured at 1.5 x 1.5 mm. Obtain the pad geometry/numbering or matching vendor drawing; no repeat body-size request.",
       "photos": "IMG_2432.jpg"
     },
     {

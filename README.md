@@ -1,68 +1,63 @@
 # PetSafe PCB reverse engineering
 
-Working reconstruction of the PetSafe PPA19-16811 main board, **100-1339 R03 A**. All 149 catalog entries are drawn on **one A2 KiCad 10 sheet**, with wires within functional blocks and named nets between them. Entries include test pads and unpopulated options.
+Current schematic and review: **v0.9.29**, 2026-10-09. PetSafe PPA19-16811 main board, **100-1339 R03 A**. All 149 catalog entries, including test pads and empty options, are on one A2 KiCad 10 sheet.
 
-Start with [the offline overview](index.html), [the current completion checklist](docs/FINISHING_CHECKLIST.html), or [the printable status](output/pdf/PetSafe_completion_status.pdf). Open [the native schematic](schematic/PetSafe_1001339.kicad_sch) in KiCad 10. The [single-sheet PDF](output/pdf/PetSafe_single_sheet.pdf) and SVG are native KiCad exports.
+Open [the current overview](index.html), [the completion checklist](docs/FINISHING_CHECKLIST.html), [the native schematic](schematic/PetSafe_1001339.kicad_sch), or [the schematic PDF](output/pdf/PetSafe_single_sheet.pdf). The [printable status](output/pdf/PetSafe_completion_status.pdf) includes the remaining questions and PIC map. The [measurement page](docs/FINISHING_MEASUREMENTS.html) preserves completed results; **no active bench batch is waiting for the owner**.
 
-For the independent ChatGPT Pro checkpoint, use the [v0.9.28 review brief](docs/reviews/2026-10-09_pro_review_v0.9.28.md). It identifies current evidence, superseded findings, the seven ERC items and the priority questions for completing the circuit reconstruction.
+## Current state
 
-## Current status
-
-Schematic revision **v0.9.28**, updated **2026-10-09**. Rear C49 is now connected between **ANT2 and GND**, confirmed by the user. Both remaining open catalog pads are resolved; U6 pin4 remains a supported intentional NC. See [C49 connection evidence](evidence/c49_connections_20261009.json). L1 and L2 now display user LCR readings of **1.4 uH** and **2.2 uH**. Frequency, mode and isolation condition are unreported, so these are recorded readings rather than identified manufacturer nominal values. See [inductance evidence](evidence/l1_l2_inductance_20261009.json). C5 now has a stock nominal 6.3 mm radial footprint, supported by its measured 6.33 mm diameter and 16 mm height. The 2.5 mm pitch remains inferred; the stock 7 mm housing is not an exact height match. See [C5 evidence](evidence/c5_dimensions_20261009.json). LED1 is now confirmed red/green with a square 1.5 x 1.5 mm body; its schematic value is updated. Colour-to-drive mapping and an exact footprint remain unconfirmed. See [LED evidence](evidence/led1_dimensions_20261009.json). Option parts now sit in their functional blocks; section 08 is removed. Unsupported TP9 was withdrawn. C49 is visible as an empty footprint in rear photo IMG_2442 and remains in the antenna block. Q9 now uses a stock NPN symbol; U6A/U106 uses a three-pin regulator role template, with the original identity unclaimed. Both remain DNP. See [option evidence](evidence/options_reorganization_20261009.json) and [review response](docs/ARCHITECT_REVIEW_RESPONSE.md). The model and native file agree on 85 net partitions, unchanged by this reorganization. All PIC pads have modeled local connections, but some remote destinations and circuit roles remain uncertain. There is **no routed KiCad PCB**, confirmed layer stack, or powered functional validation.
-
-| Remaining work | Current state |
+| Area | Status |
 |---|---|
-| Open physical pads | 0: C49 now connects ANT2 to GND; U6.4 has a supported intentional NC |
-| Other incomplete connections | 1 isolated label, plus inferred receiver/RF/PIR branches |
-| Values | 44 fitted ceramic values unknown; L1 1.4 uH / L2 2.2 uH readings recorded, conditions and exact types/ratings pending |
-| Footprints | 148/149 assigned; only LED1 is blank; assigned land patterns remain qualified |
-| ERC | 7 findings: 0 open pins, 1 isolated label, 5 undriven power inputs, 1 U6/U6A regulator-output conflict |
-| Libraries | 22 stock definitions and 4 authorized custom candidate definitions in use |
+| Drawing | One A2 sheet, 149 entries / 154 symbol units, normal local wires and named inter-block nets |
+| Physical pads | 350 assigned to modeled local nets, one supported intentional NC at U6 pin4; zero unassigned pads |
+| Connectivity check | 85 model/native net partitions agree; this checks file consistency, not every physical assumption |
+| ERC | Seven retained findings: five undriven power inputs, U6/U6A output conflict, isolated H_D1_FREE label |
+| Values | 44 fitted ceramic values unknown; C5 470 uF / 16 V; L1 1.4 uH / L2 2.2 uH readings recorded |
+| Packages | 148/149 candidates assigned; LED1 remains blank; exact fit and pin maps remain qualified |
+| Libraries | 22 stock definitions plus four explicitly authorized datasheet candidate definitions |
+| Hardware | No powered functional validation, confirmed layer stack or routed KiCad PCB |
 
-The output conflict is retained as an ERC error: fitted U6 and empty U6A share the PIR supply output. U6A is interpreted as an alternative population option; populating both is not validated. No stock pin types or ERC exclusions were altered to hide this finding. S1 retains the stock footprint candidate from the measured 6 x 6 mm body; the measured approximately 6 mm overall height differs from the stock 4.3 mm housing model. See [switch evidence](evidence/s1_dimensions_20261009.json).
+This cleanup corrects active documentation and symbol evidence metadata. **No electrical connections, values or footprint assignments changed.** The earlier [Pro review checkpoint](docs/reviews/2026-10-09_pro_review_v0.9.28.md) and its ZIP remain frozen at v0.9.28 / commit `6ae4eaa`. An independent Pro review has been prepared, not yet received.
 
-The checklist gives every known issue a stable ID, supporting evidence, next useful check and closure criterion. **A question mark, an assigned footprint, or zero open PIC pads does not measure overall completeness.** D2's local destinations are now mapped: R-C20 lower, L-ANT2/R46 upper, S-R46 lower. R46 remains unpopulated; D2 exact identity remains unknown. D3 rail association is closed by the user measurement: D3.R to V082/VDD, D3.L to GND. D3.S-to-R42 is 1.2 ohm; the exact resistor pad remains photo-selected. U3 pin 5 is now measured on VREF (1 ohm). J3 pin 3 is measured GND (1 ohm), while pin 2 reads 290 kohm to GND. J3 pin 2 now reaches R38 K/right at 1 ohm, U3 pin 6 reaches R23 B/left at 1 ohm, and R22 E/right reaches GND at 1 ohm. The old R23-VREF and J3 role guesses remain removed; R23 C/right now joins C40 lower and R42 upper at 1 ohm each. The old C40 detector-output connection has been removed; R42.1 retains the earlier TP4/PIC25 remote association.
+## What remains to finalize the schematic
 
-The [finishing photo guide](docs/FINISHING_MEASUREMENTS.html) records all five batches. TP16-to-TP11/TP17 each read 400 kohm; both direct links are rejected. U7.1/2/3 now map to J3.3/2/1. PIC21/RB0 now joins TP16/Q2.S. The user explicitly withdrew PIC21-VREF after TP16-VREF measured 0.8 Mohm; the earlier C25 PIR candidate check is cancelled. The user annotation now resolves C25 to PIC2/RA0 and C26 to PIC3/RA1, sharing GND. C26 joins R28/R29/TP7; both capacitance values remain unknown. C6 now parallels C5 across H_RF_VDD/GND by photo-supported reconstruction; no new meter value was supplied, and Q8 supply-path confidence remains separate. Clear surface traces are resolved from photos first. Bench requests are reserved for hidden continuations, ambiguous contacts/pin functions or conflicting evidence. Resolve signal paths first, then recover frequency-sensitive capacitor values with the LCR meter, check operating voltages and remaining package details, and finalize the sheet with explicit measured/assumed component evidence. These batches do not cover every remaining circuit question. Completed D2, D3 and via tests must not be repeated.
+1. **Resolve the remaining functional paths.** One complete Q3 tuning cell; RF excitation at R6/R7; D1 and local-only PIC nodes; remaining receiver/PIR hypotheses. Agent traces original photos and checks existing measurements first. Request one targeted hidden-connection or device-behavior test only when it distinguishes explicit alternatives.
+2. **Verify candidate devices and operating behavior.** Q1/Q8 and tuning-transistor pin roles, D2 identity, D6 breakdown/ICSP compatibility, S1 contacts and actual rail/gate voltages. Use existing markings and recorded tests first. Keep equivalent candidates explicit. Plan focused device/contact checks and then an appropriate powered session on the original hardware.
+3. **Recover the required capacitor values.** 44 fitted ceramic values remain unknown. C5 is 470 uF / 16 V; L1 1.4 uH and L2 2.2 uH readings are already recorded. Prioritize antenna/RF/receiver capacitances after topology. Record LCR conditions and avoid assigning a parallel-network reading to each individual capacitor.
+4. **Finish symbols and physical assignments.** LED1 footprint and red/green channel mapping; motor lead orientation. C5 lead pitch and S1 pad fit/3D height remain qualified. Use the measured LED1 1.5 mm square, C5 diameter 6.33 mm/height 16 mm and S1 6 mm body/overall height. Seek the missing pad map or pitch; do not repeat body measurements.
+5. **Document optional and later reproduction work.** Empty option values/roles, J6 onward role, actual layer stack, daughterboard internals, firmware and a routed PCB. Retain DNP gaps and distinguish them from fitted circuits. These are not missing physical pad assignments; agree reproduction scope separately from finishing the main-board schematic.
 
-## Power names
+Zero open pads does not mean every signal source, remote destination or candidate device function is established. Seven ERC findings are not seven missing wires. See the [maintained question register](evidence/remaining_work.json) for the evidence, owner/agent actions and closure criteria for each issue.
 
-| Name | Meaning |
-|---|---|
-| BATTERY+ | Printed BATTERY (+), before Q1 |
-| VSYS | User-approved name after Q1; U5/MX512H pin 4 and the supply sides of L1/L2 |
-| VDD | Printed VDD test point, regulated logic supply; U5 pin 1 / VCC |
-| VREF | Printed VREF test point and confirmed PIC/bias connections |
-| GND | Printed GND and BATTERY (-) |
+## Settled facts
 
-L1/L2 share VSYS on their supply sides; their opposite ends are separate filter branches. H_RF_VDD, H_LDO_IN, H_RX_VDD and H_PIR_VDD are descriptive local branch names, not additional confirmed independent power sources. Actual rail voltages are not yet measured.
+- C49 is connected ANT2-to-GND and remains a DNP option; TP9 was removed as unsupported.
+- All 351 physical pads are represented: 350 have modeled local nets and U6 pin4 is a supported NC. This does not prove all onward paths.
+- R41 is 330 ohm and reaches VPP. D6 polarity/routing, D2 local terminals and D3 rail terminals are resolved.
+- PIC21 reaches TP16/Q2, not VREF. J3/U7 and C25/C26 routes are resolved; U6 pin5 is externally tied to VIN.
+- C5 is 470 uF / 16 V, diameter 6.33 mm and height 16 mm. L1/L2 read 1.4/2.2 uH; measurement conditions remain unspecified.
+- R8 is 0603 by measured body; C11 supports 1206. LED1 is red/green in a 1.5 mm square body. S1 body/actuator dimensions are recorded.
 
-## Evidence and navigation
+Raw BATTERY+ is before Q1; **VSYS** is Q1's output, U5 pin4 and the common input sides of L1/L2. Printed **VDD** is the separate regulated logic rail/U5 pin1. Printed **VREF** and **GND** keep their PCB names. L1/L2 filter outputs are separate. Actual voltages are unmeasured.
 
-- [Current circuit interpretation](docs/RECONSTRUCTION.md), [measurements](docs/MEASUREMENTS.md), [sources](docs/SOURCES.md), and [library choices / alternatives](docs/LIBRARIES_AND_ALTERNATIVES.md).
-- [Front/rear via viewer](docs/VIA_REVIEW.html), [via-pair results](docs/VIA_PAIR_TESTS.html), [current via summary](docs/VIA_REVIEW_RESULTS.md), and [numbered PIC photo](output/pdf/PetSafe_PIC_GPIO_pin_map.pdf).
-- [Per-component audit](evidence/completion_audit.csv), [all modeled nets](evidence/proposed_nets.csv), [PIC evidence table](evidence/pic_gpio_status.csv), and [maintained question register](evidence/remaining_work.json).
-- [Investigation history](docs/history/README.md). Historical claims and counts are not current instructions or outstanding measurements.
+## Evidence and history
 
-The original ZIP is in `input/`. Original photographs and their checksums are preserved. User reports, photo-derived copper and typical-application hypotheses remain distinct. A source datasheet validates a candidate symbol's pin map, not the fitted part's identity or board wiring. Western alternatives are redesign options, not silent substitutions.
+- [Current circuit interpretation](docs/RECONSTRUCTION.md), [recorded measurements](docs/MEASUREMENTS.md), [library and package choices](docs/LIBRARIES_AND_ALTERNATIVES.md), [sources](docs/SOURCES.md).
+- [Via viewer](docs/VIA_REVIEW.html), [current via summary](docs/VIA_REVIEW_RESULTS.md), [via-pair results](docs/VIA_PAIR_TESTS.html), [component audit](evidence/completion_audit.csv), [modeled nets](evidence/proposed_nets.csv).
+- [Investigation history](docs/history/README.md) preserves prior narratives and cancelled requests. Dated raw measurement records remain unchanged; later explicit user corrections supersede earlier hypotheses.
+
+The original ZIP and all 26 photographs are preserved. Candidate datasheets establish symbol pin maps, not fitted-manufacturer identity or board wiring. DNP footprints do not contain assumed jumpers. Western alternatives are redesign candidates, not silent substitutions.
 
 ## Reproduce and maintain
 
-Use KiCad **10.x** (validated with 10.0.5), PowerShell and Python 3. Install `tools/requirements.txt` in a Python environment. Author schematic changes with the connected [KiCad MCP server](https://github.com/mixelpixx/KiCAD-MCP-Server); preserve stock library graphics and normal pin numbering. Four project-local symbols are registered using `${KIPRJMOD}`.
+Use KiCad 10.x (validated with 10.0.5), PowerShell and Python dependencies in `tools/requirements.txt`. Author schematic changes with the connected [KiCad MCP server](https://github.com/mixelpixx/KiCAD-MCP-Server), keeping the template, layout, physical pin crosswalk and model synchronized.
 
 ```powershell
 $env:PYTHONUTF8 = '1'
-python -m pip install -r tools/requirements.txt
 ./tools/build.ps1 -Python python
 ./tools/refresh_review.ps1 -Python python
 ```
 
-`build.ps1` exports the existing native file, runs ERC and checks model/netlist partitions and footprints. It does not overwrite native edits. `-Regenerate` explicitly rebuilds from the saved MCP placement template and routing adapter; use it only when those sources are synchronized. `refresh_review.ps1` regenerates current documentation/status and checks electrical regressions and question coverage. Both commands fail on execution or validation errors; the documented outstanding ERC findings are retained.
+`build.ps1` exports the existing native drawing and checks connectivity, ERC and footprints. `-Regenerate` explicitly rebuilds it from the MCP template and routing adapter; use only when synchronized. `refresh_review.ps1` regenerates current pages and status, checks electrical evidence and detects stale summaries. `remaining_work.json` owns the finishing plan; `current_state.py` supplies shared metrics. Historical versioned checks are not the live acceptance suite.
 
-For electrical edits, keep `evidence/reconstruction.json`, `evidence/library_layout.json`, `evidence/library_placements.json`, the MCP template, native schematic and routing adapter consistent. For documentation updates, maintain `evidence/remaining_work.json`; shared metrics are derived by `tools/current_state.py`. The live electrical suite is `tools/verify_evidence_contracts.py`; `verify_current_review.py` derives current counts and validates active/closed issues. `test_review_progress.py` exercises issue closure and capacitor recovery using in-memory fixtures only. `verify_cleanup_snapshot.py` checks the immutable 522d235 cleanup baseline; versioned suites such as `verify_v099_review.py` remain historical. Generated outputs should be rebuilt, not edited alone.
-
-Local KiCad history, lock files, caches, QA renders and export ZIPs are ignored. No generated artifact is a fabrication release. Repository: [kerby2000/PetSafe-PCB](https://github.com/kerby2000/PetSafe-PCB).
-
-## Completion milestones
-
-**Topology complete:** supported populated-component and block-interface connections, compatible candidate functions, and individually documented exceptions. **Value/package complete:** required values and geometry recovered, with exact maker/ratings distinguished from equivalent choices. A routed PCB is separate. Signal paths take priority over perfecting the remaining LED1 footprint and C5 pitch and exact mechanical fit.
+Local KiCad state, caches, locks and export ZIPs are ignored. Generated outputs are not fabrication releases. Repository: [kerby2000/PetSafe-PCB](https://github.com/kerby2000/PetSafe-PCB).

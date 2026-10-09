@@ -1,5 +1,8 @@
 # Architect review response - 2026-10-09
 
+> Historical dated investigation: later measurements and symbol numbering supersede earlier open questions below. Use [current circuit interpretation](RECONSTRUCTION.md), [measurement results](MEASUREMENTS.md) and [the live checklist](FINISHING_CHECKLIST.html) for present status.
+
+
 Baseline: 522d235. Local review branch: `codex/architect-review-522d235`. The supplied [assignment](reviews/2026-10-09_architect_assignment.md) is review evidence; no new bench readings are implied. Main and the remote are preserved.
 
 ## Corrections

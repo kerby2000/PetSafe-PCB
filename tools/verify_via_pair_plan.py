@@ -43,6 +43,7 @@ assert p['count_basis']['local_candidate_groups']==len(p['local_groups'])
 assert p['count_basis']['nonrail_candidate_sites']==sum(len(g['vias']) for g in p['local_groups'])
 assert not any('V114' in g['vias'] for g in p['local_groups']), 'Resolved U2 ground re-entered search'
 assert not any('V075' in g['vias'] for g in p['local_groups']), 'Known V075 rail re-entered unknown-net search'
+assert not any('V026' in g['vias'] for g in p['local_groups']), 'Resolved PIC21-TP16/Q2 route re-entered search'
 # Candidate group/site counts are checked against the current plan above.
 html=(R/'docs/VIA_PAIR_TESTS.html').read_text(encoding='utf-8')
 assert 'const plan='+json.dumps(p).replace('</','<\\/')+',audit=' in html
