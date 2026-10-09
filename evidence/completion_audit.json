@@ -1,5 +1,5 @@
 {
-  "revision": "v0.9.10",
+  "revision": "v0.9.11",
   "instruments": [
     "LCR meter",
     "multimeter"
@@ -1838,7 +1838,7 @@
       "observed": "UNKNOWN",
       "displayed": "BAV99?",
       "marking": "A7",
-      "value_or_identity": "User clearly reads A7. Nexperia BAV99 manufacturer marking table and SOT-23 series-dual pin map support this candidate. Physical orientation and external rail-clamp routing remain inferred.",
+      "value_or_identity": "A7 and the series-dual pin map support BAV99. User confirms L=GND, R=VDD via V082, and 1.2 ohm from S to R42 (end unspecified; pad2 selected from photo). Rail-clamp role is supported; manufacturer, diode behavior and signal operating function remain unverified.",
       "footprint": "Package_TO_SOT_SMD:SOT-23",
       "footprint_confidence": "datasheet/package candidate",
       "footprint_basis": "Existing assignment; see component identity evidence.",

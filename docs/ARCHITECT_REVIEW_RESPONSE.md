@@ -25,7 +25,7 @@ The [MCC SIL3724A datasheet](https://static.chipdip.ru/lib/761/DOC050761871.pdf)
 
 Disconnect power/programmer and discharge capacitors for continuity, diode and LCR work. Keep the original hardware/supplies. Do not repeat accepted or rejected pairs simply because a report changes.
 
-1. **D3/V082:** V082 to each of D3's three physical pads; use the existing D2 diode guide if that test is still outstanding.
+1. **D3/V082 completed during this review:** user measured D3.L to GND and D3.R to VDD through V082. D3.S to R42 reads 1.2 ohm (resistor end not explicitly named; the photo selects pad2). E02 is closed with the [measurement record](../evidence/d3_measurement_20261009.json); do not repeat these checks. D2's separate diode guide remains outstanding.
 2. **U3.5:** inspect V079/V080 and IMG_2434; check the VREF-facing R23.2 and R22.2 pads, then measure resistance to VREF separately. A resistor-valued path is not a direct net. Check R48 only if those results/photo traces warrant it.
 3. **J3:** confirm which of pins 2/3 is GND, then trace Q2/TP16 onward. Colour alone is insufficient.
 4. **One tuning cell:** Q3 physical pads, C10/C11/C12 both sides, V107 and antenna continuation. Resolve topology before individual capacitances. Diode-mode base identification alone need not resolve collector/emitter.
@@ -37,3 +37,9 @@ The [live checklist](FINISHING_CHECKLIST.html) holds all details and closure cri
 ## Validation
 
 Fresh KiCad 10 native exports, ERC, model/physical-pin comparison, stock footprints, measured electrical constraints, active-issue coverage and synthetic progress cases are run for this review. See `evidence/current_review_verification.json` and `evidence/live_evidence_verification.json` for current results. J1 numbering and R41 naming do not close unknown physical connections, so no artificial ERC decrease is expected. Original photos/ZIP and local project/history files are preserved.
+
+## Subsequent user measurement in the same session
+
+The architect corrections were committed locally as `bdba9b6`. The user then resolved D3's rail terminals. Revision v0.9.11 moves **only D3.R** from H_RX_VDD to VDD; the op-amp supply remains separate. D3.S-to-R42 is now supported by a 1.2 ohm component-level reading, with the exact R42 end still selected from IMG_2434. R42's other end already reaches TP4/PIC25. `H_D3_SIGNAL` replaces the overly specific `H_RX_RF_SENSE` name. Its role is not measured.
+
+The [Nexperia BAV99 pin table](https://assets.nexperia.com/documents/data-sheet/BAV99.pdf), page 2, makes a GND/signal/VDD clamp consistent with the selected candidate and these connections. This is functional inference, not a new fitted-manufacturer identification. The closed E02 record remains visible; E06/I01 retain signal-function/identity questions.

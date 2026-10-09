@@ -1,6 +1,6 @@
 {
   "date": "2026-10-08",
-  "revision": "v0.9.9",
+  "revision": "v0.9.11",
   "source_front": "photos/front_registered.jpg",
   "source_rear": "photos/back_mirrored_registered.jpg",
   "images_are_original_photographic_mosaics": true,
@@ -2747,10 +2747,11 @@
       "rear_appearance": "REAR_CLEARANCE",
       "front_match": "PROJECTED: inspect original front photo; may be under a component",
       "endpoints": [
-        "VDD.1"
+        "VDD.1",
+        "D3.R"
       ],
       "net": "VDD",
-      "confidence": "User continuity report to TP103; D3 terminal unresolved",
+      "confidence": "User confirms exact D3 terminal and VDD TP; no numerical resistance supplied for these rail connections",
       "note": "Visible clearance separates this site from the surrounding rear copper; this alone does not identify an internal net.",
       "id": "V082",
       "active": true,
@@ -2758,11 +2759,11 @@
         {
           "id": "V082",
           "kind": "signal",
-          "claim": "v0.9.8 follow-up: User confirms V082 reaches the board VDD test point, native TP103 / H_VDD regulated logic rail. This is distinct from MX512H pin4 VDD / H_VBAT motor supply; MX512H pin1 VCC is modeled on H_VDD. V082 was associated with D3 but its exact package terminal remains unconfirmed. Do not merge H_RX_VDD or choose a D3 pin from this report alone."
+          "claim": "2026-10-09 user meter report: D3.L=GND; D3.R=VDD TP via V082. D3.S to R42=1.2 ohm; resistor end not explicitly named. Photo selects R42.2 nearest D3; other end already mapped to TP4/PIC25. Fitted BAV99 identity and signal function remain candidates."
         }
       ],
       "review_status": "ASSIGNED",
-      "component_crosscheck": "User confirms V082-board VDD test point (native TP103), regulated logic VDD. D3 exact terminal unconfirmed; no H_RX_VDD merge implied.",
+      "component_crosscheck": "2026-10-09 user meter report identifies D3.R on V082 / board VDD TP (native TP103). D3.L is GND. Only D3.R moves from H_RX_VDD; the remaining receiver supply stays separate. See d3_measurement_20261009.json.",
       "modeled_nets": [
         "VDD"
       ],
@@ -4941,5 +4942,5 @@
       "REJECTED_NOT_VIA": 7
     }
   },
-  "review_update_id": "battery-q1-post-q1-supply-separated"
+  "review_update_id": "d3-v082-vdd-terminal-measured"
 }

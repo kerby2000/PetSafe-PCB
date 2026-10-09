@@ -1,7 +1,7 @@
 {
   "date": "2026-10-09",
-  "revision": "v0.9.10",
-  "review_revision": "architect-review-1",
+  "revision": "v0.9.11",
+  "review_revision": "architect-review-2-d3-measured",
   "interpretation": "Every catalog entry is drawn. Hardware connectivity, values and identities are only partially verified. No routed PCB exists.",
   "catalog_entries": 150,
   "physical_pins": 352,
@@ -126,7 +126,7 @@
     "isolated_pin_label": 3
   },
   "modeled_nets": 83,
-  "schematic_sha256": "6ff0730b50e2e56476a06bf8fe72edbb2576a979a2285a9e485349541b65d401",
+  "schematic_sha256": "e8a17afa31a4bc452eb031d80b782c862f5ae12f3f6c1eb6b3ae5f2863d54d34",
   "known_identified_ICs_needing_new_symbols": [],
   "complete_symbols_for_selected_candidates": true,
   "available_instruments": [
@@ -168,12 +168,6 @@
       "method": "With power disconnected, take the six directed diode-mode readings between D2 pads shown in the existing D2 guide. Then trace only the terminal indicated by the result."
     },
     {
-      "id": "E02",
-      "area": "D3 / V082 supply association",
-      "gap": "Which physical D3 terminal reaches V082. Current D3.L=GND, D3.R=H_RX_VDD and D3.S=H_RX_RF_SENSE are provisional; none is presently assigned to VDD.",
-      "method": "Measure V082 to each of D3's three pads. Record low-ohm continuity separately from diode/resistive readings."
-    },
-    {
       "id": "E03",
       "area": "RF supply / Q8 / C6",
       "gap": "C6.1 route and Q8 source-supply path. F-P=10 ohm supports a supply-related path but does not establish a direct copper join. Exact Q8 maker remains a candidate. Gate-drive headroom is unverified: a hypothetical source=6V and gate-high=4.5V gives VGS=-1.5V, not guaranteed off for the candidate threshold range. These are illustrative, not measured voltages.",
@@ -194,7 +188,7 @@
     {
       "id": "E06",
       "area": "Local-only PIC / discrete nodes",
-      "gap": "Onward roles of those three nodes, D1.R/H_D1_FREE, C26.1 and TP9.1. Local connectivity is not proof that these are intentionally unused. H_RF_CONTROL has only R6.2/R7.1: its excitation source is absent. H_BAT_SENSE has a series path through R4 to PIC24/RB3, so the missing item is functional interpretation/route confidence, not necessarily another MCU endpoint.",
+      "gap": "Onward roles of those three nodes, D1.R/H_D1_FREE, C26.1 and TP9.1. Local connectivity is not proof that these are intentionally unused. H_RF_CONTROL has only R6.2/R7.1: its excitation source is absent. H_BAT_SENSE has a series path through R4 to PIC24/RB3, so the missing item is functional interpretation/route confidence, not necessarily another MCU endpoint. H_D3_SIGNAL replaces the misleading H_RX_RF_SENSE name; operating role remains unknown.",
       "method": "Use existing photo/via evidence to select specific endpoints for the local-only PIC nodes, D1.R and H_RF_CONTROL. Review R3-R4-C28 together with PIC24: document a compatible sensing mechanism, without adding an extra sampling wire solely from a net-name assumption."
     },
     {
@@ -277,24 +271,6 @@
         "D2.S"
       ],
       "nets": []
-    },
-    {
-      "id": "E02",
-      "area": "D3 / V082 supply association",
-      "refs": [
-        "D3"
-      ],
-      "priority": 1,
-      "state": "open",
-      "known": "A7 supports a BAV99 candidate. User continuity joins V082 to the board VDD test point.",
-      "unknown": "Which physical D3 terminal reaches V082. Current D3.L=GND, D3.R=H_RX_VDD and D3.S=H_RX_RF_SENSE are provisional; none is presently assigned to VDD.",
-      "next_action": "Measure V082 to each of D3's three pads. Record low-ohm continuity separately from diode/resistive readings.",
-      "closed_when": "The actual pad is identified and conflicting modeled branches are corrected, without blindly merging VDD and the receiver supply.",
-      "open_pads": [],
-      "nets": [
-        "H_RX_VDD",
-        "H_RX_RF_SENSE"
-      ]
     },
     {
       "id": "E03",
@@ -403,12 +379,14 @@
         "R7",
         "R3",
         "R4",
-        "C28"
+        "C28",
+        "D3",
+        "R42"
       ],
       "priority": 2,
       "state": "open",
-      "known": "Every PIC pad has a modeled local net. PIC2 reaches C25/V031; PIC14 reaches TP11; PIC18 reaches TP17.",
-      "unknown": "Onward roles of those three nodes, D1.R/H_D1_FREE, C26.1 and TP9.1. Local connectivity is not proof that these are intentionally unused. H_RF_CONTROL has only R6.2/R7.1: its excitation source is absent. H_BAT_SENSE has a series path through R4 to PIC24/RB3, so the missing item is functional interpretation/route confidence, not necessarily another MCU endpoint.",
+      "known": "Every PIC pad has a modeled local net. PIC2 reaches C25/V031; PIC14 reaches TP11; PIC18 reaches TP17. D3.S-to-R42 measured 1.2 ohm; exact resistor end not named, pad2 selected from photo. R42.1 already reaches TP4/PIC25/RB4.",
+      "unknown": "Onward roles of those three nodes, D1.R/H_D1_FREE, C26.1 and TP9.1. Local connectivity is not proof that these are intentionally unused. H_RF_CONTROL has only R6.2/R7.1: its excitation source is absent. H_BAT_SENSE has a series path through R4 to PIC24/RB3, so the missing item is functional interpretation/route confidence, not necessarily another MCU endpoint. H_D3_SIGNAL replaces the misleading H_RX_RF_SENSE name; operating role remains unknown.",
       "next_action": "Use existing photo/via evidence to select specific endpoints for the local-only PIC nodes, D1.R and H_RF_CONTROL. Review R3-R4-C28 together with PIC24: document a compatible sensing mechanism, without adding an extra sampling wire solely from a net-name assumption.",
       "closed_when": "Each branch has an endpoint or supported evidence that it terminates intentionally.",
       "open_pads": [
@@ -422,7 +400,8 @@
         "H_D1_FREE",
         "H_RF_CONTROL",
         "H_BAT_SENSE",
-        "PIC_RB3_RETURN"
+        "PIC_RB3_RETURN",
+        "H_D3_SIGNAL"
       ]
     },
     {
@@ -564,28 +543,28 @@
       "id": "I01",
       "area": "Candidate identities / transistor pin maps",
       "refs": [
-        "U1",
-        "U2",
-        "U6",
-        "Q1",
-        "Q2",
-        "Q7",
-        "Q8",
-        "Q3",
-        "Q4",
-        "Q5",
-        "Q6",
-        "Q11",
         "D1",
         "D2",
         "D3",
         "D4",
         "D5",
-        "D6"
+        "D6",
+        "Q1",
+        "Q11",
+        "Q2",
+        "Q3",
+        "Q4",
+        "Q5",
+        "Q6",
+        "Q7",
+        "Q8",
+        "U1",
+        "U2",
+        "U6"
       ],
       "priority": 2,
       "state": "open",
-      "known": "Primary datasheets and marking evidence are recorded; custom symbols use the selected candidate pin tables.",
+      "known": "Primary datasheets and marking evidence are recorded; custom symbols use the selected candidate pin tables. D3 measured rail connections fit the BAV99 clamp candidate; its identity is not newly proven.",
       "unknown": "Short markings do not uniquely prove manufacturers. Candidate choices and some B/E/C or MOSFET source/drain assignments remain qualified. Western alternatives are redesign options, not identities of fitted parts.",
       "next_action": "Use electrical pad behavior and package/marking evidence for specific candidates. Do not request sharper photos where the existing marking is already legible.",
       "closed_when": "Identity is either supported sufficiently for the reconstruction or explicitly retained as a functionally verified candidate with its limits documented.",
@@ -686,7 +665,34 @@
       "nets": []
     }
   ],
-  "closed_items": [],
+  "closed_items": [
+    {
+      "id": "E02",
+      "area": "D3 / V082 supply association",
+      "refs": [
+        "D3"
+      ],
+      "priority": 1,
+      "state": "closed",
+      "known": "A7 supports a BAV99 candidate. User continuity joins V082 to the board VDD test point.",
+      "unknown": "Which physical D3 terminal reaches V082. Current D3.L=GND, D3.R=H_RX_VDD and D3.S=H_RX_RF_SENSE are provisional; none is presently assigned to VDD.",
+      "next_action": "Measure V082 to each of D3's three pads. Record low-ohm continuity separately from diode/resistive readings.",
+      "closed_when": "The actual pad is identified and conflicting modeled branches are corrected, without blindly merging VDD and the receiver supply.",
+      "open_pads": [],
+      "nets": [
+        "VDD",
+        "H_D3_SIGNAL"
+      ],
+      "resolution": {
+        "date": "2026-10-09",
+        "result": "User identifies D3.L=GND and D3.R=VDD through V082. Move only D3.R off the hypothetical receiver supply. D3.S-to-R42 measures 1.2 ohm (resistor end not stated; photo selects pad2). Signal function remains with E06 and candidate identity with I01.",
+        "evidence": [
+          "evidence/d3_measurement_20261009.json",
+          "photos/user_updates/D3_V082_VDD_20261009.png"
+        ]
+      }
+    }
+  ],
   "rails": [
     {
       "name": "BATTERY+",
@@ -703,7 +709,7 @@
     {
       "name": "VDD",
       "board_label": "VDD test point",
-      "path": "TP103, PIC20/C32, U5 pin1/VCC, V064/V063/V075/V082.",
+      "path": "TP103, PIC20/C32, U5 pin1/VCC, V064/V063/V075/V082. D3.R via V082 is user-confirmed.",
       "basis": "User via/test-point continuity. Distinct from VSYS and BATTERY+."
     },
     {

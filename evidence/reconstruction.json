@@ -1,6 +1,6 @@
 {
   "board": "100-1339 R03 A",
-  "revision": "v0.9.10",
+  "revision": "v0.9.11",
   "status": "INFERRED WORKING CIRCUIT / NOT CONTINUITY VERIFIED",
   "components": [
     {
@@ -2887,9 +2887,10 @@
       "proposed_value": "BAV99?",
       "library_symbol": "Diode:BAV99",
       "footprint": "Package_TO_SOT_SMD:SOT-23",
-      "hypothesis": "User clearly reads A7. Nexperia BAV99 manufacturer marking table and SOT-23 series-dual pin map support this candidate. Physical orientation and external rail-clamp routing remain inferred.",
+      "hypothesis": "A7 and the series-dual pin map support BAV99. User confirms L=GND, R=VDD via V082, and 1.2 ohm from S to R42 (end unspecified; pad2 selected from photo). Rail-clamp role is supported; manufacturer, diode behavior and signal operating function remain unverified.",
       "footprint_confidence": "datasheet/package candidate",
-      "footprint_basis": "Existing assignment; see component identity evidence."
+      "footprint_basis": "Existing assignment; see component identity evidence.",
+      "connection_evidence": "2026-10-09 user meter report: D3.L=GND; D3.R=VDD TP via V082. D3.S to R42=1.2 ohm; resistor end not explicitly named. Photo selects R42.2 nearest D3; other end already mapped to TP4/PIC25. Fitted BAV99 identity and signal function remain candidates."
     },
     {
       "ref": "D4",
@@ -3929,20 +3930,20 @@
       "v098_evidence": "v0.9.8: User confirms V053-V070, mapping PIC12/RC1 to existing V070/R18.1 control input. Local R18.2-Q7.L-R19.1 topology remains photo/resistance-supported inference from v0.9.7; 11.2 kohm V064-V070 retained. No direct VDD tie."
     },
     {
-      "net": "H_RX_RF_SENSE",
+      "net": "H_D3_SIGNAL",
       "endpoints": [
         "D3.S",
         "R42.2"
       ],
-      "status": "HYPOTHESIS / retains visual fragments where listed",
-      "original_fragments": []
+      "status": "User component-level low-ohm report + photo-selected resistor end",
+      "original_fragments": [],
+      "d3_measurement": "2026-10-09 user meter report: D3.L=GND; D3.R=VDD TP via V082. D3.S to R42=1.2 ohm; resistor end not explicitly named. Photo selects R42.2 nearest D3; other end already mapped to TP4/PIC25. Fitted BAV99 identity and signal function remain candidates."
     },
     {
       "net": "H_RX_VDD",
       "endpoints": [
         "C17.1",
         "C24.1",
-        "D3.R",
         "R20.2",
         "R21.1",
         "TP5.1",
@@ -4032,6 +4033,7 @@
         "C32.1",
         "C34.1",
         "C7.1",
+        "D3.R",
         "J1.VDD",
         "Q7.R",
         "R1.1",
@@ -4053,7 +4055,8 @@
       "v09_evidence": [
         "DNP free pads via V064 to board VDD test point / U1 output. This is distinct from MX512H pin4 motor VDD."
       ],
-      "v097_evidence": "Q7-region update: measured V064-V070 11.2 kohm equals marked R18+R19 nominal sum. Supply switch reconstruction is inferred; V070 control source remains unknown."
+      "v097_evidence": "Q7-region update: measured V064-V070 11.2 kohm equals marked R18+R19 nominal sum. Supply switch reconstruction is inferred; V070 control source remains unknown.",
+      "d3_measurement": "2026-10-09 user meter report: D3.L=GND; D3.R=VDD TP via V082. D3.S to R42=1.2 ohm; resistor end not explicitly named. Photo selects R42.2 nearest D3; other end already mapped to TP4/PIC25. Fitted BAV99 identity and signal function remain candidates."
     },
     {
       "net": "ICSP_CLK",
@@ -5830,7 +5833,7 @@
       ]
     },
     {
-      "net": "H_RX_RF_SENSE",
+      "net": "H_D3_SIGNAL",
       "a": [
         556.26,
         238.76
@@ -8701,7 +8704,7 @@
       ]
     },
     {
-      "net": "H_RX_RF_SENSE",
+      "net": "H_D3_SIGNAL",
       "a": [
         538.48,
         242.57
@@ -8998,7 +9001,7 @@
       ]
     },
     {
-      "net": "H_RX_RF_SENSE",
+      "net": "H_D3_SIGNAL",
       "a": [
         515.62,
         237.49
@@ -9680,7 +9683,7 @@
       ]
     },
     {
-      "net": "H_RX_VDD",
+      "net": "VDD",
       "a": [
         563.88,
         233.68
@@ -9790,7 +9793,7 @@
       ]
     },
     {
-      "net": "H_RX_RF_SENSE",
+      "net": "H_D3_SIGNAL",
       "a": [
         538.48,
         237.49

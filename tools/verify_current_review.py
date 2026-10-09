@@ -43,7 +43,7 @@ class Links(HTMLParser):
         if tag=='script':self.inscript=False
     def handle_data(self,data):
         if self.inscript:self.scripts.append(data)
-for name in ['index.html','docs/FINISHING_CHECKLIST.html']:
+for name in ['index.html','docs/FINISHING_CHECKLIST.html','docs/VIA_REVIEW.html']:
     path=ROOT/name; text=path.read_text(encoding='utf-8'); parser=Links();parser.feed(text)
     for link in parser.links:
         u=urlparse(link)
@@ -58,12 +58,15 @@ for i in ids:assert f'id="{i}"' in checklist
 reader=PdfReader(ROOT/'output/pdf/PetSafe_completion_status.pdf')
 pdftext='\n'.join(p.extract_text() for p in reader.pages)
 for i in ids:assert i+' -' in pdftext,i
+for i in s['closed_items']:
+    assert i['id']+' -' in pdftext, 'Closed issue missing from PDF history'
+    assert i['resolution']['result'] in checklist, 'Closed issue result missing from HTML history'
 for p in s['current_fitted_open_pads']:assert p in pdftext,p
 for ref in s['unknown_ceramic_values']:assert ref in pdftext,ref
 assert f'{len(s["current_gpio_pins"])} open PIC pads' in ' '.join(pdftext.split())
 assert 'No electrical measurements were supplied' not in (ROOT/'docs/MEASUREMENTS.md').read_text(encoding='utf-8')
 report=dict(result='PASS',date=s['date'],schematic_revision=s['revision'],review_revision=s['review_revision'],
-    schematic_sha256=s['schematic_sha256'],issue_groups=len(issues),fitted_open_pads_covered=len(covered),
+    schematic_sha256=s['schematic_sha256'],issue_groups=len(issues),closed_issue_groups=len(s['closed_items']),fitted_open_pads_covered=len(covered),
     isolated_labels_covered=len(isolated),ceramic_values_listed=len(s['unknown_ceramic_values']),
     pdf_pages=len(reader.pages),current_html_links='PASS',current_html_javascript_syntax='PASS',
     browser_interaction='NOT_TESTED: prior file:// automation restriction retained',

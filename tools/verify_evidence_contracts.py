@@ -72,10 +72,15 @@ assert ch7['inference']['nominal_series_ohms']==1200+10000
 assert sites['V070']['net']=='H_RX_ENABLE_CTL' and sites['V075']['net']=='VDD'
 assert sites['V075']['endpoints']==['Q7.R','R19.2']
 assert sites['V070']['resistive_measurements'][0]['resistance_ohms']==11200
-assert sites['V082']['net']=='VDD' and sites['V082']['endpoints']==['VDD.1']
+assert sites['V082']['net']=='VDD' and set(sites['V082']['endpoints'])=={'VDD.1','D3.R'}
 assert net('VDD.1')==net('U5.1')!=net('U5.4')
-if next(i for i in read('evidence/remaining_work.json')['issues'] if i['id']=='E02')['state']=='open':
- assert net('D3.R')!=net('VDD.1'), 'Unconfirmed D3 terminal or receiver rail merged'
+d3=read('evidence/d3_measurement_20261009.json')
+assert net('D3.R')==net('VDD.1') and net('D3.L')==net('GND.1')
+assert net('D3.R')!=net('U3.8'), 'D3 measurement does not establish a whole receiver-rail merge'
+assert net('D3.S')==net('R42.2') # KiCad may auto-name a continuous local wire without a label.
+assert next(n for n in m['nets'] if n['net']=='H_D3_SIGNAL')['endpoints']==['D3.S','R42.2']
+assert d3['measurements'][2]['resistance_ohms']==1.2
+assert sha(d3['photo'])==d3['photo_sha256']
 assert xml.findtext('./components/comp[@ref="TP103"]/value')=='VDD'
 assert net('U4.12')==net('R18.1')=='H_RX_ENABLE_CTL'
 assert net('U4.13')==net('TP3.1')==net('R10.1')=='RF_MONITOR_PAD'

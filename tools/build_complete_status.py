@@ -51,7 +51,7 @@ P('<b>All catalog entries are drawn on one sheet.</b> The remaining questions ar
 table([['Coverage','Open connections','Values / packages'],[f'{status["catalog_entries"]} entries; 1 A2 sheet; 20 stock + 4 custom symbol definitions.',f'{len(fitted)} populated-entry pads + {len(dnp)} DNP pads. {len(gpios)} open PIC pads in the model.',f'{len(status["unknown_ceramic_values"])} ceramic and {len(status["unknown_magnetic_values"])} magnetic values unknown; {status["footprints"]["assigned"]}/{status["catalog_entries"]} footprints assigned.']],[W/3]*3),
 P('Power rails - current names','HeadPS'),table([['Name','Known path']]+[[r['name'],r['path']] for r in status['rails']],[80,W-80]),
 P('L1/L2 share the VSYS supply side. Their opposite ends are not shorted together. H_RF_VDD, H_LDO_IN, H_RX_VDD and H_PIR_VDD describe local branches; these are not additional confirmed independent supplies. Rail voltages have not been measured.'),
-P('Recommended next checks','HeadPS'),P('1. D3/V082 and U3.5 DC-bias return; preserve separation across C18.<br/>2. J3 ground/signal and one complete Q3/C10/C11/C12 tuning cell.<br/>3. Specific R41, RF excitation and receiver-output destinations.<br/>4. After routing: frequency-sensitive values and one powered idle/scan session; footprints follow.'),
+P('Recommended next checks','HeadPS'),P('1. D3 rails resolved; next U3.5 DC-bias return, preserving separation across C18.<br/>2. J3 ground/signal and one complete Q3/C10/C11/C12 tuning cell.<br/>3. Specific R41, RF excitation and receiver-output destinations.<br/>4. After routing: frequency-sensitive values and one powered idle/scan session; footprints follow.'),
 P('Validation and limits','HeadPS'),P(f'{v["proposed_net_partitions"]} modeled net partitions match KiCad 10.0.5. ERC retains {v["erc_total"]} findings: {v["erc_by_type"].get("pin_not_connected",0)} open pins, {v["erc_by_type"].get("isolated_pin_label",0)} isolated labels and {v["erc_by_type"].get("power_pin_not_driven",0)} undriven power checks. No artificial NC/power flags hide gaps. Original photo hashes are unchanged. This proves file consistency, not all physical connections.'),
 P('Isolated modeled nodes: '+escape(', '.join(n['net'] for n in m['nets'] if len(n['endpoints'])==1))+'. A PIC pin can have a local net and still lack an onward destination.'),
 P('Completion milestones','HeadPS')]+[P('<b>'+escape(i['name'])+':</b> '+escape(i['criterion'])) for i in status['milestones']]+[PageBreak()]
@@ -62,10 +62,10 @@ for title,ids in [('Supply and diode gaps',['E01','E02','E03']),('Tuning and loc
         story.append(KeepTogether([P(escape(i['id']+' - '+i['area']),'HeadPS'),P('<b>Known:</b> '+escape(i['known'])),P('<b>Uncertain:</b> '+escape(i['unknown'])),P('<b>Next:</b> '+escape(i['next_action']))]))
     if 'V01' in ids:
         story.extend([P('Every unrecovered ceramic value','HeadPS'),P(escape(', '.join(status['unknown_ceramic_values']))),P('C5 is already 470 uF / 16 V. In-circuit LCR readings may include parallel components and semiconductor paths; record frequency, mode and whether a lead was isolated. Geometry cannot establish capacitance, dielectric or voltage rating.')])
+        if status['closed_items']:
+            story.append(P('Closed issues retained as history','HeadPS'))
+            story.extend(P(escape(i['id']+' - '+i['resolution']['result'])) for i in status['closed_items'])
     story.append(PageBreak())
-if status['closed_items']:
-    story.append(P('Closed issues retained as history','HeadPS'))
-    story.extend(P(escape(i['id']+' - '+i['resolution']['result'])) for i in status['closed_items'])
 story.extend([P('PIC connections','TitlePS'),P('Physical package pins. All have modeled local nets; the evidence column distinguishes confirmed endpoints from photo-derived or incomplete branches. Use the separate numbered photo guide for physical locations.'),
 table([['Pin','Function','Local destination / evidence']]+[[p['pin'],{27:'RB6/CLK',28:'RB7/DAT'}.get(p['pin'],p['gpio']),p['evidence']] for p in pins],[30,64,W-94]),
 P('Every remaining open pad','HeadPS'),P('<b>Populated entries:</b> '+escape(', '.join(fitted))+'.<br/><b>Empty options:</b> '+escape(', '.join(dnp))+'.','SmallPS'),

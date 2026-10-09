@@ -2,8 +2,8 @@
   "id": "via-pairs-round-6-completed",
   "pdf_path": "output/pdf/PetSafe_via_pair_next_check.pdf",
   "date": "2026-10-08",
-  "basis_revision": "v0.9.10",
-  "schematic_sha256": "6ff0730b50e2e56476a06bf8fe72edbb2576a979a2285a9e485349541b65d401",
+  "basis_revision": "v0.9.11",
+  "schematic_sha256": "e8a17afa31a4bc452eb031d80b782c862f5ae12f3f6c1eb6b3ae5f2863d54d34",
   "status": "CURRENT_GPIO_BATCH_COMPLETE",
   "scope": "Completed result locator. No repeat measurement requested; no unmeasured pair is added to accepted connectivity.",
   "count_basis": {
@@ -1415,7 +1415,7 @@
     },
     {
       "stage": "Remaining functional endpoints",
-      "action": "Q1.L/V011-V014 now confirmed to motor VDD/U5 pin4; no further rail-disambiguation test requested. Q1 is an R1A/FMOS3401A-class PMOS candidate. Raw battery BATTERY+ is distinct from post-Q1 VSYS; TP14 is on the raw side by photo. V015/R43.2 now reaches TP14; V017/R42.1/R44.1 reaches TP4/PIC25. V082 now reaches TP103/logic VDD; identify the exact D3 terminal without merging H_RX_VDD. V075 has a confirmed rail and photo/resistance-supported Q7/R19 terminal assignments; Q7 identity, orientation and function remain qualified. V011-V015 is explicitly excluded."
+      "action": "Q1.L/V011-V014 now confirmed to motor VDD/U5 pin4; no further rail-disambiguation test requested. Q1 is an R1A/FMOS3401A-class PMOS candidate. Raw battery BATTERY+ is distinct from post-Q1 VSYS; TP14 is on the raw side by photo. V015/R43.2 now reaches TP14; V017/R42.1/R44.1 reaches TP4/PIC25. V082 reaches TP103/logic VDD and measured D3.R; only that D3 terminal moved from the hypothetical receiver rail. D3.L is GND and D3.S-to-R42 reads 1.2 ohm. V075 has a confirmed rail and photo/resistance-supported Q7/R19 terminal assignments; Q7 identity, orientation and function remain qualified. V011-V015 is explicitly excluded."
     },
     {
       "stage": "Low priority",

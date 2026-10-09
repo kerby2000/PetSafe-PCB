@@ -1328,6 +1328,17 @@
       "source": "User naming authorization and L1/L2 common supply report",
       "answer": "Give Q1 output a name: VSYS. L1/L2 connect to the same VSYS.",
       "assignments": []
+    },
+    {
+      "date": "2026-10-09",
+      "source": "evidence/d3_measurement_20261009.json",
+      "assignments": [
+        {
+          "id": "V082",
+          "kind": "signal",
+          "claim": "2026-10-09 user meter report: D3.L=GND; D3.R=VDD TP via V082. D3.S to R42=1.2 ohm; resistor end not explicitly named. Photo selects R42.2 nearest D3; other end already mapped to TP4/PIC25. Fitted BAV99 identity and signal function remain candidates."
+        }
+      ]
     }
   ],
   "review_in_progress": true,

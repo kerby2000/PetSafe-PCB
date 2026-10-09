@@ -4,6 +4,10 @@ $env:PYTHONUTF8 = '1'
 $projectRoot = Split-Path -Parent $PSScriptRoot
 Push-Location $projectRoot
 try {
+    & $Python tools/reconcile_via_review.py
+    if ($LASTEXITCODE) { throw 'Via evidence reconciliation failed' }
+    & $Python tools/build_via_review.py
+    if ($LASTEXITCODE) { throw 'Via review generation failed' }
     & $Python tools/build_via_pair_plan.py
     if ($LASTEXITCODE) { throw 'Via-pair metadata refresh failed' }
     & $Python tools/build_via_pair_guide.py --html-only

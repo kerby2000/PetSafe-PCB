@@ -4921,7 +4921,10 @@
         "rotation": 0,
         "includePins": true,
         "footprint": "Package_TO_SOT_SMD:SOT-23",
-        "unit": 1
+        "unit": 1,
+        "properties": {
+          "PhysicalConnectionEvidence": "2026-10-09 user meter report: D3.L=GND; D3.R=VDD TP via V082. D3.S to R42=1.2 ohm; resistor end not explicitly named. Photo selects R42.2 nearest D3; other end already mapped to TP4/PIC25. Fitted BAV99 identity and signal function remain candidates."
+        }
       }
     },
     {
@@ -12051,7 +12054,7 @@
       ]
     },
     {
-      "net": "H_RX_RF_SENSE",
+      "net": "H_D3_SIGNAL",
       "a": [
         438,
         188
@@ -12062,7 +12065,7 @@
       ]
     },
     {
-      "net": "H_RX_RF_SENSE",
+      "net": "H_D3_SIGNAL",
       "a": [
         438,
         191
@@ -12073,7 +12076,7 @@
       ]
     },
     {
-      "net": "H_RX_RF_SENSE",
+      "net": "H_D3_SIGNAL",
       "a": [
         424,
         191
@@ -12084,7 +12087,7 @@
       ]
     },
     {
-      "net": "H_RX_RF_SENSE",
+      "net": "H_D3_SIGNAL",
       "a": [
         424,
         187
@@ -12128,7 +12131,7 @@
       ]
     },
     {
-      "net": "H_RX_VDD",
+      "net": "VDD",
       "a": [
         444,
         184
@@ -13959,7 +13962,7 @@
       ]
     },
     {
-      "net": "H_RX_VDD",
+      "net": "VDD",
       "p": [
         447,
         184
