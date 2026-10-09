@@ -1,8 +1,8 @@
 {
   "date": "2026-10-09",
   "basis_revision": "v0.9.15",
-  "status": "PHOTO_REVIEW_BEFORE_MORE_BENCH_REQUESTS",
-  "scope": "All four batches recorded. No new meter sweep is queued; agent resolves visible copper first.",
+  "status": "AWAITING_PIR_HIDDEN_ROUTE_BATCH",
+  "scope": "Two targeted candidate checks for the hidden Q2/TP16 onward route. All prior batches retained.",
   "setup": "Battery and programmer disconnected; allow capacitors to discharge. Resistance mode. Note the shorted-probe baseline; report actual ohms, kohms, Mohms, OL or changing readings. Do not bridge or desolder anything in this batch.",
   "photos": [
     {
@@ -147,16 +147,16 @@
       "id": "references",
       "source": "photos/originals/IMG_2435.jpg",
       "view_box": [
-        120,
-        945,
-        1120,
-        815
+        145,
+        980,
+        750,
+        520
       ],
       "coordinate_space": [
         1368,
         1823
       ],
-      "title": "J3 signal candidate, R38 and GND",
+      "title": "R: TP16 beside Q2",
       "points": {
         "F": {
           "xy": [
@@ -223,12 +223,77 @@
             1010
           ],
           "description": "R38 right metal end in this photo, nearer C37"
+        },
+        "R": {
+          "xy": [
+            476,
+            1264
+          ],
+          "label": [
+            665,
+            1325
+          ],
+          "description": "TP16 plated test hole below Q2, above R39; keep one probe here"
+        }
+      }
+    },
+    {
+      "id": "pic_route",
+      "source": "photos/originals/IMG_2436.jpg",
+      "view_box": [
+        700,
+        55,
+        650,
+        1110
+      ],
+      "coordinate_space": [
+        1368,
+        1823
+      ],
+      "title": "S and T: PIC test-point candidates",
+      "points": {
+        "S": {
+          "xy": [
+            1166,
+            1035
+          ],
+          "label": [
+            1255,
+            980
+          ],
+          "description": "TP11 plated test hole beside the PIC; local trace reaches pin 14 / RC3"
+        },
+        "T": {
+          "xy": [
+            1010,
+            157
+          ],
+          "label": [
+            1220,
+            265
+          ],
+          "description": "TP17 plated test hole above C32; local trace reaches pin 18 / RC7"
         }
       }
     }
   ],
-  "tests": [],
-  "interpretation": "Completed readings are recorded as supplied; clear visible copper can be accepted as photo-derived evidence without a new measurement. Hidden routing and component behavior remain separate uncertainties.",
+  "tests": [
+    {
+      "id": "B18",
+      "from": "R",
+      "to": "S",
+      "issue": "E07",
+      "purpose": "Test whether the PIR transistor output reaches PIC RC3 through hidden routing. Candidate only; no direct connection is assumed."
+    },
+    {
+      "id": "B19",
+      "from": "R",
+      "to": "T",
+      "issue": "E07",
+      "purpose": "Test the other selected digital GPIO candidate, PIC RC7. If neither pair is low-ohm, both candidates are rejected."
+    }
+  ],
+  "interpretation": "A reading near the shorted-probe baseline supports a direct connection. A kiloohm/megaohm reading or OL rejects a direct wire for that pair; do not turn a finite-resistance path into a net merge. Neither pair is connected in the model pending results. These checks address E07/E06 and may resolve a functional gap without reducing ERC by themselves.",
   "next_stages": [
     {
       "stage": "1. Finish signal paths",
@@ -267,7 +332,9 @@
     "evidence/u3_j3_measurements_20261009.json",
     "evidence/u3_j3_batch2_20261009.json",
     "evidence/u3_r23_batch3_20261009.json",
-    "evidence/u3_r23_batch4_20261009.json"
+    "evidence/u3_r23_batch4_20261009.json",
+    "photos/originals/IMG_2436.jpg",
+    "photos/originals/IMG_2440.jpg"
   ],
   "completed_tests": [
     {
@@ -415,7 +482,7 @@
       "result": "1 ohm"
     }
   ],
-  "batch_title": "No new meter measurements requested",
-  "instructions": "The visible R23-C40-R42 junction is resolved. Current work is photo tracing and reconciliation of earlier assumptions. Future requests will identify a hidden route, an ambiguous package/contact mapping, or conflicting evidence, and explain why photos cannot resolve it.",
+  "batch_title": "Next: find the PIR signal route to the PIC",
+  "instructions": "Keep one probe on R (TP16). Measure to S (TP11), then T (TP17). TP16 already reaches Q2 on visible copper. TP11 and TP17 already reach PIC pins 14/RC3 and 18/RC7 respectively. Their onward routes are unresolved: these two digital GPIO nodes are functional candidates for the PIR return, not photo-proven connections or an exhaustive list. The photos of both board faces do not establish either hidden link. Report actual resistance, even when it is high.",
   "result_summary": "B16 C-P and B17 C-Q each read 1 ohm. R23 right, C40 lower and R42 upper are one node. R23.2 is now connected in the schematic; C40 has been removed from the old inferred C23/R25 output grouping. Earlier high-resistance exclusions are retained."
 }
