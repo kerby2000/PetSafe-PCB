@@ -1,0 +1,21 @@
+{
+  "date": "2026-10-09",
+  "component": "D2",
+  "marking": "4P",
+  "issue": "E01",
+  "source": "User report in chat",
+  "mode_reported": "resistance",
+  "coverage_reported": "All three unordered pin-pair combinations",
+  "reading_range_ohms": [1000000, 2000000],
+  "individual_pair_readings": null,
+  "probe_polarities": null,
+  "reliability": "User reports readings depend on probe placement and are not reliable",
+  "power_state": "Not restated in this report; prior measurement instructions required battery and programmer disconnected",
+  "interpretation": "Inconclusive for device identity or pin functions. Does not establish OL, a defective part, or an absent copper route to other components.",
+  "next_test": "With battery/programmer disconnected and capacitors discharged, diode mode across L-R, L-S and R-S in both probe polarities. Record displayed voltage or OL, using consistent physical pad labels.",
+  "schematic_changes": "None",
+  "sources": [
+    "https://www.fluke.com/en-sg/learn/blog/digital-multimeters/how-to-test-diodes",
+    "https://media.digikey.com/pdf/Data%20Sheets/Zetex%20PDFs/FMMT2907(A).pdf"
+  ]
+}

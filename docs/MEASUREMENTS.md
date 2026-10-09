@@ -1,6 +1,6 @@
 # Recorded measurements and observations
 
-Current as of 2026-10-08. These are user reports, not measurements performed by software. Full event records remain in `evidence/measurement_plan.json`, `evidence/via_audit.json`, the versioned net-change records and the [via-pair results](VIA_PAIR_TESTS.html). [The checklist](FINISHING_CHECKLIST.html) distinguishes remaining work.
+Current as of 2026-10-09. These are user reports, not measurements performed by software. Full event records remain in `evidence/measurement_plan.json`, `evidence/via_audit.json`, the versioned net-change records and the [via-pair results](VIA_PAIR_TESTS.html). [The checklist](FINISHING_CHECKLIST.html) distinguishes remaining work.
 
 ## Numeric electrical results
 
@@ -21,8 +21,14 @@ The measurement requests specified battery and programmer disconnected. Shorted 
 | V049-V070 | Variable 200-300 kohm | Contact-dependent/inconclusive, not OL |
 | V090 to V095/V100/V103/V107 | OL, all four | No direct continuity in this test |
 | V095 to V100/V103/V107 | OL, all three | No direct continuity in this test |
+| D3.S to R42 | 1.2 ohm | Supports a direct connection to one R42 pad; pad2 selected from photo, not explicitly named in the reading |
+| D2, all three unordered pin pairs | Variable 1-2 Mohm | User calls readings unreliable and probe-placement-dependent. Individual values and probe polarity unspecified; identity/pin functions remain unresolved |
 
 Lettered Q8/U6 endpoints refer to the preserved annotated measurement photos, not package pin numbers. OL does not imply the absence of capacitive coupling.
+
+The [D2 resistance record](../evidence/d2_resistance_20261009.json) does not replace the pending diode-mode test. Diode mode measures junction voltage rather than resistance: test the three pairs in both polarities (six readings). This narrows compatible junction arrangements, but in-circuit paths and shared diode/transistor patterns can prevent a unique identity. No schematic change is justified by the current resistance readings.
+
+D3 rail association is separately closed: user reports D3.L to GND and D3.R to board VDD through V082. See the [D3 measurement record](../evidence/d3_measurement_20261009.json).
 
 ## Confirmed connections and exclusions
 
