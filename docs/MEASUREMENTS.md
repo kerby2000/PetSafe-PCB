@@ -1,6 +1,6 @@
 # Recorded measurements and observations
 
-Recorded evidence, retained through v0.9.35, 2026-10-09. These are user reports, not measurements made by software. The [LED1 colour batch](FINISHING_MEASUREMENTS.html) is completed; only the channel associated with the separately supplied 0.96 V needs clarification, not a repeat measurement. Dated raw JSON events and completed photo-guide contacts are preserved here as reference, not new requests. Earlier requests are archived in [the previous narrative](history/cleanup_v0928/docs/MEASUREMENTS.md); do not repeat a reading just because it occurs there.
+Recorded evidence, retained through v0.9.35, 2026-10-09. These are user reports, not measurements made by software. The [LED1 colour batch](FINISHING_MEASUREMENTS.html) is completed, with 0.96 V confirmed for both channels; no repeat measurement is requested. Dated raw JSON events and completed photo-guide contacts are preserved here as reference, not new requests. Earlier requests are archived in [the previous narrative](history/cleanup_v0928/docs/MEASUREMENTS.md); do not repeat a reading just because it occurs there.
 
 Available instruments reported by the user: LCR meter, Fluke 179 and Fluke 87 III. The earlier Fluke 114 inference is superseded. No actual rail voltages or powered functional results have been supplied. The 44 fitted ceramic values remain unmeasured; L1/L2 readings are recorded below.
 
@@ -119,4 +119,4 @@ A-B and C-D: 1 ohm each. B-D: OL released, 1 ohm held pressed. Additional A-C: O
 
 ## LED1 colour results, v0.9.35
 
-With black on K, A lights green and B lights red. Photo A reaches R31/PIC22/native LED1 pin2; B reaches R30/PIC23/native pin1. The user also reported 0.96 V without a channel; it is preserved unassigned pending clarification. No isolated LED forward-voltage specification or manufacturer pad numbering is inferred. [Raw results](../evidence/led1_colour_results_20261009.json).
+With black on K, A lights green and B lights red. Photo A reaches R31/PIC22/native LED1 pin2; B reaches R30/PIC23/native pin1. The user reported 0.96 V and then clarified that it applies to both A-K and B-K. Both readings are recorded as in-circuit diode-mode observations. No isolated LED forward-voltage specification or manufacturer pad numbering is inferred. [Raw results](../evidence/led1_colour_results_20261009.json).

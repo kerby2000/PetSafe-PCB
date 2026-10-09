@@ -13,11 +13,12 @@
       "unit": "V / OL + colour",
       "state": "Unpowered",
       "purpose": "Identify the colour of the R31 / PIC22 branch.",
-      "result": "Green; voltage not yet assigned",
+      "result": "Green; 0.96 V (in circuit)",
       "colour": "green",
-      "forward_voltage_v": null,
+      "forward_voltage_v": 0.96,
       "raw_user_statement": "AK - green",
-      "conditions": "Requested in-circuit diode mode, red A/B and black K, with battery/programmer disconnected. User supplied emitted colours."
+      "conditions": "Requested in-circuit diode mode, red A/B and black K, with battery/programmer disconnected. User supplied emitted colours.",
+      "voltage_evidence": "User report 0.96V, followed by clarification Both on 2026-10-09."
     },
     {
       "id": "B43",
@@ -28,19 +29,14 @@
       "unit": "V / OL + colour",
       "state": "Unpowered",
       "purpose": "Identify the colour of the R30 / PIC23 branch.",
-      "result": "Red; voltage not yet assigned",
+      "result": "Red; 0.96 V (in circuit)",
       "colour": "red",
-      "forward_voltage_v": null,
+      "forward_voltage_v": 0.96,
       "raw_user_statement": "BK - red",
-      "conditions": "Requested in-circuit diode mode, red A/B and black K, with battery/programmer disconnected. User supplied emitted colours."
+      "conditions": "Requested in-circuit diode mode, red A/B and black K, with battery/programmer disconnected. User supplied emitted colours.",
+      "voltage_evidence": "User report 0.96V, followed by clarification Both on 2026-10-09."
     }
   ],
-  "unassigned_voltage_report": {
-    "raw_user_statement": "0.96V",
-    "reading_v": 0.96,
-    "channel": null,
-    "status": "Awaiting A-K / B-K / both clarification; no intrinsic LED forward voltage inferred."
-  },
   "assessment": "B42/B43 user diode-mode colour report: photo A-K lights GREEN via R31/PIC22 (LED1 native pin2); B-K lights RED via R30/PIC23 (native pin1). Black probe at grounded K. Both native cathodes 3/4 remain on GND; internal die-to-cathode pairing and manufacturer pad numbers are not established by this in-circuit test. Body 1.5 x 1.5 mm; footprint remains unassigned.",
   "electrical_change": false,
   "photo_pad_mapping": {
@@ -55,5 +51,13 @@
   ],
   "photos": {
     "photos/originals/IMG_2432.jpg": "c982b50e7bd480e779464d26d9436c84c693d81f365ff8ac86c4aabc56e9761d"
+  },
+  "voltage_report": {
+    "raw_user_statement": "0.96V",
+    "reading_v": 0.96,
+    "channel": "both",
+    "status": "Resolved: user confirms 0.96 V for both A-K and B-K in circuit.",
+    "clarification_question": "Does the 0.96 V reading apply to A-K (green), B-K (red), or both?",
+    "raw_user_clarification": "Both"
   }
 }
