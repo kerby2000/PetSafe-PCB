@@ -100,3 +100,8 @@ No actual rail voltages, powered functional results or LCR capacitor/inductor va
 ## v0.9.27 - L1/L2 inductance readings
 
 The user reports LCR-meter readings of **L1 = 1.4 uH** and **L2 = 2.2 uH**. These replace the schematic value placeholders while retaining stock `Device:L` symbols, the existing 0805 footprint candidates and all connections. Test frequency, series/parallel mode, fixture compensation and whether the parts were isolated from the PCB have not yet been reported. These readings do not identify manufacturer nominal values, magnetic construction, tolerance, DCR or current ratings. The value checklist now has both magnetic readings recorded; 44 ceramic values remain unrecovered. See [structured measurement record](../evidence/l1_l2_inductance_20261009.json).
+
+
+## v0.9.28 - rear C49 routing resolved
+
+The user confirms that rear C49 connects between **ANT2 and GND**. The schematic now models C49.1 on `H_ANT_B` (ANT2) and C49.2 on `GND`. Since it is a nonpolar capacitor, this numbering is a schematic convention rather than a measured physical pad orientation. The existing photographed DNP classification is retained; the report supplies no capacitance or fitting change. Both previously open C49 pads are resolved. Zero open catalog pads does not prove all onward routing, candidate identities or circuit behavior. See [connection evidence](../evidence/c49_connections_20261009.json).

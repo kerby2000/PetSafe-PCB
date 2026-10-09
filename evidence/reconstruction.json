@@ -1,6 +1,6 @@
 {
   "board": "100-1339 R03 A",
-  "revision": "v0.9.27",
+  "revision": "v0.9.28",
   "status": "INFERRED WORKING CIRCUIT / NOT CONTINUITY VERIFIED",
   "components": [
     {
@@ -2288,13 +2288,18 @@
         "1",
         "2"
       ],
-      "note": "Physically present empty C49 footprint on rear IMG_2442.jpg beside antenna wire terminations. Both copper routes remain unresolved; retained in the antenna block.",
+      "note": "Rear C49 footprint beside antenna wire terminations in IMG_2442.jpg; presence confirmed by user 2026-10-09. Existing DNP population retained. User confirms C49 connects between ANT2 and GND (2026-10-09). Model pin1 = H_ANT_B / ANT2, pin2 = GND. Nonpolar capacitor: pin numbering is a schematic convention, not a separately measured physical pad orientation. No capacitance value or population change reported.",
       "side": "back",
-      "traced_pin_count": 0,
+      "traced_pin_count": 2,
       "library_symbol": "Device:C",
       "footprint": "Capacitor_SMD:C_1206_3216Metric",
       "footprint_confidence": "medium",
-      "footprint_basis": "Photo family and body/land proportions compared with adjacent known IC lead pitch. Size is independent of capacitance, dielectric and voltage rating."
+      "footprint_basis": "Photo family and body/land proportions compared with adjacent known IC lead pitch. Size is independent of capacitance, dielectric and voltage rating.",
+      "connection_evidence": {
+        "state": "user-confirmed",
+        "source": "evidence/c49_connections_20261009.json",
+        "scope": "C49 between ANT2 and GND; nonpolar terminal numbering is conventional"
+      }
     },
     {
       "ref": "C1A",
@@ -3719,11 +3724,13 @@
       "endpoints": [
         "ANT2.1",
         "D2.L",
-        "R46.1"
+        "R46.1",
+        "C49.1"
       ],
       "status": "User-confirmed D2.L to ANT2 continuity; numerical resistance not supplied",
       "original_fragments": [],
-      "d2_measurement": "D2.L (upper-right) directly connects to ANT2. D2.S to requested ANT2 returned OL; keep S separate. User confirms R46 upper pad/model1 on this net; the lower pad/model2 joins S. R46 remains empty, not a jumper."
+      "d2_measurement": "D2.L (upper-right) directly connects to ANT2. D2.S to requested ANT2 returned OL; keep S separate. User confirms R46 upper pad/model1 on this net; the lower pad/model2 joins S. R46 remains empty, not a jumper.",
+      "c49_evidence": "evidence/c49_connections_20261009.json"
     },
     {
       "net": "H_AUX_IN",
@@ -3858,7 +3865,8 @@
         "C42.1",
         "D6.2",
         "S1.TR",
-        "U6A.R2"
+        "U6A.R2",
+        "C49.2"
       ],
       "status": "HYPOTHESIS / retains visual fragments where listed",
       "original_fragments": [
@@ -3881,7 +3889,8 @@
       "v0919_evidence": "C42 upper pad/photo1 joins U3.4 ground copper by photo inference; R25.2 ground assumption withdrawn. Other branches retain their own evidence.",
       "d6_measurement": "v0.9.20 B22-B27: upper photo contact V -> GND, lower W -> VPP, each 1 ohm. B29 red V/black W about 0.7V; B30 reverse OL. Supports A=V/GND (pin2), K=W/VPP (pin1). G3 identity and Zener breakdown remain unverified; no 3.9V measurement.",
       "v0921_evidence": "C35 upper/model2 retains user V018 ground; new annotation joins S1 upper-right. Upper-left common-row switch connection remains inferred.",
-      "v0922_evidence": "User explicitly identifies the lower-right U6A pad as GND in the annotated photo. Other GND branches keep prior evidence."
+      "v0922_evidence": "User explicitly identifies the lower-right U6A pad as GND in the annotated photo. Other GND branches keep prior evidence.",
+      "c49_evidence": "evidence/c49_connections_20261009.json"
     },
     {
       "net": "H_LDO_IN",
@@ -5078,10 +5087,7 @@
       "note": ""
     }
   ],
-  "unresolved_pins": [
-    "C49.1",
-    "C49.2"
-  ],
+  "unresolved_pins": [],
   "reference_map": {
     "C1A": "C101",
     "C2A": "C102",
@@ -10594,6 +10600,28 @@
       "b": [
         387.35,
         378.46
+      ]
+    },
+    {
+      "net": "GND",
+      "a": [
+        262.89,
+        379.73
+      ],
+      "b": [
+        269.24,
+        379.73
+      ]
+    },
+    {
+      "net": "H_ANT_B",
+      "a": [
+        242.57,
+        379.73
+      ],
+      "b": [
+        255.27,
+        379.73
       ]
     }
   ],

@@ -99,7 +99,7 @@ S1 now uses stock `Switch:SW_Push`. Its repeated footprint pad1 represents physi
 
 ## v0.9.24 - options grouped by function
 
-Section 08 is removed. D4-D6 sit with PIC/ICSP; the RB5/R35/Q9/J6/R36/TP10 option sits within the PIC block; U6A sits in the PIR supply block. C49 is an explicitly labelled empty footprint in rear photo IMG_2442 beside the antenna wires, so it remains DNP in the antenna block. Its two destinations remain unresolved. TP9 has no supported physical location and was removed from the active inventory and schematic at the user's request; the original entry is retained in the [reorganization record](../evidence/options_reorganization_20261009.json).
+Section 08 is removed. D4-D6 sit with PIC/ICSP; the RB5/R35/Q9/J6/R36/TP10 option sits within the PIC block; U6A sits in the PIR supply block. C49 is an explicitly labelled empty footprint in rear photo IMG_2442 beside the antenna wires, so it remains DNP in the antenna block. Its two destinations were unresolved in this revision; v0.9.28 below records the user-confirmed ANT2/GND connection. TP9 has no supported physical location and was removed from the active inventory and schematic at the user's request; the original entry is retained in the [reorganization record](../evidence/options_reorganization_20261009.json).
 
 Q9 uses stock `Transistor_BJT:Q_NPN_BEC`: physical L=base/pin1, R=emitter/pin2/GND, S=collector/pin3/J6.1. This is an inferred optional driver, not an identified fitted transistor. U6A uses stock `Regulator_Linear:MCP1700x-330xxTT` as a regulator role template only. Physical single-left input is now native U106.3; upper-right output remains U106.2; lower-right GND is U106.1. This supersedes the arbitrary connector numbering without changing any physical nets. The identity and ratings of the absent device remain unknown.
 
@@ -119,3 +119,8 @@ The user measured C5 at 6.33 mm diameter and 16 mm high. The earlier 470 uF / 16
 ## v0.9.27 - L1/L2 inductance readings
 
 The user reports LCR-meter readings of **L1 = 1.4 uH** and **L2 = 2.2 uH**. These replace the schematic value placeholders while retaining stock `Device:L` symbols, the existing 0805 footprint candidates and all connections. Test frequency, series/parallel mode, fixture compensation and whether the parts were isolated from the PCB have not yet been reported. These readings do not identify manufacturer nominal values, magnetic construction, tolerance, DCR or current ratings. The value checklist now has both magnetic readings recorded; 44 ceramic values remain unrecovered. See [structured measurement record](../evidence/l1_l2_inductance_20261009.json).
+
+
+## v0.9.28 - rear C49 routing resolved
+
+The user confirms that rear C49 connects between **ANT2 and GND**. The schematic now models C49.1 on `H_ANT_B` (ANT2) and C49.2 on `GND`. Since it is a nonpolar capacitor, this numbering is a schematic convention rather than a measured physical pad orientation. The existing photographed DNP classification is retained; the report supplies no capacitance or fitting change. Both previously open C49 pads are resolved. Zero open catalog pads does not prove all onward routing, candidate identities or circuit behavior. See [connection evidence](../evidence/c49_connections_20261009.json).

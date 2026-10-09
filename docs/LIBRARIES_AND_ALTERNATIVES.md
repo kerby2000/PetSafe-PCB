@@ -79,7 +79,7 @@ The user reports R8 approximately 1.6 x 0.77 mm including both metal end caps, c
 
 Q9 uses stock `Transistor_BJT:Q_NPN_BEC` with a provisional NPN role: base through R35, emitter GND, collector J6.1. U6A (native U106) uses stock `Regulator_Linear:MCP1700x-330xxTT` as a three-pin regulator role/pin template only; its visible value says U6A / LDO option and it remains DNP. Neither symbol identifies an absent original component. U6A's footprint pin map is 1=GND, 2=output, 3=input; this follows the [Microchip MCP1700 SOT-23 pin table](https://ww1.microchip.com/downloads/aemDocuments/documents/APID/ProductDocuments/DataSheets/MCP1700-Data-Sheet-20001826F.pdf) and the photographed pad arrangement. No voltage or current rating is inferred from that library name. Do not populate the option from this schematic without selecting and validating a part.
 
-The former connector placeholders were replaced through MCP. The regulator symbol exposes a native ERC output conflict with U6; it is retained because U6A is an unpopulated alternative. C49 remains a stock capacitor symbol with unresolved copper; TP9 was removed after its location failed the evidence audit. There are now 149 catalog entries and 22 stock plus 4 custom definitions in use.
+The former connector placeholders were replaced through MCP. The regulator symbol exposes a native ERC output conflict with U6; it is retained because U6A is an unpopulated alternative. C49 remains a stock capacitor symbol; its formerly unresolved copper is now confirmed between ANT2 and GND in v0.9.28. TP9 was removed after its location failed the evidence audit. There are now 149 catalog entries and 22 stock plus 4 custom definitions in use.
 
 
 ## v0.9.25 - LED1 colours and dimensions

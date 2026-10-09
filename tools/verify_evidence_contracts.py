@@ -239,7 +239,12 @@ assert xml.findtext('./components/comp[@ref="U106"]/fields/field[@name="Connecti
 assert next(c for c in placements['components'] if c['reference']=='U106')['properties']['ConnectionEvidence']==option_reorg['u6a_role']
 assert xml.find('./components/comp[@ref="TP9"]') is None
 assert xml.find('./components/comp[@ref="C49"]') is not None
-assert set(m['unresolved_pins'])==set(option_reorg['retained_unresolved_pads'])
+c49_record=read('evidence/c49_connections_20261009.json')
+assert set(m['unresolved_pins'])==set(option_reorg['retained_unresolved_pads'])-set(c49_record['resolved_pads'])
+for x,y in c49_record['supported_pairs']:assert net(x)==net(y),(x,y)
+assert net('C49.1')!=net('C49.2'), 'C49 is across ANT2 and GND; do not merge its two nets'
+assert xml.findtext('./components/comp[@ref="C49"]/fields/field[@name="ConnectionEvidence"]')==c49_record['connection_evidence']
+for path,digest in c49_record['photos'].items():assert sha(path)==digest
 for ep,pn in option_reorg['u6a_current_mapping'].items():assert m['native_pin_crosswalk'][ep]==pn
 assert xml.find('./components/comp[@ref="Q9"]/libsource').attrib['part']=='Q_NPN_BEC'
 assert xml.find('./components/comp[@ref="U106"]/libsource').attrib['part']=='MCP1700x-330xxTT'

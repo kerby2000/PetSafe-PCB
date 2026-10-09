@@ -8403,7 +8403,8 @@
         "includePins": true,
         "footprint": "Capacitor_SMD:C_1206_3216Metric",
         "properties": {
-          "LocationEvidence": "Clearly visible empty C49 on rear IMG_2442.jpg beside antenna wire terminations. Retained; both copper destinations unresolved."
+          "LocationEvidence": "Rear C49 footprint beside antenna wire terminations in IMG_2442.jpg; presence confirmed by user 2026-10-09. Existing DNP population retained.",
+          "ConnectionEvidence": "User confirms C49 connects between ANT2 and GND (2026-10-09). Model pin1 = H_ANT_B / ANT2, pin2 = GND. Nonpolar capacitor: pin numbering is a schematic convention, not a separately measured physical pad orientation. No capacitance value or population change reported."
         }
       }
     },

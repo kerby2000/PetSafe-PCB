@@ -2,16 +2,16 @@
 <export version="E">
   <design>
     <source>C:\Users\lukin\Documents\ChatGPT\PetSafe-PCB\schematic\PetSafe_1001339.kicad_sch</source>
-    <date>2026-10-09T16:19:36</date>
+    <date>2026-10-09T16:32:01</date>
     <tool>Eeschema 10.0.5</tool>
     <sheet number="1" name="/" tstamps="/">
       <title_block>
         <title>PetSafe 100-1339 R03 A | single-sheet reconstruction</title>
         <company>KiCad 10 libraries + four datasheet symbols | MCP authoring</company>
-        <rev>0.9.27</rev>
+        <rev>0.9.28</rev>
         <date>2026-10-09</date>
         <source>PetSafe_1001339.kicad_sch</source>
-        <comment number="1" value="L1=1.4uH, L2=2.2uH user LCR readings; measurement conditions pending."/>
+        <comment number="1" value="C49 ANT2-to-GND confirmed; zero open catalog pads; remaining circuit issues documented."/>
         <comment number="2" value=""/>
         <comment number="3" value=""/>
         <comment number="4" value=""/>
@@ -1882,7 +1882,8 @@
       <footprint>Capacitor_SMD:C_1206_3216Metric</footprint>
       <description>Unpolarized capacitor</description>
       <fields>
-        <field name="LocationEvidence">Clearly visible empty C49 on rear IMG_2442.jpg beside antenna wire terminations. Retained; both copper destinations unresolved.</field>
+        <field name="LocationEvidence">Rear C49 footprint beside antenna wire terminations in IMG_2442.jpg; presence confirmed by user 2026-10-09. Existing DNP population retained.</field>
+        <field name="ConnectionEvidence">User confirms C49 connects between ANT2 and GND (2026-10-09). Model pin1 = H_ANT_B / ANT2, pin2 = GND. Nonpolar capacitor: pin numbering is a schematic convention, not a separately measured physical pad orientation. No capacitance value or population change reported.</field>
         <field name="OriginalReference">C49</field>
         <field name="Evidence">Photo reconstruction; topology inferred</field>
         <field name="LibraryPolicy">Unmodified KiCad 10 stock symbol</field>
@@ -1894,7 +1895,8 @@
         <field name="Description">Unpolarized capacitor</field>
       </fields>
       <libsource lib="Device" part="C" description="Unpolarized capacitor"/>
-      <property name="LocationEvidence" value="Clearly visible empty C49 on rear IMG_2442.jpg beside antenna wire terminations. Retained; both copper destinations unresolved."/>
+      <property name="LocationEvidence" value="Rear C49 footprint beside antenna wire terminations in IMG_2442.jpg; presence confirmed by user 2026-10-09. Existing DNP population retained."/>
+      <property name="ConnectionEvidence" value="User confirms C49 connects between ANT2 and GND (2026-10-09). Model pin1 = H_ANT_B / ANT2, pin2 = GND. Nonpolar capacitor: pin numbering is a schematic convention, not a separately measured physical pad orientation. No capacitance value or population change reported."/>
       <property name="OriginalReference" value="C49"/>
       <property name="Evidence" value="Photo reconstruction; topology inferred"/>
       <property name="LibraryPolicy" value="Unmodified KiCad 10 stock symbol"/>
@@ -6509,6 +6511,7 @@
       <node ref="C45" pin="1" pintype="passive"/>
       <node ref="C47" pin="1" pintype="passive"/>
       <node ref="C48" pin="1" pintype="passive"/>
+      <node ref="C49" pin="2" pintype="passive"/>
       <node ref="C5" pin="2" pintype="passive"/>
       <node ref="C6" pin="2" pintype="passive"/>
       <node ref="C7" pin="2" pintype="passive"/>
@@ -6556,6 +6559,7 @@
       <node ref="TP105" pin="1" pinfunction="1_1" pintype="passive"/>
     </net>
     <net code="4" name="/H_ANT_B" class="Default">
+      <node ref="C49" pin="1" pintype="passive"/>
       <node ref="D2" pin="1" pinfunction="Pin_1_1" pintype="passive"/>
       <node ref="R46" pin="1" pintype="passive"/>
       <node ref="TP106" pin="1" pinfunction="1_1" pintype="passive"/>
@@ -6983,13 +6987,7 @@
       <node ref="TP11" pin="1" pinfunction="1_1" pintype="passive"/>
       <node ref="U4" pin="14" pinfunction="RC3_14" pintype="bidirectional"/>
     </net>
-    <net code="86" name="unconnected-(C49-Pad1)" class="Default">
-      <node ref="C49" pin="1" pintype="passive"/>
-    </net>
-    <net code="87" name="unconnected-(C49-Pad2)" class="Default">
-      <node ref="C49" pin="2" pintype="passive"/>
-    </net>
-    <net code="88" name="unconnected-(U6-NC-Pad4)" class="Default">
+    <net code="86" name="unconnected-(U6-NC-Pad4)" class="Default">
       <node ref="U6" pin="4" pinfunction="NC_4" pintype="passive+no_connect"/>
     </net>
   </nets>

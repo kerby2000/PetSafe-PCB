@@ -1,23 +1,16 @@
 {
   "date": "2026-10-09",
-  "revision": "v0.9.27",
-  "review_revision": "v0.9.27",
+  "revision": "v0.9.28",
+  "review_revision": "v0.9.28",
   "interpretation": "Every catalog entry is drawn. Hardware connectivity, values and identities are only partially verified. No routed PCB exists.",
   "catalog_entries": 149,
   "physical_pins": 351,
-  "unresolved_physical_pins": 2,
-  "unresolved_pins_by_population": {
-    "DNP": 2
-  },
-  "unresolved_pins_by_reference": {
-    "C49": 2
-  },
+  "unresolved_physical_pins": 0,
+  "unresolved_pins_by_population": {},
+  "unresolved_pins_by_reference": {},
   "current_gpio_pins": [],
   "current_fitted_open_pads": [],
-  "current_dnp_open_pads": [
-    "C49.1",
-    "C49.2"
-  ],
+  "current_dnp_open_pads": [],
   "unknown_ceramic_values": [
     "C1",
     "C2",
@@ -72,15 +65,14 @@
     ],
     "qualification": "Assigned is not the same as measured. R8, C11 and S1 have user body dimensions; lead geometry and exact housing variants remain qualified."
   },
-  "erc_total": 9,
+  "erc_total": 7,
   "erc_by_type": {
     "power_pin_not_driven": 5,
-    "pin_not_connected": 2,
     "pin_to_pin": 1,
     "isolated_pin_label": 1
   },
   "modeled_nets": 85,
-  "schematic_sha256": "2d1f7eb33f8361a83ca214851e1ae2c4ba7535f9d8d3f1d25abb58ec9593a868",
+  "schematic_sha256": "b6ce30e133413e595eca1e2566ad39a21ff0db89cc8616ff81de20a2a47a17df",
   "known_identified_ICs_needing_new_symbols": [],
   "complete_symbols_for_selected_candidates": true,
   "available_instruments": [
@@ -196,8 +188,8 @@
     {
       "id": "D01",
       "area": "Empty options",
-      "gap": "C49 has two untraced pads. J6.2/R36.1 onward identity and intended option values remain unknown. Q9 NPN type and U6A regulator type are circuit-role inferences for empty footprints, not identified fitted devices. U6A now uses a stock regulator role template; U6.3/U106.2 share H_PIR_VDD, so native ERC reports a retained power-output conflict. U6A remains DNP; simultaneous population is not validated.",
-      "method": "Keep C49 in the antenna block and resolve its two rear-pad routes from photos first. Keep the Q9/J6 option with PIC outputs and U6A with the PIR regulator. Ask only for hidden continuations that photo review cannot establish."
+      "gap": "J6.2/R36.1 onward identity and intended option values remain unknown. Q9 NPN type and U6A regulator type are circuit-role inferences for empty footprints, not identified fitted devices. U6A now uses a stock regulator role template; U6.3/U106.2 share H_PIR_VDD, so native ERC reports a retained power-output conflict. U6A remains DNP; simultaneous population is not validated.",
+      "method": "C49 routing is resolved; keep it as an unpopulated ANT2-to-GND option. Keep Q9/J6 with PIC outputs and U6A with the PIR regulator. Only hidden onward continuations and intended optional part choices remain to assess."
     },
     {
       "id": "F01",
@@ -673,9 +665,9 @@
       ],
       "priority": 2,
       "state": "open",
-      "known": "Two open DNP pads remain: C49.1 and C49.2. R46, U7, R47/C42 and all J6/Q9/R35/R36 pads now have local routes. v0.9.21 annotated photo: J6 left/model1 joins Q9 single/native3 and R36 right/model2. J6 right/model2 joins R36 left/model1. PIC26/RB5-TP10-R35 upper; R35 lower-Q9 paired-left; paired-right via V021 is GND. All J6/Q9/R35/R36 options remain DNP. R36 left/J6 right onward rail is not established by this annotation. U6A is fully mapped: single pad after R37, upper-right J3.1/PIR supply, lower-right GND; DNP retained. v0.9.24 confirms C49 is physically present and empty on the rear in IMG_2442.jpg beside antenna terminations. Options are now drawn with their corresponding functional blocks.",
-      "unknown": "C49 has two untraced pads. J6.2/R36.1 onward identity and intended option values remain unknown. Q9 NPN type and U6A regulator type are circuit-role inferences for empty footprints, not identified fitted devices. U6A now uses a stock regulator role template; U6.3/U106.2 share H_PIR_VDD, so native ERC reports a retained power-output conflict. U6A remains DNP; simultaneous population is not validated.",
-      "next_action": "Keep C49 in the antenna block and resolve its two rear-pad routes from photos first. Keep the Q9/J6 option with PIC outputs and U6A with the PIR regulator. Ask only for hidden continuations that photo review cannot establish.",
+      "known": "C49 now connects between ANT2 and GND by user report; no catalog pads remain unassigned to a local net except the supported U6.4 NC. R46, U7, R47/C42 and all J6/Q9/R35/R36 pads now have local routes. v0.9.21 annotated photo: J6 left/model1 joins Q9 single/native3 and R36 right/model2. J6 right/model2 joins R36 left/model1. PIC26/RB5-TP10-R35 upper; R35 lower-Q9 paired-left; paired-right via V021 is GND. All J6/Q9/R35/R36 options remain DNP. R36 left/J6 right onward rail is not established by this annotation. U6A is fully mapped: single pad after R37, upper-right J3.1/PIR supply, lower-right GND; DNP retained. v0.9.24 confirms C49 is physically present and empty on the rear in IMG_2442.jpg beside antenna terminations. Options are now drawn with their corresponding functional blocks.",
+      "unknown": "J6.2/R36.1 onward identity and intended option values remain unknown. Q9 NPN type and U6A regulator type are circuit-role inferences for empty footprints, not identified fitted devices. U6A now uses a stock regulator role template; U6.3/U106.2 share H_PIR_VDD, so native ERC reports a retained power-output conflict. U6A remains DNP; simultaneous population is not validated.",
+      "next_action": "C49 routing is resolved; keep it as an unpopulated ANT2-to-GND option. Keep Q9/J6 with PIC outputs and U6A with the PIR regulator. Only hidden onward continuations and intended optional part choices remain to assess.",
       "closed_when": "Optional routes are documented to the desired reproduction scope; do not invent fitted values or no-connect flags.",
       "open_pads": [],
       "nets": [
@@ -694,10 +686,16 @@
           "result": "v0.9.22 user annotated U6A option: single left pad/model L/native U106.1 joins U6 pin5 and the existing input node after R37; upper-right/model R1/native2 joins J3.1 (red PIR wire); lower-right/model R2/native3 joins GND. All three external pads mapped, option remains DNP. User called the input VDD; retain VDD -> R37 (22 ohm) -> H_AUX_IN because the annotation ends at U6 pin5 and prior B28 confirms pin5-pin2, not a bypass across R37. No fitted IC identity or voltage measurement implied.",
           "evidence": "evidence/u6a_three_pad_routing_20261009.json",
           "date": "2026-10-09"
+        },
+        {
+          "result": "User confirms rear C49 between ANT2 and GND. Both open C49 pads resolved; DNP retained.",
+          "evidence": "evidence/c49_connections_20261009.json",
+          "date": "2026-10-09"
         }
       ],
       "supporting_evidence": [
-        "evidence/options_reorganization_20261009.json"
+        "evidence/options_reorganization_20261009.json",
+        "evidence/c49_connections_20261009.json"
       ]
     },
     {
@@ -806,7 +804,8 @@
     "v0.9.24: TP9 withdrawn as unsupported; C49 confirmed present and DNP in IMG_2442, with two pads still unresolved. Options moved into functional blocks. Q9 NPN and U6A regulator role symbols replace connectors without changing physical nets.",
     "v0.9.25: LED1 red/green emitters and 1.5 x 1.5 mm square body confirmed by user; native value updated, all physical nets preserved. Exact land pattern and colour-to-drive mapping remain open.",
     "v0.9.26: C5 radial electrolytic body measured 6.33 mm diameter x 16 mm height. Stock 6.3 mm / 2.5 mm footprint candidate assigned; pitch remains inferred, stock height 7 mm differs. Earlier 470 uF / 16 V and all physical nets retained.",
-    "v0.9.27: User LCR readings L1 1.4 uH and L2 2.2 uH replace bead/inductor value placeholders. Measurement conditions remain unreported; all nets and stock symbols/footprints are unchanged."
+    "v0.9.27: User LCR readings L1 1.4 uH and L2 2.2 uH replace bead/inductor value placeholders. Measurement conditions remain unreported; all nets and stock symbols/footprints are unchanged.",
+    "v0.9.28: Rear C49 connects between ANT2 and GND by user report. Both remaining open catalog pads resolved; DNP retained. Zero open-pad count does not establish every remote connection or component identity."
   ],
   "history": "docs/history/README.md"
 }
