@@ -1,5 +1,5 @@
 {
-  "revision": "v0.9.17",
+  "revision": "v0.9.18",
   "instruments": [
     "LCR meter",
     "multimeter"
@@ -12,7 +12,7 @@
   ],
   "fitted_capacitors": 45,
   "fitted_resistors": 38,
-  "unresolved_physical_pins": 19,
+  "unresolved_physical_pins": 18,
   "unknown_ceramic_values": [
     "C1",
     "C2",
@@ -807,8 +807,8 @@
       "footprint": "Capacitor_SMD:C_1206_3216Metric",
       "footprint_confidence": "medium",
       "footprint_basis": "Photo family and body/land proportions compared with adjacent known IC lead pitch. Size is independent of capacitance, dielectric and voltage rating.",
-      "open_pads": 1,
-      "next_method": "LCR: in-circuit screening first; isolate one terminal if an individual value is needed; Targeted continuity for 1 open physical pads",
+      "open_pads": 0,
+      "next_method": "LCR: in-circuit screening first; isolate one terminal if an individual value is needed",
       "photos": "IMG_2431.jpg;IMG_2432.jpg"
     },
     {
@@ -1763,7 +1763,7 @@
       "observed": "UNKNOWN",
       "displayed": "SIL3724A?",
       "marking": "3724A",
-      "value_or_identity": "3724A supports the SIL3724A complementary MOSFET candidate; fitted maker unconfirmed. V113/V115 centre B2/native5 GND is resolved; outer-drain join retains D-E low-resistance evidence. V114 belongs to U2.T2 GND, not Q8. Q8 supply path and C6.1 remain incomplete; no current centre-ground conflict.",
+      "value_or_identity": "3724A supports the SIL3724A complementary MOSFET candidate; fitted maker unconfirmed. V113/V115 centre B2/native5 GND is resolved; outer-drain join retains D-E low-resistance evidence. V114 belongs to U2.T2 GND, not Q8. C6 is photo-supported in parallel with C5 as of v0.9.18. Q8 source-supply path remains independently qualified; no current centre-ground conflict.",
       "footprint": "Package_TO_SOT_SMD:SOT-23-6",
       "footprint_confidence": "datasheet/package candidate",
       "footprint_basis": "Existing assignment; see component identity evidence.",

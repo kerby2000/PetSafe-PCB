@@ -35,6 +35,14 @@ assert len(ch['confirmed_via_pairs'])==5 and len(ch['rejected_pairs'])==5
 for i in [95,100,103,107]:assert f'V{i:03d}' in sites['V090']['excluded_vias'] and 'V090' in sites[f'V{i:03d}']['excluded_vias']
 assert sites['V114']['endpoints']==['U2.T2'] and sites['V114']['net']=='GND'
 assert net('U2.T2')==net('C5.2')==net('LED1.BL')==net('LED1.BR')==net('U4.8')
+c6_record=read('evidence/c5_c6_parallel_20261009.json')
+for x,y in c6_record['supported_pairs']:assert net(x)==net(y)
+assert net('C6.1')==net('C5.1')=='H_RF_VDD'
+assert net('C6.2')==net('C5.2')==net('GND.1')
+assert net('C6.1')!=net('Q8.B1') and net('C6.1')!=net('VDD.1')
+assert 'C6.1' not in m['unresolved_pins']
+assert c6_record['numerical_resistance_ohms'] is None
+for path,digest in c6_record['photos'].items():assert sha(path)==digest
 assert net('Q8.T2')!=net('Q8.B2')
 assert net('Q8.B1')==net('Q8.B3')!=net('Q8.B2')
 assert net('TP6.1')==net('C18.2')!=net('U3.5')
@@ -114,7 +122,7 @@ assert net('C26.1')!=net('C25.1') and net('C26.1')!=net('VREF.1')
 assert net('C25.2')==net('C26.2')==net('GND.1')
 assert 'C26.1' not in m['unresolved_pins']
 for path,digest in c26_record['photos'].items():assert sha(path)==digest
-for ref in ['C25','C26','U4']:
+for ref in ['C25','C26','U4','C5','C6']:
  expected=next(c for c in placements['components'] if c['reference']==ref)['properties']['ConnectionEvidence']
  assert xml.findtext(f'./components/comp[@ref="{ref}"]/fields/field[@name="ConnectionEvidence"]')==expected,ref
 completed_ids=set(measured)|set(measured2)|set(measured3)|set(measured4)|set(measured5)|{'B21'}

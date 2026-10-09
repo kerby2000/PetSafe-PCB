@@ -1,19 +1,18 @@
 {
   "date": "2026-10-09",
-  "revision": "v0.9.17",
-  "review_revision": "2026-10-09 C26-RA1 route resolved from user annotation",
+  "revision": "v0.9.18",
+  "review_revision": "2026-10-09 C6-C5 parallel supply capacitors reconstructed from photos",
   "interpretation": "Every catalog entry is drawn. Hardware connectivity, values and identities are only partially verified. No routed PCB exists.",
   "catalog_entries": 150,
   "physical_pins": 352,
-  "unresolved_physical_pins": 19,
+  "unresolved_physical_pins": 18,
   "unresolved_pins_by_population": {
     "DNP": 13,
-    "populated": 6
+    "populated": 5
   },
   "unresolved_pins_by_reference": {
     "C42": 2,
     "C49": 2,
-    "C6": 1,
     "D6": 2,
     "J6": 2,
     "Q9": 1,
@@ -25,7 +24,6 @@
   },
   "current_gpio_pins": [],
   "current_fitted_open_pads": [
-    "C6.1",
     "D6.1",
     "D6.2",
     "TP9.1",
@@ -106,14 +104,14 @@
     ],
     "qualification": "Assigned is not the same as measured. R8 and C11 anchor photo-based package families."
   },
-  "erc_total": 26,
+  "erc_total": 25,
   "erc_by_type": {
     "power_pin_not_driven": 5,
-    "pin_not_connected": 19,
+    "pin_not_connected": 18,
     "isolated_pin_label": 2
   },
   "modeled_nets": 83,
-  "schematic_sha256": "b1f730296711b2b0ebb726eff3d1bbf3b7890a54993d15c0e9f0fc55311e51f0",
+  "schematic_sha256": "2e9030c4bcddf62311dcc0d1955b5ff439a770be47fd281af32e87f9742c988d",
   "known_identified_ICs_needing_new_symbols": [],
   "complete_symbols_for_selected_candidates": true,
   "available_instruments": [
@@ -157,8 +155,8 @@
     {
       "id": "E03",
       "area": "RF supply / Q8 / C6",
-      "gap": "C6.1 route and Q8 source-supply path. F-P=10 ohm supports a supply-related path but does not establish a direct copper join. Exact Q8 maker remains a candidate. Gate-drive headroom is unverified: a hypothetical source=6V and gate-high=4.5V gives VGS=-1.5V, not guaranteed off for the candidate threshold range. These are illustrative, not measured voltages.",
-      "method": "Start with C6's non-ground pad and the L1 output/Q8 supply node; record resistance both ways. Use the existing labelled Q8 photo, not the withdrawn C6-to-output wire. After passive routing, measure VDD plus Q8 source and gate high/low during scanning, all relative to PCB GND; compute VGS. Waveforms require a scope if available. Never place an earth-referenced scope ground on a driven antenna/motor node."
+      "gap": "Q8 source-supply path remains independently qualified. C6 wiring is photo-supported; its value/rating remain unknown. F-P=10 ohm supports a supply-related path but does not establish a direct copper join. Exact Q8 maker remains a candidate. Gate-drive headroom is unverified: a hypothetical source=6V and gate-high=4.5V gives VGS=-1.5V, not guaranteed off for the candidate threshold range. These are illustrative, not measured voltages.",
+      "method": "Do not repeat C6-to-C5 local continuity: the parallel connection is adopted from photos. Agent reviews Q8 source copper and the earlier F-P=10 ohm result before selecting any hidden-path check. After passive routing, measure VDD plus Q8 source and gate high/low during scanning, relative to PCB GND, to compute VGS. Waveforms require a scope if available; use PCB GND for the scope reference."
     },
     {
       "id": "E04",
@@ -271,13 +269,11 @@
       ],
       "priority": 1,
       "state": "open",
-      "known": "Q8 centre B2/native5 is GND via V113/V115. V114 is U2.T2/native2 GND. Outer Q8 pads are joined by the earlier low-resistance result. Candidate Q8 P-source/native2 is on filtered VSYS; P-gate/native3 is driven by U2 output4 through R8, while U2 uses VDD.",
-      "unknown": "C6.1 route and Q8 source-supply path. F-P=10 ohm supports a supply-related path but does not establish a direct copper join. Exact Q8 maker remains a candidate. Gate-drive headroom is unverified: a hypothetical source=6V and gate-high=4.5V gives VGS=-1.5V, not guaranteed off for the candidate threshold range. These are illustrative, not measured voltages.",
-      "next_action": "Start with C6's non-ground pad and the L1 output/Q8 supply node; record resistance both ways. Use the existing labelled Q8 photo, not the withdrawn C6-to-output wire. After passive routing, measure VDD plus Q8 source and gate high/low during scanning, all relative to PCB GND; compute VGS. Waveforms require a scope if available. Never place an earth-referenced scope ground on a driven antenna/motor node.",
-      "closed_when": "C6 and Q8 supply routes are resolved, including any intervening component.",
-      "open_pads": [
-        "C6.1"
-      ],
+      "known": "Q8 centre B2/native5 is GND via V113/V115. V114 is U2.T2/native2 GND. Outer Q8 pads are joined by the earlier low-resistance result. Candidate Q8 P-source/native2 is on filtered VSYS; P-gate/native3 is driven by U2 output4 through R8, while U2 uses VDD. C6 now parallels C5 on H_RF_VDD/GND, supported by user proposal and visible supply/ground copper in IMG_2431/IMG_2432.",
+      "unknown": "Q8 source-supply path remains independently qualified. C6 wiring is photo-supported; its value/rating remain unknown. F-P=10 ohm supports a supply-related path but does not establish a direct copper join. Exact Q8 maker remains a candidate. Gate-drive headroom is unverified: a hypothetical source=6V and gate-high=4.5V gives VGS=-1.5V, not guaranteed off for the candidate threshold range. These are illustrative, not measured voltages.",
+      "next_action": "Do not repeat C6-to-C5 local continuity: the parallel connection is adopted from photos. Agent reviews Q8 source copper and the earlier F-P=10 ohm result before selecting any hidden-path check. After passive routing, measure VDD plus Q8 source and gate high/low during scanning, relative to PCB GND, to compute VGS. Waveforms require a scope if available; use PCB GND for the scope reference.",
+      "closed_when": "Q8 source-supply path and compatible gate-drive behavior are resolved; C6 parallel wiring is already photo-supported.",
+      "open_pads": [],
       "nets": [
         "H_RF_VDD",
         "H_RF_OUT_CAND"
@@ -285,6 +281,14 @@
       "source_documents": [
         "docs/datasheets/SIL3724A.pdf, P-channel table p3",
         "docs/datasheets/SN74LVC2G14.pdf, supply/output specifications"
+      ],
+      "resolved_subquestions": [
+        {
+          "date": "2026-10-09",
+          "result": "v0.9.18: C6 is reconstructed in parallel with C5 from the user proposal and photos IMG_2431/IMG_2432. C6 upper pad/model1 joins the C5-positive supply copper (H_RF_VDD, after L1); lower pad/model2 joins GND. Photo-supported, not a new meter-confirmed connection. C6 capacitance remains unknown. Earlier 400 kohm output exclusion and 10 ohm Q8-supply-path reading are retained; the latter does not independently prove Q8 source wiring.",
+          "evidence": "evidence/c5_c6_parallel_20261009.json",
+          "confidence": "PHOTO_SUPPORTED"
+        }
       ]
     },
     {

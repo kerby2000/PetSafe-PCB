@@ -258,7 +258,8 @@ wire('GND','Q8.B2',(130,188),(134,188));label('GND',(134,188))
 wire('H_RF_VDD','Q8.T2',(177,159),(177,132),'L1.2')
 wire('H_RF_VDD','L1.2',(187,132),'C5.1')
 label('H_RF_VDD',(181,132))
-# C6.1 to output was refuted by 400 kohm E-F; leave its destination unresolved.
+# User proposal + IMG_2431/IMG_2432: C6 is parallel with C5; not an output load.
+wire('H_RF_VDD',(187,132),(204,132),'C6.1')
 stub('H_ANT_A','ANT1.1',5);stub('H_ANT_B','ANT2.1',5)
 # User D2.R-to-C20 lower end = 1 ohm; preserve local wiring in the receiver block.
 wire('RX_A_PLUS','C20.2',(432,193),(432,198),'D2.R')
@@ -284,7 +285,7 @@ for n in layout['notes']:
     if t.startswith('H14-H15:'):t='H14-H15: C2N supports S-812C33AMC 3.3V LDO. C/R3 ground supported by resistance.'
     if t.startswith('H09:'):t='H09: 3724A matches SIL3724A N/P MOSFET pair. Both units share one package.'
     if t.startswith('Q8 T2/B1/B2'):t='V113/V115: Q8 centre pin5 GND. V114 is U2 pin2 GND, not Q8 pin2.'
-    if t.startswith('H07:'):t='H07: C14R inverter candidate. Q8 source rail inferred; C6 destination unresolved.'
+    if t.startswith('H07:'):t='H07: C14R inverter candidate. C6 parallels C5 by photo; Q8 source rail still inferred.'
     if t.startswith('No invented ties'):t='D4/D5 opposite vias join rear GND copper. D6 type and routes remain uncertain.'
     if t.startswith('H02:'):t='User: RA3/R14, RA4/R15, RA5/R16, RC0/R11, RC6/R13. RC2 -> TP3; RB0 -> TP16 / Q2; VREF tie withdrawn. RC1 -> R18 via V053-V070.'
     if t.startswith('Selected working hypothesis:'):t='v0.9: user-reviewed GND returns replace previous antenna rails on this capacitor bank.'
@@ -305,7 +306,7 @@ text('User: U3 pin5 / V079 / V080 = VREF (1 ohm); TP6 remains separate across C1
 text('U3 alternative: MCP6002-I/SN; same pin roles, electrical suitability to verify.',288,208,.762)
 text('U5 alternative: DRV8212PDSGR. Different package/pins; redesign required.',320,81,.762)
 text('U6: 3.3V is the candidate rating, not a voltage measurement. NC4/5 board ties unresolved.',234,284,.762)
-text('C6: F-P 10 ohm, F-G 300 kohm suggests a supply-related node; exact path unresolved.',90,202,.762)
+text('C6 parallels C5 on H_RF_VDD/GND (photo-supported). Q8 F-P 10 ohm path still qualified.',90,202,.762)
 text('User: V063-V064 confirms R37/R39 feed on regulated VDD.',234,287,.762)
 text('Q7: 11.2 kohm V064-V070 fits R18+R19. Supply-switch topology inferred; RC1 drives R18 via V053-V070.',229,126,.762)
 
@@ -361,7 +362,7 @@ for net,edges in adj.items():
 for l in L:
     x,y=l['p'];G.append(expr(f'(label {q(l["net"])} (at {x} {y} 0) (effects (font (size .762 .762)) (justify left bottom)) (uuid {q(uid())}))'))
 tree.extend(G)
-tree.append(expr('(title_block (title "PetSafe 100-1339 R03 A | single-sheet reconstruction") (date "2026-10-09") (rev "0.9.17") (company "KiCad 10 libraries + four datasheet symbols | MCP authoring") (comment 1 "C25 to PIC2/RA0; C26 to PIC3/RA1; shared GND confirmed by user photo."))'))
+tree.append(expr('(title_block (title "PetSafe 100-1339 R03 A | single-sheet reconstruction") (date "2026-10-09") (rev "0.9.18") (company "KiCad 10 libraries + four datasheet symbols | MCP authoring") (comment 1 "C6 reconstructed in parallel with C5 from photos; Q8 supply path remains qualified."))'))
 # Canonical pretty printer supplied by the installed MCP server.
 sys.path.insert(0,str(Path.home()/'Documents/VS.Code.Projects/KiCAD-MCP-Server/python'))
 from utils.sexpr_format import prettify
@@ -381,7 +382,7 @@ out.write_text(prettify(sx.dumps(tree)),encoding='utf-8',newline='\n')
 def wire_key(w):return w['net'],tuple(w['a']),tuple(w['b'])
 prior_order={wire_key(w):i for i,w in enumerate(model.get('geometric_wires',[]))}
 ordered_segments=sorted(segments,key=lambda s:(prior_order.get(s,len(prior_order)),s))
-model.update(revision='v0.9.17',coordinate_units='mm',native_pin_crosswalk=layout['crosswalk'],pin_positions={e:list(p) for e,p in P.items()},
+model.update(revision='v0.9.18',coordinate_units='mm',native_pin_crosswalk=layout['crosswalk'],pin_positions={e:list(p) for e,p in P.items()},
              geometric_wires=[dict(net=n,a=a,b=b) for n,a,b in ordered_segments],library_policy='KiCad 10 stock symbols plus four explicitly authorized MCP-authored datasheet symbols for U1/U5/U6/Q8')
 for c in model['components']:
     entry=next(x for x in layout['catalog'] if x['original_ref']==c['ref'])

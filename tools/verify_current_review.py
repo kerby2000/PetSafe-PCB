@@ -54,6 +54,8 @@ for name in ['index.html','docs/FINISHING_CHECKLIST.html','docs/VIA_REVIEW.html'
         result=subprocess.run(['node','--check'],input=js,text=True,capture_output=True)
         assert result.returncode==0,result.stderr
     assert '2 remaining PIC' not in text and 'v0.9 HOLD' not in text and 'Control origin unknown' not in text
+via_intro=(ROOT/'docs/VIA_REVIEW.html').read_text(encoding='utf-8').split('<script>')[0]
+assert 'RB0/V026 to VREF.' not in via_intro and 'TP104, V026/PIC21' not in via_intro
 checklist=(ROOT/'docs/FINISHING_CHECKLIST.html').read_text(encoding='utf-8')
 for i in ids:assert f'id="{i}"' in checklist
 reader=PdfReader(ROOT/'output/pdf/PetSafe_completion_status.pdf')

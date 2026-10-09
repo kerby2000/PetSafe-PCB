@@ -63,3 +63,7 @@ The conflict is now resolved: TP16-to-VREF = 0.8 Mohm, and the user explicitly c
 ## v0.9.17 - C25/C26 controller connections
 
 v0.9.17 user-annotated photo: C25 right pad/model1 -> PIC2/RA0; C26 right pad/model1 -> PIC3/RA1. Left pads/model2 are common, retaining earlier V029-GND evidence. No new numeric resistance or capacitance supplied. C26 joins the existing RA1/R28/R29/TP7 net, separate from RA0 and VREF. The supplied image is preserved at `photos/user_updates/C25_C26_PIC_mapping_20261009.png`; structured evidence: `evidence/c25_c26_mapping_20261009.json`. C26 is removed from the unresolved-pad list. The native drawing groups the three PIC input capacitors beside RA0/RA1/RA2 with direct wires and a shared GND return. No new rail, component value or meter reading is inferred.
+
+## v0.9.18 - C6 parallel with C5
+
+v0.9.18: C6 is reconstructed in parallel with C5 from the user proposal and photos IMG_2431/IMG_2432. C6 upper pad/model1 joins the C5-positive supply copper (H_RF_VDD, after L1); lower pad/model2 joins GND. Photo-supported, not a new meter-confirmed connection. C6 capacitance remains unknown. Earlier 400 kohm output exclusion and 10 ohm Q8-supply-path reading are retained; the latter does not independently prove Q8 source wiring. Structured evidence: `evidence/c5_c6_parallel_20261009.json`. This resolves C6.1 in the working reconstruction without claiming a new continuity measurement. Q8 identity/supply-path and gate-drive qualifications remain under E03.
