@@ -62,7 +62,11 @@ This resembles the **topology** of BAV99; its exact identity, ratings and packag
 
 Follow-up rail checks: **D2.R -> GND = 0.78 Mohm**, **D2.R -> VDD = 0.99 Mohm**. The user explicitly confirms that the second reading is R-VDD, not L-VDD. Neither reading supports a direct rail connection. Neither high resistance is recorded as OL or used to merge nets.
 
-The [user's annotated pad photo](../photos/user_updates/D2_user_pad_labels_20261009.png) fixes the measurement labels: **R is upper-left toward C20, L is upper-right beside R46, S is the single lower pad**. These letters are user labels, not automatic left/right directions. The measured sequence R -> S -> L is unchanged. Native placeholder numbers remain bookkeeping, not a verified device pinout. Next measure L to VDD TP and GND TP with power disconnected; neither L rail reading has been supplied.
+The [user's annotated pad photo](../photos/user_updates/D2_user_pad_labels_20261009.png) fixes the measurement labels: **R is upper-left toward C20, L is upper-right beside R46, S is the single lower pad**. These letters are user labels, not automatic left/right directions. The measured sequence R -> S -> L is unchanged. Native placeholder numbers remain bookkeeping, not a verified device pinout.
+
+The user subsequently supplied **L -> VDD = 740 kohm** and **L -> GND = 450 kohm**. All four outer-pad rail checks are now complete, with no direct VDD/GND join supported. This makes the simple ground-to-VDD clamp assumption unlikely; it does not exclude other diode functions or establish a defective part. Do not model these in-circuit resistances as discrete resistors.
+
+Photo review does not reveal an unambiguous complete route from D2. Next check only two local candidates, with power disconnected: **R -> C20 lower metal end** (nearest the printed C20) and **S -> ANT2 solder terminal**. Proximity and a possible signal-path role motivate these checks; neither is a proven trace. Keep existing D2 nets open pending a low-ohm result and do not repeat the completed rail/diode tests.
 
 ## Confirmed connections and exclusions
 

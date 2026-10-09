@@ -37,10 +37,20 @@
   "external_resistance_followup": {
     "readings_as_reported": [
       {"from": "D2.R", "to": "GND test point", "reported": "0.78 Mohm", "ohms": 780000},
-      {"from": "D2.R", "to": "VDD test point", "reported": "0.99 Mohm", "ohms": 990000}
+      {"from": "D2.R", "to": "VDD test point", "reported": "0.99 Mohm", "ohms": 990000},
+      {"from": "D2.L", "to": "VDD test point", "reported": "740 kohm", "ohms": 740000},
+      {"from": "D2.L", "to": "GND test point", "reported": "450 kohm", "ohms": 450000}
     ],
-    "interpretation": "D2.R-GND does not support a direct copper connection; the proposed simple GND-to-VDD clamp is unlikely. User explicitly confirms the second reading is R-VDD = 0.99 Mohm, not L-VDD. R has no demonstrated direct connection to either tested rail.",
-    "next_action": "With power disconnected, measure L (upper-right pad beside R46) to VDD TP and GND TP. L rail readings remain unmeasured. Then trace local component endpoints rather than repeating diode tests or assuming rail ties."
+    "interpretation": "All four outer-pad rail checks returned high resistance. Neither R nor L has a demonstrated direct copper connection to VDD or GND; the proposed simple GND-to-VDD clamp is unsupported. The numbers are in-circuit readings, not four discrete resistors, OL, or evidence of a defective component. User explicitly confirmed R-VDD = 0.99 Mohm before the separate L measurements.",
+    "next_action": "With power disconnected, check D2.R (upper-left) to the lower C20 metal end nearest its printed designator, and D2.S (single lower pad) to ANT2's solder terminal. These are local layout/function candidates, not visually established copper traces. Report ohms or OL; do not repeat the outer-pad rail or six diode tests."
+  },
+  "local_trace_review": {
+    "photos_inspected": ["photos/originals/IMG_2434.jpg", "photos/user_updates/D2_user_pad_labels_20261009.png"],
+    "result": "No unambiguous complete D2 external route is visible in these photographs. C20 and ANT2 are nearby candidate destinations. Current modeled C20 branches and receiver roles remain hypotheses, not evidence for adding D2 to them.",
+    "pending_checks": [
+      {"from": "D2.R", "to": "C20 lower metal end nearest printed C20", "basis": "Physical proximity to the adjacent capacitor; tests a local receiver-network connection"},
+      {"from": "D2.S", "to": "ANT2 solder terminal", "basis": "Nearby antenna terminal and a possible signal-path role; function is unconfirmed"}
+    ]
   },
   "schematic_changes": "No net joins, pin renumbering or symbol substitution. Keep the numbered unknown-part placeholder pending external routing evidence.",
   "sources": [

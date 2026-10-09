@@ -1828,7 +1828,7 @@
       "footprint_confidence": "datasheet/package candidate",
       "footprint_basis": "Existing assignment; see component identity evidence.",
       "open_pads": 3,
-      "next_method": "User confirms D2.R-GND=0.78 Mohm and R-VDD=0.99 Mohm; neither supports a direct rail join. With power disconnected, measure L (upper-right pad beside R46) to VDD TP and GND TP, then trace local endpoints. Do not repeat the completed six diode readings or assume rail ties.; Targeted continuity for 3 open physical pads",
+      "next_method": "Outer-pad rail tests complete: R-GND=780 kohm, R-VDD=990 kohm, L-GND=450 kohm, L-VDD=740 kohm. No direct VDD/GND clamp is supported. With power disconnected, test R (upper-left) to C20's lower metal end nearest its printed label, and S to the ANT2 solder terminal. These are local layout candidates, not established traces. Do not repeat the rail or six diode tests.; Targeted continuity for 3 open physical pads",
       "photos": "IMG_2434.jpg"
     },
     {
