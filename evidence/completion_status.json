@@ -1,7 +1,7 @@
 {
   "date": "2026-10-09",
-  "revision": "v0.9.22",
-  "review_revision": "2026-10-09 U6A lower-right ground confirmed; all three option pads mapped",
+  "revision": "v0.9.23",
+  "review_revision": "v0.9.23",
   "interpretation": "Every catalog entry is drawn. Hardware connectivity, values and identities are only partially verified. No routed PCB exists.",
   "catalog_entries": 150,
   "physical_pins": 352,
@@ -73,13 +73,12 @@
     "L2"
   ],
   "footprints": {
-    "assigned": 147,
+    "assigned": 148,
     "unassigned": [
       "C5",
-      "LED1",
-      "S1"
+      "LED1"
     ],
-    "qualification": "Assigned is not the same as measured. R8 and C11 anchor photo-based package families."
+    "qualification": "Assigned is not the same as measured. R8, C11 and S1 have user body dimensions; lead geometry and exact housing variants remain qualified."
   },
   "erc_total": 9,
   "erc_by_type": {
@@ -88,7 +87,7 @@
     "isolated_pin_label": 1
   },
   "modeled_nets": 85,
-  "schematic_sha256": "2c2d24835afa332604a5b803703e1164e4b018079d002f604f536b0c3e2929e2",
+  "schematic_sha256": "0bad32033faf0619cbd7e4b2bb690a289ec2814a4bcadbbc6a8e6ac5a759f603",
   "known_identified_ICs_needing_new_symbols": [],
   "complete_symbols_for_selected_candidates": true,
   "available_instruments": [
@@ -198,8 +197,8 @@
     {
       "id": "M01",
       "area": "Package geometry / PCB reproduction",
-      "gap": "C5, S1 and LED1 footprints are blank. Other families, connector pitch, test-pad drills, switch lead span and exact board geometry are partly photo-based.",
-      "method": "Defer C5/S1/LED1 dimensions until the main signal paths are coherent; then measure can/lead spacing, switch body/lead span and LED pad pitch. Assigned families are not verified land patterns."
+      "gap": "Only C5 and LED1 footprints are blank. S1 exact lead span and manufacturer remain unverified; the selected stock x43 3D housing is 4.3 mm high, not the user-measured 6 mm. Other families, connector pitch, test-pad drills and exact board geometry remain partly photo-based.",
+      "method": "For PCB reproduction, establish C5 can/lead spacing and LED1 pad pitch, and check the selected switch land pattern against physical pads. Use the recorded 6 mm overall S1 height for housing clearance; do not treat the stock x43 3D model as exact. No immediate additional S1 body measurement is requested."
     },
     {
       "id": "D01",
@@ -661,9 +660,9 @@
       ],
       "priority": 2,
       "state": "open",
-      "known": "Most entries have candidate stock footprints; R8 and C11 have user dimensions. J1 sequential numbering is corrected, but exact land-pattern dimensions remain photo-based.",
-      "unknown": "C5, S1 and LED1 footprints are blank. Other families, connector pitch, test-pad drills, switch lead span and exact board geometry are partly photo-based.",
-      "next_action": "Defer C5/S1/LED1 dimensions until the main signal paths are coherent; then measure can/lead spacing, switch body/lead span and LED pad pitch. Assigned families are not verified land patterns.",
+      "known": "Most entries have candidate stock footprints; R8 and C11 have user dimensions. J1 sequential numbering is corrected, but exact land-pattern dimensions remain photo-based. S1 body is user-measured 6 x 6 x 4 mm with 2 mm actuator (6 mm overall); a stock 6 x 6 mm SMD gullwing footprint is now assigned with compatible two-node symbol and four physical pads retained.",
+      "unknown": "Only C5 and LED1 footprints are blank. S1 exact lead span and manufacturer remain unverified; the selected stock x43 3D housing is 4.3 mm high, not the user-measured 6 mm. Other families, connector pitch, test-pad drills and exact board geometry remain partly photo-based.",
+      "next_action": "For PCB reproduction, establish C5 can/lead spacing and LED1 pad pitch, and check the selected switch land pattern against physical pads. Use the recorded 6 mm overall S1 height for housing clearance; do not treat the stock x43 3D model as exact. No immediate additional S1 body measurement is requested.",
       "closed_when": "Blank footprints are filled with supported stock matches or approved vendor parts; exact PCB-reproduction dimensions are distinguished from schematic-only candidates.",
       "open_pads": [],
       "nets": []

@@ -6125,7 +6125,172 @@
 			)
 			(embedded_fonts no)
 		)
+
+	(symbol "Switch:SW_Push"
+		(pin_numbers
+			(hide yes)
+		)
+		(pin_names
+			(offset 1.016)
+			(hide yes)
+		)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(in_pos_files yes)
+		(duplicate_pin_numbers_are_jumpers no)
+		(property "Reference" "SW"
+			(at 1.27 2.54 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+			)
+		)
+		(property "Value" "SW_Push"
+			(at 0 -1.524 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Footprint" ""
+			(at 0 5.08 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(hide yes)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Datasheet" ""
+			(at 0 5.08 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(hide yes)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Description" "Push button switch, generic, two pins"
+			(at 0 0 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(hide yes)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "ki_keywords" "switch normally-open pushbutton push-button"
+			(at 0 0 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(hide yes)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(symbol "SW_Push_0_1"
+			(circle
+				(center -2.032 0)
+				(radius 0.508)
+				(stroke
+					(width 0)
+					(type default)
+				)
+				(fill
+					(type none)
+				)
+			)
+			(polyline
+				(pts
+					(xy 0 1.27) (xy 0 3.048)
+				)
+				(stroke
+					(width 0)
+					(type default)
+				)
+				(fill
+					(type none)
+				)
+			)
+			(circle
+				(center 2.032 0)
+				(radius 0.508)
+				(stroke
+					(width 0)
+					(type default)
+				)
+				(fill
+					(type none)
+				)
+			)
+			(polyline
+				(pts
+					(xy 2.54 1.27) (xy -2.54 1.27)
+				)
+				(stroke
+					(width 0)
+					(type default)
+				)
+				(fill
+					(type none)
+				)
+			)
+			(pin passive line
+				(at -5.08 0 0)
+				(length 2.54)
+				(name "1"
+					(effects
+						(font
+							(size 1.27 1.27)
+						)
+					)
+				)
+				(number "1"
+					(effects
+						(font
+							(size 1.27 1.27)
+						)
+					)
+				)
+			)
+			(pin passive line
+				(at 5.08 0 180)
+				(length 2.54)
+				(name "2"
+					(effects
+						(font
+							(size 1.27 1.27)
+						)
+					)
+				)
+				(number "2"
+					(effects
+						(font
+							(size 1.27 1.27)
+						)
+					)
+				)
+			)
+		)
+		(embedded_fonts no)
 	)
+)
 	(symbol
 		(lib_id "Connector:TestPoint")
 		(at 20.32 53.34 270)
@@ -9004,100 +9169,6 @@
 			(project "PetSafe_1001339"
 				(path "/33a03d59-1679-4e9c-af69-68d086b519af"
 					(reference "TP108")
-					(unit 1)
-				)
-			)
-		)
-	)
-	(symbol
-		(lib_id "Switch:SW_Push_Dual")
-		(at 537.21 60.96 0)
-		(unit 1)
-		(body_style 1)
-		(exclude_from_sim no)
-		(in_bom yes)
-		(on_board yes)
-		(in_pos_files yes)
-		(dnp no)
-		(uuid "30a9d9dd-558d-40a8-8b38-35292688e879")
-		(property "Reference" "S1"
-			(at 537.21 68.58 0)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(property "Value" "pushbutton"
-			(at 537.21 54.61 0)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(property "Footprint" ""
-			(at 537.21 68.58 0)
-			(hide yes)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(property "Datasheet" ""
-			(at 537.21 60.96 0)
-			(hide yes)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(property "Description" "Push button switch, generic, symbol, four pins"
-			(at 537.21 60.96 0)
-			(hide yes)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(property "ConnectionEvidence" "v0.9.21 user annotated S1 upper-right to C35 upper/model2 (GND via prior V018); lower-right to C35 lower/model1, R40 lower/model2 and R41 left/model2. User explicitly confirms R41 right/model1 reaches J1 VPP/MCLR. Correct physical-to-native switch mapping TL=1, TR=3, BL=2, BR=4. Top-row/bottom-row common pairs remain a tactile-switch hypothesis; released/pressed behavior has not been measured."
-			(at 537.21 60.96 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(pin "1"
-			(uuid "8896a97b-cd3c-4f0d-9191-28048d9f8454")
-		)
-		(pin "2"
-			(uuid "603191f7-b58f-4070-87b9-2f79778ceab0")
-		)
-		(pin "3"
-			(uuid "1f9077f8-c8e7-4ac8-9fb7-c51354e8ec0e")
-		)
-		(pin "4"
-			(uuid "5ebf734f-e839-4142-8fe7-ab2ca16659e8")
-		)
-		(instances
-			(project "PetSafe_1001339"
-				(path "/33a03d59-1679-4e9c-af69-68d086b519af"
-					(reference "S1")
 					(unit 1)
 				)
 			)
@@ -19159,7 +19230,99 @@
 		(at 320.03999999999996 312.42)
 		(uuid "0d0c90ab-df10-4c98-8637-dacb4a85194f")
 	)
-	(sheet_instances
+	(symbol (lib_id "Switch:SW_Push") (at 537.21 60.96 0) (unit 1)
+(body_style 1) (exclude_from_sim no) (in_bom yes) (on_board yes) (in_pos_files yes) (dnp no)
+(uuid "cf884dec-b648-46c4-826a-ee0c80cf09ce")
+(property "Reference" "S1"
+(at 538.48 63.5 0)
+(show_name no)
+(do_not_autoplace no)
+(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+			)
+)
+(property "Value" "pushbutton"
+(at 537.21 59.436 0)
+(show_name no)
+(do_not_autoplace no)
+(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+)
+(property "Footprint" "Button_Switch_SMD:SW_SPST_PTS645Sx43SMTR92"
+(at 537.21 66.04 0)
+(hide yes)
+(show_name no)
+(do_not_autoplace no)
+(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+)
+(property "Datasheet" "https://www.ckswitches.com/media/1471/pts645.pdf"
+(at 537.21 66.04 0)
+(hide yes)
+(show_name no)
+(do_not_autoplace no)
+(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+)
+(property "Description" "Push button switch, generic, symbol, four pins"
+(at 537.21 60.96 0)
+(hide yes)
+(show_name no)
+(do_not_autoplace no)
+(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+)
+(property "ConnectionEvidence" "v0.9.23 retains the v0.9.21 button circuit: upper row TL/TR -> GND/C35.2, lower row BL/BR -> H_BUTTON/C35.1/R40.2/R41.2; R41.1 -> J1 VPP. Stock Switch:SW_Push represents the two contact nodes, with physical TL/TR -> native pin1 and BL/BR -> pin2. Four physical pads remain recorded. Common pairs and released/pressed behavior remain inferred from tactile-switch construction, not newly measured." (at 537.21 60.96 0)
+(effects (font (size 1.27 1.27)) (hide yes))
+)
+(property "MechanicalEvidence" "User measured a 6 x 6 x 4 mm body plus 2 mm actuator (about 6 mm overall). Photo shows four SMD gullwing leads; approximate pad-centre span from photo/body ratio is about 8 mm, consistent with the stock PTS645 land pattern (7.96 x 4.50 mm centres). Dimensions select a candidate family, not an exact manufacturer. Library x43 footprint/3D model denotes 4.3 mm overall and must not be used as the measured 6 mm housing." (at 537.21 60.96 0)
+(effects (font (size 1.27 1.27)) (hide yes))
+)
+(property "BodySize" "6 x 6 x 4 mm (user measured)" (at 537.21 60.96 0)
+(effects (font (size 1.27 1.27)) (hide yes))
+)
+(property "ActuatorProtrusion" "2 mm (user measured)" (at 537.21 60.96 0)
+(effects (font (size 1.27 1.27)) (hide yes))
+)
+(property "OverallHeight" "6 mm (4 + 2 mm)" (at 537.21 60.96 0)
+(effects (font (size 1.27 1.27)) (hide yes))
+)
+(property "FootprintStatus" "Candidate 2D land pattern; exact lead span and 6 mm housing variant not verified" (at 537.21 60.96 0)
+(effects (font (size 1.27 1.27)) (hide yes))
+)
+(property "Manufacturer" "Unidentified; PTS645 is a footprint reference" (at 537.21 60.96 0)
+(effects (font (size 1.27 1.27)) (hide yes))
+)
+(property "Model3DStatus" "Stock x43 model is 4.3 mm high; not an exact housing model" (at 537.21 60.96 0)
+(effects (font (size 1.27 1.27)) (hide yes))
+)
+(pin "1" (uuid "8ccab22f-86be-43b2-9815-148d9b6bff67"))
+(pin "2" (uuid "c08470b8-b485-45e1-a0c3-6cefb125ea77"))
+(instances
+(project "mcp_standard_placements"
+(path "/33a03d59-1679-4e9c-af69-68d086b519af"
+(reference "S1")
+(unit 1)
+)
+)
+)
+)
+(sheet_instances
 		(path "/"
 			(page "1")
 		)

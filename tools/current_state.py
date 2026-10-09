@@ -65,7 +65,7 @@ def current_state(model=None, validation=None, work=None):
         current_gpio_pins=sorted(int(p.split('.')[1]) for p in fitted if p.startswith('U4.')),
         current_fitted_open_pads=fitted, current_dnp_open_pads=dnp,
         unknown_ceramic_values=ceramics, unknown_magnetic_values=magnetic,
-        footprints=dict(assigned=len(components)-len(blank), unassigned=blank, qualification='Assigned is not the same as measured. R8 and C11 anchor photo-based package families.'),
+        footprints=dict(assigned=len(components)-len(blank), unassigned=blank, qualification='Assigned is not the same as measured. R8, C11 and S1 have user body dimensions; lead geometry and exact housing variants remain qualified.'),
         erc_total=validation['erc_total'], erc_by_type=validation['erc_by_type'],
         modeled_nets=validation['proposed_net_partitions'],
         schematic_sha256=hashlib.sha256((ROOT/'schematic/PetSafe_1001339.kicad_sch').read_bytes()).hexdigest(),

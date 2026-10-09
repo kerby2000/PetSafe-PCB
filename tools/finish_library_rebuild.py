@@ -154,11 +154,10 @@ for l in layout['labels']:
     w=dict(a=l['p'],b=l['p'])
     if not excluded(w):L.append(dict(net=l['net'],p=oldpoints.get(mm(l['p']),mm(l['p']))))
 # User-defined physical rows map to the stock switch's native common sides.
-wire('GND','S1.TL',(416,46),(416,50),'S1.TR')
-wire('GND',(416,50),(416,69))
+# The stock footprint repeats pad1 on TL/TR and pad2 on BL/BR.
+wire('GND','S1.TL',(416,48),(416,69))
 wire('H_BUTTON','R40.2',(440,46),'C35.1')
-wire('H_BUTTON','S1.BL',(440,46))
-wire('H_BUTTON','S1.BR',(432,50),(432,46),(440,46))
+wire('H_BUTTON','S1.BL',(432,48),(432,46),(440,46))
 wire('H_BUTTON','R41.2',(414,40),(414,31),(448,31),(448,46),(440,46))
 label('H_BUTTON',(440,46))
 stub('MCLR_VPP','R41.1',-8)
@@ -382,7 +381,7 @@ for net,edges in adj.items():
 for l in L:
     x,y=l['p'];G.append(expr(f'(label {q(l["net"])} (at {x} {y} 0) (effects (font (size .762 .762)) (justify left bottom)) (uuid {q(uid())}))'))
 tree.extend(G)
-tree.append(expr('(title_block (title "PetSafe 100-1339 R03 A | single-sheet reconstruction") (date "2026-10-09") (rev "0.9.22") (company "KiCad 10 libraries + four datasheet symbols | MCP authoring") (comment 1 "U6A option fully mapped: input after R37, J3 pin1/PIR supply and GND; remains DNP."))'))
+tree.append(expr('(title_block (title "PetSafe 100-1339 R03 A | single-sheet reconstruction") (date "2026-10-09") (rev "0.9.23") (company "KiCad 10 libraries + four datasheet symbols | MCP authoring") (comment 1 "S1: 6x6mm SMD footprint candidate; measured height 6mm."))'))
 # Canonical pretty printer supplied by the installed MCP server.
 sys.path.insert(0,str(Path.home()/'Documents/VS.Code.Projects/KiCAD-MCP-Server/python'))
 from utils.sexpr_format import prettify
@@ -402,7 +401,7 @@ out.write_text(prettify(sx.dumps(tree)),encoding='utf-8',newline='\n')
 def wire_key(w):return w['net'],tuple(w['a']),tuple(w['b'])
 prior_order={wire_key(w):i for i,w in enumerate(model.get('geometric_wires',[]))}
 ordered_segments=sorted(segments,key=lambda s:(prior_order.get(s,len(prior_order)),s))
-model.update(revision='v0.9.22',coordinate_units='mm',native_pin_crosswalk=layout['crosswalk'],pin_positions={e:list(p) for e,p in P.items()},
+model.update(revision='v0.9.23',coordinate_units='mm',native_pin_crosswalk=layout['crosswalk'],pin_positions={e:list(p) for e,p in P.items()},
              geometric_wires=[dict(net=n,a=a,b=b) for n,a,b in ordered_segments],library_policy='KiCad 10 stock symbols plus four explicitly authorized MCP-authored datasheet symbols for U1/U5/U6/Q8')
 for c in model['components']:
     entry=next(x for x in layout['catalog'] if x['original_ref']==c['ref'])

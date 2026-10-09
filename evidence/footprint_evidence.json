@@ -1,12 +1,11 @@
 {
-  "revision": "v0.7",
+  "revision": "v0.9.23",
   "method": "Photo-based family selection using known IC lead spacing and repeated package proportions; no calibrated dimensional measurement claimed.",
   "blank_before": 129,
-  "blank_after": 3,
-  "new_assignments": 126,
+  "blank_after": 2,
+  "new_assignments": 127,
   "remaining": [
     "C5",
-    "S1",
     "LED1"
   ],
   "components": [
@@ -1333,9 +1332,9 @@
     {
       "ref": "S1",
       "before": "",
-      "footprint": "",
-      "confidence": "unresolved",
-      "basis": "Four-pad tactile switch; body/lead span and common-pair mapping needed. Common stock footprints use two repeated pad numbers, while current symbol retains four physical IDs.",
+      "footprint": "Button_Switch_SMD:SW_SPST_PTS645Sx43SMTR92",
+      "confidence": "medium - measured body, photo-estimated lead span",
+      "basis": "User measured a 6 x 6 x 4 mm body plus 2 mm actuator (about 6 mm overall). Photo shows four SMD gullwing leads; approximate pad-centre span from photo/body ratio is about 8 mm, consistent with the stock PTS645 land pattern (7.96 x 4.50 mm centres). Dimensions select a candidate family, not an exact manufacturer. Library x43 footprint/3D model denotes 4.3 mm overall and must not be used as the measured 6 mm housing.",
       "photos": [
         "IMG_2438.jpg"
       ]
@@ -1655,5 +1654,6 @@
     "date": "2026-10-09",
     "record": "evidence/j1_physical_mapping.json",
     "result": "Square pad1=VPP; sequential stock footprint reconciled; dimensions remain candidates."
-  }
+  },
+  "s1_mechanical_review": "evidence/s1_dimensions_20261009.json"
 }

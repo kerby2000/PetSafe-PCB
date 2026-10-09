@@ -1,13 +1,12 @@
 {
-  "revision": "v0.9.22",
+  "revision": "v0.9.23",
   "instruments": [
     "LCR meter",
     "multimeter"
   ],
-  "footprint_assigned": 147,
+  "footprint_assigned": 148,
   "footprint_blank": [
     "C5",
-    "S1",
     "LED1"
   ],
   "fitted_capacitors": 45,
@@ -1899,11 +1898,11 @@
       "displayed": "pushbutton",
       "marking": "",
       "value_or_identity": "v0.9.21 user annotated S1 upper-right to C35 upper/model2 (GND via prior V018); lower-right to C35 lower/model1, R40 lower/model2 and R41 left/model2. User explicitly confirms R41 right/model1 reaches J1 VPP/MCLR. Correct physical-to-native switch mapping TL=1, TR=3, BL=2, BR=4. Top-row/bottom-row common pairs remain a tactile-switch hypothesis; released/pressed behavior has not been measured.",
-      "footprint": "",
-      "footprint_confidence": "unresolved",
-      "footprint_basis": "Four-pad tactile switch; body/lead span and common-pair mapping needed. Common stock footprints use two repeated pad numbers, while current symbol retains four physical IDs.",
+      "footprint": "Button_Switch_SMD:SW_SPST_PTS645Sx43SMTR92",
+      "footprint_confidence": "medium - measured body, photo-estimated lead span",
+      "footprint_basis": "User measured a 6 x 6 x 4 mm body plus 2 mm actuator (about 6 mm overall). Photo shows four SMD gullwing leads; approximate pad-centre span from photo/body ratio is about 8 mm, consistent with the stock PTS645 land pattern (7.96 x 4.50 mm centres). Dimensions select a candidate family, not an exact manufacturer. Library x43 footprint/3D model denotes 4.3 mm overall and must not be used as the measured 6 mm housing.",
       "open_pads": 0,
-      "next_method": "Measure common leg pairs with switch released and pressed; Photo with ruler/body and lead measurements for exact footprint",
+      "next_method": "Measure common leg pairs with switch released and pressed",
       "photos": "IMG_2438.jpg"
     },
     {

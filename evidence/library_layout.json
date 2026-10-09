@@ -2054,8 +2054,8 @@
       "original_ref": "S1",
       "reference": "S1",
       "unit": 1,
-      "symbol": "Switch:SW_Push_Dual",
-      "footprint": "",
+      "symbol": "Switch:SW_Push",
+      "footprint": "Button_Switch_SMD:SW_SPST_PTS645Sx43SMTR92",
       "legacy": {
         "ref": "S1",
         "actual": "S1",
@@ -2110,7 +2110,7 @@
         "kind": "SW"
       },
       "placement": {
-        "symbol": "Switch:SW_Push_Dual",
+        "symbol": "Switch:SW_Push",
         "reference": "S1",
         "value": "pushbutton",
         "position": {
@@ -2119,9 +2119,17 @@
         },
         "rotation": 0,
         "includePins": true,
-        "footprint": "",
+        "footprint": "Button_Switch_SMD:SW_SPST_PTS645Sx43SMTR92",
         "properties": {
-          "ConnectionEvidence": "v0.9.21 user annotated S1 upper-right to C35 upper/model2 (GND via prior V018); lower-right to C35 lower/model1, R40 lower/model2 and R41 left/model2. User explicitly confirms R41 right/model1 reaches J1 VPP/MCLR. Correct physical-to-native switch mapping TL=1, TR=3, BL=2, BR=4. Top-row/bottom-row common pairs remain a tactile-switch hypothesis; released/pressed behavior has not been measured."
+          "ConnectionEvidence": "v0.9.23 retains the v0.9.21 button circuit: upper row TL/TR -> GND/C35.2, lower row BL/BR -> H_BUTTON/C35.1/R40.2/R41.2; R41.1 -> J1 VPP. Stock Switch:SW_Push represents the two contact nodes, with physical TL/TR -> native pin1 and BL/BR -> pin2. Four physical pads remain recorded. Common pairs and released/pressed behavior remain inferred from tactile-switch construction, not newly measured.",
+          "MechanicalEvidence": "User measured a 6 x 6 x 4 mm body plus 2 mm actuator (about 6 mm overall). Photo shows four SMD gullwing leads; approximate pad-centre span from photo/body ratio is about 8 mm, consistent with the stock PTS645 land pattern (7.96 x 4.50 mm centres). Dimensions select a candidate family, not an exact manufacturer. Library x43 footprint/3D model denotes 4.3 mm overall and must not be used as the measured 6 mm housing.",
+          "BodySize": "6 x 6 x 4 mm (user measured)",
+          "ActuatorProtrusion": "2 mm (user measured)",
+          "OverallHeight": "6 mm (4 + 2 mm)",
+          "FootprintStatus": "Candidate 2D land pattern; exact lead span and 6 mm housing variant not verified",
+          "Datasheet": "https://www.ckswitches.com/media/1471/pts645.pdf",
+          "Manufacturer": "Unidentified; PTS645 is a footprint reference",
+          "Model3DStatus": "Stock x43 model is 4.3 mm high; not an exact housing model"
         }
       }
     },
@@ -9151,8 +9159,8 @@
     "BATN.1": "TP108.1",
     "S1.TL": "S1.1",
     "S1.BL": "S1.2",
-    "S1.TR": "S1.3",
-    "S1.BR": "S1.4",
+    "S1.TR": "S1.1",
+    "S1.BR": "S1.2",
     "C35.1": "C35.1",
     "C35.2": "C35.2",
     "R40.1": "R40.1",

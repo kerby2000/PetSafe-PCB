@@ -89,3 +89,9 @@ See [annotated routing record](../evidence/j6_q9_button_routing_20261009.json). 
 v0.9.22 user annotated U6A option: single left pad/model L/native U106.1 joins U6 pin5 and the existing input node after R37; upper-right/model R1/native2 joins J3.1 (red PIR wire); lower-right/model R2/native3 joins GND. All three external pads mapped, option remains DNP. User called the input VDD; retain VDD -> R37 (22 ohm) -> H_AUX_IN because the annotation ends at U6 pin5 and prior B28 confirms pin5-pin2, not a bypass across R37. No fitted IC identity or voltage measurement implied.
 
 See [three-pad routing evidence](../evidence/u6a_three_pad_routing_20261009.json). U106 is the KiCad reference for PCB marking U6A.
+
+## v0.9.23 - S1 dimensions and stock footprint
+
+The user measured S1 as a 6 x 6 x 4 mm body with another 2 mm of actuator, about 6 mm overall. The four gullwing SMD leads in the photo support `Button_Switch_SMD:SW_SPST_PTS645Sx43SMTR92` as a stock land-pattern candidate. The photo-estimated pad-centre span is about 8 mm; the stock footprint uses 7.96 x 4.50 mm centres. This does not identify the fitted manufacturer or establish an exact replacement housing: the stock x43 model is 4.3 mm high.
+
+S1 now uses stock `Switch:SW_Push`. Its repeated footprint pad1 represents physical TL/TR, and pad2 represents BL/BR, preserving the previous GND and H_BUTTON connections. All four physical pad names remain in the evidence; no new circuit connection or continuity result is claimed. The earlier four-unique-number symbol mapping is superseded by this compatible two-node representation. See [dimension and mapping evidence](../evidence/s1_dimensions_20261009.json). Native connectivity and stock footprint pin coverage pass; ERC remains 9. Only C5 and LED1 retain blank footprints.

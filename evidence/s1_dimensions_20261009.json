@@ -1,0 +1,56 @@
+{
+  "date": "2026-10-09",
+  "revision": "v0.9.23",
+  "ref": "S1",
+  "user_report": "6x6x4 mm + 2mm button itself on top of 4mm height",
+  "measured_dimensions_mm": {
+    "body_length": 6,
+    "body_width": 6,
+    "body_height": 4,
+    "actuator_protrusion": 2,
+    "overall_height": 6
+  },
+  "footprint": "Button_Switch_SMD:SW_SPST_PTS645Sx43SMTR92",
+  "symbol": "Switch:SW_Push",
+  "physical_to_native_switch": {
+    "S1.TL": "S1.1",
+    "S1.TR": "S1.1",
+    "S1.BL": "S1.2",
+    "S1.BR": "S1.2"
+  },
+  "retained_physical_pads": [
+    "TL",
+    "TR",
+    "BL",
+    "BR"
+  ],
+  "footprint_pad_centres_mm": {
+    "TL": [
+      -3.98,
+      -2.25
+    ],
+    "TR": [
+      3.98,
+      -2.25
+    ],
+    "BL": [
+      -3.98,
+      2.25
+    ],
+    "BR": [
+      3.98,
+      2.25
+    ]
+  },
+  "photo_pad_span_estimate_mm": 8,
+  "photo_estimate_method": "Approximate lead-centre span / 6 mm body width on the annotated S1 photo; perspective and hand-selected boundaries limit accuracy. This is not a caliper measurement.",
+  "contact_pairs_status": "Retained family-based inference, not a new continuity measurement",
+  "manufacturer_datasheet": "https://www.ckswitches.com/media/1471/pts645.pdf",
+  "manufacturer_identity": "not established",
+  "housing_status": "User measured 6 mm overall; stock x43 4.3 mm housing/3D model is not a match",
+  "interpretation": "User measured a 6 x 6 x 4 mm body plus 2 mm actuator (about 6 mm overall). Photo shows four SMD gullwing leads; approximate pad-centre span from photo/body ratio is about 8 mm, consistent with the stock PTS645 land pattern (7.96 x 4.50 mm centres). Dimensions select a candidate family, not an exact manufacturer. Library x43 footprint/3D model denotes 4.3 mm overall and must not be used as the measured 6 mm housing.",
+  "photos": {
+    "photos/originals/IMG_2438.jpg": "b3868ea3dd2f4b542d0713b57401d2a9c2a898f9b11898b32f17b84883702109",
+    "photos/user_updates/J6_Q9_button_routing_20261009.png": "0ec61f8cacb53f783d4330137ff4986d81bcb1af3a9c7d73c33ea5dfb4aaeed3"
+  }
+}

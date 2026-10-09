@@ -1,6 +1,6 @@
 {
   "board": "100-1339 R03 A",
-  "revision": "v0.9.22",
+  "revision": "v0.9.23",
   "status": "INFERRED WORKING CIRCUIT / NOT CONTINUITY VERIFIED",
   "components": [
     {
@@ -3086,13 +3086,13 @@
         "BL",
         "BR"
       ],
-      "note": "v0.9.21 user annotated S1 upper-right to C35 upper/model2 (GND via prior V018); lower-right to C35 lower/model1, R40 lower/model2 and R41 left/model2. User explicitly confirms R41 right/model1 reaches J1 VPP/MCLR. Correct physical-to-native switch mapping TL=1, TR=3, BL=2, BR=4. Top-row/bottom-row common pairs remain a tactile-switch hypothesis; released/pressed behavior has not been measured.",
+      "note": "v0.9.23 retains the v0.9.21 button circuit: upper row TL/TR -> GND/C35.2, lower row BL/BR -> H_BUTTON/C35.1/R40.2/R41.2; R41.1 -> J1 VPP. Stock Switch:SW_Push represents the two contact nodes, with physical TL/TR -> native pin1 and BL/BR -> pin2. Four physical pads remain recorded. Common pairs and released/pressed behavior remain inferred from tactile-switch construction, not newly measured.",
       "side": "front",
       "traced_pin_count": 0,
-      "library_symbol": "Switch:SW_Push_Dual",
-      "footprint": "",
-      "footprint_confidence": "unresolved",
-      "footprint_basis": "Four-pad tactile switch; body/lead span and common-pair mapping needed. Common stock footprints use two repeated pad numbers, while current symbol retains four physical IDs.",
+      "library_symbol": "Switch:SW_Push",
+      "footprint": "Button_Switch_SMD:SW_SPST_PTS645Sx43SMTR92",
+      "footprint_confidence": "medium - measured body, photo-estimated lead span",
+      "footprint_basis": "User measured a 6 x 6 x 4 mm body plus 2 mm actuator (about 6 mm overall). Photo shows four SMD gullwing leads; approximate pad-centre span from photo/body ratio is about 8 mm, consistent with the stock PTS645 land pattern (7.96 x 4.50 mm centres). Dimensions select a candidate family, not an exact manufacturer. Library x43 footprint/3D model denotes 4.3 mm overall and must not be used as the measured 6 mm housing.",
       "connection_evidence": "v0.9.21 user annotated S1 upper-right to C35 upper/model2 (GND via prior V018); lower-right to C35 lower/model1, R40 lower/model2 and R41 left/model2. User explicitly confirms R41 right/model1 reaches J1 VPP/MCLR. Correct physical-to-native switch mapping TL=1, TR=3, BL=2, BR=4. Top-row/bottom-row common pairs remain a tactile-switch hypothesis; released/pressed behavior has not been measured.",
       "hypothesis": "v0.9.21 user annotated S1 upper-right to C35 upper/model2 (GND via prior V018); lower-right to C35 lower/model1, R40 lower/model2 and R41 left/model2. User explicitly confirms R41 right/model1 reaches J1 VPP/MCLR. Correct physical-to-native switch mapping TL=1, TR=3, BL=2, BR=4. Top-row/bottom-row common pairs remain a tactile-switch hypothesis; released/pressed behavior has not been measured.",
       "photo_pad_mapping": {
@@ -3100,6 +3100,13 @@
         "TR": "upper-right",
         "BL": "lower-left",
         "BR": "lower-right"
+      },
+      "mechanical_dimensions_mm": {
+        "body_length": 6,
+        "body_width": 6,
+        "body_height": 4,
+        "actuator_protrusion": 2,
+        "overall_height": 6
       }
     },
     {
@@ -6260,17 +6267,6 @@
       ]
     },
     {
-      "net": "H_BUTTON",
-      "a": [
-        542.29,
-        63.5
-      ],
-      "b": [
-        548.64,
-        63.5
-      ]
-    },
-    {
       "net": "VDD",
       "a": [
         190.5,
@@ -6810,17 +6806,6 @@
       ]
     },
     {
-      "net": "GND",
-      "a": [
-        528.32,
-        58.42
-      ],
-      "b": [
-        532.13,
-        58.42
-      ]
-    },
-    {
       "net": "H_BUTTON",
       "a": [
         548.64,
@@ -7294,17 +7279,6 @@
       ]
     },
     {
-      "net": "H_BUTTON",
-      "a": [
-        548.64,
-        58.42
-      ],
-      "b": [
-        548.64,
-        63.5
-      ]
-    },
-    {
       "net": "GND",
       "a": [
         237.49,
@@ -7665,17 +7639,6 @@
       "b": [
         373.38,
         203.2
-      ]
-    },
-    {
-      "net": "GND",
-      "a": [
-        528.32,
-        58.42
-      ],
-      "b": [
-        528.32,
-        63.5
       ]
     },
     {
@@ -8757,17 +8720,6 @@
       ]
     },
     {
-      "net": "GND",
-      "a": [
-        528.32,
-        63.5
-      ],
-      "b": [
-        532.13,
-        63.5
-      ]
-    },
-    {
       "net": "RX_A_OUT",
       "a": [
         388.62,
@@ -9007,17 +8959,6 @@
       "b": [
         101.6,
         60.96
-      ]
-    },
-    {
-      "net": "GND",
-      "a": [
-        528.32,
-        63.5
-      ],
-      "b": [
-        528.32,
-        87.63
       ]
     },
     {
@@ -9502,17 +9443,6 @@
       "b": [
         72.39,
         217.17
-      ]
-    },
-    {
-      "net": "H_BUTTON",
-      "a": [
-        542.29,
-        58.42
-      ],
-      "b": [
-        548.64,
-        58.42
       ]
     },
     {
@@ -10647,6 +10577,50 @@
         445.77,
         361.95
       ]
+    },
+    {
+      "net": "GND",
+      "a": [
+        528.32,
+        60.96
+      ],
+      "b": [
+        528.32,
+        87.63
+      ]
+    },
+    {
+      "net": "GND",
+      "a": [
+        528.32,
+        60.96
+      ],
+      "b": [
+        532.13,
+        60.96
+      ]
+    },
+    {
+      "net": "H_BUTTON",
+      "a": [
+        542.29,
+        60.96
+      ],
+      "b": [
+        548.64,
+        60.96
+      ]
+    },
+    {
+      "net": "H_BUTTON",
+      "a": [
+        548.64,
+        58.42
+      ],
+      "b": [
+        548.64,
+        60.96
+      ]
     }
   ],
   "pin_positions": {
@@ -11032,19 +11006,19 @@
     ],
     "S1.TL": [
       532.13,
-      58.42
+      60.96
     ],
     "S1.BL": [
       542.29,
-      58.42
+      60.96
     ],
     "S1.TR": [
       532.13,
-      63.5
+      60.96
     ],
     "S1.BR": [
       542.29,
-      63.5
+      60.96
     ],
     "C35.1": [
       558.8,
@@ -12163,8 +12137,8 @@
     "BATN.1": "TP108.1",
     "S1.TL": "S1.1",
     "S1.BL": "S1.2",
-    "S1.TR": "S1.3",
-    "S1.BR": "S1.4",
+    "S1.TR": "S1.1",
+    "S1.BR": "S1.2",
     "C35.1": "C35.1",
     "C35.2": "C35.2",
     "R40.1": "R40.1",

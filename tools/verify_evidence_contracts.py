@@ -91,8 +91,17 @@ assert net('S1.TR')==net('GND.1')!=net('S1.BR')
 assert len({net('R36.1'),net('R36.2'),net('R35.1'),net('R35.2'),net('Q9.R')})==5, 'Never bridge empty option footprints'
 assert not {'Q9.S','J6.1','J6.2','R36.1','R36.2'} & set(m['unresolved_pins'])
 assert not any(n['net']=='H_R41_FREE' for n in m['nets'])
-for ep,native in option_button['physical_to_native_switch'].items():
+# v0.9.23 stock footprint represents four physical pads with two repeated numbers.
+s1_mechanical=read('evidence/s1_dimensions_20261009.json')
+for ep,native in s1_mechanical['physical_to_native_switch'].items():
  assert m['native_pin_crosswalk'][ep]==read('evidence/pin_crosswalk.json')[ep]==native
+assert len(set(s1_mechanical['physical_to_native_switch'].values()))==2
+assert len(next(c for c in m['components'] if c['ref']=='S1')['pins'])==4
+assert net('S1.TL')==net('S1.TR')==net('GND.1')
+assert net('S1.BL')==net('S1.BR')==net('R41.2')!=net('S1.TL')
+assert xml.findtext('./components/comp[@ref="S1"]/footprint')==s1_mechanical['footprint']
+assert xml.find('./components/comp[@ref="S1"]/libsource').attrib['part']=='SW_Push'
+for path,digest in s1_mechanical['photos'].items():assert sha(path)==digest
 for ref in ['J6','Q9','R35','R36']:
  assert next(c for c in m['components'] if c['ref']==ref)['population']=='DNP'
 for ref in ['J6','Q9','R35','R36','TP10','S1','C35','R40','R41']:

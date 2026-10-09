@@ -6,15 +6,15 @@ Start with [the offline overview](index.html), [the current completion checklist
 
 ## Current status
 
-Schematic revision **v0.9.18**; C6-C5 parallel wiring reconstructed from photos **2026-10-09**. See [review response](docs/ARCHITECT_REVIEW_RESPONSE.md). The model and native file agree on 83 net partitions. All PIC pads have modeled local connections, but some remote destinations and circuit roles remain uncertain. There is **no routed KiCad PCB**, confirmed layer stack, or powered functional validation.
+Schematic revision **v0.9.23**, updated **2026-10-09**. S1 now has a stock SMD footprint candidate supported by the measured 6 x 6 mm body; its 4 mm body plus 2 mm actuator is recorded as about 6 mm overall. The stock x43 housing model is 4.3 mm high and is not an exact mechanical match. See [switch evidence](evidence/s1_dimensions_20261009.json) and [review response](docs/ARCHITECT_REVIEW_RESPONSE.md). The model and native file agree on 85 net partitions. All PIC pads have modeled local connections, but some remote destinations and circuit roles remain uncertain. There is **no routed KiCad PCB**, confirmed layer stack, or powered functional validation.
 
 | Remaining work | Current state |
 |---|---|
-| Open physical pads | 18: 5 on populated entries, 13 on empty options; C6, C26 and all U7 pads now mapped |
-| Other incomplete connections | 2 isolated labels, plus inferred receiver/RF/PIR branches |
+| Open physical pads | 3: unlocated TP9 inventory entry and both C49 DNP pads; U6.4 has a supported intentional NC |
+| Other incomplete connections | 1 isolated label, plus inferred receiver/RF/PIR branches |
 | Values | 44 fitted ceramic values; L1/L2 type and value |
-| Footprints | 147/150 assigned; C5, S1 and LED1 geometry missing |
-| ERC | 25 findings: 18 open pins, 2 isolated labels, 5 undriven power inputs |
+| Footprints | 148/150 assigned; only C5 and LED1 are blank; assigned land patterns remain qualified |
+| ERC | 9 findings: 3 open pins, 1 isolated label, 5 undriven power inputs |
 | Libraries | 20 stock definitions and 4 authorized custom candidate definitions in use |
 
 The checklist gives every known issue a stable ID, supporting evidence, next useful check and closure criterion. **A question mark, an assigned footprint, or zero open PIC pads does not measure overall completeness.** D2's local destinations are now mapped: R-C20 lower, L-ANT2/R46 upper, S-R46 lower. R46 remains unpopulated; D2 exact identity remains unknown. D3 rail association is closed by the user measurement: D3.R to V082/VDD, D3.L to GND. D3.S-to-R42 is 1.2 ohm; the exact resistor pad remains photo-selected. U3 pin 5 is now measured on VREF (1 ohm). J3 pin 3 is measured GND (1 ohm), while pin 2 reads 290 kohm to GND. J3 pin 2 now reaches R38 K/right at 1 ohm, U3 pin 6 reaches R23 B/left at 1 ohm, and R22 E/right reaches GND at 1 ohm. The old R23-VREF and J3 role guesses remain removed; R23 C/right now joins C40 lower and R42 upper at 1 ohm each. The old C40 detector-output connection has been removed; R42.1 retains the earlier TP4/PIC25 remote association.
@@ -61,4 +61,4 @@ Local KiCad history, lock files, caches, QA renders and export ZIPs are ignored.
 
 ## Completion milestones
 
-**Topology complete:** supported populated-component and block-interface connections, compatible candidate functions, and individually documented exceptions. **Value/package complete:** required values and geometry recovered, with exact maker/ratings distinguished from equivalent choices. A routed PCB is separate. Signal paths take priority over perfecting C5/S1/LED1 footprints.
+**Topology complete:** supported populated-component and block-interface connections, compatible candidate functions, and individually documented exceptions. **Value/package complete:** required values and geometry recovered, with exact maker/ratings distinguished from equivalent choices. A routed PCB is separate. Signal paths take priority over perfecting the remaining C5/LED1 footprints and exact mechanical fit.
