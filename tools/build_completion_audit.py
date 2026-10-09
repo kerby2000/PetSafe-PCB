@@ -2,7 +2,7 @@
 from pathlib import Path
 from collections import Counter
 import json, csv, html
-from current_state import current_state
+from current_state import current_state, value_is_known
 
 R=Path(__file__).resolve().parents[1]
 m=json.loads((R/'evidence/reconstruction.json').read_text(encoding='utf-8'))
@@ -16,6 +16,8 @@ for c in m['components']:
     elif ref=='C5':
         gap='User sleeve reading: 470 uF / 16 V; exact can dimensions still needed'
         method=['Can diameter and lead-centre spacing for footprint']
+    elif kind in ['C','L'] and value_is_known(c):
+        gap='Individual value recovered: '+c['value']+'; '+c['value_evidence']['source']
     elif kind=='C':
         gap='Capacitance not recovered; displayed numerical values are estimates'
         method=['Read sleeve and measure can/lead spacing' if ref=='C5' else 'LCR: in-circuit screening first; isolate one terminal if an individual value is needed']
@@ -40,7 +42,7 @@ report=dict(revision=m['revision'],instruments=['LCR meter','multimeter'],
     footprint_assigned=sum(bool(r['footprint']) for r in rows),footprint_blank=[r['ref'] for r in rows if not r['footprint']],
     fitted_capacitors=sum(c['kind']=='C' and c['population']=='populated' for c in m['components']),
     fitted_resistors=sum(c['kind']=='R' and c['population']=='populated' for c in m['components']),
-    unresolved_physical_pins=len(m['unresolved_pins']),
+    unresolved_physical_pins=len(m['unresolved_pins']),unknown_ceramic_values=status['unknown_ceramic_values'],
     warning='Open-pad counts do not include every inferred route. Assigned footprints are candidates, not measured reproductions.',components=rows)
 (R/'evidence/completion_audit.json').write_text(json.dumps(report,indent=2),encoding='utf-8')
 with (R/'evidence/completion_audit.csv').open('w',newline='',encoding='utf-8') as f:
@@ -53,17 +55,19 @@ for r in rows:
 issue_cards=[]
 for i in status['items']:
     issue_cards.append(f'<article id="{e(i["id"])}"><h3>{e(i["id"])} - {e(i["area"])}</h3><p><b>Known:</b> {e(i["known"])}</p><p><b>Still uncertain:</b> {e(i["unknown"])}</p><p><b>Next useful check:</b> {e(i["next_action"])}</p><p><b>Finished when:</b> {e(i["closed_when"])}</p></article>')
+closed_cards=''.join(f'<article id="{e(i["id"])}"><h3>{e(i["id"])} - closed</h3><p>{e(i["resolution"]["result"])}</p><p>Evidence: {e(str(i["resolution"]["evidence"]))}</p></article>' for i in status['closed_items'])
+milestones=''.join(f'<p><b>{e(i["name"])}:</b> {e(i["criterion"])}</p>' for i in status['milestones'])
 page=f'''<!doctype html><html lang="en"><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>PetSafe - current completion checklist</title>
 <style>body{{font:15px/1.55 system-ui;background:#f3f6f4;color:#173b35;margin:30px auto;max-width:1200px;padding:0 20px}}a{{color:#006f64}}h1{{font-size:34px}}.cards{{display:flex;gap:12px;flex-wrap:wrap}}.cards div,article{{padding:18px;background:white;border:1px solid #bfd0c6;border-radius:8px;margin:12px 0}}.cards strong{{display:block;font-size:25px}}article p{{margin:8px 0}}.table{{overflow:auto;max-height:75vh;background:white}}table{{border-collapse:collapse;font-size:13px;min-width:1500px}}td,th{{padding:10px;border-bottom:1px solid #d5e0da;text-align:left;vertical-align:top}}th{{position:sticky;top:0;background:#dce8e1}}td:nth-child(5),td:nth-child(9){{min-width:270px}}input{{font:inherit;padding:12px;width:550px;max-width:90%;margin:20px 0}}.note{{background:#fff1cc;padding:15px}}li{{margin:8px 0}}</style>
 <a href="../index.html">Schematic overview</a> | <a href="../output/pdf/PetSafe_completion_status.pdf">Printable status</a> | <a href="history/README.md">Investigation history</a>
 <h1>What remains to finish</h1><p>{e(status['revision'])} schematic; review {e(status['review_revision'])}. All {status['catalog_entries']} catalog entries are on one sheet. This register covers known uncertainties; it does not certify unseen copper or operating behavior.</p>
 <div class="cards"><div><strong>{status['footprints']['assigned']} / {status['catalog_entries']}</strong>candidate footprints assigned</div><div><strong>{len(status['unknown_ceramic_values'])}</strong>ceramic values unrecovered</div><div><strong>{len(status['current_fitted_open_pads'])}</strong>open pads on populated entries</div><div><strong>{len(status['current_gpio_pins'])}</strong>open PIC pads in the model</div></div>
-<p class="note"><b>What the counts mean:</b> The {status['unresolved_physical_pins']} open pads include {len(status['current_dnp_open_pads'])} on empty options. A modeled wire can still be inferred. Three isolated labels (ANT2, D1.R and R41.1/button) also need attention. No PIC pin has been assumed unused. There is no routed KiCad PCB.</p>
-<h2>Recommended order</h2><ol><li>Resolve D3/V082 first: it may change the receiver supply model.</li><li>Resolve D2, C6/Q8 and the isolated button/antenna nodes, with one specific measurement at a time.</li><li>Cross-check receiver/PIR branches and candidate pin functions.</li><li>Measure RF/tuning values before ordinary bypass capacitors; finish the three missing footprints.</li></ol>
+<p class="note"><b>What the counts mean:</b> The {status['unresolved_physical_pins']} open pads include {len(status['current_dnp_open_pads'])} on empty options. A modeled wire can still be inferred. {status['erc_by_type'].get('isolated_pin_label',0)} isolated labels also need attention. No PIC pin has been assumed unused. There is no routed KiCad PCB.</p>
+<h2>Recommended order</h2><ol><li>D3/V082, then U3.5 DC-bias return.</li><li>J3 ground/signal and one complete Q3/C10/C11/C12 cell.</li><li>Specific R41, RF excitation and detector-output endpoints.</li><li>After routing, frequency-sensitive values and one powered scan session; footprint dimensions follow.</li></ol><p><a href="ARCHITECT_REVIEW_RESPONSE.md">Architect review response and specific checks</a></p><h2>Completion milestones</h2>{milestones}
 <p><b>Open populated-entry pads:</b> {e(', '.join(status['current_fitted_open_pads']))}. U6.L1/L2 are the candidate IC's internally NC pins 4/5; their external board ties remain unknown.</p>
-<p><b>Unrecovered ceramic values ({len(status['unknown_ceramic_values'])}):</b> {e(', '.join(status['unknown_ceramic_values']))}. C5 is already 470 uF / 16 V. L1/L2 type and value remain unknown. Photographs cannot determine ceramic capacitance or dielectric.</p>
+<p><b>Unrecovered ceramic values ({len(status['unknown_ceramic_values'])}):</b> {e(', '.join(status['unknown_ceramic_values']))}. C5 is already 470 uF / 16 V. <b>Unrecovered magnetic values:</b> {e(', '.join(status['unknown_magnetic_values'])) or 'None'}. Photographs cannot determine ceramic capacitance or dielectric.</p>
 <h2>Remaining questions and closure criteria</h2>{''.join(issue_cards)}
-<h2>Every component: values, footprint confidence and open pads</h2><p>Question marks denote candidates; the tables identify the actual evidence needed. No generic request to remeasure every resistor is pending.</p>
+<details><summary>Closed issues retained as history</summary>{closed_cards}</details><h2>Every component: values, footprint confidence and open pads</h2><p>Question marks denote candidates; the tables identify the actual evidence needed. No generic request to remeasure every resistor is pending.</p>
 <input id="q" type="search" placeholder="Filter by reference, LCR, continuity, footprint..." aria-label="Filter components"><div class="table"><table><thead><tr><th>Reference</th><th>Population</th><th>Observed</th><th>Proposed</th><th>Value / identity evidence</th><th>Stock footprint</th><th>Package confidence</th><th>Open pads</th><th>How to resolve</th><th>Photos</th></tr></thead><tbody>{''.join(body)}</tbody></table></div>
 <p><a href="../evidence/completion_audit.csv">Component audit CSV</a> | <a href="../evidence/remaining_work.json">Maintained question register</a> | <a href="../evidence/proposed_nets.csv">All modeled net groups</a> | <a href="MEASUREMENTS.md">Recorded measurements</a></p>
 <script>document.querySelector('#q').oninput=e=>{{let q=e.target.value.toLowerCase();document.querySelectorAll('tbody tr').forEach(r=>r.hidden=!r.textContent.toLowerCase().includes(q))}}</script></html>'''

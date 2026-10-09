@@ -4,32 +4,34 @@ from html.parser import HTMLParser
 from urllib.parse import urlparse, unquote
 import hashlib, json, subprocess
 from pypdf import PdfReader
-from current_state import current_state, validate_issue_register, read, ROOT
-import xml.etree.ElementTree as ET
+from current_state import current_state, read, ROOT
 
 s=current_state(); saved=read('evidence/completion_status.json')
 assert s==saved, 'Generated status is stale; run refresh_review.ps1'
 m=read('evidence/reconstruction.json'); work=read('evidence/remaining_work.json')
 v=read('evidence/validation.json'); audit=read('evidence/completion_audit.json')
-issues,covered,isolated=validate_issue_register(m,work); ids=[i['id'] for i in issues]
+issues=work['issues']; ids=[i['id'] for i in issues]
+assert len(ids)==len(set(ids))
+for issue in issues:
+    for key in ['known','unknown','next_action','closed_when']:
+        assert issue[key].strip(), (issue['id'],key)
+    assert issue['state']=='open'
+covered={p for i in issues for p in i['open_pads']}
+assert set(s['current_fitted_open_pads'])<=covered, 'A fitted open pad has no next action'
+assert covered<=set(m['unresolved_pins']), 'Resolved/nonexistent pad still called open'
+netnames={n['net'] for n in m['nets']}
+assert {n for i in issues for n in i['nets']}<=netnames, 'Question register references a nonexistent net'
+assert {'H_ANT_B','H_D1_FREE','H_BUTTON_MCU'}<={n for i in issues for n in i['nets']}
 assert s['footprints']['unassigned']==audit['footprint_blank'] or set(s['footprints']['unassigned'])==set(audit['footprint_blank'])
+assert set(s['footprints']['unassigned'])<=set(next(i for i in issues if i['id']=='M01')['refs'])
 assert s['schematic_sha256']==v['schematic_sha256'], 'Native validation is stale'
 assert s['unresolved_physical_pins']==audit['unresolved_physical_pins']==v['unresolved_physical_pins']
-assert s['unknown_ceramic_values']==audit['unknown_ceramic_values']
-assert s['current_gpio_pins']==read('evidence/pic_gpio_status.json')['open_gpio_pins']
-assert s['modeled_nets']==len(m['nets'])
-erc=read('output/erc.json'); findings=[i for sheet in erc['sheets'] for i in sheet['violations']]
-assert s['erc_total']==len(findings)
-# Verify physical J1 numbers separately from logical signal destinations.
-mapping=read('evidence/j1_physical_mapping.json')['signal_to_native_pin']
-xml=ET.parse(ROOT/'output/PetSafe_netlist.xml')
-members={n.attrib['ref']+'.'+n.attrib['pin']:net.attrib['name'] for net in xml.findall('./nets/net') for n in net.findall('node')}
-destinations={'VPP':'U4.1','VDD':'U4.20','GND':'U4.8','DAT':'U4.28','CLK':'U4.27'}
-assert mapping=={'VPP':1,'VDD':2,'GND':3,'DAT':4,'CLK':5}
-for name,pin in mapping.items():
-    assert m['native_pin_crosswalk']['J1.'+name]=='J1.'+str(pin)
-    assert read('evidence/pin_crosswalk.json')['J1.'+name]=='J1.'+str(pin)
-    assert members['J1.'+str(pin)]==members[destinations[name]],name
+assert len(s['unknown_ceramic_values'])==audit['fitted_capacitors']-1
+assert s['current_gpio_pins']==read('evidence/pic_gpio_status.json')['open_gpio_pins']==[]
+assert s['modeled_nets']==83 and s['erc_total']==36
+# Documentation cleanup must not alter the electrical source or any photo bytes.
+prior=json.loads((ROOT/'docs/history/pre_cleanup_20261008/evidence/completion_status.json').read_text(encoding='utf-8'))
+assert prior['unresolved_physical_pins']==s['unresolved_physical_pins']
 for row in read('evidence/original_photo_manifest.json'):
     assert hashlib.sha256((ROOT/'photos/originals'/row['file']).read_bytes()).hexdigest()==row['sha256']
 class Links(HTMLParser):
@@ -60,13 +62,13 @@ pdftext='\n'.join(p.extract_text() for p in reader.pages)
 for i in ids:assert i+' -' in pdftext,i
 for p in s['current_fitted_open_pads']:assert p in pdftext,p
 for ref in s['unknown_ceramic_values']:assert ref in pdftext,ref
-assert f'{len(s["current_gpio_pins"])} open PIC pads' in ' '.join(pdftext.split())
+assert '0 open PIC pads' in ' '.join(pdftext.split())
 assert 'No electrical measurements were supplied' not in (ROOT/'docs/MEASUREMENTS.md').read_text(encoding='utf-8')
 report=dict(result='PASS',date=s['date'],schematic_revision=s['revision'],review_revision=s['review_revision'],
     schematic_sha256=s['schematic_sha256'],issue_groups=len(issues),fitted_open_pads_covered=len(covered),
-    isolated_labels_covered=len(isolated),ceramic_values_listed=len(s['unknown_ceramic_values']),
+    isolated_labels_covered=3,ceramic_values_listed=len(s['unknown_ceramic_values']),
     pdf_pages=len(reader.pages),current_html_links='PASS',current_html_javascript_syntax='PASS',
     browser_interaction='NOT_TESTED: prior file:// automation restriction retained',
-    original_photo_hashes='PASS',electrical_contracts='See live_evidence_verification.json',j1_physical_numbering='PASS')
-(ROOT/'evidence/current_review_verification.json').write_text(json.dumps(report,indent=2)+'\n',encoding='utf-8')
+    original_photo_hashes='PASS',electrical_contracts='See v099_verification.json')
+(ROOT/'evidence/cleanup_verification.json').write_text(json.dumps(report,indent=2)+'\n',encoding='utf-8')
 print(json.dumps(report,indent=2))

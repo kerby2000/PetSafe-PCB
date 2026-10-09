@@ -19,7 +19,7 @@ fitted=sorted(e for e in m['unresolved_pins'] if cs[e.rsplit('.',1)[0]]['populat
 dnp=sorted(e for e in m['unresolved_pins'] if cs[e.rsplit('.',1)[0]]['population']=='DNP')
 gpios=[int(e.split('.')[1]) for e in fitted if e.startswith('U4.')];gpios.sort()
 func={p['pin']:p['function'] for p in read('evidence/pic_trace_audit.json')['pins']}
-local={1:'J1 VPP; mapping inferred; D6 route missing',2:'C25 signal pad / V031; onward destination unknown',3:'R28 + R29 + TP7; user meter / visible trace',4:'VREF TP via V035; user confirms via-to-TP; C39.1 local photo route',
+local={1:'J1.1/VPP at square-pad end; position photo-supported; D6 route missing',2:'C25 signal pad / V031; onward destination unknown',3:'R28 + R29 + TP7; user meter / visible trace',4:'VREF TP via V035; user confirms via-to-TP; C39.1 local photo route',
 5:'V036-V108 to R14; user continuity report',6:'V037-V102 to R15; user continuity report',7:'V039-V097 to R16; user continuity report',8:'GND / V041 photo anchor',9:'Y1 oscillator; photo-derived',10:'Y1 oscillator; photo-derived',
 11:'V047-V091 to R11; user continuity report',12:'R18.1 via V053-V070; user-confirmed; VREF link explicitly rejected',13:'TP3 via V049; user-confirmed; existing R10 branch photo-derived',14:'TP11; visible route; onward destination unknown',
 15:'V022-V016 to U5 pin2 / INA; user-confirmed',16:'V023-V019 to U5 pin3 / INB; user-confirmed',17:'R13; user meter / visible trace',18:'TP17; visible route; old R13 guess withdrawn',19:'GND / C32 / V045 photo anchor',20:'V042 to board VDD TP user-confirmed; C32.1 local photo route',
@@ -48,13 +48,14 @@ doc=SimpleDocTemplate(str(out),pagesize=A4,rightMargin=32,leftMargin=32,topMargi
 W=A4[0]-64
 story=[P('Schematic completion status','TitlePS'),P(f'PetSafe 100-1339 R03 A | {m["revision"]} | {status["date"]}'),
 P('<b>All catalog entries are drawn on one sheet.</b> The remaining questions are listed explicitly below. This is a partially verified reconstruction, not a completed hardware validation or a routed PCB.'),
-table([['Coverage','Open connections','Values / packages'],[f'{status["catalog_entries"]} entries; 1 A2 sheet; 20 stock + 4 custom symbol definitions.',f'{len(fitted)} populated-entry pads + {len(dnp)} DNP pads. {len(gpios)} open PIC pads in the model.',f'{len(status["unknown_ceramic_values"])} ceramic values and L1/L2 unknown; {status["footprints"]["assigned"]}/{status["catalog_entries"]} footprints assigned.']],[W/3]*3),
+table([['Coverage','Open connections','Values / packages'],[f'{status["catalog_entries"]} entries; 1 A2 sheet; 20 stock + 4 custom symbol definitions.',f'{len(fitted)} populated-entry pads + {len(dnp)} DNP pads. {len(gpios)} open PIC pads in the model.',f'{len(status["unknown_ceramic_values"])} ceramic and {len(status["unknown_magnetic_values"])} magnetic values unknown; {status["footprints"]["assigned"]}/{status["catalog_entries"]} footprints assigned.']],[W/3]*3),
 P('Power rails - current names','HeadPS'),table([['Name','Known path']]+[[r['name'],r['path']] for r in status['rails']],[80,W-80]),
 P('L1/L2 share the VSYS supply side. Their opposite ends are not shorted together. H_RF_VDD, H_LDO_IN, H_RX_VDD and H_PIR_VDD describe local branches; these are not additional confirmed independent supplies. Rail voltages have not been measured.'),
-P('Recommended next checks','HeadPS'),P('1. Identify which D3 pad joins V082/VDD (E02).<br/>2. Resolve D2, C6/Q8, and the isolated button/antenna paths.<br/>3. Cross-check receiver/PIR branches and candidate pin functions.<br/>4. Recover RF/tuning values, then other passives and missing package geometry.'),
-P('Validation and limits','HeadPS'),P(f'{v["proposed_net_partitions"]} modeled net partitions match KiCad 10.0.5. ERC retains {v["erc_total"]} findings: 28 open pins, 3 isolated labels and 5 undriven power checks. No artificial NC/power flags hide gaps. All 26 original photo hashes are unchanged. This proves file consistency, not all physical connections.'),
-P('The three isolated labels are H_ANT_B (ANT2), H_D1_FREE (D1.R) and H_BUTTON_MCU (R41.1). A PIC pin can have a local net and still lack an onward destination. Question-mark count is not a completion metric.'),PageBreak()]
-for title,ids in [('Priority circuit gaps',['E01','E02','E03','E04','E05','E06']),('Other routing and identity gaps',['E07','E08','E09','E10','I01','I02']),('Values, mechanics and scope',['V01','M01','D01','F01'])]:
+P('Recommended next checks','HeadPS'),P('1. D3/V082 and U3.5 DC-bias return; preserve separation across C18.<br/>2. J3 ground/signal and one complete Q3/C10/C11/C12 tuning cell.<br/>3. Specific R41, RF excitation and receiver-output destinations.<br/>4. After routing: frequency-sensitive values and one powered idle/scan session; footprints follow.'),
+P('Validation and limits','HeadPS'),P(f'{v["proposed_net_partitions"]} modeled net partitions match KiCad 10.0.5. ERC retains {v["erc_total"]} findings: {v["erc_by_type"].get("pin_not_connected",0)} open pins, {v["erc_by_type"].get("isolated_pin_label",0)} isolated labels and {v["erc_by_type"].get("power_pin_not_driven",0)} undriven power checks. No artificial NC/power flags hide gaps. Original photo hashes are unchanged. This proves file consistency, not all physical connections.'),
+P('Isolated modeled nodes: '+escape(', '.join(n['net'] for n in m['nets'] if len(n['endpoints'])==1))+'. A PIC pin can have a local net and still lack an onward destination.'),
+P('Completion milestones','HeadPS')]+[P('<b>'+escape(i['name'])+':</b> '+escape(i['criterion'])) for i in status['milestones']]+[PageBreak()]
+for title,ids in [('Supply and diode gaps',['E01','E02','E03']),('Tuning and local endpoints',['E04','E05','E06']),('Other routing and identity gaps',['E07','E08','E09','E10','I01','I02']),('Values, mechanics and scope',['V01','M01','D01','F01'])]:
     story.append(P(title,'TitlePS'))
     for i in status['items']:
         if i['id'] not in ids:continue
@@ -62,6 +63,9 @@ for title,ids in [('Priority circuit gaps',['E01','E02','E03','E04','E05','E06']
     if 'V01' in ids:
         story.extend([P('Every unrecovered ceramic value','HeadPS'),P(escape(', '.join(status['unknown_ceramic_values']))),P('C5 is already 470 uF / 16 V. In-circuit LCR readings may include parallel components and semiconductor paths; record frequency, mode and whether a lead was isolated. Geometry cannot establish capacitance, dielectric or voltage rating.')])
     story.append(PageBreak())
+if status['closed_items']:
+    story.append(P('Closed issues retained as history','HeadPS'))
+    story.extend(P(escape(i['id']+' - '+i['resolution']['result'])) for i in status['closed_items'])
 story.extend([P('PIC connections','TitlePS'),P('Physical package pins. All have modeled local nets; the evidence column distinguishes confirmed endpoints from photo-derived or incomplete branches. Use the separate numbered photo guide for physical locations.'),
 table([['Pin','Function','Local destination / evidence']]+[[p['pin'],{27:'RB6/CLK',28:'RB7/DAT'}.get(p['pin'],p['gpio']),p['evidence']] for p in pins],[30,64,W-94]),
 P('Every remaining open pad','HeadPS'),P('<b>Populated entries:</b> '+escape(', '.join(fitted))+'.<br/><b>Empty options:</b> '+escape(', '.join(dnp))+'.','SmallPS'),

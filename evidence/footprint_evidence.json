@@ -1345,7 +1345,7 @@
       "before": "",
       "footprint": "Connector_PinHeader_2.54mm:PinHeader_1x05_P2.54mm_Horizontal",
       "confidence": "medium",
-      "basis": "Five right-angle programming pins; compare spacing with adjacent PIC 1.27-mm pitch. Existing logical numbering retained; square-pad/VPP orientation must be reconciled before PCB recreation.",
+      "basis": "IMG_2437 and IMG_2439 show the VPP square-pad end: 1VPP,2VDD,3GND,4DAT,5CLK. Exact pitch/lead geometry remains photo-based.",
       "photos": [
         "IMG_2437.jpg"
       ]
@@ -1650,5 +1650,10 @@
       ]
     }
   ],
-  "v07_basis": "User R8 1.6x0.77 mm revises fitted resistor family to 0603; C11 3.2x1.5 confirms 1206. Other bodies not individually measured."
+  "v07_basis": "User R8 1.6x0.77 mm revises fitted resistor family to 0603; C11 3.2x1.5 confirms 1206. Other bodies not individually measured.",
+  "j1_numbering_review": {
+    "date": "2026-10-09",
+    "record": "evidence/j1_physical_mapping.json",
+    "result": "Square pad1=VPP; sequential stock footprint reconciled; dimensions remain candidates."
+  }
 }

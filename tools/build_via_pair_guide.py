@@ -1,6 +1,6 @@
 """Build the current paired-photo page and compact remaining-check PDF."""
 from pathlib import Path
-import json
+import json,sys
 from reportlab.pdfgen import canvas
 from reportlab.lib.colors import HexColor,white
 from reportlab.lib.utils import ImageReader
@@ -11,6 +11,8 @@ a=json.loads((R/'evidence/via_audit.json').read_text(encoding='utf-8'));sites={s
 html=(R/'tools/templates/via_pair_tests.html').read_text(encoding='utf-8').replace('PLAN_DATA',json.dumps(p).replace('</','<\\/')).replace('AUDIT_DATA',json.dumps(a).replace('</','<\\/'))
 html=html.replace('SITE_COUNT',str(p['count_basis']['nonrail_candidate_sites'])).replace('GROUP_COUNT',str(p['count_basis']['local_candidate_groups'])).replace('BASIS_REV',p['basis_revision'])
 (R/'docs/VIA_PAIR_TESTS.html').write_text(html,encoding='utf-8')
+if '--html-only' in sys.argv:
+ print('Updated via-pair HTML; historical completed-result PDF preserved.');raise SystemExit(0)
 W,H=1191,842;c=canvas.Canvas(str(R/p['pdf_path']),pagesize=(W,H))
 c.setTitle('PetSafe - recovered RC1 receiver control route');c.setAuthor('PetSafe PCB reverse engineering')
 ink=HexColor('#173e35');teal=HexColor('#087767');amber=HexColor('#a34d18');paper=HexColor('#f3f7f3');gray=HexColor('#e3ece5')

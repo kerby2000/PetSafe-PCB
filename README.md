@@ -6,7 +6,7 @@ Start with [the offline overview](index.html), [the current completion checklist
 
 ## Current status
 
-Schematic revision **v0.9.9**; investigation cleanup **2026-10-08**. The model and native file agree on 83 net partitions. All PIC pads have modeled local connections, but some remote destinations and circuit roles remain uncertain. There is **no routed KiCad PCB**, confirmed layer stack, or powered functional validation.
+Schematic revision **v0.9.10**; architect review corrections **2026-10-09**. See [review response](docs/ARCHITECT_REVIEW_RESPONSE.md). The model and native file agree on 83 net partitions. All PIC pads have modeled local connections, but some remote destinations and circuit roles remain uncertain. There is **no routed KiCad PCB**, confirmed layer stack, or powered functional validation.
 
 | Remaining work | Current state |
 |---|---|
@@ -53,6 +53,10 @@ python -m pip install -r tools/requirements.txt
 
 `build.ps1` exports the existing native file, runs ERC and checks model/netlist partitions and footprints. It does not overwrite native edits. `-Regenerate` explicitly rebuilds from the saved MCP placement template and routing adapter; use it only when those sources are synchronized. `refresh_review.ps1` regenerates current documentation/status and checks electrical regressions and question coverage. Both commands fail on execution or validation errors; the documented outstanding ERC findings are retained.
 
-For electrical edits, keep `evidence/reconstruction.json`, `evidence/library_layout.json`, `evidence/library_placements.json`, the MCP template, native schematic and routing adapter consistent. For documentation updates, maintain `evidence/remaining_work.json`; shared metrics are derived by `tools/current_state.py`. The current electrical regression suite is `tools/verify_v099_review.py`; earlier versioned suites are historical snapshots. Generated outputs should be rebuilt, not edited alone.
+For electrical edits, keep `evidence/reconstruction.json`, `evidence/library_layout.json`, `evidence/library_placements.json`, the MCP template, native schematic and routing adapter consistent. For documentation updates, maintain `evidence/remaining_work.json`; shared metrics are derived by `tools/current_state.py`. The live electrical suite is `tools/verify_evidence_contracts.py`; `verify_current_review.py` derives current counts and validates active/closed issues. `test_review_progress.py` exercises issue closure and capacitor recovery using in-memory fixtures only. `verify_cleanup_snapshot.py` checks the immutable 522d235 cleanup baseline; versioned suites such as `verify_v099_review.py` remain historical. Generated outputs should be rebuilt, not edited alone.
 
 Local KiCad history, lock files, caches, QA renders and export ZIPs are ignored. No generated artifact is a fabrication release. Repository: [kerby2000/PetSafe-PCB](https://github.com/kerby2000/PetSafe-PCB).
+
+## Completion milestones
+
+**Topology complete:** supported populated-component and block-interface connections, compatible candidate functions, and individually documented exceptions. **Value/package complete:** required values and geometry recovered, with exact maker/ratings distinguished from equivalent choices. A routed PCB is separate. Signal paths take priority over perfecting C5/S1/LED1 footprints.

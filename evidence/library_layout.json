@@ -1084,7 +1084,10 @@
         },
         "rotation": 0,
         "includePins": true,
-        "footprint": "Connector_PinHeader_2.54mm:PinHeader_1x05_P2.54mm_Horizontal"
+        "footprint": "Connector_PinHeader_2.54mm:PinHeader_1x05_P2.54mm_Horizontal",
+        "properties": {
+          "PhysicalPinEvidence": "IMG_2437 front: CLK-DAT-GND-VDD-VPP left to right; square pad is VPP/right end. IMG_2439 rear corroborates square end. Native pin1=VPP,2=VDD,3=GND,4=DAT,5=CLK; photo-based physical order, not new electrical measurements."
+        }
       }
     },
     {
@@ -9012,11 +9015,11 @@
     "U4.26": "U4.26",
     "U4.27": "U4.27",
     "U4.28": "U4.28",
-    "J1.CLK": "J1.1",
-    "J1.DAT": "J1.2",
-    "J1.VPP": "J1.3",
-    "J1.VDD": "J1.4",
-    "J1.GND": "J1.5",
+    "J1.CLK": "J1.5",
+    "J1.DAT": "J1.4",
+    "J1.VPP": "J1.1",
+    "J1.VDD": "J1.2",
+    "J1.GND": "J1.3",
     "C25.1": "C25.1",
     "C25.2": "C25.2",
     "C26.1": "C26.1",
@@ -10827,7 +10830,7 @@
       ]
     },
     {
-      "net": "H_BUTTON_MCU",
+      "net": "H_R41_FREE",
       "a": [
         407,
         40
@@ -13795,7 +13798,7 @@
       ]
     },
     {
-      "net": "H_BUTTON_MCU",
+      "net": "H_R41_FREE",
       "p": [
         401.5,
         40

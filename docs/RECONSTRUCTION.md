@@ -1,6 +1,6 @@
 # Current circuit interpretation
 
-This document describes v0.9.9. [The completion checklist](FINISHING_CHECKLIST.html) is the authoritative list of known unresolved work. [Earlier reasoning](history/README.md) is preserved as history, including rejected guesses.
+This document describes v0.9.10. [The completion checklist](FINISHING_CHECKLIST.html) is the authoritative list of known unresolved work. [Earlier reasoning](history/README.md) is preserved as history, including rejected guesses.
 
 ## What is established
 
@@ -20,7 +20,7 @@ Board VDD/TP103 is the separate logic rail and feeds MX512H pin 1/VCC. VREF/TP10
 
 Every PIC pad has a local modeled net. User continuity resolves RC4/RC5 to H-bridge INA/INB and all five tuning-control inputs: RC6-R13, RA3-R14, RA4-R15, RA5-R16, RC0-R11. RC1 reaches R18 via V053-V070; the old VREF join is rejected. RC2 reaches TP3. The [complete PIC table](../evidence/pic_gpio_status.csv) distinguishes each evidence basis.
 
-Some connected PIC nodes still lack a known remote role, notably PIC2/C25, PIC14/TP11 and PIC18/TP17. The R41.1 button node is isolated; S1 common lead pairs are provisional. J1 physical pin orientation, D6 protection routing and motor connector A/B orientation need resolution.
+Some connected PIC nodes still lack a known remote role, notably PIC2/C25, PIC14/TP11 and PIC18/TP17. R41.1 is isolated and neutrally named H_R41_FREE. The button already reaches PIC28 through R40; the free R41 end may instead be supply, bias or control. S1 common pairs remain provisional. J1 square-pad end is VPP: native pins 1 VPP,2 VDD,3 GND,4 DAT,5 CLK, supported by IMG_2437/2439. D6 routing and J5 A/B orientation still need resolution.
 
 ## RF drive and antenna tuning
 
@@ -37,3 +37,13 @@ U6/C2NM supports S-812C33AMC; the supervisor guess based on WN23 is withdrawn. U
 ## Reading uncertainty
 
 Unconnected physical pads, isolated labels, incomplete onward routes, candidate identities, unmarked values and package geometry are different gaps. The checklist covers all of these, with exact open-pad and capacitor lists. Do not remove a question mark merely because a symbol exists or a plausible typical circuit can be drawn. Record deliberate assumptions explicitly if exact identity or value cannot be recovered.
+
+## Architect review findings, 2026-10-09
+
+U3.5 currently has only C18.1 on its net, so the reconstruction lacks an intentional DC bias-current return. Check the existing R23/R22 bias-facing pads using IMG_2434 and V079/V080; measure resistive paths separately. Preserve separation across C18 and add no invented resistor.
+
+The modeled PNP tuning cells put their emitters at GND while their bases are GPIO-driven. That is not a conventional forward-operated PNP switch. Resolve Q3/C10/C11/C12 and its antenna path first; type, orientation, ground association or a junction-switching role may need correction. No automatic NPN substitution is justified. C11/C12 currently share both nodes: an in-circuit LCR result would be an effective parallel-network value, not individual capacitances.
+
+H_RF_CONTROL lacks an excitation source, H_RX_DETECT lacks a downstream detector destination and Q2/TP16 lacks a modeled controller connection. H_BAT_SENSE already has a series path through R4 to PIC24; its function and confidence require review, not necessarily another wire.
+
+Q8's P-channel source is modeled on filtered VSYS while its U2 driver uses VDD. Turn-off cannot be established from a gate-to-ground level alone. After passive routing, measure source and gate relative to GND and compute VGS. The 6.0V/4.5V example in the architect review is illustrative, not a board measurement; the fitted device and actual waveforms remain unverified.

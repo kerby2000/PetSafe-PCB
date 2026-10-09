@@ -4,13 +4,18 @@ $env:PYTHONUTF8 = '1'
 $projectRoot = Split-Path -Parent $PSScriptRoot
 Push-Location $projectRoot
 try {
+    & $Python tools/build_via_pair_plan.py
+    if ($LASTEXITCODE) { throw 'Via-pair metadata refresh failed' }
+    & $Python tools/build_via_pair_guide.py --html-only
+    if ($LASTEXITCODE) { throw 'Via-pair HTML refresh failed' }
     foreach ($script in @(
         'tools/build_complete_status.py',
         'tools/build_review.py',
         'tools/build_completion_audit.py',
-        'tools/verify_v099_review.py',
+        'tools/verify_evidence_contracts.py',
         'tools/verify_via_pair_plan.py',
-        'tools/verify_current_review.py'
+        'tools/verify_current_review.py',
+        'tools/test_review_progress.py'
     )) {
         & $Python $script
         if ($LASTEXITCODE) { throw "Review step failed: $script" }

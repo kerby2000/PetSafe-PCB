@@ -52,6 +52,7 @@ plan=dict(id='via-pairs-round-6-completed',pdf_path='output/pdf/PetSafe_via_pair
  dict(stage='Remaining functional endpoints',action='Q1.L/V011-V014 now confirmed to motor VDD/U5 pin4; no further rail-disambiguation test requested. Q1 is an R1A/FMOS3401A-class PMOS candidate. Raw battery BATTERY+ is distinct from post-Q1 VSYS; TP14 is on the raw side by photo. V015/R43.2 now reaches TP14; V017/R42.1/R44.1 reaches TP4/PIC25. V082 now reaches TP103/logic VDD; identify the exact D3 terminal without merging H_RX_VDD. V075 has a confirmed rail and photo/resistance-supported Q7/R19 terminal assignments; Q7 identity, orientation and function remain qualified. V011-V015 is explicitly excluded.'),
  dict(stage='Low priority',action='V067 now connects J3.1/PIR supply to the earlier U6A pad association. U6A remains DNP; this does not identify an IC. Do not repeat established grounds, motor pairs, Q1 duplicate vias or V079/V080.')],
  photos=dict(front=a['source_front'],rear=a['source_rear'],orientation='Rear mosaic is already mirrored to match front orientation; compare using landmarks before probing.',marker_basis='Rear coordinates are the established via IDs. Front coordinates are mostly projections; no new trace route is claimed.'))
+plan['pdf_basis_revision']='v0.9.9' # Completed result illustration; no new measurement request.
 save('evidence/via_pair_plan.json',plan)
 reading_path=R/'evidence/via_pair_readings.csv'
 previous={}

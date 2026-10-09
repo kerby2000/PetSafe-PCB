@@ -100,7 +100,7 @@ for inst in instances:
                      ('LibraryPolicy',policy),
                      ('FootprintConfidence',evidence.get('footprint_confidence','unresolved')),
                      ('FootprintBasis',evidence.get('footprint_basis','')),
-                     ('PinMapping','See evidence/pin_crosswalk.json; physical orientation may be provisional')]:
+                     ('PinMapping',evidence['note'] if ref=='J1' else 'See evidence/pin_crosswalk.json; physical orientation may be provisional')]:
         for existing in children(inst,'property'):
             if existing[1]==name:inst.remove(existing)
         inst.append(expr(f'(property {q(name)} {q(val)} (at {x} {y} 0) (effects (font (size 1 1)) hide))'))
@@ -155,7 +155,7 @@ for l in layout['labels']:
     if not excluded(w):L.append(dict(net=l['net'],p=oldpoints.get(mm(l['p']),mm(l['p']))))
 # Give the button-control label enough room before the horizontal resistor body.
 for l in L:
-    if l['net']=='H_BUTTON_MCU':
+    if l['net']=='H_R41_FREE':
         x,y=l['p'];start=(rnd(x-3.81),y)
         W.append(dict(net=l['net'],a=start,b=l['p']));l['p']=start
 wire('GND','C9.2',(49,159),(49,190),(53,190))
@@ -196,11 +196,11 @@ stub('H_TUNE_1','U4.17',-12)
 stub('H_LED_CTL_B','U4.22',4)
 stub('H_LED_CTL_A','U4.23',4)
 stub('PIC_TP4_C41','U4.25',4)
-wire('ICSP_CLK','U4.27',(228,76),(228,43),'J1.CLK');label('ICSP_CLK',(230,43))
-wire('ICSP_DAT','U4.28',(231,78),(231,45),'J1.DAT');label('ICSP_DAT',(233,45))
+wire('ICSP_CLK','U4.27',(228,76),(228,51),'J1.CLK');label('ICSP_CLK',(230,51))
+wire('ICSP_DAT','U4.28',(231,78),(231,49),'J1.DAT');label('ICSP_DAT',(233,49))
 stub('MCLR_VPP','U4.1',-12);stub('MCLR_VPP','J1.VPP',-12)
 stub('VDD','J1.VDD',-8)
-wire('GND','J1.GND',(263,51),(263,104));wire('GND','U4.8',(207,104),(263,104));label('GND',(207,104))
+wire('GND','J1.GND',(263,47),(263,104));wire('GND','U4.8',(207,104),(263,104));label('GND',(207,104))
 wire('OSC1','U4.9',(233,60),(233,85),(238,85),(238,89),'Y1.1');wire('OSC1','C30.1',(238,89))
 wire('OSC2','U4.10',(235,58),(235,83),(254,83),(254,89),'Y1.2');wire('OSC2','C31.2',(254,89))
 wire('GND','C30.2',(238,104));wire('GND','C31.1',(254,104));wire('PIC_RC3','U4.14','TP11.1')
@@ -269,7 +269,7 @@ for n in layout['notes']:
         t='U1 datasheet symbol: S-1200B45 SOT-23-5. Pin 4 is internally open; option pads retained.'
     if 'Original photographed pad names remain' in t:
         t='Library pin numbers are mapped to photo pads in evidence/pin_crosswalk.json.'
-    if t.startswith('v0.2'):t='v0.9.9 | KiCad 10.0.5 | 2026-10-08';n['y']=292
+    if t.startswith('v0.2'):t=f'{model["revision"]} | KiCad 10.0.5 | {model["review_date"]}';n['y']=292
     if t.startswith('H14-H15:'):t='H14-H15: C2N supports S-812C33AMC 3.3V LDO. C/R3 ground supported by resistance.'
     if t.startswith('H09:'):t='H09: 3724A matches SIL3724A N/P MOSFET pair. Both units share one package.'
     if t.startswith('Q8 T2/B1/B2'):t='V113/V115: Q8 centre pin5 GND. V114 is U2 pin2 GND, not Q8 pin2.'
@@ -350,14 +350,28 @@ for net,edges in adj.items():
 for l in L:
     x,y=l['p'];G.append(expr(f'(label {q(l["net"])} (at {x} {y} 0) (effects (font (size .762 .762)) (justify left bottom)) (uuid {q(uid())}))'))
 tree.extend(G)
-tree.append(expr('(title_block (title "PetSafe 100-1339 R03 A | single-sheet reconstruction") (date "2026-10-08") (rev "0.9.9") (company "KiCad 10 libraries + four datasheet symbols | MCP authoring") (comment 1 "Raw battery separated from post-Q1 supply; R1A PMOS candidate. GPIO routes retained."))'))
+tree.append(expr('(title_block (title "PetSafe 100-1339 R03 A | single-sheet reconstruction") (date "2026-10-09") (rev "0.9.10") (company "KiCad 10 libraries + four datasheet symbols | MCP authoring") (comment 1 "J1 physical numbering corrected; R41 free node neutral. Circuit hypotheses remain."))'))
 # Canonical pretty printer supplied by the installed MCP server.
 sys.path.insert(0,str(Path.home()/'Documents/VS.Code.Projects/KiCAD-MCP-Server/python'))
 from utils.sexpr_format import prettify
 out=R/'schematic/PetSafe_1001339.kicad_sch'
+# Preserve identities for unchanged graphics so a small review does not rewrite
+# every wire/label UUID. Symbols keep their MCP-template identities as before.
+def graphic_key(e):return sx.dumps([x for x in e if tag(x)!='uuid'])
+if out.exists():
+    previous=defaultdict(list)
+    for e in sx.loads(out.read_text()):
+        if tag(e) in {'text','wire','junction','label','polyline'}:
+            previous[graphic_key(e)].append(one(e,'uuid')[1])
+    for e in G:
+        matches=previous.get(graphic_key(e),[])
+        if matches:one(e,'uuid')[1]=matches.pop(0)
 out.write_text(prettify(sx.dumps(tree)),encoding='utf-8',newline='\n')
-model.update(revision='v0.9.9',coordinate_units='mm',native_pin_crosswalk=layout['crosswalk'],pin_positions={e:list(p) for e,p in P.items()},
-             geometric_wires=[dict(net=n,a=a,b=b) for n,a,b in segments],library_policy='KiCad 10 stock symbols plus four explicitly authorized MCP-authored datasheet symbols for U1/U5/U6/Q8')
+def wire_key(w):return w['net'],tuple(w['a']),tuple(w['b'])
+prior_order={wire_key(w):i for i,w in enumerate(model.get('geometric_wires',[]))}
+ordered_segments=sorted(segments,key=lambda s:(prior_order.get(s,len(prior_order)),s))
+model.update(revision='v0.9.10',coordinate_units='mm',native_pin_crosswalk=layout['crosswalk'],pin_positions={e:list(p) for e,p in P.items()},
+             geometric_wires=[dict(net=n,a=a,b=b) for n,a,b in ordered_segments],library_policy='KiCad 10 stock symbols plus four explicitly authorized MCP-authored datasheet symbols for U1/U5/U6/Q8')
 for c in model['components']:
     entry=next(x for x in layout['catalog'] if x['original_ref']==c['ref'])
     c['library_symbol']=entry['symbol'];c['footprint']=entry['footprint']
