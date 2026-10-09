@@ -9073,6 +9073,15 @@
 				)
 			)
 		)
+		(property "ConnectionEvidence" "v0.9.21 user annotated S1 upper-right to C35 upper/model2 (GND via prior V018); lower-right to C35 lower/model1, R40 lower/model2 and R41 left/model2. User explicitly confirms R41 right/model1 reaches J1 VPP/MCLR. Correct physical-to-native switch mapping TL=1, TR=3, BL=2, BR=4. Top-row/bottom-row common pairs remain a tactile-switch hypothesis; released/pressed behavior has not been measured."
+			(at 537.21 60.96 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
 		(pin "1"
 			(uuid "8896a97b-cd3c-4f0d-9191-28048d9f8454")
 		)
@@ -9160,6 +9169,15 @@
 				)
 			)
 		)
+		(property "ConnectionEvidence" "v0.9.21 user annotated S1 upper-right to C35 upper/model2 (GND via prior V018); lower-right to C35 lower/model1, R40 lower/model2 and R41 left/model2. User explicitly confirms R41 right/model1 reaches J1 VPP/MCLR. Correct physical-to-native switch mapping TL=1, TR=3, BL=2, BR=4. Top-row/bottom-row common pairs remain a tactile-switch hypothesis; released/pressed behavior has not been measured."
+			(at 558.8 74.93 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
 		(pin "1"
 			(uuid "c2f55561-edf0-4e6e-a675-56e26216c889")
 		)
@@ -9239,6 +9257,15 @@
 				)
 			)
 		)
+		(property "ConnectionEvidence" "v0.9.21 user annotated S1 upper-right to C35 upper/model2 (GND via prior V018); lower-right to C35 lower/model1, R40 lower/model2 and R41 left/model2. User explicitly confirms R41 right/model1 reaches J1 VPP/MCLR. Correct physical-to-native switch mapping TL=1, TR=3, BL=2, BR=4. Top-row/bottom-row common pairs remain a tactile-switch hypothesis; released/pressed behavior has not been measured."
+			(at 558.8 50.8 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
 		(pin "1"
 			(uuid "8d2849ed-da80-459c-90e9-17c5ee97ce5a")
 		)
@@ -9316,6 +9343,15 @@
 				(font
 					(size 1.27 1.27)
 				)
+			)
+		)
+		(property "ConnectionEvidence" "v0.9.21 user annotated S1 upper-right to C35 upper/model2 (GND via prior V018); lower-right to C35 lower/model1, R40 lower/model2 and R41 left/model2. User explicitly confirms R41 right/model1 reaches J1 VPP/MCLR. Correct physical-to-native switch mapping TL=1, TR=3, BL=2, BR=4. Top-row/bottom-row common pairs remain a tactile-switch hypothesis; released/pressed behavior has not been measured."
+			(at 520.7 50.8 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
 			)
 		)
 		(pin "1"
@@ -17578,7 +17614,7 @@
 	)
 	(symbol
 		(lib_id "Device:R")
-		(at 306.07 391.16 90)
+		(at 473.71 356.87 90)
 		(unit 1)
 		(body_style 1)
 		(exclude_from_sim no)
@@ -17588,7 +17624,7 @@
 		(dnp no)
 		(uuid "eb8e1c57-3de2-4113-8134-de2d0b32acd8")
 		(property "Reference" "R35"
-			(at 306.07 389.128 90)
+			(at 473.71 354.83799999999997 90)
 			(show_name no)
 			(do_not_autoplace no)
 			(effects
@@ -17598,7 +17634,7 @@
 			)
 		)
 		(property "Value" "DNP"
-			(at 306.07 391.16 90)
+			(at 473.71 356.87 90)
 			(show_name no)
 			(do_not_autoplace no)
 			(effects
@@ -17608,7 +17644,7 @@
 			)
 		)
 		(property "Footprint" "Resistor_SMD:R_0603_1608Metric"
-			(at 306.07 392.938 90)
+			(at 473.71 358.64799999999997 90)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -17619,7 +17655,7 @@
 			)
 		)
 		(property "Datasheet" ""
-			(at 306.07 391.16 0)
+			(at 473.71 356.87 0)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -17630,7 +17666,7 @@
 			)
 		)
 		(property "Description" "Resistor"
-			(at 306.07 391.16 0)
+			(at 473.71 356.87 0)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -17638,6 +17674,15 @@
 				(font
 					(size 1.27 1.27)
 				)
+			)
+		)
+		(property "ConnectionEvidence" "v0.9.21 annotated photo: J6 left/model1 joins Q9 single/native3 and R36 right/model2. J6 right/model2 joins R36 left/model1. PIC26/RB5-TP10-R35 upper; R35 lower-Q9 paired-left; paired-right via V021 is GND. All J6/Q9/R35/R36 options remain DNP. R36 left/J6 right onward rail is not established by this annotation."
+			(at 473.71 356.87 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
 			)
 		)
 		(pin "1"
@@ -17657,7 +17702,7 @@
 	)
 	(symbol
 		(lib_id "Device:R")
-		(at 322.58 391.16 90)
+		(at 530.86 359.41 0)
 		(unit 1)
 		(body_style 1)
 		(exclude_from_sim no)
@@ -17667,7 +17712,7 @@
 		(dnp no)
 		(uuid "4aaf2671-a721-4f2c-a42b-1cb2bf329387")
 		(property "Reference" "R36"
-			(at 322.58 389.128 90)
+			(at 530.86 357.378 90)
 			(show_name no)
 			(do_not_autoplace no)
 			(effects
@@ -17677,7 +17722,7 @@
 			)
 		)
 		(property "Value" "DNP"
-			(at 322.58 391.16 90)
+			(at 530.86 359.41 90)
 			(show_name no)
 			(do_not_autoplace no)
 			(effects
@@ -17687,7 +17732,7 @@
 			)
 		)
 		(property "Footprint" "Resistor_SMD:R_0603_1608Metric"
-			(at 322.58 392.938 90)
+			(at 530.86 361.188 90)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -17698,7 +17743,7 @@
 			)
 		)
 		(property "Datasheet" ""
-			(at 322.58 391.16 0)
+			(at 530.86 359.41 0)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -17709,7 +17754,7 @@
 			)
 		)
 		(property "Description" "Resistor"
-			(at 322.58 391.16 0)
+			(at 530.86 359.41 0)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -17717,6 +17762,15 @@
 				(font
 					(size 1.27 1.27)
 				)
+			)
+		)
+		(property "ConnectionEvidence" "v0.9.21 annotated photo: J6 left/model1 joins Q9 single/native3 and R36 right/model2. J6 right/model2 joins R36 left/model1. PIC26/RB5-TP10-R35 upper; R35 lower-Q9 paired-left; paired-right via V021 is GND. All J6/Q9/R35/R36 options remain DNP. R36 left/J6 right onward rail is not established by this annotation."
+			(at 530.86 359.41 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
 			)
 		)
 		(pin "1"
@@ -18098,7 +18152,7 @@
 	)
 	(symbol
 		(lib_id "Connector_Generic:Conn_01x03")
-		(at 483.87 361.95 0)
+		(at 496.57 359.41 0)
 		(unit 1)
 		(body_style 1)
 		(exclude_from_sim no)
@@ -18108,7 +18162,7 @@
 		(dnp no)
 		(uuid "2b4be148-ed60-4f10-9342-9189f48fa720")
 		(property "Reference" "Q9"
-			(at 483.87 367.03 0)
+			(at 496.57 364.49 0)
 			(show_name no)
 			(do_not_autoplace no)
 			(effects
@@ -18118,7 +18172,7 @@
 			)
 		)
 		(property "Value" "DNP"
-			(at 483.87 356.87 0)
+			(at 496.57 354.33000000000004 0)
 			(show_name no)
 			(do_not_autoplace no)
 			(effects
@@ -18128,7 +18182,7 @@
 			)
 		)
 		(property "Footprint" "Package_TO_SOT_SMD:SOT-23"
-			(at 483.87 361.95 0)
+			(at 496.57 359.41 0)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -18139,7 +18193,7 @@
 			)
 		)
 		(property "Datasheet" ""
-			(at 483.87 361.95 0)
+			(at 496.57 359.41 0)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -18150,7 +18204,7 @@
 			)
 		)
 		(property "Description" "Generic connector, single row, 01x03, script generated (kicad-library-utils/schlib/autogen/connector/)"
-			(at 483.87 361.95 0)
+			(at 496.57 359.41 0)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -18161,7 +18215,16 @@
 			)
 		)
 		(property "ViaEvidence" "v0.9 DNP: right pad/pin2 to V021 user GND; no fitted transistor identification required."
-			(at 483.87 361.95 0)
+			(at 496.57 359.41 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "ConnectionEvidence" "v0.9.21 annotated photo: J6 left/model1 joins Q9 single/native3 and R36 right/model2. J6 right/model2 joins R36 left/model1. PIC26/RB5-TP10-R35 upper; R35 lower-Q9 paired-left; paired-right via V021 is GND. All J6/Q9/R35/R36 options remain DNP. R36 left/J6 right onward rail is not established by this annotation."
+			(at 496.57 359.41 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -18189,7 +18252,7 @@
 	)
 	(symbol
 		(lib_id "Connector_Generic:Conn_01x02")
-		(at 504.19 361.95 0)
+		(at 562.61 359.41 0)
 		(unit 1)
 		(body_style 1)
 		(exclude_from_sim no)
@@ -18199,7 +18262,7 @@
 		(dnp no)
 		(uuid "f74ef52d-7f72-4ea8-98b4-21f1f6a5b339")
 		(property "Reference" "J6"
-			(at 504.19 364.49 0)
+			(at 562.61 361.95000000000005 0)
 			(show_name no)
 			(do_not_autoplace no)
 			(effects
@@ -18209,7 +18272,7 @@
 			)
 		)
 		(property "Value" "DNP"
-			(at 504.19 356.87 0)
+			(at 562.61 354.33000000000004 0)
 			(show_name no)
 			(do_not_autoplace no)
 			(effects
@@ -18219,7 +18282,7 @@
 			)
 		)
 		(property "Footprint" "Connector_PinHeader_2.54mm:PinHeader_1x02_P2.54mm_Vertical"
-			(at 504.19 361.95 0)
+			(at 562.61 359.41 0)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -18230,7 +18293,7 @@
 			)
 		)
 		(property "Datasheet" ""
-			(at 504.19 361.95 0)
+			(at 562.61 359.41 0)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -18241,7 +18304,7 @@
 			)
 		)
 		(property "Description" "Generic connector, single row, 01x02, script generated (kicad-library-utils/schlib/autogen/connector/)"
-			(at 504.19 361.95 0)
+			(at 562.61 359.41 0)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -18249,6 +18312,15 @@
 				(font
 					(size 1.27 1.27)
 				)
+			)
+		)
+		(property "ConnectionEvidence" "v0.9.21 annotated photo: J6 left/model1 joins Q9 single/native3 and R36 right/model2. J6 right/model2 joins R36 left/model1. PIC26/RB5-TP10-R35 upper; R35 lower-Q9 paired-left; paired-right via V021 is GND. All J6/Q9/R35/R36 options remain DNP. R36 left/J6 right onward rail is not established by this annotation."
+			(at 562.61 359.41 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
 			)
 		)
 		(pin "1"
@@ -18265,6 +18337,7 @@
 				)
 			)
 		)
+		(mirror x)
 	)
 	(symbol
 		(lib_id "Connector:TestPoint")
@@ -18344,7 +18417,7 @@
 	)
 	(symbol
 		(lib_id "Connector:TestPoint")
-		(at 455.93 382.27 270)
+		(at 461.01 351.79 270)
 		(unit 1)
 		(body_style 1)
 		(exclude_from_sim no)
@@ -18354,7 +18427,7 @@
 		(dnp no)
 		(uuid "902dfbbf-f2ae-4361-8b43-f0c8baa6f692")
 		(property "Reference" "TP10"
-			(at 449.072 382.27 0)
+			(at 454.152 351.79 0)
 			(show_name no)
 			(do_not_autoplace no)
 			(effects
@@ -18364,7 +18437,7 @@
 			)
 		)
 		(property "Value" "test point"
-			(at 450.85 382.27 0)
+			(at 455.93 351.79 0)
 			(show_name no)
 			(do_not_autoplace no)
 			(effects
@@ -18374,7 +18447,7 @@
 			)
 		)
 		(property "Footprint" "TestPoint:TestPoint_THTPad_D2.0mm_Drill1.0mm"
-			(at 455.93 387.35 0)
+			(at 461.01 356.87000000000006 0)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -18385,7 +18458,7 @@
 			)
 		)
 		(property "Datasheet" ""
-			(at 455.93 387.35 0)
+			(at 461.01 356.87000000000006 0)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -18396,7 +18469,7 @@
 			)
 		)
 		(property "Description" "test point"
-			(at 455.93 382.27 0)
+			(at 461.01 351.79 0)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -18404,6 +18477,15 @@
 				(font
 					(size 1.27 1.27)
 				)
+			)
+		)
+		(property "ConnectionEvidence" "v0.9.21 annotated photo: J6 left/model1 joins Q9 single/native3 and R36 right/model2. J6 right/model2 joins R36 left/model1. PIC26/RB5-TP10-R35 upper; R35 lower-Q9 paired-left; paired-right via V021 is GND. All J6/Q9/R35/R36 options remain DNP. R36 left/J6 right onward rail is not established by this annotation."
+			(at 461.01 351.79 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
 			)
 		)
 		(pin "1"
@@ -18420,7 +18502,7 @@
 	)
 	(symbol
 		(lib_id "Connector:TestPoint")
-		(at 478.79 382.27 270)
+		(at 508.0 351.79 270)
 		(unit 1)
 		(body_style 1)
 		(exclude_from_sim no)
@@ -18430,7 +18512,7 @@
 		(dnp no)
 		(uuid "9a14b497-6c05-4bc5-ae4d-21ecf461948e")
 		(property "Reference" "TP104"
-			(at 471.932 382.27 0)
+			(at 501.142 351.79 0)
 			(show_name no)
 			(do_not_autoplace no)
 			(effects
@@ -18440,7 +18522,7 @@
 			)
 		)
 		(property "Value" "VREF"
-			(at 473.71 382.27 0)
+			(at 502.91999999999996 351.79 0)
 			(show_name no)
 			(do_not_autoplace no)
 			(effects
@@ -18450,7 +18532,7 @@
 			)
 		)
 		(property "Footprint" "TestPoint:TestPoint_THTPad_D2.0mm_Drill1.0mm"
-			(at 478.79 387.35 0)
+			(at 508.0 356.87000000000006 0)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -18461,7 +18543,7 @@
 			)
 		)
 		(property "Datasheet" ""
-			(at 478.79 387.35 0)
+			(at 508.0 356.87000000000006 0)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -18472,7 +18554,7 @@
 			)
 		)
 		(property "Description" "test point"
-			(at 478.79 382.27 0)
+			(at 508.0 351.79 0)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -18483,7 +18565,7 @@
 			)
 		)
 		(property "ViaEvidence" "v0.9.16 CORRECTION: user confirms PIC21/RB0 -> TP16 -> Q2 single pad; TP16-VREF = 0.8 Mohm. User explicitly withdraws PIC21-VREF. PIC21/V026 belongs to H_PIR_SIG, separate from VREF. RA2/V035 and R21/V071 remain VREF. This supersedes every earlier RB0/V026-to-VREF statement."
-			(at 478.79 382.27 0)
+			(at 508.0 351.79 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -18492,7 +18574,7 @@
 			)
 		)
 		(property "MeasurementEvidence" "v0.9.16 CORRECTION: user confirms PIC21/RB0 -> TP16 -> Q2 single pad; TP16-VREF = 0.8 Mohm. User explicitly withdraws PIC21-VREF. PIC21/V026 belongs to H_PIR_SIG, separate from VREF. RA2/V035 and R21/V071 remain VREF. This supersedes every earlier RB0/V026-to-VREF statement."
-			(at 478.79 382.27 0)
+			(at 508.0 351.79 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -19891,9 +19973,15 @@
 				(hide yes)
 			)
 		)
-    (property "ConnectionEvidence" "v0.9.20 B22-B27: upper photo contact V -> GND, lower W -> VPP, each 1 ohm. B29 red V/black W about 0.7V; B30 reverse OL. Supports A=V/GND (pin2), K=W/VPP (pin1). G3 identity and Zener breakdown remain unverified; no 3.9V measurement." (at 405.13 391.16 0)
-      (effects (font (size 1.27 1.27)) (hide yes))
-    )
+		(property "ConnectionEvidence" "v0.9.20 B22-B27: upper photo contact V -> GND, lower W -> VPP, each 1 ohm. B29 red V/black W about 0.7V; B30 reverse OL. Supports A=V/GND (pin2), K=W/VPP (pin1). G3 identity and Zener breakdown remain unverified; no 3.9V measurement."
+			(at 405.13 391.16 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
 		(pin "1"
 			(uuid "d648c4ea-2c85-4528-8c49-73c7c706eaa6")
 		)

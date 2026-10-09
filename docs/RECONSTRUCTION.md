@@ -75,3 +75,11 @@ v0.9.19 user annotated local copper: R47 left -> U3.1/R27 right; R47 right + C42
 ## v0.9.20 - D6 and U6 open-pad results
 
 v0.9.20: U6.5-U6.2 measured 1 ohm (B28). User annotation also joins physical L2/native5 to R37 upper/model2 and empty U6A single/native1. U6.4/L1 marked NC by user and appears as an isolated surface stub in original photos. Candidate pin5 is internally NC but externally tied to VIN; pin4 remains unused. v0.9.20 B22-B27: upper photo contact V -> GND, lower W -> VPP, each 1 ohm. B29 red V/black W about 0.7V; B30 reverse OL. Supports A=V/GND (pin2), K=W/VPP (pin1). G3 identity and Zener breakdown remain unverified; no 3.9V measurement. Recorded readings and probe definitions: [batch results](../evidence/d6_u6_open_pad_results_20261009.json). TP9 has no established physical location and is under inventory review.
+
+## v0.9.21 - J6/Q9 option and button routing
+
+v0.9.21 annotated photo: J6 left/model1 joins Q9 single/native3 and R36 right/model2. J6 right/model2 joins R36 left/model1. PIC26/RB5-TP10-R35 upper; R35 lower-Q9 paired-left; paired-right via V021 is GND. All J6/Q9/R35/R36 options remain DNP. R36 left/J6 right onward rail is not established by this annotation.
+
+v0.9.21 user annotated S1 upper-right to C35 upper/model2 (GND via prior V018); lower-right to C35 lower/model1, R40 lower/model2 and R41 left/model2. User explicitly confirms R41 right/model1 reaches J1 VPP/MCLR. Correct physical-to-native switch mapping TL=1, TR=3, BL=2, BR=4. Top-row/bottom-row common pairs remain a tactile-switch hypothesis; released/pressed behavior has not been measured.
+
+See [annotated routing record](../evidence/j6_q9_button_routing_20261009.json). J6 numbering is a documented local convention: left hole 1, right hole 2; no fitted connector pinout is claimed.

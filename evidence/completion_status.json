@@ -1,20 +1,17 @@
 {
   "date": "2026-10-09",
-  "revision": "v0.9.20",
-  "review_revision": "2026-10-09 receiver options reconstructed; D6 routing/polarity and U6 pin5-VIN resolved",
+  "revision": "v0.9.21",
+  "review_revision": "2026-10-09 J6/Q9 option mapped; button pad mapping corrected; R41-VPP confirmed",
   "interpretation": "Every catalog entry is drawn. Hardware connectivity, values and identities are only partially verified. No routed PCB exists.",
   "catalog_entries": 150,
   "physical_pins": 352,
-  "unresolved_physical_pins": 9,
+  "unresolved_physical_pins": 4,
   "unresolved_pins_by_population": {
-    "DNP": 8,
+    "DNP": 3,
     "populated": 1
   },
   "unresolved_pins_by_reference": {
     "C49": 2,
-    "J6": 2,
-    "Q9": 1,
-    "R36": 2,
     "TP9": 1,
     "U6A": 1
   },
@@ -25,11 +22,6 @@
   "current_dnp_open_pads": [
     "C49.1",
     "C49.2",
-    "J6.1",
-    "J6.2",
-    "Q9.S",
-    "R36.1",
-    "R36.2",
     "U6A.R2"
   ],
   "unknown_ceramic_values": [
@@ -91,14 +83,14 @@
     ],
     "qualification": "Assigned is not the same as measured. R8 and C11 anchor photo-based package families."
   },
-  "erc_total": 16,
+  "erc_total": 10,
   "erc_by_type": {
     "power_pin_not_driven": 5,
-    "pin_not_connected": 9,
-    "isolated_pin_label": 2
+    "pin_not_connected": 4,
+    "isolated_pin_label": 1
   },
-  "modeled_nets": 84,
-  "schematic_sha256": "534aa4d15de6f14a2f2028fb9d853502c3bb0b3f725b503b720c63f2e03ef7cb",
+  "modeled_nets": 85,
+  "schematic_sha256": "81069417884670140f62c01b222dec090805c4a878823afcfd1a446d4ecd4d54",
   "known_identified_ICs_needing_new_symbols": [],
   "complete_symbols_for_selected_candidates": true,
   "available_instruments": [
@@ -154,8 +146,8 @@
     {
       "id": "E05",
       "area": "Button circuit",
-      "gap": "R41.1/H_R41_FREE has an unknown destination; its former H_BUTTON_MCU name was not evidence of another MCU connection. A supply, bias or other control destination is possible.",
-      "method": "Agent first reconciles IMG_2438 surface copper around R41/R40/C35/S1 against C27/VSYS and existing via reports. The switch body obscures some copper and its released/pressed internal contacts are not visible; only that residual ambiguity merits targeted bench work, not a broad resistor-to-rail sweep."
+      "gap": "S1 left-hand common-pair assignments and released/pressed behavior remain inferred. The reconstructed pressed path is VPP through 330 ohm to GND, with ICSP_DAT reaching the switch node through 10k. Operating purpose is not established by the annotation.",
+      "method": "Only verify the switch contact behavior if required: released versus pressed continuity of opposite rows. Do not repeat the annotated C35/R40/R41 joins or R41-to-VPP destination. No broad resistor-to-rail sweep."
     },
     {
       "id": "E06",
@@ -214,7 +206,7 @@
     {
       "id": "D01",
       "area": "Empty options",
-      "gap": "Optional-pad routing is incomplete; values and intended uses may remain unknowable without another board variant.",
+      "gap": "C49 and one U6A pad remain unmapped. J6 right/R36 left onward identity is not established; empty Q9 functions and intended option values remain unknown.",
       "method": "Record option copper where visible; defer measurement unless it affects a populated net."
     },
     {
@@ -333,14 +325,22 @@
       ],
       "priority": 1,
       "state": "open",
-      "known": "R41=331 gives 330 ohm. In the current model H_BUTTON reaches PIC28/ICSP_DAT THROUGH R40, not by a direct copper net. S1 common leg pairs remain a normal-switch hypothesis.",
-      "unknown": "R41.1/H_R41_FREE has an unknown destination; its former H_BUTTON_MCU name was not evidence of another MCU connection. A supply, bias or other control destination is possible.",
-      "next_action": "Agent first reconciles IMG_2438 surface copper around R41/R40/C35/S1 against C27/VSYS and existing via reports. The switch body obscures some copper and its released/pressed internal contacts are not visible; only that residual ambiguity merits targeted bench work, not a broad resistor-to-rail sweep.",
+      "known": "R41=330 ohm from marking 331; user confirms its right/model1 end reaches J1 VPP/MCLR. Its left/model2 end joins R40 lower, C35 lower and S1 lower-right. S1 upper-right reaches C35 upper, previously tied to GND/V018. R40 opposite end remains ICSP_DAT/PIC28.",
+      "unknown": "S1 left-hand common-pair assignments and released/pressed behavior remain inferred. The reconstructed pressed path is VPP through 330 ohm to GND, with ICSP_DAT reaching the switch node through 10k. Operating purpose is not established by the annotation.",
+      "next_action": "Only verify the switch contact behavior if required: released versus pressed continuity of opposite rows. Do not repeat the annotated C35/R40/R41 joins or R41-to-VPP destination. No broad resistor-to-rail sweep.",
       "closed_when": "Switch pairings and the button signal destination are verified.",
       "open_pads": [],
       "nets": [
         "H_BUTTON",
-        "H_R41_FREE"
+        "MCLR_VPP",
+        "ICSP_DAT"
+      ],
+      "resolved_subquestions": [
+        {
+          "result": "v0.9.21 user annotated S1 upper-right to C35 upper/model2 (GND via prior V018); lower-right to C35 lower/model1, R40 lower/model2 and R41 left/model2. User explicitly confirms R41 right/model1 reaches J1 VPP/MCLR. Correct physical-to-native switch mapping TL=1, TR=3, BL=2, BR=4. Top-row/bottom-row common pairs remain a tactile-switch hypothesis; released/pressed behavior has not been measured.",
+          "evidence": "evidence/j6_q9_button_routing_20261009.json",
+          "date": "2026-10-09"
+        }
       ]
     },
     {
@@ -681,12 +681,24 @@
       ],
       "priority": 2,
       "state": "open",
-      "known": "8 open pads belong to unpopulated options. R46 is now fully mapped: upper to D2.L/ANT2, lower to D2.S, with no resistor fitted. U7 is fully mapped: pin1 GND, pin2 J3 signal, pin3 PIR supply; it remains DNP. R47 and C42 local option-pad wiring is now reconstructed from annotated/original photos; both remain DNP. U6A single pad joins U6 VIN via the user-drawn R37 branch.",
-      "unknown": "Optional-pad routing is incomplete; values and intended uses may remain unknowable without another board variant.",
+      "known": "Three open DNP pads remain: C49.1, C49.2 and U6A.R2. R46, U7, R47/C42 and all J6/Q9/R35/R36 pads now have local routes. v0.9.21 annotated photo: J6 left/model1 joins Q9 single/native3 and R36 right/model2. J6 right/model2 joins R36 left/model1. PIC26/RB5-TP10-R35 upper; R35 lower-Q9 paired-left; paired-right via V021 is GND. All J6/Q9/R35/R36 options remain DNP. R36 left/J6 right onward rail is not established by this annotation.",
+      "unknown": "C49 and one U6A pad remain unmapped. J6 right/R36 left onward identity is not established; empty Q9 functions and intended option values remain unknown.",
       "next_action": "Record option copper where visible; defer measurement unless it affects a populated net.",
       "closed_when": "Optional routes are documented to the desired reproduction scope; do not invent fitted values or no-connect flags.",
       "open_pads": [],
-      "nets": []
+      "nets": [
+        "Q9_J6_1",
+        "J6_OPTION_2",
+        "R35_Q9",
+        "RB5_OPT"
+      ],
+      "resolved_subquestions": [
+        {
+          "result": "v0.9.21 annotated photo: J6 left/model1 joins Q9 single/native3 and R36 right/model2. J6 right/model2 joins R36 left/model1. PIC26/RB5-TP10-R35 upper; R35 lower-Q9 paired-left; paired-right via V021 is GND. All J6/Q9/R35/R36 options remain DNP. R36 left/J6 right onward rail is not established by this annotation.",
+          "evidence": "evidence/j6_q9_button_routing_20261009.json",
+          "date": "2026-10-09"
+        }
+      ]
     },
     {
       "id": "F01",
@@ -787,7 +799,8 @@
     "R23 right / C40 lower / R42 upper: user 1 ohm for both joins, also clear surface copper. R23 endpoint resolved; old C40 detector-output association withdrawn.",
     "U7 empty option mapped to J3: U7.1-J3.3 GND, U7.2-J3.2 signal, U7.3-J3.1 PIR supply. TP16-to-TP11/TP17 each 400 kohm; direct joins excluded.",
     "PIC21/RB0 -> TP16 -> Q2.S confirmed; old PIC21-VREF removed. TP16-VREF 0.8 Mohm, not a wire. RA2/V035 and receiver bias retain VREF.",
-    "v0.9.17 user-annotated photo: C25 right pad/model1 -> PIC2/RA0; C26 right pad/model1 -> PIC3/RA1. Left pads/model2 are common, retaining earlier V029-GND evidence. No new numeric resistance or capacitance supplied. C26 joins the existing RA1/R28/R29/TP7 net, separate from RA0 and VREF."
+    "v0.9.17 user-annotated photo: C25 right pad/model1 -> PIC2/RA0; C26 right pad/model1 -> PIC3/RA1. Left pads/model2 are common, retaining earlier V029-GND evidence. No new numeric resistance or capacitance supplied. C26 joins the existing RA1/R28/R29/TP7 net, separate from RA0 and VREF.",
+    "User confirms R41 right end reaches J1 VPP; annotated J6/Q9/R35/R36 option copper mapped."
   ],
   "history": "docs/history/README.md"
 }

@@ -37,7 +37,7 @@ for inst in instances:
     ref=next(p[2] for p in children(inst,'property') if p[1]=='Reference')
     unit=int(one(inst,'unit')[1]); c=catalog[(ref,unit)]; old=c['legacy']; lid=one(inst,'lib_id')[1]
     x,y,rot=map(float,one(inst,'at')[1:]); rad=math.radians(rot)
-    if ref in ['TP9','TP10','TP104']:
+    if ref=='TP9':
         y=277*1.27;one(inst,'at')[2]=y
     BYREF[ref]=inst
     for sub in children(libs[lid],'symbol'):
@@ -82,7 +82,7 @@ for inst in instances:
     if ref in ['TP1','TP2']:rx=vx=x+7.62;ry=y-1.27;vy=y+0.635
     if ref=='S1':rx=vx=x;ry=y-10.16;vy=y-8.255
     if ref=='C18':rx=vx=x-6.35;ry=y+3.81;vy=y+5.715
-    if ref in ['TP9','TP10','TP104']:ry-=24*1.27;vy-=24*1.27
+    if ref=='TP9':ry-=24*1.27;vy-=24*1.27
     if rot==180:rx=vx=x+4.445
     for name,px,py in [('Reference',rx,ry),('Value',vx,vy)]:
         prop=props[name];one(prop,'at')[1:]=[rnd(px),rnd(py),int(rot)%180]
@@ -153,11 +153,15 @@ for l in layout['labels']:
     if l['net'] in ['Q8_DRIVE_A','Q8_DRIVE_B','H_RF_OUT_CAND','H_RF_VDD']:continue
     w=dict(a=l['p'],b=l['p'])
     if not excluded(w):L.append(dict(net=l['net'],p=oldpoints.get(mm(l['p']),mm(l['p']))))
-# Give the button-control label enough room before the horizontal resistor body.
-for l in L:
-    if l['net']=='H_R41_FREE':
-        x,y=l['p'];start=(rnd(x-3.81),y)
-        W.append(dict(net=l['net'],a=start,b=l['p']));l['p']=start
+# User-defined physical rows map to the stock switch's native common sides.
+wire('GND','S1.TL',(416,46),(416,50),'S1.TR')
+wire('GND',(416,50),(416,69))
+wire('H_BUTTON','R40.2',(440,46),'C35.1')
+wire('H_BUTTON','S1.BL',(440,46))
+wire('H_BUTTON','S1.BR',(432,50),(432,46),(440,46))
+wire('H_BUTTON','R41.2',(414,40),(414,31),(448,31),(448,46),(440,46))
+label('H_BUTTON',(440,46))
+stub('MCLR_VPP','R41.1',-8)
 wire('GND','C9.2',(49,159),(49,190),(53,190))
 # User J3 pin3-GND; pin2 reaches R38 K/right/model1, with 10k to the opposite end.
 stub('GND','J3.3',-6,0)
@@ -222,10 +226,13 @@ stub('GND','D6.2',0,4) # Upper V, anode: 1 ohm to GND; V-to-W about 0.7V.
 wire('H_LED_CTL_A','TP1.1',(151,184),'R30.1')
 wire('H_LED_CTL_B','TP2.1',(151,191),'R31.1')
 label('GND',(199,187))
-stub('RB5_OPT','U4.26',14);stub('RB5_OPT','TP10.1',0,4)
-stub('RB5_OPT','R35.1',-3);stub('R35_Q9','R35.2',0,4)
-stub('R35_Q9','Q9.L',-4)
-stub('GND','Q9.R',4)
+stub('RB5_OPT','U4.26',14)
+wire('RB5_OPT','TP10.1',(363,281),'R35.1');label('RB5_OPT',(363,281))
+wire('R35_Q9','R35.2','Q9.L')
+wire('GND','Q9.R',(385,283),(385,292));label('GND',(385,292))
+wire('Q9_J6_1','Q9.S',(393,285),(393,290),(429,290),(429,283),'J6.1')
+wire('Q9_J6_1','R36.2',(418,290));label('Q9_J6_1',(401,290))
+wire('J6_OPTION_2','R36.1',(418,273),(435,273),(435,281),'J6.2');label('J6_OPTION_2',(418,273))
 stub('GND','R32.1',3)
 
 wire('VSYS','Q1.L',(359,94),(352,94));label('VSYS',(352,94));label('BATTERY+',(359,82)) # User post-Q1 supply; keep its label clear of R43 ground.
@@ -287,6 +294,8 @@ for g in layout['graphics']:
     G.append(e)
 for n in layout['notes']:
     t=n['text']
+    if t.startswith('Spare footprints /'):continue
+    if t.startswith('PIC GPIOs are intentionally'):t='PIC pads have local nets; some onward routes remain unresolved.'
     if t.startswith('Original pad IDs on U1.'):
         t='U1 datasheet symbol: S-1200B45 SOT-23-5. Pin 4 is internally open; option pads retained.'
     if 'Original photographed pad names remain' in t:
@@ -372,7 +381,7 @@ for net,edges in adj.items():
 for l in L:
     x,y=l['p'];G.append(expr(f'(label {q(l["net"])} (at {x} {y} 0) (effects (font (size .762 .762)) (justify left bottom)) (uuid {q(uid())}))'))
 tree.extend(G)
-tree.append(expr('(title_block (title "PetSafe 100-1339 R03 A | single-sheet reconstruction") (date "2026-10-09") (rev "0.9.20") (company "KiCad 10 libraries + four datasheet symbols | MCP authoring") (comment 1 "Receiver option wiring reconstructed; U6 pin5-VIN measured; pin4 unused by user/photo."))'))
+tree.append(expr('(title_block (title "PetSafe 100-1339 R03 A | single-sheet reconstruction") (date "2026-10-09") (rev "0.9.21") (company "KiCad 10 libraries + four datasheet symbols | MCP authoring") (comment 1 "J6/Q9 option mapped; S1 physical rows corrected; R41 to VPP confirmed by user."))'))
 # Canonical pretty printer supplied by the installed MCP server.
 sys.path.insert(0,str(Path.home()/'Documents/VS.Code.Projects/KiCAD-MCP-Server/python'))
 from utils.sexpr_format import prettify
@@ -392,7 +401,7 @@ out.write_text(prettify(sx.dumps(tree)),encoding='utf-8',newline='\n')
 def wire_key(w):return w['net'],tuple(w['a']),tuple(w['b'])
 prior_order={wire_key(w):i for i,w in enumerate(model.get('geometric_wires',[]))}
 ordered_segments=sorted(segments,key=lambda s:(prior_order.get(s,len(prior_order)),s))
-model.update(revision='v0.9.20',coordinate_units='mm',native_pin_crosswalk=layout['crosswalk'],pin_positions={e:list(p) for e,p in P.items()},
+model.update(revision='v0.9.21',coordinate_units='mm',native_pin_crosswalk=layout['crosswalk'],pin_positions={e:list(p) for e,p in P.items()},
              geometric_wires=[dict(net=n,a=a,b=b) for n,a,b in ordered_segments],library_policy='KiCad 10 stock symbols plus four explicitly authorized MCP-authored datasheet symbols for U1/U5/U6/Q8')
 for c in model['components']:
     entry=next(x for x in layout['catalog'] if x['original_ref']==c['ref'])

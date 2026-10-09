@@ -82,6 +82,23 @@ assert v['erc_total']==sum(len(s['violations']) for s in read('output/erc.json')
 assert v['unresolved_physical_pins']==len(m['unresolved_pins']) and v['schematic_sha256']==sha('schematic/PetSafe_1001339.kicad_sch')
 assert v['retained_original_visual_fragments']==28 and v['withdrawn_original_visual_fragments']==['V_Q1_LEFT']
 placements=read('evidence/library_placements.json')
+option_button=read('evidence/j6_q9_button_routing_20261009.json')
+for x,y in option_button['user_supported_pairs']+option_button['retained_evidence_pairs']+option_button['inferred_switch_pairs']:
+ assert net(x)==net(y),(x,y)
+assert net('R41.1')==net('J1.VPP')==net('D6.1')!=net('R41.2')
+assert net('R40.2')==net('R41.2')==net('C35.1')!=net('C35.2')
+assert net('S1.TR')==net('GND.1')!=net('S1.BR')
+assert len({net('R36.1'),net('R36.2'),net('R35.1'),net('R35.2'),net('Q9.R')})==5, 'Never bridge empty option footprints'
+assert not {'Q9.S','J6.1','J6.2','R36.1','R36.2'} & set(m['unresolved_pins'])
+assert not any(n['net']=='H_R41_FREE' for n in m['nets'])
+for ep,native in option_button['physical_to_native_switch'].items():
+ assert m['native_pin_crosswalk'][ep]==read('evidence/pin_crosswalk.json')[ep]==native
+for ref in ['J6','Q9','R35','R36']:
+ assert next(c for c in m['components'] if c['ref']==ref)['population']=='DNP'
+for ref in ['J6','Q9','R35','R36','TP10','S1','C35','R40','R41']:
+ expected=next(c for c in placements['components'] if c['reference']==ref)['properties']['ConnectionEvidence']
+ assert xml.findtext(f'./components/comp[@ref="{ref}"]/fields/field[@name="ConnectionEvidence"]')==expected
+for path,digest in option_button['photos'].items():assert sha(path)==digest
 batch=read('evidence/u3_j3_measurements_20261009.json')
 measured={r['id']:r for r in batch['readings']}
 assert measured['B05']['resistance_ohms']==measured['B03']['resistance_ohms']==1

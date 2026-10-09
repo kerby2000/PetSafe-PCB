@@ -431,7 +431,10 @@
       },
       "rotation": 0,
       "includePins": true,
-      "footprint": ""
+      "footprint": "",
+      "properties": {
+        "ConnectionEvidence": "v0.9.21 user annotated S1 upper-right to C35 upper/model2 (GND via prior V018); lower-right to C35 lower/model1, R40 lower/model2 and R41 left/model2. User explicitly confirms R41 right/model1 reaches J1 VPP/MCLR. Correct physical-to-native switch mapping TL=1, TR=3, BL=2, BR=4. Top-row/bottom-row common pairs remain a tactile-switch hypothesis; released/pressed behavior has not been measured."
+      }
     },
     {
       "symbol": "Device:C",
@@ -443,7 +446,10 @@
       },
       "rotation": 0,
       "includePins": true,
-      "footprint": "Capacitor_SMD:C_0805_2012Metric"
+      "footprint": "Capacitor_SMD:C_0805_2012Metric",
+      "properties": {
+        "ConnectionEvidence": "v0.9.21 user annotated S1 upper-right to C35 upper/model2 (GND via prior V018); lower-right to C35 lower/model1, R40 lower/model2 and R41 left/model2. User explicitly confirms R41 right/model1 reaches J1 VPP/MCLR. Correct physical-to-native switch mapping TL=1, TR=3, BL=2, BR=4. Top-row/bottom-row common pairs remain a tactile-switch hypothesis; released/pressed behavior has not been measured."
+      }
     },
     {
       "symbol": "Device:R",
@@ -455,7 +461,10 @@
       },
       "rotation": 0,
       "includePins": true,
-      "footprint": "Resistor_SMD:R_0603_1608Metric"
+      "footprint": "Resistor_SMD:R_0603_1608Metric",
+      "properties": {
+        "ConnectionEvidence": "v0.9.21 user annotated S1 upper-right to C35 upper/model2 (GND via prior V018); lower-right to C35 lower/model1, R40 lower/model2 and R41 left/model2. User explicitly confirms R41 right/model1 reaches J1 VPP/MCLR. Correct physical-to-native switch mapping TL=1, TR=3, BL=2, BR=4. Top-row/bottom-row common pairs remain a tactile-switch hypothesis; released/pressed behavior has not been measured."
+      }
     },
     {
       "symbol": "Device:R",
@@ -467,7 +476,10 @@
       },
       "rotation": 90,
       "includePins": true,
-      "footprint": "Resistor_SMD:R_0603_1608Metric"
+      "footprint": "Resistor_SMD:R_0603_1608Metric",
+      "properties": {
+        "ConnectionEvidence": "v0.9.21 user annotated S1 upper-right to C35 upper/model2 (GND via prior V018); lower-right to C35 lower/model1, R40 lower/model2 and R41 left/model2. User explicitly confirms R41 right/model1 reaches J1 VPP/MCLR. Correct physical-to-native switch mapping TL=1, TR=3, BL=2, BR=4. Top-row/bottom-row common pairs remain a tactile-switch hypothesis; released/pressed behavior has not been measured."
+      }
     },
     {
       "symbol": "Device:C",
@@ -1846,24 +1858,30 @@
       "reference": "R35",
       "value": "DNP",
       "position": {
-        "x": 306.07,
-        "y": 391.16
+        "x": 473.71,
+        "y": 356.87
       },
       "rotation": 90,
       "includePins": true,
-      "footprint": "Resistor_SMD:R_0603_1608Metric"
+      "footprint": "Resistor_SMD:R_0603_1608Metric",
+      "properties": {
+        "ConnectionEvidence": "v0.9.21 annotated photo: J6 left/model1 joins Q9 single/native3 and R36 right/model2. J6 right/model2 joins R36 left/model1. PIC26/RB5-TP10-R35 upper; R35 lower-Q9 paired-left; paired-right via V021 is GND. All J6/Q9/R35/R36 options remain DNP. R36 left/J6 right onward rail is not established by this annotation."
+      }
     },
     {
       "symbol": "Device:R",
       "reference": "R36",
       "value": "DNP",
       "position": {
-        "x": 322.58,
-        "y": 391.16
+        "x": 530.86,
+        "y": 359.41
       },
-      "rotation": 90,
+      "rotation": 0,
       "includePins": true,
-      "footprint": "Resistor_SMD:R_0603_1608Metric"
+      "footprint": "Resistor_SMD:R_0603_1608Metric",
+      "properties": {
+        "ConnectionEvidence": "v0.9.21 annotated photo: J6 left/model1 joins Q9 single/native3 and R36 right/model2. J6 right/model2 joins R36 left/model1. PIC26/RB5-TP10-R35 upper; R35 lower-Q9 paired-left; paired-right via V021 is GND. All J6/Q9/R35/R36 options remain DNP. R36 left/J6 right onward rail is not established by this annotation."
+      }
     },
     {
       "symbol": "Device:C",
@@ -1967,24 +1985,31 @@
       "reference": "Q9",
       "value": "DNP",
       "position": {
-        "x": 483.87,
-        "y": 361.95
+        "x": 496.57,
+        "y": 359.41
       },
       "rotation": 0,
       "includePins": true,
-      "footprint": "Package_TO_SOT_SMD:SOT-23"
+      "footprint": "Package_TO_SOT_SMD:SOT-23",
+      "properties": {
+        "ConnectionEvidence": "v0.9.21 annotated photo: J6 left/model1 joins Q9 single/native3 and R36 right/model2. J6 right/model2 joins R36 left/model1. PIC26/RB5-TP10-R35 upper; R35 lower-Q9 paired-left; paired-right via V021 is GND. All J6/Q9/R35/R36 options remain DNP. R36 left/J6 right onward rail is not established by this annotation."
+      }
     },
     {
       "symbol": "Connector_Generic:Conn_01x02",
       "reference": "J6",
       "value": "DNP",
       "position": {
-        "x": 504.19,
-        "y": 361.95
+        "x": 562.61,
+        "y": 359.41
       },
       "rotation": 0,
       "includePins": true,
-      "footprint": "Connector_PinHeader_2.54mm:PinHeader_1x02_P2.54mm_Vertical"
+      "footprint": "Connector_PinHeader_2.54mm:PinHeader_1x02_P2.54mm_Vertical",
+      "properties": {
+        "ConnectionEvidence": "v0.9.21 annotated photo: J6 left/model1 joins Q9 single/native3 and R36 right/model2. J6 right/model2 joins R36 left/model1. PIC26/RB5-TP10-R35 upper; R35 lower-Q9 paired-left; paired-right via V021 is GND. All J6/Q9/R35/R36 options remain DNP. R36 left/J6 right onward rail is not established by this annotation."
+      },
+      "mirror": "x"
     },
     {
       "symbol": "Connector:TestPoint",
@@ -2003,22 +2028,25 @@
       "reference": "TP10",
       "value": "test point",
       "position": {
-        "x": 455.93,
-        "y": 382.27
+        "x": 461.01,
+        "y": 351.79
       },
-      "rotation": 270,
+      "rotation": 0,
       "includePins": true,
-      "footprint": "TestPoint:TestPoint_THTPad_D2.0mm_Drill1.0mm"
+      "footprint": "TestPoint:TestPoint_THTPad_D2.0mm_Drill1.0mm",
+      "properties": {
+        "ConnectionEvidence": "v0.9.21 annotated photo: J6 left/model1 joins Q9 single/native3 and R36 right/model2. J6 right/model2 joins R36 left/model1. PIC26/RB5-TP10-R35 upper; R35 lower-Q9 paired-left; paired-right via V021 is GND. All J6/Q9/R35/R36 options remain DNP. R36 left/J6 right onward rail is not established by this annotation."
+      }
     },
     {
       "symbol": "Connector:TestPoint",
       "reference": "TP104",
       "value": "VREF",
       "position": {
-        "x": 478.79,
-        "y": 382.27
+        "x": 508.0,
+        "y": 351.79
       },
-      "rotation": 270,
+      "rotation": 0,
       "includePins": true,
       "footprint": "TestPoint:TestPoint_THTPad_D2.0mm_Drill1.0mm",
       "properties": {

@@ -2119,7 +2119,10 @@
         },
         "rotation": 0,
         "includePins": true,
-        "footprint": ""
+        "footprint": "",
+        "properties": {
+          "ConnectionEvidence": "v0.9.21 user annotated S1 upper-right to C35 upper/model2 (GND via prior V018); lower-right to C35 lower/model1, R40 lower/model2 and R41 left/model2. User explicitly confirms R41 right/model1 reaches J1 VPP/MCLR. Correct physical-to-native switch mapping TL=1, TR=3, BL=2, BR=4. Top-row/bottom-row common pairs remain a tactile-switch hypothesis; released/pressed behavior has not been measured."
+        }
       }
     },
     {
@@ -2173,7 +2176,10 @@
         },
         "rotation": 0,
         "includePins": true,
-        "footprint": "Capacitor_SMD:C_0805_2012Metric"
+        "footprint": "Capacitor_SMD:C_0805_2012Metric",
+        "properties": {
+          "ConnectionEvidence": "v0.9.21 user annotated S1 upper-right to C35 upper/model2 (GND via prior V018); lower-right to C35 lower/model1, R40 lower/model2 and R41 left/model2. User explicitly confirms R41 right/model1 reaches J1 VPP/MCLR. Correct physical-to-native switch mapping TL=1, TR=3, BL=2, BR=4. Top-row/bottom-row common pairs remain a tactile-switch hypothesis; released/pressed behavior has not been measured."
+        }
       }
     },
     {
@@ -2227,7 +2233,10 @@
         },
         "rotation": 0,
         "includePins": true,
-        "footprint": "Resistor_SMD:R_0603_1608Metric"
+        "footprint": "Resistor_SMD:R_0603_1608Metric",
+        "properties": {
+          "ConnectionEvidence": "v0.9.21 user annotated S1 upper-right to C35 upper/model2 (GND via prior V018); lower-right to C35 lower/model1, R40 lower/model2 and R41 left/model2. User explicitly confirms R41 right/model1 reaches J1 VPP/MCLR. Correct physical-to-native switch mapping TL=1, TR=3, BL=2, BR=4. Top-row/bottom-row common pairs remain a tactile-switch hypothesis; released/pressed behavior has not been measured."
+        }
       }
     },
     {
@@ -2281,7 +2290,10 @@
         },
         "rotation": 90,
         "includePins": true,
-        "footprint": "Resistor_SMD:R_0603_1608Metric"
+        "footprint": "Resistor_SMD:R_0603_1608Metric",
+        "properties": {
+          "ConnectionEvidence": "v0.9.21 user annotated S1 upper-right to C35 upper/model2 (GND via prior V018); lower-right to C35 lower/model1, R40 lower/model2 and R41 left/model2. User explicitly confirms R41 right/model1 reaches J1 VPP/MCLR. Correct physical-to-native switch mapping TL=1, TR=3, BL=2, BR=4. Top-row/bottom-row common pairs remain a tactile-switch hypothesis; released/pressed behavior has not been measured."
+        }
       }
     },
     {
@@ -8158,15 +8170,15 @@
       "legacy": {
         "ref": "R35",
         "actual": "R35",
-        "x": 241,
-        "y": 308,
+        "x": 373,
+        "y": 281,
         "unit": 1,
         "lid": "PetSafe_Working:RE_R35",
         "value": "DNP",
-        "rx": 241,
-        "ry": 303.5,
-        "vx": 241,
-        "vy": 305,
+        "rx": 373,
+        "ry": 276.5,
+        "vx": 373,
+        "vy": 278,
         "just": "",
         "pins": [
           {
@@ -8195,12 +8207,15 @@
         "reference": "R35",
         "value": "DNP",
         "position": {
-          "x": 306.07,
-          "y": 391.16
+          "x": 473.71,
+          "y": 356.87
         },
         "rotation": 90,
         "includePins": true,
-        "footprint": "Resistor_SMD:R_0603_1608Metric"
+        "footprint": "Resistor_SMD:R_0603_1608Metric",
+        "properties": {
+          "ConnectionEvidence": "v0.9.21 annotated photo: J6 left/model1 joins Q9 single/native3 and R36 right/model2. J6 right/model2 joins R36 left/model1. PIC26/RB5-TP10-R35 upper; R35 lower-Q9 paired-left; paired-right via V021 is GND. All J6/Q9/R35/R36 options remain DNP. R36 left/J6 right onward rail is not established by this annotation."
+        }
       }
     },
     {
@@ -8212,32 +8227,32 @@
       "legacy": {
         "ref": "R36",
         "actual": "R36",
-        "x": 254,
-        "y": 308,
+        "x": 418,
+        "y": 283,
         "unit": 1,
         "lid": "PetSafe_Working:RE_R36",
         "value": "DNP",
-        "rx": 254,
-        "ry": 303.5,
-        "vx": 254,
-        "vy": 305,
-        "just": "",
+        "rx": 422,
+        "ry": 282.3,
+        "vx": 422,
+        "vy": 283.9,
+        "just": "left",
         "pins": [
           {
             "p": "1",
             "name": "~",
-            "x": -3,
-            "y": 0,
-            "side": 0,
+            "x": 0,
+            "y": -3,
+            "side": 270,
             "typ": "passive",
             "length": 1.6
           },
           {
             "p": "2",
             "name": "~",
-            "x": 3,
-            "y": 0,
-            "side": 180,
+            "x": 0,
+            "y": 3,
+            "side": 90,
             "typ": "passive",
             "length": 1.6
           }
@@ -8249,12 +8264,15 @@
         "reference": "R36",
         "value": "DNP",
         "position": {
-          "x": 322.58,
-          "y": 391.16
+          "x": 530.86,
+          "y": 359.41
         },
-        "rotation": 90,
+        "rotation": 0,
         "includePins": true,
-        "footprint": "Resistor_SMD:R_0603_1608Metric"
+        "footprint": "Resistor_SMD:R_0603_1608Metric",
+        "properties": {
+          "ConnectionEvidence": "v0.9.21 annotated photo: J6 left/model1 joins Q9 single/native3 and R36 right/model2. J6 right/model2 joins R36 left/model1. PIC26/RB5-TP10-R35 upper; R35 lower-Q9 paired-left; paired-right via V021 is GND. All J6/Q9/R35/R36 options remain DNP. R36 left/J6 right onward rail is not established by this annotation."
+        }
       }
     },
     {
@@ -8682,15 +8700,15 @@
       "legacy": {
         "ref": "Q9",
         "actual": "Q9",
-        "x": 381,
-        "y": 285,
+        "x": 391,
+        "y": 283,
         "unit": 1,
         "lid": "PetSafe_Working:RE_Q9",
         "value": "DNP",
-        "rx": 381,
-        "ry": 279.5,
-        "vx": 381,
-        "vy": 281,
+        "rx": 391,
+        "ry": 277.5,
+        "vx": 391,
+        "vy": 279,
         "just": "",
         "pins": [
           {
@@ -8728,12 +8746,15 @@
         "reference": "Q9",
         "value": "DNP",
         "position": {
-          "x": 483.87,
-          "y": 361.95
+          "x": 496.57,
+          "y": 359.41
         },
         "rotation": 0,
         "includePins": true,
-        "footprint": "Package_TO_SOT_SMD:SOT-23"
+        "footprint": "Package_TO_SOT_SMD:SOT-23",
+        "properties": {
+          "ConnectionEvidence": "v0.9.21 annotated photo: J6 left/model1 joins Q9 single/native3 and R36 right/model2. J6 right/model2 joins R36 left/model1. PIC26/RB5-TP10-R35 upper; R35 lower-Q9 paired-left; paired-right via V021 is GND. All J6/Q9/R35/R36 options remain DNP. R36 left/J6 right onward rail is not established by this annotation."
+        }
       }
     },
     {
@@ -8745,15 +8766,15 @@
       "legacy": {
         "ref": "J6",
         "actual": "J6",
-        "x": 397,
-        "y": 285,
+        "x": 443,
+        "y": 283,
         "unit": 1,
         "lid": "PetSafe_Working:RE_J6",
         "value": "DNP",
-        "rx": 397,
-        "ry": 279.5,
-        "vx": 397,
-        "vy": 281,
+        "rx": 443,
+        "ry": 277.5,
+        "vx": 443,
+        "vy": 279,
         "just": "",
         "pins": [
           {
@@ -8782,12 +8803,16 @@
         "reference": "J6",
         "value": "DNP",
         "position": {
-          "x": 504.19,
-          "y": 361.95
+          "x": 562.61,
+          "y": 359.41
         },
         "rotation": 0,
         "includePins": true,
-        "footprint": "Connector_PinHeader_2.54mm:PinHeader_1x02_P2.54mm_Vertical"
+        "footprint": "Connector_PinHeader_2.54mm:PinHeader_1x02_P2.54mm_Vertical",
+        "properties": {
+          "ConnectionEvidence": "v0.9.21 annotated photo: J6 left/model1 joins Q9 single/native3 and R36 right/model2. J6 right/model2 joins R36 left/model1. PIC26/RB5-TP10-R35 upper; R35 lower-Q9 paired-left; paired-right via V021 is GND. All J6/Q9/R35/R36 options remain DNP. R36 left/J6 right onward rail is not established by this annotation."
+        },
+        "mirror": "x"
       }
     },
     {
@@ -8844,15 +8869,15 @@
       "legacy": {
         "ref": "TP10",
         "actual": "TP10",
-        "x": 361,
-        "y": 301,
+        "x": 363,
+        "y": 277,
         "unit": 1,
         "lid": "PetSafe_Working:RE_TP10",
         "value": "test point",
-        "rx": 361,
-        "ry": 297.5,
-        "vx": 361,
-        "vy": 299,
+        "rx": 363,
+        "ry": 273.5,
+        "vx": 363,
+        "vy": 275,
         "just": "",
         "pins": [
           {
@@ -8872,12 +8897,15 @@
         "reference": "TP10",
         "value": "test point",
         "position": {
-          "x": 455.93,
-          "y": 382.27
+          "x": 461.01,
+          "y": 351.79
         },
-        "rotation": 270,
+        "rotation": 0,
         "includePins": true,
-        "footprint": "TestPoint:TestPoint_THTPad_D2.0mm_Drill1.0mm"
+        "footprint": "TestPoint:TestPoint_THTPad_D2.0mm_Drill1.0mm",
+        "properties": {
+          "ConnectionEvidence": "v0.9.21 annotated photo: J6 left/model1 joins Q9 single/native3 and R36 right/model2. J6 right/model2 joins R36 left/model1. PIC26/RB5-TP10-R35 upper; R35 lower-Q9 paired-left; paired-right via V021 is GND. All J6/Q9/R35/R36 options remain DNP. R36 left/J6 right onward rail is not established by this annotation."
+        }
       }
     },
     {
@@ -8889,15 +8917,15 @@
       "legacy": {
         "ref": "VREF",
         "actual": "TP104",
-        "x": 379,
-        "y": 301,
+        "x": 400,
+        "y": 277,
         "unit": 1,
         "lid": "PetSafe_Working:RE_VREF",
         "value": "VREF",
-        "rx": 379,
-        "ry": 297.5,
-        "vx": 379,
-        "vy": 299,
+        "rx": 400,
+        "ry": 273.5,
+        "vx": 400,
+        "vy": 275,
         "just": "",
         "pins": [
           {
@@ -8917,10 +8945,10 @@
         "reference": "TP104",
         "value": "VREF",
         "position": {
-          "x": 478.79,
-          "y": 382.27
+          "x": 508.0,
+          "y": 351.79
         },
-        "rotation": 270,
+        "rotation": 0,
         "includePins": true,
         "footprint": "TestPoint:TestPoint_THTPad_D2.0mm_Drill1.0mm",
         "properties": {
@@ -9121,8 +9149,8 @@
     "TP15.1": "TP15.1",
     "BATN.1": "TP108.1",
     "S1.TL": "S1.1",
-    "S1.BL": "S1.3",
-    "S1.TR": "S1.2",
+    "S1.BL": "S1.2",
+    "S1.TR": "S1.3",
     "S1.BR": "S1.4",
     "C35.1": "C35.1",
     "C35.2": "C35.2",
@@ -10707,160 +10735,6 @@
       ]
     },
     {
-      "net": "H_BUTTON",
-      "a": [
-        440,
-        43
-      ],
-      "b": [
-        440,
-        46
-      ]
-    },
-    {
-      "net": "H_BUTTON",
-      "a": [
-        440,
-        46
-      ],
-      "b": [
-        440,
-        56
-      ]
-    },
-    {
-      "net": "H_BUTTON",
-      "a": [
-        440,
-        46
-      ],
-      "b": [
-        428,
-        46
-      ]
-    },
-    {
-      "net": "H_BUTTON",
-      "a": [
-        428,
-        50
-      ],
-      "b": [
-        432,
-        50
-      ]
-    },
-    {
-      "net": "H_BUTTON",
-      "a": [
-        432,
-        50
-      ],
-      "b": [
-        432,
-        46
-      ]
-    },
-    {
-      "net": "H_BUTTON",
-      "a": [
-        413,
-        40
-      ],
-      "b": [
-        414,
-        40
-      ]
-    },
-    {
-      "net": "H_BUTTON",
-      "a": [
-        414,
-        40
-      ],
-      "b": [
-        414,
-        31
-      ]
-    },
-    {
-      "net": "H_BUTTON",
-      "a": [
-        414,
-        31
-      ],
-      "b": [
-        448,
-        31
-      ]
-    },
-    {
-      "net": "H_BUTTON",
-      "a": [
-        448,
-        31
-      ],
-      "b": [
-        448,
-        46
-      ]
-    },
-    {
-      "net": "H_BUTTON",
-      "a": [
-        448,
-        46
-      ],
-      "b": [
-        440,
-        46
-      ]
-    },
-    {
-      "net": "GND",
-      "a": [
-        418,
-        46
-      ],
-      "b": [
-        416,
-        46
-      ]
-    },
-    {
-      "net": "GND",
-      "a": [
-        416,
-        46
-      ],
-      "b": [
-        416,
-        50
-      ]
-    },
-    {
-      "net": "GND",
-      "a": [
-        416,
-        50
-      ],
-      "b": [
-        418,
-        50
-      ]
-    },
-    {
-      "net": "GND",
-      "a": [
-        416,
-        50
-      ],
-      "b": [
-        416,
-        69
-      ]
-    },
-    {
       "net": "GND",
       "a": [
         440,
@@ -10891,17 +10765,6 @@
       "b": [
         416,
         69
-      ]
-    },
-    {
-      "net": "H_R41_FREE",
-      "a": [
-        407,
-        40
-      ],
-      "b": [
-        401.5,
-        40
       ]
     },
     {
@@ -13734,20 +13597,6 @@
       ]
     },
     {
-      "net": "H_BUTTON",
-      "p": [
-        440,
-        46
-      ]
-    },
-    {
-      "net": "H_R41_FREE",
-      "p": [
-        401.5,
-        40
-      ]
-    },
-    {
       "net": "PIC_TP4_C41",
       "p": [
         328,
@@ -15410,20 +15259,20 @@
       264
     ],
     "R35.1": [
-      238,
-      308
+      370,
+      281
     ],
     "R35.2": [
-      244,
-      308
+      376,
+      281
     ],
     "R36.1": [
-      251,
-      308
+      415,
+      283
     ],
     "R36.2": [
-      257,
-      308
+      421,
+      283
     ],
     "C41.1": [
       264,
@@ -15490,36 +15339,36 @@
       285.0
     ],
     "Q9.L": [
-      376,
-      284.0
+      386,
+      282.0
     ],
     "Q9.R": [
-      376,
-      286.0
+      386,
+      284.0
     ],
     "Q9.S": [
-      386,
-      285.0
+      396,
+      283.0
     ],
     "J6.1": [
-      392,
-      285.0
+      438,
+      283.0
     ],
     "J6.2": [
-      402,
-      285.0
+      448,
+      283.0
     ],
     "TP9.1": [
       343,
       301
     ],
     "TP10.1": [
-      359,
-      301
+      361,
+      277
     ],
     "VREF.1": [
-      377,
-      301
+      398,
+      277
     ]
   },
   "graphics": [

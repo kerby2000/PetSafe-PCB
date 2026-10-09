@@ -1,5 +1,5 @@
 {
-  "revision": "v0.9.20",
+  "revision": "v0.9.21",
   "instruments": [
     "LCR meter",
     "multimeter"
@@ -12,7 +12,7 @@
   ],
   "fitted_capacitors": 45,
   "fitted_resistors": 38,
-  "unresolved_physical_pins": 9,
+  "unresolved_physical_pins": 4,
   "unknown_ceramic_values": [
     "C1",
     "C2",
@@ -687,7 +687,7 @@
       "footprint": "Resistor_SMD:R_0603_1608Metric",
       "footprint_confidence": "medium",
       "footprint_basis": "Body/land proportions compared with nearby 1.27-mm SOIC and 0.95-mm SOT lead pitch. Populated resistor family appears 0805; smaller empty option lands appear 0603.",
-      "open_pads": 2,
+      "open_pads": 0,
       "next_method": "No immediate measurement requested",
       "photos": "IMG_2430.jpg;IMG_2434.jpg;IMG_2438.jpg"
     },
@@ -1782,7 +1782,7 @@
       "footprint": "Package_TO_SOT_SMD:SOT-23",
       "footprint_confidence": "medium",
       "footprint_basis": "Empty three-pad transistor-size option; no fitted identity.",
-      "open_pads": 1,
+      "open_pads": 0,
       "next_method": "No immediate measurement requested",
       "photos": "IMG_2438.jpg"
     },
@@ -1898,7 +1898,7 @@
       "observed": "pushbutton",
       "displayed": "pushbutton",
       "marking": "",
-      "value_or_identity": "Four physical leads retained. The model provisionally groups TL/BL and TR/BR as common sides; this normal tactile-switch assumption requires a released/pressed continuity check.",
+      "value_or_identity": "v0.9.21 user annotated S1 upper-right to C35 upper/model2 (GND via prior V018); lower-right to C35 lower/model1, R40 lower/model2 and R41 left/model2. User explicitly confirms R41 right/model1 reaches J1 VPP/MCLR. Correct physical-to-native switch mapping TL=1, TR=3, BL=2, BR=4. Top-row/bottom-row common pairs remain a tactile-switch hypothesis; released/pressed behavior has not been measured.",
       "footprint": "",
       "footprint_confidence": "unresolved",
       "footprint_basis": "Four-pad tactile switch; body/lead span and common-pair mapping needed. Common stock footprints use two repeated pad numbers, while current symbol retains four physical IDs.",
@@ -1962,7 +1962,7 @@
       "footprint": "Connector_PinHeader_2.54mm:PinHeader_1x02_P2.54mm_Vertical",
       "footprint_confidence": "medium",
       "footprint_basis": "Empty two-hole option; candidate 2.54-mm pitch from surrounding hole/pin scale.",
-      "open_pads": 2,
+      "open_pads": 0,
       "next_method": "No immediate measurement requested",
       "photos": "IMG_2438.jpg"
     },
