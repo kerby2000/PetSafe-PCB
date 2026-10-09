@@ -43,6 +43,25 @@ These are in-circuit resistance readings, not junction voltages. Their asymmetry
 
 D3 rail association is separately closed: user reports D3.L to GND and D3.R to board VDD through V082. See the [D3 measurement record](../evidence/d3_measurement_20261009.json).
 
+### D2 diode-mode follow-up: completed
+
+The [six diode readings](../evidence/d2_diode_20261009.json) supersede the pending test request above:
+
+| Red probe | Black probe | Diode-mode reading |
+|---|---|---|
+| L | R | OL |
+| R | L | 1.2 V |
+| L | S | OL |
+| S | L | 0.6 V |
+| R | S | 0.6 V |
+| S | R | OL |
+
+They strongly support two series junctions conducting **R -> S -> L**: R is the outer anode, S the midpoint, and L the outer cathode in this working equivalent. The earlier simple PNP candidate is a poor fit to this pattern. In-circuit measurement does not prove that both junctions are internal to D2.
+
+This resembles the **topology** of BAV99; its exact identity, ratings and package numbering are still unproved. Nexperia's BAV99 marking is A7 plus site code, not 4P. Do not import a BAV99 symbol with the old L/R numbering or restore earlier guessed rail connections. All three external endpoints remain open in the schematic.
+
+Follow-up rail checks: **D2.R -> GND = 0.78 Mohm**, **D2.R -> VDD = 0.99 Mohm**, exactly as reported. The first does not support a direct ground connection and makes the simple ground-to-VDD clamp hypothesis unlikely. The second remains labeled R-VDD even though L-VDD was requested; pad clarification is pending. Neither high resistance is recorded as OL or used to merge nets.
+
 ## Confirmed connections and exclusions
 
 Reported connections without numerical resistance are recorded as **user continuity reports**, not fabricated 0.0-ohm readings. Key examples include V022-V016 (PIC15-U5.2), V023-V019 (PIC16-U5.3), V036-V108, V037-V102, V039-V097, V047-V091, V064-V063, V064-V075, and V053-V070. See the [current via summary](VIA_REVIEW_RESULTS.md) and per-site audit for all reports.

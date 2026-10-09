@@ -32,6 +32,10 @@ for c in m['components']:
         if ref in ['D2','D3','D4','D5','D6','LED1']:method+=['Diode-mode readings and continuity; markings are already recorded; check PIC trace audit before requesting continuity']
         elif ref=='S1':method+=['Measure common leg pairs with switch released and pressed']
         elif '?' in c.get('proposed_value',c['value']):method+=['Candidate identity: confirm pin functions/routing; a short top code may not identify one manufacturer']
+    if ref=='D2':
+        issue=next(i for i in status['items'] if i['id']=='E01')
+        gap=issue['known']+' Remaining: '+issue['unknown']
+        method=[issue['next_action']]
     if openpins[ref] and pop!='DNP':method+=['Targeted continuity for '+str(openpins[ref])+' open physical pads']
     if not c['footprint']:method+=['Photo with ruler/body and lead measurements for exact footprint']
     rows.append(dict(ref=ref,native_ref=m['reference_map'].get(ref,ref),population=pop,

@@ -1,0 +1,42 @@
+{
+  "date": "2026-10-09",
+  "component": "D2",
+  "issue": "E01",
+  "marking": "4P",
+  "source": "User's six directed diode-mode readings in chat",
+  "mode": "diode test; user reports volts or OL",
+  "instrument": "User has Fluke 179 and Fluke 87 III; model used for this table not specified",
+  "power_state": "Instructions specified battery/programmer disconnected and capacitors discharged; not separately restated with these readings",
+  "isolation": "In circuit; no removal or lifted lead reported",
+  "pad_labels": "User's physical L/R/S labels, not inferred package pin numbers",
+  "readings": [
+    {"red": "L", "black": "R", "reported": "OL", "volts": null},
+    {"red": "R", "black": "L", "reported": "1.2 V", "volts": 1.2},
+    {"red": "L", "black": "S", "reported": "OL", "volts": null},
+    {"red": "S", "black": "L", "reported": "0.6 V", "volts": 0.6},
+    {"red": "R", "black": "S", "reported": "0.6 V", "volts": 0.6},
+    {"red": "S", "black": "R", "reported": "OL", "volts": null}
+  ],
+  "interpretation": {
+    "working_topology": "Two series diode junctions: R anode -> S midpoint -> L cathode",
+    "support": "R-S and S-L each read 0.6 V; R-L reads their 1.2 V sum; every reverse direction reads OL",
+    "confidence": "Strong support for terminal behavior; probable internal topology because measurements were made in circuit",
+    "transistor_candidate": "Simple PNP junction behavior would share a common cathode/base, unlike this directed chain. FMMT2907R is downgraded from its marking-only lead; external board paths prevent absolute exclusion.",
+    "bav99_comparison": "Same series topology as BAV99, but this is not a part identification or replacement recommendation. Nexperia specifies A7 plus a site code, not 4P. Its functional mapping would be R=A1, S=K1/A2, L=K2; existing photo-pad/native numbering is not thereby validated.",
+    "unresolved": ["Exact manufacturer and part number", "Electrical ratings and speed/capacitance", "Physical package numbering versus L/R/S", "All three external board connections"]
+  },
+  "external_resistance_followup": {
+    "readings_as_reported": [
+      {"from": "D2.R", "to": "GND test point", "reported": "0.78 Mohm", "ohms": 780000},
+      {"from": "D2.R", "to": "VDD test point", "reported": "0.99 Mohm", "ohms": 990000}
+    ],
+    "interpretation": "D2.R-GND does not support a direct copper connection; the proposed simple GND-to-VDD clamp is unlikely. The second reading is preserved as R-VDD, although L-VDD was requested. Clarification pending; do not silently reassign it to L.",
+    "next_action": "Confirm whether the second measurement was R-VDD or L-VDD; if R, obtain L-VDD. Then trace local component endpoints rather than repeating diode tests or assuming rail ties."
+  },
+  "schematic_changes": "No net joins, pin renumbering or symbol substitution. Keep the numbered unknown-part placeholder pending external routing evidence.",
+  "sources": [
+    "https://assets.nexperia.com/documents/data-sheet/BAV99.pdf",
+    "https://media.digikey.com/pdf/Data%20Sheets/Zetex%20PDFs/FMMT2907(A).pdf",
+    "https://assets.fluke.com/manuals/8xiii___umeng0300.pdf"
+  ]
+}

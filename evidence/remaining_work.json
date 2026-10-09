@@ -1,6 +1,6 @@
 {
   "date": "2026-10-09",
-  "review_revision": "architect-review-2-d3-measured",
+  "review_revision": "architect-review-3-d2-junctions",
   "basis_revision": "v0.9.11",
   "scope": "Current main-board uncertainties after the 522d235 architect review and user D3 follow-up. J1 numbering corrected from photos, R41 named neutrally; D3 rail assignment resolved by user measurement with closure history retained.",
   "rails": [
@@ -51,9 +51,9 @@
       ],
       "priority": 1,
       "state": "open",
-      "known": "The user clearly reads 4P; its three physical pads are retained by a numbered stock placeholder.",
-      "unknown": "Identity, internal pin functions and all three external connections. The earlier BAV99 clamp assumption is withdrawn.",
-      "next_action": "With power disconnected, take the six directed diode-mode readings between D2 pads shown in the existing D2 guide. Then trace only the terminal indicated by the result.",
+      "known": "Marking 4P. User diode test gives R-S=0.6 V, S-L=0.6 V, R-L=1.2 V and OL in all reverse directions: strong support for a series-diode path R -> S -> L. Measured in circuit; see evidence/d2_diode_20261009.json. Numbered placeholder retained.",
+      "unknown": "Exact part, ratings, physical package numbering and all three external connections. The series topology is probable; other board paths are not isolated. A BAV99-type topology is not a 4P identity match. The marking-only PNP lead is now weak.",
+      "next_action": "D2.R-GND returned 0.78 Mohm, so a direct ground clamp is unsupported. A second 0.99 Mohm result was reported as R-VDD although L-VDD was requested: clarify that pad, then trace local endpoints. Do not repeat the completed six diode readings or assume rail ties.",
       "closed_when": "A compatible device pin map and all three external endpoints are supported by evidence.",
       "open_pads": [
         "D2.L",
