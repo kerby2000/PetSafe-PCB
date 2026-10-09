@@ -30,15 +30,13 @@ if not template.exists():
 tree=sx.loads(template.read_text())
 one(tree,'paper')[1]='A2'
 libs={x[1]:x for x in children(one(tree,'lib_symbols'),'symbol')}
-instances=children(tree,'symbol'); assert len(instances)==155
+instances=children(tree,'symbol'); assert len(instances)==len(layout['catalog'])
 catalog={(i['reference'],i['unit']):i for i in layout['catalog']}
 P={}; PIN_ANGLE={}; BYREF={}; ALL_NATIVE={}
 for inst in instances:
     ref=next(p[2] for p in children(inst,'property') if p[1]=='Reference')
     unit=int(one(inst,'unit')[1]); c=catalog[(ref,unit)]; old=c['legacy']; lid=one(inst,'lib_id')[1]
     x,y,rot=map(float,one(inst,'at')[1:]); rad=math.radians(rot)
-    if ref=='TP9':
-        y=277*1.27;one(inst,'at')[2]=y
     BYREF[ref]=inst
     for sub in children(libs[lid],'symbol'):
         u,style=map(int,sub[1].rsplit('_',2)[1:])
@@ -78,18 +76,25 @@ for inst in instances:
     if ref=='Y1':rx=vx=x;ry=y-5.08;vy=y-3.175
     if ref in ['C30','C31']:rx=vx=x+2.54;ry=y-0.635;vy=y+1.27
     if ref=='TP11':rx=vx=x-12.7;ry=y-1.27;vy=y+0.635
+    if ref=='TP104':rx=vx=x;ry=y-4.445;vy=y-2.54
     if ref=='R32':rx=vx=x+4.445;ry=y-0.635;vy=y+1.27
     if ref in ['TP1','TP2']:rx=vx=x+7.62;ry=y-1.27;vy=y+0.635
     if ref=='S1':rx=vx=x;ry=y-10.16;vy=y-8.255
     if ref=='C18':rx=vx=x-6.35;ry=y+3.81;vy=y+5.715
-    if ref=='TP9':ry-=24*1.27;vy-=24*1.27
     if rot==180:rx=vx=x+4.445
     for name,px,py in [('Reference',rx,ry),('Value',vx,vy)]:
+        if ref in ['D4','D5','D6']:
+            px=x+3.81;py=y-1.27 if name=='Reference' else y+1.27
+        if ref=='Q9':px=x+5.08;py=y-1.27 if name=='Reference' else y+1.27
+        if ref=='R36':px=x-3.81;py=y-0.635 if name=='Reference' else y+1.27
+        if ref=='J6':px=x+1.27;py=y-0.635 if name=='Reference' else y+1.27
         prop=props[name];one(prop,'at')[1:]=[rnd(px),rnd(py),int(rot)%180]
         effects=one(prop,'effects')
         if effects:prop.remove(effects)
         just=old.get('just','')
         if ref in ['J1','J3','J5','U7','C30','C31','Q8','U6','Q1','TP1','TP2']:just='left'
+        if ref in ['D4','D5','D6','Q9','J6']:just='left'
+        if ref=='R36':just='right'
         if rot==180:just=''
         prop.append(expr(f'(effects (font (size 1.016 1.016)){" (justify "+just+")" if just else ""})'))
     evidence=next(cc for cc in model['components'] if cc['ref']==old['ref'])
@@ -100,12 +105,12 @@ for inst in instances:
                      ('LibraryPolicy',policy),
                      ('FootprintConfidence',evidence.get('footprint_confidence','unresolved')),
                      ('FootprintBasis',evidence.get('footprint_basis','')),
-                     ('PinMapping',evidence['note'] if ref=='J1' else 'See evidence/pin_crosswalk.json; physical orientation may be provisional')]:
+                     ('PinMapping',evidence['note'] if ref in ['J1','U106'] else 'See evidence/pin_crosswalk.json; physical orientation may be provisional')]:
         for existing in children(inst,'property'):
             if existing[1]==name:inst.remove(existing)
         inst.append(expr(f'(property {q(name)} {q(val)} (at {x} {y} 0) (effects (font (size 1 1)) hide))'))
 for ep,target in layout['crosswalk'].items():P[ep]=ALL_NATIVE[target]
-assert len(P)==352
+assert len(P)==sum(len(c['pins']) for c in model['components'])
 oldpoints={mm(v):P[e] for e,v in layout['pins'].items()}
 
 W=[]; L=[]; G=[]
@@ -217,21 +222,22 @@ wire('GND','C30.2',(238,104));wire('GND','C31.1',(254,104));wire('PIC_RC3','U4.1
 stub('VSYS','R3.1',0,-4);wire('H_BAT_SENSE','R3.2',(280,75),'R4.1');wire('H_BAT_SENSE','C28.1',(296,75));label('H_BAT_SENSE',(284,75));stub('GND','C28.2',0,6)
 stub('PIC_RB3_RETURN','U4.24',14);stub('PIC_RB3_RETURN','R4.2',0,6)
 wire('PIC_RC7_TP17','U4.18','TP17.1');label('PIC_RC7_TP17','TP17.1')
-stub('ICSP_CLK','D4.1',-4);stub('ICSP_CLK','R32.2',3)
-stub('ICSP_DAT','D5.1',-4);stub('ICSP_DAT','R40.1',0,-5)
-stub('GND','D4.2',0,4);stub('GND','D5.2',0,4)
-stub('MCLR_VPP','D6.1',-4) # Lower W, cathode: 1 ohm to J1 VPP; reverse diode direction OL.
-stub('GND','D6.2',0,4) # Upper V, anode: 1 ohm to GND; V-to-W about 0.7V.
+stub('ICSP_CLK','D4.1',0,-2);stub('ICSP_CLK','R32.2',3)
+stub('ICSP_DAT','D5.1',0,-2);stub('ICSP_DAT','R40.1',0,-5)
+stub('MCLR_VPP','D6.1',0,-2)
+bus('GND',41,['D4.2','D5.2','D6.2'])
 wire('H_LED_CTL_A','TP1.1',(151,184),'R30.1')
 wire('H_LED_CTL_B','TP2.1',(151,191),'R31.1')
 label('GND',(199,187))
 stub('RB5_OPT','U4.26',14)
-wire('RB5_OPT','TP10.1',(363,281),'R35.1');label('RB5_OPT',(363,281))
+wire('RB5_OPT','TP10.1','R35.1');label('RB5_OPT','TP10.1')
 wire('R35_Q9','R35.2','Q9.L')
-wire('GND','Q9.R',(385,283),(385,292));label('GND',(385,292))
-wire('Q9_J6_1','Q9.S',(393,285),(393,290),(429,290),(429,283),'J6.1')
-wire('Q9_J6_1','R36.2',(418,290));label('Q9_J6_1',(401,290))
-wire('J6_OPTION_2','R36.1',(418,273),(435,273),(435,281),'J6.2');label('J6_OPTION_2',(418,273))
+wire('GND','Q9.R',(186,104),(207,104))
+wire('Q9_J6_1','Q9.S',(186,90),'J6.1')
+wire('Q9_J6_1','R36.2',(186,90))
+wire('J6_OPTION_2','R36.1',(186,81),(198,81),(198,88),'J6.2')
+# Same two distinct option nets; no rail or load inferred for J6.2.
+label('Q9_J6_1',(186,90));label('J6_OPTION_2',(186,81))
 stub('GND','R32.1',3)
 
 wire('VSYS','Q1.L',(359,94),(352,94));label('VSYS',(352,94));label('BATTERY+',(359,82)) # User post-Q1 supply; keep its label clear of R43 ground.
@@ -253,8 +259,8 @@ wire('H_AUX_IN','C36.1',(237,238),(248,238));label('H_AUX_IN',(237,238))
 stub('H_AUX_IN','U6.L2',0,5) # B28: externally tied to VIN despite internal NC.
 stub('H_AUX_IN','U6A.L',-7,0) # User annotated local R37/pin5/empty-option join.
 wire('GND','U6.R3',(260,257));bus('GND',257,['C36.2','C37.2'])
-stub('H_PIR_VDD','U6A.R1',-10) # V067-J3.1 confirmed; option remains DNP.
-stub('GND','U6A.R2',0,5) # User annotation: lower-right option pad to ground.
+stub('H_PIR_VDD','U6A.R1',10) # V067-J3.1 confirmed; option remains DNP.
+stub('GND','U6A.R2',0,2) # User annotation: lower-right option pad to ground.
 wire('H_PIR_VDD','U6.R1',(280,240),'C37.1')
 wire('H_PIR_VDD',(280,240),(280,241))
 wire('H_PIR_VDD',(280,241),(290,241),(290,232))
@@ -324,9 +330,9 @@ text('D2: R-C20 lower; L-ANT2/R46 upper; S-R46 lower. R46 empty; 4P identity unk
 text('User: U3 pin5 / V079 / V080 = VREF (1 ohm); TP6 remains separate across C18.',288,211,.762)
 text('U3 alternative: MCP6002-I/SN; same pin roles, electrical suitability to verify.',288,208,.762)
 text('U5 alternative: DRV8212PDSGR. Different package/pins; redesign required.',320,81,.762)
-text('U6: pin5 joins VIN (1 ohm); pin4 unused by user/photo. 3.3V is candidate rating.',234,284,.762)
+text('U6: pin5 joins VIN (1 ohm); pin4 unused by user/photo. 3.3V is candidate rating.',234,305,.762)
 text('C6 parallels C5 on H_RF_VDD/GND (photo-supported). Q8 F-P 10 ohm path still qualified.',90,202,.762)
-text('User: V063-V064 confirms R37/R39 feed on regulated VDD.',234,287,.762)
+text('U6A: DNP alternative regulator; stock symbol does not identify the original part.',234,309,.762)
 text('Q7: 11.2 kohm V064-V070 fits R18+R19. Supply-switch topology inferred; RC1 drives R18 via V053-V070.',229,126,.762)
 
 def on(p,w):
@@ -381,7 +387,7 @@ for net,edges in adj.items():
 for l in L:
     x,y=l['p'];G.append(expr(f'(label {q(l["net"])} (at {x} {y} 0) (effects (font (size .762 .762)) (justify left bottom)) (uuid {q(uid())}))'))
 tree.extend(G)
-tree.append(expr('(title_block (title "PetSafe 100-1339 R03 A | single-sheet reconstruction") (date "2026-10-09") (rev "0.9.23") (company "KiCad 10 libraries + four datasheet symbols | MCP authoring") (comment 1 "S1: 6x6mm SMD footprint candidate; measured height 6mm."))'))
+tree.append(expr('(title_block (title "PetSafe 100-1339 R03 A | single-sheet reconstruction") (date "2026-10-09") (rev "0.9.24") (company "KiCad 10 libraries + four datasheet symbols | MCP authoring") (comment 1 "Options grouped by circuit; TP9 withdrawn; rear C49 retained."))'))
 # Canonical pretty printer supplied by the installed MCP server.
 sys.path.insert(0,str(Path.home()/'Documents/VS.Code.Projects/KiCAD-MCP-Server/python'))
 from utils.sexpr_format import prettify
@@ -401,7 +407,7 @@ out.write_text(prettify(sx.dumps(tree)),encoding='utf-8',newline='\n')
 def wire_key(w):return w['net'],tuple(w['a']),tuple(w['b'])
 prior_order={wire_key(w):i for i,w in enumerate(model.get('geometric_wires',[]))}
 ordered_segments=sorted(segments,key=lambda s:(prior_order.get(s,len(prior_order)),s))
-model.update(revision='v0.9.23',coordinate_units='mm',native_pin_crosswalk=layout['crosswalk'],pin_positions={e:list(p) for e,p in P.items()},
+model.update(revision='v0.9.24',coordinate_units='mm',native_pin_crosswalk=layout['crosswalk'],pin_positions={e:list(p) for e,p in P.items()},
              geometric_wires=[dict(net=n,a=a,b=b) for n,a,b in ordered_segments],library_policy='KiCad 10 stock symbols plus four explicitly authorized MCP-authored datasheet symbols for U1/U5/U6/Q8')
 for c in model['components']:
     entry=next(x for x in layout['catalog'] if x['original_ref']==c['ref'])

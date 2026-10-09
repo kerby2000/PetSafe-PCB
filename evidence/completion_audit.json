@@ -1,17 +1,17 @@
 {
-  "revision": "v0.9.23",
+  "revision": "v0.9.24",
   "instruments": [
     "LCR meter",
     "multimeter"
   ],
-  "footprint_assigned": 148,
+  "footprint_assigned": 147,
   "footprint_blank": [
     "C5",
     "LED1"
   ],
   "fitted_capacitors": 45,
   "fitted_resistors": 38,
-  "unresolved_physical_pins": 3,
+  "unresolved_physical_pins": 2,
   "unknown_ceramic_values": [
     "C1",
     "C2",
@@ -1625,7 +1625,7 @@
       "native_ref": "U106",
       "population": "DNP",
       "observed": "DNP",
-      "displayed": "DNP",
+      "displayed": "U6A / LDO option",
       "marking": "",
       "value_or_identity": "Unpopulated option: no fitted value to recover",
       "footprint": "Package_TO_SOT_SMD:SOT-23",
@@ -1775,7 +1775,7 @@
       "native_ref": "Q9",
       "population": "DNP",
       "observed": "DNP",
-      "displayed": "DNP",
+      "displayed": "NPN option / DNP",
       "marking": "",
       "value_or_identity": "Unpopulated option: no fitted value to recover",
       "footprint": "Package_TO_SOT_SMD:SOT-23",
@@ -2084,21 +2084,6 @@
       "open_pads": 0,
       "next_method": "No immediate measurement requested",
       "photos": "IMG_2434.jpg"
-    },
-    {
-      "ref": "TP9",
-      "native_ref": "TP9",
-      "population": "populated",
-      "observed": "test point",
-      "displayed": "test point",
-      "marking": "",
-      "value_or_identity": "Board pad: no component value required",
-      "footprint": "TestPoint:TestPoint_THTPad_D2.0mm_Drill1.0mm",
-      "footprint_confidence": "low",
-      "footprint_basis": "Stock plated-hole approximation from photographs. Exact drill and annular ring remain unmeasured; these are board pads, not fitted components.",
-      "open_pads": 1,
-      "next_method": "Targeted continuity for 1 open physical pads",
-      "photos": "IMG_2436.jpg;IMG_2437.jpg;IMG_2438.jpg"
     },
     {
       "ref": "TP10",

@@ -1,6 +1,6 @@
 {
   "board": "100-1339 R03 A",
-  "revision": "v0.9.23",
+  "revision": "v0.9.24",
   "status": "INFERRED WORKING CIRCUIT / NOT CONTINUITY VERIFIED",
   "components": [
     {
@@ -2279,7 +2279,7 @@
         "1",
         "2"
       ],
-      "note": "Unmarked ceramic: capacitance unknown; no default 100nF assigned.",
+      "note": "Physically present empty C49 footprint on rear IMG_2442.jpg beside antenna wire terminations. Both copper routes remain unresolved; retained in the antenna block.",
       "side": "back",
       "traced_pin_count": 0,
       "library_symbol": "Device:C",
@@ -2601,28 +2601,29 @@
       "value": "DNP",
       "marking": "",
       "population": "DNP",
-      "sheet": "power",
+      "sheet": "pir",
       "source": "IMG_2435.jpg",
       "pins": [
         "L",
         "R1",
         "R2"
       ],
-      "note": "Empty three-pad option, fully mapped externally: input after R37; J3.1/PIR supply; GND. Native alias U106. No fitted IC identity is claimed.",
+      "note": "v0.9.24: same measured/photo-supported U6A input/output/GND nets retained. Replace the connector sketch by a three-pin regulator role template. SOT-23 single left input -> native U106.3, upper-right output -> U106.2, lower-right GND -> U106.1. The former connector pin1/pin3 assignment was arbitrary and is superseded. MCP1700 stock symbol supplies graphics/pin roles only; it does not identify a fitted device or establish voltage/current rating. U6A remains DNP and an alternative to fitted U6.",
       "side": "front",
       "traced_pin_count": 0,
-      "library_symbol": "Connector_Generic:Conn_01x03",
+      "library_symbol": "Regulator_Linear:MCP1700x-330xxTT",
       "footprint": "Package_TO_SOT_SMD:SOT-23",
       "footprint_confidence": "medium",
       "footprint_basis": "Empty three-pad SMD option beside U6; package-family estimate only.",
       "via_evidence": "v0.9.8: User confirms V067-J3 pin1 (red wire), on modeled H_PIR_VDD. Prior V067-U6A.R1 local pad association retained. Empty U6A option remains DNP; this does not identify an IC or confirm every other H_PIR_VDD branch.",
-      "connection_evidence": "v0.9.22 user annotated U6A option: single left pad/model L/native U106.1 joins U6 pin5 and the existing input node after R37; upper-right/model R1/native2 joins J3.1 (red PIR wire); lower-right/model R2/native3 joins GND. All three external pads mapped, option remains DNP. User called the input VDD; retain VDD -> R37 (22 ohm) -> H_AUX_IN because the annotation ends at U6 pin5 and prior B28 confirms pin5-pin2, not a bypass across R37. No fitted IC identity or voltage measurement implied.",
-      "hypothesis": "v0.9.22 user annotated U6A option: single left pad/model L/native U106.1 joins U6 pin5 and the existing input node after R37; upper-right/model R1/native2 joins J3.1 (red PIR wire); lower-right/model R2/native3 joins GND. All three external pads mapped, option remains DNP. User called the input VDD; retain VDD -> R37 (22 ohm) -> H_AUX_IN because the annotation ends at U6 pin5 and prior B28 confirms pin5-pin2, not a bypass across R37. No fitted IC identity or voltage measurement implied.",
+      "connection_evidence": "v0.9.24: same measured/photo-supported U6A input/output/GND nets retained. Replace the connector sketch by a three-pin regulator role template. SOT-23 single left input -> native U106.3, upper-right output -> U106.2, lower-right GND -> U106.1. The former connector pin1/pin3 assignment was arbitrary and is superseded. MCP1700 stock symbol supplies graphics/pin roles only; it does not identify a fitted device or establish voltage/current rating. U6A remains DNP and an alternative to fitted U6.",
+      "hypothesis": "v0.9.24: same measured/photo-supported U6A input/output/GND nets retained. Replace the connector sketch by a three-pin regulator role template. SOT-23 single left input -> native U106.3, upper-right output -> U106.2, lower-right GND -> U106.1. The former connector pin1/pin3 assignment was arbitrary and is superseded. MCP1700 stock symbol supplies graphics/pin roles only; it does not identify a fitted device or establish voltage/current rating. U6A remains DNP and an alternative to fitted U6.",
       "photo_pad_mapping": {
-        "U6A.L": "single left pad / native U106.1",
-        "U6A.R1": "upper-right pad / native U106.2",
-        "U6A.R2": "lower-right pad / native U106.3"
-      }
+        "U6A.L": "single left input / native U106.3",
+        "U6A.R1": "upper-right output / native U106.2",
+        "U6A.R2": "lower-right GND / native U106.1"
+      },
+      "proposed_value": "U6A / LDO option"
     },
     {
       "ref": "U7",
@@ -2871,7 +2872,7 @@
     },
     {
       "ref": "Q9",
-      "kind": "IC",
+      "kind": "Q",
       "value": "DNP",
       "marking": "",
       "population": "DNP",
@@ -2882,10 +2883,10 @@
         "R",
         "S"
       ],
-      "note": "Physical L/R identify the paired pads, S the single pad. The single pad is ABOVE the pair in the referenced detail image; no function/polarity is implied.",
+      "note": "v0.9.24: use generic NPN BEC symbol for empty Q9, consistent with R35 drive into paired-left pin1/base, paired-right pin2/emitter to GND, and single pin3/collector to J6.1/R36.2. NPN device class is an inference; no fitted transistor identity or rating. All option parts remain DNP. J6.2/R36.1 onward role is still unknown.",
       "side": "front",
       "traced_pin_count": 0,
-      "library_symbol": "Connector_Generic:Conn_01x03",
+      "library_symbol": "Transistor_BJT:Q_NPN_BEC",
       "footprint": "Package_TO_SOT_SMD:SOT-23",
       "footprint_confidence": "medium",
       "footprint_basis": "Empty three-pad transistor-size option; no fitted identity.",
@@ -2894,12 +2895,13 @@
       },
       "v09_summary": "DNP Q9 lower-right pad to V021, user GND; pad mapping R=stock pin2.",
       "connection_evidence": "v0.9.21 annotated photo: J6 left/model1 joins Q9 single/native3 and R36 right/model2. J6 right/model2 joins R36 left/model1. PIC26/RB5-TP10-R35 upper; R35 lower-Q9 paired-left; paired-right via V021 is GND. All J6/Q9/R35/R36 options remain DNP. R36 left/J6 right onward rail is not established by this annotation.",
-      "hypothesis": "v0.9.21 annotated photo: J6 left/model1 joins Q9 single/native3 and R36 right/model2. J6 right/model2 joins R36 left/model1. PIC26/RB5-TP10-R35 upper; R35 lower-Q9 paired-left; paired-right via V021 is GND. All J6/Q9/R35/R36 options remain DNP. R36 left/J6 right onward rail is not established by this annotation.",
+      "hypothesis": "v0.9.24: use generic NPN BEC symbol for empty Q9, consistent with R35 drive into paired-left pin1/base, paired-right pin2/emitter to GND, and single pin3/collector to J6.1/R36.2. NPN device class is an inference; no fitted transistor identity or rating. All option parts remain DNP. J6.2/R36.1 onward role is still unknown.",
       "photo_pad_mapping": {
         "L": "lower-left",
         "R": "lower-right",
         "S": "single upper"
-      }
+      },
+      "proposed_value": "NPN option / DNP"
     },
     {
       "ref": "Q11",
@@ -3376,25 +3378,6 @@
       "footprint_confidence": "low",
       "footprint_basis": "Stock plated-hole approximation from photographs. Exact drill and annular ring remain unmeasured; these are board pads, not fitted components.",
       "hypothesis": "v0.8: user RP7 wording interpreted as photographed TP7. Joins RA1/R28/R29; old detector-net hypothesis withdrawn."
-    },
-    {
-      "ref": "TP9",
-      "kind": "TP",
-      "value": "test point",
-      "marking": "",
-      "population": "populated",
-      "sheet": "control",
-      "source": "IMG_2436.jpg;IMG_2437.jpg;IMG_2438.jpg",
-      "pins": [
-        "1"
-      ],
-      "note": "",
-      "side": "front",
-      "traced_pin_count": 0,
-      "library_symbol": "Connector:TestPoint",
-      "footprint": "TestPoint:TestPoint_THTPad_D2.0mm_Drill1.0mm",
-      "footprint_confidence": "low",
-      "footprint_basis": "Stock plated-hole approximation from photographs. Exact drill and annular ring remain unmeasured; these are board pads, not fitted components."
     },
     {
       "ref": "TP10",
@@ -5061,8 +5044,7 @@
   ],
   "unresolved_pins": [
     "C49.1",
-    "C49.2",
-    "TP9.1"
+    "C49.2"
   ],
   "reference_map": {
     "C1A": "C101",
@@ -6432,17 +6414,6 @@
       ]
     },
     {
-      "net": "GND",
-      "a": [
-        392.43,
-        391.16
-      ],
-      "b": [
-        392.43,
-        396.24
-      ]
-    },
-    {
       "net": "H_LED_CTL_A",
       "a": [
         191.77,
@@ -6594,17 +6565,6 @@
       "b": [
         55.88,
         62.23
-      ]
-    },
-    {
-      "net": "ICSP_CLK",
-      "a": [
-        363.22,
-        391.16
-      ],
-      "b": [
-        368.3,
-        391.16
       ]
     },
     {
@@ -8775,17 +8735,6 @@
       ]
     },
     {
-      "net": "ICSP_DAT",
-      "a": [
-        379.73,
-        391.16
-      ],
-      "b": [
-        384.81,
-        391.16
-      ]
-    },
-    {
       "net": "H_D3_SIGNAL",
       "a": [
         515.62,
@@ -9091,17 +9040,6 @@
       "b": [
         326.39,
         238.76
-      ]
-    },
-    {
-      "net": "GND",
-      "a": [
-        375.92,
-        391.16
-      ],
-      "b": [
-        375.92,
-        396.24
       ]
     },
     {
@@ -10304,28 +10242,6 @@
       ]
     },
     {
-      "net": "GND",
-      "a": [
-        408.94,
-        391.16
-      ],
-      "b": [
-        408.94,
-        396.24
-      ]
-    },
-    {
-      "net": "MCLR_VPP",
-      "a": [
-        396.24,
-        391.16
-      ],
-      "b": [
-        401.32,
-        391.16
-      ]
-    },
-    {
       "net": "H_AUX_IN",
       "a": [
         340.36,
@@ -10337,72 +10253,6 @@
       ]
     },
     {
-      "net": "GND",
-      "a": [
-        488.95,
-        359.41
-      ],
-      "b": [
-        488.95,
-        370.84
-      ]
-    },
-    {
-      "net": "GND",
-      "a": [
-        488.95,
-        359.41
-      ],
-      "b": [
-        491.49,
-        359.41
-      ]
-    },
-    {
-      "net": "J6_OPTION_2",
-      "a": [
-        530.86,
-        346.71
-      ],
-      "b": [
-        530.86,
-        355.6
-      ]
-    },
-    {
-      "net": "J6_OPTION_2",
-      "a": [
-        530.86,
-        346.71
-      ],
-      "b": [
-        552.45,
-        346.71
-      ]
-    },
-    {
-      "net": "J6_OPTION_2",
-      "a": [
-        552.45,
-        346.71
-      ],
-      "b": [
-        552.45,
-        356.87
-      ]
-    },
-    {
-      "net": "J6_OPTION_2",
-      "a": [
-        552.45,
-        356.87
-      ],
-      "b": [
-        557.53,
-        356.87
-      ]
-    },
-    {
       "net": "MCLR_VPP",
       "a": [
         506.73,
@@ -10411,171 +10261,6 @@
       "b": [
         516.89,
         50.8
-      ]
-    },
-    {
-      "net": "Q9_J6_1",
-      "a": [
-        491.49,
-        361.95
-      ],
-      "b": [
-        499.11,
-        361.95
-      ]
-    },
-    {
-      "net": "Q9_J6_1",
-      "a": [
-        499.11,
-        361.95
-      ],
-      "b": [
-        499.11,
-        368.3
-      ]
-    },
-    {
-      "net": "Q9_J6_1",
-      "a": [
-        499.11,
-        368.3
-      ],
-      "b": [
-        509.27,
-        368.3
-      ]
-    },
-    {
-      "net": "Q9_J6_1",
-      "a": [
-        509.27,
-        368.3
-      ],
-      "b": [
-        530.86,
-        368.3
-      ]
-    },
-    {
-      "net": "Q9_J6_1",
-      "a": [
-        530.86,
-        363.22
-      ],
-      "b": [
-        530.86,
-        368.3
-      ]
-    },
-    {
-      "net": "Q9_J6_1",
-      "a": [
-        530.86,
-        368.3
-      ],
-      "b": [
-        544.83,
-        368.3
-      ]
-    },
-    {
-      "net": "Q9_J6_1",
-      "a": [
-        544.83,
-        359.41
-      ],
-      "b": [
-        544.83,
-        368.3
-      ]
-    },
-    {
-      "net": "Q9_J6_1",
-      "a": [
-        544.83,
-        359.41
-      ],
-      "b": [
-        557.53,
-        359.41
-      ]
-    },
-    {
-      "net": "R35_Q9",
-      "a": [
-        477.52,
-        356.87
-      ],
-      "b": [
-        491.49,
-        356.87
-      ]
-    },
-    {
-      "net": "RB5_OPT",
-      "a": [
-        461.01,
-        351.79
-      ],
-      "b": [
-        461.01,
-        356.87
-      ]
-    },
-    {
-      "net": "RB5_OPT",
-      "a": [
-        461.01,
-        356.87
-      ],
-      "b": [
-        469.9,
-        356.87
-      ]
-    },
-    {
-      "net": "VREF",
-      "a": [
-        508.0,
-        351.79
-      ],
-      "b": [
-        508.0,
-        356.87
-      ]
-    },
-    {
-      "net": "GND",
-      "a": [
-        445.77,
-        364.49
-      ],
-      "b": [
-        445.77,
-        370.84
-      ]
-    },
-    {
-      "net": "H_AUX_IN",
-      "a": [
-        436.88,
-        359.41
-      ],
-      "b": [
-        445.77,
-        359.41
-      ]
-    },
-    {
-      "net": "H_PIR_VDD",
-      "a": [
-        433.07,
-        361.95
-      ],
-      "b": [
-        445.77,
-        361.95
       ]
     },
     {
@@ -10620,6 +10305,259 @@
       "b": [
         548.64,
         60.96
+      ]
+    },
+    {
+      "net": "GND",
+      "a": [
+        236.22,
+        128.27
+      ],
+      "b": [
+        236.22,
+        132.08
+      ]
+    },
+    {
+      "net": "GND",
+      "a": [
+        236.22,
+        132.08
+      ],
+      "b": [
+        262.89,
+        132.08
+      ]
+    },
+    {
+      "net": "GND",
+      "a": [
+        311.15,
+        46.99
+      ],
+      "b": [
+        311.15,
+        52.07
+      ]
+    },
+    {
+      "net": "GND",
+      "a": [
+        311.15,
+        52.07
+      ],
+      "b": [
+        342.9,
+        52.07
+      ]
+    },
+    {
+      "net": "GND",
+      "a": [
+        342.9,
+        46.99
+      ],
+      "b": [
+        342.9,
+        52.07
+      ]
+    },
+    {
+      "net": "GND",
+      "a": [
+        342.9,
+        52.07
+      ],
+      "b": [
+        374.65,
+        52.07
+      ]
+    },
+    {
+      "net": "GND",
+      "a": [
+        374.65,
+        46.99
+      ],
+      "b": [
+        374.65,
+        52.07
+      ]
+    },
+    {
+      "net": "H_AUX_IN",
+      "a": [
+        313.69,
+        373.38
+      ],
+      "b": [
+        322.58,
+        373.38
+      ]
+    },
+    {
+      "net": "H_PIR_VDD",
+      "a": [
+        337.82,
+        373.38
+      ],
+      "b": [
+        350.52,
+        373.38
+      ]
+    },
+    {
+      "net": "ICSP_CLK",
+      "a": [
+        342.9,
+        36.83
+      ],
+      "b": [
+        342.9,
+        39.37
+      ]
+    },
+    {
+      "net": "ICSP_DAT",
+      "a": [
+        374.65,
+        36.83
+      ],
+      "b": [
+        374.65,
+        39.37
+      ]
+    },
+    {
+      "net": "J6_OPTION_2",
+      "a": [
+        236.22,
+        102.87
+      ],
+      "b": [
+        236.22,
+        105.41
+      ]
+    },
+    {
+      "net": "J6_OPTION_2",
+      "a": [
+        236.22,
+        102.87
+      ],
+      "b": [
+        251.46,
+        102.87
+      ]
+    },
+    {
+      "net": "J6_OPTION_2",
+      "a": [
+        247.65,
+        111.76
+      ],
+      "b": [
+        251.46,
+        111.76
+      ]
+    },
+    {
+      "net": "J6_OPTION_2",
+      "a": [
+        251.46,
+        102.87
+      ],
+      "b": [
+        251.46,
+        111.76
+      ]
+    },
+    {
+      "net": "MCLR_VPP",
+      "a": [
+        311.15,
+        36.83
+      ],
+      "b": [
+        311.15,
+        39.37
+      ]
+    },
+    {
+      "net": "Q9_J6_1",
+      "a": [
+        236.22,
+        113.03
+      ],
+      "b": [
+        236.22,
+        114.3
+      ]
+    },
+    {
+      "net": "Q9_J6_1",
+      "a": [
+        236.22,
+        114.3
+      ],
+      "b": [
+        236.22,
+        118.11
+      ]
+    },
+    {
+      "net": "Q9_J6_1",
+      "a": [
+        236.22,
+        114.3
+      ],
+      "b": [
+        247.65,
+        114.3
+      ]
+    },
+    {
+      "net": "R35_Q9",
+      "a": [
+        218.44,
+        123.19
+      ],
+      "b": [
+        228.6,
+        123.19
+      ]
+    },
+    {
+      "net": "RB5_OPT",
+      "a": [
+        198.12,
+        123.19
+      ],
+      "b": [
+        210.82,
+        123.19
+      ]
+    },
+    {
+      "net": "GND",
+      "a": [
+        330.2,
+        381.0
+      ],
+      "b": [
+        330.2,
+        383.54
+      ]
+    },
+    {
+      "net": "VREF",
+      "a": [
+        387.35,
+        373.38
+      ],
+      "b": [
+        387.35,
+        378.46
       ]
     }
   ],
@@ -11921,20 +11859,20 @@
       335.28
     ],
     "R35.1": [
-      469.9,
-      356.87
+      210.82,
+      123.19
     ],
     "R35.2": [
-      477.52,
-      356.87
+      218.44,
+      123.19
     ],
     "R36.1": [
-      530.86,
-      355.6
+      236.22,
+      105.41
     ],
     "R36.2": [
-      530.86,
-      363.22
+      236.22,
+      113.03
     ],
     "C41.1": [
       207.01,
@@ -11945,48 +11883,48 @@
       76.2
     ],
     "C49.1": [
-      351.79,
-      391.16
+      255.27,
+      379.73
     ],
     "C49.2": [
-      359.41,
-      391.16
+      262.89,
+      379.73
     ],
     "D4.1": [
-      368.3,
-      391.16
+      342.9,
+      39.37
     ],
     "D4.2": [
-      375.92,
-      391.16
+      342.9,
+      46.99
     ],
     "D5.1": [
-      384.81,
-      391.16
+      374.65,
+      39.37
     ],
     "D5.2": [
-      392.43,
-      391.16
+      374.65,
+      46.99
     ],
     "D6.1": [
-      401.32,
-      391.16
+      311.15,
+      39.37
     ],
     "D6.2": [
-      408.94,
-      391.16
+      311.15,
+      46.99
     ],
     "U6A.L": [
-      445.77,
-      359.41
+      322.58,
+      373.38
     ],
     "U6A.R1": [
-      445.77,
-      361.95
+      337.82,
+      373.38
     ],
     "U6A.R2": [
-      445.77,
-      364.49
+      330.2,
+      381.0
     ],
     "U7.1": [
       400.05,
@@ -12001,36 +11939,32 @@
       304.8
     ],
     "Q9.L": [
-      491.49,
-      356.87
+      228.6,
+      123.19
     ],
     "Q9.R": [
-      491.49,
-      359.41
+      236.22,
+      128.27
     ],
     "Q9.S": [
-      491.49,
-      361.95
+      236.22,
+      118.11
     ],
     "J6.1": [
-      557.53,
-      359.41
+      247.65,
+      114.3
     ],
     "J6.2": [
-      557.53,
-      356.87
-    ],
-    "TP9.1": [
-      435.61,
-      351.79
+      247.65,
+      111.76
     ],
     "TP10.1": [
-      461.01,
-      351.79
+      198.12,
+      123.19
     ],
     "VREF.1": [
-      508.0,
-      351.79
+      387.35,
+      373.38
     ]
   },
   "sources": {
@@ -12378,9 +12312,9 @@
     "D5.2": "D5.2",
     "D6.1": "D6.1",
     "D6.2": "D6.2",
-    "U6A.L": "U106.1",
+    "U6A.L": "U106.3",
     "U6A.R1": "U106.2",
-    "U6A.R2": "U106.3",
+    "U6A.R2": "U106.1",
     "U7.1": "U7.1",
     "U7.2": "U7.2",
     "U7.3": "U7.3",
@@ -12389,7 +12323,6 @@
     "Q9.S": "Q9.3",
     "J6.1": "J6.1",
     "J6.2": "J6.2",
-    "TP9.1": "TP9.1",
     "TP10.1": "TP10.1",
     "VREF.1": "TP104.1"
   },
@@ -12425,6 +12358,14 @@
       "native_pin": "U6.4",
       "basis": "User annotated NC on upper-left pad; original IMG_2435 shows an isolated surface stub. Consistent with candidate datasheet page11, not based on the datasheet alone.",
       "evidence": "evidence/d6_u6_open_pad_results_20261009.json"
+    }
+  ],
+  "removed_catalog_entries": [
+    {
+      "ref": "TP9",
+      "date": "2026-10-09",
+      "reason": "Unsupported inherited inventory entry; no physical location established in cited photos and user could not find it. Removed at user request, not electrically declared NC.",
+      "evidence": "evidence/options_reorganization_20261009.json"
     }
   ]
 }

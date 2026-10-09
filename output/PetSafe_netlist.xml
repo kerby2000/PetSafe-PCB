@@ -2,16 +2,16 @@
 <export version="E">
   <design>
     <source>C:\Users\lukin\Documents\ChatGPT\PetSafe-PCB\schematic\PetSafe_1001339.kicad_sch</source>
-    <date>2026-10-09T15:29:42</date>
+    <date>2026-10-09T15:57:08</date>
     <tool>Eeschema 10.0.5</tool>
     <sheet number="1" name="/" tstamps="/">
       <title_block>
         <title>PetSafe 100-1339 R03 A | single-sheet reconstruction</title>
         <company>KiCad 10 libraries + four datasheet symbols | MCP authoring</company>
-        <rev>0.9.23</rev>
+        <rev>0.9.24</rev>
         <date>2026-10-09</date>
         <source>PetSafe_1001339.kicad_sch</source>
-        <comment number="1" value="S1: 6x6mm SMD footprint candidate; measured height 6mm."/>
+        <comment number="1" value="Options grouped by circuit; TP9 withdrawn; rear C49 retained."/>
         <comment number="2" value=""/>
         <comment number="3" value=""/>
         <comment number="4" value=""/>
@@ -1873,6 +1873,7 @@
       <footprint>Capacitor_SMD:C_1206_3216Metric</footprint>
       <description>Unpolarized capacitor</description>
       <fields>
+        <field name="LocationEvidence">Clearly visible empty C49 on rear IMG_2442.jpg beside antenna wire terminations. Retained; both copper destinations unresolved.</field>
         <field name="OriginalReference">C49</field>
         <field name="Evidence">Photo reconstruction; topology inferred</field>
         <field name="LibraryPolicy">Unmodified KiCad 10 stock symbol</field>
@@ -1884,6 +1885,7 @@
         <field name="Description">Unpolarized capacitor</field>
       </fields>
       <libsource lib="Device" part="C" description="Unpolarized capacitor"/>
+      <property name="LocationEvidence" value="Clearly visible empty C49 on rear IMG_2442.jpg beside antenna wire terminations. Retained; both copper destinations unresolved."/>
       <property name="OriginalReference" value="C49"/>
       <property name="Evidence" value="Photo reconstruction; topology inferred"/>
       <property name="LibraryPolicy" value="Unmodified KiCad 10 stock symbol"/>
@@ -2828,12 +2830,13 @@
       </units>
     </comp>
     <comp ref="Q9">
-      <value>DNP</value>
+      <value>NPN option / DNP</value>
       <footprint>Package_TO_SOT_SMD:SOT-23</footprint>
-      <description>Generic connector, single row, 01x03, script generated (kicad-library-utils/schlib/autogen/connector/)</description>
+      <description>Generic NPN hypothesis for empty Q9; not an identified fitted transistor.</description>
       <fields>
         <field name="ViaEvidence">v0.9 DNP: right pad/pin2 to V021 user GND; no fitted transistor identification required.</field>
         <field name="ConnectionEvidence">v0.9.21 annotated photo: J6 left/model1 joins Q9 single/native3 and R36 right/model2. J6 right/model2 joins R36 left/model1. PIC26/RB5-TP10-R35 upper; R35 lower-Q9 paired-left; paired-right via V021 is GND. All J6/Q9/R35/R36 options remain DNP. R36 left/J6 right onward rail is not established by this annotation.</field>
+        <field name="DeviceRole">v0.9.24: use generic NPN BEC symbol for empty Q9, consistent with R35 drive into paired-left pin1/base, paired-right pin2/emitter to GND, and single pin3/collector to J6.1/R36.2. NPN device class is an inference; no fitted transistor identity or rating. All option parts remain DNP. J6.2/R36.1 onward role is still unknown.</field>
         <field name="OriginalReference">Q9</field>
         <field name="Evidence">Photo reconstruction; topology inferred</field>
         <field name="LibraryPolicy">Unmodified KiCad 10 stock symbol</field>
@@ -2842,11 +2845,12 @@
         <field name="PinMapping">See evidence/pin_crosswalk.json; physical orientation may be provisional</field>
         <field name="Footprint">Package_TO_SOT_SMD:SOT-23</field>
         <field name="Datasheet"/>
-        <field name="Description">Generic connector, single row, 01x03, script generated (kicad-library-utils/schlib/autogen/connector/)</field>
+        <field name="Description">Generic NPN hypothesis for empty Q9; not an identified fitted transistor.</field>
       </fields>
-      <libsource lib="Connector_Generic" part="Conn_01x03" description="Generic connector, single row, 01x03, script generated (kicad-library-utils/schlib/autogen/connector/)"/>
+      <libsource lib="Transistor_BJT" part="Q_NPN_BEC" description="NPN transistor, base/emitter/collector"/>
       <property name="ViaEvidence" value="v0.9 DNP: right pad/pin2 to V021 user GND; no fitted transistor identification required."/>
       <property name="ConnectionEvidence" value="v0.9.21 annotated photo: J6 left/model1 joins Q9 single/native3 and R36 right/model2. J6 right/model2 joins R36 left/model1. PIC26/RB5-TP10-R35 upper; R35 lower-Q9 paired-left; paired-right via V021 is GND. All J6/Q9/R35/R36 options remain DNP. R36 left/J6 right onward rail is not established by this annotation."/>
+      <property name="DeviceRole" value="v0.9.24: use generic NPN BEC symbol for empty Q9, consistent with R35 drive into paired-left pin1/base, paired-right pin2/emitter to GND, and single pin3/collector to J6.1/R36.2. NPN device class is an inference; no fitted transistor identity or rating. All option parts remain DNP. J6.2/R36.1 onward role is still unknown."/>
       <property name="OriginalReference" value="Q9"/>
       <property name="Evidence" value="Photo reconstruction; topology inferred"/>
       <property name="LibraryPolicy" value="Unmodified KiCad 10 stock symbol"/>
@@ -2856,16 +2860,15 @@
       <property name="Sheetname" value="PetSafe_1001339"/>
       <property name="Sheetfile" value="PetSafe_1001339.kicad_sch"/>
       <property name="dnp"/>
-      <property name="ki_keywords" value="connector"/>
-      <property name="ki_fp_filters" value="Connector*:*_1x??_*"/>
+      <property name="ki_keywords" value="BJT"/>
       <sheetpath names="/" tstamps="/"/>
-      <tstamps>2b4be148-ed60-4f10-9342-9189f48fa720</tstamps>
+      <tstamps>3fc67e31-0e75-47c7-9f93-2f8863e9c614</tstamps>
       <units>
         <unit name="A">
           <pins>
             <pin num="1"/>
-            <pin num="2"/>
             <pin num="3"/>
+            <pin num="2"/>
           </pins>
         </unit>
       </units>
@@ -4924,42 +4927,6 @@
         </unit>
       </units>
     </comp>
-    <comp ref="TP9">
-      <value>test point</value>
-      <footprint>TestPoint:TestPoint_THTPad_D2.0mm_Drill1.0mm</footprint>
-      <description>test point</description>
-      <fields>
-        <field name="OriginalReference">TP9</field>
-        <field name="Evidence">Photo reconstruction; topology inferred</field>
-        <field name="LibraryPolicy">Unmodified KiCad 10 stock symbol</field>
-        <field name="FootprintConfidence">low</field>
-        <field name="FootprintBasis">Stock plated-hole approximation from photographs. Exact drill and annular ring remain unmeasured; these are board pads, not fitted components.</field>
-        <field name="PinMapping">See evidence/pin_crosswalk.json; physical orientation may be provisional</field>
-        <field name="Footprint">TestPoint:TestPoint_THTPad_D2.0mm_Drill1.0mm</field>
-        <field name="Datasheet"/>
-        <field name="Description">test point</field>
-      </fields>
-      <libsource lib="Connector" part="TestPoint" description="test point"/>
-      <property name="OriginalReference" value="TP9"/>
-      <property name="Evidence" value="Photo reconstruction; topology inferred"/>
-      <property name="LibraryPolicy" value="Unmodified KiCad 10 stock symbol"/>
-      <property name="FootprintConfidence" value="low"/>
-      <property name="FootprintBasis" value="Stock plated-hole approximation from photographs. Exact drill and annular ring remain unmeasured; these are board pads, not fitted components."/>
-      <property name="PinMapping" value="See evidence/pin_crosswalk.json; physical orientation may be provisional"/>
-      <property name="Sheetname" value="PetSafe_1001339"/>
-      <property name="Sheetfile" value="PetSafe_1001339.kicad_sch"/>
-      <property name="ki_keywords" value="test point tp"/>
-      <property name="ki_fp_filters" value="Pin* Test*"/>
-      <sheetpath names="/" tstamps="/"/>
-      <tstamps>85e4a026-1f1f-4101-8b58-45367db6ef9b</tstamps>
-      <units>
-        <unit name="A">
-          <pins>
-            <pin num="1"/>
-          </pins>
-        </unit>
-      </units>
-    </comp>
     <comp ref="TP10">
       <value>test point</value>
       <footprint>TestPoint:TestPoint_THTPad_D2.0mm_Drill1.0mm</footprint>
@@ -5576,14 +5543,14 @@
       <footprint>Package_SO:SOIC-8_3.9x4.9mm_P1.27mm</footprint>
       <description>Dual operational amplifier</description>
       <fields>
-        <field name="ViaEvidence">v0.9.3 user identifies both V079 and V080 as SGM8542 pin5. Existing local C18.1 fragment retained on RX_B_PLUS; separate from TP6 on the opposite side of C18.</field>
-        <field name="MeasurementEvidence">v0.9.14 user: pin5-VREF/R22 D 1 ohm (batch1); pin6-R23 B/left/model1 1 ohm and C/right/model2 5.6 kohm. Pin6-R22 E/GND 400 kohm. Pin5 and pin6 remain distinct; C18 branch is retained photo evidence, not meter-confirmed.</field>
         <field name="OriginalReference">U3</field>
         <field name="Evidence">Photo reconstruction; topology inferred</field>
         <field name="LibraryPolicy">Unmodified KiCad 10 stock symbol</field>
         <field name="FootprintConfidence">datasheet/package candidate</field>
         <field name="FootprintBasis">Existing assignment; see component identity evidence.</field>
         <field name="PinMapping">See evidence/pin_crosswalk.json; physical orientation may be provisional</field>
+        <field name="ViaEvidence">v0.9.3 user identifies both V079 and V080 as SGM8542 pin5. Existing local C18.1 fragment retained on RX_B_PLUS; separate from TP6 on the opposite side of C18.</field>
+        <field name="MeasurementEvidence">v0.9.14 user: pin5-VREF/R22 D 1 ohm (batch1); pin6-R23 B/left/model1 1 ohm and C/right/model2 5.6 kohm. Pin6-R22 E/GND 400 kohm. Pin5 and pin6 remain distinct; C18 branch is retained photo evidence, not meter-confirmed.</field>
         <field name="Footprint">Package_SO:SOIC-8_3.9x4.9mm_P1.27mm</field>
         <field name="Datasheet"/>
         <field name="Description">Dual operational amplifier</field>
@@ -5600,7 +5567,7 @@
       <property name="ki_keywords" value="dual opamp"/>
       <property name="ki_fp_filters" value="SOIC*3.9x4.9mm*P1.27mm* DIP*W7.62mm* MSOP*3x3mm*P0.65mm* SSOP*2.95x2.8mm*P0.65mm* TSSOP*3x3mm*P0.65mm* VSSOP*P0.5mm* TO?99*"/>
       <sheetpath names="/" tstamps="/"/>
-      <tstamps>f2ceba09-374b-42f7-984d-7b195eed131b b00d4394-db65-46d5-bada-d45b64759761 90074ca8-ab4c-417f-add8-85bfedd7631d</tstamps>
+      <tstamps>b00d4394-db65-46d5-bada-d45b64759761 f2ceba09-374b-42f7-984d-7b195eed131b 90074ca8-ab4c-417f-add8-85bfedd7631d</tstamps>
       <units>
         <unit name="A">
           <pins>
@@ -5827,44 +5794,47 @@
       </units>
     </comp>
     <comp ref="U106">
-      <value>U6A / DNP</value>
+      <value>U6A / LDO option</value>
       <footprint>Package_TO_SOT_SMD:SOT-23</footprint>
-      <description>Generic connector, single row, 01x03, script generated (kicad-library-utils/schlib/autogen/connector/)</description>
+      <datasheet>https://ww1.microchip.com/downloads/aemDocuments/documents/APID/ProductDocuments/DataSheets/MCP1700-Data-Sheet-20001826F.pdf</datasheet>
+      <description>Unidentified DNP 3-pin regulator option. No fitted MCP1700, output voltage or current rating is asserted.</description>
       <fields>
         <field name="ViaEvidence">v0.9.8: User confirms V067-J3 pin1 (red wire), on modeled H_PIR_VDD. Prior V067-U6A.R1 local pad association retained. Empty U6A option remains DNP; this does not identify an IC or confirm every other H_PIR_VDD branch.</field>
-        <field name="ConnectionEvidence">v0.9.22 user annotated U6A option: single left pad/model L/native U106.1 joins U6 pin5 and the existing input node after R37; upper-right/model R1/native2 joins J3.1 (red PIR wire); lower-right/model R2/native3 joins GND. All three external pads mapped, option remains DNP. User called the input VDD; retain VDD -&gt; R37 (22 ohm) -&gt; H_AUX_IN because the annotation ends at U6 pin5 and prior B28 confirms pin5-pin2, not a bypass across R37. No fitted IC identity or voltage measurement implied.</field>
+        <field name="ConnectionEvidence">v0.9.24: same measured/photo-supported U6A input/output/GND nets retained. Replace the connector sketch by a three-pin regulator role template. SOT-23 single left input -&gt; native U106.3, upper-right output -&gt; U106.2, lower-right GND -&gt; U106.1. The former connector pin1/pin3 assignment was arbitrary and is superseded. MCP1700 stock symbol supplies graphics/pin roles only; it does not identify a fitted device or establish voltage/current rating. U6A remains DNP and an alternative to fitted U6.</field>
+        <field name="DeviceRole">Unpopulated alternative PIR regulator. Input after R37, output J3.1, GND; MCP1700 stock symbol is a pin-role template only.</field>
         <field name="OriginalReference">U6A</field>
         <field name="Evidence">Photo reconstruction; topology inferred</field>
         <field name="LibraryPolicy">Unmodified KiCad 10 stock symbol</field>
         <field name="FootprintConfidence">medium</field>
         <field name="FootprintBasis">Empty three-pad SMD option beside U6; package-family estimate only.</field>
-        <field name="PinMapping">See evidence/pin_crosswalk.json; physical orientation may be provisional</field>
+        <field name="PinMapping">v0.9.24: same measured/photo-supported U6A input/output/GND nets retained. Replace the connector sketch by a three-pin regulator role template. SOT-23 single left input -&gt; native U106.3, upper-right output -&gt; U106.2, lower-right GND -&gt; U106.1. The former connector pin1/pin3 assignment was arbitrary and is superseded. MCP1700 stock symbol supplies graphics/pin roles only; it does not identify a fitted device or establish voltage/current rating. U6A remains DNP and an alternative to fitted U6.</field>
         <field name="Footprint">Package_TO_SOT_SMD:SOT-23</field>
-        <field name="Datasheet"/>
-        <field name="Description">Generic connector, single row, 01x03, script generated (kicad-library-utils/schlib/autogen/connector/)</field>
+        <field name="Datasheet">https://ww1.microchip.com/downloads/aemDocuments/documents/APID/ProductDocuments/DataSheets/MCP1700-Data-Sheet-20001826F.pdf</field>
+        <field name="Description">Unidentified DNP 3-pin regulator option. No fitted MCP1700, output voltage or current rating is asserted.</field>
       </fields>
-      <libsource lib="Connector_Generic" part="Conn_01x03" description="Generic connector, single row, 01x03, script generated (kicad-library-utils/schlib/autogen/connector/)"/>
+      <libsource lib="Regulator_Linear" part="MCP1700x-330xxTT" description="250mA Low Quiscent Current LDO, 3.3V output, SOT-23"/>
       <property name="ViaEvidence" value="v0.9.8: User confirms V067-J3 pin1 (red wire), on modeled H_PIR_VDD. Prior V067-U6A.R1 local pad association retained. Empty U6A option remains DNP; this does not identify an IC or confirm every other H_PIR_VDD branch."/>
-      <property name="ConnectionEvidence" value="v0.9.22 user annotated U6A option: single left pad/model L/native U106.1 joins U6 pin5 and the existing input node after R37; upper-right/model R1/native2 joins J3.1 (red PIR wire); lower-right/model R2/native3 joins GND. All three external pads mapped, option remains DNP. User called the input VDD; retain VDD -&gt; R37 (22 ohm) -&gt; H_AUX_IN because the annotation ends at U6 pin5 and prior B28 confirms pin5-pin2, not a bypass across R37. No fitted IC identity or voltage measurement implied."/>
+      <property name="ConnectionEvidence" value="v0.9.24: same measured/photo-supported U6A input/output/GND nets retained. Replace the connector sketch by a three-pin regulator role template. SOT-23 single left input -&gt; native U106.3, upper-right output -&gt; U106.2, lower-right GND -&gt; U106.1. The former connector pin1/pin3 assignment was arbitrary and is superseded. MCP1700 stock symbol supplies graphics/pin roles only; it does not identify a fitted device or establish voltage/current rating. U6A remains DNP and an alternative to fitted U6."/>
+      <property name="DeviceRole" value="Unpopulated alternative PIR regulator. Input after R37, output J3.1, GND; MCP1700 stock symbol is a pin-role template only."/>
       <property name="OriginalReference" value="U6A"/>
       <property name="Evidence" value="Photo reconstruction; topology inferred"/>
       <property name="LibraryPolicy" value="Unmodified KiCad 10 stock symbol"/>
       <property name="FootprintConfidence" value="medium"/>
       <property name="FootprintBasis" value="Empty three-pad SMD option beside U6; package-family estimate only."/>
-      <property name="PinMapping" value="See evidence/pin_crosswalk.json; physical orientation may be provisional"/>
+      <property name="PinMapping" value="v0.9.24: same measured/photo-supported U6A input/output/GND nets retained. Replace the connector sketch by a three-pin regulator role template. SOT-23 single left input -&gt; native U106.3, upper-right output -&gt; U106.2, lower-right GND -&gt; U106.1. The former connector pin1/pin3 assignment was arbitrary and is superseded. MCP1700 stock symbol supplies graphics/pin roles only; it does not identify a fitted device or establish voltage/current rating. U6A remains DNP and an alternative to fitted U6."/>
       <property name="Sheetname" value="PetSafe_1001339"/>
       <property name="Sheetfile" value="PetSafe_1001339.kicad_sch"/>
       <property name="dnp"/>
-      <property name="ki_keywords" value="connector"/>
-      <property name="ki_fp_filters" value="Connector*:*_1x??_*"/>
+      <property name="ki_keywords" value="regulator linear ldo"/>
+      <property name="ki_fp_filters" value="SOT?23*"/>
       <sheetpath names="/" tstamps="/"/>
-      <tstamps>5c16e08e-a8fa-454f-8f0c-7a98f5d24b79</tstamps>
+      <tstamps>70877b08-f6cf-46fa-bd62-cf3acc73e766</tstamps>
       <units>
         <unit name="A">
           <pins>
+            <pin num="3"/>
             <pin num="1"/>
             <pin num="2"/>
-            <pin num="3"/>
           </pins>
         </unit>
       </units>
@@ -6310,6 +6280,25 @@
         <pin num="6" name="D" type="passive"/>
       </pins>
     </libpart>
+    <libpart lib="Regulator_Linear" part="MCP1700x-330xxTT">
+      <description>250mA Low Quiscent Current LDO, 3.3V output, SOT-23</description>
+      <docs>http://ww1.microchip.com/downloads/en/DeviceDoc/20001826D.pdf</docs>
+      <footprints>
+        <fp>SOT?23*</fp>
+      </footprints>
+      <fields>
+        <field name="Reference">U</field>
+        <field name="Value">MCP1700x-330xxTT</field>
+        <field name="Footprint">Package_TO_SOT_SMD:SOT-23</field>
+        <field name="Datasheet">http://ww1.microchip.com/downloads/en/DeviceDoc/20001826D.pdf</field>
+        <field name="Description">250mA Low Quiscent Current LDO, 3.3V output, SOT-23</field>
+      </fields>
+      <pins>
+        <pin num="1" name="GND" type="power_in"/>
+        <pin num="2" name="VO" type="power_out"/>
+        <pin num="3" name="VI" type="power_in"/>
+      </pins>
+    </libpart>
     <libpart lib="Switch" part="SW_Push">
       <description>Push button switch, generic, two pins</description>
       <fields>
@@ -6358,6 +6347,23 @@
         <field name="Datasheet">https://www.onsemi.com/pub/Collateral/BC860-D.pdf</field>
         <field name="Description">0.1A Ic, 45V Vce, PNP Transistor, SOT-23</field>
         <field name="Sim.Device">PNP</field>
+        <field name="Sim.Pins">1=B 2=E 3=C</field>
+      </fields>
+      <pins>
+        <pin num="1" name="B" type="input"/>
+        <pin num="2" name="E" type="passive"/>
+        <pin num="3" name="C" type="passive"/>
+      </pins>
+    </libpart>
+    <libpart lib="Transistor_BJT" part="Q_NPN_BEC">
+      <description>NPN transistor, base/emitter/collector</description>
+      <fields>
+        <field name="Reference">Q</field>
+        <field name="Value">Q_NPN_BEC</field>
+        <field name="Footprint"/>
+        <field name="Datasheet"/>
+        <field name="Description">NPN transistor, base/emitter/collector</field>
+        <field name="Sim.Device">NPN</field>
         <field name="Sim.Pins">1=B 2=E 3=C</field>
       </fields>
       <pins>
@@ -6423,6 +6429,9 @@
     </library>
     <library logical="PetSafe_Datasheet">
       <uri>${KIPRJMOD}/PetSafe_Datasheet.kicad_sym</uri>
+    </library>
+    <library logical="Regulator_Linear">
+      <uri>${KICAD10_SYMBOL_DIR}/Regulator_Linear.kicad_sym</uri>
     </library>
     <library logical="Switch">
       <uri>${KICAD10_SYMBOL_DIR}/Switch.kicad_sym</uri>
@@ -6497,7 +6506,7 @@
       <node ref="Q5" pin="2" pinfunction="E_2" pintype="passive"/>
       <node ref="Q6" pin="2" pinfunction="E_2" pintype="passive"/>
       <node ref="Q8" pin="5" pinfunction="S_5" pintype="passive"/>
-      <node ref="Q9" pin="2" pinfunction="Pin_2_2" pintype="passive"/>
+      <node ref="Q9" pin="2" pinfunction="E_2" pintype="passive"/>
       <node ref="R10" pin="2" pintype="passive"/>
       <node ref="R2" pin="1" pintype="passive"/>
       <node ref="R22" pin="1" pintype="passive"/>
@@ -6509,7 +6518,7 @@
       <node ref="TP102" pin="1" pinfunction="1_1" pintype="passive"/>
       <node ref="TP108" pin="1" pinfunction="1_1" pintype="passive"/>
       <node ref="U1" pin="2" pinfunction="VSS_2" pintype="power_in"/>
-      <node ref="U106" pin="3" pinfunction="Pin_3_3" pintype="passive"/>
+      <node ref="U106" pin="1" pinfunction="GND_1" pintype="power_in"/>
       <node ref="U2" pin="2" pinfunction="GND_2" pintype="power_in"/>
       <node ref="U3" pin="4" pinfunction="V-_4" pintype="power_in"/>
       <node ref="U4" pin="19" pinfunction="VSS_19" pintype="passive"/>
@@ -6531,7 +6540,7 @@
     <net code="5" name="/H_AUX_IN" class="Default">
       <node ref="C36" pin="1" pintype="passive"/>
       <node ref="R37" pin="2" pintype="passive"/>
-      <node ref="U106" pin="1" pinfunction="Pin_1_1" pintype="passive"/>
+      <node ref="U106" pin="3" pinfunction="VI_3" pintype="power_in"/>
       <node ref="U6" pin="2" pinfunction="VIN_2" pintype="power_in"/>
       <node ref="U6" pin="5" pinfunction="NC_5" pintype="passive"/>
     </net>
@@ -6568,7 +6577,7 @@
       <node ref="C37" pin="1" pintype="passive"/>
       <node ref="J3" pin="1" pinfunction="Pin_1_1" pintype="passive"/>
       <node ref="R33" pin="2" pintype="passive"/>
-      <node ref="U106" pin="2" pinfunction="Pin_2_2" pintype="passive"/>
+      <node ref="U106" pin="2" pinfunction="VO_2" pintype="power_out"/>
       <node ref="U6" pin="3" pinfunction="VOUT_3" pintype="power_out"/>
       <node ref="U7" pin="3" pinfunction="Pin_3_3" pintype="passive"/>
     </net>
@@ -6674,7 +6683,7 @@
     </net>
     <net code="33" name="/Q9_J6_1" class="Default">
       <node ref="J6" pin="1" pinfunction="Pin_1_1" pintype="passive"/>
-      <node ref="Q9" pin="3" pinfunction="Pin_3_3" pintype="passive"/>
+      <node ref="Q9" pin="3" pinfunction="C_3" pintype="passive"/>
       <node ref="R36" pin="2" pintype="passive"/>
     </net>
     <net code="34" name="/RB5_OPT" class="Default">
@@ -6894,8 +6903,8 @@
       <node ref="Q8" pin="3" pinfunction="G_3" pintype="input"/>
       <node ref="R8" pin="2" pintype="passive"/>
     </net>
-    <net code="74" name="Net-(Q9-Pin_1)" class="Default">
-      <node ref="Q9" pin="1" pinfunction="Pin_1_1" pintype="passive"/>
+    <net code="74" name="Net-(Q9-B)" class="Default">
+      <node ref="Q9" pin="1" pinfunction="B_1" pintype="input"/>
       <node ref="R35" pin="2" pintype="passive"/>
     </net>
     <net code="75" name="Net-(Q11-B)" class="Default">
@@ -6957,10 +6966,7 @@
     <net code="87" name="unconnected-(C49-Pad2)" class="Default">
       <node ref="C49" pin="2" pintype="passive"/>
     </net>
-    <net code="88" name="unconnected-(TP9-Pad1)" class="Default">
-      <node ref="TP9" pin="1" pinfunction="1_1" pintype="passive"/>
-    </net>
-    <net code="89" name="unconnected-(U6-NC-Pad4)" class="Default">
+    <net code="88" name="unconnected-(U6-NC-Pad4)" class="Default">
       <node ref="U6" pin="4" pinfunction="NC_4" pintype="passive+no_connect"/>
     </net>
   </nets>

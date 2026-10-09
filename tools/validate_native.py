@@ -36,7 +36,17 @@ def main():
     erc=json.loads((ROOT/'output/erc.json').read_text())
     violations=[v for sheet in erc['sheets'] for v in sheet['violations']]
     counts=Counter(v['type'] for v in violations)
-    unexpected=set(counts)-{'pin_not_connected','isolated_pin_label','power_pin_not_driven','pin_not_driven'}
+    # Keep the DNP regulator-option warning visible in native ERC. Accept only
+    # this documented pair, never a blanket waiver for output conflicts.
+    option_conflicts=[v for v in violations if v['type']=='pin_to_pin']
+    for warning in option_conflicts:
+        assert {i['description'] for i in warning['items']}=={
+            'Symbol U6 Pin 3 [VOUT, Power output, Line]',
+            'Symbol U106 Pin 2 [VO, Power output, Line]'},warning
+        assert next(c for c in m['components'] if c['ref']=='U6A')['population']=='DNP'
+        assert any({'U6.3','U106.2'}<=pins and name=='H_PIR_VDD' for pins,name in expected.items())
+        assert (ROOT/'evidence/options_reorganization_20261009.json').exists()
+    unexpected=set(counts)-{'pin_not_connected','isolated_pin_label','power_pin_not_driven','pin_not_driven','pin_to_pin'}
     assert not unexpected,counts
     sch=ROOT/'schematic/PetSafe_1001339.kicad_sch'
     # Permit only evidence-backed intentional NCs; never blanket-suppress opens.
@@ -50,7 +60,8 @@ def main():
     assert '(lib_id "PetSafe_Working:' not in sch.read_text()
     definitions={(p.attrib['lib'],p.attrib['part']) for p in native.findall('./libparts/libpart')}
     custom=sum(lib=='PetSafe_Datasheet' for lib,part in definitions)
-    assert custom==4 and len(definitions)==24,definitions
+    expected_definitions={tuple(c['symbol'].split(':',1)) for c in json.loads((ROOT/'evidence/library_layout.json').read_text())['catalog']}
+    assert custom==4 and definitions==expected_definitions,(definitions,expected_definitions)
     # Independent manufacturer pin-table contracts, checked in native KiCad output.
     contracts={
         'U1':('S-1200B45-M5T1','Package_TO_SOT_SMD:SOT-23-5',

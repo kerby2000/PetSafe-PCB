@@ -72,3 +72,10 @@ The U1/U5 pin contracts in `evidence/vendor_symbol_requirements.json` are fulfil
 ## v0.7 package correction
 
 The user reports R8 approximately 1.6 x 0.77 mm including both metal end caps, confirming the 0603 body-size match. This supersedes v0.6's 0805 fitted-resistor-family estimate; other resistors are revised as provisional 0603 family candidates. C11 approximately 3.2 x 1.5 mm supports its 1206 assignment. C5 value/voltage are now 470uF/16V; its package remains unset pending dimensions.
+
+
+## v0.9.24 - empty option device symbols
+
+Q9 uses stock `Transistor_BJT:Q_NPN_BEC` with a provisional NPN role: base through R35, emitter GND, collector J6.1. U6A (native U106) uses stock `Regulator_Linear:MCP1700x-330xxTT` as a three-pin regulator role/pin template only; its visible value says U6A / LDO option and it remains DNP. Neither symbol identifies an absent original component. U6A's footprint pin map is 1=GND, 2=output, 3=input; this follows the [Microchip MCP1700 SOT-23 pin table](https://ww1.microchip.com/downloads/aemDocuments/documents/APID/ProductDocuments/DataSheets/MCP1700-Data-Sheet-20001826F.pdf) and the photographed pad arrangement. No voltage or current rating is inferred from that library name. Do not populate the option from this schematic without selecting and validating a part.
+
+The former connector placeholders were replaced through MCP. The regulator symbol exposes a native ERC output conflict with U6; it is retained because U6A is an unpopulated alternative. C49 remains a stock capacitor symbol with unresolved copper; TP9 was removed after its location failed the evidence audit. There are now 149 catalog entries and 22 stock plus 4 custom definitions in use.

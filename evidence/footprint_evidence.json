@@ -1,5 +1,5 @@
 {
-  "revision": "v0.9.23",
+  "revision": "v0.9.24",
   "method": "Photo-based family selection using known IC lead spacing and repeated package proportions; no calibrated dimensional measurement claimed.",
   "blank_before": 129,
   "blank_after": 2,
@@ -1466,18 +1466,6 @@
       ]
     },
     {
-      "ref": "TP9",
-      "before": "",
-      "footprint": "TestPoint:TestPoint_THTPad_D2.0mm_Drill1.0mm",
-      "confidence": "low",
-      "basis": "Stock plated-hole approximation from photographs. Exact drill and annular ring remain unmeasured; these are board pads, not fitted components.",
-      "photos": [
-        "IMG_2436.jpg",
-        "IMG_2437.jpg",
-        "IMG_2438.jpg"
-      ]
-    },
-    {
       "ref": "TP10",
       "before": "",
       "footprint": "TestPoint:TestPoint_THTPad_D2.0mm_Drill1.0mm",
@@ -1655,5 +1643,9 @@
     "record": "evidence/j1_physical_mapping.json",
     "result": "Square pad1=VPP; sequential stock footprint reconciled; dimensions remain candidates."
   },
-  "s1_mechanical_review": "evidence/s1_dimensions_20261009.json"
+  "s1_mechanical_review": "evidence/s1_dimensions_20261009.json",
+  "removed_catalog_entries": [
+    "TP9"
+  ],
+  "assignment_history_note": "blank_before/new_assignments retain the earlier assignment campaign counts. Current totals derive from reconstruction.json; TP9 withdrawn in v0.9.24."
 }

@@ -1866,8 +1866,8 @@
       "reference": "R35",
       "value": "DNP",
       "position": {
-        "x": 473.71,
-        "y": 356.87
+        "x": 214.63,
+        "y": 123.19
       },
       "rotation": 90,
       "includePins": true,
@@ -1881,8 +1881,8 @@
       "reference": "R36",
       "value": "DNP",
       "position": {
-        "x": 530.86,
-        "y": 359.41
+        "x": 236.22,
+        "y": 109.22
       },
       "rotation": 0,
       "includePins": true,
@@ -1908,22 +1908,25 @@
       "reference": "C49",
       "value": "DNP",
       "position": {
-        "x": 355.6,
-        "y": 391.16
+        "x": 259.08,
+        "y": 379.73
       },
       "rotation": 90,
       "includePins": true,
-      "footprint": "Capacitor_SMD:C_1206_3216Metric"
+      "footprint": "Capacitor_SMD:C_1206_3216Metric",
+      "properties": {
+        "LocationEvidence": "Clearly visible empty C49 on rear IMG_2442.jpg beside antenna wire terminations. Retained; both copper destinations unresolved."
+      }
     },
     {
       "symbol": "Device:D_Zener",
       "reference": "D4",
       "value": "SD05? / TVS 5V",
       "position": {
-        "x": 372.11,
-        "y": 391.16
+        "x": 342.9,
+        "y": 43.18
       },
-      "rotation": 0,
+      "rotation": 270,
       "includePins": true,
       "footprint": "Diode_SMD:D_SOD-323",
       "unit": 1
@@ -1933,10 +1936,10 @@
       "reference": "D5",
       "value": "SD05? / TVS 5V",
       "position": {
-        "x": 388.62,
-        "y": 391.16
+        "x": 374.65,
+        "y": 43.18
       },
-      "rotation": 0,
+      "rotation": 270,
       "includePins": true,
       "footprint": "Diode_SMD:D_SOD-323",
       "unit": 1
@@ -1946,10 +1949,10 @@
       "reference": "D6",
       "value": "MMSZ5228BS? / 3.9V",
       "position": {
-        "x": 405.13,
-        "y": 391.16
+        "x": 311.15,
+        "y": 43.18
       },
-      "rotation": 0,
+      "rotation": 270,
       "includePins": true,
       "footprint": "Diode_SMD:D_SOD-323",
       "unit": 1,
@@ -1958,19 +1961,23 @@
       }
     },
     {
-      "symbol": "Connector_Generic:Conn_01x03",
+      "symbol": "Regulator_Linear:MCP1700x-330xxTT",
       "reference": "U106",
-      "value": "U6A / DNP",
+      "value": "U6A / LDO option",
       "position": {
-        "x": 450.85,
-        "y": 361.95
+        "x": 330.2,
+        "y": 373.38
       },
       "rotation": 0,
       "includePins": true,
       "footprint": "Package_TO_SOT_SMD:SOT-23",
       "properties": {
         "ViaEvidence": "v0.9.8: User confirms V067-J3 pin1 (red wire), on modeled H_PIR_VDD. Prior V067-U6A.R1 local pad association retained. Empty U6A option remains DNP; this does not identify an IC or confirm every other H_PIR_VDD branch.",
-        "ConnectionEvidence": "v0.9.22 user annotated U6A option: single left pad/model L/native U106.1 joins U6 pin5 and the existing input node after R37; upper-right/model R1/native2 joins J3.1 (red PIR wire); lower-right/model R2/native3 joins GND. All three external pads mapped, option remains DNP. User called the input VDD; retain VDD -> R37 (22 ohm) -> H_AUX_IN because the annotation ends at U6 pin5 and prior B28 confirms pin5-pin2, not a bypass across R37. No fitted IC identity or voltage measurement implied."
+        "ConnectionEvidence": "v0.9.24: same measured/photo-supported U6A input/output/GND nets retained. Replace the connector sketch by a three-pin regulator role template. SOT-23 single left input -> native U106.3, upper-right output -> U106.2, lower-right GND -> U106.1. The former connector pin1/pin3 assignment was arbitrary and is superseded. MCP1700 stock symbol supplies graphics/pin roles only; it does not identify a fitted device or establish voltage/current rating. U6A remains DNP and an alternative to fitted U6.",
+        "DeviceRole": "Unpopulated alternative PIR regulator. Input after R37, output J3.1, GND; MCP1700 stock symbol is a pin-role template only.",
+        "Description": "Unidentified DNP 3-pin regulator option. No fitted MCP1700, output voltage or current rating is asserted.",
+        "Datasheet": "https://ww1.microchip.com/downloads/aemDocuments/documents/APID/ProductDocuments/DataSheets/MCP1700-Data-Sheet-20001826F.pdf",
+        "PinMapping": "Photo single-left input -> SOT23 pin3; upper-right output -> pin2; lower-right GND -> pin1. Supersedes former arbitrary connector pin1/pin3 assignment."
       }
     },
     {
@@ -1990,18 +1997,20 @@
       }
     },
     {
-      "symbol": "Connector_Generic:Conn_01x03",
+      "symbol": "Transistor_BJT:Q_NPN_BEC",
       "reference": "Q9",
-      "value": "DNP",
+      "value": "NPN option / DNP",
       "position": {
-        "x": 496.57,
-        "y": 359.41
+        "x": 233.68,
+        "y": 123.19
       },
       "rotation": 0,
       "includePins": true,
       "footprint": "Package_TO_SOT_SMD:SOT-23",
       "properties": {
-        "ConnectionEvidence": "v0.9.21 annotated photo: J6 left/model1 joins Q9 single/native3 and R36 right/model2. J6 right/model2 joins R36 left/model1. PIC26/RB5-TP10-R35 upper; R35 lower-Q9 paired-left; paired-right via V021 is GND. All J6/Q9/R35/R36 options remain DNP. R36 left/J6 right onward rail is not established by this annotation."
+        "ConnectionEvidence": "v0.9.21 annotated photo: J6 left/model1 joins Q9 single/native3 and R36 right/model2. J6 right/model2 joins R36 left/model1. PIC26/RB5-TP10-R35 upper; R35 lower-Q9 paired-left; paired-right via V021 is GND. All J6/Q9/R35/R36 options remain DNP. R36 left/J6 right onward rail is not established by this annotation.",
+        "DeviceRole": "v0.9.24: use generic NPN BEC symbol for empty Q9, consistent with R35 drive into paired-left pin1/base, paired-right pin2/emitter to GND, and single pin3/collector to J6.1/R36.2. NPN device class is an inference; no fitted transistor identity or rating. All option parts remain DNP. J6.2/R36.1 onward role is still unknown.",
+        "Description": "Generic NPN hypothesis for empty Q9; not an identified fitted transistor."
       }
     },
     {
@@ -2009,8 +2018,8 @@
       "reference": "J6",
       "value": "DNP",
       "position": {
-        "x": 562.61,
-        "y": 359.41
+        "x": 252.73,
+        "y": 114.3
       },
       "rotation": 0,
       "includePins": true,
@@ -2022,23 +2031,11 @@
     },
     {
       "symbol": "Connector:TestPoint",
-      "reference": "TP9",
-      "value": "test point",
-      "position": {
-        "x": 435.61,
-        "y": 382.27
-      },
-      "rotation": 270,
-      "includePins": true,
-      "footprint": "TestPoint:TestPoint_THTPad_D2.0mm_Drill1.0mm"
-    },
-    {
-      "symbol": "Connector:TestPoint",
       "reference": "TP10",
       "value": "test point",
       "position": {
-        "x": 461.01,
-        "y": 351.79
+        "x": 198.12,
+        "y": 123.19
       },
       "rotation": 0,
       "includePins": true,
@@ -2052,8 +2049,8 @@
       "reference": "TP104",
       "value": "VREF",
       "position": {
-        "x": 508.0,
-        "y": 351.79
+        "x": 387.35,
+        "y": 373.38
       },
       "rotation": 0,
       "includePins": true,

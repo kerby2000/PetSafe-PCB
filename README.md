@@ -1,21 +1,23 @@
 # PetSafe PCB reverse engineering
 
-Working reconstruction of the PetSafe PPA19-16811 main board, **100-1339 R03 A**. All 150 catalog entries are drawn on **one A2 KiCad 10 sheet**, with wires within functional blocks and named nets between them. Entries include test pads and unpopulated options.
+Working reconstruction of the PetSafe PPA19-16811 main board, **100-1339 R03 A**. All 149 catalog entries are drawn on **one A2 KiCad 10 sheet**, with wires within functional blocks and named nets between them. Entries include test pads and unpopulated options.
 
 Start with [the offline overview](index.html), [the current completion checklist](docs/FINISHING_CHECKLIST.html), or [the printable status](output/pdf/PetSafe_completion_status.pdf). Open [the native schematic](schematic/PetSafe_1001339.kicad_sch) in KiCad 10. The [single-sheet PDF](output/pdf/PetSafe_single_sheet.pdf) and SVG are native KiCad exports.
 
 ## Current status
 
-Schematic revision **v0.9.23**, updated **2026-10-09**. S1 now has a stock SMD footprint candidate supported by the measured 6 x 6 mm body; its 4 mm body plus 2 mm actuator is recorded as about 6 mm overall. The stock x43 housing model is 4.3 mm high and is not an exact mechanical match. See [switch evidence](evidence/s1_dimensions_20261009.json) and [review response](docs/ARCHITECT_REVIEW_RESPONSE.md). The model and native file agree on 85 net partitions. All PIC pads have modeled local connections, but some remote destinations and circuit roles remain uncertain. There is **no routed KiCad PCB**, confirmed layer stack, or powered functional validation.
+Schematic revision **v0.9.24**, updated **2026-10-09**. Option parts now sit in their functional blocks; section 08 is removed. Unsupported TP9 was withdrawn. C49 is visible as an empty footprint in rear photo IMG_2442 and remains in the antenna block. Q9 now uses a stock NPN symbol; U6A/U106 uses a three-pin regulator role template, with the original identity unclaimed. Both remain DNP. See [option evidence](evidence/options_reorganization_20261009.json) and [review response](docs/ARCHITECT_REVIEW_RESPONSE.md). The model and native file agree on 85 net partitions, unchanged by this reorganization. All PIC pads have modeled local connections, but some remote destinations and circuit roles remain uncertain. There is **no routed KiCad PCB**, confirmed layer stack, or powered functional validation.
 
 | Remaining work | Current state |
 |---|---|
-| Open physical pads | 3: unlocated TP9 inventory entry and both C49 DNP pads; U6.4 has a supported intentional NC |
+| Open physical pads | 2: both C49 DNP pads; U6.4 has a supported intentional NC |
 | Other incomplete connections | 1 isolated label, plus inferred receiver/RF/PIR branches |
 | Values | 44 fitted ceramic values; L1/L2 type and value |
-| Footprints | 148/150 assigned; only C5 and LED1 are blank; assigned land patterns remain qualified |
-| ERC | 9 findings: 3 open pins, 1 isolated label, 5 undriven power inputs |
-| Libraries | 20 stock definitions and 4 authorized custom candidate definitions in use |
+| Footprints | 147/149 assigned; only C5 and LED1 are blank; assigned land patterns remain qualified |
+| ERC | 9 findings: 2 open pins, 1 isolated label, 5 undriven power inputs, 1 U6/U6A regulator-output conflict |
+| Libraries | 22 stock definitions and 4 authorized custom candidate definitions in use |
+
+The output conflict is retained as an ERC error: fitted U6 and empty U6A share the PIR supply output. U6A is interpreted as an alternative population option; populating both is not validated. No stock pin types or ERC exclusions were altered to hide this finding. S1 retains the stock footprint candidate from the measured 6 x 6 mm body; the measured approximately 6 mm overall height differs from the stock 4.3 mm housing model. See [switch evidence](evidence/s1_dimensions_20261009.json).
 
 The checklist gives every known issue a stable ID, supporting evidence, next useful check and closure criterion. **A question mark, an assigned footprint, or zero open PIC pads does not measure overall completeness.** D2's local destinations are now mapped: R-C20 lower, L-ANT2/R46 upper, S-R46 lower. R46 remains unpopulated; D2 exact identity remains unknown. D3 rail association is closed by the user measurement: D3.R to V082/VDD, D3.L to GND. D3.S-to-R42 is 1.2 ohm; the exact resistor pad remains photo-selected. U3 pin 5 is now measured on VREF (1 ohm). J3 pin 3 is measured GND (1 ohm), while pin 2 reads 290 kohm to GND. J3 pin 2 now reaches R38 K/right at 1 ohm, U3 pin 6 reaches R23 B/left at 1 ohm, and R22 E/right reaches GND at 1 ohm. The old R23-VREF and J3 role guesses remain removed; R23 C/right now joins C40 lower and R42 upper at 1 ohm each. The old C40 detector-output connection has been removed; R42.1 retains the earlier TP4/PIC25 remote association.
 

@@ -1,23 +1,19 @@
 {
   "date": "2026-10-09",
-  "revision": "v0.9.23",
-  "review_revision": "v0.9.23",
+  "revision": "v0.9.24",
+  "review_revision": "v0.9.24",
   "interpretation": "Every catalog entry is drawn. Hardware connectivity, values and identities are only partially verified. No routed PCB exists.",
-  "catalog_entries": 150,
-  "physical_pins": 352,
-  "unresolved_physical_pins": 3,
+  "catalog_entries": 149,
+  "physical_pins": 351,
+  "unresolved_physical_pins": 2,
   "unresolved_pins_by_population": {
-    "DNP": 2,
-    "populated": 1
+    "DNP": 2
   },
   "unresolved_pins_by_reference": {
-    "C49": 2,
-    "TP9": 1
+    "C49": 2
   },
   "current_gpio_pins": [],
-  "current_fitted_open_pads": [
-    "TP9.1"
-  ],
+  "current_fitted_open_pads": [],
   "current_dnp_open_pads": [
     "C49.1",
     "C49.2"
@@ -73,7 +69,7 @@
     "L2"
   ],
   "footprints": {
-    "assigned": 148,
+    "assigned": 147,
     "unassigned": [
       "C5",
       "LED1"
@@ -83,11 +79,12 @@
   "erc_total": 9,
   "erc_by_type": {
     "power_pin_not_driven": 5,
-    "pin_not_connected": 3,
+    "pin_not_connected": 2,
+    "pin_to_pin": 1,
     "isolated_pin_label": 1
   },
   "modeled_nets": 85,
-  "schematic_sha256": "0bad32033faf0619cbd7e4b2bb690a289ec2814a4bcadbbc6a8e6ac5a759f603",
+  "schematic_sha256": "b1c446155e5aa067baa962184e878a956cec1e14db9714f489a6e7c22a734615",
   "known_identified_ICs_needing_new_symbols": [],
   "complete_symbols_for_selected_candidates": true,
   "available_instruments": [
@@ -149,7 +146,7 @@
     {
       "id": "E06",
       "area": "Local-only PIC / discrete nodes",
-      "gap": "Onward roles of those three nodes, D1.R/H_D1_FREE, TP9.1. Local connectivity is not proof that these are intentionally unused. H_RF_CONTROL has only R6.2/R7.1: its excitation source is absent. H_BAT_SENSE has a series path through R4 to PIC24/RB3, so the missing item is functional interpretation/route confidence, not necessarily another MCU endpoint. H_D3_SIGNAL replaces the misleading H_RX_RF_SENSE name; operating role remains unknown.",
+      "gap": "Onward roles of those three nodes, D1.R/H_D1_FREE. Local connectivity is not proof that these are intentionally unused. H_RF_CONTROL has only R6.2/R7.1: its excitation source is absent. H_BAT_SENSE has a series path through R4 to PIC24/RB3, so the missing item is functional interpretation/route confidence, not necessarily another MCU endpoint. H_D3_SIGNAL replaces the misleading H_RX_RF_SENSE name; operating role remains unknown.",
       "method": "Use existing photo/via evidence to select specific endpoints for the local-only PIC nodes, D1.R and H_RF_CONTROL. Review R3-R4-C28 together with PIC24: document a compatible sensing mechanism, without adding an extra sampling wire solely from a net-name assumption."
     },
     {
@@ -203,8 +200,8 @@
     {
       "id": "D01",
       "area": "Empty options",
-      "gap": "C49 remains unmapped. J6 right/R36 left onward identity is not established; empty Q9 functions and intended option values remain unknown.",
-      "method": "Record option copper where visible; defer measurement unless it affects a populated net."
+      "gap": "C49 has two untraced pads. J6.2/R36.1 onward identity and intended option values remain unknown. Q9 NPN type and U6A regulator type are circuit-role inferences for empty footprints, not identified fitted devices. U6A now uses a stock regulator role template; U6.3/U106.2 share H_PIR_VDD, so native ERC reports a retained power-output conflict. U6A remains DNP; simultaneous population is not validated.",
+      "method": "Keep C49 in the antenna block and resolve its two rear-pad routes from photos first. Keep the Q9/J6 option with PIC outputs and U6A with the PIR regulator. Ask only for hidden continuations that photo review cannot establish."
     },
     {
       "id": "F01",
@@ -348,7 +345,6 @@
         "C25",
         "C26",
         "D1",
-        "TP9",
         "TP11",
         "TP17",
         "R6",
@@ -362,12 +358,10 @@
       "priority": 2,
       "state": "open",
       "known": "Every PIC pad has a modeled local net. PIC2 reaches C25/V031; PIC14 reaches TP11; PIC18 reaches TP17. D3.S-to-R42 measured 1.2 ohm; exact resistor end not named, pad2 selected from photo. R42.1 already reaches TP4/PIC25/RB4. PIC21/RB0 now reaches TP16/Q2.S, separate from VREF; this PIR route is resolved. C26.1 reaches PIC3/RA1 and the existing R28/R29/TP7 net; C25.1 remains PIC2/RA0. Their model2 pads share GND.",
-      "unknown": "Onward roles of those three nodes, D1.R/H_D1_FREE, TP9.1. Local connectivity is not proof that these are intentionally unused. H_RF_CONTROL has only R6.2/R7.1: its excitation source is absent. H_BAT_SENSE has a series path through R4 to PIC24/RB3, so the missing item is functional interpretation/route confidence, not necessarily another MCU endpoint. H_D3_SIGNAL replaces the misleading H_RX_RF_SENSE name; operating role remains unknown.",
+      "unknown": "Onward roles of those three nodes, D1.R/H_D1_FREE. Local connectivity is not proof that these are intentionally unused. H_RF_CONTROL has only R6.2/R7.1: its excitation source is absent. H_BAT_SENSE has a series path through R4 to PIC24/RB3, so the missing item is functional interpretation/route confidence, not necessarily another MCU endpoint. H_D3_SIGNAL replaces the misleading H_RX_RF_SENSE name; operating role remains unknown.",
       "next_action": "Use existing photo/via evidence to select specific endpoints for the local-only PIC nodes, D1.R and H_RF_CONTROL. Review R3-R4-C28 together with PIC24: document a compatible sensing mechanism, without adding an extra sampling wire solely from a net-name assumption.",
       "closed_when": "Each branch has an endpoint or supported evidence that it terminates intentionally.",
-      "open_pads": [
-        "TP9.1"
-      ],
+      "open_pads": [],
       "nets": [
         "PIC_RA0_FILTER",
         "PIC_RC3",
@@ -402,7 +396,7 @@
       ],
       "priority": 2,
       "state": "open",
-      "known": "J3 pin1 supply previously confirmed; pin3-GND 1 ohm; pin2-R38 K/right/model1 1 ohm, opposite end 10 kohm. Pin2-GND 290 kohm. C2NM supports S-812C33AMC; V067 reaches J3.1/U6A, V063 regulated VDD, and U6 ground is resistance-supported. User maps all three U7 pads to corresponding J3 columns, with opposite square-pad numbering. TP16-to-TP11/TP17 each reads 400 kohm; neither is a direct route. New user report identifies PIC21/RB0 as TP16/Q2.S destination; local Q2 upper-right-to-R38 trace also identified. Conflict resolved: TP16-VREF 0.8 Mohm and user explicitly withdraws PIC21-VREF. PIC21/RB0 now joins TP16/Q2.S. v0.9.20: U6.5-U6.2 measured 1 ohm (B28). User annotation also joins physical L2/native5 to R37 upper/model2 and empty U6A single/native1. U6.4/L1 marked NC by user and appears as an isolated surface stub in original photos. Candidate pin5 is internally NC but externally tied to VIN; pin4 remains unused.",
+      "known": "J3 pin1 supply previously confirmed; pin3-GND 1 ohm; pin2-R38 K/right/model1 1 ohm, opposite end 10 kohm. Pin2-GND 290 kohm. C2NM supports S-812C33AMC; V067 reaches J3.1/U6A, V063 regulated VDD, and U6 ground is resistance-supported. User maps all three U7 pads to corresponding J3 columns, with opposite square-pad numbering. TP16-to-TP11/TP17 each reads 400 kohm; neither is a direct route. New user report identifies PIC21/RB0 as TP16/Q2.S destination; local Q2 upper-right-to-R38 trace also identified. Conflict resolved: TP16-VREF 0.8 Mohm and user explicitly withdraws PIC21-VREF. PIC21/RB0 now joins TP16/Q2.S. v0.9.20: U6.5-U6.2 measured 1 ohm (B28). User annotation also joins physical L2/native5 to R37 upper/model2 and empty U6A single/input (native U106.3 after the v0.9.24 symbol replacement). U6.4/L1 marked NC by user and appears as an isolated surface stub in original photos. Candidate pin5 is internally NC but externally tied to VIN; pin4 remains unused. U6A is shown as an unpopulated three-pin regulator template, with single input pin3, upper-right output pin2 and lower-right ground pin1; old connector pin numbering is superseded.",
       "unknown": "Remaining U6 output-branch qualifications, actual PIR voltage, R33 branch and Q2 candidate pin functions remain qualified. Connector ordering and PIR output-to-controller destination are resolved.",
       "next_action": "Do not repeat PIR-to-PIC routing tests. Agent checks remaining U6/R33 visible copper and candidate device orientation; only residual hidden ties or device behavior merit measurements.",
       "closed_when": "Physical connector ordering, U6 supply/output and signal path are verified; NC pads are documented whether tied externally or left unused.",
@@ -683,9 +677,9 @@
       ],
       "priority": 2,
       "state": "open",
-      "known": "Two open DNP pads remain: C49.1 and C49.2. R46, U7, R47/C42 and all J6/Q9/R35/R36 pads now have local routes. v0.9.21 annotated photo: J6 left/model1 joins Q9 single/native3 and R36 right/model2. J6 right/model2 joins R36 left/model1. PIC26/RB5-TP10-R35 upper; R35 lower-Q9 paired-left; paired-right via V021 is GND. All J6/Q9/R35/R36 options remain DNP. R36 left/J6 right onward rail is not established by this annotation. U6A is fully mapped: single pad after R37, upper-right J3.1/PIR supply, lower-right GND; DNP retained.",
-      "unknown": "C49 remains unmapped. J6 right/R36 left onward identity is not established; empty Q9 functions and intended option values remain unknown.",
-      "next_action": "Record option copper where visible; defer measurement unless it affects a populated net.",
+      "known": "Two open DNP pads remain: C49.1 and C49.2. R46, U7, R47/C42 and all J6/Q9/R35/R36 pads now have local routes. v0.9.21 annotated photo: J6 left/model1 joins Q9 single/native3 and R36 right/model2. J6 right/model2 joins R36 left/model1. PIC26/RB5-TP10-R35 upper; R35 lower-Q9 paired-left; paired-right via V021 is GND. All J6/Q9/R35/R36 options remain DNP. R36 left/J6 right onward rail is not established by this annotation. U6A is fully mapped: single pad after R37, upper-right J3.1/PIR supply, lower-right GND; DNP retained. v0.9.24 confirms C49 is physically present and empty on the rear in IMG_2442.jpg beside antenna terminations. Options are now drawn with their corresponding functional blocks.",
+      "unknown": "C49 has two untraced pads. J6.2/R36.1 onward identity and intended option values remain unknown. Q9 NPN type and U6A regulator type are circuit-role inferences for empty footprints, not identified fitted devices. U6A now uses a stock regulator role template; U6.3/U106.2 share H_PIR_VDD, so native ERC reports a retained power-output conflict. U6A remains DNP; simultaneous population is not validated.",
+      "next_action": "Keep C49 in the antenna block and resolve its two rear-pad routes from photos first. Keep the Q9/J6 option with PIC outputs and U6A with the PIR regulator. Ask only for hidden continuations that photo review cannot establish.",
       "closed_when": "Optional routes are documented to the desired reproduction scope; do not invent fitted values or no-connect flags.",
       "open_pads": [],
       "nets": [
@@ -705,6 +699,9 @@
           "evidence": "evidence/u6a_three_pad_routing_20261009.json",
           "date": "2026-10-09"
         }
+      ],
+      "supporting_evidence": [
+        "evidence/options_reorganization_20261009.json"
       ]
     },
     {
@@ -808,7 +805,9 @@
     "PIC21/RB0 -> TP16 -> Q2.S confirmed; old PIC21-VREF removed. TP16-VREF 0.8 Mohm, not a wire. RA2/V035 and receiver bias retain VREF.",
     "v0.9.17 user-annotated photo: C25 right pad/model1 -> PIC2/RA0; C26 right pad/model1 -> PIC3/RA1. Left pads/model2 are common, retaining earlier V029-GND evidence. No new numeric resistance or capacitance supplied. C26 joins the existing RA1/R28/R29/TP7 net, separate from RA0 and VREF.",
     "User confirms R41 right end reaches J1 VPP; annotated J6/Q9/R35/R36 option copper mapped.",
-    "U6A lower-right pad is GND; all three empty option pads now mapped."
+    "U6A lower-right pad is GND; all three empty option pads now mapped.",
+    "v0.9.24 removes unsupported TP9 from active inventory, retains photographed C49, and moves D4-D6 / Q9-J6 / U6A into their circuit blocks. No measured net membership changes.",
+    "v0.9.24: TP9 withdrawn as unsupported; C49 confirmed present and DNP in IMG_2442, with two pads still unresolved. Options moved into functional blocks. Q9 NPN and U6A regulator role symbols replace connectors without changing physical nets."
   ],
   "history": "docs/history/README.md"
 }

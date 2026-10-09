@@ -234,8 +234,16 @@ assert len({net('U6A.L'),net('U6A.R1'),net('U6A.R2'),net('R37.1')})==4, 'Do not 
 assert net('U6A.L')==net('R37.2')==net('U6.R2')
 assert not any(e.startswith('U6A.') for e in m['unresolved_pins'])
 assert next(c for c in m['components'] if c['ref']=='U6A')['population']=='DNP'
-assert xml.findtext('./components/comp[@ref="U106"]/fields/field[@name="ConnectionEvidence"]')==u6a_record['interpretation']
-assert next(c for c in placements['components'] if c['reference']=='U106')['properties']['ConnectionEvidence']==u6a_record['interpretation']
+option_reorg=read('evidence/options_reorganization_20261009.json')
+assert xml.findtext('./components/comp[@ref="U106"]/fields/field[@name="ConnectionEvidence"]')==option_reorg['u6a_role']
+assert next(c for c in placements['components'] if c['reference']=='U106')['properties']['ConnectionEvidence']==option_reorg['u6a_role']
+assert xml.find('./components/comp[@ref="TP9"]') is None
+assert xml.find('./components/comp[@ref="C49"]') is not None
+assert set(m['unresolved_pins'])==set(option_reorg['retained_unresolved_pads'])
+for ep,pn in option_reorg['u6a_current_mapping'].items():assert m['native_pin_crosswalk'][ep]==pn
+assert xml.find('./components/comp[@ref="Q9"]/libsource').attrib['part']=='Q_NPN_BEC'
+assert xml.find('./components/comp[@ref="U106"]/libsource').attrib['part']=='MCP1700x-330xxTT'
+for path,digest in option_reorg['photos'].items():assert sha(path)==digest
 for path,digest in u6a_record['photos'].items():assert sha(path)==digest
 assert net('U4.12')!=net('VREF.1') and net('U4.12')!=net('VDD.1')
 assert sites['V053']['net']==sites['V070']['net']=='H_RX_ENABLE_CTL'

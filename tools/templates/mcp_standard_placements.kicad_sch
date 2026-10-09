@@ -6125,172 +6125,556 @@
 			)
 			(embedded_fonts no)
 		)
-
-	(symbol "Switch:SW_Push"
-		(pin_numbers
-			(hide yes)
-		)
-		(pin_names
-			(offset 1.016)
-			(hide yes)
-		)
-		(exclude_from_sim no)
-		(in_bom yes)
-		(on_board yes)
-		(in_pos_files yes)
-		(duplicate_pin_numbers_are_jumpers no)
-		(property "Reference" "SW"
-			(at 1.27 2.54 0)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(justify left)
+		(symbol "Switch:SW_Push"
+			(pin_numbers
+				(hide yes)
 			)
-		)
-		(property "Value" "SW_Push"
-			(at 0 -1.524 0)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
+			(pin_names
+				(offset 1.016)
+				(hide yes)
 			)
-		)
-		(property "Footprint" ""
-			(at 0 5.08 0)
-			(show_name no)
-			(do_not_autoplace no)
-			(hide yes)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(property "Datasheet" ""
-			(at 0 5.08 0)
-			(show_name no)
-			(do_not_autoplace no)
-			(hide yes)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(property "Description" "Push button switch, generic, two pins"
-			(at 0 0 0)
-			(show_name no)
-			(do_not_autoplace no)
-			(hide yes)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(property "ki_keywords" "switch normally-open pushbutton push-button"
-			(at 0 0 0)
-			(show_name no)
-			(do_not_autoplace no)
-			(hide yes)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(symbol "SW_Push_0_1"
-			(circle
-				(center -2.032 0)
-				(radius 0.508)
-				(stroke
-					(width 0)
-					(type default)
-				)
-				(fill
-					(type none)
-				)
-			)
-			(polyline
-				(pts
-					(xy 0 1.27) (xy 0 3.048)
-				)
-				(stroke
-					(width 0)
-					(type default)
-				)
-				(fill
-					(type none)
-				)
-			)
-			(circle
-				(center 2.032 0)
-				(radius 0.508)
-				(stroke
-					(width 0)
-					(type default)
-				)
-				(fill
-					(type none)
-				)
-			)
-			(polyline
-				(pts
-					(xy 2.54 1.27) (xy -2.54 1.27)
-				)
-				(stroke
-					(width 0)
-					(type default)
-				)
-				(fill
-					(type none)
-				)
-			)
-			(pin passive line
-				(at -5.08 0 0)
-				(length 2.54)
-				(name "1"
-					(effects
-						(font
-							(size 1.27 1.27)
-						)
+			(exclude_from_sim no)
+			(in_bom yes)
+			(on_board yes)
+			(in_pos_files yes)
+			(duplicate_pin_numbers_are_jumpers no)
+			(property "Reference" "SW"
+				(at 1.27 2.54 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(effects
+					(font
+						(size 1.27 1.27)
 					)
+					(justify left)
 				)
-				(number "1"
-					(effects
-						(font
-							(size 1.27 1.27)
-						)
+			)
+			(property "Value" "SW_Push"
+				(at 0 -1.524 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(effects
+					(font
+						(size 1.27 1.27)
 					)
 				)
 			)
-			(pin passive line
-				(at 5.08 0 180)
-				(length 2.54)
-				(name "2"
-					(effects
-						(font
-							(size 1.27 1.27)
+			(property "Footprint" ""
+				(at 0 5.08 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(hide yes)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(property "Datasheet" ""
+				(at 0 5.08 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(hide yes)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(property "Description" "Push button switch, generic, two pins"
+				(at 0 0 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(hide yes)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(property "ki_keywords" "switch normally-open pushbutton push-button"
+				(at 0 0 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(hide yes)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(symbol "SW_Push_0_1"
+				(circle
+					(center -2.032 0)
+					(radius 0.508)
+					(stroke
+						(width 0)
+						(type default)
+					)
+					(fill
+						(type none)
+					)
+				)
+				(polyline
+					(pts
+						(xy 0 1.27) (xy 0 3.048)
+					)
+					(stroke
+						(width 0)
+						(type default)
+					)
+					(fill
+						(type none)
+					)
+				)
+				(circle
+					(center 2.032 0)
+					(radius 0.508)
+					(stroke
+						(width 0)
+						(type default)
+					)
+					(fill
+						(type none)
+					)
+				)
+				(polyline
+					(pts
+						(xy 2.54 1.27) (xy -2.54 1.27)
+					)
+					(stroke
+						(width 0)
+						(type default)
+					)
+					(fill
+						(type none)
+					)
+				)
+				(pin passive line
+					(at -5.08 0 0)
+					(length 2.54)
+					(name "1"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+					(number "1"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
 						)
 					)
 				)
-				(number "2"
-					(effects
-						(font
-							(size 1.27 1.27)
+				(pin passive line
+					(at 5.08 0 180)
+					(length 2.54)
+					(name "2"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+					(number "2"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
 						)
 					)
 				)
 			)
+			(embedded_fonts no)
 		)
-		(embedded_fonts no)
+		(symbol "Transistor_BJT:Q_NPN_BEC"
+			(pin_names
+				(offset 0)
+				(hide yes)
+			)
+			(exclude_from_sim no)
+			(in_bom yes)
+			(on_board yes)
+			(in_pos_files yes)
+			(duplicate_pin_numbers_are_jumpers no)
+			(property "Reference" "Q"
+				(at 5.08 1.27 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(justify left)
+				)
+			)
+			(property "Value" "Q_NPN_BEC"
+				(at 5.08 -1.27 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(justify left)
+				)
+			)
+			(property "Footprint" ""
+				(at 5.08 2.54 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(hide yes)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(property "Datasheet" ""
+				(at 0 0 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(hide yes)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(property "Description" "NPN transistor, base/emitter/collector"
+				(at 0 0 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(hide yes)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(property "Sim.Device" "NPN"
+				(at 0 0 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(hide yes)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(property "Sim.Pins" "1=B 2=E 3=C"
+				(at 0 0 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(hide yes)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(property "ki_keywords" "BJT"
+				(at 0 0 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(hide yes)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(symbol "Q_NPN_BEC_0_1"
+				(polyline
+					(pts
+						(xy -2.54 0) (xy 0.635 0)
+					)
+					(stroke
+						(width 0)
+						(type default)
+					)
+					(fill
+						(type none)
+					)
+				)
+				(polyline
+					(pts
+						(xy 0.635 1.905) (xy 0.635 -1.905)
+					)
+					(stroke
+						(width 0.508)
+						(type default)
+					)
+					(fill
+						(type none)
+					)
+				)
+				(circle
+					(center 1.27 0)
+					(radius 2.8194)
+					(stroke
+						(width 0.254)
+						(type default)
+					)
+					(fill
+						(type none)
+					)
+				)
+			)
+			(symbol "Q_NPN_BEC_1_1"
+				(polyline
+					(pts
+						(xy 0.635 0.635) (xy 2.54 2.54)
+					)
+					(stroke
+						(width 0)
+						(type default)
+					)
+					(fill
+						(type none)
+					)
+				)
+				(polyline
+					(pts
+						(xy 0.635 -0.635) (xy 2.54 -2.54)
+					)
+					(stroke
+						(width 0)
+						(type default)
+					)
+					(fill
+						(type none)
+					)
+				)
+				(polyline
+					(pts
+						(xy 1.27 -1.778) (xy 1.778 -1.27) (xy 2.286 -2.286) (xy 1.27 -1.778)
+					)
+					(stroke
+						(width 0)
+						(type default)
+					)
+					(fill
+						(type outline)
+					)
+				)
+				(pin input line
+					(at -5.08 0 0)
+					(length 2.54)
+					(name "B"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+					(number "1"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+				)
+				(pin passive line
+					(at 2.54 -5.08 90)
+					(length 2.54)
+					(name "E"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+					(number "2"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+				)
+				(pin passive line
+					(at 2.54 5.08 270)
+					(length 2.54)
+					(name "C"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+					(number "3"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+				)
+			)
+			(embedded_fonts no)
+		)
+		(symbol "Regulator_Linear:MCP1700x-330xxTT"
+			(pin_names
+				(offset 0.254)
+			)
+			(exclude_from_sim no)
+			(in_bom yes)
+			(on_board yes)
+			(in_pos_files yes)
+			(duplicate_pin_numbers_are_jumpers no)
+			(property "Reference" "U"
+				(at -3.81 3.175 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(property "Value" "MCP1700x-330xxTT"
+				(at 0 3.175 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(justify left)
+				)
+			)
+			(property "Footprint" "Package_TO_SOT_SMD:SOT-23"
+				(at 0 5.715 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(hide yes)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(property "Datasheet" "http://ww1.microchip.com/downloads/en/DeviceDoc/20001826D.pdf"
+				(at 0 0 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(hide yes)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(property "Description" "250mA Low Quiscent Current LDO, 3.3V output, SOT-23"
+				(at 0 0 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(hide yes)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(property "ki_keywords" "regulator linear ldo"
+				(at 0 0 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(hide yes)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(property "ki_fp_filters" "SOT?23*"
+				(at 0 0 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(hide yes)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(symbol "MCP1700x-330xxTT_0_1"
+				(rectangle
+					(start -5.08 1.905)
+					(end 5.08 -5.08)
+					(stroke
+						(width 0.254)
+						(type default)
+					)
+					(fill
+						(type background)
+					)
+				)
+			)
+			(symbol "MCP1700x-330xxTT_1_1"
+				(pin power_in line
+					(at 0 -7.62 90)
+					(length 2.54)
+					(name "GND"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+					(number "1"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+				)
+				(pin power_out line
+					(at 7.62 0 180)
+					(length 2.54)
+					(name "VO"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+					(number "2"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+				)
+				(pin power_in line
+					(at -7.62 0 0)
+					(length 2.54)
+					(name "VI"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+					(number "3"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+				)
+			)
+			(embedded_fonts no)
+		)
 	)
-)
 	(symbol
 		(lib_id "Connector:TestPoint")
 		(at 20.32 53.34 270)
@@ -17685,7 +18069,7 @@
 	)
 	(symbol
 		(lib_id "Device:R")
-		(at 473.71 356.87 90)
+		(at 214.63 123.19 90)
 		(unit 1)
 		(body_style 1)
 		(exclude_from_sim no)
@@ -17695,7 +18079,7 @@
 		(dnp no)
 		(uuid "eb8e1c57-3de2-4113-8134-de2d0b32acd8")
 		(property "Reference" "R35"
-			(at 473.71 354.83799999999997 90)
+			(at 214.63 121.15799999999996 90)
 			(show_name no)
 			(do_not_autoplace no)
 			(effects
@@ -17705,7 +18089,7 @@
 			)
 		)
 		(property "Value" "DNP"
-			(at 473.71 356.87 90)
+			(at 214.63 123.19 90)
 			(show_name no)
 			(do_not_autoplace no)
 			(effects
@@ -17715,7 +18099,7 @@
 			)
 		)
 		(property "Footprint" "Resistor_SMD:R_0603_1608Metric"
-			(at 473.71 358.64799999999997 90)
+			(at 214.63 124.96799999999996 90)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -17726,7 +18110,7 @@
 			)
 		)
 		(property "Datasheet" ""
-			(at 473.71 356.87 0)
+			(at 214.63 123.19 0)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -17737,7 +18121,7 @@
 			)
 		)
 		(property "Description" "Resistor"
-			(at 473.71 356.87 0)
+			(at 214.63 123.19 0)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -17748,7 +18132,7 @@
 			)
 		)
 		(property "ConnectionEvidence" "v0.9.21 annotated photo: J6 left/model1 joins Q9 single/native3 and R36 right/model2. J6 right/model2 joins R36 left/model1. PIC26/RB5-TP10-R35 upper; R35 lower-Q9 paired-left; paired-right via V021 is GND. All J6/Q9/R35/R36 options remain DNP. R36 left/J6 right onward rail is not established by this annotation."
-			(at 473.71 356.87 0)
+			(at 214.63 123.19 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -17773,7 +18157,7 @@
 	)
 	(symbol
 		(lib_id "Device:R")
-		(at 530.86 359.41 0)
+		(at 236.22 109.22 0)
 		(unit 1)
 		(body_style 1)
 		(exclude_from_sim no)
@@ -17783,7 +18167,7 @@
 		(dnp no)
 		(uuid "4aaf2671-a721-4f2c-a42b-1cb2bf329387")
 		(property "Reference" "R36"
-			(at 530.86 357.378 90)
+			(at 236.22000000000003 107.18799999999996 90)
 			(show_name no)
 			(do_not_autoplace no)
 			(effects
@@ -17793,7 +18177,7 @@
 			)
 		)
 		(property "Value" "DNP"
-			(at 530.86 359.41 90)
+			(at 236.22000000000003 109.22 90)
 			(show_name no)
 			(do_not_autoplace no)
 			(effects
@@ -17803,7 +18187,7 @@
 			)
 		)
 		(property "Footprint" "Resistor_SMD:R_0603_1608Metric"
-			(at 530.86 361.188 90)
+			(at 236.22000000000003 110.99799999999996 90)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -17814,7 +18198,7 @@
 			)
 		)
 		(property "Datasheet" ""
-			(at 530.86 359.41 0)
+			(at 236.22000000000003 109.22 0)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -17825,7 +18209,7 @@
 			)
 		)
 		(property "Description" "Resistor"
-			(at 530.86 359.41 0)
+			(at 236.22000000000003 109.22 0)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -17836,7 +18220,7 @@
 			)
 		)
 		(property "ConnectionEvidence" "v0.9.21 annotated photo: J6 left/model1 joins Q9 single/native3 and R36 right/model2. J6 right/model2 joins R36 left/model1. PIC26/RB5-TP10-R35 upper; R35 lower-Q9 paired-left; paired-right via V021 is GND. All J6/Q9/R35/R36 options remain DNP. R36 left/J6 right onward rail is not established by this annotation."
-			(at 530.86 359.41 0)
+			(at 236.22000000000003 109.22 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -17951,7 +18335,7 @@
 	)
 	(symbol
 		(lib_id "Device:C")
-		(at 355.6 391.16 90)
+		(at 259.08 379.73 90)
 		(unit 1)
 		(body_style 1)
 		(exclude_from_sim no)
@@ -17961,7 +18345,7 @@
 		(dnp no)
 		(uuid "3c5250ee-4c2c-4fdf-9173-9cb01ce86cad")
 		(property "Reference" "C49"
-			(at 358.14 390.525 0)
+			(at 261.61999999999995 379.09499999999997 0)
 			(show_name no)
 			(do_not_autoplace no)
 			(effects
@@ -17972,7 +18356,7 @@
 			)
 		)
 		(property "Value" "DNP"
-			(at 353.06 390.525 0)
+			(at 256.53999999999996 379.09499999999997 0)
 			(show_name no)
 			(do_not_autoplace no)
 			(effects
@@ -17983,7 +18367,7 @@
 			)
 		)
 		(property "Footprint" "Capacitor_SMD:C_1206_3216Metric"
-			(at 351.79 390.195 0)
+			(at 255.26999999999998 378.765 0)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -17994,7 +18378,7 @@
 			)
 		)
 		(property "Datasheet" ""
-			(at 355.6 391.16 0)
+			(at 259.08 379.73 0)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -18005,7 +18389,7 @@
 			)
 		)
 		(property "Description" "Unpolarized capacitor"
-			(at 355.6 391.16 0)
+			(at 259.08 379.73 0)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -18013,6 +18397,15 @@
 				(font
 					(size 1.27 1.27)
 				)
+			)
+		)
+		(property "LocationEvidence" "Clearly visible empty C49 on rear IMG_2442.jpg beside antenna wire terminations. Retained; both copper destinations unresolved."
+			(at 259.08 379.73 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
 			)
 		)
 		(pin "1"
@@ -18025,106 +18418,6 @@
 			(project "PetSafe_1001339"
 				(path "/33a03d59-1679-4e9c-af69-68d086b519af"
 					(reference "C49")
-					(unit 1)
-				)
-			)
-		)
-	)
-	(symbol
-		(lib_id "Connector_Generic:Conn_01x03")
-		(at 450.85 361.95 0)
-		(unit 1)
-		(body_style 1)
-		(exclude_from_sim no)
-		(in_bom yes)
-		(on_board yes)
-		(in_pos_files yes)
-		(dnp no)
-		(uuid "5c16e08e-a8fa-454f-8f0c-7a98f5d24b79")
-		(property "Reference" "U106"
-			(at 450.85 367.03 0)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(property "Value" "U6A / DNP"
-			(at 450.85 356.87 0)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(property "Footprint" "Package_TO_SOT_SMD:SOT-23"
-			(at 450.85 361.95 0)
-			(hide yes)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(property "Datasheet" ""
-			(at 450.85 361.95 0)
-			(hide yes)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(property "Description" "Generic connector, single row, 01x03, script generated (kicad-library-utils/schlib/autogen/connector/)"
-			(at 450.85 361.95 0)
-			(hide yes)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(property "ViaEvidence" "v0.9.8: User confirms V067-J3 pin1 (red wire), on modeled H_PIR_VDD. Prior V067-U6A.R1 local pad association retained. Empty U6A option remains DNP; this does not identify an IC or confirm every other H_PIR_VDD branch."
-			(at 450.85 361.95 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "ConnectionEvidence" "v0.9.22 user annotated U6A option: single left pad/model L/native U106.1 joins U6 pin5 and the existing input node after R37; upper-right/model R1/native2 joins J3.1 (red PIR wire); lower-right/model R2/native3 joins GND. All three external pads mapped, option remains DNP. User called the input VDD; retain VDD -> R37 (22 ohm) -> H_AUX_IN because the annotation ends at U6 pin5 and prior B28 confirms pin5-pin2, not a bypass across R37. No fitted IC identity or voltage measurement implied."
-			(at 450.85 361.95 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(pin "1"
-			(uuid "1e8a2c08-0b3d-46f7-a374-da58d4bec8fc")
-		)
-		(pin "2"
-			(uuid "84cbc102-4079-4ec9-b816-58c039fc19f2")
-		)
-		(pin "3"
-			(uuid "13df1075-fe36-4ce8-a570-2e7fe2a736d8")
-		)
-		(instances
-			(project "PetSafe_1001339"
-				(path "/33a03d59-1679-4e9c-af69-68d086b519af"
-					(reference "U106")
 					(unit 1)
 				)
 			)
@@ -18231,108 +18524,8 @@
 		)
 	)
 	(symbol
-		(lib_id "Connector_Generic:Conn_01x03")
-		(at 496.57 359.41 0)
-		(unit 1)
-		(body_style 1)
-		(exclude_from_sim no)
-		(in_bom yes)
-		(on_board yes)
-		(in_pos_files yes)
-		(dnp no)
-		(uuid "2b4be148-ed60-4f10-9342-9189f48fa720")
-		(property "Reference" "Q9"
-			(at 496.57 364.49 0)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(property "Value" "DNP"
-			(at 496.57 354.33000000000004 0)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(property "Footprint" "Package_TO_SOT_SMD:SOT-23"
-			(at 496.57 359.41 0)
-			(hide yes)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(property "Datasheet" ""
-			(at 496.57 359.41 0)
-			(hide yes)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(property "Description" "Generic connector, single row, 01x03, script generated (kicad-library-utils/schlib/autogen/connector/)"
-			(at 496.57 359.41 0)
-			(hide yes)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(property "ViaEvidence" "v0.9 DNP: right pad/pin2 to V021 user GND; no fitted transistor identification required."
-			(at 496.57 359.41 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "ConnectionEvidence" "v0.9.21 annotated photo: J6 left/model1 joins Q9 single/native3 and R36 right/model2. J6 right/model2 joins R36 left/model1. PIC26/RB5-TP10-R35 upper; R35 lower-Q9 paired-left; paired-right via V021 is GND. All J6/Q9/R35/R36 options remain DNP. R36 left/J6 right onward rail is not established by this annotation."
-			(at 496.57 359.41 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(pin "1"
-			(uuid "3506c8ec-065f-492c-b2f2-d7c95495ba59")
-		)
-		(pin "2"
-			(uuid "67a2ea2c-6dfe-4a7f-82b6-a7205c2c9f4f")
-		)
-		(pin "3"
-			(uuid "b29a554a-522c-4205-a6a8-29cbe4e97f75")
-		)
-		(instances
-			(project "PetSafe_1001339"
-				(path "/33a03d59-1679-4e9c-af69-68d086b519af"
-					(reference "Q9")
-					(unit 1)
-				)
-			)
-		)
-	)
-	(symbol
 		(lib_id "Connector_Generic:Conn_01x02")
-		(at 562.61 359.41 0)
+		(at 252.73 114.3 0)
 		(unit 1)
 		(body_style 1)
 		(exclude_from_sim no)
@@ -18342,7 +18535,7 @@
 		(dnp no)
 		(uuid "f74ef52d-7f72-4ea8-98b4-21f1f6a5b339")
 		(property "Reference" "J6"
-			(at 562.61 361.95000000000005 0)
+			(at 252.73000000000002 116.84000000000003 0)
 			(show_name no)
 			(do_not_autoplace no)
 			(effects
@@ -18352,7 +18545,7 @@
 			)
 		)
 		(property "Value" "DNP"
-			(at 562.61 354.33000000000004 0)
+			(at 252.73000000000002 109.22000000000003 0)
 			(show_name no)
 			(do_not_autoplace no)
 			(effects
@@ -18362,7 +18555,7 @@
 			)
 		)
 		(property "Footprint" "Connector_PinHeader_2.54mm:PinHeader_1x02_P2.54mm_Vertical"
-			(at 562.61 359.41 0)
+			(at 252.73000000000002 114.30000000000001 0)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -18373,7 +18566,7 @@
 			)
 		)
 		(property "Datasheet" ""
-			(at 562.61 359.41 0)
+			(at 252.73000000000002 114.30000000000001 0)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -18384,7 +18577,7 @@
 			)
 		)
 		(property "Description" "Generic connector, single row, 01x02, script generated (kicad-library-utils/schlib/autogen/connector/)"
-			(at 562.61 359.41 0)
+			(at 252.73000000000002 114.30000000000001 0)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -18395,7 +18588,7 @@
 			)
 		)
 		(property "ConnectionEvidence" "v0.9.21 annotated photo: J6 left/model1 joins Q9 single/native3 and R36 right/model2. J6 right/model2 joins R36 left/model1. PIC26/RB5-TP10-R35 upper; R35 lower-Q9 paired-left; paired-right via V021 is GND. All J6/Q9/R35/R36 options remain DNP. R36 left/J6 right onward rail is not established by this annotation."
-			(at 562.61 359.41 0)
+			(at 252.73000000000002 114.30000000000001 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -18421,83 +18614,7 @@
 	)
 	(symbol
 		(lib_id "Connector:TestPoint")
-		(at 435.61 382.27 270)
-		(unit 1)
-		(body_style 1)
-		(exclude_from_sim no)
-		(in_bom yes)
-		(on_board yes)
-		(in_pos_files yes)
-		(dnp no)
-		(uuid "85e4a026-1f1f-4101-8b58-45367db6ef9b")
-		(property "Reference" "TP9"
-			(at 428.752 382.27 0)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(property "Value" "test point"
-			(at 430.53 382.27 0)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(property "Footprint" "TestPoint:TestPoint_THTPad_D2.0mm_Drill1.0mm"
-			(at 435.61 387.35 0)
-			(hide yes)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(property "Datasheet" ""
-			(at 435.61 387.35 0)
-			(hide yes)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(property "Description" "test point"
-			(at 435.61 382.27 0)
-			(hide yes)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(pin "1"
-			(uuid "63fca78c-4246-4f97-880c-b47187497b4d")
-		)
-		(instances
-			(project "PetSafe_1001339"
-				(path "/33a03d59-1679-4e9c-af69-68d086b519af"
-					(reference "TP9")
-					(unit 1)
-				)
-			)
-		)
-	)
-	(symbol
-		(lib_id "Connector:TestPoint")
-		(at 461.01 351.79 270)
+		(at 198.12 123.19 270)
 		(unit 1)
 		(body_style 1)
 		(exclude_from_sim no)
@@ -18507,7 +18624,7 @@
 		(dnp no)
 		(uuid "902dfbbf-f2ae-4361-8b43-f0c8baa6f692")
 		(property "Reference" "TP10"
-			(at 454.152 351.79 0)
+			(at 191.262 123.19 0)
 			(show_name no)
 			(do_not_autoplace no)
 			(effects
@@ -18517,7 +18634,7 @@
 			)
 		)
 		(property "Value" "test point"
-			(at 455.93 351.79 0)
+			(at 193.04000000000002 123.19 0)
 			(show_name no)
 			(do_not_autoplace no)
 			(effects
@@ -18527,7 +18644,7 @@
 			)
 		)
 		(property "Footprint" "TestPoint:TestPoint_THTPad_D2.0mm_Drill1.0mm"
-			(at 461.01 356.87000000000006 0)
+			(at 198.12 128.27000000000004 0)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -18538,7 +18655,7 @@
 			)
 		)
 		(property "Datasheet" ""
-			(at 461.01 356.87000000000006 0)
+			(at 198.12 128.27000000000004 0)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -18549,7 +18666,7 @@
 			)
 		)
 		(property "Description" "test point"
-			(at 461.01 351.79 0)
+			(at 198.12 123.19 0)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -18560,7 +18677,7 @@
 			)
 		)
 		(property "ConnectionEvidence" "v0.9.21 annotated photo: J6 left/model1 joins Q9 single/native3 and R36 right/model2. J6 right/model2 joins R36 left/model1. PIC26/RB5-TP10-R35 upper; R35 lower-Q9 paired-left; paired-right via V021 is GND. All J6/Q9/R35/R36 options remain DNP. R36 left/J6 right onward rail is not established by this annotation."
-			(at 461.01 351.79 0)
+			(at 198.12 123.19 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -18582,7 +18699,7 @@
 	)
 	(symbol
 		(lib_id "Connector:TestPoint")
-		(at 508.0 351.79 270)
+		(at 387.35 373.38 270)
 		(unit 1)
 		(body_style 1)
 		(exclude_from_sim no)
@@ -18592,7 +18709,7 @@
 		(dnp no)
 		(uuid "9a14b497-6c05-4bc5-ae4d-21ecf461948e")
 		(property "Reference" "TP104"
-			(at 501.142 351.79 0)
+			(at 380.492 373.38 0)
 			(show_name no)
 			(do_not_autoplace no)
 			(effects
@@ -18602,7 +18719,7 @@
 			)
 		)
 		(property "Value" "VREF"
-			(at 502.91999999999996 351.79 0)
+			(at 382.27 373.38 0)
 			(show_name no)
 			(do_not_autoplace no)
 			(effects
@@ -18612,7 +18729,7 @@
 			)
 		)
 		(property "Footprint" "TestPoint:TestPoint_THTPad_D2.0mm_Drill1.0mm"
-			(at 508.0 356.87000000000006 0)
+			(at 387.35 378.46000000000004 0)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -18623,7 +18740,7 @@
 			)
 		)
 		(property "Datasheet" ""
-			(at 508.0 356.87000000000006 0)
+			(at 387.35 378.46000000000004 0)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -18634,7 +18751,7 @@
 			)
 		)
 		(property "Description" "test point"
-			(at 508.0 351.79 0)
+			(at 387.35 373.38 0)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -18645,7 +18762,7 @@
 			)
 		)
 		(property "ViaEvidence" "v0.9.16 CORRECTION: user confirms PIC21/RB0 -> TP16 -> Q2 single pad; TP16-VREF = 0.8 Mohm. User explicitly withdraws PIC21-VREF. PIC21/V026 belongs to H_PIR_SIG, separate from VREF. RA2/V035 and R21/V071 remain VREF. This supersedes every earlier RB0/V026-to-VREF statement."
-			(at 508.0 351.79 0)
+			(at 387.35 373.38 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -18654,7 +18771,7 @@
 			)
 		)
 		(property "MeasurementEvidence" "v0.9.16 CORRECTION: user confirms PIC21/RB0 -> TP16 -> Q2 single pad; TP16-VREF = 0.8 Mohm. User explicitly withdraws PIC21-VREF. PIC21/V026 belongs to H_PIR_SIG, separate from VREF. RA2/V035 and R21/V071 remain VREF. This supersedes every earlier RB0/V026-to-VREF statement."
-			(at 508.0 351.79 0)
+			(at 387.35 373.38 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -19230,99 +19347,389 @@
 		(at 320.03999999999996 312.42)
 		(uuid "0d0c90ab-df10-4c98-8637-dacb4a85194f")
 	)
-	(symbol (lib_id "Switch:SW_Push") (at 537.21 60.96 0) (unit 1)
-(body_style 1) (exclude_from_sim no) (in_bom yes) (on_board yes) (in_pos_files yes) (dnp no)
-(uuid "cf884dec-b648-46c4-826a-ee0c80cf09ce")
-(property "Reference" "S1"
-(at 538.48 63.5 0)
-(show_name no)
-(do_not_autoplace no)
-(effects
+	(symbol
+		(lib_id "Switch:SW_Push")
+		(at 537.21 60.96 0)
+		(unit 1)
+		(body_style 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(in_pos_files yes)
+		(dnp no)
+		(uuid "cf884dec-b648-46c4-826a-ee0c80cf09ce")
+		(property "Reference" "S1"
+			(at 538.48 63.5 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
 				(font
 					(size 1.27 1.27)
 				)
 				(justify left)
 			)
-)
-(property "Value" "pushbutton"
-(at 537.21 59.436 0)
-(show_name no)
-(do_not_autoplace no)
-(effects
+		)
+		(property "Value" "pushbutton"
+			(at 537.21 59.436 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
 				(font
 					(size 1.27 1.27)
 				)
 			)
-)
-(property "Footprint" "Button_Switch_SMD:SW_SPST_PTS645Sx43SMTR92"
-(at 537.21 66.04 0)
-(hide yes)
-(show_name no)
-(do_not_autoplace no)
-(effects
+		)
+		(property "Footprint" "Button_Switch_SMD:SW_SPST_PTS645Sx43SMTR92"
+			(at 537.21 66.04 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
 				(font
 					(size 1.27 1.27)
 				)
 			)
-)
-(property "Datasheet" "https://www.ckswitches.com/media/1471/pts645.pdf"
-(at 537.21 66.04 0)
-(hide yes)
-(show_name no)
-(do_not_autoplace no)
-(effects
+		)
+		(property "Datasheet" "https://www.ckswitches.com/media/1471/pts645.pdf"
+			(at 537.21 66.04 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
 				(font
 					(size 1.27 1.27)
 				)
 			)
-)
-(property "Description" "Push button switch, generic, symbol, four pins"
-(at 537.21 60.96 0)
-(hide yes)
-(show_name no)
-(do_not_autoplace no)
-(effects
+		)
+		(property "Description" "Push button switch, generic, symbol, four pins"
+			(at 537.21 60.96 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
 				(font
 					(size 1.27 1.27)
 				)
 			)
-)
-(property "ConnectionEvidence" "v0.9.23 retains the v0.9.21 button circuit: upper row TL/TR -> GND/C35.2, lower row BL/BR -> H_BUTTON/C35.1/R40.2/R41.2; R41.1 -> J1 VPP. Stock Switch:SW_Push represents the two contact nodes, with physical TL/TR -> native pin1 and BL/BR -> pin2. Four physical pads remain recorded. Common pairs and released/pressed behavior remain inferred from tactile-switch construction, not newly measured." (at 537.21 60.96 0)
-(effects (font (size 1.27 1.27)) (hide yes))
-)
-(property "MechanicalEvidence" "User measured a 6 x 6 x 4 mm body plus 2 mm actuator (about 6 mm overall). Photo shows four SMD gullwing leads; approximate pad-centre span from photo/body ratio is about 8 mm, consistent with the stock PTS645 land pattern (7.96 x 4.50 mm centres). Dimensions select a candidate family, not an exact manufacturer. Library x43 footprint/3D model denotes 4.3 mm overall and must not be used as the measured 6 mm housing." (at 537.21 60.96 0)
-(effects (font (size 1.27 1.27)) (hide yes))
-)
-(property "BodySize" "6 x 6 x 4 mm (user measured)" (at 537.21 60.96 0)
-(effects (font (size 1.27 1.27)) (hide yes))
-)
-(property "ActuatorProtrusion" "2 mm (user measured)" (at 537.21 60.96 0)
-(effects (font (size 1.27 1.27)) (hide yes))
-)
-(property "OverallHeight" "6 mm (4 + 2 mm)" (at 537.21 60.96 0)
-(effects (font (size 1.27 1.27)) (hide yes))
-)
-(property "FootprintStatus" "Candidate 2D land pattern; exact lead span and 6 mm housing variant not verified" (at 537.21 60.96 0)
-(effects (font (size 1.27 1.27)) (hide yes))
-)
-(property "Manufacturer" "Unidentified; PTS645 is a footprint reference" (at 537.21 60.96 0)
-(effects (font (size 1.27 1.27)) (hide yes))
-)
-(property "Model3DStatus" "Stock x43 model is 4.3 mm high; not an exact housing model" (at 537.21 60.96 0)
-(effects (font (size 1.27 1.27)) (hide yes))
-)
-(pin "1" (uuid "8ccab22f-86be-43b2-9815-148d9b6bff67"))
-(pin "2" (uuid "c08470b8-b485-45e1-a0c3-6cefb125ea77"))
-(instances
-(project "mcp_standard_placements"
-(path "/33a03d59-1679-4e9c-af69-68d086b519af"
-(reference "S1")
-(unit 1)
-)
-)
-)
-)
-(sheet_instances
+		)
+		(property "ConnectionEvidence" "v0.9.23 retains the v0.9.21 button circuit: upper row TL/TR -> GND/C35.2, lower row BL/BR -> H_BUTTON/C35.1/R40.2/R41.2; R41.1 -> J1 VPP. Stock Switch:SW_Push represents the two contact nodes, with physical TL/TR -> native pin1 and BL/BR -> pin2. Four physical pads remain recorded. Common pairs and released/pressed behavior remain inferred from tactile-switch construction, not newly measured."
+			(at 537.21 60.96 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "MechanicalEvidence" "User measured a 6 x 6 x 4 mm body plus 2 mm actuator (about 6 mm overall). Photo shows four SMD gullwing leads; approximate pad-centre span from photo/body ratio is about 8 mm, consistent with the stock PTS645 land pattern (7.96 x 4.50 mm centres). Dimensions select a candidate family, not an exact manufacturer. Library x43 footprint/3D model denotes 4.3 mm overall and must not be used as the measured 6 mm housing."
+			(at 537.21 60.96 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "BodySize" "6 x 6 x 4 mm (user measured)"
+			(at 537.21 60.96 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "ActuatorProtrusion" "2 mm (user measured)"
+			(at 537.21 60.96 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "OverallHeight" "6 mm (4 + 2 mm)"
+			(at 537.21 60.96 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "FootprintStatus" "Candidate 2D land pattern; exact lead span and 6 mm housing variant not verified"
+			(at 537.21 60.96 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Manufacturer" "Unidentified; PTS645 is a footprint reference"
+			(at 537.21 60.96 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Model3DStatus" "Stock x43 model is 4.3 mm high; not an exact housing model"
+			(at 537.21 60.96 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(pin "1"
+			(uuid "8ccab22f-86be-43b2-9815-148d9b6bff67")
+		)
+		(pin "2"
+			(uuid "c08470b8-b485-45e1-a0c3-6cefb125ea77")
+		)
+		(instances
+			(project "mcp_standard_placements"
+				(path "/33a03d59-1679-4e9c-af69-68d086b519af"
+					(reference "S1")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "Transistor_BJT:Q_NPN_BEC")
+		(at 233.68 123.19 0)
+		(unit 1)
+		(body_style 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(in_pos_files yes)
+		(dnp no)
+		(uuid "3fc67e31-0e75-47c7-9f93-2f8863e9c614")
+		(property "Reference" "Q9"
+			(at 238.76 124.45999999999998 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+			)
+		)
+		(property "Value" "NPN option / DNP"
+			(at 238.76 121.91999999999996 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+			)
+		)
+		(property "Footprint" "Package_TO_SOT_SMD:SOT-23"
+			(at 238.76 125.72999999999996 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Datasheet" ""
+			(at 233.68 123.19 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Description" "Generic NPN hypothesis for empty Q9; not an identified fitted transistor."
+			(at 233.68 123.19 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "ViaEvidence" "v0.9 DNP: right pad/pin2 to V021 user GND; no fitted transistor identification required."
+			(at 233.68 123.19 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "ConnectionEvidence" "v0.9.21 annotated photo: J6 left/model1 joins Q9 single/native3 and R36 right/model2. J6 right/model2 joins R36 left/model1. PIC26/RB5-TP10-R35 upper; R35 lower-Q9 paired-left; paired-right via V021 is GND. All J6/Q9/R35/R36 options remain DNP. R36 left/J6 right onward rail is not established by this annotation."
+			(at 233.68 123.19 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "DeviceRole" "v0.9.24: use generic NPN BEC symbol for empty Q9, consistent with R35 drive into paired-left pin1/base, paired-right pin2/emitter to GND, and single pin3/collector to J6.1/R36.2. NPN device class is an inference; no fitted transistor identity or rating. All option parts remain DNP. J6.2/R36.1 onward role is still unknown."
+			(at 233.68 123.19 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(pin "1"
+			(uuid "34234728-b104-4a33-a314-bb815c417beb")
+		)
+		(pin "2"
+			(uuid "f2792722-a76b-4f3e-8e4d-58c0804d1bbb")
+		)
+		(pin "3"
+			(uuid "33819788-092e-4180-85df-78df7ae0ae6f")
+		)
+		(instances
+			(project "mcp_standard_placements"
+				(path "/33a03d59-1679-4e9c-af69-68d086b519af"
+					(reference "Q9")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "Regulator_Linear:MCP1700x-330xxTT")
+		(at 330.2 373.38 0)
+		(unit 1)
+		(body_style 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(in_pos_files yes)
+		(dnp no)
+		(uuid "70877b08-f6cf-46fa-bd62-cf3acc73e766")
+		(property "Reference" "U106"
+			(at 326.39 376.555 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Value" "U6A / LDO option"
+			(at 330.2 376.555 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+			)
+		)
+		(property "Footprint" "Package_TO_SOT_SMD:SOT-23"
+			(at 330.2 379.095 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Datasheet" "https://ww1.microchip.com/downloads/aemDocuments/documents/APID/ProductDocuments/DataSheets/MCP1700-Data-Sheet-20001826F.pdf"
+			(at 330.2 373.38 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Description" "Unidentified DNP 3-pin regulator option. No fitted MCP1700, output voltage or current rating is asserted."
+			(at 330.2 373.38 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "ViaEvidence" "v0.9.8: User confirms V067-J3 pin1 (red wire), on modeled H_PIR_VDD. Prior V067-U6A.R1 local pad association retained. Empty U6A option remains DNP; this does not identify an IC or confirm every other H_PIR_VDD branch."
+			(at 330.2 373.38 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "ConnectionEvidence" "v0.9.24: same measured/photo-supported U6A input/output/GND nets retained. Replace the connector sketch by a three-pin regulator role template. SOT-23 single left input -> native U106.3, upper-right output -> U106.2, lower-right GND -> U106.1. The former connector pin1/pin3 assignment was arbitrary and is superseded. MCP1700 stock symbol supplies graphics/pin roles only; it does not identify a fitted device or establish voltage/current rating. U6A remains DNP and an alternative to fitted U6."
+			(at 330.2 373.38 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "DeviceRole" "Unpopulated alternative PIR regulator. Input after R37, output J3.1, GND; MCP1700 stock symbol is a pin-role template only."
+			(at 330.2 373.38 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "PinMapping" "Photo single-left input -> SOT23 pin3; upper-right output -> pin2; lower-right GND -> pin1. Supersedes former arbitrary connector pin1/pin3 assignment."
+			(at 330.2 373.38 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(pin "1"
+			(uuid "c8954b73-956b-4c58-8160-8c0bf10da270")
+		)
+		(pin "2"
+			(uuid "4a86e838-1769-4042-a22b-7b0ebe4646a9")
+		)
+		(pin "3"
+			(uuid "658cb269-71f7-40d4-a11c-f5f5d449dc2d")
+		)
+		(instances
+			(project "mcp_standard_placements"
+				(path "/33a03d59-1679-4e9c-af69-68d086b519af"
+					(reference "U106")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(sheet_instances
 		(path "/"
 			(page "1")
 		)
@@ -19799,7 +20206,7 @@
 	)
 	(symbol
 		(lib_id "Device:D_Zener")
-		(at 372.11 391.16 0)
+		(at 342.9 43.18 270)
 		(unit 1)
 		(body_style 1)
 		(exclude_from_sim no)
@@ -19809,7 +20216,7 @@
 		(dnp no)
 		(uuid "bc5d1252-9c38-4678-bee4-2d23bb46d86d")
 		(property "Reference" "D4"
-			(at 372.11 393.7 0)
+			(at 342.9 45.71999999999997 0)
 			(show_name no)
 			(do_not_autoplace no)
 			(effects
@@ -19819,7 +20226,7 @@
 			)
 		)
 		(property "Value" "SD05? / TVS 5V"
-			(at 372.11 388.62 0)
+			(at 342.9 40.639999999999986 0)
 			(show_name no)
 			(do_not_autoplace no)
 			(effects
@@ -19829,7 +20236,7 @@
 			)
 		)
 		(property "Footprint" "Diode_SMD:D_SOD-323"
-			(at 372.11 391.16 0)
+			(at 342.9 43.18000000000001 0)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -19840,7 +20247,7 @@
 			)
 		)
 		(property "Datasheet" "https://www.vishay.com/docs/85751/1n4148ws.pdf"
-			(at 372.11 391.16 0)
+			(at 342.9 43.18000000000001 0)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -19851,7 +20258,7 @@
 			)
 		)
 		(property "Description" "75V 0.15A Fast switching Diode, SOD-323"
-			(at 372.11 391.16 0)
+			(at 342.9 43.18000000000001 0)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -19862,7 +20269,7 @@
 			)
 		)
 		(property "OriginalReference" "D4"
-			(at 372.11 391.16 0)
+			(at 342.9 43.18000000000001 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -19871,7 +20278,7 @@
 			)
 		)
 		(property "Evidence" "Photo reconstruction; topology inferred"
-			(at 372.11 391.16 0)
+			(at 342.9 43.18000000000001 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -19880,7 +20287,7 @@
 			)
 		)
 		(property "LibraryPolicy" "Unmodified KiCad 10 stock symbol"
-			(at 372.11 391.16 0)
+			(at 342.9 43.18000000000001 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -19889,7 +20296,7 @@
 			)
 		)
 		(property "PinMapping" "See evidence/pin_crosswalk.json; physical orientation may be provisional"
-			(at 372.11 391.16 0)
+			(at 342.9 43.18000000000001 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -19898,7 +20305,7 @@
 			)
 		)
 		(property "ViaEvidence" "v0.8: D4.2 via V030 matches main rear VSS-associated copper; photo inference, not continuity measurement."
-			(at 372.11 391.16 0)
+			(at 342.9 43.18000000000001 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -19923,7 +20330,7 @@
 	)
 	(symbol
 		(lib_id "Device:D_Zener")
-		(at 388.62 391.16 0)
+		(at 374.65 43.18 270)
 		(unit 1)
 		(body_style 1)
 		(exclude_from_sim no)
@@ -19933,7 +20340,7 @@
 		(dnp no)
 		(uuid "775ea2c3-9c9b-4e15-97e7-b582699d9866")
 		(property "Reference" "D5"
-			(at 388.62 393.7 0)
+			(at 374.65 45.71999999999997 0)
 			(show_name no)
 			(do_not_autoplace no)
 			(effects
@@ -19943,7 +20350,7 @@
 			)
 		)
 		(property "Value" "SD05? / TVS 5V"
-			(at 388.62 388.62 0)
+			(at 374.65 40.639999999999986 0)
 			(show_name no)
 			(do_not_autoplace no)
 			(effects
@@ -19953,7 +20360,7 @@
 			)
 		)
 		(property "Footprint" "Diode_SMD:D_SOD-323"
-			(at 388.62 391.16 0)
+			(at 374.65 43.18000000000001 0)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -19964,7 +20371,7 @@
 			)
 		)
 		(property "Datasheet" "https://www.vishay.com/docs/85751/1n4148ws.pdf"
-			(at 388.62 391.16 0)
+			(at 374.65 43.18000000000001 0)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -19975,7 +20382,7 @@
 			)
 		)
 		(property "Description" "75V 0.15A Fast switching Diode, SOD-323"
-			(at 388.62 391.16 0)
+			(at 374.65 43.18000000000001 0)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -19986,7 +20393,7 @@
 			)
 		)
 		(property "OriginalReference" "D5"
-			(at 388.62 391.16 0)
+			(at 374.65 43.18000000000001 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -19995,7 +20402,7 @@
 			)
 		)
 		(property "Evidence" "Photo reconstruction; topology inferred"
-			(at 388.62 391.16 0)
+			(at 374.65 43.18000000000001 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -20004,7 +20411,7 @@
 			)
 		)
 		(property "LibraryPolicy" "Unmodified KiCad 10 stock symbol"
-			(at 388.62 391.16 0)
+			(at 374.65 43.18000000000001 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -20013,7 +20420,7 @@
 			)
 		)
 		(property "PinMapping" "See evidence/pin_crosswalk.json; physical orientation may be provisional"
-			(at 388.62 391.16 0)
+			(at 374.65 43.18000000000001 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -20022,7 +20429,7 @@
 			)
 		)
 		(property "ViaEvidence" "v0.8: D5.2 via V027 matches main rear VSS-associated copper; photo inference, not continuity measurement."
-			(at 388.62 391.16 0)
+			(at 374.65 43.18000000000001 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -20047,7 +20454,7 @@
 	)
 	(symbol
 		(lib_id "Device:D_Zener")
-		(at 405.13 391.16 0)
+		(at 311.15 43.18 270)
 		(unit 1)
 		(body_style 1)
 		(exclude_from_sim no)
@@ -20057,7 +20464,7 @@
 		(dnp no)
 		(uuid "48bcaf1d-1684-45c8-b6b0-3369c20fdab4")
 		(property "Reference" "D6"
-			(at 405.13 393.7 0)
+			(at 311.15 45.71999999999997 0)
 			(show_name no)
 			(do_not_autoplace no)
 			(effects
@@ -20067,7 +20474,7 @@
 			)
 		)
 		(property "Value" "MMSZ5228BS? / 3.9V"
-			(at 405.13 388.62 0)
+			(at 311.15 40.639999999999986 0)
 			(show_name no)
 			(do_not_autoplace no)
 			(effects
@@ -20077,7 +20484,7 @@
 			)
 		)
 		(property "Footprint" "Diode_SMD:D_SOD-323"
-			(at 405.13 391.16 0)
+			(at 311.15 43.18000000000001 0)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -20088,7 +20495,7 @@
 			)
 		)
 		(property "Datasheet" "https://www.vishay.com/docs/85751/1n4148ws.pdf"
-			(at 405.13 391.16 0)
+			(at 311.15 43.18000000000001 0)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -20099,7 +20506,7 @@
 			)
 		)
 		(property "Description" "75V 0.15A Fast switching Diode, SOD-323"
-			(at 405.13 391.16 0)
+			(at 311.15 43.18000000000001 0)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -20110,7 +20517,7 @@
 			)
 		)
 		(property "OriginalReference" "D6"
-			(at 405.13 391.16 0)
+			(at 311.15 43.18000000000001 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -20119,7 +20526,7 @@
 			)
 		)
 		(property "Evidence" "Photo reconstruction; topology inferred"
-			(at 405.13 391.16 0)
+			(at 311.15 43.18000000000001 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -20128,7 +20535,7 @@
 			)
 		)
 		(property "LibraryPolicy" "Unmodified KiCad 10 stock symbol"
-			(at 405.13 391.16 0)
+			(at 311.15 43.18000000000001 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -20137,7 +20544,7 @@
 			)
 		)
 		(property "PinMapping" "See evidence/pin_crosswalk.json; physical orientation may be provisional"
-			(at 405.13 391.16 0)
+			(at 311.15 43.18000000000001 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -20146,7 +20553,7 @@
 			)
 		)
 		(property "ConnectionEvidence" "v0.9.20 B22-B27: upper photo contact V -> GND, lower W -> VPP, each 1 ohm. B29 red V/black W about 0.7V; B30 reverse OL. Supports A=V/GND (pin2), K=W/VPP (pin1). G3 identity and Zener breakdown remain unverified; no 3.9V measurement."
-			(at 405.13 391.16 0)
+			(at 311.15 43.18000000000001 0)
 			(effects
 				(font
 					(size 1.27 1.27)
