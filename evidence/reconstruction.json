@@ -1,6 +1,6 @@
 {
   "board": "100-1339 R03 A",
-  "revision": "v0.9.31",
+  "revision": "v0.9.32",
   "status": "PARTIALLY VERIFIED RECONSTRUCTION; USER MEASUREMENTS, PHOTO TRACES AND QUALIFIED HYPOTHESES",
   "components": [
     {
@@ -616,31 +616,6 @@
       }
     },
     {
-      "ref": "R33",
-      "kind": "R",
-      "value": "10k",
-      "marking": "01C",
-      "population": "populated",
-      "sheet": "power",
-      "source": "IMG_2435.jpg",
-      "pins": [
-        "1",
-        "2"
-      ],
-      "note": "Value decoded from visible marking, not measured.",
-      "side": "front",
-      "traced_pin_count": 0,
-      "library_symbol": "Device:R",
-      "footprint": "Resistor_SMD:R_0603_1608Metric",
-      "footprint_confidence": "medium - revised family estimate",
-      "footprint_basis": "User reports R8 approximately 1.6 x 0.77 mm, consistent with 0603 (1608 metric). Repeated fitted resistor family revised using R8 as a scale reference. This individual body has not been measured; earlier 0805 estimate superseded.",
-      "current_summary": "INVENTORY UNVERIFIED (E07): inherited 10k PIR pull-up. Cited IMG_2435 establishes R37/R38/R39, but not R33. Physical presence/location and assumed J3.1/J3.2 endpoints remain unverified; retain pending identification, not as a measured value.",
-      "value_evidence": {
-        "state": "unverified",
-        "source": "Inherited inventory; physical part not established by its cited photo."
-      }
-    },
-    {
       "ref": "R37",
       "kind": "R",
       "value": "22",
@@ -717,7 +692,7 @@
       "hypothesis": "10k from marking. Model2 joins printed VDD through V063/V064; model1 remains on the inferred Q2 base/R38 node. PIR output TP16/Q2.S to PIC21 is confirmed; transistor pin functions and the R33 branch remain qualified.",
       "via_evidence": "v0.9.6: User confirms V064-V063. R37.1/R39.2 feed junction is regulated board VDD, not motor VDD.",
       "v096_summary": "v0.9.6: User confirms V064-V063. R37.1/R39.2 feed junction is regulated board VDD, not motor VDD.",
-      "current_summary": "10k from marking. Model2 joins printed VDD through V063/V064; model1 remains on the inferred Q2 base/R38 node. PIR output TP16/Q2.S to PIC21 is confirmed; transistor pin functions and the R33 branch remain qualified."
+      "current_summary": "10k from marking. Model2 joins printed VDD through V063/V064; model1 remains on the inferred Q2 base/R38 node. PIR output TP16/Q2.S to PIC21 is confirmed; transistor pin functions remain unverified. Unsupported R33 pull-up withdrawn."
     },
     {
       "ref": "R40",
@@ -2778,7 +2753,7 @@
         "Q3.L": "First four transistor L pads visibly join V089/V094/V099/V104, user GND. Q3 L joins the same front copper by photo inference. Candidate emitter functions not independently established."
       },
       "v09_summary": "First four transistor L pads visibly join V089/V094/V099/V104, user GND. Q3 L joins the same front copper by photo inference. Candidate emitter functions not independently established.",
-      "current_summary": "Provisional 2H / MMBTA55 PNP candidate; physical R->base1, L->emitter2/GND, S->collector3 is unverified. This is not ordinary positive-GPIO PNP switching. Preserve copper pending one Q3-cell polarity/orientation test; no NPN substitution by plausibility."
+      "current_summary": "DISPUTED 2H / MMBTA55 PNP candidate. Q3 in-circuit diode readings: L->R 2.3V, L->S latest 0.48V (earlier 0.35V); reverse directions and R/S both ways OL. These do not confirm B=R/E=L/C=S. Copper and candidate symbol retained pending isolated-device identification; no MOSFET identity inferred from one forward path."
     },
     {
       "ref": "Q4",
@@ -2806,7 +2781,7 @@
         "Q4.L": "First four transistor L pads visibly join V089/V094/V099/V104, user GND. Q3 L joins the same front copper by photo inference. Candidate emitter functions not independently established."
       },
       "v09_summary": "First four transistor L pads visibly join V089/V094/V099/V104, user GND. Q3 L joins the same front copper by photo inference. Candidate emitter functions not independently established.",
-      "current_summary": "Provisional 2H / MMBTA55 PNP candidate; physical R->base1, L->emitter2/GND, S->collector3 is unverified. This is not ordinary positive-GPIO PNP switching. Preserve copper pending one Q3-cell polarity/orientation test; no NPN substitution by plausibility."
+      "current_summary": "Same 2H marking as Q3; PNP type/pinout remains disputed by Q3 in-circuit diode results (0.48V L->S; 2.3V L->R; other directions OL). This device was not diode-tested. Retain existing copper and provisional PNP symbol pending family identification."
     },
     {
       "ref": "Q5",
@@ -2834,7 +2809,7 @@
         "Q5.L": "First four transistor L pads visibly join V089/V094/V099/V104, user GND. Q3 L joins the same front copper by photo inference. Candidate emitter functions not independently established."
       },
       "v09_summary": "First four transistor L pads visibly join V089/V094/V099/V104, user GND. Q3 L joins the same front copper by photo inference. Candidate emitter functions not independently established.",
-      "current_summary": "Provisional 2H / MMBTA55 PNP candidate; physical R->base1, L->emitter2/GND, S->collector3 is unverified. This is not ordinary positive-GPIO PNP switching. Preserve copper pending one Q3-cell polarity/orientation test; no NPN substitution by plausibility."
+      "current_summary": "Same 2H marking as Q3; PNP type/pinout remains disputed by Q3 in-circuit diode results (0.48V L->S; 2.3V L->R; other directions OL). This device was not diode-tested. Retain existing copper and provisional PNP symbol pending family identification."
     },
     {
       "ref": "Q6",
@@ -2862,7 +2837,7 @@
         "Q6.L": "First four transistor L pads visibly join V089/V094/V099/V104, user GND. Q3 L joins the same front copper by photo inference. Candidate emitter functions not independently established."
       },
       "v09_summary": "First four transistor L pads visibly join V089/V094/V099/V104, user GND. Q3 L joins the same front copper by photo inference. Candidate emitter functions not independently established.",
-      "current_summary": "Provisional 2H / MMBTA55 PNP candidate; physical R->base1, L->emitter2/GND, S->collector3 is unverified. This is not ordinary positive-GPIO PNP switching. Preserve copper pending one Q3-cell polarity/orientation test; no NPN substitution by plausibility."
+      "current_summary": "Same 2H marking as Q3; PNP type/pinout remains disputed by Q3 in-circuit diode results (0.48V L->S; 2.3V L->R; other directions OL). This device was not diode-tested. Retain existing copper and provisional PNP symbol pending family identification."
     },
     {
       "ref": "Q7",
@@ -2985,7 +2960,7 @@
         "Q11.L": "First four transistor L pads visibly join V089/V094/V099/V104, user GND. Q3 L joins the same front copper by photo inference. Candidate emitter functions not independently established."
       },
       "v09_summary": "First four transistor L pads visibly join V089/V094/V099/V104, user GND. Q3 L joins the same front copper by photo inference. Candidate emitter functions not independently established.",
-      "current_summary": "Provisional 2H / MMBTA55 PNP candidate; physical R->base1, L->emitter2/GND, S->collector3 is unverified. This is not ordinary positive-GPIO PNP switching. Preserve copper pending one Q3-cell polarity/orientation test; no NPN substitution by plausibility."
+      "current_summary": "Same 2H marking as Q3; PNP type/pinout remains disputed by Q3 in-circuit diode results (0.48V L->S; 2.3V L->R; other directions OL). This device was not diode-tested. Retain existing copper and provisional PNP symbol pending family identification."
     },
     {
       "ref": "D1",
@@ -3230,7 +3205,7 @@
       "via_evidence": "v0.9.14 user: pin1 PIR supply previously confirmed; pin2 H-R38 K/right/model1 1 ohm and H-R38 J/left/model2 10 kohm; pin3-GND 1 ohm. Pin2-GND remains 290 kohm (batch1), distinct from ground. Q2 onward/controller route remains unverified. v0.9.16: matching physical columns reach U7; J3.1-U7.3 supply, J3.2-U7.2 signal, J3.3-U7.1 GND.",
       "measurement_evidence": "v0.9.14 user: pin1 PIR supply previously confirmed; pin2 H-R38 K/right/model1 1 ohm and H-R38 J/left/model2 10 kohm; pin3-GND 1 ohm. Pin2-GND remains 290 kohm (batch1), distinct from ground. Q2 onward/controller route remains unverified. v0.9.16: matching physical columns reach U7; J3.1-U7.3 supply, J3.2-U7.2 signal, J3.3-U7.1 GND.",
       "photo_pad_mapping": {},
-      "current_summary": "PIR connector: pin1 supply; pin2 to R38 K/right/model1 at 1 ohm, with 10k through R38; pin3 GND at 1 ohm. The Q2 single-pad/TP16 output reaches PIC21/RB0 by user correction. PIC21-to-VREF was withdrawn after TP16-VREF measured 0.8 Mohm. Q2/R33 device behavior remains qualified."
+      "current_summary": "PIR connector: pin1 supply; pin2 to R38 K/right/model1 at 1 ohm, with 10k through R38; pin3 GND at 1 ohm. The Q2 single-pad/TP16 output reaches PIC21/RB0 by user correction. PIC21-to-VREF was withdrawn after TP16-VREF measured 0.8 Mohm. Q2 behavior remains unverified; unsupported R33 pull-up withdrawn."
     },
     {
       "ref": "J5",
@@ -4021,7 +3996,6 @@
     {
       "net": "H_PIR_RAW",
       "endpoints": [
-        "R33.1",
         "R38.1",
         "J3.2",
         "U7.2"
@@ -4048,7 +4022,6 @@
       "endpoints": [
         "C37.1",
         "J3.1",
-        "R33.2",
         "U6.R1",
         "U6A.R1",
         "U7.3"
@@ -6580,17 +6553,6 @@
       ]
     },
     {
-      "net": "H_PIR_VDD",
-      "a": [
-        393.7,
-        356.87
-      ],
-      "b": [
-        397.51,
-        356.87
-      ]
-    },
-    {
       "net": "H_BUTTON",
       "a": [
         524.51,
@@ -6698,17 +6660,6 @@
       "b": [
         483.87,
         66.04
-      ]
-    },
-    {
-      "net": "H_PIR_RAW",
-      "a": [
-        388.62,
-        349.25
-      ],
-      "b": [
-        393.7,
-        349.25
       ]
     },
     {
@@ -6830,17 +6781,6 @@
       "b": [
         427.99,
         111.76
-      ]
-    },
-    {
-      "net": "H_PIR_RAW",
-      "a": [
-        388.62,
-        336.55
-      ],
-      "b": [
-        388.62,
-        349.25
       ]
     },
     {
@@ -12012,14 +11952,6 @@
       340.36,
       87.63
     ],
-    "R33.1": [
-      393.7,
-      349.25
-    ],
-    "R33.2": [
-      393.7,
-      356.87
-    ],
     "TP16.1": [
       379.73,
       335.28
@@ -12461,8 +12393,6 @@
     "R39.2": "R39.2",
     "R32.1": "R32.1",
     "R32.2": "R32.2",
-    "R33.1": "R33.1",
-    "R33.2": "R33.2",
     "TP16.1": "TP16.1",
     "R35.1": "R35.1",
     "R35.2": "R35.2",
@@ -12532,6 +12462,12 @@
       "date": "2026-10-09",
       "reason": "Unsupported inherited inventory entry; no physical location established in cited photos and user could not find it. Removed at user request, not electrically declared NC.",
       "evidence": "evidence/options_reorganization_20261009.json"
+    },
+    {
+      "ref": "R33",
+      "date": "2026-10-09",
+      "reason": "Inherited inventory has no photo-supported location; user cannot locate the part. Withdraw the unsupported entry and assumed pull-up, not classify as DNP or NC.",
+      "evidence": "evidence/r33_withdrawal_v0932.json"
     }
   ]
 }

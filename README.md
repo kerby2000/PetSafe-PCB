@@ -1,19 +1,19 @@
 # PetSafe PCB reverse engineering
 
-Current schematic and review: **v0.9.31**, 2026-10-09. PetSafe PPA19-16811 main board, **100-1339 R03 A**. All 149 catalog entries, including test pads and empty options, are on one A2 KiCad 10 sheet.
+Current schematic and review: **v0.9.32**, 2026-10-09. PetSafe PPA19-16811 main board, **100-1339 R03 A**. All 148 catalog entries, including test pads and empty options, are on one A2 KiCad 10 sheet.
 
-Open [the current overview](index.html), [the completion checklist](docs/FINISHING_CHECKLIST.html), [the native schematic](schematic/PetSafe_1001339.kicad_sch), or [the schematic PDF](output/pdf/PetSafe_single_sheet.pdf). The [printable status](output/pdf/PetSafe_completion_status.pdf) includes only current questions and closure criteria. The [measurement page](docs/FINISHING_MEASUREMENTS.html) shows the **next Q3 diode-test batch**; completed results are archived.
+Open [the current overview](index.html), [the completion checklist](docs/FINISHING_CHECKLIST.html), [the native schematic](schematic/PetSafe_1001339.kicad_sch), or [the schematic PDF](output/pdf/PetSafe_single_sheet.pdf). The [printable status](output/pdf/PetSafe_completion_status.pdf) includes only current questions and closure criteria. The [measurement page](docs/FINISHING_MEASUREMENTS.html) shows the **Q3 result and remaining identity question**; completed results are archived.
 
 ## Current state
 
 | Area | Status |
 |---|---|
-| Drawing | One A2 sheet, 149 entries / 154 symbol units, normal local wires and named inter-block nets |
-| Physical pads | 350 assigned to modeled local nets, one supported intentional NC at U6 pin4; zero unassigned pads |
+| Drawing | One A2 sheet, 148 entries / 153 symbol units, normal local wires and named inter-block nets |
+| Physical pads | 348 assigned to modeled local nets, one supported intentional NC at U6 pin4; zero unassigned pads |
 | Connectivity check | 83 model/native net partitions agree; this checks file consistency, not every physical assumption |
 | ERC | One user-retained U6/U6A output conflict; five source declarations resolved; no missing-library findings or isolated labels |
 | Values | 44 fitted ceramic values unknown; C5 470 uF / 16 V; L1 1.4 uH / L2 2.2 uH readings recorded |
-| Packages | 148/149 candidates assigned; LED1 remains blank; exact fit and pin maps remain qualified |
+| Packages | 147/148 candidates assigned; LED1 remains blank; exact fit and pin maps remain qualified |
 | Libraries | 22 stock device definitions plus four datasheet candidate definitions; five additional stock PWR_FLAG annotations |
 | Hardware | No powered functional validation, confirmed layer stack or routed KiCad PCB |
 
@@ -21,11 +21,11 @@ The [current finalization audit](docs/reviews/2026-10-09_finalization_cleanup_v0
 
 ## What remains to finalize the schematic
 
-1. **Resolve hidden paths and device behavior.** Q3 diode tests are the next batch. R33 inventory, three local-only PIC branches, antenna continuations, candidate pin functions, button contacts and operating levels are tracked individually in the checklist.
+1. **Resolve hidden paths and device behavior.** Q3 in-circuit tests are complete but inconclusive; isolated testing is optional. Remaining gaps include three local-only PIC branches, antenna continuations, candidate pin functions, button contacts and operating levels are tracked individually in the checklist.
 2. **Recover critical component values.** 44 ceramic values remain. Prioritize antenna/RF/receiver components after topology, accounting for parallel paths in LCR readings.
 3. **Finish interface and package mapping.** LED colour/pad assignment and its missing footprint, plus motor lead orientation. Exact package fit, routed PCB/layer stack, daughterboard and firmware are later reproduction work, not extra unfinished main-board wires.
 
-Zero open pads does not mean every signal source, remote destination or candidate device function is established. There are zero dangling native wire ends and no pinless wire islands. R33 physical inventory is explicitly unverified (E07). See the [maintained question register](evidence/remaining_work.json) for the evidence, owner/agent actions and closure criteria for each issue.
+Zero open pads does not mean every signal source, remote destination or candidate device function is established. There are zero dangling native wire ends and no pinless wire islands. Unsupported R33 and its assumed pull-up have been withdrawn after photo review and user inspection. See the [maintained question register](evidence/remaining_work.json) for the evidence, owner/agent actions and closure criteria for each issue.
 
 ## History
 

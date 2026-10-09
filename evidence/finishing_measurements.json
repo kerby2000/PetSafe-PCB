@@ -1,7 +1,7 @@
 {
   "date": "2026-10-09",
-  "basis_revision": "v0.9.31",
-  "status": "AWAITING_Q3_DIODE_TESTS",
+  "basis_revision": "v0.9.32",
+  "status": "Q3_IN_CIRCUIT_COMPLETE_IDENTITY_OPEN",
   "scope": "One transistor-junction test; no repeated continuity of visible traces.",
   "setup": "Disconnect the battery and programmer. Use diode-test mode on the Fluke 179 or 87 III. Red probe = From; black probe = To. Report volts or OL, not resistance.",
   "photos": [
@@ -516,57 +516,8 @@
       }
     }
   ],
-  "tests": [
-    {
-      "id": "B31",
-      "group": "q3-junctions",
-      "from": "QL",
-      "to": "QR",
-      "mode": "diode",
-      "purpose": "Measure forward voltage or OL to identify the common junction/base direction."
-    },
-    {
-      "id": "B32",
-      "group": "q3-junctions",
-      "from": "QR",
-      "to": "QL",
-      "mode": "diode",
-      "purpose": "Measure forward voltage or OL to identify the common junction/base direction."
-    },
-    {
-      "id": "B33",
-      "group": "q3-junctions",
-      "from": "QL",
-      "to": "QS",
-      "mode": "diode",
-      "purpose": "Measure forward voltage or OL to identify the common junction/base direction."
-    },
-    {
-      "id": "B34",
-      "group": "q3-junctions",
-      "from": "QS",
-      "to": "QL",
-      "mode": "diode",
-      "purpose": "Measure forward voltage or OL to identify the common junction/base direction."
-    },
-    {
-      "id": "B35",
-      "group": "q3-junctions",
-      "from": "QR",
-      "to": "QS",
-      "mode": "diode",
-      "purpose": "Measure forward voltage or OL to identify the common junction/base direction."
-    },
-    {
-      "id": "B36",
-      "group": "q3-junctions",
-      "from": "QS",
-      "to": "QR",
-      "mode": "diode",
-      "purpose": "Measure forward voltage or OL to identify the common junction/base direction."
-    }
-  ],
-  "interpretation": "PNP: two forward readings toward a common black-probe base. NPN: two forward readings away from a common red-probe base. In-circuit paths can obscure this; this first test cannot reliably distinguish collector and emitter.",
+  "tests": [],
+  "interpretation": "The latest QL(red)-QS(black) 0.48 V is consistent with a forward junction but does not establish a BJT or MOSFET. QL-QR 2.3 V and QR-QS OL both ways do not confirm the PNP B=QR assignment. Preserve the existing copper and mark the candidate disputed.",
   "next_stages": [
     {
       "stage": "Resolve the remaining functional paths",
@@ -873,11 +824,73 @@
       "purpose": "Diode mode: RED probe W (lower / VPP), BLACK probe V (upper / GND).",
       "unit": "V / OL",
       "result": "OL"
+    },
+    {
+      "id": "B31",
+      "group": "q3-junctions",
+      "from": "QL",
+      "to": "QR",
+      "mode": "diode",
+      "purpose": "Measure forward voltage or OL to identify the common junction/base direction.",
+      "result": "2.3 V",
+      "conditions": "In circuit, battery and programmer disconnected as requested."
+    },
+    {
+      "id": "B32",
+      "group": "q3-junctions",
+      "from": "QR",
+      "to": "QL",
+      "mode": "diode",
+      "purpose": "Measure forward voltage or OL to identify the common junction/base direction.",
+      "result": "OL",
+      "conditions": "In circuit, battery and programmer disconnected as requested."
+    },
+    {
+      "id": "B33",
+      "group": "q3-junctions",
+      "from": "QL",
+      "to": "QS",
+      "mode": "diode",
+      "purpose": "Measure forward voltage or OL to identify the common junction/base direction.",
+      "result": "0.48 V",
+      "conditions": "In circuit, battery and programmer disconnected as requested.",
+      "earlier_reading": "0.35 V",
+      "latest_user_statement": "I re-measured again. QL (R) QS(B) - 0.48V"
+    },
+    {
+      "id": "B34",
+      "group": "q3-junctions",
+      "from": "QS",
+      "to": "QL",
+      "mode": "diode",
+      "purpose": "Measure forward voltage or OL to identify the common junction/base direction.",
+      "result": "OL",
+      "conditions": "In circuit, battery and programmer disconnected as requested."
+    },
+    {
+      "id": "B35",
+      "group": "q3-junctions",
+      "from": "QR",
+      "to": "QS",
+      "mode": "diode",
+      "purpose": "Measure forward voltage or OL to identify the common junction/base direction.",
+      "result": "OL",
+      "conditions": "In circuit, battery and programmer disconnected as requested."
+    },
+    {
+      "id": "B36",
+      "group": "q3-junctions",
+      "from": "QS",
+      "to": "QR",
+      "mode": "diode",
+      "purpose": "Measure forward voltage or OL to identify the common junction/base direction.",
+      "result": "OL",
+      "conditions": "In circuit, battery and programmer disconnected as requested."
     }
   ],
-  "batch_title": "Q3: identify junction polarity and base pad",
-  "instructions": "Only one transistor, Q3 beside R13 and C10. QL and QR are its two upper contacts; QS is its single lower contact. Probe the metal solder pads. Leave all components fitted for this first test.",
-  "result_summary": "No results for this batch yet.",
+  "batch_title": "Q3: in-circuit results recorded; identity still open",
+  "instructions": "The six in-circuit readings are complete. No repeat batch is requested. An isolated-device test would separate Q3 junctions from other PCB paths; do not desolder until you choose to undertake that step.",
+  "result_summary": "QL->QR 2.3 V; QR->QL OL; QL->QS latest 0.48 V (earlier 0.35 V); QS->QL OL; QR<->QS OL both ways.",
   "cancelled_tests": [
     {
       "id": "B20",
@@ -889,7 +902,7 @@
       "reason": "User identifies PIC21/RB0 destination; reconcile the older VREF assignment instead."
     }
   ],
-  "revision": "v0.9.30",
+  "revision": "v0.9.32",
   "photo_updates": [
     {
       "evidence": "evidence/c25_c26_mapping_20261009.json",
@@ -912,7 +925,7 @@
       "result": "v0.9.22 user annotated U6A option: single left pad/model L/native U106.1 joins U6 pin5 and the existing input node after R37; upper-right/model R1/native2 joins J3.1 (red PIR wire); lower-right/model R2/native3 joins GND. All three external pads mapped, option remains DNP. User called the input VDD; retain VDD -> R37 (22 ohm) -> H_AUX_IN because the annotation ends at U6 pin5 and prior B28 confirms pin5-pin2, not a bypass across R37. No fitted IC identity or voltage measurement implied."
     }
   ],
-  "batch_id": "open-pads-20261009",
+  "batch_id": "q3-in-circuit-20261009",
   "location_review": {
     "reference": "TP9",
     "status": "REMOVED_UNSUPPORTED_ENTRY",
@@ -963,5 +976,6 @@
     ],
     "pending_check": null,
     "model_status": "Applied v0.9.20: pin5-VIN measured 1 ohm; R37 and U6A single-pad local joins from the annotation; pin4 explicitly unused."
-  }
+  },
+  "next_prompt": "Optional isolated Q3 test; waiting for user preference. No new measurement batch queued."
 }

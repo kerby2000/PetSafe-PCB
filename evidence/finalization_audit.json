@@ -1,16 +1,19 @@
 {
-  "revision": "v0.9.31",
+  "revision": "v0.9.32",
   "result": "PASS",
-  "schematic_sha256": "8dc8824f2ac055dae037a325f1e3acb479de09b6daca56bdbe60166de8af6f33",
+  "schematic_sha256": "1cbec6569aa51c6a13184a25393e8833202632ea65fcd3b467adafbb0f8c4e86",
   "physical_net_partitions": 83,
-  "physical_partitions_unchanged_from": "ecd683d",
-  "physical_pad_crosswalk_unchanged": true,
+  "retained_pad_memberships_unchanged_from": "ecd683d",
+  "withdrawn_catalog_entries": [
+    "R33"
+  ],
+  "retained_physical_pad_crosswalk_unchanged": true,
   "intentional_nc_unchanged": [
     "U6.L1 / native pin4"
   ],
   "dangling_wire_ends": 0,
   "wire_islands_without_pins": 0,
-  "native_wire_segments": 509,
+  "native_wire_segments": 506,
   "unassigned_model_pads": 0,
   "isolated_modeled_nets": [],
   "erc": {
@@ -75,7 +78,7 @@
     "PIC_RC3": "E06",
     "PIC_RC7_TP17": "E06"
   },
-  "newly_sharpened_gap": "E07: physical R33 is not established by its cited photograph; assumed pull-up retained pending inventory resolution.",
+  "current_device_gap": "E04: Q3 in-circuit pattern disputes PNP pinout; isolated identification remains optional.",
   "active_issue_count": 12,
   "uncertainty_coverage": [
     {
@@ -237,11 +240,6 @@
     },
     {
       "reference": "R32",
-      "issues": [],
-      "population": "populated"
-    },
-    {
-      "reference": "R33",
       "issues": [],
       "population": "populated"
     },

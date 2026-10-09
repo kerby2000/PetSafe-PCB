@@ -21,8 +21,6 @@ for c in m['components']:
     elif kind=='C':
         gap='Capacitance not recovered; displayed numerical values are estimates'
         method=['Read sleeve and measure can/lead spacing' if ref=='C5' else 'LCR: in-circuit screening first; isolate one terminal if an individual value is needed']
-    elif ref=='R33':
-        gap=component_summary(c);method=['Locate physical R33 first; E07. No resistance measurement requested yet.']
     elif kind=='R':
         gap='Nominal resistance recovered from marking; tolerance and exact maker not established'
     elif kind=='L':
@@ -69,9 +67,9 @@ page=f'''<!doctype html><html lang="en"><meta charset="utf-8"><meta name="viewpo
 <a href="../index.html">Schematic overview</a> | <a href="FINISHING_MEASUREMENTS.html">Next measurement: Q3</a> | <a href="../output/pdf/PetSafe_completion_status.pdf">Printable remaining work</a> | <a href="history/README.md">History and resolved items</a>
 <h1>What remains to finish</h1><p>{e(status['revision'])} Â· {len(status['items'])} active issues. Each card states what is established, the specific gap and its closure criterion.</p>
 <div class="metrics"><div><strong>{len(status['current_fitted_open_pads'])}</strong>unassigned fitted pads</div><div><strong>{audit.get('dangling_wire_ends','pending')}</strong>dangling wire ends</div><div><strong>{status['erc_total']}</strong>retained ERC conflict</div><div><strong>{len(status['unknown_ceramic_values'])}</strong>unknown ceramic values</div></div>
-<div class="card"><b>Next:</b> <a href="FINISHING_MEASUREMENTS.html">Six diode-mode readings on Q3</a>, with labelled contacts. Other listed tests are staged, not requested together. No repeat of established local connections.</div>
+<div class="card"><b>Next:</b> <a href="FINISHING_MEASUREMENTS.html">Q3 result and remaining identity question</a>. The in-circuit batch is complete. Other listed tests are staged, not requested together. No repeat of established local connections.</div>
 <h2>Finish in this order</h2><ol>{plan}</ol>
-<p><b>Audit boundary:</b> {status['modeled_nets']} modeled net partitions agree with KiCad. Zero open pads or wire tails does not establish hidden copper or circuit operation. Three PIC branches (RA0/C25, RC3/TP11, RC7/TP17) remain under E06; R33 inventory is explicitly under E07. <a href="../evidence/finalization_audit.json">Detailed audit</a>.</p>
+<p><b>Audit boundary:</b> {status['modeled_nets']} modeled net partitions agree with KiCad. Zero open pads or wire tails does not establish hidden copper or circuit operation. Three PIC branches (RA0/C25, RC3/TP11, RC7/TP17) remain under E06. Q3 device identity remains under E04. <a href="../evidence/finalization_audit.json">Detailed audit</a>.</p>
 <h2>Remaining questions</h2>{''.join(issue_cards)}
 <div class="card"><h2>Unrecovered ceramic values</h2><p>{e(', '.join(status['unknown_ceramic_values']))}</p><p>Values belong to V01; package geometry cannot determine capacitance. C5 and L1/L2 readings are already retained in the inventory.</p></div>
 <h2>Scope and accepted limitations</h2><p>{e(json.loads((R/'evidence/remaining_work.json').read_text())['scope_note'])}</p><p>{e(json.loads((R/'evidence/remaining_work.json').read_text())['accepted_option_limitations'])}</p>

@@ -8134,60 +8134,6 @@
       }
     },
     {
-      "original_ref": "R33",
-      "reference": "R33",
-      "unit": 1,
-      "symbol": "Device:R",
-      "footprint": "Resistor_SMD:R_0603_1608Metric",
-      "legacy": {
-        "ref": "R33",
-        "actual": "R33",
-        "x": 310,
-        "y": 278,
-        "unit": 1,
-        "lid": "PetSafe_Working:RE_R33",
-        "value": "10k",
-        "rx": 312,
-        "ry": 277.3,
-        "vx": 312,
-        "vy": 278.9,
-        "just": "left",
-        "pins": [
-          {
-            "p": "1",
-            "name": "~",
-            "x": 0,
-            "y": -3,
-            "side": 270,
-            "typ": "passive",
-            "length": 1.6
-          },
-          {
-            "p": "2",
-            "name": "~",
-            "x": 0,
-            "y": 3,
-            "side": 90,
-            "typ": "passive",
-            "length": 1.6
-          }
-        ],
-        "kind": "R"
-      },
-      "placement": {
-        "symbol": "Device:R",
-        "reference": "R33",
-        "value": "10k",
-        "position": {
-          "x": 393.7,
-          "y": 353.06
-        },
-        "rotation": 0,
-        "includePins": true,
-        "footprint": "Resistor_SMD:R_0603_1608Metric"
-      }
-    },
-    {
       "original_ref": "TP16",
       "reference": "TP16",
       "unit": 1,
@@ -9428,8 +9374,6 @@
     "R39.2": "R39.2",
     "R32.1": "R32.1",
     "R32.2": "R32.2",
-    "R33.1": "R33.1",
-    "R33.2": "R33.2",
     "TP16.1": "TP16.1",
     "R35.1": "R35.1",
     "R35.2": "R35.2",
@@ -9629,7 +9573,7 @@
       "size": 0.52
     },
     {
-      "text": "149 retained catalog entries; unsupported TP9 entry removed after photo audit.",
+      "text": "148 retained catalog entries; unsupported TP9 and R33 entries withdrawn.",
       "x": 341,
       "y": 229,
       "size": 0.58
@@ -13229,39 +13173,6 @@
       ]
     },
     {
-      "net": "H_PIR_RAW",
-      "a": [
-        310,
-        275
-      ],
-      "b": [
-        306,
-        275
-      ]
-    },
-    {
-      "net": "H_PIR_RAW",
-      "a": [
-        306,
-        275
-      ],
-      "b": [
-        306,
-        265
-      ]
-    },
-    {
-      "net": "H_PIR_VDD",
-      "a": [
-        310,
-        281
-      ],
-      "b": [
-        313,
-        281
-      ]
-    },
-    {
       "net": "H_PIR_SIG",
       "a": [
         290,
@@ -13922,13 +13833,6 @@
       "p": [
         290,
         283
-      ]
-    },
-    {
-      "net": "H_PIR_VDD",
-      "p": [
-        313,
-        281
       ]
     },
     {
@@ -15286,14 +15190,6 @@
     "R32.2": [
       301,
       273
-    ],
-    "R33.1": [
-      310,
-      275
-    ],
-    "R33.2": [
-      310,
-      281
     ],
     "TP16.1": [
       299,

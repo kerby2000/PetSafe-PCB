@@ -61,6 +61,17 @@ assert 'RB0/V026 to VREF.' not in via_intro and 'TP104, V026/PIC21' not in via_i
 checklist=(ROOT/'docs/FINISHING_CHECKLIST.html').read_text(encoding='utf-8')
 for i in ids:assert f'id="{i}"' in checklist
 measurements=read('evidence/finishing_measurements.json')
+q3=read('evidence/q3_diode_results_20261009.json')
+expected_diode={'B31':('QL','QR','2.3 V'),'B32':('QR','QL','OL'),'B33':('QL','QS','0.48 V'),'B34':('QS','QL','OL'),'B35':('QR','QS','OL'),'B36':('QS','QR','OL')}
+for test_id,(red,black,result) in expected_diode.items():
+    recorded=next(t for t in q3['measurements'] if t['id']==test_id)
+    assert (recorded['from'],recorded['to'],recorded['result'])==(red,black,result)
+    assert recorded in measurements['completed_tests']
+    assert not any(t['id']==test_id for t in measurements['tests']), 'Completed test re-entered the queue'
+assert next(t for t in q3['measurements'] if t['id']=='B33')['earlier_reading']=='0.35 V'
+assert xml.find('./components/comp[@ref="R33"]') is None
+assert not any(ep.startswith('R33.') for net in m['nets'] for ep in net['endpoints'])
+assert members['J3.2']==members['R38.1']==members['U7.2']!=members['J3.1']
 measurement_page=(ROOT/'docs/FINISHING_MEASUREMENTS.html').read_text(encoding='utf-8')
 assert 'U6A is DNP' in measurement_page and 'U6A is 0' not in measurement_page, 'Population text replaced by numeric placeholder'
 if not measurements['tests']:
@@ -70,7 +81,7 @@ audit_rows={c['ref']:c for c in audit['components']}
 assert '6.33' in audit_rows['C5']['value_or_identity'] and '16 mm' in audit_rows['C5']['value_or_identity']
 assert 'pin5' in audit_rows['U6']['value_or_identity'].lower() and '1 ohm' in audit_rows['U6']['value_or_identity']
 assert '1.4' in audit_rows['L1']['value_or_identity'] and '2.2' in audit_rows['L2']['value_or_identity']
-assert 'TP9' not in audit_rows, 'Removed unsupported entry has returned'
+assert 'TP9' not in audit_rows and 'R33' not in audit_rows, 'Removed unsupported entry has returned'
 assert members['R41.1']==members['J1.1'] and members['U4.21']==members['TP16.1']!=members['TP104.1']
 for name in ['index.html','docs/FINISHING_CHECKLIST.html','docs/FINISHING_MEASUREMENTS.html']:
     body=(ROOT/name).read_text(encoding='utf-8')

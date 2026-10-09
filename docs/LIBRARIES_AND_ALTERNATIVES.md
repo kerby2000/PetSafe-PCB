@@ -1,6 +1,6 @@
 # Current KiCad libraries and package qualifications
 
-Current schematic v0.9.31 uses KiCad 10.0.5, the connected KiCad MCP server, **149 catalog entries / 154 physical-device symbol units / 351 physical pads**, and **22 stock plus four authorized datasheet device definitions**. Five stock PWR_FLAG annotations declare existing source paths without adding physical parts. The project and KiCad 10 global tables register PetSafe_Datasheet; all embedded symbol graphics/pins match their registered sources. 148 footprints are assigned candidates; only LED1 remains blank. [Current component audit](../evidence/completion_audit.csv) and [pin crosswalk](../evidence/pin_crosswalk.json) supersede older catalog totals and arbitrary connector numbering.
+Current schematic v0.9.32 uses KiCad 10.0.5, the connected KiCad MCP server, **148 catalog entries / 153 physical-device symbol units / 349 physical pads**, and **22 stock plus four authorized datasheet device definitions**. Five stock PWR_FLAG annotations declare existing source paths without adding physical parts. The project and KiCad 10 global tables register PetSafe_Datasheet; all embedded symbol graphics/pins match their registered sources. 147 footprints are assigned candidates; only LED1 remains blank. [Current component audit](../evidence/completion_audit.csv) and [pin crosswalk](../evidence/pin_crosswalk.json) supersede older catalog totals and arbitrary connector numbering.
 
 Stock graphics and pin numbers are retained. U1/U5 and subsequently U6/Q8 were explicitly authorized for MCP datasheet-symbol construction. The symbol library is portable through `${KIPRJMOD}`. Candidate pinout correctness is distinct from fitted identity and actual board wiring. [The prior library narrative](history/cleanup_v0928/docs/LIBRARIES_AND_ALTERNATIVES.md) preserves intermediate authoring details and older package guesses.
 
@@ -13,8 +13,8 @@ Stock graphics and pin numbers are retained. U1/U5 and subsequently U6/Q8 were e
 | U3 A/B/C | `Amplifier_Operational:Opamp_Dual` | Standard generic dual op-amp with matching 1-8 pin functions; value remains SGM8542XS. No modified or custom op-amp symbol. |
 | Q1 | `Transistor_FET:Q_PMOS_GSD` | v0.9.9: FMOS3401A candidate, matching manufacturer R1A marking and SOT-23 G1/S2/D3 pinout. Photo R=gate, L=source, single S=drain. Original NPN hypothesis withdrawn. Exact fitted maker unconfirmed. |
 | Q2, Q7 | `Transistor_BJT:BC847`, `Transistor_BJT:BC857` | Standard family symbols; values preserve the B/C gain-bin candidates. |
-| Q3/Q4/Q5/Q6/Q11 | `Transistor_BJT:Q_PNP_BEC` | Standard generic PNP with B=1, E=2, C=3; value MMBTA55? preserves the uncertain 2H identification. |
-| D1/D3 | `Diode:BAV99` | A7 marking candidates; D3 marking now confirmed by the user. D3 rail terminals are user-confirmed (L GND, R VDD); exact R42 end is photo-selected. D1 still has an isolated branch. Exact fitted maker remains unproved. |
+| Q3/Q4/Q5/Q6/Q11 | `Transistor_BJT:Q_PNP_BEC` | Standard generic PNP with B=1, E=2, C=3; value MMBTA55? preserves the uncertain 2H identification. Q3 in-circuit readings (L->S latest 0.48 V; L->R 2.3 V; other directions OL) do not confirm this pinout. Its family is now explicitly disputed; no MOSFET substitution was made. |
+| D1/D3 | `Diode:BAV99` | A7 marking candidates; D3 marking now confirmed by the user. D3 rail terminals are user-confirmed (L GND, R VDD); exact R42 end is photo-selected. D1 routes now follow the original-photo correction in architect_review_v0930.json; excitation timing remains unmeasured. Exact fitted maker remains unproved. |
 | D2 | `Connector_Generic:Conn_01x03` | Unidentified 4P part; in-circuit readings support series junctions R -> S -> L. L=1/R=2/S=3 remain bookkeeping. User maps R-C20 lower, L-ANT2/R46 upper, S-R46 lower; R46 is empty. Exact part/ratings unknown; prior rail-clamp ties remain withdrawn. |
 | LED1 | `Device:LED_Dual_AAKK` | User-confirmed red/green dual emitter, 1.5 x 1.5 mm body; colour-to-pin mapping and footprint remain provisional. |
 | S1 | `Switch:SW_Push` | Four physical switch pads map to two repeated footprint pad numbers; see measured-body evidence below. |
@@ -68,7 +68,7 @@ Q9 uses stock `Transistor_BJT:Q_NPN_BEC`: L/base1 through R35, R/emitter2 to GND
 
 U6A is native **U106**, using `Regulator_Linear:MCP1700x-330xxTT` only as a regulator role template: **pin3 input, pin2 output, pin1 ground**. The earlier connector numbering is superseded. It is DNP and shares its output with U6, retaining the ERC output conflict; this does not validate simultaneous population or identify an absent original part. No new ERC suppression was added.
 
-C49 remains stock `Device:C`, DNP between ANT2 and GND; both connections are resolved. TP9 is absent from the active inventory after the unsupported original entry was withdrawn.
+C49 remains stock `Device:C`, DNP between ANT2 and GND; both connections are resolved. TP9 and R33 are absent from the active inventory after unsupported original entries were withdrawn. R33 was not reclassified as DNP; its assumed PIR pull-up wiring was removed.
 
 ## Current measured geometry and values
 

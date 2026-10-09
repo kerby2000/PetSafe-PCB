@@ -107,3 +107,7 @@ U6=C2NM; Q8=3724A; D2=4P; D3=A7; D4/D5=5U; D6=G3; R41=331 (330 ohm). R29/R44=18C
 | LED1 | Red and green emitters, square 1.5 x 1.5 mm | Pad geometry/numbering, channel mapping and matching footprint |
 
 Reported connections without numerical resistance remain **user continuity reports**, never fabricated 0.0-ohm readings. V053-V071/VREF and Q1.L-R43.2 are withdrawn/rejected. V114 is U2.T2 ground, not Q8; V072 is TP6, not R22.2. Raw BATTERY+ and post-Q1 VSYS remain separate. See [current via findings](VIA_REVIEW_RESULTS.md) and the [question register](../evidence/remaining_work.json).
+
+## 2026-10-09 Q3 diode results and R33 inspection
+
+Q3 red QL / black QR: 2.3 V; reverse: OL. Red QL / black QS: latest 0.48 V, previously 0.35 V; reverse: OL. QR/QS: OL both ways. In-circuit results do not confirm the candidate PNP pin map; no copper changes derived from them. User could not locate R33; the unsupported entry and assumed pull-up have been withdrawn. See [the archived event](history/q3-r33-v0932.md) and the [active checklist](FINISHING_CHECKLIST.html).

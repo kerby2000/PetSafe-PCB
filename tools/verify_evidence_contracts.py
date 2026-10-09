@@ -172,6 +172,7 @@ assert m['intentional_no_connects'][0]['endpoint']=='U6.L1'
 assert len(m['intentional_no_connects'])==1 and 'U6.L1' not in m['unresolved_pins']
 for path,digest in open_batch['photos'].items():assert sha(path)==digest
 completed_ids|={x['id'] for x in open_batch['readings']+open_batch['diode_readings']}
+completed_ids|={f'B{n}' for n in range(31,37)}
 assert {r['id'] for r in queue['completed_tests']}==completed_ids
 assert not completed_ids&{r['id'] for r in queue['tests']}, 'Do not repeat completed finishing readings'
 for ref in ['U4','R11','R14','R15','R16','R37','R39','Q1','U2','Q8','C5','LED1','R18','R19','Q7','TP3','TP104','U106','J3','R43','TP14','R42','R44','TP4','TP103','R21','R22','R23','R48']:
@@ -181,7 +182,7 @@ status_pdf=PdfReader(R/'output/pdf/PetSafe_completion_status.pdf')
 # Status is a living report: validate content, not the historical two-page layout.
 status_text='\n'.join(p.extract_text() for p in status_pdf.pages)
 assert 'Remaining schematic work' in status_text and 'E06 -' in status_text
-assert 'R33 inventory' in status_text and 'dangling wire ends' in status_text
+assert 'unsupported R33 withdrawn' in status_text and 'dangling wire ends' in status_text
 pdfs={'output/pdf/PetSafe_single_sheet.pdf':1,'output/pdf/PetSafe_completion_status.pdf':len(status_pdf.pages),'output/pdf/PetSafe_PIC_GPIO_pin_map.pdf':1,'output/pdf/PetSafe_via_pair_next_check.pdf':1}
 for path,pages in pdfs.items():assert len(PdfReader(R/path).pages)==pages
 assert net('Q7.R')==net('R19.2')==net('VDD.1')

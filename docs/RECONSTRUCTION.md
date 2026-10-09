@@ -1,6 +1,6 @@
 # Current circuit interpretation
 
-Schematic v0.9.31, 2026-10-09. This is the current interpretation, not a chronological log. The [previous narrative](history/cleanup_v0928/docs/RECONSTRUCTION.md) is archived; older requests there are superseded. Use [the checklist](FINISHING_CHECKLIST.html) for remaining questions.
+Schematic v0.9.32, 2026-10-09. This is the current interpretation, not a chronological log. The [previous narrative](history/cleanup_v0928/docs/RECONSTRUCTION.md) is archived; older requests there are superseded. Use [the checklist](FINISHING_CHECKLIST.html) for remaining questions.
 
 ## Power and references
 
@@ -18,7 +18,7 @@ R41 is 330 ohm and its model1/right end reaches **J1 VPP**. Its model2 end joins
 
 J1 square/VPP end is pin1, then VDD2, GND3, DAT4 and CLK5. D6 routing and polarity are measured: anode GND, cathode VPP, about 0.7 V forward, OL reverse. Its G3 marking does not establish breakdown or ICSP compatibility. D4/D5 use photo-supported 5U/SD05 TVS candidates.
 
-J3 is pin1 PIR supply, pin2 raw signal to R38, pin3 GND. Empty U7.1/2/3 map to J3.3/2/1. The PIR-to-PIC route is resolved; Q2 candidate pin functions and R33 behavior remain qualified. The separate PIR board's internal circuit is outside this main-board drawing.
+J3 is pin1 PIR supply, pin2 raw signal to R38, pin3 GND. Empty U7.1/2/3 map to J3.3/2/1. The PIR-to-PIC route is resolved; Q2 candidate pin functions and operating behavior remain qualified. Unsupported R33 and its assumed raw-signal pull-up have been withdrawn after photo review and user inspection. The separate PIR board's internal circuit is outside this main-board drawing.
 
 Q9/J6/R35/R36/TP10 are DNP options in the PIC block. Q9's NPN symbol expresses a possible driver role; no fitted identity is claimed. J6.2/R36.1's onward role remains unknown.
 
@@ -28,7 +28,7 @@ Q8/3724A uses a SIL3724A N/P MOSFET candidate. Its centre B2/native5 ground and 
 
 The [IMG_2431 trace review](RF_TRACE_REVIEW.html) establishes PIC13/TP3/R10.1/R6.2/R7.1/D1.S on RF_MONITOR_PAD. D1.R/native2 joins R7.2/C9.1/U2.1 (H_RF_IN_A); D1.L/native1 retains R6.1/C8.1/U2.3 (H_RF_IN_B). The prior H_RF_CONTROL/H_D1_FREE nodes are retired. These are photo-supported connections combined with the earlier measured PIC13-to-TP3 destination, not new meter readings. With the BAV99/U2 candidates, this is consistent with opposite charge/discharge delays at the two gate-driver inputs. Actual switching timing, dead time and Q8 gate headroom are unmeasured.
 
-Five PIC tuning controls are mapped. The modeled PNP emitter-at-GND/nonnegative-GPIO arrangement is not an ordinary forward-operated PNP switch; device type/orientation, ground assignment or RF switching role needs review. Finish one Q3/R13/C10/C11/C12 cell, including V107 and antenna continuation, before extrapolating by symmetry. Seven measured capacitor-midpoint OL exclusions must remain separate constraints. C49 is an empty rear option now connected ANT2-to-GND; it does not establish the other antenna paths.
+Five PIC tuning controls are mapped. Q3 in-circuit readings are L->R 2.3 V and L->S latest 0.48 V (earlier 0.35 V), with all other directions OL. This does not confirm the PNP candidate or justify a MOSFET substitution; isolated-device identification remains optional under E04. The modeled PNP emitter-at-GND/nonnegative-GPIO arrangement is not an ordinary forward-operated PNP switch; device type/orientation, ground assignment or RF switching role needs review. Finish one Q3/R13/C10/C11/C12 cell, including V107 and antenna continuation, before extrapolating by symmetry. Seven measured capacitor-midpoint OL exclusions must remain separate constraints. C49 is an empty rear option now connected ANT2-to-GND; it does not establish the other antenna paths.
 
 ## Receiver
 
@@ -40,6 +40,6 @@ C23.2 and R25.1 form a series junction still named H_RX_DETECT. It **continues t
 
 ## Completion criteria
 
-The model and native drawing agree on 83 net partitions. Native geometry has zero dangling wire ends or pinless wire fragments. Zero unassigned pads and the retained U6 pin4 NC do not certify all onward routes. Five stock power-source declarations now resolve the undriven-input checks without changing physical partitions. Only the user-retained U6/U6A output conflict remains. No ERC exclusion or new NC was introduced. R33 is an additional inventory qualification: its cited photo does not establish its physical presence; its inherited PIR pull-up remains unverified under E07.
+The model and native drawing agree on 83 net partitions. Native geometry has zero dangling wire ends or pinless wire fragments. Zero unassigned pads and the retained U6 pin4 NC do not certify all onward routes. Five stock power-source declarations now resolve the undriven-input checks without changing physical partitions. Only the user-retained U6/U6A output conflict remains. No ERC exclusion or new NC was introduced. R33 and its two assumed endpoints have been removed; all retained physical pad memberships and mappings are unchanged.
 
 Topology, device behavior, 44 ceramic values, LED footprint/channel map and remaining geometry are tracked separately. A routed PCB, actual layer stack, firmware and powered validation are separate milestones. [Recorded measurements](MEASUREMENTS.md) are user evidence; [library choices](LIBRARIES_AND_ALTERNATIVES.md) retain candidate qualifications.

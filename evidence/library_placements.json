@@ -1427,7 +1427,7 @@
       "includePins": true,
       "footprint": "Package_TO_SOT_SMD:SOT-23",
       "properties": {
-        "CurrentEvidence": "Provisional 2H / MMBTA55 PNP candidate; physical R->base1, L->emitter2/GND, S->collector3 is unverified. This is not ordinary positive-GPIO PNP switching. Preserve copper pending one Q3-cell polarity/orientation test; no NPN substitution by plausibility."
+        "CurrentEvidence": "DISPUTED 2H / MMBTA55 PNP candidate. Q3 in-circuit diode readings: L->R 2.3V, L->S latest 0.48V (earlier 0.35V); reverse directions and R/S both ways OL. These do not confirm B=R/E=L/C=S. Copper and candidate symbol retained pending isolated-device identification; no MOSFET identity inferred from one forward path."
       }
     },
     {
@@ -1490,7 +1490,7 @@
       "includePins": true,
       "footprint": "Package_TO_SOT_SMD:SOT-23",
       "properties": {
-        "CurrentEvidence": "Provisional 2H / MMBTA55 PNP candidate; physical R->base1, L->emitter2/GND, S->collector3 is unverified. This is not ordinary positive-GPIO PNP switching. Preserve copper pending one Q3-cell polarity/orientation test; no NPN substitution by plausibility."
+        "CurrentEvidence": "Same 2H marking as Q3; PNP type/pinout remains disputed by Q3 in-circuit diode results (0.48V L->S; 2.3V L->R; other directions OL). This device was not diode-tested. Retain existing copper and provisional PNP symbol pending family identification."
       }
     },
     {
@@ -1556,7 +1556,7 @@
       "includePins": true,
       "footprint": "Package_TO_SOT_SMD:SOT-23",
       "properties": {
-        "CurrentEvidence": "Provisional 2H / MMBTA55 PNP candidate; physical R->base1, L->emitter2/GND, S->collector3 is unverified. This is not ordinary positive-GPIO PNP switching. Preserve copper pending one Q3-cell polarity/orientation test; no NPN substitution by plausibility."
+        "CurrentEvidence": "Same 2H marking as Q3; PNP type/pinout remains disputed by Q3 in-circuit diode results (0.48V L->S; 2.3V L->R; other directions OL). This device was not diode-tested. Retain existing copper and provisional PNP symbol pending family identification."
       }
     },
     {
@@ -1622,7 +1622,7 @@
       "includePins": true,
       "footprint": "Package_TO_SOT_SMD:SOT-23",
       "properties": {
-        "CurrentEvidence": "Provisional 2H / MMBTA55 PNP candidate; physical R->base1, L->emitter2/GND, S->collector3 is unverified. This is not ordinary positive-GPIO PNP switching. Preserve copper pending one Q3-cell polarity/orientation test; no NPN substitution by plausibility."
+        "CurrentEvidence": "Same 2H marking as Q3; PNP type/pinout remains disputed by Q3 in-circuit diode results (0.48V L->S; 2.3V L->R; other directions OL). This device was not diode-tested. Retain existing copper and provisional PNP symbol pending family identification."
       }
     },
     {
@@ -1688,7 +1688,7 @@
       "includePins": true,
       "footprint": "Package_TO_SOT_SMD:SOT-23",
       "properties": {
-        "CurrentEvidence": "Provisional 2H / MMBTA55 PNP candidate; physical R->base1, L->emitter2/GND, S->collector3 is unverified. This is not ordinary positive-GPIO PNP switching. Preserve copper pending one Q3-cell polarity/orientation test; no NPN substitution by plausibility."
+        "CurrentEvidence": "Same 2H marking as Q3; PNP type/pinout remains disputed by Q3 in-circuit diode results (0.48V L->S; 2.3V L->R; other directions OL). This device was not diode-tested. Retain existing copper and provisional PNP symbol pending family identification."
       }
     },
     {
@@ -1829,7 +1829,7 @@
       "properties": {
         "ViaEvidence": "v0.9.14 user: pin1 PIR supply previously confirmed; pin2 H-R38 K/right/model1 1 ohm and H-R38 J/left/model2 10 kohm; pin3-GND 1 ohm. Pin2-GND remains 290 kohm (batch1), distinct from ground. Q2 onward/controller route remains unverified. v0.9.16: matching physical columns reach U7; J3.1-U7.3 supply, J3.2-U7.2 signal, J3.3-U7.1 GND.",
         "MeasurementEvidence": "v0.9.14 user: pin1 PIR supply previously confirmed; pin2 H-R38 K/right/model1 1 ohm and H-R38 J/left/model2 10 kohm; pin3-GND 1 ohm. Pin2-GND remains 290 kohm (batch1), distinct from ground. Q2 onward/controller route remains unverified. v0.9.16: matching physical columns reach U7; J3.1-U7.3 supply, J3.2-U7.2 signal, J3.3-U7.1 GND.",
-        "CurrentEvidence": "PIR connector: pin1 supply; pin2 to R38 K/right/model1 at 1 ohm, with 10k through R38; pin3 GND at 1 ohm. The Q2 single-pad/TP16 output reaches PIC21/RB0 by user correction. PIC21-to-VREF was withdrawn after TP16-VREF measured 0.8 Mohm. Q2/R33 device behavior remains qualified."
+        "CurrentEvidence": "PIR connector: pin1 supply; pin2 to R38 K/right/model1 at 1 ohm, with 10k through R38; pin3 GND at 1 ohm. The Q2 single-pad/TP16 output reaches PIC21/RB0 by user correction. PIC21-to-VREF was withdrawn after TP16-VREF measured 0.8 Mohm. Q2 behavior remains unverified; unsupported R33 pull-up withdrawn."
       }
     },
     {
@@ -1875,7 +1875,7 @@
       "footprint": "Resistor_SMD:R_0603_1608Metric",
       "properties": {
         "ViaEvidence": "v0.9.6: User confirms V064-V063. R37.1/R39.2 feed junction is regulated board VDD, not motor VDD.",
-        "CurrentEvidence": "10k from marking. Model2 joins printed VDD through V063/V064; model1 remains on the inferred Q2 base/R38 node. PIR output TP16/Q2.S to PIC21 is confirmed; transistor pin functions and the R33 branch remain qualified."
+        "CurrentEvidence": "10k from marking. Model2 joins printed VDD through V063/V064; model1 remains on the inferred Q2 base/R38 node. PIR output TP16/Q2.S to PIC21 is confirmed; transistor pin functions remain unverified. Unsupported R33 pull-up withdrawn."
       }
     },
     {
@@ -1889,21 +1889,6 @@
       "rotation": 0,
       "includePins": true,
       "footprint": "Resistor_SMD:R_0603_1608Metric"
-    },
-    {
-      "symbol": "Device:R",
-      "reference": "R33",
-      "value": "10k",
-      "position": {
-        "x": 393.7,
-        "y": 353.06
-      },
-      "rotation": 0,
-      "includePins": true,
-      "footprint": "Resistor_SMD:R_0603_1608Metric",
-      "properties": {
-        "CurrentEvidence": "INVENTORY UNVERIFIED (E07): inherited 10k PIR pull-up. Cited IMG_2435 establishes R37/R38/R39, but not R33. Physical presence/location and assumed J3.1/J3.2 endpoints remain unverified; retain pending identification, not as a measured value."
-      }
     },
     {
       "symbol": "Connector:TestPoint",

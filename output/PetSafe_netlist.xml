@@ -2,16 +2,16 @@
 <export version="E">
   <design>
     <source>C:\Users\lukin\Documents\ChatGPT\PetSafe-PCB\schematic\PetSafe_1001339.kicad_sch</source>
-    <date>2026-10-09T19:30:35</date>
+    <date>2026-10-09T19:52:01</date>
     <tool>Eeschema 10.0.5</tool>
     <sheet number="1" name="/" tstamps="/">
       <title_block>
         <title>PetSafe 100-1339 R03 A | single-sheet reconstruction</title>
         <company>KiCad 10 libraries + four datasheet symbols | MCP authoring</company>
-        <rev>0.9.31</rev>
+        <rev>0.9.32</rev>
         <date>2026-10-09</date>
         <source>PetSafe_1001339.kicad_sch</source>
-        <comment number="1" value="Power declarations added; physical net partitions unchanged."/>
+        <comment number="1" value="R33 unsupported entry withdrawn; Q3 diode pattern disputes candidate pinout."/>
         <comment number="2" value=""/>
         <comment number="3" value=""/>
         <comment number="4" value=""/>
@@ -2304,9 +2304,9 @@
       <fields>
         <field name="ViaEvidence">v0.9.14 user: pin1 PIR supply previously confirmed; pin2 H-R38 K/right/model1 1 ohm and H-R38 J/left/model2 10 kohm; pin3-GND 1 ohm. Pin2-GND remains 290 kohm (batch1), distinct from ground. Q2 onward/controller route remains unverified. v0.9.16: matching physical columns reach U7; J3.1-U7.3 supply, J3.2-U7.2 signal, J3.3-U7.1 GND.</field>
         <field name="MeasurementEvidence">v0.9.14 user: pin1 PIR supply previously confirmed; pin2 H-R38 K/right/model1 1 ohm and H-R38 J/left/model2 10 kohm; pin3-GND 1 ohm. Pin2-GND remains 290 kohm (batch1), distinct from ground. Q2 onward/controller route remains unverified. v0.9.16: matching physical columns reach U7; J3.1-U7.3 supply, J3.2-U7.2 signal, J3.3-U7.1 GND.</field>
-        <field name="CurrentEvidence">PIR connector: pin1 supply; pin2 to R38 K/right/model1 at 1 ohm, with 10k through R38; pin3 GND at 1 ohm. The Q2 single-pad/TP16 output reaches PIC21/RB0 by user correction. PIC21-to-VREF was withdrawn after TP16-VREF measured 0.8 Mohm. Q2/R33 device behavior remains qualified.</field>
+        <field name="CurrentEvidence">PIR connector: pin1 supply; pin2 to R38 K/right/model1 at 1 ohm, with 10k through R38; pin3 GND at 1 ohm. The Q2 single-pad/TP16 output reaches PIC21/RB0 by user correction. PIC21-to-VREF was withdrawn after TP16-VREF measured 0.8 Mohm. Q2 behavior remains unverified; unsupported R33 pull-up withdrawn.</field>
         <field name="OriginalReference">J3</field>
-        <field name="Evidence">PIR connector: pin1 supply; pin2 to R38 K/right/model1 at 1 ohm, with 10k through R38; pin3 GND at 1 ohm. The Q2 single-pad/TP16 output reaches PIC21/RB0 by user correction. PIC21-to-VREF was withdrawn after TP16-VREF measured 0.8 Mohm. Q2/R33 device behavior remains qualified.</field>
+        <field name="Evidence">PIR connector: pin1 supply; pin2 to R38 K/right/model1 at 1 ohm, with 10k through R38; pin3 GND at 1 ohm. The Q2 single-pad/TP16 output reaches PIC21/RB0 by user correction. PIC21-to-VREF was withdrawn after TP16-VREF measured 0.8 Mohm. Q2 behavior remains unverified; unsupported R33 pull-up withdrawn.</field>
         <field name="LibraryPolicy">Unmodified KiCad 10 stock symbol</field>
         <field name="FootprintConfidence">medium</field>
         <field name="FootprintBasis">Three soldered wire holes; generic 2.54-mm row models the candidate land pattern, not the connector housing.</field>
@@ -2318,9 +2318,9 @@
       <libsource lib="Connector_Generic" part="Conn_01x03" description="Generic connector, single row, 01x03, script generated (kicad-library-utils/schlib/autogen/connector/)"/>
       <property name="ViaEvidence" value="v0.9.14 user: pin1 PIR supply previously confirmed; pin2 H-R38 K/right/model1 1 ohm and H-R38 J/left/model2 10 kohm; pin3-GND 1 ohm. Pin2-GND remains 290 kohm (batch1), distinct from ground. Q2 onward/controller route remains unverified. v0.9.16: matching physical columns reach U7; J3.1-U7.3 supply, J3.2-U7.2 signal, J3.3-U7.1 GND."/>
       <property name="MeasurementEvidence" value="v0.9.14 user: pin1 PIR supply previously confirmed; pin2 H-R38 K/right/model1 1 ohm and H-R38 J/left/model2 10 kohm; pin3-GND 1 ohm. Pin2-GND remains 290 kohm (batch1), distinct from ground. Q2 onward/controller route remains unverified. v0.9.16: matching physical columns reach U7; J3.1-U7.3 supply, J3.2-U7.2 signal, J3.3-U7.1 GND."/>
-      <property name="CurrentEvidence" value="PIR connector: pin1 supply; pin2 to R38 K/right/model1 at 1 ohm, with 10k through R38; pin3 GND at 1 ohm. The Q2 single-pad/TP16 output reaches PIC21/RB0 by user correction. PIC21-to-VREF was withdrawn after TP16-VREF measured 0.8 Mohm. Q2/R33 device behavior remains qualified."/>
+      <property name="CurrentEvidence" value="PIR connector: pin1 supply; pin2 to R38 K/right/model1 at 1 ohm, with 10k through R38; pin3 GND at 1 ohm. The Q2 single-pad/TP16 output reaches PIC21/RB0 by user correction. PIC21-to-VREF was withdrawn after TP16-VREF measured 0.8 Mohm. Q2 behavior remains unverified; unsupported R33 pull-up withdrawn."/>
       <property name="OriginalReference" value="J3"/>
-      <property name="Evidence" value="PIR connector: pin1 supply; pin2 to R38 K/right/model1 at 1 ohm, with 10k through R38; pin3 GND at 1 ohm. The Q2 single-pad/TP16 output reaches PIC21/RB0 by user correction. PIC21-to-VREF was withdrawn after TP16-VREF measured 0.8 Mohm. Q2/R33 device behavior remains qualified."/>
+      <property name="Evidence" value="PIR connector: pin1 supply; pin2 to R38 K/right/model1 at 1 ohm, with 10k through R38; pin3 GND at 1 ohm. The Q2 single-pad/TP16 output reaches PIC21/RB0 by user correction. PIC21-to-VREF was withdrawn after TP16-VREF measured 0.8 Mohm. Q2 behavior remains unverified; unsupported R33 pull-up withdrawn."/>
       <property name="LibraryPolicy" value="Unmodified KiCad 10 stock symbol"/>
       <property name="FootprintConfidence" value="medium"/>
       <property name="FootprintBasis" value="Three soldered wire holes; generic 2.54-mm row models the candidate land pattern, not the connector housing."/>
@@ -2647,9 +2647,9 @@
       <description>PNP transistor, base/emitter/collector</description>
       <fields>
         <field name="ViaEvidence">v0.9: physical L pad to user-reviewed ground copper; old antenna-A rail withdrawn. Device identity/orientation remains candidate.</field>
-        <field name="CurrentEvidence">Provisional 2H / MMBTA55 PNP candidate; physical R-&gt;base1, L-&gt;emitter2/GND, S-&gt;collector3 is unverified. This is not ordinary positive-GPIO PNP switching. Preserve copper pending one Q3-cell polarity/orientation test; no NPN substitution by plausibility.</field>
+        <field name="CurrentEvidence">DISPUTED 2H / MMBTA55 PNP candidate. Q3 in-circuit diode readings: L-&gt;R 2.3V, L-&gt;S latest 0.48V (earlier 0.35V); reverse directions and R/S both ways OL. These do not confirm B=R/E=L/C=S. Copper and candidate symbol retained pending isolated-device identification; no MOSFET identity inferred from one forward path.</field>
         <field name="OriginalReference">Q3</field>
-        <field name="Evidence">Provisional 2H / MMBTA55 PNP candidate; physical R-&gt;base1, L-&gt;emitter2/GND, S-&gt;collector3 is unverified. This is not ordinary positive-GPIO PNP switching. Preserve copper pending one Q3-cell polarity/orientation test; no NPN substitution by plausibility.</field>
+        <field name="Evidence">DISPUTED 2H / MMBTA55 PNP candidate. Q3 in-circuit diode readings: L-&gt;R 2.3V, L-&gt;S latest 0.48V (earlier 0.35V); reverse directions and R/S both ways OL. These do not confirm B=R/E=L/C=S. Copper and candidate symbol retained pending isolated-device identification; no MOSFET identity inferred from one forward path.</field>
         <field name="LibraryPolicy">Unmodified KiCad 10 stock symbol</field>
         <field name="FootprintConfidence">datasheet/package candidate</field>
         <field name="FootprintBasis">Existing assignment; see component identity evidence.</field>
@@ -2660,9 +2660,9 @@
       </fields>
       <libsource lib="Transistor_BJT" part="Q_PNP_BEC" description="PNP transistor, base/emitter/collector"/>
       <property name="ViaEvidence" value="v0.9: physical L pad to user-reviewed ground copper; old antenna-A rail withdrawn. Device identity/orientation remains candidate."/>
-      <property name="CurrentEvidence" value="Provisional 2H / MMBTA55 PNP candidate; physical R-&gt;base1, L-&gt;emitter2/GND, S-&gt;collector3 is unverified. This is not ordinary positive-GPIO PNP switching. Preserve copper pending one Q3-cell polarity/orientation test; no NPN substitution by plausibility."/>
+      <property name="CurrentEvidence" value="DISPUTED 2H / MMBTA55 PNP candidate. Q3 in-circuit diode readings: L-&gt;R 2.3V, L-&gt;S latest 0.48V (earlier 0.35V); reverse directions and R/S both ways OL. These do not confirm B=R/E=L/C=S. Copper and candidate symbol retained pending isolated-device identification; no MOSFET identity inferred from one forward path."/>
       <property name="OriginalReference" value="Q3"/>
-      <property name="Evidence" value="Provisional 2H / MMBTA55 PNP candidate; physical R-&gt;base1, L-&gt;emitter2/GND, S-&gt;collector3 is unverified. This is not ordinary positive-GPIO PNP switching. Preserve copper pending one Q3-cell polarity/orientation test; no NPN substitution by plausibility."/>
+      <property name="Evidence" value="DISPUTED 2H / MMBTA55 PNP candidate. Q3 in-circuit diode readings: L-&gt;R 2.3V, L-&gt;S latest 0.48V (earlier 0.35V); reverse directions and R/S both ways OL. These do not confirm B=R/E=L/C=S. Copper and candidate symbol retained pending isolated-device identification; no MOSFET identity inferred from one forward path."/>
       <property name="LibraryPolicy" value="Unmodified KiCad 10 stock symbol"/>
       <property name="FootprintConfidence" value="datasheet/package candidate"/>
       <property name="FootprintBasis" value="Existing assignment; see component identity evidence."/>
@@ -2688,9 +2688,9 @@
       <description>PNP transistor, base/emitter/collector</description>
       <fields>
         <field name="ViaEvidence">v0.9: physical L pad to user-reviewed ground copper; old antenna-A rail withdrawn. Device identity/orientation remains candidate.</field>
-        <field name="CurrentEvidence">Provisional 2H / MMBTA55 PNP candidate; physical R-&gt;base1, L-&gt;emitter2/GND, S-&gt;collector3 is unverified. This is not ordinary positive-GPIO PNP switching. Preserve copper pending one Q3-cell polarity/orientation test; no NPN substitution by plausibility.</field>
+        <field name="CurrentEvidence">Same 2H marking as Q3; PNP type/pinout remains disputed by Q3 in-circuit diode results (0.48V L-&gt;S; 2.3V L-&gt;R; other directions OL). This device was not diode-tested. Retain existing copper and provisional PNP symbol pending family identification.</field>
         <field name="OriginalReference">Q4</field>
-        <field name="Evidence">Provisional 2H / MMBTA55 PNP candidate; physical R-&gt;base1, L-&gt;emitter2/GND, S-&gt;collector3 is unverified. This is not ordinary positive-GPIO PNP switching. Preserve copper pending one Q3-cell polarity/orientation test; no NPN substitution by plausibility.</field>
+        <field name="Evidence">Same 2H marking as Q3; PNP type/pinout remains disputed by Q3 in-circuit diode results (0.48V L-&gt;S; 2.3V L-&gt;R; other directions OL). This device was not diode-tested. Retain existing copper and provisional PNP symbol pending family identification.</field>
         <field name="LibraryPolicy">Unmodified KiCad 10 stock symbol</field>
         <field name="FootprintConfidence">datasheet/package candidate</field>
         <field name="FootprintBasis">Existing assignment; see component identity evidence.</field>
@@ -2701,9 +2701,9 @@
       </fields>
       <libsource lib="Transistor_BJT" part="Q_PNP_BEC" description="PNP transistor, base/emitter/collector"/>
       <property name="ViaEvidence" value="v0.9: physical L pad to user-reviewed ground copper; old antenna-A rail withdrawn. Device identity/orientation remains candidate."/>
-      <property name="CurrentEvidence" value="Provisional 2H / MMBTA55 PNP candidate; physical R-&gt;base1, L-&gt;emitter2/GND, S-&gt;collector3 is unverified. This is not ordinary positive-GPIO PNP switching. Preserve copper pending one Q3-cell polarity/orientation test; no NPN substitution by plausibility."/>
+      <property name="CurrentEvidence" value="Same 2H marking as Q3; PNP type/pinout remains disputed by Q3 in-circuit diode results (0.48V L-&gt;S; 2.3V L-&gt;R; other directions OL). This device was not diode-tested. Retain existing copper and provisional PNP symbol pending family identification."/>
       <property name="OriginalReference" value="Q4"/>
-      <property name="Evidence" value="Provisional 2H / MMBTA55 PNP candidate; physical R-&gt;base1, L-&gt;emitter2/GND, S-&gt;collector3 is unverified. This is not ordinary positive-GPIO PNP switching. Preserve copper pending one Q3-cell polarity/orientation test; no NPN substitution by plausibility."/>
+      <property name="Evidence" value="Same 2H marking as Q3; PNP type/pinout remains disputed by Q3 in-circuit diode results (0.48V L-&gt;S; 2.3V L-&gt;R; other directions OL). This device was not diode-tested. Retain existing copper and provisional PNP symbol pending family identification."/>
       <property name="LibraryPolicy" value="Unmodified KiCad 10 stock symbol"/>
       <property name="FootprintConfidence" value="datasheet/package candidate"/>
       <property name="FootprintBasis" value="Existing assignment; see component identity evidence."/>
@@ -2729,9 +2729,9 @@
       <description>PNP transistor, base/emitter/collector</description>
       <fields>
         <field name="ViaEvidence">v0.9: physical L pad to user-reviewed ground copper; old antenna-A rail withdrawn. Device identity/orientation remains candidate.</field>
-        <field name="CurrentEvidence">Provisional 2H / MMBTA55 PNP candidate; physical R-&gt;base1, L-&gt;emitter2/GND, S-&gt;collector3 is unverified. This is not ordinary positive-GPIO PNP switching. Preserve copper pending one Q3-cell polarity/orientation test; no NPN substitution by plausibility.</field>
+        <field name="CurrentEvidence">Same 2H marking as Q3; PNP type/pinout remains disputed by Q3 in-circuit diode results (0.48V L-&gt;S; 2.3V L-&gt;R; other directions OL). This device was not diode-tested. Retain existing copper and provisional PNP symbol pending family identification.</field>
         <field name="OriginalReference">Q5</field>
-        <field name="Evidence">Provisional 2H / MMBTA55 PNP candidate; physical R-&gt;base1, L-&gt;emitter2/GND, S-&gt;collector3 is unverified. This is not ordinary positive-GPIO PNP switching. Preserve copper pending one Q3-cell polarity/orientation test; no NPN substitution by plausibility.</field>
+        <field name="Evidence">Same 2H marking as Q3; PNP type/pinout remains disputed by Q3 in-circuit diode results (0.48V L-&gt;S; 2.3V L-&gt;R; other directions OL). This device was not diode-tested. Retain existing copper and provisional PNP symbol pending family identification.</field>
         <field name="LibraryPolicy">Unmodified KiCad 10 stock symbol</field>
         <field name="FootprintConfidence">datasheet/package candidate</field>
         <field name="FootprintBasis">Existing assignment; see component identity evidence.</field>
@@ -2742,9 +2742,9 @@
       </fields>
       <libsource lib="Transistor_BJT" part="Q_PNP_BEC" description="PNP transistor, base/emitter/collector"/>
       <property name="ViaEvidence" value="v0.9: physical L pad to user-reviewed ground copper; old antenna-A rail withdrawn. Device identity/orientation remains candidate."/>
-      <property name="CurrentEvidence" value="Provisional 2H / MMBTA55 PNP candidate; physical R-&gt;base1, L-&gt;emitter2/GND, S-&gt;collector3 is unverified. This is not ordinary positive-GPIO PNP switching. Preserve copper pending one Q3-cell polarity/orientation test; no NPN substitution by plausibility."/>
+      <property name="CurrentEvidence" value="Same 2H marking as Q3; PNP type/pinout remains disputed by Q3 in-circuit diode results (0.48V L-&gt;S; 2.3V L-&gt;R; other directions OL). This device was not diode-tested. Retain existing copper and provisional PNP symbol pending family identification."/>
       <property name="OriginalReference" value="Q5"/>
-      <property name="Evidence" value="Provisional 2H / MMBTA55 PNP candidate; physical R-&gt;base1, L-&gt;emitter2/GND, S-&gt;collector3 is unverified. This is not ordinary positive-GPIO PNP switching. Preserve copper pending one Q3-cell polarity/orientation test; no NPN substitution by plausibility."/>
+      <property name="Evidence" value="Same 2H marking as Q3; PNP type/pinout remains disputed by Q3 in-circuit diode results (0.48V L-&gt;S; 2.3V L-&gt;R; other directions OL). This device was not diode-tested. Retain existing copper and provisional PNP symbol pending family identification."/>
       <property name="LibraryPolicy" value="Unmodified KiCad 10 stock symbol"/>
       <property name="FootprintConfidence" value="datasheet/package candidate"/>
       <property name="FootprintBasis" value="Existing assignment; see component identity evidence."/>
@@ -2770,9 +2770,9 @@
       <description>PNP transistor, base/emitter/collector</description>
       <fields>
         <field name="ViaEvidence">v0.9: physical L pad to user-reviewed ground copper; old antenna-A rail withdrawn. Device identity/orientation remains candidate.</field>
-        <field name="CurrentEvidence">Provisional 2H / MMBTA55 PNP candidate; physical R-&gt;base1, L-&gt;emitter2/GND, S-&gt;collector3 is unverified. This is not ordinary positive-GPIO PNP switching. Preserve copper pending one Q3-cell polarity/orientation test; no NPN substitution by plausibility.</field>
+        <field name="CurrentEvidence">Same 2H marking as Q3; PNP type/pinout remains disputed by Q3 in-circuit diode results (0.48V L-&gt;S; 2.3V L-&gt;R; other directions OL). This device was not diode-tested. Retain existing copper and provisional PNP symbol pending family identification.</field>
         <field name="OriginalReference">Q6</field>
-        <field name="Evidence">Provisional 2H / MMBTA55 PNP candidate; physical R-&gt;base1, L-&gt;emitter2/GND, S-&gt;collector3 is unverified. This is not ordinary positive-GPIO PNP switching. Preserve copper pending one Q3-cell polarity/orientation test; no NPN substitution by plausibility.</field>
+        <field name="Evidence">Same 2H marking as Q3; PNP type/pinout remains disputed by Q3 in-circuit diode results (0.48V L-&gt;S; 2.3V L-&gt;R; other directions OL). This device was not diode-tested. Retain existing copper and provisional PNP symbol pending family identification.</field>
         <field name="LibraryPolicy">Unmodified KiCad 10 stock symbol</field>
         <field name="FootprintConfidence">datasheet/package candidate</field>
         <field name="FootprintBasis">Existing assignment; see component identity evidence.</field>
@@ -2783,9 +2783,9 @@
       </fields>
       <libsource lib="Transistor_BJT" part="Q_PNP_BEC" description="PNP transistor, base/emitter/collector"/>
       <property name="ViaEvidence" value="v0.9: physical L pad to user-reviewed ground copper; old antenna-A rail withdrawn. Device identity/orientation remains candidate."/>
-      <property name="CurrentEvidence" value="Provisional 2H / MMBTA55 PNP candidate; physical R-&gt;base1, L-&gt;emitter2/GND, S-&gt;collector3 is unverified. This is not ordinary positive-GPIO PNP switching. Preserve copper pending one Q3-cell polarity/orientation test; no NPN substitution by plausibility."/>
+      <property name="CurrentEvidence" value="Same 2H marking as Q3; PNP type/pinout remains disputed by Q3 in-circuit diode results (0.48V L-&gt;S; 2.3V L-&gt;R; other directions OL). This device was not diode-tested. Retain existing copper and provisional PNP symbol pending family identification."/>
       <property name="OriginalReference" value="Q6"/>
-      <property name="Evidence" value="Provisional 2H / MMBTA55 PNP candidate; physical R-&gt;base1, L-&gt;emitter2/GND, S-&gt;collector3 is unverified. This is not ordinary positive-GPIO PNP switching. Preserve copper pending one Q3-cell polarity/orientation test; no NPN substitution by plausibility."/>
+      <property name="Evidence" value="Same 2H marking as Q3; PNP type/pinout remains disputed by Q3 in-circuit diode results (0.48V L-&gt;S; 2.3V L-&gt;R; other directions OL). This device was not diode-tested. Retain existing copper and provisional PNP symbol pending family identification."/>
       <property name="LibraryPolicy" value="Unmodified KiCad 10 stock symbol"/>
       <property name="FootprintConfidence" value="datasheet/package candidate"/>
       <property name="FootprintBasis" value="Existing assignment; see component identity evidence."/>
@@ -2950,9 +2950,9 @@
       <description>PNP transistor, base/emitter/collector</description>
       <fields>
         <field name="ViaEvidence">v0.9: physical L pad to user-reviewed ground copper; old antenna-A rail withdrawn. Device identity/orientation remains candidate.</field>
-        <field name="CurrentEvidence">Provisional 2H / MMBTA55 PNP candidate; physical R-&gt;base1, L-&gt;emitter2/GND, S-&gt;collector3 is unverified. This is not ordinary positive-GPIO PNP switching. Preserve copper pending one Q3-cell polarity/orientation test; no NPN substitution by plausibility.</field>
+        <field name="CurrentEvidence">Same 2H marking as Q3; PNP type/pinout remains disputed by Q3 in-circuit diode results (0.48V L-&gt;S; 2.3V L-&gt;R; other directions OL). This device was not diode-tested. Retain existing copper and provisional PNP symbol pending family identification.</field>
         <field name="OriginalReference">Q11</field>
-        <field name="Evidence">Provisional 2H / MMBTA55 PNP candidate; physical R-&gt;base1, L-&gt;emitter2/GND, S-&gt;collector3 is unverified. This is not ordinary positive-GPIO PNP switching. Preserve copper pending one Q3-cell polarity/orientation test; no NPN substitution by plausibility.</field>
+        <field name="Evidence">Same 2H marking as Q3; PNP type/pinout remains disputed by Q3 in-circuit diode results (0.48V L-&gt;S; 2.3V L-&gt;R; other directions OL). This device was not diode-tested. Retain existing copper and provisional PNP symbol pending family identification.</field>
         <field name="LibraryPolicy">Unmodified KiCad 10 stock symbol</field>
         <field name="FootprintConfidence">datasheet/package candidate</field>
         <field name="FootprintBasis">Existing assignment; see component identity evidence.</field>
@@ -2963,9 +2963,9 @@
       </fields>
       <libsource lib="Transistor_BJT" part="Q_PNP_BEC" description="PNP transistor, base/emitter/collector"/>
       <property name="ViaEvidence" value="v0.9: physical L pad to user-reviewed ground copper; old antenna-A rail withdrawn. Device identity/orientation remains candidate."/>
-      <property name="CurrentEvidence" value="Provisional 2H / MMBTA55 PNP candidate; physical R-&gt;base1, L-&gt;emitter2/GND, S-&gt;collector3 is unverified. This is not ordinary positive-GPIO PNP switching. Preserve copper pending one Q3-cell polarity/orientation test; no NPN substitution by plausibility."/>
+      <property name="CurrentEvidence" value="Same 2H marking as Q3; PNP type/pinout remains disputed by Q3 in-circuit diode results (0.48V L-&gt;S; 2.3V L-&gt;R; other directions OL). This device was not diode-tested. Retain existing copper and provisional PNP symbol pending family identification."/>
       <property name="OriginalReference" value="Q11"/>
-      <property name="Evidence" value="Provisional 2H / MMBTA55 PNP candidate; physical R-&gt;base1, L-&gt;emitter2/GND, S-&gt;collector3 is unverified. This is not ordinary positive-GPIO PNP switching. Preserve copper pending one Q3-cell polarity/orientation test; no NPN substitution by plausibility."/>
+      <property name="Evidence" value="Same 2H marking as Q3; PNP type/pinout remains disputed by Q3 in-circuit diode results (0.48V L-&gt;S; 2.3V L-&gt;R; other directions OL). This device was not diode-tested. Retain existing copper and provisional PNP symbol pending family identification."/>
       <property name="LibraryPolicy" value="Unmodified KiCad 10 stock symbol"/>
       <property name="FootprintConfidence" value="datasheet/package candidate"/>
       <property name="FootprintBasis" value="Existing assignment; see component identity evidence."/>
@@ -4139,45 +4139,6 @@
         </unit>
       </units>
     </comp>
-    <comp ref="R33">
-      <value>10k</value>
-      <footprint>Resistor_SMD:R_0603_1608Metric</footprint>
-      <description>Resistor</description>
-      <fields>
-        <field name="CurrentEvidence">INVENTORY UNVERIFIED (E07): inherited 10k PIR pull-up. Cited IMG_2435 establishes R37/R38/R39, but not R33. Physical presence/location and assumed J3.1/J3.2 endpoints remain unverified; retain pending identification, not as a measured value.</field>
-        <field name="OriginalReference">R33</field>
-        <field name="Evidence">INVENTORY UNVERIFIED (E07): inherited 10k PIR pull-up. Cited IMG_2435 establishes R37/R38/R39, but not R33. Physical presence/location and assumed J3.1/J3.2 endpoints remain unverified; retain pending identification, not as a measured value.</field>
-        <field name="LibraryPolicy">Unmodified KiCad 10 stock symbol</field>
-        <field name="FootprintConfidence">medium - revised family estimate</field>
-        <field name="FootprintBasis">User reports R8 approximately 1.6 x 0.77 mm, consistent with 0603 (1608 metric). Repeated fitted resistor family revised using R8 as a scale reference. This individual body has not been measured; earlier 0805 estimate superseded.</field>
-        <field name="PinMapping">See evidence/pin_crosswalk.json; physical orientation may be provisional</field>
-        <field name="Footprint">Resistor_SMD:R_0603_1608Metric</field>
-        <field name="Datasheet"/>
-        <field name="Description">Resistor</field>
-      </fields>
-      <libsource lib="Device" part="R" description="Resistor"/>
-      <property name="CurrentEvidence" value="INVENTORY UNVERIFIED (E07): inherited 10k PIR pull-up. Cited IMG_2435 establishes R37/R38/R39, but not R33. Physical presence/location and assumed J3.1/J3.2 endpoints remain unverified; retain pending identification, not as a measured value."/>
-      <property name="OriginalReference" value="R33"/>
-      <property name="Evidence" value="INVENTORY UNVERIFIED (E07): inherited 10k PIR pull-up. Cited IMG_2435 establishes R37/R38/R39, but not R33. Physical presence/location and assumed J3.1/J3.2 endpoints remain unverified; retain pending identification, not as a measured value."/>
-      <property name="LibraryPolicy" value="Unmodified KiCad 10 stock symbol"/>
-      <property name="FootprintConfidence" value="medium - revised family estimate"/>
-      <property name="FootprintBasis" value="User reports R8 approximately 1.6 x 0.77 mm, consistent with 0603 (1608 metric). Repeated fitted resistor family revised using R8 as a scale reference. This individual body has not been measured; earlier 0805 estimate superseded."/>
-      <property name="PinMapping" value="See evidence/pin_crosswalk.json; physical orientation may be provisional"/>
-      <property name="Sheetname" value="PetSafe_1001339"/>
-      <property name="Sheetfile" value="PetSafe_1001339.kicad_sch"/>
-      <property name="ki_keywords" value="R res resistor"/>
-      <property name="ki_fp_filters" value="R_*"/>
-      <sheetpath names="/" tstamps="/"/>
-      <tstamps>aef537f3-8438-46b4-bd6e-93d6134f522e</tstamps>
-      <units>
-        <unit name="A">
-          <pins>
-            <pin num="1"/>
-            <pin num="2"/>
-          </pins>
-        </unit>
-      </units>
-    </comp>
     <comp ref="R35">
       <value>DNP</value>
       <footprint>Resistor_SMD:R_0603_1608Metric</footprint>
@@ -4344,9 +4305,9 @@
       <description>Resistor</description>
       <fields>
         <field name="ViaEvidence">v0.9.6: User confirms V064-V063. R37.1/R39.2 feed junction is regulated board VDD, not motor VDD.</field>
-        <field name="CurrentEvidence">10k from marking. Model2 joins printed VDD through V063/V064; model1 remains on the inferred Q2 base/R38 node. PIR output TP16/Q2.S to PIC21 is confirmed; transistor pin functions and the R33 branch remain qualified.</field>
+        <field name="CurrentEvidence">10k from marking. Model2 joins printed VDD through V063/V064; model1 remains on the inferred Q2 base/R38 node. PIR output TP16/Q2.S to PIC21 is confirmed; transistor pin functions remain unverified. Unsupported R33 pull-up withdrawn.</field>
         <field name="OriginalReference">R39</field>
-        <field name="Evidence">10k from marking. Model2 joins printed VDD through V063/V064; model1 remains on the inferred Q2 base/R38 node. PIR output TP16/Q2.S to PIC21 is confirmed; transistor pin functions and the R33 branch remain qualified.</field>
+        <field name="Evidence">10k from marking. Model2 joins printed VDD through V063/V064; model1 remains on the inferred Q2 base/R38 node. PIR output TP16/Q2.S to PIC21 is confirmed; transistor pin functions remain unverified. Unsupported R33 pull-up withdrawn.</field>
         <field name="LibraryPolicy">Unmodified KiCad 10 stock symbol</field>
         <field name="FootprintConfidence">medium - revised family estimate</field>
         <field name="FootprintBasis">User reports R8 approximately 1.6 x 0.77 mm, consistent with 0603 (1608 metric). Repeated fitted resistor family revised using R8 as a scale reference. This individual body has not been measured; earlier 0805 estimate superseded.</field>
@@ -4357,9 +4318,9 @@
       </fields>
       <libsource lib="Device" part="R" description="Resistor"/>
       <property name="ViaEvidence" value="v0.9.6: User confirms V064-V063. R37.1/R39.2 feed junction is regulated board VDD, not motor VDD."/>
-      <property name="CurrentEvidence" value="10k from marking. Model2 joins printed VDD through V063/V064; model1 remains on the inferred Q2 base/R38 node. PIR output TP16/Q2.S to PIC21 is confirmed; transistor pin functions and the R33 branch remain qualified."/>
+      <property name="CurrentEvidence" value="10k from marking. Model2 joins printed VDD through V063/V064; model1 remains on the inferred Q2 base/R38 node. PIR output TP16/Q2.S to PIC21 is confirmed; transistor pin functions remain unverified. Unsupported R33 pull-up withdrawn."/>
       <property name="OriginalReference" value="R39"/>
-      <property name="Evidence" value="10k from marking. Model2 joins printed VDD through V063/V064; model1 remains on the inferred Q2 base/R38 node. PIR output TP16/Q2.S to PIC21 is confirmed; transistor pin functions and the R33 branch remain qualified."/>
+      <property name="Evidence" value="10k from marking. Model2 joins printed VDD through V063/V064; model1 remains on the inferred Q2 base/R38 node. PIR output TP16/Q2.S to PIC21 is confirmed; transistor pin functions remain unverified. Unsupported R33 pull-up withdrawn."/>
       <property name="LibraryPolicy" value="Unmodified KiCad 10 stock symbol"/>
       <property name="FootprintConfidence" value="medium - revised family estimate"/>
       <property name="FootprintBasis" value="User reports R8 approximately 1.6 x 0.77 mm, consistent with 0603 (1608 metric). Repeated fitted resistor family revised using R8 as a scale reference. This individual body has not been measured; earlier 0805 estimate superseded."/>
@@ -5584,13 +5545,13 @@
       <datasheet>https://www.ti.com/lit/ds/symlink/sn74lvc2g14.pdf</datasheet>
       <description>Dual NOT Gate, Schmitt Triggered, Low-Voltage CMOS</description>
       <fields>
+        <field name="ViaEvidence">v0.9.5: V114 reaches U2.T2, not Q8.T2. Earlier user GND assignment retained; native U2 pin2 already GND. This resolves the via annotation conflict.</field>
         <field name="OriginalReference">U2</field>
         <field name="Evidence">Photo reconstruction; individual net evidence in reconstruction.json</field>
         <field name="LibraryPolicy">Unmodified KiCad 10 stock symbol</field>
         <field name="FootprintConfidence">datasheet/package candidate</field>
         <field name="FootprintBasis">Existing assignment; see component identity evidence.</field>
         <field name="PinMapping">See evidence/pin_crosswalk.json; physical orientation may be provisional</field>
-        <field name="ViaEvidence">v0.9.5: V114 reaches U2.T2, not Q8.T2. Earlier user GND assignment retained; native U2 pin2 already GND. This resolves the via annotation conflict.</field>
         <field name="Footprint">Package_TO_SOT_SMD:SOT-23-6</field>
         <field name="Datasheet">https://www.ti.com/lit/ds/symlink/sn74lvc2g14.pdf</field>
         <field name="Description">Dual NOT Gate, Schmitt Triggered, Low-Voltage CMOS</field>
@@ -5607,7 +5568,7 @@
       <property name="ki_keywords" value="Dual Gate NOT Schmitt LVC CMOS"/>
       <property name="ki_fp_filters" value="SG-* SOT*"/>
       <sheetpath names="/" tstamps="/"/>
-      <tstamps>d0ce7cd7-6c1d-460b-bc83-44a9736c68fd c2038b9c-b36c-4670-ab94-21c1a9753278 3fee6f3a-8cd1-4f78-bc72-965c744b6fd1</tstamps>
+      <tstamps>c2038b9c-b36c-4670-ab94-21c1a9753278 d0ce7cd7-6c1d-460b-bc83-44a9736c68fd 3fee6f3a-8cd1-4f78-bc72-965c744b6fd1</tstamps>
       <units>
         <unit name="A">
           <pins>
@@ -5634,14 +5595,14 @@
       <footprint>Package_SO:SOIC-8_3.9x4.9mm_P1.27mm</footprint>
       <description>Dual operational amplifier</description>
       <fields>
-        <field name="ViaEvidence">v0.9.3 user identifies both V079 and V080 as SGM8542 pin5. Existing local C18.1 fragment retained on RX_B_PLUS; separate from TP6 on the opposite side of C18.</field>
-        <field name="MeasurementEvidence">v0.9.14 user: pin5-VREF/R22 D 1 ohm (batch1); pin6-R23 B/left/model1 1 ohm and C/right/model2 5.6 kohm. Pin6-R22 E/GND 400 kohm. Pin5 and pin6 remain distinct; C18 branch is retained photo evidence, not meter-confirmed.</field>
         <field name="OriginalReference">U3</field>
         <field name="Evidence">Photo reconstruction; individual net evidence in reconstruction.json</field>
         <field name="LibraryPolicy">Unmodified KiCad 10 stock symbol</field>
         <field name="FootprintConfidence">datasheet/package candidate</field>
         <field name="FootprintBasis">Existing assignment; see component identity evidence.</field>
         <field name="PinMapping">See evidence/pin_crosswalk.json; physical orientation may be provisional</field>
+        <field name="ViaEvidence">v0.9.3 user identifies both V079 and V080 as SGM8542 pin5. Existing local C18.1 fragment retained on RX_B_PLUS; separate from TP6 on the opposite side of C18.</field>
+        <field name="MeasurementEvidence">v0.9.14 user: pin5-VREF/R22 D 1 ohm (batch1); pin6-R23 B/left/model1 1 ohm and C/right/model2 5.6 kohm. Pin6-R22 E/GND 400 kohm. Pin5 and pin6 remain distinct; C18 branch is retained photo evidence, not meter-confirmed.</field>
         <field name="Footprint">Package_SO:SOIC-8_3.9x4.9mm_P1.27mm</field>
         <field name="Datasheet"/>
         <field name="Description">Dual operational amplifier</field>
@@ -5658,7 +5619,7 @@
       <property name="ki_keywords" value="dual opamp"/>
       <property name="ki_fp_filters" value="SOIC*3.9x4.9mm*P1.27mm* DIP*W7.62mm* MSOP*3x3mm*P0.65mm* SSOP*2.95x2.8mm*P0.65mm* TSSOP*3x3mm*P0.65mm* VSSOP*P0.5mm* TO?99*"/>
       <sheetpath names="/" tstamps="/"/>
-      <tstamps>f2ceba09-374b-42f7-984d-7b195eed131b b00d4394-db65-46d5-bada-d45b64759761 90074ca8-ab4c-417f-add8-85bfedd7631d</tstamps>
+      <tstamps>b00d4394-db65-46d5-bada-d45b64759761 f2ceba09-374b-42f7-984d-7b195eed131b 90074ca8-ab4c-417f-add8-85bfedd7631d</tstamps>
       <units>
         <unit name="A">
           <pins>
@@ -6670,7 +6631,6 @@
     <net code="11" name="/H_PIR_VDD" class="Default">
       <node ref="C37" pin="1" pintype="passive"/>
       <node ref="J3" pin="1" pinfunction="Pin_1_1" pintype="passive"/>
-      <node ref="R33" pin="2" pintype="passive"/>
       <node ref="U106" pin="2" pinfunction="VO_2" pintype="power_out"/>
       <node ref="U6" pin="3" pinfunction="VOUT_3" pintype="power_out"/>
       <node ref="U7" pin="3" pinfunction="Pin_3_3" pintype="passive"/>
@@ -6912,7 +6872,6 @@
     </net>
     <net code="52" name="Net-(J3-Pin_2)" class="Default">
       <node ref="J3" pin="2" pinfunction="Pin_2_2" pintype="passive"/>
-      <node ref="R33" pin="1" pintype="passive"/>
       <node ref="R38" pin="1" pintype="passive"/>
       <node ref="U7" pin="2" pinfunction="Pin_2_2" pintype="passive"/>
     </net>

@@ -1,6 +1,6 @@
 {
   "date": "2026-10-09",
-  "review_revision": "v0.9.31",
+  "review_revision": "v0.9.32",
   "basis_revision": "v0.9.30",
   "scope": "Current main-board finishing register after independent review of 6ae4eaa and original-photo audit. RF common drive and D1 input assignment corrected from IMG_2431; U6A regulator retained by explicit user choice. No new bench readings or antenna midpoint joins.",
   "rails": [
@@ -96,9 +96,9 @@
       ],
       "priority": 1,
       "state": "open",
-      "known": "Five PIC-to-base-resistor routes and the visible Q3/R13/C10 joins are mapped. Seven tested midpoint pairs are isolated (OL).",
-      "unknown": "PNP emitter-at-GND is not ordinary GPIO-controlled PNP switching. Device polarity/base mapping or the assumed RF mechanism may be wrong. The five capacitor midpoints lack an established antenna continuation.",
-      "next_action": "Next batch: six directional diode-mode readings on Q3 only, using the labelled photo. This distinguishes PNP/NPN/base candidates; collector/emitter and hidden antenna links may still need one follow-up. No repeated visible-trace tests.",
+      "known": "Five PIC-to-control-resistor routes and visible Q3/R13/C10 joins are mapped. Seven midpoint-pair OL exclusions retained. Q3 diode batch complete: L->S latest 0.48 V, L->R 2.3 V; reverse directions and R/S both ways OL.",
+      "unknown": "The diode pattern does not confirm the drawn PNP B=R/E=L/C=S mapping. In-circuit paths or contact effects prevent device identification; a single 0.48 V path does not prove a MOSFET. Five capacitor midpoints still lack an established antenna continuation.",
+      "next_action": "Optional isolated Q3 diode test if the user can remove it; otherwise retain the disputed candidate and defer identity while reviewing other hidden paths. Do not repeat the six in-circuit tests or substitute a device family by plausibility.",
       "closed_when": "One cell has a supported device map and functional antenna path; the other four are checked only where needed.",
       "open_pads": [],
       "nets": [
@@ -112,7 +112,8 @@
       ],
       "supporting_evidence": [
         "evidence/architect_review_v0930.json",
-        "docs/history/v0.9.30-before-finalization/evidence/remaining_work.json"
+        "docs/history/v0.9.30-before-finalization/evidence/remaining_work.json",
+        "evidence/q3_diode_results_20261009.json"
       ],
       "owner": "Agent evidence review; targeted owner test only as listed",
       "category": "connectivity/behavior"
@@ -188,7 +189,7 @@
     },
     {
       "id": "E07",
-      "area": "PIR: R33 inventory and Q2 behavior",
+      "area": "PIR: Q2 behavior and operating supply",
       "refs": [
         "U6",
         "Q2",
@@ -203,9 +204,9 @@
       "priority": 2,
       "state": "open",
       "known": "J3/U7 ordering, U6 external pads and PIC21/TP16/Q2 output routing are established. U6 pin5 is tied to VIN; pin4 is unused.",
-      "unknown": "R33 is inherited as a fitted 10k PIR pull-up, but its cited IMG_2435 shows R37/R38/R39 and does not establish R33. Its existence/location and both assumed endpoints must be resolved. Q2 pin functions and actual PIR voltage also remain unverified.",
-      "next_action": "Locate R33 before requesting measurements of it. If a real R33 exists, identify its pads and check its two proposed nets (J3.2 and J3.1). If the inventory duplicated another resistor, remove that unsupported entry after corroboration. Q2 behavior belongs in the later powered check.",
-      "closed_when": "R33 is physically accounted for or withdrawn with evidence; Q2 signal behavior and U6 output are supported. No repeat connector or NC-pad checks.",
+      "unknown": "Q2 terminal functions, signal behavior and actual U6/PIR operating voltage remain unverified.",
+      "next_action": "Later powered check: record U6 output/J3.1 voltage and compare J3.2 raw signal with PIC21/TP16 as PIR changes state. Agent retains the measured connectivity; no repeat connector or NC-pad checks.",
+      "closed_when": "Q2 signal behavior and U6 output are supported by device or operating evidence.",
       "open_pads": [],
       "nets": [
         "H_PIR_RAW",
@@ -215,7 +216,8 @@
         "PIR_BASE"
       ],
       "supporting_evidence": [
-        "docs/history/v0.9.30-before-finalization/evidence/remaining_work.json"
+        "docs/history/v0.9.30-before-finalization/evidence/remaining_work.json",
+        "evidence/r33_withdrawal_v0932.json"
       ],
       "owner": "Agent evidence review; targeted owner test only as listed",
       "category": "connectivity/behavior"
@@ -396,7 +398,7 @@
       ],
       "priority": 2,
       "state": "open",
-      "known": "C5 is 470uF/16V. L1/L2 readings are 1.4/2.2uH. Marked resistor nominal values are recorded; R33 inventory is separately under E07.",
+      "known": "C5 is 470uF/16V. L1/L2 readings are 1.4/2.2uH. Retained marked resistor nominal values are recorded.",
       "unknown": "44 fitted ceramic values remain unknown. L1/L2 measurement conditions and component ratings are not established.",
       "next_action": "After tuning topology, prioritize antenna/RF/receiver capacitors with the LCR meter. Record frequency, mode and isolation. Parallel parts give a combined reading; lift one terminal only where an individual value is needed. Report existing L1/L2 measurement conditions without remeasuring yet.",
       "closed_when": "Critical individual values are recovered; any bypass substitutions and unverified ratings are explicitly identified assumptions.",
@@ -422,7 +424,7 @@
       ],
       "priority": 2,
       "state": "open",
-      "known": "148/149 candidate footprints assigned. C5 diameter/height, S1 body/actuator size, R8 and C11 sizes are already measured.",
+      "known": "LED1 is the only unassigned footprint. C5 diameter/height, S1 body/actuator size, R8 and C11 sizes are already measured.",
       "unknown": "LED1 land pattern/numbering is the only blank footprint. C5 pitch and S1 pad fit/3D heights are reproduction qualifications, not unknown schematic wires.",
       "next_action": "Obtain LED underside/pad geometry or a matching vendor drawing before selecting a footprint. For later PCB reproduction check C5 lead pitch and S1 pad fit; use actual 16mm capacitor and 6mm switch heights. Do not repeat body dimensions.",
       "closed_when": "LED footprint has a supported pad map; remaining package-fit assumptions are documented separately from schematic connectivity.",
@@ -470,7 +472,7 @@
         "E10",
         "I01"
       ],
-      "summary": "One Q3 diode batch next; R33 inventory and three local-only PIC branches remain explicit. Other checks are staged, not requested together.",
+      "summary": "Q3 in-circuit tests recorded; identity remains disputed and isolated testing is optional. Three local-only PIC branches and antenna continuations remain. Other checks are staged, not requested together.",
       "next_action": "Use the next measurement screen. Agent resolves visible copper and prepares only discriminating hidden-path or operating tests."
     },
     {

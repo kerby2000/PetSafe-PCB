@@ -15308,7 +15308,7 @@
 				(hide yes)
 			)
 		)
-		(property "CurrentEvidence" "Provisional 2H / MMBTA55 PNP candidate; physical R->base1, L->emitter2/GND, S->collector3 is unverified. This is not ordinary positive-GPIO PNP switching. Preserve copper pending one Q3-cell polarity/orientation test; no NPN substitution by plausibility."
+		(property "CurrentEvidence" "DISPUTED 2H / MMBTA55 PNP candidate. Q3 in-circuit diode readings: L->R 2.3V, L->S latest 0.48V (earlier 0.35V); reverse directions and R/S both ways OL. These do not confirm B=R/E=L/C=S. Copper and candidate symbol retained pending isolated-device identification; no MOSFET identity inferred from one forward path."
 			(at 50.8 347.98 0)
 			(effects
 				(font
@@ -15750,7 +15750,7 @@
 				(hide yes)
 			)
 		)
-		(property "CurrentEvidence" "Provisional 2H / MMBTA55 PNP candidate; physical R->base1, L->emitter2/GND, S->collector3 is unverified. This is not ordinary positive-GPIO PNP switching. Preserve copper pending one Q3-cell polarity/orientation test; no NPN substitution by plausibility."
+		(property "CurrentEvidence" "Same 2H marking as Q3; PNP type/pinout remains disputed by Q3 in-circuit diode results (0.48V L->S; 2.3V L->R; other directions OL). This device was not diode-tested. Retain existing copper and provisional PNP symbol pending family identification."
 			(at 104.14 347.98 0)
 			(effects
 				(font
@@ -16201,7 +16201,7 @@
 				(hide yes)
 			)
 		)
-		(property "CurrentEvidence" "Provisional 2H / MMBTA55 PNP candidate; physical R->base1, L->emitter2/GND, S->collector3 is unverified. This is not ordinary positive-GPIO PNP switching. Preserve copper pending one Q3-cell polarity/orientation test; no NPN substitution by plausibility."
+		(property "CurrentEvidence" "Same 2H marking as Q3; PNP type/pinout remains disputed by Q3 in-circuit diode results (0.48V L->S; 2.3V L->R; other directions OL). This device was not diode-tested. Retain existing copper and provisional PNP symbol pending family identification."
 			(at 157.48 347.98 0)
 			(effects
 				(font
@@ -16652,7 +16652,7 @@
 				(hide yes)
 			)
 		)
-		(property "CurrentEvidence" "Provisional 2H / MMBTA55 PNP candidate; physical R->base1, L->emitter2/GND, S->collector3 is unverified. This is not ordinary positive-GPIO PNP switching. Preserve copper pending one Q3-cell polarity/orientation test; no NPN substitution by plausibility."
+		(property "CurrentEvidence" "Same 2H marking as Q3; PNP type/pinout remains disputed by Q3 in-circuit diode results (0.48V L->S; 2.3V L->R; other directions OL). This device was not diode-tested. Retain existing copper and provisional PNP symbol pending family identification."
 			(at 210.82 347.98 0)
 			(effects
 				(font
@@ -17103,7 +17103,7 @@
 				(hide yes)
 			)
 		)
-		(property "CurrentEvidence" "Provisional 2H / MMBTA55 PNP candidate; physical R->base1, L->emitter2/GND, S->collector3 is unverified. This is not ordinary positive-GPIO PNP switching. Preserve copper pending one Q3-cell polarity/orientation test; no NPN substitution by plausibility."
+		(property "CurrentEvidence" "Same 2H marking as Q3; PNP type/pinout remains disputed by Q3 in-circuit diode results (0.48V L->S; 2.3V L->R; other directions OL). This device was not diode-tested. Retain existing copper and provisional PNP symbol pending family identification."
 			(at 264.16 347.98 0)
 			(effects
 				(font
@@ -17910,7 +17910,7 @@
 				(hide yes)
 			)
 		)
-		(property "CurrentEvidence" "PIR connector: pin1 supply; pin2 to R38 K/right/model1 at 1 ohm, with 10k through R38; pin3 GND at 1 ohm. The Q2 single-pad/TP16 output reaches PIC21/RB0 by user correction. PIC21-to-VREF was withdrawn after TP16-VREF measured 0.8 Mohm. Q2/R33 device behavior remains qualified."
+		(property "CurrentEvidence" "PIR connector: pin1 supply; pin2 to R38 K/right/model1 at 1 ohm, with 10k through R38; pin3 GND at 1 ohm. The Q2 single-pad/TP16 output reaches PIC21/RB0 by user correction. PIC21-to-VREF was withdrawn after TP16-VREF measured 0.8 Mohm. Q2 behavior remains unverified; unsupported R33 pull-up withdrawn."
 			(at 405.13 327.66 0)
 			(effects
 				(font
@@ -18194,7 +18194,7 @@
 				(hide yes)
 			)
 		)
-		(property "CurrentEvidence" "10k from marking. Model2 joins printed VDD through V063/V064; model1 remains on the inferred Q2 base/R38 node. PIR output TP16/Q2.S to PIC21 is confirmed; transistor pin functions and the R33 branch remain qualified."
+		(property "CurrentEvidence" "10k from marking. Model2 joins printed VDD through V063/V064; model1 remains on the inferred Q2 base/R38 node. PIR output TP16/Q2.S to PIC21 is confirmed; transistor pin functions remain unverified. Unsupported R33 pull-up withdrawn."
 			(at 351.79 355.6 0)
 			(effects
 				(font
@@ -18301,94 +18301,6 @@
 			(project "PetSafe_1001339"
 				(path "/33a03d59-1679-4e9c-af69-68d086b519af"
 					(reference "R32")
-					(unit 1)
-				)
-			)
-		)
-	)
-	(symbol
-		(lib_id "Device:R")
-		(at 393.7 353.06 0)
-		(unit 1)
-		(body_style 1)
-		(exclude_from_sim no)
-		(in_bom yes)
-		(on_board yes)
-		(in_pos_files yes)
-		(dnp no)
-		(uuid "aef537f3-8438-46b4-bd6e-93d6134f522e")
-		(property "Reference" "R33"
-			(at 395.732 353.06 90)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(property "Value" "10k"
-			(at 393.7 353.06 90)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(property "Footprint" "Resistor_SMD:R_0603_1608Metric"
-			(at 391.922 353.06 90)
-			(hide yes)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(property "Datasheet" ""
-			(at 393.7 353.06 0)
-			(hide yes)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(property "Description" "Resistor"
-			(at 393.7 353.06 0)
-			(hide yes)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(property "CurrentEvidence" "INVENTORY UNVERIFIED (E07): inherited 10k PIR pull-up. Cited IMG_2435 establishes R37/R38/R39, but not R33. Physical presence/location and assumed J3.1/J3.2 endpoints remain unverified; retain pending identification, not as a measured value."
-			(at 393.7 353.06 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(pin "1"
-			(uuid "c0b66bf3-8de5-4789-9856-670729ad0529")
-		)
-		(pin "2"
-			(uuid "8505a383-3df0-46da-bb60-ae07468000b9")
-		)
-		(instances
-			(project "PetSafe_1001339"
-				(path "/33a03d59-1679-4e9c-af69-68d086b519af"
-					(reference "R33")
 					(unit 1)
 				)
 			)
