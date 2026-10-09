@@ -1,8 +1,8 @@
 {
   "date": "2026-10-09",
   "basis_revision": "v0.9.18",
-  "status": "PIR_ROUTE_RESOLVED",
-  "scope": "All supplied readings applied; PIC21-VREF mistake corrected.",
+  "status": "OPEN_PAD_CHECKS_READY",
+  "scope": "Targeted external-copper checks for D6 and U6. TP9 physical existence/location is unverified.",
   "setup": "Battery and programmer disconnected; allow capacitors to discharge. Resistance mode. Note the shorted-probe baseline; report actual ohms, kohms, Mohms, OL or changing readings. Do not bridge or desolder anything in this batch.",
   "photos": [
     {
@@ -303,10 +303,221 @@
           "description": "C25 RIGHT metal end in this photo, nearest C39; upper capacitor above C26; local trace reaches PIC pin2 / RA0"
         }
       }
+    },
+    {
+      "id": "u6_open",
+      "source": "photos/originals/IMG_2435.jpg",
+      "coordinate_space": [
+        1368,
+        1823
+      ],
+      "view_box": [
+        620,
+        1010,
+        600,
+        420
+      ],
+      "title": "1. U6: does pin 5 join VIN under the chip?",
+      "instructions": "Your annotation shows pin 4 unused, pin 5 reaching the upper end of R37 and the single pad of empty U6A, pin 3 reaching the PIR supply, pin 2 reaching C36, and pin 1 at GND. Only the hidden pin 5-to-pin 2 join remains in this batch. Numbers are package pins; grey labels give orientation only. The current R37-to-VIN connection is an older hypothesis, so it must not be used as proof of this join.",
+      "context_points": [
+        "4",
+        "3",
+        "1"
+      ],
+      "points": {
+        "4": {
+          "xy": [
+            791,
+            1163
+          ],
+          "label": [
+            681,
+            1102
+          ],
+          "description": "U6 pin 4 / L1: upper pad on the two-pad side",
+          "role": "target"
+        },
+        "5": {
+          "xy": [
+            794,
+            1263
+          ],
+          "label": [
+            680,
+            1344
+          ],
+          "description": "U6 pin 5 / L2: lower pad on the two-pad side",
+          "role": "target"
+        },
+        "3": {
+          "xy": [
+            954,
+            1163
+          ],
+          "label": [
+            1109,
+            1071
+          ],
+          "description": "U6 pin 3 / R1: upper-right pad, candidate VOUT",
+          "role": "reference"
+        },
+        "2": {
+          "xy": [
+            954,
+            1215
+          ],
+          "label": [
+            1152,
+            1225
+          ],
+          "description": "U6 pin 2 / R2: middle-right pad, candidate VIN",
+          "role": "reference"
+        },
+        "1": {
+          "xy": [
+            954,
+            1264
+          ],
+          "label": [
+            1096,
+            1370
+          ],
+          "description": "U6 pin 1 / R3: lower-right pad, candidate GND",
+          "role": "reference"
+        }
+      }
+    },
+    {
+      "id": "d6_open",
+      "source": "photos/originals/IMG_2437.jpg",
+      "coordinate_space": [
+        1368,
+        1823
+      ],
+      "view_box": [
+        440,
+        885,
+        675,
+        545
+      ],
+      "title": "2. D6 beside PIC U4 and the programming connector J1",
+      "instructions": "Measure each D6 end against the three nearby connector nodes. The paths disappear near/under U4, so the photographs alone do not establish their destinations. Keep V and W as physical end names; do not assign diode pin numbers from these labels.",
+      "points": {
+        "V": {
+          "xy": [
+            903,
+            1027
+          ],
+          "label": [
+            790,
+            965
+          ],
+          "description": "D6 upper metal end in this photo",
+          "role": "target"
+        },
+        "W": {
+          "xy": [
+            901,
+            1115
+          ],
+          "label": [
+            1037,
+            1037
+          ],
+          "description": "D6 lower metal end, nearer J1",
+          "role": "target"
+        },
+        "X": {
+          "xy": [
+            862,
+            1220
+          ],
+          "label": [
+            991,
+            1363
+          ],
+          "description": "J1 pin 1 / VPP: rightmost square solder pad",
+          "role": "reference"
+        },
+        "Y": {
+          "xy": [
+            729,
+            1220
+          ],
+          "label": [
+            733,
+            1363
+          ],
+          "description": "J1 pin 2 / VDD: second pad from the right",
+          "role": "reference"
+        },
+        "Z": {
+          "xy": [
+            597,
+            1220
+          ],
+          "label": [
+            501,
+            1363
+          ],
+          "description": "J1 pin 3 / GND: middle pad",
+          "role": "reference"
+        }
+      }
     }
   ],
-  "tests": [],
-  "interpretation": "All three high-resistance results reject direct joins; they are not added resistor values. The confirmed PIC21-TP16 route replaces the earlier incorrect VREF assignment.",
+  "tests": [
+    {
+      "id": "B22",
+      "from": "V",
+      "to": "X",
+      "group": "d6_open",
+      "purpose": "Locate this D6 end on the VPP/GND/VDD network; no join is assumed."
+    },
+    {
+      "id": "B23",
+      "from": "W",
+      "to": "X",
+      "group": "d6_open",
+      "purpose": "Locate this D6 end on the VPP/GND/VDD network; no join is assumed."
+    },
+    {
+      "id": "B24",
+      "from": "V",
+      "to": "Z",
+      "group": "d6_open",
+      "purpose": "Locate this D6 end on the VPP/GND/VDD network; no join is assumed."
+    },
+    {
+      "id": "B25",
+      "from": "W",
+      "to": "Z",
+      "group": "d6_open",
+      "purpose": "Locate this D6 end on the VPP/GND/VDD network; no join is assumed."
+    },
+    {
+      "id": "B26",
+      "from": "V",
+      "to": "Y",
+      "group": "d6_open",
+      "purpose": "Locate this D6 end on the VPP/GND/VDD network; no join is assumed."
+    },
+    {
+      "id": "B27",
+      "from": "W",
+      "to": "Y",
+      "group": "d6_open",
+      "purpose": "Locate this D6 end on the VPP/GND/VDD network; no join is assumed."
+    },
+    {
+      "id": "B28",
+      "from": "5",
+      "to": "2",
+      "group": "u6_open",
+      "purpose": "Determine whether the R37 / U6A input branch reaches U6 VIN beneath the package. A near-baseline reading supports a join; high resistance or OL leaves the input routing hypothesis unresolved."
+    }
+  ],
+  "interpretation": "A stable reading close to the shorted-probe baseline supports a copper join. kohms, Mohms, OL or changing readings do not establish a wire. These are routing checks, not diode-voltage or capacitor-value measurements. OL to a few references does not by itself prove an unused pad; a no-connect decision also needs copper inspection.",
   "next_stages": [
     {
       "stage": "1. Finish signal paths",
@@ -355,7 +566,9 @@
     "photos/originals/IMG_2440.jpg",
     "evidence/pir_batch5_u7_20261009.json",
     "photos/originals/IMG_2437.jpg",
-    "evidence/pic21_tp16_followup_20261009.json"
+    "evidence/pic21_tp16_followup_20261009.json",
+    "docs/datasheets/S812C.pdf",
+    "evidence/j1_physical_mapping.json"
   ],
   "completed_tests": [
     {
@@ -527,8 +740,8 @@
       "result": "0.8 Mohm; user explicitly withdraws PIC21-VREF"
     }
   ],
-  "batch_title": "PIR signal route resolved",
-  "instructions": "PIC21/RB0 now reaches TP16 and Q2 single pad. TP16-to-VREF reads 0.8 Mohm; the mistaken PIC21-to-VREF connection has been removed. U7 is fully mapped to J3. B20/C25 is cancelled; no further PIR-to-PIC measurements are needed.",
+  "batch_title": "U6: one hidden join; D6: two unknown destinations",
+  "instructions": "Start with the single U6 check, then D6. Your U6 annotation replaces the broader NC-pad tests. Touch the centre of each small ring, not the large label. Record actual resistance, not just a continuity beep. The PCB and photographs remain in the orientation shown.",
   "result_summary": "B18 TP16-TP11 and B19 TP16-TP17 each read 400 kohm. B21 TP16-VREF reads 0.8 Mohm. User identifies PIC21/RB0 as TP16/Q2.S destination and explicitly withdraws PIC21-VREF. U7.1/2/3 map to J3.3/2/1. These updates are applied in the schematic. v0.9.17 user-annotated photo: C25 right pad/model1 -> PIC2/RA0; C26 right pad/model1 -> PIC3/RA1. Left pads/model2 are common, retaining earlier V029-GND evidence. No new numeric resistance or capacitance supplied. C26 joins the existing RA1/R28/R29/TP7 net, separate from RA0 and VREF. C6 now parallels C5 by photo-supported reconstruction; value unknown.",
   "cancelled_tests": [
     {
@@ -551,5 +764,56 @@
       "evidence": "evidence/c5_c6_parallel_20261009.json",
       "result": "v0.9.18: C6 is reconstructed in parallel with C5 from the user proposal and photos IMG_2431/IMG_2432. C6 upper pad/model1 joins the C5-positive supply copper (H_RF_VDD, after L1); lower pad/model2 joins GND. Photo-supported, not a new meter-confirmed connection. C6 capacitance remains unknown. Earlier 400 kohm output exclusion and 10 ohm Q8-supply-path reading are retained; the latter does not independently prove Q8 source wiring."
     }
-  ]
+  ],
+  "batch_id": "open-pads-20261009",
+  "location_review": {
+    "reference": "TP9",
+    "status": "UNLOCATED_INVENTORY_ENTRY",
+    "inherited_source": "reference/v01/evidence/components.csv",
+    "reviewed_photos": [
+      "photos/originals/IMG_2436.jpg",
+      "photos/originals/IMG_2437.jpg",
+      "photos/originals/IMG_2438.jpg",
+      "photos/originals/IMG_2439.jpg",
+      "photos/originals/IMG_2440.jpg",
+      "photos/user/2026-10-08/board_full.png"
+    ],
+    "user_report": "I cannot find TP9",
+    "conclusion": "TP9 has no established physical location. Possible inherited inventory error; absence is not yet proven. Do not nominate a random hole or ask continuity checks for it. Agent must audit the entry before removing it from the model.",
+    "action": "No TP9 measurement requested. Native TP9 remains pending inventory audit; the five-open-entry count includes this unlocated entry."
+  },
+  "batch_source_sha256": {
+    "photos/originals/IMG_2437.jpg": "3c7c58fea79ea903a3099f204c1d97406c0884edb6d54fd5e7441363e71467a7",
+    "photos/originals/IMG_2435.jpg": "04f1464e2fceeec695365b25183dc96505034434565d20713f55c5b13b18fac1",
+    "photos/user_updates/U6_external_routing_20261009.png": "65159aec548c6c5ca68f86e1153a6f7142d5379f75eb733d48f02450a36f5273"
+  },
+  "candidate_datasheet_note": "S-812C datasheet Rev.7.0_01, page 11, Table 5: pin4 NC; pin5 NC for A/E variants. Electrically open internally; external connection to VIN or VSS is allowed. Pin numbering checked against Figure 5 and the existing physical crosswalk.",
+  "u6_annotation": {
+    "source": "photos/user_updates/U6_external_routing_20261009.png",
+    "evidence_type": "USER_ANNOTATED_ROUTING_PROPOSAL_NO_NUMERIC_READINGS",
+    "reported_unused": [
+      "U6.4"
+    ],
+    "reported_local_connections": [
+      [
+        "U6.5",
+        "R37 upper photo end",
+        "U6A single pad"
+      ],
+      [
+        "U6.3",
+        "PIR supply terminal"
+      ],
+      [
+        "U6.2",
+        "C36 left photo end"
+      ],
+      [
+        "U6.1",
+        "GND"
+      ]
+    ],
+    "pending_check": "U6.5 to U6.2",
+    "model_status": "Recorded for reconciliation; native schematic not changed by measurement-screen preparation."
+  }
 }
