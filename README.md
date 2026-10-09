@@ -1,6 +1,6 @@
 # PetSafe PCB reverse engineering
 
-Current schematic and review: **v0.9.29**, 2026-10-09. PetSafe PPA19-16811 main board, **100-1339 R03 A**. All 149 catalog entries, including test pads and empty options, are on one A2 KiCad 10 sheet.
+Current schematic and review: **v0.9.30**, 2026-10-09. PetSafe PPA19-16811 main board, **100-1339 R03 A**. All 149 catalog entries, including test pads and empty options, are on one A2 KiCad 10 sheet.
 
 Open [the current overview](index.html), [the completion checklist](docs/FINISHING_CHECKLIST.html), [the native schematic](schematic/PetSafe_1001339.kicad_sch), or [the schematic PDF](output/pdf/PetSafe_single_sheet.pdf). The [printable status](output/pdf/PetSafe_completion_status.pdf) includes the remaining questions and PIC map. The [measurement page](docs/FINISHING_MEASUREMENTS.html) preserves completed results; **no active bench batch is waiting for the owner**.
 
@@ -10,24 +10,24 @@ Open [the current overview](index.html), [the completion checklist](docs/FINISHI
 |---|---|
 | Drawing | One A2 sheet, 149 entries / 154 symbol units, normal local wires and named inter-block nets |
 | Physical pads | 350 assigned to modeled local nets, one supported intentional NC at U6 pin4; zero unassigned pads |
-| Connectivity check | 85 model/native net partitions agree; this checks file consistency, not every physical assumption |
-| ERC | Seven retained findings: five undriven power inputs, U6/U6A output conflict, isolated H_D1_FREE label |
+| Connectivity check | 83 model/native net partitions agree; this checks file consistency, not every physical assumption |
+| ERC | Six retained findings: five undriven power inputs and the user-retained U6/U6A output conflict; no isolated labels |
 | Values | 44 fitted ceramic values unknown; C5 470 uF / 16 V; L1 1.4 uH / L2 2.2 uH readings recorded |
 | Packages | 148/149 candidates assigned; LED1 remains blank; exact fit and pin maps remain qualified |
 | Libraries | 22 stock definitions plus four explicitly authorized datasheet candidate definitions |
 | Hardware | No powered functional validation, confirmed layer stack or routed KiCad PCB |
 
-This cleanup corrects active documentation and symbol evidence metadata. **No electrical connections, values or footprint assignments changed.** The earlier [Pro review checkpoint](docs/reviews/2026-10-09_pro_review_v0.9.28.md) and its ZIP remain frozen at v0.9.28 / commit `6ae4eaa`. An independent Pro review has been prepared, not yet received.
+The [independent review](docs/reviews/2026-10-09_independent_review_6ae4eaa.md) has been received and [worked through](docs/reviews/2026-10-09_review_response_v0.9.30.md). Reinspection of IMG_2431 corrects the TP3/R6/R7 common drive and D1 input assignment. Values, footprints and other electrical partitions are unchanged. The earlier review ZIP remains frozen at v0.9.28 / `6ae4eaa`.
 
 ## What remains to finalize the schematic
 
-1. **Resolve the remaining functional paths.** One complete Q3 tuning cell; RF excitation at R6/R7; D1 and local-only PIC nodes; remaining receiver/PIR hypotheses. Agent traces original photos and checks existing measurements first. Request one targeted hidden-connection or device-behavior test only when it distinguishes explicit alternatives.
+1. **Resolve the remaining functional paths.** One complete Q3 tuning cell; antenna continuation, local-only PIC nodes and receiver/PIR hypotheses. RF common-drive routing is now photo-supported; waveform/timing remain unmeasured. Agent traces original photos and checks existing measurements first. Request one targeted hidden-connection or device-behavior test only when it distinguishes explicit alternatives.
 2. **Verify candidate devices and operating behavior.** Q1/Q8 and tuning-transistor pin roles, D2 identity, D6 breakdown/ICSP compatibility, S1 contacts and actual rail/gate voltages. Use existing markings and recorded tests first. Keep equivalent candidates explicit. Plan focused device/contact checks and then an appropriate powered session on the original hardware.
 3. **Recover the required capacitor values.** 44 fitted ceramic values remain unknown. C5 is 470 uF / 16 V; L1 1.4 uH and L2 2.2 uH readings are already recorded. Prioritize antenna/RF/receiver capacitances after topology. Record LCR conditions and avoid assigning a parallel-network reading to each individual capacitor.
 4. **Finish symbols and physical assignments.** LED1 footprint and red/green channel mapping; motor lead orientation. C5 lead pitch and S1 pad fit/3D height remain qualified. Use the measured LED1 1.5 mm square, C5 diameter 6.33 mm/height 16 mm and S1 6 mm body/overall height. Seek the missing pad map or pitch; do not repeat body measurements.
 5. **Document optional and later reproduction work.** Empty option values/roles, J6 onward role, actual layer stack, daughterboard internals, firmware and a routed PCB. Retain DNP gaps and distinguish them from fitted circuits. These are not missing physical pad assignments; agree reproduction scope separately from finishing the main-board schematic.
 
-Zero open pads does not mean every signal source, remote destination or candidate device function is established. Seven ERC findings are not seven missing wires. See the [maintained question register](evidence/remaining_work.json) for the evidence, owner/agent actions and closure criteria for each issue.
+Zero open pads does not mean every signal source, remote destination or candidate device function is established. The six ERC findings are not six missing wires. See the [maintained question register](evidence/remaining_work.json) for the evidence, owner/agent actions and closure criteria for each issue.
 
 ## Settled facts
 

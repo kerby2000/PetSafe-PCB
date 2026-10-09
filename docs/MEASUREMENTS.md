@@ -1,6 +1,6 @@
 # Recorded measurements and observations
 
-Current for v0.9.29, 2026-10-09. These are user reports, not measurements made by software. **No active bench batch is pending.** Dated raw JSON events and completed photo-guide contacts are preserved. Earlier requests are archived in [the previous narrative](history/cleanup_v0928/docs/MEASUREMENTS.md); do not repeat a reading just because it occurs there.
+Current for v0.9.30, 2026-10-09. These are user reports, not measurements made by software. **No active bench batch is pending.** Dated raw JSON events and completed photo-guide contacts are preserved. Earlier requests are archived in [the previous narrative](history/cleanup_v0928/docs/MEASUREMENTS.md); do not repeat a reading just because it occurs there.
 
 Available instruments reported by the user: LCR meter, Fluke 179 and Fluke 87 III. The earlier Fluke 114 inference is superseded. No actual rail voltages or powered functional results have been supplied. The 44 fitted ceramic values remain unmeasured; L1/L2 readings are recorded below.
 

@@ -1,6 +1,6 @@
 # Current KiCad libraries and package qualifications
 
-Current schematic v0.9.29 uses KiCad 10.0.5, the connected KiCad MCP server, **149 catalog entries / 154 symbol units / 351 physical pads**, and **22 stock plus four authorized datasheet symbol definitions**. 148 footprints are assigned candidates; only LED1 remains blank. [Current component audit](FINISHING_CHECKLIST.html) and [pin crosswalk](../evidence/pin_crosswalk.json) supersede older catalog totals and arbitrary connector numbering.
+Current schematic v0.9.30 uses KiCad 10.0.5, the connected KiCad MCP server, **149 catalog entries / 154 symbol units / 351 physical pads**, and **22 stock plus four authorized datasheet symbol definitions**. 148 footprints are assigned candidates; only LED1 remains blank. [Current component audit](FINISHING_CHECKLIST.html) and [pin crosswalk](../evidence/pin_crosswalk.json) supersede older catalog totals and arbitrary connector numbering.
 
 Stock graphics and pin numbers are retained. U1/U5 and subsequently U6/Q8 were explicitly authorized for MCP datasheet-symbol construction. The symbol library is portable through `${KIPRJMOD}`. Candidate pinout correctness is distinct from fitted identity and actual board wiring. [The prior library narrative](history/cleanup_v0928/docs/LIBRARIES_AND_ALTERNATIVES.md) preserves intermediate authoring details and older package guesses.
 

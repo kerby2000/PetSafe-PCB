@@ -7,7 +7,6 @@ H_ANT_B,User-confirmed D2.L to ANT2 continuity; numerical resistance not supplie
 H_AUX_IN,"HYPOTHESIS: regulator input after R37, based on photo and S-812C33 pinout",C36.1;R37.2;U6.R2;U6.L2;U6A.L,
 H_BAT_SENSE,HYPOTHESIS / retains visual fragments where listed,C28.1;R3.2;R4.1,
 H_BUTTON,User annotated C35 lower/R40 lower/R41 left/S1 lower-right; S1 lower-left common-row tie remains inferred.,C35.1;R40.2;R41.2;S1.BR;S1.BL,
-H_D1_FREE,HYPOTHESIS / retains visual fragments where listed,D1.R,
 H_D3_SIGNAL,User component-level low-ohm report + photo-selected resistor end,D3.S;R42.2,
 H_LDO_IN,HYPOTHESIS / retains visual fragments where listed,C1.1;C1A.1;L2.2;U1.L1;U1.L3,V_U1_LEFT_TOP
 H_LED_A,HYPOTHESIS / retains visual fragments where listed,LED1.TL;R30.2,
@@ -19,8 +18,7 @@ H_MOTOR_B,HYPOTHESIS / retains visual fragments where listed,J5.B;TP15.1;U5.5,V_
 H_PIR_RAW,User J3.2-to-R38 K/right/model1 = 1 ohm. Opposite R38 J/left/model2 = 10 kohm. R33 branch remains photo/circuit hypothesis.,R33.1;R38.1;J3.2;U7.2,
 H_PIR_SIG,"USER_CONFIRMED PIC21-TP16 and local photo Q2.S trace; TP16-VREF measured 800 kohm, no rail tie.",Q2.S;TP16.1;U4.21,V_Q2_SINGLE
 H_PIR_VDD,HYPOTHESIS / retains visual fragments where listed,C37.1;J3.1;R33.2;U6.R1;U6A.R1;U7.3,
-H_RF_CONTROL,HYPOTHESIS / retains visual fragments where listed,R6.2;R7.1,
-H_RF_IN_A,HYPOTHESIS / retains visual fragments where listed,C9.1;D1.S;R7.2;U2.T3,
+H_RF_IN_A,PHOTO_SUPPORTED IMG_2431: R7 lower/C9 upper/D1 paired-right/U2 top-right (native1),C9.1;R7.2;U2.T3;D1.R,
 H_RF_IN_B,HYPOTHESIS / retains visual fragments where listed,C8.1;D1.L;R6.1;U2.T1,
 H_RF_OUT_CAND,MIXED: Q8 B1-B3 supported by 2ohm D-E; R5 continuation inferred. C6 output tie refuted by 400kohm E-F.,Q8.B1;Q8.B3;R5.1,
 H_RF_VDD,HYPOTHESIS / retains visual fragments where listed,C5.1;L1.2;Q8.T2;C6.1,
@@ -54,7 +52,7 @@ Q8_DRIVE_B,HYPOTHESIS / retains visual fragments where listed,Q8.T1;R8.2,
 Q9_J6_1,"User annotated single Q9 pad, left J6 hole and right R36 pad. Empty options; Q9 function unassigned.",Q9.S;J6.1;R36.2,
 R35_Q9,PHOTO_TRACE / not electrically measured,Q9.L;R35.2,
 RB5_OPT,PHOTO_TRACE / not electrically measured,R35.1;TP10.1;U4.26,
-RF_MONITOR_PAD,HYPOTHESIS / retains visual fragments where listed,R10.1;TP3.1;U4.13,
+RF_MONITOR_PAD,"USER_CONFIRMED PIC13-TP3; PHOTO_SUPPORTED local R10/R6/R7/D1 midpoint, IMG_2431; RF timing unmeasured",R10.1;TP3.1;U4.13;R6.2;R7.1;D1.S,
 RX_A_FB,HYPOTHESIS / retains visual fragments where listed,C22.2;R26.2;R48.1;U3.2,V_U3_INA_MINUS_LOCAL
 RX_A_FILTER,HYPOTHESIS / retains visual fragments where listed,C18.2;R27.1;TP6.1,
 RX_A_OUT,HYPOTHESIS / retains visual fragments where listed,C22.1;R26.1;R27.2;U3.1;R47.1,V_U3_OUTA_LOCAL

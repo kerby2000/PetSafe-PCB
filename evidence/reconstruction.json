@@ -1,6 +1,6 @@
 {
   "board": "100-1339 R03 A",
-  "revision": "v0.9.29",
+  "revision": "v0.9.30",
   "status": "PARTIALLY VERIFIED RECONSTRUCTION; USER MEASUREMENTS, PHOTO TRACES AND QUALIFIED HYPOTHESES",
   "components": [
     {
@@ -83,7 +83,8 @@
       "library_symbol": "Device:R",
       "footprint": "Resistor_SMD:R_0603_1608Metric",
       "footprint_confidence": "medium - revised family estimate",
-      "footprint_basis": "User reports R8 approximately 1.6 x 0.77 mm, consistent with 0603 (1608 metric). Repeated fitted resistor family revised using R8 as a scale reference. This individual body has not been measured; earlier 0805 estimate superseded."
+      "footprint_basis": "User reports R8 approximately 1.6 x 0.77 mm, consistent with 0603 (1608 metric). Repeated fitted resistor family revised using R8 as a scale reference. This individual body has not been measured; earlier 0805 estimate superseded.",
+      "current_summary": "v0.9.30 original IMG_2431: TP3/PIC13 common reaches R6 upper (model2), R7 upper (model1) and D1 single pad/native3. D1 paired-right/native2 joins R7 lower/C9 upper/U2 native1. Photo-supported; not new bench readings. BAV99 identity and RF timing remain candidates."
     },
     {
       "ref": "R7",
@@ -103,7 +104,8 @@
       "library_symbol": "Device:R",
       "footprint": "Resistor_SMD:R_0603_1608Metric",
       "footprint_confidence": "medium - revised family estimate",
-      "footprint_basis": "User reports R8 approximately 1.6 x 0.77 mm, consistent with 0603 (1608 metric). Repeated fitted resistor family revised using R8 as a scale reference. This individual body has not been measured; earlier 0805 estimate superseded."
+      "footprint_basis": "User reports R8 approximately 1.6 x 0.77 mm, consistent with 0603 (1608 metric). Repeated fitted resistor family revised using R8 as a scale reference. This individual body has not been measured; earlier 0805 estimate superseded.",
+      "current_summary": "v0.9.30 original IMG_2431: TP3/PIC13 common reaches R6 upper (model2), R7 upper (model1) and D1 single pad/native3. D1 paired-right/native2 joins R7 lower/C9 upper/U2 native1. Photo-supported; not new bench readings. BAV99 identity and RF timing remain candidates."
     },
     {
       "ref": "R8",
@@ -2770,7 +2772,8 @@
       "v09_evidence": {
         "Q3.L": "First four transistor L pads visibly join V089/V094/V099/V104, user GND. Q3 L joins the same front copper by photo inference. Candidate emitter functions not independently established."
       },
-      "v09_summary": "First four transistor L pads visibly join V089/V094/V099/V104, user GND. Q3 L joins the same front copper by photo inference. Candidate emitter functions not independently established."
+      "v09_summary": "First four transistor L pads visibly join V089/V094/V099/V104, user GND. Q3 L joins the same front copper by photo inference. Candidate emitter functions not independently established.",
+      "current_summary": "Provisional 2H / MMBTA55 PNP candidate; physical R->base1, L->emitter2/GND, S->collector3 is unverified. This is not ordinary positive-GPIO PNP switching. Preserve copper pending one Q3-cell polarity/orientation test; no NPN substitution by plausibility."
     },
     {
       "ref": "Q4",
@@ -2797,7 +2800,8 @@
       "v09_evidence": {
         "Q4.L": "First four transistor L pads visibly join V089/V094/V099/V104, user GND. Q3 L joins the same front copper by photo inference. Candidate emitter functions not independently established."
       },
-      "v09_summary": "First four transistor L pads visibly join V089/V094/V099/V104, user GND. Q3 L joins the same front copper by photo inference. Candidate emitter functions not independently established."
+      "v09_summary": "First four transistor L pads visibly join V089/V094/V099/V104, user GND. Q3 L joins the same front copper by photo inference. Candidate emitter functions not independently established.",
+      "current_summary": "Provisional 2H / MMBTA55 PNP candidate; physical R->base1, L->emitter2/GND, S->collector3 is unverified. This is not ordinary positive-GPIO PNP switching. Preserve copper pending one Q3-cell polarity/orientation test; no NPN substitution by plausibility."
     },
     {
       "ref": "Q5",
@@ -2824,7 +2828,8 @@
       "v09_evidence": {
         "Q5.L": "First four transistor L pads visibly join V089/V094/V099/V104, user GND. Q3 L joins the same front copper by photo inference. Candidate emitter functions not independently established."
       },
-      "v09_summary": "First four transistor L pads visibly join V089/V094/V099/V104, user GND. Q3 L joins the same front copper by photo inference. Candidate emitter functions not independently established."
+      "v09_summary": "First four transistor L pads visibly join V089/V094/V099/V104, user GND. Q3 L joins the same front copper by photo inference. Candidate emitter functions not independently established.",
+      "current_summary": "Provisional 2H / MMBTA55 PNP candidate; physical R->base1, L->emitter2/GND, S->collector3 is unverified. This is not ordinary positive-GPIO PNP switching. Preserve copper pending one Q3-cell polarity/orientation test; no NPN substitution by plausibility."
     },
     {
       "ref": "Q6",
@@ -2851,7 +2856,8 @@
       "v09_evidence": {
         "Q6.L": "First four transistor L pads visibly join V089/V094/V099/V104, user GND. Q3 L joins the same front copper by photo inference. Candidate emitter functions not independently established."
       },
-      "v09_summary": "First four transistor L pads visibly join V089/V094/V099/V104, user GND. Q3 L joins the same front copper by photo inference. Candidate emitter functions not independently established."
+      "v09_summary": "First four transistor L pads visibly join V089/V094/V099/V104, user GND. Q3 L joins the same front copper by photo inference. Candidate emitter functions not independently established.",
+      "current_summary": "Provisional 2H / MMBTA55 PNP candidate; physical R->base1, L->emitter2/GND, S->collector3 is unverified. This is not ordinary positive-GPIO PNP switching. Preserve copper pending one Q3-cell polarity/orientation test; no NPN substitution by plausibility."
     },
     {
       "ref": "Q7",
@@ -2973,7 +2979,8 @@
       "v09_evidence": {
         "Q11.L": "First four transistor L pads visibly join V089/V094/V099/V104, user GND. Q3 L joins the same front copper by photo inference. Candidate emitter functions not independently established."
       },
-      "v09_summary": "First four transistor L pads visibly join V089/V094/V099/V104, user GND. Q3 L joins the same front copper by photo inference. Candidate emitter functions not independently established."
+      "v09_summary": "First four transistor L pads visibly join V089/V094/V099/V104, user GND. Q3 L joins the same front copper by photo inference. Candidate emitter functions not independently established.",
+      "current_summary": "Provisional 2H / MMBTA55 PNP candidate; physical R->base1, L->emitter2/GND, S->collector3 is unverified. This is not ordinary positive-GPIO PNP switching. Preserve copper pending one Q3-cell polarity/orientation test; no NPN substitution by plausibility."
     },
     {
       "ref": "D1",
@@ -2996,7 +3003,8 @@
       "library_symbol": "Diode:BAV99",
       "footprint": "Package_TO_SOT_SMD:SOT-23",
       "footprint_confidence": "datasheet/package candidate",
-      "footprint_basis": "Existing assignment; see component identity evidence."
+      "footprint_basis": "Existing assignment; see component identity evidence.",
+      "current_summary": "v0.9.30 original IMG_2431: TP3/PIC13 common reaches R6 upper (model2), R7 upper (model1) and D1 single pad/native3. D1 paired-right/native2 joins R7 lower/C9 upper/U2 native1. Photo-supported; not new bench readings. BAV99 identity and RF timing remain candidates."
     },
     {
       "ref": "D2",
@@ -3363,7 +3371,8 @@
       "footprint": "TestPoint:TestPoint_THTPad_D2.0mm_Drill1.0mm",
       "footprint_confidence": "low",
       "footprint_basis": "Stock plated-hole approximation from photographs. Exact drill and annular ring remain unmeasured; these are board pads, not fitted components.",
-      "via_evidence": "v0.9.8: User reports V049 = TP03, interpreted as board TP3. V049 already confirmed to PIC13/RC2. Existing local TP3-R10.1 association retained as photo-derived, not a new user measurement."
+      "via_evidence": "v0.9.8: User reports V049 = TP03, interpreted as board TP3. V049 already confirmed to PIC13/RC2. Existing local TP3-R10.1 association retained as photo-derived, not a new user measurement.",
+      "current_summary": "v0.9.30 original IMG_2431: TP3/PIC13 common reaches R6 upper (model2), R7 upper (model1) and D1 single pad/native3. D1 paired-right/native2 joins R7 lower/C9 upper/U2 native1. Photo-supported; not new bench readings. BAV99 identity and RF timing remain candidates."
     },
     {
       "ref": "TP4",
@@ -3804,14 +3813,6 @@
       "original_fragments": []
     },
     {
-      "net": "H_D1_FREE",
-      "endpoints": [
-        "D1.R"
-      ],
-      "status": "HYPOTHESIS / retains visual fragments where listed",
-      "original_fragments": []
-    },
-    {
       "net": "GND",
       "endpoints": [
         "BATN.1",
@@ -4052,23 +4053,14 @@
       "v0916_evidence": "User measured matching physical columns of U7 and J3. U7 local square-pad pin1 maps to J3 pin3; middle to pin2; outer round pin3 to J3 pin1. No numeric resistance supplied; other branches retain earlier qualifications."
     },
     {
-      "net": "H_RF_CONTROL",
-      "endpoints": [
-        "R6.2",
-        "R7.1"
-      ],
-      "status": "HYPOTHESIS / retains visual fragments where listed",
-      "original_fragments": []
-    },
-    {
       "net": "H_RF_IN_A",
       "endpoints": [
         "C9.1",
-        "D1.S",
         "R7.2",
-        "U2.T3"
+        "U2.T3",
+        "D1.R"
       ],
-      "status": "HYPOTHESIS / retains visual fragments where listed",
+      "status": "PHOTO_SUPPORTED IMG_2431: R7 lower/C9 upper/D1 paired-right/U2 top-right (native1)",
       "original_fragments": []
     },
     {
@@ -4482,9 +4474,12 @@
       "endpoints": [
         "R10.1",
         "TP3.1",
-        "U4.13"
+        "U4.13",
+        "R6.2",
+        "R7.1",
+        "D1.S"
       ],
-      "status": "HYPOTHESIS / retains visual fragments where listed",
+      "status": "USER_CONFIRMED PIC13-TP3; PHOTO_SUPPORTED local R10/R6/R7/D1 midpoint, IMG_2431; RF timing unmeasured",
       "original_fragments": [],
       "v098_evidence": "User V049-TP03 with earlier V049-PIC13 association. TP03 interpreted as TP3 visible in board photo. Existing R10.1 branch remains photo-derived."
     },
@@ -5491,17 +5486,6 @@
       ]
     },
     {
-      "net": "RF_MONITOR_PAD",
-      "a": [
-        24.13,
-        251.46
-      ],
-      "b": [
-        30.48,
-        251.46
-      ]
-    },
-    {
       "net": "TUNE_2_MID",
       "a": [
         99.06,
@@ -5521,17 +5505,6 @@
       "b": [
         229.87,
         167.64
-      ]
-    },
-    {
-      "net": "H_D1_FREE",
-      "a": [
-        57.15,
-        200.66
-      ],
-      "b": [
-        60.96,
-        200.66
       ]
     },
     {
@@ -6294,17 +6267,6 @@
       ]
     },
     {
-      "net": "H_RF_IN_A",
-      "a": [
-        49.53,
-        209.55
-      ],
-      "b": [
-        58.42,
-        209.55
-      ]
-    },
-    {
       "net": "OSC2",
       "a": [
         322.58,
@@ -6698,17 +6660,6 @@
       "b": [
         293.37,
         99.06
-      ]
-    },
-    {
-      "net": "H_RF_IN_A",
-      "a": [
-        58.42,
-        185.42
-      ],
-      "b": [
-        58.42,
-        209.55
       ]
     },
     {
@@ -7391,17 +7342,6 @@
       "b": [
         568.96,
         58.42
-      ]
-    },
-    {
-      "net": "RF_MONITOR_PAD",
-      "a": [
-        24.13,
-        259.08
-      ],
-      "b": [
-        52.07,
-        259.08
       ]
     },
     {
@@ -8109,17 +8049,6 @@
       ]
     },
     {
-      "net": "H_RF_CONTROL",
-      "a": [
-        30.48,
-        173.99
-      ],
-      "b": [
-        38.1,
-        173.99
-      ]
-    },
-    {
       "net": "RX_B_FB",
       "a": [
         461.01,
@@ -8472,17 +8401,6 @@
       ]
     },
     {
-      "net": "H_RF_CONTROL",
-      "a": [
-        30.48,
-        226.06
-      ],
-      "b": [
-        38.1,
-        226.06
-      ]
-    },
-    {
       "net": "H_TUNE_4",
       "a": [
         283.21,
@@ -8689,17 +8607,6 @@
       "b": [
         259.08,
         347.98
-      ]
-    },
-    {
-      "net": "H_RF_IN_A",
-      "a": [
-        49.53,
-        205.74
-      ],
-      "b": [
-        49.53,
-        209.55
       ]
     },
     {
@@ -9198,17 +9105,6 @@
       ]
     },
     {
-      "net": "H_RF_IN_A",
-      "a": [
-        49.53,
-        185.42
-      ],
-      "b": [
-        58.42,
-        185.42
-      ]
-    },
-    {
       "net": "GND",
       "a": [
         368.3,
@@ -9495,17 +9391,6 @@
       ]
     },
     {
-      "net": "RF_MONITOR_PAD",
-      "a": [
-        24.13,
-        251.46
-      ],
-      "b": [
-        24.13,
-        259.08
-      ]
-    },
-    {
       "net": "H_PIR_VDD",
       "a": [
         368.3,
@@ -9558,17 +9443,6 @@
       "b": [
         224.79,
         201.93
-      ]
-    },
-    {
-      "net": "H_RF_IN_A",
-      "a": [
-        38.1,
-        185.42
-      ],
-      "b": [
-        49.53,
-        185.42
       ]
     },
     {
@@ -10647,6 +10521,149 @@
       "b": [
         255.27,
         379.73
+      ]
+    },
+    {
+      "net": "H_RF_IN_A",
+      "a": [
+        38.1,
+        185.42
+      ],
+      "b": [
+        58.42,
+        185.42
+      ]
+    },
+    {
+      "net": "H_RF_IN_A",
+      "a": [
+        57.15,
+        200.66
+      ],
+      "b": [
+        58.42,
+        200.66
+      ]
+    },
+    {
+      "net": "H_RF_IN_A",
+      "a": [
+        58.42,
+        185.42
+      ],
+      "b": [
+        58.42,
+        200.66
+      ]
+    },
+    {
+      "net": "RF_MONITOR_PAD",
+      "a": [
+        22.86,
+        173.99
+      ],
+      "b": [
+        22.86,
+        210.82
+      ]
+    },
+    {
+      "net": "RF_MONITOR_PAD",
+      "a": [
+        22.86,
+        173.99
+      ],
+      "b": [
+        38.1,
+        173.99
+      ]
+    },
+    {
+      "net": "RF_MONITOR_PAD",
+      "a": [
+        22.86,
+        210.82
+      ],
+      "b": [
+        22.86,
+        226.06
+      ]
+    },
+    {
+      "net": "RF_MONITOR_PAD",
+      "a": [
+        22.86,
+        210.82
+      ],
+      "b": [
+        49.53,
+        210.82
+      ]
+    },
+    {
+      "net": "RF_MONITOR_PAD",
+      "a": [
+        22.86,
+        226.06
+      ],
+      "b": [
+        22.86,
+        251.46
+      ]
+    },
+    {
+      "net": "RF_MONITOR_PAD",
+      "a": [
+        22.86,
+        226.06
+      ],
+      "b": [
+        38.1,
+        226.06
+      ]
+    },
+    {
+      "net": "RF_MONITOR_PAD",
+      "a": [
+        22.86,
+        251.46
+      ],
+      "b": [
+        22.86,
+        259.08
+      ]
+    },
+    {
+      "net": "RF_MONITOR_PAD",
+      "a": [
+        22.86,
+        251.46
+      ],
+      "b": [
+        30.48,
+        251.46
+      ]
+    },
+    {
+      "net": "RF_MONITOR_PAD",
+      "a": [
+        22.86,
+        259.08
+      ],
+      "b": [
+        52.07,
+        259.08
+      ]
+    },
+    {
+      "net": "RF_MONITOR_PAD",
+      "a": [
+        49.53,
+        205.74
+      ],
+      "b": [
+        49.53,
+        210.82
       ]
     }
   ],

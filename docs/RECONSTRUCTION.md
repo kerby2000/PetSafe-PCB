@@ -1,6 +1,6 @@
 # Current circuit interpretation
 
-Schematic v0.9.29, 2026-10-09. This is the current interpretation, not a chronological log. The [previous narrative](history/cleanup_v0928/docs/RECONSTRUCTION.md) is archived; older requests there are superseded. Use [the checklist](FINISHING_CHECKLIST.html) for remaining questions.
+Schematic v0.9.30, 2026-10-09. This is the current interpretation, not a chronological log. The [previous narrative](history/cleanup_v0928/docs/RECONSTRUCTION.md) is archived; older requests there are superseded. Use [the checklist](FINISHING_CHECKLIST.html) for remaining questions.
 
 ## Power and references
 
@@ -26,7 +26,7 @@ Q9/J6/R35/R36/TP10 are DNP options in the PIC block. Q9's NPN symbol expresses a
 
 Q8/3724A uses a SIL3724A N/P MOSFET candidate. Its centre B2/native5 ground and outer-drain join have evidence. The source-supply interpretation and gate-drive headroom remain qualified; a 10-ohm measured path is not a proven copper short. C6 is in parallel with C5 across H_RF_VDD/GND by photo-supported reconstruction. C5 is 470 uF / 16 V; C6 is unmeasured.
 
-H_RF_CONTROL contains R6.2/R7.1 but still lacks an established excitation source. D1.R/H_D1_FREE is isolated. Resolve these functional paths from photos before selecting a new bench check.
+The [IMG_2431 trace review](RF_TRACE_REVIEW.html) establishes PIC13/TP3/R10.1/R6.2/R7.1/D1.S on RF_MONITOR_PAD. D1.R/native2 joins R7.2/C9.1/U2.1 (H_RF_IN_A); D1.L/native1 retains R6.1/C8.1/U2.3 (H_RF_IN_B). The prior H_RF_CONTROL/H_D1_FREE nodes are retired. These are photo-supported connections combined with the earlier measured PIC13-to-TP3 destination, not new meter readings. With the BAV99/U2 candidates, this is consistent with opposite charge/discharge delays at the two gate-driver inputs. Actual switching timing, dead time and Q8 gate headroom are unmeasured.
 
 Five PIC tuning controls are mapped. The modeled PNP emitter-at-GND/nonnegative-GPIO arrangement is not an ordinary forward-operated PNP switch; device type/orientation, ground assignment or RF switching role needs review. Finish one Q3/R13/C10/C11/C12 cell, including V107 and antenna continuation, before extrapolating by symmetry. Seven measured capacitor-midpoint OL exclusions must remain separate constraints. C49 is an empty rear option now connected ANT2-to-GND; it does not establish the other antenna paths.
 
@@ -40,6 +40,6 @@ C23.2 and R25.1 form a series junction still named H_RX_DETECT. It **continues t
 
 ## Completion criteria
 
-The model and native drawing agree on 85 net partitions. Zero unassigned pads and the retained U6 pin4 NC do not certify all onward routes. ERC retains five undriven power checks, one U6/U6A output conflict and isolated H_D1_FREE. No new flags or suppressions were added during cleanup.
+The model and native drawing agree on 83 net partitions. Zero unassigned pads and the retained U6 pin4 NC do not certify all onward routes. ERC retains five undriven power checks and one U6/U6A output conflict. The user explicitly chose the regulator symbol over passive option pads; its warning remains. The D1 isolated-label finding is resolved by photo tracing. No power flags, exclusions or new NC declarations were introduced.
 
 Topology, device behavior, 44 ceramic values, LED footprint/channel map and remaining geometry are tracked separately. A routed PCB, actual layer stack, firmware and powered validation are separate milestones. [Recorded measurements](MEASUREMENTS.md) are user evidence; [library choices](LIBRARIES_AND_ALTERNATIVES.md) retain candidate qualifications.

@@ -70,5 +70,26 @@
     "result": "PASS: final full-sheet render and enlarged PIC/receiver/LED/diode regions inspected; final TP1/TP2 field positions clear of wires; 9-PIC map inspected.",
     "via_viewer": "JavaScript syntax, data counts and image paths checked. Interactive browser visual QA unavailable: local file URL blocked by browser policy; no workaround attempted.",
     "hardware": "User selected GPIO continuity, existing U6/Q8 readings; new via-ground assignments photo-derived."
+  },
+  "v0930": {
+    "date": "2026-10-09",
+    "revision": "v0.9.30",
+    "schematic_sha256": "42d1c780de091c46b0693d8b711b04da3f6fa857c86758e8c8d07c797bdaddd9",
+    "pdfs_reviewed": [
+      {
+        "path": "output/pdf/PetSafe_single_sheet.pdf",
+        "sha256": "0047c0ea0137b910cd4faf0175f97641a9f3e187fd546ad1d999e74089773aef",
+        "pages": 1
+      },
+      {
+        "path": "output/pdf/PetSafe_completion_status.pdf",
+        "sha256": "9da62923942ac852439819d1cf7cf04faf8beaf646e48e61e810a4fb2765e7b8",
+        "pages": 6
+      }
+    ],
+    "renderer": "Poppler pdftoppm; whole A2 at 4500px, RF/title detailed crops at 144 dpi, status pages at 1500px.",
+    "inspection": "PASS: A2 drawing and RF routing inspected; shortened title comment fits the frame. Status pages reviewed; orphan history paragraph repaired by shortening the current option summary while retaining dated records. Final changed pages5/6 re-rendered and inspected.",
+    "html": "RF trace view: links/markup inspected statically; browser file URL interaction not tested because policy blocked file access earlier. Original photograph bytes unchanged.",
+    "hardware": "No new bench readings. RF joins photo-supported; candidate timing and tuning interpretation remain unverified."
   }
 }

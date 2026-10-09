@@ -141,7 +141,7 @@ def excluded(w):
         or 230<=a[0]<=331 and 230<=b[0]<=331 and 215<=a[1]<=257 and 215<=b[1]<=257)
 for w in layout['wires']:
     if excluded(w):continue
-    if w['net'] in ['Q8_DRIVE_A','Q8_DRIVE_B','H_RF_OUT_CAND','H_RF_VDD']:continue
+    if w['net'] in ['Q8_DRIVE_A','Q8_DRIVE_B','H_RF_OUT_CAND','H_RF_VDD','H_RF_CONTROL','H_D1_FREE','H_RF_IN_A','H_RF_IN_B','RF_MONITOR_PAD']:continue
     if w['net']=='GND' and (w['a']==[57,159] or w['b']==[57,159] or w['a']==[57,190] or w['b']==[57,190]):continue
     a,b=mm(w['a']),mm(w['b']); aa=oldpoints.get(a,a);bb=oldpoints.get(b,b)
     # Adapt short symbol leads; preserve authored route corridors.
@@ -155,7 +155,7 @@ for w in layout['wires']:
     for aa,bb in zip(path,path[1:]):
         if aa!=bb:W.append(dict(net=w['net'],a=xy(aa),b=xy(bb)))
 for l in layout['labels']:
-    if l['net'] in ['Q8_DRIVE_A','Q8_DRIVE_B','H_RF_OUT_CAND','H_RF_VDD']:continue
+    if l['net'] in ['Q8_DRIVE_A','Q8_DRIVE_B','H_RF_OUT_CAND','H_RF_VDD','H_RF_CONTROL','H_D1_FREE','H_RF_IN_A','H_RF_IN_B','RF_MONITOR_PAD']:continue
     w=dict(a=l['p'],b=l['p'])
     if not excluded(w):L.append(dict(net=l['net'],p=oldpoints.get(mm(l['p']),mm(l['p']))))
 # User-defined physical rows map to the stock switch's native common sides.
@@ -266,6 +266,20 @@ wire('H_PIR_VDD',(280,240),(280,241))
 wire('H_PIR_VDD',(280,241),(290,241),(290,232))
 wire('H_PIR_VDD',(290,241),(290,256),'J3.1');label('H_PIR_VDD',(290,232))
 
+# v0.9.30 IMG_2431 photo audit: TP3 drives R6/R7 common and D1 midpoint.
+# A/B are input nets, not an assertion about measured RF waveform or dead time.
+wire('H_RF_IN_A','R7.2',(30,146),(53,146),'U2.T3')
+wire('H_RF_IN_A','C9.1',(53,146))
+wire('H_RF_IN_A','D1.R',(46,158),(46,146))
+wire('H_RF_IN_B','R6.1',(30,171),(53,171),'U2.T1')
+wire('H_RF_IN_B','C8.1',(53,171))
+wire('H_RF_IN_B','D1.L',(24,158),(24,171),(30,171))
+wire('RF_MONITOR_PAD','R7.1',(18,137),(18,198),'R10.1')
+wire('RF_MONITOR_PAD','R6.2',(18,178))
+wire('RF_MONITOR_PAD','D1.S',(39,166),(18,166))
+wire('RF_MONITOR_PAD',(18,198),(18,204),(41,204),'TP3.1')
+label('RF_MONITOR_PAD',(18,137))
+
 # Q8: 3724A marking supports SIL3724A pinout; manufacturer and routing provisional.
 wire('Q8_DRIVE_A','R9.2',(111,146),(111,182),'Q8.T3')
 wire('Q8_DRIVE_B','R8.2',(106,171),(106,163),'Q8.T1')
@@ -318,7 +332,7 @@ for n in layout['notes']:
     if t.startswith('H02:'):t='User: RA3/R14, RA4/R15, RA5/R16, RC0/R11, RC6/R13. RC2 -> TP3; RB0 -> TP16 / Q2; VREF tie withdrawn. RC1 -> R18 via V053-V070.'
     if t.startswith('Selected working hypothesis:'):t='v0.9: user-reviewed GND returns replace previous antenna rails on this capacitor bank.'
     if t.startswith('Ceff ='):t='Local three-capacitor junctions retained. Hidden links from these midpoints to antenna remain unknown.'
-    if t.startswith('All-parallel'):t='Do not infer complete tuning topology from local connections. Transistor identity/orientation remains provisional.'
+    if t.startswith('All-parallel'):t='Q3/Q4/Q5/Q6/Q11: PNP E-at-GND assignment and RF switching role PROVISIONAL; verify one cell.'
     if t.startswith('C27 role unresolved'):t='C27: motor-supply bypass; value unmeasured.'
     if t.startswith('Optional R1/R2/C3/C4'):t='Empty options: R1/C3 free ends join regulated VDD; R2/C4 free ends join GND.'
     if t.startswith('H04:'):t='User: PIC15/RC4 -> INA pin2; PIC16/RC5 -> INB pin3. Motor output polarity remains inferred.'
@@ -334,6 +348,7 @@ text('User: U3 pin5 / V079 / V080 = VREF (1 ohm); TP6 remains separate across C1
 text('U3 alternative: MCP6002-I/SN; same pin roles, electrical suitability to verify.',288,208,.762)
 text('U5 alternative: DRV8212PDSGR. Different package/pins; redesign required.',320,81,.762)
 text('U6: pin5 joins VIN (1 ohm); pin4 unused by user/photo. 3.3V is candidate rating.',234,305,.762)
+text('IMG_2431: TP3/PIC13 drives R6/R7/D1 midpoint. Diode identity and timing unverified.',13,211,.762)
 text('C6 parallels C5 on H_RF_VDD/GND (photo-supported). Q8 F-P 10 ohm path still qualified.',90,202,.762)
 text('U6A: DNP alternative regulator; stock symbol does not identify the original part.',234,309,.762)
 text('Q7: 11.2 kohm V064-V070 fits R18+R19. Supply-switch topology inferred; RC1 drives R18 via V053-V070.',229,126,.762)
@@ -390,7 +405,7 @@ for net,edges in adj.items():
 for l in L:
     x,y=l['p'];G.append(expr(f'(label {q(l["net"])} (at {x} {y} 0) (effects (font (size .762 .762)) (justify left bottom)) (uuid {q(uid())}))'))
 tree.extend(G)
-tree.append(expr('(title_block (title "PetSafe 100-1339 R03 A | single-sheet reconstruction") (date "2026-10-09") (rev "0.9.29") (company "KiCad 10 libraries + four datasheet symbols | MCP authoring") (comment 1 "Current evidence audit; electrical topology unchanged; see remaining-work register."))'))
+tree.append(expr('(title_block (title "PetSafe 100-1339 R03 A | single-sheet reconstruction") (date "2026-10-09") (rev "0.9.30") (company "KiCad 10 libraries + four datasheet symbols | MCP authoring") (comment 1 "RF drive/D1 photo correction; other topology provisional."))'))
 # Canonical pretty printer supplied by the installed MCP server.
 sys.path.insert(0,str(Path.home()/'Documents/VS.Code.Projects/KiCAD-MCP-Server/python'))
 from utils.sexpr_format import prettify
@@ -410,7 +425,7 @@ out.write_text(prettify(sx.dumps(tree)),encoding='utf-8',newline='\n')
 def wire_key(w):return w['net'],tuple(w['a']),tuple(w['b'])
 prior_order={wire_key(w):i for i,w in enumerate(model.get('geometric_wires',[]))}
 ordered_segments=sorted(segments,key=lambda s:(prior_order.get(s,len(prior_order)),s))
-model.update(revision='v0.9.29',coordinate_units='mm',native_pin_crosswalk=layout['crosswalk'],pin_positions={e:list(p) for e,p in P.items()},
+model.update(revision='v0.9.30',coordinate_units='mm',native_pin_crosswalk=layout['crosswalk'],pin_positions={e:list(p) for e,p in P.items()},
              geometric_wires=[dict(net=n,a=a,b=b) for n,a,b in ordered_segments],library_policy='KiCad 10 stock symbols plus four explicitly authorized MCP-authored datasheet symbols for U1/U5/U6/Q8')
 for c in model['components']:
     entry=next(x for x in layout['catalog'] if x['original_ref']==c['ref'])

@@ -18,6 +18,7 @@ try {
         'tools/build_review.py',
         'tools/build_completion_audit.py',
         'tools/verify_evidence_contracts.py',
+        'tools/verify_architect_review.py',
         'tools/verify_via_pair_plan.py',
         'tools/verify_current_review.py',
         'tools/test_review_progress.py'

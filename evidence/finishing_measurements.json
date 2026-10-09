@@ -1,8 +1,8 @@
 {
   "date": "2026-10-09",
-  "basis_revision": "v0.9.29",
+  "basis_revision": "v0.9.30",
   "status": "NO_ACTIVE_MEASUREMENTS",
-  "scope": "Completed resistance/diode batches retained. No new bench measurements requested during the documentation audit.",
+  "scope": "Completed measurements retained. Independent review/photo audit corrected RF routing; next device-behavior check remains to be prepared, with no bulk or repeated visible-trace request.",
   "setup": "No active measurement request.",
   "photos": [
     {
@@ -471,7 +471,7 @@
   "next_stages": [
     {
       "stage": "Resolve the remaining functional paths",
-      "work": "One complete Q3 tuning cell; RF excitation at R6/R7; D1 and local-only PIC nodes; remaining receiver/PIR hypotheses. Agent traces original photos and checks existing measurements first. Request one targeted hidden-connection or device-behavior test only when it distinguishes explicit alternatives."
+      "work": "One complete Q3 tuning cell; remaining antenna continuation and local-only PIC nodes; receiver/PIR hypotheses. TP3/R6/R7/D1 excitation routing is now photo-supported; timing remains unmeasured. Agent traces original photos and checks existing measurements first. Request one targeted hidden-connection or device-behavior test only when it distinguishes explicit alternatives."
     },
     {
       "stage": "Verify candidate devices and operating behavior",
@@ -510,7 +510,8 @@
     "J6/Q9/R35/R36 local annotated copper and R41-to-J1 VPP destination now applied; no repeat requested.",
     "U6A three option pads mapped by user annotation; no measurement requested.",
     "C49 ANT2/GND routing; both pads resolved.",
-    "C5, S1 and LED1 body dimensions; L1/L2 readings already recorded."
+    "C5, S1 and LED1 body dimensions; L1/L2 readings already recorded.",
+    "TP3/R6/R7/D1 visible local joins resolved by the IMG_2431 photo audit; timing and device behavior remain separate."
   ],
   "deferred": "All catalog pads have modeled local nets or the supported U6 pin4 NC. Optional device identities/values and J6 role remain qualified. PCB routing, layer-stack confirmation, daughterboard internals and firmware are separate scope.",
   "sources": [
@@ -789,7 +790,7 @@
       "reason": "User identifies PIC21/RB0 destination; reconcile the older VREF assignment instead."
     }
   ],
-  "revision": "v0.9.29",
+  "revision": "v0.9.30",
   "photo_updates": [
     {
       "evidence": "evidence/c25_c26_mapping_20261009.json",
