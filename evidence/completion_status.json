@@ -1,13 +1,13 @@
 {
   "date": "2026-10-09",
-  "revision": "v0.9.14",
-  "review_revision": "2026-10-09 R23 finishing batch 3",
+  "revision": "v0.9.15",
+  "review_revision": "2026-10-09 measured R23 junction and photo-first review",
   "interpretation": "Every catalog entry is drawn. Hardware connectivity, values and identities are only partially verified. No routed PCB exists.",
   "catalog_entries": 150,
   "physical_pins": 352,
-  "unresolved_physical_pins": 24,
+  "unresolved_physical_pins": 23,
   "unresolved_pins_by_population": {
-    "populated": 8,
+    "populated": 7,
     "DNP": 16
   },
   "unresolved_pins_by_reference": {
@@ -18,7 +18,6 @@
     "D6": 2,
     "J6": 2,
     "Q9": 1,
-    "R23": 1,
     "R36": 2,
     "R47": 2,
     "TP9": 1,
@@ -32,7 +31,6 @@
     "C6.1",
     "D6.1",
     "D6.2",
-    "R23.2",
     "TP9.1",
     "U6.L1",
     "U6.L2"
@@ -114,14 +112,14 @@
     ],
     "qualification": "Assigned is not the same as measured. R8 and C11 anchor photo-based package families."
   },
-  "erc_total": 31,
+  "erc_total": 30,
   "erc_by_type": {
     "power_pin_not_driven": 5,
-    "pin_not_connected": 24,
+    "pin_not_connected": 23,
     "isolated_pin_label": 2
   },
   "modeled_nets": 83,
-  "schematic_sha256": "66b0d489ce7d9dba081812f92cc1cd1bcf5a6717c45f7f07a593502dc454c6f1",
+  "schematic_sha256": "5a92c97aa332019e827f52655a4f0c06ac20744e69990a92825fecae0710b242",
   "known_identified_ICs_needing_new_symbols": [],
   "complete_symbols_for_selected_candidates": true,
   "available_instruments": [
@@ -178,7 +176,7 @@
       "id": "E05",
       "area": "Button circuit",
       "gap": "R41.1/H_R41_FREE has an unknown destination; its former H_BUTTON_MCU name was not evidence of another MCU connection. A supply, bias or other control destination is possible.",
-      "method": "Inspect the short R41 trace in IMG_2438 first. Identify the physical pad that does not reach the S1/R40 button side, then check only candidate nearby VDD, VSYS or TP4/R44 control nodes chosen from the photo. A nonzero resistance is not direct continuity. Confirm S1 common pairs released/pressed. Do not scan all PIC pins or assume a pull-up."
+      "method": "Agent first reconciles IMG_2438 surface copper around R41/R40/C35/S1 against C27/VSYS and existing via reports. The switch body obscures some copper and its released/pressed internal contacts are not visible; only that residual ambiguity merits targeted bench work, not a broad resistor-to-rail sweep."
     },
     {
       "id": "E06",
@@ -190,13 +188,13 @@
       "id": "E07",
       "area": "PIR interface / U6 / J3",
       "gap": "U6 VIN/VOUT external branches and NC-pad ties, actual PIR voltage, Q2/R39 and R33 interface branches. Q2.S/TP16 lacks a modeled controller destination. J3 connector ground and R38 entry are now established.",
-      "method": "After the receiver input checks, use the Q2/TP16 photo/via route to choose a specific controller endpoint; confirm Q2/R39 and R33 branches if needed. Do not repeat J3 ground or J3-to-R38 tests. Check remaining U6 branches before powered voltages."
+      "method": "Agent traces visible Q2/R38/R39/U6 copper and checks opposite-side pads first. The actual hard gap is the hidden Q2.S/TP16 onward destination; choose a specific candidate from both-side evidence before a meter request. Do not repeat J3 or short local trace checks."
     },
     {
       "id": "E08",
       "area": "Receiver / bias / Q7",
-      "gap": "R23 C/right/model2 onward destination; remaining feedback/coupling and R48.2 VREF hypotheses, Q7 pin roles, receiver output destination. Both R23 ends were 270-289 kohm from U3.5; the old VREF tie remains rejected. U3 pin6 is not directly ground.",
-      "method": "Measure R23 C/right to the facing C40 lower pad (P) and R42 upper pad (Q) in IMG_2434. The visible short trace toward their gap supports this focused check; no copper join or whole-net merge is assumed. C18/TP6 candidates have been rejected; do not repeat them. Receiver output routing remains to be reconciled."
+      "gap": "C23/R25 output continuation, remaining filter/bias hypotheses and Q7 pin roles. R42.1-TP4/PIC25 uses prior user evidence; the new local junction does not establish circuit behavior.",
+      "method": "Agent traces visible receiver copper and checks vias first. Reserve the meter for a hidden onward route or a specific conflict with remote-net evidence. Do not repeat the completed R23/C40/R42/C18/TP6 checks."
     },
     {
       "id": "E09",
@@ -352,7 +350,7 @@
       "state": "open",
       "known": "R41=331 gives 330 ohm. In the current model H_BUTTON reaches PIC28/ICSP_DAT THROUGH R40, not by a direct copper net. S1 common leg pairs remain a normal-switch hypothesis.",
       "unknown": "R41.1/H_R41_FREE has an unknown destination; its former H_BUTTON_MCU name was not evidence of another MCU connection. A supply, bias or other control destination is possible.",
-      "next_action": "Inspect the short R41 trace in IMG_2438 first. Identify the physical pad that does not reach the S1/R40 button side, then check only candidate nearby VDD, VSYS or TP4/R44 control nodes chosen from the photo. A nonzero resistance is not direct continuity. Confirm S1 common pairs released/pressed. Do not scan all PIC pins or assume a pull-up.",
+      "next_action": "Agent first reconciles IMG_2438 surface copper around R41/R40/C35/S1 against C27/VSYS and existing via reports. The switch body obscures some copper and its released/pressed internal contacts are not visible; only that residual ambiguity merits targeted bench work, not a broad resistor-to-rail sweep.",
       "closed_when": "Switch pairings and the button signal destination are verified.",
       "open_pads": [],
       "nets": [
@@ -417,7 +415,7 @@
       "state": "open",
       "known": "J3 pin1 supply previously confirmed; pin3-GND 1 ohm; pin2-R38 K/right/model1 1 ohm, opposite end 10 kohm. Pin2-GND 290 kohm. C2NM supports S-812C33AMC; V067 reaches J3.1/U6A, V063 regulated VDD, and U6 ground is resistance-supported.",
       "unknown": "U6 VIN/VOUT external branches and NC-pad ties, actual PIR voltage, Q2/R39 and R33 interface branches. Q2.S/TP16 lacks a modeled controller destination. J3 connector ground and R38 entry are now established.",
-      "next_action": "After the receiver input checks, use the Q2/TP16 photo/via route to choose a specific controller endpoint; confirm Q2/R39 and R33 branches if needed. Do not repeat J3 ground or J3-to-R38 tests. Check remaining U6 branches before powered voltages.",
+      "next_action": "Agent traces visible Q2/R38/R39/U6 copper and checks opposite-side pads first. The actual hard gap is the hidden Q2.S/TP16 onward destination; choose a specific candidate from both-side evidence before a meter request. Do not repeat J3 or short local trace checks.",
       "closed_when": "Physical connector ordering, U6 supply/output and signal path are verified; NC pads are documented whether tied externally or left unused.",
       "open_pads": [
         "U6.L1",
@@ -456,13 +454,11 @@
       ],
       "priority": 2,
       "state": "open",
-      "known": "PIC12/RC1-R18 via V053-V070; V064-V075 continuity and V064-V070 11.2 kohm support Q7 supply-switch hypothesis. U3.5 is VREF; R22 D/left is VREF and E/right GND, 10k between. U3.6-R23 B/left 1 ohm, C/right 5.6 kohm; pin6-ground 400 kohm. Prior TP6/C18 fragment is retained separately from pin5. R23 C-right to C18 left/right and TP6 measures 300/400/600 kohm respectively, excluding direct joins.",
-      "unknown": "R23 C/right/model2 onward destination; remaining feedback/coupling and R48.2 VREF hypotheses, Q7 pin roles, receiver output destination. Both R23 ends were 270-289 kohm from U3.5; the old VREF tie remains rejected. U3 pin6 is not directly ground.",
-      "next_action": "Measure R23 C/right to the facing C40 lower pad (P) and R42 upper pad (Q) in IMG_2434. The visible short trace toward their gap supports this focused check; no copper join or whole-net merge is assumed. C18/TP6 candidates have been rejected; do not repeat them. Receiver output routing remains to be reconciled.",
+      "known": "U3.5 and R22.2 are VREF; R22.1 is GND. U3.6 reaches R23 B/left. R23 C/right, C40 lower and R42 upper are one measured junction (1 ohm). The old C40 detector-output link is withdrawn. Prior C18/TP6/VREF high-resistance exclusions remain; Q7 supply-switch topology is still inferred.",
+      "unknown": "C23/R25 output continuation, remaining filter/bias hypotheses and Q7 pin roles. R42.1-TP4/PIC25 uses prior user evidence; the new local junction does not establish circuit behavior.",
+      "next_action": "Agent traces visible receiver copper and checks vias first. Reserve the meter for a hidden onward route or a specific conflict with remote-net evidence. Do not repeat the completed R23/C40/R42/C18/TP6 checks.",
       "closed_when": "Receiver supply, bias, gain/filter paths and interface endpoints are reconciled against evidence. U3.5 has a documented DC return or supported intentional nonstandard mechanism, and the detector output has a supported functional destination.",
-      "open_pads": [
-        "R23.2"
-      ],
+      "open_pads": [],
       "nets": [
         "H_RX_ENABLE",
         "H_RX_ENABLE_CTL",
@@ -490,6 +486,11 @@
         {
           "result": "R23 C/right is not directly joined to either C18 end or TP6; readings are 300/400/600 kohm. Onward destination remains open.",
           "evidence": "evidence/u3_r23_batch3_20261009.json",
+          "date": "2026-10-09"
+        },
+        {
+          "result": "R23 right-C40 lower-R42 upper junction established; R23.2 no longer open. Prior C40 detector-output association withdrawn.",
+          "evidence": "evidence/u3_r23_batch4_20261009.json",
           "date": "2026-10-09"
         }
       ]
@@ -764,7 +765,8 @@
     "Reported continuity, resistance and negative results are preserved separately from inferred connections.",
     "Original ZIP and 26 original photo hashes are preserved; native/model net partitions match.",
     "User U3.5-VREF and R22 D/left at 1 ohm; R22 E/right 10 kohm away. J3.3-GND 1 ohm; J3.2-GND 290 kohm. R23-VREF and old J3 role hypotheses withdrawn.",
-    "Batch2: U3.6-R23 B 1 ohm / C 5.6 kohm; J3.2-R38 K 1 ohm / J 10 kohm; R22 E-GND 1 ohm. Extra U3.6-R22 E 400 kohm recorded as an indirect path."
+    "Batch2: U3.6-R23 B 1 ohm / C 5.6 kohm; J3.2-R38 K 1 ohm / J 10 kohm; R22 E-GND 1 ohm. Extra U3.6-R22 E 400 kohm recorded as an indirect path.",
+    "R23 right / C40 lower / R42 upper: user 1 ohm for both joins, also clear surface copper. R23 endpoint resolved; old C40 detector-output association withdrawn."
   ],
   "history": "docs/history/README.md"
 }

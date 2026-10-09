@@ -4583,11 +4583,11 @@
         "includePins": true,
         "footprint": "Resistor_SMD:R_0603_1608Metric",
         "properties": {
-          "ViaEvidence": "v0.9.14 user: B/left/model1-U3.6 1 ohm; C/right/model2-U3.6 5.6 kohm, agreeing with 562 marking. C destination remains open; earlier VREF guess rejected by 270-289 kohm to pin5. Pin6-GND 400 kohm also rejects a direct pin6-ground join.",
-          "MeasurementEvidence": "v0.9.14 user: B/left/model1-U3.6 1 ohm; C/right/model2-U3.6 5.6 kohm, agreeing with 562 marking. C destination remains open; earlier VREF guess rejected by 270-289 kohm to pin5. Pin6-GND 400 kohm also rejects a direct pin6-ground join."
+          "ViaEvidence": "v0.9.15: right C/model2 joins C40 lower P/model1 and R42 upper Q/model1 at 1 ohm each. Left B/model1 joins U3.6 (prior 1 ohm); marked 5.6k retained. C18 ends/TP6/VREF direct joins rejected by prior high readings. R42.1 remote PIC/TP4 association retained from earlier user reports.",
+          "MeasurementEvidence": "v0.9.15: right C/model2 joins C40 lower P/model1 and R42 upper Q/model1 at 1 ohm each. Left B/model1 joins U3.6 (prior 1 ohm); marked 5.6k retained. C18 ends/TP6/VREF direct joins rejected by prior high readings. R42.1 remote PIC/TP4 association retained from earlier user reports."
         }
       },
-      "via_evidence": "v0.9.14 user: B/left/model1-U3.6 1 ohm; C/right/model2-U3.6 5.6 kohm, agreeing with 562 marking. C destination remains open; earlier VREF guess rejected by 270-289 kohm to pin5. Pin6-GND 400 kohm also rejects a direct pin6-ground join."
+      "via_evidence": "v0.9.15: right C/model2 joins C40 lower P/model1 and R42 upper Q/model1 at 1 ohm each. Left B/model1 joins U3.6 (prior 1 ohm); marked 5.6k retained. C18 ends/TP6/VREF direct joins rejected by prior high readings. R42.1 remote PIC/TP4 association retained from earlier user reports."
     },
     {
       "original_ref": "C18",
@@ -4760,15 +4760,15 @@
       "legacy": {
         "ref": "C40",
         "actual": "C40",
-        "x": 427,
-        "y": 170,
+        "x": 375,
+        "y": 176,
         "unit": 1,
         "lid": "PetSafe_Working:RE_C40",
         "value": "?",
-        "rx": 429,
-        "ry": 169.3,
-        "vx": 429,
-        "vy": 170.9,
+        "rx": 377,
+        "ry": 175.3,
+        "vx": 377,
+        "vy": 176.9,
         "just": "left",
         "pins": [
           {
@@ -4797,14 +4797,18 @@
         "reference": "C40",
         "value": "?",
         "position": {
-          "x": 542.29,
-          "y": 215.9
+          "x": 476.25,
+          "y": 223.52
         },
         "rotation": 0,
         "includePins": true,
-        "footprint": "Capacitor_SMD:C_0805_2012Metric"
+        "footprint": "Capacitor_SMD:C_0805_2012Metric",
+        "properties": {
+          "MeasurementEvidence": "v0.9.15: lower P/model1 joins R23 C/model2 and R42 Q/model1, user 1 ohm. Remove prior C23/R25 detector-output association. Upper/model2 remains GND via user V083 report plus photo pad selection. Capacitance unmeasured.",
+          "ViaEvidence": "v0.9.15: lower P/model1 joins R23 C/model2 and R42 Q/model1, user 1 ohm. Remove prior C23/R25 detector-output association. Upper/model2 remains GND via user V083 report plus photo pad selection. Capacitance unmeasured."
+        }
       },
-      "via_evidence": "v0.9.2: V083 associated with C40; earlier GND report retained for photo-selected return pad2."
+      "via_evidence": "v0.9.15: lower P/model1 joins R23 C/model2 and R42 Q/model1, user 1 ohm. Remove prior C23/R25 detector-output association. Upper/model2 remains GND via user V083 report plus photo pad selection. Capacitance unmeasured."
     },
     {
       "original_ref": "R42",
@@ -4859,10 +4863,11 @@
         "includePins": true,
         "footprint": "Resistor_SMD:R_0603_1608Metric",
         "properties": {
-          "ViaEvidence": "v0.9.8: User confirms V017-TP4. Prior V017-R42.1/R44.1 local junction now joins TP4 and PIC25/RB4. R42.1 explicitly user-named; R44 pad1 and C41 branch retain earlier photo selection. No numeric resistance supplied; circuit operating role remains inferred."
+          "ViaEvidence": "v0.9.15: upper Q/model1 joins R23 C/model2 and C40 P/model1 at 1 ohm. Prior V017/TP4/PIC25/R44.1 mapping retained. Lower/model2 to D3.S is photo-selected, supported by earlier component-level 1.2 ohm reading without named end. Marked 1.2k retained.",
+          "MeasurementEvidence": "v0.9.15: upper Q/model1 joins R23 C/model2 and C40 P/model1 at 1 ohm. Prior V017/TP4/PIC25/R44.1 mapping retained. Lower/model2 to D3.S is photo-selected, supported by earlier component-level 1.2 ohm reading without named end. Marked 1.2k retained."
         }
       },
-      "via_evidence": "v0.9.8: User confirms V017-TP4. Prior V017-R42.1/R44.1 local junction now joins TP4 and PIC25/RB4. R42.1 explicitly user-named; R44 pad1 and C41 branch retain earlier photo selection. No numeric resistance supplied; circuit operating role remains inferred."
+      "via_evidence": "v0.9.15: upper Q/model1 joins R23 C/model2 and C40 P/model1 at 1 ohm. Prior V017/TP4/PIC25/R44.1 mapping retained. Lower/model2 to D3.S is photo-selected, supported by earlier component-level 1.2 ohm reading without named end. Marked 1.2k retained."
     },
     {
       "original_ref": "D3",
@@ -11981,61 +11986,6 @@
       ]
     },
     {
-      "net": "H_RX_DETECT",
-      "a": [
-        406,
-        158
-      ],
-      "b": [
-        415,
-        158
-      ]
-    },
-    {
-      "net": "H_RX_DETECT",
-      "a": [
-        415,
-        158
-      ],
-      "b": [
-        415,
-        167
-      ]
-    },
-    {
-      "net": "H_RX_DETECT",
-      "a": [
-        415,
-        158
-      ],
-      "b": [
-        427,
-        158
-      ]
-    },
-    {
-      "net": "H_RX_DETECT",
-      "a": [
-        427,
-        158
-      ],
-      "b": [
-        427,
-        167
-      ]
-    },
-    {
-      "net": "GND",
-      "a": [
-        415,
-        179
-      ],
-      "b": [
-        427,
-        179
-      ]
-    },
-    {
       "net": "GND",
       "a": [
         415,
@@ -12043,17 +11993,6 @@
       ],
       "b": [
         415,
-        179
-      ]
-    },
-    {
-      "net": "GND",
-      "a": [
-        427,
-        173
-      ],
-      "b": [
-        427,
         179
       ]
     },
@@ -12146,50 +12085,6 @@
       ]
     },
     {
-      "net": "H_RX_DETECT",
-      "a": [
-        438,
-        205
-      ],
-      "b": [
-        452,
-        205
-      ]
-    },
-    {
-      "net": "H_RX_DETECT",
-      "a": [
-        452,
-        205
-      ],
-      "b": [
-        452,
-        163
-      ]
-    },
-    {
-      "net": "H_RX_DETECT",
-      "a": [
-        452,
-        163
-      ],
-      "b": [
-        427,
-        163
-      ]
-    },
-    {
-      "net": "H_RX_DETECT",
-      "a": [
-        427,
-        163
-      ],
-      "b": [
-        427,
-        158
-      ]
-    },
-    {
       "net": "PIC_RA1_RX_REF",
       "a": [
         335,
@@ -12198,17 +12093,6 @@
       "b": [
         330,
         184
-      ]
-    },
-    {
-      "net": "H_RX_DETECT",
-      "a": [
-        391,
-        205
-      ],
-      "b": [
-        438,
-        205
       ]
     },
     {
@@ -13596,6 +13480,94 @@
         237,
         160
       ]
+    },
+    {
+      "net": "H_RX_DETECT",
+      "a": [
+        406,
+        158
+      ],
+      "b": [
+        415,
+        158
+      ]
+    },
+    {
+      "net": "H_RX_DETECT",
+      "a": [
+        415,
+        158
+      ],
+      "b": [
+        415,
+        167
+      ]
+    },
+    {
+      "net": "PIC_TP4_C41",
+      "a": [
+        363,
+        179
+      ],
+      "b": [
+        363,
+        187
+      ]
+    },
+    {
+      "net": "PIC_TP4_C41",
+      "a": [
+        363,
+        187
+      ],
+      "b": [
+        400,
+        187
+      ]
+    },
+    {
+      "net": "PIC_TP4_C41",
+      "a": [
+        375,
+        173
+      ],
+      "b": [
+        385,
+        173
+      ]
+    },
+    {
+      "net": "PIC_TP4_C41",
+      "a": [
+        385,
+        173
+      ],
+      "b": [
+        385,
+        187
+      ]
+    },
+    {
+      "net": "GND",
+      "a": [
+        375,
+        179
+      ],
+      "b": [
+        375,
+        183
+      ]
+    },
+    {
+      "net": "GND",
+      "a": [
+        375,
+        183
+      ],
+      "b": [
+        379,
+        183
+      ]
     }
   ],
   "labels": [
@@ -13901,13 +13873,6 @@
       ]
     },
     {
-      "net": "PIC_TP4_C41",
-      "p": [
-        392,
-        187
-      ]
-    },
-    {
       "net": "GND",
       "p": [
         429,
@@ -13933,13 +13898,6 @@
       "p": [
         447,
         198
-      ]
-    },
-    {
-      "net": "H_RX_DETECT",
-      "p": [
-        391,
-        205
       ]
     },
     {
@@ -14136,6 +14094,27 @@
       "p": [
         249,
         166
+      ]
+    },
+    {
+      "net": "H_RX_DETECT",
+      "p": [
+        415,
+        158
+      ]
+    },
+    {
+      "net": "PIC_TP4_C41",
+      "p": [
+        363,
+        187
+      ]
+    },
+    {
+      "net": "GND",
+      "p": [
+        379,
+        183
       ]
     }
   ],
@@ -14929,12 +14908,12 @@
       173
     ],
     "C40.1": [
-      427,
-      167
+      375,
+      173
     ],
     "C40.2": [
-      427,
-      173
+      375,
+      179
     ],
     "R42.1": [
       400,

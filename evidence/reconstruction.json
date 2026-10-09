@@ -1,6 +1,6 @@
 {
   "board": "100-1339 R03 A",
-  "revision": "v0.9.14",
+  "revision": "v0.9.15",
   "status": "INFERRED WORKING CIRCUIT / NOT CONTINUITY VERIFIED",
   "components": [
     {
@@ -412,10 +412,9 @@
       "footprint": "Resistor_SMD:R_0603_1608Metric",
       "footprint_confidence": "medium - revised family estimate",
       "footprint_basis": "User reports R8 approximately 1.6 x 0.77 mm, consistent with 0603 (1608 metric). Repeated fitted resistor family revised using R8 as a scale reference. This individual body has not been measured; earlier 0805 estimate superseded.",
-      "via_evidence": "v0.9.14 user: B/left/model1-U3.6 1 ohm; C/right/model2-U3.6 5.6 kohm, agreeing with 562 marking. C destination remains open; earlier VREF guess rejected by 270-289 kohm to pin5. Pin6-GND 400 kohm also rejects a direct pin6-ground join.",
-      "measurement_evidence": "v0.9.14 user: B/left/model1-U3.6 1 ohm; C/right/model2-U3.6 5.6 kohm, agreeing with 562 marking. C destination remains open; earlier VREF guess rejected by 270-289 kohm to pin5. Pin6-GND 400 kohm also rejects a direct pin6-ground join.",
+      "via_evidence": "v0.9.15: right C/model2 joins C40 lower P/model1 and R42 upper Q/model1 at 1 ohm each. Left B/model1 joins U3.6 (prior 1 ohm); marked 5.6k retained. C18 ends/TP6/VREF direct joins rejected by prior high readings. R42.1 remote PIC/TP4 association retained from earlier user reports.",
+      "measurement_evidence": "v0.9.15: right C/model2 joins C40 lower P/model1 and R42 upper Q/model1 at 1 ohm each. Left B/model1 joins U3.6 (prior 1 ohm); marked 5.6k retained. C18 ends/TP6/VREF direct joins rejected by prior high readings. R42.1 remote PIC/TP4 association retained from earlier user reports.",
       "photo_pad_mapping": {
-        "R23.1": "B / left end in IMG_2434",
         "R23.2": "C / right end in IMG_2434"
       }
     },
@@ -767,7 +766,12 @@
       "footprint": "Resistor_SMD:R_0603_1608Metric",
       "footprint_confidence": "medium - revised family estimate",
       "footprint_basis": "User reports R8 approximately 1.6 x 0.77 mm, consistent with 0603 (1608 metric). Repeated fitted resistor family revised using R8 as a scale reference. This individual body has not been measured; earlier 0805 estimate superseded.",
-      "via_evidence": "v0.9.8: User confirms V017-TP4. Prior V017-R42.1/R44.1 local junction now joins TP4 and PIC25/RB4. R42.1 explicitly user-named; R44 pad1 and C41 branch retain earlier photo selection. No numeric resistance supplied; circuit operating role remains inferred."
+      "via_evidence": "v0.9.15: upper Q/model1 joins R23 C/model2 and C40 P/model1 at 1 ohm. Prior V017/TP4/PIC25/R44.1 mapping retained. Lower/model2 to D3.S is photo-selected, supported by earlier component-level 1.2 ohm reading without named end. Marked 1.2k retained.",
+      "measurement_evidence": "v0.9.15: upper Q/model1 joins R23 C/model2 and C40 P/model1 at 1 ohm. Prior V017/TP4/PIC25/R44.1 mapping retained. Lower/model2 to D3.S is photo-selected, supported by earlier component-level 1.2 ohm reading without named end. Marked 1.2k retained.",
+      "photo_pad_mapping": {
+        "R42.1": "Q / upper end in IMG_2434",
+        "R42.2": "Lower end in IMG_2434; trace toward D3.S, selected by photo"
+      }
     },
     {
       "ref": "R43",
@@ -1991,10 +1995,15 @@
       "footprint": "Capacitor_SMD:C_0805_2012Metric",
       "footprint_confidence": "medium",
       "footprint_basis": "Photo family and body/land proportions compared with adjacent known IC lead pitch. Size is independent of capacitance, dielectric and voltage rating.",
-      "via_evidence": "v0.9.2: V083 associated with C40; earlier GND report retained for photo-selected return pad2.",
+      "via_evidence": "v0.9.15: lower P/model1 joins R23 C/model2 and R42 Q/model1, user 1 ohm. Remove prior C23/R25 detector-output association. Upper/model2 remains GND via user V083 report plus photo pad selection. Capacitance unmeasured.",
       "value_evidence": {
         "state": "unknown",
         "source": "No individual measured value supplied; any displayed estimate is a hypothesis."
+      },
+      "measurement_evidence": "v0.9.15: lower P/model1 joins R23 C/model2 and R42 Q/model1, user 1 ohm. Remove prior C23/R25 detector-output association. Upper/model2 remains GND via user V083 report plus photo pad selection. Capacitance unmeasured.",
+      "photo_pad_mapping": {
+        "C40.1": "P / lower end in IMG_2434",
+        "C40.2": "Upper end in IMG_2434; GND/V083 from earlier report and photo"
       }
     },
     {
@@ -3925,10 +3934,9 @@
       "net": "H_RX_DETECT",
       "endpoints": [
         "C23.2",
-        "C40.1",
         "R25.1"
       ],
-      "status": "HYPOTHESIS / retains visual fragments where listed",
+      "status": "C23.2/R25.1 prior photo/circuit fragment retained. C40 association withdrawn by measured R23-R42 junction in v0.9.15; onward output route still unverified.",
       "original_fragments": []
     },
     {
@@ -4216,13 +4224,16 @@
         "TP4.1",
         "U4.25",
         "R42.1",
-        "R44.1"
+        "R44.1",
+        "R23.2",
+        "C40.1"
       ],
       "status": "USER_REPORTED_CONTINUITY + PHOTO_TRACE",
       "original_fragments": [],
       "v07_evidence": "IMG_2437 local right capacitor pad to TP4; trace continues under U4, final GPIO unresolved",
       "v08_evidence": "User meter/visual trace RB4 pin25 to TP4; existing C41.1-TP4 local photo trace retained.",
-      "v098_evidence": "v0.9.8: User confirms V017-TP4. Prior V017-R42.1/R44.1 local junction now joins TP4 and PIC25/RB4. R42.1 explicitly user-named; R44 pad1 and C41 branch retain earlier photo selection. No numeric resistance supplied; circuit operating role remains inferred."
+      "v098_evidence": "v0.9.8: User confirms V017-TP4. Prior V017-R42.1/R44.1 local junction now joins TP4 and PIC25/RB4. R42.1 explicitly user-named; R44 pad1 and C41 branch retain earlier photo selection. No numeric resistance supplied; circuit operating role remains inferred.",
+      "v0915_evidence": "User B16/B17: R23 right, C40 lower and R42 upper are one surface junction (1 ohm each). R42.1 remote V017/TP4/PIC25/R44.1 connection retained from earlier reports, not remeasured."
     },
     {
       "net": "PIR_BASE",
@@ -4901,7 +4912,6 @@
     "J6.1",
     "J6.2",
     "Q9.S",
-    "R23.2",
     "R36.1",
     "R36.2",
     "R47.1",
@@ -4929,17 +4939,6 @@
     "BATN": "TP108"
   },
   "geometric_wires": [
-    {
-      "net": "H_RX_DETECT",
-      "a": [
-        527.05,
-        200.66
-      ],
-      "b": [
-        542.29,
-        200.66
-      ]
-    },
     {
       "net": "RX_B_OUT",
       "a": [
@@ -5312,17 +5311,6 @@
       "b": [
         30.48,
         251.46
-      ]
-    },
-    {
-      "net": "GND",
-      "a": [
-        527.05,
-        227.33
-      ],
-      "b": [
-        542.29,
-        227.33
       ]
     },
     {
@@ -6008,17 +5996,6 @@
       ]
     },
     {
-      "net": "H_RX_DETECT",
-      "a": [
-        542.29,
-        200.66
-      ],
-      "b": [
-        542.29,
-        207.01
-      ]
-    },
-    {
       "net": "PIC_TP4_C41",
       "a": [
         198.12,
@@ -6214,17 +6191,6 @@
       "b": [
         72.39,
         185.42
-      ]
-    },
-    {
-      "net": "H_RX_DETECT",
-      "a": [
-        574.04,
-        207.01
-      ],
-      "b": [
-        574.04,
-        260.35
       ]
     },
     {
@@ -6544,17 +6510,6 @@
       "b": [
         368.3,
         325.12
-      ]
-    },
-    {
-      "net": "H_RX_DETECT",
-      "a": [
-        542.29,
-        207.01
-      ],
-      "b": [
-        542.29,
-        212.09
       ]
     },
     {
@@ -6973,17 +6928,6 @@
       "b": [
         167.64,
         322.58
-      ]
-    },
-    {
-      "net": "H_RX_DETECT",
-      "a": [
-        496.57,
-        260.35
-      ],
-      "b": [
-        556.26,
-        260.35
       ]
     },
     {
@@ -8824,17 +8768,6 @@
       ]
     },
     {
-      "net": "H_RX_DETECT",
-      "a": [
-        556.26,
-        260.35
-      ],
-      "b": [
-        574.04,
-        260.35
-      ]
-    },
-    {
       "net": "BATTERY+",
       "a": [
         20.32,
@@ -9041,17 +8974,6 @@
       "b": [
         502.92,
         200.66
-      ]
-    },
-    {
-      "net": "GND",
-      "a": [
-        542.29,
-        219.71
-      ],
-      "b": [
-        542.29,
-        227.33
       ]
     },
     {
@@ -9891,17 +9813,6 @@
       ]
     },
     {
-      "net": "H_RX_DETECT",
-      "a": [
-        542.29,
-        207.01
-      ],
-      "b": [
-        574.04,
-        207.01
-      ]
-    },
-    {
       "net": "H_TUNE_3",
       "a": [
         283.21,
@@ -10185,6 +10096,83 @@
       "b": [
         400.05,
         327.66
+      ]
+    },
+    {
+      "net": "GND",
+      "a": [
+        476.25,
+        227.33
+      ],
+      "b": [
+        476.25,
+        232.41
+      ]
+    },
+    {
+      "net": "GND",
+      "a": [
+        476.25,
+        232.41
+      ],
+      "b": [
+        481.33,
+        232.41
+      ]
+    },
+    {
+      "net": "PIC_TP4_C41",
+      "a": [
+        461.01,
+        227.33
+      ],
+      "b": [
+        461.01,
+        237.49
+      ]
+    },
+    {
+      "net": "PIC_TP4_C41",
+      "a": [
+        461.01,
+        237.49
+      ],
+      "b": [
+        488.95,
+        237.49
+      ]
+    },
+    {
+      "net": "PIC_TP4_C41",
+      "a": [
+        476.25,
+        219.71
+      ],
+      "b": [
+        488.95,
+        219.71
+      ]
+    },
+    {
+      "net": "PIC_TP4_C41",
+      "a": [
+        488.95,
+        219.71
+      ],
+      "b": [
+        488.95,
+        237.49
+      ]
+    },
+    {
+      "net": "PIC_TP4_C41",
+      "a": [
+        488.95,
+        237.49
+      ],
+      "b": [
+        497.84,
+        237.49
       ]
     }
   ],
@@ -10978,12 +10966,12 @@
       219.71
     ],
     "C40.1": [
-      542.29,
-      212.09
+      476.25,
+      219.71
     ],
     "C40.2": [
-      542.29,
-      219.71
+      476.25,
+      227.33
     ],
     "R42.1": [
       508.0,

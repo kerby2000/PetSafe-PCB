@@ -41,7 +41,10 @@ assert net('U3.5')==net('C18.1')
 assert net('U3.5')==net('R22.2')==net('VREF.1')
 assert len({net('TP6.1'),net('U3.5'),net('R22.2'),net('U4.8')})==3
 assert net('J3.3')==net('GND.1')
-assert 'R23.2' in m['unresolved_pins'] and 'J3.2' not in m['unresolved_pins']
+assert not {'R23.2','J3.2'} & set(m['unresolved_pins'])
+assert net('R23.2')==net('C40.1')==net('R42.1')==net('TP4.1')
+assert net('C40.2')==net('GND.1')!=net('C40.1')
+assert net('C40.1')!=net('C23.2'), 'Do not merge the old inferred detector-output net with the measured R23 junction'
 assert net('J3.2')==net('R38.1')!=net('R38.2')
 assert net('U3.6')==net('R23.1')!=net('R23.2')
 assert net('R22.1')==net('GND.1')!=net('U3.6')
@@ -68,7 +71,7 @@ assert measured['B06']['resistance_ohms']==290000 and measured['B07']['resistanc
 assert measured['B01']['resistance_range_ohms']==measured['B02']['resistance_range_ohms']==[270000,289000]
 for ref,value in [('R22','10k'),('R23','5.6k')]:
  assert xml.findtext(f'./components/comp[@ref="{ref}"]/value')==value, 'In-circuit path resistance must not replace the marked value'
-for ref in ['U3','R22','R23','R38','J3']:
+for ref in ['U3','R22','R23','R38','J3','C40','R42']:
  expected=next(c for c in placements['components'] if c['reference']==ref)['properties']['MeasurementEvidence']
  assert xml.findtext(f'./components/comp[@ref="{ref}"]/fields/field[@name="MeasurementEvidence"]')==expected,ref
 for path,digest in batch['photo_sha256'].items():assert sha(path)==digest
@@ -85,7 +88,12 @@ assert {k:r['resistance_ohms'] for k,r in measured3.items()}=={'B13':300000,'B14
 for x,y in batch3['rejected_direct_pairs']:
  assert net(x)!=net(y), 'High measured resistance must not become a copper join: '+x+' - '+y
 for path,digest in batch3['photos'].items():assert sha(path)==digest
-completed_ids=set(measured)|set(measured2)|set(measured3)
+batch4=read('evidence/u3_r23_batch4_20261009.json')
+measured4={r['id']:r for r in batch4['readings']}
+assert {k:r['resistance_ohms'] for k,r in measured4.items()}=={'B16':1,'B17':1}
+for x,y in batch4['confirmed_pairs']:assert net(x)==net(y)
+for path,digest in batch4['photos'].items():assert sha(path)==digest
+completed_ids=set(measured)|set(measured2)|set(measured3)|set(measured4)
 assert {r['id'] for r in queue['completed_tests']}==completed_ids
 assert not completed_ids&{r['id'] for r in queue['tests']}, 'Do not repeat completed finishing readings'
 for ref in ['U4','R11','R14','R15','R16','R37','R39','Q1','U2','Q8','C5','LED1','R18','R19','Q7','TP3','TP104','U106','J3','R43','TP14','R42','R44','TP4','TP103','R21','R22','R23','R48']:

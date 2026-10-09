@@ -1,8 +1,8 @@
 {
   "date": "2026-10-09",
-  "basis_revision": "v0.9.14",
-  "status": "AWAITING_FOURTH_BATCH",
-  "scope": "Three R23 continuation candidates rejected by high measured resistance. Two local photo-supported candidates remain in this queue; native topology is unchanged.",
+  "basis_revision": "v0.9.15",
+  "status": "PHOTO_REVIEW_BEFORE_MORE_BENCH_REQUESTS",
+  "scope": "All four batches recorded. No new meter sweep is queued; agent resolves visible copper first.",
   "setup": "Battery and programmer disconnected; allow capacitors to discharge. Resistance mode. Note the shorted-probe baseline; report actual ohms, kohms, Mohms, OL or changing readings. Do not bridge or desolder anything in this batch.",
   "photos": [
     {
@@ -227,27 +227,12 @@
       }
     }
   ],
-  "tests": [
-    {
-      "id": "B16",
-      "from": "C",
-      "to": "P",
-      "issue": "E08",
-      "purpose": "Check the C40 lower pad beside the visible R23 trace. A local short would not by itself confirm every inferred C40 net branch."
-    },
-    {
-      "id": "B17",
-      "from": "C",
-      "to": "Q",
-      "issue": "E08",
-      "purpose": "Check the facing R42 upper pad. Distinguish direct copper from a resistor-valued or high-resistance path; no join is assumed."
-    }
-  ],
-  "interpretation": "Near the probe baseline supports a local low-resistance route; a beep alone is insufficient. Record finite resistance without rounding it to a short. A changing reading may involve capacitors. None of the proposed pairs is new measured evidence.",
+  "tests": [],
+  "interpretation": "Completed readings are recorded as supplied; clear visible copper can be accepted as photo-derived evidence without a new measurement. Hidden routing and component behavior remain separate uncertainties.",
   "next_stages": [
     {
       "stage": "1. Finish signal paths",
-      "work": "Locate R23 C/right continuation and the receiver output; then trace Q2/TP16 toward the controller, RF excitation and one complete antenna tuning cell. J3 entry, ground and R22 return are now established. Check the smaller C6, D6, C26, TP9, R41 and D1 endpoints using existing evidence before new measurements."
+      "work": "Agent completes visible copper tracing, removes unsupported assumptions and checks via matches. Priorities: receiver output, Q2/TP16 onward route, RF excitation, tuning-cell topology and the switch contact ambiguity. Only unresolved hidden destinations or behavior will be sent for targeted measurements."
     },
     {
       "stage": "2. Recover values",
@@ -269,7 +254,8 @@
     "Seven rejected capacitor-midpoint pairs",
     "Completed B01-B07: U3 pin5 to R22/R23/VREF and J3 pins2/3 to GND",
     "Completed B08-B12 and X01: J3-R38, U3 pin6-R23, R22-GND, U3 pin6-R22 E",
-    "Completed B13-B15: R23 C to C18 M/N and TP6 O; 300k/400k/600k exclude direct joins"
+    "Completed B13-B15: R23 C to C18 M/N and TP6 O; 300k/400k/600k exclude direct joins",
+    "Completed B16-B17: R23 C-C40 P and R23 C-R42 Q, both 1 ohm; clear surface trace"
   ],
   "deferred": "The 16 open pads on empty options are recorded but are lower priority unless they affect a fitted net. U6's two candidate internal-NC pins need external-copper inspection, not an invented no-connect flag. Firmware, daughterboard internals and routed PCB are separate from main-board schematic completion.",
   "sources": [
@@ -280,7 +266,8 @@
     "https://www.sg-micro.com/rect/assets/537cce2c-8022-4ea6-97f4-6524851a35e8/SGM8541_SGM8542_SGM8544.pdf",
     "evidence/u3_j3_measurements_20261009.json",
     "evidence/u3_j3_batch2_20261009.json",
-    "evidence/u3_r23_batch3_20261009.json"
+    "evidence/u3_r23_batch3_20261009.json",
+    "evidence/u3_r23_batch4_20261009.json"
   ],
   "completed_tests": [
     {
@@ -410,9 +397,25 @@
       "issue": "E08",
       "purpose": "Test whether R23 takes its signal from the existing TP6/filter node. This is a candidate, not a measured join.",
       "result": "600 kohm"
+    },
+    {
+      "id": "B16",
+      "from": "C",
+      "to": "P",
+      "issue": "E08",
+      "purpose": "Check the C40 lower pad beside the visible R23 trace. A local short would not by itself confirm every inferred C40 net branch.",
+      "result": "1 ohm"
+    },
+    {
+      "id": "B17",
+      "from": "C",
+      "to": "Q",
+      "issue": "E08",
+      "purpose": "Check the facing R42 upper pad. Distinguish direct copper from a resistor-valued or high-resistance path; no join is assumed.",
+      "result": "1 ohm"
     }
   ],
-  "batch_title": "Next batch: two pads beside the R23 trace",
-  "instructions": "Keep one probe on C (R23 right metal end). Measure C-P (C40 lower metal end), then C-Q (R42 upper metal end). P and Q face each other across the gap beside R23. Battery and programmer remain disconnected. Report actual resistance; letters A-O keep their previous meanings.",
-  "result_summary": "C-M = 300 kohm, C-N = 400 kohm and C-O = 600 kohm. R23 C/right is not directly connected to either C18 end or TP6. R23 remains 5.6k and its onward destination remains unresolved. Previous confirmed J3, U3 pin5/pin6 and R22 connections remain recorded. No wire or new resistor was added from these readings."
+  "batch_title": "No new meter measurements requested",
+  "instructions": "The visible R23-C40-R42 junction is resolved. Current work is photo tracing and reconciliation of earlier assumptions. Future requests will identify a hidden route, an ambiguous package/contact mapping, or conflicting evidence, and explain why photos cannot resolve it.",
+  "result_summary": "B16 C-P and B17 C-Q each read 1 ohm. R23 right, C40 lower and R42 upper are one node. R23.2 is now connected in the schematic; C40 has been removed from the old inferred C23/R25 output grouping. Earlier high-resistance exclusions are retained."
 }

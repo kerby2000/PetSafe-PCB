@@ -1,6 +1,6 @@
 # Current circuit interpretation
 
-This document describes v0.9.14. [The completion checklist](FINISHING_CHECKLIST.html) is the authoritative list of known unresolved work. [Earlier reasoning](history/README.md) is preserved as history, including rejected guesses.
+This document describes v0.9.15. [The completion checklist](FINISHING_CHECKLIST.html) is the authoritative list of known unresolved work. [Earlier reasoning](history/README.md) is preserved as history, including rejected guesses.
 
 ## What is established
 
@@ -42,7 +42,7 @@ Unconnected physical pads, isolated labels, incomplete onward routes, candidate 
 
 ## Architect review findings, 2026-10-09
 
-The missing U3.5 DC return is resolved: U3.5-VREF and U3.5-R22 D/left each read 1 ohm. The R22 E/right/model1 end reads 10 kohm to U3.5 and is now directly measured to GND at 1 ohm. Both R23 ends read 270-289 kohm to U3.5, rejecting the old R23-VREF tie. R23 B/left/model1 is now measured to U3.6 at 1 ohm; C/right/model2 is 5.6 kohm away, agreeing with its marking. R23.2 remains unresolved. An extra U3.6-to-R22 E/GND reading of 400 kohm establishes no direct ground join. TP6 and the nearby C18 ends are the next specific candidates for R23 C/right. These in-circuit readings do not replace marked resistor values. Original C18.1 local connectivity is retained on VREF; TP6 stays separate across C18. See evidence/u3_j3_measurements_20261009.json and evidence/u3_j3_batch2_20261009.json. The 400 kohm reading is an in-circuit path, not a new component value.
+The missing U3.5 DC return is resolved: U3.5-VREF and U3.5-R22 D/left each read 1 ohm. The R22 E/right/model1 end reads 10 kohm to U3.5 and is now directly measured to GND at 1 ohm. Both R23 ends read 270-289 kohm to U3.5, rejecting the old R23-VREF tie. R23 B/left/model1 is now measured to U3.6 at 1 ohm; C/right/model2 is 5.6 kohm away, agreeing with its marking. R23.2 is now measured to C40 lower/model1 and R42 upper/model1 at 1 ohm each. C40 no longer belongs to the old inferred C23/R25 detector-output grouping. The earlier R42.1-TP4/PIC25 association remains separately supported by prior user reports. An extra U3.6-to-R22 E/GND reading of 400 kohm establishes no direct ground join. R23 C to both C18 ends and TP6 reads 300/400/600 kohm, rejecting those direct joins. All four batches are complete; see evidence/u3_r23_batch3_20261009.json and evidence/u3_r23_batch4_20261009.json. These in-circuit readings do not replace marked resistor values. Original C18.1 local connectivity is retained on VREF; TP6 stays separate across C18. See evidence/u3_j3_measurements_20261009.json and evidence/u3_j3_batch2_20261009.json. The 400 kohm reading is an in-circuit path, not a new component value.
 
 The modeled PNP tuning cells put their emitters at GND while their bases are GPIO-driven. That is not a conventional forward-operated PNP switch. Resolve Q3/C10/C11/C12 and its antenna path first; type, orientation, ground association or a junction-switching role may need correction. No automatic NPN substitution is justified. C11/C12 currently share both nodes: an in-circuit LCR result would be an effective parallel-network value, not individual capacitances.
 

@@ -25,7 +25,7 @@ H_RF_IN_A,HYPOTHESIS / retains visual fragments where listed,C9.1;D1.S;R7.2;U2.T
 H_RF_IN_B,HYPOTHESIS / retains visual fragments where listed,C8.1;D1.L;R6.1;U2.T1,
 H_RF_OUT_CAND,MIXED: Q8 B1-B3 supported by 2ohm D-E; R5 continuation inferred. C6 output tie refuted by 400kohm E-F.,Q8.B1;Q8.B3;R5.1,
 H_RF_VDD,HYPOTHESIS / retains visual fragments where listed,C5.1;L1.2;Q8.T2,
-H_RX_DETECT,HYPOTHESIS / retains visual fragments where listed,C23.2;C40.1;R25.1,
+H_RX_DETECT,C23.2/R25.1 prior photo/circuit fragment retained. C40 association withdrawn by measured R23-R42 junction in v0.9.15; onward output route still unverified.,C23.2;R25.1,
 H_RX_ENABLE,HYPOTHESIS / retains visual fragments where listed,Q7.L;R18.2;R19.1,
 H_RX_ENABLE_CTL,HYPOTHESIS / retains visual fragments where listed,R18.1;U4.12,
 H_RX_VDD,HYPOTHESIS / retains visual fragments where listed,C17.1;C24.1;R20.2;R21.1;TP5.1;U3.8,V_U3_SUPPLY_LOCAL
@@ -46,7 +46,7 @@ PIC_RA1_RX_REF,USER_REPORTED_CONTINUITY + photo-selected resistor pads,R28.1;R29
 PIC_RB3_RETURN,PHOTO_TRACE / not electrically measured,R4.2;U4.24,
 PIC_RC3,HYPOTHESIS / retains visual fragments where listed,TP11.1;U4.14,V_U4_RC3
 PIC_RC7_TP17,PHOTO_TRACE,TP17.1;U4.18,
-PIC_TP4_C41,USER_REPORTED_CONTINUITY + PHOTO_TRACE,C41.1;TP4.1;U4.25;R42.1;R44.1,
+PIC_TP4_C41,USER_REPORTED_CONTINUITY + PHOTO_TRACE,C41.1;TP4.1;U4.25;R42.1;R44.1;R23.2;C40.1,
 PIR_BASE,HYPOTHESIS / retains visual fragments where listed,Q2.R;R38.2;R39.1,
 Q1_GATE,HYPOTHESIS / retains visual fragments where listed,Q1.R;R44.2,V_Q1_RIGHT
 Q8_DRIVE_A,HYPOTHESIS / retains visual fragments where listed,Q8.T3;R9.2,

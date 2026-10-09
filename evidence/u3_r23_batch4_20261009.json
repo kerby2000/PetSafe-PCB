@@ -1,0 +1,65 @@
+{
+  "date": "2026-10-09",
+  "revision": "v0.9.15",
+  "source": "User B16 C-P and B17 C-Q each 1 ohm; user also identifies the continuous surface trace as clear in the photo.",
+  "readings": [
+    {
+      "id": "B16",
+      "pair": [
+        "R23 right / C",
+        "C40 lower / P"
+      ],
+      "resistance_ohms": 1
+    },
+    {
+      "id": "B17",
+      "pair": [
+        "R23 right / C",
+        "R42 upper / Q"
+      ],
+      "resistance_ohms": 1
+    }
+  ],
+  "shorted_probe_baseline": null,
+  "physical_pad_mapping": {
+    "R23.2": "C / right end in IMG_2434",
+    "C40.1": "P / lower end in IMG_2434",
+    "C40.2": "Upper end in IMG_2434; GND/V083 from earlier report and photo",
+    "R42.1": "Q / upper end in IMG_2434",
+    "R42.2": "Lower end in IMG_2434; trace toward D3.S, selected by photo"
+  },
+  "confirmed_pairs": [
+    [
+      "R23.2",
+      "C40.1"
+    ],
+    [
+      "R23.2",
+      "R42.1"
+    ]
+  ],
+  "withdrawn_connections": [
+    {
+      "endpoints": [
+        "C40.1",
+        "C23.2"
+      ],
+      "reason": "Earlier inferred detector-output grouping conflicts with the now established R23/R42 surface junction; no evidence supports merging the whole output net."
+    }
+  ],
+  "inherited_connections": "R42.1 to V017/TP4/PIC25/R44.1 from earlier user reports is retained. Those remote endpoints were not remeasured in this batch.",
+  "qualifications": [
+    "Only the local three-pad junction is newly measured. No shorted-probe baseline was supplied in this batch.",
+    "R23 remains 5.6k; R42 remains 1.2k. C40 capacitance is unknown.",
+    "C40 ground end and C23/R25 grouping retain their separate evidence qualifications. No whole-net merge of H_RX_DETECT with the PIC node.",
+    "Prior high-resistance exclusions to both C18 ends, TP6 and VREF remain enforced.",
+    "Visible trace joins should be solved from photographs; future bench requests must target a specific ambiguity, hidden route or device behavior."
+  ],
+  "photos": {
+    "photos/originals/IMG_2434.jpg": "2feac8570055753400b337f4cfe8a79256da8f3bcd706e0d972dfd9672b50d0a",
+    "photos/originals/IMG_2435.jpg": "04f1464e2fceeec695365b25183dc96505034434565d20713f55c5b13b18fac1",
+    "photos/originals/IMG_2437.jpg": "3c7c58fea79ea903a3099f204c1d97406c0884edb6d54fd5e7441363e71467a7",
+    "photos/originals/IMG_2438.jpg": "b3868ea3dd2f4b542d0713b57401d2a9c2a898f9b11898b32f17b84883702109",
+    "photos/originals/IMG_2439.jpg": "25e0c2dd55a3a1145175b61fec427c5c429e92a614bf944bd6f721fd490d42cc"
+  }
+}
