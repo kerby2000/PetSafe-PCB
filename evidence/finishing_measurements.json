@@ -1,8 +1,8 @@
 {
   "date": "2026-10-09",
-  "basis_revision": "v0.9.15",
-  "status": "AWAITING_PIR_HIDDEN_ROUTE_BATCH",
-  "scope": "Two targeted candidate checks for the hidden Q2/TP16 onward route. All prior batches retained.",
+  "basis_revision": "v0.9.16",
+  "status": "PIR_ROUTE_RESOLVED",
+  "scope": "All supplied readings applied; PIC21-VREF mistake corrected.",
   "setup": "Battery and programmer disconnected; allow capacitors to discharge. Resistance mode. Note the shorted-probe baseline; report actual ohms, kohms, Mohms, OL or changing readings. Do not bridge or desolder anything in this batch.",
   "photos": [
     {
@@ -147,10 +147,10 @@
       "id": "references",
       "source": "photos/originals/IMG_2435.jpg",
       "view_box": [
-        145,
-        980,
-        750,
-        520
+        120,
+        940,
+        800,
+        560
       ],
       "coordinate_space": [
         1368,
@@ -275,29 +275,42 @@
           "description": "TP17 plated test hole above C32; local trace reaches pin 18 / RC7"
         }
       }
-    }
-  ],
-  "tests": [
-    {
-      "id": "B18",
-      "from": "R",
-      "to": "S",
-      "issue": "E07",
-      "purpose": "Test whether the PIR transistor output reaches PIC RC3 through hidden routing. Candidate only; no direct connection is assumed."
     },
     {
-      "id": "B19",
-      "from": "R",
-      "to": "T",
-      "issue": "E07",
-      "purpose": "Test the other selected digital GPIO candidate, PIC RC7. If neither pair is low-ohm, both candidates are rejected."
+      "id": "pic_ra0",
+      "source": "photos/originals/IMG_2437.jpg",
+      "view_box": [
+        740,
+        945,
+        625,
+        640
+      ],
+      "coordinate_space": [
+        1368,
+        1823
+      ],
+      "title": "U: C25 right metal end, nearest C39",
+      "points": {
+        "U": {
+          "xy": [
+            1099,
+            1273
+          ],
+          "label": [
+            1185,
+            1370
+          ],
+          "description": "C25 RIGHT metal end in this photo, nearest C39; upper capacitor above C26; local trace reaches PIC pin2 / RA0"
+        }
+      }
     }
   ],
-  "interpretation": "A reading near the shorted-probe baseline supports a direct connection. A kiloohm/megaohm reading or OL rejects a direct wire for that pair; do not turn a finite-resistance path into a net merge. Neither pair is connected in the model pending results. These checks address E07/E06 and may resolve a functional gap without reducing ERC by themselves.",
+  "tests": [],
+  "interpretation": "All three high-resistance results reject direct joins; they are not added resistor values. The confirmed PIC21-TP16 route replaces the earlier incorrect VREF assignment.",
   "next_stages": [
     {
       "stage": "1. Finish signal paths",
-      "work": "Agent completes visible copper tracing, removes unsupported assumptions and checks via matches. Priorities: receiver output, Q2/TP16 onward route, RF excitation, tuning-cell topology and the switch contact ambiguity. Only unresolved hidden destinations or behavior will be sent for targeted measurements."
+      "work": "Agent completes visible copper tracing, removes unsupported assumptions and checks via matches. Priorities: receiver output, RF excitation, tuning-cell topology and the switch contact ambiguity. Only unresolved hidden destinations or behavior will be sent for targeted measurements."
     },
     {
       "stage": "2. Recover values",
@@ -320,9 +333,12 @@
     "Completed B01-B07: U3 pin5 to R22/R23/VREF and J3 pins2/3 to GND",
     "Completed B08-B12 and X01: J3-R38, U3 pin6-R23, R22-GND, U3 pin6-R22 E",
     "Completed B13-B15: R23 C to C18 M/N and TP6 O; 300k/400k/600k exclude direct joins",
-    "Completed B16-B17: R23 C-C40 P and R23 C-R42 Q, both 1 ohm; clear surface trace"
+    "Completed B16-B17: R23 C-C40 P and R23 C-R42 Q, both 1 ohm; clear surface trace",
+    "B18/B19 TP16 to TP11/TP17: both 400 kohm, direct joins rejected",
+    "U7-to-J3: all three corresponding physical columns reported connected",
+    "B21 TP16-VREF 0.8 Mohm; PIC21-VREF explicitly withdrawn; PIC21-TP16/Q2 confirmed"
   ],
-  "deferred": "The 16 open pads on empty options are recorded but are lower priority unless they affect a fitted net. U6's two candidate internal-NC pins need external-copper inspection, not an invented no-connect flag. Firmware, daughterboard internals and routed PCB are separate from main-board schematic completion.",
+  "deferred": "The 13 open pads on empty options are recorded but are lower priority unless they affect a fitted net. U6's two candidate internal-NC pins need external-copper inspection, not an invented no-connect flag. Firmware, daughterboard internals and routed PCB are separate from main-board schematic completion.",
   "sources": [
     "evidence/remaining_work.json",
     "evidence/reconstruction.json",
@@ -334,7 +350,10 @@
     "evidence/u3_r23_batch3_20261009.json",
     "evidence/u3_r23_batch4_20261009.json",
     "photos/originals/IMG_2436.jpg",
-    "photos/originals/IMG_2440.jpg"
+    "photos/originals/IMG_2440.jpg",
+    "evidence/pir_batch5_u7_20261009.json",
+    "photos/originals/IMG_2437.jpg",
+    "evidence/pic21_tp16_followup_20261009.json"
   ],
   "completed_tests": [
     {
@@ -480,9 +499,44 @@
       "issue": "E08",
       "purpose": "Check the facing R42 upper pad. Distinguish direct copper from a resistor-valued or high-resistance path; no join is assumed.",
       "result": "1 ohm"
+    },
+    {
+      "id": "B18",
+      "from": "R",
+      "to": "S",
+      "issue": "E07",
+      "purpose": "Test whether the PIR transistor output reaches PIC RC3 through hidden routing. Candidate only; no direct connection is assumed.",
+      "result": "400 kohm"
+    },
+    {
+      "id": "B19",
+      "from": "R",
+      "to": "T",
+      "issue": "E07",
+      "purpose": "Test the other selected digital GPIO candidate, PIC RC7. If neither pair is low-ohm, both candidates are rejected.",
+      "result": "400 kohm"
+    },
+    {
+      "id": "B21",
+      "from": "R",
+      "to": "F",
+      "issue": "E07",
+      "purpose": "Resolve contradictory implications of the PIC21-TP16 and PIC21-VREF reports. This is an evidence conflict check, not a repeat of a visible local trace.",
+      "result": "0.8 Mohm; user explicitly withdraws PIC21-VREF"
     }
   ],
-  "batch_title": "Next: find the PIR signal route to the PIC",
-  "instructions": "Keep one probe on R (TP16). Measure to S (TP11), then T (TP17). TP16 already reaches Q2 on visible copper. TP11 and TP17 already reach PIC pins 14/RC3 and 18/RC7 respectively. Their onward routes are unresolved: these two digital GPIO nodes are functional candidates for the PIR return, not photo-proven connections or an exhaustive list. The photos of both board faces do not establish either hidden link. Report actual resistance, even when it is high.",
-  "result_summary": "B16 C-P and B17 C-Q each read 1 ohm. R23 right, C40 lower and R42 upper are one node. R23.2 is now connected in the schematic; C40 has been removed from the old inferred C23/R25 output grouping. Earlier high-resistance exclusions are retained."
+  "batch_title": "PIR signal route resolved",
+  "instructions": "PIC21/RB0 now reaches TP16 and Q2 single pad. TP16-to-VREF reads 0.8 Mohm; the mistaken PIC21-to-VREF connection has been removed. U7 is fully mapped to J3. B20/C25 is cancelled; no further PIR-to-PIC measurements are needed.",
+  "result_summary": "B18 TP16-TP11 and B19 TP16-TP17 each read 400 kohm. B21 TP16-VREF reads 0.8 Mohm. User identifies PIC21/RB0 as TP16/Q2.S destination and explicitly withdraws PIC21-VREF. U7.1/2/3 map to J3.3/2/1. These updates are applied in the schematic.",
+  "cancelled_tests": [
+    {
+      "id": "B20",
+      "from": "R",
+      "to": "U",
+      "issue": "E07",
+      "purpose": "Test whether the PIR output reaches the PIC2/RA0 input at C25 right pad through hidden routing. TP11 and TP17 have already been rejected.",
+      "status": "CANCELLED_BEFORE_RESULT",
+      "reason": "User identifies PIC21/RB0 destination; reconcile the older VREF assignment instead."
+    }
+  ]
 }

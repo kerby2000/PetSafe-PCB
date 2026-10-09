@@ -7337,15 +7337,16 @@
 				(hide yes)
 			)
 		)
-		(property "ViaEvidence" "v0.9.9: User checked V035-VREF TP. Prior photo association V035-PIC4/RA2-C39.1 retained; joins the already confirmed RB0/V026/R21.2/V071 VREF node. No voltage or numerical resistance supplied. Other modeled bias branches retain earlier inferred status. V042-PIC20 supply now user-confirmed to board VDD/TP103, not motor VDD."
+		(property "ViaEvidence" "v0.9.16 CORRECTION: user confirms PIC21/RB0 -> TP16 -> Q2 single pad; TP16-VREF = 0.8 Mohm. User explicitly withdraws PIC21-VREF. PIC21/V026 belongs to H_PIR_SIG, separate from VREF. RA2/V035 and R21/V071 remain VREF. This supersedes every earlier RB0/V026-to-VREF statement."
 			(at 262.89 78.74 0)
 			(effects
 				(font
 					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
+				) (hide yes))
 		)
+    (property "MeasurementEvidence" "v0.9.16 CORRECTION: user confirms PIC21/RB0 -> TP16 -> Q2 single pad; TP16-VREF = 0.8 Mohm. User explicitly withdraws PIC21-VREF. PIC21/V026 belongs to H_PIR_SIG, separate from VREF. RA2/V035 and R21/V071 remain VREF. This supersedes every earlier RB0/V026-to-VREF statement." (at 262.89 78.74 0)
+      (effects (font (size 1.27 1.27)) (hide yes))
+    )
 		(pin "1"
 			(uuid "2cc68a08-ab7c-4f62-837a-672a9475163e")
 		)
@@ -11820,15 +11821,16 @@
 				)
 			)
 		)
-		(property "ViaEvidence" "v0.9.8: User confirms V071-VREF. Earlier V071-R21.2 and V026-VREF-PIC21/RB0 associations retained. R21.2 joins VREF. Existing R22.2/R23.2/R48.2 receiver-bias branches remain prior photo/circuit hypotheses, not new measured connections. VREF remains separate from VDD and RC1/V053. No voltage or numeric resistance supplied."
+		(property "ViaEvidence" "v0.9.16 CORRECTION: user confirms PIC21/RB0 -> TP16 -> Q2 single pad; TP16-VREF = 0.8 Mohm. User explicitly withdraws PIC21-VREF. PIC21/V026 belongs to H_PIR_SIG, separate from VREF. RA2/V035 and R21/V071 remain VREF. This supersedes every earlier RB0/V026-to-VREF statement."
 			(at 356.87 223.52 0)
 			(effects
 				(font
 					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
+				) (hide yes))
 		)
+    (property "MeasurementEvidence" "v0.9.16 CORRECTION: user confirms PIC21/RB0 -> TP16 -> Q2 single pad; TP16-VREF = 0.8 Mohm. User explicitly withdraws PIC21-VREF. PIC21/V026 belongs to H_PIR_SIG, separate from VREF. RA2/V035 and R21/V071 remain VREF. This supersedes every earlier RB0/V026-to-VREF statement." (at 356.87 223.52 0)
+      (effects (font (size 1.27 1.27)) (hide yes))
+    )
 		(pin "1"
 			(uuid "5d121715-3676-4ccb-98aa-33a43155b56a")
 		)
@@ -13697,15 +13699,16 @@
 				)
 			)
 		)
-		(property "ViaEvidence" "v0.9.8: User confirms V071-VREF. Earlier V071-R21.2 and V026-VREF-PIC21/RB0 associations retained. R21.2 joins VREF. Existing R22.2/R23.2/R48.2 receiver-bias branches remain prior photo/circuit hypotheses, not new measured connections. VREF remains separate from VDD and RC1/V053. No voltage or numeric resistance supplied."
+		(property "ViaEvidence" "v0.9.16 CORRECTION: user confirms PIC21/RB0 -> TP16 -> Q2 single pad; TP16-VREF = 0.8 Mohm. User explicitly withdraws PIC21-VREF. PIC21/V026 belongs to H_PIR_SIG, separate from VREF. RA2/V035 and R21/V071 remain VREF. This supersedes every earlier RB0/V026-to-VREF statement."
 			(at 307.34 229.87 0)
 			(effects
 				(font
 					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
+				) (hide yes))
 		)
+    (property "MeasurementEvidence" "v0.9.16 CORRECTION: user confirms PIC21/RB0 -> TP16 -> Q2 single pad; TP16-VREF = 0.8 Mohm. User explicitly withdraws PIC21-VREF. PIC21/V026 belongs to H_PIR_SIG, separate from VREF. RA2/V035 and R21/V071 remain VREF. This supersedes every earlier RB0/V026-to-VREF statement." (at 307.34 229.87 0)
+      (effects (font (size 1.27 1.27)) (hide yes))
+    )
 		(pin "1"
 			(uuid "cdcb5dd5-ac2e-42ef-8894-1b4844de1f92")
 		)
@@ -13785,23 +13788,19 @@
 				)
 			)
 		)
-		(property "ViaEvidence" "v0.9.14 user: E/right/model1-GND 1 ohm; D/left/model2-VREF confirmed in batch1. R22 spans VREF to GND; 10 kohm agrees with 01C marking. U3 pin6 to E is 400 kohm and is not a wire."
+		(property "ViaEvidence" "v0.9.16 CORRECTION: user confirms PIC21/RB0 -> TP16 -> Q2 single pad; TP16-VREF = 0.8 Mohm. User explicitly withdraws PIC21-VREF. PIC21/V026 belongs to H_PIR_SIG, separate from VREF. RA2/V035 and R21/V071 remain VREF. This supersedes every earlier RB0/V026-to-VREF statement."
 			(at 326.39 229.87 0)
 			(effects
 				(font
 					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
+				) (hide yes))
 		)
-		(property "MeasurementEvidence" "v0.9.14 user: E/right/model1-GND 1 ohm; D/left/model2-VREF confirmed in batch1. R22 spans VREF to GND; 10 kohm agrees with 01C marking. U3 pin6 to E is 400 kohm and is not a wire."
+		(property "MeasurementEvidence" "v0.9.16 CORRECTION: user confirms PIC21/RB0 -> TP16 -> Q2 single pad; TP16-VREF = 0.8 Mohm. User explicitly withdraws PIC21-VREF. PIC21/V026 belongs to H_PIR_SIG, separate from VREF. RA2/V035 and R21/V071 remain VREF. This supersedes every earlier RB0/V026-to-VREF statement."
 			(at 326.39 229.87 0)
 			(effects
 				(font
 					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
+				) (hide yes))
 		)
 		(pin "1"
 			(uuid "282abd8d-d18e-4a5e-b223-42c410395a42")
@@ -16908,7 +16907,7 @@
 				)
 			)
 		)
-		(property "ViaEvidence" "v0.9.14 user: pin1 PIR supply previously confirmed; pin2 H-R38 K/right/model1 1 ohm and H-R38 J/left/model2 10 kohm; pin3-GND 1 ohm. Pin2-GND remains 290 kohm (batch1), distinct from ground. Q2 onward/controller route remains unverified."
+		(property "ViaEvidence" "v0.9.14 user: pin1 PIR supply previously confirmed; pin2 H-R38 K/right/model1 1 ohm and H-R38 J/left/model2 10 kohm; pin3-GND 1 ohm. Pin2-GND remains 290 kohm (batch1), distinct from ground. Q2 onward/controller route remains unverified. v0.9.16: matching physical columns reach U7; J3.1-U7.3 supply, J3.2-U7.2 signal, J3.3-U7.1 GND."
 			(at 405.13 327.66 0)
 			(effects
 				(font
@@ -16917,7 +16916,7 @@
 				(hide yes)
 			)
 		)
-		(property "MeasurementEvidence" "v0.9.14 user: pin1 PIR supply previously confirmed; pin2 H-R38 K/right/model1 1 ohm and H-R38 J/left/model2 10 kohm; pin3-GND 1 ohm. Pin2-GND remains 290 kohm (batch1), distinct from ground. Q2 onward/controller route remains unverified."
+		(property "MeasurementEvidence" "v0.9.14 user: pin1 PIR supply previously confirmed; pin2 H-R38 K/right/model1 1 ohm and H-R38 J/left/model2 10 kohm; pin3-GND 1 ohm. Pin2-GND remains 290 kohm (batch1), distinct from ground. Q2 onward/controller route remains unverified. v0.9.16: matching physical columns reach U7; J3.1-U7.3 supply, J3.2-U7.2 signal, J3.3-U7.1 GND."
 			(at 405.13 327.66 0)
 			(effects
 				(font
@@ -17438,6 +17437,16 @@
 				)
 			)
 		)
+		(property "MeasurementEvidence" "v0.9.16 CORRECTION: user confirms PIC21/RB0 -> TP16 -> Q2 single pad; TP16-VREF = 0.8 Mohm. User explicitly withdraws PIC21-VREF. PIC21/V026 belongs to H_PIR_SIG, separate from VREF. RA2/V035 and R21/V071 remain VREF. This supersedes every earlier RB0/V026-to-VREF statement."
+			(at 379.73 335.28 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				) (hide yes))
+		)
+    (property "ViaEvidence" "v0.9.16 CORRECTION: user confirms PIC21/RB0 -> TP16 -> Q2 single pad; TP16-VREF = 0.8 Mohm. User explicitly withdraws PIC21-VREF. PIC21/V026 belongs to H_PIR_SIG, separate from VREF. RA2/V035 and R21/V071 remain VREF. This supersedes every earlier RB0/V026-to-VREF statement." (at 379.73 335.28 0)
+      (effects (font (size 1.27 1.27)) (hide yes))
+    )
 		(pin "1"
 			(uuid "87ee1410-73cb-473e-ad7e-80cca3d40d50")
 		)
@@ -17872,7 +17881,7 @@
 	)
 	(symbol
 		(lib_id "Connector_Generic:Conn_01x03")
-		(at 461.01 361.95 0)
+		(at 405.13 302.26 0)
 		(unit 1)
 		(body_style 1)
 		(exclude_from_sim no)
@@ -17882,7 +17891,7 @@
 		(dnp no)
 		(uuid "ef7941e1-9b84-4150-adbf-5ef3005b969d")
 		(property "Reference" "U7"
-			(at 461.01 367.03 0)
+			(at 405.13 307.34 0)
 			(show_name no)
 			(do_not_autoplace no)
 			(effects
@@ -17892,7 +17901,7 @@
 			)
 		)
 		(property "Value" "DNP"
-			(at 461.01 356.87 0)
+			(at 405.13 297.18 0)
 			(show_name no)
 			(do_not_autoplace no)
 			(effects
@@ -17902,7 +17911,7 @@
 			)
 		)
 		(property "Footprint" "Connector_PinHeader_2.54mm:PinHeader_1x03_P2.54mm_Vertical"
-			(at 461.01 361.95 0)
+			(at 405.13 302.26 0)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -17913,7 +17922,7 @@
 			)
 		)
 		(property "Datasheet" ""
-			(at 461.01 361.95 0)
+			(at 405.13 302.26 0)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -17924,7 +17933,7 @@
 			)
 		)
 		(property "Description" "Generic connector, single row, 01x03, script generated (kicad-library-utils/schlib/autogen/connector/)"
-			(at 461.01 361.95 0)
+			(at 405.13 302.26 0)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -17932,6 +17941,24 @@
 				(font
 					(size 1.27 1.27)
 				)
+			)
+		)
+		(property "MeasurementEvidence" "v0.9.16: user measured U7 square pad/model1 to J3.3/GND; middle/model2 to J3.2/H_PIR_RAW; outer round/model3 to J3.1/H_PIR_VDD. IMG_2441 confirms square-pad numbering. No numerical continuity values supplied. Empty option remains DNP."
+			(at 405.13 302.26 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "ViaEvidence" "v0.9.16: user measured U7 square pad/model1 to J3.3/GND; middle/model2 to J3.2/H_PIR_RAW; outer round/model3 to J3.1/H_PIR_VDD. IMG_2441 confirms square-pad numbering. No numerical continuity values supplied. Empty option remains DNP."
+			(at 405.13 302.26 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
 			)
 		)
 		(pin "1"
@@ -18338,15 +18365,16 @@
 				)
 			)
 		)
-		(property "ViaEvidence" "v0.9.9: User checked V035-VREF TP. Prior photo association V035-PIC4/RA2-C39.1 retained; joins the already confirmed RB0/V026/R21.2/V071 VREF node. No voltage or numerical resistance supplied. Other modeled bias branches retain earlier inferred status."
+		(property "ViaEvidence" "v0.9.16 CORRECTION: user confirms PIC21/RB0 -> TP16 -> Q2 single pad; TP16-VREF = 0.8 Mohm. User explicitly withdraws PIC21-VREF. PIC21/V026 belongs to H_PIR_SIG, separate from VREF. RA2/V035 and R21/V071 remain VREF. This supersedes every earlier RB0/V026-to-VREF statement."
 			(at 478.79 382.27 0)
 			(effects
 				(font
 					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
+				) (hide yes))
 		)
+    (property "MeasurementEvidence" "v0.9.16 CORRECTION: user confirms PIC21/RB0 -> TP16 -> Q2 single pad; TP16-VREF = 0.8 Mohm. User explicitly withdraws PIC21-VREF. PIC21/V026 belongs to H_PIR_SIG, separate from VREF. RA2/V035 and R21/V071 remain VREF. This supersedes every earlier RB0/V026-to-VREF statement." (at 478.79 382.27 0)
+      (effects (font (size 1.27 1.27)) (hide yes))
+    )
 		(pin "1"
 			(uuid "82c658ae-36a3-4237-b93c-9b0227a44f0b")
 		)

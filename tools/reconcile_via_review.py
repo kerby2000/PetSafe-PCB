@@ -54,10 +54,12 @@ def apply(out):
     annotate([20],['R40.1'],'User identifies R40; photo selects upper/free pad1 on the existing ICSP DAT node.','ICSP_DAT')
     annotate([21],['Q9.R'],'Q9 DNP lower-right pad; stock pin2.','GND')
     annotate([24],['R32.1'],'R32 upper photo pad. Old PIR assignment withdrawn.','GND')
-    annotate([26],['U4.21','VREF.1'],'User V026-VREF report with prior V026-PIC21/RB0 mapping. VREF is native TP104; voltage/function not established.','VREF')
+    annotate([26],['U4.21','TP16.1','Q2.S'],'v0.9.16 user corrects PIC21 to TP16/Q2.S and withdraws PIC21-VREF; TP16-VREF 800 kohm. Prior V026-PIC21 local association retained.','H_PIR_SIG')
+    sites['V026']['confidence']='User PIC21-TP16 report and explicit correction; prior V026-PIC21 association retained'
+    sites['V026'].pop('joined_vias',None)
     annotate([29],['C25.2','C26.2'],'User adds both capacitors to earlier GND report; return pads selected from photos/model. C26.1 remains unresolved.','GND')
     annotate([31],['U4.2','C25.1'],'User RA0/C25 association corroborates existing local signal node.','PIC_RA0_FILTER')
-    annotate([35],['U4.4','C39.1','VREF.1'],'User confirms V035-VREF TP; earlier local PIC4/RA2-C39.1 photo route retained. Same VREF node as V026/RB0 and V071/R21.2.','VREF')
+    annotate([35],['U4.4','C39.1','VREF.1'],'User confirms V035-VREF TP; earlier local PIC4/RA2-C39.1 photo route retained. Same VREF node as V071/R21.2; RB0/V026 association withdrawn.','VREF')
     sites['V035']['confidence']='User V035-VREF continuity; PIC4/C39 pad association from earlier photo trace'
     annotate([42],['U4.20','C32.1','VDD.1'],'User confirms V042-board VDD TP, matching prior PIC20/C32.1 photo mapping. Regulated VDD, not motor VDD or raw battery.','VDD')
     sites['V042']['confidence']='User continuity to board VDD; PIC20/C32.1 local association from photo'
@@ -80,8 +82,8 @@ def apply(out):
     annotate([70],['R18.1'],'User V064-V070 = 11.2 kohm excludes direct VDD. Nominal R18 1.2k + R19 10k fits the measured path; base-input topology supported by photo/circuit inference. Onward control source unknown.','H_RX_ENABLE_CTL')
     annotate([53,70],['U4.12','R18.1'],'User confirms V053-V070 and excludes V053-VREF. PIC12/RC1 reaches R18 input; Q7 local operating role remains inferred. No numeric ohms supplied.','H_RX_ENABLE_CTL')
     for i in [53,70]:sites[f'V{i:03d}'].update(joined_vias=['V053','V070'],confidence='User continuity report; no numerical resistance supplied')
-    annotate([71],['R21.2','VREF.1','U4.21'],'User confirms V071-VREF, previously mapped to PIC21/RB0 via V026. Other receiver-bias branches remain photo/circuit hypotheses.','VREF')
-    for i in [26,71]:sites[f'V{i:03d}']['joined_vias']=['V026','V071']
+    annotate([71],['R21.2','VREF.1'],'User V071-VREF retained. Earlier inferred PIC21/V026 association explicitly withdrawn in v0.9.16. Other receiver-bias branches retain their evidence.','VREF')
+    sites['V071'].pop('joined_vias',None)
     sites['V072'].update(net='RX_A_FILTER',endpoints=['TP6.1'],excluded_endpoints=['R22.2'],confidence='User identifies TP6 and explicitly excludes R22.2',component_crosscheck='User identifies TP6. Existing C18.2/R27.1 branches on RX_A_FILTER remain hypotheses; the via report does not certify the whole modeled net. TP6 remains separate from U3.5 across C18.')
     sites['V073'].update(net='GND',endpoints=[],component_crosscheck='User correction: GND only. R19 association removed; no R19 ground merge. V075 is now user-associated with Q7; its exact terminal is unresolved.')
     sites['V075'].update(net='VDD',endpoints=['Q7.R','R19.2'],component_refs=['Q7','R19'],candidate_endpoints=[],confidence='Rail measured via V064; local terminals selected from IMG_2434 and 11.2 kohm R18+R19 path, not separate pad measurements.',component_crosscheck='V064-V075 confirms regulated VDD. IMG_2434 shows the R19/Q7 paired-pad continuation; V064-V070 11.2 kohm supports R18+R19 base-input/pull-up arrangement. Q7.R/native2 and R19.2 now modeled on VDD as a supported reconstruction, not user-probed exact terminal proof.')
@@ -120,7 +122,7 @@ def apply(out):
         annotate([va,vb],[f'U4.{pin}',res+'.1'],f'User working via pair V{va:03d}-V{vb:03d}; PIC control to resistor confirmed. No numerical ohms supplied.',f'H_TUNE_{n}')
         for i in [va,vb]:sites[f'V{i:03d}'].update(joined_vias=[f'V{va:03d}',f'V{vb:03d}'],confidence='User continuity report; exact resistance not supplied')
     for i in [63,64,75]:sites[f'V{i:03d}']['joined_vias']=['V063','V064','V075']
-    sites['V053']['excluded_vias']=['V071','V026'];sites['V071']['excluded_vias']=['V053'];sites['V026']['excluded_vias']=['V053']
+    sites['V053']['excluded_vias']=['V071'];sites['V071']['excluded_vias']=['V053','V026'];sites['V026']['excluded_vias']=['V071'];sites['V026']['excluded_endpoints']=['VREF.1']
     sites['V053']['excluded_endpoints']=['VREF.1']
     sites['V090']['excluded_vias']=['V095','V100','V103','V107']
     for i in [95,100,103,107]:sites[f'V{i:03d}']['excluded_vias']=['V090']
@@ -141,7 +143,7 @@ def apply(out):
             s.update(review_status='REJECTED_NOT_VIA',net=None,endpoints=[],modeled_nets=[],component_crosscheck='User rejects this detection as not a via. Stable ID retained; excluded from active markers.')
         elif s['user_reports'] and s['net'] and s['review_status']!='CONFLICT':s['review_status']='ASSIGNED'
         elif not s['user_reports'] and s['net']:s['review_status']='PHOTO_LOCAL'
-    out.update(revision=model['revision'],review_update_id='d3-v082-vdd-terminal-measured',user_review_source='evidence/via_user_review.json',
+    out.update(revision=model['revision'],review_update_id='pic21-tp16-vref-correction',user_review_source='evidence/via_user_review.json',
         user_review_method=review['method'],supply_naming=review['supply_naming'],
         review_summary=dict(catalogued_ids=len(sites),active_sites=sum(s['active'] for s in sites.values()),user_reported_ids=len(current_ids),original_user_reported_ids=len(original_ids),
             omitted_from_user_list=sorted(set(sites)-current_ids),rejected=rejected,conflicts=list(conflicts),

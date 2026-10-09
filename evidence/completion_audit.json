@@ -1,5 +1,5 @@
 {
-  "revision": "v0.9.15",
+  "revision": "v0.9.16",
   "instruments": [
     "LCR meter",
     "multimeter"
@@ -12,7 +12,7 @@
   ],
   "fitted_capacitors": 45,
   "fitted_resistors": 38,
-  "unresolved_physical_pins": 23,
+  "unresolved_physical_pins": 20,
   "unknown_ceramic_values": [
     "C1",
     "C2",
@@ -1647,7 +1647,7 @@
       "footprint": "Connector_PinHeader_2.54mm:PinHeader_1x03_P2.54mm_Vertical",
       "footprint_confidence": "low",
       "footprint_basis": "Three empty through-hole pads; generic 2.54-mm row represents candidate hole geometry, not a fitted header or identified IC.",
-      "open_pads": 3,
+      "open_pads": 0,
       "next_method": "No immediate measurement requested",
       "photos": "IMG_2441.jpg"
     },
@@ -1673,7 +1673,7 @@
       "observed": "UNKNOWN",
       "displayed": "BC847B?",
       "marking": "1FW / 56",
-      "value_or_identity": "1FW supports BC847B. Candidate B=R, E=L, C=S and interface role remain inferred. J3.1 supply, J3.3 GND and J3.2-R38 K are user-confirmed; Q2/TP16 onward route remains unverified.",
+      "value_or_identity": "1FW supports BC847B. Candidate B=R, E=L, C=S and interface role remain inferred. J3.1 supply, J3.3 GND and J3.2-R38 K are user-confirmed; Q2/TP16 reaches PIC21/RB0 per user, separate from VREF at 800 kohm.",
       "footprint": "Package_TO_SOT_SMD:SOT-23",
       "footprint_confidence": "datasheet/package candidate",
       "footprint_basis": "Existing assignment; see component identity evidence.",

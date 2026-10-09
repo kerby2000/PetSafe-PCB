@@ -73,7 +73,7 @@ for inst in instances:
     if ref=='U5':ry=y-22.86;vy=y-20.955
     if ref=='U6':rx=vx=x+15.24;ry=y-8.89;vy=y-6.985
     if ref=='Q8':rx=vx=x+12.7;ry=y-1.27;vy=y+0.635
-    if ref in ['J1','J3','J5']:rx=vx=x+2.54;ry=y-3.81;vy=y-1.905
+    if ref in ['J1','J3','J5','U7']:rx=vx=x+2.54;ry=y-3.81;vy=y-1.905
     if ref=='Q1':rx=vx=x+11.43;ry=y-5.08;vy=y-3.175;just='left'
     if ref=='Y1':rx=vx=x;ry=y-5.08;vy=y-3.175
     if ref in ['C30','C31']:rx=vx=x+2.54;ry=y-0.635;vy=y+1.27
@@ -89,7 +89,7 @@ for inst in instances:
         effects=one(prop,'effects')
         if effects:prop.remove(effects)
         just=old.get('just','')
-        if ref in ['J1','J3','J5','C30','C31','Q8','U6','Q1','TP1','TP2']:just='left'
+        if ref in ['J1','J3','J5','U7','C30','C31','Q8','U6','Q1','TP1','TP2']:just='left'
         if rot==180:just=''
         prop.append(expr(f'(effects (font (size 1.016 1.016)){" (justify "+just+")" if just else ""})'))
     evidence=next(cc for cc in model['components'] if cc['ref']==old['ref'])
@@ -162,6 +162,10 @@ wire('GND','C9.2',(49,159),(49,190),(53,190))
 # User J3 pin3-GND; pin2 reaches R38 K/right/model1, with 10k to the opposite end.
 stub('GND','J3.3',-6,0)
 wire('H_PIR_RAW','J3.2',(306,258),(306,265))
+# U7 empty option, measured matching columns; square-pad numbering reverses J3.
+stub('GND','U7.1',-7,0)
+wire('H_PIR_RAW','U7.2',(306,238),(306,258))
+wire('H_PIR_VDD','U7.3','J3.1')
 
 # Datasheet S-1200B45 symbol: input/enable left, output/NC right, ground below.
 stub('BATTERY+','BATP.1',0,7)
@@ -192,7 +196,7 @@ stub('H_TUNE_5','U4.11',-12)
 stub('H_RX_ENABLE_CTL','U4.12',-12) # User V053-V070; old VREF join rejected.
 stub('RF_MONITOR_PAD','U4.13',-12)
 stub('VREF','VREF.1',0,4)
-stub('VREF','U4.21',4)
+stub('H_PIR_SIG','U4.21',4)
 stub('MOTOR_INA','U4.15',-12)
 stub('MOTOR_INB','U4.16',-12)
 stub('H_TUNE_1','U4.17',-12)
@@ -282,7 +286,7 @@ for n in layout['notes']:
     if t.startswith('Q8 T2/B1/B2'):t='V113/V115: Q8 centre pin5 GND. V114 is U2 pin2 GND, not Q8 pin2.'
     if t.startswith('H07:'):t='H07: C14R inverter candidate. Q8 source rail inferred; C6 destination unresolved.'
     if t.startswith('No invented ties'):t='D4/D5 opposite vias join rear GND copper. D6 type and routes remain uncertain.'
-    if t.startswith('H02:'):t='User: RA3/R14, RA4/R15, RA5/R16, RC0/R11, RC6/R13. RC2 -> TP3; RB0 -> VREF. RC1 -> R18 via V053-V070.'
+    if t.startswith('H02:'):t='User: RA3/R14, RA4/R15, RA5/R16, RC0/R11, RC6/R13. RC2 -> TP3; RB0 -> TP16 / Q2; VREF tie withdrawn. RC1 -> R18 via V053-V070.'
     if t.startswith('Selected working hypothesis:'):t='v0.9: user-reviewed GND returns replace previous antenna rails on this capacitor bank.'
     if t.startswith('Ceff ='):t='Local three-capacitor junctions retained. Hidden links from these midpoints to antenna remain unknown.'
     if t.startswith('All-parallel'):t='Do not infer complete tuning topology from local connections. Transistor identity/orientation remains provisional.'
@@ -357,7 +361,7 @@ for net,edges in adj.items():
 for l in L:
     x,y=l['p'];G.append(expr(f'(label {q(l["net"])} (at {x} {y} 0) (effects (font (size .762 .762)) (justify left bottom)) (uuid {q(uid())}))'))
 tree.extend(G)
-tree.append(expr('(title_block (title "PetSafe 100-1339 R03 A | single-sheet reconstruction") (date "2026-10-09") (rev "0.9.15") (company "KiCad 10 libraries + four datasheet symbols | MCP authoring") (comment 1 "R23-C40-R42 junction measured; photo-first review of remaining paths."))'))
+tree.append(expr('(title_block (title "PetSafe 100-1339 R03 A | single-sheet reconstruction") (date "2026-10-09") (rev "0.9.16") (company "KiCad 10 libraries + four datasheet symbols | MCP authoring") (comment 1 "U7-J3 mapped; PIC21 to TP16/Q2; mistaken RB0-VREF tie removed."))'))
 # Canonical pretty printer supplied by the installed MCP server.
 sys.path.insert(0,str(Path.home()/'Documents/VS.Code.Projects/KiCAD-MCP-Server/python'))
 from utils.sexpr_format import prettify
@@ -377,7 +381,7 @@ out.write_text(prettify(sx.dumps(tree)),encoding='utf-8',newline='\n')
 def wire_key(w):return w['net'],tuple(w['a']),tuple(w['b'])
 prior_order={wire_key(w):i for i,w in enumerate(model.get('geometric_wires',[]))}
 ordered_segments=sorted(segments,key=lambda s:(prior_order.get(s,len(prior_order)),s))
-model.update(revision='v0.9.15',coordinate_units='mm',native_pin_crosswalk=layout['crosswalk'],pin_positions={e:list(p) for e,p in P.items()},
+model.update(revision='v0.9.16',coordinate_units='mm',native_pin_crosswalk=layout['crosswalk'],pin_positions={e:list(p) for e,p in P.items()},
              geometric_wires=[dict(net=n,a=a,b=b) for n,a,b in ordered_segments],library_policy='KiCad 10 stock symbols plus four explicitly authorized MCP-authored datasheet symbols for U1/U5/U6/Q8')
 for c in model['components']:
     entry=next(x for x in layout['catalog'] if x['original_ref']==c['ref'])

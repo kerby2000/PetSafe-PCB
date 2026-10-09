@@ -1339,6 +1339,27 @@
           "claim": "2026-10-09 user meter report: D3.L=GND; D3.R=VDD TP via V082. D3.S to R42=1.2 ohm; resistor end not explicitly named. Photo selects R42.2 nearest D3; other end already mapped to TP4/PIC25. Fitted BAV99 identity and signal function remain candidates."
         }
       ]
+    },
+    {
+      "date": "2026-10-09",
+      "source": "evidence/pic21_tp16_followup_20261009.json",
+      "assignments": [
+        {
+          "id": "V026",
+          "kind": "signal",
+          "claim": "PIC21/RB0-to-VREF explicitly withdrawn by user. PIC21 now reaches TP16/Q2.S; retaining prior V026-PIC21 association puts V026 on H_PIR_SIG. TP16-VREF measured 0.8 Mohm."
+        },
+        {
+          "id": "V071",
+          "kind": "signal",
+          "claim": "R21.2-VREF user report retained. Earlier inferred same-net relation to V026/PIC21 is withdrawn in v0.9.16."
+        },
+        {
+          "id": "V035",
+          "kind": "signal",
+          "claim": "V035-VREF and prior PIC4/RA2-C39.1 association retained. Old claim that RB0/V026 shares this node is withdrawn."
+        }
+      ]
     }
   ],
   "review_in_progress": true,

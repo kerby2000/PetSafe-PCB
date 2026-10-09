@@ -18,6 +18,7 @@ assert s['unresolved_physical_pins']==audit['unresolved_physical_pins']==v['unre
 assert s['unknown_ceramic_values']==audit['unknown_ceramic_values']
 assert s['current_gpio_pins']==read('evidence/pic_gpio_status.json')['open_gpio_pins']
 assert s['modeled_nets']==len(m['nets'])
+assert 'PIC21' not in next(r for r in work['rails'] if r['name']=='VREF')['path'], 'Removed RB0/VREF assignment remains in the rail summary'
 erc=read('output/erc.json'); findings=[i for sheet in erc['sheets'] for i in sheet['violations']]
 assert s['erc_total']==len(findings)
 # Verify physical J1 numbers separately from logical signal destinations.

@@ -1,0 +1,65 @@
+{
+  "date": "2026-10-09",
+  "revision": "v0.9.16",
+  "source": "User photo and report: PIC21 RB0 connected to TP16; TP16 to Q2 single/middle pad; Q2 upper-right pad to R38 signal interface.",
+  "reported_pairs": [
+    [
+      "U4.21",
+      "TP16.1"
+    ],
+    [
+      "TP16.1",
+      "Q2.S"
+    ],
+    [
+      "Q2.R",
+      "R38.2"
+    ]
+  ],
+  "numerical_resistance": null,
+  "interpretation": "TP16/Q2.S and Q2 upper-right/R38 nearest end are visible local traces. The initially conflicting PIC21-VREF assignment was withdrawn by the user after the 800 kohm TP16-VREF check; PIC21 now follows TP16/Q2.S, separate from VREF.",
+  "status": "RESOLVED_USER_WITHDREW_PIC21_VREF",
+  "prior_report": "V026-PIC21/RB0 and V026-VREF, with later V071-VREF and V035-VREF reports. See evidence/v098_net_changes.json and via audit.",
+  "model_action": "Move U4.21 from VREF to H_PIR_SIG (TP16/Q2.S). Retain RA2/V035 and receiver bias on VREF. V026 retains its prior PIC21 association and follows H_PIR_SIG; obsolete V026-V071 same-net inference removed.",
+  "photos": {
+    "photos/user_updates/PIC21_TP16_Q2_20261009.png": "417a05f7c581b44b9c7bf4d9e1854c77ab16e8da3fbf4f2a9923842954ecd5a4"
+  },
+  "resolution": {
+    "date": "2026-10-09",
+    "reading": {
+      "id": "B21",
+      "pair": [
+        "TP16.1",
+        "VREF.1"
+      ],
+      "resistance_ohms": 800000,
+      "reported": "0.8 Mohm"
+    },
+    "explicit_correction": "PIC21-VREF is clearly a mistake",
+    "confirmed_pairs": [
+      [
+        "U4.21",
+        "TP16.1"
+      ],
+      [
+        "TP16.1",
+        "Q2.S"
+      ],
+      [
+        "Q2.R",
+        "R38.2"
+      ]
+    ],
+    "rejected_direct_pairs": [
+      [
+        "U4.21",
+        "VREF.1"
+      ],
+      [
+        "TP16.1",
+        "VREF.1"
+      ]
+    ],
+    "qualification": "No numerical ohms supplied for PIC21-to-TP16. 800 kohm is the in-circuit separation check, not a component value."
+  }
+}

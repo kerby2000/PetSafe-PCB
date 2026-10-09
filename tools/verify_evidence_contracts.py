@@ -29,7 +29,8 @@ for va,vb,pin,res,n in [(36,108,5,'R14',2),(37,102,6,'R15',3),(39,97,7,'R16',4),
 assert net('R37.1')==net('R39.2')==net('VDD.1')!=net('U5.4')
 assert sites['V063']['net']==sites['V064']['net']=='VDD'
 assert net('U4.12')!=net('R21.2')
-assert sites['V053']['excluded_vias']==['V071','V026']
+assert sites['V053']['excluded_vias']==['V071']
+assert sites['V026']['net']=='H_PIR_SIG' and 'V071' not in sites['V026'].get('joined_vias',[])
 assert len(ch['confirmed_via_pairs'])==5 and len(ch['rejected_pairs'])==5
 for i in [95,100,103,107]:assert f'V{i:03d}' in sites['V090']['excluded_vias'] and 'V090' in sites[f'V{i:03d}']['excluded_vias']
 assert sites['V114']['endpoints']==['U2.T2'] and sites['V114']['net']=='GND'
@@ -71,7 +72,7 @@ assert measured['B06']['resistance_ohms']==290000 and measured['B07']['resistanc
 assert measured['B01']['resistance_range_ohms']==measured['B02']['resistance_range_ohms']==[270000,289000]
 for ref,value in [('R22','10k'),('R23','5.6k')]:
  assert xml.findtext(f'./components/comp[@ref="{ref}"]/value')==value, 'In-circuit path resistance must not replace the marked value'
-for ref in ['U3','R22','R23','R38','J3','C40','R42']:
+for ref in ['U3','R22','R23','R38','J3','C40','R42','U7','TP16']:
  expected=next(c for c in placements['components'] if c['reference']==ref)['properties']['MeasurementEvidence']
  assert xml.findtext(f'./components/comp[@ref="{ref}"]/fields/field[@name="MeasurementEvidence"]')==expected,ref
 for path,digest in batch['photo_sha256'].items():assert sha(path)==digest
@@ -93,7 +94,20 @@ measured4={r['id']:r for r in batch4['readings']}
 assert {k:r['resistance_ohms'] for k,r in measured4.items()}=={'B16':1,'B17':1}
 for x,y in batch4['confirmed_pairs']:assert net(x)==net(y)
 for path,digest in batch4['photos'].items():assert sha(path)==digest
-completed_ids=set(measured)|set(measured2)|set(measured3)|set(measured4)
+batch5=read('evidence/pir_batch5_u7_20261009.json')
+measured5={r['id']:r for r in batch5['readings']}
+assert {k:r['resistance_ohms'] for k,r in measured5.items()}=={'B18':400000,'B19':400000}
+for x,y in batch5['rejected_direct_pairs']:assert net(x)!=net(y)
+for x,y in batch5['confirmed_pairs']:assert net(x)==net(y)
+assert not {'U7.1','U7.2','U7.3'} & set(m['unresolved_pins'])
+assert next(c for c in m['components'] if c['ref']=='U7')['population']=='DNP'
+assert net('U7.1')==net('GND.1') and net('U7.2')==net('J3.2') and net('U7.3')==net('J3.1')
+for path,digest in batch5['photos'].items():assert sha(path)==digest
+pir_correction=read('evidence/pic21_tp16_followup_20261009.json')['resolution']
+assert pir_correction['reading']['resistance_ohms']==800000
+for x,y in pir_correction['confirmed_pairs']:assert net(x)==net(y)
+for x,y in pir_correction['rejected_direct_pairs']:assert net(x)!=net(y)
+completed_ids=set(measured)|set(measured2)|set(measured3)|set(measured4)|set(measured5)|{'B21'}
 assert {r['id'] for r in queue['completed_tests']}==completed_ids
 assert not completed_ids&{r['id'] for r in queue['tests']}, 'Do not repeat completed finishing readings'
 for ref in ['U4','R11','R14','R15','R16','R37','R39','Q1','U2','Q8','C5','LED1','R18','R19','Q7','TP3','TP104','U106','J3','R43','TP14','R42','R44','TP4','TP103','R21','R22','R23','R48']:
@@ -143,8 +157,9 @@ assert xml.findtext('./components/comp[@ref="R46"]/fields/field[@name="Measureme
 assert xml.findtext('./components/comp[@ref="TP103"]/value')=='VDD'
 assert net('U4.12')==net('R18.1')=='H_RX_ENABLE_CTL'
 assert net('U4.13')==net('TP3.1')==net('R10.1')=='RF_MONITOR_PAD'
-assert net('U4.21')==net('VREF.1')=='VREF'
-assert net('R21.2')==net('VREF.1')==net('U4.21')!=net('VDD.1')
+assert net('U4.21')==net('TP16.1')==net('Q2.S')=='H_PIR_SIG'
+assert net('R21.2')==net('VREF.1')!=net('U4.21')
+assert net('VREF.1')!=net('VDD.1')
 assert sites['V071']['net']=='VREF'
 assert net('R42.1')==net('R44.1')==net('TP4.1')==net('U4.25')
 assert net('U6A.R1')==net('J3.1')=='H_PIR_VDD'
@@ -170,4 +185,4 @@ assert xml.findtext('./components/comp[@ref="TP107"]/value')=='BATTERY (+)'
 assert xml.findtext('./components/comp[@ref="TP108"]/value')=='BATTERY (-)'
 out=dict(revision=m['revision'],result='PASS',schematic_sha256=v['schematic_sha256'],modeled_nets=v['proposed_net_partitions'],open_pads=len(m['unresolved_pins']),erc_total=v['erc_total'],gpio_pins_still_open=gpio,recorded_resistance_ohms=11200,qualified_q7_topology='R18 input - base; R19 base-emitter pull-up; emitter VDD; collector R20. Photo/resistance-supported inference.',unmeasured_gpio_connections='None introduced',prior_independent_electrical_contracts='PASS',review_replay='PASS',mcp_properties_match='PASS',original_photo_checksums=v['original_photo_checksums'],pdfs={k:dict(pages=n,sha256=sha(k)) for k,n in pdfs.items()},pic_map_basis='Updated v0.9.9: V035/RA2 to VREF, V042 to VDD; zero open PIC pads; qualified local connections remain. Original photo pixels retained.')
 (R/'evidence/live_evidence_verification.json').write_text(json.dumps(out,indent=2)+'\n',encoding='utf-8')
-print('PASS: RC1-R18, RC2-TP3, RB0-VREF, U6A-J3.1; rejected RC1-VREF; prior independent contracts; native/model and MCP properties.')
+print('PASS: RC1-R18, RC2-TP3, RB0-TP16/Q2, U6A-J3.1; rejected RC1-VREF; prior independent contracts; native/model and MCP properties.')

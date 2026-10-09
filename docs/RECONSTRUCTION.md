@@ -14,7 +14,7 @@ BATTERY+ reaches Q1's single physical pad (native pin 3). Q1.L (native pin 2) su
 
 The R1A marking matches the Formosa FMOS3401A PMOS candidate, with gate 1/source 2/drain 3. Reverse-polarity protection is a supported interpretation; exact maker and gate operation remain unverified. Photo label `S` means **single pad**, not source.
 
-Board VDD/TP103 is the separate logic rail and feeds MX512H pin 1/VCC. VREF/TP104 is separate again: user reports connect PIC21/RB0/V026, PIC4/RA2/V035 and R21.2/V071. U3.5 and R22 D/left/model2 are now measured to VREF at 1 ohm. Other VREF bias branches remain individually qualified; the R23 tie was rejected. GND includes BATTERY (-). Candidate regulator outputs of 4.5 V and 3.3 V are datasheet ratings, not measured board voltages.
+Board VDD/TP103 is the separate logic rail and feeds MX512H pin 1/VCC. VREF/TP104 is separate again: user reports connect PIC4/RA2/V035 and R21.2/V071. PIC21/RB0/V026 was explicitly withdrawn from VREF in v0.9.16 and now reaches TP16/Q2. U3.5 and R22 D/left/model2 are now measured to VREF at 1 ohm. Other VREF bias branches remain individually qualified; the R23 tie was rejected. GND includes BATTERY (-). Candidate regulator outputs of 4.5 V and 3.3 V are datasheet ratings, not measured board voltages.
 
 ## Controller, motor and controls
 
@@ -46,6 +46,16 @@ The missing U3.5 DC return is resolved: U3.5-VREF and U3.5-R22 D/left each read 
 
 The modeled PNP tuning cells put their emitters at GND while their bases are GPIO-driven. That is not a conventional forward-operated PNP switch. Resolve Q3/C10/C11/C12 and its antenna path first; type, orientation, ground association or a junction-switching role may need correction. No automatic NPN substitution is justified. C11/C12 currently share both nodes: an in-circuit LCR result would be an effective parallel-network value, not individual capacitances.
 
-H_RF_CONTROL lacks an excitation source, H_RX_DETECT lacks a downstream detector destination and Q2/TP16 lacks a modeled controller connection. H_BAT_SENSE already has a series path through R4 to PIC24; its function and confidence require review, not necessarily another wire.
+H_RF_CONTROL lacks an excitation source, H_RX_DETECT lacks a downstream detector destination and Q2/TP16 now reaches PIC21/RB0 by user correction (v0.9.16). H_BAT_SENSE already has a series path through R4 to PIC24; its function and confidence require review, not necessarily another wire.
 
 Q8's P-channel source is modeled on filtered VSYS while its U2 driver uses VDD. Turn-off cannot be established from a gate-to-ground level alone. After passive routing, measure source and gate relative to GND and compute VGS. The 6.0V/4.5V example in the architect review is illustrative, not a board measurement; the fitted device and actual waveforms remain unverified.
+
+## U7 and PIR route follow-up, v0.9.16
+
+The user measured the three corresponding physical columns of J3 and the empty U7 footprint as connected. The square pad is at opposite ends, so the local schematic numbering is U7.1-J3.3/GND, U7.2-J3.2/H_PIR_RAW, U7.3-J3.1/H_PIR_VDD. No numeric resistance was supplied for these pairs; U7 stays DNP. All three former U7 open pads are resolved.
+
+B18 TP16-TP11 and B19 TP16-TP17 each read 400 kohm. These are rejected direct connections, not new 400k components. TP16 still needs its controller destination; the next candidate is PIC2/RA0 at the right end of C25. The Q2-to-TP16 and C25-to-PIC2 local traces are already visible; only their possible hidden interconnection requires the meter. Evidence: `evidence/pir_batch5_u7_20261009.json`.
+
+The subsequent user report identifies PIC21/RB0 as TP16's destination, and Q2's upper-right pad as the R38 interface. Those local transistor traces are accepted from the photo. The new PIC21 report conflicts with the implication of the older PIC21/V026/VREF mapping: no net merge is made until TP16-to-VREF is checked. The C25 candidate B20 is cancelled. See `evidence/pic21_tp16_followup_20261009.json`.
+
+The conflict is now resolved: TP16-to-VREF = 0.8 Mohm, and the user explicitly calls PIC21-VREF a mistake. PIC21 moves to H_PIR_SIG / TP16 / Q2.S. V026 retains its earlier PIC21 association; its obsolete V071/VREF grouping is removed. V035/RA2 and V071/R21 remain on VREF. No further PIR-to-PIC routing check is required; earlier pending/C25 instructions in this chronological record are superseded.

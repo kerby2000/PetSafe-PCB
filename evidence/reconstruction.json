@@ -1,6 +1,6 @@
 {
   "board": "100-1339 R03 A",
-  "revision": "v0.9.15",
+  "revision": "v0.9.16",
   "status": "INFERRED WORKING CIRCUIT / NOT CONTINUITY VERIFIED",
   "components": [
     {
@@ -364,7 +364,8 @@
       "footprint": "Resistor_SMD:R_0603_1608Metric",
       "footprint_confidence": "medium - revised family estimate",
       "footprint_basis": "User reports R8 approximately 1.6 x 0.77 mm, consistent with 0603 (1608 metric). Repeated fitted resistor family revised using R8 as a scale reference. This individual body has not been measured; earlier 0805 estimate superseded.",
-      "via_evidence": "v0.9.8: User confirms V071-VREF. Earlier V071-R21.2 and V026-VREF-PIC21/RB0 associations retained. R21.2 joins VREF. Existing R22.2/R23.2/R48.2 receiver-bias branches remain prior photo/circuit hypotheses, not new measured connections. VREF remains separate from VDD and RC1/V053. No voltage or numeric resistance supplied."
+      "via_evidence": "v0.9.16 CORRECTION: user confirms PIC21/RB0 -> TP16 -> Q2 single pad; TP16-VREF = 0.8 Mohm. User explicitly withdraws PIC21-VREF. PIC21/V026 belongs to H_PIR_SIG, separate from VREF. RA2/V035 and R21/V071 remain VREF. This supersedes every earlier RB0/V026-to-VREF statement.",
+      "measurement_evidence": "v0.9.16 CORRECTION: user confirms PIC21/RB0 -> TP16 -> Q2 single pad; TP16-VREF = 0.8 Mohm. User explicitly withdraws PIC21-VREF. PIC21/V026 belongs to H_PIR_SIG, separate from VREF. RA2/V035 and R21/V071 remain VREF. This supersedes every earlier RB0/V026-to-VREF statement."
     },
     {
       "ref": "R22",
@@ -385,9 +386,9 @@
       "footprint": "Resistor_SMD:R_0603_1608Metric",
       "footprint_confidence": "medium - revised family estimate",
       "footprint_basis": "User reports R8 approximately 1.6 x 0.77 mm, consistent with 0603 (1608 metric). Repeated fitted resistor family revised using R8 as a scale reference. This individual body has not been measured; earlier 0805 estimate superseded.",
-      "via_evidence": "v0.9.14 user: E/right/model1-GND 1 ohm; D/left/model2-VREF confirmed in batch1. R22 spans VREF to GND; 10 kohm agrees with 01C marking. U3 pin6 to E is 400 kohm and is not a wire.",
+      "via_evidence": "v0.9.16 CORRECTION: user confirms PIC21/RB0 -> TP16 -> Q2 single pad; TP16-VREF = 0.8 Mohm. User explicitly withdraws PIC21-VREF. PIC21/V026 belongs to H_PIR_SIG, separate from VREF. RA2/V035 and R21/V071 remain VREF. This supersedes every earlier RB0/V026-to-VREF statement.",
       "v093_summary": "v0.9.14 user: E/right/model1-GND 1 ohm; D/left/model2-VREF confirmed in batch1. R22 spans VREF to GND; 10 kohm agrees with 01C marking. U3 pin6 to E is 400 kohm and is not a wire.",
-      "measurement_evidence": "v0.9.14 user: E/right/model1-GND 1 ohm; D/left/model2-VREF confirmed in batch1. R22 spans VREF to GND; 10 kohm agrees with 01C marking. U3 pin6 to E is 400 kohm and is not a wire.",
+      "measurement_evidence": "v0.9.16 CORRECTION: user confirms PIC21/RB0 -> TP16 -> Q2 single pad; TP16-VREF = 0.8 Mohm. User explicitly withdraws PIC21-VREF. PIC21/V026 belongs to H_PIR_SIG, separate from VREF. RA2/V035 and R21/V071 remain VREF. This supersedes every earlier RB0/V026-to-VREF statement.",
       "photo_pad_mapping": {
         "R22.1": "E / right end in IMG_2434 / GND",
         "R22.2": "D / left end in IMG_2434 / VREF (previous batch)"
@@ -837,7 +838,8 @@
       "footprint": "Resistor_SMD:R_0603_1608Metric",
       "footprint_confidence": "medium - revised family estimate",
       "footprint_basis": "User reports R8 approximately 1.6 x 0.77 mm, consistent with 0603 (1608 metric). Repeated fitted resistor family revised using R8 as a scale reference. This individual body has not been measured; earlier 0805 estimate superseded.",
-      "via_evidence": "v0.9.8: User confirms V071-VREF. Earlier V071-R21.2 and V026-VREF-PIC21/RB0 associations retained. R21.2 joins VREF. Existing R22.2/R23.2/R48.2 receiver-bias branches remain prior photo/circuit hypotheses, not new measured connections. VREF remains separate from VDD and RC1/V053. No voltage or numeric resistance supplied."
+      "via_evidence": "v0.9.16 CORRECTION: user confirms PIC21/RB0 -> TP16 -> Q2 single pad; TP16-VREF = 0.8 Mohm. User explicitly withdraws PIC21-VREF. PIC21/V026 belongs to H_PIR_SIG, separate from VREF. RA2/V035 and R21/V071 remain VREF. This supersedes every earlier RB0/V026-to-VREF statement.",
+      "measurement_evidence": "v0.9.16 CORRECTION: user confirms PIC21/RB0 -> TP16 -> Q2 single pad; TP16-VREF = 0.8 Mohm. User explicitly withdraws PIC21-VREF. PIC21/V026 belongs to H_PIR_SIG, separate from VREF. RA2/V035 and R21/V071 remain VREF. This supersedes every earlier RB0/V026-to-VREF statement."
     },
     {
       "ref": "R1",
@@ -2398,7 +2400,8 @@
       "v093_summary": "v0.9.3 user confirms 5/RA3-V036, 6/RA4-V037, 7/RA5-V039, 11/RC0-V047, 13/RC2-V049. Earlier 15-V022, 16-V023, 21-V026 retained. All eight via routes have unknown onward destinations; no NC inferred.",
       "v094_summary": "v0.9.4: user confirms pin15/RC4 via V022-V016 to MX512H U5 pin2/INA, and pin16/RC5 via V023-V019 to U5 pin3/INB. Remaining via-only GPIOs: 5/V036, 6/V037, 7/V039, 11/V047, 13/V049, 21/V026.",
       "v096_summary": "v0.9.6 user working pairs: 5/RA3 V036-V108 R14; 6/RA4 V037-V102 R15; 7/RA5 V039-V097 R16; 11/RC0 V047-V091 R11. Existing RC6-R13 retained. Only 13/RC2 and 21/RB0 remain without modeled onward routes.",
-      "via_evidence": "v0.9.9: User checked V035-VREF TP. Prior photo association V035-PIC4/RA2-C39.1 retained; joins the already confirmed RB0/V026/R21.2/V071 VREF node. No voltage or numerical resistance supplied. Other modeled bias branches retain earlier inferred status. V042-PIC20 supply now user-confirmed to board VDD/TP103, not motor VDD."
+      "via_evidence": "v0.9.16 CORRECTION: user confirms PIC21/RB0 -> TP16 -> Q2 single pad; TP16-VREF = 0.8 Mohm. User explicitly withdraws PIC21-VREF. PIC21/V026 belongs to H_PIR_SIG, separate from VREF. RA2/V035 and R21/V071 remain VREF. This supersedes every earlier RB0/V026-to-VREF statement.",
+      "measurement_evidence": "v0.9.16 CORRECTION: user confirms PIC21/RB0 -> TP16 -> Q2 single pad; TP16-VREF = 0.8 Mohm. User explicitly withdraws PIC21-VREF. PIC21/V026 belongs to H_PIR_SIG, separate from VREF. RA2/V035 and R21/V071 remain VREF. This supersedes every earlier RB0/V026-to-VREF statement."
     },
     {
       "ref": "U5",
@@ -2573,13 +2576,20 @@
         "2",
         "3"
       ],
-      "note": "Three-hole unpopulated footprint; square pad is local pin 1.",
+      "note": "v0.9.16: user measured U7 square pad/model1 to J3.3/GND; middle/model2 to J3.2/H_PIR_RAW; outer round/model3 to J3.1/H_PIR_VDD. IMG_2441 confirms square-pad numbering. No numerical continuity values supplied. Empty option remains DNP.",
       "side": "back",
-      "traced_pin_count": 0,
+      "traced_pin_count": 3,
       "library_symbol": "Connector_Generic:Conn_01x03",
       "footprint": "Connector_PinHeader_2.54mm:PinHeader_1x03_P2.54mm_Vertical",
       "footprint_confidence": "low",
-      "footprint_basis": "Three empty through-hole pads; generic 2.54-mm row represents candidate hole geometry, not a fitted header or identified IC."
+      "footprint_basis": "Three empty through-hole pads; generic 2.54-mm row represents candidate hole geometry, not a fitted header or identified IC.",
+      "measurement_evidence": "v0.9.16: user measured U7 square pad/model1 to J3.3/GND; middle/model2 to J3.2/H_PIR_RAW; outer round/model3 to J3.1/H_PIR_VDD. IMG_2441 confirms square-pad numbering. No numerical continuity values supplied. Empty option remains DNP.",
+      "via_evidence": "v0.9.16: user measured U7 square pad/model1 to J3.3/GND; middle/model2 to J3.2/H_PIR_RAW; outer round/model3 to J3.1/H_PIR_VDD. IMG_2441 confirms square-pad numbering. No numerical continuity values supplied. Empty option remains DNP.",
+      "photo_pad_mapping": {
+        "U7.1": "Square empty pad: left in the user front photo; top in IMG_2441. Connects to J3.3 / black wire / GND.",
+        "U7.2": "Middle empty pad to middle J3.2 / blue wire / H_PIR_RAW.",
+        "U7.3": "Round outer empty pad: right in user front photo; bottom in IMG_2441. Connects to J3.1 / red wire / H_PIR_VDD."
+      }
     },
     {
       "ref": "Q1",
@@ -2625,7 +2635,7 @@
       "side": "front",
       "traced_pin_count": 1,
       "proposed_value": "BC847B?",
-      "hypothesis": "1FW supports BC847B. Candidate B=R, E=L, C=S and interface role remain inferred. J3.1 supply, J3.3 GND and J3.2-R38 K are user-confirmed; Q2/TP16 onward route remains unverified.",
+      "hypothesis": "1FW supports BC847B. Candidate B=R, E=L, C=S and interface role remain inferred. J3.1 supply, J3.3 GND and J3.2-R38 K are user-confirmed; Q2/TP16 reaches PIC21/RB0 per user, separate from VREF at 800 kohm.",
       "library_symbol": "Transistor_BJT:BC847",
       "footprint": "Package_TO_SOT_SMD:SOT-23",
       "footprint_confidence": "datasheet/package candidate",
@@ -3063,8 +3073,8 @@
       "footprint": "Connector_PinHeader_2.54mm:PinHeader_1x03_P2.54mm_Vertical",
       "footprint_confidence": "medium",
       "footprint_basis": "Three soldered wire holes; generic 2.54-mm row models the candidate land pattern, not the connector housing.",
-      "via_evidence": "v0.9.14 user: pin1 PIR supply previously confirmed; pin2 H-R38 K/right/model1 1 ohm and H-R38 J/left/model2 10 kohm; pin3-GND 1 ohm. Pin2-GND remains 290 kohm (batch1), distinct from ground. Q2 onward/controller route remains unverified.",
-      "measurement_evidence": "v0.9.14 user: pin1 PIR supply previously confirmed; pin2 H-R38 K/right/model1 1 ohm and H-R38 J/left/model2 10 kohm; pin3-GND 1 ohm. Pin2-GND remains 290 kohm (batch1), distinct from ground. Q2 onward/controller route remains unverified.",
+      "via_evidence": "v0.9.14 user: pin1 PIR supply previously confirmed; pin2 H-R38 K/right/model1 1 ohm and H-R38 J/left/model2 10 kohm; pin3-GND 1 ohm. Pin2-GND remains 290 kohm (batch1), distinct from ground. Q2 onward/controller route remains unverified. v0.9.16: matching physical columns reach U7; J3.1-U7.3 supply, J3.2-U7.2 signal, J3.3-U7.1 GND.",
+      "measurement_evidence": "v0.9.14 user: pin1 PIR supply previously confirmed; pin2 H-R38 K/right/model1 1 ohm and H-R38 J/left/model2 10 kohm; pin3-GND 1 ohm. Pin2-GND remains 290 kohm (batch1), distinct from ground. Q2 onward/controller route remains unverified. v0.9.16: matching physical columns reach U7; J3.1-U7.3 supply, J3.2-U7.2 signal, J3.3-U7.1 GND.",
       "photo_pad_mapping": {}
     },
     {
@@ -3387,7 +3397,9 @@
       "library_symbol": "Connector:TestPoint",
       "footprint": "TestPoint:TestPoint_THTPad_D2.0mm_Drill1.0mm",
       "footprint_confidence": "low",
-      "footprint_basis": "Stock plated-hole approximation from photographs. Exact drill and annular ring remain unmeasured; these are board pads, not fitted components."
+      "footprint_basis": "Stock plated-hole approximation from photographs. Exact drill and annular ring remain unmeasured; these are board pads, not fitted components.",
+      "measurement_evidence": "v0.9.16 CORRECTION: user confirms PIC21/RB0 -> TP16 -> Q2 single pad; TP16-VREF = 0.8 Mohm. User explicitly withdraws PIC21-VREF. PIC21/V026 belongs to H_PIR_SIG, separate from VREF. RA2/V035 and R21/V071 remain VREF. This supersedes every earlier RB0/V026-to-VREF statement.",
+      "via_evidence": "v0.9.16 CORRECTION: user confirms PIC21/RB0 -> TP16 -> Q2 single pad; TP16-VREF = 0.8 Mohm. User explicitly withdraws PIC21-VREF. PIC21/V026 belongs to H_PIR_SIG, separate from VREF. RA2/V035 and R21/V071 remain VREF. This supersedes every earlier RB0/V026-to-VREF statement."
     },
     {
       "ref": "TP17",
@@ -3493,7 +3505,8 @@
         "VREF.1": "PIC pin12 visible trace reaches V053, the VREF-labelled board pad. Remote continuation/function remains unknown."
       },
       "v09_summary": "PIC pin12 visible trace reaches V053, the VREF-labelled board pad. Remote continuation/function remains unknown.",
-      "via_evidence": "v0.9.9: User checked V035-VREF TP. Prior photo association V035-PIC4/RA2-C39.1 retained; joins the already confirmed RB0/V026/R21.2/V071 VREF node. No voltage or numerical resistance supplied. Other modeled bias branches retain earlier inferred status."
+      "via_evidence": "v0.9.16 CORRECTION: user confirms PIC21/RB0 -> TP16 -> Q2 single pad; TP16-VREF = 0.8 Mohm. User explicitly withdraws PIC21-VREF. PIC21/V026 belongs to H_PIR_SIG, separate from VREF. RA2/V035 and R21/V071 remain VREF. This supersedes every earlier RB0/V026-to-VREF statement.",
+      "measurement_evidence": "v0.9.16 CORRECTION: user confirms PIC21/RB0 -> TP16 -> Q2 single pad; TP16-VREF = 0.8 Mohm. User explicitly withdraws PIC21-VREF. PIC21/V026 belongs to H_PIR_SIG, separate from VREF. RA2/V035 and R21/V071 remain VREF. This supersedes every earlier RB0/V026-to-VREF statement."
     },
     {
       "ref": "ANT1",
@@ -3733,7 +3746,8 @@
         "U5.6",
         "U5.7",
         "U6.R3",
-        "J3.3"
+        "J3.3",
+        "U7.1"
       ],
       "status": "HYPOTHESIS / retains visual fragments where listed",
       "original_fragments": [
@@ -3749,7 +3763,8 @@
         "First four transistor L pads visibly join V089/V094/V099/V104, user GND. Q3 L joins the same front copper by photo inference. Candidate emitter functions not independently established.",
         "Front lower tuning-capacitor common band joins V087/V088 user GND. Withdraw antenna B assignment of these pads; midpoint antenna links remain unknown.",
         "Rear tuning-capacitor ground-side lands share copper around V093/V096/V101/V105. These are user-GND sites; opposite lands retain the local front/rear midpoint grouping."
-      ]
+      ],
+      "v0916_evidence": "User measured matching physical columns of U7 and J3. U7 local square-pad pin1 maps to J3 pin3; middle to pin2; outer round pin3 to J3 pin1. No numeric resistance supplied; other branches retain earlier qualifications."
     },
     {
       "net": "H_LDO_IN",
@@ -3851,21 +3866,25 @@
       "endpoints": [
         "R33.1",
         "R38.1",
-        "J3.2"
+        "J3.2",
+        "U7.2"
       ],
       "status": "User J3.2-to-R38 K/right/model1 = 1 ohm. Opposite R38 J/left/model2 = 10 kohm. R33 branch remains photo/circuit hypothesis.",
-      "original_fragments": []
+      "original_fragments": [],
+      "v0916_evidence": "User measured matching physical columns of U7 and J3. U7 local square-pad pin1 maps to J3 pin3; middle to pin2; outer round pin3 to J3 pin1. No numeric resistance supplied; other branches retain earlier qualifications."
     },
     {
       "net": "H_PIR_SIG",
       "endpoints": [
         "Q2.S",
-        "TP16.1"
+        "TP16.1",
+        "U4.21"
       ],
-      "status": "HYPOTHESIS / retains visual fragments where listed",
+      "status": "USER_CONFIRMED PIC21-TP16 and local photo Q2.S trace; TP16-VREF measured 800 kohm, no rail tie.",
       "original_fragments": [
         "V_Q2_SINGLE"
-      ]
+      ],
+      "v0916_evidence": "TP16-to-TP11 and TP16-to-TP17 each 400 kohm. Direct joins rejected; no new resistor inferred."
     },
     {
       "net": "H_PIR_VDD",
@@ -3874,10 +3893,12 @@
         "J3.1",
         "R33.2",
         "U6.R1",
-        "U6A.R1"
+        "U6A.R1",
+        "U7.3"
       ],
       "status": "HYPOTHESIS / retains visual fragments where listed",
-      "original_fragments": []
+      "original_fragments": [],
+      "v0916_evidence": "User measured matching physical columns of U7 and J3. U7 local square-pad pin1 maps to J3 pin3; middle to pin2; outer round pin3 to J3 pin1. No numeric resistance supplied; other branches retain earlier qualifications."
     },
     {
       "net": "H_RF_CONTROL",
@@ -4182,7 +4203,6 @@
     {
       "net": "VREF",
       "endpoints": [
-        "U4.21",
         "VREF.1",
         "R21.2",
         "R22.2",
@@ -4194,7 +4214,8 @@
       ],
       "status": "Mixed evidence: user measures U3.5/R22.2/VREF at 1 ohm. Original C18.1 local fragment retained; other bias branches individually qualified. R23-VREF hypothesis rejected.",
       "original_fragments": [],
-      "v098_evidence": "v0.9.8: User confirms V071-VREF. Earlier V071-R21.2 and V026-VREF-PIC21/RB0 associations retained. R21.2 joins VREF. Existing R22.2/R23.2/R48.2 receiver-bias branches remain prior photo/circuit hypotheses, not new measured connections. VREF remains separate from VDD and RC1/V053. No voltage or numeric resistance supplied."
+      "v098_evidence": "v0.9.8: User confirms V071-VREF. Earlier V071-R21.2 and V026-VREF-PIC21/RB0 associations retained. R21.2 joins VREF. Existing R22.2/R23.2/R48.2 receiver-bias branches remain prior photo/circuit hypotheses, not new measured connections. VREF remains separate from VDD and RC1/V053. No voltage or numeric resistance supplied.",
+      "v0916_correction": "v0.9.16 CORRECTION: user confirms PIC21/RB0 -> TP16 -> Q2 single pad; TP16-VREF = 0.8 Mohm. User explicitly withdraws PIC21-VREF. PIC21/V026 belongs to H_PIR_SIG, separate from VREF. RA2/V035 and R21/V071 remain VREF. This supersedes every earlier RB0/V026-to-VREF statement."
     },
     {
       "net": "PIC_RC3",
@@ -4920,10 +4941,7 @@
     "U6.L1",
     "U6.L2",
     "U6A.L",
-    "U6A.R2",
-    "U7.1",
-    "U7.2",
-    "U7.3"
+    "U6A.R2"
   ],
   "reference_map": {
     "C1A": "C101",
@@ -5333,17 +5351,6 @@
       "b": [
         229.87,
         167.64
-      ]
-    },
-    {
-      "net": "VREF",
-      "a": [
-        283.21,
-        81.28
-      ],
-      "b": [
-        288.29,
-        81.28
       ]
     },
     {
@@ -10174,6 +10181,61 @@
         497.84,
         237.49
       ]
+    },
+    {
+      "net": "GND",
+      "a": [
+        391.16,
+        299.72
+      ],
+      "b": [
+        400.05,
+        299.72
+      ]
+    },
+    {
+      "net": "H_PIR_RAW",
+      "a": [
+        388.62,
+        302.26
+      ],
+      "b": [
+        388.62,
+        327.66
+      ]
+    },
+    {
+      "net": "H_PIR_RAW",
+      "a": [
+        388.62,
+        302.26
+      ],
+      "b": [
+        400.05,
+        302.26
+      ]
+    },
+    {
+      "net": "H_PIR_VDD",
+      "a": [
+        400.05,
+        304.8
+      ],
+      "b": [
+        400.05,
+        325.12
+      ]
+    },
+    {
+      "net": "H_PIR_SIG",
+      "a": [
+        283.21,
+        81.28
+      ],
+      "b": [
+        288.29,
+        81.28
+      ]
     }
   ],
   "pin_positions": {
@@ -11542,16 +11604,16 @@
       364.49
     ],
     "U7.1": [
-      455.93,
-      359.41
+      400.05,
+      299.72
     ],
     "U7.2": [
-      455.93,
-      361.95
+      400.05,
+      302.26
     ],
     "U7.3": [
-      455.93,
-      364.49
+      400.05,
+      304.8
     ],
     "Q9.L": [
       478.79,
@@ -11960,5 +12022,16 @@
       "revision": "v0.9.4"
     }
   ],
-  "review_date": "2026-10-09"
+  "review_date": "2026-10-09",
+  "pending_connection_reports": [
+    {
+      "endpoints": [
+        "U4.21",
+        "TP16.1"
+      ],
+      "evidence": "evidence/pic21_tp16_followup_20261009.json",
+      "status": "RESOLVED_APPLIED",
+      "reason": "v0.9.16 CORRECTION: user confirms PIC21/RB0 -> TP16 -> Q2 single pad; TP16-VREF = 0.8 Mohm. User explicitly withdraws PIC21-VREF. PIC21/V026 belongs to H_PIR_SIG, separate from VREF. RA2/V035 and R21/V071 remain VREF. This supersedes every earlier RB0/V026-to-VREF statement."
+    }
+  ]
 }

@@ -2,16 +2,16 @@
 <export version="E">
   <design>
     <source>C:\Users\lukin\Documents\ChatGPT\PetSafe-PCB\schematic\PetSafe_1001339.kicad_sch</source>
-    <date>2026-10-09T12:03:22</date>
+    <date>2026-10-09T13:02:55</date>
     <tool>Eeschema 10.0.5</tool>
     <sheet number="1" name="/" tstamps="/">
       <title_block>
         <title>PetSafe 100-1339 R03 A | single-sheet reconstruction</title>
         <company>KiCad 10 libraries + four datasheet symbols | MCP authoring</company>
-        <rev>0.9.15</rev>
+        <rev>0.9.16</rev>
         <date>2026-10-09</date>
         <source>PetSafe_1001339.kicad_sch</source>
-        <comment number="1" value="R23-C40-R42 junction measured; photo-first review of remaining paths."/>
+        <comment number="1" value="U7-J3 mapped; PIC21 to TP16/Q2; mistaken RB0-VREF tie removed."/>
         <comment number="2" value=""/>
         <comment number="3" value=""/>
         <comment number="4" value=""/>
@@ -2255,8 +2255,8 @@
       <footprint>Connector_PinHeader_2.54mm:PinHeader_1x03_P2.54mm_Vertical</footprint>
       <description>Generic connector, single row, 01x03, script generated (kicad-library-utils/schlib/autogen/connector/)</description>
       <fields>
-        <field name="ViaEvidence">v0.9.14 user: pin1 PIR supply previously confirmed; pin2 H-R38 K/right/model1 1 ohm and H-R38 J/left/model2 10 kohm; pin3-GND 1 ohm. Pin2-GND remains 290 kohm (batch1), distinct from ground. Q2 onward/controller route remains unverified.</field>
-        <field name="MeasurementEvidence">v0.9.14 user: pin1 PIR supply previously confirmed; pin2 H-R38 K/right/model1 1 ohm and H-R38 J/left/model2 10 kohm; pin3-GND 1 ohm. Pin2-GND remains 290 kohm (batch1), distinct from ground. Q2 onward/controller route remains unverified.</field>
+        <field name="ViaEvidence">v0.9.14 user: pin1 PIR supply previously confirmed; pin2 H-R38 K/right/model1 1 ohm and H-R38 J/left/model2 10 kohm; pin3-GND 1 ohm. Pin2-GND remains 290 kohm (batch1), distinct from ground. Q2 onward/controller route remains unverified. v0.9.16: matching physical columns reach U7; J3.1-U7.3 supply, J3.2-U7.2 signal, J3.3-U7.1 GND.</field>
+        <field name="MeasurementEvidence">v0.9.14 user: pin1 PIR supply previously confirmed; pin2 H-R38 K/right/model1 1 ohm and H-R38 J/left/model2 10 kohm; pin3-GND 1 ohm. Pin2-GND remains 290 kohm (batch1), distinct from ground. Q2 onward/controller route remains unverified. v0.9.16: matching physical columns reach U7; J3.1-U7.3 supply, J3.2-U7.2 signal, J3.3-U7.1 GND.</field>
         <field name="OriginalReference">J3</field>
         <field name="Evidence">Photo reconstruction; topology inferred</field>
         <field name="LibraryPolicy">Unmodified KiCad 10 stock symbol</field>
@@ -2268,8 +2268,8 @@
         <field name="Description">Generic connector, single row, 01x03, script generated (kicad-library-utils/schlib/autogen/connector/)</field>
       </fields>
       <libsource lib="Connector_Generic" part="Conn_01x03" description="Generic connector, single row, 01x03, script generated (kicad-library-utils/schlib/autogen/connector/)"/>
-      <property name="ViaEvidence" value="v0.9.14 user: pin1 PIR supply previously confirmed; pin2 H-R38 K/right/model1 1 ohm and H-R38 J/left/model2 10 kohm; pin3-GND 1 ohm. Pin2-GND remains 290 kohm (batch1), distinct from ground. Q2 onward/controller route remains unverified."/>
-      <property name="MeasurementEvidence" value="v0.9.14 user: pin1 PIR supply previously confirmed; pin2 H-R38 K/right/model1 1 ohm and H-R38 J/left/model2 10 kohm; pin3-GND 1 ohm. Pin2-GND remains 290 kohm (batch1), distinct from ground. Q2 onward/controller route remains unverified."/>
+      <property name="ViaEvidence" value="v0.9.14 user: pin1 PIR supply previously confirmed; pin2 H-R38 K/right/model1 1 ohm and H-R38 J/left/model2 10 kohm; pin3-GND 1 ohm. Pin2-GND remains 290 kohm (batch1), distinct from ground. Q2 onward/controller route remains unverified. v0.9.16: matching physical columns reach U7; J3.1-U7.3 supply, J3.2-U7.2 signal, J3.3-U7.1 GND."/>
+      <property name="MeasurementEvidence" value="v0.9.14 user: pin1 PIR supply previously confirmed; pin2 H-R38 K/right/model1 1 ohm and H-R38 J/left/model2 10 kohm; pin3-GND 1 ohm. Pin2-GND remains 290 kohm (batch1), distinct from ground. Q2 onward/controller route remains unverified. v0.9.16: matching physical columns reach U7; J3.1-U7.3 supply, J3.2-U7.2 signal, J3.3-U7.1 GND."/>
       <property name="OriginalReference" value="J3"/>
       <property name="Evidence" value="Photo reconstruction; topology inferred"/>
       <property name="LibraryPolicy" value="Unmodified KiCad 10 stock symbol"/>
@@ -3584,7 +3584,8 @@
       <footprint>Resistor_SMD:R_0603_1608Metric</footprint>
       <description>Resistor</description>
       <fields>
-        <field name="ViaEvidence">v0.9.8: User confirms V071-VREF. Earlier V071-R21.2 and V026-VREF-PIC21/RB0 associations retained. R21.2 joins VREF. Existing R22.2/R23.2/R48.2 receiver-bias branches remain prior photo/circuit hypotheses, not new measured connections. VREF remains separate from VDD and RC1/V053. No voltage or numeric resistance supplied.</field>
+        <field name="ViaEvidence">v0.9.16 CORRECTION: user confirms PIC21/RB0 -&gt; TP16 -&gt; Q2 single pad; TP16-VREF = 0.8 Mohm. User explicitly withdraws PIC21-VREF. PIC21/V026 belongs to H_PIR_SIG, separate from VREF. RA2/V035 and R21/V071 remain VREF. This supersedes every earlier RB0/V026-to-VREF statement.</field>
+        <field name="MeasurementEvidence">v0.9.16 CORRECTION: user confirms PIC21/RB0 -&gt; TP16 -&gt; Q2 single pad; TP16-VREF = 0.8 Mohm. User explicitly withdraws PIC21-VREF. PIC21/V026 belongs to H_PIR_SIG, separate from VREF. RA2/V035 and R21/V071 remain VREF. This supersedes every earlier RB0/V026-to-VREF statement.</field>
         <field name="OriginalReference">R21</field>
         <field name="Evidence">Photo reconstruction; topology inferred</field>
         <field name="LibraryPolicy">Unmodified KiCad 10 stock symbol</field>
@@ -3596,7 +3597,8 @@
         <field name="Description">Resistor</field>
       </fields>
       <libsource lib="Device" part="R" description="Resistor"/>
-      <property name="ViaEvidence" value="v0.9.8: User confirms V071-VREF. Earlier V071-R21.2 and V026-VREF-PIC21/RB0 associations retained. R21.2 joins VREF. Existing R22.2/R23.2/R48.2 receiver-bias branches remain prior photo/circuit hypotheses, not new measured connections. VREF remains separate from VDD and RC1/V053. No voltage or numeric resistance supplied."/>
+      <property name="ViaEvidence" value="v0.9.16 CORRECTION: user confirms PIC21/RB0 -&gt; TP16 -&gt; Q2 single pad; TP16-VREF = 0.8 Mohm. User explicitly withdraws PIC21-VREF. PIC21/V026 belongs to H_PIR_SIG, separate from VREF. RA2/V035 and R21/V071 remain VREF. This supersedes every earlier RB0/V026-to-VREF statement."/>
+      <property name="MeasurementEvidence" value="v0.9.16 CORRECTION: user confirms PIC21/RB0 -&gt; TP16 -&gt; Q2 single pad; TP16-VREF = 0.8 Mohm. User explicitly withdraws PIC21-VREF. PIC21/V026 belongs to H_PIR_SIG, separate from VREF. RA2/V035 and R21/V071 remain VREF. This supersedes every earlier RB0/V026-to-VREF statement."/>
       <property name="OriginalReference" value="R21"/>
       <property name="Evidence" value="Photo reconstruction; topology inferred"/>
       <property name="LibraryPolicy" value="Unmodified KiCad 10 stock symbol"/>
@@ -3623,8 +3625,8 @@
       <footprint>Resistor_SMD:R_0603_1608Metric</footprint>
       <description>Resistor</description>
       <fields>
-        <field name="ViaEvidence">v0.9.14 user: E/right/model1-GND 1 ohm; D/left/model2-VREF confirmed in batch1. R22 spans VREF to GND; 10 kohm agrees with 01C marking. U3 pin6 to E is 400 kohm and is not a wire.</field>
-        <field name="MeasurementEvidence">v0.9.14 user: E/right/model1-GND 1 ohm; D/left/model2-VREF confirmed in batch1. R22 spans VREF to GND; 10 kohm agrees with 01C marking. U3 pin6 to E is 400 kohm and is not a wire.</field>
+        <field name="ViaEvidence">v0.9.16 CORRECTION: user confirms PIC21/RB0 -&gt; TP16 -&gt; Q2 single pad; TP16-VREF = 0.8 Mohm. User explicitly withdraws PIC21-VREF. PIC21/V026 belongs to H_PIR_SIG, separate from VREF. RA2/V035 and R21/V071 remain VREF. This supersedes every earlier RB0/V026-to-VREF statement.</field>
+        <field name="MeasurementEvidence">v0.9.16 CORRECTION: user confirms PIC21/RB0 -&gt; TP16 -&gt; Q2 single pad; TP16-VREF = 0.8 Mohm. User explicitly withdraws PIC21-VREF. PIC21/V026 belongs to H_PIR_SIG, separate from VREF. RA2/V035 and R21/V071 remain VREF. This supersedes every earlier RB0/V026-to-VREF statement.</field>
         <field name="OriginalReference">R22</field>
         <field name="Evidence">Photo reconstruction; topology inferred</field>
         <field name="LibraryPolicy">Unmodified KiCad 10 stock symbol</field>
@@ -3636,8 +3638,8 @@
         <field name="Description">Resistor</field>
       </fields>
       <libsource lib="Device" part="R" description="Resistor"/>
-      <property name="ViaEvidence" value="v0.9.14 user: E/right/model1-GND 1 ohm; D/left/model2-VREF confirmed in batch1. R22 spans VREF to GND; 10 kohm agrees with 01C marking. U3 pin6 to E is 400 kohm and is not a wire."/>
-      <property name="MeasurementEvidence" value="v0.9.14 user: E/right/model1-GND 1 ohm; D/left/model2-VREF confirmed in batch1. R22 spans VREF to GND; 10 kohm agrees with 01C marking. U3 pin6 to E is 400 kohm and is not a wire."/>
+      <property name="ViaEvidence" value="v0.9.16 CORRECTION: user confirms PIC21/RB0 -&gt; TP16 -&gt; Q2 single pad; TP16-VREF = 0.8 Mohm. User explicitly withdraws PIC21-VREF. PIC21/V026 belongs to H_PIR_SIG, separate from VREF. RA2/V035 and R21/V071 remain VREF. This supersedes every earlier RB0/V026-to-VREF statement."/>
+      <property name="MeasurementEvidence" value="v0.9.16 CORRECTION: user confirms PIC21/RB0 -&gt; TP16 -&gt; Q2 single pad; TP16-VREF = 0.8 Mohm. User explicitly withdraws PIC21-VREF. PIC21/V026 belongs to H_PIR_SIG, separate from VREF. RA2/V035 and R21/V071 remain VREF. This supersedes every earlier RB0/V026-to-VREF statement."/>
       <property name="OriginalReference" value="R22"/>
       <property name="Evidence" value="Photo reconstruction; topology inferred"/>
       <property name="LibraryPolicy" value="Unmodified KiCad 10 stock symbol"/>
@@ -4543,7 +4545,8 @@
       <footprint>Resistor_SMD:R_0603_1608Metric</footprint>
       <description>Resistor</description>
       <fields>
-        <field name="ViaEvidence">v0.9.8: User confirms V071-VREF. Earlier V071-R21.2 and V026-VREF-PIC21/RB0 associations retained. R21.2 joins VREF. Existing R22.2/R23.2/R48.2 receiver-bias branches remain prior photo/circuit hypotheses, not new measured connections. VREF remains separate from VDD and RC1/V053. No voltage or numeric resistance supplied.</field>
+        <field name="ViaEvidence">v0.9.16 CORRECTION: user confirms PIC21/RB0 -&gt; TP16 -&gt; Q2 single pad; TP16-VREF = 0.8 Mohm. User explicitly withdraws PIC21-VREF. PIC21/V026 belongs to H_PIR_SIG, separate from VREF. RA2/V035 and R21/V071 remain VREF. This supersedes every earlier RB0/V026-to-VREF statement.</field>
+        <field name="MeasurementEvidence">v0.9.16 CORRECTION: user confirms PIC21/RB0 -&gt; TP16 -&gt; Q2 single pad; TP16-VREF = 0.8 Mohm. User explicitly withdraws PIC21-VREF. PIC21/V026 belongs to H_PIR_SIG, separate from VREF. RA2/V035 and R21/V071 remain VREF. This supersedes every earlier RB0/V026-to-VREF statement.</field>
         <field name="OriginalReference">R48</field>
         <field name="Evidence">Photo reconstruction; topology inferred</field>
         <field name="LibraryPolicy">Unmodified KiCad 10 stock symbol</field>
@@ -4555,7 +4558,8 @@
         <field name="Description">Resistor</field>
       </fields>
       <libsource lib="Device" part="R" description="Resistor"/>
-      <property name="ViaEvidence" value="v0.9.8: User confirms V071-VREF. Earlier V071-R21.2 and V026-VREF-PIC21/RB0 associations retained. R21.2 joins VREF. Existing R22.2/R23.2/R48.2 receiver-bias branches remain prior photo/circuit hypotheses, not new measured connections. VREF remains separate from VDD and RC1/V053. No voltage or numeric resistance supplied."/>
+      <property name="ViaEvidence" value="v0.9.16 CORRECTION: user confirms PIC21/RB0 -&gt; TP16 -&gt; Q2 single pad; TP16-VREF = 0.8 Mohm. User explicitly withdraws PIC21-VREF. PIC21/V026 belongs to H_PIR_SIG, separate from VREF. RA2/V035 and R21/V071 remain VREF. This supersedes every earlier RB0/V026-to-VREF statement."/>
+      <property name="MeasurementEvidence" value="v0.9.16 CORRECTION: user confirms PIC21/RB0 -&gt; TP16 -&gt; Q2 single pad; TP16-VREF = 0.8 Mohm. User explicitly withdraws PIC21-VREF. PIC21/V026 belongs to H_PIR_SIG, separate from VREF. RA2/V035 and R21/V071 remain VREF. This supersedes every earlier RB0/V026-to-VREF statement."/>
       <property name="OriginalReference" value="R48"/>
       <property name="Evidence" value="Photo reconstruction; topology inferred"/>
       <property name="LibraryPolicy" value="Unmodified KiCad 10 stock symbol"/>
@@ -5059,6 +5063,8 @@
       <footprint>TestPoint:TestPoint_THTPad_D2.0mm_Drill1.0mm</footprint>
       <description>test point</description>
       <fields>
+        <field name="MeasurementEvidence">v0.9.16 CORRECTION: user confirms PIC21/RB0 -&gt; TP16 -&gt; Q2 single pad; TP16-VREF = 0.8 Mohm. User explicitly withdraws PIC21-VREF. PIC21/V026 belongs to H_PIR_SIG, separate from VREF. RA2/V035 and R21/V071 remain VREF. This supersedes every earlier RB0/V026-to-VREF statement.</field>
+        <field name="ViaEvidence">v0.9.16 CORRECTION: user confirms PIC21/RB0 -&gt; TP16 -&gt; Q2 single pad; TP16-VREF = 0.8 Mohm. User explicitly withdraws PIC21-VREF. PIC21/V026 belongs to H_PIR_SIG, separate from VREF. RA2/V035 and R21/V071 remain VREF. This supersedes every earlier RB0/V026-to-VREF statement.</field>
         <field name="OriginalReference">TP16</field>
         <field name="Evidence">Photo reconstruction; topology inferred</field>
         <field name="LibraryPolicy">Unmodified KiCad 10 stock symbol</field>
@@ -5070,6 +5076,8 @@
         <field name="Description">test point</field>
       </fields>
       <libsource lib="Connector" part="TestPoint" description="test point"/>
+      <property name="MeasurementEvidence" value="v0.9.16 CORRECTION: user confirms PIC21/RB0 -&gt; TP16 -&gt; Q2 single pad; TP16-VREF = 0.8 Mohm. User explicitly withdraws PIC21-VREF. PIC21/V026 belongs to H_PIR_SIG, separate from VREF. RA2/V035 and R21/V071 remain VREF. This supersedes every earlier RB0/V026-to-VREF statement."/>
+      <property name="ViaEvidence" value="v0.9.16 CORRECTION: user confirms PIC21/RB0 -&gt; TP16 -&gt; Q2 single pad; TP16-VREF = 0.8 Mohm. User explicitly withdraws PIC21-VREF. PIC21/V026 belongs to H_PIR_SIG, separate from VREF. RA2/V035 and R21/V071 remain VREF. This supersedes every earlier RB0/V026-to-VREF statement."/>
       <property name="OriginalReference" value="TP16"/>
       <property name="Evidence" value="Photo reconstruction; topology inferred"/>
       <property name="LibraryPolicy" value="Unmodified KiCad 10 stock symbol"/>
@@ -5241,7 +5249,8 @@
       <footprint>TestPoint:TestPoint_THTPad_D2.0mm_Drill1.0mm</footprint>
       <description>test point</description>
       <fields>
-        <field name="ViaEvidence">v0.9.9: User checked V035-VREF TP. Prior photo association V035-PIC4/RA2-C39.1 retained; joins the already confirmed RB0/V026/R21.2/V071 VREF node. No voltage or numerical resistance supplied. Other modeled bias branches retain earlier inferred status.</field>
+        <field name="ViaEvidence">v0.9.16 CORRECTION: user confirms PIC21/RB0 -&gt; TP16 -&gt; Q2 single pad; TP16-VREF = 0.8 Mohm. User explicitly withdraws PIC21-VREF. PIC21/V026 belongs to H_PIR_SIG, separate from VREF. RA2/V035 and R21/V071 remain VREF. This supersedes every earlier RB0/V026-to-VREF statement.</field>
+        <field name="MeasurementEvidence">v0.9.16 CORRECTION: user confirms PIC21/RB0 -&gt; TP16 -&gt; Q2 single pad; TP16-VREF = 0.8 Mohm. User explicitly withdraws PIC21-VREF. PIC21/V026 belongs to H_PIR_SIG, separate from VREF. RA2/V035 and R21/V071 remain VREF. This supersedes every earlier RB0/V026-to-VREF statement.</field>
         <field name="OriginalReference">VREF</field>
         <field name="Evidence">Photo reconstruction; topology inferred</field>
         <field name="LibraryPolicy">Unmodified KiCad 10 stock symbol</field>
@@ -5253,7 +5262,8 @@
         <field name="Description">test point</field>
       </fields>
       <libsource lib="Connector" part="TestPoint" description="test point"/>
-      <property name="ViaEvidence" value="v0.9.9: User checked V035-VREF TP. Prior photo association V035-PIC4/RA2-C39.1 retained; joins the already confirmed RB0/V026/R21.2/V071 VREF node. No voltage or numerical resistance supplied. Other modeled bias branches retain earlier inferred status."/>
+      <property name="ViaEvidence" value="v0.9.16 CORRECTION: user confirms PIC21/RB0 -&gt; TP16 -&gt; Q2 single pad; TP16-VREF = 0.8 Mohm. User explicitly withdraws PIC21-VREF. PIC21/V026 belongs to H_PIR_SIG, separate from VREF. RA2/V035 and R21/V071 remain VREF. This supersedes every earlier RB0/V026-to-VREF statement."/>
+      <property name="MeasurementEvidence" value="v0.9.16 CORRECTION: user confirms PIC21/RB0 -&gt; TP16 -&gt; Q2 single pad; TP16-VREF = 0.8 Mohm. User explicitly withdraws PIC21-VREF. PIC21/V026 belongs to H_PIR_SIG, separate from VREF. RA2/V035 and R21/V071 remain VREF. This supersedes every earlier RB0/V026-to-VREF statement."/>
       <property name="OriginalReference" value="VREF"/>
       <property name="Evidence" value="Photo reconstruction; topology inferred"/>
       <property name="LibraryPolicy" value="Unmodified KiCad 10 stock symbol"/>
@@ -5466,13 +5476,13 @@
       <datasheet>https://www.ti.com/lit/ds/symlink/sn74lvc2g14.pdf</datasheet>
       <description>Dual NOT Gate, Schmitt Triggered, Low-Voltage CMOS</description>
       <fields>
+        <field name="ViaEvidence">v0.9.5: V114 reaches U2.T2, not Q8.T2. Earlier user GND assignment retained; native U2 pin2 already GND. This resolves the via annotation conflict.</field>
         <field name="OriginalReference">U2</field>
         <field name="Evidence">Photo reconstruction; topology inferred</field>
         <field name="LibraryPolicy">Unmodified KiCad 10 stock symbol</field>
         <field name="FootprintConfidence">datasheet/package candidate</field>
         <field name="FootprintBasis">Existing assignment; see component identity evidence.</field>
         <field name="PinMapping">See evidence/pin_crosswalk.json; physical orientation may be provisional</field>
-        <field name="ViaEvidence">v0.9.5: V114 reaches U2.T2, not Q8.T2. Earlier user GND assignment retained; native U2 pin2 already GND. This resolves the via annotation conflict.</field>
         <field name="Footprint">Package_TO_SOT_SMD:SOT-23-6</field>
         <field name="Datasheet">https://www.ti.com/lit/ds/symlink/sn74lvc2g14.pdf</field>
         <field name="Description">Dual NOT Gate, Schmitt Triggered, Low-Voltage CMOS</field>
@@ -5571,7 +5581,8 @@
       <description>8-bit Flash MCU, 32MHz, 14KB Flash, 1024B RAM 256B EEPROM, SOIC-28</description>
       <fields>
         <field name="UserGPIOEvidence">v0.8: user confirms multimeter + visual trace. 3-TP7/R28/R29; 17-R13; 22-TP2; 23-TP1; 25-TP4; 26-TP10. No numerical resistance values supplied. Nine GPIO destinations remain unresolved.</field>
-        <field name="ViaEvidence">v0.9.9: User checked V035-VREF TP. Prior photo association V035-PIC4/RA2-C39.1 retained; joins the already confirmed RB0/V026/R21.2/V071 VREF node. No voltage or numerical resistance supplied. Other modeled bias branches retain earlier inferred status. V042-PIC20 supply now user-confirmed to board VDD/TP103, not motor VDD.</field>
+        <field name="ViaEvidence">v0.9.16 CORRECTION: user confirms PIC21/RB0 -&gt; TP16 -&gt; Q2 single pad; TP16-VREF = 0.8 Mohm. User explicitly withdraws PIC21-VREF. PIC21/V026 belongs to H_PIR_SIG, separate from VREF. RA2/V035 and R21/V071 remain VREF. This supersedes every earlier RB0/V026-to-VREF statement.</field>
+        <field name="MeasurementEvidence">v0.9.16 CORRECTION: user confirms PIC21/RB0 -&gt; TP16 -&gt; Q2 single pad; TP16-VREF = 0.8 Mohm. User explicitly withdraws PIC21-VREF. PIC21/V026 belongs to H_PIR_SIG, separate from VREF. RA2/V035 and R21/V071 remain VREF. This supersedes every earlier RB0/V026-to-VREF statement.</field>
         <field name="OriginalReference">U4</field>
         <field name="Evidence">Photo reconstruction; topology inferred</field>
         <field name="LibraryPolicy">Unmodified KiCad 10 stock symbol</field>
@@ -5584,7 +5595,8 @@
       </fields>
       <libsource lib="MCU_Microchip_PIC16" part="PIC16F18855-xSO" description="8-bit Flash MCU, 32MHz, 14KB Flash, 1024B RAM 256B EEPROM, SOIC-28"/>
       <property name="UserGPIOEvidence" value="v0.8: user confirms multimeter + visual trace. 3-TP7/R28/R29; 17-R13; 22-TP2; 23-TP1; 25-TP4; 26-TP10. No numerical resistance values supplied. Nine GPIO destinations remain unresolved."/>
-      <property name="ViaEvidence" value="v0.9.9: User checked V035-VREF TP. Prior photo association V035-PIC4/RA2-C39.1 retained; joins the already confirmed RB0/V026/R21.2/V071 VREF node. No voltage or numerical resistance supplied. Other modeled bias branches retain earlier inferred status. V042-PIC20 supply now user-confirmed to board VDD/TP103, not motor VDD."/>
+      <property name="ViaEvidence" value="v0.9.16 CORRECTION: user confirms PIC21/RB0 -&gt; TP16 -&gt; Q2 single pad; TP16-VREF = 0.8 Mohm. User explicitly withdraws PIC21-VREF. PIC21/V026 belongs to H_PIR_SIG, separate from VREF. RA2/V035 and R21/V071 remain VREF. This supersedes every earlier RB0/V026-to-VREF statement."/>
+      <property name="MeasurementEvidence" value="v0.9.16 CORRECTION: user confirms PIC21/RB0 -&gt; TP16 -&gt; Q2 single pad; TP16-VREF = 0.8 Mohm. User explicitly withdraws PIC21-VREF. PIC21/V026 belongs to H_PIR_SIG, separate from VREF. RA2/V035 and R21/V071 remain VREF. This supersedes every earlier RB0/V026-to-VREF statement."/>
       <property name="OriginalReference" value="U4"/>
       <property name="Evidence" value="Photo reconstruction; topology inferred"/>
       <property name="LibraryPolicy" value="Unmodified KiCad 10 stock symbol"/>
@@ -5722,6 +5734,8 @@
       <footprint>Connector_PinHeader_2.54mm:PinHeader_1x03_P2.54mm_Vertical</footprint>
       <description>Generic connector, single row, 01x03, script generated (kicad-library-utils/schlib/autogen/connector/)</description>
       <fields>
+        <field name="MeasurementEvidence">v0.9.16: user measured U7 square pad/model1 to J3.3/GND; middle/model2 to J3.2/H_PIR_RAW; outer round/model3 to J3.1/H_PIR_VDD. IMG_2441 confirms square-pad numbering. No numerical continuity values supplied. Empty option remains DNP.</field>
+        <field name="ViaEvidence">v0.9.16: user measured U7 square pad/model1 to J3.3/GND; middle/model2 to J3.2/H_PIR_RAW; outer round/model3 to J3.1/H_PIR_VDD. IMG_2441 confirms square-pad numbering. No numerical continuity values supplied. Empty option remains DNP.</field>
         <field name="OriginalReference">U7</field>
         <field name="Evidence">Photo reconstruction; topology inferred</field>
         <field name="LibraryPolicy">Unmodified KiCad 10 stock symbol</field>
@@ -5733,6 +5747,8 @@
         <field name="Description">Generic connector, single row, 01x03, script generated (kicad-library-utils/schlib/autogen/connector/)</field>
       </fields>
       <libsource lib="Connector_Generic" part="Conn_01x03" description="Generic connector, single row, 01x03, script generated (kicad-library-utils/schlib/autogen/connector/)"/>
+      <property name="MeasurementEvidence" value="v0.9.16: user measured U7 square pad/model1 to J3.3/GND; middle/model2 to J3.2/H_PIR_RAW; outer round/model3 to J3.1/H_PIR_VDD. IMG_2441 confirms square-pad numbering. No numerical continuity values supplied. Empty option remains DNP."/>
+      <property name="ViaEvidence" value="v0.9.16: user measured U7 square pad/model1 to J3.3/GND; middle/model2 to J3.2/H_PIR_RAW; outer round/model3 to J3.1/H_PIR_VDD. IMG_2441 confirms square-pad numbering. No numerical continuity values supplied. Empty option remains DNP."/>
       <property name="OriginalReference" value="U7"/>
       <property name="Evidence" value="Photo reconstruction; topology inferred"/>
       <property name="LibraryPolicy" value="Unmodified KiCad 10 stock symbol"/>
@@ -6446,6 +6462,7 @@
       <node ref="U5" pin="6" pinfunction="GND_6" pintype="power_in"/>
       <node ref="U5" pin="7" pinfunction="GND_7" pintype="power_in"/>
       <node ref="U6" pin="1" pinfunction="VSS_1" pintype="power_in"/>
+      <node ref="U7" pin="1" pinfunction="Pin_1_1" pintype="passive"/>
     </net>
     <net code="3" name="/H_ANT_A" class="Default">
       <node ref="R5" pin="2" pintype="passive"/>
@@ -6489,6 +6506,7 @@
     <net code="11" name="/H_PIR_SIG" class="Default">
       <node ref="Q2" pin="3" pinfunction="C_3" pintype="passive"/>
       <node ref="TP16" pin="1" pinfunction="1_1" pintype="passive"/>
+      <node ref="U4" pin="21" pinfunction="RB0_21" pintype="bidirectional"/>
     </net>
     <net code="12" name="/H_PIR_VDD" class="Default">
       <node ref="C37" pin="1" pintype="passive"/>
@@ -6496,6 +6514,7 @@
       <node ref="R33" pin="2" pintype="passive"/>
       <node ref="U106" pin="2" pinfunction="Pin_2_2" pintype="passive"/>
       <node ref="U6" pin="3" pinfunction="VOUT_3" pintype="power_out"/>
+      <node ref="U7" pin="3" pinfunction="Pin_3_3" pintype="passive"/>
     </net>
     <net code="13" name="/H_R41_FREE" class="Default">
       <node ref="R41" pin="1" pintype="passive"/>
@@ -6641,7 +6660,6 @@
       <node ref="R48" pin="2" pintype="passive"/>
       <node ref="TP104" pin="1" pinfunction="1_1" pintype="passive"/>
       <node ref="U3" pin="5" pinfunction="+_5" pintype="input"/>
-      <node ref="U4" pin="21" pinfunction="RB0_21" pintype="bidirectional"/>
       <node ref="U4" pin="4" pinfunction="RA2_4" pintype="bidirectional"/>
     </net>
     <net code="39" name="/VSYS" class="Default">
@@ -6726,6 +6744,7 @@
       <node ref="J3" pin="2" pinfunction="Pin_2_2" pintype="passive"/>
       <node ref="R33" pin="1" pintype="passive"/>
       <node ref="R38" pin="1" pintype="passive"/>
+      <node ref="U7" pin="2" pinfunction="Pin_2_2" pintype="passive"/>
     </net>
     <net code="54" name="Net-(J5-Pin_1)" class="Default">
       <node ref="J5" pin="1" pinfunction="Pin_1_1" pintype="passive"/>
@@ -6914,19 +6933,10 @@
     <net code="101" name="unconnected-(U6-NC-Pad5)" class="Default">
       <node ref="U6" pin="5" pinfunction="NC_5" pintype="passive"/>
     </net>
-    <net code="102" name="unconnected-(U7-Pin_1-Pad1)" class="Default">
-      <node ref="U7" pin="1" pinfunction="Pin_1_1" pintype="passive"/>
-    </net>
-    <net code="103" name="unconnected-(U7-Pin_2-Pad2)" class="Default">
-      <node ref="U7" pin="2" pinfunction="Pin_2_2" pintype="passive"/>
-    </net>
-    <net code="104" name="unconnected-(U7-Pin_3-Pad3)" class="Default">
-      <node ref="U7" pin="3" pinfunction="Pin_3_3" pintype="passive"/>
-    </net>
-    <net code="105" name="unconnected-(U106-Pin_1-Pad1)" class="Default">
+    <net code="102" name="unconnected-(U106-Pin_1-Pad1)" class="Default">
       <node ref="U106" pin="1" pinfunction="Pin_1_1" pintype="passive"/>
     </net>
-    <net code="106" name="unconnected-(U106-Pin_3-Pad3)" class="Default">
+    <net code="103" name="unconnected-(U106-Pin_3-Pad3)" class="Default">
       <node ref="U106" pin="3" pinfunction="Pin_3_3" pintype="passive"/>
     </net>
   </nets>
