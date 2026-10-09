@@ -1,0 +1,112 @@
+{
+  "date": "2026-10-09",
+  "revision": "v0.9.14",
+  "source": "User finishing batch B08-B12 plus an extra U3.6-to-R22 E reading.",
+  "setup": "Resistance readings reported in response to the battery/programmer-disconnected guide; no powered measurements.",
+  "readings": [
+    {
+      "id": "B08",
+      "pair": [
+        "J3.2 / H",
+        "R38 left / J"
+      ],
+      "resistance_ohms": 10000
+    },
+    {
+      "id": "B09",
+      "pair": [
+        "J3.2 / H",
+        "R38 right / K"
+      ],
+      "resistance_ohms": 1
+    },
+    {
+      "id": "B10",
+      "pair": [
+        "U3.6 / L",
+        "R23 left / B"
+      ],
+      "resistance_ohms": 1
+    },
+    {
+      "id": "B11",
+      "pair": [
+        "U3.6 / L",
+        "R23 right / C"
+      ],
+      "resistance_ohms": 5600
+    },
+    {
+      "id": "B12",
+      "pair": [
+        "R22 right / E",
+        "GND TP / G"
+      ],
+      "resistance_ohms": 1
+    },
+    {
+      "id": "X01",
+      "pair": [
+        "U3.6 / L",
+        "R22 right / E"
+      ],
+      "resistance_ohms": 400000
+    }
+  ],
+  "physical_pad_mapping": {
+    "R23.1": "B / left end in IMG_2434",
+    "R23.2": "C / right end in IMG_2434",
+    "R22.1": "E / right end in IMG_2434 / GND",
+    "R22.2": "D / left end in IMG_2434 / VREF (previous batch)",
+    "R38.1": "K / right end in IMG_2435 / J3.2",
+    "R38.2": "J / left end in IMG_2435 / 10k from J3.2"
+  },
+  "confirmed_pairs": [
+    [
+      "U3.6",
+      "R23.1"
+    ],
+    [
+      "J3.2",
+      "R38.1"
+    ],
+    [
+      "R22.1",
+      "GND.1"
+    ]
+  ],
+  "indirect_paths": [
+    {
+      "endpoints": [
+        "U3.6",
+        "R23.2"
+      ],
+      "ohms": 5600
+    },
+    {
+      "endpoints": [
+        "J3.2",
+        "R38.2"
+      ],
+      "ohms": 10000
+    },
+    {
+      "endpoints": [
+        "U3.6",
+        "GND.1"
+      ],
+      "ohms": 400000
+    }
+  ],
+  "qualifications": [
+    "The 5.6k and 10k in-circuit readings agree with the existing marked values; no value changes or new resistors.",
+    "400k is a measured in-circuit path, not a discrete resistor value. U3.6 is not directly GND.",
+    "R23 C/right destination is still unresolved; a direct GND tie would conflict with the reported 5.6k and 400k paths.",
+    "Only J3.2-R38 K is newly established. R33 and Q2/R39 branches remain separately qualified photo/circuit hypotheses.",
+    "The photo/model inference that TP6 and C18 form an input filter is the basis for the next three checks, not new measured evidence."
+  ],
+  "photos": {
+    "photos/originals/IMG_2434.jpg": "2feac8570055753400b337f4cfe8a79256da8f3bcd706e0d972dfd9672b50d0a",
+    "photos/originals/IMG_2435.jpg": "04f1464e2fceeec695365b25183dc96505034434565d20713f55c5b13b18fac1"
+  }
+}

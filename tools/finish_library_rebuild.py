@@ -159,8 +159,9 @@ for l in L:
         x,y=l['p'];start=(rnd(x-3.81),y)
         W.append(dict(net=l['net'],a=start,b=l['p']));l['p']=start
 wire('GND','C9.2',(49,159),(49,190),(53,190))
-# User J3 pin3-GND 1 ohm; pin2 290 kohm, left unresolved pending R38 check.
+# User J3 pin3-GND; pin2 reaches R38 K/right/model1, with 10k to the opposite end.
 stub('GND','J3.3',-6,0)
+wire('H_PIR_RAW','J3.2',(306,258),(306,265))
 
 # Datasheet S-1200B45 symbol: input/enable left, output/NC right, ground below.
 stub('BATTERY+','BATP.1',0,7)
@@ -356,7 +357,7 @@ for net,edges in adj.items():
 for l in L:
     x,y=l['p'];G.append(expr(f'(label {q(l["net"])} (at {x} {y} 0) (effects (font (size .762 .762)) (justify left bottom)) (uuid {q(uid())}))'))
 tree.extend(G)
-tree.append(expr('(title_block (title "PetSafe 100-1339 R03 A | single-sheet reconstruction") (date "2026-10-09") (rev "0.9.13") (company "KiCad 10 libraries + four datasheet symbols | MCP authoring") (comment 1 "U3.5 = VREF; J3.3 = GND. Rejected R23/J3 guesses removed."))'))
+tree.append(expr('(title_block (title "PetSafe 100-1339 R03 A | single-sheet reconstruction") (date "2026-10-09") (rev "0.9.14") (company "KiCad 10 libraries + four datasheet symbols | MCP authoring") (comment 1 "J3.2-R38, U3.6-R23 and R22-GND measured; R23 onward open."))'))
 # Canonical pretty printer supplied by the installed MCP server.
 sys.path.insert(0,str(Path.home()/'Documents/VS.Code.Projects/KiCAD-MCP-Server/python'))
 from utils.sexpr_format import prettify
@@ -376,7 +377,7 @@ out.write_text(prettify(sx.dumps(tree)),encoding='utf-8',newline='\n')
 def wire_key(w):return w['net'],tuple(w['a']),tuple(w['b'])
 prior_order={wire_key(w):i for i,w in enumerate(model.get('geometric_wires',[]))}
 ordered_segments=sorted(segments,key=lambda s:(prior_order.get(s,len(prior_order)),s))
-model.update(revision='v0.9.13',coordinate_units='mm',native_pin_crosswalk=layout['crosswalk'],pin_positions={e:list(p) for e,p in P.items()},
+model.update(revision='v0.9.14',coordinate_units='mm',native_pin_crosswalk=layout['crosswalk'],pin_positions={e:list(p) for e,p in P.items()},
              geometric_wires=[dict(net=n,a=a,b=b) for n,a,b in ordered_segments],library_policy='KiCad 10 stock symbols plus four explicitly authorized MCP-authored datasheet symbols for U1/U5/U6/Q8')
 for c in model['components']:
     entry=next(x for x in layout['catalog'] if x['original_ref']==c['ref'])

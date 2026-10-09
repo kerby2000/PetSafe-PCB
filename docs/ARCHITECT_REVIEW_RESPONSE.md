@@ -49,3 +49,9 @@ The [Nexperia BAV99 pin table](https://assets.nexperia.com/documents/data-sheet/
 User measurements resolve U3 pin 5's DC return: VREF and R22's left end each read 1 ohm to pin 5; the other R22 end reads 10 kohm. Both R23 ends read 270-289 kohm, rejecting the earlier R23-VREF hypothesis. R23.2 is left unresolved pending a targeted pin6/feedback check; its marked value remains 5.6k.
 
 J3 pin 3 reads 1 ohm to GND, and pin 2 reads 290 kohm. The schematic now grounds pin 3 and leaves pin 2's destination unconfirmed. The old connector-role assumptions are removed. The current [photo guide](FINISHING_MEASUREMENTS.html) preserves all seven readings and proposes five follow-ups. Native/model comparison passes at 83 net partitions; 32 ERC findings include the two newly exposed endpoints. This is more accurate evidence, not a claim of circuit completion.
+
+## U3 and J3 second batch, v0.9.14
+
+User establishes U3 pin6 to R23 B/left/model1 at 1 ohm, with 5.6 kohm to C/right/model2. J3 pin2 to R38 K/right/model1 is 1 ohm, with 10 kohm to J/left/model2. R22 E/right/model1 is GND at 1 ohm. These support the marked resistor values and resolve the connector entry and R22 return. The additional pin6-to-R22 E reading is 400 kohm; it is preserved as an in-circuit path, not a new resistor or a direct ground tie.
+
+R23 C/right remains open. The next three checks test its relationship to TP6 and each C18 end, using the existing filter-node model and adjacent photo traces as a candidate. R33/Q2/R39 and TP16 onward routing remain qualified. All previous probe letters and results are retained in the current guide. Evidence: `evidence/u3_j3_batch2_20261009.json`.

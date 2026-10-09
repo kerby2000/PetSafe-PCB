@@ -1,8 +1,8 @@
 {
   "date": "2026-10-09",
-  "review_revision": "2026-10-09 U3/J3 finishing batch",
-  "basis_revision": "v0.9.13",
-  "scope": "Current main-board uncertainties after the 522d235 architect review and user D3 follow-up. J1 numbering corrected from photos, R41 named neutrally; D3 rail assignment resolved by user measurement with closure history retained. D2 local destinations now have user evidence: R to C20 lower end, L to ANT2/R46 upper, S to R46 lower; R46 is DNP. Exact part identity remains open. U3.5 VREF and J3.3 ground now measured; disproven R23 and J3 role guesses withdrawn in v0.9.13.",
+  "review_revision": "2026-10-09 U3/J3 finishing batch 2",
+  "basis_revision": "v0.9.14",
+  "scope": "Current main-board uncertainties after the 522d235 architect review and user D3 follow-up. J1 numbering corrected from photos, R41 named neutrally; D3 rail assignment resolved by user measurement with closure history retained. D2 local destinations now have user evidence: R to C20 lower end, L to ANT2/R46 upper, S to R46 lower; R46 is DNP. Exact part identity remains open. U3.5 VREF and J3.3 ground now measured; disproven R23 and J3 role guesses withdrawn in v0.9.13. Batch2 confirms J3.2-R38 K, U3.6-R23 B and R22 E-GND; R23 C remains unresolved.",
   "rails": [
     {
       "name": "BATTERY+",
@@ -41,7 +41,8 @@
     "BATTERY+, VSYS, VDD, VREF and GND are distinguished; L1/L2 supply sides both connect to VSYS.",
     "Reported continuity, resistance and negative results are preserved separately from inferred connections.",
     "Original ZIP and 26 original photo hashes are preserved; native/model net partitions match.",
-    "User U3.5-VREF and R22 D/left at 1 ohm; R22 E/right 10 kohm away. J3.3-GND 1 ohm; J3.2-GND 290 kohm. R23-VREF and old J3 role hypotheses withdrawn."
+    "User U3.5-VREF and R22 D/left at 1 ohm; R22 E/right 10 kohm away. J3.3-GND 1 ohm; J3.2-GND 290 kohm. R23-VREF and old J3 role hypotheses withdrawn.",
+    "Batch2: U3.6-R23 B 1 ohm / C 5.6 kohm; J3.2-R38 K 1 ohm / J 10 kohm; R22 E-GND 1 ohm. Extra U3.6-R22 E 400 kohm recorded as an indirect path."
   ],
   "issues": [
     {
@@ -237,14 +238,13 @@
       ],
       "priority": 2,
       "state": "open",
-      "known": "C2NM supports an S-812C33AMC candidate. V067 reaches J3.1/red and the U6A option pad; V063 reaches regulated VDD. U6 ground is supported by the user readings. User measures J3.3-GND 1 ohm and J3.2-GND 290 kohm; pin3 is ground, pin2 is separate.",
-      "unknown": "J3.2 onward signal route, U6 VIN/VOUT external branches, NC-pad external ties, actual PIR voltage and Q2 interface. H_PIR_SIG ends at Q2.S/TP16 with no modeled controller destination.",
-      "next_action": "Measure J3.2 to both R38 ends in the finishing photo guide to test the signal-interface candidate. Do not repeat connector ground checks. Then trace Q2/TP16 toward a specific controller endpoint and check U6 external branches.",
+      "known": "J3 pin1 supply previously confirmed; pin3-GND 1 ohm; pin2-R38 K/right/model1 1 ohm, opposite end 10 kohm. Pin2-GND 290 kohm. C2NM supports S-812C33AMC; V067 reaches J3.1/U6A, V063 regulated VDD, and U6 ground is resistance-supported.",
+      "unknown": "U6 VIN/VOUT external branches and NC-pad ties, actual PIR voltage, Q2/R39 and R33 interface branches. Q2.S/TP16 lacks a modeled controller destination. J3 connector ground and R38 entry are now established.",
+      "next_action": "After the receiver input checks, use the Q2/TP16 photo/via route to choose a specific controller endpoint; confirm Q2/R39 and R33 branches if needed. Do not repeat J3 ground or J3-to-R38 tests. Check remaining U6 branches before powered voltages.",
       "closed_when": "Physical connector ordering, U6 supply/output and signal path are verified; NC pads are documented whether tied externally or left unused.",
       "open_pads": [
         "U6.L1",
-        "U6.L2",
-        "J3.2"
+        "U6.L2"
       ],
       "nets": [
         "H_PIR_RAW",
@@ -252,6 +252,13 @@
         "H_PIR_VDD",
         "H_AUX_IN",
         "PIR_BASE"
+      ],
+      "resolved_subquestions": [
+        {
+          "result": "J3.2 connects to R38 K/right/model1; J3.3 is GND.",
+          "evidence": "evidence/u3_j3_batch2_20261009.json",
+          "date": "2026-10-09"
+        }
       ]
     },
     {
@@ -272,9 +279,9 @@
       ],
       "priority": 2,
       "state": "open",
-      "known": "PIC12/RC1 reaches R18 via V053-V070. V064-V075 is continuity; V064-V070=11.2 kohm supports the R18+R19 path. VREF reaches R21.2, PIC21 and PIC4. TP6/C18.2 is separate from U3.5/C18.1. User U3.5-VREF 1 ohm and U3.5-R22 D/left 1 ohm establish the input DC return; R22 E/right is 10 kohm away. Both R23 ends are 270-289 kohm to U3.5.",
-      "unknown": "R23.2 destination after its VREF tie was rejected, R23 physical-end numbering and remaining feedback/coupling branches, R22 E/right ground and R48.2 VREF hypotheses. Q7 terminal selection/power-switch role remains inferred. TP6 onward role and H_RX_DETECT downstream destination remain unresolved.",
-      "next_action": "Measure U3.6 to both R23 ends, then R22 E/right to GND as shown in the finishing guide. These test the remaining feedback association and the opposite bias resistor end. Preserve separation across C18. Trace C23/C40/R25 output next; do not repeat U3.5-VREF tests or invent a bias resistor.",
+      "known": "PIC12/RC1-R18 via V053-V070; V064-V075 continuity and V064-V070 11.2 kohm support Q7 supply-switch hypothesis. U3.5 is VREF; R22 D/left is VREF and E/right GND, 10k between. U3.6-R23 B/left 1 ohm, C/right 5.6 kohm; pin6-ground 400 kohm. Prior TP6/C18 fragment is retained separately from pin5.",
+      "unknown": "R23 C/right/model2 onward destination; remaining feedback/coupling and R48.2 VREF hypotheses, Q7 pin roles, receiver output destination. Both R23 ends were 270-289 kohm from U3.5; the old VREF tie remains rejected. U3 pin6 is not directly ground.",
+      "next_action": "Measure R23 C/right to TP6 and to each C18 end. This tests the existing input-filter node as the most plausible continuation; none is assumed short. Keep both C18 ends distinct. Do not repeat pin6-to-R23 or R22-ground checks. Receiver output routing follows.",
       "closed_when": "Receiver supply, bias, gain/filter paths and interface endpoints are reconciled against evidence. U3.5 has a documented DC return or supported intentional nonstandard mechanism, and the detector output has a supported functional destination.",
       "open_pads": [
         "R23.2"
@@ -296,6 +303,11 @@
         {
           "result": "U3.5 DC return established by direct VREF connection.",
           "evidence": "evidence/u3_j3_measurements_20261009.json",
+          "date": "2026-10-09"
+        },
+        {
+          "result": "R22 ground end and U3.6-to-R23 B/left confirmed; R23 C/right destination remains open.",
+          "evidence": "evidence/u3_j3_batch2_20261009.json",
           "date": "2026-10-09"
         }
       ]

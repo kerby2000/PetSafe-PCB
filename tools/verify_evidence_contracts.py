@@ -41,7 +41,10 @@ assert net('U3.5')==net('C18.1')
 assert net('U3.5')==net('R22.2')==net('VREF.1')
 assert len({net('TP6.1'),net('U3.5'),net('R22.2'),net('U4.8')})==3
 assert net('J3.3')==net('GND.1')
-assert {'J3.2','R23.2'} <= set(m['unresolved_pins'])
+assert 'R23.2' in m['unresolved_pins'] and 'J3.2' not in m['unresolved_pins']
+assert net('J3.2')==net('R38.1')!=net('R38.2')
+assert net('U3.6')==net('R23.1')!=net('R23.2')
+assert net('R22.1')==net('GND.1')!=net('U3.6')
 assert net('J3.2')!=net('GND.1') and net('R23.2')!=net('VREF.1')
 assert all(sites[f'V{i:03d}']['net']=='VREF' for i in [79,80])
 assert net('Q1.L')!=net('R43.2') and net('Q1.L')==net('U5.4') and net('R43.2')==net('TP14.1')
@@ -65,13 +68,19 @@ assert measured['B06']['resistance_ohms']==290000 and measured['B07']['resistanc
 assert measured['B01']['resistance_range_ohms']==measured['B02']['resistance_range_ohms']==[270000,289000]
 for ref,value in [('R22','10k'),('R23','5.6k')]:
  assert xml.findtext(f'./components/comp[@ref="{ref}"]/value')==value, 'In-circuit path resistance must not replace the marked value'
-for ref in ['U3','R22','R23','J3']:
+for ref in ['U3','R22','R23','R38','J3']:
  expected=next(c for c in placements['components'] if c['reference']==ref)['properties']['MeasurementEvidence']
  assert xml.findtext(f'./components/comp[@ref="{ref}"]/fields/field[@name="MeasurementEvidence"]')==expected,ref
 for path,digest in batch['photo_sha256'].items():assert sha(path)==digest
 queue=read('evidence/finishing_measurements.json')
-assert {r['id'] for r in queue['completed_tests']}==set(measured)
-assert not set(measured)&{r['id'] for r in queue['tests']}, 'Do not repeat completed finishing readings'
+batch2=read('evidence/u3_j3_batch2_20261009.json')
+measured2={r['id']:r for r in batch2['readings']}
+assert {k:r['resistance_ohms'] for k,r in measured2.items()}=={'B08':10000,'B09':1,'B10':1,'B11':5600,'B12':1,'X01':400000}
+assert net('R23.1')!=net('GND.1'), '400 kohm must not be rounded to a copper connection'
+assert xml.findtext('./components/comp[@ref="R38"]/value')=='10k'
+for path,digest in batch2['photos'].items():assert sha(path)==digest
+assert {r['id'] for r in queue['completed_tests']}==set(measured)|set(measured2)
+assert not (set(measured)|set(measured2))&{r['id'] for r in queue['tests']}, 'Do not repeat completed finishing readings'
 for ref in ['U4','R11','R14','R15','R16','R37','R39','Q1','U2','Q8','C5','LED1','R18','R19','Q7','TP3','TP104','U106','J3','R43','TP14','R42','R44','TP4','TP103','R21','R22','R23','R48']:
  expected=next(c for c in placements['components'] if c['reference']==ref)['properties']['ViaEvidence']
  assert xml.findtext(f'./components/comp[@ref="{ref}"]/fields/field[@name="ViaEvidence"]')==expected,ref

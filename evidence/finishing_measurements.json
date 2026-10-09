@@ -1,8 +1,8 @@
 {
   "date": "2026-10-09",
-  "basis_revision": "v0.9.13",
-  "status": "AWAITING_SECOND_BATCH",
-  "scope": "First seven readings recorded; five targeted follow-ups. Not every remaining schematic gap is covered.",
+  "basis_revision": "v0.9.14",
+  "status": "AWAITING_THIRD_BATCH",
+  "scope": "Both previous batches and the additional 400 kohm reading are recorded. Three targeted R23 continuation checks remain in this queue.",
   "setup": "Battery and programmer disconnected; allow capacitors to discharge. Resistance mode. Note the shorted-probe baseline; report actual ohms, kohms, Mohms, OL or changing readings. Do not bridge or desolder anything in this batch.",
   "photos": [
     {
@@ -12,13 +12,13 @@
         150,
         285,
         1050,
-        730
+        825
       ],
       "coordinate_space": [
         1368,
         1823
       ],
-      "title": "U3 input and nearby resistors",
+      "title": "R23 onward route: C18 and TP6",
       "points": {
         "A": {
           "xy": [
@@ -85,6 +85,39 @@
             570
           ],
           "description": "U3 pin 6: second lead from the right on the upper row in this photo"
+        },
+        "M": {
+          "xy": [
+            885,
+            510
+          ],
+          "label": [
+            838,
+            559
+          ],
+          "description": "C18 left metal end in this photo"
+        },
+        "N": {
+          "xy": [
+            1003,
+            510
+          ],
+          "label": [
+            1080,
+            581
+          ],
+          "description": "C18 right metal end in this photo"
+        },
+        "O": {
+          "xy": [
+            280,
+            1040
+          ],
+          "label": [
+            400,
+            1067
+          ],
+          "description": "TP6 plated hole below and left of U3"
         }
       }
     },
@@ -174,46 +207,32 @@
   ],
   "tests": [
     {
-      "id": "B08",
-      "from": "H",
-      "to": "J",
-      "issue": "E07",
-      "purpose": "Test whether J3 pin 2 reaches this end of the existing R38/Q2 interface candidate."
-    },
-    {
-      "id": "B09",
-      "from": "H",
-      "to": "K",
-      "issue": "E07",
-      "purpose": "Test the other R38 end; a roughly 10 kohm path is different from direct continuity."
-    },
-    {
-      "id": "B10",
-      "from": "L",
-      "to": "B",
+      "id": "B13",
+      "from": "C",
+      "to": "M",
       "issue": "E08",
-      "purpose": "Test the retained U3 pin6/R23 feedback hypothesis and establish its physical end."
+      "purpose": "Test R23 right end against one side of the adjacent C18 input-filter candidate."
     },
     {
-      "id": "B11",
-      "from": "L",
-      "to": "C",
+      "id": "B14",
+      "from": "C",
+      "to": "N",
       "issue": "E08",
-      "purpose": "Test the other R23 end; distinguish a direct path from a path through nominal 5.6 kohm."
+      "purpose": "Test the other C18 end without assuming its physical numbering. A changing capacitor path is not a short."
     },
     {
-      "id": "B12",
-      "from": "E",
-      "to": "G",
+      "id": "B15",
+      "from": "C",
+      "to": "O",
       "issue": "E08",
-      "purpose": "Verify whether the R22 end opposite the measured VREF end is actually GND."
+      "purpose": "Test whether R23 takes its signal from the existing TP6/filter node. This is a candidate, not a measured join."
     }
   ],
   "interpretation": "Near the probe baseline supports a local low-resistance route; a beep alone is insufficient. Record finite resistance without rounding it to a short. A changing reading may involve capacitors. None of the proposed pairs is new measured evidence.",
   "next_stages": [
     {
       "stage": "1. Finish signal paths",
-      "work": "Finish the R23 feedback branch, J3 signal route and receiver output; RF excitation and one complete antenna tuning cell follow. Then check the smaller C6, D6, C26, TP9, R41 and D1 endpoints. U3 pin5 DC return and J3 ground ordering are now established. Use photos and earlier via results before each small batch."
+      "work": "Locate R23 C/right continuation and the receiver output; then trace Q2/TP16 toward the controller, RF excitation and one complete antenna tuning cell. J3 entry, ground and R22 return are now established. Check the smaller C6, D6, C26, TP9, R41 and D1 endpoints using existing evidence before new measurements."
     },
     {
       "stage": "2. Recover values",
@@ -233,7 +252,8 @@
     "D3/V082 rail checks",
     "Confirmed PIC/via connections",
     "Seven rejected capacitor-midpoint pairs",
-    "Completed B01-B07: U3 pin5 to R22/R23/VREF and J3 pins2/3 to GND"
+    "Completed B01-B07: U3 pin5 to R22/R23/VREF and J3 pins2/3 to GND",
+    "Completed B08-B12 and X01: J3-R38, U3 pin6-R23, R22-GND, U3 pin6-R22 E"
   ],
   "deferred": "The 16 open pads on empty options are recorded but are lower priority unless they affect a fitted net. U6's two candidate internal-NC pins need external-copper inspection, not an invented no-connect flag. Firmware, daughterboard internals and routed PCB are separate from main-board schematic completion.",
   "sources": [
@@ -242,7 +262,8 @@
     "photos/originals/IMG_2434.jpg",
     "photos/originals/IMG_2435.jpg",
     "https://www.sg-micro.com/rect/assets/537cce2c-8022-4ea6-97f4-6524851a35e8/SGM8541_SGM8542_SGM8544.pdf",
-    "evidence/u3_j3_measurements_20261009.json"
+    "evidence/u3_j3_measurements_20261009.json",
+    "evidence/u3_j3_batch2_20261009.json"
   ],
   "completed_tests": [
     {
@@ -300,9 +321,57 @@
       "issue": "E07",
       "purpose": "Test J3.3 separately; wire colour is not evidence of ground.",
       "result": "1 ohm"
+    },
+    {
+      "id": "B08",
+      "from": "H",
+      "to": "J",
+      "issue": "E07",
+      "purpose": "Test whether J3 pin 2 reaches this end of the existing R38/Q2 interface candidate.",
+      "result": "10 kohm"
+    },
+    {
+      "id": "B09",
+      "from": "H",
+      "to": "K",
+      "issue": "E07",
+      "purpose": "Test the other R38 end; a roughly 10 kohm path is different from direct continuity.",
+      "result": "1 ohm"
+    },
+    {
+      "id": "B10",
+      "from": "L",
+      "to": "B",
+      "issue": "E08",
+      "purpose": "Test the retained U3 pin6/R23 feedback hypothesis and establish its physical end.",
+      "result": "1 ohm"
+    },
+    {
+      "id": "B11",
+      "from": "L",
+      "to": "C",
+      "issue": "E08",
+      "purpose": "Test the other R23 end; distinguish a direct path from a path through nominal 5.6 kohm.",
+      "result": "5.6 kohm"
+    },
+    {
+      "id": "B12",
+      "from": "E",
+      "to": "G",
+      "issue": "E08",
+      "purpose": "Verify whether the R22 end opposite the measured VREF end is actually GND.",
+      "result": "1 ohm"
+    },
+    {
+      "id": "X01",
+      "from": "L",
+      "to": "E",
+      "issue": "E08",
+      "purpose": "Additional user check of U3 pin6 to the now measured ground end of R22.",
+      "result": "400 kohm"
     }
   ],
-  "batch_title": "Next batch: five resistance readings",
-  "instructions": "Use H (J3 pin 2) for B08-B09, then L (U3 pin 6) for B10-B11. Finally measure E (R22 right end) to G (GND TP). These are proposed checks; none assumes a short. All letter labels from the previous batch keep their meanings.",
-  "result_summary": "U3 pin 5 and R22 D/left join VREF at about 1 ohm; E/right is 10 kohm away. J3 pin 3 is GND at 1 ohm; pin 2 reads 290 kohm to ground. Both R23 ends read 270-289 kohm to the VREF input, so the old R23-to-VREF connection is removed. R23 and J3 pin 2 still need their actual destinations established."
+  "batch_title": "Next batch: three R23 continuation checks",
+  "instructions": "Keep one probe on C (R23 right end). Measure to M (C18 left), N (C18 right), then O (TP6). No connection is assumed; report actual resistance or a changing reading. Labels retain their earlier meanings.",
+  "result_summary": "U3 pin6 reaches R23 B/left at 1 ohm; C/right is 5.6 kohm away. J3 pin2 reaches R38 K/right at 1 ohm and J/left through 10 kohm. R22 E/right is GND at 1 ohm; U3 pin6 is 400 kohm from it. The local J3 entry and R22 return are resolved. R23 C/right still needs its onward destination."
 }

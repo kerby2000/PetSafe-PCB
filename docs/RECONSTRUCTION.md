@@ -1,6 +1,6 @@
 # Current circuit interpretation
 
-This document describes v0.9.13. [The completion checklist](FINISHING_CHECKLIST.html) is the authoritative list of known unresolved work. [Earlier reasoning](history/README.md) is preserved as history, including rejected guesses.
+This document describes v0.9.14. [The completion checklist](FINISHING_CHECKLIST.html) is the authoritative list of known unresolved work. [Earlier reasoning](history/README.md) is preserved as history, including rejected guesses.
 
 ## What is established
 
@@ -34,7 +34,7 @@ D2's three local routes are resolved by user reports: R (upper-left/native2) to 
 
 The 11.2 kohm V064-V070 measurement fits nominal R19 + R18 and supports the Q7 supply-switch hypothesis. Q7 terminal selection remains photo/circuit inference. User now confirms D3.R reaches board VDD through V082 and D3.L is GND. Only D3.R is moved off H_RX_VDD. D3.S-to-R42 reads 1.2 ohm; photo selects R42.2, with R42.1 already mapped to TP4/PIC25. The node is neutrally named H_D3_SIGNAL; its operating function is unknown. Op-amp feedback, coupling and bias branches are still partly inferred. TP6/C18.2 and U3.5/C18.1 are separate sides of a capacitor.
 
-U6/C2NM supports S-812C33AMC; the supervisor guess based on WN23 is withdrawn. User confirms V067 to J3.1/red PIR supply. User now measures J3.3-GND at 1 ohm and J3.2-GND at 290 kohm. Pin3 is ground, pin2 remains open in the reconstruction pending a targeted R38 check. The former ground/raw assignments are withdrawn. U6 external branches and the Q2 interface remain partly inferred. The separate PIR board's internal circuit is outside this main-board reconstruction.
+U6/C2NM supports S-812C33AMC; the supervisor guess based on WN23 is withdrawn. User confirms V067 to J3.1/red PIR supply. User now measures J3.3-GND at 1 ohm and J3.2-GND at 290 kohm. Pin3 is ground. The next batch establishes pin2 to R38 K/right/model1 at 1 ohm and the other R38 end at 10 kohm; this agrees with the marked 10k value. The R33 branch, Q2/R39 interface and Q2/TP16 onward route remain independently qualified. The former ground/raw assignments are withdrawn. U6 external branches and the Q2 interface remain partly inferred. The separate PIR board's internal circuit is outside this main-board reconstruction.
 
 ## Reading uncertainty
 
@@ -42,7 +42,7 @@ Unconnected physical pads, isolated labels, incomplete onward routes, candidate 
 
 ## Architect review findings, 2026-10-09
 
-The missing U3.5 DC return is resolved: U3.5-VREF and U3.5-R22 D/left each read 1 ohm. The R22 E/right end reads 10 kohm to U3.5; its modeled ground destination still needs a direct check. Both R23 ends read 270-289 kohm to U3.5, rejecting the old R23-VREF tie. R23.2 is now unresolved, and the R23.1-to-U3.6 feedback route remains a hypothesis for the next batch. These in-circuit readings do not replace marked resistor values. Original C18.1 local connectivity is retained on VREF; TP6 stays separate across C18. See evidence/u3_j3_measurements_20261009.json.
+The missing U3.5 DC return is resolved: U3.5-VREF and U3.5-R22 D/left each read 1 ohm. The R22 E/right/model1 end reads 10 kohm to U3.5 and is now directly measured to GND at 1 ohm. Both R23 ends read 270-289 kohm to U3.5, rejecting the old R23-VREF tie. R23 B/left/model1 is now measured to U3.6 at 1 ohm; C/right/model2 is 5.6 kohm away, agreeing with its marking. R23.2 remains unresolved. An extra U3.6-to-R22 E/GND reading of 400 kohm establishes no direct ground join. TP6 and the nearby C18 ends are the next specific candidates for R23 C/right. These in-circuit readings do not replace marked resistor values. Original C18.1 local connectivity is retained on VREF; TP6 stays separate across C18. See evidence/u3_j3_measurements_20261009.json and evidence/u3_j3_batch2_20261009.json. The 400 kohm reading is an in-circuit path, not a new component value.
 
 The modeled PNP tuning cells put their emitters at GND while their bases are GPIO-driven. That is not a conventional forward-operated PNP switch. Resolve Q3/C10/C11/C12 and its antenna path first; type, orientation, ground association or a junction-switching role may need correction. No automatic NPN substitution is justified. C11/C12 currently share both nodes: an in-circuit LCR result would be an effective parallel-network value, not individual capacitances.
 

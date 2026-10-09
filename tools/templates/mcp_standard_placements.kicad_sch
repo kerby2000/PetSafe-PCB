@@ -11488,7 +11488,7 @@
 				(hide yes)
 			)
 		)
-    (property "MeasurementEvidence" "v0.9.13 user: pin5-VREF 1 ohm; pin5-R22 D/left 1 ohm, E/right 10 kohm; both R23 ends 270-289 kohm. Pin5 and V079/V080 now VREF. Original C18.1 fragment retained; TP6/C18.2 stays separate across C18." (at 381.0 200.66 0)
+    (property "MeasurementEvidence" "v0.9.14 user: pin5-VREF/R22 D 1 ohm (batch1); pin6-R23 B/left/model1 1 ohm and C/right/model2 5.6 kohm. Pin6-R22 E/GND 400 kohm. Pin5 and pin6 remain distinct; C18 branch is retained photo evidence, not meter-confirmed." (at 381.0 200.66 0)
       (effects (font (size 1.27 1.27)) (hide yes))
     )
 		(pin "1"
@@ -12226,14 +12226,14 @@
 				)
 			)
 		)
-		(property "ViaEvidence" "v0.9.13 user: both physical ends 270-289 kohm to U3.5, now confirmed VREF. Withdraw R23.2-VREF; leave pad2 unresolved. Prior pad1-to-U3.6 feedback link and physical-end numbering remain hypotheses. Marked 562 nominal 5.6k retained."
+		(property "ViaEvidence" "v0.9.14 user: B/left/model1-U3.6 1 ohm; C/right/model2-U3.6 5.6 kohm, agreeing with 562 marking. C destination remains open; earlier VREF guess rejected by 270-289 kohm to pin5. Pin6-GND 400 kohm also rejects a direct pin6-ground join."
 			(at 461.01 223.52 0)
 			(effects
 				(font
 					(size 1.27 1.27)
 				) (hide yes))
 		)
-    (property "MeasurementEvidence" "v0.9.13 user: both physical ends 270-289 kohm to U3.5, now confirmed VREF. Withdraw R23.2-VREF; leave pad2 unresolved. Prior pad1-to-U3.6 feedback link and physical-end numbering remain hypotheses. Marked 562 nominal 5.6k retained." (at 461.01 223.52 0)
+    (property "MeasurementEvidence" "v0.9.14 user: B/left/model1-U3.6 1 ohm; C/right/model2-U3.6 5.6 kohm, agreeing with 562 marking. C destination remains open; earlier VREF guess rejected by 270-289 kohm to pin5. Pin6-GND 400 kohm also rejects a direct pin6-ground join." (at 461.01 223.52 0)
       (effects (font (size 1.27 1.27)) (hide yes))
     )
 		(pin "1"
@@ -13753,14 +13753,14 @@
 				)
 			)
 		)
-		(property "ViaEvidence" "v0.9.13 user: D/left end in IMG_2434 is model2, U3.5/VREF at 1 ohm. E/right/model1 is 10 kohm from U3.5. Marked 01C nominal 10k retained; E-to-GND is still a prior hypothesis awaiting direct check."
+		(property "ViaEvidence" "v0.9.14 user: E/right/model1-GND 1 ohm; D/left/model2-VREF confirmed in batch1. R22 spans VREF to GND; 10 kohm agrees with 01C marking. U3 pin6 to E is 400 kohm and is not a wire."
 			(at 326.39 229.87 0)
 			(effects
 				(font
 					(size 1.27 1.27)
 				) (hide yes))
 		)
-    (property "MeasurementEvidence" "v0.9.13 user: D/left end in IMG_2434 is model2, U3.5/VREF at 1 ohm. E/right/model1 is 10 kohm from U3.5. Marked 01C nominal 10k retained; E-to-GND is still a prior hypothesis awaiting direct check." (at 326.39 229.87 0)
+    (property "MeasurementEvidence" "v0.9.14 user: E/right/model1-GND 1 ohm; D/left/model2-VREF confirmed in batch1. R22 spans VREF to GND; 10 kohm agrees with 01C marking. U3 pin6 to E is 400 kohm and is not a wire." (at 326.39 229.87 0)
       (effects (font (size 1.27 1.27)) (hide yes))
     )
 		(pin "1"
@@ -16862,14 +16862,14 @@
 				)
 			)
 		)
-		(property "ViaEvidence" "v0.9.13 user: pin3 (left / I in IMG_2435)-GND 1 ohm; pin2 (middle / H)-GND 290 kohm. Correct pin3 to GND, withdraw pin2 ground and pin3 raw-signal hypotheses. Pin1 supply remains confirmed. Pin2 destination awaits R38 checks."
+		(property "ViaEvidence" "v0.9.14 user: pin1 PIR supply previously confirmed; pin2 H-R38 K/right/model1 1 ohm and H-R38 J/left/model2 10 kohm; pin3-GND 1 ohm. Pin2-GND remains 290 kohm (batch1), distinct from ground. Q2 onward/controller route remains unverified."
 			(at 405.13 327.66 0)
 			(effects
 				(font
 					(size 1.27 1.27)
 				) (hide yes))
 		)
-    (property "MeasurementEvidence" "v0.9.13 user: pin3 (left / I in IMG_2435)-GND 1 ohm; pin2 (middle / H)-GND 290 kohm. Correct pin3 to GND, withdraw pin2 ground and pin3 raw-signal hypotheses. Pin1 supply remains confirmed. Pin2 destination awaits R38 checks." (at 405.13 327.66 0)
+    (property "MeasurementEvidence" "v0.9.14 user: pin1 PIR supply previously confirmed; pin2 H-R38 K/right/model1 1 ohm and H-R38 J/left/model2 10 kohm; pin3-GND 1 ohm. Pin2-GND remains 290 kohm (batch1), distinct from ground. Q2 onward/controller route remains unverified." (at 405.13 327.66 0)
       (effects (font (size 1.27 1.27)) (hide yes))
     )
 		(pin "1"
@@ -17041,6 +17041,9 @@
 				)
 			)
 		)
+    (property "MeasurementEvidence" "v0.9.14 user: K/right/model1-J3.2 1 ohm; J/left/model2-J3.2 10 kohm, agreeing with 01C marking. Q2/R39 and R33 branches remain prior hypotheses beyond this measured pair." (at 341.63 345.44 0)
+      (effects (font (size 1.27 1.27)) (hide yes))
+    )
 		(pin "1"
 			(uuid "626f0218-a592-42c5-8819-41a6fed1910a")
 		)

@@ -1,6 +1,6 @@
 {
   "board": "100-1339 R03 A",
-  "revision": "v0.9.13",
+  "revision": "v0.9.14",
   "status": "INFERRED WORKING CIRCUIT / NOT CONTINUITY VERIFIED",
   "components": [
     {
@@ -385,9 +385,13 @@
       "footprint": "Resistor_SMD:R_0603_1608Metric",
       "footprint_confidence": "medium - revised family estimate",
       "footprint_basis": "User reports R8 approximately 1.6 x 0.77 mm, consistent with 0603 (1608 metric). Repeated fitted resistor family revised using R8 as a scale reference. This individual body has not been measured; earlier 0805 estimate superseded.",
-      "via_evidence": "v0.9.13 user: D/left end in IMG_2434 is model2, U3.5/VREF at 1 ohm. E/right/model1 is 10 kohm from U3.5. Marked 01C nominal 10k retained; E-to-GND is still a prior hypothesis awaiting direct check.",
-      "v093_summary": "v0.9.13 user: D/left end in IMG_2434 is model2, U3.5/VREF at 1 ohm. E/right/model1 is 10 kohm from U3.5. Marked 01C nominal 10k retained; E-to-GND is still a prior hypothesis awaiting direct check.",
-      "measurement_evidence": "v0.9.13 user: D/left end in IMG_2434 is model2, U3.5/VREF at 1 ohm. E/right/model1 is 10 kohm from U3.5. Marked 01C nominal 10k retained; E-to-GND is still a prior hypothesis awaiting direct check."
+      "via_evidence": "v0.9.14 user: E/right/model1-GND 1 ohm; D/left/model2-VREF confirmed in batch1. R22 spans VREF to GND; 10 kohm agrees with 01C marking. U3 pin6 to E is 400 kohm and is not a wire.",
+      "v093_summary": "v0.9.14 user: E/right/model1-GND 1 ohm; D/left/model2-VREF confirmed in batch1. R22 spans VREF to GND; 10 kohm agrees with 01C marking. U3 pin6 to E is 400 kohm and is not a wire.",
+      "measurement_evidence": "v0.9.14 user: E/right/model1-GND 1 ohm; D/left/model2-VREF confirmed in batch1. R22 spans VREF to GND; 10 kohm agrees with 01C marking. U3 pin6 to E is 400 kohm and is not a wire.",
+      "photo_pad_mapping": {
+        "R22.1": "E / right end in IMG_2434 / GND",
+        "R22.2": "D / left end in IMG_2434 / VREF (previous batch)"
+      }
     },
     {
       "ref": "R23",
@@ -408,8 +412,12 @@
       "footprint": "Resistor_SMD:R_0603_1608Metric",
       "footprint_confidence": "medium - revised family estimate",
       "footprint_basis": "User reports R8 approximately 1.6 x 0.77 mm, consistent with 0603 (1608 metric). Repeated fitted resistor family revised using R8 as a scale reference. This individual body has not been measured; earlier 0805 estimate superseded.",
-      "via_evidence": "v0.9.13 user: both physical ends 270-289 kohm to U3.5, now confirmed VREF. Withdraw R23.2-VREF; leave pad2 unresolved. Prior pad1-to-U3.6 feedback link and physical-end numbering remain hypotheses. Marked 562 nominal 5.6k retained.",
-      "measurement_evidence": "v0.9.13 user: both physical ends 270-289 kohm to U3.5, now confirmed VREF. Withdraw R23.2-VREF; leave pad2 unresolved. Prior pad1-to-U3.6 feedback link and physical-end numbering remain hypotheses. Marked 562 nominal 5.6k retained."
+      "via_evidence": "v0.9.14 user: B/left/model1-U3.6 1 ohm; C/right/model2-U3.6 5.6 kohm, agreeing with 562 marking. C destination remains open; earlier VREF guess rejected by 270-289 kohm to pin5. Pin6-GND 400 kohm also rejects a direct pin6-ground join.",
+      "measurement_evidence": "v0.9.14 user: B/left/model1-U3.6 1 ohm; C/right/model2-U3.6 5.6 kohm, agreeing with 562 marking. C destination remains open; earlier VREF guess rejected by 270-289 kohm to pin5. Pin6-GND 400 kohm also rejects a direct pin6-ground join.",
+      "photo_pad_mapping": {
+        "R23.1": "B / left end in IMG_2434",
+        "R23.2": "C / right end in IMG_2434"
+      }
     },
     {
       "ref": "R24",
@@ -664,7 +672,12 @@
       "library_symbol": "Device:R",
       "footprint": "Resistor_SMD:R_0603_1608Metric",
       "footprint_confidence": "medium - revised family estimate",
-      "footprint_basis": "User reports R8 approximately 1.6 x 0.77 mm, consistent with 0603 (1608 metric). Repeated fitted resistor family revised using R8 as a scale reference. This individual body has not been measured; earlier 0805 estimate superseded."
+      "footprint_basis": "User reports R8 approximately 1.6 x 0.77 mm, consistent with 0603 (1608 metric). Repeated fitted resistor family revised using R8 as a scale reference. This individual body has not been measured; earlier 0805 estimate superseded.",
+      "measurement_evidence": "v0.9.14 user: K/right/model1-J3.2 1 ohm; J/left/model2-J3.2 10 kohm, agreeing with 01C marking. Q2/R39 and R33 branches remain prior hypotheses beyond this measured pair.",
+      "photo_pad_mapping": {
+        "R38.1": "K / right end in IMG_2435 / J3.2",
+        "R38.2": "J / left end in IMG_2435 / 10k from J3.2"
+      }
     },
     {
       "ref": "R39",
@@ -2432,8 +2445,9 @@
       "footprint": "Package_SO:SOIC-8_3.9x4.9mm_P1.27mm",
       "footprint_confidence": "datasheet/package candidate",
       "footprint_basis": "Existing assignment; see component identity evidence.",
-      "v093_summary": "v0.9.13 user: pin5-VREF 1 ohm; pin5-R22 D/left 1 ohm, E/right 10 kohm; both R23 ends 270-289 kohm. Pin5 and V079/V080 now VREF. Original C18.1 fragment retained; TP6/C18.2 stays separate across C18.",
-      "measurement_evidence": "v0.9.13 user: pin5-VREF 1 ohm; pin5-R22 D/left 1 ohm, E/right 10 kohm; both R23 ends 270-289 kohm. Pin5 and V079/V080 now VREF. Original C18.1 fragment retained; TP6/C18.2 stays separate across C18."
+      "v093_summary": "v0.9.14 user: pin5-VREF/R22 D 1 ohm (batch1); pin6-R23 B/left/model1 1 ohm and C/right/model2 5.6 kohm. Pin6-R22 E/GND 400 kohm. Pin5 and pin6 remain distinct; C18 branch is retained photo evidence, not meter-confirmed.",
+      "measurement_evidence": "v0.9.14 user: pin5-VREF/R22 D 1 ohm (batch1); pin6-R23 B/left/model1 1 ohm and C/right/model2 5.6 kohm. Pin6-R22 E/GND 400 kohm. Pin5 and pin6 remain distinct; C18 branch is retained photo evidence, not meter-confirmed.",
+      "photo_pad_mapping": {}
     },
     {
       "ref": "U1",
@@ -2602,7 +2616,7 @@
       "side": "front",
       "traced_pin_count": 1,
       "proposed_value": "BC847B?",
-      "hypothesis": "1FW supports BC847B. Candidate B=R, E=L, C=S and PIR interface role remain inferred. J3.1 supply and J3.3 GND are user-confirmed; J3.2 onward route remains unverified.",
+      "hypothesis": "1FW supports BC847B. Candidate B=R, E=L, C=S and interface role remain inferred. J3.1 supply, J3.3 GND and J3.2-R38 K are user-confirmed; Q2/TP16 onward route remains unverified.",
       "library_symbol": "Transistor_BJT:BC847",
       "footprint": "Package_TO_SOT_SMD:SOT-23",
       "footprint_confidence": "datasheet/package candidate",
@@ -3032,7 +3046,7 @@
         "2",
         "3"
       ],
-      "note": "v0.9.13 user: pin3 (left / I in IMG_2435)-GND 1 ohm; pin2 (middle / H)-GND 290 kohm. Correct pin3 to GND, withdraw pin2 ground and pin3 raw-signal hypotheses. Pin1 supply remains confirmed. Pin2 destination awaits R38 checks.",
+      "note": "v0.9.14 user: pin1 PIR supply previously confirmed; pin2 H-R38 K/right/model1 1 ohm and H-R38 J/left/model2 10 kohm; pin3-GND 1 ohm. Pin2-GND remains 290 kohm (batch1), distinct from ground. Q2 onward/controller route remains unverified.",
       "side": "front",
       "traced_pin_count": 0,
       "proposed_value": "PIR BOARD",
@@ -3040,8 +3054,9 @@
       "footprint": "Connector_PinHeader_2.54mm:PinHeader_1x03_P2.54mm_Vertical",
       "footprint_confidence": "medium",
       "footprint_basis": "Three soldered wire holes; generic 2.54-mm row models the candidate land pattern, not the connector housing.",
-      "via_evidence": "v0.9.13 user: pin3 (left / I in IMG_2435)-GND 1 ohm; pin2 (middle / H)-GND 290 kohm. Correct pin3 to GND, withdraw pin2 ground and pin3 raw-signal hypotheses. Pin1 supply remains confirmed. Pin2 destination awaits R38 checks.",
-      "measurement_evidence": "v0.9.13 user: pin3 (left / I in IMG_2435)-GND 1 ohm; pin2 (middle / H)-GND 290 kohm. Correct pin3 to GND, withdraw pin2 ground and pin3 raw-signal hypotheses. Pin1 supply remains confirmed. Pin2 destination awaits R38 checks."
+      "via_evidence": "v0.9.14 user: pin1 PIR supply previously confirmed; pin2 H-R38 K/right/model1 1 ohm and H-R38 J/left/model2 10 kohm; pin3-GND 1 ohm. Pin2-GND remains 290 kohm (batch1), distinct from ground. Q2 onward/controller route remains unverified.",
+      "measurement_evidence": "v0.9.14 user: pin1 PIR supply previously confirmed; pin2 H-R38 K/right/model1 1 ohm and H-R38 J/left/model2 10 kohm; pin3-GND 1 ohm. Pin2-GND remains 290 kohm (batch1), distinct from ground. Q2 onward/controller route remains unverified.",
+      "photo_pad_mapping": {}
     },
     {
       "ref": "J5",
@@ -3826,9 +3841,10 @@
       "net": "H_PIR_RAW",
       "endpoints": [
         "R33.1",
-        "R38.1"
+        "R38.1",
+        "J3.2"
       ],
-      "status": "Prior photo/circuit R33-R38 fragment retained. J3.3 removed by user ground measurement; J3.2 destination unverified.",
+      "status": "User J3.2-to-R38 K/right/model1 = 1 ohm. Opposite R38 J/left/model2 = 10 kohm. R33 branch remains photo/circuit hypothesis.",
       "original_fragments": []
     },
     {
@@ -4337,7 +4353,7 @@
         "R24.2",
         "U3.6"
       ],
-      "status": "HYPOTHESIS / retains visual fragments where listed",
+      "status": "User U3.6-to-R23 B/left/model1 = 1 ohm; R23 C/right/model2 = 5.6 kohm. R24 original visual fragment retained; C21 association remains inferred.",
       "original_fragments": [
         "V_U3_INB_MINUS_LOCAL"
       ]
@@ -4882,7 +4898,6 @@
     "C6.1",
     "D6.1",
     "D6.2",
-    "J3.2",
     "J6.1",
     "J6.2",
     "Q9.S",
@@ -10148,6 +10163,28 @@
       "b": [
         477.52,
         198.12
+      ]
+    },
+    {
+      "net": "H_PIR_RAW",
+      "a": [
+        388.62,
+        327.66
+      ],
+      "b": [
+        388.62,
+        336.55
+      ]
+    },
+    {
+      "net": "H_PIR_RAW",
+      "a": [
+        388.62,
+        327.66
+      ],
+      "b": [
+        400.05,
+        327.66
       ]
     }
   ],

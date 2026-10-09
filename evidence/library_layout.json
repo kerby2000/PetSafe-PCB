@@ -3970,8 +3970,8 @@
         "includePins": true,
         "footprint": "Package_SO:SOIC-8_3.9x4.9mm_P1.27mm",
         "properties": {
-          "ViaEvidence": "v0.9.13 user: pin5-VREF 1 ohm; pin5-R22 D/left 1 ohm, E/right 10 kohm; both R23 ends 270-289 kohm. Pin5 and V079/V080 now VREF. Original C18.1 fragment retained; TP6/C18.2 stays separate across C18.",
-          "MeasurementEvidence": "v0.9.13 user: pin5-VREF 1 ohm; pin5-R22 D/left 1 ohm, E/right 10 kohm; both R23 ends 270-289 kohm. Pin5 and V079/V080 now VREF. Original C18.1 fragment retained; TP6/C18.2 stays separate across C18."
+          "ViaEvidence": "v0.9.14 user: pin5-VREF/R22 D 1 ohm (batch1); pin6-R23 B/left/model1 1 ohm and C/right/model2 5.6 kohm. Pin6-R22 E/GND 400 kohm. Pin5 and pin6 remain distinct; C18 branch is retained photo evidence, not meter-confirmed.",
+          "MeasurementEvidence": "v0.9.14 user: pin5-VREF/R22 D 1 ohm (batch1); pin6-R23 B/left/model1 1 ohm and C/right/model2 5.6 kohm. Pin6-R22 E/GND 400 kohm. Pin5 and pin6 remain distinct; C18 branch is retained photo evidence, not meter-confirmed."
         }
       }
     },
@@ -4037,8 +4037,8 @@
         "angle": 0,
         "unit": 2,
         "properties": {
-          "ViaEvidence": "v0.9.13 user: pin5-VREF 1 ohm; pin5-R22 D/left 1 ohm, E/right 10 kohm; both R23 ends 270-289 kohm. Pin5 and V079/V080 now VREF. Original C18.1 fragment retained; TP6/C18.2 stays separate across C18.",
-          "MeasurementEvidence": "v0.9.13 user: pin5-VREF 1 ohm; pin5-R22 D/left 1 ohm, E/right 10 kohm; both R23 ends 270-289 kohm. Pin5 and V079/V080 now VREF. Original C18.1 fragment retained; TP6/C18.2 stays separate across C18."
+          "ViaEvidence": "v0.9.14 user: pin5-VREF/R22 D 1 ohm (batch1); pin6-R23 B/left/model1 1 ohm and C/right/model2 5.6 kohm. Pin6-R22 E/GND 400 kohm. Pin5 and pin6 remain distinct; C18 branch is retained photo evidence, not meter-confirmed.",
+          "MeasurementEvidence": "v0.9.14 user: pin5-VREF/R22 D 1 ohm (batch1); pin6-R23 B/left/model1 1 ohm and C/right/model2 5.6 kohm. Pin6-R22 E/GND 400 kohm. Pin5 and pin6 remain distinct; C18 branch is retained photo evidence, not meter-confirmed."
         }
       }
     },
@@ -4095,8 +4095,8 @@
         "angle": 0,
         "unit": 3,
         "properties": {
-          "ViaEvidence": "v0.9.13 user: pin5-VREF 1 ohm; pin5-R22 D/left 1 ohm, E/right 10 kohm; both R23 ends 270-289 kohm. Pin5 and V079/V080 now VREF. Original C18.1 fragment retained; TP6/C18.2 stays separate across C18.",
-          "MeasurementEvidence": "v0.9.13 user: pin5-VREF 1 ohm; pin5-R22 D/left 1 ohm, E/right 10 kohm; both R23 ends 270-289 kohm. Pin5 and V079/V080 now VREF. Original C18.1 fragment retained; TP6/C18.2 stays separate across C18."
+          "ViaEvidence": "v0.9.14 user: pin5-VREF/R22 D 1 ohm (batch1); pin6-R23 B/left/model1 1 ohm and C/right/model2 5.6 kohm. Pin6-R22 E/GND 400 kohm. Pin5 and pin6 remain distinct; C18 branch is retained photo evidence, not meter-confirmed.",
+          "MeasurementEvidence": "v0.9.14 user: pin5-VREF/R22 D 1 ohm (batch1); pin6-R23 B/left/model1 1 ohm and C/right/model2 5.6 kohm. Pin6-R22 E/GND 400 kohm. Pin5 and pin6 remain distinct; C18 branch is retained photo evidence, not meter-confirmed."
         }
       }
     },
@@ -4583,11 +4583,11 @@
         "includePins": true,
         "footprint": "Resistor_SMD:R_0603_1608Metric",
         "properties": {
-          "ViaEvidence": "v0.9.13 user: both physical ends 270-289 kohm to U3.5, now confirmed VREF. Withdraw R23.2-VREF; leave pad2 unresolved. Prior pad1-to-U3.6 feedback link and physical-end numbering remain hypotheses. Marked 562 nominal 5.6k retained.",
-          "MeasurementEvidence": "v0.9.13 user: both physical ends 270-289 kohm to U3.5, now confirmed VREF. Withdraw R23.2-VREF; leave pad2 unresolved. Prior pad1-to-U3.6 feedback link and physical-end numbering remain hypotheses. Marked 562 nominal 5.6k retained."
+          "ViaEvidence": "v0.9.14 user: B/left/model1-U3.6 1 ohm; C/right/model2-U3.6 5.6 kohm, agreeing with 562 marking. C destination remains open; earlier VREF guess rejected by 270-289 kohm to pin5. Pin6-GND 400 kohm also rejects a direct pin6-ground join.",
+          "MeasurementEvidence": "v0.9.14 user: B/left/model1-U3.6 1 ohm; C/right/model2-U3.6 5.6 kohm, agreeing with 562 marking. C destination remains open; earlier VREF guess rejected by 270-289 kohm to pin5. Pin6-GND 400 kohm also rejects a direct pin6-ground join."
         }
       },
-      "via_evidence": "v0.9.13 user: both physical ends 270-289 kohm to U3.5, now confirmed VREF. Withdraw R23.2-VREF; leave pad2 unresolved. Prior pad1-to-U3.6 feedback link and physical-end numbering remain hypotheses. Marked 562 nominal 5.6k retained."
+      "via_evidence": "v0.9.14 user: B/left/model1-U3.6 1 ohm; C/right/model2-U3.6 5.6 kohm, agreeing with 562 marking. C destination remains open; earlier VREF guess rejected by 270-289 kohm to pin5. Pin6-GND 400 kohm also rejects a direct pin6-ground join."
     },
     {
       "original_ref": "C18",
@@ -5705,11 +5705,11 @@
         "includePins": true,
         "footprint": "Resistor_SMD:R_0603_1608Metric",
         "properties": {
-          "ViaEvidence": "v0.9.13 user: D/left end in IMG_2434 is model2, U3.5/VREF at 1 ohm. E/right/model1 is 10 kohm from U3.5. Marked 01C nominal 10k retained; E-to-GND is still a prior hypothesis awaiting direct check.",
-          "MeasurementEvidence": "v0.9.13 user: D/left end in IMG_2434 is model2, U3.5/VREF at 1 ohm. E/right/model1 is 10 kohm from U3.5. Marked 01C nominal 10k retained; E-to-GND is still a prior hypothesis awaiting direct check."
+          "ViaEvidence": "v0.9.14 user: E/right/model1-GND 1 ohm; D/left/model2-VREF confirmed in batch1. R22 spans VREF to GND; 10 kohm agrees with 01C marking. U3 pin6 to E is 400 kohm and is not a wire.",
+          "MeasurementEvidence": "v0.9.14 user: E/right/model1-GND 1 ohm; D/left/model2-VREF confirmed in batch1. R22 spans VREF to GND; 10 kohm agrees with 01C marking. U3 pin6 to E is 400 kohm and is not a wire."
         }
       },
-      "via_evidence": "v0.9.13 user: D/left end in IMG_2434 is model2, U3.5/VREF at 1 ohm. E/right/model1 is 10 kohm from U3.5. Marked 01C nominal 10k retained; E-to-GND is still a prior hypothesis awaiting direct check."
+      "via_evidence": "v0.9.14 user: E/right/model1-GND 1 ohm; D/left/model2-VREF confirmed in batch1. R22 spans VREF to GND; 10 kohm agrees with 01C marking. U3 pin6 to E is 400 kohm and is not a wire."
     },
     {
       "original_ref": "C42",
@@ -7747,7 +7747,7 @@
           },
           {
             "p": "2",
-            "name": "2 / destination unresolved",
+            "name": "2 / R38 signal",
             "x": -4,
             "y": 0,
             "side": 0,
@@ -7778,11 +7778,11 @@
         "includePins": true,
         "footprint": "Connector_PinHeader_2.54mm:PinHeader_1x03_P2.54mm_Vertical",
         "properties": {
-          "ViaEvidence": "v0.9.13 user: pin3 (left / I in IMG_2435)-GND 1 ohm; pin2 (middle / H)-GND 290 kohm. Correct pin3 to GND, withdraw pin2 ground and pin3 raw-signal hypotheses. Pin1 supply remains confirmed. Pin2 destination awaits R38 checks.",
-          "MeasurementEvidence": "v0.9.13 user: pin3 (left / I in IMG_2435)-GND 1 ohm; pin2 (middle / H)-GND 290 kohm. Correct pin3 to GND, withdraw pin2 ground and pin3 raw-signal hypotheses. Pin1 supply remains confirmed. Pin2 destination awaits R38 checks."
+          "ViaEvidence": "v0.9.14 user: pin1 PIR supply previously confirmed; pin2 H-R38 K/right/model1 1 ohm and H-R38 J/left/model2 10 kohm; pin3-GND 1 ohm. Pin2-GND remains 290 kohm (batch1), distinct from ground. Q2 onward/controller route remains unverified.",
+          "MeasurementEvidence": "v0.9.14 user: pin1 PIR supply previously confirmed; pin2 H-R38 K/right/model1 1 ohm and H-R38 J/left/model2 10 kohm; pin3-GND 1 ohm. Pin2-GND remains 290 kohm (batch1), distinct from ground. Q2 onward/controller route remains unverified."
         }
       },
-      "via_evidence": "v0.9.13 user: pin3 (left / I in IMG_2435)-GND 1 ohm; pin2 (middle / H)-GND 290 kohm. Correct pin3 to GND, withdraw pin2 ground and pin3 raw-signal hypotheses. Pin1 supply remains confirmed. Pin2 destination awaits R38 checks."
+      "via_evidence": "v0.9.14 user: pin1 PIR supply previously confirmed; pin2 H-R38 K/right/model1 1 ohm and H-R38 J/left/model2 10 kohm; pin3-GND 1 ohm. Pin2-GND remains 290 kohm (batch1), distinct from ground. Q2 onward/controller route remains unverified."
     },
     {
       "original_ref": "Q2",
@@ -7898,7 +7898,10 @@
         },
         "rotation": 90,
         "includePins": true,
-        "footprint": "Resistor_SMD:R_0603_1608Metric"
+        "footprint": "Resistor_SMD:R_0603_1608Metric",
+        "properties": {
+          "MeasurementEvidence": "v0.9.14 user: K/right/model1-J3.2 1 ohm; J/left/model2-J3.2 10 kohm, agreeing with 01C marking. Q2/R39 and R33 branches remain prior hypotheses beyond this measured pair."
+        }
       }
     },
     {
