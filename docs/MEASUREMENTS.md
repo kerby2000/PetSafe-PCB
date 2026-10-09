@@ -1,6 +1,6 @@
 # Recorded measurements and observations
 
-Recorded evidence, retained through v0.9.35, 2026-10-09. These are user reports, not measurements made by software. The [LED1 colour batch](FINISHING_MEASUREMENTS.html) is completed, with 0.96 V confirmed for both channels; no repeat measurement is requested. Dated raw JSON events and completed photo-guide contacts are preserved here as reference, not new requests. Earlier requests are archived in [the previous narrative](history/cleanup_v0928/docs/MEASUREMENTS.md); do not repeat a reading just because it occurs there.
+Recorded evidence, retained through v0.9.36, 2026-10-09. These are user reports, not measurements made by software. The [active batch](FINISHING_MEASUREMENTS.html) asks only B44-B46: one tuning midpoint to ANT1, to ANT2, and ANT1-to-ANT2 with the antenna fitted. No result is recorded yet. LED1 colour checks are complete, with 0.96 V confirmed for both channels; no repeat is requested. Dated raw JSON events and completed photo-guide contacts are preserved here as reference, not new requests. Earlier requests are archived in [the previous narrative](history/cleanup_v0928/docs/MEASUREMENTS.md); do not repeat a reading just because it occurs there.
 
 Available instruments reported by the user: LCR meter, Fluke 179 and Fluke 87 III. The earlier Fluke 114 inference is superseded. No actual rail voltages or powered functional results have been supplied. The 44 fitted ceramic values remain unmeasured; L1/L2 readings are recorded below.
 

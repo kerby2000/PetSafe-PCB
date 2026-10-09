@@ -71,7 +71,12 @@ for test_id,red,colour,pin,resistor in [('B42','A','green','2','R31'),('B43','B'
 assert members['R30.1']==members['U4.23']!=members['R31.1']==members['U4.22']
 assert members['LED1.3']==members['LED1.4']==members['U4.8']
 assert xml.findtext('./components/comp[@ref="LED1"]/fields/field[@name="ColourMapping"]')=='Native pin1 / R30 / PIC23 = RED; native pin2 / R31 / PIC22 = GREEN'
-assert next(i for i in work['issues'] if i['id']=='I02')['refs']==['J5']
+j5=read('evidence/j5_photo_review_20261009.json')
+assert not any(i['id']=='I02' for i in work['issues'])
+assert j5['closed_issue']['state']=='closed' and j5['electrical_change'] is False
+assert members['J5.1']==members['U5.8']!=members['J5.2']==members['U5.5']==members['TP15.1']
+assert next(c for c in m['components'] if c['ref']=='J5')['side']=='back'
+for path,digest in j5['photos'].items():assert hashlib.sha256((ROOT/path).read_bytes()).hexdigest()==digest
 for path,digest in led['photos'].items():assert hashlib.sha256((ROOT/path).read_bytes()).hexdigest()==digest
 s1=read('evidence/s1_contact_results_20261009.json')
 expected_s1={'B38':('A','B','Released','1 ohm'),'B39':('C','D','Released','1 ohm'),

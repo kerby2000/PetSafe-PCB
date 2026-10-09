@@ -48,7 +48,7 @@ doc=SimpleDocTemplate(str(out),pagesize=A4,rightMargin=32,leftMargin=32,topMargi
 W=A4[0]-64
 audit=read('evidence/finalization_audit.json')
 story=[P('Remaining schematic work','TitlePS'),P(f'PetSafe 100-1339 | {m["revision"]} | {status["date"]}'),
-P(f'<b>{len(status["items"])} active issues.</b> Completed steps are archived, not bench requests. S1 electrical contacts are verified; E05 is closed. Q3 stays fitted with identification deferred. LED colours are recorded: R30/PIC23 red; R31/PIC22 green. Package mapping remains separate.'),
+P(f'<b>{len(status["items"])} active issues.</b> Next: B44-B46, one tuning midpoint to ANT1/ANT2 plus the antenna-loop reading. Q3 stays fitted. J5 board contacts are mapped from photos; I02 is archived. Completed steps are not new bench requests.'),
 table([['Drawing / connectivity','Remaining data','ERC'],[f'{len(fitted)} fitted open pads; {len(gpios)} open PIC pads; {audit["dangling_wire_ends"]} dangling wire ends. {len(m["nets"])} native/model net partitions match.',f'{len(status["unknown_ceramic_values"])} ceramic values; LED1 footprint blank. Three local-only PIC branches remain explicit; unsupported R33 withdrawn.',f'{status["erc_total"]} retained U6/U6A output conflict. Five stock power-source flags retained; no new copper joins.']],[W/3]*3),
 P('Audit boundary','HeadPS'),P('Native wire geometry, library definitions, all catalog pad assignments and existing evidence were checked. Zero open pads does not establish hidden copper or functional behavior. U6A is DNP; its regulator symbol and visible conflict remain by user choice. No new NC markers, net merges or ERC exclusions.'),
 P('Order of work','HeadPS')]
@@ -63,6 +63,10 @@ for group in status['finish_plan']:
     if 'V01' in group['issues']:
         story.extend([P('All unrecovered ceramic values','HeadPS'),P(escape(', '.join(status['unknown_ceramic_values'])))])
     story.append(PageBreak())
+story.append(P('PCB reproduction requirements','TitlePS'))
+for row in read('evidence/remaining_work.json')['reproduction_requirements']:
+    story.append(KeepTogether([P(escape(row['item']),'HeadPS'),P(escape(row['remaining'])),P('<b>Agent:</b> '+escape(row['agent_work'])),P('<b>Owner input:</b> '+escape(row['owner_input']))]))
+story.append(PageBreak())
 story.extend([P('Scope and sources','TitlePS'),P(escape(read('evidence/remaining_work.json')['scope_note'])),P(escape(read('evidence/remaining_work.json')['accepted_option_limitations'])),P('All previous issue dispositions: evidence/finalization_review_v0931.json. Native geometry and uncertainty coverage: evidence/finalization_audit.json. Current register: evidence/remaining_work.json. Archived observations and old checklists: docs/history/README.md.'),P('Power-source flags describe supply paths through existing passive components; they do not prove voltage or transistor operation. Installed KiCad 10 libraries and project symbols match the embedded pin/graphic definitions. GUI library reload has not been verified.'),P('Reference rails','HeadPS'),table([['Rail','Existing modeled path']]+[[r['name'],r['path']] for r in status['rails']],[75,W-75])])
 
 def footer(c,d):

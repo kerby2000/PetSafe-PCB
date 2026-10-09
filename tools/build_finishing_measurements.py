@@ -1,6 +1,6 @@
 """Render only the active measurement queue; raw completed evidence stays archived."""
 from pathlib import Path
-import json, html, base64
+import json, html, base64, mimetypes
 from current_state import current_state
 R=Path(__file__).resolve().parents[1]
 p=json.loads((R/'evidence/finishing_measurements.json').read_text(encoding='utf-8'))
@@ -24,7 +24,8 @@ for photo in p['photos']:
     tests=[t for t in displayed if t['group']==photo['id']]
     if not tests:continue
     raw=base64.b64encode((R/photo['source']).read_bytes()).decode('ascii')
-    svg=photo_svg(photo,'../../').replace('../../'+photo['source'],'data:image/jpeg;base64,'+raw)
+    mime=mimetypes.guess_type(photo['source'])[0] or 'application/octet-stream'
+    svg=photo_svg(photo,'../../').replace('../../'+photo['source'],'data:'+mime+';base64,'+raw)
     (out/(photo['id']+'.svg')).write_text(svg,encoding='utf-8')
     def reading(t):
         if p['tests']:return f'<input data-id="{t["id"]}" aria-label="{t["id"]}" placeholder="{esc(t.get("unit","V or OL"))}">'

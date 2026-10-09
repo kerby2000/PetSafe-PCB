@@ -1,6 +1,6 @@
 # Current circuit interpretation
 
-Schematic v0.9.35, 2026-10-09. This is the current interpretation, not a chronological log. The [previous narrative](history/cleanup_v0928/docs/RECONSTRUCTION.md) is archived; older requests there are superseded. Use [the checklist](FINISHING_CHECKLIST.html) for remaining questions.
+Schematic v0.9.36, 2026-10-09. This is the current interpretation, not a chronological log. The [previous narrative](history/cleanup_v0928/docs/RECONSTRUCTION.md) is archived; older requests there are superseded. Use [the checklist](FINISHING_CHECKLIST.html) for remaining questions.
 
 ## Power and references
 
@@ -18,7 +18,9 @@ R41 is 330 ohm and its model1/right end reaches **J1 VPP**. Its model2 end joins
 
 LED1 colour checks identify **R30 / PIC23 / native anode1 as red** and **R31 / PIC22 / native anode2 as green**. Both modeled cathodes remain GND. Package pad numbering and internal grounded-pad pairing remain qualified; the colour tests do not establish the missing footprint. No net or pin mapping changed.
 
-J1 square/VPP end is pin1, then VDD2, GND3, DAT4 and CLK5. D6 routing and polarity are measured: anode GND, cathode VPP, about 0.7 V forward, OL reverse. Its G3 marking does not establish breakdown or ICSP compatibility. D4/D5 use photo-supported 5U/SD05 TVS candidates.
+J1 square/VPP end is pin1, then VDD2, GND3, DAT4 and CLK5. D6 routing and polarity are measured: anode GND, cathode VPP, about 0.7 V forward, OL reverse. Its G3 marking does not establish breakdown or ICSP compatibility. The two documented G3 candidates are 3.9 V and 2.4 V, while Microchip DS40001753B specifies 8-9 V for high-voltage programming entry. Low-voltage programming is possible only with LVP enabled; the fitted PIC configuration is unknown. This is an unresolved rating/entry-method question, not a missing connection. See [the source review](../evidence/d6_programming_review_20261009.json). D4/D5 use photo-supported 5U/SD05 TVS candidates.
+
+J5 sits on the rear. In front photo IMG_2438, the upper contact beside C34 is A/native1 and reaches U5.8/OUTA; the lower contact nearer BATTERY+ is B/native2 and reaches U5.5/OUTB and TP15. Visible copper establishes the board mapping; no further board-continuity test is requested. Motor wire colours, direction and chosen connector footprint numbering remain separate reproduction qualifications. See [the photo review](../evidence/j5_photo_review_20261009.json).
 
 J3 is pin1 PIR supply, pin2 raw signal to R38, pin3 GND. Empty U7.1/2/3 map to J3.3/2/1. The PIR-to-PIC route is resolved; Q2 candidate pin functions and operating behavior remain qualified. Unsupported R33 and its assumed raw-signal pull-up have been withdrawn after photo review and user inspection. The separate PIR board's internal circuit is outside this main-board drawing.
 

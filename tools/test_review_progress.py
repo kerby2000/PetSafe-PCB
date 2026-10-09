@@ -9,14 +9,14 @@ class ReviewProgress(unittest.TestCase):
         self.validation=read('evidence/validation.json')
 
     def test_closed_issue_remains_in_history(self):
-        item=next(i for i in self.work['issues'] if i['id']=='I02')
+        item=next(i for i in self.work['issues'] if i['id']=='I01')
         item['state']='open'; item.pop('resolution',None)
         original=copy.deepcopy(self.work)
-        item.update(state='closed',resolution=dict(date='2099-01-01',result='Synthetic LED/connector completion fixture; not a hardware result.',evidence=['in-memory test fixture']))
+        item.update(state='closed',resolution=dict(date='2099-01-01',result='Synthetic identity completion fixture; not a hardware result.',evidence=['in-memory test fixture']))
         validate_issue_register(self.model,self.work)
         state=current_state(self.model,self.validation,self.work)
-        self.assertNotIn('I02',[i['id'] for i in state['items']])
-        self.assertEqual(next(i for i in state['closed_items'] if i['id']=='I02')['unknown'],next(i for i in original['issues'] if i['id']=='I02')['unknown'])
+        self.assertNotIn('I01',[i['id'] for i in state['items']])
+        self.assertEqual(next(i for i in state['closed_items'] if i['id']=='I01')['unknown'],next(i for i in original['issues'] if i['id']=='I01')['unknown'])
         self.assertEqual(len(state['items'])+len(state['closed_items']),len(original['issues']))
 
     def test_individual_value_update_reduces_unknown_list(self):
@@ -32,7 +32,7 @@ class ReviewProgress(unittest.TestCase):
         self.assertIn('C6',current_state(self.model,self.validation,self.work)['unknown_ceramic_values'])
 
     def test_unsupported_closure_rejected(self):
-        item=next(i for i in self.work['issues'] if i['id']=='I02')
+        item=next(i for i in self.work['issues'] if i['id']=='I01')
         item['state']='closed'; item.pop('resolution',None)
         with self.assertRaises(AssertionError):validate_issue_register(self.model,self.work)
 

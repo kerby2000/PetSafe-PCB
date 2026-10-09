@@ -72,3 +72,9 @@ See [recorded measurements](MEASUREMENTS.md), [circuit interpretation](RECONSTRU
 The [current audit](reviews/2026-10-09_finalization_cleanup_v0.9.31.md) records five stock power declarations and the KiCad 10 library correction. [KiCad 10 schematic documentation](https://docs.kicad.org/10.0/en/eeschema/eeschema.html) is the basis for ERC source flags across passive supply paths. The flags do not establish measured voltage.
 
 D2 identity search: the manufacturer-authored [Diodes BAV3004WS datasheet](https://www.farnell.com/datasheets/2814336.pdf) includes marking 4P but describes a two-terminal package, incompatible with this three-pad D2. It is rejected as a fitted identity; diode behaviour alone does not recover exact ratings. Q3's MMBTA55 candidate and 2H marking remain subject to physical junction checks; see the preserved manufacturer datasheet and I01/E04.
+
+## Programming compatibility and motor contact review, v0.9.36
+
+[Microchip PIC16(L)F188XX programming specification DS40001753B](https://www.microchip.com/content/dam/mchp/documents/OTH/ProductDocuments/ProgrammingSpecifications/40001753B.pdf), pages 2, 21 and 23: high-voltage entry 8-9 V, LVP-dependent low-voltage entry, and code-protection behavior. Read via the web PDF tool; publisher denied direct local download. The [D6 review](../evidence/d6_programming_review_20261009.json) records the implications without selecting a G3 identity or claiming the fitted PIC configuration.
+
+IMG_2438 front copper and IMG_2439 rear connector position establish J5 A/native1 to OUTA and B/native2 to OUTB/TP15. The [photo ledger](../evidence/j5_photo_review_20261009.json) preserves source hashes and qualifies external harness colours and connector fit.

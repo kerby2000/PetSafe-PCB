@@ -1,5 +1,5 @@
 {
-  "revision": "v0.9.35",
+  "revision": "v0.9.36",
   "instruments": [
     "LCR meter",
     "multimeter"
@@ -1871,7 +1871,7 @@
       "footprint_confidence": "datasheet/package candidate",
       "footprint_basis": "Existing assignment; see component identity evidence.",
       "open_pads": 0,
-      "next_method": "No more continuity or ordinary diode tests. Agent seeks a matching primary marking specification; if still ambiguous, plan a current-limited isolated breakdown test. Do not apply a high-voltage test through the PIC.",
+      "next_method": "No repeated continuity or diode-mode check. Marking research establishes ambiguity, not a rating. Keep D6 fitted for now; resolve its rating by an isolated current-limited test only if needed. Before any programmer session, establish the supported entry method; do not apply a breakdown test through the PIC.",
       "photos": "IMG_2437.jpg"
     },
     {
@@ -1926,13 +1926,13 @@
       "observed": "motor connector",
       "displayed": "MOTOR",
       "marking": "",
-      "value_or_identity": "Two physical contacts; A/B must be related to red/black motor leads by continuity.",
+      "value_or_identity": "Photo-supported J5 map (IMG_2438 front, IMG_2439 rear): contact nearer C34 = A/native1 -> U5.8 OUTA; contact nearer BATTERY+ edge = B/native2 -> U5.5 OUTB/TP15. Connector body is on the rear. Harness colours, stock-footprint numbering and exact pitch remain unverified; no new bench result.",
       "footprint": "Connector_JST:JST_XH_B2B-XH-A_1x02_P2.50mm_Vertical",
       "footprint_confidence": "low",
       "footprint_basis": "Two-pin white shrouded through-hole motor connector. XH 2.5-mm geometry is a candidate; pitch, latch and maker need confirmation.",
       "open_pads": 0,
       "next_method": "No immediate measurement requested",
-      "photos": "IMG_2439.jpg"
+      "photos": "IMG_2438.jpg;IMG_2439.jpg"
     },
     {
       "ref": "J6",
@@ -1961,7 +1961,7 @@
       "footprint_confidence": "unresolved",
       "footprint_basis": "User-measured square body 1.5 x 1.5 mm, red/green dual LED; four contacts visible in IMG_2432. Installed KiCad10/MCP search found no validated matching dual-LED footprint. LED_SK6812_EC15_1.5x1.5mm has four 0.5 x 0.5 mm pads on 0.9 mm centres for a different addressable package; body-size equality does not verify its land pattern or numbering. LED1 footprint remains unassigned pending a matching vendor drawing/part.",
       "open_pads": 0,
-      "next_method": "Obtain LED underside/pad geometry or a matching vendor drawing before selecting a footprint. For later PCB reproduction check C5 lead pitch and S1 pad fit; use actual 16mm capacitor and 6mm switch heights. Do not repeat body dimensions.; LED1 body is already measured at 1.5 x 1.5 mm. Obtain the pad geometry/numbering or matching vendor drawing; no repeat body-size request.",
+      "next_method": "Obtain LED underside/pad geometry or a matching vendor drawing before selecting a footprint. For later PCB reproduction check C5 lead pitch and S1 pad fit; use actual 16mm capacitor and 6mm switch heights. Do not repeat body dimensions. Match J5 physical A/B contacts to the chosen connector drawing before PCB layout; record harness colours when available, without repeating visible board continuity.; LED1 body is already measured at 1.5 x 1.5 mm. Obtain the pad geometry/numbering or matching vendor drawing; no repeat body-size request.",
       "photos": "IMG_2432.jpg"
     },
     {

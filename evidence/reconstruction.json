@@ -1,6 +1,6 @@
 {
   "board": "100-1339 R03 A",
-  "revision": "v0.9.35",
+  "revision": "v0.9.36",
   "status": "PARTIALLY VERIFIED RECONSTRUCTION; USER MEASUREMENTS, PHOTO TRACES AND QUALIFIED HYPOTHESES",
   "components": [
     {
@@ -3216,19 +3216,20 @@
       "marking": "",
       "population": "populated",
       "sheet": "motor",
-      "source": "IMG_2439.jpg",
+      "source": "IMG_2438.jpg;IMG_2439.jpg",
       "pins": [
         "A",
         "B"
       ],
-      "note": "Two physical contacts; A/B must be related to red/black motor leads by continuity.",
-      "side": "front",
-      "traced_pin_count": 0,
+      "note": "Photo-supported J5 map (IMG_2438 front, IMG_2439 rear): contact nearer C34 = A/native1 -> U5.8 OUTA; contact nearer BATTERY+ edge = B/native2 -> U5.5 OUTB/TP15. Connector body is on the rear. Harness colours, stock-footprint numbering and exact pitch remain unverified; no new bench result.",
+      "side": "back",
+      "traced_pin_count": 2,
       "proposed_value": "MOTOR",
       "library_symbol": "Connector_Generic:Conn_01x02",
       "footprint": "Connector_JST:JST_XH_B2B-XH-A_1x02_P2.50mm_Vertical",
       "footprint_confidence": "low",
-      "footprint_basis": "Two-pin white shrouded through-hole motor connector. XH 2.5-mm geometry is a candidate; pitch, latch and maker need confirmation."
+      "footprint_basis": "Two-pin white shrouded through-hole motor connector. XH 2.5-mm geometry is a candidate; pitch, latch and maker need confirmation.",
+      "current_summary": "Photo-supported J5 map (IMG_2438 front, IMG_2439 rear): contact nearer C34 = A/native1 -> U5.8 OUTA; contact nearer BATTERY+ edge = B/native2 -> U5.5 OUTB/TP15. Connector body is on the rear. Harness colours, stock-footprint numbering and exact pitch remain unverified; no new bench result."
     },
     {
       "ref": "J6",

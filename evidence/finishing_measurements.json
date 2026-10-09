@@ -1,9 +1,9 @@
 {
   "date": "2026-10-09",
   "basis_revision": "v0.9.35",
-  "status": "LED_COLOURS_AND_READINGS_RECORDED",
-  "scope": "LED colour-to-branch map established; package pad geometry remains separate.",
-  "setup": "Completed diode-mode checks: A-K green, 0.96 V; B-K red, 0.96 V. No repeat measurement requested.",
+  "status": "AWAITING_ONE_TUNING_CELL_ANTENNA_CHECK",
+  "scope": "Resolve the hidden continuation of one tuning-capacitor midpoint before testing the remaining four.",
+  "setup": "Battery and programmer disconnected; resistance mode. Leave Q3 and the antenna wires fitted. Probe exposed metal, not insulation.",
   "photos": [
     {
       "id": "receiver",
@@ -665,10 +665,93 @@
           "role": "reference"
         }
       }
+    },
+    {
+      "id": "antenna-one-cell",
+      "title": "One tuning cell: M to the two antenna terminals",
+      "source": "photos/user/2026-10-08/board_upper.png",
+      "coordinate_space": [
+        2736,
+        3646
+      ],
+      "view_box": [
+        880,
+        780,
+        820,
+        730
+      ],
+      "points": {
+        "M": {
+          "xy": [
+            1238,
+            1026
+          ],
+          "label": [
+            1130,
+            945
+          ],
+          "description": "C11 left metal end, facing C10. This is the existing C10/C11/C12 junction via V107; do not probe the opposite C11 end."
+        },
+        "A": {
+          "xy": [
+            1604,
+            1008
+          ],
+          "label": [
+            1650,
+            900
+          ],
+          "description": "ANT1 solder terminal, next to the printed ANT1 label.",
+          "role": "reference"
+        },
+        "B": {
+          "xy": [
+            1608,
+            1310
+          ],
+          "label": [
+            1650,
+            1445
+          ],
+          "description": "ANT2 solder terminal, next to the printed ANT2 label.",
+          "role": "reference"
+        }
+      }
     }
   ],
-  "tests": [],
-  "interpretation": "B42/B43 user diode-mode colour report: photo A-K lights GREEN via R31/PIC22 (LED1 native pin2); B-K lights RED via R30/PIC23 (native pin1). Black probe at grounded K. Both native cathodes 3/4 remain on GND; internal die-to-cathode pairing and manufacturer pad numbers are not established by this in-circuit test. Body 1.5 x 1.5 mm; footprint remains unassigned.",
+  "tests": [
+    {
+      "id": "B44",
+      "group": "antenna-one-cell",
+      "from": "M",
+      "to": "A",
+      "mode": "resistance",
+      "unit": "ohms / OL",
+      "state": "Unpowered",
+      "purpose": "Test whether the first tuning midpoint reaches ANT1 through hidden copper or a resistive path."
+    },
+    {
+      "id": "B45",
+      "group": "antenna-one-cell",
+      "from": "M",
+      "to": "B",
+      "mode": "resistance",
+      "unit": "ohms / OL",
+      "state": "Unpowered",
+      "purpose": "Test the alternative continuation to ANT2."
+    },
+    {
+      "id": "B46",
+      "group": "antenna-one-cell",
+      "from": "A",
+      "to": "B",
+      "mode": "resistance",
+      "unit": "ohms / OL",
+      "state": "Unpowered",
+      "purpose": "Measure the existing antenna loop path so it cannot be mistaken for a direct PCB join."
+    }
+  ],
+  "interpretation": "Near-baseline resistance supports a conductive path; it does not prove direct PCB copper if the antenna loop or another component is in the path. High or OL readings reject a direct short under the test conditions, but do not exclude capacitive RF coupling. No new nets will be joined until the results are interpreted together.",
   "next_stages": [
     {
       "stage": "Resolve the remaining functional paths",
@@ -1159,8 +1242,8 @@
       "voltage_evidence": "User report 0.96V, followed by clarification Both on 2026-10-09."
     }
   ],
-  "batch_title": "LED1 colour results recorded",
-  "instructions": "The user confirms the 0.96 V reading applies to both channels. Readings were taken in circuit and do not establish isolated LED specifications.",
+  "batch_title": "Tuning cell to antenna: three resistance readings",
+  "instructions": "Measure M-A, M-B and A-B. Report numeric resistance or OL, and note a changing reading. The A-B check accounts for the external antenna loop; it is not a request to desolder anything.",
   "result_summary": "B42/B43 user diode-mode colour report: photo A-K lights GREEN via R31/PIC22 (LED1 native pin2); B-K lights RED via R30/PIC23 (native pin1). Black probe at grounded K. Both native cathodes 3/4 remain on GND; internal die-to-cathode pairing and manufacturer pad numbers are not established by this in-circuit test. Body 1.5 x 1.5 mm; footprint remains unassigned.",
   "cancelled_tests": [
     {
@@ -1173,7 +1256,7 @@
       "reason": "User identifies PIC21/RB0 destination; reconcile the older VREF assignment instead."
     }
   ],
-  "revision": "v0.9.35",
+  "revision": "v0.9.36",
   "photo_updates": [
     {
       "evidence": "evidence/c25_c26_mapping_20261009.json",
@@ -1196,7 +1279,7 @@
       "result": "v0.9.22 user annotated U6A option: single left pad/model L/native U106.1 joins U6 pin5 and the existing input node after R37; upper-right/model R1/native2 joins J3.1 (red PIR wire); lower-right/model R2/native3 joins GND. All three external pads mapped, option remains DNP. User called the input VDD; retain VDD -> R37 (22 ohm) -> H_AUX_IN because the annotation ends at U6 pin5 and prior B28 confirms pin5-pin2, not a bypass across R37. No fitted IC identity or voltage measurement implied."
     }
   ],
-  "batch_id": "led1-colours-20261009",
+  "batch_id": "antenna-one-cell-20261009",
   "location_review": {
     "reference": "TP9",
     "status": "REMOVED_UNSUPPORTED_ENTRY",
@@ -1217,7 +1300,8 @@
   "batch_source_sha256": {
     "photos/originals/IMG_2437.jpg": "3c7c58fea79ea903a3099f204c1d97406c0884edb6d54fd5e7441363e71467a7",
     "photos/originals/IMG_2435.jpg": "04f1464e2fceeec695365b25183dc96505034434565d20713f55c5b13b18fac1",
-    "photos/user_updates/U6_external_routing_20261009.png": "65159aec548c6c5ca68f86e1153a6f7142d5379f75eb733d48f02450a36f5273"
+    "photos/user_updates/U6_external_routing_20261009.png": "65159aec548c6c5ca68f86e1153a6f7142d5379f75eb733d48f02450a36f5273",
+    "photos/user/2026-10-08/board_upper.png": "66b7c33e78b3b37d1acf8d42b28e781b7c9904c1ff469b35b19df1abeda7af28"
   },
   "candidate_datasheet_note": "S-812C datasheet Rev.7.0_01, page 11, Table 5: pin4 NC; pin5 NC for A/E variants. Electrically open internally; external connection to VIN or VSS is allowed. Pin numbering checked against Figure 5 and the existing physical crosswalk.",
   "u6_annotation": {
@@ -1248,8 +1332,8 @@
     "pending_check": null,
     "model_status": "Applied v0.9.20: pin5-VIN measured 1 ohm; R37 and U6A single-pad local joins from the annotation; pin4 explicitly unused."
   },
-  "next_prompt": null,
-  "review_revision": "v0.9.35",
+  "next_prompt": "Report B44 M-A, B45 M-B and B46 A-B in resistance mode, battery/programmer disconnected.",
+  "review_revision": "v0.9.36",
   "request_probe_baseline": false,
   "q3_decision": "Defer isolated Q3 identification; retain candidate qualification and existing copper. No desoldering or repeat Q3 batch requested.",
   "last_completed_test_ids": [

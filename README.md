@@ -1,8 +1,8 @@
 # PetSafe PCB reverse engineering
 
-Current schematic and review: **v0.9.35**, 2026-10-09. PetSafe PPA19-16811 main board, **100-1339 R03 A**. All 148 catalog entries, including test pads and empty options, are on one A2 KiCad 10 sheet.
+Current schematic and review: **v0.9.36**, 2026-10-09. PetSafe PPA19-16811 main board, **100-1339 R03 A**. All 148 catalog entries, including test pads and empty options, are on one A2 KiCad 10 sheet.
 
-Open [the current overview](index.html), [the completion checklist](docs/FINISHING_CHECKLIST.html), [the native schematic](schematic/PetSafe_1001339.kicad_sch), or [the schematic PDF](output/pdf/PetSafe_single_sheet.pdf). The [printable status](output/pdf/PetSafe_completion_status.pdf) includes only current questions and closure criteria. The [measurement page](docs/FINISHING_MEASUREMENTS.html) shows the **completed LED1 colour results B42/B43**; completed results are archived.
+Open [the current overview](index.html), [the completion checklist](docs/FINISHING_CHECKLIST.html), [the native schematic](schematic/PetSafe_1001339.kicad_sch), or [the schematic PDF](output/pdf/PetSafe_single_sheet.pdf). The [printable status](output/pdf/PetSafe_completion_status.pdf) includes only current questions and closure criteria. The [measurement page](docs/FINISHING_MEASUREMENTS.html) shows the **active antenna checks B44-B46**; completed LED1 results B42/B43 are retained without requesting a repeat.
 
 ## Current state
 
@@ -23,13 +23,19 @@ The [current finalization audit](docs/reviews/2026-10-09_finalization_cleanup_v0
 
 1. **Resolve hidden paths and device behavior.** Q3 stays fitted by user choice; isolated identification is deferred. Q8 supply continuity is supported. S1 contacts and normally-open action are verified; E05 is closed. LED colour mapping is now established. Remaining gaps include three local-only PIC branches, antenna continuations, candidate pin functions and operating levels, tracked individually in the checklist.
 2. **Recover critical component values.** 44 ceramic values remain. Prioritize antenna/RF/receiver components after topology, accounting for parallel paths in LCR readings.
-3. **Finish interface and package mapping.** LED pad geometry/numbering and its missing footprint, plus motor lead orientation. Exact package fit, routed PCB/layer stack, daughterboard and firmware are later reproduction work, not extra unfinished main-board wires.
+3. **Finish interface and package mapping.** LED pad geometry/numbering and its missing footprint, plus connector fit and external motor harness orientation. J5 board contacts are now photo-mapped to the H-bridge outputs. Exact package fit, routed PCB/layer stack, daughterboard and firmware are later reproduction work, not extra unfinished main-board wires.
 
 Zero open pads does not mean every signal source, remote destination or candidate device function is established. There are zero dangling native wire ends and no pinless wire islands. Unsupported R33 and its assumed pull-up have been withdrawn after photo review and user inspection. See the [maintained question register](evidence/remaining_work.json) for the evidence, owner/agent actions and closure criteria for each issue.
 
+## Can the original PCB be recreated?
+
+Not yet. The schematic has complete local pad assignments but still has unresolved electrical behavior, candidate identities and critical values. A replacement PCB additionally needs dimensioned geometry, a qualified stackup and routing, package fit, and verification against the original. Via continuity can recover connectivity, but cannot recover the exact hidden copper geometry. No routed PCB exists.
+
+A functioning new assembly also needs the PIC program/configuration, motor/antenna/PIR integration and powered validation. No firmware backup is present; its read protection is unknown. The main-board schematic does not contain the separate PIR daughterboard circuit. These requirements are listed separately in the [completion checklist](docs/FINISHING_CHECKLIST.html#reproduction).
+
 ## History
 
-Resolved investigation is preserved in [history](docs/history/README.md). The active checklist has 11 issue groups; [every previous item has a disposition](evidence/finalization_review_v0931.json). No physical net partition was changed by this cleanup.
+Resolved investigation is preserved in [history](docs/history/README.md). The active checklist has 10 issue groups; [every previous item has a disposition](evidence/finalization_review_v0931.json). No physical net partition was changed by this cleanup.
 
 ## Evidence and history
 

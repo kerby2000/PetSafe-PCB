@@ -1,7 +1,7 @@
 {
   "date": "2026-10-09",
-  "review_revision": "v0.9.35",
-  "basis_revision": "v0.9.35",
+  "review_revision": "v0.9.36",
+  "basis_revision": "v0.9.36",
   "scope": "Current main-board finishing register. Supported connections and completed measurements are recorded in the current model; resolved issues are archived. Remaining hidden paths, candidate identities, values and operating behavior are listed below.",
   "rails": [
     {
@@ -100,7 +100,7 @@
       "state": "open",
       "known": "Five PIC-to-control-resistor routes and visible Q3/R13/C10 joins are mapped. Seven midpoint-pair OL exclusions retained. Q3 diode batch complete: L->S latest 0.48 V, L->R 2.3 V; reverse directions and R/S both ways OL.",
       "unknown": "The diode pattern does not confirm the drawn PNP B=R/E=L/C=S mapping. In-circuit paths or contact effects prevent device identification; a single 0.48 V path does not prove a MOSFET. Five capacitor midpoints still lack an established antenna continuation.",
-      "next_action": "User chose to leave Q3 fitted. Isolated identification is deferred; no Q3 desoldering or repeated in-circuit diode batch is requested. Retain the disputed candidate while the agent reviews antenna continuations and other evidence.",
+      "next_action": "Active batch B44-B46: measure the C10/C11/C12 midpoint V107 at C11 left metal end to ANT1, then ANT2, and ANT1-to-ANT2. Account for the connected antenna loop before interpreting low readings. Q3 stays fitted; isolated identity testing is deferred.",
       "closed_when": "One cell has a supported device map and functional antenna path; the other four are checked only where needed.",
       "open_pads": [],
       "nets": [
@@ -116,7 +116,8 @@
         "evidence/architect_review_v0930.json",
         "docs/history/v0.9.30-before-finalization/evidence/remaining_work.json",
         "evidence/q3_diode_results_20261009.json",
-        "evidence/q3_deferred_q8_followup_20261009.json"
+        "evidence/q3_deferred_q8_followup_20261009.json",
+        "evidence/finishing_measurements.json"
       ],
       "owner": "Agent evidence review; targeted owner test only as listed",
       "category": "connectivity/behavior"
@@ -290,9 +291,9 @@
       ],
       "priority": 2,
       "state": "open",
-      "known": "D6 anode is GND and cathode is VPP; forward drop is about 0.7V and reverse diode mode is OL. J1 pin order is resolved.",
-      "unknown": "G3 does not uniquely establish breakdown voltage. The displayed 3.9V candidate is not a measured clamp rating and could conflict with programming voltage.",
-      "next_action": "No more continuity or ordinary diode tests. Agent seeks a matching primary marking specification; if still ambiguous, plan a current-limited isolated breakdown test. Do not apply a high-voltage test through the PIC.",
+      "known": "D6 anode is GND and cathode is VPP; forward drop is about 0.7V and reverse diode mode is OL. J1 pin order is resolved. Primary programming specification DS40001753B requires 8.0-9.0 V for high-voltage entry; low-voltage entry exists only when LVP is enabled.",
+      "unknown": "G3 is nonunique: MMSZ5228BS is 3.9 V; PZU2.4B is 2.4 V. Neither rating has been measured on this board. A directly connected clamp of either rating would load the required high-voltage ICSP level. The current PIC LVP configuration and actual D6 breakdown are unknown.",
+      "next_action": "No repeated continuity or diode-mode check. Marking research establishes ambiguity, not a rating. Keep D6 fitted for now; resolve its rating by an isolated current-limited test only if needed. Before any programmer session, establish the supported entry method; do not apply a breakdown test through the PIC.",
       "closed_when": "Clamp class/rating is established or explicitly bounded for reconstruction, and programming compatibility is checked.",
       "open_pads": [],
       "nets": [
@@ -301,7 +302,8 @@
         "MCLR_VPP"
       ],
       "supporting_evidence": [
-        "docs/history/v0.9.30-before-finalization/evidence/remaining_work.json"
+        "docs/history/v0.9.30-before-finalization/evidence/remaining_work.json",
+        "evidence/d6_programming_review_20261009.json"
       ],
       "owner": "Agent evidence review; targeted owner test only as listed",
       "category": "connectivity/behavior"
@@ -344,27 +346,6 @@
       "category": "identity"
     },
     {
-      "id": "I02",
-      "area": "Motor connector physical lead order",
-      "refs": [
-        "J5"
-      ],
-      "priority": 2,
-      "state": "open",
-      "known": "U5 motor outputs are modeled to the two J5 contacts. LED colour mapping is recorded separately in the completed B42/B43 ledger.",
-      "unknown": "Physical motor lead A/B correspondence to the existing native J5 pin1/pin2 map remains provisional.",
-      "next_action": "Review front/rear photos and connector orientation first. If the hidden route cannot establish the physical map, prepare a labelled continuity check to the H-bridge outputs. Motor operating direction is a separate behavior question.",
-      "closed_when": "Physical J5 contacts and motor leads are tied to the modeled U5 outputs by photo or continuity evidence.",
-      "open_pads": [],
-      "nets": [],
-      "supporting_evidence": [
-        "docs/history/v0.9.30-before-finalization/evidence/remaining_work.json",
-        "evidence/led1_colour_results_20261009.json"
-      ],
-      "owner": "Agent evidence review; targeted owner test only as listed",
-      "category": "connectivity/behavior"
-    },
-    {
       "id": "V01",
       "area": "Capacitor values and passive ratings",
       "refs": [
@@ -400,15 +381,16 @@
       ],
       "priority": 2,
       "state": "open",
-      "known": "LED1 is the only unassigned footprint; R30/PIC23 lights red and R31/PIC22 lights green. C5 diameter/height, S1 body/actuator size, R8 and C11 sizes are already measured.",
-      "unknown": "LED1 land pattern/manufacturer numbering and internal pairing of its externally grounded cathode pads remain unverified. C5 pitch and S1 pad fit/3D heights are reproduction qualifications, not unknown schematic wires.",
-      "next_action": "Obtain LED underside/pad geometry or a matching vendor drawing before selecting a footprint. For later PCB reproduction check C5 lead pitch and S1 pad fit; use actual 16mm capacitor and 6mm switch heights. Do not repeat body dimensions.",
+      "known": "LED1 is the only unassigned footprint; R30/PIC23 lights red and R31/PIC22 lights green. C5 diameter/height, S1 body/actuator size, R8 and C11 sizes are already measured. J5 rear placement and both board contacts are mapped to U5 outputs from front/rear photos.",
+      "unknown": "LED1 land pattern/manufacturer numbering and internal pairing of its externally grounded cathode pads remain unverified. C5 pitch and S1 pad fit/3D heights are reproduction qualifications, not unknown schematic wires. J5 stock-footprint pad order/pitch and external motor harness colours remain unverified.",
+      "next_action": "Obtain LED underside/pad geometry or a matching vendor drawing before selecting a footprint. For later PCB reproduction check C5 lead pitch and S1 pad fit; use actual 16mm capacitor and 6mm switch heights. Do not repeat body dimensions. Match J5 physical A/B contacts to the chosen connector drawing before PCB layout; record harness colours when available, without repeating visible board continuity.",
       "closed_when": "LED footprint has a supported pad map; remaining package-fit assumptions are documented separately from schematic connectivity.",
       "open_pads": [],
       "nets": [],
       "supporting_evidence": [
         "docs/history/v0.9.30-before-finalization/evidence/remaining_work.json",
-        "evidence/led1_colour_results_20261009.json"
+        "evidence/led1_colour_results_20261009.json",
+        "evidence/j5_photo_review_20261009.json"
       ],
       "owner": "Agent evidence review; targeted owner test only as listed",
       "category": "package"
@@ -449,7 +431,7 @@
         "I01"
       ],
       "summary": "S1 contacts are verified and removed from active work. Q3 stays fitted with identification deferred. Three local-only PIC branches, antenna continuations and powered behavior remain.",
-      "next_action": "Agent reviews hidden-path candidates from photos; remaining powered checks are staged. No repeat LED or S1 tests."
+      "next_action": "Start with B44-B46 on one tuning cell. Agent reviews remaining hidden-path candidates; powered rail/behavior checks follow as one staged session. No repeat LED or S1 tests."
     },
     {
       "id": "F2",
@@ -466,15 +448,46 @@
       "title": "Finish interface and package mapping",
       "scope": "Main-board interfaces",
       "issues": [
-        "I02",
         "M01"
       ],
-      "summary": "LED colour branches are established. Remaining: LED footprint/internal grounded-pad pairing and motor lead order; exact physical fit is later PCB qualification.",
-      "next_action": "Review motor connector orientation from photos before a bench request. Obtain a matching LED vendor drawing or pad geometry for footprint selection."
+      "summary": "LED colour branches and J5 board-contact/output mapping are established. LED footprint, connector fit and external motor harness orientation remain reproduction qualifications.",
+      "next_action": "Obtain a matching LED vendor drawing or pad geometry; qualify J5 and the other packages before laying out a replacement PCB."
     }
   ],
   "settled_summary": [],
   "history_register": "docs/history/v0.9.30-before-finalization/evidence/remaining_work.json",
   "scope_note": "Main-board schematic finalization. Routed PCB/layer stack, PIR daughterboard internals and firmware reconstruction remain later work, not completed. Empty-option population design is not needed to reproduce the observed DNP board.",
-  "accepted_option_limitations": "DNP options retain all modeled local routes and candidate roles. J6.2/R36.1 terminates at an unpopulated external interface; no additional onboard rail is assumed. U6A stays a regulator symbol with its visible output conflict by explicit user choice."
+  "accepted_option_limitations": "DNP options retain all modeled local routes and candidate roles. J6.2/R36.1 terminates at an unpopulated external interface; no additional onboard rail is assumed. U6A stays a regulator symbol with its visible output conflict by explicit user choice.",
+  "reproduction_requirements": [
+    {
+      "item": "Electrical design",
+      "remaining": "Close the 10 active main-board issue groups, recover critical values, and qualify candidate pin functions/ratings.",
+      "agent_work": "Trace visible copper, review datasheets and keep the model/native files consistent.",
+      "owner_input": "Current B44-B46, followed by selected powered and LCR measurements."
+    },
+    {
+      "item": "Mechanical fit",
+      "remaining": "Dimensioned board perimeter, mounting holes, connector positions and lead geometry; LED land pattern.",
+      "agent_work": "Create a dimensioned replacement layout from supported measurements.",
+      "owner_input": "Only geometry not recoverable reliably from the photos; existing body dimensions are retained."
+    },
+    {
+      "item": "Copper and stackup",
+      "remaining": "No routed PCB exists; four layers remain a hypothesis. Continuity identifies nets, not hidden track geometry or dielectric thickness.",
+      "agent_work": "Design and check a replacement routing/stackup once electrical and mechanical data are sufficient.",
+      "owner_input": "Layer/board thickness evidence if exact physical replication is required."
+    },
+    {
+      "item": "Firmware and configuration",
+      "remaining": "No PIC firmware/configuration backup is present. An identical populated board needs the program and configuration, or compatible replacement firmware.",
+      "agent_work": "Plan a read-only backup after ICSP/D6 compatibility is established; do not erase the original.",
+      "owner_input": "Programmer availability later. Protection may prevent reading the program; this is currently unknown."
+    },
+    {
+      "item": "Complete working assembly",
+      "remaining": "Powered validation, motor/antenna/PIR integration, and daughterboard internals if that board is also being copied.",
+      "agent_work": "Define staged checks against the original and validate the replacement.",
+      "owner_input": "Operating measurements on the original; external assemblies and their geometry if reproduced."
+    }
+  ]
 }

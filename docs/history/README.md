@@ -35,3 +35,7 @@ B37 P-F = 1 ohm supports the existing Q8.T2/native2 to C6.1 supply join. The old
 ## v0.9.35 LED colour map
 
 [B42/B43 results](../../evidence/led1_colour_results_20261009.json): R31/PIC22 is green; R30/PIC23 is red. This closes the colour-to-control-branch question without changing electrical nets or native numbering. LED land-pattern compatibility is retained in M01; I02 is now limited to the physical motor-connector map.
+
+## v0.9.36 motor board-contact mapping
+
+[I02 closure and source-photo hashes](../../evidence/j5_photo_review_20261009.json): both board contacts are mapped from visible front copper, with the J5 connector body on the rear. No net partition changed. External harness colours and exact footprint fit stay under M01/reproduction requirements; no board-continuity repeat is requested. The active bench task is now B44-B46, one antenna tuning midpoint and the connected antenna loop.
