@@ -1,5 +1,5 @@
 {
-  "revision": "v0.9.24",
+  "revision": "v0.9.25",
   "instruments": [
     "LCR meter",
     "multimeter"
@@ -1969,13 +1969,13 @@
       "ref": "LED1",
       "native_ref": "LED1",
       "population": "populated",
-      "observed": "UNKNOWN_4PAD",
-      "displayed": "2-colour LED?",
+      "observed": "Red / Green",
+      "displayed": "Red / Green",
       "marking": "",
-      "value_or_identity": "Physical four-pad LED package. Number/polarity of internal emitters to measure.",
+      "value_or_identity": "User confirms square 1.5 x 1.5 mm package containing red and green emitters. Four pads and existing board connections retained. Which resistor/PIC channel lights each colour, internal die pairing and exact manufacturer pad numbering remain unconfirmed. No stock land pattern assigned from body size alone.",
       "footprint": "",
       "footprint_confidence": "unresolved",
-      "footprint_basis": "Four-terminal LED; body size, pad arrangement and internal polarity need confirmation before choosing an exact stock footprint.",
+      "footprint_basis": "User-measured square body 1.5 x 1.5 mm, red/green dual LED; four contacts visible in IMG_2432. Installed KiCad10/MCP search found no validated matching dual-LED footprint. LED_SK6812_EC15_1.5x1.5mm has four 0.5 x 0.5 mm pads on 0.9 mm centres for a different addressable package; body-size equality does not verify its land pattern or numbering. LED1 footprint remains unassigned pending a matching vendor drawing/part.",
       "open_pads": 0,
       "next_method": "Diode-mode readings and continuity; markings are already recorded; check PIC trace audit before requesting continuity; Photo with ruler/body and lead measurements for exact footprint",
       "photos": "IMG_2432.jpg"

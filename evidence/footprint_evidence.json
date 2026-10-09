@@ -1,5 +1,5 @@
 {
-  "revision": "v0.9.24",
+  "revision": "v0.9.25",
   "method": "Photo-based family selection using known IC lead spacing and repeated package proportions; no calibrated dimensional measurement claimed.",
   "blank_before": 129,
   "blank_after": 2,
@@ -1385,7 +1385,7 @@
       "before": "",
       "footprint": "",
       "confidence": "unresolved",
-      "basis": "Four-terminal LED; body size, pad arrangement and internal polarity need confirmation before choosing an exact stock footprint.",
+      "basis": "User-measured square body 1.5 x 1.5 mm, red/green dual LED; four contacts visible in IMG_2432. Installed KiCad10/MCP search found no validated matching dual-LED footprint. LED_SK6812_EC15_1.5x1.5mm has four 0.5 x 0.5 mm pads on 0.9 mm centres for a different addressable package; body-size equality does not verify its land pattern or numbering. LED1 footprint remains unassigned pending a matching vendor drawing/part.",
       "photos": [
         "IMG_2432.jpg"
       ]

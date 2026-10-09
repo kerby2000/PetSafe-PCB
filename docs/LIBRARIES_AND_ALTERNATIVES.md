@@ -16,7 +16,8 @@ The user authorized U1/U5 after vendor files could not be found, and subsequentl
 | Q3/Q4/Q5/Q6/Q11 | `Transistor_BJT:Q_PNP_BEC` | Standard generic PNP with B=1, E=2, C=3; value MMBTA55? preserves the uncertain 2H identification. |
 | D1/D3 | `Diode:BAV99` | A7 marking candidates; D3 marking now confirmed by the user. Physical orientation and external clamp routes remain inferred. |
 | D2 | `Connector_Generic:Conn_01x03` | Unidentified 4P part; in-circuit readings support series junctions R -> S -> L. L=1/R=2/S=3 remain bookkeeping. User maps R-C20 lower, L-ANT2/R46 upper, S-R46 lower; R46 is empty. Exact part/ratings unknown; prior rail-clamp ties remain withdrawn. |
-| LED1, S1 | `Device:LED_Dual_AAKK`, `Switch:SW_Push_Dual` | Stock four-pin symbols; photographed pad mapping remains provisional. |
+| LED1 | `Device:LED_Dual_AAKK` | User-confirmed red/green dual emitter, 1.5 x 1.5 mm body; colour-to-pin mapping and footprint remain provisional. |
+| S1 | `Switch:SW_Push` | Four physical switch pads map to two repeated footprint pad numbers; see measured-body evidence below. |
 | R/C/L/Y/TP | `Device:R`, `Device:C`, `Device:C_Polarized`, `Device:L`, `Device:Crystal`, `Connector:TestPoint` | Existing conventional library parts. C5 polarity is inferred from the selected rail topology. |
 | U1 | `PetSafe_Datasheet:S-1200B45-M5T1` | MCP-created from ABLIC Rev.6 page 5: 1 VIN, 2 VSS, 3 ON/OFF, 4 NC, 5 VOUT. B option has active-high enable. The fitted part remains a strong identification candidate, not a measured fact. |
 | U5 | `PetSafe_Datasheet:MX512H` | MCP-created from Mixic Rev.1.2 page 2: 1 VCC, 2 INA, 3 INB, 4 VDD, 5 OUTB, 6/7 GND, 8 OUTA. Logic/motor supplies and both ground pins retained. |
@@ -79,3 +80,8 @@ The user reports R8 approximately 1.6 x 0.77 mm including both metal end caps, c
 Q9 uses stock `Transistor_BJT:Q_NPN_BEC` with a provisional NPN role: base through R35, emitter GND, collector J6.1. U6A (native U106) uses stock `Regulator_Linear:MCP1700x-330xxTT` as a three-pin regulator role/pin template only; its visible value says U6A / LDO option and it remains DNP. Neither symbol identifies an absent original component. U6A's footprint pin map is 1=GND, 2=output, 3=input; this follows the [Microchip MCP1700 SOT-23 pin table](https://ww1.microchip.com/downloads/aemDocuments/documents/APID/ProductDocuments/DataSheets/MCP1700-Data-Sheet-20001826F.pdf) and the photographed pad arrangement. No voltage or current rating is inferred from that library name. Do not populate the option from this schematic without selecting and validating a part.
 
 The former connector placeholders were replaced through MCP. The regulator symbol exposes a native ERC output conflict with U6; it is retained because U6A is an unpopulated alternative. C49 remains a stock capacitor symbol with unresolved copper; TP9 was removed after its location failed the evidence audit. There are now 149 catalog entries and 22 stock plus 4 custom definitions in use.
+
+
+## v0.9.25 - LED1 colours and dimensions
+
+LED1 contains red and green emitters in a user-measured square 1.5 x 1.5 mm body. The existing stock dual-LED symbol now displays `Red / Green`; all four physical board connections remain unchanged. Colour-to-drive assignment and exact manufacturer pin numbering remain unconfirmed. Installed KiCad10/MCP searches did not establish a matching dual-LED footprint. The similarly sized SK6812 EC15 footprint is an addressable-LED land pattern with different unverified pads/numbering, so it was not assigned merely for its body dimensions. A matching vendor drawing/footprint is still needed; no custom library part was created. See [LED evidence](../evidence/led1_dimensions_20261009.json).

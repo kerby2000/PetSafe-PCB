@@ -104,3 +104,8 @@ Section 08 is removed. D4-D6 sit with PIC/ICSP; the RB5/R35/Q9/J6/R36/TP10 optio
 Q9 uses stock `Transistor_BJT:Q_NPN_BEC`: physical L=base/pin1, R=emitter/pin2/GND, S=collector/pin3/J6.1. This is an inferred optional driver, not an identified fitted transistor. U6A uses stock `Regulator_Linear:MCP1700x-330xxTT` as a regulator role template only. Physical single-left input is now native U106.3; upper-right output remains U106.2; lower-right GND is U106.1. This supersedes the arbitrary connector numbering without changing any physical nets. The identity and ratings of the absent device remain unknown.
 
 Native ERC retains an output-to-output error for U6.3/U106.2 on H_PIR_VDD: empty U6A is interpreted as an alternative to fitted U6, and simultaneous population is not validated. No pin types or ERC exclusions were changed. The validator accepts only that exact documented DNP option conflict and rejects other output conflicts. All 85 physical net partitions remain unchanged. The active catalog contains 149 entries, with 147 footprints and only C49's two unresolved physical pads. Nine ERC findings remain: two open pins, one isolated label, five undriven power inputs and the one DNP regulator-output conflict.
+
+
+## v0.9.25 - LED1 observation
+
+User confirms two internal emitters, red and green, in a square 1.5 x 1.5 mm body. The schematic and inventory now display `Red / Green`; this removes the generic colour question mark without inventing which PIC/resistor branch lights each colour. Existing nets and the four-pad stock dual-LED symbol are retained. Exact land pattern, manufacturer numbering and colour-to-drive mapping remain unconfirmed. See [observation record](../evidence/led1_dimensions_20261009.json).

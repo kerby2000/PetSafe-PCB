@@ -821,7 +821,7 @@
     {
       "symbol": "Device:LED_Dual_AAKK",
       "reference": "LED1",
-      "value": "2-colour LED?",
+      "value": "Red / Green",
       "position": {
         "x": 231.14,
         "y": 237.49
@@ -830,7 +830,10 @@
       "includePins": true,
       "footprint": "",
       "properties": {
-        "ViaEvidence": "v0.9.5: V127 is GND and reaches LED1. IMG_2432 shows the common pair opposite the resistor-fed pads; these are the existing model BL/BR pair (stock pins3/4), now grounded. Physical orientation and internal colour/polarity mapping remain provisional."
+        "ViaEvidence": "v0.9.5: V127 is GND and reaches LED1. IMG_2432 shows the common pair opposite the resistor-fed pads; these are the existing model BL/BR pair (stock pins3/4), now grounded. Physical orientation and internal colour/polarity mapping remain provisional.",
+        "Colour": "Red / Green",
+        "BodySize": "1.5 x 1.5 mm (user measurement)",
+        "MeasurementEvidence": "User confirms square 1.5 x 1.5 mm package containing red and green emitters. Four pads and existing board connections retained. Which resistor/PIC channel lights each colour, internal die pairing and exact manufacturer pad numbering remain unconfirmed. No stock land pattern assigned from body size alone."
       }
     },
     {

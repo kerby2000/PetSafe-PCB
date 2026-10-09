@@ -11651,7 +11651,7 @@
 				)
 			)
 		)
-		(property "Value" "2-colour LED?"
+		(property "Value" "Red / Green"
 			(at 231.14 231.14 0)
 			(show_name no)
 			(do_not_autoplace no)
@@ -11703,6 +11703,15 @@
 				(hide yes)
 			)
 		)
+(property "Colour" "Red / Green" (at 231.14 237.49 0)
+(effects (font (size 1.27 1.27)) (hide yes))
+)
+(property "BodySize" "1.5 x 1.5 mm (user measurement)" (at 231.14 237.49 0)
+(effects (font (size 1.27 1.27)) (hide yes))
+)
+(property "MeasurementEvidence" "User confirms square 1.5 x 1.5 mm package containing red and green emitters. Four pads and existing board connections retained. Which resistor/PIC channel lights each colour, internal die pairing and exact manufacturer pad numbering remain unconfirmed. No stock land pattern assigned from body size alone." (at 231.14 237.49 0)
+(effects (font (size 1.27 1.27)) (hide yes))
+)
 		(pin "1"
 			(uuid "e17bbd08-da1b-4440-abe8-ef09d84db2d3")
 		)

@@ -3779,14 +3779,19 @@
       "placement": {
         "symbol": "Device:LED_Dual_AAKK",
         "reference": "LED1",
-        "value": "2-colour LED?",
+        "value": "Red / Green",
         "position": {
           "x": 231.14,
           "y": 237.49
         },
         "rotation": 0,
         "includePins": true,
-        "footprint": ""
+        "footprint": "",
+        "properties": {
+          "Colour": "Red / Green",
+          "BodySize": "1.5 x 1.5 mm (user measurement)",
+          "MeasurementEvidence": "User confirms square 1.5 x 1.5 mm package containing red and green emitters. Four pads and existing board connections retained. Which resistor/PIC channel lights each colour, internal die pairing and exact manufacturer pad numbering remain unconfirmed. No stock land pattern assigned from body size alone."
+        }
       }
     },
     {

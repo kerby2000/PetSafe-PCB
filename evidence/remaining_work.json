@@ -1,6 +1,6 @@
 {
   "date": "2026-10-09",
-  "review_revision": "v0.9.24",
+  "review_revision": "v0.9.25",
   "basis_revision": "v0.9.22",
   "scope": "Current main-board uncertainties after the 522d235 architect review and user D3 follow-up. J1 numbering corrected from photos, R41 named neutrally; D3 rail assignment resolved by user measurement with closure history retained. D2 local destinations now have user evidence: R to C20 lower end, L to ANT2/R46 upper, S to R46 lower; R46 is DNP. Exact part identity remains open. U3.5 VREF and J3.3 ground now measured; disproven R23 and J3 role guesses withdrawn in v0.9.13. Batch2 confirms J3.2-R38 K, U3.6-R23 B and R22 E-GND; R23 C remains unresolved. Batch3 rejects direct R23 C joins to C18 M/N and TP6: 300/400/600 kohm respectively; no topology change. Batch4 resolves R23 C-C40 lower-R42 upper. C40 leaves the unsupported detector-output grouping. Clear surface traces are agent photo work, not routine bench requests. Batch5 rejects TP16-to-TP11/TP17 direct joins (400 kohm each). User maps all three U7 pads to J3; U7 pin1 is GND, pin2 signal, pin3 PIR supply. User measured TP16-VREF 0.8 Mohm and explicitly withdrew PIC21-VREF. PIC21/RB0 now joins TP16/Q2.S; the PIR-to-controller route is resolved. C26.1 now joins PIC3/RA1 from user annotation; C25 remains PIC2/RA0, with common GND. Values still unknown. C6 is now reconstructed in parallel with C5 from the user proposal and copper photos; no new meter reading or capacitance supplied. v0.9.21 annotated photo: J6 left/model1 joins Q9 single/native3 and R36 right/model2. J6 right/model2 joins R36 left/model1. PIC26/RB5-TP10-R35 upper; R35 lower-Q9 paired-left; paired-right via V021 is GND. All J6/Q9/R35/R36 options remain DNP. R36 left/J6 right onward rail is not established by this annotation. v0.9.21 user annotated S1 upper-right to C35 upper/model2 (GND via prior V018); lower-right to C35 lower/model1, R40 lower/model2 and R41 left/model2. User explicitly confirms R41 right/model1 reaches J1 VPP/MCLR. Correct physical-to-native switch mapping TL=1, TR=3, BL=2, BR=4. Top-row/bottom-row common pairs remain a tactile-switch hypothesis; released/pressed behavior has not been measured. v0.9.22 user annotated U6A option: single left pad/model L/native U106.1 joins U6 pin5 and the existing input node after R37; upper-right/model R1/native2 joins J3.1 (red PIR wire); lower-right/model R2/native3 joins GND. All three external pads mapped, option remains DNP. User called the input VDD; retain VDD -> R37 (22 ohm) -> H_AUX_IN because the annotation ends at U6 pin5 and prior B28 confirms pin5-pin2, not a bypass across R37. No fitted IC identity or voltage measurement implied.",
   "rails": [
@@ -50,7 +50,8 @@
     "User confirms R41 right end reaches J1 VPP; annotated J6/Q9/R35/R36 option copper mapped.",
     "U6A lower-right pad is GND; all three empty option pads now mapped.",
     "v0.9.24 removes unsupported TP9 from active inventory, retains photographed C49, and moves D4-D6 / Q9-J6 / U6A into their circuit blocks. No measured net membership changes.",
-    "v0.9.24: TP9 withdrawn as unsupported; C49 confirmed present and DNP in IMG_2442, with two pads still unresolved. Options moved into functional blocks. Q9 NPN and U6A regulator role symbols replace connectors without changing physical nets."
+    "v0.9.24: TP9 withdrawn as unsupported; C49 confirmed present and DNP in IMG_2442, with two pads still unresolved. Options moved into functional blocks. Q9 NPN and U6A regulator role symbols replace connectors without changing physical nets.",
+    "v0.9.25: LED1 red/green emitters and 1.5 x 1.5 mm square body confirmed by user; native value updated, all physical nets preserved. Exact land pattern and colour-to-drive mapping remain open."
   ],
   "issues": [
     {
@@ -484,9 +485,9 @@
       ],
       "priority": 2,
       "state": "open",
-      "known": "V127 reaches the photo-selected LED common pair; the two PIC LED drives are mapped. MX512H OUTA/OUTB map to the modeled motor connector.",
-      "unknown": "LED internal polarity/colour mapping and J5 physical A/B lead polarity remain provisional.",
-      "next_action": "Check LED pad pairs in diode mode and record emitted colour. Match J5 wire positions to U5 outputs by continuity.",
+      "known": "V127 reaches the photo-selected LED common pair; the two PIC LED drives are mapped. MX512H OUTA/OUTB map to the modeled motor connector. User confirms LED1 contains red and green emitters in a square 1.5 x 1.5 mm body; the schematic now says Red / Green.",
+      "unknown": "Which R30/R31 (PIC22/PIC23) branch lights red versus green, exact die pairing/polarity and manufacturer pin numbering remain unconfirmed. J5 physical A/B lead polarity remains provisional.",
+      "next_action": "Only if channel identification is needed, use diode mode from each resistor-fed LED contact toward its grounded contact and record the emitted colour; do not repeat known board-routing checks. Match J5 wire positions to U5 outputs by continuity.",
       "closed_when": "LED internal mapping and connector orientation are established.",
       "open_pads": [],
       "nets": []
@@ -522,9 +523,9 @@
       ],
       "priority": 2,
       "state": "open",
-      "known": "Most entries have candidate stock footprints; R8 and C11 have user dimensions. J1 sequential numbering is corrected, but exact land-pattern dimensions remain photo-based. S1 body is user-measured 6 x 6 x 4 mm with 2 mm actuator (6 mm overall); a stock 6 x 6 mm SMD gullwing footprint is now assigned with compatible two-node symbol and four physical pads retained.",
-      "unknown": "Only C5 and LED1 footprints are blank. S1 exact lead span and manufacturer remain unverified; the selected stock x43 3D housing is 4.3 mm high, not the user-measured 6 mm. Other families, connector pitch, test-pad drills and exact board geometry remain partly photo-based.",
-      "next_action": "For PCB reproduction, establish C5 can/lead spacing and LED1 pad pitch, and check the selected switch land pattern against physical pads. Use the recorded 6 mm overall S1 height for housing clearance; do not treat the stock x43 3D model as exact. No immediate additional S1 body measurement is requested.",
+      "known": "Candidate stock footprints are assigned except C5/LED1. R8/C11 have measured bodies; J1 numbering is corrected. S1 measures 6 x 6 x 4 mm plus 2 mm actuator (6 mm overall), with a stock SMD footprint and four physical pads mapped to two contact nodes. LED1 is red/green, square 1.5 x 1.5 mm.",
+      "unknown": "LED1 land pattern/numbering and C5 geometry remain unresolved. S1 manufacturer and exact pad fit are unverified; the stock x43 housing is 4.3 mm high, not the measured 6 mm. Other package families, connector pitches, test-pad drills and board geometry remain partly photo-based.",
+      "next_action": "Obtain C5 can/lead spacing and a matching LED1 vendor footprint/pad drawing. Verify S1 land-pattern fit; use its recorded 6 mm overall height for clearance. No repeat body measurement is needed.",
       "closed_when": "Blank footprints are filled with supported stock matches or approved vendor parts; exact PCB-reproduction dimensions are distinguished from schematic-only candidates.",
       "open_pads": [],
       "nets": []
