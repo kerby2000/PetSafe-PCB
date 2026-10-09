@@ -1,5 +1,5 @@
 {
-  "revision": "v0.9.33",
+  "revision": "v0.9.34",
   "instruments": [
     "LCR meter",
     "multimeter"
@@ -1881,12 +1881,12 @@
       "observed": "pushbutton",
       "displayed": "pushbutton",
       "marking": "",
-      "value_or_identity": "Measured body 6 x 6 x 4 mm plus 2 mm actuator. Stock SW_Push has two native nodes: physical TL/TR -> pin1/GND; BL/BR -> pin2/H_BUTTON. R41 reaches J1 VPP. Internal contact pairing and released/pressed behavior remain inferred; the former four-native-pin connector numbering is superseded.",
+      "value_or_identity": "B38-B41: A-B and C-D each 1 ohm; B-D released OL and held pressed 1 ohm. Confirms normally-open S1 with physical TL/TR common on GND (native pin1) and BL/BR common on H_BUTTON (native pin2). Additional A-C OL retained as reported. R41 reaches J1 VPP through the existing 330-ohm path. Contact issue E05 closed; exact footprint fit and the measured 6-mm housing remain separate mechanical qualifications.",
       "footprint": "Button_Switch_SMD:SW_SPST_PTS645Sx43SMTR92",
       "footprint_confidence": "medium - measured body, photo-estimated lead span",
       "footprint_basis": "User measured a 6 x 6 x 4 mm body plus 2 mm actuator (about 6 mm overall). Photo shows four SMD gullwing leads; approximate pad-centre span from photo/body ratio is about 8 mm, consistent with the stock PTS645 land pattern (7.96 x 4.50 mm centres). Dimensions select a candidate family, not an exact manufacturer. Library x43 footprint/3D model denotes 4.3 mm overall and must not be used as the measured 6 mm housing.",
       "open_pads": 0,
-      "next_method": "B38-B41 on the labelled S1 screen: A-B and C-D released, then B-D released and held pressed. These distinguish internal common contacts and switching behavior without repeating PCB routing.",
+      "next_method": "Electrical contacts verified; no repeat requested. Exact pad fit and 6 mm housing remain later PCB qualifications.",
       "photos": "IMG_2438.jpg"
     },
     {
@@ -1961,7 +1961,7 @@
       "footprint_confidence": "unresolved",
       "footprint_basis": "User-measured square body 1.5 x 1.5 mm, red/green dual LED; four contacts visible in IMG_2432. Installed KiCad10/MCP search found no validated matching dual-LED footprint. LED_SK6812_EC15_1.5x1.5mm has four 0.5 x 0.5 mm pads on 0.9 mm centres for a different addressable package; body-size equality does not verify its land pattern or numbering. LED1 footprint remains unassigned pending a matching vendor drawing/part.",
       "open_pads": 0,
-      "next_method": "Later diode-mode check: red probe on each resistor-fed LED contact and black on its common-ground contact; record colour/voltage or OL. Match motor lead positions to U5 output5/output8 only if not visibly traceable.; LED1 body is already measured at 1.5 x 1.5 mm. Obtain the pad geometry/numbering or matching vendor drawing; no repeat body-size request.",
+      "next_method": "B42/B43: unpowered diode mode, black K and red A then B on the LED screen. Report colour and voltage/OL. A reaches R31/PIC22; B reaches R30/PIC23 by visible traces. Internal grounded-pad pairing and manufacturer numbering remain separate; motor lead order is reviewed from photos first.; LED1 body is already measured at 1.5 x 1.5 mm. Obtain the pad geometry/numbering or matching vendor drawing; no repeat body-size request.",
       "photos": "IMG_2432.jpg"
     },
     {

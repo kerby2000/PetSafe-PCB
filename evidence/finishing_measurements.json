@@ -1,9 +1,9 @@
 {
   "date": "2026-10-09",
-  "basis_revision": "v0.9.33",
-  "status": "AWAITING_S1_CONTACT_BEHAVIOR",
-  "scope": "S1 internal contact pairing and released/pressed behavior; no repeat of visible PCB routing.",
-  "setup": "Disconnect battery and programmer. Use resistance mode (ohms). For each reading, probe the exposed solder contacts labelled A-D. Leave all components fitted.",
+  "basis_revision": "v0.9.34",
+  "status": "AWAITING_LED_COLOURS",
+  "scope": "Identify which existing LED resistor branch lights each colour; exact footprint geometry remains separate.",
+  "setup": "Disconnect battery and programmer. Select diode-test mode, not resistance. Leave LED1 fitted. Black probe stays on K, the upper-right LED solder contact in this photo.",
   "photos": [
     {
       "id": "receiver",
@@ -614,51 +614,82 @@
           "description": "S1 lower-right solder contact, next to R41 (physical BR)."
         }
       }
+    },
+    {
+      "id": "led1-colours",
+      "title": "LED1: black probe K; red probe A then B",
+      "source": "photos/originals/IMG_2432.jpg",
+      "coordinate_space": [
+        1368,
+        1823
+      ],
+      "view_box": [
+        525,
+        15,
+        570,
+        615
+      ],
+      "points": {
+        "A": {
+          "xy": [
+            760,
+            132
+          ],
+          "label": [
+            601,
+            60
+          ],
+          "description": "Upper-left LED solder contact in this photo; visible trace to the LED-facing end of R31 (PIC22/RB1 branch)."
+        },
+        "B": {
+          "xy": [
+            760,
+            194
+          ],
+          "label": [
+            590,
+            275
+          ],
+          "description": "Lower-left LED solder contact in this photo; visible trace to the LED-facing end of R30 (PIC23/RB2 branch)."
+        },
+        "K": {
+          "xy": [
+            889,
+            132
+          ],
+          "label": [
+            1010,
+            65
+          ],
+          "description": "Upper-right LED solder contact; common-ground side in the current reconstruction. Keep the black probe here.",
+          "role": "reference"
+        }
+      }
     }
   ],
   "tests": [
     {
-      "id": "B38",
-      "group": "s1-contacts",
+      "id": "B42",
+      "group": "led1-colours",
       "from": "A",
-      "to": "B",
-      "mode": "resistance",
-      "unit": "ohms / OL",
-      "state": "Released",
-      "purpose": "Check upper common contact pair inside S1."
+      "to": "K",
+      "mode": "diode",
+      "unit": "V / OL + colour",
+      "state": "Unpowered",
+      "purpose": "Identify the colour of the R31 / PIC22 branch."
     },
     {
-      "id": "B39",
-      "group": "s1-contacts",
-      "from": "C",
-      "to": "D",
-      "mode": "resistance",
-      "unit": "ohms / OL",
-      "state": "Released",
-      "purpose": "Check lower common contact pair inside S1."
-    },
-    {
-      "id": "B40",
-      "group": "s1-contacts",
+      "id": "B43",
+      "group": "led1-colours",
       "from": "B",
-      "to": "D",
-      "mode": "resistance",
-      "unit": "ohms / OL",
-      "state": "Released",
-      "purpose": "Record released resistance across the proposed switching contacts; allow capacitor charging to settle."
-    },
-    {
-      "id": "B41",
-      "group": "s1-contacts",
-      "from": "B",
-      "to": "D",
-      "mode": "resistance",
-      "unit": "ohms / OL",
-      "state": "Held pressed",
-      "purpose": "Check whether pressing closes the proposed switching contacts."
+      "to": "K",
+      "mode": "diode",
+      "unit": "V / OL + colour",
+      "state": "Unpowered",
+      "purpose": "Identify the colour of the R30 / PIC23 branch."
     }
   ],
-  "interpretation": "The current model predicts same-row common contacts (A-B and C-D) and B-D closing only while pressed. In-circuit parallel paths can give a finite resistance when released; the change on pressing distinguishes contact closure. These checks concern the switch interior, not visible resistor traces.",
+  "interpretation": "A visible colour and forward reading identify the resistor/PIC colour channel. OL or no light is inconclusive in circuit and does not alone mean a failed LED. Both right-hand contacts are currently modeled as grounded; this test does not distinguish their internal die pairing or establish a manufacturer footprint.",
   "next_stages": [
     {
       "stage": "Resolve the remaining functional paths",
@@ -666,7 +697,7 @@
     },
     {
       "stage": "Verify candidate devices and operating behavior",
-      "work": "Q1/Q8 and tuning-transistor pin roles, D2 identity, D6 breakdown/ICSP compatibility, S1 contacts and actual rail/gate voltages. Use existing markings and recorded tests first. Keep equivalent candidates explicit. Plan focused device/contact checks and then an appropriate powered session on the original hardware."
+      "work": "Q1/Q8 and tuning-transistor pin roles, D2 identity, D6 breakdown/ICSP compatibility, actual rail/gate voltages. Use existing markings and recorded tests first. Keep equivalent candidates explicit. Plan focused device/contact checks and then an appropriate powered session on the original hardware."
     },
     {
       "stage": "Recover the required capacitor values",
@@ -703,7 +734,8 @@
     "C49 ANT2/GND routing; both pads resolved.",
     "C5, S1 and LED1 body dimensions; L1/L2 readings already recorded.",
     "TP3/R6/R7/D1 visible local joins resolved by the IMG_2431 photo audit; timing and device behavior remain separate.",
-    "B37 Q8 P-F = 1 ohm supports the source-supply join. No repeat requested; electrical operation remains separate."
+    "B37 Q8 P-F = 1 ohm supports the source-supply join. No repeat requested; electrical operation remains separate.",
+    "B38-B41 S1: common pairs and normally-open action confirmed. Extra A-C OL preserved. No more S1 electrical checks requested."
   ],
   "deferred": "Other measurements are staged in the current checklist, not requested in this batch.",
   "sources": [
@@ -724,7 +756,8 @@
     "docs/datasheets/S812C.pdf",
     "evidence/j1_physical_mapping.json",
     "evidence/q8_supply_result_20261009.json",
-    "photos/originals/IMG_2438.jpg"
+    "photos/originals/IMG_2438.jpg",
+    "evidence/s1_contact_results_20261009.json"
   ],
   "completed_tests": [
     {
@@ -1047,11 +1080,76 @@
       "conditions": "Unpowered resistance test requested. No fresh baseline or stability statement supplied.",
       "earlier_reading": "10 ohm",
       "interpretation": "Supports the existing Q8.T2/native2 to C6.1 H_RF_VDD connection. Exact copper resistance, device identity and operation are not established."
+    },
+    {
+      "id": "B38",
+      "group": "s1-contacts",
+      "from": "A",
+      "to": "B",
+      "mode": "resistance",
+      "unit": "ohms / OL",
+      "state": "Released",
+      "purpose": "Check upper common contact pair inside S1.",
+      "result": "1 ohm",
+      "resistance_ohms": 1,
+      "conditions": "In-circuit resistance readings; battery/programmer disconnected as requested."
+    },
+    {
+      "id": "B39",
+      "group": "s1-contacts",
+      "from": "C",
+      "to": "D",
+      "mode": "resistance",
+      "unit": "ohms / OL",
+      "state": "Released",
+      "purpose": "Check lower common contact pair inside S1.",
+      "result": "1 ohm",
+      "resistance_ohms": 1,
+      "conditions": "In-circuit resistance readings; battery/programmer disconnected as requested."
+    },
+    {
+      "id": "B40",
+      "group": "s1-contacts",
+      "from": "B",
+      "to": "D",
+      "mode": "resistance",
+      "unit": "ohms / OL",
+      "state": "Released",
+      "purpose": "Record released resistance across the proposed switching contacts; allow capacitor charging to settle.",
+      "result": "OL",
+      "resistance_ohms": null,
+      "conditions": "In-circuit resistance readings; battery/programmer disconnected as requested."
+    },
+    {
+      "id": "B41",
+      "group": "s1-contacts",
+      "from": "B",
+      "to": "D",
+      "mode": "resistance",
+      "unit": "ohms / OL",
+      "state": "Held pressed",
+      "purpose": "Check whether pressing closes the proposed switching contacts.",
+      "result": "1 ohm",
+      "resistance_ohms": 1,
+      "conditions": "In-circuit resistance readings; battery/programmer disconnected as requested."
+    },
+    {
+      "id": "X02",
+      "group": "s1-contacts",
+      "from": "A",
+      "to": "C",
+      "mode": "resistance",
+      "unit": "ohms / OL",
+      "state": "Not separately stated",
+      "result": "OL",
+      "purpose": "Extra cross-pair result volunteered by user.",
+      "raw_user_statement": "A- C - OL",
+      "conditions": "Reported before the explicitly pressed B-D result; no separate button-state label supplied."
     }
   ],
-  "batch_title": "S1: verify the button contacts",
-  "instructions": "Measure A-B and C-D with the button released. Then measure B-D first released and again while holding the button down. Report ohms or OL; if a released reading changes as C35 charges, give the settled reading or say changing.",
-  "result_summary": "B37 P-F = 1 ohm supports the existing Q8 source-supply join; the earlier 10-ohm ambiguity is retired from active work. Q3 remains fitted with identification deferred.",
+  "batch_title": "LED1: map the red and green channels",
+  "instructions": "Touch the red probe to A, then B. For each position report the displayed voltage (or OL) and the emitted colour: red, green or no light. Probe the exposed solder, not the yellow/clear LED body. A follows the visible trace to R31; B follows the visible trace to R30.",
+  "result_summary": "S1 electrical contact issue E05 is closed from B38-B41. Both common pairs read 1 ohm, B-D is OL released and 1 ohm pressed; extra A-C OL retained. No net or pin-map change required.",
   "cancelled_tests": [
     {
       "id": "B20",
@@ -1063,7 +1161,7 @@
       "reason": "User identifies PIC21/RB0 destination; reconcile the older VREF assignment instead."
     }
   ],
-  "revision": "v0.9.33",
+  "revision": "v0.9.34",
   "photo_updates": [
     {
       "evidence": "evidence/c25_c26_mapping_20261009.json",
@@ -1086,7 +1184,7 @@
       "result": "v0.9.22 user annotated U6A option: single left pad/model L/native U106.1 joins U6 pin5 and the existing input node after R37; upper-right/model R1/native2 joins J3.1 (red PIR wire); lower-right/model R2/native3 joins GND. All three external pads mapped, option remains DNP. User called the input VDD; retain VDD -> R37 (22 ohm) -> H_AUX_IN because the annotation ends at U6 pin5 and prior B28 confirms pin5-pin2, not a bypass across R37. No fitted IC identity or voltage measurement implied."
     }
   ],
-  "batch_id": "s1-contacts-20261009",
+  "batch_id": "led1-colours-20261009",
   "location_review": {
     "reference": "TP9",
     "status": "REMOVED_UNSUPPORTED_ENTRY",
@@ -1138,12 +1236,16 @@
     "pending_check": null,
     "model_status": "Applied v0.9.20: pin5-VIN measured 1 ohm; R37 and U6A single-pad local joins from the annotation; pin4 explicitly unused."
   },
-  "next_prompt": "Report A-B released, C-D released, B-D released, and B-D held pressed, in ohms or OL.",
-  "review_revision": "v0.9.33",
+  "next_prompt": "Diode mode, black K: report red A -> K and red B -> K, each voltage or OL plus colour/no light.",
+  "review_revision": "v0.9.34",
   "request_probe_baseline": false,
   "q3_decision": "Defer isolated Q3 identification; retain candidate qualification and existing copper. No desoldering or repeat Q3 batch requested.",
   "last_completed_test_ids": [
-    "B37"
+    "B38",
+    "B39",
+    "B40",
+    "B41",
+    "X02"
   ],
-  "last_result_evidence": "evidence/q8_supply_result_20261009.json"
+  "last_result_evidence": "evidence/s1_contact_results_20261009.json"
 }

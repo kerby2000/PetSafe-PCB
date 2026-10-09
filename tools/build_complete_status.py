@@ -48,7 +48,7 @@ doc=SimpleDocTemplate(str(out),pagesize=A4,rightMargin=32,leftMargin=32,topMargi
 W=A4[0]-64
 audit=read('evidence/finalization_audit.json')
 story=[P('Remaining schematic work','TitlePS'),P(f'PetSafe 100-1339 | {m["revision"]} | {status["date"]}'),
-P(f'<b>{len(status["items"])} active issues.</b> Completed steps are archived, not bench requests. Q3 stays fitted; isolated identification is deferred. Q8 supply continuity now has 1-ohm support. Next: S1 contact checks B38-B41 at docs/FINISHING_MEASUREMENTS.html.'),
+P(f'<b>{len(status["items"])} active issues.</b> Completed steps are archived, not bench requests. S1 electrical contacts are verified; E05 is closed. Q3 stays fitted with identification deferred. Next: LED1 colour checks B42/B43 at docs/FINISHING_MEASUREMENTS.html.'),
 table([['Drawing / connectivity','Remaining data','ERC'],[f'{len(fitted)} fitted open pads; {len(gpios)} open PIC pads; {audit["dangling_wire_ends"]} dangling wire ends. {len(m["nets"])} native/model net partitions match.',f'{len(status["unknown_ceramic_values"])} ceramic values; LED1 footprint blank. Three local-only PIC branches remain explicit; unsupported R33 withdrawn.',f'{status["erc_total"]} retained U6/U6A output conflict. Five stock power-source flags retained; no new copper joins.']],[W/3]*3),
 P('Audit boundary','HeadPS'),P('Native wire geometry, library definitions, all catalog pad assignments and existing evidence were checked. Zero open pads does not establish hidden copper or functional behavior. U6A is DNP; its regulator symbol and visible conflict remain by user choice. No new NC markers, net merges or ERC exclusions.'),
 P('Order of work','HeadPS')]

@@ -1,6 +1,6 @@
 {
   "board": "100-1339 R03 A",
-  "revision": "v0.9.33",
+  "revision": "v0.9.34",
   "status": "PARTIALLY VERIFIED RECONSTRUCTION; USER MEASUREMENTS, PHOTO TRACES AND QUALIFIED HYPOTHESES",
   "components": [
     {
@@ -3135,7 +3135,7 @@
       "footprint_confidence": "medium - measured body, photo-estimated lead span",
       "footprint_basis": "User measured a 6 x 6 x 4 mm body plus 2 mm actuator (about 6 mm overall). Photo shows four SMD gullwing leads; approximate pad-centre span from photo/body ratio is about 8 mm, consistent with the stock PTS645 land pattern (7.96 x 4.50 mm centres). Dimensions select a candidate family, not an exact manufacturer. Library x43 footprint/3D model denotes 4.3 mm overall and must not be used as the measured 6 mm housing.",
       "connection_evidence": "v0.9.21 user annotated S1 upper-right to C35 upper/model2 (GND via prior V018); lower-right to C35 lower/model1, R40 lower/model2 and R41 left/model2. User explicitly confirms R41 right/model1 reaches J1 VPP/MCLR. Correct physical-to-native switch mapping TL=1, TR=3, BL=2, BR=4. Top-row/bottom-row common pairs remain a tactile-switch hypothesis; released/pressed behavior has not been measured.",
-      "hypothesis": "Measured body 6 x 6 x 4 mm plus 2 mm actuator. Stock SW_Push has two native nodes: physical TL/TR -> pin1/GND; BL/BR -> pin2/H_BUTTON. R41 reaches J1 VPP. Internal contact pairing and released/pressed behavior remain inferred; the former four-native-pin connector numbering is superseded.",
+      "hypothesis": "B38-B41: A-B and C-D each 1 ohm; B-D released OL and held pressed 1 ohm. Confirms normally-open S1 with physical TL/TR common on GND (native pin1) and BL/BR common on H_BUTTON (native pin2). Additional A-C OL retained as reported. R41 reaches J1 VPP through the existing 330-ohm path. Contact issue E05 closed; exact footprint fit and the measured 6-mm housing remain separate mechanical qualifications.",
       "photo_pad_mapping": {
         "TL": "upper-left",
         "TR": "upper-right",
@@ -3149,7 +3149,8 @@
         "actuator_protrusion": 2,
         "overall_height": 6
       },
-      "current_summary": "Measured body 6 x 6 x 4 mm plus 2 mm actuator. Stock SW_Push has two native nodes: physical TL/TR -> pin1/GND; BL/BR -> pin2/H_BUTTON. R41 reaches J1 VPP. Internal contact pairing and released/pressed behavior remain inferred; the former four-native-pin connector numbering is superseded."
+      "current_summary": "B38-B41: A-B and C-D each 1 ohm; B-D released OL and held pressed 1 ohm. Confirms normally-open S1 with physical TL/TR common on GND (native pin1) and BL/BR common on H_BUTTON (native pin2). Additional A-C OL retained as reported. R41 reaches J1 VPP through the existing 330-ohm path. Contact issue E05 closed; exact footprint fit and the measured 6-mm housing remain separate mechanical qualifications.",
+      "contact_evidence": "B38 A-B 1 ohm; B39 C-D 1 ohm; B40 B-D released OL; B41 B-D held pressed 1 ohm. See evidence/s1_contact_results_20261009.json."
     },
     {
       "ref": "J1",

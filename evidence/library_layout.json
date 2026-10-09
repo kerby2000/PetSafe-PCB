@@ -2133,7 +2133,8 @@
           "Datasheet": "https://www.ckswitches.com/media/1471/pts645.pdf",
           "Manufacturer": "Unidentified; PTS645 is a footprint reference",
           "Model3DStatus": "Stock x43 model is 4.3 mm high; not an exact housing model",
-          "CurrentEvidence": "Measured body 6 x 6 x 4 mm plus 2 mm actuator. Stock SW_Push has two native nodes: physical TL/TR -> pin1/GND; BL/BR -> pin2/H_BUTTON. R41 reaches J1 VPP. Internal contact pairing and released/pressed behavior remain inferred; the former four-native-pin connector numbering is superseded."
+          "CurrentEvidence": "B38-B41: A-B and C-D each 1 ohm; B-D released OL and held pressed 1 ohm. Confirms normally-open S1 with physical TL/TR common on GND (native pin1) and BL/BR common on H_BUTTON (native pin2). Additional A-C OL retained as reported. R41 reaches J1 VPP through the existing 330-ohm path. Contact issue E05 closed; exact footprint fit and the measured 6-mm housing remain separate mechanical qualifications.",
+          "ContactEvidence": "B38 A-B 1 ohm; B39 C-D 1 ohm; B40 B-D released OL; B41 B-D held pressed 1 ohm. See evidence/s1_contact_results_20261009.json."
         }
       }
     },

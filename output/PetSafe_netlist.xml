@@ -2,16 +2,16 @@
 <export version="E">
   <design>
     <source>C:\Users\lukin\Documents\ChatGPT\PetSafe-PCB\schematic\PetSafe_1001339.kicad_sch</source>
-    <date>2026-10-09T20:52:08</date>
+    <date>2026-10-09T21:43:58</date>
     <tool>Eeschema 10.0.5</tool>
     <sheet number="1" name="/" tstamps="/">
       <title_block>
         <title>PetSafe 100-1339 R03 A | single-sheet reconstruction</title>
         <company>KiCad 10 libraries + four datasheet symbols | MCP authoring</company>
-        <rev>0.9.33</rev>
+        <rev>0.9.34</rev>
         <date>2026-10-09</date>
         <source>PetSafe_1001339.kicad_sch</source>
-        <comment number="1" value="Q8 supply continuity supported by B37; candidate identity and gate drive remain open."/>
+        <comment number="1" value="S1 contact pairs and normally-open action verified; E05 closed."/>
         <comment number="2" value=""/>
         <comment number="3" value=""/>
         <comment number="4" value=""/>
@@ -2856,7 +2856,6 @@
       <datasheet>https://static.chipdip.ru/lib/761/DOC050761871.pdf</datasheet>
       <description>MCC SIL3724A dual N/P MOSFET, marking 3724A; candidate for Q8, fitted manufacturer unconfirmed. Pin map verified from manufacturer page 1. KiCad generic MOSFET artwork imported through MCP.</description>
       <fields>
-        <field name="ViaEvidence">v0.9.5: V113/V115 reach centre B2/pin5 GND. V114 belongs to U2.T2 and supplies no evidence about Q8.T2. Existing Q8.T2 supply hypothesis and outer-drain join remain independently qualified.</field>
         <field name="CurrentEvidence">3724A supports the SIL3724A complementary MOSFET candidate; fitted maker unconfirmed. B37 P-F = 1 ohm supports Q8.T2/native2 joining C6.1 on H_RF_VDD. The earlier 10-ohm reading is superseded for the current connection assessment; no fresh probe baseline or stability statement was supplied. V113/V115 centre B2/native5 GND and the outer-drain join retain earlier evidence; V114 belongs to U2.T2. Candidate pin functions, gate drive and operating levels remain unverified.</field>
         <field name="OriginalReference">Q8</field>
         <field name="Evidence">3724A supports the SIL3724A complementary MOSFET candidate; fitted maker unconfirmed. B37 P-F = 1 ohm supports Q8.T2/native2 joining C6.1 on H_RF_VDD. The earlier 10-ohm reading is superseded for the current connection assessment; no fresh probe baseline or stability statement was supplied. V113/V115 centre B2/native5 GND and the outer-drain join retain earlier evidence; V114 belongs to U2.T2. Candidate pin functions, gate drive and operating levels remain unverified.</field>
@@ -2864,6 +2863,7 @@
         <field name="FootprintConfidence">datasheet/package candidate</field>
         <field name="FootprintBasis">Existing assignment; see component identity evidence.</field>
         <field name="PinMapping">See evidence/pin_crosswalk.json; physical orientation may be provisional</field>
+        <field name="ViaEvidence">v0.9.5: V113/V115 reach centre B2/pin5 GND. V114 belongs to U2.T2 and supplies no evidence about Q8.T2. Existing Q8.T2 supply hypothesis and outer-drain join remain independently qualified.</field>
         <field name="Footprint">Package_TO_SOT_SMD:SOT-23-6</field>
         <field name="Datasheet">https://static.chipdip.ru/lib/761/DOC050761871.pdf</field>
         <field name="Description">MCC SIL3724A dual N/P MOSFET, marking 3724A; candidate for Q8, fitted manufacturer unconfirmed. Pin map verified from manufacturer page 1. KiCad generic MOSFET artwork imported through MCP.</field>
@@ -4680,9 +4680,10 @@
         <field name="FootprintStatus">Candidate 2D land pattern; exact lead span and 6 mm housing variant not verified</field>
         <field name="Manufacturer">Unidentified; PTS645 is a footprint reference</field>
         <field name="Model3DStatus">Stock x43 model is 4.3 mm high; not an exact housing model</field>
-        <field name="CurrentEvidence">Measured body 6 x 6 x 4 mm plus 2 mm actuator. Stock SW_Push has two native nodes: physical TL/TR -&gt; pin1/GND; BL/BR -&gt; pin2/H_BUTTON. R41 reaches J1 VPP. Internal contact pairing and released/pressed behavior remain inferred; the former four-native-pin connector numbering is superseded.</field>
+        <field name="CurrentEvidence">B38-B41: A-B and C-D each 1 ohm; B-D released OL and held pressed 1 ohm. Confirms normally-open S1 with physical TL/TR common on GND (native pin1) and BL/BR common on H_BUTTON (native pin2). Additional A-C OL retained as reported. R41 reaches J1 VPP through the existing 330-ohm path. Contact issue E05 closed; exact footprint fit and the measured 6-mm housing remain separate mechanical qualifications.</field>
+        <field name="ContactEvidence">B38 A-B 1 ohm; B39 C-D 1 ohm; B40 B-D released OL; B41 B-D held pressed 1 ohm. See evidence/s1_contact_results_20261009.json.</field>
         <field name="OriginalReference">S1</field>
-        <field name="Evidence">Measured body 6 x 6 x 4 mm plus 2 mm actuator. Stock SW_Push has two native nodes: physical TL/TR -&gt; pin1/GND; BL/BR -&gt; pin2/H_BUTTON. R41 reaches J1 VPP. Internal contact pairing and released/pressed behavior remain inferred; the former four-native-pin connector numbering is superseded.</field>
+        <field name="Evidence">B38-B41: A-B and C-D each 1 ohm; B-D released OL and held pressed 1 ohm. Confirms normally-open S1 with physical TL/TR common on GND (native pin1) and BL/BR common on H_BUTTON (native pin2). Additional A-C OL retained as reported. R41 reaches J1 VPP through the existing 330-ohm path. Contact issue E05 closed; exact footprint fit and the measured 6-mm housing remain separate mechanical qualifications.</field>
         <field name="LibraryPolicy">Unmodified KiCad 10 stock symbol</field>
         <field name="FootprintConfidence">medium - measured body, photo-estimated lead span</field>
         <field name="FootprintBasis">User measured a 6 x 6 x 4 mm body plus 2 mm actuator (about 6 mm overall). Photo shows four SMD gullwing leads; approximate pad-centre span from photo/body ratio is about 8 mm, consistent with the stock PTS645 land pattern (7.96 x 4.50 mm centres). Dimensions select a candidate family, not an exact manufacturer. Library x43 footprint/3D model denotes 4.3 mm overall and must not be used as the measured 6 mm housing.</field>
@@ -4700,9 +4701,10 @@
       <property name="FootprintStatus" value="Candidate 2D land pattern; exact lead span and 6 mm housing variant not verified"/>
       <property name="Manufacturer" value="Unidentified; PTS645 is a footprint reference"/>
       <property name="Model3DStatus" value="Stock x43 model is 4.3 mm high; not an exact housing model"/>
-      <property name="CurrentEvidence" value="Measured body 6 x 6 x 4 mm plus 2 mm actuator. Stock SW_Push has two native nodes: physical TL/TR -&gt; pin1/GND; BL/BR -&gt; pin2/H_BUTTON. R41 reaches J1 VPP. Internal contact pairing and released/pressed behavior remain inferred; the former four-native-pin connector numbering is superseded."/>
+      <property name="CurrentEvidence" value="B38-B41: A-B and C-D each 1 ohm; B-D released OL and held pressed 1 ohm. Confirms normally-open S1 with physical TL/TR common on GND (native pin1) and BL/BR common on H_BUTTON (native pin2). Additional A-C OL retained as reported. R41 reaches J1 VPP through the existing 330-ohm path. Contact issue E05 closed; exact footprint fit and the measured 6-mm housing remain separate mechanical qualifications."/>
+      <property name="ContactEvidence" value="B38 A-B 1 ohm; B39 C-D 1 ohm; B40 B-D released OL; B41 B-D held pressed 1 ohm. See evidence/s1_contact_results_20261009.json."/>
       <property name="OriginalReference" value="S1"/>
-      <property name="Evidence" value="Measured body 6 x 6 x 4 mm plus 2 mm actuator. Stock SW_Push has two native nodes: physical TL/TR -&gt; pin1/GND; BL/BR -&gt; pin2/H_BUTTON. R41 reaches J1 VPP. Internal contact pairing and released/pressed behavior remain inferred; the former four-native-pin connector numbering is superseded."/>
+      <property name="Evidence" value="B38-B41: A-B and C-D each 1 ohm; B-D released OL and held pressed 1 ohm. Confirms normally-open S1 with physical TL/TR common on GND (native pin1) and BL/BR common on H_BUTTON (native pin2). Additional A-C OL retained as reported. R41 reaches J1 VPP through the existing 330-ohm path. Contact issue E05 closed; exact footprint fit and the measured 6-mm housing remain separate mechanical qualifications."/>
       <property name="LibraryPolicy" value="Unmodified KiCad 10 stock symbol"/>
       <property name="FootprintConfidence" value="medium - measured body, photo-estimated lead span"/>
       <property name="FootprintBasis" value="User measured a 6 x 6 x 4 mm body plus 2 mm actuator (about 6 mm overall). Photo shows four SMD gullwing leads; approximate pad-centre span from photo/body ratio is about 8 mm, consistent with the stock PTS645 land pattern (7.96 x 4.50 mm centres). Dimensions select a candidate family, not an exact manufacturer. Library x43 footprint/3D model denotes 4.3 mm overall and must not be used as the measured 6 mm housing."/>
@@ -5570,7 +5572,7 @@
       <property name="ki_keywords" value="Dual Gate NOT Schmitt LVC CMOS"/>
       <property name="ki_fp_filters" value="SG-* SOT*"/>
       <sheetpath names="/" tstamps="/"/>
-      <tstamps>c2038b9c-b36c-4670-ab94-21c1a9753278 d0ce7cd7-6c1d-460b-bc83-44a9736c68fd 3fee6f3a-8cd1-4f78-bc72-965c744b6fd1</tstamps>
+      <tstamps>d0ce7cd7-6c1d-460b-bc83-44a9736c68fd c2038b9c-b36c-4670-ab94-21c1a9753278 3fee6f3a-8cd1-4f78-bc72-965c744b6fd1</tstamps>
       <units>
         <unit name="A">
           <pins>

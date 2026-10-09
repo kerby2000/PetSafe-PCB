@@ -1,8 +1,8 @@
 {
   "date": "2026-10-09",
-  "review_revision": "v0.9.33",
-  "basis_revision": "v0.9.33",
-  "scope": "Current main-board finishing register after independent review of 6ae4eaa and original-photo audit. RF common drive and D1 input assignment corrected from IMG_2431; U6A regulator retained by explicit user choice. No new bench readings or antenna midpoint joins.",
+  "review_revision": "v0.9.34",
+  "basis_revision": "v0.9.34",
+  "scope": "Current main-board finishing register. Supported connections and completed measurements are recorded in the current model; resolved issues are archived. Remaining hidden paths, candidate identities, values and operating behavior are listed below.",
   "rails": [
     {
       "name": "BATTERY+",
@@ -117,33 +117,6 @@
         "docs/history/v0.9.30-before-finalization/evidence/remaining_work.json",
         "evidence/q3_diode_results_20261009.json",
         "evidence/q3_deferred_q8_followup_20261009.json"
-      ],
-      "owner": "Agent evidence review; targeted owner test only as listed",
-      "category": "connectivity/behavior"
-    },
-    {
-      "id": "E05",
-      "area": "Button contact behavior",
-      "refs": [
-        "S1",
-        "R41",
-        "R40",
-        "C35"
-      ],
-      "priority": 1,
-      "state": "open",
-      "known": "R41 is 330 ohm to J1 VPP. The switch-side node also reaches R40 and C35; opposite C35 side is GND.",
-      "unknown": "Internal contact pairings and released/pressed behavior of this switch have not been measured.",
-      "next_action": "B38-B41 on the labelled S1 screen: A-B and C-D released, then B-D released and held pressed. These distinguish internal common contacts and switching behavior without repeating PCB routing.",
-      "closed_when": "Same-row pairs and open/closed switching agree with the drawing, or the switch pin mapping is corrected.",
-      "open_pads": [],
-      "nets": [
-        "H_BUTTON",
-        "MCLR_VPP",
-        "ICSP_DAT"
-      ],
-      "supporting_evidence": [
-        "docs/history/v0.9.30-before-finalization/evidence/remaining_work.json"
       ],
       "owner": "Agent evidence review; targeted owner test only as listed",
       "category": "connectivity/behavior"
@@ -381,7 +354,7 @@
       "state": "open",
       "known": "LED1 is red/green in a 1.5 mm square body; two control branches and common ground are mapped. U5 motor outputs are modeled.",
       "unknown": "Which resistor branch lights red/green and exact LED pad numbering remain unknown. Physical motor lead A/B correspondence is provisional.",
-      "next_action": "Later diode-mode check: red probe on each resistor-fed LED contact and black on its common-ground contact; record colour/voltage or OL. Match motor lead positions to U5 output5/output8 only if not visibly traceable.",
+      "next_action": "B42/B43: unpowered diode mode, black K and red A then B on the LED screen. Report colour and voltage/OL. A reaches R31/PIC22; B reaches R30/PIC23 by visible traces. Internal grounded-pad pairing and manufacturer numbering remain separate; motor lead order is reviewed from photos first.",
       "closed_when": "LED internal channels/polarity and motor connector physical ordering are supported.",
       "open_pads": [],
       "nets": [],
@@ -467,7 +440,6 @@
       "issues": [
         "E03",
         "E04",
-        "E05",
         "E06",
         "E07",
         "E08",
@@ -475,8 +447,8 @@
         "E10",
         "I01"
       ],
-      "summary": "Q8 supply connection now has 1-ohm support. Next: S1 internal contacts and pressed/released behavior. Q3 stays fitted; isolated identification is deferred. Three local-only PIC branches and antenna continuations remain.",
-      "next_action": "Use B38-B41 on the labelled button screen. Other checks remain staged; visible copper is resolved from photographs first."
+      "summary": "S1 contacts are verified and removed from active work. Q3 stays fitted with identification deferred. Three local-only PIC branches, antenna continuations and powered behavior remain.",
+      "next_action": "Agent reviews hidden-path candidates from photos; remaining powered checks are staged. The current bench task is LED1 under interfaces below."
     },
     {
       "id": "F2",
@@ -496,8 +468,8 @@
         "I02",
         "M01"
       ],
-      "summary": "LED channel/pad map and footprint; motor wire order. Exact physical fit is a later PCB qualification.",
-      "next_action": "Use LED diode tests and pad geometry; retain measured body sizes."
+      "summary": "Next: two LED1 diode tests to identify the red/green resistor branches. LED footprint/internal pad pairing and motor lead order remain; exact physical fit is later PCB qualification.",
+      "next_action": "Use B42/B43 on the labelled LED screen; record colour and voltage or OL. Keep the established body dimensions."
     }
   ],
   "settled_summary": [],

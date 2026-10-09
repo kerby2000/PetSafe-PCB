@@ -61,6 +61,20 @@ assert 'RB0/V026 to VREF.' not in via_intro and 'TP104, V026/PIC21' not in via_i
 checklist=(ROOT/'docs/FINISHING_CHECKLIST.html').read_text(encoding='utf-8')
 for i in ids:assert f'id="{i}"' in checklist
 measurements=read('evidence/finishing_measurements.json')
+s1=read('evidence/s1_contact_results_20261009.json')
+expected_s1={'B38':('A','B','Released','1 ohm'),'B39':('C','D','Released','1 ohm'),
+             'B40':('B','D','Released','OL'),'B41':('B','D','Held pressed','1 ohm'),
+             'X02':('A','C','Not separately stated','OL')}
+for test_id,expected in expected_s1.items():
+    recorded=next(t for t in s1['measurements'] if t['id']==test_id)
+    assert tuple(recorded[k] for k in ['from','to','state','result'])==expected
+    assert recorded in measurements['completed_tests']
+    assert not any(t['id']==test_id for t in measurements['tests'])
+assert s1['closed_issue']['id']=='E05' and s1['closed_issue']['state']=='closed'
+assert s1['closed_issue']['resolution']['evidence']==['evidence/s1_contact_results_20261009.json']
+assert not any(i['id']=='E05' for i in work['issues']), 'Closed S1 issue still in active register'
+assert members['S1.1']==members['C35.2']!=members['S1.2']==members['R41.2']
+for path,digest in s1['photos'].items():assert hashlib.sha256((ROOT/path).read_bytes()).hexdigest()==digest
 q8=read('evidence/q8_supply_result_20261009.json')
 q8_test=q8['measurements'][0]
 assert q8_test['id']=='B37' and q8_test['raw_user_statement']=='P-F 1Ohm'

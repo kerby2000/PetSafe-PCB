@@ -27,3 +27,7 @@ The user subsequently chose to leave Q3 fitted. Isolated identification is defer
 ## v0.9.33 Q8 supply result
 
 B37 P-F = 1 ohm supports the existing Q8.T2/native2 to C6.1 supply join. The older 10-ohm ambiguity is retired from the active checklist, while both observations remain recorded in `evidence/q8_supply_result_20261009.json` and `docs/MEASUREMENTS.md`. A fresh baseline and stability statement were not supplied. No net or pin mapping changed. Gate drive and fitted identity remain open; Q3 stays fitted by user choice.
+
+## v0.9.34 S1 contact issue E05 closed
+
+[S1 result ledger](../../evidence/s1_contact_results_20261009.json) retains B38-B41, the extra A-C OL report and the closed issue disposition. Same-row pairs read 1 ohm, cross-pair B-D reads OL released and 1 ohm pressed. Existing wiring and native pin mapping are retained. No further electrical contact test is needed; exact footprint fit remains separate under M01.

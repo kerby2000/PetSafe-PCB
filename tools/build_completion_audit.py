@@ -29,9 +29,10 @@ for c in m['components']:
         gap='Board pad: no component value required'
     else:
         gap=component_summary(c)
-        issue_id={'D2':'I01','D3':'I01','D4':'I01','D5':'I01','D6':'E10','LED1':'I02','S1':'E05'}.get(ref)
+        issue_id={'D2':'I01','D3':'I01','D4':'I01','D5':'I01','D6':'E10','LED1':'I02'}.get(ref)
         if issue_id:
             method=[next(i['next_action'] for i in status['items'] if i['id']==issue_id)]
+    if ref=='S1':method=['Electrical contacts verified; no repeat requested. Exact pad fit and 6 mm housing remain later PCB qualifications.']
     if ref=='D2':
         issue=next(i for i in status['items'] if i['id']=='I01')
         gap=issue['known']+' Remaining: '+issue['unknown']
@@ -64,10 +65,10 @@ auditpath=R/'evidence/finalization_audit.json'
 audit=json.loads(auditpath.read_text()) if auditpath.exists() else {}
 page=f'''<!doctype html><html lang="en"><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>PetSafe remaining work</title>
 <style>body{{font:16px/1.55 system-ui;background:#edf3ef;color:#193e36;max-width:1120px;margin:28px auto;padding:0 22px}}a{{color:#006e62}}h1{{font-size:36px}}article,.card{{background:white;border:1px solid #bfd0c6;border-radius:9px;padding:20px;margin:16px 0}}article p{{margin:9px 0}}.metrics{{display:flex;gap:15px;flex-wrap:wrap}}.metrics div{{background:#173e36;color:white;padding:16px;border-radius:8px}}.metrics strong{{font-size:27px;display:block}}li{{margin:8px 0}}</style>
-<a href="../index.html">Schematic overview</a> | <a href="FINISHING_MEASUREMENTS.html">Next measurement: S1 contacts</a> | <a href="../output/pdf/PetSafe_completion_status.pdf">Printable remaining work</a> | <a href="history/README.md">History and resolved items</a>
+<a href="../index.html">Schematic overview</a> | <a href="FINISHING_MEASUREMENTS.html">Next measurement: LED colours</a> | <a href="../output/pdf/PetSafe_completion_status.pdf">Printable remaining work</a> | <a href="history/README.md">History and resolved items</a>
 <h1>What remains to finish</h1><p>{e(status['revision'])} Â· {len(status['items'])} active issues. Each card states what is established, the specific gap and its closure criterion.</p>
 <div class="metrics"><div><strong>{len(status['current_fitted_open_pads'])}</strong>unassigned fitted pads</div><div><strong>{audit.get('dangling_wire_ends','pending')}</strong>dangling wire ends</div><div><strong>{status['erc_total']}</strong>retained ERC conflict</div><div><strong>{len(status['unknown_ceramic_values'])}</strong>unknown ceramic values</div></div>
-<div class="card"><b>Next:</b> <a href="FINISHING_MEASUREMENTS.html">S1 contact checks B38-B41</a>. Q8 supply continuity now has 1-ohm support. Q3 stays fitted; its completed readings are retained. Other listed tests are staged, not requested together. No repeat of established local connections.</div>
+<div class="card"><b>Next:</b> <a href="FINISHING_MEASUREMENTS.html">LED1 colour checks B42/B43</a>. S1 electrical contacts are verified; E05 is closed. Q3 stays fitted; its completed readings are retained. Other listed tests are staged, not requested together. No repeat of established local connections.</div>
 <h2>Finish in this order</h2><ol>{plan}</ol>
 <p><b>Audit boundary:</b> {status['modeled_nets']} modeled net partitions agree with KiCad. Zero open pads or wire tails does not establish hidden copper or circuit operation. Three PIC branches (RA0/C25, RC3/TP11, RC7/TP17) remain under E06. Q3 device identity remains under E04. <a href="../evidence/finalization_audit.json">Detailed audit</a>.</p>
 <h2>Remaining questions</h2>{''.join(issue_cards)}

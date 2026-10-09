@@ -1,6 +1,6 @@
 # Current circuit interpretation
 
-Schematic v0.9.33, 2026-10-09. This is the current interpretation, not a chronological log. The [previous narrative](history/cleanup_v0928/docs/RECONSTRUCTION.md) is archived; older requests there are superseded. Use [the checklist](FINISHING_CHECKLIST.html) for remaining questions.
+Schematic v0.9.34, 2026-10-09. This is the current interpretation, not a chronological log. The [previous narrative](history/cleanup_v0928/docs/RECONSTRUCTION.md) is archived; older requests there are superseded. Use [the checklist](FINISHING_CHECKLIST.html) for remaining questions.
 
 ## Power and references
 
@@ -14,7 +14,7 @@ U1 uses a datasheet-derived S-1200B45 symbol. U6/C2NM supports S-812C33AMC. U6 p
 
 All PIC pads have modeled local nets. PIC21/RB0 reaches TP16/Q2.S; the old VREF association was explicitly withdrawn after TP16-VREF measured 0.8 Mohm. PIC2/C25, PIC14/TP11 and PIC18/TP17 still need their onward connections or operating roles assessed. C26 reaches PIC3/RA1 with R28/R29/TP7. C25/C26 have common ground ends; C39/PIC4 belongs to VREF.
 
-R41 is 330 ohm and its model1/right end reaches **J1 VPP**. Its model2 end joins H_BUTTON/R40.2/C35.1. The former isolated H_R41_FREE node is obsolete. R40's other end is ICSP_DAT/PIC28. S1 currently uses stock SW_Push: physical upper row TL/TR maps to native pin1/GND; lower BL/BR to native pin2/H_BUTTON. Internal common pairs and pressed/released behavior remain inferred. Old four-native-pin connector numbering is superseded.
+R41 is 330 ohm and its model1/right end reaches **J1 VPP**. Its model2 end joins H_BUTTON/R40.2/C35.1. The former isolated H_R41_FREE node is obsolete. R40's other end is ICSP_DAT/PIC28. S1 currently uses stock SW_Push: physical upper row TL/TR maps to native pin1/GND; lower BL/BR to native pin2/H_BUTTON. B38/B39 each measure 1 ohm across the two common pairs; B40 is OL released and B41 is 1 ohm pressed across them. These verify normally-open contact behavior; E05 is closed. Extra A-C OL is preserved in the result ledger. Old four-native-pin connector numbering is superseded.
 
 J1 square/VPP end is pin1, then VDD2, GND3, DAT4 and CLK5. D6 routing and polarity are measured: anode GND, cathode VPP, about 0.7 V forward, OL reverse. Its G3 marking does not establish breakdown or ICSP compatibility. D4/D5 use photo-supported 5U/SD05 TVS candidates.
 

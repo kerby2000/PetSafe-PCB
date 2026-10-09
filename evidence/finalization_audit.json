@@ -1,7 +1,7 @@
 {
-  "revision": "v0.9.33",
+  "revision": "v0.9.34",
   "result": "PASS",
-  "schematic_sha256": "555dab33c1ae69c34da80592c070d01a96898328ec8e431db927b7cba937dd8a",
+  "schematic_sha256": "1e99a7ccf23f0a31a94d8ddcc3fbb915cf70e946ff1da575cf56bfb42ae7cb4f",
   "physical_net_partitions": 83,
   "retained_pad_memberships_unchanged_from": "ecd683d",
   "withdrawn_catalog_entries": [
@@ -79,7 +79,7 @@
     "PIC_RC7_TP17": "E06"
   },
   "current_device_gap": "E04: Q3 in-circuit pattern disputes PNP pinout; isolated identification remains optional.",
-  "active_issue_count": 12,
+  "active_issue_count": 11,
   "uncertainty_coverage": [
     {
       "reference": "R3",
@@ -266,16 +266,12 @@
     },
     {
       "reference": "R40",
-      "issues": [
-        "E05"
-      ],
+      "issues": [],
       "population": "populated"
     },
     {
       "reference": "R41",
-      "issues": [
-        "E05"
-      ],
+      "issues": [],
       "population": "populated"
     },
     {
@@ -604,7 +600,6 @@
     {
       "reference": "C35",
       "issues": [
-        "E05",
         "V01"
       ],
       "population": "populated"
@@ -943,7 +938,6 @@
     {
       "reference": "S1",
       "issues": [
-        "E05",
         "M01"
       ],
       "population": "populated"
