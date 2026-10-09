@@ -1,10 +1,10 @@
 # Current circuit interpretation
 
-This document describes v0.9.12. [The completion checklist](FINISHING_CHECKLIST.html) is the authoritative list of known unresolved work. [Earlier reasoning](history/README.md) is preserved as history, including rejected guesses.
+This document describes v0.9.13. [The completion checklist](FINISHING_CHECKLIST.html) is the authoritative list of known unresolved work. [Earlier reasoning](history/README.md) is preserved as history, including rejected guesses.
 
 ## What is established
 
-All 150 catalog entries are represented on one A2 sheet. Twenty stock and four authorized custom symbol definitions provide the selected pin maps. All 352 physical pad identifiers have library-number crosswalks. The native netlist matches 84 modeled net partitions; this is a file-consistency result, not proof of every board connection.
+All 150 catalog entries are represented on one A2 sheet. Twenty stock and four authorized custom symbol definitions provide the selected pin maps. All 352 physical pad identifiers have library-number crosswalks. The native netlist matches 83 modeled net partitions; this is a file-consistency result, not proof of every board connection.
 
 The user supplied multimeter continuity, resistance readings, clear component markings and dimensions. Visible traces and approximate front/rear photo registration provide additional evidence. A via touching a surface copper region can support a local association; its appearance cannot establish a buried net or prove a four-layer stack.
 
@@ -14,7 +14,7 @@ BATTERY+ reaches Q1's single physical pad (native pin 3). Q1.L (native pin 2) su
 
 The R1A marking matches the Formosa FMOS3401A PMOS candidate, with gate 1/source 2/drain 3. Reverse-polarity protection is a supported interpretation; exact maker and gate operation remain unverified. Photo label `S` means **single pad**, not source.
 
-Board VDD/TP103 is the separate logic rail and feeds MX512H pin 1/VCC. VREF/TP104 is separate again: user reports connect PIC21/RB0/V026, PIC4/RA2/V035 and R21.2/V071. Other VREF bias branches remain hypotheses. GND includes BATTERY (-). Candidate regulator outputs of 4.5 V and 3.3 V are datasheet ratings, not measured board voltages.
+Board VDD/TP103 is the separate logic rail and feeds MX512H pin 1/VCC. VREF/TP104 is separate again: user reports connect PIC21/RB0/V026, PIC4/RA2/V035 and R21.2/V071. U3.5 and R22 D/left/model2 are now measured to VREF at 1 ohm. Other VREF bias branches remain individually qualified; the R23 tie was rejected. GND includes BATTERY (-). Candidate regulator outputs of 4.5 V and 3.3 V are datasheet ratings, not measured board voltages.
 
 ## Controller, motor and controls
 
@@ -34,7 +34,7 @@ D2's three local routes are resolved by user reports: R (upper-left/native2) to 
 
 The 11.2 kohm V064-V070 measurement fits nominal R19 + R18 and supports the Q7 supply-switch hypothesis. Q7 terminal selection remains photo/circuit inference. User now confirms D3.R reaches board VDD through V082 and D3.L is GND. Only D3.R is moved off H_RX_VDD. D3.S-to-R42 reads 1.2 ohm; photo selects R42.2, with R42.1 already mapped to TP4/PIC25. The node is neutrally named H_D3_SIGNAL; its operating function is unknown. Op-amp feedback, coupling and bias branches are still partly inferred. TP6/C18.2 and U3.5/C18.1 are separate sides of a capacitor.
 
-U6/C2NM supports S-812C33AMC; the supervisor guess based on WN23 is withdrawn. User confirms V067 to J3.1/red PIR supply. The model's J3.2 ground and J3.3 raw-signal roles, U6 external branches and Q2 interface need cross-checking. Wire colour alone does not establish a role. The separate PIR board's internal circuit is outside this main-board reconstruction.
+U6/C2NM supports S-812C33AMC; the supervisor guess based on WN23 is withdrawn. User confirms V067 to J3.1/red PIR supply. User now measures J3.3-GND at 1 ohm and J3.2-GND at 290 kohm. Pin3 is ground, pin2 remains open in the reconstruction pending a targeted R38 check. The former ground/raw assignments are withdrawn. U6 external branches and the Q2 interface remain partly inferred. The separate PIR board's internal circuit is outside this main-board reconstruction.
 
 ## Reading uncertainty
 
@@ -42,7 +42,7 @@ Unconnected physical pads, isolated labels, incomplete onward routes, candidate 
 
 ## Architect review findings, 2026-10-09
 
-U3.5 currently has only C18.1 on its net, so the reconstruction lacks an intentional DC bias-current return. Check the existing R23/R22 bias-facing pads using IMG_2434 and V079/V080; measure resistive paths separately. Preserve separation across C18 and add no invented resistor.
+The missing U3.5 DC return is resolved: U3.5-VREF and U3.5-R22 D/left each read 1 ohm. The R22 E/right end reads 10 kohm to U3.5; its modeled ground destination still needs a direct check. Both R23 ends read 270-289 kohm to U3.5, rejecting the old R23-VREF tie. R23.2 is now unresolved, and the R23.1-to-U3.6 feedback route remains a hypothesis for the next batch. These in-circuit readings do not replace marked resistor values. Original C18.1 local connectivity is retained on VREF; TP6 stays separate across C18. See evidence/u3_j3_measurements_20261009.json.
 
 The modeled PNP tuning cells put their emitters at GND while their bases are GPIO-driven. That is not a conventional forward-operated PNP switch. Resolve Q3/C10/C11/C12 and its antenna path first; type, orientation, ground association or a junction-switching role may need correction. No automatic NPN substitution is justified. C11/C12 currently share both nodes: an in-circuit LCR result would be an effective parallel-network value, not individual capacitances.
 

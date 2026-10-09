@@ -159,6 +159,8 @@ for l in L:
         x,y=l['p'];start=(rnd(x-3.81),y)
         W.append(dict(net=l['net'],a=start,b=l['p']));l['p']=start
 wire('GND','C9.2',(49,159),(49,190),(53,190))
+# User J3 pin3-GND 1 ohm; pin2 290 kohm, left unresolved pending R38 check.
+stub('GND','J3.3',-6,0)
 
 # Datasheet S-1200B45 symbol: input/enable left, output/NC right, ground below.
 stub('BATTERY+','BATP.1',0,7)
@@ -294,7 +296,7 @@ text('BATTERY+ -> Q1 -> VSYS / U5 pin4. Board VDD / TP103 = VDD -> U5 pin1.',320
 text('VDD / TP103: regulated logic supply VDD; candidate 4.5V, not measured. V082 confirmed here.',13,76,.762)
 text('User: D3.R -> V082 / VDD; D3.L -> GND; D3.S -> R42 1.2 ohm (photo selects pad2).',330,126,.762)
 text('D2: R-C20 lower; L-ANT2/R46 upper; S-R46 lower. R46 empty; 4P identity unknown.',350,202,.762)
-text('User: V072 = TP6, not R22.2. V079/V080 = U3 pin5; separate from TP6 across C18.',288,211,.762)
+text('User: U3 pin5 / V079 / V080 = VREF (1 ohm); TP6 remains separate across C18.',288,211,.762)
 text('U3 alternative: MCP6002-I/SN; same pin roles, electrical suitability to verify.',288,208,.762)
 text('U5 alternative: DRV8212PDSGR. Different package/pins; redesign required.',320,81,.762)
 text('U6: 3.3V is the candidate rating, not a voltage measurement. NC4/5 board ties unresolved.',234,284,.762)
@@ -354,7 +356,7 @@ for net,edges in adj.items():
 for l in L:
     x,y=l['p'];G.append(expr(f'(label {q(l["net"])} (at {x} {y} 0) (effects (font (size .762 .762)) (justify left bottom)) (uuid {q(uid())}))'))
 tree.extend(G)
-tree.append(expr('(title_block (title "PetSafe 100-1339 R03 A | single-sheet reconstruction") (date "2026-10-09") (rev "0.9.12") (company "KiCad 10 libraries + four datasheet symbols | MCP authoring") (comment 1 "D2 local routes resolved; R46 empty between S and L/ANT2. Other hypotheses documented."))'))
+tree.append(expr('(title_block (title "PetSafe 100-1339 R03 A | single-sheet reconstruction") (date "2026-10-09") (rev "0.9.13") (company "KiCad 10 libraries + four datasheet symbols | MCP authoring") (comment 1 "U3.5 = VREF; J3.3 = GND. Rejected R23/J3 guesses removed."))'))
 # Canonical pretty printer supplied by the installed MCP server.
 sys.path.insert(0,str(Path.home()/'Documents/VS.Code.Projects/KiCAD-MCP-Server/python'))
 from utils.sexpr_format import prettify
@@ -374,7 +376,7 @@ out.write_text(prettify(sx.dumps(tree)),encoding='utf-8',newline='\n')
 def wire_key(w):return w['net'],tuple(w['a']),tuple(w['b'])
 prior_order={wire_key(w):i for i,w in enumerate(model.get('geometric_wires',[]))}
 ordered_segments=sorted(segments,key=lambda s:(prior_order.get(s,len(prior_order)),s))
-model.update(revision='v0.9.12',coordinate_units='mm',native_pin_crosswalk=layout['crosswalk'],pin_positions={e:list(p) for e,p in P.items()},
+model.update(revision='v0.9.13',coordinate_units='mm',native_pin_crosswalk=layout['crosswalk'],pin_positions={e:list(p) for e,p in P.items()},
              geometric_wires=[dict(net=n,a=a,b=b) for n,a,b in ordered_segments],library_policy='KiCad 10 stock symbols plus four explicitly authorized MCP-authored datasheet symbols for U1/U5/U6/Q8')
 for c in model['components']:
     entry=next(x for x in layout['catalog'] if x['original_ref']==c['ref'])

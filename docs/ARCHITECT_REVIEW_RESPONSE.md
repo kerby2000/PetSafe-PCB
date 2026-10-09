@@ -43,3 +43,9 @@ Fresh KiCad 10 native exports, ERC, model/physical-pin comparison, stock footpri
 The architect corrections were committed locally as `bdba9b6`. The user then resolved D3's rail terminals. Revision v0.9.11 moves **only D3.R** from H_RX_VDD to VDD; the op-amp supply remains separate. D3.S-to-R42 is now supported by a 1.2 ohm component-level reading, with the exact R42 end still selected from IMG_2434. R42's other end already reaches TP4/PIC25. `H_D3_SIGNAL` replaces the overly specific `H_RX_RF_SENSE` name. Its role is not measured.
 
 The [Nexperia BAV99 pin table](https://assets.nexperia.com/documents/data-sheet/BAV99.pdf), page 2, makes a GND/signal/VDD clamp consistent with the selected candidate and these connections. This is functional inference, not a new fitted-manufacturer identification. The closed E02 record remains visible; E06/I01 retain signal-function/identity questions.
+
+## U3 and J3 follow-up, v0.9.13
+
+User measurements resolve U3 pin 5's DC return: VREF and R22's left end each read 1 ohm to pin 5; the other R22 end reads 10 kohm. Both R23 ends read 270-289 kohm, rejecting the earlier R23-VREF hypothesis. R23.2 is left unresolved pending a targeted pin6/feedback check; its marked value remains 5.6k.
+
+J3 pin 3 reads 1 ohm to GND, and pin 2 reads 290 kohm. The schematic now grounds pin 3 and leaves pin 2's destination unconfirmed. The old connector-role assumptions are removed. The current [photo guide](FINISHING_MEASUREMENTS.html) preserves all seven readings and proposes five follow-ups. Native/model comparison passes at 83 net partitions; 32 ERC findings include the two newly exposed endpoints. This is more accurate evidence, not a claim of circuit completion.

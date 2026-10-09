@@ -3970,7 +3970,8 @@
         "includePins": true,
         "footprint": "Package_SO:SOIC-8_3.9x4.9mm_P1.27mm",
         "properties": {
-          "ViaEvidence": "v0.9.3 user identifies both V079 and V080 as SGM8542 pin5. Existing local C18.1 fragment retained on RX_B_PLUS; separate from TP6 on the opposite side of C18."
+          "ViaEvidence": "v0.9.13 user: pin5-VREF 1 ohm; pin5-R22 D/left 1 ohm, E/right 10 kohm; both R23 ends 270-289 kohm. Pin5 and V079/V080 now VREF. Original C18.1 fragment retained; TP6/C18.2 stays separate across C18.",
+          "MeasurementEvidence": "v0.9.13 user: pin5-VREF 1 ohm; pin5-R22 D/left 1 ohm, E/right 10 kohm; both R23 ends 270-289 kohm. Pin5 and V079/V080 now VREF. Original C18.1 fragment retained; TP6/C18.2 stays separate across C18."
         }
       }
     },
@@ -4036,7 +4037,8 @@
         "angle": 0,
         "unit": 2,
         "properties": {
-          "ViaEvidence": "v0.9.3 user identifies both V079 and V080 as SGM8542 pin5. Existing local C18.1 fragment retained on RX_B_PLUS; separate from TP6 on the opposite side of C18."
+          "ViaEvidence": "v0.9.13 user: pin5-VREF 1 ohm; pin5-R22 D/left 1 ohm, E/right 10 kohm; both R23 ends 270-289 kohm. Pin5 and V079/V080 now VREF. Original C18.1 fragment retained; TP6/C18.2 stays separate across C18.",
+          "MeasurementEvidence": "v0.9.13 user: pin5-VREF 1 ohm; pin5-R22 D/left 1 ohm, E/right 10 kohm; both R23 ends 270-289 kohm. Pin5 and V079/V080 now VREF. Original C18.1 fragment retained; TP6/C18.2 stays separate across C18."
         }
       }
     },
@@ -4093,7 +4095,8 @@
         "angle": 0,
         "unit": 3,
         "properties": {
-          "ViaEvidence": "v0.9.3 user identifies both V079 and V080 as SGM8542 pin5. Existing local C18.1 fragment retained on RX_B_PLUS; separate from TP6 on the opposite side of C18."
+          "ViaEvidence": "v0.9.13 user: pin5-VREF 1 ohm; pin5-R22 D/left 1 ohm, E/right 10 kohm; both R23 ends 270-289 kohm. Pin5 and V079/V080 now VREF. Original C18.1 fragment retained; TP6/C18.2 stays separate across C18.",
+          "MeasurementEvidence": "v0.9.13 user: pin5-VREF 1 ohm; pin5-R22 D/left 1 ohm, E/right 10 kohm; both R23 ends 270-289 kohm. Pin5 and V079/V080 now VREF. Original C18.1 fragment retained; TP6/C18.2 stays separate across C18."
         }
       }
     },
@@ -4580,10 +4583,11 @@
         "includePins": true,
         "footprint": "Resistor_SMD:R_0603_1608Metric",
         "properties": {
-          "ViaEvidence": "v0.9.8: User confirms V071-VREF. Earlier V071-R21.2 and V026-VREF-PIC21/RB0 associations retained. R21.2 joins VREF. Existing R22.2/R23.2/R48.2 receiver-bias branches remain prior photo/circuit hypotheses, not new measured connections. VREF remains separate from VDD and RC1/V053. No voltage or numeric resistance supplied."
+          "ViaEvidence": "v0.9.13 user: both physical ends 270-289 kohm to U3.5, now confirmed VREF. Withdraw R23.2-VREF; leave pad2 unresolved. Prior pad1-to-U3.6 feedback link and physical-end numbering remain hypotheses. Marked 562 nominal 5.6k retained.",
+          "MeasurementEvidence": "v0.9.13 user: both physical ends 270-289 kohm to U3.5, now confirmed VREF. Withdraw R23.2-VREF; leave pad2 unresolved. Prior pad1-to-U3.6 feedback link and physical-end numbering remain hypotheses. Marked 562 nominal 5.6k retained."
         }
       },
-      "via_evidence": "v0.9.8: User confirms V071-VREF. Earlier V071-R21.2 and V026-VREF-PIC21/RB0 associations retained. R21.2 joins VREF. Existing R22.2/R23.2/R48.2 receiver-bias branches remain prior photo/circuit hypotheses, not new measured connections. VREF remains separate from VDD and RC1/V053. No voltage or numeric resistance supplied."
+      "via_evidence": "v0.9.13 user: both physical ends 270-289 kohm to U3.5, now confirmed VREF. Withdraw R23.2-VREF; leave pad2 unresolved. Prior pad1-to-U3.6 feedback link and physical-end numbering remain hypotheses. Marked 562 nominal 5.6k retained."
     },
     {
       "original_ref": "C18",
@@ -5701,10 +5705,11 @@
         "includePins": true,
         "footprint": "Resistor_SMD:R_0603_1608Metric",
         "properties": {
-          "ViaEvidence": "v0.9.8: User confirms V071-VREF. Earlier V071-R21.2 and V026-VREF-PIC21/RB0 associations retained. R21.2 joins VREF. Existing R22.2/R23.2/R48.2 receiver-bias branches remain prior photo/circuit hypotheses, not new measured connections. VREF remains separate from VDD and RC1/V053. No voltage or numeric resistance supplied."
+          "ViaEvidence": "v0.9.13 user: D/left end in IMG_2434 is model2, U3.5/VREF at 1 ohm. E/right/model1 is 10 kohm from U3.5. Marked 01C nominal 10k retained; E-to-GND is still a prior hypothesis awaiting direct check.",
+          "MeasurementEvidence": "v0.9.13 user: D/left end in IMG_2434 is model2, U3.5/VREF at 1 ohm. E/right/model1 is 10 kohm from U3.5. Marked 01C nominal 10k retained; E-to-GND is still a prior hypothesis awaiting direct check."
         }
       },
-      "via_evidence": "v0.9.8: User confirms V071-VREF. Earlier V071-R21.2 and V026-VREF-PIC21/RB0 associations retained. R21.2 joins VREF. Existing R22.2/R23.2/R48.2 receiver-bias branches remain prior photo/circuit hypotheses, not new measured connections. VREF remains separate from VDD and RC1/V053. No voltage or numeric resistance supplied."
+      "via_evidence": "v0.9.13 user: D/left end in IMG_2434 is model2, U3.5/VREF at 1 ohm. E/right/model1 is 10 kohm from U3.5. Marked 01C nominal 10k retained; E-to-GND is still a prior hypothesis awaiting direct check."
     },
     {
       "original_ref": "C42",
@@ -7742,7 +7747,7 @@
           },
           {
             "p": "2",
-            "name": "2 / GND?",
+            "name": "2 / destination unresolved",
             "x": -4,
             "y": 0,
             "side": 0,
@@ -7751,7 +7756,7 @@
           },
           {
             "p": "3",
-            "name": "3 / SIG?",
+            "name": "3 / GND",
             "x": -4,
             "y": 4,
             "side": 0,
@@ -7773,10 +7778,11 @@
         "includePins": true,
         "footprint": "Connector_PinHeader_2.54mm:PinHeader_1x03_P2.54mm_Vertical",
         "properties": {
-          "ViaEvidence": "v0.9.8: User confirms V067-J3 pin1 (red wire), on modeled H_PIR_VDD. Prior V067-U6A.R1 local pad association retained. Empty U6A option remains DNP; this does not identify an IC or confirm every other H_PIR_VDD branch."
+          "ViaEvidence": "v0.9.13 user: pin3 (left / I in IMG_2435)-GND 1 ohm; pin2 (middle / H)-GND 290 kohm. Correct pin3 to GND, withdraw pin2 ground and pin3 raw-signal hypotheses. Pin1 supply remains confirmed. Pin2 destination awaits R38 checks.",
+          "MeasurementEvidence": "v0.9.13 user: pin3 (left / I in IMG_2435)-GND 1 ohm; pin2 (middle / H)-GND 290 kohm. Correct pin3 to GND, withdraw pin2 ground and pin3 raw-signal hypotheses. Pin1 supply remains confirmed. Pin2 destination awaits R38 checks."
         }
       },
-      "via_evidence": "v0.9.8: User confirms V067-J3 pin1 (red wire), on modeled H_PIR_VDD. Prior V067-U6A.R1 local pad association retained. Empty U6A option remains DNP; this does not identify an IC or confirm every other H_PIR_VDD branch."
+      "via_evidence": "v0.9.13 user: pin3 (left / I in IMG_2435)-GND 1 ohm; pin2 (middle / H)-GND 290 kohm. Correct pin3 to GND, withdraw pin2 ground and pin3 raw-signal hypotheses. Pin1 supply remains confirmed. Pin2 destination awaits R38 checks."
     },
     {
       "original_ref": "Q2",
@@ -11917,7 +11923,7 @@
       ]
     },
     {
-      "net": "RX_B_PLUS",
+      "net": "VREF",
       "a": [
         375,
         156
@@ -11958,17 +11964,6 @@
       "b": [
         335,
         158
-      ]
-    },
-    {
-      "net": "VREF",
-      "a": [
-        363,
-        179
-      ],
-      "b": [
-        363,
-        183
       ]
     },
     {
@@ -13358,28 +13353,6 @@
       ]
     },
     {
-      "net": "GND",
-      "a": [
-        309,
-        269
-      ],
-      "b": [
-        309,
-        258
-      ]
-    },
-    {
-      "net": "GND",
-      "a": [
-        309,
-        258
-      ],
-      "b": [
-        315,
-        258
-      ]
-    },
-    {
       "net": "PIR_BASE",
       "a": [
         272,
@@ -13421,28 +13394,6 @@
       "b": [
         290,
         283
-      ]
-    },
-    {
-      "net": "H_PIR_RAW",
-      "a": [
-        315,
-        262
-      ],
-      "b": [
-        306,
-        262
-      ]
-    },
-    {
-      "net": "H_PIR_RAW",
-      "a": [
-        306,
-        262
-      ],
-      "b": [
-        306,
-        265
       ]
     },
     {
@@ -13929,13 +13880,6 @@
       "net": "VREF",
       "p": [
         279,
-        183
-      ]
-    },
-    {
-      "net": "VREF",
-      "p": [
-        363,
         183
       ]
     },

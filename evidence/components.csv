@@ -17,7 +17,7 @@ R19,R19,10k,10k,01C,populated,IMG_2429.jpg;IMG_2434.jpg,See reconstruction notes
 R20,R20,22,22,220,populated,IMG_2429.jpg;IMG_2434.jpg,See reconstruction notes; added connectivity inferred,0,Device:R,Resistor_SMD:R_0603_1608Metric
 R21,R21,10k,10k,01C,populated,IMG_2429.jpg;IMG_2434.jpg,See reconstruction notes; added connectivity inferred,0,Device:R,Resistor_SMD:R_0603_1608Metric
 R22,R22,10k,10k,01C,populated,IMG_2429.jpg;IMG_2434.jpg,See reconstruction notes; added connectivity inferred,0,Device:R,Resistor_SMD:R_0603_1608Metric
-R23,R23,5.6k,5.6k,562,populated,IMG_2429.jpg;IMG_2434.jpg,See reconstruction notes; added connectivity inferred,0,Device:R,Resistor_SMD:R_0603_1608Metric
+R23,R23,5.6k,5.6k,562,populated,IMG_2429.jpg;IMG_2434.jpg,See reconstruction notes; added connectivity inferred,1,Device:R,Resistor_SMD:R_0603_1608Metric
 R24,R24,120k,120k,124,populated,IMG_2429.jpg;IMG_2434.jpg,See reconstruction notes; added connectivity inferred,0,Device:R,Resistor_SMD:R_0603_1608Metric
 R25,R25,1.2k,1.2k,122,populated,IMG_2429.jpg;IMG_2434.jpg,See reconstruction notes; added connectivity inferred,0,Device:R,Resistor_SMD:R_0603_1608Metric
 R26,R26,120k,120k,124,populated,IMG_2429.jpg;IMG_2434.jpg,See reconstruction notes; added connectivity inferred,0,Device:R,Resistor_SMD:R_0603_1608Metric
@@ -106,7 +106,7 @@ U6,U6,UNKNOWN_5PIN,S-812C33AMC? / 3.3V,C2NM,populated,IMG_2435.jpg,"H14v05: C2N 
 U6A,U106,DNP,DNP,,DNP,IMG_2435.jpg,See reconstruction notes; added connectivity inferred,2,Connector_Generic:Conn_01x03,Package_TO_SOT_SMD:SOT-23
 U7,U7,DNP,DNP,,DNP,IMG_2441.jpg,See reconstruction notes; added connectivity inferred,3,Connector_Generic:Conn_01x03,Connector_PinHeader_2.54mm:PinHeader_1x03_P2.54mm_Vertical
 Q1,Q1,UNKNOWN,FMOS3401A?,R1A,populated,IMG_2438.jpg,"R1A marking matches Formosa FMOS3401A datasheet p5; SOT-23 PMOS with G=1 (photo R), S=2 (photo L), D=3 (photo single S). Candidate identification, not manufacturer proof. Drain at battery+ and source at load support reverse-polarity protection; gate-control behavior not verified. Earlier MMBT3904 NPN hypothesis withdrawn.",0,Transistor_FET:Q_PMOS_GSD,Package_TO_SOT_SMD:SOT-23
-Q2,Q2,UNKNOWN,BC847B?,1FW / 56,populated,IMG_2435.jpg,"1FW supports BC847B. Candidate B=R, E=L, C=S and PIR interface role remain inferred. J3.1/red supply is user-confirmed; J3.2/.3 functions still require cross-check.",0,Transistor_BJT:BC847,Package_TO_SOT_SMD:SOT-23
+Q2,Q2,UNKNOWN,BC847B?,1FW / 56,populated,IMG_2435.jpg,"1FW supports BC847B. Candidate B=R, E=L, C=S and PIR interface role remain inferred. J3.1 supply and J3.3 GND are user-confirmed; J3.2 onward route remains unverified.",0,Transistor_BJT:BC847,Package_TO_SOT_SMD:SOT-23
 Q3,Q3,UNKNOWN,MMBTA55?,2H,populated,IMG_2433.jpg,H13: 2H marking suggests PNP MMBTA55/FMMTA55 family; PBSS5140T alternative. B=R E=L C=S assumed.,0,Transistor_BJT:Q_PNP_BEC,Package_TO_SOT_SMD:SOT-23
 Q4,Q4,UNKNOWN,MMBTA55?,2H,populated,IMG_2433.jpg,H13: 2H marking suggests PNP MMBTA55/FMMTA55 family; PBSS5140T alternative. B=R E=L C=S assumed.,0,Transistor_BJT:Q_PNP_BEC,Package_TO_SOT_SMD:SOT-23
 Q5,Q5,UNKNOWN,MMBTA55?,2H,populated,IMG_2433.jpg,H13: 2H marking suggests PNP MMBTA55/FMMTA55 family; PBSS5140T alternative. B=R E=L C=S assumed.,0,Transistor_BJT:Q_PNP_BEC,Package_TO_SOT_SMD:SOT-23
@@ -123,7 +123,7 @@ D5,D5,UNKNOWN,SD05? / TVS 5V,5U,populated,IMG_2437.jpg,v0.8: cathode/model1 to I
 D6,D6,UNKNOWN,MMSZ5228BS? / 3.9V,G3,populated,IMG_2437.jpg,H17v05: New sharp user marking supersedes T4/1N4148WS guess. Diodes table maps G3 to MMSZ5228BS 3.9V SOD323; Nexperia PZU2.4B 2.4V SOD323F also uses G3. Selected first as provisional; voltage not confirmed. Cathode band visible; photo-pad numbering and external routes still unresolved.,2,Device:D_Zener,Diode_SMD:D_SOD-323
 S1,S1,pushbutton,pushbutton,,populated,IMG_2438.jpg,See reconstruction notes; added connectivity inferred,0,Switch:SW_Push_Dual,
 J1,J1,ICSP header,ICSP,,populated,IMG_2437.jpg,See reconstruction notes; added connectivity inferred,0,Connector_Generic:Conn_01x05,Connector_PinHeader_2.54mm:PinHeader_1x05_P2.54mm_Horizontal
-J3,J3,PIR daughterboard,PIR BOARD,,populated,IMG_2435.jpg;IMG_2441.jpg,See reconstruction notes; added connectivity inferred,0,Connector_Generic:Conn_01x03,Connector_PinHeader_2.54mm:PinHeader_1x03_P2.54mm_Vertical
+J3,J3,PIR daughterboard,PIR BOARD,,populated,IMG_2435.jpg;IMG_2441.jpg,See reconstruction notes; added connectivity inferred,1,Connector_Generic:Conn_01x03,Connector_PinHeader_2.54mm:PinHeader_1x03_P2.54mm_Vertical
 J5,J5,motor connector,MOTOR,,populated,IMG_2439.jpg,See reconstruction notes; added connectivity inferred,0,Connector_Generic:Conn_01x02,Connector_JST:JST_XH_B2B-XH-A_1x02_P2.50mm_Vertical
 J6,J6,DNP,DNP,,DNP,IMG_2438.jpg,See reconstruction notes; added connectivity inferred,2,Connector_Generic:Conn_01x02,Connector_PinHeader_2.54mm:PinHeader_1x02_P2.54mm_Vertical
 LED1,LED1,UNKNOWN_4PAD,2-colour LED?,,populated,IMG_2432.jpg,See reconstruction notes; added connectivity inferred,0,Device:LED_Dual_AAKK,

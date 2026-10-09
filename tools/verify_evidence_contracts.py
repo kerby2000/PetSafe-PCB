@@ -38,7 +38,12 @@ assert net('Q8.T2')!=net('Q8.B2')
 assert net('Q8.B1')==net('Q8.B3')!=net('Q8.B2')
 assert net('TP6.1')==net('C18.2')!=net('U3.5')
 assert net('U3.5')==net('C18.1')
-assert len({net('TP6.1'),net('U3.5'),net('R22.2'),net('U4.8')})==4
+assert net('U3.5')==net('R22.2')==net('VREF.1')
+assert len({net('TP6.1'),net('U3.5'),net('R22.2'),net('U4.8')})==3
+assert net('J3.3')==net('GND.1')
+assert {'J3.2','R23.2'} <= set(m['unresolved_pins'])
+assert net('J3.2')!=net('GND.1') and net('R23.2')!=net('VREF.1')
+assert all(sites[f'V{i:03d}']['net']=='VREF' for i in [79,80])
 assert net('Q1.L')!=net('R43.2') and net('Q1.L')==net('U5.4') and net('R43.2')==net('TP14.1')
 assert all(sites[f'V{i:03d}']['net']=='VSYS' for i in [11,12,13,14])
 assert net('Q1.L')!=net('VDD.1'), 'Motor and logic rails must remain separate'
@@ -52,6 +57,21 @@ assert v['erc_total']==sum(len(s['violations']) for s in read('output/erc.json')
 assert v['unresolved_physical_pins']==len(m['unresolved_pins']) and v['schematic_sha256']==sha('schematic/PetSafe_1001339.kicad_sch')
 assert v['retained_original_visual_fragments']==28 and v['withdrawn_original_visual_fragments']==['V_Q1_LEFT']
 placements=read('evidence/library_placements.json')
+batch=read('evidence/u3_j3_measurements_20261009.json')
+measured={r['id']:r for r in batch['readings']}
+assert measured['B05']['resistance_ohms']==measured['B03']['resistance_ohms']==1
+assert measured['B04']['resistance_ohms']==10000
+assert measured['B06']['resistance_ohms']==290000 and measured['B07']['resistance_ohms']==1
+assert measured['B01']['resistance_range_ohms']==measured['B02']['resistance_range_ohms']==[270000,289000]
+for ref,value in [('R22','10k'),('R23','5.6k')]:
+ assert xml.findtext(f'./components/comp[@ref="{ref}"]/value')==value, 'In-circuit path resistance must not replace the marked value'
+for ref in ['U3','R22','R23','J3']:
+ expected=next(c for c in placements['components'] if c['reference']==ref)['properties']['MeasurementEvidence']
+ assert xml.findtext(f'./components/comp[@ref="{ref}"]/fields/field[@name="MeasurementEvidence"]')==expected,ref
+for path,digest in batch['photo_sha256'].items():assert sha(path)==digest
+queue=read('evidence/finishing_measurements.json')
+assert {r['id'] for r in queue['completed_tests']}==set(measured)
+assert not set(measured)&{r['id'] for r in queue['tests']}, 'Do not repeat completed finishing readings'
 for ref in ['U4','R11','R14','R15','R16','R37','R39','Q1','U2','Q8','C5','LED1','R18','R19','Q7','TP3','TP104','U106','J3','R43','TP14','R42','R44','TP4','TP103','R21','R22','R23','R48']:
  expected=next(c for c in placements['components'] if c['reference']==ref)['properties']['ViaEvidence']
  assert xml.findtext(f'./components/comp[@ref="{ref}"]/fields/field[@name="ViaEvidence"]')==expected,ref

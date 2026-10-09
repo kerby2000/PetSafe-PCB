@@ -1,7 +1,7 @@
 net,status,endpoints,retained_original_fragments
 BATTERY+,Battery+ to Q1 single pad user/photo-confirmed; TP14 copper photo-supported; R43.2 to TP14 user-confirmed,Q1.S;TP14.1;R43.2;BATP.1,
 D2_MID,User-confirmed local copper: D2.S to R46 lower pad; no resistor populated,D2.S;R46.2,
-GND,HYPOTHESIS / retains visual fragments where listed,BATN.1;C1.2;C11.1;C12.1;C14.1;C15.1;C17.2;C19.2;C1A.2;C2.2;C20.1;C24.2;C25.2;C26.2;C27.2;C28.2;C29.1;C2A.2;C30.2;C31.1;C32.2;C33.2;C34.2;C35.2;C36.2;C37.2;C38.1;C39.2;C4.1;C40.2;C41.2;C44.1;C45.1;C47.1;C48.1;C5.2;C6.2;C7.2;C8.2;C9.2;D3.L;D4.2;D5.2;GND.1;GND_RF.1;J1.GND;J3.2;LED1.BL;LED1.BR;Q11.L;Q2.L;Q3.L;Q4.L;Q5.L;Q6.L;Q8.B2;Q9.R;R10.2;R2.1;R22.1;R25.2;R29.2;R32.1;R43.1;S1.BL;S1.TL;U1.L2;U2.T2;U3.4;U4.19;U4.8;U5.6;U5.7;U6.R3,V_XTAL_CAP_COMMON
+GND,HYPOTHESIS / retains visual fragments where listed,BATN.1;C1.2;C11.1;C12.1;C14.1;C15.1;C17.2;C19.2;C1A.2;C2.2;C20.1;C24.2;C25.2;C26.2;C27.2;C28.2;C29.1;C2A.2;C30.2;C31.1;C32.2;C33.2;C34.2;C35.2;C36.2;C37.2;C38.1;C39.2;C4.1;C40.2;C41.2;C44.1;C45.1;C47.1;C48.1;C5.2;C6.2;C7.2;C8.2;C9.2;D3.L;D4.2;D5.2;GND.1;GND_RF.1;J1.GND;LED1.BL;LED1.BR;Q11.L;Q2.L;Q3.L;Q4.L;Q5.L;Q6.L;Q8.B2;Q9.R;R10.2;R2.1;R22.1;R25.2;R29.2;R32.1;R43.1;S1.BL;S1.TL;U1.L2;U2.T2;U3.4;U4.19;U4.8;U5.6;U5.7;U6.R3;J3.3,V_XTAL_CAP_COMMON
 H_ANT_A,HYPOTHESIS / retains visual fragments where listed,ANT1.1;R5.2,
 H_ANT_B,User-confirmed D2.L to ANT2 continuity; numerical resistance not supplied,ANT2.1;D2.L;R46.1,
 H_AUX_IN,"HYPOTHESIS: regulator input after R37, based on photo and S-812C33 pinout",C36.1;R37.2;U6.R2,
@@ -16,7 +16,7 @@ H_LED_CTL_A,USER_REPORTED_CONTINUITY + local photo trace,R30.1;TP1.1;U4.23,
 H_LED_CTL_B,USER_REPORTED_CONTINUITY + local photo trace,R31.1;TP2.1;U4.22,
 H_MOTOR_A,HYPOTHESIS / retains visual fragments where listed,J5.A;U5.8,
 H_MOTOR_B,HYPOTHESIS / retains visual fragments where listed,J5.B;TP15.1;U5.5,V_MOTOR_OUTB
-H_PIR_RAW,HYPOTHESIS / retains visual fragments where listed,J3.3;R33.1;R38.1,
+H_PIR_RAW,Prior photo/circuit R33-R38 fragment retained. J3.3 removed by user ground measurement; J3.2 destination unverified.,R33.1;R38.1,
 H_PIR_SIG,HYPOTHESIS / retains visual fragments where listed,Q2.S;TP16.1,V_Q2_SINGLE
 H_PIR_VDD,HYPOTHESIS / retains visual fragments where listed,C37.1;J3.1;R33.2;U6.R1;U6A.R1,
 H_R41_FREE,HYPOTHESIS / retains visual fragments where listed,R41.1,
@@ -60,7 +60,6 @@ RX_A_OUT,HYPOTHESIS / retains visual fragments where listed,C22.1;R26.1;R27.2;U3
 RX_A_PLUS,HYPOTHESIS / retains visual fragments where listed,C19.1;C20.2;R28.2;U3.3;D2.R,
 RX_B_FB,HYPOTHESIS / retains visual fragments where listed,C21.2;R23.1;R24.2;U3.6,V_U3_INB_MINUS_LOCAL
 RX_B_OUT,HYPOTHESIS / retains visual fragments where listed,C21.1;C23.1;R24.1;U3.7,V_U3_OUTB_LOCAL
-RX_B_PLUS,HYPOTHESIS / retains visual fragments where listed,C18.1;U3.5,V_U3_INB_PLUS_LOCAL
 RX_SUPPLY_SERIES,HYPOTHESIS / retains visual fragments where listed,Q7.S;R20.1,
 TUNE_1_BASE,HYPOTHESIS / retains visual fragments where listed,Q3.R;R13.2,V_TUNE_Q3_DRIVE
 TUNE_1_MID,HYPOTHESIS / retains visual fragments where listed,C10.2;C11.2;C12.2,
@@ -81,5 +80,5 @@ U1_ALT_PAD,HYPOTHESIS / retains visual fragments where listed,C3.2;C4.2;R1.2;R2.
 U2_DRIVE_A,HYPOTHESIS / retains visual fragments where listed,R9.1;U2.B3,
 U2_DRIVE_B,HYPOTHESIS / retains visual fragments where listed,R8.1;U2.B1,
 VDD,HYPOTHESIS / retains visual fragments where listed,C2.1;C2A.1;C3.1;C32.1;C34.1;C7.1;D3.R;J1.VDD;Q7.R;R1.1;R19.2;R37.1;R39.2;U1.R1;U2.B2;U4.20;U5.1;VDD.1,V_U5_LOGIC_CAP;V_U1_RIGHT_TOP
-VREF,User-confirmed R21.2-VREF-RB0 with retained inferred receiver-bias branches,U4.21;VREF.1;R21.2;R22.2;R23.2;R48.2;C39.1;U4.4,
+VREF,Mixed evidence: user measures U3.5/R22.2/VREF at 1 ohm. Original C18.1 local fragment retained; other bias branches individually qualified. R23-VREF hypothesis rejected.,U4.21;VREF.1;R21.2;R22.2;R48.2;C39.1;U4.4;C18.1;U3.5,
 VSYS,User-confirmed Q1.L/U5.4 motor rail; other branches retain individual earlier evidence,C27.1;C33.1;L1.1;L2.1;R3.1;U5.4;Q1.L,V_U5_MOTOR_CAP

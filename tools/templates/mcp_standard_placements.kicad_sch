@@ -11488,6 +11488,9 @@
 				(hide yes)
 			)
 		)
+    (property "MeasurementEvidence" "v0.9.13 user: pin5-VREF 1 ohm; pin5-R22 D/left 1 ohm, E/right 10 kohm; both R23 ends 270-289 kohm. Pin5 and V079/V080 now VREF. Original C18.1 fragment retained; TP6/C18.2 stays separate across C18." (at 381.0 200.66 0)
+      (effects (font (size 1.27 1.27)) (hide yes))
+    )
 		(pin "1"
 			(uuid "a5605f3e-d001-49c3-95d3-f2fdec0f8709")
 		)
@@ -12223,15 +12226,16 @@
 				)
 			)
 		)
-		(property "ViaEvidence" "v0.9.8: User confirms V071-VREF. Earlier V071-R21.2 and V026-VREF-PIC21/RB0 associations retained. R21.2 joins VREF. Existing R22.2/R23.2/R48.2 receiver-bias branches remain prior photo/circuit hypotheses, not new measured connections. VREF remains separate from VDD and RC1/V053. No voltage or numeric resistance supplied."
+		(property "ViaEvidence" "v0.9.13 user: both physical ends 270-289 kohm to U3.5, now confirmed VREF. Withdraw R23.2-VREF; leave pad2 unresolved. Prior pad1-to-U3.6 feedback link and physical-end numbering remain hypotheses. Marked 562 nominal 5.6k retained."
 			(at 461.01 223.52 0)
 			(effects
 				(font
 					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
+				) (hide yes))
 		)
+    (property "MeasurementEvidence" "v0.9.13 user: both physical ends 270-289 kohm to U3.5, now confirmed VREF. Withdraw R23.2-VREF; leave pad2 unresolved. Prior pad1-to-U3.6 feedback link and physical-end numbering remain hypotheses. Marked 562 nominal 5.6k retained." (at 461.01 223.52 0)
+      (effects (font (size 1.27 1.27)) (hide yes))
+    )
 		(pin "1"
 			(uuid "efad3cc0-193a-4ba1-873f-6932f3f554e8")
 		)
@@ -13749,15 +13753,16 @@
 				)
 			)
 		)
-		(property "ViaEvidence" "v0.9.8: User confirms V071-VREF. Earlier V071-R21.2 and V026-VREF-PIC21/RB0 associations retained. R21.2 joins VREF. Existing R22.2/R23.2/R48.2 receiver-bias branches remain prior photo/circuit hypotheses, not new measured connections. VREF remains separate from VDD and RC1/V053. No voltage or numeric resistance supplied."
+		(property "ViaEvidence" "v0.9.13 user: D/left end in IMG_2434 is model2, U3.5/VREF at 1 ohm. E/right/model1 is 10 kohm from U3.5. Marked 01C nominal 10k retained; E-to-GND is still a prior hypothesis awaiting direct check."
 			(at 326.39 229.87 0)
 			(effects
 				(font
 					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
+				) (hide yes))
 		)
+    (property "MeasurementEvidence" "v0.9.13 user: D/left end in IMG_2434 is model2, U3.5/VREF at 1 ohm. E/right/model1 is 10 kohm from U3.5. Marked 01C nominal 10k retained; E-to-GND is still a prior hypothesis awaiting direct check." (at 326.39 229.87 0)
+      (effects (font (size 1.27 1.27)) (hide yes))
+    )
 		(pin "1"
 			(uuid "282abd8d-d18e-4a5e-b223-42c410395a42")
 		)
@@ -16857,15 +16862,16 @@
 				)
 			)
 		)
-		(property "ViaEvidence" "v0.9.8: User confirms V067-J3 pin1 (red wire), on modeled H_PIR_VDD. Prior V067-U6A.R1 local pad association retained. Empty U6A option remains DNP; this does not identify an IC or confirm every other H_PIR_VDD branch."
+		(property "ViaEvidence" "v0.9.13 user: pin3 (left / I in IMG_2435)-GND 1 ohm; pin2 (middle / H)-GND 290 kohm. Correct pin3 to GND, withdraw pin2 ground and pin3 raw-signal hypotheses. Pin1 supply remains confirmed. Pin2 destination awaits R38 checks."
 			(at 405.13 327.66 0)
 			(effects
 				(font
 					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
+				) (hide yes))
 		)
+    (property "MeasurementEvidence" "v0.9.13 user: pin3 (left / I in IMG_2435)-GND 1 ohm; pin2 (middle / H)-GND 290 kohm. Correct pin3 to GND, withdraw pin2 ground and pin3 raw-signal hypotheses. Pin1 supply remains confirmed. Pin2 destination awaits R38 checks." (at 405.13 327.66 0)
+      (effects (font (size 1.27 1.27)) (hide yes))
+    )
 		(pin "1"
 			(uuid "4a9aa7de-2512-460d-ac9f-c75ebd830f3e")
 		)

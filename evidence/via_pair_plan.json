@@ -2,14 +2,14 @@
   "id": "via-pairs-round-6-completed",
   "pdf_path": "output/pdf/PetSafe_via_pair_next_check.pdf",
   "date": "2026-10-08",
-  "basis_revision": "v0.9.12",
-  "schematic_sha256": "2bca3793a316ea7f07ee2ddb6971ad1ac503998e11ed13711773da8ebe728d36",
+  "basis_revision": "v0.9.13",
+  "schematic_sha256": "0d115d7330f191cab6308798a3af6c81781f1153920760263cbe12edf6a1e61a",
   "status": "CURRENT_GPIO_BATCH_COMPLETE",
   "scope": "Completed result locator. No repeat measurement requested; no unmeasured pair is added to accepted connectivity.",
   "count_basis": {
     "active_via_sites": 120,
-    "nonrail_candidate_sites": 9,
-    "local_candidate_groups": 8,
+    "nonrail_candidate_sites": 7,
+    "local_candidate_groups": 7,
     "dnp_group": "V067/U6A now mapped to J3.1/PIR supply; excluded from search pool",
     "qualification": "Groups are local endpoint associations, not a count of proven missing nets. Some modeled local nets need no additional hidden connection. Four unmentioned IDs are already photo-matched; they are not the full work queue."
   },
@@ -29,15 +29,6 @@
       ],
       "endpoints": [
         "TP6.1"
-      ]
-    },
-    {
-      "vias": [
-        "V079",
-        "V080"
-      ],
-      "endpoints": [
-        "U3.5"
       ]
     },
     {

@@ -1,6 +1,6 @@
 {
   "board": "100-1339 R03 A",
-  "revision": "v0.9.12",
+  "revision": "v0.9.13",
   "status": "INFERRED WORKING CIRCUIT / NOT CONTINUITY VERIFIED",
   "components": [
     {
@@ -385,8 +385,9 @@
       "footprint": "Resistor_SMD:R_0603_1608Metric",
       "footprint_confidence": "medium - revised family estimate",
       "footprint_basis": "User reports R8 approximately 1.6 x 0.77 mm, consistent with 0603 (1608 metric). Repeated fitted resistor family revised using R8 as a scale reference. This individual body has not been measured; earlier 0805 estimate superseded.",
-      "via_evidence": "v0.9.8: User confirms V071-VREF. Earlier V071-R21.2 and V026-VREF-PIC21/RB0 associations retained. R21.2 joins VREF. Existing R22.2/R23.2/R48.2 receiver-bias branches remain prior photo/circuit hypotheses, not new measured connections. VREF remains separate from VDD and RC1/V053. No voltage or numeric resistance supplied.",
-      "v093_summary": "v0.9.3 V072 reaches TP6, explicitly not R22.2. Independent H_RX_BIAS hypothesis remains unverified; no receiver bias net merge."
+      "via_evidence": "v0.9.13 user: D/left end in IMG_2434 is model2, U3.5/VREF at 1 ohm. E/right/model1 is 10 kohm from U3.5. Marked 01C nominal 10k retained; E-to-GND is still a prior hypothesis awaiting direct check.",
+      "v093_summary": "v0.9.13 user: D/left end in IMG_2434 is model2, U3.5/VREF at 1 ohm. E/right/model1 is 10 kohm from U3.5. Marked 01C nominal 10k retained; E-to-GND is still a prior hypothesis awaiting direct check.",
+      "measurement_evidence": "v0.9.13 user: D/left end in IMG_2434 is model2, U3.5/VREF at 1 ohm. E/right/model1 is 10 kohm from U3.5. Marked 01C nominal 10k retained; E-to-GND is still a prior hypothesis awaiting direct check."
     },
     {
       "ref": "R23",
@@ -407,7 +408,8 @@
       "footprint": "Resistor_SMD:R_0603_1608Metric",
       "footprint_confidence": "medium - revised family estimate",
       "footprint_basis": "User reports R8 approximately 1.6 x 0.77 mm, consistent with 0603 (1608 metric). Repeated fitted resistor family revised using R8 as a scale reference. This individual body has not been measured; earlier 0805 estimate superseded.",
-      "via_evidence": "v0.9.8: User confirms V071-VREF. Earlier V071-R21.2 and V026-VREF-PIC21/RB0 associations retained. R21.2 joins VREF. Existing R22.2/R23.2/R48.2 receiver-bias branches remain prior photo/circuit hypotheses, not new measured connections. VREF remains separate from VDD and RC1/V053. No voltage or numeric resistance supplied."
+      "via_evidence": "v0.9.13 user: both physical ends 270-289 kohm to U3.5, now confirmed VREF. Withdraw R23.2-VREF; leave pad2 unresolved. Prior pad1-to-U3.6 feedback link and physical-end numbering remain hypotheses. Marked 562 nominal 5.6k retained.",
+      "measurement_evidence": "v0.9.13 user: both physical ends 270-289 kohm to U3.5, now confirmed VREF. Withdraw R23.2-VREF; leave pad2 unresolved. Prior pad1-to-U3.6 feedback link and physical-end numbering remain hypotheses. Marked 562 nominal 5.6k retained."
     },
     {
       "ref": "R24",
@@ -2430,7 +2432,8 @@
       "footprint": "Package_SO:SOIC-8_3.9x4.9mm_P1.27mm",
       "footprint_confidence": "datasheet/package candidate",
       "footprint_basis": "Existing assignment; see component identity evidence.",
-      "v093_summary": "v0.9.3 user identifies both V079 and V080 as SGM8542 pin5. Existing local C18.1 fragment retained on RX_B_PLUS; separate from TP6 on the opposite side of C18."
+      "v093_summary": "v0.9.13 user: pin5-VREF 1 ohm; pin5-R22 D/left 1 ohm, E/right 10 kohm; both R23 ends 270-289 kohm. Pin5 and V079/V080 now VREF. Original C18.1 fragment retained; TP6/C18.2 stays separate across C18.",
+      "measurement_evidence": "v0.9.13 user: pin5-VREF 1 ohm; pin5-R22 D/left 1 ohm, E/right 10 kohm; both R23 ends 270-289 kohm. Pin5 and V079/V080 now VREF. Original C18.1 fragment retained; TP6/C18.2 stays separate across C18."
     },
     {
       "ref": "U1",
@@ -2599,7 +2602,7 @@
       "side": "front",
       "traced_pin_count": 1,
       "proposed_value": "BC847B?",
-      "hypothesis": "1FW supports BC847B. Candidate B=R, E=L, C=S and PIR interface role remain inferred. J3.1/red supply is user-confirmed; J3.2/.3 functions still require cross-check.",
+      "hypothesis": "1FW supports BC847B. Candidate B=R, E=L, C=S and PIR interface role remain inferred. J3.1 supply and J3.3 GND are user-confirmed; J3.2 onward route remains unverified.",
       "library_symbol": "Transistor_BJT:BC847",
       "footprint": "Package_TO_SOT_SMD:SOT-23",
       "footprint_confidence": "datasheet/package candidate",
@@ -3029,7 +3032,7 @@
         "2",
         "3"
       ],
-      "note": "Rear-photo colour association: 1 red, 2 blue, 3 black. User confirms pin1/red PIR supply. Model assigns pin2=GND and pin3=raw signal provisionally; verify physical order and functions, not by wire colour alone.",
+      "note": "v0.9.13 user: pin3 (left / I in IMG_2435)-GND 1 ohm; pin2 (middle / H)-GND 290 kohm. Correct pin3 to GND, withdraw pin2 ground and pin3 raw-signal hypotheses. Pin1 supply remains confirmed. Pin2 destination awaits R38 checks.",
       "side": "front",
       "traced_pin_count": 0,
       "proposed_value": "PIR BOARD",
@@ -3037,7 +3040,8 @@
       "footprint": "Connector_PinHeader_2.54mm:PinHeader_1x03_P2.54mm_Vertical",
       "footprint_confidence": "medium",
       "footprint_basis": "Three soldered wire holes; generic 2.54-mm row models the candidate land pattern, not the connector housing.",
-      "via_evidence": "v0.9.8: User confirms V067-J3 pin1 (red wire), on modeled H_PIR_VDD. Prior V067-U6A.R1 local pad association retained. Empty U6A option remains DNP; this does not identify an IC or confirm every other H_PIR_VDD branch."
+      "via_evidence": "v0.9.13 user: pin3 (left / I in IMG_2435)-GND 1 ohm; pin2 (middle / H)-GND 290 kohm. Correct pin3 to GND, withdraw pin2 ground and pin3 raw-signal hypotheses. Pin1 supply remains confirmed. Pin2 destination awaits R38 checks.",
+      "measurement_evidence": "v0.9.13 user: pin3 (left / I in IMG_2435)-GND 1 ohm; pin2 (middle / H)-GND 290 kohm. Correct pin3 to GND, withdraw pin2 ground and pin3 raw-signal hypotheses. Pin1 supply remains confirmed. Pin2 destination awaits R38 checks."
     },
     {
       "ref": "J5",
@@ -3678,7 +3682,6 @@
         "GND.1",
         "GND_RF.1",
         "J1.GND",
-        "J3.2",
         "LED1.BL",
         "LED1.BR",
         "Q11.L",
@@ -3705,7 +3708,8 @@
         "U4.8",
         "U5.6",
         "U5.7",
-        "U6.R3"
+        "U6.R3",
+        "J3.3"
       ],
       "status": "HYPOTHESIS / retains visual fragments where listed",
       "original_fragments": [
@@ -3821,11 +3825,10 @@
     {
       "net": "H_PIR_RAW",
       "endpoints": [
-        "J3.3",
         "R33.1",
         "R38.1"
       ],
-      "status": "HYPOTHESIS / retains visual fragments where listed",
+      "status": "Prior photo/circuit R33-R38 fragment retained. J3.3 removed by user ground measurement; J3.2 destination unverified.",
       "original_fragments": []
     },
     {
@@ -4159,12 +4162,13 @@
         "VREF.1",
         "R21.2",
         "R22.2",
-        "R23.2",
         "R48.2",
         "C39.1",
-        "U4.4"
+        "U4.4",
+        "C18.1",
+        "U3.5"
       ],
-      "status": "User-confirmed R21.2-VREF-RB0 with retained inferred receiver-bias branches",
+      "status": "Mixed evidence: user measures U3.5/R22.2/VREF at 1 ohm. Original C18.1 local fragment retained; other bias branches individually qualified. R23-VREF hypothesis rejected.",
       "original_fragments": [],
       "v098_evidence": "v0.9.8: User confirms V071-VREF. Earlier V071-R21.2 and V026-VREF-PIC21/RB0 associations retained. R21.2 joins VREF. Existing R22.2/R23.2/R48.2 receiver-bias branches remain prior photo/circuit hypotheses, not new measured connections. VREF remains separate from VDD and RC1/V053. No voltage or numeric resistance supplied."
     },
@@ -4349,17 +4353,6 @@
       "status": "HYPOTHESIS / retains visual fragments where listed",
       "original_fragments": [
         "V_U3_OUTB_LOCAL"
-      ]
-    },
-    {
-      "net": "RX_B_PLUS",
-      "endpoints": [
-        "C18.1",
-        "U3.5"
-      ],
-      "status": "HYPOTHESIS / retains visual fragments where listed",
-      "original_fragments": [
-        "V_U3_INB_PLUS_LOCAL"
       ]
     },
     {
@@ -4889,9 +4882,11 @@
     "C6.1",
     "D6.1",
     "D6.2",
+    "J3.2",
     "J6.1",
     "J6.2",
     "Q9.S",
+    "R23.2",
     "R36.1",
     "R36.2",
     "R47.1",
@@ -4994,17 +4989,6 @@
       "b": [
         134.62,
         217.17
-      ]
-    },
-    {
-      "net": "VREF",
-      "a": [
-        461.01,
-        227.33
-      ],
-      "b": [
-        461.01,
-        232.41
       ]
     },
     {
@@ -5890,17 +5874,6 @@
     {
       "net": "GND",
       "a": [
-        392.43,
-        327.66
-      ],
-      "b": [
-        400.05,
-        327.66
-      ]
-    },
-    {
-      "net": "GND",
-      "a": [
         454.66,
         124.46
       ],
@@ -6372,17 +6345,6 @@
       ]
     },
     {
-      "net": "RX_B_PLUS",
-      "a": [
-        464.82,
-        198.12
-      ],
-      "b": [
-        477.52,
-        198.12
-      ]
-    },
-    {
       "net": "VREF",
       "a": [
         313.69,
@@ -6567,17 +6529,6 @@
       "b": [
         368.3,
         325.12
-      ]
-    },
-    {
-      "net": "H_PIR_RAW",
-      "a": [
-        393.7,
-        330.2
-      ],
-      "b": [
-        400.05,
-        330.2
       ]
     },
     {
@@ -6787,17 +6738,6 @@
       "b": [
         302.26,
         132.08
-      ]
-    },
-    {
-      "net": "GND",
-      "a": [
-        392.43,
-        327.66
-      ],
-      "b": [
-        392.43,
-        341.63
       ]
     },
     {
@@ -8000,17 +7940,6 @@
       ]
     },
     {
-      "net": "H_PIR_RAW",
-      "a": [
-        388.62,
-        332.74
-      ],
-      "b": [
-        388.62,
-        336.55
-      ]
-    },
-    {
       "net": "GND",
       "a": [
         300.99,
@@ -8349,17 +8278,6 @@
       "b": [
         205.74,
         322.58
-      ]
-    },
-    {
-      "net": "H_PIR_RAW",
-      "a": [
-        393.7,
-        330.2
-      ],
-      "b": [
-        393.7,
-        332.74
       ]
     },
     {
@@ -9075,17 +8993,6 @@
       "b": [
         220.98,
         240.03
-      ]
-    },
-    {
-      "net": "H_PIR_RAW",
-      "a": [
-        388.62,
-        332.74
-      ],
-      "b": [
-        393.7,
-        332.74
       ]
     },
     {
@@ -10219,6 +10126,28 @@
       "b": [
         551.18,
         251.46
+      ]
+    },
+    {
+      "net": "GND",
+      "a": [
+        392.43,
+        330.2
+      ],
+      "b": [
+        400.05,
+        330.2
+      ]
+    },
+    {
+      "net": "VREF",
+      "a": [
+        464.82,
+        198.12
+      ],
+      "b": [
+        477.52,
+        198.12
       ]
     }
   ],

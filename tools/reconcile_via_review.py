@@ -88,7 +88,7 @@ def apply(out):
     annotate([76],['R22.1'],'R22 opposite/right photo pad; user GND corroborates return.','GND')
     annotate([77],['C19.2','R29.2'],'User explicitly confirms the C19-R29 junction is GND. R29 opposite the PIC3/TP7 end is pad2; C19 pad2 is assigned to the upper photo pad beside the via. Earlier C19-to-clamp and R29-to-U3.5 guesses withdrawn.','GND')
     annotate([78],['C17.2'],'User adds C17 to earlier GND report; return pad selected from existing photo/model.','GND')
-    annotate([79,80],['U3.5'],'User identifies SGM8542 pin5 for both vias. Existing original C18.1 local fragment retained on RX_B_PLUS; TP6 lies on the opposite side of C18 and is not merged.','RX_B_PLUS')
+    annotate([79,80],['U3.5','VREF.1'],'User identifies SGM8542 pin5 for both vias, then measures pin5-VREF 1 ohm. Original C18.1 local fragment retained; TP6 stays separate across C18. See u3_j3_measurements_20261009.json.','VREF')
     for i in [79,80]:sites[f'V{i:03d}']['confidence']='User explicit U3 pin5 association; no new per-site ohms supplied'
     annotate([82],['VDD.1','D3.R'],'2026-10-09 user meter report identifies D3.R on V082 / board VDD TP (native TP103). D3.L is GND. Only D3.R moves from H_RX_VDD; the remaining receiver supply stays separate. See d3_measurement_20261009.json.','VDD')
     sites['V082']['confidence']='User confirms exact D3 terminal and VDD TP; no numerical resistance supplied for these rail connections'

@@ -1,61 +1,308 @@
 {
   "date": "2026-10-09",
-  "basis_revision": "v0.9.12",
-  "status": "AWAITING_FIRST_BATCH",
-  "scope": "First targeted finishing batch, not a claim that seven readings finish the whole schematic.",
+  "basis_revision": "v0.9.13",
+  "status": "AWAITING_SECOND_BATCH",
+  "scope": "First seven readings recorded; five targeted follow-ups. Not every remaining schematic gap is covered.",
   "setup": "Battery and programmer disconnected; allow capacitors to discharge. Resistance mode. Note the shorted-probe baseline; report actual ohms, kohms, Mohms, OL or changing readings. Do not bridge or desolder anything in this batch.",
   "photos": [
     {
       "id": "receiver",
       "source": "photos/originals/IMG_2434.jpg",
-      "view_box": [150, 285, 1050, 730],
-      "coordinate_space": [1368, 1823],
+      "view_box": [
+        150,
+        285,
+        1050,
+        730
+      ],
+      "coordinate_space": [
+        1368,
+        1823
+      ],
       "title": "U3 input and nearby resistors",
       "points": {
-        "A": {"xy": [867, 644], "label": [976, 664], "description": "U3 pin 5: upper-right lead in this photo"},
-        "B": {"xy": [884, 399], "label": [834, 334], "description": "R23 left metal end in this photo"},
-        "C": {"xy": [1000, 397], "label": [1070, 345], "description": "R23 right metal end in this photo"},
-        "D": {"xy": [253, 765], "label": [206, 700], "description": "R22 left metal end in this photo"},
-        "E": {"xy": [354, 765], "label": [408, 797], "description": "R22 right metal end in this photo"}
+        "A": {
+          "xy": [
+            867,
+            644
+          ],
+          "label": [
+            976,
+            664
+          ],
+          "description": "U3 pin 5: upper-right lead in this photo"
+        },
+        "B": {
+          "xy": [
+            884,
+            399
+          ],
+          "label": [
+            834,
+            334
+          ],
+          "description": "R23 left metal end in this photo"
+        },
+        "C": {
+          "xy": [
+            1000,
+            397
+          ],
+          "label": [
+            1070,
+            345
+          ],
+          "description": "R23 right metal end in this photo"
+        },
+        "D": {
+          "xy": [
+            253,
+            765
+          ],
+          "label": [
+            206,
+            700
+          ],
+          "description": "R22 left metal end in this photo"
+        },
+        "E": {
+          "xy": [
+            354,
+            765
+          ],
+          "label": [
+            408,
+            797
+          ],
+          "description": "R22 right metal end in this photo"
+        },
+        "L": {
+          "xy": [
+            790,
+            644
+          ],
+          "label": [
+            734,
+            570
+          ],
+          "description": "U3 pin 6: second lead from the right on the upper row in this photo"
+        }
       }
     },
     {
       "id": "references",
       "source": "photos/originals/IMG_2435.jpg",
-      "view_box": [120, 945, 1120, 815],
-      "coordinate_space": [1368, 1823],
-      "title": "VREF, GND and J3",
+      "view_box": [
+        120,
+        945,
+        1120,
+        815
+      ],
+      "coordinate_space": [
+        1368,
+        1823
+      ],
+      "title": "J3 signal candidate, R38 and GND",
       "points": {
-        "F": {"xy": [230, 1058], "label": [349, 996], "description": "Printed VREF test point"},
-        "G": {"xy": [372, 1602], "label": [492, 1550], "description": "Printed GND test point"},
-        "H": {"xy": [972, 1614], "label": [1025, 1527], "description": "J3 pin 2, middle solder terminal"},
-        "I": {"xy": [840, 1614], "label": [761, 1527], "description": "J3 pin 3, left terminal in this photo"}
+        "F": {
+          "xy": [
+            230,
+            1058
+          ],
+          "label": [
+            349,
+            996
+          ],
+          "description": "Printed VREF test point"
+        },
+        "G": {
+          "xy": [
+            372,
+            1602
+          ],
+          "label": [
+            492,
+            1550
+          ],
+          "description": "Printed GND test point"
+        },
+        "H": {
+          "xy": [
+            972,
+            1614
+          ],
+          "label": [
+            1025,
+            1527
+          ],
+          "description": "J3 pin 2, middle solder terminal"
+        },
+        "I": {
+          "xy": [
+            840,
+            1614
+          ],
+          "label": [
+            761,
+            1527
+          ],
+          "description": "J3 pin 3, left terminal in this photo"
+        },
+        "J": {
+          "xy": [
+            739,
+            1058
+          ],
+          "label": [
+            689,
+            997
+          ],
+          "description": "R38 left metal end in this photo, nearer Q2"
+        },
+        "K": {
+          "xy": [
+            840,
+            1058
+          ],
+          "label": [
+            904,
+            1010
+          ],
+          "description": "R38 right metal end in this photo, nearer C37"
+        }
       }
     }
   ],
   "tests": [
-    {"id":"B01","from":"A","to":"B","issue":"E08","purpose":"Check one physical end of the nearby R23 bias candidate; no connection assumed."},
-    {"id":"B02","from":"A","to":"C","issue":"E08","purpose":"Check the other R23 end; distinguish direct copper from a path through the resistor."},
-    {"id":"B03","from":"A","to":"D","issue":"E08","purpose":"Check one physical end of the R22 bias candidate; no connection assumed."},
-    {"id":"B04","from":"A","to":"E","issue":"E08","purpose":"Check the other R22 end without presuming its model numbering is correct."},
-    {"id":"B05","from":"A","to":"F","issue":"E08","purpose":"Measure the input's total resistance to VREF; a resistor-valued path must not be replaced with a wire."},
-    {"id":"B06","from":"G","to":"H","issue":"E07","purpose":"Test the model's J3.2-ground assignment."},
-    {"id":"B07","from":"G","to":"I","issue":"E07","purpose":"Test J3.3 separately; wire colour is not evidence of ground."}
+    {
+      "id": "B08",
+      "from": "H",
+      "to": "J",
+      "issue": "E07",
+      "purpose": "Test whether J3 pin 2 reaches this end of the existing R38/Q2 interface candidate."
+    },
+    {
+      "id": "B09",
+      "from": "H",
+      "to": "K",
+      "issue": "E07",
+      "purpose": "Test the other R38 end; a roughly 10 kohm path is different from direct continuity."
+    },
+    {
+      "id": "B10",
+      "from": "L",
+      "to": "B",
+      "issue": "E08",
+      "purpose": "Test the retained U3 pin6/R23 feedback hypothesis and establish its physical end."
+    },
+    {
+      "id": "B11",
+      "from": "L",
+      "to": "C",
+      "issue": "E08",
+      "purpose": "Test the other R23 end; distinguish a direct path from a path through nominal 5.6 kohm."
+    },
+    {
+      "id": "B12",
+      "from": "E",
+      "to": "G",
+      "issue": "E08",
+      "purpose": "Verify whether the R22 end opposite the measured VREF end is actually GND."
+    }
   ],
   "interpretation": "Near the probe baseline supports a local low-resistance route; a beep alone is insufficient. Record finite resistance without rounding it to a short. A changing reading may involve capacitors. None of the proposed pairs is new measured evidence.",
   "next_stages": [
-    {"stage":"1. Finish signal paths","work":"Resolve the receiver input bias and detector output; RF excitation source and one complete antenna tuning cell; PIR output to controller. Then check the smaller C6, D6, C26, TP9, R41 and D1 endpoints. Use existing photographs and previous via results before choosing each small batch."},
-    {"stage":"2. Recover values","work":"Use the LCR meter for frequency-sensitive antenna, RF shaping and receiver capacitors first. In-circuit parallel networks give effective values; isolate a lead only if needed for individual values. L1/L2 type and value also remain unresolved. Use documented assumptions for noncritical substitutions where justified, not a blanket capacitor value."},
-    {"stage":"3. Check operating levels and physical details","work":"Once routing is coherent, make one powered voltage session for the named rails and relevant switched supplies; any waveform question requires suitable waveform measurements. Complete LED/motor/switch orientation checks and the remaining C5/S1/LED1 package dimensions."},
-    {"stage":"4. Finalize the one-sheet schematic","work":"Update wires, values, pin maps and footprints; use normal component values with measured/assumed/candidate evidence in properties and the BOM. Remove question marks only when replaced by established information or an explicit justified assumption. Run native KiCad connectivity/ERC and inspect the final sheet. Exact unknown manufacturer identity can remain documented without blocking a compatible functional reconstruction."}
+    {
+      "stage": "1. Finish signal paths",
+      "work": "Finish the R23 feedback branch, J3 signal route and receiver output; RF excitation and one complete antenna tuning cell follow. Then check the smaller C6, D6, C26, TP9, R41 and D1 endpoints. U3 pin5 DC return and J3 ground ordering are now established. Use photos and earlier via results before each small batch."
+    },
+    {
+      "stage": "2. Recover values",
+      "work": "Use the LCR meter for frequency-sensitive antenna, RF shaping and receiver capacitors first. In-circuit parallel networks give effective values; isolate a lead only if needed for individual values. L1/L2 type and value also remain unresolved. Use documented assumptions for noncritical substitutions where justified, not a blanket capacitor value."
+    },
+    {
+      "stage": "3. Check operating levels and physical details",
+      "work": "Once routing is coherent, make one powered voltage session for the named rails and relevant switched supplies; any waveform question requires suitable waveform measurements. Complete LED/motor/switch orientation checks and the remaining C5/S1/LED1 package dimensions."
+    },
+    {
+      "stage": "4. Finalize the one-sheet schematic",
+      "work": "Update wires, values, pin maps and footprints; use normal component values with measured/assumed/candidate evidence in properties and the BOM. Remove question marks only when replaced by established information or an explicit justified assumption. Run native KiCad connectivity/ERC and inspect the final sheet. Exact unknown manufacturer identity can remain documented without blocking a compatible functional reconstruction."
+    }
   ],
-  "do_not_repeat": ["D2 directed diode tests or its local/rail checks", "D3/V082 rail checks", "Confirmed PIC/via connections", "Seven rejected capacitor-midpoint pairs"],
+  "do_not_repeat": [
+    "D2 directed diode tests or its local/rail checks",
+    "D3/V082 rail checks",
+    "Confirmed PIC/via connections",
+    "Seven rejected capacitor-midpoint pairs",
+    "Completed B01-B07: U3 pin5 to R22/R23/VREF and J3 pins2/3 to GND"
+  ],
   "deferred": "The 16 open pads on empty options are recorded but are lower priority unless they affect a fitted net. U6's two candidate internal-NC pins need external-copper inspection, not an invented no-connect flag. Firmware, daughterboard internals and routed PCB are separate from main-board schematic completion.",
   "sources": [
     "evidence/remaining_work.json",
     "evidence/reconstruction.json",
     "photos/originals/IMG_2434.jpg",
     "photos/originals/IMG_2435.jpg",
-    "https://www.sg-micro.com/rect/assets/537cce2c-8022-4ea6-97f4-6524851a35e8/SGM8541_SGM8542_SGM8544.pdf"
-  ]
+    "https://www.sg-micro.com/rect/assets/537cce2c-8022-4ea6-97f4-6524851a35e8/SGM8541_SGM8542_SGM8544.pdf",
+    "evidence/u3_j3_measurements_20261009.json"
+  ],
+  "completed_tests": [
+    {
+      "id": "B01",
+      "from": "A",
+      "to": "B",
+      "issue": "E08",
+      "purpose": "Check one physical end of the nearby R23 bias candidate; no connection assumed.",
+      "result": "270-289 kohm (shared range)"
+    },
+    {
+      "id": "B02",
+      "from": "A",
+      "to": "C",
+      "issue": "E08",
+      "purpose": "Check the other R23 end; distinguish direct copper from a path through the resistor.",
+      "result": "270-289 kohm (shared range)"
+    },
+    {
+      "id": "B03",
+      "from": "A",
+      "to": "D",
+      "issue": "E08",
+      "purpose": "Check one physical end of the R22 bias candidate; no connection assumed.",
+      "result": "1 ohm"
+    },
+    {
+      "id": "B04",
+      "from": "A",
+      "to": "E",
+      "issue": "E08",
+      "purpose": "Check the other R22 end without presuming its model numbering is correct.",
+      "result": "10 kohm"
+    },
+    {
+      "id": "B05",
+      "from": "A",
+      "to": "F",
+      "issue": "E08",
+      "purpose": "Measure the input's total resistance to VREF; a resistor-valued path must not be replaced with a wire.",
+      "result": "1 ohm"
+    },
+    {
+      "id": "B06",
+      "from": "G",
+      "to": "H",
+      "issue": "E07",
+      "purpose": "Test the model's J3.2-ground assignment.",
+      "result": "290 kohm"
+    },
+    {
+      "id": "B07",
+      "from": "G",
+      "to": "I",
+      "issue": "E07",
+      "purpose": "Test J3.3 separately; wire colour is not evidence of ground.",
+      "result": "1 ohm"
+    }
+  ],
+  "batch_title": "Next batch: five resistance readings",
+  "instructions": "Use H (J3 pin 2) for B08-B09, then L (U3 pin 6) for B10-B11. Finally measure E (R22 right end) to G (GND TP). These are proposed checks; none assumes a short. All letter labels from the previous batch keep their meanings.",
+  "result_summary": "U3 pin 5 and R22 D/left join VREF at about 1 ohm; E/right is 10 kohm away. J3 pin 3 is GND at 1 ohm; pin 2 reads 290 kohm to ground. Both R23 ends read 270-289 kohm to the VREF input, so the old R23-to-VREF connection is removed. R23 and J3 pin 2 still need their actual destinations established."
 }

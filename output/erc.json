@@ -1,7 +1,7 @@
 {
     "$schema": "https://schemas.kicad.org/erc.v1.json",
     "coordinate_units": "mm",
-    "date": "2026-10-09T10:42:45",
+    "date": "2026-10-09T11:23:01",
     "ignored_checks": [
         {
             "description": "Global label only appears once in the schematic",
@@ -259,6 +259,21 @@
                     "description": "Pin not connected",
                     "items": [
                         {
+                            "description": "Symbol J3 Pin 2 [Pin_2, Passive, Line]",
+                            "pos": {
+                                "x": 4.0005,
+                                "y": 3.2766
+                            },
+                            "uuid": "5bb64ef8-c293-4bdd-beed-663ff4e34400"
+                        }
+                    ],
+                    "severity": "error",
+                    "type": "pin_not_connected"
+                },
+                {
+                    "description": "Pin not connected",
+                    "items": [
+                        {
                             "description": "Symbol D6 Pin 1 [K, Passive, Line]",
                             "pos": {
                                 "x": 4.0132,
@@ -389,6 +404,21 @@
                     ],
                     "severity": "error",
                     "type": "power_pin_not_driven"
+                },
+                {
+                    "description": "Pin not connected",
+                    "items": [
+                        {
+                            "description": "Symbol R23 Pin 2 [Passive, Line]",
+                            "pos": {
+                                "x": 4.6101,
+                                "y": 2.2733
+                            },
+                            "uuid": "5332b338-b4f8-4cf5-aeaa-137ce05392b2"
+                        }
+                    ],
+                    "severity": "error",
+                    "type": "pin_not_connected"
                 },
                 {
                     "description": "Pin not connected",

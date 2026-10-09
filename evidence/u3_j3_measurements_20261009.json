@@ -1,0 +1,126 @@
+{
+  "date": "2026-10-09",
+  "revision": "v0.9.13",
+  "source": "User resistance readings in chat; finishing guide batch B01-B07",
+  "setup": "Resistance mode, battery/programmer disconnected as requested; no powered readings.",
+  "readings": [
+    {
+      "id": "B01",
+      "pair": [
+        "U3.5",
+        "R23 left / B"
+      ],
+      "resistance_range_ohms": [
+        270000,
+        289000
+      ]
+    },
+    {
+      "id": "B02",
+      "pair": [
+        "U3.5",
+        "R23 right / C"
+      ],
+      "resistance_range_ohms": [
+        270000,
+        289000
+      ]
+    },
+    {
+      "id": "B03",
+      "pair": [
+        "U3.5",
+        "R22 left / D"
+      ],
+      "resistance_ohms": 1
+    },
+    {
+      "id": "B04",
+      "pair": [
+        "U3.5",
+        "R22 right / E"
+      ],
+      "resistance_ohms": 10000
+    },
+    {
+      "id": "B05",
+      "pair": [
+        "U3.5",
+        "VREF TP / F"
+      ],
+      "resistance_ohms": 1
+    },
+    {
+      "id": "B06",
+      "pair": [
+        "GND TP / G",
+        "J3.2 / H"
+      ],
+      "resistance_ohms": 290000
+    },
+    {
+      "id": "B07",
+      "pair": [
+        "GND TP / G",
+        "J3.3 / I"
+      ],
+      "resistance_ohms": 1
+    }
+  ],
+  "qualifications": [
+    "The user supplied a shared 270-289 kohm range for both R23 ends, not separate exact readings.",
+    "Finite in-circuit resistance is recorded as a path measurement, not a wire or a discrete component value.",
+    "R22 D/left is now model pad2 (VREF); E/right is model pad1. Its prior GND assignment remains an inference pending direct E-GND check.",
+    "R23 physical-end/model numbering remains unverified; neither end is directly VREF. Prior R23.1 feedback association is retained as a hypothesis.",
+    "J3.2 is no longer grounded. Signal-to-R38 is a proposed check, not an established connection."
+  ],
+  "confirmed_pairs": [
+    [
+      "U3.5",
+      "VREF.1"
+    ],
+    [
+      "U3.5",
+      "R22.2"
+    ],
+    [
+      "J3.3",
+      "GND.1"
+    ]
+  ],
+  "withdrawn_connections": [
+    {
+      "endpoints": [
+        "R23.2",
+        "VREF.1"
+      ],
+      "reason": "Both physical resistor ends high resistance to the now measured VREF input."
+    },
+    {
+      "endpoints": [
+        "J3.2",
+        "GND.1"
+      ],
+      "reason": "290 kohm, not copper continuity."
+    },
+    {
+      "endpoints": [
+        "J3.3",
+        "R38.1"
+      ],
+      "reason": "Pin3 now measured ground; old raw-signal connector assignment withdrawn."
+    }
+  ],
+  "open_after_correction": [
+    "R23.2",
+    "J3.2"
+  ],
+  "photo_orientation": {
+    "receiver": "photos/originals/IMG_2434.jpg",
+    "connector": "photos/originals/IMG_2435.jpg"
+  },
+  "photo_sha256": {
+    "photos/originals/IMG_2434.jpg": "2feac8570055753400b337f4cfe8a79256da8f3bcd706e0d972dfd9672b50d0a",
+    "photos/originals/IMG_2435.jpg": "04f1464e2fceeec695365b25183dc96505034434565d20713f55c5b13b18fac1"
+  }
+}

@@ -1,6 +1,6 @@
 {
   "date": "2026-10-08",
-  "revision": "v0.9.12",
+  "revision": "v0.9.13",
   "source_front": "photos/front_registered.jpg",
   "source_rear": "photos/back_mirrored_registered.jpg",
   "images_are_original_photographic_mosaics": true,
@@ -2656,9 +2656,10 @@
       "rear_appearance": "REAR_CLEARANCE",
       "front_match": "PROJECTED: inspect original front photo; may be under a component",
       "endpoints": [
-        "U3.5"
+        "U3.5",
+        "VREF.1"
       ],
-      "net": "RX_B_PLUS",
+      "net": "VREF",
       "confidence": "User explicit U3 pin5 association; no new per-site ohms supplied",
       "note": "Visible clearance separates this site from the surrounding rear copper; this alone does not identify an internal net.",
       "id": "V079",
@@ -2672,9 +2673,9 @@
       ],
       "review_status": "ASSIGNED",
       "modeled_nets": [
-        "RX_B_PLUS"
+        "VREF"
       ],
-      "component_crosscheck": "User identifies SGM8542 pin5 for both vias. Existing original C18.1 local fragment retained on RX_B_PLUS; TP6 lies on the opposite side of C18 and is not merged."
+      "component_crosscheck": "User identifies SGM8542 pin5 for both vias, then measures pin5-VREF 1 ohm. Original C18.1 local fragment retained; TP6 stays separate across C18. See u3_j3_measurements_20261009.json."
     },
     {
       "rear_xy": [
@@ -2688,9 +2689,10 @@
       "rear_appearance": "REAR_CLEARANCE",
       "front_match": "PROJECTED: inspect original front photo; may be under a component",
       "endpoints": [
-        "U3.5"
+        "U3.5",
+        "VREF.1"
       ],
-      "net": "RX_B_PLUS",
+      "net": "VREF",
       "confidence": "User explicit U3 pin5 association; no new per-site ohms supplied",
       "note": "Visible clearance separates this site from the surrounding rear copper; this alone does not identify an internal net.",
       "id": "V080",
@@ -2704,9 +2706,9 @@
       ],
       "review_status": "ASSIGNED",
       "modeled_nets": [
-        "RX_B_PLUS"
+        "VREF"
       ],
-      "component_crosscheck": "User identifies SGM8542 pin5 for both vias. Existing original C18.1 local fragment retained on RX_B_PLUS; TP6 lies on the opposite side of C18 and is not merged."
+      "component_crosscheck": "User identifies SGM8542 pin5 for both vias, then measures pin5-VREF 1 ohm. Original C18.1 local fragment retained; TP6 stays separate across C18. See u3_j3_measurements_20261009.json."
     },
     {
       "rear_xy": [

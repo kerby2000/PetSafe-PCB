@@ -1,5 +1,5 @@
 {
-  "revision": "v0.9.12",
+  "revision": "v0.9.13",
   "instruments": [
     "LCR meter",
     "multimeter"
@@ -12,7 +12,7 @@
   ],
   "fitted_capacitors": 45,
   "fitted_resistors": 38,
-  "unresolved_physical_pins": 23,
+  "unresolved_physical_pins": 25,
   "unknown_ceramic_values": [
     "C1",
     "C2",
@@ -342,8 +342,8 @@
       "footprint": "Resistor_SMD:R_0603_1608Metric",
       "footprint_confidence": "medium - revised family estimate",
       "footprint_basis": "User reports R8 approximately 1.6 x 0.77 mm, consistent with 0603 (1608 metric). Repeated fitted resistor family revised using R8 as a scale reference. This individual body has not been measured; earlier 0805 estimate superseded.",
-      "open_pads": 0,
-      "next_method": "No immediate measurement requested",
+      "open_pads": 1,
+      "next_method": "Targeted continuity for 1 open physical pads",
       "photos": "IMG_2429.jpg;IMG_2434.jpg"
     },
     {
@@ -1673,7 +1673,7 @@
       "observed": "UNKNOWN",
       "displayed": "BC847B?",
       "marking": "1FW / 56",
-      "value_or_identity": "1FW supports BC847B. Candidate B=R, E=L, C=S and PIR interface role remain inferred. J3.1/red supply is user-confirmed; J3.2/.3 functions still require cross-check.",
+      "value_or_identity": "1FW supports BC847B. Candidate B=R, E=L, C=S and PIR interface role remain inferred. J3.1 supply and J3.3 GND are user-confirmed; J3.2 onward route remains unverified.",
       "footprint": "Package_TO_SOT_SMD:SOT-23",
       "footprint_confidence": "datasheet/package candidate",
       "footprint_basis": "Existing assignment; see component identity evidence.",
@@ -1928,12 +1928,12 @@
       "observed": "PIR daughterboard",
       "displayed": "PIR BOARD",
       "marking": "",
-      "value_or_identity": "Rear-photo colour association: 1 red, 2 blue, 3 black. User confirms pin1/red PIR supply. Model assigns pin2=GND and pin3=raw signal provisionally; verify physical order and functions, not by wire colour alone.",
+      "value_or_identity": "v0.9.13 user: pin3 (left / I in IMG_2435)-GND 1 ohm; pin2 (middle / H)-GND 290 kohm. Correct pin3 to GND, withdraw pin2 ground and pin3 raw-signal hypotheses. Pin1 supply remains confirmed. Pin2 destination awaits R38 checks.",
       "footprint": "Connector_PinHeader_2.54mm:PinHeader_1x03_P2.54mm_Vertical",
       "footprint_confidence": "medium",
       "footprint_basis": "Three soldered wire holes; generic 2.54-mm row models the candidate land pattern, not the connector housing.",
-      "open_pads": 0,
-      "next_method": "No immediate measurement requested",
+      "open_pads": 1,
+      "next_method": "Targeted continuity for 1 open physical pads",
       "photos": "IMG_2435.jpg;IMG_2441.jpg"
     },
     {
