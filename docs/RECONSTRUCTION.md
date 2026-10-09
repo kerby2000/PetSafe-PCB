@@ -1,6 +1,6 @@
 # Current circuit interpretation
 
-Schematic v0.9.34, 2026-10-09. This is the current interpretation, not a chronological log. The [previous narrative](history/cleanup_v0928/docs/RECONSTRUCTION.md) is archived; older requests there are superseded. Use [the checklist](FINISHING_CHECKLIST.html) for remaining questions.
+Schematic v0.9.35, 2026-10-09. This is the current interpretation, not a chronological log. The [previous narrative](history/cleanup_v0928/docs/RECONSTRUCTION.md) is archived; older requests there are superseded. Use [the checklist](FINISHING_CHECKLIST.html) for remaining questions.
 
 ## Power and references
 
@@ -15,6 +15,8 @@ U1 uses a datasheet-derived S-1200B45 symbol. U6/C2NM supports S-812C33AMC. U6 p
 All PIC pads have modeled local nets. PIC21/RB0 reaches TP16/Q2.S; the old VREF association was explicitly withdrawn after TP16-VREF measured 0.8 Mohm. PIC2/C25, PIC14/TP11 and PIC18/TP17 still need their onward connections or operating roles assessed. C26 reaches PIC3/RA1 with R28/R29/TP7. C25/C26 have common ground ends; C39/PIC4 belongs to VREF.
 
 R41 is 330 ohm and its model1/right end reaches **J1 VPP**. Its model2 end joins H_BUTTON/R40.2/C35.1. The former isolated H_R41_FREE node is obsolete. R40's other end is ICSP_DAT/PIC28. S1 currently uses stock SW_Push: physical upper row TL/TR maps to native pin1/GND; lower BL/BR to native pin2/H_BUTTON. B38/B39 each measure 1 ohm across the two common pairs; B40 is OL released and B41 is 1 ohm pressed across them. These verify normally-open contact behavior; E05 is closed. Extra A-C OL is preserved in the result ledger. Old four-native-pin connector numbering is superseded.
+
+LED1 colour checks identify **R30 / PIC23 / native anode1 as red** and **R31 / PIC22 / native anode2 as green**. Both modeled cathodes remain GND. Package pad numbering and internal grounded-pad pairing remain qualified; the colour tests do not establish the missing footprint. No net or pin mapping changed.
 
 J1 square/VPP end is pin1, then VDD2, GND3, DAT4 and CLK5. D6 routing and polarity are measured: anode GND, cathode VPP, about 0.7 V forward, OL reverse. Its G3 marking does not establish breakdown or ICSP compatibility. D4/D5 use photo-supported 5U/SD05 TVS candidates.
 
@@ -42,4 +44,4 @@ C23.2 and R25.1 form a series junction still named H_RX_DETECT. It **continues t
 
 The model and native drawing agree on 83 net partitions. Native geometry has zero dangling wire ends or pinless wire fragments. Zero unassigned pads and the retained U6 pin4 NC do not certify all onward routes. Five stock power-source declarations now resolve the undriven-input checks without changing physical partitions. Only the user-retained U6/U6A output conflict remains. No ERC exclusion or new NC was introduced. R33 and its two assumed endpoints have been removed; all retained physical pad memberships and mappings are unchanged.
 
-Topology, device behavior, 44 ceramic values, LED footprint/channel map and remaining geometry are tracked separately. A routed PCB, actual layer stack, firmware and powered validation are separate milestones. [Recorded measurements](MEASUREMENTS.md) are user evidence; [library choices](LIBRARIES_AND_ALTERNATIVES.md) retain candidate qualifications.
+Topology, device behavior, 44 ceramic values, LED footprint/pad geometry and remaining geometry are tracked separately. A routed PCB, actual layer stack, firmware and powered validation are separate milestones. [Recorded measurements](MEASUREMENTS.md) are user evidence; [library choices](LIBRARIES_AND_ALTERNATIVES.md) retain candidate qualifications.

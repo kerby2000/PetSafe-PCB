@@ -28,7 +28,7 @@ assert member['U106.1']==member['U4.8'] and member['U106.2']==member['J3.1'] and
 assert xml.find('./components/comp[@ref="U106"]/libsource').attrib['part']=='MCP1700x-330xxTT'
 components={c['ref']:c for c in m['components']}
 placements=read('evidence/library_placements.json')['components']
-for ref in ['Q3','Q4','Q5','Q6','Q11','D1','R6','R7','TP3','Q8','C6','S1']:
+for ref in ['Q3','Q4','Q5','Q6','Q11','D1','R6','R7','TP3','Q8','C6','S1','LED1']:
  summary=components[ref]['current_summary']
  assert xml.findtext('./components/comp[@ref="'+ref+'"]/fields/field[@name="CurrentEvidence"]')==summary
  assert next(c for c in placements if c['reference']==ref)['properties']['CurrentEvidence']==summary

@@ -1,6 +1,6 @@
 {
   "board": "100-1339 R03 A",
-  "revision": "v0.9.34",
+  "revision": "v0.9.35",
   "status": "PARTIALLY VERIFIED RECONSTRUCTION; USER MEASUREMENTS, PHOTO TRACES AND QUALIFIED HYPOTHESES",
   "components": [
     {
@@ -3293,7 +3293,22 @@
         "source": "User report 2026-10-09; evidence/led1_dimensions_20261009.json"
       },
       "measurement_evidence": "User confirms square 1.5 x 1.5 mm package containing red and green emitters. Four pads and existing board connections retained. Which resistor/PIC channel lights each colour, internal die pairing and exact manufacturer pad numbering remain unconfirmed. No stock land pattern assigned from body size alone.",
-      "current_summary": "User confirms square 1.5 x 1.5 mm package containing red and green emitters. Four pads and existing board connections retained. Which resistor/PIC channel lights each colour, internal die pairing and exact manufacturer pad numbering remain unconfirmed. No stock land pattern assigned from body size alone."
+      "current_summary": "B42/B43 user diode-mode colour report: photo A-K lights GREEN via R31/PIC22 (LED1 native pin2); B-K lights RED via R30/PIC23 (native pin1). Black probe at grounded K. Both native cathodes 3/4 remain on GND; internal die-to-cathode pairing and manufacturer pad numbers are not established by this in-circuit test. Body 1.5 x 1.5 mm; footprint remains unassigned.",
+      "colour_mapping": {
+        "red": {
+          "native_anode_pin": 1,
+          "series_resistor": "R30",
+          "pic_pin": 23,
+          "photo_point": "B"
+        },
+        "green": {
+          "native_anode_pin": 2,
+          "series_resistor": "R31",
+          "pic_pin": 22,
+          "photo_point": "A"
+        }
+      },
+      "colour_evidence": "evidence/led1_colour_results_20261009.json"
     },
     {
       "ref": "TP1",

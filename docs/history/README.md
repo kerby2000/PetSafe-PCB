@@ -31,3 +31,7 @@ B37 P-F = 1 ohm supports the existing Q8.T2/native2 to C6.1 supply join. The old
 ## v0.9.34 S1 contact issue E05 closed
 
 [S1 result ledger](../../evidence/s1_contact_results_20261009.json) retains B38-B41, the extra A-C OL report and the closed issue disposition. Same-row pairs read 1 ohm, cross-pair B-D reads OL released and 1 ohm pressed. Existing wiring and native pin mapping are retained. No further electrical contact test is needed; exact footprint fit remains separate under M01.
+
+## v0.9.35 LED colour map
+
+[B42/B43 results](../../evidence/led1_colour_results_20261009.json): R31/PIC22 is green; R30/PIC23 is red. This closes the colour-to-control-branch question without changing electrical nets or native numbering. LED land-pattern compatibility is retained in M01; I02 is now limited to the physical motor-connector map.

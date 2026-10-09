@@ -61,6 +61,18 @@ assert 'RB0/V026 to VREF.' not in via_intro and 'TP104, V026/PIC21' not in via_i
 checklist=(ROOT/'docs/FINISHING_CHECKLIST.html').read_text(encoding='utf-8')
 for i in ids:assert f'id="{i}"' in checklist
 measurements=read('evidence/finishing_measurements.json')
+led=read('evidence/led1_colour_results_20261009.json')
+for test_id,red,colour,pin,resistor in [('B42','A','green','2','R31'),('B43','B','red','1','R30')]:
+    recorded=next(t for t in led['measurements'] if t['id']==test_id)
+    assert (recorded['from'],recorded['to'],recorded['colour'])==(red,'K',colour)
+    assert recorded in measurements['completed_tests']
+    assert not any(t['id']==test_id for t in measurements['tests']), 'Completed LED colour test re-entered queue'
+    assert members['LED1.'+pin]==members[resistor+'.2']
+assert members['R30.1']==members['U4.23']!=members['R31.1']==members['U4.22']
+assert members['LED1.3']==members['LED1.4']==members['U4.8']
+assert xml.findtext('./components/comp[@ref="LED1"]/fields/field[@name="ColourMapping"]')=='Native pin1 / R30 / PIC23 = RED; native pin2 / R31 / PIC22 = GREEN'
+assert next(i for i in work['issues'] if i['id']=='I02')['refs']==['J5']
+for path,digest in led['photos'].items():assert hashlib.sha256((ROOT/path).read_bytes()).hexdigest()==digest
 s1=read('evidence/s1_contact_results_20261009.json')
 expected_s1={'B38':('A','B','Released','1 ohm'),'B39':('C','D','Released','1 ohm'),
              'B40':('B','D','Released','OL'),'B41':('B','D','Held pressed','1 ohm'),

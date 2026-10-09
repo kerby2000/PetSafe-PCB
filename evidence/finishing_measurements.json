@@ -1,9 +1,9 @@
 {
   "date": "2026-10-09",
-  "basis_revision": "v0.9.34",
-  "status": "AWAITING_LED_COLOURS",
-  "scope": "Identify which existing LED resistor branch lights each colour; exact footprint geometry remains separate.",
-  "setup": "Disconnect battery and programmer. Select diode-test mode, not resistance. Leave LED1 fitted. Black probe stays on K, the upper-right LED solder contact in this photo.",
+  "basis_revision": "v0.9.35",
+  "status": "LED_COLOURS_RECORDED_VOLTAGE_CHANNEL_PENDING",
+  "scope": "LED colour-to-branch map established; package pad geometry remains separate.",
+  "setup": "Completed colour checks: A-K green; B-K red. No repeat measurement requested.",
   "photos": [
     {
       "id": "receiver",
@@ -667,29 +667,8 @@
       }
     }
   ],
-  "tests": [
-    {
-      "id": "B42",
-      "group": "led1-colours",
-      "from": "A",
-      "to": "K",
-      "mode": "diode",
-      "unit": "V / OL + colour",
-      "state": "Unpowered",
-      "purpose": "Identify the colour of the R31 / PIC22 branch."
-    },
-    {
-      "id": "B43",
-      "group": "led1-colours",
-      "from": "B",
-      "to": "K",
-      "mode": "diode",
-      "unit": "V / OL + colour",
-      "state": "Unpowered",
-      "purpose": "Identify the colour of the R30 / PIC23 branch."
-    }
-  ],
-  "interpretation": "A visible colour and forward reading identify the resistor/PIC colour channel. OL or no light is inconclusive in circuit and does not alone mean a failed LED. Both right-hand contacts are currently modeled as grounded; this test does not distinguish their internal die pairing or establish a manufacturer footprint.",
+  "tests": [],
+  "interpretation": "B42/B43 user diode-mode colour report: photo A-K lights GREEN via R31/PIC22 (LED1 native pin2); B-K lights RED via R30/PIC23 (native pin1). Black probe at grounded K. Both native cathodes 3/4 remain on GND; internal die-to-cathode pairing and manufacturer pad numbers are not established by this in-circuit test. Body 1.5 x 1.5 mm; footprint remains unassigned.",
   "next_stages": [
     {
       "stage": "Resolve the remaining functional paths",
@@ -735,7 +714,8 @@
     "C5, S1 and LED1 body dimensions; L1/L2 readings already recorded.",
     "TP3/R6/R7/D1 visible local joins resolved by the IMG_2431 photo audit; timing and device behavior remain separate.",
     "B37 Q8 P-F = 1 ohm supports the source-supply join. No repeat requested; electrical operation remains separate.",
-    "B38-B41 S1: common pairs and normally-open action confirmed. Extra A-C OL preserved. No more S1 electrical checks requested."
+    "B38-B41 S1: common pairs and normally-open action confirmed. Extra A-C OL preserved. No more S1 electrical checks requested.",
+    "B42/B43 LED colours: A/R31/PIC22 green; B/R30/PIC23 red. No repeated colour check requested."
   ],
   "deferred": "Other measurements are staged in the current checklist, not requested in this batch.",
   "sources": [
@@ -1145,11 +1125,41 @@
       "purpose": "Extra cross-pair result volunteered by user.",
       "raw_user_statement": "A- C - OL",
       "conditions": "Reported before the explicitly pressed B-D result; no separate button-state label supplied."
+    },
+    {
+      "id": "B42",
+      "group": "led1-colours",
+      "from": "A",
+      "to": "K",
+      "mode": "diode",
+      "unit": "V / OL + colour",
+      "state": "Unpowered",
+      "purpose": "Identify the colour of the R31 / PIC22 branch.",
+      "result": "Green; voltage not yet assigned",
+      "colour": "green",
+      "forward_voltage_v": null,
+      "raw_user_statement": "AK - green",
+      "conditions": "Requested in-circuit diode mode, red A/B and black K, with battery/programmer disconnected. User supplied emitted colours."
+    },
+    {
+      "id": "B43",
+      "group": "led1-colours",
+      "from": "B",
+      "to": "K",
+      "mode": "diode",
+      "unit": "V / OL + colour",
+      "state": "Unpowered",
+      "purpose": "Identify the colour of the R30 / PIC23 branch.",
+      "result": "Red; voltage not yet assigned",
+      "colour": "red",
+      "forward_voltage_v": null,
+      "raw_user_statement": "BK - red",
+      "conditions": "Requested in-circuit diode mode, red A/B and black K, with battery/programmer disconnected. User supplied emitted colours."
     }
   ],
-  "batch_title": "LED1: map the red and green channels",
-  "instructions": "Touch the red probe to A, then B. For each position report the displayed voltage (or OL) and the emitted colour: red, green or no light. Probe the exposed solder, not the yellow/clear LED body. A follows the visible trace to R31; B follows the visible trace to R30.",
-  "result_summary": "S1 electrical contact issue E05 is closed from B38-B41. Both common pairs read 1 ohm, B-D is OL released and 1 ohm pressed; extra A-C OL retained. No net or pin-map change required.",
+  "batch_title": "LED1 colour results recorded",
+  "instructions": "The additional 0.96 V report is preserved without assigning it to either channel until clarified.",
+  "result_summary": "B42/B43 user diode-mode colour report: photo A-K lights GREEN via R31/PIC22 (LED1 native pin2); B-K lights RED via R30/PIC23 (native pin1). Black probe at grounded K. Both native cathodes 3/4 remain on GND; internal die-to-cathode pairing and manufacturer pad numbers are not established by this in-circuit test. Body 1.5 x 1.5 mm; footprint remains unassigned.",
   "cancelled_tests": [
     {
       "id": "B20",
@@ -1161,7 +1171,7 @@
       "reason": "User identifies PIC21/RB0 destination; reconcile the older VREF assignment instead."
     }
   ],
-  "revision": "v0.9.34",
+  "revision": "v0.9.35",
   "photo_updates": [
     {
       "evidence": "evidence/c25_c26_mapping_20261009.json",
@@ -1236,16 +1246,13 @@
     "pending_check": null,
     "model_status": "Applied v0.9.20: pin5-VIN measured 1 ohm; R37 and U6A single-pad local joins from the annotation; pin4 explicitly unused."
   },
-  "next_prompt": "Diode mode, black K: report red A -> K and red B -> K, each voltage or OL plus colour/no light.",
-  "review_revision": "v0.9.34",
+  "next_prompt": "Clarify whether the already supplied 0.96 V applies to A-K (green), B-K (red), or both; no remeasurement requested.",
+  "review_revision": "v0.9.35",
   "request_probe_baseline": false,
   "q3_decision": "Defer isolated Q3 identification; retain candidate qualification and existing copper. No desoldering or repeat Q3 batch requested.",
   "last_completed_test_ids": [
-    "B38",
-    "B39",
-    "B40",
-    "B41",
-    "X02"
+    "B42",
+    "B43"
   ],
-  "last_result_evidence": "evidence/s1_contact_results_20261009.json"
+  "last_result_evidence": "evidence/led1_colour_results_20261009.json"
 }

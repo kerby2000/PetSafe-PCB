@@ -1,6 +1,6 @@
 # Recorded measurements and observations
 
-Recorded evidence, retained through v0.9.34, 2026-10-09. These are user reports, not measurements made by software. The only active bench request is the [LED1 colour batch](FINISHING_MEASUREMENTS.html). Dated raw JSON events and completed photo-guide contacts are preserved here as reference, not new requests. Earlier requests are archived in [the previous narrative](history/cleanup_v0928/docs/MEASUREMENTS.md); do not repeat a reading just because it occurs there.
+Recorded evidence, retained through v0.9.35, 2026-10-09. These are user reports, not measurements made by software. The [LED1 colour batch](FINISHING_MEASUREMENTS.html) is completed; only the channel associated with the separately supplied 0.96 V needs clarification, not a repeat measurement. Dated raw JSON events and completed photo-guide contacts are preserved here as reference, not new requests. Earlier requests are archived in [the previous narrative](history/cleanup_v0928/docs/MEASUREMENTS.md); do not repeat a reading just because it occurs there.
 
 Available instruments reported by the user: LCR meter, Fluke 179 and Fluke 87 III. The earlier Fluke 114 inference is superseded. No actual rail voltages or powered functional results have been supplied. The 44 fitted ceramic values remain unmeasured; L1/L2 readings are recorded below.
 
@@ -105,7 +105,7 @@ U6=C2NM; Q8=3724A; D2=4P; D3=A7; D4/D5=5U; D6=G3; R41=331 (330 ohm). R29/R44=18C
 | R8 | 1.6 x 0.77 mm including end caps | 0603 body supported; ratings/other resistors remain qualified |
 | C11 | About 3.2 x 1.5 mm | 1206 supported; capacitance unknown |
 | S1 | 6 x 6 x 4 mm body, plus 2 mm actuator | Contacts verified in B38-B41; exact pad fit remains; stock 4.3 mm model differs from actual about 6 mm height |
-| LED1 | Red and green emitters, square 1.5 x 1.5 mm | Pad geometry/numbering, channel mapping and matching footprint |
+| LED1 | Red and green emitters, square 1.5 x 1.5 mm | Pad geometry/numbering and matching footprint; colour branches established by B42/B43 |
 
 Reported connections without numerical resistance remain **user continuity reports**, never fabricated 0.0-ohm readings. V053-V071/VREF and Q1.L-R43.2 are withdrawn/rejected. V114 is U2.T2 ground, not Q8; V072 is TP6, not R22.2. Raw BATTERY+ and post-Q1 VSYS remain separate. See [current via findings](VIA_REVIEW_RESULTS.md) and the [question register](../evidence/remaining_work.json).
 
@@ -116,3 +116,7 @@ Q3 red QL / black QR: 2.3 V; reverse: OL. Red QL / black QS: latest 0.48 V, prev
 ## S1 contacts, v0.9.34
 
 A-B and C-D: 1 ohm each. B-D: OL released, 1 ohm held pressed. Additional A-C: OL, without a separate button-state label. Confirms the drawn common pairs and normally-open action; E05 closed. Exact footprint/housing remains qualified. Raw evidence: [S1 results](../evidence/s1_contact_results_20261009.json).
+
+## LED1 colour results, v0.9.35
+
+With black on K, A lights green and B lights red. Photo A reaches R31/PIC22/native LED1 pin2; B reaches R30/PIC23/native pin1. The user also reported 0.96 V without a channel; it is preserved unassigned pending clarification. No isolated LED forward-voltage specification or manufacturer pad numbering is inferred. [Raw results](../evidence/led1_colour_results_20261009.json).

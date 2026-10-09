@@ -3823,7 +3823,9 @@
           "Colour": "Red / Green",
           "BodySize": "1.5 x 1.5 mm (user measurement)",
           "MeasurementEvidence": "User confirms square 1.5 x 1.5 mm package containing red and green emitters. Four pads and existing board connections retained. Which resistor/PIC channel lights each colour, internal die pairing and exact manufacturer pad numbering remain unconfirmed. No stock land pattern assigned from body size alone.",
-          "CurrentEvidence": "User confirms square 1.5 x 1.5 mm package containing red and green emitters. Four pads and existing board connections retained. Which resistor/PIC channel lights each colour, internal die pairing and exact manufacturer pad numbering remain unconfirmed. No stock land pattern assigned from body size alone."
+          "CurrentEvidence": "B42/B43 user diode-mode colour report: photo A-K lights GREEN via R31/PIC22 (LED1 native pin2); B-K lights RED via R30/PIC23 (native pin1). Black probe at grounded K. Both native cathodes 3/4 remain on GND; internal die-to-cathode pairing and manufacturer pad numbers are not established by this in-circuit test. Body 1.5 x 1.5 mm; footprint remains unassigned.",
+          "ColourMapping": "Native pin1 / R30 / PIC23 = RED; native pin2 / R31 / PIC22 = GREEN",
+          "ColourEvidence": "User B42/B43 colour observations, 2026-10-09; evidence/led1_colour_results_20261009.json"
         }
       }
     },

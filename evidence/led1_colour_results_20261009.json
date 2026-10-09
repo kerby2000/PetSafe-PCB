@@ -1,0 +1,59 @@
+{
+  "date": "2026-10-09",
+  "revision": "v0.9.35",
+  "baseline_commit": "e8eebe0",
+  "raw_user_statement": "AK - green\nBK - red",
+  "measurements": [
+    {
+      "id": "B42",
+      "group": "led1-colours",
+      "from": "A",
+      "to": "K",
+      "mode": "diode",
+      "unit": "V / OL + colour",
+      "state": "Unpowered",
+      "purpose": "Identify the colour of the R31 / PIC22 branch.",
+      "result": "Green; voltage not yet assigned",
+      "colour": "green",
+      "forward_voltage_v": null,
+      "raw_user_statement": "AK - green",
+      "conditions": "Requested in-circuit diode mode, red A/B and black K, with battery/programmer disconnected. User supplied emitted colours."
+    },
+    {
+      "id": "B43",
+      "group": "led1-colours",
+      "from": "B",
+      "to": "K",
+      "mode": "diode",
+      "unit": "V / OL + colour",
+      "state": "Unpowered",
+      "purpose": "Identify the colour of the R30 / PIC23 branch.",
+      "result": "Red; voltage not yet assigned",
+      "colour": "red",
+      "forward_voltage_v": null,
+      "raw_user_statement": "BK - red",
+      "conditions": "Requested in-circuit diode mode, red A/B and black K, with battery/programmer disconnected. User supplied emitted colours."
+    }
+  ],
+  "unassigned_voltage_report": {
+    "raw_user_statement": "0.96V",
+    "reading_v": 0.96,
+    "channel": null,
+    "status": "Awaiting A-K / B-K / both clarification; no intrinsic LED forward voltage inferred."
+  },
+  "assessment": "B42/B43 user diode-mode colour report: photo A-K lights GREEN via R31/PIC22 (LED1 native pin2); B-K lights RED via R30/PIC23 (native pin1). Black probe at grounded K. Both native cathodes 3/4 remain on GND; internal die-to-cathode pairing and manufacturer pad numbers are not established by this in-circuit test. Body 1.5 x 1.5 mm; footprint remains unassigned.",
+  "electrical_change": false,
+  "photo_pad_mapping": {
+    "A": "R31 / PIC22 / LED1 native2 / green",
+    "B": "R30 / PIC23 / LED1 native1 / red",
+    "K": "Photo upper-right ground contact; both modeled cathodes 3/4 share GND externally"
+  },
+  "closed_subquestion": "Which resistor/PIC branch lights each colour. Removed from active I02; footprint/internal grounded-pad pairing remains under M01.",
+  "limits": [
+    "Manufacturer pad numbering and internal pairing of the externally grounded contacts are not determined.",
+    "An in-circuit meter reading is not an isolated LED forward-voltage specification."
+  ],
+  "photos": {
+    "photos/originals/IMG_2432.jpg": "c982b50e7bd480e779464d26d9436c84c693d81f365ff8ac86c4aabc56e9761d"
+  }
+}

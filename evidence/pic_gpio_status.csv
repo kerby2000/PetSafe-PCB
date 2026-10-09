@@ -20,8 +20,8 @@ pin,gpio,net,open_pad,evidence
 19,VSS,GND,False,GND / C32 / V045 photo anchor
 20,VDD,VDD,False,V042 to board VDD TP user-confirmed; C32.1 local photo route
 21,RB0,H_PIR_SIG,False,TP16/Q2.S; user correction. Old VREF join rejected; TP16-VREF 800 kohm
-22,RB1,H_LED_CTL_B,False,TP2 / R31; user meter / visible trace
-23,RB2,H_LED_CTL_A,False,TP1 / R30; user meter / visible trace
+22,RB1,H_LED_CTL_B,False,"TP2 / R31 / green LED branch; user meter, visible trace and B42 colour"
+23,RB2,H_LED_CTL_A,False,"TP1 / R30 / red LED branch; user meter, visible trace and B43 colour"
 24,RB3,PIC_RB3_RETURN,False,R4; photo-derived; sensing role remains inferred
 25,RB4,PIC_TP4_C41,False,TP4 / V017 / R42.1 / R44.1; user continuity; C41 photo-derived
 26,RB5,RB5_OPT,False,TP10 / R35; user meter / visible trace

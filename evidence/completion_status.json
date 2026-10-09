@@ -1,7 +1,7 @@
 {
   "date": "2026-10-09",
-  "revision": "v0.9.34",
-  "review_revision": "v0.9.34",
+  "revision": "v0.9.35",
+  "review_revision": "v0.9.35",
   "interpretation": "Every catalog entry is drawn. Hardware connectivity, values and identities are only partially verified. No routed PCB exists.",
   "catalog_entries": 148,
   "physical_pins": 349,
@@ -70,7 +70,7 @@
     "pin_to_pin": 1
   },
   "modeled_nets": 83,
-  "schematic_sha256": "1e99a7ccf23f0a31a94d8ddcc3fbb915cf70e946ff1da575cf56bfb42ae7cb4f",
+  "schematic_sha256": "977c95b545874e369b7a336957978d7f883cb44ff38b8643ab81776f08b46c71",
   "known_identified_ICs_needing_new_symbols": [],
   "complete_symbols_for_selected_candidates": true,
   "available_instruments": [
@@ -155,9 +155,9 @@
     },
     {
       "id": "I02",
-      "area": "LED channel map and motor lead orientation",
-      "gap": "Which resistor branch lights red/green and exact LED pad numbering remain unknown. Physical motor lead A/B correspondence is provisional.",
-      "method": "B42/B43: unpowered diode mode, black K and red A then B on the LED screen. Report colour and voltage/OL. A reaches R31/PIC22; B reaches R30/PIC23 by visible traces. Internal grounded-pad pairing and manufacturer numbering remain separate; motor lead order is reviewed from photos first."
+      "area": "Motor connector physical lead order",
+      "gap": "Physical motor lead A/B correspondence to the existing native J5 pin1/pin2 map remains provisional.",
+      "method": "Review front/rear photos and connector orientation first. If the hidden route cannot establish the physical map, prepare a labelled continuity check to the H-bridge outputs. Motor operating direction is a separate behavior question."
     },
     {
       "id": "V01",
@@ -168,7 +168,7 @@
     {
       "id": "M01",
       "area": "LED footprint and mechanical qualification",
-      "gap": "LED1 land pattern/numbering is the only blank footprint. C5 pitch and S1 pad fit/3D heights are reproduction qualifications, not unknown schematic wires.",
+      "gap": "LED1 land pattern/manufacturer numbering and internal pairing of its externally grounded cathode pads remain unverified. C5 pitch and S1 pad fit/3D heights are reproduction qualifications, not unknown schematic wires.",
       "method": "Obtain LED underside/pad geometry or a matching vendor drawing before selecting a footprint. For later PCB reproduction check C5 lead pitch and S1 pad fit; use actual 16mm capacitor and 6mm switch heights. Do not repeat body dimensions."
     }
   ],
@@ -481,21 +481,21 @@
     },
     {
       "id": "I02",
-      "area": "LED channel map and motor lead orientation",
+      "area": "Motor connector physical lead order",
       "refs": [
-        "LED1",
         "J5"
       ],
       "priority": 2,
       "state": "open",
-      "known": "LED1 is red/green in a 1.5 mm square body; two control branches and common ground are mapped. U5 motor outputs are modeled.",
-      "unknown": "Which resistor branch lights red/green and exact LED pad numbering remain unknown. Physical motor lead A/B correspondence is provisional.",
-      "next_action": "B42/B43: unpowered diode mode, black K and red A then B on the LED screen. Report colour and voltage/OL. A reaches R31/PIC22; B reaches R30/PIC23 by visible traces. Internal grounded-pad pairing and manufacturer numbering remain separate; motor lead order is reviewed from photos first.",
-      "closed_when": "LED internal channels/polarity and motor connector physical ordering are supported.",
+      "known": "U5 motor outputs are modeled to the two J5 contacts. LED colour mapping is recorded separately in the completed B42/B43 ledger.",
+      "unknown": "Physical motor lead A/B correspondence to the existing native J5 pin1/pin2 map remains provisional.",
+      "next_action": "Review front/rear photos and connector orientation first. If the hidden route cannot establish the physical map, prepare a labelled continuity check to the H-bridge outputs. Motor operating direction is a separate behavior question.",
+      "closed_when": "Physical J5 contacts and motor leads are tied to the modeled U5 outputs by photo or continuity evidence.",
       "open_pads": [],
       "nets": [],
       "supporting_evidence": [
-        "docs/history/v0.9.30-before-finalization/evidence/remaining_work.json"
+        "docs/history/v0.9.30-before-finalization/evidence/remaining_work.json",
+        "evidence/led1_colour_results_20261009.json"
       ],
       "owner": "Agent evidence review; targeted owner test only as listed",
       "category": "connectivity/behavior"
@@ -536,14 +536,15 @@
       ],
       "priority": 2,
       "state": "open",
-      "known": "LED1 is the only unassigned footprint. C5 diameter/height, S1 body/actuator size, R8 and C11 sizes are already measured.",
-      "unknown": "LED1 land pattern/numbering is the only blank footprint. C5 pitch and S1 pad fit/3D heights are reproduction qualifications, not unknown schematic wires.",
+      "known": "LED1 is the only unassigned footprint; R30/PIC23 lights red and R31/PIC22 lights green. C5 diameter/height, S1 body/actuator size, R8 and C11 sizes are already measured.",
+      "unknown": "LED1 land pattern/manufacturer numbering and internal pairing of its externally grounded cathode pads remain unverified. C5 pitch and S1 pad fit/3D heights are reproduction qualifications, not unknown schematic wires.",
       "next_action": "Obtain LED underside/pad geometry or a matching vendor drawing before selecting a footprint. For later PCB reproduction check C5 lead pitch and S1 pad fit; use actual 16mm capacitor and 6mm switch heights. Do not repeat body dimensions.",
       "closed_when": "LED footprint has a supported pad map; remaining package-fit assumptions are documented separately from schematic connectivity.",
       "open_pads": [],
       "nets": [],
       "supporting_evidence": [
-        "docs/history/v0.9.30-before-finalization/evidence/remaining_work.json"
+        "docs/history/v0.9.30-before-finalization/evidence/remaining_work.json",
+        "evidence/led1_colour_results_20261009.json"
       ],
       "owner": "Agent evidence review; targeted owner test only as listed",
       "category": "package"
@@ -565,7 +566,7 @@
         "I01"
       ],
       "summary": "S1 contacts are verified and removed from active work. Q3 stays fitted with identification deferred. Three local-only PIC branches, antenna continuations and powered behavior remain.",
-      "next_action": "Agent reviews hidden-path candidates from photos; remaining powered checks are staged. The current bench task is LED1 under interfaces below."
+      "next_action": "Agent reviews hidden-path candidates from photos; remaining powered checks are staged. No repeat LED or S1 tests."
     },
     {
       "id": "F2",
@@ -585,8 +586,8 @@
         "I02",
         "M01"
       ],
-      "summary": "Next: two LED1 diode tests to identify the red/green resistor branches. LED footprint/internal pad pairing and motor lead order remain; exact physical fit is later PCB qualification.",
-      "next_action": "Use B42/B43 on the labelled LED screen; record colour and voltage or OL. Keep the established body dimensions."
+      "summary": "LED colour branches are established. Remaining: LED footprint/internal grounded-pad pairing and motor lead order; exact physical fit is later PCB qualification.",
+      "next_action": "Review motor connector orientation from photos before a bench request. Obtain a matching LED vendor drawing or pad geometry for footprint selection."
     }
   ],
   "settled_summary": [],
