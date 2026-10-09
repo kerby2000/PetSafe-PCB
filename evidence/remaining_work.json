@@ -1,8 +1,8 @@
 {
   "date": "2026-10-09",
-  "review_revision": "2026-10-09 J6/Q9 option mapped; button pad mapping corrected; R41-VPP confirmed",
-  "basis_revision": "v0.9.21",
-  "scope": "Current main-board uncertainties after the 522d235 architect review and user D3 follow-up. J1 numbering corrected from photos, R41 named neutrally; D3 rail assignment resolved by user measurement with closure history retained. D2 local destinations now have user evidence: R to C20 lower end, L to ANT2/R46 upper, S to R46 lower; R46 is DNP. Exact part identity remains open. U3.5 VREF and J3.3 ground now measured; disproven R23 and J3 role guesses withdrawn in v0.9.13. Batch2 confirms J3.2-R38 K, U3.6-R23 B and R22 E-GND; R23 C remains unresolved. Batch3 rejects direct R23 C joins to C18 M/N and TP6: 300/400/600 kohm respectively; no topology change. Batch4 resolves R23 C-C40 lower-R42 upper. C40 leaves the unsupported detector-output grouping. Clear surface traces are agent photo work, not routine bench requests. Batch5 rejects TP16-to-TP11/TP17 direct joins (400 kohm each). User maps all three U7 pads to J3; U7 pin1 is GND, pin2 signal, pin3 PIR supply. User measured TP16-VREF 0.8 Mohm and explicitly withdrew PIC21-VREF. PIC21/RB0 now joins TP16/Q2.S; the PIR-to-controller route is resolved. C26.1 now joins PIC3/RA1 from user annotation; C25 remains PIC2/RA0, with common GND. Values still unknown. C6 is now reconstructed in parallel with C5 from the user proposal and copper photos; no new meter reading or capacitance supplied. v0.9.21 annotated photo: J6 left/model1 joins Q9 single/native3 and R36 right/model2. J6 right/model2 joins R36 left/model1. PIC26/RB5-TP10-R35 upper; R35 lower-Q9 paired-left; paired-right via V021 is GND. All J6/Q9/R35/R36 options remain DNP. R36 left/J6 right onward rail is not established by this annotation. v0.9.21 user annotated S1 upper-right to C35 upper/model2 (GND via prior V018); lower-right to C35 lower/model1, R40 lower/model2 and R41 left/model2. User explicitly confirms R41 right/model1 reaches J1 VPP/MCLR. Correct physical-to-native switch mapping TL=1, TR=3, BL=2, BR=4. Top-row/bottom-row common pairs remain a tactile-switch hypothesis; released/pressed behavior has not been measured.",
+  "review_revision": "2026-10-09 U6A lower-right ground confirmed; all three option pads mapped",
+  "basis_revision": "v0.9.22",
+  "scope": "Current main-board uncertainties after the 522d235 architect review and user D3 follow-up. J1 numbering corrected from photos, R41 named neutrally; D3 rail assignment resolved by user measurement with closure history retained. D2 local destinations now have user evidence: R to C20 lower end, L to ANT2/R46 upper, S to R46 lower; R46 is DNP. Exact part identity remains open. U3.5 VREF and J3.3 ground now measured; disproven R23 and J3 role guesses withdrawn in v0.9.13. Batch2 confirms J3.2-R38 K, U3.6-R23 B and R22 E-GND; R23 C remains unresolved. Batch3 rejects direct R23 C joins to C18 M/N and TP6: 300/400/600 kohm respectively; no topology change. Batch4 resolves R23 C-C40 lower-R42 upper. C40 leaves the unsupported detector-output grouping. Clear surface traces are agent photo work, not routine bench requests. Batch5 rejects TP16-to-TP11/TP17 direct joins (400 kohm each). User maps all three U7 pads to J3; U7 pin1 is GND, pin2 signal, pin3 PIR supply. User measured TP16-VREF 0.8 Mohm and explicitly withdrew PIC21-VREF. PIC21/RB0 now joins TP16/Q2.S; the PIR-to-controller route is resolved. C26.1 now joins PIC3/RA1 from user annotation; C25 remains PIC2/RA0, with common GND. Values still unknown. C6 is now reconstructed in parallel with C5 from the user proposal and copper photos; no new meter reading or capacitance supplied. v0.9.21 annotated photo: J6 left/model1 joins Q9 single/native3 and R36 right/model2. J6 right/model2 joins R36 left/model1. PIC26/RB5-TP10-R35 upper; R35 lower-Q9 paired-left; paired-right via V021 is GND. All J6/Q9/R35/R36 options remain DNP. R36 left/J6 right onward rail is not established by this annotation. v0.9.21 user annotated S1 upper-right to C35 upper/model2 (GND via prior V018); lower-right to C35 lower/model1, R40 lower/model2 and R41 left/model2. User explicitly confirms R41 right/model1 reaches J1 VPP/MCLR. Correct physical-to-native switch mapping TL=1, TR=3, BL=2, BR=4. Top-row/bottom-row common pairs remain a tactile-switch hypothesis; released/pressed behavior has not been measured. v0.9.22 user annotated U6A option: single left pad/model L/native U106.1 joins U6 pin5 and the existing input node after R37; upper-right/model R1/native2 joins J3.1 (red PIR wire); lower-right/model R2/native3 joins GND. All three external pads mapped, option remains DNP. User called the input VDD; retain VDD -> R37 (22 ohm) -> H_AUX_IN because the annotation ends at U6 pin5 and prior B28 confirms pin5-pin2, not a bypass across R37. No fitted IC identity or voltage measurement implied.",
   "rails": [
     {
       "name": "BATTERY+",
@@ -47,7 +47,8 @@
     "U7 empty option mapped to J3: U7.1-J3.3 GND, U7.2-J3.2 signal, U7.3-J3.1 PIR supply. TP16-to-TP11/TP17 each 400 kohm; direct joins excluded.",
     "PIC21/RB0 -> TP16 -> Q2.S confirmed; old PIC21-VREF removed. TP16-VREF 0.8 Mohm, not a wire. RA2/V035 and receiver bias retain VREF.",
     "v0.9.17 user-annotated photo: C25 right pad/model1 -> PIC2/RA0; C26 right pad/model1 -> PIC3/RA1. Left pads/model2 are common, retaining earlier V029-GND evidence. No new numeric resistance or capacitance supplied. C26 joins the existing RA1/R28/R29/TP7 net, separate from RA0 and VREF.",
-    "User confirms R41 right end reaches J1 VPP; annotated J6/Q9/R35/R36 option copper mapped."
+    "User confirms R41 right end reaches J1 VPP; annotated J6/Q9/R35/R36 option copper mapped.",
+    "U6A lower-right pad is GND; all three empty option pads now mapped."
   ],
   "issues": [
     {
@@ -296,6 +297,11 @@
           "result": "v0.9.20: U6.5-U6.2 measured 1 ohm (B28). User annotation also joins physical L2/native5 to R37 upper/model2 and empty U6A single/native1. U6.4/L1 marked NC by user and appears as an isolated surface stub in original photos. Candidate pin5 is internally NC but externally tied to VIN; pin4 remains unused.",
           "evidence": "evidence/d6_u6_open_pad_results_20261009.json",
           "date": "2026-10-09"
+        },
+        {
+          "result": "v0.9.22 user annotated U6A option: single left pad/model L/native U106.1 joins U6 pin5 and the existing input node after R37; upper-right/model R1/native2 joins J3.1 (red PIR wire); lower-right/model R2/native3 joins GND. All three external pads mapped, option remains DNP. User called the input VDD; retain VDD -> R37 (22 ohm) -> H_AUX_IN because the annotation ends at U6 pin5 and prior B28 confirms pin5-pin2, not a bypass across R37. No fitted IC identity or voltage measurement implied.",
+          "evidence": "evidence/u6a_three_pad_routing_20261009.json",
+          "date": "2026-10-09"
         }
       ]
     },
@@ -540,8 +546,8 @@
       ],
       "priority": 2,
       "state": "open",
-      "known": "Three open DNP pads remain: C49.1, C49.2 and U6A.R2. R46, U7, R47/C42 and all J6/Q9/R35/R36 pads now have local routes. v0.9.21 annotated photo: J6 left/model1 joins Q9 single/native3 and R36 right/model2. J6 right/model2 joins R36 left/model1. PIC26/RB5-TP10-R35 upper; R35 lower-Q9 paired-left; paired-right via V021 is GND. All J6/Q9/R35/R36 options remain DNP. R36 left/J6 right onward rail is not established by this annotation.",
-      "unknown": "C49 and one U6A pad remain unmapped. J6 right/R36 left onward identity is not established; empty Q9 functions and intended option values remain unknown.",
+      "known": "Two open DNP pads remain: C49.1 and C49.2. R46, U7, R47/C42 and all J6/Q9/R35/R36 pads now have local routes. v0.9.21 annotated photo: J6 left/model1 joins Q9 single/native3 and R36 right/model2. J6 right/model2 joins R36 left/model1. PIC26/RB5-TP10-R35 upper; R35 lower-Q9 paired-left; paired-right via V021 is GND. All J6/Q9/R35/R36 options remain DNP. R36 left/J6 right onward rail is not established by this annotation. U6A is fully mapped: single pad after R37, upper-right J3.1/PIR supply, lower-right GND; DNP retained.",
+      "unknown": "C49 remains unmapped. J6 right/R36 left onward identity is not established; empty Q9 functions and intended option values remain unknown.",
       "next_action": "Record option copper where visible; defer measurement unless it affects a populated net.",
       "closed_when": "Optional routes are documented to the desired reproduction scope; do not invent fitted values or no-connect flags.",
       "open_pads": [],
@@ -555,6 +561,11 @@
         {
           "result": "v0.9.21 annotated photo: J6 left/model1 joins Q9 single/native3 and R36 right/model2. J6 right/model2 joins R36 left/model1. PIC26/RB5-TP10-R35 upper; R35 lower-Q9 paired-left; paired-right via V021 is GND. All J6/Q9/R35/R36 options remain DNP. R36 left/J6 right onward rail is not established by this annotation.",
           "evidence": "evidence/j6_q9_button_routing_20261009.json",
+          "date": "2026-10-09"
+        },
+        {
+          "result": "v0.9.22 user annotated U6A option: single left pad/model L/native U106.1 joins U6 pin5 and the existing input node after R37; upper-right/model R1/native2 joins J3.1 (red PIR wire); lower-right/model R2/native3 joins GND. All three external pads mapped, option remains DNP. User called the input VDD; retain VDD -> R37 (22 ohm) -> H_AUX_IN because the annotation ends at U6 pin5 and prior B28 confirms pin5-pin2, not a bypass across R37. No fitted IC identity or voltage measurement implied.",
+          "evidence": "evidence/u6a_three_pad_routing_20261009.json",
           "date": "2026-10-09"
         }
       ]
@@ -591,6 +602,7 @@
     "v0.9.18: C6 is reconstructed in parallel with C5 from the user proposal and photos IMG_2431/IMG_2432. C6 upper pad/model1 joins the C5-positive supply copper (H_RF_VDD, after L1); lower pad/model2 joins GND. Photo-supported, not a new meter-confirmed connection. C6 capacitance remains unknown. Earlier 400 kohm output exclusion and 10 ohm Q8-supply-path reading are retained; the latter does not independently prove Q8 source wiring.",
     "v0.9.19 user annotated local copper: R47 left -> U3.1/R27 right; R47 right + C42 lower + R25 lower + R48 right share RX_STAGE_LINK. C42 upper -> GND inferred from continuous copper beside U3.4 in IMG_2429/2434. R25-GND and R48-VREF old assumptions withdrawn. R47/C42 remain DNP. No meter reading supplied.",
     "v0.9.21 annotated photo: J6 left/model1 joins Q9 single/native3 and R36 right/model2. J6 right/model2 joins R36 left/model1. PIC26/RB5-TP10-R35 upper; R35 lower-Q9 paired-left; paired-right via V021 is GND. All J6/Q9/R35/R36 options remain DNP. R36 left/J6 right onward rail is not established by this annotation.",
-    "v0.9.21 user annotated S1 upper-right to C35 upper/model2 (GND via prior V018); lower-right to C35 lower/model1, R40 lower/model2 and R41 left/model2. User explicitly confirms R41 right/model1 reaches J1 VPP/MCLR. Correct physical-to-native switch mapping TL=1, TR=3, BL=2, BR=4. Top-row/bottom-row common pairs remain a tactile-switch hypothesis; released/pressed behavior has not been measured."
+    "v0.9.21 user annotated S1 upper-right to C35 upper/model2 (GND via prior V018); lower-right to C35 lower/model1, R40 lower/model2 and R41 left/model2. User explicitly confirms R41 right/model1 reaches J1 VPP/MCLR. Correct physical-to-native switch mapping TL=1, TR=3, BL=2, BR=4. Top-row/bottom-row common pairs remain a tactile-switch hypothesis; released/pressed behavior has not been measured.",
+    "v0.9.22 user annotated U6A option: single left pad/model L/native U106.1 joins U6 pin5 and the existing input node after R37; upper-right/model R1/native2 joins J3.1 (red PIR wire); lower-right/model R2/native3 joins GND. All three external pads mapped, option remains DNP. User called the input VDD; retain VDD -> R37 (22 ohm) -> H_AUX_IN because the annotation ends at U6 pin5 and prior B28 confirms pin5-pin2, not a bypass across R37. No fitted IC identity or voltage measurement implied."
   ]
 }

@@ -83,3 +83,9 @@ v0.9.21 annotated photo: J6 left/model1 joins Q9 single/native3 and R36 right/mo
 v0.9.21 user annotated S1 upper-right to C35 upper/model2 (GND via prior V018); lower-right to C35 lower/model1, R40 lower/model2 and R41 left/model2. User explicitly confirms R41 right/model1 reaches J1 VPP/MCLR. Correct physical-to-native switch mapping TL=1, TR=3, BL=2, BR=4. Top-row/bottom-row common pairs remain a tactile-switch hypothesis; released/pressed behavior has not been measured.
 
 See [annotated routing record](../evidence/j6_q9_button_routing_20261009.json). J6 numbering is a documented local convention: left hole 1, right hole 2; no fitted connector pinout is claimed.
+
+## v0.9.22 - U6A option fully mapped
+
+v0.9.22 user annotated U6A option: single left pad/model L/native U106.1 joins U6 pin5 and the existing input node after R37; upper-right/model R1/native2 joins J3.1 (red PIR wire); lower-right/model R2/native3 joins GND. All three external pads mapped, option remains DNP. User called the input VDD; retain VDD -> R37 (22 ohm) -> H_AUX_IN because the annotation ends at U6 pin5 and prior B28 confirms pin5-pin2, not a bypass across R37. No fitted IC identity or voltage measurement implied.
+
+See [three-pad routing evidence](../evidence/u6a_three_pad_routing_20261009.json). U106 is the KiCad reference for PCB marking U6A.

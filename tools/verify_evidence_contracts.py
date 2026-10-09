@@ -218,6 +218,16 @@ assert net('VREF.1')!=net('VDD.1')
 assert sites['V071']['net']=='VREF'
 assert net('R42.1')==net('R44.1')==net('TP4.1')==net('U4.25')
 assert net('U6A.R1')==net('J3.1')=='H_PIR_VDD'
+u6a_record=read('evidence/u6a_three_pad_routing_20261009.json')
+for x,y in u6a_record['supported_pairs']:assert net(x)==net(y),(x,y)
+assert net('U6A.R2')==net('GND.1')
+assert len({net('U6A.L'),net('U6A.R1'),net('U6A.R2'),net('R37.1')})==4, 'Do not bypass R37 or short the empty regulator option pads'
+assert net('U6A.L')==net('R37.2')==net('U6.R2')
+assert not any(e.startswith('U6A.') for e in m['unresolved_pins'])
+assert next(c for c in m['components'] if c['ref']=='U6A')['population']=='DNP'
+assert xml.findtext('./components/comp[@ref="U106"]/fields/field[@name="ConnectionEvidence"]')==u6a_record['interpretation']
+assert next(c for c in placements['components'] if c['reference']=='U106')['properties']['ConnectionEvidence']==u6a_record['interpretation']
+for path,digest in u6a_record['photos'].items():assert sha(path)==digest
 assert net('U4.12')!=net('VREF.1') and net('U4.12')!=net('VDD.1')
 assert sites['V053']['net']==sites['V070']['net']=='H_RX_ENABLE_CTL'
 assert sites['V067']['endpoints']==['U6A.R1','J3.1']

@@ -1,6 +1,6 @@
 {
   "board": "100-1339 R03 A",
-  "revision": "v0.9.21",
+  "revision": "v0.9.22",
   "status": "INFERRED WORKING CIRCUIT / NOT CONTINUITY VERIFIED",
   "components": [
     {
@@ -2608,14 +2608,21 @@
         "R1",
         "R2"
       ],
-      "note": "Alternative three-pad footprint; do not presume electrical equivalence to U6.",
+      "note": "Empty three-pad option, fully mapped externally: input after R37; J3.1/PIR supply; GND. Native alias U106. No fitted IC identity is claimed.",
       "side": "front",
       "traced_pin_count": 0,
       "library_symbol": "Connector_Generic:Conn_01x03",
       "footprint": "Package_TO_SOT_SMD:SOT-23",
       "footprint_confidence": "medium",
       "footprint_basis": "Empty three-pad SMD option beside U6; package-family estimate only.",
-      "via_evidence": "v0.9.8: User confirms V067-J3 pin1 (red wire), on modeled H_PIR_VDD. Prior V067-U6A.R1 local pad association retained. Empty U6A option remains DNP; this does not identify an IC or confirm every other H_PIR_VDD branch."
+      "via_evidence": "v0.9.8: User confirms V067-J3 pin1 (red wire), on modeled H_PIR_VDD. Prior V067-U6A.R1 local pad association retained. Empty U6A option remains DNP; this does not identify an IC or confirm every other H_PIR_VDD branch.",
+      "connection_evidence": "v0.9.22 user annotated U6A option: single left pad/model L/native U106.1 joins U6 pin5 and the existing input node after R37; upper-right/model R1/native2 joins J3.1 (red PIR wire); lower-right/model R2/native3 joins GND. All three external pads mapped, option remains DNP. User called the input VDD; retain VDD -> R37 (22 ohm) -> H_AUX_IN because the annotation ends at U6 pin5 and prior B28 confirms pin5-pin2, not a bypass across R37. No fitted IC identity or voltage measurement implied.",
+      "hypothesis": "v0.9.22 user annotated U6A option: single left pad/model L/native U106.1 joins U6 pin5 and the existing input node after R37; upper-right/model R1/native2 joins J3.1 (red PIR wire); lower-right/model R2/native3 joins GND. All three external pads mapped, option remains DNP. User called the input VDD; retain VDD -> R37 (22 ohm) -> H_AUX_IN because the annotation ends at U6 pin5 and prior B28 confirms pin5-pin2, not a bypass across R37. No fitted IC identity or voltage measurement implied.",
+      "photo_pad_mapping": {
+        "U6A.L": "single left pad / native U106.1",
+        "U6A.R1": "upper-right pad / native U106.2",
+        "U6A.R2": "lower-right pad / native U106.3"
+      }
     },
     {
       "ref": "U7",
@@ -3824,7 +3831,8 @@
         "U7.1",
         "C42.1",
         "D6.2",
-        "S1.TR"
+        "S1.TR",
+        "U6A.R2"
       ],
       "status": "HYPOTHESIS / retains visual fragments where listed",
       "original_fragments": [
@@ -3846,7 +3854,8 @@
       "v0918_evidence": "C6.2/C5.2 common return retained and supported by the supplied photo; other branches keep their own evidence.",
       "v0919_evidence": "C42 upper pad/photo1 joins U3.4 ground copper by photo inference; R25.2 ground assumption withdrawn. Other branches retain their own evidence.",
       "d6_measurement": "v0.9.20 B22-B27: upper photo contact V -> GND, lower W -> VPP, each 1 ohm. B29 red V/black W about 0.7V; B30 reverse OL. Supports A=V/GND (pin2), K=W/VPP (pin1). G3 identity and Zener breakdown remain unverified; no 3.9V measurement.",
-      "v0921_evidence": "C35 upper/model2 retains user V018 ground; new annotation joins S1 upper-right. Upper-left common-row switch connection remains inferred."
+      "v0921_evidence": "C35 upper/model2 retains user V018 ground; new annotation joins S1 upper-right. Upper-left common-row switch connection remains inferred.",
+      "v0922_evidence": "User explicitly identifies the lower-right U6A pad as GND in the annotated photo. Other GND branches keep prior evidence."
     },
     {
       "net": "H_LDO_IN",
@@ -5046,8 +5055,7 @@
   "unresolved_pins": [
     "C49.1",
     "C49.2",
-    "TP9.1",
-    "U6A.R2"
+    "TP9.1"
   ],
   "reference_map": {
     "C1A": "C101",
@@ -6502,17 +6510,6 @@
       "b": [
         461.01,
         219.71
-      ]
-    },
-    {
-      "net": "H_PIR_VDD",
-      "a": [
-        422.91,
-        361.95
-      ],
-      "b": [
-        435.61,
-        361.95
       ]
     },
     {
@@ -10377,17 +10374,6 @@
       ]
     },
     {
-      "net": "H_AUX_IN",
-      "a": [
-        426.72,
-        359.41
-      ],
-      "b": [
-        435.61,
-        359.41
-      ]
-    },
-    {
       "net": "GND",
       "a": [
         408.94,
@@ -10627,6 +10613,39 @@
       "b": [
         508.0,
         356.87
+      ]
+    },
+    {
+      "net": "GND",
+      "a": [
+        445.77,
+        364.49
+      ],
+      "b": [
+        445.77,
+        370.84
+      ]
+    },
+    {
+      "net": "H_AUX_IN",
+      "a": [
+        436.88,
+        359.41
+      ],
+      "b": [
+        445.77,
+        359.41
+      ]
+    },
+    {
+      "net": "H_PIR_VDD",
+      "a": [
+        433.07,
+        361.95
+      ],
+      "b": [
+        445.77,
+        361.95
       ]
     }
   ],
@@ -11984,15 +12003,15 @@
       391.16
     ],
     "U6A.L": [
-      435.61,
+      445.77,
       359.41
     ],
     "U6A.R1": [
-      435.61,
+      445.77,
       361.95
     ],
     "U6A.R2": [
-      435.61,
+      445.77,
       364.49
     ],
     "U7.1": [

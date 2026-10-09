@@ -17961,7 +17961,7 @@
 	)
 	(symbol
 		(lib_id "Connector_Generic:Conn_01x03")
-		(at 440.69 361.95 0)
+		(at 450.85 361.95 0)
 		(unit 1)
 		(body_style 1)
 		(exclude_from_sim no)
@@ -17971,7 +17971,7 @@
 		(dnp no)
 		(uuid "5c16e08e-a8fa-454f-8f0c-7a98f5d24b79")
 		(property "Reference" "U106"
-			(at 440.69 367.03 0)
+			(at 450.85 367.03 0)
 			(show_name no)
 			(do_not_autoplace no)
 			(effects
@@ -17981,7 +17981,7 @@
 			)
 		)
 		(property "Value" "U6A / DNP"
-			(at 440.69 356.87 0)
+			(at 450.85 356.87 0)
 			(show_name no)
 			(do_not_autoplace no)
 			(effects
@@ -17991,7 +17991,7 @@
 			)
 		)
 		(property "Footprint" "Package_TO_SOT_SMD:SOT-23"
-			(at 440.69 361.95 0)
+			(at 450.85 361.95 0)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -18002,7 +18002,7 @@
 			)
 		)
 		(property "Datasheet" ""
-			(at 440.69 361.95 0)
+			(at 450.85 361.95 0)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -18013,7 +18013,7 @@
 			)
 		)
 		(property "Description" "Generic connector, single row, 01x03, script generated (kicad-library-utils/schlib/autogen/connector/)"
-			(at 440.69 361.95 0)
+			(at 450.85 361.95 0)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -18024,7 +18024,16 @@
 			)
 		)
 		(property "ViaEvidence" "v0.9.8: User confirms V067-J3 pin1 (red wire), on modeled H_PIR_VDD. Prior V067-U6A.R1 local pad association retained. Empty U6A option remains DNP; this does not identify an IC or confirm every other H_PIR_VDD branch."
-			(at 440.69 361.95 0)
+			(at 450.85 361.95 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "ConnectionEvidence" "v0.9.22 user annotated U6A option: single left pad/model L/native U106.1 joins U6 pin5 and the existing input node after R37; upper-right/model R1/native2 joins J3.1 (red PIR wire); lower-right/model R2/native3 joins GND. All three external pads mapped, option remains DNP. User called the input VDD; retain VDD -> R37 (22 ohm) -> H_AUX_IN because the annotation ends at U6 pin5 and prior B28 confirms pin5-pin2, not a bypass across R37. No fitted IC identity or voltage measurement implied."
+			(at 450.85 361.95 0)
 			(effects
 				(font
 					(size 1.27 1.27)
