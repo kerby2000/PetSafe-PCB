@@ -21,3 +21,5 @@ The [previous register](v0.9.30-before-finalization/evidence/remaining_work.json
 ## v0.9.32 Q3 result and R33 withdrawal
 
 [Recorded measurements and inventory correction](q3-r33-v0932.md). Q3 latest forward reading is 0.48 V; its identity remains disputed. The unsupported R33 entry and assumed pull-up were removed.
+
+The user subsequently chose to leave Q3 fitted. Isolated identification is deferred; the next active check is B37 at Q8/C6. This changes the review queue only; see `evidence/q3_deferred_q8_followup_20261009.json`.

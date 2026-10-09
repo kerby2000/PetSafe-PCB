@@ -1,7 +1,7 @@
 {
   "date": "2026-10-09",
   "revision": "v0.9.32",
-  "review_revision": "v0.9.32",
+  "review_revision": "v0.9.32-r1",
   "interpretation": "Every catalog entry is drawn. Hardware connectivity, values and identities are only partially verified. No routed PCB exists.",
   "catalog_entries": 148,
   "physical_pins": 349,
@@ -109,13 +109,13 @@
       "id": "E03",
       "area": "RF supply and Q8 drive",
       "gap": "The Q8 source supply path has a 10-ohm result rather than proven copper continuity. P-channel gate turn-off margin and RF timing remain unmeasured.",
-      "method": "First confirm Q8 physical pin2 to C6 supply end with stable probe contact if the photo path remains ambiguous. In the later powered session compare source and gate levels; a multimeter cannot establish RF gate timing."
+      "method": "B37: with battery/programmer disconnected, measure Q8 top-centre pad P to C6 upper metal end F on the labelled photo, plus shorted-probe baseline. This resolves the earlier 10-ohm ambiguity. Source/gate voltages and timing remain later checks."
     },
     {
       "id": "E04",
       "area": "Antenna and tuning-cell topology",
       "gap": "The diode pattern does not confirm the drawn PNP B=R/E=L/C=S mapping. In-circuit paths or contact effects prevent device identification; a single 0.48 V path does not prove a MOSFET. Five capacitor midpoints still lack an established antenna continuation.",
-      "method": "Optional isolated Q3 diode test if the user can remove it; otherwise retain the disputed candidate and defer identity while reviewing other hidden paths. Do not repeat the six in-circuit tests or substitute a device family by plausibility."
+      "method": "User chose to leave Q3 fitted. Isolated identification is deferred; no Q3 desoldering or repeated in-circuit diode batch is requested. Retain the disputed candidate while the agent reviews antenna continuations and other evidence."
     },
     {
       "id": "E05",
@@ -192,7 +192,7 @@
       "state": "open",
       "known": "C5/C6 parallel wiring and Q8 ground/output joins are established. SIL3724A and the U2 inverter remain candidate identities.",
       "unknown": "The Q8 source supply path has a 10-ohm result rather than proven copper continuity. P-channel gate turn-off margin and RF timing remain unmeasured.",
-      "next_action": "First confirm Q8 physical pin2 to C6 supply end with stable probe contact if the photo path remains ambiguous. In the later powered session compare source and gate levels; a multimeter cannot establish RF gate timing.",
+      "next_action": "B37: with battery/programmer disconnected, measure Q8 top-centre pad P to C6 upper metal end F on the labelled photo, plus shorted-probe baseline. This resolves the earlier 10-ohm ambiguity. Source/gate voltages and timing remain later checks.",
       "closed_when": "Source path and actual gate-to-source drive are supported; C6 value is handled by V01.",
       "open_pads": [],
       "nets": [
@@ -204,7 +204,8 @@
         "docs/datasheets/SN74LVC2G14.pdf, supply/output specifications"
       ],
       "supporting_evidence": [
-        "docs/history/v0.9.30-before-finalization/evidence/remaining_work.json"
+        "docs/history/v0.9.30-before-finalization/evidence/remaining_work.json",
+        "evidence/q3_deferred_q8_followup_20261009.json"
       ],
       "owner": "Agent evidence review; targeted owner test only as listed",
       "category": "connectivity/behavior"
@@ -240,7 +241,7 @@
       "state": "open",
       "known": "Five PIC-to-control-resistor routes and visible Q3/R13/C10 joins are mapped. Seven midpoint-pair OL exclusions retained. Q3 diode batch complete: L->S latest 0.48 V, L->R 2.3 V; reverse directions and R/S both ways OL.",
       "unknown": "The diode pattern does not confirm the drawn PNP B=R/E=L/C=S mapping. In-circuit paths or contact effects prevent device identification; a single 0.48 V path does not prove a MOSFET. Five capacitor midpoints still lack an established antenna continuation.",
-      "next_action": "Optional isolated Q3 diode test if the user can remove it; otherwise retain the disputed candidate and defer identity while reviewing other hidden paths. Do not repeat the six in-circuit tests or substitute a device family by plausibility.",
+      "next_action": "User chose to leave Q3 fitted. Isolated identification is deferred; no Q3 desoldering or repeated in-circuit diode batch is requested. Retain the disputed candidate while the agent reviews antenna continuations and other evidence.",
       "closed_when": "One cell has a supported device map and functional antenna path; the other four are checked only where needed.",
       "open_pads": [],
       "nets": [
@@ -255,7 +256,8 @@
       "supporting_evidence": [
         "evidence/architect_review_v0930.json",
         "docs/history/v0.9.30-before-finalization/evidence/remaining_work.json",
-        "evidence/q3_diode_results_20261009.json"
+        "evidence/q3_diode_results_20261009.json",
+        "evidence/q3_deferred_q8_followup_20261009.json"
       ],
       "owner": "Agent evidence review; targeted owner test only as listed",
       "category": "connectivity/behavior"
@@ -595,8 +597,8 @@
         "E10",
         "I01"
       ],
-      "summary": "Q3 in-circuit tests recorded; identity remains disputed and isolated testing is optional. Three local-only PIC branches and antenna continuations remain. Other checks are staged, not requested together.",
-      "next_action": "Use the next measurement screen. Agent resolves visible copper and prepares only discriminating hidden-path or operating tests."
+      "summary": "Q3 stays fitted; isolated identification is deferred. Next: Q8 supply-path resistance with a shorted-probe baseline. Three local-only PIC branches and antenna continuations remain; other checks are staged.",
+      "next_action": "Use B37 on the labelled measurement screen. Agent resolves visible copper and requests only checks that distinguish the remaining alternatives."
     },
     {
       "id": "F2",
