@@ -1,0 +1,31 @@
+{
+  "revision": "v0.9.27",
+  "date": "2026-10-09",
+  "instrument": "LCR meter (user wrote LRC)",
+  "user_report": "L1 1.4uH, L2 2.2uH",
+  "measurements": [
+    {
+      "ref": "L1",
+      "inductance_uH": 1.4,
+      "inductance_H": 1.4e-06,
+      "frequency_hz": null,
+      "mode": null,
+      "connection_condition": "not reported",
+      "fixture_compensation": "not reported",
+      "display_value": "1.4uH"
+    },
+    {
+      "ref": "L2",
+      "inductance_uH": 2.2,
+      "inductance_H": 2.2e-06,
+      "frequency_hz": null,
+      "mode": null,
+      "connection_condition": "not reported",
+      "fixture_compensation": "not reported",
+      "display_value": "2.2uH"
+    }
+  ],
+  "physical_net_membership_changed": false,
+  "interpretation": "Use reported readings on the schematic. Unknown measurement conditions prevent treating them as identified manufacturer nominal values or frequency-independent characteristics. Ferrite/inductor construction, exact part, tolerance, DCR and current rating are not established.",
+  "followup": "Asked whether measured soldered on PCB or with a lead disconnected, and test frequency if shown; no repeat measurement requested."
+}

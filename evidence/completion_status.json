@@ -1,7 +1,7 @@
 {
   "date": "2026-10-09",
-  "revision": "v0.9.26",
-  "review_revision": "v0.9.26",
+  "revision": "v0.9.27",
+  "review_revision": "v0.9.27",
   "interpretation": "Every catalog entry is drawn. Hardware connectivity, values and identities are only partially verified. No routed PCB exists.",
   "catalog_entries": 149,
   "physical_pins": 351,
@@ -64,10 +64,7 @@
     "C47",
     "C48"
   ],
-  "unknown_magnetic_values": [
-    "L1",
-    "L2"
-  ],
+  "unknown_magnetic_values": [],
   "footprints": {
     "assigned": 148,
     "unassigned": [
@@ -83,7 +80,7 @@
     "isolated_pin_label": 1
   },
   "modeled_nets": 85,
-  "schematic_sha256": "149aa01d5ae849edb2ae4f2b29147e1a281c698d728940e6de569c64d50f05b6",
+  "schematic_sha256": "2d1f7eb33f8361a83ca214851e1ae2c4ba7535f9d8d3f1d25abb58ec9593a868",
   "known_identified_ICs_needing_new_symbols": [],
   "complete_symbols_for_selected_candidates": true,
   "available_instruments": [
@@ -187,8 +184,8 @@
     {
       "id": "V01",
       "area": "Unmarked passive values",
-      "gap": "Unmeasured fitted ceramic values and L1/L2 type/value remain listed by the component audit. Voltage rating, dielectric, resistor tolerance and power rating are separate evidence gaps.",
-      "method": "After one tuning cell topology is verified, prioritize its effective capacitance, RF shaping and receiver filters before bypass values. C11/C12 presently share both modeled nodes: an in-circuit reading is their effective network value, not individual values. Record frequency, mode, amplitude and in-circuit/isolated condition. Separate individual values only when needed for the BOM; do not assign an invented split or blanket 100nF."
+      "gap": "44 fitted ceramic values remain unmeasured. L1/L2 test frequency, series/parallel mode, fixture compensation and in-circuit/isolation condition are unreported; nominal values, magnetic construction, tolerance, DCR and current ratings remain unidentified. Other voltage, dielectric and power ratings are separate gaps.",
+      "method": "Record L1/L2 measurement condition and test frequency if available; do not repeat readings yet. After one tuning cell is verified, prioritize RF/receiver capacitances. C11/C12 share both modeled nodes: an in-circuit reading is their combined value. Record frequency, mode and isolation; separate individual values only when needed."
     },
     {
       "id": "M01",
@@ -632,9 +629,9 @@
       ],
       "priority": 2,
       "state": "open",
-      "known": "C5 is 470 uF / 16 V; 38 fitted resistors have nominal marked values. R8 full-body dimensions support 0603 and C11 dimensions support 1206.",
-      "unknown": "Unmeasured fitted ceramic values and L1/L2 type/value remain listed by the component audit. Voltage rating, dielectric, resistor tolerance and power rating are separate evidence gaps.",
-      "next_action": "After one tuning cell topology is verified, prioritize its effective capacitance, RF shaping and receiver filters before bypass values. C11/C12 presently share both modeled nodes: an in-circuit reading is their effective network value, not individual values. Record frequency, mode, amplitude and in-circuit/isolated condition. Separate individual values only when needed for the BOM; do not assign an invented split or blanket 100nF.",
+      "known": "C5 is 470 uF / 16 V; 38 fitted resistors have nominal marked values. User LCR readings: L1 1.4 uH, L2 2.2 uH, now displayed in the schematic. R8/C11 measurements support 0603/1206 packages.",
+      "unknown": "44 fitted ceramic values remain unmeasured. L1/L2 test frequency, series/parallel mode, fixture compensation and in-circuit/isolation condition are unreported; nominal values, magnetic construction, tolerance, DCR and current ratings remain unidentified. Other voltage, dielectric and power ratings are separate gaps.",
+      "next_action": "Record L1/L2 measurement condition and test frequency if available; do not repeat readings yet. After one tuning cell is verified, prioritize RF/receiver capacitances. C11/C12 share both modeled nodes: an in-circuit reading is their combined value. Record frequency, mode and isolation; separate individual values only when needed.",
       "closed_when": "Values needed for faithful circuit behavior are recovered; any remaining bypass substitutions or ratings are explicitly documented assumptions.",
       "open_pads": [],
       "nets": []
@@ -808,7 +805,8 @@
     "v0.9.24 removes unsupported TP9 from active inventory, retains photographed C49, and moves D4-D6 / Q9-J6 / U6A into their circuit blocks. No measured net membership changes.",
     "v0.9.24: TP9 withdrawn as unsupported; C49 confirmed present and DNP in IMG_2442, with two pads still unresolved. Options moved into functional blocks. Q9 NPN and U6A regulator role symbols replace connectors without changing physical nets.",
     "v0.9.25: LED1 red/green emitters and 1.5 x 1.5 mm square body confirmed by user; native value updated, all physical nets preserved. Exact land pattern and colour-to-drive mapping remain open.",
-    "v0.9.26: C5 radial electrolytic body measured 6.33 mm diameter x 16 mm height. Stock 6.3 mm / 2.5 mm footprint candidate assigned; pitch remains inferred, stock height 7 mm differs. Earlier 470 uF / 16 V and all physical nets retained."
+    "v0.9.26: C5 radial electrolytic body measured 6.33 mm diameter x 16 mm height. Stock 6.3 mm / 2.5 mm footprint candidate assigned; pitch remains inferred, stock height 7 mm differs. Earlier 470 uF / 16 V and all physical nets retained.",
+    "v0.9.27: User LCR readings L1 1.4 uH and L2 2.2 uH replace bead/inductor value placeholders. Measurement conditions remain unreported; all nets and stock symbols/footprints are unchanged."
   ],
   "history": "docs/history/README.md"
 }

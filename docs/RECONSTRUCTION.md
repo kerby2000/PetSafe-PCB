@@ -114,3 +114,8 @@ User confirms two internal emitters, red and green, in a square 1.5 x 1.5 mm bod
 ## v0.9.26 - C5 can dimensions and radial footprint
 
 The user measured C5 at 6.33 mm diameter and 16 mm high. The earlier 470 uF / 16 V identification is retained. MCP assigned stock `Capacitor_THT:CP_Radial_D6.3mm_P2.50mm` to the existing `Device:C_Polarized` symbol: native pad1 is positive/H_RF_VDD and pad2 is negative/GND. No electrical net changes were made. The diameter supports the nominal 6.3 mm family; 2.5 mm lead pitch and 0.8 mm drill are explicit candidate geometry, not measured facts. The stock footprint describes a 7 mm body, so its 3D housing must not be used as the measured 16 mm envelope. Use the recorded actual height for clearance; no custom part or housing was created. Only LED1 now lacks an assigned footprint. See [C5 dimension record](../evidence/c5_dimensions_20261009.json).
+
+
+## v0.9.27 - L1/L2 inductance readings
+
+The user reports LCR-meter readings of **L1 = 1.4 uH** and **L2 = 2.2 uH**. These replace the schematic value placeholders while retaining stock `Device:L` symbols, the existing 0805 footprint candidates and all connections. Test frequency, series/parallel mode, fixture compensation and whether the parts were isolated from the PCB have not yet been reported. These readings do not identify manufacturer nominal values, magnetic construction, tolerance, DCR or current ratings. The value checklist now has both magnetic readings recorded; 44 ceramic values remain unrecovered. See [structured measurement record](../evidence/l1_l2_inductance_20261009.json).

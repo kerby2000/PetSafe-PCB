@@ -1,6 +1,6 @@
 {
   "board": "100-1339 R03 A",
-  "revision": "v0.9.26",
+  "revision": "v0.9.27",
   "status": "INFERRED WORKING CIRCUIT / NOT CONTINUITY VERIFIED",
   "components": [
     {
@@ -2339,7 +2339,7 @@
     {
       "ref": "L1",
       "kind": "L",
-      "value": "UNKNOWN",
+      "value": "1.4uH",
       "marking": "",
       "population": "populated",
       "sheet": "rf_drive",
@@ -2348,24 +2348,31 @@
         "1",
         "2"
       ],
-      "note": "Series two-terminal magnetic component; ferrite bead versus inductor and value not verified.",
+      "note": "User LCR-meter reading: L1 = 1.4 uH. Test frequency, test mode, fixture compensation and in-circuit/isolation condition not yet reported. Recorded reading; manufacturer nominal, tolerance, DCR and current rating remain unknown.",
       "side": "front",
       "traced_pin_count": 0,
-      "proposed_value": "bead / L ?",
+      "proposed_value": "1.4uH",
       "library_symbol": "Device:L",
       "footprint": "Inductor_SMD:L_0805_2012Metric",
       "footprint_confidence": "medium",
-      "footprint_basis": "Two-terminal dark chip with approximately 0805 body proportions. Could be a ferrite bead; material and impedance/inductance remain unresolved.",
+      "footprint_basis": "Two-terminal dark chip with approximately 0805 body proportions. User LCR inductance recorded separately; exact package/land fit, magnetic construction and impedance versus frequency remain unverified.",
       "via_evidence": "v0.9.9: User confirms L1 and L2 connect to the same VSYS after Q1. Existing supply-side pad1 selections retained from photos/model; opposite terminals are separate across each component. The report does not identify inductance/ferrite type or measured values.",
       "value_evidence": {
-        "state": "estimated",
-        "source": "No individual measured value supplied; any displayed estimate is a hypothesis."
-      }
+        "state": "measured",
+        "source": "User LCR-meter report 2026-10-09; evidence/l1_l2_inductance_20261009.json",
+        "scope": "reported inductance reading; not a manufacturer nominal identification",
+        "frequency_hz": null,
+        "connection_condition": "not reported",
+        "mode": "not reported",
+        "fixture_compensation": "not reported"
+      },
+      "hypothesis": "User LCR-meter reading: L1 = 1.4 uH. Test frequency, test mode, fixture compensation and in-circuit/isolation condition not yet reported. Recorded reading; manufacturer nominal, tolerance, DCR and current rating remain unknown.",
+      "measurement_evidence": "User LCR-meter reading: L1 = 1.4 uH. Test frequency, test mode, fixture compensation and in-circuit/isolation condition not yet reported. Recorded reading; manufacturer nominal, tolerance, DCR and current rating remain unknown."
     },
     {
       "ref": "L2",
       "kind": "L",
-      "value": "UNKNOWN",
+      "value": "2.2uH",
       "marking": "",
       "population": "populated",
       "sheet": "power",
@@ -2374,19 +2381,26 @@
         "1",
         "2"
       ],
-      "note": "Series two-terminal magnetic component; ferrite bead versus inductor and value not verified.",
+      "note": "User LCR-meter reading: L2 = 2.2 uH. Test frequency, test mode, fixture compensation and in-circuit/isolation condition not yet reported. Recorded reading; manufacturer nominal, tolerance, DCR and current rating remain unknown.",
       "side": "front",
       "traced_pin_count": 0,
-      "proposed_value": "bead / L ?",
+      "proposed_value": "2.2uH",
       "library_symbol": "Device:L",
       "footprint": "Inductor_SMD:L_0805_2012Metric",
       "footprint_confidence": "medium",
-      "footprint_basis": "Two-terminal dark chip with approximately 0805 body proportions. Could be a ferrite bead; material and impedance/inductance remain unresolved.",
+      "footprint_basis": "Two-terminal dark chip with approximately 0805 body proportions. User LCR inductance recorded separately; exact package/land fit, magnetic construction and impedance versus frequency remain unverified.",
       "via_evidence": "v0.9.9: User confirms L1 and L2 connect to the same VSYS after Q1. Existing supply-side pad1 selections retained from photos/model; opposite terminals are separate across each component. The report does not identify inductance/ferrite type or measured values.",
       "value_evidence": {
-        "state": "estimated",
-        "source": "No individual measured value supplied; any displayed estimate is a hypothesis."
-      }
+        "state": "measured",
+        "source": "User LCR-meter report 2026-10-09; evidence/l1_l2_inductance_20261009.json",
+        "scope": "reported inductance reading; not a manufacturer nominal identification",
+        "frequency_hz": null,
+        "connection_condition": "not reported",
+        "mode": "not reported",
+        "fixture_compensation": "not reported"
+      },
+      "hypothesis": "User LCR-meter reading: L2 = 2.2 uH. Test frequency, test mode, fixture compensation and in-circuit/isolation condition not yet reported. Recorded reading; manufacturer nominal, tolerance, DCR and current rating remain unknown.",
+      "measurement_evidence": "User LCR-meter reading: L2 = 2.2 uH. Test frequency, test mode, fixture compensation and in-circuit/isolation condition not yet reported. Recorded reading; manufacturer nominal, tolerance, DCR and current rating remain unknown."
     },
     {
       "ref": "Y1",

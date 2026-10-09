@@ -95,3 +95,8 @@ User dimensions: C11 approximately 3.2 x 1.5 mm supports 1206; R8 approximately 
 ## Not yet measured
 
 No actual rail voltages, powered functional results or LCR capacitor/inductor values have been supplied. The user has an LCR meter, a Fluke 179 and a Fluke 87 III. Both Fluke models support diode testing; see also the [87 III manual](https://assets.fluke.com/manuals/8xiii___umeng0300.pdf). Prioritize RF/tuning values; record frequency, mode and in-circuit versus isolated-lead status. Do not infer a ceramic's value, voltage rating or dielectric from package size.
+
+
+## v0.9.27 - L1/L2 inductance readings
+
+The user reports LCR-meter readings of **L1 = 1.4 uH** and **L2 = 2.2 uH**. These replace the schematic value placeholders while retaining stock `Device:L` symbols, the existing 0805 footprint candidates and all connections. Test frequency, series/parallel mode, fixture compensation and whether the parts were isolated from the PCB have not yet been reported. These readings do not identify manufacturer nominal values, magnetic construction, tolerance, DCR or current ratings. The value checklist now has both magnetic readings recorded; 44 ceramic values remain unrecovered. See [structured measurement record](../evidence/l1_l2_inductance_20261009.json).
