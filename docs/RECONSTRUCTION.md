@@ -1,6 +1,6 @@
 # Current circuit interpretation
 
-Schematic v0.9.32, 2026-10-09. This is the current interpretation, not a chronological log. The [previous narrative](history/cleanup_v0928/docs/RECONSTRUCTION.md) is archived; older requests there are superseded. Use [the checklist](FINISHING_CHECKLIST.html) for remaining questions.
+Schematic v0.9.33, 2026-10-09. This is the current interpretation, not a chronological log. The [previous narrative](history/cleanup_v0928/docs/RECONSTRUCTION.md) is archived; older requests there are superseded. Use [the checklist](FINISHING_CHECKLIST.html) for remaining questions.
 
 ## Power and references
 
@@ -24,7 +24,7 @@ Q9/J6/R35/R36/TP10 are DNP options in the PIC block. Q9's NPN symbol expresses a
 
 ## RF excitation and tuning
 
-Q8/3724A uses a SIL3724A N/P MOSFET candidate. Its centre B2/native5 ground and outer-drain join have evidence. The source-supply interpretation and gate-drive headroom remain qualified; a 10-ohm measured path is not a proven copper short. C6 is in parallel with C5 across H_RF_VDD/GND by photo-supported reconstruction. C5 is 470 uF / 16 V; C6 is unmeasured.
+Q8/3724A uses a SIL3724A N/P MOSFET candidate. Its centre B2/native5 ground and outer-drain join have evidence. B37 P-F = 1 ohm supports Q8.T2/native2 joining C6.1 on H_RF_VDD, superseding the earlier 10-ohm connection ambiguity. No fresh probe baseline or stability statement was supplied, so exact copper resistance is not established. Candidate source/gate roles and gate-drive headroom remain qualified. C6 is in parallel with C5 across H_RF_VDD/GND by photo-supported reconstruction. C5 is 470 uF / 16 V; C6 is unmeasured.
 
 The [IMG_2431 trace review](RF_TRACE_REVIEW.html) establishes PIC13/TP3/R10.1/R6.2/R7.1/D1.S on RF_MONITOR_PAD. D1.R/native2 joins R7.2/C9.1/U2.1 (H_RF_IN_A); D1.L/native1 retains R6.1/C8.1/U2.3 (H_RF_IN_B). The prior H_RF_CONTROL/H_D1_FREE nodes are retired. These are photo-supported connections combined with the earlier measured PIC13-to-TP3 destination, not new meter readings. With the BAV99/U2 candidates, this is consistent with opposite charge/discharge delays at the two gate-driver inputs. Actual switching timing, dead time and Q8 gate headroom are unmeasured.
 

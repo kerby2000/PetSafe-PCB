@@ -1,8 +1,8 @@
 # PetSafe PCB reverse engineering
 
-Current schematic and review: **v0.9.32**, 2026-10-09. PetSafe PPA19-16811 main board, **100-1339 R03 A**. All 148 catalog entries, including test pads and empty options, are on one A2 KiCad 10 sheet.
+Current schematic and review: **v0.9.33**, 2026-10-09. PetSafe PPA19-16811 main board, **100-1339 R03 A**. All 148 catalog entries, including test pads and empty options, are on one A2 KiCad 10 sheet.
 
-Open [the current overview](index.html), [the completion checklist](docs/FINISHING_CHECKLIST.html), [the native schematic](schematic/PetSafe_1001339.kicad_sch), or [the schematic PDF](output/pdf/PetSafe_single_sheet.pdf). The [printable status](output/pdf/PetSafe_completion_status.pdf) includes only current questions and closure criteria. The [measurement page](docs/FINISHING_MEASUREMENTS.html) shows the **Q8 supply-path check B37**; completed results are archived.
+Open [the current overview](index.html), [the completion checklist](docs/FINISHING_CHECKLIST.html), [the native schematic](schematic/PetSafe_1001339.kicad_sch), or [the schematic PDF](output/pdf/PetSafe_single_sheet.pdf). The [printable status](output/pdf/PetSafe_completion_status.pdf) includes only current questions and closure criteria. The [measurement page](docs/FINISHING_MEASUREMENTS.html) shows the **S1 contact checks B38-B41**; completed results are archived.
 
 ## Current state
 
@@ -21,7 +21,7 @@ The [current finalization audit](docs/reviews/2026-10-09_finalization_cleanup_v0
 
 ## What remains to finalize the schematic
 
-1. **Resolve hidden paths and device behavior.** Q3 stays fitted by user choice; isolated identification is deferred. Next is Q8 supply-path check B37. Remaining gaps include three local-only PIC branches, antenna continuations, candidate pin functions, button contacts and operating levels, tracked individually in the checklist.
+1. **Resolve hidden paths and device behavior.** Q3 stays fitted by user choice; isolated identification is deferred. Q8 supply continuity now has 1-ohm support. Next are S1 contact checks B38-B41. Remaining gaps include three local-only PIC branches, antenna continuations, candidate pin functions, button contacts and operating levels, tracked individually in the checklist.
 2. **Recover critical component values.** 44 ceramic values remain. Prioritize antenna/RF/receiver components after topology, accounting for parallel paths in LCR readings.
 3. **Finish interface and package mapping.** LED colour/pad assignment and its missing footprint, plus motor lead orientation. Exact package fit, routed PCB/layer stack, daughterboard and firmware are later reproduction work, not extra unfinished main-board wires.
 

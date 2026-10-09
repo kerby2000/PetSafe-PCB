@@ -1,9 +1,9 @@
 {
   "date": "2026-10-09",
-  "basis_revision": "v0.9.32",
-  "status": "AWAITING_Q8_SUPPLY_RESISTANCE",
-  "scope": "One transistor-junction test; no repeated continuity of visible traces.",
-  "setup": "Disconnect battery and programmer. Use resistance mode (ohms), not diode mode. First touch the probe tips together and record their resistance; then measure P-F. Keep contact steady and report whether the reading settles or changes.",
+  "basis_revision": "v0.9.33",
+  "status": "AWAITING_S1_CONTACT_BEHAVIOR",
+  "scope": "S1 internal contact pairing and released/pressed behavior; no repeat of visible PCB routing.",
+  "setup": "Disconnect battery and programmer. Use resistance mode (ohms). For each reading, probe the exposed solder contacts labelled A-D. Leave all components fitted.",
   "photos": [
     {
       "id": "receiver",
@@ -553,20 +553,112 @@
           "description": "Upper metal end of C6, on the C5-positive supply side in this photo. Not C6 lower/GND end."
         }
       }
+    },
+    {
+      "id": "s1-contacts",
+      "title": "S1: internal contacts and button action",
+      "source": "photos/originals/IMG_2438.jpg",
+      "coordinate_space": [
+        1368,
+        1823
+      ],
+      "view_box": [
+        265,
+        540,
+        970,
+        550
+      ],
+      "points": {
+        "A": {
+          "xy": [
+            408,
+            704
+          ],
+          "label": [
+            305,
+            612
+          ],
+          "description": "S1 upper-left solder contact in this photo (physical TL)."
+        },
+        "B": {
+          "xy": [
+            914,
+            722
+          ],
+          "label": [
+            1000,
+            592
+          ],
+          "description": "S1 upper-right solder contact, next to C35 (physical TR)."
+        },
+        "C": {
+          "xy": [
+            410,
+            947
+          ],
+          "label": [
+            303,
+            1035
+          ],
+          "description": "S1 lower-left solder contact in this photo (physical BL)."
+        },
+        "D": {
+          "xy": [
+            914,
+            956
+          ],
+          "label": [
+            1050,
+            1040
+          ],
+          "description": "S1 lower-right solder contact, next to R41 (physical BR)."
+        }
+      }
     }
   ],
   "tests": [
     {
-      "id": "B37",
-      "group": "q8-supply",
-      "from": "P",
-      "to": "F",
+      "id": "B38",
+      "group": "s1-contacts",
+      "from": "A",
+      "to": "B",
       "mode": "resistance",
       "unit": "ohms / OL",
-      "purpose": "Resolve the earlier 10-ohm Q8 source-supply result against stable probe contact; path is obscured beneath Q8."
+      "state": "Released",
+      "purpose": "Check upper common contact pair inside S1."
+    },
+    {
+      "id": "B39",
+      "group": "s1-contacts",
+      "from": "C",
+      "to": "D",
+      "mode": "resistance",
+      "unit": "ohms / OL",
+      "state": "Released",
+      "purpose": "Check lower common contact pair inside S1."
+    },
+    {
+      "id": "B40",
+      "group": "s1-contacts",
+      "from": "B",
+      "to": "D",
+      "mode": "resistance",
+      "unit": "ohms / OL",
+      "state": "Released",
+      "purpose": "Record released resistance across the proposed switching contacts; allow capacitor charging to settle."
+    },
+    {
+      "id": "B41",
+      "group": "s1-contacts",
+      "from": "B",
+      "to": "D",
+      "mode": "resistance",
+      "unit": "ohms / OL",
+      "state": "Held pressed",
+      "purpose": "Check whether pressing closes the proposed switching contacts."
     }
   ],
-  "interpretation": "If P-F is steady and indistinguishable from the shorted-probe baseline, it supports a direct source-supply net. A reproducible extra resistance such as 10 ohms leaves the path unresolved; no resistor or wire will be invented from it. OL rejects the proposed direct join. This does not verify MOSFET identity, rail voltage or switching behavior.",
+  "interpretation": "The current model predicts same-row common contacts (A-B and C-D) and B-D closing only while pressed. In-circuit parallel paths can give a finite resistance when released; the change on pressing distinguishes contact closure. These checks concern the switch interior, not visible resistor traces.",
   "next_stages": [
     {
       "stage": "Resolve the remaining functional paths",
@@ -610,7 +702,8 @@
     "U6A three option pads mapped by user annotation; no measurement requested.",
     "C49 ANT2/GND routing; both pads resolved.",
     "C5, S1 and LED1 body dimensions; L1/L2 readings already recorded.",
-    "TP3/R6/R7/D1 visible local joins resolved by the IMG_2431 photo audit; timing and device behavior remain separate."
+    "TP3/R6/R7/D1 visible local joins resolved by the IMG_2431 photo audit; timing and device behavior remain separate.",
+    "B37 Q8 P-F = 1 ohm supports the source-supply join. No repeat requested; electrical operation remains separate."
   ],
   "deferred": "Other measurements are staged in the current checklist, not requested in this batch.",
   "sources": [
@@ -629,7 +722,9 @@
     "photos/originals/IMG_2437.jpg",
     "evidence/pic21_tp16_followup_20261009.json",
     "docs/datasheets/S812C.pdf",
-    "evidence/j1_physical_mapping.json"
+    "evidence/j1_physical_mapping.json",
+    "evidence/q8_supply_result_20261009.json",
+    "photos/originals/IMG_2438.jpg"
   ],
   "completed_tests": [
     {
@@ -935,11 +1030,28 @@
       "purpose": "Measure forward voltage or OL to identify the common junction/base direction.",
       "result": "OL",
       "conditions": "In circuit, battery and programmer disconnected as requested."
+    },
+    {
+      "id": "B37",
+      "group": "q8-supply",
+      "from": "P",
+      "to": "F",
+      "mode": "resistance",
+      "unit": "ohms / OL",
+      "purpose": "Resolve the earlier 10-ohm Q8 source-supply result against stable probe contact; path is obscured beneath Q8.",
+      "result": "1 ohm",
+      "resistance_ohms": 1,
+      "raw_user_statement": "P-F 1Ohm",
+      "shorted_probe_ohms": null,
+      "stability": null,
+      "conditions": "Unpowered resistance test requested. No fresh baseline or stability statement supplied.",
+      "earlier_reading": "10 ohm",
+      "interpretation": "Supports the existing Q8.T2/native2 to C6.1 H_RF_VDD connection. Exact copper resistance, device identity and operation are not established."
     }
   ],
-  "batch_title": "Q8: resolve the supply connection",
-  "instructions": "Leave Q3 and all other components fitted. P is the centre of Q8's three upper solder contacts in this photo; F is C6's upper metal end. Probe the exposed metal, not the package body or solder mask.",
-  "result_summary": "No B37 result supplied. Completed Q3 readings and the 0.48 V correction remain in the evidence history.",
+  "batch_title": "S1: verify the button contacts",
+  "instructions": "Measure A-B and C-D with the button released. Then measure B-D first released and again while holding the button down. Report ohms or OL; if a released reading changes as C35 charges, give the settled reading or say changing.",
+  "result_summary": "B37 P-F = 1 ohm supports the existing Q8 source-supply join; the earlier 10-ohm ambiguity is retired from active work. Q3 remains fitted with identification deferred.",
   "cancelled_tests": [
     {
       "id": "B20",
@@ -951,7 +1063,7 @@
       "reason": "User identifies PIC21/RB0 destination; reconcile the older VREF assignment instead."
     }
   ],
-  "revision": "v0.9.32",
+  "revision": "v0.9.33",
   "photo_updates": [
     {
       "evidence": "evidence/c25_c26_mapping_20261009.json",
@@ -974,7 +1086,7 @@
       "result": "v0.9.22 user annotated U6A option: single left pad/model L/native U106.1 joins U6 pin5 and the existing input node after R37; upper-right/model R1/native2 joins J3.1 (red PIR wire); lower-right/model R2/native3 joins GND. All three external pads mapped, option remains DNP. User called the input VDD; retain VDD -> R37 (22 ohm) -> H_AUX_IN because the annotation ends at U6 pin5 and prior B28 confirms pin5-pin2, not a bypass across R37. No fitted IC identity or voltage measurement implied."
     }
   ],
-  "batch_id": "q8-supply-20261009",
+  "batch_id": "s1-contacts-20261009",
   "location_review": {
     "reference": "TP9",
     "status": "REMOVED_UNSUPPORTED_ENTRY",
@@ -1026,8 +1138,12 @@
     "pending_check": null,
     "model_status": "Applied v0.9.20: pin5-VIN measured 1 ohm; R37 and U6A single-pad local joins from the annotation; pin4 explicitly unused."
   },
-  "next_prompt": "Report shorted-probe resistance and B37 P-F resistance, including stability.",
-  "review_revision": "v0.9.32-r1",
-  "request_probe_baseline": true,
-  "q3_decision": "Defer isolated Q3 identification; retain candidate qualification and existing copper. No desoldering or repeat Q3 batch requested."
+  "next_prompt": "Report A-B released, C-D released, B-D released, and B-D held pressed, in ohms or OL.",
+  "review_revision": "v0.9.33",
+  "request_probe_baseline": false,
+  "q3_decision": "Defer isolated Q3 identification; retain candidate qualification and existing copper. No desoldering or repeat Q3 batch requested.",
+  "last_completed_test_ids": [
+    "B37"
+  ],
+  "last_result_evidence": "evidence/q8_supply_result_20261009.json"
 }

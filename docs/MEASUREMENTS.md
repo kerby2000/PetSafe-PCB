@@ -16,7 +16,8 @@ The measurement requests specified battery and programmer disconnected. Shorted 
 | Q8 D-E | 2 ohm | Supports the joined outer-pad node |
 | Q8 E-F | 400 kohm | Rejects direct C6-to-output copper |
 | Q8 S-G | 2 ohm | Supports ground association |
-| Q8 F-P | 10 ohm | Exact path remains unresolved; not a proven copper join |
+| Q8 F-P, earlier | 10 ohm | Preserved observation; superseded for current connection assessment by B37 below |
+| Q8 P-F, B37 | 1 ohm | Supports Q8.T2/native2 to C6.1 on H_RF_VDD. Fresh baseline/stability not supplied; no exact trace-resistance or device-identity claim |
 | Q8 F-G | 300 kohm | Not direct ground |
 | V064-V070 | 11.2 kohm | Supports R18 1.2k + R19 10k hypothesis; not direct VDD |
 | V049-V071 | 20 kohm | Not direct continuity |

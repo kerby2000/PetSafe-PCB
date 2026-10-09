@@ -61,6 +61,16 @@ assert 'RB0/V026 to VREF.' not in via_intro and 'TP104, V026/PIC21' not in via_i
 checklist=(ROOT/'docs/FINISHING_CHECKLIST.html').read_text(encoding='utf-8')
 for i in ids:assert f'id="{i}"' in checklist
 measurements=read('evidence/finishing_measurements.json')
+q8=read('evidence/q8_supply_result_20261009.json')
+q8_test=q8['measurements'][0]
+assert q8_test['id']=='B37' and q8_test['raw_user_statement']=='P-F 1Ohm'
+assert q8_test['result']=='1 ohm' and q8_test['resistance_ohms']==1
+assert q8_test['shorted_probe_ohms'] is None and q8_test['stability'] is None
+assert q8_test['earlier_reading']=='10 ohm' and q8_test in measurements['completed_tests']
+assert not any(t['id']=='B37' for t in measurements['tests']), 'Completed Q8 check re-entered queue'
+assert members['Q8.2']==members['C6.1']==members['C5.1']
+assert members['Q8.2']!=members['Q8.5'] and members['Q8.2']!=members['TP103.1']
+for path,digest in q8['photos'].items():assert hashlib.sha256((ROOT/path).read_bytes()).hexdigest()==digest
 q3=read('evidence/q3_diode_results_20261009.json')
 expected_diode={'B31':('QL','QR','2.3 V'),'B32':('QR','QL','OL'),'B33':('QL','QS','0.48 V'),'B34':('QS','QL','OL'),'B35':('QR','QS','OL'),'B36':('QS','QR','OL')}
 for test_id,(red,black,result) in expected_diode.items():

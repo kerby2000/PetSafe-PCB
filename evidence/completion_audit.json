@@ -1,5 +1,5 @@
 {
-  "revision": "v0.9.32",
+  "revision": "v0.9.33",
   "instruments": [
     "LCR meter",
     "multimeter"
@@ -1746,7 +1746,7 @@
       "observed": "UNKNOWN",
       "displayed": "SIL3724A?",
       "marking": "3724A",
-      "value_or_identity": "3724A supports the SIL3724A complementary MOSFET candidate; fitted maker unconfirmed. V113/V115 centre B2/native5 GND is resolved; outer-drain join retains D-E low-resistance evidence. V114 belongs to U2.T2 GND, not Q8. C6 is photo-supported in parallel with C5 as of v0.9.18. Q8 source-supply path remains independently qualified; no current centre-ground conflict.",
+      "value_or_identity": "3724A supports the SIL3724A complementary MOSFET candidate; fitted maker unconfirmed. B37 P-F = 1 ohm supports Q8.T2/native2 joining C6.1 on H_RF_VDD. The earlier 10-ohm reading is superseded for the current connection assessment; no fresh probe baseline or stability statement was supplied. V113/V115 centre B2/native5 GND and the outer-drain join retain earlier evidence; V114 belongs to U2.T2. Candidate pin functions, gate drive and operating levels remain unverified.",
       "footprint": "Package_TO_SOT_SMD:SOT-23-6",
       "footprint_confidence": "datasheet/package candidate",
       "footprint_basis": "Existing assignment; see component identity evidence.",
@@ -1886,7 +1886,7 @@
       "footprint_confidence": "medium - measured body, photo-estimated lead span",
       "footprint_basis": "User measured a 6 x 6 x 4 mm body plus 2 mm actuator (about 6 mm overall). Photo shows four SMD gullwing leads; approximate pad-centre span from photo/body ratio is about 8 mm, consistent with the stock PTS645 land pattern (7.96 x 4.50 mm centres). Dimensions select a candidate family, not an exact manufacturer. Library x43 footprint/3D model denotes 4.3 mm overall and must not be used as the measured 6 mm housing.",
       "open_pads": 0,
-      "next_method": "Later unpowered check: measure across the two right-hand S1 legs, released then pressed, and each same-row left/right pair released. This checks the four-pad mapping without repeating any resistor routing.",
+      "next_method": "B38-B41 on the labelled S1 screen: A-B and C-D released, then B-D released and held pressed. These distinguish internal common contacts and switching behavior without repeating PCB routing.",
       "photos": "IMG_2438.jpg"
     },
     {

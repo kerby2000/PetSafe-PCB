@@ -6,7 +6,7 @@ R=Path(__file__).resolve().parents[1]
 p=json.loads((R/'evidence/finishing_measurements.json').read_text(encoding='utf-8'))
 s=current_state();esc=html.escape
 active={t[k] for t in p['tests'] for k in ['from','to']}
-latest=[t for t in p['completed_tests'] if t['id'] in {'B31','B32','B33','B34','B35','B36'}]
+latest=[t for t in p['completed_tests'] if t['id'] in p.get('last_completed_test_ids', ['B31','B32','B33','B34','B35','B36'])]
 displayed=p['tests'] or latest
 shown_contacts={t[k] for t in displayed for k in ['from','to']}
 def photo_svg(photo, prefix='../'):
@@ -29,11 +29,12 @@ for photo in p['photos']:
     def reading(t):
         if p['tests']:return f'<input data-id="{t["id"]}" aria-label="{t["id"]}" placeholder="{esc(t.get("unit","V or OL"))}">'
         return esc(t['result'])+(' (latest; earlier '+esc(t['earlier_reading'])+')' if t.get('earlier_reading') else '')
-    rows=''.join(f'<tr><td>{t["id"]}</td><td>{t["from"]}</td><td>{t["to"]}</td><td>{reading(t)}</td></tr>' for t in tests)
+    rows=''.join(f'<tr><td>{t["id"]}</td><td>{t["from"]}</td><td>{t["to"]}</td><td>{esc(t.get("state", "As described"))}</td><td>{reading(t)}</td></tr>' for t in tests)
     legend=''.join(f'<li><b>{k}</b>: {esc(v["description"])}</li>' for k,v in photo['points'].items() if k in shown_contacts)
-    panels.append(f'<article><h2>{esc(photo["title"])}</h2><img src="measurement_screens/{photo["id"]}.svg" alt="{esc(photo["title"])}"><ul>{legend}</ul><table><tr><th>ID</th><th>Red probe</th><th>Black probe</th><th>Reading</th></tr>{rows}</table></article>')
+    panels.append(f'<article><h2>{esc(photo["title"])}</h2><img src="measurement_screens/{photo["id"]}.svg" alt="{esc(photo["title"])}"><ul>{legend}</ul><table><tr><th>ID</th><th>Red probe</th><th>Black probe</th><th>Button / state</th><th>Reading</th></tr>{rows}</table></article>')
 roadmap=''.join('<li><b>'+esc(g['title'])+'</b> - '+esc(g['summary'])+'</li>' for g in s['finish_plan'])
-reply='<h2>Copy results</h2><p>Worksheet only; nothing is sent automatically. Copy before closing.</p><textarea id="reply" readonly></textarea><button id="copy">Select results</button>' if p['tests'] else '<p>No new readings requested here. <a href="../evidence/q3_diode_results_20261009.json">Recorded result and interpretation</a>.</p>'
+result_path=esc(p.get('last_result_evidence','evidence/q3_diode_results_20261009.json'))
+reply='<h2>Copy results</h2><p>Worksheet only; nothing is sent automatically. Copy before closing.</p><textarea id="reply" readonly></textarea><button id="copy">Select results</button>' if p['tests'] else f'<p>No new readings requested here. <a href="../{result_path}">Recorded result and interpretation</a>.</p>'
 baseline='<p><label>Shorted-probe baseline (ohms): <input id="baseline" aria-label="Shorted-probe baseline" placeholder="ohms"></label></p>' if p.get('request_probe_baseline') and p['tests'] else ''
 batch_status=f'{len(p["tests"])} requested readings' if p['tests'] else 'In-circuit batch completed; no active measurement form'
 page=f'''<!doctype html><html lang="en"><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>PetSafe next measurement</title>
@@ -41,6 +42,6 @@ page=f'''<!doctype html><html lang="en"><meta charset="utf-8"><meta name="viewpo
 <a href="FINISHING_CHECKLIST.html">All remaining issues</a> | <a href="../index.html">Schematic</a> | <a href="history/README.md">Completed investigation</a>
 <h1>{esc(p['batch_title'])}</h1><p>{s['revision']} · {batch_status}</p><p class="note">{esc(p['setup'])}</p><p>{esc(p['instructions'])}</p>{baseline}{''.join(panels)}<p>{esc(p['interpretation'])}</p>{reply}
 <h2>What follows</h2><ul>{roadmap}</ul><p>ERC: {s['erc_total']} retained U6/U6A output conflict. U6A is DNP; its regulator symbol remains by your request. Other source and library findings are resolved.</p>
-<script>const data={json.dumps(p['tests'])};const title={json.dumps(p['batch_title'])};function update(){{const base=document.querySelector('#baseline');document.querySelector('#reply').value='PetSafe '+title+' / {s['revision']}'+String.fromCharCode(10)+(base?'Shorted probes: '+base.value+' ohms'+String.fromCharCode(10):'')+data.map(t=>t.id+' red '+t.from+' / black '+t.to+': '+document.querySelector('[data-id="'+t.id+'"]').value).join(String.fromCharCode(10))}}if(data.length){{document.querySelectorAll('input').forEach(e=>e.oninput=update);document.querySelector('#copy').onclick=()=>document.querySelector('#reply').select();update();}}</script></html>'''
+<script>const data={json.dumps(p['tests'])};const title={json.dumps(p['batch_title'])};function update(){{const base=document.querySelector('#baseline');document.querySelector('#reply').value='PetSafe '+title+' / {s['revision']}'+String.fromCharCode(10)+(base?'Shorted probes: '+base.value+' ohms'+String.fromCharCode(10):'')+data.map(t=>t.id+' red '+t.from+' / black '+t.to+(t.state?' ('+t.state+')':'')+': '+document.querySelector('[data-id="'+t.id+'"]').value).join(String.fromCharCode(10))}}if(data.length){{document.querySelectorAll('input').forEach(e=>e.oninput=update);document.querySelector('#copy').onclick=()=>document.querySelector('#reply').select();update();}}</script></html>'''
 (R/'docs/FINISHING_MEASUREMENTS.html').write_text(page,encoding='utf-8')
 print('Active measurement page: '+str(len(p['tests']))+' tests; history omitted.')

@@ -332,7 +332,7 @@ for n in layout['notes']:
     if t.startswith('H14-H15:'):t='H14-H15: C2N supports S-812C33AMC 3.3V LDO. C/R3 ground supported by resistance.'
     if t.startswith('H09:'):t='H09: 3724A matches SIL3724A N/P MOSFET pair. Both units share one package.'
     if t.startswith('Q8 T2/B1/B2'):t='V113/V115: Q8 centre pin5 GND. V114 is U2 pin2 GND, not Q8 pin2.'
-    if t.startswith('H07:'):t='H07: C14R inverter candidate. C6 parallels C5 by photo; Q8 source rail still inferred.'
+    if t.startswith('H07:'):t='H07: C14R inverter candidate. C6 parallels C5 by photo; Q8 source rail supported by B37.'
     if t.startswith('No invented ties'):t='D4/D5 ground returns photo-supported. D6: A=GND, K=VPP measured; breakdown unknown.'
     if t.startswith('H02:'):t='User: RA3/R14, RA4/R15, RA5/R16, RC0/R11, RC6/R13. RC2 -> TP3; RB0 -> TP16 / Q2; VREF tie withdrawn. RC1 -> R18 via V053-V070.'
     if t.startswith('Selected working hypothesis:'):t='v0.9: user-reviewed GND returns replace previous antenna rails on this capacitor bank.'
@@ -354,7 +354,7 @@ text('U3 alternative: MCP6002-I/SN; same pin roles, electrical suitability to ve
 text('U5 alternative: DRV8212PDSGR. Different package/pins; redesign required.',320,81,.762)
 text('U6: pin5 joins VIN (1 ohm); pin4 unused by user/photo. 3.3V is candidate rating.',234,305,.762)
 text('IMG_2431: TP3/PIC13 drives R6/R7/D1 midpoint. Diode identity and timing unverified.',13,211,.762)
-text('C6 parallels C5 on H_RF_VDD/GND (photo-supported). Q8 F-P 10 ohm path still qualified.',90,202,.762)
+text('C6 parallels C5 (photo); Q8 P-F = 1 ohm supports H_RF_VDD join. Gate drive unverified.',90,202,.762)
 text('U6A: DNP alternative regulator; stock symbol does not identify the original part.',234,309,.762)
 text('Q7: 11.2 kohm V064-V070 fits R18+R19. Supply-switch topology inferred; RC1 drives R18 via V053-V070.',229,126,.762)
 
@@ -419,7 +419,7 @@ for net,edges in adj.items():
 for l in L:
     x,y=l['p'];G.append(expr(f'(label {q(l["net"])} (at {x} {y} 0) (effects (font (size .762 .762)) (justify left bottom)) (uuid {q(uid())}))'))
 tree.extend(G)
-tree.append(expr('(title_block (title "PetSafe 100-1339 R03 A | single-sheet reconstruction") (date "2026-10-09") (rev "0.9.32") (company "KiCad 10 libraries + four datasheet symbols | MCP authoring") (comment 1 "R33 unsupported entry withdrawn; Q3 diode pattern disputes candidate pinout."))'))
+tree.append(expr('(title_block (title "PetSafe 100-1339 R03 A | single-sheet reconstruction") (date "2026-10-09") (rev "0.9.33") (company "KiCad 10 libraries + four datasheet symbols | MCP authoring") (comment 1 "Q8 supply continuity supported by B37; candidate identity and gate drive remain open."))'))
 # Canonical pretty printer supplied by the installed MCP server.
 sys.path.insert(0,str(Path.home()/'Documents/VS.Code.Projects/KiCAD-MCP-Server/python'))
 from utils.sexpr_format import prettify
@@ -439,7 +439,7 @@ out.write_text(prettify(sx.dumps(tree)),encoding='utf-8',newline='\n')
 def wire_key(w):return w['net'],tuple(w['a']),tuple(w['b'])
 prior_order={wire_key(w):i for i,w in enumerate(model.get('geometric_wires',[]))}
 ordered_segments=sorted(segments,key=lambda s:(prior_order.get(s,len(prior_order)),s))
-model.update(revision='v0.9.32',coordinate_units='mm',native_pin_crosswalk=layout['crosswalk'],pin_positions={e:list(p) for e,p in P.items()},
+model.update(revision='v0.9.33',coordinate_units='mm',native_pin_crosswalk=layout['crosswalk'],pin_positions={e:list(p) for e,p in P.items()},
              geometric_wires=[dict(net=n,a=a,b=b) for n,a,b in ordered_segments],library_policy='KiCad 10 stock symbols plus four explicitly authorized MCP-authored datasheet symbols for U1/U5/U6/Q8')
 for c in model['components']:
     entry=next(x for x in layout['catalog'] if x['original_ref']==c['ref'])

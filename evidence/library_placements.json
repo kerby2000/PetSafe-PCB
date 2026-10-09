@@ -722,7 +722,7 @@
       "unit": 1,
       "properties": {
         "ViaEvidence": "v0.9.5: V113/V115 reach centre B2/pin5 GND. V114 belongs to U2.T2 and supplies no evidence about Q8.T2. Existing Q8.T2 supply hypothesis and outer-drain join remain independently qualified.",
-        "CurrentEvidence": "3724A supports the SIL3724A complementary MOSFET candidate; fitted maker unconfirmed. V113/V115 centre B2/native5 GND is resolved; outer-drain join retains D-E low-resistance evidence. V114 belongs to U2.T2 GND, not Q8. C6 is photo-supported in parallel with C5 as of v0.9.18. Q8 source-supply path remains independently qualified; no current centre-ground conflict."
+        "CurrentEvidence": "3724A supports the SIL3724A complementary MOSFET candidate; fitted maker unconfirmed. B37 P-F = 1 ohm supports Q8.T2/native2 joining C6.1 on H_RF_VDD. The earlier 10-ohm reading is superseded for the current connection assessment; no fresh probe baseline or stability statement was supplied. V113/V115 centre B2/native5 GND and the outer-drain join retain earlier evidence; V114 belongs to U2.T2. Candidate pin functions, gate drive and operating levels remain unverified."
       }
     },
     {
@@ -776,7 +776,8 @@
       "includePins": true,
       "footprint": "Capacitor_SMD:C_1206_3216Metric",
       "properties": {
-        "ConnectionEvidence": "v0.9.18: C6 is reconstructed in parallel with C5 from the user proposal and photos IMG_2431/IMG_2432. C6 upper pad/model1 joins the C5-positive supply copper (H_RF_VDD, after L1); lower pad/model2 joins GND. Photo-supported, not a new meter-confirmed connection. C6 capacitance remains unknown. Earlier 400 kohm output exclusion and 10 ohm Q8-supply-path reading are retained; the latter does not independently prove Q8 source wiring."
+        "ConnectionEvidence": "v0.9.18: C6 is reconstructed in parallel with C5 from the user proposal and photos IMG_2431/IMG_2432. C6 upper pad/model1 joins the C5-positive supply copper (H_RF_VDD, after L1); lower pad/model2 joins GND. Photo-supported, not a new meter-confirmed connection. C6 capacitance remains unknown. Earlier 400 kohm output exclusion and 10 ohm Q8-supply-path reading are retained; the latter does not independently prove Q8 source wiring.",
+        "CurrentEvidence": "C6 is photo-supported in parallel with C5 across H_RF_VDD/GND, after L1. B37 P-F = 1 ohm supports C6 upper pad/model1 joining Q8.T2/native2; no fresh probe baseline or stability statement supplied. This resolves the prior 10-ohm source-path ambiguity for the net reconstruction, not Q8 identity or operation. C6 capacitance remains unknown."
       }
     },
     {
@@ -2188,7 +2189,8 @@
       "rotation": 0,
       "includePins": true,
       "properties": {
-        "ViaEvidence": "v0.9.2: V113/V115 connect centre B2/pin5 to GND; earlier outer B1/B3 via annotation withdrawn. V114 reaches opposite centre T2/pin2, with GND versus source supply unresolved. Outer drain join retains earlier D-E resistance evidence."
+        "ViaEvidence": "v0.9.2: V113/V115 connect centre B2/pin5 to GND; earlier outer B1/B3 via annotation withdrawn. V114 reaches opposite centre T2/pin2, with GND versus source supply unresolved. Outer drain join retains earlier D-E resistance evidence.",
+        "CurrentEvidence": "3724A supports the SIL3724A complementary MOSFET candidate; fitted maker unconfirmed. B37 P-F = 1 ohm supports Q8.T2/native2 joining C6.1 on H_RF_VDD. The earlier 10-ohm reading is superseded for the current connection assessment; no fresh probe baseline or stability statement was supplied. V113/V115 centre B2/native5 GND and the outer-drain join retain earlier evidence; V114 belongs to U2.T2. Candidate pin functions, gate drive and operating levels remain unverified."
       }
     }
   ],

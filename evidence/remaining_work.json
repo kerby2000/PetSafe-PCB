@@ -1,7 +1,7 @@
 {
   "date": "2026-10-09",
-  "review_revision": "v0.9.32-r1",
-  "basis_revision": "v0.9.30",
+  "review_revision": "v0.9.33",
+  "basis_revision": "v0.9.33",
   "scope": "Current main-board finishing register after independent review of 6ae4eaa and original-photo audit. RF common drive and D1 input assignment corrected from IMG_2431; U6A regulator retained by explicit user choice. No new bench readings or antenna midpoint joins.",
   "rails": [
     {
@@ -48,9 +48,9 @@
       ],
       "priority": 1,
       "state": "open",
-      "known": "C5/C6 parallel wiring and Q8 ground/output joins are established. SIL3724A and the U2 inverter remain candidate identities.",
-      "unknown": "The Q8 source supply path has a 10-ohm result rather than proven copper continuity. P-channel gate turn-off margin and RF timing remain unmeasured.",
-      "next_action": "B37: with battery/programmer disconnected, measure Q8 top-centre pad P to C6 upper metal end F on the labelled photo, plus shorted-probe baseline. This resolves the earlier 10-ohm ambiguity. Source/gate voltages and timing remain later checks.",
+      "known": "C5/C6 parallel wiring and Q8 ground/output joins are established. B37 P-F = 1 ohm supports Q8.T2/native2 to C6.1 on H_RF_VDD; no fresh baseline or stability statement supplied. SIL3724A and the U2 inverter remain candidates.",
+      "unknown": "Candidate gate/source roles, P-channel turn-off margin and RF timing remain unverified. The source-supply continuity question no longer requires a bench check.",
+      "next_action": "Later operating check on the original hardware: establish source/gate voltages and actual gate-to-source drive, then RF timing if suitable equipment is available. Do not repeat P-F continuity.",
       "closed_when": "Source path and actual gate-to-source drive are supported; C6 value is handled by V01.",
       "open_pads": [],
       "nets": [
@@ -63,7 +63,8 @@
       ],
       "supporting_evidence": [
         "docs/history/v0.9.30-before-finalization/evidence/remaining_work.json",
-        "evidence/q3_deferred_q8_followup_20261009.json"
+        "evidence/q3_deferred_q8_followup_20261009.json",
+        "evidence/q8_supply_result_20261009.json"
       ],
       "owner": "Agent evidence review; targeted owner test only as listed",
       "category": "connectivity/behavior"
@@ -133,7 +134,7 @@
       "state": "open",
       "known": "R41 is 330 ohm to J1 VPP. The switch-side node also reaches R40 and C35; opposite C35 side is GND.",
       "unknown": "Internal contact pairings and released/pressed behavior of this switch have not been measured.",
-      "next_action": "Later unpowered check: measure across the two right-hand S1 legs, released then pressed, and each same-row left/right pair released. This checks the four-pad mapping without repeating any resistor routing.",
+      "next_action": "B38-B41 on the labelled S1 screen: A-B and C-D released, then B-D released and held pressed. These distinguish internal common contacts and switching behavior without repeating PCB routing.",
       "closed_when": "Same-row pairs and open/closed switching agree with the drawing, or the switch pin mapping is corrected.",
       "open_pads": [],
       "nets": [
@@ -474,8 +475,8 @@
         "E10",
         "I01"
       ],
-      "summary": "Q3 stays fitted; isolated identification is deferred. Next: Q8 supply-path resistance with a shorted-probe baseline. Three local-only PIC branches and antenna continuations remain; other checks are staged.",
-      "next_action": "Use B37 on the labelled measurement screen. Agent resolves visible copper and requests only checks that distinguish the remaining alternatives."
+      "summary": "Q8 supply connection now has 1-ohm support. Next: S1 internal contacts and pressed/released behavior. Q3 stays fitted; isolated identification is deferred. Three local-only PIC branches and antenna continuations remain.",
+      "next_action": "Use B38-B41 on the labelled button screen. Other checks remain staged; visible copper is resolved from photographs first."
     },
     {
       "id": "F2",

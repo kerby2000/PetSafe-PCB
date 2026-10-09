@@ -23,3 +23,7 @@ The [previous register](v0.9.30-before-finalization/evidence/remaining_work.json
 [Recorded measurements and inventory correction](q3-r33-v0932.md). Q3 latest forward reading is 0.48 V; its identity remains disputed. The unsupported R33 entry and assumed pull-up were removed.
 
 The user subsequently chose to leave Q3 fitted. Isolated identification is deferred; the next active check is B37 at Q8/C6. This changes the review queue only; see `evidence/q3_deferred_q8_followup_20261009.json`.
+
+## v0.9.33 Q8 supply result
+
+B37 P-F = 1 ohm supports the existing Q8.T2/native2 to C6.1 supply join. The older 10-ohm ambiguity is retired from the active checklist, while both observations remain recorded in `evidence/q8_supply_result_20261009.json` and `docs/MEASUREMENTS.md`. A fresh baseline and stability statement were not supplied. No net or pin mapping changed. Gate drive and fitted identity remain open; Q3 stays fitted by user choice.

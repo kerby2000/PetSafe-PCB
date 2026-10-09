@@ -2,16 +2,16 @@
 <export version="E">
   <design>
     <source>C:\Users\lukin\Documents\ChatGPT\PetSafe-PCB\schematic\PetSafe_1001339.kicad_sch</source>
-    <date>2026-10-09T19:52:01</date>
+    <date>2026-10-09T20:52:08</date>
     <tool>Eeschema 10.0.5</tool>
     <sheet number="1" name="/" tstamps="/">
       <title_block>
         <title>PetSafe 100-1339 R03 A | single-sheet reconstruction</title>
         <company>KiCad 10 libraries + four datasheet symbols | MCP authoring</company>
-        <rev>0.9.32</rev>
+        <rev>0.9.33</rev>
         <date>2026-10-09</date>
         <source>PetSafe_1001339.kicad_sch</source>
-        <comment number="1" value="R33 unsupported entry withdrawn; Q3 diode pattern disputes candidate pinout."/>
+        <comment number="1" value="Q8 supply continuity supported by B37; candidate identity and gate drive remain open."/>
         <comment number="2" value=""/>
         <comment number="3" value=""/>
         <comment number="4" value=""/>
@@ -239,8 +239,9 @@
       <description>Unpolarized capacitor</description>
       <fields>
         <field name="ConnectionEvidence">v0.9.18: C6 is reconstructed in parallel with C5 from the user proposal and photos IMG_2431/IMG_2432. C6 upper pad/model1 joins the C5-positive supply copper (H_RF_VDD, after L1); lower pad/model2 joins GND. Photo-supported, not a new meter-confirmed connection. C6 capacitance remains unknown. Earlier 400 kohm output exclusion and 10 ohm Q8-supply-path reading are retained; the latter does not independently prove Q8 source wiring.</field>
+        <field name="CurrentEvidence">C6 is photo-supported in parallel with C5 across H_RF_VDD/GND, after L1. B37 P-F = 1 ohm supports C6 upper pad/model1 joining Q8.T2/native2; no fresh probe baseline or stability statement supplied. This resolves the prior 10-ohm source-path ambiguity for the net reconstruction, not Q8 identity or operation. C6 capacitance remains unknown.</field>
         <field name="OriginalReference">C6</field>
-        <field name="Evidence">Photo reconstruction; individual net evidence in reconstruction.json</field>
+        <field name="Evidence">C6 is photo-supported in parallel with C5 across H_RF_VDD/GND, after L1. B37 P-F = 1 ohm supports C6 upper pad/model1 joining Q8.T2/native2; no fresh probe baseline or stability statement supplied. This resolves the prior 10-ohm source-path ambiguity for the net reconstruction, not Q8 identity or operation. C6 capacitance remains unknown.</field>
         <field name="LibraryPolicy">Unmodified KiCad 10 stock symbol</field>
         <field name="FootprintConfidence">medium</field>
         <field name="FootprintBasis">Photo family and body/land proportions compared with adjacent known IC lead pitch. Size is independent of capacitance, dielectric and voltage rating.</field>
@@ -251,8 +252,9 @@
       </fields>
       <libsource lib="Device" part="C" description="Unpolarized capacitor"/>
       <property name="ConnectionEvidence" value="v0.9.18: C6 is reconstructed in parallel with C5 from the user proposal and photos IMG_2431/IMG_2432. C6 upper pad/model1 joins the C5-positive supply copper (H_RF_VDD, after L1); lower pad/model2 joins GND. Photo-supported, not a new meter-confirmed connection. C6 capacitance remains unknown. Earlier 400 kohm output exclusion and 10 ohm Q8-supply-path reading are retained; the latter does not independently prove Q8 source wiring."/>
+      <property name="CurrentEvidence" value="C6 is photo-supported in parallel with C5 across H_RF_VDD/GND, after L1. B37 P-F = 1 ohm supports C6 upper pad/model1 joining Q8.T2/native2; no fresh probe baseline or stability statement supplied. This resolves the prior 10-ohm source-path ambiguity for the net reconstruction, not Q8 identity or operation. C6 capacitance remains unknown."/>
       <property name="OriginalReference" value="C6"/>
-      <property name="Evidence" value="Photo reconstruction; individual net evidence in reconstruction.json"/>
+      <property name="Evidence" value="C6 is photo-supported in parallel with C5 across H_RF_VDD/GND, after L1. B37 P-F = 1 ohm supports C6 upper pad/model1 joining Q8.T2/native2; no fresh probe baseline or stability statement supplied. This resolves the prior 10-ohm source-path ambiguity for the net reconstruction, not Q8 identity or operation. C6 capacitance remains unknown."/>
       <property name="LibraryPolicy" value="Unmodified KiCad 10 stock symbol"/>
       <property name="FootprintConfidence" value="medium"/>
       <property name="FootprintBasis" value="Photo family and body/land proportions compared with adjacent known IC lead pitch. Size is independent of capacitance, dielectric and voltage rating."/>
@@ -2854,23 +2856,23 @@
       <datasheet>https://static.chipdip.ru/lib/761/DOC050761871.pdf</datasheet>
       <description>MCC SIL3724A dual N/P MOSFET, marking 3724A; candidate for Q8, fitted manufacturer unconfirmed. Pin map verified from manufacturer page 1. KiCad generic MOSFET artwork imported through MCP.</description>
       <fields>
-        <field name="CurrentEvidence">3724A supports the SIL3724A complementary MOSFET candidate; fitted maker unconfirmed. V113/V115 centre B2/native5 GND is resolved; outer-drain join retains D-E low-resistance evidence. V114 belongs to U2.T2 GND, not Q8. C6 is photo-supported in parallel with C5 as of v0.9.18. Q8 source-supply path remains independently qualified; no current centre-ground conflict.</field>
+        <field name="ViaEvidence">v0.9.5: V113/V115 reach centre B2/pin5 GND. V114 belongs to U2.T2 and supplies no evidence about Q8.T2. Existing Q8.T2 supply hypothesis and outer-drain join remain independently qualified.</field>
+        <field name="CurrentEvidence">3724A supports the SIL3724A complementary MOSFET candidate; fitted maker unconfirmed. B37 P-F = 1 ohm supports Q8.T2/native2 joining C6.1 on H_RF_VDD. The earlier 10-ohm reading is superseded for the current connection assessment; no fresh probe baseline or stability statement was supplied. V113/V115 centre B2/native5 GND and the outer-drain join retain earlier evidence; V114 belongs to U2.T2. Candidate pin functions, gate drive and operating levels remain unverified.</field>
         <field name="OriginalReference">Q8</field>
-        <field name="Evidence">3724A supports the SIL3724A complementary MOSFET candidate; fitted maker unconfirmed. V113/V115 centre B2/native5 GND is resolved; outer-drain join retains D-E low-resistance evidence. V114 belongs to U2.T2 GND, not Q8. C6 is photo-supported in parallel with C5 as of v0.9.18. Q8 source-supply path remains independently qualified; no current centre-ground conflict.</field>
+        <field name="Evidence">3724A supports the SIL3724A complementary MOSFET candidate; fitted maker unconfirmed. B37 P-F = 1 ohm supports Q8.T2/native2 joining C6.1 on H_RF_VDD. The earlier 10-ohm reading is superseded for the current connection assessment; no fresh probe baseline or stability statement was supplied. V113/V115 centre B2/native5 GND and the outer-drain join retain earlier evidence; V114 belongs to U2.T2. Candidate pin functions, gate drive and operating levels remain unverified.</field>
         <field name="LibraryPolicy">User-authorized datasheet symbol created through KiCad MCP</field>
         <field name="FootprintConfidence">datasheet/package candidate</field>
         <field name="FootprintBasis">Existing assignment; see component identity evidence.</field>
         <field name="PinMapping">See evidence/pin_crosswalk.json; physical orientation may be provisional</field>
-        <field name="ViaEvidence">v0.9.5: V113/V115 reach centre B2/pin5 GND. V114 belongs to U2.T2 and supplies no evidence about Q8.T2. Existing Q8.T2 supply hypothesis and outer-drain join remain independently qualified.</field>
         <field name="Footprint">Package_TO_SOT_SMD:SOT-23-6</field>
         <field name="Datasheet">https://static.chipdip.ru/lib/761/DOC050761871.pdf</field>
         <field name="Description">MCC SIL3724A dual N/P MOSFET, marking 3724A; candidate for Q8, fitted manufacturer unconfirmed. Pin map verified from manufacturer page 1. KiCad generic MOSFET artwork imported through MCP.</field>
       </fields>
       <libsource lib="PetSafe_Datasheet" part="SIL3724A" description="MCC SIL3724A dual N/P MOSFET, marking 3724A; candidate for Q8, fitted manufacturer unconfirmed. Pin map verified from manufacturer page 1. KiCad generic MOSFET artwork imported through MCP."/>
       <property name="ViaEvidence" value="v0.9.5: V113/V115 reach centre B2/pin5 GND. V114 belongs to U2.T2 and supplies no evidence about Q8.T2. Existing Q8.T2 supply hypothesis and outer-drain join remain independently qualified."/>
-      <property name="CurrentEvidence" value="3724A supports the SIL3724A complementary MOSFET candidate; fitted maker unconfirmed. V113/V115 centre B2/native5 GND is resolved; outer-drain join retains D-E low-resistance evidence. V114 belongs to U2.T2 GND, not Q8. C6 is photo-supported in parallel with C5 as of v0.9.18. Q8 source-supply path remains independently qualified; no current centre-ground conflict."/>
+      <property name="CurrentEvidence" value="3724A supports the SIL3724A complementary MOSFET candidate; fitted maker unconfirmed. B37 P-F = 1 ohm supports Q8.T2/native2 joining C6.1 on H_RF_VDD. The earlier 10-ohm reading is superseded for the current connection assessment; no fresh probe baseline or stability statement was supplied. V113/V115 centre B2/native5 GND and the outer-drain join retain earlier evidence; V114 belongs to U2.T2. Candidate pin functions, gate drive and operating levels remain unverified."/>
       <property name="OriginalReference" value="Q8"/>
-      <property name="Evidence" value="3724A supports the SIL3724A complementary MOSFET candidate; fitted maker unconfirmed. V113/V115 centre B2/native5 GND is resolved; outer-drain join retains D-E low-resistance evidence. V114 belongs to U2.T2 GND, not Q8. C6 is photo-supported in parallel with C5 as of v0.9.18. Q8 source-supply path remains independently qualified; no current centre-ground conflict."/>
+      <property name="Evidence" value="3724A supports the SIL3724A complementary MOSFET candidate; fitted maker unconfirmed. B37 P-F = 1 ohm supports Q8.T2/native2 joining C6.1 on H_RF_VDD. The earlier 10-ohm reading is superseded for the current connection assessment; no fresh probe baseline or stability statement was supplied. V113/V115 centre B2/native5 GND and the outer-drain join retain earlier evidence; V114 belongs to U2.T2. Candidate pin functions, gate drive and operating levels remain unverified."/>
       <property name="LibraryPolicy" value="User-authorized datasheet symbol created through KiCad MCP"/>
       <property name="FootprintConfidence" value="datasheet/package candidate"/>
       <property name="FootprintBasis" value="Existing assignment; see component identity evidence."/>
@@ -5545,13 +5547,13 @@
       <datasheet>https://www.ti.com/lit/ds/symlink/sn74lvc2g14.pdf</datasheet>
       <description>Dual NOT Gate, Schmitt Triggered, Low-Voltage CMOS</description>
       <fields>
-        <field name="ViaEvidence">v0.9.5: V114 reaches U2.T2, not Q8.T2. Earlier user GND assignment retained; native U2 pin2 already GND. This resolves the via annotation conflict.</field>
         <field name="OriginalReference">U2</field>
         <field name="Evidence">Photo reconstruction; individual net evidence in reconstruction.json</field>
         <field name="LibraryPolicy">Unmodified KiCad 10 stock symbol</field>
         <field name="FootprintConfidence">datasheet/package candidate</field>
         <field name="FootprintBasis">Existing assignment; see component identity evidence.</field>
         <field name="PinMapping">See evidence/pin_crosswalk.json; physical orientation may be provisional</field>
+        <field name="ViaEvidence">v0.9.5: V114 reaches U2.T2, not Q8.T2. Earlier user GND assignment retained; native U2 pin2 already GND. This resolves the via annotation conflict.</field>
         <field name="Footprint">Package_TO_SOT_SMD:SOT-23-6</field>
         <field name="Datasheet">https://www.ti.com/lit/ds/symlink/sn74lvc2g14.pdf</field>
         <field name="Description">Dual NOT Gate, Schmitt Triggered, Low-Voltage CMOS</field>
@@ -5595,14 +5597,14 @@
       <footprint>Package_SO:SOIC-8_3.9x4.9mm_P1.27mm</footprint>
       <description>Dual operational amplifier</description>
       <fields>
+        <field name="ViaEvidence">v0.9.3 user identifies both V079 and V080 as SGM8542 pin5. Existing local C18.1 fragment retained on RX_B_PLUS; separate from TP6 on the opposite side of C18.</field>
+        <field name="MeasurementEvidence">v0.9.14 user: pin5-VREF/R22 D 1 ohm (batch1); pin6-R23 B/left/model1 1 ohm and C/right/model2 5.6 kohm. Pin6-R22 E/GND 400 kohm. Pin5 and pin6 remain distinct; C18 branch is retained photo evidence, not meter-confirmed.</field>
         <field name="OriginalReference">U3</field>
         <field name="Evidence">Photo reconstruction; individual net evidence in reconstruction.json</field>
         <field name="LibraryPolicy">Unmodified KiCad 10 stock symbol</field>
         <field name="FootprintConfidence">datasheet/package candidate</field>
         <field name="FootprintBasis">Existing assignment; see component identity evidence.</field>
         <field name="PinMapping">See evidence/pin_crosswalk.json; physical orientation may be provisional</field>
-        <field name="ViaEvidence">v0.9.3 user identifies both V079 and V080 as SGM8542 pin5. Existing local C18.1 fragment retained on RX_B_PLUS; separate from TP6 on the opposite side of C18.</field>
-        <field name="MeasurementEvidence">v0.9.14 user: pin5-VREF/R22 D 1 ohm (batch1); pin6-R23 B/left/model1 1 ohm and C/right/model2 5.6 kohm. Pin6-R22 E/GND 400 kohm. Pin5 and pin6 remain distinct; C18 branch is retained photo evidence, not meter-confirmed.</field>
         <field name="Footprint">Package_SO:SOIC-8_3.9x4.9mm_P1.27mm</field>
         <field name="Datasheet"/>
         <field name="Description">Dual operational amplifier</field>
@@ -5619,7 +5621,7 @@
       <property name="ki_keywords" value="dual opamp"/>
       <property name="ki_fp_filters" value="SOIC*3.9x4.9mm*P1.27mm* DIP*W7.62mm* MSOP*3x3mm*P0.65mm* SSOP*2.95x2.8mm*P0.65mm* TSSOP*3x3mm*P0.65mm* VSSOP*P0.5mm* TO?99*"/>
       <sheetpath names="/" tstamps="/"/>
-      <tstamps>b00d4394-db65-46d5-bada-d45b64759761 f2ceba09-374b-42f7-984d-7b195eed131b 90074ca8-ab4c-417f-add8-85bfedd7631d</tstamps>
+      <tstamps>f2ceba09-374b-42f7-984d-7b195eed131b b00d4394-db65-46d5-bada-d45b64759761 90074ca8-ab4c-417f-add8-85bfedd7631d</tstamps>
       <units>
         <unit name="A">
           <pins>
