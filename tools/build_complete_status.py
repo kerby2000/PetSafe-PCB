@@ -46,30 +46,25 @@ def table(rows,widths):
 out=R/'output/pdf/PetSafe_completion_status.pdf'
 doc=SimpleDocTemplate(str(out),pagesize=A4,rightMargin=32,leftMargin=32,topMargin=30,bottomMargin=32,title=f'PetSafe {m["revision"]} - complete schematic status',author='PetSafe PCB reverse-engineering project')
 W=A4[0]-64
-story=[P('Schematic completion status','TitlePS'),P(f'PetSafe 100-1339 R03 A | {m["revision"]} | {status["date"]}'),
-P('<b>All catalog entries are drawn on one sheet.</b> The remaining questions are listed explicitly below. This is a partially verified reconstruction, not a completed hardware validation or a routed PCB.'),
-table([['Coverage','Open connections','Values / packages'],[f'{status["catalog_entries"]} entries; 1 A2 sheet; {v["stock_library_symbols"]} stock + {v["custom_symbols"]} custom symbol definitions.',f'{len(fitted)} populated-entry pads + {len(dnp)} DNP pads. {len(gpios)} open PIC pads in the model.',f'{len(status["unknown_ceramic_values"])} ceramic values unknown; {len(status["unknown_magnetic_values"])} magnetic readings missing; {status["footprints"]["assigned"]}/{status["catalog_entries"]} footprints assigned.']],[W/3]*3),
-P('Power rails - current names','HeadPS'),table([['Name','Known path']]+[[r['name'],r['path']] for r in status['rails']],[80,W-80]),
-P('L1/L2 share the VSYS supply side. Their opposite ends are not shorted together. H_RF_VDD, H_LDO_IN, H_RX_VDD and H_PIR_VDD describe local branches; these are not additional confirmed independent supplies. Rail voltages have not been measured. L1 = 1.4 uH and L2 = 2.2 uH are user LCR readings; test frequency and isolation condition are not yet reported.'),
-P('What remains to finish','HeadPS'),P('<br/>'.join('<b>'+escape(g['title'])+':</b> '+escape(g['summary']) for g in status['finish_plan'])),
-P('Validation and limits','HeadPS'),P(f'{v["proposed_net_partitions"]} modeled net partitions match KiCad 10.0.5. ERC retains {v["erc_total"]} findings: {v["erc_by_type"].get("pin_not_connected",0)} open pins, {v["erc_by_type"].get("isolated_pin_label",0)} isolated labels, {v["erc_by_type"].get("power_pin_not_driven",0)} undriven power checks and {v["erc_by_type"].get("pin_to_pin",0)} regulator-option output conflict. U6A is DNP; its common output with fitted U6 is retained and documented, not suppressed. No artificial NC/power flags hide gaps. Original photo hashes are unchanged. This proves file consistency, not all physical connections.'),
-P('Isolated modeled nodes: '+escape(', '.join(n['net'] for n in m['nets'] if len(n['endpoints'])==1) or 'None')+'. A PIC pin can have a local net and still lack an onward destination.'),
-P('Completion milestones','HeadPS')]+[P('<b>'+escape(i['name'])+':</b> '+escape(i['criterion'])) for i in status['milestones']]+[PageBreak()]
-for title,ids in [('Supply and device gaps',['E01','E02','E03','I01','I02']),('Tuning and local endpoints',['E04','E05','E06']),('PIR, receiver and protection',['E07','E08','E09','E10']),('Values, mechanics and scope',['V01','M01','D01','F01'])]:
-    story.append(P(title,'TitlePS'))
+audit=read('evidence/finalization_audit.json')
+story=[P('Remaining schematic work','TitlePS'),P(f'PetSafe 100-1339 | {m["revision"]} | {status["date"]}'),
+P(f'<b>{len(status["items"])} active issues.</b> Completed steps are archived, not bench requests. Next: six directional Q3 diode readings using docs/FINISHING_MEASUREMENTS.html.'),
+table([['Drawing / connectivity','Remaining data','ERC'],[f'{len(fitted)} fitted open pads; {len(gpios)} open PIC pads; {audit["dangling_wire_ends"]} dangling wire ends. {len(m["nets"])} native/model net partitions match.',f'{len(status["unknown_ceramic_values"])} ceramic values; LED1 footprint blank. Three local-only PIC branches and R33 inventory remain explicit.',f'{status["erc_total"]} retained U6/U6A output conflict. Five stock power-source flags added; physical net partitions unchanged.']],[W/3]*3),
+P('Audit boundary','HeadPS'),P('Native wire geometry, library definitions, all catalog pad assignments and existing evidence were checked. Zero open pads does not establish hidden copper or functional behavior. U6A is DNP; its regulator symbol and visible conflict remain by user choice. No new NC markers, net merges or ERC exclusions.'),
+P('Order of work','HeadPS')]
+for group in status['finish_plan']:
+    story.append(P('<b>'+escape(group['title'])+':</b> '+escape(group['summary'])+' '+escape(group['next_action'])))
+story.append(PageBreak())
+for group in status['finish_plan']:
+    story.append(P(escape(group['title']),'TitlePS'))
     for i in status['items']:
-        if i['id'] not in ids:continue
-        story.append(KeepTogether([P(escape(i['id']+' - '+i['area']),'HeadPS'),P('<b>Known:</b> '+escape(i['known'])),P('<b>Uncertain:</b> '+escape(i['unknown'])),P('<b>Next:</b> '+escape(i['next_action']))]))
-    if 'V01' in ids:
-        story.extend([P('Every unrecovered ceramic value','HeadPS'),P(escape(', '.join(status['unknown_ceramic_values']))),P('C5 is already 470 uF / 16 V. In-circuit LCR readings may include parallel components and semiconductor paths; record frequency, mode and whether a lead was isolated. Geometry cannot establish capacitance, dielectric or voltage rating.')])
-        if status['closed_items']:
-            story.append(P('Closed issues retained as history','HeadPS'))
-            story.extend(P(escape(i['id']+' - '+i['resolution']['result'])) for i in status['closed_items'])
+        if i['id'] not in group['issues']:continue
+        story.append(KeepTogether([P(escape(i['id']+' - '+i['area']),'HeadPS'),P('<b>Established:</b> '+escape(i['known'])),P('<b>Remaining:</b> '+escape(i['unknown'])),P('<b>Next:</b> '+escape(i['next_action'])),P('<b>Close when:</b> '+escape(i['closed_when']))]))
+    if 'V01' in group['issues']:
+        story.extend([P('All unrecovered ceramic values','HeadPS'),P(escape(', '.join(status['unknown_ceramic_values'])))])
     story.append(PageBreak())
-story.extend([P('PIC connections','TitlePS'),P('Physical package pins. All have modeled local nets; the evidence column distinguishes confirmed endpoints from photo-derived or incomplete branches. Use the separate numbered photo guide for physical locations.'),
-table([['Pin','Function','Local destination / evidence']]+[[p['pin'],{27:'RB6/CLK',28:'RB7/DAT'}.get(p['pin'],p['gpio']),p['evidence']] for p in pins],[30,64,W-94]),
-P('Every remaining open pad','HeadPS'),P('<b>Populated entries:</b> '+escape(', '.join(fitted) or 'None')+'.<br/><b>Empty options:</b> '+escape(', '.join(dnp) or 'None')+'.','SmallPS'),
-P('TP9 was withdrawn as an unsupported inherited inventory entry; rear C49 is photographed and now confirmed between ANT2 and GND. Both pads are resolved; its DNP classification is retained. U6 pin4 is unused by user/photo evidence; pin5 externally joins pin2/VIN (1 ohm), although internally NC in the candidate datasheet. Photo pad S means single pad, not necessarily source. The completion checklist includes closure criteria and the full component audit. Sources: reconstruction.json, remaining_work.json, via_audit.json, native validation and preserved measurement records.','SmallPS')])
+story.extend([P('Scope and sources','TitlePS'),P(escape(read('evidence/remaining_work.json')['scope_note'])),P(escape(read('evidence/remaining_work.json')['accepted_option_limitations'])),P('All previous issue dispositions: evidence/finalization_review_v0931.json. Native geometry and uncertainty coverage: evidence/finalization_audit.json. Current register: evidence/remaining_work.json. Archived observations and old checklists: docs/history/README.md.'),P('Power-source flags describe supply paths through existing passive components; they do not prove voltage or transistor operation. Installed KiCad 10 libraries and project symbols match the embedded pin/graphic definitions. GUI library reload has not been verified.'),P('Reference rails','HeadPS'),table([['Rail','Existing modeled path']]+[[r['name'],r['path']] for r in status['rails']],[75,W-75])])
+
 def footer(c,d):
     c.setFillColor(ink);c.setFont('Helvetica',8);c.drawString(32,17,'PetSafe | Evidence-qualified reconstruction | '+m['revision']);c.drawRightString(A4[0]-32,17,str(d.page))
 doc.build(story,onFirstPage=footer,onLaterPages=footer)

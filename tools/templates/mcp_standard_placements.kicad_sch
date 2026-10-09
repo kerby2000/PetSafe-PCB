@@ -6674,6 +6674,121 @@
 			)
 			(embedded_fonts no)
 		)
+		(symbol "power:PWR_FLAG"
+			(power global)
+			(pin_numbers
+				(hide yes)
+			)
+			(pin_names
+				(offset 0)
+				(hide yes)
+			)
+			(exclude_from_sim no)
+			(in_bom yes)
+			(on_board yes)
+			(in_pos_files yes)
+			(duplicate_pin_numbers_are_jumpers no)
+			(property "Reference" "#FLG"
+				(at 0 1.905 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(hide yes)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(property "Value" "PWR_FLAG"
+				(at 0 3.81 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(property "Footprint" ""
+				(at 0 0 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(hide yes)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(property "Datasheet" ""
+				(at 0 0 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(hide yes)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(property "Description" "Special symbol for telling ERC where power comes from"
+				(at 0 0 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(hide yes)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(property "ki_keywords" "flag power"
+				(at 0 0 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(hide yes)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(symbol "PWR_FLAG_0_0"
+				(pin power_out line
+					(at 0 0 90)
+					(length 0)
+					(name ""
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+					(number "1"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+				)
+			)
+			(symbol "PWR_FLAG_0_1"
+				(polyline
+					(pts
+						(xy 0 0) (xy 0 1.27) (xy -1.016 1.905) (xy 0 2.54) (xy 1.016 1.905) (xy 0 1.27)
+					)
+					(stroke
+						(width 0)
+						(type default)
+					)
+					(fill
+						(type none)
+					)
+				)
+			)
+			(embedded_fonts no)
+		)
 	)
 	(symbol
 		(lib_id "Connector:TestPoint")
@@ -10818,9 +10933,15 @@
 				)
 			)
 		)
-    (property "CurrentEvidence" "v0.9.30 original IMG_2431: TP3/PIC13 common reaches R6 upper (model2), R7 upper (model1) and D1 single pad/native3. D1 paired-right/native2 joins R7 lower/C9 upper/U2 native1. Photo-supported; not new bench readings. BAV99 identity and RF timing remain candidates." (at 38.1 222.25 0)
-      (effects (font (size 1.27 1.27)) (hide yes))
-    )
+		(property "CurrentEvidence" "v0.9.30 original IMG_2431: TP3/PIC13 common reaches R6 upper (model2), R7 upper (model1) and D1 single pad/native3. D1 paired-right/native2 joins R7 lower/C9 upper/U2 native1. Photo-supported; not new bench readings. BAV99 identity and RF timing remain candidates."
+			(at 38.1 222.25 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
 		(pin "1"
 			(uuid "e6cdf487-f086-4a57-ad6d-9f63970a6e36")
 		)
@@ -10900,9 +11021,15 @@
 				)
 			)
 		)
-    (property "CurrentEvidence" "v0.9.30 original IMG_2431: TP3/PIC13 common reaches R6 upper (model2), R7 upper (model1) and D1 single pad/native3. D1 paired-right/native2 joins R7 lower/C9 upper/U2 native1. Photo-supported; not new bench readings. BAV99 identity and RF timing remain candidates." (at 38.1 177.8 0)
-      (effects (font (size 1.27 1.27)) (hide yes))
-    )
+		(property "CurrentEvidence" "v0.9.30 original IMG_2431: TP3/PIC13 common reaches R6 upper (model2), R7 upper (model1) and D1 single pad/native3. D1 paired-right/native2 joins R7 lower/C9 upper/U2 native1. Photo-supported; not new bench readings. BAV99 identity and RF timing remain candidates."
+			(at 38.1 177.8 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
 		(pin "1"
 			(uuid "c36812e2-b275-4911-a699-d71c0e65ac68")
 		)
@@ -10982,9 +11109,15 @@
 				)
 			)
 		)
-    (property "CurrentEvidence" "v0.9.30 original IMG_2431: TP3/PIC13 common reaches R6 upper (model2), R7 upper (model1) and D1 single pad/native3. D1 paired-right/native2 joins R7 lower/C9 upper/U2 native1. Photo-supported; not new bench readings. BAV99 identity and RF timing remain candidates." (at 49.53 200.66 0)
-      (effects (font (size 1.27 1.27)) (hide yes))
-    )
+		(property "CurrentEvidence" "v0.9.30 original IMG_2431: TP3/PIC13 common reaches R6 upper (model2), R7 upper (model1) and D1 single pad/native3. D1 paired-right/native2 joins R7 lower/C9 upper/U2 native1. Photo-supported; not new bench readings. BAV99 identity and RF timing remain candidates."
+			(at 49.53 200.66 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
 		(pin "1"
 			(uuid "0b5ed7f4-ab42-4911-b8ce-00a4d72436a2")
 		)
@@ -11762,9 +11895,15 @@
 				(hide yes)
 			)
 		)
-    (property "CurrentEvidence" "v0.9.30 original IMG_2431: TP3/PIC13 common reaches R6 upper (model2), R7 upper (model1) and D1 single pad/native3. D1 paired-right/native2 joins R7 lower/C9 upper/U2 native1. Photo-supported; not new bench readings. BAV99 identity and RF timing remain candidates." (at 52.07 251.46 0)
-      (effects (font (size 1.27 1.27)) (hide yes))
-    )
+		(property "CurrentEvidence" "v0.9.30 original IMG_2431: TP3/PIC13 common reaches R6 upper (model2), R7 upper (model1) and D1 single pad/native3. D1 paired-right/native2 joins R7 lower/C9 upper/U2 native1. Photo-supported; not new bench readings. BAV99 identity and RF timing remain candidates."
+			(at 52.07 251.46 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
 		(pin "1"
 			(uuid "b9ddde4c-ce8c-4aba-a89a-9500681a45b9")
 		)
@@ -15169,9 +15308,15 @@
 				(hide yes)
 			)
 		)
-    (property "CurrentEvidence" "Provisional 2H / MMBTA55 PNP candidate; physical R->base1, L->emitter2/GND, S->collector3 is unverified. This is not ordinary positive-GPIO PNP switching. Preserve copper pending one Q3-cell polarity/orientation test; no NPN substitution by plausibility." (at 50.8 347.98 0)
-      (effects (font (size 1.27 1.27)) (hide yes))
-    )
+		(property "CurrentEvidence" "Provisional 2H / MMBTA55 PNP candidate; physical R->base1, L->emitter2/GND, S->collector3 is unverified. This is not ordinary positive-GPIO PNP switching. Preserve copper pending one Q3-cell polarity/orientation test; no NPN substitution by plausibility."
+			(at 50.8 347.98 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
 		(pin "1"
 			(uuid "11eeede7-757d-4755-b98c-e74ce21b9e4b")
 		)
@@ -15605,9 +15750,15 @@
 				(hide yes)
 			)
 		)
-    (property "CurrentEvidence" "Provisional 2H / MMBTA55 PNP candidate; physical R->base1, L->emitter2/GND, S->collector3 is unverified. This is not ordinary positive-GPIO PNP switching. Preserve copper pending one Q3-cell polarity/orientation test; no NPN substitution by plausibility." (at 104.14 347.98 0)
-      (effects (font (size 1.27 1.27)) (hide yes))
-    )
+		(property "CurrentEvidence" "Provisional 2H / MMBTA55 PNP candidate; physical R->base1, L->emitter2/GND, S->collector3 is unverified. This is not ordinary positive-GPIO PNP switching. Preserve copper pending one Q3-cell polarity/orientation test; no NPN substitution by plausibility."
+			(at 104.14 347.98 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
 		(pin "1"
 			(uuid "b523f1c6-5da6-4bab-a87d-fc0627246def")
 		)
@@ -16050,9 +16201,15 @@
 				(hide yes)
 			)
 		)
-    (property "CurrentEvidence" "Provisional 2H / MMBTA55 PNP candidate; physical R->base1, L->emitter2/GND, S->collector3 is unverified. This is not ordinary positive-GPIO PNP switching. Preserve copper pending one Q3-cell polarity/orientation test; no NPN substitution by plausibility." (at 157.48 347.98 0)
-      (effects (font (size 1.27 1.27)) (hide yes))
-    )
+		(property "CurrentEvidence" "Provisional 2H / MMBTA55 PNP candidate; physical R->base1, L->emitter2/GND, S->collector3 is unverified. This is not ordinary positive-GPIO PNP switching. Preserve copper pending one Q3-cell polarity/orientation test; no NPN substitution by plausibility."
+			(at 157.48 347.98 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
 		(pin "1"
 			(uuid "bb7052fb-914a-4fe5-9cda-886292841f73")
 		)
@@ -16495,9 +16652,15 @@
 				(hide yes)
 			)
 		)
-    (property "CurrentEvidence" "Provisional 2H / MMBTA55 PNP candidate; physical R->base1, L->emitter2/GND, S->collector3 is unverified. This is not ordinary positive-GPIO PNP switching. Preserve copper pending one Q3-cell polarity/orientation test; no NPN substitution by plausibility." (at 210.82 347.98 0)
-      (effects (font (size 1.27 1.27)) (hide yes))
-    )
+		(property "CurrentEvidence" "Provisional 2H / MMBTA55 PNP candidate; physical R->base1, L->emitter2/GND, S->collector3 is unverified. This is not ordinary positive-GPIO PNP switching. Preserve copper pending one Q3-cell polarity/orientation test; no NPN substitution by plausibility."
+			(at 210.82 347.98 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
 		(pin "1"
 			(uuid "4dff3bcf-a0ea-4943-a65d-4350e3b21aaa")
 		)
@@ -16940,9 +17103,15 @@
 				(hide yes)
 			)
 		)
-    (property "CurrentEvidence" "Provisional 2H / MMBTA55 PNP candidate; physical R->base1, L->emitter2/GND, S->collector3 is unverified. This is not ordinary positive-GPIO PNP switching. Preserve copper pending one Q3-cell polarity/orientation test; no NPN substitution by plausibility." (at 264.16 347.98 0)
-      (effects (font (size 1.27 1.27)) (hide yes))
-    )
+		(property "CurrentEvidence" "Provisional 2H / MMBTA55 PNP candidate; physical R->base1, L->emitter2/GND, S->collector3 is unverified. This is not ordinary positive-GPIO PNP switching. Preserve copper pending one Q3-cell polarity/orientation test; no NPN substitution by plausibility."
+			(at 264.16 347.98 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
 		(pin "1"
 			(uuid "925f49fd-3ea4-4c5d-ae26-0c84a9efd6d0")
 		)
@@ -18199,6 +18368,15 @@
 				(font
 					(size 1.27 1.27)
 				)
+			)
+		)
+		(property "CurrentEvidence" "INVENTORY UNVERIFIED (E07): inherited 10k PIR pull-up. Cited IMG_2435 establishes R37/R38/R39, but not R33. Physical presence/location and assumed J3.1/J3.2 endpoints remain unverified; retain pending identification, not as a measured value."
+			(at 393.7 353.06 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
 			)
 		)
 		(pin "1"
@@ -20030,6 +20208,396 @@
 			(project "mcp_standard_placements"
 				(path "/33a03d59-1679-4e9c-af69-68d086b519af"
 					(reference "U106")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "power:PWR_FLAG")
+		(at 91.44 81.28 0)
+		(unit 1)
+		(body_style 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(in_pos_files yes)
+		(dnp no)
+		(uuid "8f45243d-ce12-460d-8725-3f6778b17f01")
+		(property "Reference" "#FLG01"
+			(at 91.44 83.185 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Value" "PWR_FLAG"
+			(at 91.44 77.47 0.0)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide no)
+			)
+		)
+		(property "Footprint" ""
+			(at 91.44 81.28 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Datasheet" ""
+			(at 91.44 81.28 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Description" "Special symbol for telling ERC where power comes from"
+			(at 91.44 81.28 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(pin "1"
+			(uuid "47161cef-5f8b-422b-bace-99c77d7468ba")
+		)
+		(instances
+			(project "mcp_standard_placements"
+				(path "/33a03d59-1679-4e9c-af69-68d086b519af"
+					(reference "#FLG01")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "power:PWR_FLAG")
+		(at 53.34 53.34 0)
+		(unit 1)
+		(body_style 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(in_pos_files yes)
+		(dnp no)
+		(uuid "a53b7429-67d9-4b1f-818d-caf04783c24e")
+		(property "Reference" "#FLG02"
+			(at 53.34 55.245 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Value" "PWR_FLAG"
+			(at 53.34 49.53 0.0)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide no)
+			)
+		)
+		(property "Footprint" ""
+			(at 53.34 53.34 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Datasheet" ""
+			(at 53.34 53.34 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Description" "Special symbol for telling ERC where power comes from"
+			(at 53.34 53.34 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(pin "1"
+			(uuid "e9280712-688f-4f71-8f24-1ec2874b9373")
+		)
+		(instances
+			(project "mcp_standard_placements"
+				(path "/33a03d59-1679-4e9c-af69-68d086b519af"
+					(reference "#FLG02")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "power:PWR_FLAG")
+		(at 444.5 41.91 0)
+		(unit 1)
+		(body_style 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(in_pos_files yes)
+		(dnp no)
+		(uuid "2c0d67f2-7d03-4c55-bc7a-2c84af859d36")
+		(property "Reference" "#FLG03"
+			(at 444.5 43.815 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Value" "PWR_FLAG"
+			(at 444.5 38.099999999999994 0.0)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide no)
+			)
+		)
+		(property "Footprint" ""
+			(at 444.5 41.91 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Datasheet" ""
+			(at 444.5 41.91 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Description" "Special symbol for telling ERC where power comes from"
+			(at 444.5 41.91 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(pin "1"
+			(uuid "5df85c8b-017a-4540-bf40-1d1a743e6078")
+		)
+		(instances
+			(project "mcp_standard_placements"
+				(path "/33a03d59-1679-4e9c-af69-68d086b519af"
+					(reference "#FLG03")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "power:PWR_FLAG")
+		(at 307.34 302.26 0)
+		(unit 1)
+		(body_style 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(in_pos_files yes)
+		(dnp no)
+		(uuid "890e4307-71e2-4d3d-b0bc-5c08aac2d29a")
+		(property "Reference" "#FLG04"
+			(at 307.34 304.165 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Value" "PWR_FLAG"
+			(at 307.34 298.45 0.0)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide no)
+			)
+		)
+		(property "Footprint" ""
+			(at 307.34 302.26 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Datasheet" ""
+			(at 307.34 302.26 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Description" "Special symbol for telling ERC where power comes from"
+			(at 307.34 302.26 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(pin "1"
+			(uuid "492ff88a-8d31-4d04-add2-7fa22cc154cf")
+		)
+		(instances
+			(project "mcp_standard_placements"
+				(path "/33a03d59-1679-4e9c-af69-68d086b519af"
+					(reference "#FLG04")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "power:PWR_FLAG")
+		(at 563.88 172.72 0)
+		(unit 1)
+		(body_style 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(in_pos_files yes)
+		(dnp no)
+		(uuid "8b1d8565-9263-4370-9e65-ae0c58165e9a")
+		(property "Reference" "#FLG05"
+			(at 563.88 174.625 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Value" "PWR_FLAG"
+			(at 563.88 168.91 0.0)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide no)
+			)
+		)
+		(property "Footprint" ""
+			(at 563.88 172.72 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Datasheet" ""
+			(at 563.88 172.72 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Description" "Special symbol for telling ERC where power comes from"
+			(at 563.88 172.72 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(pin "1"
+			(uuid "643f8dbc-2a97-4b07-a075-c65ce426aa6d")
+		)
+		(instances
+			(project "mcp_standard_placements"
+				(path "/33a03d59-1679-4e9c-af69-68d086b519af"
+					(reference "#FLG05")
 					(unit 1)
 				)
 			)

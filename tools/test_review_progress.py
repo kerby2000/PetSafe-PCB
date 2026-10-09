@@ -42,7 +42,7 @@ class ReviewProgress(unittest.TestCase):
             self.model['unresolved_pins'].append('D2.L')
         for issue in self.work['issues']:
             issue['open_pads']=[p for p in issue['open_pads'] if p!='D2.L']
-        item=next(i for i in self.work['issues'] if i['id']=='E01')
+        item=next(i for i in self.work['issues'] if i['id']=='I01')
         item['open_pads'].append('D2.L')
         item.update(state='closed',resolution=dict(date='2099-01-01',result='Synthetic premature closure',evidence=['fixture']))
         with self.assertRaises(AssertionError):validate_issue_register(self.model,self.work)

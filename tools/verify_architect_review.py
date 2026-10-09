@@ -31,8 +31,9 @@ for ref in ['Q3','Q4','Q5','Q6','Q11','D1','R6','R7','TP3']:
  summary=components[ref]['current_summary']
  assert xml.findtext('./components/comp[@ref="'+ref+'"]/fields/field[@name="CurrentEvidence"]')==summary
  assert next(c for c in placements if c['reference']==ref)['properties']['CurrentEvidence']==summary
-v=read('evidence/validation.json');assert v['erc_total']==6 and v['erc_by_type'].get('isolated_pin_label',0)==0
-assert v['erc_by_type']['power_pin_not_driven']==5 and v['erc_by_type']['pin_to_pin']==1
-result=dict(result='PASS',revision=m['revision'],baseline_commit=record['baseline_commit'],bounded_rf_partition_change='PASS',all_other_partitions_unchanged='PASS',native_rf_paths='PASS',u6a_symbol_and_mapping_retained='PASS',review_file_and_photo_hashes='PASS',erc_total=v['erc_total'],power_flags_or_nc_added=False,measurement_contracts='See live_evidence_verification.json')
+v=read('evidence/validation.json');assert v['erc_total']==1 and v['erc_by_type']=={'pin_to_pin':1}
+assert len(read('evidence/power_source_declarations.json')['declarations'])==5
+assert read('evidence/finalization_audit.json')['physical_partitions_unchanged_from']=='ecd683d'
+result=dict(result='PASS',revision=m['revision'],baseline_commit=record['baseline_commit'],bounded_rf_partition_change='PASS',all_other_partitions_unchanged='PASS',native_rf_paths='PASS',u6a_symbol_and_mapping_retained='PASS',review_file_and_photo_hashes='PASS',erc_total=v['erc_total'],power_declarations='Five existing supply paths; see power_source_declarations.json',nc_added=False,measurement_contracts='See live_evidence_verification.json')
 (R/'evidence/architect_review_verification.json').write_text(json.dumps(result,indent=2)+'\n',encoding='utf-8')
 print(json.dumps(result,indent=2))

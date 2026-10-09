@@ -180,7 +180,8 @@ for ref in ['U4','R11','R14','R15','R16','R37','R39','Q1','U2','Q8','C5','LED1',
 status_pdf=PdfReader(R/'output/pdf/PetSafe_completion_status.pdf')
 # Status is a living report: validate content, not the historical two-page layout.
 status_text='\n'.join(p.extract_text() for p in status_pdf.pages)
-assert 'PIC connections' in status_text and 'Every remaining open pad' in status_text
+assert 'Remaining schematic work' in status_text and 'E06 -' in status_text
+assert 'R33 inventory' in status_text and 'dangling wire ends' in status_text
 pdfs={'output/pdf/PetSafe_single_sheet.pdf':1,'output/pdf/PetSafe_completion_status.pdf':len(status_pdf.pages),'output/pdf/PetSafe_PIC_GPIO_pin_map.pdf':1,'output/pdf/PetSafe_via_pair_next_check.pdf':1}
 for path,pages in pdfs.items():assert len(PdfReader(R/path).pages)==pages
 assert net('Q7.R')==net('R19.2')==net('VDD.1')

@@ -1,6 +1,6 @@
 # Current circuit interpretation
 
-Schematic v0.9.30, 2026-10-09. This is the current interpretation, not a chronological log. The [previous narrative](history/cleanup_v0928/docs/RECONSTRUCTION.md) is archived; older requests there are superseded. Use [the checklist](FINISHING_CHECKLIST.html) for remaining questions.
+Schematic v0.9.31, 2026-10-09. This is the current interpretation, not a chronological log. The [previous narrative](history/cleanup_v0928/docs/RECONSTRUCTION.md) is archived; older requests there are superseded. Use [the checklist](FINISHING_CHECKLIST.html) for remaining questions.
 
 ## Power and references
 
@@ -40,6 +40,6 @@ C23.2 and R25.1 form a series junction still named H_RX_DETECT. It **continues t
 
 ## Completion criteria
 
-The model and native drawing agree on 83 net partitions. Zero unassigned pads and the retained U6 pin4 NC do not certify all onward routes. ERC retains five undriven power checks and one U6/U6A output conflict. The user explicitly chose the regulator symbol over passive option pads; its warning remains. The D1 isolated-label finding is resolved by photo tracing. No power flags, exclusions or new NC declarations were introduced.
+The model and native drawing agree on 83 net partitions. Native geometry has zero dangling wire ends or pinless wire fragments. Zero unassigned pads and the retained U6 pin4 NC do not certify all onward routes. Five stock power-source declarations now resolve the undriven-input checks without changing physical partitions. Only the user-retained U6/U6A output conflict remains. No ERC exclusion or new NC was introduced. R33 is an additional inventory qualification: its cited photo does not establish its physical presence; its inherited PIR pull-up remains unverified under E07.
 
 Topology, device behavior, 44 ceramic values, LED footprint/channel map and remaining geometry are tracked separately. A routed PCB, actual layer stack, firmware and powered validation are separate milestones. [Recorded measurements](MEASUREMENTS.md) are user evidence; [library choices](LIBRARIES_AND_ALTERNATIVES.md) retain candidate qualifications.

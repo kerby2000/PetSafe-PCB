@@ -1,5 +1,5 @@
 {
-  "revision": "v0.9.30",
+  "revision": "v0.9.31",
   "instruments": [
     "LCR meter",
     "multimeter"
@@ -486,12 +486,12 @@
       "observed": "10k",
       "displayed": "10k",
       "marking": "01C",
-      "value_or_identity": "Nominal resistance recovered from marking; tolerance and exact maker not established",
+      "value_or_identity": "INVENTORY UNVERIFIED (E07): inherited 10k PIR pull-up. Cited IMG_2435 establishes R37/R38/R39, but not R33. Physical presence/location and assumed J3.1/J3.2 endpoints remain unverified; retain pending identification, not as a measured value.",
       "footprint": "Resistor_SMD:R_0603_1608Metric",
       "footprint_confidence": "medium - revised family estimate",
       "footprint_basis": "User reports R8 approximately 1.6 x 0.77 mm, consistent with 0603 (1608 metric). Repeated fitted resistor family revised using R8 as a scale reference. This individual body has not been measured; earlier 0805 estimate superseded.",
       "open_pads": 0,
-      "next_method": "No immediate measurement requested",
+      "next_method": "Locate physical R33 first; E07. No resistance measurement requested yet.",
       "photos": "IMG_2435.jpg"
     },
     {
@@ -1821,12 +1821,12 @@
       "observed": "UNKNOWN",
       "displayed": "4P / unidentified",
       "marking": "4P",
-      "value_or_identity": "Marking 4P. Diode readings support R -> S -> L series-junction behavior in circuit. Photo R=upper-left, L=upper-right, S=single lower. User confirms R-C20 lower 1 ohm; L-ANT2/R46 upper; S-R46 lower. R46 unpopulated. S-ANT2 OL; S-GND 700 kohm, S-VREF 1.32 Mohm. Outer pads show high resistance to VDD/GND. Remaining: All three D2 local destinations are resolved. Exact part, ratings and physical package numbering remain unknown; internal series topology is probable from in-circuit tests. Other RX_A_PLUS branches remain inferred. The purpose/value of the empty R46 option is unknown; no resistor is fitted.",
+      "value_or_identity": "Manufacturer candidate datasheets and pin tables exist. D2 local wiring is complete; measured R -> S -> L diode behavior supports a series pair. Remaining: Exact fitted identity/ratings remain candidates for D1-D6, Q1-Q8/Q11, U1/U2/U6. The 4P marking alone does not identify three-pin D2; a manufacturer 4P code for a two-pin diode is incompatible.",
       "footprint": "Package_TO_SOT_SMD:SOT-23",
       "footprint_confidence": "datasheet/package candidate",
       "footprint_basis": "Existing assignment; see component identity evidence.",
       "open_pads": 0,
-      "next_method": "No further D2 rail or local continuity sweep is needed. Seek a manufacturer 4P marking/package match consistent with the series-junction measurements; retain the explicit equivalent-circuit assumption if identity cannot be recovered. Do not fit or bridge R46.",
+      "next_method": "Resolve electrical risks through E03/E04/E07/E08/E09/E10. For remaining ambiguity retain the supported equivalent circuit and disclose ratings not established; no sharper-marking request or repeat D2 rail sweep. Exact manufacturer recovery is not always possible with a meter.",
       "photos": "IMG_2434.jpg"
     },
     {
@@ -1841,7 +1841,7 @@
       "footprint_confidence": "datasheet/package candidate",
       "footprint_basis": "Existing assignment; see component identity evidence.",
       "open_pads": 0,
-      "next_method": "Use electrical pad behavior and package/marking evidence for specific candidates. Do not request sharper photos where the existing marking is already legible.",
+      "next_method": "Resolve electrical risks through E03/E04/E07/E08/E09/E10. For remaining ambiguity retain the supported equivalent circuit and disclose ratings not established; no sharper-marking request or repeat D2 rail sweep. Exact manufacturer recovery is not always possible with a meter.",
       "photos": "IMG_2434.jpg"
     },
     {
@@ -1856,7 +1856,7 @@
       "footprint_confidence": "datasheet/package candidate",
       "footprint_basis": "Existing assignment; see component identity evidence.",
       "open_pads": 0,
-      "next_method": "Use electrical pad behavior and package/marking evidence for specific candidates. Do not request sharper photos where the existing marking is already legible.",
+      "next_method": "Resolve electrical risks through E03/E04/E07/E08/E09/E10. For remaining ambiguity retain the supported equivalent circuit and disclose ratings not established; no sharper-marking request or repeat D2 rail sweep. Exact manufacturer recovery is not always possible with a meter.",
       "photos": "IMG_2437.jpg"
     },
     {
@@ -1871,7 +1871,7 @@
       "footprint_confidence": "datasheet/package candidate",
       "footprint_basis": "Existing assignment; see component identity evidence.",
       "open_pads": 0,
-      "next_method": "Use electrical pad behavior and package/marking evidence for specific candidates. Do not request sharper photos where the existing marking is already legible.",
+      "next_method": "Resolve electrical risks through E03/E04/E07/E08/E09/E10. For remaining ambiguity retain the supported equivalent circuit and disclose ratings not established; no sharper-marking request or repeat D2 rail sweep. Exact manufacturer recovery is not always possible with a meter.",
       "photos": "IMG_2437.jpg"
     },
     {
@@ -1886,7 +1886,7 @@
       "footprint_confidence": "datasheet/package candidate",
       "footprint_basis": "Existing assignment; see component identity evidence.",
       "open_pads": 0,
-      "next_method": "No further D6 routing or polarity checks. Resolve actual breakdown/type only with appropriate part evidence or a controlled isolated test if required; diode mode does not measure breakdown.",
+      "next_method": "No more continuity or ordinary diode tests. Agent seeks a matching primary marking specification; if still ambiguous, plan a current-limited isolated breakdown test. Do not apply a high-voltage test through the PIC.",
       "photos": "IMG_2437.jpg"
     },
     {
@@ -1901,7 +1901,7 @@
       "footprint_confidence": "medium - measured body, photo-estimated lead span",
       "footprint_basis": "User measured a 6 x 6 x 4 mm body plus 2 mm actuator (about 6 mm overall). Photo shows four SMD gullwing leads; approximate pad-centre span from photo/body ratio is about 8 mm, consistent with the stock PTS645 land pattern (7.96 x 4.50 mm centres). Dimensions select a candidate family, not an exact manufacturer. Library x43 footprint/3D model denotes 4.3 mm overall and must not be used as the measured 6 mm housing.",
       "open_pads": 0,
-      "next_method": "Only verify the switch contact behavior if required: released versus pressed continuity of opposite rows. Do not repeat the annotated C35/R40/R41 joins or R41-to-VPP destination. No broad resistor-to-rail sweep.",
+      "next_method": "Later unpowered check: measure across the two right-hand S1 legs, released then pressed, and each same-row left/right pair released. This checks the four-pad mapping without repeating any resistor routing.",
       "photos": "IMG_2438.jpg"
     },
     {
@@ -1976,7 +1976,7 @@
       "footprint_confidence": "unresolved",
       "footprint_basis": "User-measured square body 1.5 x 1.5 mm, red/green dual LED; four contacts visible in IMG_2432. Installed KiCad10/MCP search found no validated matching dual-LED footprint. LED_SK6812_EC15_1.5x1.5mm has four 0.5 x 0.5 mm pads on 0.9 mm centres for a different addressable package; body-size equality does not verify its land pattern or numbering. LED1 footprint remains unassigned pending a matching vendor drawing/part.",
       "open_pads": 0,
-      "next_method": "Only if channel identification is needed, use diode mode from each resistor-fed LED contact toward its grounded contact and record the emitted colour; do not repeat known board-routing checks. Match J5 wire positions to U5 outputs by continuity.; LED1 body is already measured at 1.5 x 1.5 mm. Obtain the pad geometry/numbering or matching vendor drawing; no repeat body-size request.",
+      "next_method": "Later diode-mode check: red probe on each resistor-fed LED contact and black on its common-ground contact; record colour/voltage or OL. Match motor lead positions to U5 output5/output8 only if not visibly traceable.; LED1 body is already measured at 1.5 x 1.5 mm. Obtain the pad geometry/numbering or matching vendor drawing; no repeat body-size request.",
       "photos": "IMG_2432.jpg"
     },
     {

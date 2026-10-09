@@ -13,3 +13,7 @@ Key superseded claims: no measurements supplied; two/eight GPIO pads still open;
 ## v0.9.28 narrative cleanup
 
 [Archived summaries](cleanup_v0928/README.md) preserve the pre-v0.9.29 text and its old requests. Original bytes and SHA-256 hashes are recorded in `evidence/cleanup_v0929.json` at repository root. Relative links in these preserved files describe their original location. Current pages correct TP9/C49, R41-VPP, PIC21/TP16, D6 polarity, U6A native numbers, C5 geometry and L1/L2 readings. No measurement history or electrical net was erased.
+
+## v0.9.30 remaining-work cleanup
+
+The [previous register](v0.9.30-before-finalization/evidence/remaining_work.json) and [raw measurement queue/results](v0.9.30-before-finalization/evidence/finishing_measurements.json) preserve all prior observations. Old HTML and PDF snapshots retain their original relative-link context. SHA-256 hashes are in `evidence/cleanup_v0931.json` at repository root. The active register now omits completed substeps and duplicates; D2 identity is under I01, empty options are documented scope limitations, and PCB/daughterboard/firmware work is deferred explicitly rather than declared complete. See [the current audit response](../reviews/2026-10-09_finalization_cleanup_v0.9.31.md).

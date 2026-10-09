@@ -86,9 +86,12 @@ for key in ['completed_tests','cancelled_tests','photo_updates','photos']:
 reader=PdfReader(ROOT/'output/pdf/PetSafe_completion_status.pdf')
 pdftext='\n'.join(p.extract_text() for p in reader.pages)
 for i in ids:assert i+' -' in pdftext,i
-for i in s['closed_items']:
-    assert i['id']+' -' in pdftext, 'Closed issue missing from PDF history'
-    assert i['resolution']['result'] in checklist, 'Closed issue result missing from HTML history'
+assert not s['closed_items'], 'Resolved groups belong in history, not the active register'
+assert 'history/README.md' in checklist
+archive=read('evidence/cleanup_v0931.json')
+for name,digest in archive['archived_sha256'].items():
+    assert hashlib.sha256((ROOT/archive['archived_root']/name).read_bytes()).hexdigest()==digest
+assert 'Already resolved' not in checklist and 'Closed issues retained' not in checklist
 for p in s['current_fitted_open_pads']:assert p in pdftext,p
 for ref in s['unknown_ceramic_values']:assert ref in pdftext,ref
 assert f'{len(s["current_gpio_pins"])} open PIC pads' in ' '.join(pdftext.split())

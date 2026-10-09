@@ -1,9 +1,9 @@
 {
   "date": "2026-10-09",
-  "basis_revision": "v0.9.30",
-  "status": "NO_ACTIVE_MEASUREMENTS",
-  "scope": "Completed measurements retained. Independent review/photo audit corrected RF routing; next device-behavior check remains to be prepared, with no bulk or repeated visible-trace request.",
-  "setup": "No active measurement request.",
+  "basis_revision": "v0.9.31",
+  "status": "AWAITING_Q3_DIODE_TESTS",
+  "scope": "One transistor-junction test; no repeated continuity of visible traces.",
+  "setup": "Disconnect the battery and programmer. Use diode-test mode on the Fluke 179 or 87 III. Red probe = From; black probe = To. Report volts or OL, not resistance.",
   "photos": [
     {
       "id": "receiver",
@@ -464,10 +464,109 @@
           "role": "reference"
         }
       }
+    },
+    {
+      "id": "q3-junctions",
+      "source": "photos/originals/IMG_2433.jpg",
+      "coordinate_space": [
+        1368,
+        1823
+      ],
+      "view_box": [
+        1030,
+        370,
+        325,
+        465
+      ],
+      "title": "Q3 next to R13 and C10",
+      "points": {
+        "QL": {
+          "xy": [
+            1115,
+            563
+          ],
+          "label": [
+            1062,
+            453
+          ],
+          "description": "Q3 upper-left paired pad in this photo"
+        },
+        "QR": {
+          "xy": [
+            1233,
+            563
+          ],
+          "label": [
+            1301,
+            453
+          ],
+          "description": "Q3 upper-right paired pad, visibly fed by R13"
+        },
+        "QS": {
+          "xy": [
+            1173,
+            723
+          ],
+          "label": [
+            1285,
+            774
+          ],
+          "description": "Q3 single lower pad, visibly continuing to C10"
+        }
+      }
     }
   ],
-  "tests": [],
-  "interpretation": "D6 junction direction is supported in-circuit; exact manufacturer/type and breakdown voltage remain unverified. U6 pin4 no-connect has user/photo evidence. No blind ERC suppressions were added.",
+  "tests": [
+    {
+      "id": "B31",
+      "group": "q3-junctions",
+      "from": "QL",
+      "to": "QR",
+      "mode": "diode",
+      "purpose": "Measure forward voltage or OL to identify the common junction/base direction."
+    },
+    {
+      "id": "B32",
+      "group": "q3-junctions",
+      "from": "QR",
+      "to": "QL",
+      "mode": "diode",
+      "purpose": "Measure forward voltage or OL to identify the common junction/base direction."
+    },
+    {
+      "id": "B33",
+      "group": "q3-junctions",
+      "from": "QL",
+      "to": "QS",
+      "mode": "diode",
+      "purpose": "Measure forward voltage or OL to identify the common junction/base direction."
+    },
+    {
+      "id": "B34",
+      "group": "q3-junctions",
+      "from": "QS",
+      "to": "QL",
+      "mode": "diode",
+      "purpose": "Measure forward voltage or OL to identify the common junction/base direction."
+    },
+    {
+      "id": "B35",
+      "group": "q3-junctions",
+      "from": "QR",
+      "to": "QS",
+      "mode": "diode",
+      "purpose": "Measure forward voltage or OL to identify the common junction/base direction."
+    },
+    {
+      "id": "B36",
+      "group": "q3-junctions",
+      "from": "QS",
+      "to": "QR",
+      "mode": "diode",
+      "purpose": "Measure forward voltage or OL to identify the common junction/base direction."
+    }
+  ],
+  "interpretation": "PNP: two forward readings toward a common black-probe base. NPN: two forward readings away from a common red-probe base. In-circuit paths can obscure this; this first test cannot reliably distinguish collector and emitter.",
   "next_stages": [
     {
       "stage": "Resolve the remaining functional paths",
@@ -513,7 +612,7 @@
     "C5, S1 and LED1 body dimensions; L1/L2 readings already recorded.",
     "TP3/R6/R7/D1 visible local joins resolved by the IMG_2431 photo audit; timing and device behavior remain separate."
   ],
-  "deferred": "All catalog pads have modeled local nets or the supported U6 pin4 NC. Optional device identities/values and J6 role remain qualified. PCB routing, layer-stack confirmation, daughterboard internals and firmware are separate scope.",
+  "deferred": "Other measurements are staged in the current checklist, not requested in this batch.",
   "sources": [
     "evidence/remaining_work.json",
     "evidence/reconstruction.json",
@@ -776,9 +875,9 @@
       "result": "OL"
     }
   ],
-  "batch_title": "No active measurement request",
-  "instructions": "The previous D2/D3/D6, PIC/PIR and open-pad batches are complete. Use the current remaining-work list; completed readings below remain evidence, not requests to repeat.",
-  "result_summary": "Completed readings and photo corrections are preserved below and in their dated evidence records. Current results: D6 A=GND/K=VPP; U6 pin5=VIN; PIC21=TP16/Q2, not VREF; D2/D3 local routes and R41-VPP resolved. C49 now connects ANT2 to GND. U6A native numbering is U106.3 input, U106.2 output, U106.1 ground; old connector-number descriptions in historical annotations are superseded.",
+  "batch_title": "Q3: identify junction polarity and base pad",
+  "instructions": "Only one transistor, Q3 beside R13 and C10. QL and QR are its two upper contacts; QS is its single lower contact. Probe the metal solder pads. Leave all components fitted for this first test.",
+  "result_summary": "No results for this batch yet.",
   "cancelled_tests": [
     {
       "id": "B20",

@@ -1,0 +1,55 @@
+{
+  "revision": "v0.9.31",
+  "symbol": "power:PWR_FLAG",
+  "source": "KiCad 10 stock library",
+  "declarations": [
+    {
+      "reference": "#FLG01",
+      "net": "GND",
+      "position_mm": [
+        91.44,
+        81.28
+      ],
+      "basis": "BATTERY(-) provides the return. This power flag declares an external source, not a new copper link."
+    },
+    {
+      "reference": "#FLG02",
+      "net": "H_LDO_IN",
+      "position_mm": [
+        53.34,
+        53.34
+      ],
+      "basis": "VSYS reaches U1 VIN through L2. A passive inductor does not propagate KiCad power-output pin type."
+    },
+    {
+      "reference": "#FLG03",
+      "net": "VSYS",
+      "position_mm": [
+        444.5,
+        41.91
+      ],
+      "basis": "User confirmed Q1.L -> U5 pin4 and L1/L2 supply sides. Q1 passive terminals do not declare a power source to ERC."
+    },
+    {
+      "reference": "#FLG04",
+      "net": "H_AUX_IN",
+      "position_mm": [
+        307.34,
+        302.26
+      ],
+      "basis": "VDD from U1 reaches U6 VIN through R37. Passive resistor output requires a power declaration."
+    },
+    {
+      "reference": "#FLG05",
+      "net": "H_RX_VDD",
+      "position_mm": [
+        563.88,
+        172.72
+      ],
+      "basis": "Modeled switched supply VDD -> Q7 -> R20 -> U3 pin8. Flag declares intended power distribution only; Q7 identity/switching and rail voltage remain E08/E09 open."
+    }
+  ],
+  "does_not_assert": "Measured voltage, waveform, fitted identity or a new net connection.",
+  "u6a": "Retain regulator symbol and visible ERC conflict at user request.",
+  "library_registration": "Project table complete; global KiCad 10 table registered. MCP global register incorrectly selected 9.0; only its new entry was removed and 10.0 was corrected explicitly. GUI reload not verified."
+}

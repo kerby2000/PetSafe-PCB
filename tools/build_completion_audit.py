@@ -21,6 +21,8 @@ for c in m['components']:
     elif kind=='C':
         gap='Capacitance not recovered; displayed numerical values are estimates'
         method=['Read sleeve and measure can/lead spacing' if ref=='C5' else 'LCR: in-circuit screening first; isolate one terminal if an individual value is needed']
+    elif ref=='R33':
+        gap=component_summary(c);method=['Locate physical R33 first; E07. No resistance measurement requested yet.']
     elif kind=='R':
         gap='Nominal resistance recovered from marking; tolerance and exact maker not established'
     elif kind=='L':
@@ -29,11 +31,11 @@ for c in m['components']:
         gap='Board pad: no component value required'
     else:
         gap=component_summary(c)
-        issue_id={'D2':'E01','D3':'I01','D4':'I01','D5':'I01','D6':'E10','LED1':'I02','S1':'E05'}.get(ref)
+        issue_id={'D2':'I01','D3':'I01','D4':'I01','D5':'I01','D6':'E10','LED1':'I02','S1':'E05'}.get(ref)
         if issue_id:
             method=[next(i['next_action'] for i in status['items'] if i['id']==issue_id)]
     if ref=='D2':
-        issue=next(i for i in status['items'] if i['id']=='E01')
+        issue=next(i for i in status['items'] if i['id']=='I01')
         gap=issue['known']+' Remaining: '+issue['unknown']
         method=[issue['next_action']]
     if openpins[ref] and pop!='DNP':method+=['Targeted continuity for '+str(openpins[ref])+' open physical pads']
@@ -59,24 +61,21 @@ for r in rows:
 issue_cards=[]
 for i in status['items']:
     issue_cards.append(f'<article id="{e(i["id"])}"><h3>{e(i["id"])} - {e(i["area"])}</h3><p><b>Known:</b> {e(i["known"])}</p><p><b>Still uncertain:</b> {e(i["unknown"])}</p><p><b>Next useful check:</b> {e(i["next_action"])}</p><p><b>Finished when:</b> {e(i["closed_when"])}</p></article>')
-closed_cards=''.join(f'<article id="{e(i["id"])}"><h3>{e(i["id"])} - closed</h3><p>{e(i["resolution"]["result"])}</p><p>Evidence: {e(str(i["resolution"]["evidence"]))}</p></article>' for i in status['closed_items'])
-plan=''.join('<li><b>'+e(g['title'])+'</b> - '+e(g['summary'])+' '+e(g['next_action'])+'</li>' for g in status['finish_plan'])
-settled=''.join('<li>'+e(t)+'</li>' for t in status['settled_summary'])
-milestones=''.join(f'<p><b>{e(i["name"])}:</b> {e(i["criterion"])}</p>' for i in status['milestones'])
-page=f'''<!doctype html><html lang="en"><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>PetSafe - current completion checklist</title>
-<style>body{{font:15px/1.55 system-ui;background:#f3f6f4;color:#173b35;margin:30px auto;max-width:1200px;padding:0 20px}}a{{color:#006f64}}h1{{font-size:34px}}.cards{{display:flex;gap:12px;flex-wrap:wrap}}.cards div,article{{padding:18px;background:white;border:1px solid #bfd0c6;border-radius:8px;margin:12px 0}}.cards strong{{display:block;font-size:25px}}article p{{margin:8px 0}}.table{{overflow:auto;max-height:75vh;background:white}}table{{border-collapse:collapse;font-size:13px;min-width:1500px}}td,th{{padding:10px;border-bottom:1px solid #d5e0da;text-align:left;vertical-align:top}}th{{position:sticky;top:0;background:#dce8e1}}td:nth-child(5),td:nth-child(9){{min-width:270px}}input{{font:inherit;padding:12px;width:550px;max-width:90%;margin:20px 0}}.note{{background:#fff1cc;padding:15px}}li{{margin:8px 0}}</style>
-<a href="../index.html">Schematic overview</a> | <a href="../output/pdf/PetSafe_completion_status.pdf">Printable status</a> | <a href="history/README.md">Investigation history</a>
-<h1>What remains to finish</h1><p>{e(status['revision'])} schematic; review {e(status['review_revision'])}. All {status['catalog_entries']} catalog entries are on one sheet. This register covers known uncertainties; it does not certify unseen copper or operating behavior.</p>
-<div class="cards"><div><strong>{status['footprints']['assigned']} / {status['catalog_entries']}</strong>candidate footprints assigned</div><div><strong>{len(status['unknown_ceramic_values'])}</strong>ceramic values unrecovered</div><div><strong>{len(status['current_fitted_open_pads'])}</strong>open pads on populated entries</div><div><strong>{len(status['current_gpio_pins'])}</strong>open PIC pads in the model</div></div>
-<p class="note"><b>What the counts mean:</b> The {status['unresolved_physical_pins']} open pads include {len(status['current_dnp_open_pads'])} on empty options. A modeled wire can still be inferred. {status['erc_by_type'].get('isolated_pin_label',0)} isolated labels also need attention. No PIC pin has been assumed unused. There is no routed KiCad PCB.</p>
-<h2>Finish in this order</h2><ol>{plan}</ol><p>No active measurement batch is waiting for the owner. The entries below describe remaining work, not a request to perform every listed method now.</p>
-<details><summary>Already resolved</summary><ul>{settled}</ul></details><h2>Completion milestones</h2>{milestones}
-<p><b>Open populated-entry pads:</b> {e(', '.join(status['current_fitted_open_pads']) or 'None')}. <b>Open empty-option pads:</b> {e(', '.join(status['current_dnp_open_pads']) or 'None')}. TP9 was removed as unsupported; C49 is wired ANT2-to-GND. U6 pin4 is intentionally unused; pin5 externally joins VIN at 1 ohm.</p>
-<p><b>Unrecovered ceramic values ({len(status['unknown_ceramic_values'])}):</b> {e(', '.join(status['unknown_ceramic_values']))}. C5 is 470 uF / 16 V. L1/L2 readings are 1.4/2.2 uH; conditions and exact type/ratings remain unreported. Package size does not establish ceramic capacitance or dielectric.</p>
-<h2>Remaining questions and closure criteria</h2>{''.join(issue_cards)}
-<details><summary>Closed issues retained as history</summary>{closed_cards}</details><h2>Every component: values, footprint confidence and open pads</h2><p>Question marks denote candidates; the tables identify the actual evidence needed. No generic request to remeasure every resistor is pending.</p>
-<input id="q" type="search" placeholder="Filter by reference, LCR, continuity, footprint..." aria-label="Filter components"><div class="table"><table><thead><tr><th>Reference</th><th>Population</th><th>Observed</th><th>Proposed</th><th>Value / identity evidence</th><th>Stock footprint</th><th>Package confidence</th><th>Open pads</th><th>How to resolve</th><th>Photos</th></tr></thead><tbody>{''.join(body)}</tbody></table></div>
-<p><a href="../evidence/completion_audit.csv">Component audit CSV</a> | <a href="../evidence/remaining_work.json">Maintained question register</a> | <a href="../evidence/proposed_nets.csv">All modeled net groups</a> | <a href="MEASUREMENTS.md">Recorded measurements</a></p>
-<script>document.querySelector('#q').oninput=e=>{{let q=e.target.value.toLowerCase();document.querySelectorAll('tbody tr').forEach(r=>r.hidden=!r.textContent.toLowerCase().includes(q))}}</script></html>'''
+plan=''.join('<li><b>'+e(g['title'])+'</b> - '+e(g['summary'])+'</li>' for g in status['finish_plan'])
+auditpath=R/'evidence/finalization_audit.json'
+audit=json.loads(auditpath.read_text()) if auditpath.exists() else {}
+page=f'''<!doctype html><html lang="en"><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>PetSafe remaining work</title>
+<style>body{{font:16px/1.55 system-ui;background:#edf3ef;color:#193e36;max-width:1120px;margin:28px auto;padding:0 22px}}a{{color:#006e62}}h1{{font-size:36px}}article,.card{{background:white;border:1px solid #bfd0c6;border-radius:9px;padding:20px;margin:16px 0}}article p{{margin:9px 0}}.metrics{{display:flex;gap:15px;flex-wrap:wrap}}.metrics div{{background:#173e36;color:white;padding:16px;border-radius:8px}}.metrics strong{{font-size:27px;display:block}}li{{margin:8px 0}}</style>
+<a href="../index.html">Schematic overview</a> | <a href="FINISHING_MEASUREMENTS.html">Next measurement: Q3</a> | <a href="../output/pdf/PetSafe_completion_status.pdf">Printable remaining work</a> | <a href="history/README.md">History and resolved items</a>
+<h1>What remains to finish</h1><p>{e(status['revision'])} Â· {len(status['items'])} active issues. Each card states what is established, the specific gap and its closure criterion.</p>
+<div class="metrics"><div><strong>{len(status['current_fitted_open_pads'])}</strong>unassigned fitted pads</div><div><strong>{audit.get('dangling_wire_ends','pending')}</strong>dangling wire ends</div><div><strong>{status['erc_total']}</strong>retained ERC conflict</div><div><strong>{len(status['unknown_ceramic_values'])}</strong>unknown ceramic values</div></div>
+<div class="card"><b>Next:</b> <a href="FINISHING_MEASUREMENTS.html">Six diode-mode readings on Q3</a>, with labelled contacts. Other listed tests are staged, not requested together. No repeat of established local connections.</div>
+<h2>Finish in this order</h2><ol>{plan}</ol>
+<p><b>Audit boundary:</b> {status['modeled_nets']} modeled net partitions agree with KiCad. Zero open pads or wire tails does not establish hidden copper or circuit operation. Three PIC branches (RA0/C25, RC3/TP11, RC7/TP17) remain under E06; R33 inventory is explicitly under E07. <a href="../evidence/finalization_audit.json">Detailed audit</a>.</p>
+<h2>Remaining questions</h2>{''.join(issue_cards)}
+<div class="card"><h2>Unrecovered ceramic values</h2><p>{e(', '.join(status['unknown_ceramic_values']))}</p><p>Values belong to V01; package geometry cannot determine capacitance. C5 and L1/L2 readings are already retained in the inventory.</p></div>
+<h2>Scope and accepted limitations</h2><p>{e(json.loads((R/'evidence/remaining_work.json').read_text())['scope_note'])}</p><p>{e(json.loads((R/'evidence/remaining_work.json').read_text())['accepted_option_limitations'])}</p>
+<p>The library is registered for KiCad 10. Open the project .kicad_pro to load its project library table; an already-open editor may need reopening. Five stock PWR_FLAG annotations describe existing source paths. They do not certify measured voltages or Q7/Q8 operation. The U6/U106 regulator conflict remains visible at your request.</p>
+<p><a href="../evidence/completion_audit.csv">Full component audit</a> | <a href="../evidence/remaining_work.json">Active register</a> | <a href="../evidence/finalization_review_v0931.json">Disposition of every previous item</a> | <a href="../evidence/proposed_nets.csv">Modeled nets</a></p></html>'''
 (R/'docs/FINISHING_CHECKLIST.html').write_text(page,encoding='utf-8')
-print({k:v for k,v in report.items() if k!='components'})
+print('Remaining-only checklist: '+str(len(status['items']))+' issues.')

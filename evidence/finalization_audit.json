@@ -1,0 +1,1156 @@
+{
+  "revision": "v0.9.31",
+  "result": "PASS",
+  "schematic_sha256": "8dc8824f2ac055dae037a325f1e3acb479de09b6daca56bdbe60166de8af6f33",
+  "physical_net_partitions": 83,
+  "physical_partitions_unchanged_from": "ecd683d",
+  "physical_pad_crosswalk_unchanged": true,
+  "intentional_nc_unchanged": [
+    "U6.L1 / native pin4"
+  ],
+  "dangling_wire_ends": 0,
+  "wire_islands_without_pins": 0,
+  "native_wire_segments": 509,
+  "unassigned_model_pads": 0,
+  "isolated_modeled_nets": [],
+  "erc": {
+    "pin_to_pin": 1
+  },
+  "erc_exclusions": [],
+  "unchanged_default_ignored_checks": [
+    "footprint_filter",
+    "four_way_junction",
+    "simulation_model_issue",
+    "single_global_label"
+  ],
+  "source_flags": [
+    {
+      "reference": "#FLG01",
+      "net": "GND",
+      "position_mm": [
+        91.44,
+        81.28
+      ],
+      "basis": "BATTERY(-) provides the return. This power flag declares an external source, not a new copper link."
+    },
+    {
+      "reference": "#FLG02",
+      "net": "H_LDO_IN",
+      "position_mm": [
+        53.34,
+        53.34
+      ],
+      "basis": "VSYS reaches U1 VIN through L2. A passive inductor does not propagate KiCad power-output pin type."
+    },
+    {
+      "reference": "#FLG03",
+      "net": "VSYS",
+      "position_mm": [
+        444.5,
+        41.91
+      ],
+      "basis": "User confirmed Q1.L -> U5 pin4 and L1/L2 supply sides. Q1 passive terminals do not declare a power source to ERC."
+    },
+    {
+      "reference": "#FLG04",
+      "net": "H_AUX_IN",
+      "position_mm": [
+        307.34,
+        302.26
+      ],
+      "basis": "VDD from U1 reaches U6 VIN through R37. Passive resistor output requires a power declaration."
+    },
+    {
+      "reference": "#FLG05",
+      "net": "H_RX_VDD",
+      "position_mm": [
+        563.88,
+        172.72
+      ],
+      "basis": "Modeled switched supply VDD -> Q7 -> R20 -> U3 pin8. Flag declares intended power distribution only; Q7 identity/switching and rail voltage remain E08/E09 open."
+    }
+  ],
+  "local_only_branches": {
+    "PIC_RA0_FILTER": "E06",
+    "PIC_RC3": "E06",
+    "PIC_RC7_TP17": "E06"
+  },
+  "newly_sharpened_gap": "E07: physical R33 is not established by its cited photograph; assumed pull-up retained pending inventory resolution.",
+  "active_issue_count": 12,
+  "uncertainty_coverage": [
+    {
+      "reference": "R3",
+      "issues": [
+        "E06"
+      ],
+      "population": "populated"
+    },
+    {
+      "reference": "R4",
+      "issues": [
+        "E06"
+      ],
+      "population": "populated"
+    },
+    {
+      "reference": "R5",
+      "issues": [],
+      "population": "populated"
+    },
+    {
+      "reference": "R6",
+      "issues": [
+        "E06"
+      ],
+      "population": "populated"
+    },
+    {
+      "reference": "R7",
+      "issues": [
+        "E06"
+      ],
+      "population": "populated"
+    },
+    {
+      "reference": "R8",
+      "issues": [],
+      "population": "populated"
+    },
+    {
+      "reference": "R9",
+      "issues": [],
+      "population": "populated"
+    },
+    {
+      "reference": "R10",
+      "issues": [],
+      "population": "populated"
+    },
+    {
+      "reference": "R11",
+      "issues": [],
+      "population": "populated"
+    },
+    {
+      "reference": "R13",
+      "issues": [],
+      "population": "populated"
+    },
+    {
+      "reference": "R14",
+      "issues": [],
+      "population": "populated"
+    },
+    {
+      "reference": "R15",
+      "issues": [],
+      "population": "populated"
+    },
+    {
+      "reference": "R16",
+      "issues": [],
+      "population": "populated"
+    },
+    {
+      "reference": "R18",
+      "issues": [
+        "E08"
+      ],
+      "population": "populated"
+    },
+    {
+      "reference": "R19",
+      "issues": [
+        "E08"
+      ],
+      "population": "populated"
+    },
+    {
+      "reference": "R20",
+      "issues": [
+        "E08"
+      ],
+      "population": "populated"
+    },
+    {
+      "reference": "R21",
+      "issues": [
+        "E08"
+      ],
+      "population": "populated"
+    },
+    {
+      "reference": "R22",
+      "issues": [
+        "E08"
+      ],
+      "population": "populated"
+    },
+    {
+      "reference": "R23",
+      "issues": [
+        "E08"
+      ],
+      "population": "populated"
+    },
+    {
+      "reference": "R24",
+      "issues": [],
+      "population": "populated"
+    },
+    {
+      "reference": "R25",
+      "issues": [
+        "E08"
+      ],
+      "population": "populated"
+    },
+    {
+      "reference": "R26",
+      "issues": [],
+      "population": "populated"
+    },
+    {
+      "reference": "R27",
+      "issues": [],
+      "population": "populated"
+    },
+    {
+      "reference": "R28",
+      "issues": [],
+      "population": "populated"
+    },
+    {
+      "reference": "R29",
+      "issues": [],
+      "population": "populated"
+    },
+    {
+      "reference": "R30",
+      "issues": [],
+      "population": "populated"
+    },
+    {
+      "reference": "R31",
+      "issues": [],
+      "population": "populated"
+    },
+    {
+      "reference": "R32",
+      "issues": [],
+      "population": "populated"
+    },
+    {
+      "reference": "R33",
+      "issues": [],
+      "population": "populated"
+    },
+    {
+      "reference": "R37",
+      "issues": [
+        "E07"
+      ],
+      "population": "populated"
+    },
+    {
+      "reference": "R38",
+      "issues": [
+        "E07"
+      ],
+      "population": "populated"
+    },
+    {
+      "reference": "R39",
+      "issues": [
+        "E07"
+      ],
+      "population": "populated"
+    },
+    {
+      "reference": "R40",
+      "issues": [
+        "E05"
+      ],
+      "population": "populated"
+    },
+    {
+      "reference": "R41",
+      "issues": [
+        "E05"
+      ],
+      "population": "populated"
+    },
+    {
+      "reference": "R42",
+      "issues": [
+        "E06"
+      ],
+      "population": "populated"
+    },
+    {
+      "reference": "R43",
+      "issues": [
+        "E09"
+      ],
+      "population": "populated"
+    },
+    {
+      "reference": "R44",
+      "issues": [
+        "E09"
+      ],
+      "population": "populated"
+    },
+    {
+      "reference": "R48",
+      "issues": [
+        "E08"
+      ],
+      "population": "populated"
+    },
+    {
+      "reference": "R1",
+      "issues": [
+        "accepted-DNP-scope"
+      ],
+      "population": "DNP"
+    },
+    {
+      "reference": "R2",
+      "issues": [
+        "accepted-DNP-scope"
+      ],
+      "population": "DNP"
+    },
+    {
+      "reference": "R35",
+      "issues": [
+        "accepted-DNP-scope"
+      ],
+      "population": "DNP"
+    },
+    {
+      "reference": "R36",
+      "issues": [
+        "accepted-DNP-scope"
+      ],
+      "population": "DNP"
+    },
+    {
+      "reference": "R46",
+      "issues": [
+        "accepted-DNP-scope"
+      ],
+      "population": "DNP"
+    },
+    {
+      "reference": "R47",
+      "issues": [
+        "E08",
+        "accepted-DNP-scope"
+      ],
+      "population": "DNP"
+    },
+    {
+      "reference": "C1",
+      "issues": [
+        "V01"
+      ],
+      "population": "populated"
+    },
+    {
+      "reference": "C2",
+      "issues": [
+        "V01"
+      ],
+      "population": "populated"
+    },
+    {
+      "reference": "C3",
+      "issues": [
+        "accepted-DNP-scope"
+      ],
+      "population": "DNP"
+    },
+    {
+      "reference": "C4",
+      "issues": [
+        "accepted-DNP-scope"
+      ],
+      "population": "DNP"
+    },
+    {
+      "reference": "C5",
+      "issues": [
+        "M01"
+      ],
+      "population": "populated"
+    },
+    {
+      "reference": "C6",
+      "issues": [
+        "E03",
+        "V01"
+      ],
+      "population": "populated"
+    },
+    {
+      "reference": "C7",
+      "issues": [
+        "V01"
+      ],
+      "population": "populated"
+    },
+    {
+      "reference": "C8",
+      "issues": [
+        "V01"
+      ],
+      "population": "populated"
+    },
+    {
+      "reference": "C9",
+      "issues": [
+        "V01"
+      ],
+      "population": "populated"
+    },
+    {
+      "reference": "C10",
+      "issues": [
+        "E04",
+        "V01"
+      ],
+      "population": "populated"
+    },
+    {
+      "reference": "C11",
+      "issues": [
+        "E04",
+        "V01"
+      ],
+      "population": "populated"
+    },
+    {
+      "reference": "C12",
+      "issues": [
+        "E04",
+        "V01"
+      ],
+      "population": "populated"
+    },
+    {
+      "reference": "C13",
+      "issues": [
+        "E04",
+        "V01"
+      ],
+      "population": "populated"
+    },
+    {
+      "reference": "C14",
+      "issues": [
+        "E04",
+        "V01"
+      ],
+      "population": "populated"
+    },
+    {
+      "reference": "C15",
+      "issues": [
+        "E04",
+        "V01"
+      ],
+      "population": "populated"
+    },
+    {
+      "reference": "C16",
+      "issues": [
+        "E04",
+        "V01"
+      ],
+      "population": "populated"
+    },
+    {
+      "reference": "C17",
+      "issues": [
+        "V01"
+      ],
+      "population": "populated"
+    },
+    {
+      "reference": "C18",
+      "issues": [
+        "E08",
+        "V01"
+      ],
+      "population": "populated"
+    },
+    {
+      "reference": "C19",
+      "issues": [
+        "V01"
+      ],
+      "population": "populated"
+    },
+    {
+      "reference": "C20",
+      "issues": [
+        "V01"
+      ],
+      "population": "populated"
+    },
+    {
+      "reference": "C21",
+      "issues": [
+        "V01"
+      ],
+      "population": "populated"
+    },
+    {
+      "reference": "C22",
+      "issues": [
+        "V01"
+      ],
+      "population": "populated"
+    },
+    {
+      "reference": "C23",
+      "issues": [
+        "E08",
+        "V01"
+      ],
+      "population": "populated"
+    },
+    {
+      "reference": "C24",
+      "issues": [
+        "V01"
+      ],
+      "population": "populated"
+    },
+    {
+      "reference": "C25",
+      "issues": [
+        "E06",
+        "V01"
+      ],
+      "population": "populated"
+    },
+    {
+      "reference": "C26",
+      "issues": [
+        "E06",
+        "V01"
+      ],
+      "population": "populated"
+    },
+    {
+      "reference": "C27",
+      "issues": [
+        "V01"
+      ],
+      "population": "populated"
+    },
+    {
+      "reference": "C28",
+      "issues": [
+        "E06",
+        "V01"
+      ],
+      "population": "populated"
+    },
+    {
+      "reference": "C29",
+      "issues": [
+        "E04",
+        "V01"
+      ],
+      "population": "populated"
+    },
+    {
+      "reference": "C30",
+      "issues": [
+        "V01"
+      ],
+      "population": "populated"
+    },
+    {
+      "reference": "C31",
+      "issues": [
+        "V01"
+      ],
+      "population": "populated"
+    },
+    {
+      "reference": "C32",
+      "issues": [
+        "V01"
+      ],
+      "population": "populated"
+    },
+    {
+      "reference": "C33",
+      "issues": [
+        "V01"
+      ],
+      "population": "populated"
+    },
+    {
+      "reference": "C34",
+      "issues": [
+        "V01"
+      ],
+      "population": "populated"
+    },
+    {
+      "reference": "C35",
+      "issues": [
+        "E05",
+        "V01"
+      ],
+      "population": "populated"
+    },
+    {
+      "reference": "C36",
+      "issues": [
+        "E07",
+        "V01"
+      ],
+      "population": "populated"
+    },
+    {
+      "reference": "C37",
+      "issues": [
+        "E07",
+        "V01"
+      ],
+      "population": "populated"
+    },
+    {
+      "reference": "C38",
+      "issues": [
+        "E04",
+        "V01"
+      ],
+      "population": "populated"
+    },
+    {
+      "reference": "C39",
+      "issues": [
+        "V01"
+      ],
+      "population": "populated"
+    },
+    {
+      "reference": "C40",
+      "issues": [
+        "V01"
+      ],
+      "population": "populated"
+    },
+    {
+      "reference": "C41",
+      "issues": [
+        "V01"
+      ],
+      "population": "populated"
+    },
+    {
+      "reference": "C42",
+      "issues": [
+        "E08",
+        "accepted-DNP-scope"
+      ],
+      "population": "DNP"
+    },
+    {
+      "reference": "C43",
+      "issues": [
+        "E04",
+        "V01"
+      ],
+      "population": "populated"
+    },
+    {
+      "reference": "C44",
+      "issues": [
+        "E04",
+        "V01"
+      ],
+      "population": "populated"
+    },
+    {
+      "reference": "C45",
+      "issues": [
+        "E04",
+        "V01"
+      ],
+      "population": "populated"
+    },
+    {
+      "reference": "C46",
+      "issues": [
+        "E04",
+        "V01"
+      ],
+      "population": "populated"
+    },
+    {
+      "reference": "C47",
+      "issues": [
+        "E04",
+        "V01"
+      ],
+      "population": "populated"
+    },
+    {
+      "reference": "C48",
+      "issues": [
+        "E04",
+        "V01"
+      ],
+      "population": "populated"
+    },
+    {
+      "reference": "C49",
+      "issues": [
+        "accepted-DNP-scope"
+      ],
+      "population": "DNP"
+    },
+    {
+      "reference": "C1A",
+      "issues": [
+        "accepted-DNP-scope"
+      ],
+      "population": "DNP"
+    },
+    {
+      "reference": "C2A",
+      "issues": [
+        "accepted-DNP-scope"
+      ],
+      "population": "DNP"
+    },
+    {
+      "reference": "L1",
+      "issues": [
+        "E03",
+        "E09",
+        "V01"
+      ],
+      "population": "populated"
+    },
+    {
+      "reference": "L2",
+      "issues": [
+        "E09",
+        "V01"
+      ],
+      "population": "populated"
+    },
+    {
+      "reference": "Y1",
+      "issues": [],
+      "population": "populated"
+    },
+    {
+      "reference": "U4",
+      "issues": [
+        "E06",
+        "E10"
+      ],
+      "population": "populated"
+    },
+    {
+      "reference": "U5",
+      "issues": [
+        "E09"
+      ],
+      "population": "populated"
+    },
+    {
+      "reference": "U3",
+      "issues": [
+        "E08"
+      ],
+      "population": "populated"
+    },
+    {
+      "reference": "U1",
+      "issues": [
+        "E09",
+        "I01"
+      ],
+      "population": "populated"
+    },
+    {
+      "reference": "U2",
+      "issues": [
+        "E03",
+        "I01"
+      ],
+      "population": "populated"
+    },
+    {
+      "reference": "U6",
+      "issues": [
+        "E07",
+        "I01"
+      ],
+      "population": "populated"
+    },
+    {
+      "reference": "U6A",
+      "issues": [
+        "accepted-DNP-scope"
+      ],
+      "population": "DNP"
+    },
+    {
+      "reference": "U7",
+      "issues": [
+        "E07",
+        "accepted-DNP-scope"
+      ],
+      "population": "DNP"
+    },
+    {
+      "reference": "Q1",
+      "issues": [
+        "E09",
+        "I01"
+      ],
+      "population": "populated"
+    },
+    {
+      "reference": "Q2",
+      "issues": [
+        "E07",
+        "I01"
+      ],
+      "population": "populated"
+    },
+    {
+      "reference": "Q3",
+      "issues": [
+        "E04",
+        "I01"
+      ],
+      "population": "populated"
+    },
+    {
+      "reference": "Q4",
+      "issues": [
+        "E04",
+        "I01"
+      ],
+      "population": "populated"
+    },
+    {
+      "reference": "Q5",
+      "issues": [
+        "E04",
+        "I01"
+      ],
+      "population": "populated"
+    },
+    {
+      "reference": "Q6",
+      "issues": [
+        "E04",
+        "I01"
+      ],
+      "population": "populated"
+    },
+    {
+      "reference": "Q7",
+      "issues": [
+        "E08",
+        "I01"
+      ],
+      "population": "populated"
+    },
+    {
+      "reference": "Q8",
+      "issues": [
+        "E03",
+        "I01"
+      ],
+      "population": "populated"
+    },
+    {
+      "reference": "Q9",
+      "issues": [
+        "accepted-DNP-scope"
+      ],
+      "population": "DNP"
+    },
+    {
+      "reference": "Q11",
+      "issues": [
+        "E04",
+        "I01"
+      ],
+      "population": "populated"
+    },
+    {
+      "reference": "D1",
+      "issues": [
+        "E06",
+        "I01"
+      ],
+      "population": "populated"
+    },
+    {
+      "reference": "D2",
+      "issues": [
+        "I01"
+      ],
+      "population": "populated"
+    },
+    {
+      "reference": "D3",
+      "issues": [
+        "E06",
+        "I01"
+      ],
+      "population": "populated"
+    },
+    {
+      "reference": "D4",
+      "issues": [
+        "E10",
+        "I01"
+      ],
+      "population": "populated"
+    },
+    {
+      "reference": "D5",
+      "issues": [
+        "E10",
+        "I01"
+      ],
+      "population": "populated"
+    },
+    {
+      "reference": "D6",
+      "issues": [
+        "E10",
+        "I01"
+      ],
+      "population": "populated"
+    },
+    {
+      "reference": "S1",
+      "issues": [
+        "E05",
+        "M01"
+      ],
+      "population": "populated"
+    },
+    {
+      "reference": "J1",
+      "issues": [
+        "E10",
+        "M01"
+      ],
+      "population": "populated"
+    },
+    {
+      "reference": "J3",
+      "issues": [
+        "E07",
+        "M01"
+      ],
+      "population": "populated"
+    },
+    {
+      "reference": "J5",
+      "issues": [
+        "I02",
+        "M01"
+      ],
+      "population": "populated"
+    },
+    {
+      "reference": "J6",
+      "issues": [
+        "accepted-DNP-scope"
+      ],
+      "population": "DNP"
+    },
+    {
+      "reference": "LED1",
+      "issues": [
+        "I02",
+        "M01"
+      ],
+      "population": "populated"
+    },
+    {
+      "reference": "TP1",
+      "issues": [],
+      "population": "populated"
+    },
+    {
+      "reference": "TP2",
+      "issues": [],
+      "population": "populated"
+    },
+    {
+      "reference": "TP3",
+      "issues": [],
+      "population": "populated"
+    },
+    {
+      "reference": "TP4",
+      "issues": [],
+      "population": "populated"
+    },
+    {
+      "reference": "TP5",
+      "issues": [],
+      "population": "populated"
+    },
+    {
+      "reference": "TP6",
+      "issues": [
+        "E08"
+      ],
+      "population": "populated"
+    },
+    {
+      "reference": "TP7",
+      "issues": [],
+      "population": "populated"
+    },
+    {
+      "reference": "TP10",
+      "issues": [],
+      "population": "populated"
+    },
+    {
+      "reference": "TP11",
+      "issues": [
+        "E06"
+      ],
+      "population": "populated"
+    },
+    {
+      "reference": "TP14",
+      "issues": [],
+      "population": "populated"
+    },
+    {
+      "reference": "TP15",
+      "issues": [],
+      "population": "populated"
+    },
+    {
+      "reference": "TP16",
+      "issues": [],
+      "population": "populated"
+    },
+    {
+      "reference": "TP17",
+      "issues": [
+        "E06"
+      ],
+      "population": "populated"
+    },
+    {
+      "reference": "GND",
+      "issues": [],
+      "population": "populated"
+    },
+    {
+      "reference": "GND_RF",
+      "issues": [],
+      "population": "populated"
+    },
+    {
+      "reference": "VDD",
+      "issues": [],
+      "population": "populated"
+    },
+    {
+      "reference": "VREF",
+      "issues": [],
+      "population": "populated"
+    },
+    {
+      "reference": "ANT1",
+      "issues": [
+        "E04"
+      ],
+      "population": "populated"
+    },
+    {
+      "reference": "ANT2",
+      "issues": [
+        "E04"
+      ],
+      "population": "populated"
+    },
+    {
+      "reference": "BATP",
+      "issues": [],
+      "population": "populated"
+    },
+    {
+      "reference": "BATN",
+      "issues": [],
+      "population": "populated"
+    }
+  ],
+  "unverified_footprint": "LED1 / M01",
+  "unrecovered_ceramics": [
+    "C1",
+    "C2",
+    "C6",
+    "C7",
+    "C8",
+    "C9",
+    "C10",
+    "C11",
+    "C12",
+    "C13",
+    "C14",
+    "C15",
+    "C16",
+    "C17",
+    "C18",
+    "C19",
+    "C20",
+    "C21",
+    "C22",
+    "C23",
+    "C24",
+    "C25",
+    "C26",
+    "C27",
+    "C28",
+    "C29",
+    "C30",
+    "C31",
+    "C32",
+    "C33",
+    "C34",
+    "C35",
+    "C36",
+    "C37",
+    "C38",
+    "C39",
+    "C40",
+    "C41",
+    "C43",
+    "C44",
+    "C45",
+    "C46",
+    "C47",
+    "C48"
+  ],
+  "limit": "Checks native geometry, catalog and registered evidence only. Does not prove unseen inner-layer continuity, fitted identities or powered behavior."
+}

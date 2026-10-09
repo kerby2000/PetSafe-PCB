@@ -30,7 +30,12 @@ if not template.exists():
 tree=sx.loads(template.read_text())
 one(tree,'paper')[1]='A2'
 libs={x[1]:x for x in children(one(tree,'lib_symbols'),'symbol')}
-instances=children(tree,'symbol'); assert len(instances)==len(layout['catalog'])
+all_instances=children(tree,'symbol')
+annotations=[i for i in all_instances if one(i,'lib_id')[1]=='power:PWR_FLAG']
+instances=[i for i in all_instances if i not in annotations]
+assert len(instances)==len(layout['catalog'])
+declarations=json.loads((R/'evidence/power_source_declarations.json').read_text())['declarations']
+assert len(annotations)==len(declarations)==5
 catalog={(i['reference'],i['unit']):i for i in layout['catalog']}
 P={}; PIN_ANGLE={}; BYREF={}; ALL_NATIVE={}
 for inst in instances:
@@ -375,6 +380,15 @@ if clashes or delta:
 # Split only at same-net joins, de-duplicate, and label disconnected pieces.
 pts=defaultdict(set)
 for w in W:pts[w['net']].update([w['a'],w['b']])
+for inst in annotations:
+    ref=next(p[2] for p in children(inst,'property') if p[1]=='Reference')
+    record=next(d for d in declarations if d['reference']==ref)
+    p=xy(one(inst,'at')[1:3])
+    assert p==tuple(record['position_mm'])
+    assert {w['net'] for w in W if on(p,w)}=={record['net']}, (ref,p,record['net'],[w for w in W if on(p,w)],'Flag must attach to exactly its existing supply net')
+    pts[record['net']].add(p)
+    for name,value in [('SourceBasis',record['basis']),('EvidenceLimit','ERC power declaration; no voltage or device-function measurement implied')]:
+        inst.append(expr(f'(property {q(name)} {q(value)} (at {p[0]} {p[1]} 0) (effects (font (size 1 1)) hide))'))
 for e,n in member.items():pts[n].add(P[e])
 L=[l for l in L if any(on(l['p'],w) and w['net']==l['net'] for w in W)]
 for l in L:pts[l['net']].add(l['p'])
@@ -405,7 +419,7 @@ for net,edges in adj.items():
 for l in L:
     x,y=l['p'];G.append(expr(f'(label {q(l["net"])} (at {x} {y} 0) (effects (font (size .762 .762)) (justify left bottom)) (uuid {q(uid())}))'))
 tree.extend(G)
-tree.append(expr('(title_block (title "PetSafe 100-1339 R03 A | single-sheet reconstruction") (date "2026-10-09") (rev "0.9.30") (company "KiCad 10 libraries + four datasheet symbols | MCP authoring") (comment 1 "RF drive/D1 photo correction; other topology provisional."))'))
+tree.append(expr('(title_block (title "PetSafe 100-1339 R03 A | single-sheet reconstruction") (date "2026-10-09") (rev "0.9.31") (company "KiCad 10 libraries + four datasheet symbols | MCP authoring") (comment 1 "Power declarations added; physical net partitions unchanged."))'))
 # Canonical pretty printer supplied by the installed MCP server.
 sys.path.insert(0,str(Path.home()/'Documents/VS.Code.Projects/KiCAD-MCP-Server/python'))
 from utils.sexpr_format import prettify
@@ -425,7 +439,7 @@ out.write_text(prettify(sx.dumps(tree)),encoding='utf-8',newline='\n')
 def wire_key(w):return w['net'],tuple(w['a']),tuple(w['b'])
 prior_order={wire_key(w):i for i,w in enumerate(model.get('geometric_wires',[]))}
 ordered_segments=sorted(segments,key=lambda s:(prior_order.get(s,len(prior_order)),s))
-model.update(revision='v0.9.30',coordinate_units='mm',native_pin_crosswalk=layout['crosswalk'],pin_positions={e:list(p) for e,p in P.items()},
+model.update(revision='v0.9.31',coordinate_units='mm',native_pin_crosswalk=layout['crosswalk'],pin_positions={e:list(p) for e,p in P.items()},
              geometric_wires=[dict(net=n,a=a,b=b) for n,a,b in ordered_segments],library_policy='KiCad 10 stock symbols plus four explicitly authorized MCP-authored datasheet symbols for U1/U5/U6/Q8')
 for c in model['components']:
     entry=next(x for x in layout['catalog'] if x['original_ref']==c['ref'])

@@ -1,6 +1,6 @@
 {
   "board": "100-1339 R03 A",
-  "revision": "v0.9.30",
+  "revision": "v0.9.31",
   "status": "PARTIALLY VERIFIED RECONSTRUCTION; USER MEASUREMENTS, PHOTO TRACES AND QUALIFIED HYPOTHESES",
   "components": [
     {
@@ -633,7 +633,12 @@
       "library_symbol": "Device:R",
       "footprint": "Resistor_SMD:R_0603_1608Metric",
       "footprint_confidence": "medium - revised family estimate",
-      "footprint_basis": "User reports R8 approximately 1.6 x 0.77 mm, consistent with 0603 (1608 metric). Repeated fitted resistor family revised using R8 as a scale reference. This individual body has not been measured; earlier 0805 estimate superseded."
+      "footprint_basis": "User reports R8 approximately 1.6 x 0.77 mm, consistent with 0603 (1608 metric). Repeated fitted resistor family revised using R8 as a scale reference. This individual body has not been measured; earlier 0805 estimate superseded.",
+      "current_summary": "INVENTORY UNVERIFIED (E07): inherited 10k PIR pull-up. Cited IMG_2435 establishes R37/R38/R39, but not R33. Physical presence/location and assumed J3.1/J3.2 endpoints remain unverified; retain pending identification, not as a measured value.",
+      "value_evidence": {
+        "state": "unverified",
+        "source": "Inherited inventory; physical part not established by its cited photo."
+      }
     },
     {
       "ref": "R37",
@@ -5442,17 +5447,6 @@
       ]
     },
     {
-      "net": "H_AUX_IN",
-      "a": [
-        300.99,
-        302.26
-      ],
-      "b": [
-        314.96,
-        302.26
-      ]
-    },
-    {
       "net": "PIR_BASE",
       "a": [
         351.79,
@@ -5648,17 +5642,6 @@
       "b": [
         60.96,
         110.49
-      ]
-    },
-    {
-      "net": "H_RX_VDD",
-      "a": [
-        554.99,
-        172.72
-      ],
-      "b": [
-        570.23,
-        172.72
       ]
     },
     {
@@ -7411,17 +7394,6 @@
       ]
     },
     {
-      "net": "H_LDO_IN",
-      "a": [
-        48.26,
-        53.34
-      ],
-      "b": [
-        55.88,
-        53.34
-      ]
-    },
-    {
       "net": "BATTERY+",
       "a": [
         481.33,
@@ -7628,17 +7600,6 @@
       "b": [
         445.77,
         250.19
-      ]
-    },
-    {
-      "net": "VSYS",
-      "a": [
-        430.53,
-        41.91
-      ],
-      "b": [
-        458.47,
-        41.91
       ]
     },
     {
@@ -8310,17 +8271,6 @@
       "b": [
         165.1,
         226.06
-      ]
-    },
-    {
-      "net": "GND",
-      "a": [
-        83.82,
-        81.28
-      ],
-      "b": [
-        114.3,
-        81.28
       ]
     },
     {
@@ -10664,6 +10614,116 @@
       "b": [
         49.53,
         210.82
+      ]
+    },
+    {
+      "net": "H_AUX_IN",
+      "a": [
+        300.99,
+        302.26
+      ],
+      "b": [
+        307.34,
+        302.26
+      ]
+    },
+    {
+      "net": "H_AUX_IN",
+      "a": [
+        307.34,
+        302.26
+      ],
+      "b": [
+        314.96,
+        302.26
+      ]
+    },
+    {
+      "net": "H_LDO_IN",
+      "a": [
+        48.26,
+        53.34
+      ],
+      "b": [
+        53.34,
+        53.34
+      ]
+    },
+    {
+      "net": "H_LDO_IN",
+      "a": [
+        53.34,
+        53.34
+      ],
+      "b": [
+        55.88,
+        53.34
+      ]
+    },
+    {
+      "net": "H_RX_VDD",
+      "a": [
+        554.99,
+        172.72
+      ],
+      "b": [
+        563.88,
+        172.72
+      ]
+    },
+    {
+      "net": "H_RX_VDD",
+      "a": [
+        563.88,
+        172.72
+      ],
+      "b": [
+        570.23,
+        172.72
+      ]
+    },
+    {
+      "net": "VSYS",
+      "a": [
+        430.53,
+        41.91
+      ],
+      "b": [
+        444.5,
+        41.91
+      ]
+    },
+    {
+      "net": "VSYS",
+      "a": [
+        444.5,
+        41.91
+      ],
+      "b": [
+        458.47,
+        41.91
+      ]
+    },
+    {
+      "net": "GND",
+      "a": [
+        83.82,
+        81.28
+      ],
+      "b": [
+        91.44,
+        81.28
+      ]
+    },
+    {
+      "net": "GND",
+      "a": [
+        91.44,
+        81.28
+      ],
+      "b": [
+        114.3,
+        81.28
       ]
     }
   ],
