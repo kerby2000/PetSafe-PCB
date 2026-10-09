@@ -107,6 +107,16 @@ pir_correction=read('evidence/pic21_tp16_followup_20261009.json')['resolution']
 assert pir_correction['reading']['resistance_ohms']==800000
 for x,y in pir_correction['confirmed_pairs']:assert net(x)==net(y)
 for x,y in pir_correction['rejected_direct_pairs']:assert net(x)!=net(y)
+c26_record=read('evidence/c25_c26_mapping_20261009.json')
+for x,y in c26_record['confirmed_pairs']:assert net(x)==net(y)
+assert net('C26.1')==net('U4.3')==net('R28.1')==net('R29.1')==net('TP7.1')
+assert net('C26.1')!=net('C25.1') and net('C26.1')!=net('VREF.1')
+assert net('C25.2')==net('C26.2')==net('GND.1')
+assert 'C26.1' not in m['unresolved_pins']
+for path,digest in c26_record['photos'].items():assert sha(path)==digest
+for ref in ['C25','C26','U4']:
+ expected=next(c for c in placements['components'] if c['reference']==ref)['properties']['ConnectionEvidence']
+ assert xml.findtext(f'./components/comp[@ref="{ref}"]/fields/field[@name="ConnectionEvidence"]')==expected,ref
 completed_ids=set(measured)|set(measured2)|set(measured3)|set(measured4)|set(measured5)|{'B21'}
 assert {r['id'] for r in queue['completed_tests']}==completed_ids
 assert not completed_ids&{r['id'] for r in queue['tests']}, 'Do not repeat completed finishing readings'

@@ -7342,11 +7342,28 @@
 			(effects
 				(font
 					(size 1.27 1.27)
-				) (hide yes))
+				)
+				(hide yes)
+			)
 		)
-    (property "MeasurementEvidence" "v0.9.16 CORRECTION: user confirms PIC21/RB0 -> TP16 -> Q2 single pad; TP16-VREF = 0.8 Mohm. User explicitly withdraws PIC21-VREF. PIC21/V026 belongs to H_PIR_SIG, separate from VREF. RA2/V035 and R21/V071 remain VREF. This supersedes every earlier RB0/V026-to-VREF statement." (at 262.89 78.74 0)
-      (effects (font (size 1.27 1.27)) (hide yes))
-    )
+		(property "MeasurementEvidence" "v0.9.16 CORRECTION: user confirms PIC21/RB0 -> TP16 -> Q2 single pad; TP16-VREF = 0.8 Mohm. User explicitly withdraws PIC21-VREF. PIC21/V026 belongs to H_PIR_SIG, separate from VREF. RA2/V035 and R21/V071 remain VREF. This supersedes every earlier RB0/V026-to-VREF statement."
+			(at 262.89 78.74 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "ConnectionEvidence" "v0.9.17 user-annotated photo: C25 right pad/model1 -> PIC2/RA0; C26 right pad/model1 -> PIC3/RA1. Left pads/model2 are common, retaining earlier V029-GND evidence. No new numeric resistance or capacitance supplied. C26 joins the existing RA1/R28/R29/TP7 net, separate from RA0 and VREF."
+			(at 262.89 78.74 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
 		(pin "1"
 			(uuid "2cc68a08-ab7c-4f62-837a-672a9475163e")
 		)
@@ -7539,7 +7556,7 @@
 	)
 	(symbol
 		(lib_id "Device:C")
-		(at 312.42 62.23 0)
+		(at 322.58 78.74 0)
 		(unit 1)
 		(body_style 1)
 		(exclude_from_sim no)
@@ -7549,7 +7566,7 @@
 		(dnp no)
 		(uuid "14950990-e187-46c1-a2ca-67d61c81fe38")
 		(property "Reference" "C25"
-			(at 313.05500000000006 64.77 0)
+			(at 323.21500000000003 81.28 0)
 			(show_name no)
 			(do_not_autoplace no)
 			(effects
@@ -7560,7 +7577,7 @@
 			)
 		)
 		(property "Value" "?"
-			(at 313.05500000000006 59.69 0)
+			(at 323.21500000000003 76.19999999999999 0)
 			(show_name no)
 			(do_not_autoplace no)
 			(effects
@@ -7571,7 +7588,7 @@
 			)
 		)
 		(property "Footprint" "Capacitor_SMD:C_0805_2012Metric"
-			(at 313.385 58.42 0)
+			(at 323.54499999999996 74.93 0)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -7582,7 +7599,7 @@
 			)
 		)
 		(property "Datasheet" ""
-			(at 312.42 62.23 0)
+			(at 322.58 78.74 0)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -7593,7 +7610,7 @@
 			)
 		)
 		(property "Description" "Unpolarized capacitor"
-			(at 312.42 62.23 0)
+			(at 322.58 78.74 0)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -7601,6 +7618,15 @@
 				(font
 					(size 1.27 1.27)
 				)
+			)
+		)
+		(property "ConnectionEvidence" "v0.9.17 user-annotated photo: C25 right pad/model1 -> PIC2/RA0; C26 right pad/model1 -> PIC3/RA1. Left pads/model2 are common, retaining earlier V029-GND evidence. No new numeric resistance or capacitance supplied. C26 joins the existing RA1/R28/R29/TP7 net, separate from RA0 and VREF."
+			(at 322.58 78.74 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
 			)
 		)
 		(pin "1"
@@ -7620,7 +7646,7 @@
 	)
 	(symbol
 		(lib_id "Device:C")
-		(at 224.79 48.26 0)
+		(at 312.42 78.74 0)
 		(unit 1)
 		(body_style 1)
 		(exclude_from_sim no)
@@ -7630,7 +7656,7 @@
 		(dnp no)
 		(uuid "2779f88d-bc12-4e59-87ba-f811a0ae9e12")
 		(property "Reference" "C26"
-			(at 225.425 50.8 0)
+			(at 313.05500000000006 81.28 0)
 			(show_name no)
 			(do_not_autoplace no)
 			(effects
@@ -7641,7 +7667,7 @@
 			)
 		)
 		(property "Value" "?"
-			(at 225.425 45.72 0)
+			(at 313.05500000000006 76.19999999999999 0)
 			(show_name no)
 			(do_not_autoplace no)
 			(effects
@@ -7652,7 +7678,7 @@
 			)
 		)
 		(property "Footprint" "Capacitor_SMD:C_0805_2012Metric"
-			(at 225.755 44.45 0)
+			(at 313.385 74.93 0)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -7663,7 +7689,7 @@
 			)
 		)
 		(property "Datasheet" ""
-			(at 224.79 48.26 0)
+			(at 312.42 78.74 0)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -7674,7 +7700,7 @@
 			)
 		)
 		(property "Description" "Unpolarized capacitor"
-			(at 224.79 48.26 0)
+			(at 312.42 78.74 0)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -7682,6 +7708,15 @@
 				(font
 					(size 1.27 1.27)
 				)
+			)
+		)
+		(property "ConnectionEvidence" "v0.9.17 user-annotated photo: C25 right pad/model1 -> PIC2/RA0; C26 right pad/model1 -> PIC3/RA1. Left pads/model2 are common, retaining earlier V029-GND evidence. No new numeric resistance or capacitance supplied. C26 joins the existing RA1/R28/R29/TP7 net, separate from RA0 and VREF."
+			(at 312.42 78.74 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
 			)
 		)
 		(pin "1"
@@ -7701,7 +7736,7 @@
 	)
 	(symbol
 		(lib_id "Device:C")
-		(at 300.99 67.31 0)
+		(at 300.99 78.74 0)
 		(unit 1)
 		(body_style 1)
 		(exclude_from_sim no)
@@ -7711,7 +7746,7 @@
 		(dnp no)
 		(uuid "8454338f-8359-45b6-ab88-3ae54af63c13")
 		(property "Reference" "C39"
-			(at 301.625 69.85 0)
+			(at 301.625 81.27999999999999 0)
 			(show_name no)
 			(do_not_autoplace no)
 			(effects
@@ -7722,7 +7757,7 @@
 			)
 		)
 		(property "Value" "?"
-			(at 301.625 64.77000000000001 0)
+			(at 301.625 76.2 0)
 			(show_name no)
 			(do_not_autoplace no)
 			(effects
@@ -7733,7 +7768,7 @@
 			)
 		)
 		(property "Footprint" "Capacitor_SMD:C_0805_2012Metric"
-			(at 301.95500000000004 63.50000000000001 0)
+			(at 301.95500000000004 74.93 0)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -7744,7 +7779,7 @@
 			)
 		)
 		(property "Datasheet" ""
-			(at 300.99 67.31 0)
+			(at 300.99 78.74 0)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -7755,7 +7790,7 @@
 			)
 		)
 		(property "Description" "Unpolarized capacitor"
-			(at 300.99 67.31 0)
+			(at 300.99 78.74 0)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -7766,7 +7801,7 @@
 			)
 		)
 		(property "ViaEvidence" "v0.9.9: User checked V035-VREF TP. Prior photo association V035-PIC4/RA2-C39.1 retained; joins the already confirmed RB0/V026/R21.2/V071 VREF node. No voltage or numerical resistance supplied. Other modeled bias branches retain earlier inferred status."
-			(at 300.99 67.31 0)
+			(at 300.99 78.74 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -11826,11 +11861,19 @@
 			(effects
 				(font
 					(size 1.27 1.27)
-				) (hide yes))
+				)
+				(hide yes)
+			)
 		)
-    (property "MeasurementEvidence" "v0.9.16 CORRECTION: user confirms PIC21/RB0 -> TP16 -> Q2 single pad; TP16-VREF = 0.8 Mohm. User explicitly withdraws PIC21-VREF. PIC21/V026 belongs to H_PIR_SIG, separate from VREF. RA2/V035 and R21/V071 remain VREF. This supersedes every earlier RB0/V026-to-VREF statement." (at 356.87 223.52 0)
-      (effects (font (size 1.27 1.27)) (hide yes))
-    )
+		(property "MeasurementEvidence" "v0.9.16 CORRECTION: user confirms PIC21/RB0 -> TP16 -> Q2 single pad; TP16-VREF = 0.8 Mohm. User explicitly withdraws PIC21-VREF. PIC21/V026 belongs to H_PIR_SIG, separate from VREF. RA2/V035 and R21/V071 remain VREF. This supersedes every earlier RB0/V026-to-VREF statement."
+			(at 356.87 223.52 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
 		(pin "1"
 			(uuid "5d121715-3676-4ccb-98aa-33a43155b56a")
 		)
@@ -13704,11 +13747,19 @@
 			(effects
 				(font
 					(size 1.27 1.27)
-				) (hide yes))
+				)
+				(hide yes)
+			)
 		)
-    (property "MeasurementEvidence" "v0.9.16 CORRECTION: user confirms PIC21/RB0 -> TP16 -> Q2 single pad; TP16-VREF = 0.8 Mohm. User explicitly withdraws PIC21-VREF. PIC21/V026 belongs to H_PIR_SIG, separate from VREF. RA2/V035 and R21/V071 remain VREF. This supersedes every earlier RB0/V026-to-VREF statement." (at 307.34 229.87 0)
-      (effects (font (size 1.27 1.27)) (hide yes))
-    )
+		(property "MeasurementEvidence" "v0.9.16 CORRECTION: user confirms PIC21/RB0 -> TP16 -> Q2 single pad; TP16-VREF = 0.8 Mohm. User explicitly withdraws PIC21-VREF. PIC21/V026 belongs to H_PIR_SIG, separate from VREF. RA2/V035 and R21/V071 remain VREF. This supersedes every earlier RB0/V026-to-VREF statement."
+			(at 307.34 229.87 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
 		(pin "1"
 			(uuid "cdcb5dd5-ac2e-42ef-8894-1b4844de1f92")
 		)
@@ -13793,14 +13844,18 @@
 			(effects
 				(font
 					(size 1.27 1.27)
-				) (hide yes))
+				)
+				(hide yes)
+			)
 		)
 		(property "MeasurementEvidence" "v0.9.16 CORRECTION: user confirms PIC21/RB0 -> TP16 -> Q2 single pad; TP16-VREF = 0.8 Mohm. User explicitly withdraws PIC21-VREF. PIC21/V026 belongs to H_PIR_SIG, separate from VREF. RA2/V035 and R21/V071 remain VREF. This supersedes every earlier RB0/V026-to-VREF statement."
 			(at 326.39 229.87 0)
 			(effects
 				(font
 					(size 1.27 1.27)
-				) (hide yes))
+				)
+				(hide yes)
+			)
 		)
 		(pin "1"
 			(uuid "282abd8d-d18e-4a5e-b223-42c410395a42")
@@ -17442,11 +17497,19 @@
 			(effects
 				(font
 					(size 1.27 1.27)
-				) (hide yes))
+				)
+				(hide yes)
+			)
 		)
-    (property "ViaEvidence" "v0.9.16 CORRECTION: user confirms PIC21/RB0 -> TP16 -> Q2 single pad; TP16-VREF = 0.8 Mohm. User explicitly withdraws PIC21-VREF. PIC21/V026 belongs to H_PIR_SIG, separate from VREF. RA2/V035 and R21/V071 remain VREF. This supersedes every earlier RB0/V026-to-VREF statement." (at 379.73 335.28 0)
-      (effects (font (size 1.27 1.27)) (hide yes))
-    )
+		(property "ViaEvidence" "v0.9.16 CORRECTION: user confirms PIC21/RB0 -> TP16 -> Q2 single pad; TP16-VREF = 0.8 Mohm. User explicitly withdraws PIC21-VREF. PIC21/V026 belongs to H_PIR_SIG, separate from VREF. RA2/V035 and R21/V071 remain VREF. This supersedes every earlier RB0/V026-to-VREF statement."
+			(at 379.73 335.28 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
 		(pin "1"
 			(uuid "87ee1410-73cb-473e-ad7e-80cca3d40d50")
 		)
@@ -18370,11 +18433,19 @@
 			(effects
 				(font
 					(size 1.27 1.27)
-				) (hide yes))
+				)
+				(hide yes)
+			)
 		)
-    (property "MeasurementEvidence" "v0.9.16 CORRECTION: user confirms PIC21/RB0 -> TP16 -> Q2 single pad; TP16-VREF = 0.8 Mohm. User explicitly withdraws PIC21-VREF. PIC21/V026 belongs to H_PIR_SIG, separate from VREF. RA2/V035 and R21/V071 remain VREF. This supersedes every earlier RB0/V026-to-VREF statement." (at 478.79 382.27 0)
-      (effects (font (size 1.27 1.27)) (hide yes))
-    )
+		(property "MeasurementEvidence" "v0.9.16 CORRECTION: user confirms PIC21/RB0 -> TP16 -> Q2 single pad; TP16-VREF = 0.8 Mohm. User explicitly withdraws PIC21-VREF. PIC21/V026 belongs to H_PIR_SIG, separate from VREF. RA2/V035 and R21/V071 remain VREF. This supersedes every earlier RB0/V026-to-VREF statement."
+			(at 478.79 382.27 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
 		(pin "1"
 			(uuid "82c658ae-36a3-4237-b93c-9b0227a44f0b")
 		)

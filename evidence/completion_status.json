@@ -1,17 +1,16 @@
 {
   "date": "2026-10-09",
-  "revision": "v0.9.16",
-  "review_revision": "2026-10-09 U7 mapped and PIC21-PIR destination corrected",
+  "revision": "v0.9.17",
+  "review_revision": "2026-10-09 C26-RA1 route resolved from user annotation",
   "interpretation": "Every catalog entry is drawn. Hardware connectivity, values and identities are only partially verified. No routed PCB exists.",
   "catalog_entries": 150,
   "physical_pins": 352,
-  "unresolved_physical_pins": 20,
+  "unresolved_physical_pins": 19,
   "unresolved_pins_by_population": {
-    "populated": 7,
-    "DNP": 13
+    "DNP": 13,
+    "populated": 6
   },
   "unresolved_pins_by_reference": {
-    "C26": 1,
     "C42": 2,
     "C49": 2,
     "C6": 1,
@@ -26,7 +25,6 @@
   },
   "current_gpio_pins": [],
   "current_fitted_open_pads": [
-    "C26.1",
     "C6.1",
     "D6.1",
     "D6.2",
@@ -108,14 +106,14 @@
     ],
     "qualification": "Assigned is not the same as measured. R8 and C11 anchor photo-based package families."
   },
-  "erc_total": 27,
+  "erc_total": 26,
   "erc_by_type": {
     "power_pin_not_driven": 5,
-    "pin_not_connected": 20,
+    "pin_not_connected": 19,
     "isolated_pin_label": 2
   },
   "modeled_nets": 83,
-  "schematic_sha256": "53bb1a1aeb8549e9e875e1580ed22bf0074b95dd108452dc8aae1d530e42b98e",
+  "schematic_sha256": "b1f730296711b2b0ebb726eff3d1bbf3b7890a54993d15c0e9f0fc55311e51f0",
   "known_identified_ICs_needing_new_symbols": [],
   "complete_symbols_for_selected_candidates": true,
   "available_instruments": [
@@ -177,7 +175,7 @@
     {
       "id": "E06",
       "area": "Local-only PIC / discrete nodes",
-      "gap": "Onward roles of those three nodes, D1.R/H_D1_FREE, C26.1 and TP9.1. Local connectivity is not proof that these are intentionally unused. H_RF_CONTROL has only R6.2/R7.1: its excitation source is absent. H_BAT_SENSE has a series path through R4 to PIC24/RB3, so the missing item is functional interpretation/route confidence, not necessarily another MCU endpoint. H_D3_SIGNAL replaces the misleading H_RX_RF_SENSE name; operating role remains unknown.",
+      "gap": "Onward roles of those three nodes, D1.R/H_D1_FREE, TP9.1. Local connectivity is not proof that these are intentionally unused. H_RF_CONTROL has only R6.2/R7.1: its excitation source is absent. H_BAT_SENSE has a series path through R4 to PIC24/RB3, so the missing item is functional interpretation/route confidence, not necessarily another MCU endpoint. H_D3_SIGNAL replaces the misleading H_RX_RF_SENSE name; operating role remains unknown.",
       "method": "Use existing photo/via evidence to select specific endpoints for the local-only PIC nodes, D1.R and H_RF_CONTROL. Review R3-R4-C28 together with PIC24: document a compatible sensing mechanism, without adding an extra sampling wire solely from a net-name assumption."
     },
     {
@@ -375,12 +373,11 @@
       ],
       "priority": 2,
       "state": "open",
-      "known": "Every PIC pad has a modeled local net. PIC2 reaches C25/V031; PIC14 reaches TP11; PIC18 reaches TP17. D3.S-to-R42 measured 1.2 ohm; exact resistor end not named, pad2 selected from photo. R42.1 already reaches TP4/PIC25/RB4. PIC21/RB0 now reaches TP16/Q2.S, separate from VREF; this PIR route is resolved.",
-      "unknown": "Onward roles of those three nodes, D1.R/H_D1_FREE, C26.1 and TP9.1. Local connectivity is not proof that these are intentionally unused. H_RF_CONTROL has only R6.2/R7.1: its excitation source is absent. H_BAT_SENSE has a series path through R4 to PIC24/RB3, so the missing item is functional interpretation/route confidence, not necessarily another MCU endpoint. H_D3_SIGNAL replaces the misleading H_RX_RF_SENSE name; operating role remains unknown.",
+      "known": "Every PIC pad has a modeled local net. PIC2 reaches C25/V031; PIC14 reaches TP11; PIC18 reaches TP17. D3.S-to-R42 measured 1.2 ohm; exact resistor end not named, pad2 selected from photo. R42.1 already reaches TP4/PIC25/RB4. PIC21/RB0 now reaches TP16/Q2.S, separate from VREF; this PIR route is resolved. C26.1 reaches PIC3/RA1 and the existing R28/R29/TP7 net; C25.1 remains PIC2/RA0. Their model2 pads share GND.",
+      "unknown": "Onward roles of those three nodes, D1.R/H_D1_FREE, TP9.1. Local connectivity is not proof that these are intentionally unused. H_RF_CONTROL has only R6.2/R7.1: its excitation source is absent. H_BAT_SENSE has a series path through R4 to PIC24/RB3, so the missing item is functional interpretation/route confidence, not necessarily another MCU endpoint. H_D3_SIGNAL replaces the misleading H_RX_RF_SENSE name; operating role remains unknown.",
       "next_action": "Use existing photo/via evidence to select specific endpoints for the local-only PIC nodes, D1.R and H_RF_CONTROL. Review R3-R4-C28 together with PIC24: document a compatible sensing mechanism, without adding an extra sampling wire solely from a net-name assumption.",
       "closed_when": "Each branch has an endpoint or supported evidence that it terminates intentionally.",
       "open_pads": [
-        "C26.1",
         "TP9.1"
       ],
       "nets": [
@@ -392,6 +389,13 @@
         "H_BAT_SENSE",
         "PIC_RB3_RETURN",
         "H_D3_SIGNAL"
+      ],
+      "resolved_subquestions": [
+        {
+          "date": "2026-10-09",
+          "result": "v0.9.17 user-annotated photo: C25 right pad/model1 -> PIC2/RA0; C26 right pad/model1 -> PIC3/RA1. Left pads/model2 are common, retaining earlier V029-GND evidence. No new numeric resistance or capacitance supplied. C26 joins the existing RA1/R28/R29/TP7 net, separate from RA0 and VREF.",
+          "evidence": "evidence/c25_c26_mapping_20261009.json"
+        }
       ]
     },
     {
@@ -775,7 +779,8 @@
     "Batch2: U3.6-R23 B 1 ohm / C 5.6 kohm; J3.2-R38 K 1 ohm / J 10 kohm; R22 E-GND 1 ohm. Extra U3.6-R22 E 400 kohm recorded as an indirect path.",
     "R23 right / C40 lower / R42 upper: user 1 ohm for both joins, also clear surface copper. R23 endpoint resolved; old C40 detector-output association withdrawn.",
     "U7 empty option mapped to J3: U7.1-J3.3 GND, U7.2-J3.2 signal, U7.3-J3.1 PIR supply. TP16-to-TP11/TP17 each 400 kohm; direct joins excluded.",
-    "PIC21/RB0 -> TP16 -> Q2.S confirmed; old PIC21-VREF removed. TP16-VREF 0.8 Mohm, not a wire. RA2/V035 and receiver bias retain VREF."
+    "PIC21/RB0 -> TP16 -> Q2.S confirmed; old PIC21-VREF removed. TP16-VREF 0.8 Mohm, not a wire. RA2/V035 and receiver bias retain VREF.",
+    "v0.9.17 user-annotated photo: C25 right pad/model1 -> PIC2/RA0; C26 right pad/model1 -> PIC3/RA1. Left pads/model2 are common, retaining earlier V029-GND evidence. No new numeric resistance or capacitance supplied. C26 joins the existing RA1/R28/R29/TP7 net, separate from RA0 and VREF."
   ],
   "history": "docs/history/README.md"
 }

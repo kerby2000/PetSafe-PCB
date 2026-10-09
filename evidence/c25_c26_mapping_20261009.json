@@ -1,0 +1,28 @@
+{
+  "date": "2026-10-09",
+  "revision": "v0.9.17",
+  "source": "User annotated photo and explicit connection report",
+  "method": "User-reported routing drawn on photograph; no meter value supplied",
+  "orientation": "As supplied: PIC pins along lower edge; pin1 is nearest D6 at left; pin2 is the second lead, pin3 third. Capacitor right pads are model1; left common pads model2.",
+  "confirmed_pairs": [
+    [
+      "C25.1",
+      "U4.2"
+    ],
+    [
+      "C26.1",
+      "U4.3"
+    ],
+    [
+      "C25.2",
+      "C26.2"
+    ]
+  ],
+  "retained_ground_basis": "Earlier user V029-C25-C26 GND mapping, corroborated by the newly drawn common pads.",
+  "numerical_resistance_ohms": null,
+  "capacitance_values": "Not supplied; remain unknown",
+  "photos": {
+    "photos/user_updates/C25_C26_PIC_mapping_20261009.png": "7e466477669a0bc7f21fe5ef342e109ede6fe00b38aab03c57820744f88e9454"
+  },
+  "model_action": "Add C26.1 to PIC_RA1_RX_REF; retain separate PIC_RA0_FILTER and GND nets. Move C25/C26/C39 together beside the PIC for direct local wiring."
+}

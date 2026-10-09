@@ -7861,6 +7861,15 @@
 				(hide yes)
 			)
 		)
+		(property "ConnectionEvidence" "v0.9.17 user-annotated photo: C25 right pad/model1 -> PIC2/RA0; C26 right pad/model1 -> PIC3/RA1. Left pads/model2 are common, retaining earlier V029-GND evidence. No new numeric resistance or capacitance supplied. C26 joins the existing RA1/R28/R29/TP7 net, separate from RA0 and VREF."
+			(at 262.89 78.74 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
 		(pin "1"
 			(uuid "2cc68a08-ab7c-4f62-837a-672a9475163e")
 		)
@@ -8139,7 +8148,7 @@
 	)
 	(symbol
 		(lib_id "Device:C")
-		(at 312.42 62.23 0)
+		(at 322.58 78.74 0)
 		(unit 1)
 		(body_style 1)
 		(exclude_from_sim no)
@@ -8149,7 +8158,7 @@
 		(dnp no)
 		(uuid "14950990-e187-46c1-a2ca-67d61c81fe38")
 		(property "Reference" "C25"
-			(at 314.96 61.341 0)
+			(at 325.12 77.851 0)
 			(show_name no)
 			(do_not_autoplace no)
 			(effects
@@ -8160,7 +8169,7 @@
 			)
 		)
 		(property "Value" "?"
-			(at 314.96 63.373 0)
+			(at 325.12 79.883 0)
 			(show_name no)
 			(do_not_autoplace no)
 			(effects
@@ -8171,7 +8180,7 @@
 			)
 		)
 		(property "Footprint" "Capacitor_SMD:C_0805_2012Metric"
-			(at 313.385 58.42 0)
+			(at 323.54499999999996 74.93 0)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -8182,7 +8191,7 @@
 			)
 		)
 		(property "Datasheet" ""
-			(at 312.42 62.23 0)
+			(at 322.58 78.74 0)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -8193,7 +8202,7 @@
 			)
 		)
 		(property "Description" "Unpolarized capacitor"
-			(at 312.42 62.23 0)
+			(at 322.58 78.74 0)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -8201,6 +8210,15 @@
 				(font
 					(size 1.27 1.27)
 				)
+			)
+		)
+		(property "ConnectionEvidence" "v0.9.17 user-annotated photo: C25 right pad/model1 -> PIC2/RA0; C26 right pad/model1 -> PIC3/RA1. Left pads/model2 are common, retaining earlier V029-GND evidence. No new numeric resistance or capacitance supplied. C26 joins the existing RA1/R28/R29/TP7 net, separate from RA0 and VREF."
+			(at 322.58 78.74 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
 			)
 		)
 		(pin "1"
@@ -8218,42 +8236,42 @@
 			)
 		)
 		(property "OriginalReference" "C25"
-			(at 312.42 62.23 0)
+			(at 322.58 78.74 0)
 			(effects
 				(font
 					(size 1 1)
 				) hide)
 		)
 		(property "Evidence" "Photo reconstruction; topology inferred"
-			(at 312.42 62.23 0)
+			(at 322.58 78.74 0)
 			(effects
 				(font
 					(size 1 1)
 				) hide)
 		)
 		(property "LibraryPolicy" "Unmodified KiCad 10 stock symbol"
-			(at 312.42 62.23 0)
+			(at 322.58 78.74 0)
 			(effects
 				(font
 					(size 1 1)
 				) hide)
 		)
 		(property "FootprintConfidence" "medium"
-			(at 312.42 62.23 0)
+			(at 322.58 78.74 0)
 			(effects
 				(font
 					(size 1 1)
 				) hide)
 		)
 		(property "FootprintBasis" "Photo family and body/land proportions compared with adjacent known IC lead pitch. Size is independent of capacitance, dielectric and voltage rating."
-			(at 312.42 62.23 0)
+			(at 322.58 78.74 0)
 			(effects
 				(font
 					(size 1 1)
 				) hide)
 		)
 		(property "PinMapping" "See evidence/pin_crosswalk.json; physical orientation may be provisional"
-			(at 312.42 62.23 0)
+			(at 322.58 78.74 0)
 			(effects
 				(font
 					(size 1 1)
@@ -8262,7 +8280,7 @@
 	)
 	(symbol
 		(lib_id "Device:C")
-		(at 224.79 48.26 0)
+		(at 312.42 78.74 0)
 		(unit 1)
 		(body_style 1)
 		(exclude_from_sim no)
@@ -8272,7 +8290,7 @@
 		(dnp no)
 		(uuid "2779f88d-bc12-4e59-87ba-f811a0ae9e12")
 		(property "Reference" "C26"
-			(at 227.33 47.371 0)
+			(at 314.96 77.851 0)
 			(show_name no)
 			(do_not_autoplace no)
 			(effects
@@ -8283,7 +8301,7 @@
 			)
 		)
 		(property "Value" "?"
-			(at 227.33 49.403 0)
+			(at 314.96 79.883 0)
 			(show_name no)
 			(do_not_autoplace no)
 			(effects
@@ -8294,7 +8312,7 @@
 			)
 		)
 		(property "Footprint" "Capacitor_SMD:C_0805_2012Metric"
-			(at 225.755 44.45 0)
+			(at 313.385 74.93 0)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -8305,7 +8323,7 @@
 			)
 		)
 		(property "Datasheet" ""
-			(at 224.79 48.26 0)
+			(at 312.42 78.74 0)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -8316,7 +8334,7 @@
 			)
 		)
 		(property "Description" "Unpolarized capacitor"
-			(at 224.79 48.26 0)
+			(at 312.42 78.74 0)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -8324,6 +8342,15 @@
 				(font
 					(size 1.27 1.27)
 				)
+			)
+		)
+		(property "ConnectionEvidence" "v0.9.17 user-annotated photo: C25 right pad/model1 -> PIC2/RA0; C26 right pad/model1 -> PIC3/RA1. Left pads/model2 are common, retaining earlier V029-GND evidence. No new numeric resistance or capacitance supplied. C26 joins the existing RA1/R28/R29/TP7 net, separate from RA0 and VREF."
+			(at 312.42 78.74 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
 			)
 		)
 		(pin "1"
@@ -8341,42 +8368,42 @@
 			)
 		)
 		(property "OriginalReference" "C26"
-			(at 224.79 48.26 0)
+			(at 312.42 78.74 0)
 			(effects
 				(font
 					(size 1 1)
 				) hide)
 		)
 		(property "Evidence" "Photo reconstruction; topology inferred"
-			(at 224.79 48.26 0)
+			(at 312.42 78.74 0)
 			(effects
 				(font
 					(size 1 1)
 				) hide)
 		)
 		(property "LibraryPolicy" "Unmodified KiCad 10 stock symbol"
-			(at 224.79 48.26 0)
+			(at 312.42 78.74 0)
 			(effects
 				(font
 					(size 1 1)
 				) hide)
 		)
 		(property "FootprintConfidence" "medium"
-			(at 224.79 48.26 0)
+			(at 312.42 78.74 0)
 			(effects
 				(font
 					(size 1 1)
 				) hide)
 		)
 		(property "FootprintBasis" "Photo family and body/land proportions compared with adjacent known IC lead pitch. Size is independent of capacitance, dielectric and voltage rating."
-			(at 224.79 48.26 0)
+			(at 312.42 78.74 0)
 			(effects
 				(font
 					(size 1 1)
 				) hide)
 		)
 		(property "PinMapping" "See evidence/pin_crosswalk.json; physical orientation may be provisional"
-			(at 224.79 48.26 0)
+			(at 312.42 78.74 0)
 			(effects
 				(font
 					(size 1 1)
@@ -8385,7 +8412,7 @@
 	)
 	(symbol
 		(lib_id "Device:C")
-		(at 300.99 67.31 0)
+		(at 300.99 78.74 0)
 		(unit 1)
 		(body_style 1)
 		(exclude_from_sim no)
@@ -8395,7 +8422,7 @@
 		(dnp no)
 		(uuid "8454338f-8359-45b6-ab88-3ae54af63c13")
 		(property "Reference" "C39"
-			(at 303.53 66.421 0)
+			(at 303.53 77.851 0)
 			(show_name no)
 			(do_not_autoplace no)
 			(effects
@@ -8406,7 +8433,7 @@
 			)
 		)
 		(property "Value" "?"
-			(at 303.53 68.453 0)
+			(at 303.53 79.883 0)
 			(show_name no)
 			(do_not_autoplace no)
 			(effects
@@ -8417,7 +8444,7 @@
 			)
 		)
 		(property "Footprint" "Capacitor_SMD:C_0805_2012Metric"
-			(at 301.95500000000004 63.50000000000001 0)
+			(at 301.95500000000004 74.93 0)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -8428,7 +8455,7 @@
 			)
 		)
 		(property "Datasheet" ""
-			(at 300.99 67.31 0)
+			(at 300.99 78.74 0)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -8439,7 +8466,7 @@
 			)
 		)
 		(property "Description" "Unpolarized capacitor"
-			(at 300.99 67.31 0)
+			(at 300.99 78.74 0)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -8450,7 +8477,7 @@
 			)
 		)
 		(property "ViaEvidence" "v0.9.9: User checked V035-VREF TP. Prior photo association V035-PIC4/RA2-C39.1 retained; joins the already confirmed RB0/V026/R21.2/V071 VREF node. No voltage or numerical resistance supplied. Other modeled bias branches retain earlier inferred status."
-			(at 300.99 67.31 0)
+			(at 300.99 78.74 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -8473,42 +8500,42 @@
 			)
 		)
 		(property "OriginalReference" "C39"
-			(at 300.99 67.31 0)
+			(at 300.99 78.74 0)
 			(effects
 				(font
 					(size 1 1)
 				) hide)
 		)
 		(property "Evidence" "Photo reconstruction; topology inferred"
-			(at 300.99 67.31 0)
+			(at 300.99 78.74 0)
 			(effects
 				(font
 					(size 1 1)
 				) hide)
 		)
 		(property "LibraryPolicy" "Unmodified KiCad 10 stock symbol"
-			(at 300.99 67.31 0)
+			(at 300.99 78.74 0)
 			(effects
 				(font
 					(size 1 1)
 				) hide)
 		)
 		(property "FootprintConfidence" "medium"
-			(at 300.99 67.31 0)
+			(at 300.99 78.74 0)
 			(effects
 				(font
 					(size 1 1)
 				) hide)
 		)
 		(property "FootprintBasis" "Photo family and body/land proportions compared with adjacent known IC lead pitch. Size is independent of capacitance, dielectric and voltage rating."
-			(at 300.99 67.31 0)
+			(at 300.99 78.74 0)
 			(effects
 				(font
 					(size 1 1)
 				) hide)
 		)
 		(property "PinMapping" "See evidence/pin_crosswalk.json; physical orientation may be provisional"
-			(at 300.99 67.31 0)
+			(at 300.99 78.74 0)
 			(effects
 				(font
 					(size 1 1)
@@ -26894,7 +26921,7 @@
 		)
 		(uuid "bb99e1b0-a175-4adb-a3f0-74da310fc1b3")
 	)
-	(text "v0.9.16 | KiCad 10.0.5 | 2026-10-09"
+	(text "v0.9.17 | KiCad 10.0.5 | 2026-10-09"
 		(at 514.35 370.84000000000003 0)
 		(effects
 			(font
@@ -26902,7 +26929,7 @@
 			)
 			(justify left)
 		)
-		(uuid "db48888b-4ce8-4685-815f-5cd3ae41a9f2")
+		(uuid "4fe96e05-d9c8-42df-99f3-e571150c7e48")
 	)
 	(text "BATTERY+ -> Q1 -> VSYS / U5 pin4. Board VDD / TP103 = VDD -> U5 pin1."
 		(at 406.4 97.79 0)
@@ -27526,16 +27553,6 @@
 	)
 	(wire
 		(pts
-			(xy 210.82 55.88) (xy 224.79 55.88)
-		)
-		(stroke
-			(width 0)
-			(type default)
-		)
-		(uuid "afaac82b-783d-4891-8b2a-f237d9b2f3a7")
-	)
-	(wire
-		(pts
 			(xy 213.36 353.06) (xy 213.36 364.49)
 		)
 		(stroke
@@ -27583,16 +27600,6 @@
 			(type default)
 		)
 		(uuid "96be1633-7352-46c8-83fb-78e0805d47f5")
-	)
-	(wire
-		(pts
-			(xy 224.79 52.07) (xy 224.79 55.88)
-		)
-		(stroke
-			(width 0)
-			(type default)
-		)
-		(uuid "fb0e08b5-3de2-415c-afa2-2800eea57561")
 	)
 	(wire
 		(pts
@@ -27776,13 +27783,13 @@
 	)
 	(wire
 		(pts
-			(xy 300.99 71.12) (xy 300.99 83.82)
+			(xy 300.99 82.55) (xy 300.99 83.82)
 		)
 		(stroke
 			(width 0)
 			(type default)
 		)
-		(uuid "38982a39-e52e-4dca-85d1-b18cb439d8c4")
+		(uuid "5d3f3b4b-2dac-46c3-ac93-e03ad7ad5209")
 	)
 	(wire
 		(pts
@@ -27836,13 +27843,33 @@
 	)
 	(wire
 		(pts
-			(xy 312.42 66.04) (xy 312.42 83.82)
+			(xy 312.42 82.55) (xy 312.42 83.82)
 		)
 		(stroke
 			(width 0)
 			(type default)
 		)
-		(uuid "8fa122c1-9738-4837-96c6-1bda12ce3e31")
+		(uuid "2f33d2b8-7d78-4ec1-876d-7be50d742317")
+	)
+	(wire
+		(pts
+			(xy 312.42 83.82) (xy 322.58 83.82)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "17f8c256-6e27-4cc0-8810-e8b112ea7bb3")
+	)
+	(wire
+		(pts
+			(xy 322.58 82.55) (xy 322.58 83.82)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "6a33b480-e842-4702-990c-b76bddc4ee18")
 	)
 	(wire
 		(pts
@@ -30006,23 +30033,53 @@
 	)
 	(wire
 		(pts
-			(xy 283.21 58.42) (xy 312.42 58.42)
+			(xy 283.21 58.42) (xy 322.58 58.42)
 		)
 		(stroke
 			(width 0)
 			(type default)
 		)
-		(uuid "5a161432-1418-44e0-8696-38461ae6e1f3")
+		(uuid "6263d3f5-42d6-4a6a-a4bf-fedbb3c85629")
 	)
 	(wire
 		(pts
-			(xy 283.21 60.96) (xy 288.29 60.96)
+			(xy 322.58 58.42) (xy 322.58 74.93)
 		)
 		(stroke
 			(width 0)
 			(type default)
 		)
-		(uuid "5a04b562-49b1-4954-a5fe-ec525232a2df")
+		(uuid "97c25917-f6e5-431e-8fb5-d7cdfb542768")
+	)
+	(wire
+		(pts
+			(xy 283.21 60.96) (xy 287.02 60.96)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "e3c34fee-b768-45a9-a2f4-05724c3564fd")
+	)
+	(wire
+		(pts
+			(xy 287.02 60.96) (xy 312.42 60.96)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "d9f912e8-5666-49c5-a26c-90c22a912b22")
+	)
+	(wire
+		(pts
+			(xy 312.42 60.96) (xy 312.42 74.93)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "3d9453ed-275a-4486-ab3d-140e00b9817a")
 	)
 	(wire
 		(pts
@@ -31646,6 +31703,16 @@
 	)
 	(wire
 		(pts
+			(xy 300.99 63.5) (xy 300.99 74.93)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "7312a9c5-7f72-46c0-ac78-fcadb25d0757")
+	)
+	(wire
+		(pts
 			(xy 307.34 233.68) (xy 307.34 238.76)
 		)
 		(stroke
@@ -31815,28 +31882,10 @@
 		(uuid "2f753609-9ca4-4787-924e-64e0df8fc8e3")
 	)
 	(junction
-		(at 123.19 102.87)
+		(at 38.1 217.17)
 		(diameter 0)
 		(color 0 0 0 0)
-		(uuid "41c84140-13b7-416b-9b5a-871de4b9c148")
-	)
-	(junction
-		(at 101.6 102.87)
-		(diameter 0)
-		(color 0 0 0 0)
-		(uuid "06acbfbe-7f2f-48e3-962b-358de5e190ac")
-	)
-	(junction
-		(at 91.44 102.87)
-		(diameter 0)
-		(color 0 0 0 0)
-		(uuid "a1501474-c178-4730-aaa9-e6b1dd811462")
-	)
-	(junction
-		(at 488.95 237.49)
-		(diameter 0)
-		(color 0 0 0 0)
-		(uuid "54f67cf7-ce94-43cd-9539-45050111a48c")
+		(uuid "03b54150-3c06-4446-8b67-ccee647fe20f")
 	)
 	(junction
 		(at 67.31 217.17)
@@ -31845,10 +31894,34 @@
 		(uuid "32a559c1-30f6-47da-8089-e219f2ce2b3e")
 	)
 	(junction
-		(at 38.1 217.17)
+		(at 322.58 132.08)
 		(diameter 0)
 		(color 0 0 0 0)
-		(uuid "03b54150-3c06-4446-8b67-ccee647fe20f")
+		(uuid "4c105cdd-7833-4f9b-bf36-af2bfa6ceda7")
+	)
+	(junction
+		(at 83.82 81.28)
+		(diameter 0)
+		(color 0 0 0 0)
+		(uuid "1f5984d2-d7a9-4abf-ba10-9dfdcc2c30bc")
+	)
+	(junction
+		(at 330.2 326.39)
+		(diameter 0)
+		(color 0 0 0 0)
+		(uuid "4228a21d-ff5d-4f38-b071-98614070bc7b")
+	)
+	(junction
+		(at 55.88 81.28)
+		(diameter 0)
+		(color 0 0 0 0)
+		(uuid "9e8a5191-1848-45f9-9472-5dc797b666db")
+	)
+	(junction
+		(at 302.26 132.08)
+		(diameter 0)
+		(color 0 0 0 0)
+		(uuid "955b082b-0c0d-4351-b646-c6a15123a8df")
 	)
 	(junction
 		(at 114.3 298.45)
@@ -31857,34 +31930,10 @@
 		(uuid "95bb482f-d435-4069-982c-be1676c73f4a")
 	)
 	(junction
-		(at 152.4 298.45)
+		(at 167.64 298.45)
 		(diameter 0)
 		(color 0 0 0 0)
-		(uuid "bd8313e9-395c-4e08-bd29-786cb3826a18")
-	)
-	(junction
-		(at 528.32 63.5)
-		(diameter 0)
-		(color 0 0 0 0)
-		(uuid "3b04ff1e-8b04-4385-87e5-772dcb16991b")
-	)
-	(junction
-		(at 528.32 87.63)
-		(diameter 0)
-		(color 0 0 0 0)
-		(uuid "ae52c3b3-951b-4eda-b1cb-6268ff6893e1")
-	)
-	(junction
-		(at 99.06 298.45)
-		(diameter 0)
-		(color 0 0 0 0)
-		(uuid "098bd2eb-969f-4ca8-b27f-3a9c923d1c52")
-	)
-	(junction
-		(at 60.96 298.45)
-		(diameter 0)
-		(color 0 0 0 0)
-		(uuid "bb72becb-74a0-4e20-833d-0b3ab76f1869")
+		(uuid "cf06fbb4-f20c-4652-8dbd-8924000386f7")
 	)
 	(junction
 		(at 455.93 87.63)
@@ -31899,10 +31948,40 @@
 		(uuid "6dd4dac3-6da4-4860-a0ce-745e2da20451")
 	)
 	(junction
-		(at 160.02 364.49)
+		(at 205.74 298.45)
 		(diameter 0)
 		(color 0 0 0 0)
-		(uuid "c4f8236f-6c86-45eb-b8fe-d1fef7ddfc35")
+		(uuid "f98a74a1-a455-412c-8fd1-c00a16c23203")
+	)
+	(junction
+		(at 528.32 63.5)
+		(diameter 0)
+		(color 0 0 0 0)
+		(uuid "3b04ff1e-8b04-4385-87e5-772dcb16991b")
+	)
+	(junction
+		(at 430.53 87.63)
+		(diameter 0)
+		(color 0 0 0 0)
+		(uuid "501383c6-a7d4-46e1-b9a3-3bc243b9b9ee")
+	)
+	(junction
+		(at 134.62 81.28)
+		(diameter 0)
+		(color 0 0 0 0)
+		(uuid "f23fab32-8460-4d95-a81f-8fb98fe53d3f")
+	)
+	(junction
+		(at 528.32 87.63)
+		(diameter 0)
+		(color 0 0 0 0)
+		(uuid "ae52c3b3-951b-4eda-b1cb-6268ff6893e1")
+	)
+	(junction
+		(at 99.06 298.45)
+		(diameter 0)
+		(color 0 0 0 0)
+		(uuid "098bd2eb-969f-4ca8-b27f-3a9c923d1c52")
 	)
 	(junction
 		(at 213.36 364.49)
@@ -31917,10 +31996,10 @@
 		(uuid "7f61c69e-8124-43cb-a627-17f05eda5658")
 	)
 	(junction
-		(at 330.2 326.39)
+		(at 160.02 364.49)
 		(diameter 0)
 		(color 0 0 0 0)
-		(uuid "4228a21d-ff5d-4f38-b071-98614070bc7b")
+		(uuid "c4f8236f-6c86-45eb-b8fe-d1fef7ddfc35")
 	)
 	(junction
 		(at 259.08 298.45)
@@ -31929,34 +32008,16 @@
 		(uuid "e011edb9-4428-4663-9f66-24621284ef5f")
 	)
 	(junction
-		(at 55.88 81.28)
+		(at 152.4 298.45)
 		(diameter 0)
 		(color 0 0 0 0)
-		(uuid "9e8a5191-1848-45f9-9472-5dc797b666db")
+		(uuid "bd8313e9-395c-4e08-bd29-786cb3826a18")
 	)
 	(junction
-		(at 430.53 87.63)
+		(at 60.96 298.45)
 		(diameter 0)
 		(color 0 0 0 0)
-		(uuid "501383c6-a7d4-46e1-b9a3-3bc243b9b9ee")
-	)
-	(junction
-		(at 302.26 132.08)
-		(diameter 0)
-		(color 0 0 0 0)
-		(uuid "955b082b-0c0d-4351-b646-c6a15123a8df")
-	)
-	(junction
-		(at 322.58 132.08)
-		(diameter 0)
-		(color 0 0 0 0)
-		(uuid "4c105cdd-7833-4f9b-bf36-af2bfa6ceda7")
-	)
-	(junction
-		(at 220.98 298.45)
-		(diameter 0)
-		(color 0 0 0 0)
-		(uuid "a5ce34aa-06b7-44f4-adb4-3296de5831d0")
+		(uuid "bb72becb-74a0-4e20-833d-0b3ab76f1869")
 	)
 	(junction
 		(at 114.3 81.28)
@@ -31965,82 +32026,16 @@
 		(uuid "18d6d367-4f62-48de-9ccf-fcb1d876df8e")
 	)
 	(junction
-		(at 205.74 298.45)
+		(at 220.98 298.45)
 		(diameter 0)
 		(color 0 0 0 0)
-		(uuid "f98a74a1-a455-412c-8fd1-c00a16c23203")
+		(uuid "a5ce34aa-06b7-44f4-adb4-3296de5831d0")
 	)
 	(junction
-		(at 167.64 298.45)
+		(at 312.42 83.82)
 		(diameter 0)
 		(color 0 0 0 0)
-		(uuid "cf06fbb4-f20c-4652-8dbd-8924000386f7")
-	)
-	(junction
-		(at 83.82 81.28)
-		(diameter 0)
-		(color 0 0 0 0)
-		(uuid "1f5984d2-d7a9-4abf-ba10-9dfdcc2c30bc")
-	)
-	(junction
-		(at 134.62 81.28)
-		(diameter 0)
-		(color 0 0 0 0)
-		(uuid "f23fab32-8460-4d95-a81f-8fb98fe53d3f")
-	)
-	(junction
-		(at 398.78 180.34)
-		(diameter 0)
-		(color 0 0 0 0)
-		(uuid "98c3a918-c95c-4ec3-afa7-521c36a88168")
-	)
-	(junction
-		(at 398.78 200.66)
-		(diameter 0)
-		(color 0 0 0 0)
-		(uuid "fb67fda0-f5f8-421b-855d-9b5e023c70bc")
-	)
-	(junction
-		(at 548.64 58.42)
-		(diameter 0)
-		(color 0 0 0 0)
-		(uuid "1a273b3d-fe05-4ece-bedb-2e138227401e")
-	)
-	(junction
-		(at 558.8 58.42)
-		(diameter 0)
-		(color 0 0 0 0)
-		(uuid "560dd695-fc4e-4ff6-8b50-a3973da95055")
-	)
-	(junction
-		(at 360.68 198.12)
-		(diameter 0)
-		(color 0 0 0 0)
-		(uuid "6d8cbb89-f3aa-41df-a1e3-686f0638e8d9")
-	)
-	(junction
-		(at 445.77 250.19)
-		(diameter 0)
-		(color 0 0 0 0)
-		(uuid "139b1c9f-8336-4753-a524-c99e93a224fd")
-	)
-	(junction
-		(at 363.22 180.34)
-		(diameter 0)
-		(color 0 0 0 0)
-		(uuid "5a68bba2-1880-4c3a-b039-68235a197f28")
-	)
-	(junction
-		(at 363.22 203.2)
-		(diameter 0)
-		(color 0 0 0 0)
-		(uuid "759b4aac-a1bc-460f-8eee-fda17dae94f4")
-	)
-	(junction
-		(at 483.87 69.85)
-		(diameter 0)
-		(color 0 0 0 0)
-		(uuid "6607cd53-e8e3-4d9b-a65c-624664ec5f5f")
+		(uuid "d5433ea0-a187-48d9-9540-feb402163ca0")
 	)
 	(junction
 		(at 114.3 53.34)
@@ -32055,34 +32050,88 @@
 		(uuid "79e88e98-634f-4837-9e62-40490c197fb8")
 	)
 	(junction
-		(at 302.26 113.03)
+		(at 481.33 104.14)
 		(diameter 0)
 		(color 0 0 0 0)
-		(uuid "8d8943ab-42b1-4e7f-bb05-71475b84a6f9")
+		(uuid "cd1e7e63-f0e8-40bb-a1f4-345e821458bb")
 	)
 	(junction
-		(at 314.96 302.26)
+		(at 300.99 182.88)
 		(diameter 0)
 		(color 0 0 0 0)
-		(uuid "8d21dcc9-64dd-4bbc-984b-cfceec7b5bf8")
+		(uuid "694243c7-bfed-4d2d-99a1-4321250f8c55")
+	)
+	(junction
+		(at 101.6 102.87)
+		(diameter 0)
+		(color 0 0 0 0)
+		(uuid "06acbfbe-7f2f-48e3-962b-358de5e190ac")
+	)
+	(junction
+		(at 123.19 102.87)
+		(diameter 0)
+		(color 0 0 0 0)
+		(uuid "41c84140-13b7-416b-9b5a-871de4b9c148")
+	)
+	(junction
+		(at 91.44 102.87)
+		(diameter 0)
+		(color 0 0 0 0)
+		(uuid "a1501474-c178-4730-aaa9-e6b1dd811462")
+	)
+	(junction
+		(at 368.3 306.07)
+		(diameter 0)
+		(color 0 0 0 0)
+		(uuid "056075d1-ef0c-4559-8be4-62f737c0b22b")
+	)
+	(junction
+		(at 355.6 306.07)
+		(diameter 0)
+		(color 0 0 0 0)
+		(uuid "46b8120f-fd51-466b-86ae-c06cd5cde609")
+	)
+	(junction
+		(at 469.9 180.34)
+		(diameter 0)
+		(color 0 0 0 0)
+		(uuid "9a0ee961-691f-455e-be6d-ed65bb2b618b")
+	)
+	(junction
+		(at 469.9 203.2)
+		(diameter 0)
+		(color 0 0 0 0)
+		(uuid "fcca1c45-a7a0-4ed2-aadc-0cf4859ad620")
+	)
+	(junction
+		(at 445.77 250.19)
+		(diameter 0)
+		(color 0 0 0 0)
+		(uuid "139b1c9f-8336-4753-a524-c99e93a224fd")
+	)
+	(junction
+		(at 360.68 198.12)
+		(diameter 0)
+		(color 0 0 0 0)
+		(uuid "6d8cbb89-f3aa-41df-a1e3-686f0638e8d9")
+	)
+	(junction
+		(at 548.64 58.42)
+		(diameter 0)
+		(color 0 0 0 0)
+		(uuid "1a273b3d-fe05-4ece-bedb-2e138227401e")
+	)
+	(junction
+		(at 558.8 58.42)
+		(diameter 0)
+		(color 0 0 0 0)
+		(uuid "560dd695-fc4e-4ff6-8b50-a3973da95055")
 	)
 	(junction
 		(at 160.02 322.58)
 		(diameter 0)
 		(color 0 0 0 0)
 		(uuid "6307663a-fec3-4fdc-b200-a2d45a65a001")
-	)
-	(junction
-		(at 388.62 336.55)
-		(diameter 0)
-		(color 0 0 0 0)
-		(uuid "12826147-2975-4e00-bfb9-b95311503a25")
-	)
-	(junction
-		(at 388.62 327.66)
-		(diameter 0)
-		(color 0 0 0 0)
-		(uuid "fc587719-c815-49d8-a017-9217efa72deb")
 	)
 	(junction
 		(at 67.31 185.42)
@@ -32097,10 +32146,46 @@
 		(uuid "35fe2f5f-a712-4b8d-b57c-357e640865ed")
 	)
 	(junction
-		(at 349.25 182.88)
+		(at 322.58 113.03)
 		(diameter 0)
 		(color 0 0 0 0)
-		(uuid "1cafcb22-541c-4d14-8710-e2e0a91d7ea0")
+		(uuid "3d37da29-ec64-4974-a469-70068f455ca1")
+	)
+	(junction
+		(at 483.87 69.85)
+		(diameter 0)
+		(color 0 0 0 0)
+		(uuid "6607cd53-e8e3-4d9b-a65c-624664ec5f5f")
+	)
+	(junction
+		(at 502.92 200.66)
+		(diameter 0)
+		(color 0 0 0 0)
+		(uuid "5e29039a-295e-4b41-bcae-d28cd393e0ef")
+	)
+	(junction
+		(at 502.92 180.34)
+		(diameter 0)
+		(color 0 0 0 0)
+		(uuid "bbf95d22-37c5-4fd4-b306-74bd94ff30d3")
+	)
+	(junction
+		(at 398.78 200.66)
+		(diameter 0)
+		(color 0 0 0 0)
+		(uuid "fb67fda0-f5f8-421b-855d-9b5e023c70bc")
+	)
+	(junction
+		(at 398.78 180.34)
+		(diameter 0)
+		(color 0 0 0 0)
+		(uuid "98c3a918-c95c-4ec3-afa7-521c36a88168")
+	)
+	(junction
+		(at 165.1 220.98)
+		(diameter 0)
+		(color 0 0 0 0)
+		(uuid "a34ccbda-762c-4be3-ac42-8f265884e6e2")
 	)
 	(junction
 		(at 48.26 53.34)
@@ -32121,46 +32206,10 @@
 		(uuid "3e8f800a-87c5-483d-91f2-40bf3178b3c7")
 	)
 	(junction
-		(at 106.68 322.58)
+		(at 314.96 302.26)
 		(diameter 0)
 		(color 0 0 0 0)
-		(uuid "afd72549-9a1e-4b56-8d0d-9cc88c0dcd6f")
-	)
-	(junction
-		(at 355.6 306.07)
-		(diameter 0)
-		(color 0 0 0 0)
-		(uuid "46b8120f-fd51-466b-86ae-c06cd5cde609")
-	)
-	(junction
-		(at 368.3 306.07)
-		(diameter 0)
-		(color 0 0 0 0)
-		(uuid "056075d1-ef0c-4559-8be4-62f737c0b22b")
-	)
-	(junction
-		(at 213.36 322.58)
-		(diameter 0)
-		(color 0 0 0 0)
-		(uuid "966acaa8-73cd-49dc-951b-6fb15385ca5e")
-	)
-	(junction
-		(at 322.58 113.03)
-		(diameter 0)
-		(color 0 0 0 0)
-		(uuid "3d37da29-ec64-4974-a469-70068f455ca1")
-	)
-	(junction
-		(at 469.9 180.34)
-		(diameter 0)
-		(color 0 0 0 0)
-		(uuid "9a0ee961-691f-455e-be6d-ed65bb2b618b")
-	)
-	(junction
-		(at 469.9 203.2)
-		(diameter 0)
-		(color 0 0 0 0)
-		(uuid "fcca1c45-a7a0-4ed2-aadc-0cf4859ad620")
+		(uuid "8d21dcc9-64dd-4bbc-984b-cfceec7b5bf8")
 	)
 	(junction
 		(at 53.34 322.58)
@@ -32169,22 +32218,58 @@
 		(uuid "a0e14ee9-ee69-4930-ac64-5666652304da")
 	)
 	(junction
-		(at 502.92 180.34)
+		(at 363.22 203.2)
 		(diameter 0)
 		(color 0 0 0 0)
-		(uuid "bbf95d22-37c5-4fd4-b306-74bd94ff30d3")
+		(uuid "759b4aac-a1bc-460f-8eee-fda17dae94f4")
 	)
 	(junction
-		(at 502.92 200.66)
+		(at 363.22 180.34)
 		(diameter 0)
 		(color 0 0 0 0)
-		(uuid "5e29039a-295e-4b41-bcae-d28cd393e0ef")
+		(uuid "5a68bba2-1880-4c3a-b039-68235a197f28")
 	)
 	(junction
-		(at 165.1 220.98)
+		(at 302.26 113.03)
 		(diameter 0)
 		(color 0 0 0 0)
-		(uuid "a34ccbda-762c-4be3-ac42-8f265884e6e2")
+		(uuid "8d8943ab-42b1-4e7f-bb05-71475b84a6f9")
+	)
+	(junction
+		(at 488.95 237.49)
+		(diameter 0)
+		(color 0 0 0 0)
+		(uuid "54f67cf7-ce94-43cd-9539-45050111a48c")
+	)
+	(junction
+		(at 349.25 182.88)
+		(diameter 0)
+		(color 0 0 0 0)
+		(uuid "1cafcb22-541c-4d14-8710-e2e0a91d7ea0")
+	)
+	(junction
+		(at 388.62 336.55)
+		(diameter 0)
+		(color 0 0 0 0)
+		(uuid "12826147-2975-4e00-bfb9-b95311503a25")
+	)
+	(junction
+		(at 388.62 327.66)
+		(diameter 0)
+		(color 0 0 0 0)
+		(uuid "fc587719-c815-49d8-a017-9217efa72deb")
+	)
+	(junction
+		(at 106.68 322.58)
+		(diameter 0)
+		(color 0 0 0 0)
+		(uuid "afd72549-9a1e-4b56-8d0d-9cc88c0dcd6f")
+	)
+	(junction
+		(at 213.36 322.58)
+		(diameter 0)
+		(color 0 0 0 0)
+		(uuid "966acaa8-73cd-49dc-951b-6fb15385ca5e")
 	)
 	(junction
 		(at 266.7 322.58)
@@ -32197,18 +32282,6 @@
 		(diameter 0)
 		(color 0 0 0 0)
 		(uuid "420b1295-67a1-400a-b319-b30c9acb4470")
-	)
-	(junction
-		(at 481.33 104.14)
-		(diameter 0)
-		(color 0 0 0 0)
-		(uuid "cd1e7e63-f0e8-40bb-a1f4-345e821458bb")
-	)
-	(junction
-		(at 300.99 182.88)
-		(diameter 0)
-		(color 0 0 0 0)
-		(uuid "694243c7-bfed-4d2d-99a1-4321250f8c55")
 	)
 	(label "H_BUTTON"
 		(at 558.8 58.42 0)
@@ -32820,6 +32893,16 @@
 		)
 		(uuid "85e2179b-9b89-456d-8932-cc71fd3c7b5b")
 	)
+	(label "PIC_RA1_RX_REF"
+		(at 287.02 60.96 0)
+		(effects
+			(font
+				(size 0.762 0.762)
+			)
+			(justify left bottom)
+		)
+		(uuid "3094ed61-a4ed-4187-acac-a6179aff2f76")
+	)
 	(label "VREF"
 		(at 300.99 63.5 0)
 		(effects
@@ -32849,16 +32932,6 @@
 			(justify left bottom)
 		)
 		(uuid "f09df462-33db-478c-a78b-1c08434a7be7")
-	)
-	(label "PIC_RA1_RX_REF"
-		(at 288.29 60.96 0)
-		(effects
-			(font
-				(size 0.762 0.762)
-			)
-			(justify left bottom)
-		)
-		(uuid "8edfbd74-15f3-45e7-b531-7c639609c890")
 	)
 	(label "H_TUNE_2"
 		(at 288.29 66.04 0)
@@ -33440,6 +33513,36 @@
 		)
 		(uuid "fe62a7d7-afda-4a85-90d0-7076fb0ec929")
 	)
+	(label "VDD"
+		(at 347.98 359.41 0)
+		(effects
+			(font
+				(size 0.762 0.762)
+			)
+			(justify left bottom)
+		)
+		(uuid "486b5fb8-9371-4443-a769-42fd19a69fe0")
+	)
+	(label "VREF"
+		(at 464.82 198.12 0)
+		(effects
+			(font
+				(size 0.762 0.762)
+			)
+			(justify left bottom)
+		)
+		(uuid "bd0fda3e-cb38-4d8a-b159-13875ef9a24b")
+	)
+	(label "RF_MONITOR_PAD"
+		(at 24.13 251.46 0)
+		(effects
+			(font
+				(size 0.762 0.762)
+			)
+			(justify left bottom)
+		)
+		(uuid "021dcd82-4a9f-4467-a5cc-20b53406e7fd")
+	)
 	(label "H_BAT_SENSE"
 		(at 355.6 90.17 0)
 		(effects
@@ -33470,41 +33573,11 @@
 		)
 		(uuid "bf400a70-223b-489b-a54d-d0e24a0b8c8b")
 	)
-	(label "VREF"
-		(at 464.82 198.12 0)
-		(effects
-			(font
-				(size 0.762 0.762)
-			)
-			(justify left bottom)
-		)
-		(uuid "bd0fda3e-cb38-4d8a-b159-13875ef9a24b")
-	)
-	(label "VDD"
-		(at 347.98 359.41 0)
-		(effects
-			(font
-				(size 0.762 0.762)
-			)
-			(justify left bottom)
-		)
-		(uuid "486b5fb8-9371-4443-a769-42fd19a69fe0")
-	)
-	(label "RF_MONITOR_PAD"
-		(at 24.13 251.46 0)
-		(effects
-			(font
-				(size 0.762 0.762)
-			)
-			(justify left bottom)
-		)
-		(uuid "021dcd82-4a9f-4467-a5cc-20b53406e7fd")
-	)
 	(title_block
 		(title "PetSafe 100-1339 R03 A | single-sheet reconstruction")
 		(date "2026-10-09")
-		(rev "0.9.16")
+		(rev "0.9.17")
 		(company "KiCad 10 libraries + four datasheet symbols | MCP authoring")
-		(comment 1 "U7-J3 mapped; PIC21 to TP16/Q2; mistaken RB0-VREF tie removed.")
+		(comment 1 "C25 to PIC2/RA0; C26 to PIC3/RA1; shared GND confirmed by user photo.")
 	)
 )

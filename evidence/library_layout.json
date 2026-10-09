@@ -1002,7 +1002,8 @@
         "footprint": "Package_SO:SOIC-28W_7.5x17.9mm_P1.27mm",
         "properties": {
           "ViaEvidence": "v0.9.16 CORRECTION: user confirms PIC21/RB0 -> TP16 -> Q2 single pad; TP16-VREF = 0.8 Mohm. User explicitly withdraws PIC21-VREF. PIC21/V026 belongs to H_PIR_SIG, separate from VREF. RA2/V035 and R21/V071 remain VREF. This supersedes every earlier RB0/V026-to-VREF statement.",
-          "MeasurementEvidence": "v0.9.16 CORRECTION: user confirms PIC21/RB0 -> TP16 -> Q2 single pad; TP16-VREF = 0.8 Mohm. User explicitly withdraws PIC21-VREF. PIC21/V026 belongs to H_PIR_SIG, separate from VREF. RA2/V035 and R21/V071 remain VREF. This supersedes every earlier RB0/V026-to-VREF statement."
+          "MeasurementEvidence": "v0.9.16 CORRECTION: user confirms PIC21/RB0 -> TP16 -> Q2 single pad; TP16-VREF = 0.8 Mohm. User explicitly withdraws PIC21-VREF. PIC21/V026 belongs to H_PIR_SIG, separate from VREF. RA2/V035 and R21/V071 remain VREF. This supersedes every earlier RB0/V026-to-VREF statement.",
+          "ConnectionEvidence": "v0.9.17 user-annotated photo: C25 right pad/model1 -> PIC2/RA0; C26 right pad/model1 -> PIC3/RA1. Left pads/model2 are common, retaining earlier V029-GND evidence. No new numeric resistance or capacitance supplied. C26 joins the existing RA1/R28/R29/TP7 net, separate from RA0 and VREF."
         }
       },
       "via_evidence": "v0.9.16 CORRECTION: user confirms PIC21/RB0 -> TP16 -> Q2 single pad; TP16-VREF = 0.8 Mohm. User explicitly withdraws PIC21-VREF. PIC21/V026 belongs to H_PIR_SIG, separate from VREF. RA2/V035 and R21/V071 remain VREF. This supersedes every earlier RB0/V026-to-VREF statement."
@@ -1100,15 +1101,15 @@
       "legacy": {
         "ref": "C25",
         "actual": "C25",
-        "x": 246.0,
-        "y": 49.0,
+        "x": 253.99999999999997,
+        "y": 61.99999999999999,
         "unit": 1,
         "lid": "PetSafe_Working:RE_C25",
         "value": "100n?",
-        "rx": 248.0,
-        "ry": 48.3,
-        "vx": 248.0,
-        "vy": 49.9,
+        "rx": 255.99999999999997,
+        "ry": 61.29999999999999,
+        "vx": 255.99999999999997,
+        "vy": 62.89999999999999,
         "just": "left",
         "pins": [
           {
@@ -1137,12 +1138,15 @@
         "reference": "C25",
         "value": "?",
         "position": {
-          "x": 312.42,
-          "y": 62.23
+          "x": 322.58,
+          "y": 78.74
         },
         "rotation": 0,
         "includePins": true,
-        "footprint": "Capacitor_SMD:C_0805_2012Metric"
+        "footprint": "Capacitor_SMD:C_0805_2012Metric",
+        "properties": {
+          "ConnectionEvidence": "v0.9.17 user-annotated photo: C25 right pad/model1 -> PIC2/RA0; C26 right pad/model1 -> PIC3/RA1. Left pads/model2 are common, retaining earlier V029-GND evidence. No new numeric resistance or capacitance supplied. C26 joins the existing RA1/R28/R29/TP7 net, separate from RA0 and VREF."
+        }
       }
     },
     {
@@ -1154,15 +1158,15 @@
       "legacy": {
         "ref": "C26",
         "actual": "C26",
-        "x": 177,
-        "y": 38,
+        "x": 246.0,
+        "y": 61.99999999999999,
         "unit": 1,
         "lid": "PetSafe_Working:RE_C26",
         "value": "100n?",
-        "rx": 179,
-        "ry": 37.3,
-        "vx": 179,
-        "vy": 38.9,
+        "rx": 248.0,
+        "ry": 61.29999999999999,
+        "vx": 248.0,
+        "vy": 62.89999999999999,
         "just": "left",
         "pins": [
           {
@@ -1191,12 +1195,15 @@
         "reference": "C26",
         "value": "?",
         "position": {
-          "x": 224.79,
-          "y": 48.26
+          "x": 312.42,
+          "y": 78.74
         },
         "rotation": 0,
         "includePins": true,
-        "footprint": "Capacitor_SMD:C_0805_2012Metric"
+        "footprint": "Capacitor_SMD:C_0805_2012Metric",
+        "properties": {
+          "ConnectionEvidence": "v0.9.17 user-annotated photo: C25 right pad/model1 -> PIC2/RA0; C26 right pad/model1 -> PIC3/RA1. Left pads/model2 are common, retaining earlier V029-GND evidence. No new numeric resistance or capacitance supplied. C26 joins the existing RA1/R28/R29/TP7 net, separate from RA0 and VREF."
+        }
       }
     },
     {
@@ -1209,14 +1216,14 @@
         "ref": "C39",
         "actual": "C39",
         "x": 237.0,
-        "y": 53.0,
+        "y": 61.99999999999999,
         "unit": 1,
         "lid": "PetSafe_Working:RE_C39",
         "value": "100n?",
         "rx": 239.0,
-        "ry": 52.3,
+        "ry": 61.29999999999999,
         "vx": 239.0,
-        "vy": 53.9,
+        "vy": 62.89999999999999,
         "just": "left",
         "pins": [
           {
@@ -1246,7 +1253,7 @@
         "value": "?",
         "position": {
           "x": 300.99,
-          "y": 67.31
+          "y": 78.74
         },
         "rotation": 0,
         "includePins": true,

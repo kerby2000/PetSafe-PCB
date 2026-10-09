@@ -6,20 +6,20 @@ Start with [the offline overview](index.html), [the current completion checklist
 
 ## Current status
 
-Schematic revision **v0.9.16**; measured U7-J3 mapping and corrected PIC21/TP16 PIR route **2026-10-09**. See [review response](docs/ARCHITECT_REVIEW_RESPONSE.md). The model and native file agree on 83 net partitions. All PIC pads have modeled local connections, but some remote destinations and circuit roles remain uncertain. There is **no routed KiCad PCB**, confirmed layer stack, or powered functional validation.
+Schematic revision **v0.9.17**; C26-RA1 wiring resolved from user annotation **2026-10-09**. See [review response](docs/ARCHITECT_REVIEW_RESPONSE.md). The model and native file agree on 83 net partitions. All PIC pads have modeled local connections, but some remote destinations and circuit roles remain uncertain. There is **no routed KiCad PCB**, confirmed layer stack, or powered functional validation.
 
 | Remaining work | Current state |
 |---|---|
-| Open physical pads | 20: 7 on populated entries, 13 on empty options; all U7 pads now mapped |
+| Open physical pads | 19: 6 on populated entries, 13 on empty options; C26 and all U7 pads now mapped |
 | Other incomplete connections | 2 isolated labels, plus inferred receiver/RF/PIR branches |
 | Values | 44 fitted ceramic values; L1/L2 type and value |
 | Footprints | 147/150 assigned; C5, S1 and LED1 geometry missing |
-| ERC | 27 findings: 20 open pins, 2 isolated labels, 5 undriven power inputs |
+| ERC | 26 findings: 19 open pins, 2 isolated labels, 5 undriven power inputs |
 | Libraries | 20 stock definitions and 4 authorized custom candidate definitions in use |
 
 The checklist gives every known issue a stable ID, supporting evidence, next useful check and closure criterion. **A question mark, an assigned footprint, or zero open PIC pads does not measure overall completeness.** D2's local destinations are now mapped: R-C20 lower, L-ANT2/R46 upper, S-R46 lower. R46 remains unpopulated; D2 exact identity remains unknown. D3 rail association is closed by the user measurement: D3.R to V082/VDD, D3.L to GND. D3.S-to-R42 is 1.2 ohm; the exact resistor pad remains photo-selected. U3 pin 5 is now measured on VREF (1 ohm). J3 pin 3 is measured GND (1 ohm), while pin 2 reads 290 kohm to GND. J3 pin 2 now reaches R38 K/right at 1 ohm, U3 pin 6 reaches R23 B/left at 1 ohm, and R22 E/right reaches GND at 1 ohm. The old R23-VREF and J3 role guesses remain removed; R23 C/right now joins C40 lower and R42 upper at 1 ohm each. The old C40 detector-output connection has been removed; R42.1 retains the earlier TP4/PIC25 remote association.
 
-The [finishing photo guide](docs/FINISHING_MEASUREMENTS.html) records all five batches. TP16-to-TP11/TP17 each read 400 kohm; both direct links are rejected. U7.1/2/3 now map to J3.3/2/1. PIC21/RB0 now joins TP16/Q2.S. The user explicitly withdrew PIC21-VREF after TP16-VREF measured 0.8 Mohm; the C25 check is cancelled; clear surface traces are resolved from photos first. Bench requests are reserved for hidden continuations, ambiguous contacts/pin functions or conflicting evidence. Resolve signal paths first, then recover frequency-sensitive capacitor values with the LCR meter, check operating voltages and remaining package details, and finalize the sheet with explicit measured/assumed component evidence. These batches do not cover every remaining circuit question. Completed D2, D3 and via tests must not be repeated.
+The [finishing photo guide](docs/FINISHING_MEASUREMENTS.html) records all five batches. TP16-to-TP11/TP17 each read 400 kohm; both direct links are rejected. U7.1/2/3 now map to J3.3/2/1. PIC21/RB0 now joins TP16/Q2.S. The user explicitly withdrew PIC21-VREF after TP16-VREF measured 0.8 Mohm; the earlier C25 PIR candidate check is cancelled. The user annotation now resolves C25 to PIC2/RA0 and C26 to PIC3/RA1, sharing GND. C26 joins R28/R29/TP7; both capacitance values remain unknown. Clear surface traces are resolved from photos first. Bench requests are reserved for hidden continuations, ambiguous contacts/pin functions or conflicting evidence. Resolve signal paths first, then recover frequency-sensitive capacitor values with the LCR meter, check operating voltages and remaining package details, and finalize the sheet with explicit measured/assumed component evidence. These batches do not cover every remaining circuit question. Completed D2, D3 and via tests must not be repeated.
 
 ## Power names
 

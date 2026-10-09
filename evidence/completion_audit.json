@@ -1,5 +1,5 @@
 {
-  "revision": "v0.9.16",
+  "revision": "v0.9.17",
   "instruments": [
     "LCR meter",
     "multimeter"
@@ -12,7 +12,7 @@
   ],
   "fitted_capacitors": 45,
   "fitted_resistors": 38,
-  "unresolved_physical_pins": 20,
+  "unresolved_physical_pins": 19,
   "unknown_ceramic_values": [
     "C1",
     "C2",
@@ -1107,8 +1107,8 @@
       "footprint": "Capacitor_SMD:C_0805_2012Metric",
       "footprint_confidence": "medium",
       "footprint_basis": "Photo family and body/land proportions compared with adjacent known IC lead pitch. Size is independent of capacitance, dielectric and voltage rating.",
-      "open_pads": 1,
-      "next_method": "LCR: in-circuit screening first; isolate one terminal if an individual value is needed; Targeted continuity for 1 open physical pads",
+      "open_pads": 0,
+      "next_method": "LCR: in-circuit screening first; isolate one terminal if an individual value is needed",
       "photos": "IMG_2436.jpg;IMG_2437.jpg;IMG_2438.jpg"
     },
     {

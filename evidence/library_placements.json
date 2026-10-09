@@ -179,7 +179,8 @@
       "footprint": "Package_SO:SOIC-28W_7.5x17.9mm_P1.27mm",
       "properties": {
         "ViaEvidence": "v0.9.16 CORRECTION: user confirms PIC21/RB0 -> TP16 -> Q2 single pad; TP16-VREF = 0.8 Mohm. User explicitly withdraws PIC21-VREF. PIC21/V026 belongs to H_PIR_SIG, separate from VREF. RA2/V035 and R21/V071 remain VREF. This supersedes every earlier RB0/V026-to-VREF statement.",
-        "MeasurementEvidence": "v0.9.16 CORRECTION: user confirms PIC21/RB0 -> TP16 -> Q2 single pad; TP16-VREF = 0.8 Mohm. User explicitly withdraws PIC21-VREF. PIC21/V026 belongs to H_PIR_SIG, separate from VREF. RA2/V035 and R21/V071 remain VREF. This supersedes every earlier RB0/V026-to-VREF statement."
+        "MeasurementEvidence": "v0.9.16 CORRECTION: user confirms PIC21/RB0 -> TP16 -> Q2 single pad; TP16-VREF = 0.8 Mohm. User explicitly withdraws PIC21-VREF. PIC21/V026 belongs to H_PIR_SIG, separate from VREF. RA2/V035 and R21/V071 remain VREF. This supersedes every earlier RB0/V026-to-VREF statement.",
+        "ConnectionEvidence": "v0.9.17 user-annotated photo: C25 right pad/model1 -> PIC2/RA0; C26 right pad/model1 -> PIC3/RA1. Left pads/model2 are common, retaining earlier V029-GND evidence. No new numeric resistance or capacitance supplied. C26 joins the existing RA1/R28/R29/TP7 net, separate from RA0 and VREF."
       },
       "via_evidence": "v0.9.16 CORRECTION: user confirms PIC21/RB0 -> TP16 -> Q2 single pad; TP16-VREF = 0.8 Mohm. User explicitly withdraws PIC21-VREF. PIC21/V026 belongs to H_PIR_SIG, separate from VREF. RA2/V035 and R21/V071 remain VREF. This supersedes every earlier RB0/V026-to-VREF statement."
     },
@@ -203,24 +204,30 @@
       "reference": "C25",
       "value": "?",
       "position": {
-        "x": 312.42,
-        "y": 62.23
+        "x": 322.58,
+        "y": 78.74
       },
       "rotation": 0,
       "includePins": true,
-      "footprint": "Capacitor_SMD:C_0805_2012Metric"
+      "footprint": "Capacitor_SMD:C_0805_2012Metric",
+      "properties": {
+        "ConnectionEvidence": "v0.9.17 user-annotated photo: C25 right pad/model1 -> PIC2/RA0; C26 right pad/model1 -> PIC3/RA1. Left pads/model2 are common, retaining earlier V029-GND evidence. No new numeric resistance or capacitance supplied. C26 joins the existing RA1/R28/R29/TP7 net, separate from RA0 and VREF."
+      }
     },
     {
       "symbol": "Device:C",
       "reference": "C26",
       "value": "?",
       "position": {
-        "x": 224.79,
-        "y": 48.26
+        "x": 312.42,
+        "y": 78.74
       },
       "rotation": 0,
       "includePins": true,
-      "footprint": "Capacitor_SMD:C_0805_2012Metric"
+      "footprint": "Capacitor_SMD:C_0805_2012Metric",
+      "properties": {
+        "ConnectionEvidence": "v0.9.17 user-annotated photo: C25 right pad/model1 -> PIC2/RA0; C26 right pad/model1 -> PIC3/RA1. Left pads/model2 are common, retaining earlier V029-GND evidence. No new numeric resistance or capacitance supplied. C26 joins the existing RA1/R28/R29/TP7 net, separate from RA0 and VREF."
+      }
     },
     {
       "symbol": "Device:C",
@@ -228,7 +235,7 @@
       "value": "?",
       "position": {
         "x": 300.99,
-        "y": 67.31
+        "y": 78.74
       },
       "rotation": 0,
       "includePins": true,

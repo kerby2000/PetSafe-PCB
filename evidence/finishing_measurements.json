@@ -336,7 +336,8 @@
     "Completed B16-B17: R23 C-C40 P and R23 C-R42 Q, both 1 ohm; clear surface trace",
     "B18/B19 TP16 to TP11/TP17: both 400 kohm, direct joins rejected",
     "U7-to-J3: all three corresponding physical columns reported connected",
-    "B21 TP16-VREF 0.8 Mohm; PIC21-VREF explicitly withdrawn; PIC21-TP16/Q2 confirmed"
+    "B21 TP16-VREF 0.8 Mohm; PIC21-VREF explicitly withdrawn; PIC21-TP16/Q2 confirmed",
+    "C25/C26 local routing resolved from user annotation; no additional continuity test requested."
   ],
   "deferred": "The 13 open pads on empty options are recorded but are lower priority unless they affect a fitted net. U6's two candidate internal-NC pins need external-copper inspection, not an invented no-connect flag. Firmware, daughterboard internals and routed PCB are separate from main-board schematic completion.",
   "sources": [
@@ -527,7 +528,7 @@
   ],
   "batch_title": "PIR signal route resolved",
   "instructions": "PIC21/RB0 now reaches TP16 and Q2 single pad. TP16-to-VREF reads 0.8 Mohm; the mistaken PIC21-to-VREF connection has been removed. U7 is fully mapped to J3. B20/C25 is cancelled; no further PIR-to-PIC measurements are needed.",
-  "result_summary": "B18 TP16-TP11 and B19 TP16-TP17 each read 400 kohm. B21 TP16-VREF reads 0.8 Mohm. User identifies PIC21/RB0 as TP16/Q2.S destination and explicitly withdraws PIC21-VREF. U7.1/2/3 map to J3.3/2/1. These updates are applied in the schematic.",
+  "result_summary": "B18 TP16-TP11 and B19 TP16-TP17 each read 400 kohm. B21 TP16-VREF reads 0.8 Mohm. User identifies PIC21/RB0 as TP16/Q2.S destination and explicitly withdraws PIC21-VREF. U7.1/2/3 map to J3.3/2/1. These updates are applied in the schematic. v0.9.17 user-annotated photo: C25 right pad/model1 -> PIC2/RA0; C26 right pad/model1 -> PIC3/RA1. Left pads/model2 are common, retaining earlier V029-GND evidence. No new numeric resistance or capacitance supplied. C26 joins the existing RA1/R28/R29/TP7 net, separate from RA0 and VREF.",
   "cancelled_tests": [
     {
       "id": "B20",
@@ -537,6 +538,13 @@
       "purpose": "Test whether the PIR output reaches the PIC2/RA0 input at C25 right pad through hidden routing. TP11 and TP17 have already been rejected.",
       "status": "CANCELLED_BEFORE_RESULT",
       "reason": "User identifies PIC21/RB0 destination; reconcile the older VREF assignment instead."
+    }
+  ],
+  "revision": "v0.9.17",
+  "photo_updates": [
+    {
+      "evidence": "evidence/c25_c26_mapping_20261009.json",
+      "result": "v0.9.17 user-annotated photo: C25 right pad/model1 -> PIC2/RA0; C26 right pad/model1 -> PIC3/RA1. Left pads/model2 are common, retaining earlier V029-GND evidence. No new numeric resistance or capacitance supplied. C26 joins the existing RA1/R28/R29/TP7 net, separate from RA0 and VREF."
     }
   ]
 }

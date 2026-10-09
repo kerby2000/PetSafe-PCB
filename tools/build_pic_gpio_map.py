@@ -46,6 +46,7 @@ request=dict(date='2026-10-09',basis_revision=model['revision'],status='LOCAL_GP
  supplementary_local_nets={str(n):('Direct to TP17; prior onward R13 guess withdrawn' if n==18 else ('VREF via V035; user confirmed via-to-TP, C39 local photo route' if n==4 else pins[n]['evidence'])) for n in [1,2,4,14,18,24,26,27,28]},
  notes=['No guessed destination is presented as a measurement.',
         'All 28 pads are visible in the close-up although the top of the plastic body is cropped.',
+        'v0.9.17 user annotated photo confirms C25-PIC2/RA0, C26-PIC3/RA1 and common GND returns. C26 joins existing R28/R29/TP7 net; capacitor values remain unknown.',
         'v0.9.9: V035/RA2/C39 reaches VREF; V042/PIC20 reaches board VDD. Earlier RC2/V049-TP3 and RB0/V026-TP16/Q2 are confirmed; RB0-VREF explicitly withdrawn in v0.9.16. RC1/PIC12-V053-V070-R18 is confirmed; old VREF join rejected. PIC15/RC4 -> U5.2 INA via V022-V016; PIC16/RC5 -> U5.3 INB via V023-V019 are now resolved. No PIC pads remain open; local-net remote roles and inferred branches remain qualified.'])
 (R/'evidence/pic_gpio_request.json').write_text(json.dumps(request,indent=2)+'\n',encoding='utf-8')
 
@@ -115,14 +116,14 @@ y=500
 y=paragraph(tx,y,'Tuning controls resolved: 5/RA3 -> R14 (V036-V108); 6/RA4 -> R15 (V037-V102); 7/RA5 -> R16 (V039-V097); 11/RC0 -> R11 (V047-V091). Existing 17/RC6 -> R13 retained.',tw,11,15)
 y=paragraph(tx,y,'Motor controls resolved: 15/RC4 -> U5.2 INA (V022-V016); 16/RC5 -> U5.3 INB (V023-V019). User-reported connections.',tw,11,15)
 y=paragraph(tx,y,'User meter + visual trace: 3-R28/R29/TP7; 17-R13; 22-TP2; 23-TP1; 25-TP4. 26-TP10 corroborated. Numerical ohms not supplied.',tw,11,15)
-y=paragraph(tx,y-4,'12: R18/V053-V070 | 21: TP16/Q2 | 2: C25 | 4: VREF/C39 | 14: TP11 | 18: TP17 | 24: R4 | 26: TP10/R35 | 27/28: ICSP nodes.',tw,11,15)
+y=paragraph(tx,y-4,'12: R18/V053-V070 | 21: TP16/Q2 | 2: C25 | 3: C26/R28/R29/TP7 | 4: VREF/C39 | 14: TP11 | 18: TP17 | 24: R4 | 26: TP10/R35 | 27/28: ICSP nodes.',tw,11,15)
 paragraph(tx,y-5,'These are not included in the orange pins. No visible route is not proof of NC. No no-connect flags were added. RP7 wording interpreted as photographed TP7.',tw,10,14)
 
 c.setStrokeColor(HexColor('#C2D1CB'));c.line(30,108,1161,108)
 text(30,87,'Unpowered checks: disconnect battery and programmer. Compare low readings with your shorted-probe baseline (about 0.5 ohm).',12,True)
 text(30,67,'Reply example: U4.3 -> Rxx, left pad -> 0.7 ohm. A visual trace is useful too. Give exact pads and actual ohms, rather than only a beep.',11)
 text(30,48,'Orange lines are callout leaders, not traced copper. Source: your new close-up; original photograph pixels retained.',10,color=muted)
-text(30,27,'Pinout: Microchip DS40001802G, page 4. Current schematic: v0.9.16. Date: 2026-10-09. Full details: evidence/pic_gpio_request.json.',10,color=muted)
+text(30,27,'Pinout: Microchip DS40001802G, page 4. Current schematic: v0.9.17. Date: 2026-10-09. Full details: evidence/pic_gpio_request.json.',10,color=muted)
 c.linkURL(SOURCE+'#page=4',(30,23,290,38),relative=0)
 c.showPage();c.save()
 print(f'{OUT}: 1 page, {len(missing)} unresolved GPIOs, all 28 physical pads numbered')

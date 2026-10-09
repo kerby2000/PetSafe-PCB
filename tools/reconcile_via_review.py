@@ -57,7 +57,7 @@ def apply(out):
     annotate([26],['U4.21','TP16.1','Q2.S'],'v0.9.16 user corrects PIC21 to TP16/Q2.S and withdraws PIC21-VREF; TP16-VREF 800 kohm. Prior V026-PIC21 local association retained.','H_PIR_SIG')
     sites['V026']['confidence']='User PIC21-TP16 report and explicit correction; prior V026-PIC21 association retained'
     sites['V026'].pop('joined_vias',None)
-    annotate([29],['C25.2','C26.2'],'User adds both capacitors to earlier GND report; return pads selected from photos/model. C26.1 remains unresolved.','GND')
+    annotate([29],['C25.2','C26.2'],'User adds both capacitors to earlier GND report. v0.9.17 annotated photo corroborates their common model2 pads; C26.1 now reaches PIC3/RA1, C25.1 PIC2/RA0.','GND')
     annotate([31],['U4.2','C25.1'],'User RA0/C25 association corroborates existing local signal node.','PIC_RA0_FILTER')
     annotate([35],['U4.4','C39.1','VREF.1'],'User confirms V035-VREF TP; earlier local PIC4/RA2-C39.1 photo route retained. Same VREF node as V071/R21.2; RB0/V026 association withdrawn.','VREF')
     sites['V035']['confidence']='User V035-VREF continuity; PIC4/C39 pad association from earlier photo trace'

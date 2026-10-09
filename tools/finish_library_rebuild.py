@@ -182,13 +182,13 @@ stub('VDD','R1.1',0,5);stub('VDD','C3.1',0,5)
 stub('GND','R2.1',0,5);stub('GND','C4.1',0,5)
 
 # PIC: official SOIC symbol; both ground pins share the library endpoint.
-bus('VDD',32,['U4.20','C32.1']);bus('GND',44,['C32.2','C26.2'])
-# IMG_2436: RA0/C25 and RA2/C39 are signal nodes, not supply bypasses.
-wire('PIC_RA0_FILTER','U4.2','C25.1')
-wire('VREF','U4.4','C39.1');label('VREF','C39.1') # User V035-VREF
-bus('GND',66,['C25.2','C39.2'])
+bus('VDD',32,['U4.20','C32.1']);bus('GND',44,['C32.2'])
+# User annotated photo: C25/RA0 and C26/RA1 share GND; RA2/C39 remains VREF.
+wire('PIC_RA0_FILTER','U4.2',(254,46),'C25.1')
+wire('PIC_RA1_RX_REF','U4.3',(246,48),'C26.1');label('PIC_RA1_RX_REF',(226,48))
+wire('VREF','U4.4',(237,50),'C39.1');label('VREF',(237,50))
+bus('GND',66,['C25.2','C26.2','C39.2'])
 wire('PIC_TP4_C41','TP4.1','C41.1');stub('GND','C41.2',4)
-stub('PIC_RA1_RX_REF','U4.3',4)
 stub('H_TUNE_2','U4.5',4)
 stub('H_TUNE_3','U4.6',4)
 stub('H_TUNE_4','U4.7',4)
@@ -361,7 +361,7 @@ for net,edges in adj.items():
 for l in L:
     x,y=l['p'];G.append(expr(f'(label {q(l["net"])} (at {x} {y} 0) (effects (font (size .762 .762)) (justify left bottom)) (uuid {q(uid())}))'))
 tree.extend(G)
-tree.append(expr('(title_block (title "PetSafe 100-1339 R03 A | single-sheet reconstruction") (date "2026-10-09") (rev "0.9.16") (company "KiCad 10 libraries + four datasheet symbols | MCP authoring") (comment 1 "U7-J3 mapped; PIC21 to TP16/Q2; mistaken RB0-VREF tie removed."))'))
+tree.append(expr('(title_block (title "PetSafe 100-1339 R03 A | single-sheet reconstruction") (date "2026-10-09") (rev "0.9.17") (company "KiCad 10 libraries + four datasheet symbols | MCP authoring") (comment 1 "C25 to PIC2/RA0; C26 to PIC3/RA1; shared GND confirmed by user photo."))'))
 # Canonical pretty printer supplied by the installed MCP server.
 sys.path.insert(0,str(Path.home()/'Documents/VS.Code.Projects/KiCAD-MCP-Server/python'))
 from utils.sexpr_format import prettify
@@ -381,7 +381,7 @@ out.write_text(prettify(sx.dumps(tree)),encoding='utf-8',newline='\n')
 def wire_key(w):return w['net'],tuple(w['a']),tuple(w['b'])
 prior_order={wire_key(w):i for i,w in enumerate(model.get('geometric_wires',[]))}
 ordered_segments=sorted(segments,key=lambda s:(prior_order.get(s,len(prior_order)),s))
-model.update(revision='v0.9.16',coordinate_units='mm',native_pin_crosswalk=layout['crosswalk'],pin_positions={e:list(p) for e,p in P.items()},
+model.update(revision='v0.9.17',coordinate_units='mm',native_pin_crosswalk=layout['crosswalk'],pin_positions={e:list(p) for e,p in P.items()},
              geometric_wires=[dict(net=n,a=a,b=b) for n,a,b in ordered_segments],library_policy='KiCad 10 stock symbols plus four explicitly authorized MCP-authored datasheet symbols for U1/U5/U6/Q8')
 for c in model['components']:
     entry=next(x for x in layout['catalog'] if x['original_ref']==c['ref'])

@@ -1,6 +1,6 @@
 {
   "board": "100-1339 R03 A",
-  "revision": "v0.9.16",
+  "revision": "v0.9.17",
   "status": "INFERRED WORKING CIRCUIT / NOT CONTINUITY VERIFIED",
   "components": [
     {
@@ -1604,11 +1604,12 @@
       "footprint": "Capacitor_SMD:C_0805_2012Metric",
       "footprint_confidence": "medium",
       "footprint_basis": "Photo family and body/land proportions compared with adjacent known IC lead pitch. Size is independent of capacitance, dielectric and voltage rating.",
-      "hypothesis": "v0.7 photo review withdraws the generic 100n bypass assumption. Right photo pad (model pin1) visibly connects U4 pin2 / RA0.",
+      "hypothesis": "v0.9.17 user-annotated photo: C25 right pad/model1 -> PIC2/RA0; C26 right pad/model1 -> PIC3/RA1. Left pads/model2 are common, retaining earlier V029-GND evidence. No new numeric resistance or capacitance supplied. C26 joins the existing RA1/R28/R29/TP7 net, separate from RA0 and VREF.",
       "value_evidence": {
         "state": "estimated",
         "source": "No individual measured value supplied; any displayed estimate is a hypothesis."
-      }
+      },
+      "connection_evidence": "v0.9.17 user-annotated photo: C25 right pad/model1 -> PIC2/RA0; C26 right pad/model1 -> PIC3/RA1. Left pads/model2 are common, retaining earlier V029-GND evidence. No new numeric resistance or capacitance supplied. C26 joins the existing RA1/R28/R29/TP7 net, separate from RA0 and VREF."
     },
     {
       "ref": "C26",
@@ -1630,11 +1631,12 @@
       "footprint": "Capacitor_SMD:C_0805_2012Metric",
       "footprint_confidence": "medium",
       "footprint_basis": "Photo family and body/land proportions compared with adjacent known IC lead pitch. Size is independent of capacitance, dielectric and voltage rating.",
-      "hypothesis": "v0.7 photo review withdraws the generic 100n bypass assumption. The old VDD tie is not supported by visible copper. Signal-side destination remains unresolved.",
+      "hypothesis": "v0.9.17 user-annotated photo: C25 right pad/model1 -> PIC2/RA0; C26 right pad/model1 -> PIC3/RA1. Left pads/model2 are common, retaining earlier V029-GND evidence. No new numeric resistance or capacitance supplied. C26 joins the existing RA1/R28/R29/TP7 net, separate from RA0 and VREF.",
       "value_evidence": {
         "state": "estimated",
         "source": "No individual measured value supplied; any displayed estimate is a hypothesis."
-      }
+      },
+      "connection_evidence": "v0.9.17 user-annotated photo: C25 right pad/model1 -> PIC2/RA0; C26 right pad/model1 -> PIC3/RA1. Left pads/model2 are common, retaining earlier V029-GND evidence. No new numeric resistance or capacitance supplied. C26 joins the existing RA1/R28/R29/TP7 net, separate from RA0 and VREF."
     },
     {
       "ref": "C27",
@@ -2401,7 +2403,8 @@
       "v094_summary": "v0.9.4: user confirms pin15/RC4 via V022-V016 to MX512H U5 pin2/INA, and pin16/RC5 via V023-V019 to U5 pin3/INB. Remaining via-only GPIOs: 5/V036, 6/V037, 7/V039, 11/V047, 13/V049, 21/V026.",
       "v096_summary": "v0.9.6 user working pairs: 5/RA3 V036-V108 R14; 6/RA4 V037-V102 R15; 7/RA5 V039-V097 R16; 11/RC0 V047-V091 R11. Existing RC6-R13 retained. Only 13/RC2 and 21/RB0 remain without modeled onward routes.",
       "via_evidence": "v0.9.16 CORRECTION: user confirms PIC21/RB0 -> TP16 -> Q2 single pad; TP16-VREF = 0.8 Mohm. User explicitly withdraws PIC21-VREF. PIC21/V026 belongs to H_PIR_SIG, separate from VREF. RA2/V035 and R21/V071 remain VREF. This supersedes every earlier RB0/V026-to-VREF statement.",
-      "measurement_evidence": "v0.9.16 CORRECTION: user confirms PIC21/RB0 -> TP16 -> Q2 single pad; TP16-VREF = 0.8 Mohm. User explicitly withdraws PIC21-VREF. PIC21/V026 belongs to H_PIR_SIG, separate from VREF. RA2/V035 and R21/V071 remain VREF. This supersedes every earlier RB0/V026-to-VREF statement."
+      "measurement_evidence": "v0.9.16 CORRECTION: user confirms PIC21/RB0 -> TP16 -> Q2 single pad; TP16-VREF = 0.8 Mohm. User explicitly withdraws PIC21-VREF. PIC21/V026 belongs to H_PIR_SIG, separate from VREF. RA2/V035 and R21/V071 remain VREF. This supersedes every earlier RB0/V026-to-VREF statement.",
+      "c25_c26_evidence": "v0.9.17 user-annotated photo: C25 right pad/model1 -> PIC2/RA0; C26 right pad/model1 -> PIC3/RA1. Left pads/model2 are common, retaining earlier V029-GND evidence. No new numeric resistance or capacitance supplied. C26 joins the existing RA1/R28/R29/TP7 net, separate from RA0 and VREF."
     },
     {
       "ref": "U5",
@@ -3764,7 +3767,8 @@
         "Front lower tuning-capacitor common band joins V087/V088 user GND. Withdraw antenna B assignment of these pads; midpoint antenna links remain unknown.",
         "Rear tuning-capacitor ground-side lands share copper around V093/V096/V101/V105. These are user-GND sites; opposite lands retain the local front/rear midpoint grouping."
       ],
-      "v0916_evidence": "User measured matching physical columns of U7 and J3. U7 local square-pad pin1 maps to J3 pin3; middle to pin2; outer round pin3 to J3 pin1. No numeric resistance supplied; other branches retain earlier qualifications."
+      "v0916_evidence": "User measured matching physical columns of U7 and J3. U7 local square-pad pin1 maps to J3 pin3; middle to pin2; outer round pin3 to J3 pin1. No numeric resistance supplied; other branches retain earlier qualifications.",
+      "v0917_evidence": "User drawing corroborates common C25.2/C26.2; V029-GND identification is retained. No new claim for other GND branches."
     },
     {
       "net": "H_LDO_IN",
@@ -4176,7 +4180,8 @@
       ],
       "status": "PHOTO_TRACE / not electrically measured",
       "original_fragments": [],
-      "v07_evidence": "IMG_2436: pin2 to C25 right pad"
+      "v07_evidence": "IMG_2436: pin2 to C25 right pad",
+      "v0917_evidence": "v0.9.17 user-annotated photo: C25 right pad/model1 -> PIC2/RA0; C26 right pad/model1 -> PIC3/RA1. Left pads/model2 are common, retaining earlier V029-GND evidence. No new numeric resistance or capacitance supplied. C26 joins the existing RA1/R28/R29/TP7 net, separate from RA0 and VREF."
     },
     {
       "net": "PIC_RA1_RX_REF",
@@ -4184,11 +4189,13 @@
         "R28.1",
         "R29.1",
         "TP7.1",
-        "U4.3"
+        "U4.3",
+        "C26.1"
       ],
       "status": "USER_REPORTED_CONTINUITY + photo-selected resistor pads",
       "original_fragments": [],
-      "v08_evidence": "User: pin3 goes to R28, R29 and RP7 point, using multimeter and visible traces. RP7 interpreted as visible TP7. IMG_2434 supports common free resistor ends/model1; earlier ties to other inferred bias/detector nodes withdrawn."
+      "v08_evidence": "User: pin3 goes to R28, R29 and RP7 point, using multimeter and visible traces. RP7 interpreted as visible TP7. IMG_2434 supports common free resistor ends/model1; earlier ties to other inferred bias/detector nodes withdrawn.",
+      "v0917_evidence": "v0.9.17 user-annotated photo: C25 right pad/model1 -> PIC2/RA0; C26 right pad/model1 -> PIC3/RA1. Left pads/model2 are common, retaining earlier V029-GND evidence. No new numeric resistance or capacitance supplied. C26 joins the existing RA1/R28/R29/TP7 net, separate from RA0 and VREF."
     },
     {
       "net": "PIC_RB3_RETURN",
@@ -4922,7 +4929,6 @@
     }
   ],
   "unresolved_pins": [
-    "C26.1",
     "C42.1",
     "C42.2",
     "C49.1",
@@ -5461,17 +5467,6 @@
       "b": [
         274.32,
         309.88
-      ]
-    },
-    {
-      "net": "PIC_RA1_RX_REF",
-      "a": [
-        283.21,
-        60.96
-      ],
-      "b": [
-        288.29,
-        60.96
       ]
     },
     {
@@ -6839,17 +6834,6 @@
       ]
     },
     {
-      "net": "PIC_RA0_FILTER",
-      "a": [
-        283.21,
-        58.42
-      ],
-      "b": [
-        312.42,
-        58.42
-      ]
-    },
-    {
       "net": "VREF",
       "a": [
         354.33,
@@ -7741,17 +7725,6 @@
       ]
     },
     {
-      "net": "GND",
-      "a": [
-        224.79,
-        52.07
-      ],
-      "b": [
-        224.79,
-        55.88
-      ]
-    },
-    {
       "net": "MCLR_VPP",
       "a": [
         227.33,
@@ -7903,17 +7876,6 @@
       "b": [
         114.3,
         298.45
-      ]
-    },
-    {
-      "net": "GND",
-      "a": [
-        300.99,
-        71.12
-      ],
-      "b": [
-        300.99,
-        83.82
       ]
     },
     {
@@ -8453,17 +8415,6 @@
       "b": [
         237.49,
         167.64
-      ]
-    },
-    {
-      "net": "GND",
-      "a": [
-        210.82,
-        55.88
-      ],
-      "b": [
-        224.79,
-        55.88
       ]
     },
     {
@@ -9525,17 +9476,6 @@
     {
       "net": "GND",
       "a": [
-        312.42,
-        66.04
-      ],
-      "b": [
-        312.42,
-        83.82
-      ]
-    },
-    {
-      "net": "GND",
-      "a": [
         246.38,
         234.95
       ],
@@ -10236,6 +10176,116 @@
         288.29,
         81.28
       ]
+    },
+    {
+      "net": "GND",
+      "a": [
+        300.99,
+        82.55
+      ],
+      "b": [
+        300.99,
+        83.82
+      ]
+    },
+    {
+      "net": "GND",
+      "a": [
+        312.42,
+        82.55
+      ],
+      "b": [
+        312.42,
+        83.82
+      ]
+    },
+    {
+      "net": "GND",
+      "a": [
+        312.42,
+        83.82
+      ],
+      "b": [
+        322.58,
+        83.82
+      ]
+    },
+    {
+      "net": "GND",
+      "a": [
+        322.58,
+        82.55
+      ],
+      "b": [
+        322.58,
+        83.82
+      ]
+    },
+    {
+      "net": "PIC_RA0_FILTER",
+      "a": [
+        283.21,
+        58.42
+      ],
+      "b": [
+        322.58,
+        58.42
+      ]
+    },
+    {
+      "net": "PIC_RA0_FILTER",
+      "a": [
+        322.58,
+        58.42
+      ],
+      "b": [
+        322.58,
+        74.93
+      ]
+    },
+    {
+      "net": "PIC_RA1_RX_REF",
+      "a": [
+        283.21,
+        60.96
+      ],
+      "b": [
+        287.02,
+        60.96
+      ]
+    },
+    {
+      "net": "PIC_RA1_RX_REF",
+      "a": [
+        287.02,
+        60.96
+      ],
+      "b": [
+        312.42,
+        60.96
+      ]
+    },
+    {
+      "net": "PIC_RA1_RX_REF",
+      "a": [
+        312.42,
+        60.96
+      ],
+      "b": [
+        312.42,
+        74.93
+      ]
+    },
+    {
+      "net": "VREF",
+      "a": [
+        300.99,
+        63.5
+      ],
+      "b": [
+        300.99,
+        74.93
+      ]
     }
   ],
   "pin_positions": {
@@ -10476,28 +10526,28 @@
       59.69
     ],
     "C25.1": [
-      312.42,
-      58.42
+      322.58,
+      74.93
     ],
     "C25.2": [
-      312.42,
-      66.04
+      322.58,
+      82.55
     ],
     "C26.1": [
-      224.79,
-      44.45
+      312.42,
+      74.93
     ],
     "C26.2": [
-      224.79,
-      52.07
+      312.42,
+      82.55
     ],
     "C39.1": [
       300.99,
-      63.5
+      74.93
     ],
     "C39.2": [
       300.99,
-      71.12
+      82.55
     ],
     "Y1.1": [
       308.61,
