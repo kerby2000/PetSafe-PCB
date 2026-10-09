@@ -1,11 +1,10 @@
 {
-  "revision": "v0.9.25",
+  "revision": "v0.9.26",
   "method": "Photo-based family selection using known IC lead spacing and repeated package proportions; no calibrated dimensional measurement claimed.",
   "blank_before": 129,
-  "blank_after": 2,
+  "blank_after": 1,
   "new_assignments": 127,
   "remaining": [
-    "C5",
     "LED1"
   ],
   "components": [
@@ -544,9 +543,9 @@
     {
       "ref": "C5",
       "before": "",
-      "footprint": "",
-      "confidence": "unresolved",
-      "basis": "Capacitance and voltage are user-confirmed. Can diameter and lead pitch remain unmeasured.",
+      "footprint": "Capacitor_THT:CP_Radial_D6.3mm_P2.50mm",
+      "confidence": "medium - measured diameter; inferred pitch",
+      "basis": "User-measured diameter 6.33 mm supports stock nominal 6.3 mm radial can. Standard 2.5 mm lead pitch is inferred, not measured; actual pad spacing/drill fit remain unverified. Stock footprint description is 7 mm tall, while actual can height is 16 mm. This is a 2D land-pattern candidate, not an exact housing model.",
       "photos": [
         "IMG_2431.jpg",
         "IMG_2432.jpg"

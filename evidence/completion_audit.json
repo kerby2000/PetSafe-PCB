@@ -1,12 +1,11 @@
 {
-  "revision": "v0.9.25",
+  "revision": "v0.9.26",
   "instruments": [
     "LCR meter",
     "multimeter"
   ],
-  "footprint_assigned": 147,
+  "footprint_assigned": 148,
   "footprint_blank": [
-    "C5",
     "LED1"
   ],
   "fitted_capacitors": 45,
@@ -788,11 +787,11 @@
       "displayed": "470uF / 16V",
       "marking": "470uF 16V",
       "value_or_identity": "User sleeve reading: 470 uF / 16 V; exact can dimensions still needed",
-      "footprint": "",
-      "footprint_confidence": "unresolved",
-      "footprint_basis": "Capacitance and voltage are user-confirmed. Can diameter and lead pitch remain unmeasured.",
+      "footprint": "Capacitor_THT:CP_Radial_D6.3mm_P2.50mm",
+      "footprint_confidence": "medium - measured diameter; inferred pitch",
+      "footprint_basis": "User-measured diameter 6.33 mm supports stock nominal 6.3 mm radial can. Standard 2.5 mm lead pitch is inferred, not measured; actual pad spacing/drill fit remain unverified. Stock footprint description is 7 mm tall, while actual can height is 16 mm. This is a 2D land-pattern candidate, not an exact housing model.",
       "open_pads": 0,
-      "next_method": "Can diameter and lead-centre spacing for footprint; Photo with ruler/body and lead measurements for exact footprint",
+      "next_method": "Can diameter and lead-centre spacing for footprint",
       "photos": "IMG_2431.jpg;IMG_2432.jpg"
     },
     {

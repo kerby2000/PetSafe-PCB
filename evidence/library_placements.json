@@ -731,10 +731,14 @@
       },
       "rotation": 0,
       "includePins": true,
-      "footprint": "",
+      "footprint": "Capacitor_THT:CP_Radial_D6.3mm_P2.50mm",
       "properties": {
         "ViaEvidence": "v0.9.5: V125/V126 reach C5 negative terminal, native pad2, GND. Confirms existing ground assignment; 470uF/16V value retained.",
-        "ConnectionEvidence": "v0.9.18: C6 is reconstructed in parallel with C5 from the user proposal and photos IMG_2431/IMG_2432. C6 upper pad/model1 joins the C5-positive supply copper (H_RF_VDD, after L1); lower pad/model2 joins GND. Photo-supported, not a new meter-confirmed connection. C6 capacitance remains unknown. Earlier 400 kohm output exclusion and 10 ohm Q8-supply-path reading are retained; the latter does not independently prove Q8 source wiring."
+        "ConnectionEvidence": "v0.9.18: C6 is reconstructed in parallel with C5 from the user proposal and photos IMG_2431/IMG_2432. C6 upper pad/model1 joins the C5-positive supply copper (H_RF_VDD, after L1); lower pad/model2 joins GND. Photo-supported, not a new meter-confirmed connection. C6 capacitance remains unknown. Earlier 400 kohm output exclusion and 10 ohm Q8-supply-path reading are retained; the latter does not independently prove Q8 source wiring.",
+        "BodySize": "6.33 mm diameter x 16 mm height (user measurement)",
+        "Height": "16 mm",
+        "LeadPitch": "2.5 mm (inferred, not measured)",
+        "MeasurementEvidence": "User confirms radial electrolytic C5, 6.33 mm diameter and 16 mm high; earlier sleeve reading 470 uF / 16 V retained. Standard nominal 6.3 mm footprint assigned; 2.5 mm pitch and 0.8 mm drills remain candidate geometry. Stock footprint describes a 7 mm body, so its housing model is not an exact match. Use measured 16 mm for clearance. Polarity and physical nets unchanged."
       }
     },
     {

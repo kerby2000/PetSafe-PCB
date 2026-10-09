@@ -1,7 +1,7 @@
 {
   "date": "2026-10-09",
-  "revision": "v0.9.25",
-  "review_revision": "v0.9.25",
+  "revision": "v0.9.26",
+  "review_revision": "v0.9.26",
   "interpretation": "Every catalog entry is drawn. Hardware connectivity, values and identities are only partially verified. No routed PCB exists.",
   "catalog_entries": 149,
   "physical_pins": 351,
@@ -69,9 +69,8 @@
     "L2"
   ],
   "footprints": {
-    "assigned": 147,
+    "assigned": 148,
     "unassigned": [
-      "C5",
       "LED1"
     ],
     "qualification": "Assigned is not the same as measured. R8, C11 and S1 have user body dimensions; lead geometry and exact housing variants remain qualified."
@@ -84,7 +83,7 @@
     "isolated_pin_label": 1
   },
   "modeled_nets": 85,
-  "schematic_sha256": "d771f56a3d47e5b6c99ff7b2ba90d2b1c8e33b029794816957fb5a788794d609",
+  "schematic_sha256": "149aa01d5ae849edb2ae4f2b29147e1a281c698d728940e6de569c64d50f05b6",
   "known_identified_ICs_needing_new_symbols": [],
   "complete_symbols_for_selected_candidates": true,
   "available_instruments": [
@@ -194,8 +193,8 @@
     {
       "id": "M01",
       "area": "Package geometry / PCB reproduction",
-      "gap": "LED1 land pattern/numbering and C5 geometry remain unresolved. S1 manufacturer and exact pad fit are unverified; the stock x43 housing is 4.3 mm high, not the measured 6 mm. Other package families, connector pitches, test-pad drills and board geometry remain partly photo-based.",
-      "method": "Obtain C5 can/lead spacing and a matching LED1 vendor footprint/pad drawing. Verify S1 land-pattern fit; use its recorded 6 mm overall height for clearance. No repeat body measurement is needed."
+      "gap": "C5 lead pitch/drill fit remain inferred (stock 2.5 mm/0.8 mm); its stock 7 mm housing differs from the measured 16 mm. LED1 land pattern/numbering remain unresolved. S1 exact pad fit is unverified and stock height is 4.3 mm versus measured 6 mm. Other pitches, drills and board geometry remain partly photo-based.",
+      "method": "For PCB reproduction, verify C5 lead spacing and S1 pad fit; use measured C5 16 mm and S1 6 mm heights for clearance. Obtain a matching LED1 vendor footprint/pad drawing. No repeat body measurement is needed."
     },
     {
       "id": "D01",
@@ -654,9 +653,9 @@
       ],
       "priority": 2,
       "state": "open",
-      "known": "Candidate stock footprints are assigned except C5/LED1. R8/C11 have measured bodies; J1 numbering is corrected. S1 measures 6 x 6 x 4 mm plus 2 mm actuator (6 mm overall), with a stock SMD footprint and four physical pads mapped to two contact nodes. LED1 is red/green, square 1.5 x 1.5 mm.",
-      "unknown": "LED1 land pattern/numbering and C5 geometry remain unresolved. S1 manufacturer and exact pad fit are unverified; the stock x43 housing is 4.3 mm high, not the measured 6 mm. Other package families, connector pitches, test-pad drills and board geometry remain partly photo-based.",
-      "next_action": "Obtain C5 can/lead spacing and a matching LED1 vendor footprint/pad drawing. Verify S1 land-pattern fit; use its recorded 6 mm overall height for clearance. No repeat body measurement is needed.",
+      "known": "148/149 entries have candidate stock footprints; only LED1 remains blank. C5 is measured 6.33 mm diameter x 16 mm high and uses the nominal 6.3 mm radial footprint. S1 measures 6 x 6 x 4 mm plus 2 mm actuator (6 mm overall). LED1 is red/green, square 1.5 x 1.5 mm. R8/C11 bodies are measured; J1 numbering is corrected.",
+      "unknown": "C5 lead pitch/drill fit remain inferred (stock 2.5 mm/0.8 mm); its stock 7 mm housing differs from the measured 16 mm. LED1 land pattern/numbering remain unresolved. S1 exact pad fit is unverified and stock height is 4.3 mm versus measured 6 mm. Other pitches, drills and board geometry remain partly photo-based.",
+      "next_action": "For PCB reproduction, verify C5 lead spacing and S1 pad fit; use measured C5 16 mm and S1 6 mm heights for clearance. Obtain a matching LED1 vendor footprint/pad drawing. No repeat body measurement is needed.",
       "closed_when": "Blank footprints are filled with supported stock matches or approved vendor parts; exact PCB-reproduction dimensions are distinguished from schematic-only candidates.",
       "open_pads": [],
       "nets": []
@@ -808,7 +807,8 @@
     "U6A lower-right pad is GND; all three empty option pads now mapped.",
     "v0.9.24 removes unsupported TP9 from active inventory, retains photographed C49, and moves D4-D6 / Q9-J6 / U6A into their circuit blocks. No measured net membership changes.",
     "v0.9.24: TP9 withdrawn as unsupported; C49 confirmed present and DNP in IMG_2442, with two pads still unresolved. Options moved into functional blocks. Q9 NPN and U6A regulator role symbols replace connectors without changing physical nets.",
-    "v0.9.25: LED1 red/green emitters and 1.5 x 1.5 mm square body confirmed by user; native value updated, all physical nets preserved. Exact land pattern and colour-to-drive mapping remain open."
+    "v0.9.25: LED1 red/green emitters and 1.5 x 1.5 mm square body confirmed by user; native value updated, all physical nets preserved. Exact land pattern and colour-to-drive mapping remain open.",
+    "v0.9.26: C5 radial electrolytic body measured 6.33 mm diameter x 16 mm height. Stock 6.3 mm / 2.5 mm footprint candidate assigned; pitch remains inferred, stock height 7 mm differs. Earlier 470 uF / 16 V and all physical nets retained."
   ],
   "history": "docs/history/README.md"
 }

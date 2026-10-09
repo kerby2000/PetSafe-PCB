@@ -109,3 +109,8 @@ Native ERC retains an output-to-output error for U6.3/U106.2 on H_PIR_VDD: empty
 ## v0.9.25 - LED1 observation
 
 User confirms two internal emitters, red and green, in a square 1.5 x 1.5 mm body. The schematic and inventory now display `Red / Green`; this removes the generic colour question mark without inventing which PIC/resistor branch lights each colour. Existing nets and the four-pad stock dual-LED symbol are retained. Exact land pattern, manufacturer numbering and colour-to-drive mapping remain unconfirmed. See [observation record](../evidence/led1_dimensions_20261009.json).
+
+
+## v0.9.26 - C5 can dimensions and radial footprint
+
+The user measured C5 at 6.33 mm diameter and 16 mm high. The earlier 470 uF / 16 V identification is retained. MCP assigned stock `Capacitor_THT:CP_Radial_D6.3mm_P2.50mm` to the existing `Device:C_Polarized` symbol: native pad1 is positive/H_RF_VDD and pad2 is negative/GND. No electrical net changes were made. The diameter supports the nominal 6.3 mm family; 2.5 mm lead pitch and 0.8 mm drill are explicit candidate geometry, not measured facts. The stock footprint describes a 7 mm body, so its 3D housing must not be used as the measured 16 mm envelope. Use the recorded actual height for clearance; no custom part or housing was created. Only LED1 now lacks an assigned footprint. See [C5 dimension record](../evidence/c5_dimensions_20261009.json).

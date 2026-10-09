@@ -6,14 +6,14 @@ Start with [the offline overview](index.html), [the current completion checklist
 
 ## Current status
 
-Schematic revision **v0.9.25**, updated **2026-10-09**. LED1 is now confirmed red/green with a square 1.5 x 1.5 mm body; its schematic value is updated. Colour-to-drive mapping and an exact footprint remain unconfirmed. See [LED evidence](evidence/led1_dimensions_20261009.json). Option parts now sit in their functional blocks; section 08 is removed. Unsupported TP9 was withdrawn. C49 is visible as an empty footprint in rear photo IMG_2442 and remains in the antenna block. Q9 now uses a stock NPN symbol; U6A/U106 uses a three-pin regulator role template, with the original identity unclaimed. Both remain DNP. See [option evidence](evidence/options_reorganization_20261009.json) and [review response](docs/ARCHITECT_REVIEW_RESPONSE.md). The model and native file agree on 85 net partitions, unchanged by this reorganization. All PIC pads have modeled local connections, but some remote destinations and circuit roles remain uncertain. There is **no routed KiCad PCB**, confirmed layer stack, or powered functional validation.
+Schematic revision **v0.9.26**, updated **2026-10-09**. C5 now has a stock nominal 6.3 mm radial footprint, supported by its measured 6.33 mm diameter and 16 mm height. The 2.5 mm pitch remains inferred; the stock 7 mm housing is not an exact height match. See [C5 evidence](evidence/c5_dimensions_20261009.json). LED1 is now confirmed red/green with a square 1.5 x 1.5 mm body; its schematic value is updated. Colour-to-drive mapping and an exact footprint remain unconfirmed. See [LED evidence](evidence/led1_dimensions_20261009.json). Option parts now sit in their functional blocks; section 08 is removed. Unsupported TP9 was withdrawn. C49 is visible as an empty footprint in rear photo IMG_2442 and remains in the antenna block. Q9 now uses a stock NPN symbol; U6A/U106 uses a three-pin regulator role template, with the original identity unclaimed. Both remain DNP. See [option evidence](evidence/options_reorganization_20261009.json) and [review response](docs/ARCHITECT_REVIEW_RESPONSE.md). The model and native file agree on 85 net partitions, unchanged by this reorganization. All PIC pads have modeled local connections, but some remote destinations and circuit roles remain uncertain. There is **no routed KiCad PCB**, confirmed layer stack, or powered functional validation.
 
 | Remaining work | Current state |
 |---|---|
 | Open physical pads | 2: both C49 DNP pads; U6.4 has a supported intentional NC |
 | Other incomplete connections | 1 isolated label, plus inferred receiver/RF/PIR branches |
 | Values | 44 fitted ceramic values; L1/L2 type and value |
-| Footprints | 147/149 assigned; only C5 and LED1 are blank; assigned land patterns remain qualified |
+| Footprints | 148/149 assigned; only LED1 is blank; assigned land patterns remain qualified |
 | ERC | 9 findings: 2 open pins, 1 isolated label, 5 undriven power inputs, 1 U6/U6A regulator-output conflict |
 | Libraries | 22 stock definitions and 4 authorized custom candidate definitions in use |
 
@@ -63,4 +63,4 @@ Local KiCad history, lock files, caches, QA renders and export ZIPs are ignored.
 
 ## Completion milestones
 
-**Topology complete:** supported populated-component and block-interface connections, compatible candidate functions, and individually documented exceptions. **Value/package complete:** required values and geometry recovered, with exact maker/ratings distinguished from equivalent choices. A routed PCB is separate. Signal paths take priority over perfecting the remaining C5/LED1 footprints and exact mechanical fit.
+**Topology complete:** supported populated-component and block-interface connections, compatible candidate functions, and individually documented exceptions. **Value/package complete:** required values and geometry recovered, with exact maker/ratings distinguished from equivalent choices. A routed PCB is separate. Signal paths take priority over perfecting the remaining LED1 footprint and C5 pitch and exact mechanical fit.

@@ -11052,7 +11052,7 @@
 				(justify left)
 			)
 		)
-		(property "Footprint" ""
+		(property "Footprint" "Capacitor_THT:CP_Radial_D6.3mm_P2.50mm"
 			(at 238.455 177.8 0)
 			(hide yes)
 			(show_name no)
@@ -11121,6 +11121,18 @@
 				(hide yes)
 			)
 		)
+(property "BodySize" "6.33 mm diameter x 16 mm height (user measurement)" (at 237.49 181.61 0)
+(effects (font (size 1.27 1.27)) (hide yes))
+)
+(property "Height" "16 mm" (at 237.49 181.61 0)
+(effects (font (size 1.27 1.27)) (hide yes))
+)
+(property "LeadPitch" "2.5 mm (inferred, not measured)" (at 237.49 181.61 0)
+(effects (font (size 1.27 1.27)) (hide yes))
+)
+(property "MeasurementEvidence" "User confirms radial electrolytic C5, 6.33 mm diameter and 16 mm high; earlier sleeve reading 470 uF / 16 V retained. Standard nominal 6.3 mm footprint assigned; 2.5 mm pitch and 0.8 mm drills remain candidate geometry. Stock footprint describes a 7 mm body, so its housing model is not an exact match. Use measured 16 mm for clearance. Polarity and physical nets unchanged." (at 237.49 181.61 0)
+(effects (font (size 1.27 1.27)) (hide yes))
+)
 		(pin "1"
 			(uuid "1f0a9396-2967-444b-97f0-8b5ec6729161")
 		)
