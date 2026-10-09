@@ -1,0 +1,279 @@
+{
+  "date": "2026-10-09",
+  "revision": "v0.9.20",
+  "basis_revision_of_user_reply": "v0.9.18",
+  "shorted_probe_baseline_ohms": null,
+  "readings": [
+    {
+      "id": "B22",
+      "from": "V",
+      "to": "X",
+      "ohms": 44000,
+      "reported": "44000 ohm"
+    },
+    {
+      "id": "B23",
+      "from": "W",
+      "to": "X",
+      "ohms": 1,
+      "reported": "1 ohm"
+    },
+    {
+      "id": "B24",
+      "from": "V",
+      "to": "Z",
+      "ohms": 1,
+      "reported": "1 ohm"
+    },
+    {
+      "id": "B25",
+      "from": "W",
+      "to": "Z",
+      "ohms": 44000,
+      "reported": "44000 ohm"
+    },
+    {
+      "id": "B26",
+      "from": "V",
+      "to": "Y",
+      "ohms": 270000,
+      "reported": "270000 ohm"
+    },
+    {
+      "id": "B27",
+      "from": "W",
+      "to": "Y",
+      "ohms": 10000,
+      "reported": "10000 ohm"
+    },
+    {
+      "id": "B28",
+      "from": "5",
+      "to": "2",
+      "ohms": 1,
+      "reported": "1 ohm"
+    }
+  ],
+  "probe_definitions": {
+    "u6_open": {
+      "id": "u6_open",
+      "source": "photos/originals/IMG_2435.jpg",
+      "coordinate_space": [
+        1368,
+        1823
+      ],
+      "view_box": [
+        620,
+        1010,
+        600,
+        420
+      ],
+      "title": "1. U6: does pin 5 join VIN under the chip?",
+      "instructions": "Your annotation shows pin 4 unused, pin 5 reaching the upper end of R37 and the single pad of empty U6A, pin 3 reaching the PIR supply, pin 2 reaching C36, and pin 1 at GND. Only the hidden pin 5-to-pin 2 join remains in this batch. Numbers are package pins; grey labels give orientation only. The current R37-to-VIN connection is an older hypothesis, so it must not be used as proof of this join.",
+      "context_points": [
+        "4",
+        "3",
+        "1"
+      ],
+      "points": {
+        "4": {
+          "xy": [
+            791,
+            1163
+          ],
+          "label": [
+            681,
+            1102
+          ],
+          "description": "U6 pin 4 / L1: upper pad on the two-pad side",
+          "role": "target"
+        },
+        "5": {
+          "xy": [
+            794,
+            1263
+          ],
+          "label": [
+            680,
+            1344
+          ],
+          "description": "U6 pin 5 / L2: lower pad on the two-pad side",
+          "role": "target"
+        },
+        "3": {
+          "xy": [
+            954,
+            1163
+          ],
+          "label": [
+            1109,
+            1071
+          ],
+          "description": "U6 pin 3 / R1: upper-right pad, candidate VOUT",
+          "role": "reference"
+        },
+        "2": {
+          "xy": [
+            954,
+            1215
+          ],
+          "label": [
+            1152,
+            1225
+          ],
+          "description": "U6 pin 2 / R2: middle-right pad, candidate VIN",
+          "role": "reference"
+        },
+        "1": {
+          "xy": [
+            954,
+            1264
+          ],
+          "label": [
+            1096,
+            1370
+          ],
+          "description": "U6 pin 1 / R3: lower-right pad, candidate GND",
+          "role": "reference"
+        }
+      }
+    },
+    "d6_open": {
+      "id": "d6_open",
+      "source": "photos/originals/IMG_2437.jpg",
+      "coordinate_space": [
+        1368,
+        1823
+      ],
+      "view_box": [
+        440,
+        885,
+        675,
+        545
+      ],
+      "title": "2. D6 beside PIC U4 and the programming connector J1",
+      "instructions": "Measure each D6 end against the three nearby connector nodes. The paths disappear near/under U4, so the photographs alone do not establish their destinations. Keep V and W as physical end names; do not assign diode pin numbers from these labels.",
+      "points": {
+        "V": {
+          "xy": [
+            903,
+            1027
+          ],
+          "label": [
+            790,
+            965
+          ],
+          "description": "D6 upper metal end in this photo",
+          "role": "target"
+        },
+        "W": {
+          "xy": [
+            901,
+            1115
+          ],
+          "label": [
+            1037,
+            1037
+          ],
+          "description": "D6 lower metal end, nearer J1",
+          "role": "target"
+        },
+        "X": {
+          "xy": [
+            862,
+            1220
+          ],
+          "label": [
+            991,
+            1363
+          ],
+          "description": "J1 pin 1 / VPP: rightmost square solder pad",
+          "role": "reference"
+        },
+        "Y": {
+          "xy": [
+            729,
+            1220
+          ],
+          "label": [
+            733,
+            1363
+          ],
+          "description": "J1 pin 2 / VDD: second pad from the right",
+          "role": "reference"
+        },
+        "Z": {
+          "xy": [
+            597,
+            1220
+          ],
+          "label": [
+            501,
+            1363
+          ],
+          "description": "J1 pin 3 / GND: middle pad",
+          "role": "reference"
+        }
+      }
+    }
+  },
+  "confirmed_physical_connections": [
+    "D6 upper contact V to J1.3/GND (B24, 1 ohm)",
+    "D6 lower contact W to J1.1/VPP (B23, 1 ohm)",
+    "U6 pin5 to pin2/VIN (B28, 1 ohm)"
+  ],
+  "confirmed_pairs": [
+    [
+      "U6.L2",
+      "U6.R2"
+    ],
+    [
+      "D6.1",
+      "J1.VPP"
+    ],
+    [
+      "D6.2",
+      "J1.GND"
+    ]
+  ],
+  "user_annotated_pairs": [
+    [
+      "U6.L2",
+      "R37.2"
+    ],
+    [
+      "U6.L2",
+      "U6A.L"
+    ]
+  ],
+  "intentional_no_connect": {
+    "endpoint": "U6.L1",
+    "native_pin": "U6.4",
+    "basis": "User annotated NC on upper-left pad; original IMG_2435 shows an isolated surface stub. Consistent with candidate datasheet page11, not based on the datasheet alone."
+  },
+  "d6_polarity": "v0.9.20 B22-B27: upper photo contact V -> GND, lower W -> VPP, each 1 ohm. B29 red V/black W about 0.7V; B30 reverse OL. Supports A=V/GND (pin2), K=W/VPP (pin1). G3 identity and Zener breakdown remain unverified; no 3.9V measurement.",
+  "interpretation": "44k/270k/10k are in-circuit paths and not direct joins or new resistor values. No new shorted-probe baseline supplied.",
+  "photos": {
+    "photos/originals/IMG_2437.jpg": "3c7c58fea79ea903a3099f204c1d97406c0884edb6d54fd5e7441363e71467a7",
+    "photos/originals/IMG_2435.jpg": "04f1464e2fceeec695365b25183dc96505034434565d20713f55c5b13b18fac1",
+    "photos/user_updates/U6_external_routing_20261009.png": "65159aec548c6c5ca68f86e1153a6f7142d5379f75eb733d48f02450a36f5273"
+  },
+  "model_action": "v0.9.20: U6.5-U6.2 measured 1 ohm (B28). User annotation also joins physical L2/native5 to R37 upper/model2 and empty U6A single/native1. U6.4/L1 marked NC by user and appears as an isolated surface stub in original photos. Candidate pin5 is internally NC but externally tied to VIN; pin4 remains unused. v0.9.20 B22-B27: upper photo contact V -> GND, lower W -> VPP, each 1 ohm. B29 red V/black W about 0.7V; B30 reverse OL. Supports A=V/GND (pin2), K=W/VPP (pin1). G3 identity and Zener breakdown remain unverified; no 3.9V measurement.",
+  "diode_readings": [
+    {
+      "id": "B29",
+      "red": "V",
+      "black": "W",
+      "reported": "V-W -0.7V",
+      "volts": 0.7,
+      "interpretation": "Hyphen interpreted as the user's reading separator; forward-drop magnitude approximately 0.7 V."
+    },
+    {
+      "id": "B30",
+      "red": "W",
+      "black": "V",
+      "reported": "W-V - OL",
+      "volts": null
+    }
+  ]
+}

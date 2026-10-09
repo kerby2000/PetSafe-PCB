@@ -10621,9 +10621,15 @@
 				(hide yes)
 			)
 		)
-    (property "ConnectionEvidence" "v0.9.18: C6 is reconstructed in parallel with C5 from the user proposal and photos IMG_2431/IMG_2432. C6 upper pad/model1 joins the C5-positive supply copper (H_RF_VDD, after L1); lower pad/model2 joins GND. Photo-supported, not a new meter-confirmed connection. C6 capacitance remains unknown. Earlier 400 kohm output exclusion and 10 ohm Q8-supply-path reading are retained; the latter does not independently prove Q8 source wiring." (at 237.49 181.61 0)
-      (effects (font (size 1.27 1.27)) (hide yes))
-    )
+		(property "ConnectionEvidence" "v0.9.18: C6 is reconstructed in parallel with C5 from the user proposal and photos IMG_2431/IMG_2432. C6 upper pad/model1 joins the C5-positive supply copper (H_RF_VDD, after L1); lower pad/model2 joins GND. Photo-supported, not a new meter-confirmed connection. C6 capacitance remains unknown. Earlier 400 kohm output exclusion and 10 ohm Q8-supply-path reading are retained; the latter does not independently prove Q8 source wiring."
+			(at 237.49 181.61 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
 		(pin "1"
 			(uuid "1f0a9396-2967-444b-97f0-8b5ec6729161")
 		)
@@ -10705,9 +10711,15 @@
 				)
 			)
 		)
-    (property "ConnectionEvidence" "v0.9.18: C6 is reconstructed in parallel with C5 from the user proposal and photos IMG_2431/IMG_2432. C6 upper pad/model1 joins the C5-positive supply copper (H_RF_VDD, after L1); lower pad/model2 joins GND. Photo-supported, not a new meter-confirmed connection. C6 capacitance remains unknown. Earlier 400 kohm output exclusion and 10 ohm Q8-supply-path reading are retained; the latter does not independently prove Q8 source wiring." (at 259.08 181.61 0)
-      (effects (font (size 1.27 1.27)) (hide yes))
-    )
+		(property "ConnectionEvidence" "v0.9.18: C6 is reconstructed in parallel with C5 from the user proposal and photos IMG_2431/IMG_2432. C6 upper pad/model1 joins the C5-positive supply copper (H_RF_VDD, after L1); lower pad/model2 joins GND. Photo-supported, not a new meter-confirmed connection. C6 capacitance remains unknown. Earlier 400 kohm output exclusion and 10 ohm Q8-supply-path reading are retained; the latter does not independently prove Q8 source wiring."
+			(at 259.08 181.61 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
 		(pin "1"
 			(uuid "3d197f63-e51c-418b-af2e-ff7bec675d2c")
 		)
@@ -11880,6 +11892,15 @@
 				(hide yes)
 			)
 		)
+		(property "ConnectionEvidence" "v0.9.19 user annotated local copper: R47 left -> U3.1/R27 right; R47 right + C42 lower + R25 lower + R48 right share RX_STAGE_LINK. C42 upper -> GND inferred from continuous copper beside U3.4 in IMG_2429/2434. R25-GND and R48-VREF old assumptions withdrawn. R47/C42 remain DNP. No meter reading supplied."
+			(at 356.87 223.52 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
 		(pin "1"
 			(uuid "5d121715-3676-4ccb-98aa-33a43155b56a")
 		)
@@ -12540,6 +12561,15 @@
 				(font
 					(size 1.27 1.27)
 				)
+			)
+		)
+		(property "ConnectionEvidence" "v0.9.19 user annotated local copper: R47 left -> U3.1/R27 right; R47 right + C42 lower + R25 lower + R48 right share RX_STAGE_LINK. C42 upper -> GND inferred from continuous copper beside U3.4 in IMG_2429/2434. R25-GND and R48-VREF old assumptions withdrawn. R47/C42 remain DNP. No meter reading supplied."
+			(at 527.05 215.9 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
 			)
 		)
 		(pin "1"
@@ -13880,7 +13910,7 @@
 	)
 	(symbol
 		(lib_id "Device:C")
-		(at 367.03 248.92 90)
+		(at 377.19 223.52 0)
 		(unit 1)
 		(body_style 1)
 		(exclude_from_sim no)
@@ -13890,7 +13920,7 @@
 		(dnp no)
 		(uuid "d3e24752-17df-418e-9cd5-1c6cf43024c9")
 		(property "Reference" "C42"
-			(at 369.57 248.285 0)
+			(at 379.73 222.88500000000002 0)
 			(show_name no)
 			(do_not_autoplace no)
 			(effects
@@ -13901,7 +13931,7 @@
 			)
 		)
 		(property "Value" "DNP"
-			(at 364.49 248.285 0)
+			(at 374.65000000000003 222.88500000000002 0)
 			(show_name no)
 			(do_not_autoplace no)
 			(effects
@@ -13912,7 +13942,7 @@
 			)
 		)
 		(property "Footprint" "Capacitor_SMD:C_0603_1608Metric"
-			(at 363.22 247.955 0)
+			(at 373.38000000000005 222.55500000000004 0)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -13923,7 +13953,7 @@
 			)
 		)
 		(property "Datasheet" ""
-			(at 367.03 248.92 0)
+			(at 377.19 223.52 0)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -13934,7 +13964,7 @@
 			)
 		)
 		(property "Description" "Unpolarized capacitor"
-			(at 367.03 248.92 0)
+			(at 377.19 223.52 0)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -13942,6 +13972,15 @@
 				(font
 					(size 1.27 1.27)
 				)
+			)
+		)
+		(property "ConnectionEvidence" "v0.9.19 user annotated local copper: R47 left -> U3.1/R27 right; R47 right + C42 lower + R25 lower + R48 right share RX_STAGE_LINK. C42 upper -> GND inferred from continuous copper beside U3.4 in IMG_2429/2434. R25-GND and R48-VREF old assumptions withdrawn. R47/C42 remain DNP. No meter reading supplied."
+			(at 377.19 223.52 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
 			)
 		)
 		(pin "1"
@@ -13961,7 +14000,7 @@
 	)
 	(symbol
 		(lib_id "Device:R")
-		(at 392.43 248.92 90)
+		(at 398.78 223.52 0)
 		(unit 1)
 		(body_style 1)
 		(exclude_from_sim no)
@@ -13971,7 +14010,7 @@
 		(dnp no)
 		(uuid "8af4afab-c54a-4c2e-ad2f-1e8529de5788")
 		(property "Reference" "R47"
-			(at 392.43 246.888 90)
+			(at 398.78 221.48800000000003 90)
 			(show_name no)
 			(do_not_autoplace no)
 			(effects
@@ -13981,7 +14020,7 @@
 			)
 		)
 		(property "Value" "DNP"
-			(at 392.43 248.92 90)
+			(at 398.78 223.52 90)
 			(show_name no)
 			(do_not_autoplace no)
 			(effects
@@ -13991,7 +14030,7 @@
 			)
 		)
 		(property "Footprint" "Resistor_SMD:R_0603_1608Metric"
-			(at 392.43 250.698 90)
+			(at 398.78 225.29800000000003 90)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -14002,7 +14041,7 @@
 			)
 		)
 		(property "Datasheet" ""
-			(at 392.43 248.92 0)
+			(at 398.78 223.52 0)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -14013,7 +14052,7 @@
 			)
 		)
 		(property "Description" "Resistor"
-			(at 392.43 248.92 0)
+			(at 398.78 223.52 0)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -14021,6 +14060,15 @@
 				(font
 					(size 1.27 1.27)
 				)
+			)
+		)
+		(property "ConnectionEvidence" "v0.9.19 user annotated local copper: R47 left -> U3.1/R27 right; R47 right + C42 lower + R25 lower + R48 right share RX_STAGE_LINK. C42 upper -> GND inferred from continuous copper beside U3.4 in IMG_2429/2434. R25-GND and R48-VREF old assumptions withdrawn. R47/C42 remain DNP. No meter reading supplied."
+			(at 398.78 223.52 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
 			)
 		)
 		(pin "1"
@@ -19016,6 +19064,10 @@
 			)
 		)
 	)
+	(no_connect
+		(at 320.03999999999996 312.42)
+		(uuid "0d0c90ab-df10-4c98-8637-dacb4a85194f")
+	)
 	(sheet_instances
 		(path "/"
 			(page "1")
@@ -19232,6 +19284,15 @@
 			)
 		)
 		(property "PinMapping" "See evidence/pin_crosswalk.json; physical orientation may be provisional"
+			(at 330.2 309.88 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "ConnectionEvidence" "v0.9.20: U6.5-U6.2 measured 1 ohm (B28). User annotation also joins physical L2/native5 to R37 upper/model2 and empty U6A single/native1. U6.4/L1 marked NC by user and appears as an isolated surface stub in original photos. Candidate pin5 is internally NC but externally tied to VIN; pin4 remains unused."
 			(at 330.2 309.88 0)
 			(effects
 				(font
@@ -19830,6 +19891,9 @@
 				(hide yes)
 			)
 		)
+    (property "ConnectionEvidence" "v0.9.20 B22-B27: upper photo contact V -> GND, lower W -> VPP, each 1 ohm. B29 red V/black W about 0.7V; B30 reverse OL. Supports A=V/GND (pin2), K=W/VPP (pin1). G3 identity and Zener breakdown remain unverified; no 3.9V measurement." (at 405.13 391.16 0)
+      (effects (font (size 1.27 1.27)) (hide yes))
+    )
 		(pin "1"
 			(uuid "d648c4ea-2c85-4528-8c49-73c7c706eaa6")
 		)

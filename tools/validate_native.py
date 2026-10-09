@@ -1,7 +1,7 @@
 """Compare the authored electrical model with a native KiCad XML netlist."""
 from pathlib import Path
 from collections import Counter
-import json, hashlib, xml.etree.ElementTree as ET
+import json, hashlib, re, xml.etree.ElementTree as ET
 ROOT=Path(__file__).resolve().parents[1]
 def sha(p):return hashlib.sha256(p.read_bytes()).hexdigest()
 def main():
@@ -39,7 +39,14 @@ def main():
     unexpected=set(counts)-{'pin_not_connected','isolated_pin_label','power_pin_not_driven','pin_not_driven'}
     assert not unexpected,counts
     sch=ROOT/'schematic/PetSafe_1001339.kicad_sch'
-    assert '(no_connect ' not in sch.read_text()
+    # Permit only evidence-backed intentional NCs; never blanket-suppress opens.
+    nc=m.get('intentional_no_connects',[])
+    marked={tuple(round(float(v),5) for v in xy) for xy in re.findall(r'\(no_connect\s+\(at\s+([-\d.]+)\s+([-\d.]+)\)',sch.read_text())}
+    assert marked=={tuple(m['pin_positions'][c['endpoint']]) for c in nc}
+    for c in nc:
+        assert c['basis'] and (ROOT/c['evidence']).exists()
+        assert c['endpoint'] not in m['unresolved_pins']
+        assert not any(translated(c['endpoint']) in pins and len(pins)>1 for pins in actual)
     assert '(lib_id "PetSafe_Working:' not in sch.read_text()
     definitions={(p.attrib['lib'],p.attrib['part']) for p in native.findall('./libparts/libpart')}
     custom=sum(lib=='PetSafe_Datasheet' for lib,part in definitions)

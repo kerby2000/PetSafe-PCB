@@ -1,5 +1,5 @@
 {
-  "revision": "v0.9.18",
+  "revision": "v0.9.20",
   "instruments": [
     "LCR meter",
     "multimeter"
@@ -12,7 +12,7 @@
   ],
   "fitted_capacitors": 45,
   "fitted_resistors": 38,
-  "unresolved_physical_pins": 18,
+  "unresolved_physical_pins": 9,
   "unknown_ceramic_values": [
     "C1",
     "C2",
@@ -717,7 +717,7 @@
       "footprint": "Resistor_SMD:R_0603_1608Metric",
       "footprint_confidence": "medium",
       "footprint_basis": "Body/land proportions compared with nearby 1.27-mm SOIC and 0.95-mm SOT lead pitch. Populated resistor family appears 0805; smaller empty option lands appear 0603.",
-      "open_pads": 2,
+      "open_pads": 0,
       "next_method": "No immediate measurement requested",
       "photos": "IMG_2430.jpg;IMG_2434.jpg;IMG_2438.jpg"
     },
@@ -1347,7 +1347,7 @@
       "footprint": "Capacitor_SMD:C_0603_1608Metric",
       "footprint_confidence": "medium",
       "footprint_basis": "Photo family and body/land proportions compared with adjacent known IC lead pitch. Size is independent of capacitance, dielectric and voltage rating.",
-      "open_pads": 2,
+      "open_pads": 0,
       "next_method": "No immediate measurement requested",
       "photos": "IMG_2434.jpg"
     },
@@ -1617,8 +1617,8 @@
       "footprint": "Package_TO_SOT_SMD:SOT-23-5",
       "footprint_confidence": "datasheet/package candidate",
       "footprint_basis": "Existing assignment; see component identity evidence.",
-      "open_pads": 2,
-      "next_method": "Candidate identity: confirm pin functions/routing; a short top code may not identify one manufacturer; Targeted continuity for 2 open physical pads",
+      "open_pads": 0,
+      "next_method": "Candidate identity: confirm pin functions/routing; a short top code may not identify one manufacturer",
       "photos": "IMG_2435.jpg"
     },
     {
@@ -1632,7 +1632,7 @@
       "footprint": "Package_TO_SOT_SMD:SOT-23",
       "footprint_confidence": "medium",
       "footprint_basis": "Empty three-pad SMD option beside U6; package-family estimate only.",
-      "open_pads": 2,
+      "open_pads": 1,
       "next_method": "No immediate measurement requested",
       "photos": "IMG_2435.jpg"
     },
@@ -1883,12 +1883,12 @@
       "observed": "UNKNOWN",
       "displayed": "MMSZ5228BS? / 3.9V",
       "marking": "G3",
-      "value_or_identity": "H17v05: New sharp user marking supersedes T4/1N4148WS guess. Diodes table maps G3 to MMSZ5228BS 3.9V SOD323; Nexperia PZU2.4B 2.4V SOD323F also uses G3. Selected first as provisional; voltage not confirmed. Cathode band visible; photo-pad numbering and external routes still unresolved.",
+      "value_or_identity": "G3 permits multiple part candidates. In-circuit forward direction supports anode at GND and cathode at VPP. Exact type and reverse-breakdown voltage remain unknown; existing MMSZ5228BS/3.9V is only a candidate.",
       "footprint": "Diode_SMD:D_SOD-323",
       "footprint_confidence": "datasheet/package candidate",
       "footprint_basis": "Existing assignment; see component identity evidence.",
-      "open_pads": 2,
-      "next_method": "Diode-mode readings and continuity; markings are already recorded; check PIC trace audit before requesting continuity; Targeted continuity for 2 open physical pads",
+      "open_pads": 0,
+      "next_method": "Diode-mode readings and continuity; markings are already recorded; check PIC trace audit before requesting continuity",
       "photos": "IMG_2437.jpg"
     },
     {

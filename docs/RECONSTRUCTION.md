@@ -20,7 +20,7 @@ Board VDD/TP103 is the separate logic rail and feeds MX512H pin 1/VCC. VREF/TP10
 
 Every PIC pad has a local modeled net. User continuity resolves RC4/RC5 to H-bridge INA/INB and all five tuning-control inputs: RC6-R13, RA3-R14, RA4-R15, RA5-R16, RC0-R11. RC1 reaches R18 via V053-V070; the old VREF join is rejected. RC2 reaches TP3. The [complete PIC table](../evidence/pic_gpio_status.csv) distinguishes each evidence basis.
 
-Some connected PIC nodes still lack a known remote role, notably PIC2/C25, PIC14/TP11 and PIC18/TP17. R41.1 is isolated and neutrally named H_R41_FREE. The button already reaches PIC28 through R40; the free R41 end may instead be supply, bias or control. S1 common pairs remain provisional. J1 square-pad end is VPP: native pins 1 VPP,2 VDD,3 GND,4 DAT,5 CLK, supported by IMG_2437/2439. D6 routing and J5 A/B orientation still need resolution.
+Some connected PIC nodes still lack a known remote role, notably PIC2/C25, PIC14/TP11 and PIC18/TP17. R41.1 is isolated and neutrally named H_R41_FREE. The button already reaches PIC28 through R40; the free R41 end may instead be supply, bias or control. S1 common pairs remain provisional. J1 square-pad end is VPP: native pins 1 VPP,2 VDD,3 GND,4 DAT,5 CLK, supported by IMG_2437/2439. D6 routing/polarity is measured in v0.9.20; exact D6 breakdown/type and J5 A/B orientation remain uncertain.
 
 ## RF drive and antenna tuning
 
@@ -67,3 +67,11 @@ v0.9.17 user-annotated photo: C25 right pad/model1 -> PIC2/RA0; C26 right pad/mo
 ## v0.9.18 - C6 parallel with C5
 
 v0.9.18: C6 is reconstructed in parallel with C5 from the user proposal and photos IMG_2431/IMG_2432. C6 upper pad/model1 joins the C5-positive supply copper (H_RF_VDD, after L1); lower pad/model2 joins GND. Photo-supported, not a new meter-confirmed connection. C6 capacitance remains unknown. Earlier 400 kohm output exclusion and 10 ohm Q8-supply-path reading are retained; the latter does not independently prove Q8 source wiring. Structured evidence: `evidence/c5_c6_parallel_20261009.json`. This resolves C6.1 in the working reconstruction without claiming a new continuity measurement. Q8 identity/supply-path and gate-drive qualifications remain under E03.
+
+## v0.9.19 - receiver option footprints and interstage junction
+
+v0.9.19 user annotated local copper: R47 left -> U3.1/R27 right; R47 right + C42 lower + R25 lower + R48 right share RX_STAGE_LINK. C42 upper -> GND inferred from continuous copper beside U3.4 in IMG_2429/2434. R25-GND and R48-VREF old assumptions withdrawn. R47/C42 remain DNP. No meter reading supplied. The grounded C42 upper pad is agent photo inference; the other new joins come from the user annotation. See [structured evidence](../evidence/r47_c42_routing_20261009.json). Empty R47 does not short U3 output to this junction, and empty C42 does not ground it.
+
+## v0.9.20 - D6 and U6 open-pad results
+
+v0.9.20: U6.5-U6.2 measured 1 ohm (B28). User annotation also joins physical L2/native5 to R37 upper/model2 and empty U6A single/native1. U6.4/L1 marked NC by user and appears as an isolated surface stub in original photos. Candidate pin5 is internally NC but externally tied to VIN; pin4 remains unused. v0.9.20 B22-B27: upper photo contact V -> GND, lower W -> VPP, each 1 ohm. B29 red V/black W about 0.7V; B30 reverse OL. Supports A=V/GND (pin2), K=W/VPP (pin1). G3 identity and Zener breakdown remain unverified; no 3.9V measurement. Recorded readings and probe definitions: [batch results](../evidence/d6_u6_open_pad_results_20261009.json). TP9 has no established physical location and is under inventory review.

@@ -217,6 +217,8 @@ wire('PIC_RC7_TP17','U4.18','TP17.1');label('PIC_RC7_TP17','TP17.1')
 stub('ICSP_CLK','D4.1',-4);stub('ICSP_CLK','R32.2',3)
 stub('ICSP_DAT','D5.1',-4);stub('ICSP_DAT','R40.1',0,-5)
 stub('GND','D4.2',0,4);stub('GND','D5.2',0,4)
+stub('MCLR_VPP','D6.1',-4) # Lower W, cathode: 1 ohm to J1 VPP; reverse diode direction OL.
+stub('GND','D6.2',0,4) # Upper V, anode: 1 ohm to GND; V-to-W about 0.7V.
 wire('H_LED_CTL_A','TP1.1',(151,184),'R30.1')
 wire('H_LED_CTL_B','TP2.1',(151,191),'R31.1')
 label('GND',(199,187))
@@ -242,6 +244,8 @@ stub('VSYS','C27.1',0,-4);stub('GND','C27.2',0,4)
 wire('VDD','R37.1',(235,233),(235,227));label('VDD',(235,227))
 wire('H_AUX_IN','R37.2',(248,233),(248,240),'U6.R2')
 wire('H_AUX_IN','C36.1',(237,238),(248,238));label('H_AUX_IN',(237,238))
+stub('H_AUX_IN','U6.L2',0,5) # B28: externally tied to VIN despite internal NC.
+stub('H_AUX_IN','U6A.L',-7,0) # User annotated local R37/pin5/empty-option join.
 wire('GND','U6.R3',(260,257));bus('GND',257,['C36.2','C37.2'])
 stub('H_PIR_VDD','U6A.R1',-10) # V067-J3.1 confirmed; option remains DNP.
 wire('H_PIR_VDD','U6.R1',(280,240),'C37.1')
@@ -266,6 +270,12 @@ wire('RX_A_PLUS','C20.2',(432,193),(432,198),'D2.R')
 wire('H_ANT_B','D2.L',(420,196),(420,194),'R46.1');label('H_ANT_B',(420,194))
 wire('D2_MID','D2.S','R46.2') # Empty R46 lower; no bridge to its upper ANT2 pad.
 
+# v0.9.19 annotated receiver copper; preserve DNP option gaps.
+wire('RX_A_OUT',(314,158),'R47.1')
+bus('RX_STAGE_LINK',182,['R48.2','C42.2','R47.2'])
+stub('RX_STAGE_LINK','R25.2',0,7)
+stub('GND','C42.1',0,-4) # Continuous U3.4 ground copper in IMG_2429/2434.
+
 # Preserve original frame geometry at half scale, using normal readable text sizes.
 for g in layout['graphics']:
     e=sx.loads(g)
@@ -286,7 +296,7 @@ for n in layout['notes']:
     if t.startswith('H09:'):t='H09: 3724A matches SIL3724A N/P MOSFET pair. Both units share one package.'
     if t.startswith('Q8 T2/B1/B2'):t='V113/V115: Q8 centre pin5 GND. V114 is U2 pin2 GND, not Q8 pin2.'
     if t.startswith('H07:'):t='H07: C14R inverter candidate. C6 parallels C5 by photo; Q8 source rail still inferred.'
-    if t.startswith('No invented ties'):t='D4/D5 opposite vias join rear GND copper. D6 type and routes remain uncertain.'
+    if t.startswith('No invented ties'):t='D4/D5 ground returns photo-supported. D6: A=GND, K=VPP measured; breakdown unknown.'
     if t.startswith('H02:'):t='User: RA3/R14, RA4/R15, RA5/R16, RC0/R11, RC6/R13. RC2 -> TP3; RB0 -> TP16 / Q2; VREF tie withdrawn. RC1 -> R18 via V053-V070.'
     if t.startswith('Selected working hypothesis:'):t='v0.9: user-reviewed GND returns replace previous antenna rails on this capacitor bank.'
     if t.startswith('Ceff ='):t='Local three-capacitor junctions retained. Hidden links from these midpoints to antenna remain unknown.'
@@ -305,7 +315,7 @@ text('D2: R-C20 lower; L-ANT2/R46 upper; S-R46 lower. R46 empty; 4P identity unk
 text('User: U3 pin5 / V079 / V080 = VREF (1 ohm); TP6 remains separate across C18.',288,211,.762)
 text('U3 alternative: MCP6002-I/SN; same pin roles, electrical suitability to verify.',288,208,.762)
 text('U5 alternative: DRV8212PDSGR. Different package/pins; redesign required.',320,81,.762)
-text('U6: 3.3V is the candidate rating, not a voltage measurement. NC4/5 board ties unresolved.',234,284,.762)
+text('U6: pin5 joins VIN (1 ohm); pin4 unused by user/photo. 3.3V is candidate rating.',234,284,.762)
 text('C6 parallels C5 on H_RF_VDD/GND (photo-supported). Q8 F-P 10 ohm path still qualified.',90,202,.762)
 text('User: V063-V064 confirms R37/R39 feed on regulated VDD.',234,287,.762)
 text('Q7: 11.2 kohm V064-V070 fits R18+R19. Supply-switch topology inferred; RC1 drives R18 via V053-V070.',229,126,.762)
@@ -362,7 +372,7 @@ for net,edges in adj.items():
 for l in L:
     x,y=l['p'];G.append(expr(f'(label {q(l["net"])} (at {x} {y} 0) (effects (font (size .762 .762)) (justify left bottom)) (uuid {q(uid())}))'))
 tree.extend(G)
-tree.append(expr('(title_block (title "PetSafe 100-1339 R03 A | single-sheet reconstruction") (date "2026-10-09") (rev "0.9.18") (company "KiCad 10 libraries + four datasheet symbols | MCP authoring") (comment 1 "C6 reconstructed in parallel with C5 from photos; Q8 supply path remains qualified."))'))
+tree.append(expr('(title_block (title "PetSafe 100-1339 R03 A | single-sheet reconstruction") (date "2026-10-09") (rev "0.9.20") (company "KiCad 10 libraries + four datasheet symbols | MCP authoring") (comment 1 "Receiver option wiring reconstructed; U6 pin5-VIN measured; pin4 unused by user/photo."))'))
 # Canonical pretty printer supplied by the installed MCP server.
 sys.path.insert(0,str(Path.home()/'Documents/VS.Code.Projects/KiCAD-MCP-Server/python'))
 from utils.sexpr_format import prettify
@@ -382,10 +392,10 @@ out.write_text(prettify(sx.dumps(tree)),encoding='utf-8',newline='\n')
 def wire_key(w):return w['net'],tuple(w['a']),tuple(w['b'])
 prior_order={wire_key(w):i for i,w in enumerate(model.get('geometric_wires',[]))}
 ordered_segments=sorted(segments,key=lambda s:(prior_order.get(s,len(prior_order)),s))
-model.update(revision='v0.9.18',coordinate_units='mm',native_pin_crosswalk=layout['crosswalk'],pin_positions={e:list(p) for e,p in P.items()},
+model.update(revision='v0.9.20',coordinate_units='mm',native_pin_crosswalk=layout['crosswalk'],pin_positions={e:list(p) for e,p in P.items()},
              geometric_wires=[dict(net=n,a=a,b=b) for n,a,b in ordered_segments],library_policy='KiCad 10 stock symbols plus four explicitly authorized MCP-authored datasheet symbols for U1/U5/U6/Q8')
 for c in model['components']:
     entry=next(x for x in layout['catalog'] if x['original_ref']==c['ref'])
     c['library_symbol']=entry['symbol'];c['footprint']=entry['footprint']
 (R/'evidence/reconstruction.json').write_text(json.dumps(model,indent=2),encoding='utf-8',newline='\n')
-print(f'Routed {len(segments)} segments. Model has {len(expected)} connected pads, {len(P)-len(expected)} unresolved pads. {len(libs)} library definitions including four MCP-authored datasheet symbols.')
+print(f'Routed {len(segments)} segments. Model has {len(expected)} connected pads, {len(model["unresolved_pins"])} unresolved pads, {len(model.get("intentional_no_connects",[]))} supported NC pads. {len(libs)} library definitions including four MCP-authored datasheet symbols.')

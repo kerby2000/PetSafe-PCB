@@ -1,6 +1,6 @@
 {
   "board": "100-1339 R03 A",
-  "revision": "v0.9.18",
+  "revision": "v0.9.20",
   "status": "INFERRED WORKING CIRCUIT / NOT CONTINUITY VERIFIED",
   "components": [
     {
@@ -457,7 +457,12 @@
       "library_symbol": "Device:R",
       "footprint": "Resistor_SMD:R_0603_1608Metric",
       "footprint_confidence": "medium - revised family estimate",
-      "footprint_basis": "User reports R8 approximately 1.6 x 0.77 mm, consistent with 0603 (1608 metric). Repeated fitted resistor family revised using R8 as a scale reference. This individual body has not been measured; earlier 0805 estimate superseded."
+      "footprint_basis": "User reports R8 approximately 1.6 x 0.77 mm, consistent with 0603 (1608 metric). Repeated fitted resistor family revised using R8 as a scale reference. This individual body has not been measured; earlier 0805 estimate superseded.",
+      "photo_pad_mapping": {
+        "1": "upper",
+        "2": "lower"
+      },
+      "connection_evidence": "v0.9.19 user annotated local copper: R47 left -> U3.1/R27 right; R47 right + C42 lower + R25 lower + R48 right share RX_STAGE_LINK. C42 upper -> GND inferred from continuous copper beside U3.4 in IMG_2429/2434. R25-GND and R48-VREF old assumptions withdrawn. R47/C42 remain DNP. No meter reading supplied."
     },
     {
       "ref": "R26",
@@ -839,7 +844,12 @@
       "footprint_confidence": "medium - revised family estimate",
       "footprint_basis": "User reports R8 approximately 1.6 x 0.77 mm, consistent with 0603 (1608 metric). Repeated fitted resistor family revised using R8 as a scale reference. This individual body has not been measured; earlier 0805 estimate superseded.",
       "via_evidence": "v0.9.16 CORRECTION: user confirms PIC21/RB0 -> TP16 -> Q2 single pad; TP16-VREF = 0.8 Mohm. User explicitly withdraws PIC21-VREF. PIC21/V026 belongs to H_PIR_SIG, separate from VREF. RA2/V035 and R21/V071 remain VREF. This supersedes every earlier RB0/V026-to-VREF statement.",
-      "measurement_evidence": "v0.9.16 CORRECTION: user confirms PIC21/RB0 -> TP16 -> Q2 single pad; TP16-VREF = 0.8 Mohm. User explicitly withdraws PIC21-VREF. PIC21/V026 belongs to H_PIR_SIG, separate from VREF. RA2/V035 and R21/V071 remain VREF. This supersedes every earlier RB0/V026-to-VREF statement."
+      "measurement_evidence": "v0.9.16 CORRECTION: user confirms PIC21/RB0 -> TP16 -> Q2 single pad; TP16-VREF = 0.8 Mohm. User explicitly withdraws PIC21-VREF. PIC21/V026 belongs to H_PIR_SIG, separate from VREF. RA2/V035 and R21/V071 remain VREF. This supersedes every earlier RB0/V026-to-VREF statement.",
+      "photo_pad_mapping": {
+        "1": "left",
+        "2": "right"
+      },
+      "connection_evidence": "v0.9.19 user annotated local copper: R47 left -> U3.1/R27 right; R47 right + C42 lower + R25 lower + R48 right share RX_STAGE_LINK. C42 upper -> GND inferred from continuous copper beside U3.4 in IMG_2429/2434. R25-GND and R48-VREF old assumptions withdrawn. R47/C42 remain DNP. No meter reading supplied."
     },
     {
       "ref": "R1",
@@ -968,7 +978,12 @@
       "library_symbol": "Device:R",
       "footprint": "Resistor_SMD:R_0603_1608Metric",
       "footprint_confidence": "medium",
-      "footprint_basis": "Body/land proportions compared with nearby 1.27-mm SOIC and 0.95-mm SOT lead pitch. Populated resistor family appears 0805; smaller empty option lands appear 0603."
+      "footprint_basis": "Body/land proportions compared with nearby 1.27-mm SOIC and 0.95-mm SOT lead pitch. Populated resistor family appears 0805; smaller empty option lands appear 0603.",
+      "photo_pad_mapping": {
+        "1": "left",
+        "2": "right"
+      },
+      "connection_evidence": "v0.9.19 user annotated local copper: R47 left -> U3.1/R27 right; R47 right + C42 lower + R25 lower + R48 right share RX_STAGE_LINK. C42 upper -> GND inferred from continuous copper beside U3.4 in IMG_2429/2434. R25-GND and R48-VREF old assumptions withdrawn. R47/C42 remain DNP. No meter reading supplied."
     },
     {
       "ref": "C1",
@@ -2055,7 +2070,12 @@
       "library_symbol": "Device:C",
       "footprint": "Capacitor_SMD:C_0603_1608Metric",
       "footprint_confidence": "medium",
-      "footprint_basis": "Photo family and body/land proportions compared with adjacent known IC lead pitch. Size is independent of capacitance, dielectric and voltage rating."
+      "footprint_basis": "Photo family and body/land proportions compared with adjacent known IC lead pitch. Size is independent of capacitance, dielectric and voltage rating.",
+      "photo_pad_mapping": {
+        "1": "upper",
+        "2": "lower"
+      },
+      "connection_evidence": "v0.9.19 user annotated local copper: R47 left -> U3.1/R27 right; R47 right + C42 lower + R25 lower + R48 right share RX_STAGE_LINK. C42 upper -> GND inferred from continuous copper beside U3.4 in IMG_2429/2434. R25-GND and R48-VREF old assumptions withdrawn. R47/C42 remain DNP. No meter reading supplied."
     },
     {
       "ref": "C43",
@@ -2544,7 +2564,8 @@
       "previous_marking": "WN23? (misread; superseded by sharp photo)",
       "marking_source": "photos/user_updates/U6_new_mark.png",
       "footprint_confidence": "datasheet/package candidate",
-      "footprint_basis": "Existing assignment; see component identity evidence."
+      "footprint_basis": "Existing assignment; see component identity evidence.",
+      "connection_evidence": "v0.9.20: U6.5-U6.2 measured 1 ohm (B28). User annotation also joins physical L2/native5 to R37 upper/model2 and empty U6A single/native1. U6.4/L1 marked NC by user and appears as an isolated surface stub in original photos. Candidate pin5 is internally NC but externally tied to VIN; pin4 remains unused."
     },
     {
       "ref": "U6A",
@@ -2999,10 +3020,15 @@
       "library_symbol": "Device:D_Zener",
       "footprint": "Diode_SMD:D_SOD-323",
       "proposed_value": "MMSZ5228BS? / 3.9V",
-      "hypothesis": "H17v05: New sharp user marking supersedes T4/1N4148WS guess. Diodes table maps G3 to MMSZ5228BS 3.9V SOD323; Nexperia PZU2.4B 2.4V SOD323F also uses G3. Selected first as provisional; voltage not confirmed. Cathode band visible; photo-pad numbering and external routes still unresolved.",
+      "hypothesis": "G3 permits multiple part candidates. In-circuit forward direction supports anode at GND and cathode at VPP. Exact type and reverse-breakdown voltage remain unknown; existing MMSZ5228BS/3.9V is only a candidate.",
       "marking_source": "photos/user_updates/D6_G3.png",
       "footprint_confidence": "datasheet/package candidate",
-      "footprint_basis": "Existing assignment; see component identity evidence."
+      "footprint_basis": "Existing assignment; see component identity evidence.",
+      "connection_evidence": "v0.9.20 B22-B27: upper photo contact V -> GND, lower W -> VPP, each 1 ohm. B29 red V/black W about 0.7V; B30 reverse OL. Supports A=V/GND (pin2), K=W/VPP (pin1). G3 identity and Zener breakdown remain unverified; no 3.9V measurement.",
+      "photo_pad_mapping": {
+        "1": "lower contact W, cathode",
+        "2": "upper contact V, anode"
+      }
     },
     {
       "ref": "S1",
@@ -3621,10 +3647,13 @@
       "endpoints": [
         "C36.1",
         "R37.2",
-        "U6.R2"
+        "U6.R2",
+        "U6.L2",
+        "U6A.L"
       ],
       "status": "HYPOTHESIS: regulator input after R37, based on photo and S-812C33 pinout",
-      "original_fragments": []
+      "original_fragments": [],
+      "v0920_evidence": "v0.9.20: U6.5-U6.2 measured 1 ohm (B28). User annotation also joins physical L2/native5 to R37 upper/model2 and empty U6A single/native1. U6.4/L1 marked NC by user and appears as an isolated surface stub in original photos. Candidate pin5 is internally NC but externally tied to VIN; pin4 remains unused."
     },
     {
       "net": "BATTERY+",
@@ -3737,7 +3766,6 @@
         "R10.2",
         "R2.1",
         "R22.1",
-        "R25.2",
         "R29.2",
         "R32.1",
         "R43.1",
@@ -3752,7 +3780,9 @@
         "U5.7",
         "U6.R3",
         "J3.3",
-        "U7.1"
+        "U7.1",
+        "C42.1",
+        "D6.2"
       ],
       "status": "HYPOTHESIS / retains visual fragments where listed",
       "original_fragments": [
@@ -3771,7 +3801,9 @@
       ],
       "v0916_evidence": "User measured matching physical columns of U7 and J3. U7 local square-pad pin1 maps to J3 pin3; middle to pin2; outer round pin3 to J3 pin1. No numeric resistance supplied; other branches retain earlier qualifications.",
       "v0917_evidence": "User drawing corroborates common C25.2/C26.2; V029-GND identification is retained. No new claim for other GND branches.",
-      "v0918_evidence": "C6.2/C5.2 common return retained and supported by the supplied photo; other branches keep their own evidence."
+      "v0918_evidence": "C6.2/C5.2 common return retained and supported by the supplied photo; other branches keep their own evidence.",
+      "v0919_evidence": "C42 upper pad/photo1 joins U3.4 ground copper by photo inference; R25.2 ground assumption withdrawn. Other branches retain their own evidence.",
+      "d6_measurement": "v0.9.20 B22-B27: upper photo contact V -> GND, lower W -> VPP, each 1 ohm. B29 red V/black W about 0.7V; B30 reverse OL. Supports A=V/GND (pin2), K=W/VPP (pin1). G3 identity and Zener breakdown remain unverified; no 3.9V measurement."
     },
     {
       "net": "H_LDO_IN",
@@ -3966,7 +3998,7 @@
         "C23.2",
         "R25.1"
       ],
-      "status": "C23.2/R25.1 prior photo/circuit fragment retained. C40 association withdrawn by measured R23-R42 junction in v0.9.15; onward output route still unverified.",
+      "status": "C23.2 to R25.1 local series junction corroborated by user annotation. R25.2 now continues to R48/R47/C42 at RX_STAGE_LINK; historical net name is not a verified detector role.",
       "original_fragments": []
     },
     {
@@ -4148,10 +4180,12 @@
       "net": "MCLR_VPP",
       "endpoints": [
         "J1.VPP",
-        "U4.1"
+        "U4.1",
+        "D6.1"
       ],
       "status": "HYPOTHESIS / retains visual fragments where listed",
-      "original_fragments": []
+      "original_fragments": [],
+      "d6_measurement": "v0.9.20 B22-B27: upper photo contact V -> GND, lower W -> VPP, each 1 ohm. B29 red V/black W about 0.7V; B30 reverse OL. Supports A=V/GND (pin2), K=W/VPP (pin1). G3 identity and Zener breakdown remain unverified; no 3.9V measurement."
     },
     {
       "net": "OSC1",
@@ -4218,7 +4252,6 @@
         "VREF.1",
         "R21.2",
         "R22.2",
-        "R48.2",
         "C39.1",
         "U4.4",
         "C18.1",
@@ -4227,7 +4260,8 @@
       "status": "Mixed evidence: user measures U3.5/R22.2/VREF at 1 ohm. Original C18.1 local fragment retained; other bias branches individually qualified. R23-VREF hypothesis rejected.",
       "original_fragments": [],
       "v098_evidence": "v0.9.8: User confirms V071-VREF. Earlier V071-R21.2 and V026-VREF-PIC21/RB0 associations retained. R21.2 joins VREF. Existing R22.2/R23.2/R48.2 receiver-bias branches remain prior photo/circuit hypotheses, not new measured connections. VREF remains separate from VDD and RC1/V053. No voltage or numeric resistance supplied.",
-      "v0916_correction": "v0.9.16 CORRECTION: user confirms PIC21/RB0 -> TP16 -> Q2 single pad; TP16-VREF = 0.8 Mohm. User explicitly withdraws PIC21-VREF. PIC21/V026 belongs to H_PIR_SIG, separate from VREF. RA2/V035 and R21/V071 remain VREF. This supersedes every earlier RB0/V026-to-VREF statement."
+      "v0916_correction": "v0.9.16 CORRECTION: user confirms PIC21/RB0 -> TP16 -> Q2 single pad; TP16-VREF = 0.8 Mohm. User explicitly withdraws PIC21-VREF. PIC21/V026 belongs to H_PIR_SIG, separate from VREF. RA2/V035 and R21/V071 remain VREF. This supersedes every earlier RB0/V026-to-VREF statement.",
+      "v0919_evidence": "Withdraw unmeasured R48.2-to-VREF assignment; annotated copper groups it with R25/R47/C42 at RX_STAGE_LINK."
     },
     {
       "net": "PIC_RC3",
@@ -4369,7 +4403,8 @@
         "C22.1",
         "R26.1",
         "R27.2",
-        "U3.1"
+        "U3.1",
+        "R47.1"
       ],
       "status": "HYPOTHESIS / retains visual fragments where listed",
       "original_fragments": [
@@ -4623,6 +4658,17 @@
         "R46.2"
       ],
       "status": "User-confirmed local copper: D2.S to R46 lower pad; no resistor populated",
+      "original_fragments": []
+    },
+    {
+      "net": "RX_STAGE_LINK",
+      "endpoints": [
+        "R25.2",
+        "R48.2",
+        "R47.2",
+        "C42.2"
+      ],
+      "status": "PHOTO_SUPPORTED: annotated local junction after R25, feeding R48; R47/C42 empty options.",
       "original_fragments": []
     }
   ],
@@ -4934,23 +4980,14 @@
     }
   ],
   "unresolved_pins": [
-    "C42.1",
-    "C42.2",
     "C49.1",
     "C49.2",
-    "D6.1",
-    "D6.2",
     "J6.1",
     "J6.2",
     "Q9.S",
     "R36.1",
     "R36.2",
-    "R47.1",
-    "R47.2",
     "TP9.1",
-    "U6.L1",
-    "U6.L2",
-    "U6A.L",
     "U6A.R2"
   ],
   "reference_map": {
@@ -6178,17 +6215,6 @@
       ]
     },
     {
-      "net": "GND",
-      "a": [
-        527.05,
-        219.71
-      ],
-      "b": [
-        527.05,
-        227.33
-      ]
-    },
-    {
       "net": "H_RF_IN_A",
       "a": [
         67.31,
@@ -6651,17 +6677,6 @@
       ]
     },
     {
-      "net": "VREF",
-      "a": [
-        354.33,
-        227.33
-      ],
-      "b": [
-        356.87,
-        227.33
-      ]
-    },
-    {
       "net": "RX_A_FB",
       "a": [
         356.87,
@@ -6835,17 +6850,6 @@
       "b": [
         388.62,
         349.25
-      ]
-    },
-    {
-      "net": "VREF",
-      "a": [
-        354.33,
-        227.33
-      ],
-      "b": [
-        354.33,
-        232.41
       ]
     },
     {
@@ -10312,6 +10316,138 @@
         259.08,
         177.8
       ]
+    },
+    {
+      "net": "GND",
+      "a": [
+        377.19,
+        214.63
+      ],
+      "b": [
+        377.19,
+        219.71
+      ]
+    },
+    {
+      "net": "RX_A_OUT",
+      "a": [
+        398.78,
+        200.66
+      ],
+      "b": [
+        398.78,
+        219.71
+      ]
+    },
+    {
+      "net": "RX_STAGE_LINK",
+      "a": [
+        356.87,
+        227.33
+      ],
+      "b": [
+        356.87,
+        231.14
+      ]
+    },
+    {
+      "net": "RX_STAGE_LINK",
+      "a": [
+        356.87,
+        231.14
+      ],
+      "b": [
+        377.19,
+        231.14
+      ]
+    },
+    {
+      "net": "RX_STAGE_LINK",
+      "a": [
+        377.19,
+        227.33
+      ],
+      "b": [
+        377.19,
+        231.14
+      ]
+    },
+    {
+      "net": "RX_STAGE_LINK",
+      "a": [
+        377.19,
+        231.14
+      ],
+      "b": [
+        398.78,
+        231.14
+      ]
+    },
+    {
+      "net": "RX_STAGE_LINK",
+      "a": [
+        398.78,
+        227.33
+      ],
+      "b": [
+        398.78,
+        231.14
+      ]
+    },
+    {
+      "net": "RX_STAGE_LINK",
+      "a": [
+        527.05,
+        219.71
+      ],
+      "b": [
+        527.05,
+        228.6
+      ]
+    },
+    {
+      "net": "H_AUX_IN",
+      "a": [
+        426.72,
+        359.41
+      ],
+      "b": [
+        435.61,
+        359.41
+      ]
+    },
+    {
+      "net": "GND",
+      "a": [
+        408.94,
+        391.16
+      ],
+      "b": [
+        408.94,
+        396.24
+      ]
+    },
+    {
+      "net": "MCLR_VPP",
+      "a": [
+        396.24,
+        391.16
+      ],
+      "b": [
+        401.32,
+        391.16
+      ]
+    },
+    {
+      "net": "H_AUX_IN",
+      "a": [
+        340.36,
+        312.42
+      ],
+      "b": [
+        340.36,
+        318.77
+      ]
     }
   ],
   "pin_positions": {
@@ -11244,20 +11380,20 @@
       233.68
     ],
     "C42.1": [
-      363.22,
-      248.92
+      377.19,
+      219.71
     ],
     "C42.2": [
-      370.84,
-      248.92
+      377.19,
+      227.33
     ],
     "R47.1": [
-      388.62,
-      248.92
+      398.78,
+      219.71
     ],
     "R47.2": [
-      396.24,
-      248.92
+      398.78,
+      227.33
     ],
     "R46.1": [
       525.78,
@@ -12108,6 +12244,14 @@
       "evidence": "evidence/pic21_tp16_followup_20261009.json",
       "status": "RESOLVED_APPLIED",
       "reason": "v0.9.16 CORRECTION: user confirms PIC21/RB0 -> TP16 -> Q2 single pad; TP16-VREF = 0.8 Mohm. User explicitly withdraws PIC21-VREF. PIC21/V026 belongs to H_PIR_SIG, separate from VREF. RA2/V035 and R21/V071 remain VREF. This supersedes every earlier RB0/V026-to-VREF statement."
+    }
+  ],
+  "intentional_no_connects": [
+    {
+      "endpoint": "U6.L1",
+      "native_pin": "U6.4",
+      "basis": "User annotated NC on upper-left pad; original IMG_2435 shows an isolated surface stub. Consistent with candidate datasheet page11, not based on the datasheet alone.",
+      "evidence": "evidence/d6_u6_open_pad_results_20261009.json"
     }
   ]
 }

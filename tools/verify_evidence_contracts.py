@@ -43,6 +43,16 @@ assert net('C6.1')!=net('Q8.B1') and net('C6.1')!=net('VDD.1')
 assert 'C6.1' not in m['unresolved_pins']
 assert c6_record['numerical_resistance_ohms'] is None
 for path,digest in c6_record['photos'].items():assert sha(path)==digest
+rx_options=read('evidence/r47_c42_routing_20261009.json')
+for x,y in rx_options['user_supported_pairs']+rx_options['agent_photo_supported_pairs']:
+ assert net(x)==net(y),(x,y)
+assert net('R25.2')==net('R48.2')==net('R47.2')==net('C42.2')=='RX_STAGE_LINK'
+assert len({net('R25.2'),net('GND.1'),net('VREF.1'),net('U3.1')})==4, 'Do not revive old rail ties or bridge DNP R47/C42'
+assert net('R47.1')==net('U3.1') and net('C42.1')==net('U3.4')
+assert not {'R47.1','R47.2','C42.1','C42.2'} & set(m['unresolved_pins'])
+for ref in ['R47','C42']:
+ assert next(c for c in m['components'] if c['ref']==ref)['population']=='DNP'
+for path,digest in rx_options['photos'].items():assert sha(path)==digest
 assert net('Q8.T2')!=net('Q8.B2')
 assert net('Q8.B1')==net('Q8.B3')!=net('Q8.B2')
 assert net('TP6.1')==net('C18.2')!=net('U3.5')
@@ -122,10 +132,20 @@ assert net('C26.1')!=net('C25.1') and net('C26.1')!=net('VREF.1')
 assert net('C25.2')==net('C26.2')==net('GND.1')
 assert 'C26.1' not in m['unresolved_pins']
 for path,digest in c26_record['photos'].items():assert sha(path)==digest
-for ref in ['C25','C26','U4','C5','C6']:
+for ref in ['C25','C26','U4','C5','C6','R47','C42','R25','R48','U6','D6']:
  expected=next(c for c in placements['components'] if c['reference']==ref)['properties']['ConnectionEvidence']
  assert xml.findtext(f'./components/comp[@ref="{ref}"]/fields/field[@name="ConnectionEvidence"]')==expected,ref
 completed_ids=set(measured)|set(measured2)|set(measured3)|set(measured4)|set(measured5)|{'B21'}
+open_batch=read('evidence/d6_u6_open_pad_results_20261009.json')
+assert {x['id']:x['ohms'] for x in open_batch['readings']}=={'B22':44000,'B23':1,'B24':1,'B25':44000,'B26':270000,'B27':10000,'B28':1}
+for x,y in open_batch['confirmed_pairs']+open_batch['user_annotated_pairs']:assert net(x)==net(y)
+assert net('D6.1')==net('J1.VPP')==net('U4.1')!=net('GND.1')
+assert net('D6.2')==net('GND.1')
+assert net('U6.L2')==net('U6.R2')==net('R37.2')==net('U6A.L')
+assert m['intentional_no_connects'][0]['endpoint']=='U6.L1'
+assert len(m['intentional_no_connects'])==1 and 'U6.L1' not in m['unresolved_pins']
+for path,digest in open_batch['photos'].items():assert sha(path)==digest
+completed_ids|={x['id'] for x in open_batch['readings']+open_batch['diode_readings']}
 assert {r['id'] for r in queue['completed_tests']}==completed_ids
 assert not completed_ids&{r['id'] for r in queue['tests']}, 'Do not repeat completed finishing readings'
 for ref in ['U4','R11','R14','R15','R16','R37','R39','Q1','U2','Q8','C5','LED1','R18','R19','Q7','TP3','TP104','U106','J3','R43','TP14','R42','R44','TP4','TP103','R21','R22','R23','R48']:

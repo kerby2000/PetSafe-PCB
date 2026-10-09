@@ -1,7 +1,7 @@
 {
   "date": "2026-10-09",
-  "review_revision": "2026-10-09 C6-C5 parallel supply capacitors reconstructed from photos",
-  "basis_revision": "v0.9.18",
+  "review_revision": "2026-10-09 receiver options reconstructed; D6 routing/polarity and U6 pin5-VIN resolved",
+  "basis_revision": "v0.9.20",
   "scope": "Current main-board uncertainties after the 522d235 architect review and user D3 follow-up. J1 numbering corrected from photos, R41 named neutrally; D3 rail assignment resolved by user measurement with closure history retained. D2 local destinations now have user evidence: R to C20 lower end, L to ANT2/R46 upper, S to R46 lower; R46 is DNP. Exact part identity remains open. U3.5 VREF and J3.3 ground now measured; disproven R23 and J3 role guesses withdrawn in v0.9.13. Batch2 confirms J3.2-R38 K, U3.6-R23 B and R22 E-GND; R23 C remains unresolved. Batch3 rejects direct R23 C joins to C18 M/N and TP6: 300/400/600 kohm respectively; no topology change. Batch4 resolves R23 C-C40 lower-R42 upper. C40 leaves the unsupported detector-output grouping. Clear surface traces are agent photo work, not routine bench requests. Batch5 rejects TP16-to-TP11/TP17 direct joins (400 kohm each). User maps all three U7 pads to J3; U7 pin1 is GND, pin2 signal, pin3 PIR supply. User measured TP16-VREF 0.8 Mohm and explicitly withdrew PIC21-VREF. PIC21/RB0 now joins TP16/Q2.S; the PIR-to-controller route is resolved. C26.1 now joins PIC3/RA1 from user annotation; C25 remains PIC2/RA0, with common GND. Values still unknown. C6 is now reconstructed in parallel with C5 from the user proposal and copper photos; no new meter reading or capacitance supplied.",
   "rails": [
     {
@@ -26,7 +26,7 @@
       "name": "VREF",
       "board_label": "VREF test point",
       "path": "TP104, PIC4/RA2/V035/C39, R21.2/V071. U3.5 and R22 D/left/model2 at 1 ohm.",
-      "basis": "User-confirmed core plus U3.5/R22 D/left. R48 remains inferred; R23 branch rejected. PIC21/RB0/V026 explicitly withdrawn; TP16-VREF measured 800 kohm."
+      "basis": "User-confirmed core plus U3.5/R22 D/left. R48.2 removed: user annotation groups it with R25/R47/C42; R23 branch rejected. PIC21/RB0/V026 explicitly withdrawn; TP16-VREF measured 800 kohm."
     },
     {
       "name": "GND",
@@ -255,14 +255,11 @@
       ],
       "priority": 2,
       "state": "open",
-      "known": "J3 pin1 supply previously confirmed; pin3-GND 1 ohm; pin2-R38 K/right/model1 1 ohm, opposite end 10 kohm. Pin2-GND 290 kohm. C2NM supports S-812C33AMC; V067 reaches J3.1/U6A, V063 regulated VDD, and U6 ground is resistance-supported. User maps all three U7 pads to corresponding J3 columns, with opposite square-pad numbering. TP16-to-TP11/TP17 each reads 400 kohm; neither is a direct route. New user report identifies PIC21/RB0 as TP16/Q2.S destination; local Q2 upper-right-to-R38 trace also identified. Conflict resolved: TP16-VREF 0.8 Mohm and user explicitly withdraws PIC21-VREF. PIC21/RB0 now joins TP16/Q2.S.",
-      "unknown": "U6 VIN/VOUT external branches and NC-pad ties, actual PIR voltage, R33 branch and Q2 candidate pin functions remain qualified. Connector ordering and PIR output-to-controller destination are resolved.",
+      "known": "J3 pin1 supply previously confirmed; pin3-GND 1 ohm; pin2-R38 K/right/model1 1 ohm, opposite end 10 kohm. Pin2-GND 290 kohm. C2NM supports S-812C33AMC; V067 reaches J3.1/U6A, V063 regulated VDD, and U6 ground is resistance-supported. User maps all three U7 pads to corresponding J3 columns, with opposite square-pad numbering. TP16-to-TP11/TP17 each reads 400 kohm; neither is a direct route. New user report identifies PIC21/RB0 as TP16/Q2.S destination; local Q2 upper-right-to-R38 trace also identified. Conflict resolved: TP16-VREF 0.8 Mohm and user explicitly withdraws PIC21-VREF. PIC21/RB0 now joins TP16/Q2.S. v0.9.20: U6.5-U6.2 measured 1 ohm (B28). User annotation also joins physical L2/native5 to R37 upper/model2 and empty U6A single/native1. U6.4/L1 marked NC by user and appears as an isolated surface stub in original photos. Candidate pin5 is internally NC but externally tied to VIN; pin4 remains unused.",
+      "unknown": "Remaining U6 output-branch qualifications, actual PIR voltage, R33 branch and Q2 candidate pin functions remain qualified. Connector ordering and PIR output-to-controller destination are resolved.",
       "next_action": "Do not repeat PIR-to-PIC routing tests. Agent checks remaining U6/R33 visible copper and candidate device orientation; only residual hidden ties or device behavior merit measurements.",
       "closed_when": "Physical connector ordering, U6 supply/output and signal path are verified; NC pads are documented whether tied externally or left unused.",
-      "open_pads": [
-        "U6.L1",
-        "U6.L2"
-      ],
+      "open_pads": [],
       "nets": [
         "H_PIR_RAW",
         "H_PIR_SIG",
@@ -285,6 +282,11 @@
           "result": "PIC21/RB0-to-TP16/Q2.S applied; earlier PIC21-VREF explicitly withdrawn, with TP16-VREF 0.8 Mohm.",
           "evidence": "evidence/pic21_tp16_followup_20261009.json",
           "date": "2026-10-09"
+        },
+        {
+          "result": "v0.9.20: U6.5-U6.2 measured 1 ohm (B28). User annotation also joins physical L2/native5 to R37 upper/model2 and empty U6A single/native1. U6.4/L1 marked NC by user and appears as an isolated surface stub in original photos. Candidate pin5 is internally NC but externally tied to VIN; pin4 remains unused.",
+          "evidence": "evidence/d6_u6_open_pad_results_20261009.json",
+          "date": "2026-10-09"
         }
       ]
     },
@@ -302,12 +304,16 @@
         "R23",
         "R48",
         "C18",
-        "TP6"
+        "TP6",
+        "R25",
+        "R47",
+        "C42",
+        "C23"
       ],
       "priority": 2,
       "state": "open",
-      "known": "U3.5 and R22.2 are VREF; R22.1 is GND. U3.6 reaches R23 B/left. R23 C/right, C40 lower and R42 upper are one measured junction (1 ohm). The old C40 detector-output link is withdrawn. Prior C18/TP6/VREF high-resistance exclusions remain; Q7 supply-switch topology is still inferred.",
-      "unknown": "C23/R25 output continuation, remaining filter/bias hypotheses and Q7 pin roles. R42.1-TP4/PIC25 uses prior user evidence; the new local junction does not establish circuit behavior.",
+      "known": "U3.5 and R22.2 are VREF; R22.1 is GND. U3.6 reaches R23 B/left. R23 C/right, C40 lower and R42 upper are one measured junction (1 ohm). The old C40 detector-output link is withdrawn. Prior C18/TP6/VREF high-resistance exclusions remain; Q7 supply-switch topology is still inferred. v0.9.19 user annotated local copper: R47 left -> U3.1/R27 right; R47 right + C42 lower + R25 lower + R48 right share RX_STAGE_LINK. C42 upper -> GND inferred from continuous copper beside U3.4 in IMG_2429/2434. R25-GND and R48-VREF old assumptions withdrawn. R47/C42 remain DNP. No meter reading supplied.",
+      "unknown": "Remaining receiver bias/filter hypotheses, Q7 pin functions and operating transfer function. C23/R25 now continues into R48 through RX_STAGE_LINK; R42.1-TP4/PIC25 retains its independent evidence.",
       "next_action": "Agent traces visible receiver copper and checks vias first. Reserve the meter for a hidden onward route or a specific conflict with remote-net evidence. Do not repeat the completed R23/C40/R42/C18/TP6 checks.",
       "closed_when": "Receiver supply, bias, gain/filter paths and interface endpoints are reconciled against evidence. U3.5 has a documented DC return or supported intentional nonstandard mechanism, and the detector output has a supported functional destination.",
       "open_pads": [],
@@ -322,7 +328,8 @@
         "RX_B_FB",
         "RX_B_OUT",
         "H_RX_DETECT",
-        "VREF"
+        "VREF",
+        "RX_STAGE_LINK"
       ],
       "resolved_subquestions": [
         {
@@ -343,6 +350,11 @@
         {
           "result": "R23 right-C40 lower-R42 upper junction established; R23.2 no longer open. Prior C40 detector-output association withdrawn.",
           "evidence": "evidence/u3_r23_batch4_20261009.json",
+          "date": "2026-10-09"
+        },
+        {
+          "result": "v0.9.19 user annotated local copper: R47 left -> U3.1/R27 right; R47 right + C42 lower + R25 lower + R48 right share RX_STAGE_LINK. C42 upper -> GND inferred from continuous copper beside U3.4 in IMG_2429/2434. R25-GND and R48-VREF old assumptions withdrawn. R47/C42 remain DNP. No meter reading supplied.",
+          "evidence": "evidence/r47_c42_routing_20261009.json",
           "date": "2026-10-09"
         }
       ]
@@ -387,14 +399,11 @@
       ],
       "priority": 2,
       "state": "open",
-      "known": "D4/D5=5U supports SD05 TVS candidates. D6=G3 has at least two documented Zener candidates. ICSP signal routes are photo-derived. J1 square-pad/VPP end is resolved from IMG_2437 and corroborated by IMG_2439: 1 VPP, 2 VDD, 3 GND, 4 DAT, 5 CLK. Electrical signal destinations are unchanged.",
-      "unknown": "Both D6 pad routes, exact voltage/polarity and candidate diode identities remain open. J1 pitch and lead geometry remain photo-based; its sequential numbering is now resolved.",
-      "next_action": "Measure D6 pads to adjacent PIC/ICSP nodes using the corrected J1 numbering. Do not repeat J1 position identification; position evidence is photographic, not new meter confirmation.",
+      "known": "D4/D5=5U supports SD05 TVS candidates. D6=G3 has at least two documented Zener candidates. ICSP signal routes are photo-derived. J1 square-pad/VPP end is resolved from IMG_2437 and corroborated by IMG_2439: 1 VPP, 2 VDD, 3 GND, 4 DAT, 5 CLK. Electrical signal destinations are unchanged. B22-B27 resolve physical D6 upper V to GND and lower W to VPP, each 1 ohm. v0.9.20 B22-B27: upper photo contact V -> GND, lower W -> VPP, each 1 ohm. B29 red V/black W about 0.7V; B30 reverse OL. Supports A=V/GND (pin2), K=W/VPP (pin1). G3 identity and Zener breakdown remain unverified; no 3.9V measurement.",
+      "unknown": "D6 exact identity/class, breakdown voltage and ICSP voltage compatibility remain unknown. The 3.9V value is only a marking candidate, not a measured clamp voltage. J1 geometry remains photo-estimated.",
+      "next_action": "No further D6 routing or polarity checks. Resolve actual breakdown/type only with appropriate part evidence or a controlled isolated test if required; diode mode does not measure breakdown.",
       "closed_when": "D6 connections and candidate class are supported; ICSP connector physical numbering is reconciled. Zener voltage needs a suitable controlled test or exact part evidence, not ordinary diode mode.",
-      "open_pads": [
-        "D6.1",
-        "D6.2"
-      ],
+      "open_pads": [],
       "nets": [
         "ICSP_CLK",
         "ICSP_DAT",
@@ -410,6 +419,13 @@
             "photos/originals/IMG_2437.jpg",
             "photos/originals/IMG_2439.jpg"
           ]
+        }
+      ],
+      "resolved_subquestions": [
+        {
+          "result": "v0.9.20 B22-B27: upper photo contact V -> GND, lower W -> VPP, each 1 ohm. B29 red V/black W about 0.7V; B30 reverse OL. Supports A=V/GND (pin2), K=W/VPP (pin1). G3 identity and Zener breakdown remain unverified; no 3.9V measurement.",
+          "evidence": "evidence/d6_u6_open_pad_results_20261009.json",
+          "date": "2026-10-09"
         }
       ]
     },
@@ -515,7 +531,7 @@
       ],
       "priority": 2,
       "state": "open",
-      "known": "13 open pads belong to unpopulated options. R46 is now fully mapped: upper to D2.L/ANT2, lower to D2.S, with no resistor fitted. U7 is fully mapped: pin1 GND, pin2 J3 signal, pin3 PIR supply; it remains DNP.",
+      "known": "8 open pads belong to unpopulated options. R46 is now fully mapped: upper to D2.L/ANT2, lower to D2.S, with no resistor fitted. U7 is fully mapped: pin1 GND, pin2 J3 signal, pin3 PIR supply; it remains DNP. R47 and C42 local option-pad wiring is now reconstructed from annotated/original photos; both remain DNP. U6A single pad joins U6 VIN via the user-drawn R37 branch.",
       "unknown": "Optional-pad routing is incomplete; values and intended uses may remain unknowable without another board variant.",
       "next_action": "Record option copper where visible; defer measurement unless it affects a populated net.",
       "closed_when": "Optional routes are documented to the desired reproduction scope; do not invent fitted values or no-connect flags.",
@@ -551,6 +567,7 @@
   ],
   "measurement_followup": "evidence/d3_measurement_20261009.json",
   "photo_supported_summary": [
-    "v0.9.18: C6 is reconstructed in parallel with C5 from the user proposal and photos IMG_2431/IMG_2432. C6 upper pad/model1 joins the C5-positive supply copper (H_RF_VDD, after L1); lower pad/model2 joins GND. Photo-supported, not a new meter-confirmed connection. C6 capacitance remains unknown. Earlier 400 kohm output exclusion and 10 ohm Q8-supply-path reading are retained; the latter does not independently prove Q8 source wiring."
+    "v0.9.18: C6 is reconstructed in parallel with C5 from the user proposal and photos IMG_2431/IMG_2432. C6 upper pad/model1 joins the C5-positive supply copper (H_RF_VDD, after L1); lower pad/model2 joins GND. Photo-supported, not a new meter-confirmed connection. C6 capacitance remains unknown. Earlier 400 kohm output exclusion and 10 ohm Q8-supply-path reading are retained; the latter does not independently prove Q8 source wiring.",
+    "v0.9.19 user annotated local copper: R47 left -> U3.1/R27 right; R47 right + C42 lower + R25 lower + R48 right share RX_STAGE_LINK. C42 upper -> GND inferred from continuous copper beside U3.4 in IMG_2429/2434. R25-GND and R48-VREF old assumptions withdrawn. R47/C42 remain DNP. No meter reading supplied."
   ]
 }

@@ -19,7 +19,7 @@ fitted=sorted(e for e in m['unresolved_pins'] if cs[e.rsplit('.',1)[0]]['populat
 dnp=sorted(e for e in m['unresolved_pins'] if cs[e.rsplit('.',1)[0]]['population']=='DNP')
 gpios=[int(e.split('.')[1]) for e in fitted if e.startswith('U4.')];gpios.sort()
 func={p['pin']:p['function'] for p in read('evidence/pic_trace_audit.json')['pins']}
-local={1:'J1.1/VPP at square-pad end; position photo-supported; D6 route missing',2:'C25 signal pad / V031; onward destination unknown',3:'C26 signal pad (user annotation); R28 + R29 + TP7 (earlier meter/trace)',4:'VREF TP via V035; user confirms via-to-TP; C39.1 local photo route',
+local={1:'J1.1/VPP plus D6 cathode; D6 W-VPP 1 ohm, forward 0.7V from GND',2:'C25 signal pad / V031; onward destination unknown',3:'C26 signal pad (user annotation); R28 + R29 + TP7 (earlier meter/trace)',4:'VREF TP via V035; user confirms via-to-TP; C39.1 local photo route',
 5:'V036-V108 to R14; user continuity report',6:'V037-V102 to R15; user continuity report',7:'V039-V097 to R16; user continuity report',8:'GND / V041 photo anchor',9:'Y1 oscillator; photo-derived',10:'Y1 oscillator; photo-derived',
 11:'V047-V091 to R11; user continuity report',12:'R18.1 via V053-V070; user-confirmed; VREF link explicitly rejected',13:'TP3 via V049; user-confirmed; existing R10 branch photo-derived',14:'TP11; visible route; onward destination unknown',
 15:'V022-V016 to U5 pin2 / INA; user-confirmed',16:'V023-V019 to U5 pin3 / INB; user-confirmed',17:'R13; user meter / visible trace',18:'TP17; visible route; old R13 guess withdrawn',19:'GND / C32 / V045 photo anchor',20:'V042 to board VDD TP user-confirmed; C32.1 local photo route',
@@ -69,7 +69,7 @@ for title,ids in [('Supply and diode gaps',['E01','E02','E03']),('Tuning and loc
 story.extend([P('PIC connections','TitlePS'),P('Physical package pins. All have modeled local nets; the evidence column distinguishes confirmed endpoints from photo-derived or incomplete branches. Use the separate numbered photo guide for physical locations.'),
 table([['Pin','Function','Local destination / evidence']]+[[p['pin'],{27:'RB6/CLK',28:'RB7/DAT'}.get(p['pin'],p['gpio']),p['evidence']] for p in pins],[30,64,W-94]),
 P('Every remaining open pad','HeadPS'),P('<b>Populated entries:</b> '+escape(', '.join(fitted))+'.<br/><b>Empty options:</b> '+escape(', '.join(dnp))+'.','SmallPS'),
-P('U6.L1/L2 are candidate internal NC pins 4/5; external ties remain unknown. Photo pad S means single pad, not necessarily source. Current completion checklist includes closure criteria and the full per-component audit. Sources: reconstruction.json, remaining_work.json, via_audit.json, v099_net_changes.json, native validation and the preserved earlier measurement records.','SmallPS')])
+P('TP9 remains an unlocated inventory entry. U6 pin4 is unused by user/photo evidence; pin5 externally joins pin2/VIN (1 ohm), although internally NC in the candidate datasheet. Photo pad S means single pad, not necessarily source. The completion checklist includes closure criteria and the full component audit. Sources: reconstruction.json, remaining_work.json, via_audit.json, native validation and preserved measurement records.','SmallPS')])
 def footer(c,d):
     c.setFillColor(ink);c.setFont('Helvetica',8);c.drawString(32,17,'PetSafe | Evidence-qualified reconstruction | '+m['revision']);c.drawRightString(A4[0]-32,17,str(d.page))
 doc.build(story,onFirstPage=footer,onLaterPages=footer)

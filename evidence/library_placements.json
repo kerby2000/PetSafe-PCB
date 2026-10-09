@@ -915,7 +915,8 @@
       "via_evidence": "v0.9.16 CORRECTION: user confirms PIC21/RB0 -> TP16 -> Q2 single pad; TP16-VREF = 0.8 Mohm. User explicitly withdraws PIC21-VREF. PIC21/V026 belongs to H_PIR_SIG, separate from VREF. RA2/V035 and R21/V071 remain VREF. This supersedes every earlier RB0/V026-to-VREF statement.",
       "properties": {
         "ViaEvidence": "v0.9.16 CORRECTION: user confirms PIC21/RB0 -> TP16 -> Q2 single pad; TP16-VREF = 0.8 Mohm. User explicitly withdraws PIC21-VREF. PIC21/V026 belongs to H_PIR_SIG, separate from VREF. RA2/V035 and R21/V071 remain VREF. This supersedes every earlier RB0/V026-to-VREF statement.",
-        "MeasurementEvidence": "v0.9.16 CORRECTION: user confirms PIC21/RB0 -> TP16 -> Q2 single pad; TP16-VREF = 0.8 Mohm. User explicitly withdraws PIC21-VREF. PIC21/V026 belongs to H_PIR_SIG, separate from VREF. RA2/V035 and R21/V071 remain VREF. This supersedes every earlier RB0/V026-to-VREF statement."
+        "MeasurementEvidence": "v0.9.16 CORRECTION: user confirms PIC21/RB0 -> TP16 -> Q2 single pad; TP16-VREF = 0.8 Mohm. User explicitly withdraws PIC21-VREF. PIC21/V026 belongs to H_PIR_SIG, separate from VREF. RA2/V035 and R21/V071 remain VREF. This supersedes every earlier RB0/V026-to-VREF statement.",
+        "ConnectionEvidence": "v0.9.19 user annotated local copper: R47 left -> U3.1/R27 right; R47 right + C42 lower + R25 lower + R48 right share RX_STAGE_LINK. C42 upper -> GND inferred from continuous copper beside U3.4 in IMG_2429/2434. R25-GND and R48-VREF old assumptions withdrawn. R47/C42 remain DNP. No meter reading supplied."
       }
     },
     {
@@ -1020,7 +1021,10 @@
       },
       "rotation": 0,
       "includePins": true,
-      "footprint": "Resistor_SMD:R_0603_1608Metric"
+      "footprint": "Resistor_SMD:R_0603_1608Metric",
+      "properties": {
+        "ConnectionEvidence": "v0.9.19 user annotated local copper: R47 left -> U3.1/R27 right; R47 right + C42 lower + R25 lower + R48 right share RX_STAGE_LINK. C42 upper -> GND inferred from continuous copper beside U3.4 in IMG_2429/2434. R25-GND and R48-VREF old assumptions withdrawn. R47/C42 remain DNP. No meter reading supplied."
+      }
     },
     {
       "symbol": "Device:C",
@@ -1276,24 +1280,30 @@
       "reference": "C42",
       "value": "DNP",
       "position": {
-        "x": 367.03,
-        "y": 248.92
+        "x": 377.19,
+        "y": 223.52
       },
-      "rotation": 90,
+      "rotation": 0,
       "includePins": true,
-      "footprint": "Capacitor_SMD:C_0603_1608Metric"
+      "footprint": "Capacitor_SMD:C_0603_1608Metric",
+      "properties": {
+        "ConnectionEvidence": "v0.9.19 user annotated local copper: R47 left -> U3.1/R27 right; R47 right + C42 lower + R25 lower + R48 right share RX_STAGE_LINK. C42 upper -> GND inferred from continuous copper beside U3.4 in IMG_2429/2434. R25-GND and R48-VREF old assumptions withdrawn. R47/C42 remain DNP. No meter reading supplied."
+      }
     },
     {
       "symbol": "Device:R",
       "reference": "R47",
       "value": "DNP",
       "position": {
-        "x": 392.43,
-        "y": 248.92
+        "x": 398.78000000000003,
+        "y": 223.52
       },
-      "rotation": 90,
+      "rotation": 0,
       "includePins": true,
-      "footprint": "Resistor_SMD:R_0603_1608Metric"
+      "footprint": "Resistor_SMD:R_0603_1608Metric",
+      "properties": {
+        "ConnectionEvidence": "v0.9.19 user annotated local copper: R47 left -> U3.1/R27 right; R47 right + C42 lower + R25 lower + R48 right share RX_STAGE_LINK. C42 upper -> GND inferred from continuous copper beside U3.4 in IMG_2429/2434. R25-GND and R48-VREF old assumptions withdrawn. R47/C42 remain DNP. No meter reading supplied."
+      }
     },
     {
       "symbol": "Device:R",
@@ -1673,7 +1683,10 @@
       "rotation": 0,
       "includePins": true,
       "footprint": "Package_TO_SOT_SMD:SOT-23-5",
-      "unit": 1
+      "unit": 1,
+      "properties": {
+        "ConnectionEvidence": "v0.9.20: U6.5-U6.2 measured 1 ohm (B28). User annotation also joins physical L2/native5 to R37 upper/model2 and empty U6A single/native1. U6.4/L1 marked NC by user and appears as an isolated surface stub in original photos. Candidate pin5 is internally NC but externally tied to VIN; pin4 remains unused."
+      }
     },
     {
       "symbol": "Device:R",
@@ -1913,7 +1926,10 @@
       "rotation": 0,
       "includePins": true,
       "footprint": "Diode_SMD:D_SOD-323",
-      "unit": 1
+      "unit": 1,
+      "properties": {
+        "ConnectionEvidence": "v0.9.20 B22-B27: upper photo contact V -> GND, lower W -> VPP, each 1 ohm. B29 red V/black W about 0.7V; B30 reverse OL. Supports A=V/GND (pin2), K=W/VPP (pin1). G3 identity and Zener breakdown remain unverified; no 3.9V measurement."
+      }
     },
     {
       "symbol": "Connector_Generic:Conn_01x03",
