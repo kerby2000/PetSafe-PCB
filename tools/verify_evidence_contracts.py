@@ -81,6 +81,21 @@ assert net('D3.S')==net('R42.2') # KiCad may auto-name a continuous local wire w
 assert next(n for n in m['nets'] if n['net']=='H_D3_SIGNAL')['endpoints']==['D3.S','R42.2']
 assert d3['measurements'][2]['resistance_ohms']==1.2
 assert sha(d3['photo'])==d3['photo_sha256']
+d2=read('evidence/d2_diode_20261009.json')
+assert net('D2.R')==net('C20.2') and net('D2.L')==net('ANT2.1')
+assert net('D2.R')!=net('D2.L')
+assert all(net(p) not in {net('GND.1'),net('VDD.1')} for p in ['D2.R','D2.L'])
+assert not set(['D2.S','D2.L','D2.R','R46.1','R46.2']) & set(m['unresolved_pins'])
+assert net('D2.S')==net('R46.2') and net('D2.L')==net('R46.1')
+assert net('D2.S') not in {net('D2.L'),net('D2.R'),net('GND.1'),net('VREF.1')}, 'Empty R46 must not bridge S to ANT2 or a rail'
+assert next(c for c in m['components'] if c['ref']=='R46')['population']=='DNP'
+assert xml.findtext('./components/comp[@ref="R46"]/value')=='DNP'
+assert d2['local_connection_measurements'][0]['ohms']==1
+assert d2['local_connection_measurements'][1]['reported']=='OL'
+assert {r['to']:r['ohms'] for r in d2['external_resistance_followup']['readings_as_reported'] if r['from']=='D2.S'}=={'GND test point':700000,'VREF test point':1320000}
+assert sha(d2['pad_orientation_confirmation']['photo'])==d2['pad_orientation_confirmation']['photo_sha256']
+assert xml.findtext('./components/comp[@ref="D2"]/fields/field[@name="MeasurementEvidence"]')==next(c for c in placements['components'] if c['reference']=='D2')['properties']['MeasurementEvidence']
+assert xml.findtext('./components/comp[@ref="R46"]/fields/field[@name="MeasurementEvidence"]')==next(c for c in placements['components'] if c['reference']=='R46')['properties']['MeasurementEvidence']
 assert xml.findtext('./components/comp[@ref="TP103"]/value')=='VDD'
 assert net('U4.12')==net('R18.1')=='H_RX_ENABLE_CTL'
 assert net('U4.13')==net('TP3.1')==net('R10.1')=='RF_MONITOR_PAD'

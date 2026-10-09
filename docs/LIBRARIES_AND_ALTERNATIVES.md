@@ -15,7 +15,7 @@ The user authorized U1/U5 after vendor files could not be found, and subsequentl
 | Q2, Q7 | `Transistor_BJT:BC847`, `Transistor_BJT:BC857` | Standard family symbols; values preserve the B/C gain-bin candidates. |
 | Q3/Q4/Q5/Q6/Q11 | `Transistor_BJT:Q_PNP_BEC` | Standard generic PNP with B=1, E=2, C=3; value MMBTA55? preserves the uncertain 2H identification. |
 | D1/D3 | `Diode:BAV99` | A7 marking candidates; D3 marking now confirmed by the user. Physical orientation and external clamp routes remain inferred. |
-| D2 | `Connector_Generic:Conn_01x03` | Unidentified 4P part. Stock numbered placeholder with L=1/R=2/S=3 as bookkeeping only; no functional assignment. Prior BAV99 clamp ties withdrawn. |
+| D2 | `Connector_Generic:Conn_01x03` | Unidentified 4P part; in-circuit readings support series junctions R -> S -> L. L=1/R=2/S=3 remain bookkeeping. User maps R-C20 lower, L-ANT2/R46 upper, S-R46 lower; R46 is empty. Exact part/ratings unknown; prior rail-clamp ties remain withdrawn. |
 | LED1, S1 | `Device:LED_Dual_AAKK`, `Switch:SW_Push_Dual` | Stock four-pin symbols; photographed pad mapping remains provisional. |
 | R/C/L/Y/TP | `Device:R`, `Device:C`, `Device:C_Polarized`, `Device:L`, `Device:Crystal`, `Connector:TestPoint` | Existing conventional library parts. C5 polarity is inferred from the selected rail topology. |
 | U1 | `PetSafe_Datasheet:S-1200B45-M5T1` | MCP-created from ABLIC Rev.6 page 5: 1 VIN, 2 VSS, 3 ON/OFF, 4 NC, 5 VOUT. B option has active-high enable. The fitted part remains a strong identification candidate, not a measured fact. |

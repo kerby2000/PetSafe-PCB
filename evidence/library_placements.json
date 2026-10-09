@@ -1065,7 +1065,10 @@
       "rotation": 0,
       "includePins": true,
       "footprint": "Package_TO_SOT_SMD:SOT-23",
-      "unit": 1
+      "unit": 1,
+      "properties": {
+        "MeasurementEvidence": "User: R (upper-left)-C20 lower = 1 ohm; L (upper-right)-ANT2 and R46 upper directly connected; S (single lower)-R46 lower directly connected. R46 DNP, not a jumper. S-ANT2 OL; S-GND 700 kohm; S-VREF 1.32 Mohm. D2 L=1/R=2/S=3 are placeholder IDs; R46 upper=1/lower=2."
+      }
     },
     {
       "symbol": "Device:R",
@@ -1278,12 +1281,15 @@
       "reference": "R46",
       "value": "DNP",
       "position": {
-        "x": 412.75,
-        "y": 248.92
+        "x": 525.78,
+        "y": 250.19
       },
-      "rotation": 90,
+      "rotation": 0,
       "includePins": true,
-      "footprint": "Resistor_SMD:R_0603_1608Metric"
+      "footprint": "Resistor_SMD:R_0603_1608Metric",
+      "properties": {
+        "MeasurementEvidence": "User confirms empty R46 footprint: upper pad/model1 joins D2.L/ANT2; lower pad/model2 joins D2.S. Remains DNP; no conducting bridge is fitted."
+      }
     },
     {
       "symbol": "Connector:TestPoint",

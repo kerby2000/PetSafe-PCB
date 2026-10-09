@@ -4988,9 +4988,12 @@
         "rotation": 0,
         "includePins": true,
         "footprint": "Package_TO_SOT_SMD:SOT-23",
-        "unit": 1
+        "unit": 1,
+        "properties": {
+          "MeasurementEvidence": "User: R (upper-left)-C20 lower = 1 ohm; L (upper-right)-ANT2 and R46 upper directly connected; S (single lower)-R46 lower directly connected. R46 DNP, not a jumper. S-ANT2 OL; S-GND 700 kohm; S-VREF 1.32 Mohm. D2 L=1/R=2/S=3 are placeholder IDs; R46 upper=1/lower=2."
+        }
       },
-      "description": "Unidentified three-terminal part marked 4P. Numbered stock placeholder; pin functions unresolved.",
+      "description": "Unidentified 4P part; probable series junctions R-S-L. R reaches C20 lower end; L reaches ANT2 and empty R46 upper; S reaches empty R46 lower. Numbered stock placeholder.",
       "datasheet": ""
     },
     {
@@ -5820,16 +5823,16 @@
       "legacy": {
         "ref": "R46",
         "actual": "R46",
-        "x": 325,
-        "y": 196,
+        "x": 414,
+        "y": 197,
         "unit": 1,
         "lid": "PetSafe_Working:RE_R46",
         "value": "DNP",
-        "rx": 325,
-        "ry": 191.5,
-        "vx": 325,
-        "vy": 193,
-        "just": "",
+        "rx": 412,
+        "ry": 195.5,
+        "vx": 412,
+        "vy": 197,
+        "just": "right",
         "pins": [
           {
             "p": "1",
@@ -5857,12 +5860,15 @@
         "reference": "R46",
         "value": "DNP",
         "position": {
-          "x": 412.75,
-          "y": 248.92
+          "x": 525.78,
+          "y": 250.19
         },
-        "rotation": 90,
+        "rotation": 0,
         "includePins": true,
-        "footprint": "Resistor_SMD:R_0603_1608Metric"
+        "footprint": "Resistor_SMD:R_0603_1608Metric",
+        "properties": {
+          "MeasurementEvidence": "User confirms empty R46 footprint: upper pad/model1 joins D2.L/ANT2; lower pad/model2 joins D2.S. Remains DNP; no conducting bridge is fitted."
+        }
       }
     },
     {

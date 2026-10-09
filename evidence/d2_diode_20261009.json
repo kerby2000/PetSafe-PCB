@@ -19,12 +19,42 @@
     "caution": "These are the user's labels, not the English words left/right. Do not swap measured results to match photo position. Existing native L=1/R=2/S=3 remains placeholder bookkeeping only."
   },
   "readings": [
-    {"red": "L", "black": "R", "reported": "OL", "volts": null},
-    {"red": "R", "black": "L", "reported": "1.2 V", "volts": 1.2},
-    {"red": "L", "black": "S", "reported": "OL", "volts": null},
-    {"red": "S", "black": "L", "reported": "0.6 V", "volts": 0.6},
-    {"red": "R", "black": "S", "reported": "0.6 V", "volts": 0.6},
-    {"red": "S", "black": "R", "reported": "OL", "volts": null}
+    {
+      "red": "L",
+      "black": "R",
+      "reported": "OL",
+      "volts": null
+    },
+    {
+      "red": "R",
+      "black": "L",
+      "reported": "1.2 V",
+      "volts": 1.2
+    },
+    {
+      "red": "L",
+      "black": "S",
+      "reported": "OL",
+      "volts": null
+    },
+    {
+      "red": "S",
+      "black": "L",
+      "reported": "0.6 V",
+      "volts": 0.6
+    },
+    {
+      "red": "R",
+      "black": "S",
+      "reported": "0.6 V",
+      "volts": 0.6
+    },
+    {
+      "red": "S",
+      "black": "R",
+      "reported": "OL",
+      "volts": null
+    }
   ],
   "interpretation": {
     "working_topology": "Two series diode junctions: R anode -> S midpoint -> L cathode",
@@ -32,30 +62,140 @@
     "confidence": "Strong support for terminal behavior; probable internal topology because measurements were made in circuit",
     "transistor_candidate": "Simple PNP junction behavior would share a common cathode/base, unlike this directed chain. FMMT2907R is downgraded from its marking-only lead; external board paths prevent absolute exclusion.",
     "bav99_comparison": "Same series topology as BAV99, but this is not a part identification or replacement recommendation. Nexperia specifies A7 plus a site code, not 4P. Its functional mapping would be R=A1, S=K1/A2, L=K2; existing photo-pad/native numbering is not thereby validated.",
-    "unresolved": ["Exact manufacturer and part number", "Electrical ratings and speed/capacitance", "Physical package numbering versus L/R/S", "All three external board connections"]
+    "unresolved": [
+      "Exact manufacturer and part number",
+      "Electrical ratings and speed/capacitance",
+      "Physical package numbering versus L/R/S",
+      "Further receiver/antenna branch routes beyond the measured local links"
+    ],
+    "r46_option": "R46 is unpopulated and its two pads lie across the probable S-to-L junction. There is no fitted resistive path. A populated resistor would shunt that junction; intended option value/purpose is unknown."
   },
   "external_resistance_followup": {
     "readings_as_reported": [
-      {"from": "D2.R", "to": "GND test point", "reported": "0.78 Mohm", "ohms": 780000},
-      {"from": "D2.R", "to": "VDD test point", "reported": "0.99 Mohm", "ohms": 990000},
-      {"from": "D2.L", "to": "VDD test point", "reported": "740 kohm", "ohms": 740000},
-      {"from": "D2.L", "to": "GND test point", "reported": "450 kohm", "ohms": 450000}
+      {
+        "from": "D2.R",
+        "to": "GND test point",
+        "reported": "0.78 Mohm",
+        "ohms": 780000
+      },
+      {
+        "from": "D2.R",
+        "to": "VDD test point",
+        "reported": "0.99 Mohm",
+        "ohms": 990000
+      },
+      {
+        "from": "D2.L",
+        "to": "VDD test point",
+        "reported": "740 kohm",
+        "ohms": 740000
+      },
+      {
+        "from": "D2.L",
+        "to": "GND test point",
+        "reported": "450 kohm",
+        "ohms": 450000
+      },
+      {
+        "from": "D2.S",
+        "to": "GND test point",
+        "reported": "700 kohm",
+        "ohms": 700000
+      },
+      {
+        "from": "D2.S",
+        "to": "VREF test point",
+        "reported": "1.32 Mohm",
+        "ohms": 1320000
+      }
     ],
-    "interpretation": "All four outer-pad rail checks returned high resistance. Neither R nor L has a demonstrated direct copper connection to VDD or GND; the proposed simple GND-to-VDD clamp is unsupported. The numbers are in-circuit readings, not four discrete resistors, OL, or evidence of a defective component. User explicitly confirmed R-VDD = 0.99 Mohm before the separate L measurements.",
-    "next_action": "With power disconnected, check D2.R (upper-left) to the lower C20 metal end nearest its printed designator, and D2.S (single lower pad) to ANT2's solder terminal. These are local layout/function candidates, not visually established copper traces. Report ohms or OL; do not repeat the outer-pad rail or six diode tests."
+    "interpretation": "All four outer-pad rail checks returned high resistance. Neither R nor L has a demonstrated direct copper connection to VDD or GND; the proposed simple GND-to-VDD clamp is unsupported. The numbers are in-circuit readings, not four discrete resistors, OL, or evidence of a defective component. User explicitly confirmed R-VDD = 0.99 Mohm before the separate L measurements. S-GND and S-VREF also show high resistance, not direct copper or OL; no rail tie or discrete resistor is inferred.",
+    "next_action": "Completed. All three D2 local destinations are identified; no repeat rail checks needed. Exact 4P identity and ratings remain unresolved."
   },
   "local_trace_review": {
-    "photos_inspected": ["photos/originals/IMG_2434.jpg", "photos/user_updates/D2_user_pad_labels_20261009.png"],
-    "result": "No unambiguous complete D2 external route is visible in these photographs. C20 and ANT2 are nearby candidate destinations. Current modeled C20 branches and receiver roles remain hypotheses, not evidence for adding D2 to them.",
-    "pending_checks": [
-      {"from": "D2.R", "to": "C20 lower metal end nearest printed C20", "basis": "Physical proximity to the adjacent capacitor; tests a local receiver-network connection"},
-      {"from": "D2.S", "to": "ANT2 solder terminal", "basis": "Nearby antenna terminal and a possible signal-path role; function is unconfirmed"}
-    ]
+    "photos_inspected": [
+      "photos/originals/IMG_2434.jpg",
+      "photos/user_updates/D2_user_pad_labels_20261009.png"
+    ],
+    "result": "R-C20 lower 1 ohm; L-ANT2 direct; S-ANT2 OL. User identifies S-R46 lower and L/ANT2-R46 upper, with R46 unpopulated. All three local destinations now resolved; other C20/RX_A_PLUS branches remain inferred.",
+    "completed_candidates": [
+      {
+        "from": "D2.R",
+        "to": "C20 lower metal end nearest printed C20",
+        "basis": "Physical proximity to the adjacent capacitor; tests a local receiver-network connection"
+      },
+      {
+        "from": "D2.S",
+        "to": "ANT2 solder terminal",
+        "basis": "Nearby antenna terminal and a possible signal-path role; function is unconfirmed"
+      },
+      {
+        "from": "D2.S",
+        "to": "GND test point",
+        "basis": "Tests an unconfirmed midpoint reference"
+      },
+      {
+        "from": "D2.S",
+        "to": "VREF test point",
+        "basis": "Tests an unconfirmed midpoint bias"
+      }
+    ],
+    "pending_checks": []
   },
-  "schematic_changes": "No net joins, pin renumbering or symbol substitution. Keep the numbered unknown-part placeholder pending external routing evidence.",
+  "schematic_changes": "v0.9.12: D2.R/native2 joins C20.2 on RX_A_PLUS; D2.L/native1 joins ANT2/TP106 and R46.1 upper on H_ANT_B; D2.S/native3 joins R46.2 lower on D2_MID. Keep R46 DNP, S separate from L/ANT2/GND/VREF, and the unknown-part stock placeholder.",
   "sources": [
     "https://assets.nexperia.com/documents/data-sheet/BAV99.pdf",
     "https://media.digikey.com/pdf/Data%20Sheets/Zetex%20PDFs/FMMT2907(A).pdf",
     "https://assets.fluke.com/manuals/8xiii___umeng0300.pdf"
+  ],
+  "local_connection_measurements": [
+    {
+      "from": "D2.R",
+      "to": "C20 lower metal end nearest printed C20",
+      "reported": "1 ohm",
+      "ohms": 1,
+      "model_endpoints": [
+        "D2.R",
+        "C20.2"
+      ],
+      "interpretation": "Supports a direct local connection; no fixed lead-resistance subtraction"
+    },
+    {
+      "from": "D2.S",
+      "to": "ANT",
+      "requested_endpoint": "ANT2",
+      "reported": "OL",
+      "interpretation": "No direct continuity in the requested ANT2 test; does not rule out capacitive/semiconductor paths"
+    },
+    {
+      "from": "D2.L",
+      "to": "ANT2",
+      "reported": "directly connected",
+      "ohms": null,
+      "interpretation": "User continuity report; no numeric value invented"
+    },
+    {
+      "from": "D2.S",
+      "to": "R46 lower pad",
+      "reported": "clearly connected",
+      "ohms": null,
+      "model_endpoints": [
+        "D2.S",
+        "R46.2"
+      ],
+      "source": "User visible-copper report and explicit lower-pad clarification"
+    },
+    {
+      "from": "R46 upper pad",
+      "to": "D2.L and ANT2",
+      "reported": "connected",
+      "ohms": null,
+      "model_endpoints": [
+        "R46.1",
+        "D2.L",
+        "ANT2.1"
+      ],
+      "source": "User explicit upper-pad clarification"
+    }
   ]
 }

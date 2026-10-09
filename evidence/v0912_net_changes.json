@@ -1,0 +1,48 @@
+{
+  "from": "v0.9.11",
+  "to": "v0.9.12",
+  "date": "2026-10-09",
+  "source": "evidence/d2_diode_20261009.json",
+  "confirmed_pairs": [
+    [
+      "D2.R",
+      "C20.2"
+    ],
+    [
+      "D2.L",
+      "ANT2.1"
+    ],
+    [
+      "D2.S",
+      "R46.2"
+    ],
+    [
+      "D2.L",
+      "R46.1"
+    ]
+  ],
+  "excluded_direct_pair": {
+    "endpoints": [
+      "D2.S",
+      "ANT2.1"
+    ],
+    "reported": "OL"
+  },
+  "retained_uncertainty": "C20 lower end is model pin2; other RX_A_PLUS connections remain prior hypotheses. D2 pin numbers are bookkeeping. R46 upper=1/lower=2, fully mapped but unpopulated. D2 exact identity and ratings remain unknown.",
+  "non_continuity_readings": [
+    {
+      "endpoints": [
+        "D2.S",
+        "GND.1"
+      ],
+      "ohms": 700000
+    },
+    {
+      "endpoints": [
+        "D2.S",
+        "VREF.1"
+      ],
+      "ohms": 1320000
+    }
+  ]
+}

@@ -1,6 +1,6 @@
 {
   "board": "100-1339 R03 A",
-  "revision": "v0.9.11",
+  "revision": "v0.9.12",
   "status": "INFERRED WORKING CIRCUIT / NOT CONTINUITY VERIFIED",
   "components": [
     {
@@ -920,13 +920,14 @@
         "1",
         "2"
       ],
-      "note": "Empty footprint photographed; do not treat as a jumper.",
+      "note": "Empty footprint, confirmed by user. Upper photo pad=model1 joins D2.L/ANT2; lower photo pad=model2 joins D2.S. Do not treat as a jumper or install an assumed value.",
       "side": "front",
       "traced_pin_count": 0,
       "library_symbol": "Device:R",
       "footprint": "Resistor_SMD:R_0603_1608Metric",
       "footprint_confidence": "medium",
-      "footprint_basis": "Body/land proportions compared with nearby 1.27-mm SOIC and 0.95-mm SOT lead pitch. Populated resistor family appears 0805; smaller empty option lands appear 0603."
+      "footprint_basis": "Body/land proportions compared with nearby 1.27-mm SOIC and 0.95-mm SOT lead pitch. Populated resistor family appears 0805; smaller empty option lands appear 0603.",
+      "pad_evidence": "User explicitly identifies upper and lower pads in D2_user_pad_labels_20261009.png. Upper=1 and lower=2 are model assignments for this nonpolar empty option."
     },
     {
       "ref": "R47",
@@ -1462,7 +1463,8 @@
       "value_evidence": {
         "state": "unknown",
         "source": "No individual measured value supplied; any displayed estimate is a hypothesis."
-      }
+      },
+      "pad_evidence": "IMG_2434/user photo lower metal end nearest printed C20 is assigned model pin2; user D2.R-to-that-end = 1 ohm. Other capacitor end remains model pin1; existing GND and receiver-input branches are not independently confirmed by this result."
     },
     {
       "ref": "C21",
@@ -2858,13 +2860,13 @@
         "R",
         "S"
       ],
-      "note": "Three-terminal diode-designated part. L/R/S are photo pad identifiers, not assumed anodes/cathodes.",
+      "note": "User photo: R upper-left toward C20, L upper-right toward R46, S single lower pad. In-circuit measured topology is probable, not exact identity.",
       "side": "front",
       "traced_pin_count": 0,
       "proposed_value": "4P / unidentified",
       "library_symbol": "Connector_Generic:Conn_01x03",
       "footprint": "Package_TO_SOT_SMD:SOT-23",
-      "hypothesis": "User clearly reads 4P. Withdraw BAV99 identity and all three guessed rail-clamp ties. Zetex FMMT2907R PNP is an exact code/package match but not established as the fitted part. Stock numbered placeholder retains L=1/R=2/S=3 as pad identifiers only; internal functions and routing unresolved.",
+      "hypothesis": "4P exact identity unresolved. In-circuit diode readings support R -> S -> L series junctions, weakening the marking-only PNP lead. User confirms R-C20 lower end 1 ohm, L-ANT2/R46 upper, S-R46 lower. R46 is DNP. D2 L=1/R=2/S=3 are placeholder identifiers, not a verified device pinout.",
       "footprint_confidence": "datasheet/package candidate",
       "footprint_basis": "Existing assignment; see component identity evidence."
     },
@@ -3560,10 +3562,13 @@
     {
       "net": "H_ANT_B",
       "endpoints": [
-        "ANT2.1"
+        "ANT2.1",
+        "D2.L",
+        "R46.1"
       ],
-      "status": "HYPOTHESIS / retains visual fragments where listed",
-      "original_fragments": []
+      "status": "User-confirmed D2.L to ANT2 continuity; numerical resistance not supplied",
+      "original_fragments": [],
+      "d2_measurement": "D2.L (upper-right) directly connects to ANT2. D2.S to requested ANT2 returned OL; keep S separate. User confirms R46 upper pad/model1 on this net; the lower pad/model2 joins S. R46 remains empty, not a jumper."
     },
     {
       "net": "H_AUX_IN",
@@ -4313,10 +4318,12 @@
         "C19.1",
         "C20.2",
         "R28.2",
-        "U3.3"
+        "U3.3",
+        "D2.R"
       ],
       "status": "HYPOTHESIS / retains visual fragments where listed",
-      "original_fragments": []
+      "original_fragments": [],
+      "d2_measurement": "User D2.R (upper-left) to C20 lower metal end = 1 ohm. Lower end assigned model C20.2. Existing C19/R28/U3.3 branches remain photo/circuit hypotheses, not newly measured."
     },
     {
       "net": "RX_B_FB",
@@ -4554,6 +4561,15 @@
         "U2.B1"
       ],
       "status": "HYPOTHESIS / retains visual fragments where listed",
+      "original_fragments": []
+    },
+    {
+      "net": "D2_MID",
+      "endpoints": [
+        "D2.S",
+        "R46.2"
+      ],
+      "status": "User-confirmed local copper: D2.S to R46 lower pad; no resistor populated",
       "original_fragments": []
     }
   ],
@@ -4871,9 +4887,6 @@
     "C49.1",
     "C49.2",
     "C6.1",
-    "D2.L",
-    "D2.R",
-    "D2.S",
     "D6.1",
     "D6.2",
     "J6.1",
@@ -4881,8 +4894,6 @@
     "Q9.S",
     "R36.1",
     "R36.2",
-    "R46.1",
-    "R46.2",
     "R47.1",
     "R47.2",
     "TP9.1",
@@ -10132,6 +10143,83 @@
         339.09,
         57.15
       ]
+    },
+    {
+      "net": "D2_MID",
+      "a": [
+        525.78,
+        254.0
+      ],
+      "b": [
+        551.18,
+        254.0
+      ]
+    },
+    {
+      "net": "H_ANT_B",
+      "a": [
+        525.78,
+        246.38
+      ],
+      "b": [
+        533.4,
+        246.38
+      ]
+    },
+    {
+      "net": "H_ANT_B",
+      "a": [
+        533.4,
+        246.38
+      ],
+      "b": [
+        533.4,
+        248.92
+      ]
+    },
+    {
+      "net": "H_ANT_B",
+      "a": [
+        533.4,
+        248.92
+      ],
+      "b": [
+        551.18,
+        248.92
+      ]
+    },
+    {
+      "net": "RX_A_PLUS",
+      "a": [
+        445.77,
+        245.11
+      ],
+      "b": [
+        548.64,
+        245.11
+      ]
+    },
+    {
+      "net": "RX_A_PLUS",
+      "a": [
+        548.64,
+        245.11
+      ],
+      "b": [
+        548.64,
+        251.46
+      ]
+    },
+    {
+      "net": "RX_A_PLUS",
+      "a": [
+        548.64,
+        251.46
+      ],
+      "b": [
+        551.18,
+        251.46
+      ]
     }
   ],
   "pin_positions": {
@@ -11080,12 +11168,12 @@
       248.92
     ],
     "R46.1": [
-      408.94,
-      248.92
+      525.78,
+      246.38
     ],
     "R46.2": [
-      416.56,
-      248.92
+      525.78,
+      254.0
     ],
     "ANT2.1": [
       21.59,

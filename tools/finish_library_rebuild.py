@@ -253,6 +253,10 @@ wire('H_RF_VDD','L1.2',(187,132),'C5.1')
 label('H_RF_VDD',(181,132))
 # C6.1 to output was refuted by 400 kohm E-F; leave its destination unresolved.
 stub('H_ANT_A','ANT1.1',5);stub('H_ANT_B','ANT2.1',5)
+# User D2.R-to-C20 lower end = 1 ohm; preserve local wiring in the receiver block.
+wire('RX_A_PLUS','C20.2',(432,193),(432,198),'D2.R')
+wire('H_ANT_B','D2.L',(420,196),(420,194),'R46.1');label('H_ANT_B',(420,194))
+wire('D2_MID','D2.S','R46.2') # Empty R46 lower; no bridge to its upper ANT2 pad.
 
 # Preserve original frame geometry at half scale, using normal readable text sizes.
 for g in layout['graphics']:
@@ -289,7 +293,7 @@ for n in layout['notes']:
 text('BATTERY+ -> Q1 -> VSYS / U5 pin4. Board VDD / TP103 = VDD -> U5 pin1.',320,77,.762)
 text('VDD / TP103: regulated logic supply VDD; candidate 4.5V, not measured. V082 confirmed here.',13,76,.762)
 text('User: D3.R -> V082 / VDD; D3.L -> GND; D3.S -> R42 1.2 ohm (photo selects pad2).',330,126,.762)
-text('D2: 4P unidentified; old BAV99 clamp ties withdrawn.',350,201,.762)
+text('D2: R-C20 lower; L-ANT2/R46 upper; S-R46 lower. R46 empty; 4P identity unknown.',350,202,.762)
 text('User: V072 = TP6, not R22.2. V079/V080 = U3 pin5; separate from TP6 across C18.',288,211,.762)
 text('U3 alternative: MCP6002-I/SN; same pin roles, electrical suitability to verify.',288,208,.762)
 text('U5 alternative: DRV8212PDSGR. Different package/pins; redesign required.',320,81,.762)
@@ -350,7 +354,7 @@ for net,edges in adj.items():
 for l in L:
     x,y=l['p'];G.append(expr(f'(label {q(l["net"])} (at {x} {y} 0) (effects (font (size .762 .762)) (justify left bottom)) (uuid {q(uid())}))'))
 tree.extend(G)
-tree.append(expr('(title_block (title "PetSafe 100-1339 R03 A | single-sheet reconstruction") (date "2026-10-09") (rev "0.9.11") (company "KiCad 10 libraries + four datasheet symbols | MCP authoring") (comment 1 "J1 corrected; D3.R measured to VDD. Remaining circuit hypotheses documented."))'))
+tree.append(expr('(title_block (title "PetSafe 100-1339 R03 A | single-sheet reconstruction") (date "2026-10-09") (rev "0.9.12") (company "KiCad 10 libraries + four datasheet symbols | MCP authoring") (comment 1 "D2 local routes resolved; R46 empty between S and L/ANT2. Other hypotheses documented."))'))
 # Canonical pretty printer supplied by the installed MCP server.
 sys.path.insert(0,str(Path.home()/'Documents/VS.Code.Projects/KiCAD-MCP-Server/python'))
 from utils.sexpr_format import prettify
@@ -370,7 +374,7 @@ out.write_text(prettify(sx.dumps(tree)),encoding='utf-8',newline='\n')
 def wire_key(w):return w['net'],tuple(w['a']),tuple(w['b'])
 prior_order={wire_key(w):i for i,w in enumerate(model.get('geometric_wires',[]))}
 ordered_segments=sorted(segments,key=lambda s:(prior_order.get(s,len(prior_order)),s))
-model.update(revision='v0.9.11',coordinate_units='mm',native_pin_crosswalk=layout['crosswalk'],pin_positions={e:list(p) for e,p in P.items()},
+model.update(revision='v0.9.12',coordinate_units='mm',native_pin_crosswalk=layout['crosswalk'],pin_positions={e:list(p) for e,p in P.items()},
              geometric_wires=[dict(net=n,a=a,b=b) for n,a,b in ordered_segments],library_policy='KiCad 10 stock symbols plus four explicitly authorized MCP-authored datasheet symbols for U1/U5/U6/Q8')
 for c in model['components']:
     entry=next(x for x in layout['catalog'] if x['original_ref']==c['ref'])

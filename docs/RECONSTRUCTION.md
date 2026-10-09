@@ -1,10 +1,10 @@
 # Current circuit interpretation
 
-This document describes v0.9.11. [The completion checklist](FINISHING_CHECKLIST.html) is the authoritative list of known unresolved work. [Earlier reasoning](history/README.md) is preserved as history, including rejected guesses.
+This document describes v0.9.12. [The completion checklist](FINISHING_CHECKLIST.html) is the authoritative list of known unresolved work. [Earlier reasoning](history/README.md) is preserved as history, including rejected guesses.
 
 ## What is established
 
-All 150 catalog entries are represented on one A2 sheet. Twenty stock and four authorized custom symbol definitions provide the selected pin maps. All 352 physical pad identifiers have library-number crosswalks. The native netlist matches 83 modeled net partitions; this is a file-consistency result, not proof of every board connection.
+All 150 catalog entries are represented on one A2 sheet. Twenty stock and four authorized custom symbol definitions provide the selected pin maps. All 352 physical pad identifiers have library-number crosswalks. The native netlist matches 84 modeled net partitions; this is a file-consistency result, not proof of every board connection.
 
 The user supplied multimeter continuity, resistance readings, clear component markings and dimensions. Visible traces and approximate front/rear photo registration provide additional evidence. A via touching a surface copper region can support a local association; its appearance cannot establish a buried net or prove a four-layer stack.
 
@@ -26,9 +26,11 @@ Some connected PIC nodes still lack a known remote role, notably PIC2/C25, PIC14
 
 U2/C14R supports a dual Schmitt inverter. Q8/3724A supports a complementary MOSFET candidate. V113/V115 ground its centre B2/native5; V114 is U2.T2 ground, not Q8. Earlier low-resistance readings support the joined outer Q8 pads. C6-to-output was rejected by a 400 kohm result; its 10 ohm reading toward the opposite centre pad is not proof of a direct wire.
 
-The five control inputs are mapped, but capacitor-midpoint continuations and ANT2 are not complete. Seven OL readings reject a simple shared-midpoint assumption; no broad pair sweep remains queued. Capacitor values and transistor orientations still constrain the circuit interpretation. D1.R is also a local isolated node.
+The five control inputs are mapped. ANT2 now has confirmed continuity to D2.L and R46's upper pad; capacitor-midpoint continuations are still incomplete. Seven OL readings reject a simple shared-midpoint assumption; no broad pair sweep remains queued. Capacitor values and transistor orientations still constrain the circuit interpretation. D1.R is also a local isolated node.
 
 ## Receiver and PIR interface
+
+D2's three local routes are resolved by user reports: R (upper-left/native2) to C20's lower end/model2 at 1 ohm; L (upper-right/native1) to ANT2 and R46 upper/model1; S (single lower/native3) to R46 lower/model2. R46 is empty, so these last two nodes remain separate. S-ANT2 reads OL; S-GND 700 kohm and S-VREF 1.32 Mohm establish no direct rail connection. The six diode readings support series junctions R -> S -> L in circuit, with R46 as an unpopulated shunt option across S-L. Exact 4P identity, ratings and package numbering remain uncertain. Existing C20/C19/R28/U3.3 links on RX_A_PLUS are still hypotheses beyond the measured D2-C20 pair.
 
 The 11.2 kohm V064-V070 measurement fits nominal R19 + R18 and supports the Q7 supply-switch hypothesis. Q7 terminal selection remains photo/circuit inference. User now confirms D3.R reaches board VDD through V082 and D3.L is GND. Only D3.R is moved off H_RX_VDD. D3.S-to-R42 reads 1.2 ohm; photo selects R42.2, with R42.1 already mapped to TP4/PIC25. The node is neutrally named H_D3_SIGNAL; its operating function is unknown. Op-amp feedback, coupling and bias branches are still partly inferred. TP6/C18.2 and U3.5/C18.1 are separate sides of a capacitor.
 

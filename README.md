@@ -6,18 +6,18 @@ Start with [the offline overview](index.html), [the current completion checklist
 
 ## Current status
 
-Schematic revision **v0.9.11**; architect review corrections **2026-10-09**. See [review response](docs/ARCHITECT_REVIEW_RESPONSE.md). The model and native file agree on 83 net partitions. All PIC pads have modeled local connections, but some remote destinations and circuit roles remain uncertain. There is **no routed KiCad PCB**, confirmed layer stack, or powered functional validation.
+Schematic revision **v0.9.12**; architect review corrections and D2 local routing **2026-10-09**. See [review response](docs/ARCHITECT_REVIEW_RESPONSE.md). The model and native file agree on 84 net partitions. All PIC pads have modeled local connections, but some remote destinations and circuit roles remain uncertain. There is **no routed KiCad PCB**, confirmed layer stack, or powered functional validation.
 
 | Remaining work | Current state |
 |---|---|
-| Open physical pads | 28: 10 on populated entries, 18 on empty options |
-| Other incomplete connections | 3 isolated labels, plus inferred receiver/RF/PIR branches |
+| Open physical pads | 23: 7 on populated entries, 16 on empty options |
+| Other incomplete connections | 2 isolated labels, plus inferred receiver/RF/PIR branches |
 | Values | 44 fitted ceramic values; L1/L2 type and value |
 | Footprints | 147/150 assigned; C5, S1 and LED1 geometry missing |
-| ERC | 36 findings: 28 open pins, 3 isolated labels, 5 undriven power inputs |
+| ERC | 30 findings: 23 open pins, 2 isolated labels, 5 undriven power inputs |
 | Libraries | 20 stock definitions and 4 authorized custom candidate definitions in use |
 
-The checklist gives every known issue a stable ID, supporting evidence, next useful check and closure criterion. **A question mark, an assigned footprint, or zero open PIC pads does not measure overall completeness.** D3 rail association is now closed by the user measurement: D3.R to V082/VDD, D3.L to GND. D3.S-to-R42 is 1.2 ohm; the exact resistor pad remains photo-selected. Next priority is U3 pin 5's missing DC-bias return; the rest of the receiver supply remains separate.
+The checklist gives every known issue a stable ID, supporting evidence, next useful check and closure criterion. **A question mark, an assigned footprint, or zero open PIC pads does not measure overall completeness.** D2's local destinations are now mapped: R-C20 lower, L-ANT2/R46 upper, S-R46 lower. R46 remains unpopulated; D2 exact identity remains unknown. D3 rail association is closed by the user measurement: D3.R to V082/VDD, D3.L to GND. D3.S-to-R42 is 1.2 ohm; the exact resistor pad remains photo-selected. Next priority is U3 pin 5's missing DC-bias return; the rest of the receiver supply remains separate.
 
 ## Power names
 

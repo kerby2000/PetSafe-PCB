@@ -7503,9 +7503,15 @@
 				)
 			)
 		)
-    (property "PhysicalPinEvidence" "IMG_2437 front: CLK-DAT-GND-VDD-VPP left to right; square pad is VPP/right end. IMG_2439 rear corroborates square end. Native pin1=VPP,2=VDD,3=GND,4=DAT,5=CLK; photo-based physical order, not new electrical measurements." (at 344.17 59.69 0)
-      (effects (font (size 1.27 1.27)) (hide yes))
-    )
+		(property "PhysicalPinEvidence" "IMG_2437 front: CLK-DAT-GND-VDD-VPP left to right; square pad is VPP/right end. IMG_2439 rear corroborates square end. Native pin1=VPP,2=VDD,3=GND,4=DAT,5=CLK; photo-based physical order, not new electrical measurements."
+			(at 344.17 59.69 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
 		(pin "1"
 			(uuid "3326cd69-bf64-4405-98b1-6b50b28b0434")
 		)
@@ -13929,7 +13935,7 @@
 	)
 	(symbol
 		(lib_id "Device:R")
-		(at 412.75 248.92 90)
+		(at 525.78 250.19 0)
 		(unit 1)
 		(body_style 1)
 		(exclude_from_sim no)
@@ -13939,7 +13945,7 @@
 		(dnp no)
 		(uuid "1404036b-3736-42a5-8a6a-de4d578cffe5")
 		(property "Reference" "R46"
-			(at 412.75 246.888 90)
+			(at 525.78 248.15800000000002 90)
 			(show_name no)
 			(do_not_autoplace no)
 			(effects
@@ -13949,7 +13955,7 @@
 			)
 		)
 		(property "Value" "DNP"
-			(at 412.75 248.92 90)
+			(at 525.78 250.19 90)
 			(show_name no)
 			(do_not_autoplace no)
 			(effects
@@ -13959,7 +13965,7 @@
 			)
 		)
 		(property "Footprint" "Resistor_SMD:R_0603_1608Metric"
-			(at 412.75 250.698 90)
+			(at 525.78 251.96800000000002 90)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -13970,7 +13976,7 @@
 			)
 		)
 		(property "Datasheet" ""
-			(at 412.75 248.92 0)
+			(at 525.78 250.19 0)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -13981,7 +13987,7 @@
 			)
 		)
 		(property "Description" "Resistor"
-			(at 412.75 248.92 0)
+			(at 525.78 250.19 0)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -13991,6 +13997,9 @@
 				)
 			)
 		)
+    (property "MeasurementEvidence" "User confirms empty R46 footprint: upper pad/model1 joins D2.L/ANT2; lower pad/model2 joins D2.S. Remains DNP; no conducting bridge is fitted." (at 525.78 250.19 0)
+      (effects (font (size 1.27 1.27)) (hide yes))
+    )
 		(pin "1"
 			(uuid "31fed4f5-3383-4150-806d-d3a4d18d0513")
 		)
@@ -18704,6 +18713,15 @@
 				(hide yes)
 			)
 		)
+		(property "MeasurementEvidence" "User: R (upper-left)-C20 lower = 1 ohm; L (upper-right)-ANT2 and R46 upper directly connected; S (single lower)-R46 lower directly connected. R46 DNP, not a jumper. S-ANT2 OL; S-GND 700 kohm; S-VREF 1.32 Mohm. D2 L=1/R=2/S=3 are placeholder IDs; R46 upper=1/lower=2."
+			(at 556.26 251.46 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
 		(pin "1"
 			(uuid "933965dc-aaa7-493b-8dd5-326d52d883c3")
 		)
@@ -18938,9 +18956,15 @@
 					(size 1 1)
 				) hide)
 		)
-    (property "PhysicalConnectionEvidence" "2026-10-09 user meter report: D3.L=GND; D3.R=VDD TP via V082. D3.S to R42=1.2 ohm; resistor end not explicitly named. Photo selects R42.2 nearest D3; other end already mapped to TP4/PIC25. Fitted BAV99 identity and signal function remain candidates." (at 556.26 233.68 0)
-      (effects (font (size 1.27 1.27)) (hide yes))
-    )
+		(property "PhysicalConnectionEvidence" "2026-10-09 user meter report: D3.L=GND; D3.R=VDD TP via V082. D3.S to R42=1.2 ohm; resistor end not explicitly named. Photo selects R42.2 nearest D3; other end already mapped to TP4/PIC25. Fitted BAV99 identity and signal function remain candidates."
+			(at 556.26 233.68 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
 	)
 	(symbol
 		(lib_id "PetSafe_Datasheet:S-812C33AMC")

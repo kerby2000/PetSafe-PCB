@@ -66,7 +66,19 @@ The [user's annotated pad photo](../photos/user_updates/D2_user_pad_labels_20261
 
 The user subsequently supplied **L -> VDD = 740 kohm** and **L -> GND = 450 kohm**. All four outer-pad rail checks are now complete, with no direct VDD/GND join supported. This makes the simple ground-to-VDD clamp assumption unlikely; it does not exclude other diode functions or establish a defective part. Do not model these in-circuit resistances as discrete resistors.
 
-Photo review does not reveal an unambiguous complete route from D2. Next check only two local candidates, with power disconnected: **R -> C20 lower metal end** (nearest the printed C20) and **S -> ANT2 solder terminal**. Proximity and a possible signal-path role motivate these checks; neither is a proven trace. Keep existing D2 nets open pending a low-ohm result and do not repeat the completed rail/diode tests.
+The subsequent local checks resolve all three D2 destinations:
+
+| Check | User result | Model interpretation |
+|---|---|---|
+| R -> C20 lower metal end | 1 ohm | D2.R/native2 joins C20.2 on RX_A_PLUS |
+| S -> requested ANT2 terminal | OL | No direct copper join; preserve separate nodes |
+| L -> ANT2 | Directly connected | D2.L/native1 joins ANT2 on H_ANT_B |
+| S -> GND TP | 700 kohm | No direct GND connection established |
+| S -> VREF TP | 1.32 Mohm | No direct VREF connection established |
+| S -> R46 lower pad | Clearly connected | D2.S/native3 joins R46.2 on D2_MID |
+| R46 upper pad -> L / ANT2 | Connected | R46.1 joins H_ANT_B |
+
+The user confirms **R46 is unpopulated**. Its pads sit across the probable S-to-L junction, but there is no fitted resistor or jumper between them. Upper=1/lower=2 are model assignments for this empty nonpolar option. This establishes D2's local antenna/receiver connections; it does not identify the exact 4P component, validate package numbering, or confirm the other inferred C20/C19/R28/U3.3 branches. All local/rail tests are recorded in [the D2 evidence record](../evidence/d2_diode_20261009.json); no repeat sweep is needed.
 
 ## Confirmed connections and exclusions
 
