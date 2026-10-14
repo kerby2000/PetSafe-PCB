@@ -1,0 +1,39 @@
+{
+  "date": "2026-10-14",
+  "schematic_revision": "v0.9.39",
+  "baseline_commit": "b468d37",
+  "schematic_sha256": "87faf8d1bd6df103352c95404d0ef3eaf904c7dbc5ba1bd3149667cc80818ec3",
+  "electrical_change": false,
+  "status": "LOW_RECEIVER_SUPPLY_RECORDED_Q7_DRIVE_PENDING",
+  "measurements": [
+    {
+      "id": "B62",
+      "group": "receiver-supply",
+      "from": "RX",
+      "to": "G",
+      "mode": "DC voltage",
+      "unit": "V; steady or varying",
+      "state": "Powered, same red-blinking state; PIR connected",
+      "issue": "E08",
+      "purpose": "Establish whether receiver supply H_RX_VDD is available while printed VREF reads zero.",
+      "date": "2026-10-14",
+      "result": "0.066 V",
+      "voltage_v": 0.066,
+      "stability": null,
+      "source_worksheet_revision": "v0.9.39",
+      "native_endpoint": "TP5.1",
+      "raw_user_statement": "PetSafe Receiver supply while VREF reads zero / v0.9.39\nB62 red RX / black G (Powered, same red-blinking state; PIR connected): 0.066"
+    }
+  ],
+  "interpretation": "TP5/H_RX_VDD measured 66 mV relative to GND. This supports low receiver-supply availability in the reported red-blinking state, consistent with the separate VREF=0 V reading. It does not establish why the supply is low, prove Q7 is faulty or off, prove VREF is shorted to GND, or exclude brief switching pulses. Stability was not reported.",
+  "next_test_basis": "R19 left/model1 joins Q7.L/native1 (candidate base); right/model2 joins Q7.R/native2 (candidate emitter/VDD). Check each against GND to distinguish absent local feed from a near-zero emitter/base difference. Marked resistor ends avoid the closely spaced Q7 contacts.",
+  "candidate_source": {
+    "url": "https://assets.nexperia.com/documents/data-sheet/BC856_BC857_BC858.pdf",
+    "accessed": "2026-10-14",
+    "reference": "Rev.9, Table3: B=1, E=2, C=3; Table5: BC857C marking3G plus site code; Table8: negative VBE for conducting PNP. Candidate source does not establish fitted identity or board net membership."
+  },
+  "photo_sources": {
+    "photos/originals/IMG_2434.jpg": "2feac8570055753400b337f4cfe8a79256da8f3bcd706e0d972dfd9672b50d0a",
+    "photos/originals/IMG_2435.jpg": "04f1464e2fceeec695365b25183dc96505034434565d20713f55c5b13b18fac1"
+  }
+}

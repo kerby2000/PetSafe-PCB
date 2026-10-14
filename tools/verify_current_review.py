@@ -86,6 +86,11 @@ assert tp14['measurement'] in measurements['completed_tests']
 assert members['TP14.1']==members['R43.2']==members['U5.8']==members['J5.1']
 assert len({members[e] for e in ['TP14.1','Q1.1','Q1.2','Q1.3','U4.8']})==5
 assert next(s for s in read('evidence/via_audit.json')['sites'] if s['id']=='V015')['net']=='H_MOTOR_A'
+rx=read('evidence/receiver_supply_results_20261014.json')
+assert rx['electrical_change'] is False and rx['measurements'][0] in measurements['completed_tests']
+assert members['TP5.1']==members['U3.8']==members['R20.2']
+assert len({members[e] for e in ['TP5.1','R19.1','R19.2','U4.8']})==4
+for path,digest in rx['photo_sources'].items():assert hashlib.sha256((ROOT/path).read_bytes()).hexdigest()==digest
 manual=read('evidence/product_manual_led_review_20261014.json')
 assert manual['model']=='PPA19-16811'
 pack=manual['model_evidence'];assert hashlib.sha256((ROOT/pack['file']).read_bytes()).hexdigest()==pack['sha256']

@@ -193,6 +193,12 @@ assert [(r['id'],r['result']) for r in follow['measurements']]==[('B60','6.3 V')
 for row in follow['measurements']:
  assert row in queue['completed_tests']
  completed_ids.add(row['id'])
+receiver=read('evidence/receiver_supply_results_20261014.json')
+b62=receiver['measurements'][0]
+assert (b62['id'],b62['voltage_v'],b62['native_endpoint'])==('B62',0.066,'TP5.1')
+assert b62['stability'] is None and receiver['electrical_change'] is False
+assert b62 in queue['completed_tests']
+completed_ids.add('B62')
 assert {r['id'] for r in queue['completed_tests']}==completed_ids
 assert not completed_ids&{r['id'] for r in queue['tests']}, 'Do not repeat completed finishing readings'
 for ref in ['U4','R11','R14','R15','R16','R37','R39','Q1','U2','Q8','C5','LED1','R18','R19','Q7','TP3','TP104','U106','J3','R43','TP14','R42','R44','TP4','TP103','R21','R22','R23','R48']:

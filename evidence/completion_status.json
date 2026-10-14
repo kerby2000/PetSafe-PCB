@@ -132,14 +132,14 @@
     {
       "id": "E08",
       "area": "Receiver and Q7 operating behavior",
-      "gap": "Q7 transistor pin roles/supply switching, receiver gain/filter response and the functional MCU interface are unverified. H_RX_DETECT is only a series junction, not proof of a missing output wire. D3/R42-to-PIC25/RB4 wiring is established; its functional role belongs to receiver/Q1 operating validation, not an assumed missing wire. VREF at 0 V must be interpreted against PIC/receiver state; receiver supply and amplifier output voltages remain unmeasured.",
-      "method": "B62: red TP5 receiver-supply test point to black GND, DC volts in the same red-blinking state. This distinguishes absent receiver supply from a bias-path issue; no baseline rail repeats."
+      "gap": "Q7 transistor pin roles/supply switching, receiver gain/filter response and the functional MCU interface are unverified. H_RX_DETECT is only a series junction, not proof of a missing output wire. D3/R42-to-PIC25/RB4 wiring is established; its functional role belongs to receiver/Q1 operating validation, not an assumed missing wire. VREF at 0 V must be interpreted against PIC/receiver state; receiver supply is now measured low, but its cause and amplifier output behavior remain unverified. A low DC reading cannot exclude switching pulses.",
+      "method": "B63/B64: R19 left (candidate Q7 base) and right (candidate emitter/VDD) ends to GND in DC volts, same powered state. This distinguishes a missing local feed from off-state control; do not repeat TP5 or VREF."
     },
     {
       "id": "E09",
       "area": "Supply voltages and Q1 control",
       "gap": "Q1 control behavior, motor-output states, the path giving 516 ohm from OUTA to Q1 gate, zero VREF and the red-flashing state remain unresolved. R3/R4/C28-to-RB3 functional role is inferred.",
-      "method": "First B62: TP5 receiver supply to GND in the same powered state. Then choose operating-state checks for Q1 and the bridge, using the corrected TP14/OUTA assignment; no repeat continuity requested."
+      "method": "B63/B64 first check Q7 local feed and control through the two R19 ends. Q1/motor operating checks follow separately; no repeat established continuity."
     },
     {
       "id": "E10",
@@ -341,13 +341,14 @@
         "D3",
         "R42",
         "C25",
-        "R27"
+        "R27",
+        "TP5"
       ],
       "priority": 2,
       "state": "open",
-      "known": "U3 input returns and R23/R42/C40, C23/R25/R48 and DNP R47/C42 paths are reconciled. VREF supplies U3 pin5. B59 C25.1-TP6.1 = 1.5 ohm establishes the receiver filter connection to PIC2/RA0; R27 remains between that node and U3.1. B57 measured the printed VREF test point at 0 V while the red LED blinked about once per second.",
-      "unknown": "Q7 transistor pin roles/supply switching, receiver gain/filter response and the functional MCU interface are unverified. H_RX_DETECT is only a series junction, not proof of a missing output wire. D3/R42-to-PIC25/RB4 wiring is established; its functional role belongs to receiver/Q1 operating validation, not an assumed missing wire. VREF at 0 V must be interpreted against PIC/receiver state; receiver supply and amplifier output voltages remain unmeasured.",
-      "next_action": "B62: red TP5 receiver-supply test point to black GND, DC volts in the same red-blinking state. This distinguishes absent receiver supply from a bias-path issue; no baseline rail repeats.",
+      "known": "U3 input returns and R23/R42/C40, C23/R25/R48 and DNP R47/C42 paths are reconciled. VREF supplies U3 pin5. B59 C25.1-TP6.1 = 1.5 ohm establishes the receiver filter connection to PIC2/RA0; R27 remains between that node and U3.1. B57 measured the printed VREF test point at 0 V while the red LED blinked about once per second. B62 TP5/H_RX_VDD measured 0.066 V (66 mV) in the same state with PIR connected; stability not supplied.",
+      "unknown": "Q7 transistor pin roles/supply switching, receiver gain/filter response and the functional MCU interface are unverified. H_RX_DETECT is only a series junction, not proof of a missing output wire. D3/R42-to-PIC25/RB4 wiring is established; its functional role belongs to receiver/Q1 operating validation, not an assumed missing wire. VREF at 0 V must be interpreted against PIC/receiver state; receiver supply is now measured low, but its cause and amplifier output behavior remain unverified. A low DC reading cannot exclude switching pulses.",
+      "next_action": "B63/B64: R19 left (candidate Q7 base) and right (candidate emitter/VDD) ends to GND in DC volts, same powered state. This distinguishes a missing local feed from off-state control; do not repeat TP5 or VREF.",
       "closed_when": "Receiver supply, bias and the existing RA0/RA1/RB4 interfaces have supported operating roles; no presumed extra output wire is required.",
       "open_pads": [],
       "nets": [
@@ -363,12 +364,14 @@
         "H_RX_DETECT",
         "VREF",
         "RX_STAGE_LINK",
-        "H_D3_SIGNAL"
+        "H_D3_SIGNAL",
+        "H_RX_VDD"
       ],
       "supporting_evidence": [
         "docs/history/v0.9.30-before-finalization/evidence/remaining_work.json",
         "evidence/ra0_tp6_connection_v0938.json",
-        "evidence/supply_baseline_results_20261014.json"
+        "evidence/supply_baseline_results_20261014.json",
+        "evidence/receiver_supply_results_20261014.json"
       ],
       "owner": "Agent evidence review; targeted owner test only as listed",
       "category": "connectivity/behavior"
@@ -391,9 +394,9 @@
       ],
       "priority": 2,
       "state": "open",
-      "known": "VSYS/RF 6.3 V, printed VDD 4.5 V, PIR supply 3.3 V with PIR attached; VREF 0 V and red LED approximately 1 Hz. TP14 is now established on U5.8/OUTA at 1.5 ohm; R43.2/V015 follows its existing TP14 association. BATTERY+ stays separate. TP14-Q1 gate measured 516 ohm.",
+      "known": "VSYS/RF 6.3 V, printed VDD 4.5 V, PIR supply 3.3 V with PIR attached; VREF 0 V and red LED approximately 1 Hz. TP14 is now established on U5.8/OUTA at 1.5 ohm; R43.2/V015 follows its existing TP14 association. BATTERY+ stays separate. TP14-Q1 gate measured 516 ohm. B62: receiver TP5 supply is 0.066 V; this may explain absent VREF bias without implying a ground short.",
       "unknown": "Q1 control behavior, motor-output states, the path giving 516 ohm from OUTA to Q1 gate, zero VREF and the red-flashing state remain unresolved. R3/R4/C28-to-RB3 functional role is inferred.",
-      "next_action": "First B62: TP5 receiver supply to GND in the same powered state. Then choose operating-state checks for Q1 and the bridge, using the corrected TP14/OUTA assignment; no repeat continuity requested.",
+      "next_action": "B63/B64 first check Q7 local feed and control through the two R19 ends. Q1/motor operating checks follow separately; no repeat established continuity.",
       "closed_when": "Actual supply levels and control behavior are recorded without merging battery, VSYS or filtered branches.",
       "open_pads": [],
       "nets": [
@@ -410,7 +413,8 @@
         "docs/history/v0.9.30-before-finalization/evidence/remaining_work.json",
         "evidence/supply_baseline_results_20261014.json",
         "evidence/product_manual_led_review_20261014.json",
-        "evidence/tp14_motor_output_correction_v0939.json"
+        "evidence/tp14_motor_output_correction_v0939.json",
+        "evidence/receiver_supply_results_20261014.json"
       ],
       "owner": "Agent evidence review; targeted owner test only as listed",
       "category": "connectivity/behavior"
@@ -548,7 +552,7 @@
         "I01"
       ],
       "summary": "S1 contacts and the front capacitor-bank ANT2 connection are established. Q3 stays fitted with identification deferred. Two local-only PIC branches, candidate device roles and powered behavior remain.",
-      "next_action": "RA0-TP6 and TP14-OUTA are now resolved. B62 checks receiver supply at TP5 to interpret zero VREF. TP11/TP17 hidden continuation remains qualified; Q3 stays fitted."
+      "next_action": "RA0-TP6 and TP14-OUTA are resolved. TP5 receiver supply measured 66 mV; B63/B64 now compare Q7 control and supply at R19. TP11/TP17 hidden continuation remains qualified; Q3 stays fitted."
     },
     {
       "id": "F2",

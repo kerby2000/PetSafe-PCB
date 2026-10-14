@@ -1,9 +1,9 @@
 {
   "date": "2026-10-14",
   "basis_revision": "v0.9.37",
-  "status": "AWAITING_RECEIVER_SUPPLY_VOLTAGE",
-  "scope": "One receiver supply reading, following the resolved TP14 motor-output assignment.",
-  "setup": "Connect the original battery, keep PIR connected and programmer disconnected. Use DC VOLTS with leads in COM and V/ohms. Keep the same red-blinking state and avoid bridging nearby pads.",
+  "status": "AWAITING_Q7_SUPPLY_AND_BASE_VOLTAGES",
+  "scope": "Two local voltages after B62 established receiver supply at 66 mV. No topology change or repeat TP5 reading.",
+  "setup": "Keep the original battery and PIR connected, programmer disconnected, in the same red-blinking state. Use DC VOLTS with leads in COM and V/ohms. Keep black on the printed GND hole; touch one resistor metal end at a time with red.",
   "photos": [
     {
       "id": "receiver",
@@ -1178,7 +1178,8 @@
       ],
       "title": "Black probe: printed GND hole",
       "reference_for": [
-        "receiver-supply"
+        "receiver-supply",
+        "q7-drive"
       ],
       "points": {
         "G": {
@@ -1196,22 +1197,76 @@
           "role": "reference"
         }
       }
+    },
+    {
+      "id": "q7-drive",
+      "source": "photos/originals/IMG_2434.jpg",
+      "coordinate_space": [
+        1368,
+        1823
+      ],
+      "view_box": [
+        50,
+        130,
+        780,
+        700
+      ],
+      "title": "Q7 supply and control: both metal ends of R19",
+      "points": {
+        "B": {
+          "xy": [
+            151,
+            540
+          ],
+          "label": [
+            107,
+            706
+          ],
+          "description": "LEFT metal end of horizontal R19, marked 01C, directly below Q7. Model R19.1 / candidate Q7 base. Red probe here for B63.",
+          "native_endpoint": "R19.1",
+          "net": "H_RX_ENABLE"
+        },
+        "E": {
+          "xy": [
+            274,
+            540
+          ],
+          "label": [
+            425,
+            575
+          ],
+          "description": "RIGHT metal end of R19, nearest the round via and R20. Model R19.2 / candidate Q7 emitter and VDD feed. Red probe here for B64.",
+          "native_endpoint": "R19.2",
+          "net": "VDD"
+        }
+      }
     }
   ],
   "tests": [
     {
-      "id": "B62",
-      "group": "receiver-supply",
-      "from": "RX",
+      "id": "B63",
+      "group": "q7-drive",
+      "from": "B",
       "to": "G",
       "mode": "DC voltage",
       "unit": "V; steady or varying",
       "state": "Powered, same red-blinking state; PIR connected",
       "issue": "E08",
-      "purpose": "Establish whether receiver supply H_RX_VDD is available while printed VREF reads zero."
+      "purpose": "Measure the candidate Q7 base/control node at R19.1."
+    },
+    {
+      "id": "B64",
+      "group": "q7-drive",
+      "from": "E",
+      "to": "G",
+      "mode": "DC voltage",
+      "unit": "V; steady or varying",
+      "state": "Powered, same red-blinking state; PIR connected",
+      "issue": "E08",
+      "purpose": "Verify local Q7 input supply at R19.2 and compare with its candidate base."
     }
   ],
-  "interpretation": "TP14 is now OUTA, established by 1.5 ohm to U5 pin8. The remaining 0 V at VREF is a separate question: TP5 powers U3 and feeds the R21/R22 bias network. A low TP5 reading could explain absent bias; a nonzero TP5 reading directs the next check to the bias path. A multimeter reading alone cannot resolve brief pulses or establish a failed part.",
+  "interpretation": "B62 TP5=0.066 V supports a low receiver supply but does not identify the cause. In the candidate PNP circuit, E near the previously measured 4.5 V and B close to E would support Q7 being held off. B substantially lower than E would prompt a collector/R20/load check. Both points low would instead question the local feed or its assumed routing. These DC readings cannot exclude brief pulses or establish a defective part.",
   "next_stages": [
     {
       "stage": "Resolve the remaining functional paths",
@@ -1261,7 +1316,7 @@
     "B42/B43 LED colours: A/R31/PIC22 green; B/R30/PIC23 red. No repeated colour check requested.",
     "B44-B52 antenna continuity completed: C11 outer end ANT2, distinct ANT1 and GND. Corrected pair labels retained in the raw result evidence."
   ],
-  "deferred": "Q3 stays fitted. Receiver bias and red-blinking behavior remain unverified; do not mix powered voltage checks with resistance mode.",
+  "deferred": "Q3 stays fitted. Q7 identity, switching pulses and the red-blinking cause remain unverified.",
   "sources": [
     "evidence/remaining_work.json",
     "evidence/reconstruction.json",
@@ -2026,11 +2081,29 @@
       "raw_user_statement": "TP14 and pin 8 of the MX512H are connected - 1.5ohm",
       "shorted_probe_ohms": null,
       "stability": null
+    },
+    {
+      "id": "B62",
+      "group": "receiver-supply",
+      "from": "RX",
+      "to": "G",
+      "mode": "DC voltage",
+      "unit": "V; steady or varying",
+      "state": "Powered, same red-blinking state; PIR connected",
+      "issue": "E08",
+      "purpose": "Establish whether receiver supply H_RX_VDD is available while printed VREF reads zero.",
+      "date": "2026-10-14",
+      "result": "0.066 V",
+      "voltage_v": 0.066,
+      "stability": null,
+      "source_worksheet_revision": "v0.9.39",
+      "native_endpoint": "TP5.1",
+      "raw_user_statement": "PetSafe Receiver supply while VREF reads zero / v0.9.39\nB62 red RX / black G (Powered, same red-blinking state; PIR connected): 0.066"
     }
   ],
-  "batch_title": "Receiver supply while VREF reads zero",
-  "instructions": "B62: red RX (TP5 above U3), black G (printed GND test hole). Report volts and whether steady or varying. No other supply or continuity readings need repeating.",
-  "result_summary": "TP14-U5.8 = 1.5 ohm: TP14/R43.2 moved to OUTA. TP14-Q1.R = 516 ohm is not a direct join.",
+  "batch_title": "Q7: local supply or off-state control?",
+  "instructions": "B63: red B (R19 LEFT end) to black G. B64: red E (R19 RIGHT end) to black G. Report volts for each and whether steady or varying. Do not measure resistance while powered.",
+  "result_summary": "B62 TP5-GND = 0.066 V (66 mV). Receiver supply is low in the reported state; Q7 drive and local feed not yet measured.",
   "cancelled_tests": [
     {
       "id": "B20",
@@ -2065,7 +2138,7 @@
       "result": "v0.9.22 user annotated U6A option: single left pad/model L/native U106.1 joins U6 pin5 and the existing input node after R37; upper-right/model R1/native2 joins J3.1 (red PIR wire); lower-right/model R2/native3 joins GND. All three external pads mapped, option remains DNP. User called the input VDD; retain VDD -> R37 (22 ohm) -> H_AUX_IN because the annotation ends at U6 pin5 and prior B28 confirms pin5-pin2, not a bypass across R37. No fitted IC identity or voltage measurement implied."
     }
   ],
-  "batch_id": "receiver-supply-20261014",
+  "batch_id": "q7-drive-20261014",
   "location_review": {
     "reference": "TP9",
     "status": "REMOVED_UNSUPPORTED_ENTRY",
@@ -2121,14 +2194,13 @@
     "pending_check": null,
     "model_status": "Applied v0.9.20: pin5-VIN measured 1 ohm; R37 and U6A single-pad local joins from the annotation; pin4 explicitly unused."
   },
-  "next_prompt": "One powered DC reading: TP5 to printed GND. This checks receiver supply availability while VREF is zero.",
+  "next_prompt": "B63 and B64: both R19 metal ends to printed GND, DC volts. No repeat TP5 reading.",
   "review_revision": "v0.9.39",
   "request_probe_baseline": false,
   "q3_decision": "Defer isolated Q3 identification; retain candidate qualification and existing copper. No desoldering or repeat Q3 batch requested.",
   "last_completed_test_ids": [
-    "B61",
-    "X03"
+    "B62"
   ],
-  "last_result_evidence": "evidence/tp14_motor_output_correction_v0939.json",
+  "last_result_evidence": "evidence/receiver_supply_results_20261014.json",
   "staged_batches": []
 }
