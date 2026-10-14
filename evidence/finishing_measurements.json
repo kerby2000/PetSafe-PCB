@@ -1,9 +1,9 @@
 {
   "date": "2026-10-14",
-  "basis_revision": "v0.9.36",
-  "status": "COMPLETED_ANTENNA_OUTER_RAIL",
-  "scope": "Resolve conflicting interpretation of the capacitor-bank outer rail. Current model assigns C11 outer end to GND, but the bank still has no established antenna path.",
-  "setup": "Battery and programmer disconnected; resistance mode. Leave Q3 and antenna wires fitted. G is the printed GND test point beside C5.",
+  "basis_revision": "v0.9.37",
+  "status": "AWAITING_E06_RA0_TP6",
+  "scope": "Test one candidate internal connection between PIC RA0/C25/V031 and TP6/R27/V072. No net merge until a result supports it.",
+  "setup": "BATTERY AND PROGRAMMER DISCONNECTED. Use resistance (ohms), not the powered voltage setup from the previous screen. Leave Q3 fitted. Measure between A0 and T6 below; neither probe goes to GND.",
   "photos": [
     {
       "id": "receiver",
@@ -742,7 +742,7 @@
             1390,
             1150
           ],
-          "description": "C11 right metal end, nearest ANT1 and away from C10. This is the opposite end from the completed M reading; currently model C11.1 / GND."
+          "description": "C11 right metal end, nearest ANT1 and away from C10; model C11.1, now ANT2 from the measured 1.4-ohm N-B result."
         },
         "A": {
           "xy": [
@@ -794,7 +794,7 @@
             1410,
             1050
           ],
-          "description": "C11 right metal end, nearest ANT1 and away from C10. This is the opposite end from the completed M reading; currently model C11.1 / GND."
+          "description": "C11 right metal end, nearest ANT1 and away from C10; model C11.1, now ANT2 from the measured 1.4-ohm N-B result."
         },
         "A": {
           "xy": [
@@ -839,10 +839,227 @@
         "B",
         "G"
       ]
+    },
+    {
+      "id": "supply-logic-pir",
+      "source": "photos/originals/IMG_2435.jpg",
+      "view_box": [
+        120,
+        210,
+        1130,
+        1580
+      ],
+      "coordinate_space": [
+        1368,
+        1823
+      ],
+      "title": "1. Fix black at G; measure VDD, VREF and PIR supply",
+      "points": {
+        "G": {
+          "xy": [
+            372,
+            1602
+          ],
+          "label": [
+            210,
+            1525
+          ],
+          "description": "Printed GND test hole beside J3. Keep the black probe here for all six readings.",
+          "role": "reference"
+        },
+        "P4": {
+          "xy": [
+            604,
+            396
+          ],
+          "label": [
+            422,
+            290
+          ],
+          "description": "Printed VDD test hole beside C2, above U1. Logic supply.",
+          "native_endpoint": "TP103.1",
+          "net": "VDD"
+        },
+        "P5": {
+          "xy": [
+            230,
+            1058
+          ],
+          "label": [
+            345,
+            965
+          ],
+          "description": "Printed VREF test hole, left of Q2. Reference rail.",
+          "native_endpoint": "TP104.1",
+          "net": "VREF"
+        },
+        "P6": {
+          "xy": [
+            1120,
+            1612
+          ],
+          "label": [
+            1140,
+            1490
+          ],
+          "description": "J3 pin 1: rightmost square solder terminal, red PIR supply wire. Not the middle signal terminal.",
+          "native_endpoint": "J3.1",
+          "net": "H_PIR_VDD"
+        }
+      }
+    },
+    {
+      "id": "supply-battery",
+      "source": "photos/originals/IMG_2438.jpg",
+      "view_box": [
+        560,
+        1050,
+        735,
+        720
+      ],
+      "coordinate_space": [
+        1368,
+        1823
+      ],
+      "title": "2. Battery positive at TP14; black stays at G",
+      "points": {
+        "P1": {
+          "xy": [
+            856,
+            1438
+          ],
+          "label": [
+            753,
+            1330
+          ],
+          "description": "TP14 test hole beside Q1, on the raw BATTERY+ side. Black probe remains at GND from the first photo.",
+          "native_endpoint": "TP14.1",
+          "net": "BATTERY+"
+        }
+      }
+    },
+    {
+      "id": "supply-rf",
+      "source": "photos/originals/IMG_2432.jpg",
+      "view_box": [
+        210,
+        320,
+        950,
+        830
+      ],
+      "coordinate_space": [
+        1368,
+        1823
+      ],
+      "title": "3. Both sides of L1; black stays at G",
+      "points": {
+        "P2": {
+          "xy": [
+            401,
+            482
+          ],
+          "label": [
+            280,
+            403
+          ],
+          "description": "Exposed plated hole immediately above L1 in this photo: VSYS, the post-Q1 supply side. Not TP1.",
+          "native_endpoint": "L1.1",
+          "net": "VSYS"
+        },
+        "P3": {
+          "xy": [
+            403,
+            900
+          ],
+          "label": [
+            270,
+            1035
+          ],
+          "description": "Exposed plated hole immediately below L1, towards C5 positive: RF supply after L1. Not TP2.",
+          "native_endpoint": "L1.2",
+          "net": "H_RF_VDD"
+        }
+      }
+    },
+    {
+      "id": "e06-ra0",
+      "source": "photos/originals/IMG_2437.jpg",
+      "view_box": [
+        790,
+        920,
+        575,
+        660
+      ],
+      "coordinate_space": [
+        1368,
+        1823
+      ],
+      "title": "A0: C25 signal end at PIC pin 2 / RA0",
+      "points": {
+        "A0": {
+          "xy": [
+            1099,
+            1273
+          ],
+          "label": [
+            1174,
+            1370
+          ],
+          "description": "Right metal end of C25, nearest C39; the upper capacitor above C26. Existing PIC pin 2 / RA0 / V031 node. Red probe here.",
+          "native_endpoint": "C25.1",
+          "net": "PIC_RA0_FILTER"
+        }
+      }
+    },
+    {
+      "id": "e06-tp6",
+      "source": "photos/originals/IMG_2434.jpg",
+      "view_box": [
+        100,
+        620,
+        1000,
+        700
+      ],
+      "coordinate_space": [
+        1368,
+        1823
+      ],
+      "title": "T6: TP6 test hole beside R27",
+      "reference_for": [
+        "e06-ra0"
+      ],
+      "points": {
+        "T6": {
+          "xy": [
+            280,
+            1040
+          ],
+          "label": [
+            175,
+            930
+          ],
+          "description": "Plated hole printed TP6, left of R27 and below-left of U3. Existing R27/C18/V072 node. Black probe here.",
+          "role": "reference",
+          "native_endpoint": "TP6.1",
+          "net": "RX_A_FILTER"
+        }
+      }
     }
   ],
-  "tests": [],
-  "interpretation": "C11 outer end N to ANT2 = 1.4 ohm supports a direct connection. N-ANT1 = 5 ohm agrees with the approximately 5-ohm fitted antenna path. N-GND, ANT1-GND and corrected ANT2-GND reports are 414 kohm. The apparent contradiction was a misidentified probe pair, now explicitly corrected by the user. The five front capacitor outer pads share continuous visible copper in IMG_2433; only C11-to-ANT2 was measured. Rear capacitor returns and transistor pads are not reassigned by this evidence.",
+  "tests": [
+    {
+      "id": "B59",
+      "group": "e06-ra0",
+      "from": "A0",
+      "to": "T6",
+      "mode": "Resistance",
+      "unit": "ohms / kohms / OL",
+      "state": "Unpowered",
+      "issue": "E06",
+      "purpose": "Distinguish a direct RA0/V031-to-receiver-TP6/V072 continuation from two separate nets."
+    }
+  ],
+  "interpretation": "Why this pair: C25/RA0/V031 and TP6/R27/V072 are two signal branches whose onward routes disappear internally. TP6 is connected through R27 to the first receiver amplifier output, making it a concrete candidate for the filtered PIC input. This is a hypothesis, not a claimed wire. A near-probe result supports one net; a kilohm reading indicates a component path and must not be treated as continuity. OL rejects only this pair, not every possible route.",
   "next_stages": [
     {
       "stage": "Resolve the remaining functional paths",
@@ -889,9 +1106,10 @@
     "TP3/R6/R7/D1 visible local joins resolved by the IMG_2431 photo audit; timing and device behavior remain separate.",
     "B37 Q8 P-F = 1 ohm supports the source-supply join. No repeat requested; electrical operation remains separate.",
     "B38-B41 S1: common pairs and normally-open action confirmed. Extra A-C OL preserved. No more S1 electrical checks requested.",
-    "B42/B43 LED colours: A/R31/PIC22 green; B/R30/PIC23 red. No repeated colour check requested."
+    "B42/B43 LED colours: A/R31/PIC22 green; B/R30/PIC23 red. No repeated colour check requested.",
+    "B44-B52 antenna continuity completed: C11 outer end ANT2, distinct ANT1 and GND. Corrected pair labels retained in the raw result evidence."
   ],
-  "deferred": "Other measurements are staged in the current checklist, not requested in this batch.",
+  "deferred": "Six powered supply readings B53-B58 are preserved in evidence/supply_baseline_plan_20261014.json. Do not mix the powered and resistance setups. Q3 stays fitted.",
   "sources": [
     "evidence/remaining_work.json",
     "evidence/reconstruction.json",
@@ -1474,8 +1692,8 @@
       "conditions": "Battery/programmer disconnected and antenna fitted were requested; fresh shorted-probe baseline and stability not separately supplied."
     }
   ],
-  "batch_title": "C11 antenna connection resolved",
-  "instructions": "Completed: C11 N to ANT2 B = 1.4 ohm; N to ANT1 A = 5 ohm. The earlier 414 kohm follow-up was ANT2 to GND, corrected by the user. No repeat antenna reading is requested.",
+  "batch_title": "E06: one hidden receiver-to-PIC connection",
+  "instructions": "B59: red probe A0, the right metal end of C25 nearest C39 in the PIC photo; black probe T6, the plated TP6 hole beside R27 in the receiver photo. Report the resistance in ohms, kohms, or OL. If it changes, report the range. This is one reading across two photographs.",
   "result_summary": "C11 outer end N to ANT2 = 1.4 ohm supports a direct connection. N-ANT1 = 5 ohm agrees with the approximately 5-ohm fitted antenna path. N-GND, ANT1-GND and corrected ANT2-GND reports are 414 kohm. The apparent contradiction was a misidentified probe pair, now explicitly corrected by the user. The five front capacitor outer pads share continuous visible copper in IMG_2433; only C11-to-ANT2 was measured. Rear capacitor returns and transistor pads are not reassigned by this evidence.",
   "cancelled_tests": [
     {
@@ -1511,7 +1729,7 @@
       "result": "v0.9.22 user annotated U6A option: single left pad/model L/native U106.1 joins U6 pin5 and the existing input node after R37; upper-right/model R1/native2 joins J3.1 (red PIR wire); lower-right/model R2/native3 joins GND. All three external pads mapped, option remains DNP. User called the input VDD; retain VDD -> R37 (22 ohm) -> H_AUX_IN because the annotation ends at U6 pin5 and prior B28 confirms pin5-pin2, not a bypass across R37. No fitted IC identity or voltage measurement implied."
     }
   ],
-  "batch_id": "antenna-contact-check-20261014",
+  "batch_id": "e06-ra0-tp6-20261014",
   "location_review": {
     "reference": "TP9",
     "status": "REMOVED_UNSUPPORTED_ENTRY",
@@ -1533,7 +1751,10 @@
     "photos/originals/IMG_2437.jpg": "3c7c58fea79ea903a3099f204c1d97406c0884edb6d54fd5e7441363e71467a7",
     "photos/originals/IMG_2435.jpg": "04f1464e2fceeec695365b25183dc96505034434565d20713f55c5b13b18fac1",
     "photos/user_updates/U6_external_routing_20261009.png": "65159aec548c6c5ca68f86e1153a6f7142d5379f75eb733d48f02450a36f5273",
-    "photos/user/2026-10-08/board_upper.png": "66b7c33e78b3b37d1acf8d42b28e781b7c9904c1ff469b35b19df1abeda7af28"
+    "photos/user/2026-10-08/board_upper.png": "66b7c33e78b3b37d1acf8d42b28e781b7c9904c1ff469b35b19df1abeda7af28",
+    "photos/originals/IMG_2438.jpg": "b3868ea3dd2f4b542d0713b57401d2a9c2a898f9b11898b32f17b84883702109",
+    "photos/originals/IMG_2432.jpg": "c982b50e7bd480e779464d26d9436c84c693d81f365ff8ac86c4aabc56e9761d",
+    "photos/originals/IMG_2434.jpg": "2feac8570055753400b337f4cfe8a79256da8f3bcd706e0d972dfd9672b50d0a"
   },
   "candidate_datasheet_note": "S-812C datasheet Rev.7.0_01, page 11, Table 5: pin4 NC; pin5 NC for A/E variants. Electrically open internally; external connection to VIN or VSS is allowed. Pin numbering checked against Figure 5 and the existing physical crosswalk.",
   "u6_annotation": {
@@ -1564,7 +1785,7 @@
     "pending_check": null,
     "model_status": "Applied v0.9.20: pin5-VIN measured 1 ohm; R37 and U6A single-pad local joins from the annotation; pin4 explicitly unused."
   },
-  "next_prompt": "No further antenna continuity reading requested. Agent reviews remaining local-only PIC branches next; Q3 stays fitted and its device identity remains deferred.",
+  "next_prompt": "E06 photo review is complete. Please take the single unpowered B59 reading, C25 signal end A0 to TP6 T6. The prepared six-voltage batch is staged for afterward.",
   "review_revision": "v0.9.37",
   "request_probe_baseline": false,
   "q3_decision": "Defer isolated Q3 identification; retain candidate qualification and existing copper. No desoldering or repeat Q3 batch requested.",
@@ -1572,5 +1793,86 @@
     "B51",
     "B52"
   ],
-  "last_result_evidence": "evidence/antenna_outer_rail_results_20261014.json"
+  "last_result_evidence": "evidence/antenna_outer_rail_results_20261014.json",
+  "staged_batches": [
+    {
+      "id": "supply-baseline-20261014",
+      "plan": "evidence/supply_baseline_plan_20261014.json",
+      "status": "Prepared; resume after the unpowered E06 check. Not cancelled or completed.",
+      "tests": [
+        {
+          "id": "B53",
+          "group": "supply-battery",
+          "from": "P1",
+          "to": "G",
+          "mode": "DC voltage",
+          "unit": "V / varying range",
+          "state": "Powered, at rest after startup",
+          "issue": "E09",
+          "net": "BATTERY+",
+          "purpose": "Record actual BATTERY+ voltage relative to GND; no previously measured voltage exists."
+        },
+        {
+          "id": "B54",
+          "group": "supply-rf",
+          "from": "P2",
+          "to": "G",
+          "mode": "DC voltage",
+          "unit": "V / varying range",
+          "state": "Powered, at rest after startup",
+          "issue": "E09",
+          "net": "VSYS",
+          "purpose": "Record actual VSYS voltage relative to GND; no previously measured voltage exists."
+        },
+        {
+          "id": "B55",
+          "group": "supply-rf",
+          "from": "P3",
+          "to": "G",
+          "mode": "DC voltage",
+          "unit": "V / varying range",
+          "state": "Powered, at rest after startup",
+          "issue": "E03",
+          "net": "H_RF_VDD",
+          "purpose": "Record actual H_RF_VDD voltage relative to GND; no previously measured voltage exists."
+        },
+        {
+          "id": "B56",
+          "group": "supply-logic-pir",
+          "from": "P4",
+          "to": "G",
+          "mode": "DC voltage",
+          "unit": "V / varying range",
+          "state": "Powered, at rest after startup",
+          "issue": "E09",
+          "net": "VDD",
+          "purpose": "Record actual VDD voltage relative to GND; no previously measured voltage exists."
+        },
+        {
+          "id": "B57",
+          "group": "supply-logic-pir",
+          "from": "P5",
+          "to": "G",
+          "mode": "DC voltage",
+          "unit": "V / varying range",
+          "state": "Powered, at rest after startup",
+          "issue": "E09",
+          "net": "VREF",
+          "purpose": "Record actual VREF voltage relative to GND; no previously measured voltage exists."
+        },
+        {
+          "id": "B58",
+          "group": "supply-logic-pir",
+          "from": "P6",
+          "to": "G",
+          "mode": "DC voltage",
+          "unit": "V / varying range",
+          "state": "Powered, at rest after startup",
+          "issue": "E07",
+          "net": "H_PIR_VDD",
+          "purpose": "Record actual H_PIR_VDD voltage relative to GND; no previously measured voltage exists."
+        }
+      ]
+    }
+  ]
 }

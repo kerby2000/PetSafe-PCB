@@ -119,9 +119,9 @@
     },
     {
       "id": "E06",
-      "area": "PIC branches without an established onward endpoint",
-      "gap": "RA0/C25, RC3/TP11 and RC7/TP17 may terminate locally or continue internally. R3/R4/C28-to-RB3 and D3/R42-to-RB4 circuit roles are unverified.",
-      "method": "Review matching front/rear via locations before proposing candidate continuity pairs. TP16-to-TP11/TP17 was already rejected; do not repeat it. No generic all-to-all test is requested."
+      "area": "PIC local branches: RA0/V031, TP11 and TP17",
+      "gap": "RA0/V031 has no established signal source. TP6/R27/V072 is a specific hidden-link candidate. RC3/TP11 and RC7/TP17 may be test-only branches, but an inner-layer continuation cannot be excluded from the photographs; test-only purpose remains an inference.",
+      "method": "B59, unpowered: C25 signal end (PIC2/RA0/V031) to TP6 (R27/V072), resistance in ohms or OL. Both are local signal branches with no established onward endpoint. Do not repeat TP16-to-TP11/TP17. No additional RC3/RC7 pair is proposed without evidence."
     },
     {
       "id": "E07",
@@ -132,13 +132,13 @@
     {
       "id": "E08",
       "area": "Receiver and Q7 operating behavior",
-      "gap": "Q7 transistor pin roles/supply switching, receiver gain/filter response and the functional MCU interface are unverified. H_RX_DETECT is only a series junction, not proof of a missing output wire.",
+      "gap": "Q7 transistor pin roles/supply switching, receiver gain/filter response and the functional MCU interface are unverified. H_RX_DETECT is only a series junction, not proof of a missing output wire. D3/R42-to-PIC25/RB4 wiring is established; its functional role belongs to receiver/Q1 operating validation, not an assumed missing wire.",
       "method": "Do not invent another detector wire. In one powered session measure VDD, U3 pin8, VREF and U3 outputs pins1/7, idle and active. Interpret waveforms only after critical capacitor values are recovered."
     },
     {
       "id": "E09",
       "area": "Supply voltages and Q1 control",
-      "gap": "Actual voltages and Q1 gate behavior have not been measured. Candidate regulator ratings are not measured board voltages.",
+      "gap": "Actual voltages and Q1 gate behavior have not been measured. Candidate regulator ratings are not measured board voltages. R3/R4/C28-to-PIC24/RB3 wiring is modeled; its sensing/control role is not yet verified.",
       "method": "Later powered session using the original battery: BATTERY+, VSYS, VDD, VREF, U6 output, Q1 gate and switched receiver supply, idle and active. Keep Q8 timing with E03."
     },
     {
@@ -257,7 +257,7 @@
     },
     {
       "id": "E06",
-      "area": "PIC branches without an established onward endpoint",
+      "area": "PIC local branches: RA0/V031, TP11 and TP17",
       "refs": [
         "U4",
         "C25",
@@ -266,33 +266,26 @@
         "TP11",
         "TP17",
         "R6",
-        "R7",
-        "R3",
-        "R4",
-        "C28",
-        "D3",
-        "R42"
+        "R7"
       ],
       "priority": 2,
       "state": "open",
-      "known": "PIC2/RA0 reaches C25/V031; PIC14/RC3 reaches TP11; PIC18/RC7 reaches TP17. RF common-drive wiring is now photo-supported.",
-      "unknown": "RA0/C25, RC3/TP11 and RC7/TP17 may terminate locally or continue internally. R3/R4/C28-to-RB3 and D3/R42-to-RB4 circuit roles are unverified.",
-      "next_action": "Review matching front/rear via locations before proposing candidate continuity pairs. TP16-to-TP11/TP17 was already rejected; do not repeat it. No generic all-to-all test is requested.",
-      "closed_when": "Each of the three local-only branches has a traced continuation or explicit evidence of intentional termination; functional roles are qualified separately.",
+      "known": "PIC2/RA0 reaches C25.1 and V031; PIC14/RC3 reaches TP11; PIC18/RC7 reaches TP17. Front/rear photo comparison confirms these local routes and shows no onward rear-surface trace at the corresponding sites. TP11/TP17 are valid test-point endpoints, not dangling wires.",
+      "unknown": "RA0/V031 has no established signal source. TP6/R27/V072 is a specific hidden-link candidate. RC3/TP11 and RC7/TP17 may be test-only branches, but an inner-layer continuation cannot be excluded from the photographs; test-only purpose remains an inference.",
+      "next_action": "B59, unpowered: C25 signal end (PIC2/RA0/V031) to TP6 (R27/V072), resistance in ohms or OL. Both are local signal branches with no established onward endpoint. Do not repeat TP16-to-TP11/TP17. No additional RC3/RC7 pair is proposed without evidence.",
+      "closed_when": "Resolve or explicitly bound RA0 onward routing and the TP11/TP17 hidden-layer limitation. Keep test-only purpose qualified unless supported; GPIO firmware roles are handled separately from missing copper.",
       "open_pads": [],
       "nets": [
         "PIC_RA0_FILTER",
         "PIC_RC3",
         "PIC_RC7_TP17",
-        "H_BAT_SENSE",
-        "PIC_RB3_RETURN",
-        "H_D3_SIGNAL",
         "RF_MONITOR_PAD",
         "H_RF_IN_A",
         "H_RF_IN_B"
       ],
       "supporting_evidence": [
-        "docs/history/v0.9.30-before-finalization/evidence/remaining_work.json"
+        "docs/history/v0.9.30-before-finalization/evidence/remaining_work.json",
+        "evidence/e06_photo_review_20261014.json"
       ],
       "owner": "Agent evidence review; targeted owner test only as listed",
       "category": "connectivity/behavior"
@@ -350,12 +343,14 @@
         "R25",
         "R47",
         "C42",
-        "C23"
+        "C23",
+        "D3",
+        "R42"
       ],
       "priority": 2,
       "state": "open",
       "known": "U3 input returns and R23/R42/C40, C23/R25/R48 and DNP R47/C42 paths are reconciled. VREF supplies U3 pin5.",
-      "unknown": "Q7 transistor pin roles/supply switching, receiver gain/filter response and the functional MCU interface are unverified. H_RX_DETECT is only a series junction, not proof of a missing output wire.",
+      "unknown": "Q7 transistor pin roles/supply switching, receiver gain/filter response and the functional MCU interface are unverified. H_RX_DETECT is only a series junction, not proof of a missing output wire. D3/R42-to-PIC25/RB4 wiring is established; its functional role belongs to receiver/Q1 operating validation, not an assumed missing wire.",
       "next_action": "Do not invent another detector wire. In one powered session measure VDD, U3 pin8, VREF and U3 outputs pins1/7, idle and active. Interpret waveforms only after critical capacitor values are recovered.",
       "closed_when": "Receiver power and bias are supported and the existing PIC25/RA1 interfaces have a documented role; no presumed output destination is used as a closure criterion.",
       "open_pads": [],
@@ -371,7 +366,8 @@
         "RX_B_OUT",
         "H_RX_DETECT",
         "VREF",
-        "RX_STAGE_LINK"
+        "RX_STAGE_LINK",
+        "H_D3_SIGNAL"
       ],
       "supporting_evidence": [
         "docs/history/v0.9.30-before-finalization/evidence/remaining_work.json"
@@ -389,12 +385,15 @@
         "L2",
         "R43",
         "R44",
-        "U5"
+        "U5",
+        "R3",
+        "R4",
+        "C28"
       ],
       "priority": 2,
       "state": "open",
       "known": "BATTERY+, post-Q1 VSYS, VDD and VREF are separate nets. L1/L2 supply sides share VSYS. Five ERC source declarations now describe existing supply paths.",
-      "unknown": "Actual voltages and Q1 gate behavior have not been measured. Candidate regulator ratings are not measured board voltages.",
+      "unknown": "Actual voltages and Q1 gate behavior have not been measured. Candidate regulator ratings are not measured board voltages. R3/R4/C28-to-PIC24/RB3 wiring is modeled; its sensing/control role is not yet verified.",
       "next_action": "Later powered session using the original battery: BATTERY+, VSYS, VDD, VREF, U6 output, Q1 gate and switched receiver supply, idle and active. Keep Q8 timing with E03.",
       "closed_when": "Actual supply levels and control behavior are recorded without merging battery, VSYS or filtered branches.",
       "open_pads": [],
@@ -404,7 +403,9 @@
         "VDD",
         "Q1_GATE",
         "H_LDO_IN",
-        "U1_ALT_PAD"
+        "U1_ALT_PAD",
+        "H_BAT_SENSE",
+        "PIC_RB3_RETURN"
       ],
       "supporting_evidence": [
         "docs/history/v0.9.30-before-finalization/evidence/remaining_work.json"
@@ -545,7 +546,7 @@
         "I01"
       ],
       "summary": "S1 contacts and the front capacitor-bank ANT2 connection are established. Q3 stays fitted with identification deferred. Three local-only PIC branches, candidate device roles and powered behavior remain.",
-      "next_action": "Antenna outer-rail batch completed. Next agent review: local-only RA0/C25, RC3/TP11 and RC7/TP17 paths before proposing a targeted hidden-connection test. Q3 stays fitted."
+      "next_action": "First B59: one unpowered RA0/C25-to-TP6 candidate test after front/rear photo review. Six powered supply readings are prepared for afterward. Q3 stays fitted."
     },
     {
       "id": "F2",

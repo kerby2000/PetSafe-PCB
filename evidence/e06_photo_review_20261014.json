@@ -1,0 +1,76 @@
+{
+  "date": "2026-10-14",
+  "basis_revision": "v0.9.37",
+  "electrical_change": false,
+  "status": "LOCAL_PATHS_REVIEWED_ONE_TARGETED_PAIR_PENDING",
+  "source_sha256": {
+    "photos/originals/IMG_2436.jpg": "8870fa15bfcc55dcaca5535ca33af2a242edadc07ad4c95db49fb32245e0cdaf",
+    "photos/originals/IMG_2437.jpg": "3c7c58fea79ea903a3099f204c1d97406c0884edb6d54fd5e7441363e71467a7",
+    "photos/originals/IMG_2439.jpg": "25e0c2dd55a3a1145175b61fec427c5c429e92a614bf944bd6f721fd490d42cc",
+    "photos/originals/IMG_2440.jpg": "65f1441dd9028c8aee8ef37b60e839d41dbfe143992736e07047fb3cf5ca15bf",
+    "photos/originals/IMG_2434.jpg": "2feac8570055753400b337f4cfe8a79256da8f3bcd706e0d972dfd9672b50d0a"
+  },
+  "front_rear_registration": "Existing approximate mirrored mosaic; local ICSP, oscillator, C32 and TP positions cross-checked against originals. Not metrology and not evidence of inner copper.",
+  "branches": [
+    {
+      "net": "PIC_RA0_FILTER",
+      "local": [
+        "U4.2",
+        "C25.1",
+        "V031"
+      ],
+      "observed": "Front C25/PIC2 route and user V031 assignment. Rear V031 has annular clearance and no visible surface continuation.",
+      "remaining": "Onward signal source unknown; test TP6/V072 as a specific receiver-side candidate."
+    },
+    {
+      "net": "PIC_RC3",
+      "local": [
+        "U4.14",
+        "TP11.1"
+      ],
+      "observed": "Direct front trace from PIC end pin to TP11; matching rear pad has no visible onward surface route.",
+      "remaining": "Test-only branch is plausible, not proven; inner connection cannot be excluded. No specific missing destination identified."
+    },
+    {
+      "net": "PIC_RC7_TP17",
+      "local": [
+        "U4.18",
+        "TP17.1"
+      ],
+      "observed": "Front trace from PIC pin18 beside C32 to TP17; matching rear pad has no visible onward surface route.",
+      "remaining": "Test-only branch is plausible, not proven; inner connection cannot be excluded. No specific missing destination identified."
+    }
+  ],
+  "candidate": {
+    "from_node": "PIC_RA0_FILTER / V031",
+    "to_node": "RX_A_FILTER / TP6 / V072",
+    "basis": "TP6 joins R27.1/C18.2 and R27.2 reaches U3.1. This is an existing receiver output/filter branch with a hidden via; RA0 has a capacitor and hidden via but no external signal source in the model.",
+    "confidence": "TESTABLE_HYPOTHESIS_ONLY",
+    "not_yet_connected": true,
+    "test": {
+      "id": "B59",
+      "group": "e06-ra0",
+      "from": "A0",
+      "to": "T6",
+      "mode": "Resistance",
+      "unit": "ohms / kohms / OL",
+      "state": "Unpowered",
+      "issue": "E06",
+      "purpose": "Distinguish a direct RA0/V031-to-receiver-TP6/V072 continuation from two separate nets."
+    }
+  },
+  "datasheet": {
+    "url": "https://ww1.microchip.com/downloads/en/DeviceDoc/PIC16(L)F18855-75-Data-Sheet-40001802H.pdf",
+    "location": "Table 1-2, page 19",
+    "finding": "RA0 can serve as ANA0 or comparator negative input. This supports a possible analog role but does not establish firmware configuration or a PCB connection."
+  },
+  "functional_questions_relocated": {
+    "RB3/R3/R4/C28": "E09 supply and sensing behavior",
+    "RB4/D3/R42": "E08 receiver operating behavior"
+  },
+  "prior_tests_not_repeated": [
+    "TP16-TP11 = 400 kohm",
+    "TP16-TP17 = 400 kohm"
+  ],
+  "conclusion": "E06 narrowed but not falsely closed. No copper changes, NC flags, or inferred net joins."
+}

@@ -22,7 +22,8 @@ out=R/'docs/measurement_screens';out.mkdir(exist_ok=True)
 panels=[]
 for photo in p['photos']:
     tests=[t for t in displayed if t['group']==photo['id']]
-    if not tests:continue
+    reference_panel=bool(set(photo.get('reference_for',[])) & {t['group'] for t in displayed})
+    if not tests and not reference_panel:continue
     raw=base64.b64encode((R/photo['source']).read_bytes()).decode('ascii')
     mime=mimetypes.guess_type(photo['source'])[0] or 'application/octet-stream'
     svg=photo_svg(photo,'../../').replace('../../'+photo['source'],'data:'+mime+';base64,'+raw)
@@ -32,7 +33,8 @@ for photo in p['photos']:
         return esc(t['result'])+(' (latest; earlier '+esc(t['earlier_reading'])+')' if t.get('earlier_reading') else '')
     rows=''.join(f'<tr><td>{t["id"]}</td><td>{t["from"]}</td><td>{t["to"]}</td><td>{esc(t.get("state", "As described"))}</td><td>{reading(t)}</td></tr>' for t in tests)
     legend=''.join(f'<li><b>{k}</b>: {esc(v["description"])}</li>' for k,v in photo['points'].items() if k in shown_contacts)
-    panels.append(f'<article><h2>{esc(photo["title"])}</h2><img src="measurement_screens/{photo["id"]}.svg" alt="{esc(photo["title"])}"><ul>{legend}</ul><table><tr><th>ID</th><th>Red probe</th><th>Black probe</th><th>Condition</th><th>Reading</th></tr>{rows}</table></article>')
+    result_table=f'<table><tr><th>ID</th><th>Red probe</th><th>Black probe</th><th>Condition</th><th>Reading</th></tr>{rows}</table>' if tests else '<p>Other probe location for the same reading above; no additional test.</p>'
+    panels.append(f'<article><h2>{esc(photo["title"])}</h2><img src="measurement_screens/{photo["id"]}.svg" alt="{esc(photo["title"])}"><ul>{legend}</ul>{result_table}</article>')
 roadmap=''.join('<li><b>'+esc(g['title'])+'</b> - '+esc(g['summary'])+'</li>' for g in s['finish_plan'])
 result_path=esc(p.get('last_result_evidence','evidence/q3_diode_results_20261009.json'))
 reply='<h2>Copy results</h2><p>Worksheet only; nothing is sent automatically. Copy before closing.</p><textarea id="reply" readonly></textarea><button id="copy">Select results</button>' if p['tests'] else f'<p>No new readings requested here. <a href="../{result_path}">Recorded result and interpretation</a>.</p>'
