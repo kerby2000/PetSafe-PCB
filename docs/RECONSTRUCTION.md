@@ -1,6 +1,6 @@
 # Current circuit interpretation
 
-Schematic v0.9.36, 2026-10-09. This is the current interpretation, not a chronological log. The [previous narrative](history/cleanup_v0928/docs/RECONSTRUCTION.md) is archived; older requests there are superseded. Use [the checklist](FINISHING_CHECKLIST.html) for remaining questions.
+Schematic v0.9.37, 2026-10-14. This is the current interpretation, not a chronological log. The [previous narrative](history/cleanup_v0928/docs/RECONSTRUCTION.md) is archived; older requests there are superseded. Use [the checklist](FINISHING_CHECKLIST.html) for remaining questions.
 
 ## Power and references
 
@@ -32,7 +32,7 @@ Q8/3724A uses a SIL3724A N/P MOSFET candidate. Its centre B2/native5 ground and 
 
 The [IMG_2431 trace review](RF_TRACE_REVIEW.html) establishes PIC13/TP3/R10.1/R6.2/R7.1/D1.S on RF_MONITOR_PAD. D1.R/native2 joins R7.2/C9.1/U2.1 (H_RF_IN_A); D1.L/native1 retains R6.1/C8.1/U2.3 (H_RF_IN_B). The prior H_RF_CONTROL/H_D1_FREE nodes are retired. These are photo-supported connections combined with the earlier measured PIC13-to-TP3 destination, not new meter readings. With the BAV99/U2 candidates, this is consistent with opposite charge/discharge delays at the two gate-driver inputs. Actual switching timing, dead time and Q8 gate headroom are unmeasured.
 
-Five PIC tuning controls are mapped. Q3 in-circuit readings are L->R 2.3 V and L->S latest 0.48 V (earlier 0.35 V), with all other directions OL. This does not confirm the PNP candidate or justify a MOSFET substitution; isolated-device identification remains optional under E04. The modeled PNP emitter-at-GND/nonnegative-GPIO arrangement is not an ordinary forward-operated PNP switch; device type/orientation, ground assignment or RF switching role needs review. Finish one Q3/R13/C10/C11/C12 cell, including V107 and antenna continuation, before extrapolating by symmetry. Seven measured capacitor-midpoint OL exclusions must remain separate constraints. C49 is an empty rear option now connected ANT2-to-GND; it does not establish the other antenna paths.
+Five PIC tuning controls are mapped. The v0.9.37 antenna correction is supported by C11 outer end N to ANT2 = 1.4 ohm, N to ANT1 = 5 ohms, and ANT1-ANT2 approximately 5 ohms with antenna fitted. The earlier 414-kohm N-ANT2 report was corrected to ANT2-GND. IMG_2433 shows C11/C14/C29/C44/C47 outer pads share continuous front copper: these five ends now join ANT2. Their opposite ends remain separate local midpoints; M to both antenna terminals read OL at DC, consistent with capacitive coupling. Rear C12/C15/C38/C45/C48 ground returns are retained separately. V087/V088 user GND reports remain, but the old inferred front-band association is withdrawn. Q3 in-circuit readings L-R 2.3 V and L-S 0.48 V with other directions OL do not confirm the PNP candidate; Q3 stays fitted and its identification remains deferred. Values and actual RF switching still need resolution under E04/V01. No ANT1/ANT2/GND net merge or effective-capacitance formula is inferred. C49 remains an empty rear ANT2-to-GND option.
 
 ## Receiver
 

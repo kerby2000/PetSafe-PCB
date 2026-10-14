@@ -2,16 +2,16 @@
 <export version="E">
   <design>
     <source>C:\Users\lukin\Documents\ChatGPT\PetSafe-PCB\schematic\PetSafe_1001339.kicad_sch</source>
-    <date>2026-10-09T22:44:06</date>
+    <date>2026-10-14T22:05:53</date>
     <tool>Eeschema 10.0.5</tool>
     <sheet number="1" name="/" tstamps="/">
       <title_block>
         <title>PetSafe 100-1339 R03 A | single-sheet reconstruction</title>
         <company>KiCad 10 libraries + four datasheet symbols | MCP authoring</company>
-        <rev>0.9.36</rev>
-        <date>2026-10-09</date>
+        <rev>0.9.37</rev>
+        <date>2026-10-14</date>
         <source>PetSafe_1001339.kicad_sch</source>
-        <comment number="1" value="J5 board contacts mapped from photos. Antenna topology remains under review."/>
+        <comment number="1" value="C11-ANT2 measured; tuning-device roles remain open."/>
         <comment number="2" value=""/>
         <comment number="3" value=""/>
         <comment number="4" value=""/>
@@ -433,9 +433,10 @@
       <footprint>Capacitor_SMD:C_1206_3216Metric</footprint>
       <description>Unpolarized capacitor</description>
       <fields>
-        <field name="ViaEvidence">v0.9: pin1 ground return from user-reviewed via/photo comparison. Pin2 retains local tuning midpoint. Hidden antenna links remain unresolved; earlier complete series-bank hypothesis withdrawn.</field>
+        <field name="ViaEvidence">v0.9.37: former front-band association to V087/V088 withdrawn. See antenna_outer_rail_correction_v0937.json.</field>
+        <field name="CurrentEvidence">v0.9.37: Measured C11.1-ANT2 = 1.4 ohm (B52). Pin1 is ANT2/H_ANT_B, not GND; pin2 retains its local tuning midpoint. Capacitance unknown. Old V087/V088 association withdrawn; rear-capacitor GND returns unchanged.</field>
         <field name="OriginalReference">C11</field>
-        <field name="Evidence">Photo reconstruction; individual net evidence in reconstruction.json</field>
+        <field name="Evidence">v0.9.37: Measured C11.1-ANT2 = 1.4 ohm (B52). Pin1 is ANT2/H_ANT_B, not GND; pin2 retains its local tuning midpoint. Capacitance unknown. Old V087/V088 association withdrawn; rear-capacitor GND returns unchanged.</field>
         <field name="LibraryPolicy">Unmodified KiCad 10 stock symbol</field>
         <field name="FootprintConfidence">user dimensional match</field>
         <field name="FootprintBasis">User reports approximately 3.2 x 1.5 mm, matching nominal 1206 / 3216 metric. Capacitance remains unknown.</field>
@@ -445,9 +446,10 @@
         <field name="Description">Unpolarized capacitor</field>
       </fields>
       <libsource lib="Device" part="C" description="Unpolarized capacitor"/>
-      <property name="ViaEvidence" value="v0.9: pin1 ground return from user-reviewed via/photo comparison. Pin2 retains local tuning midpoint. Hidden antenna links remain unresolved; earlier complete series-bank hypothesis withdrawn."/>
+      <property name="ViaEvidence" value="v0.9.37: former front-band association to V087/V088 withdrawn. See antenna_outer_rail_correction_v0937.json."/>
+      <property name="CurrentEvidence" value="v0.9.37: Measured C11.1-ANT2 = 1.4 ohm (B52). Pin1 is ANT2/H_ANT_B, not GND; pin2 retains its local tuning midpoint. Capacitance unknown. Old V087/V088 association withdrawn; rear-capacitor GND returns unchanged."/>
       <property name="OriginalReference" value="C11"/>
-      <property name="Evidence" value="Photo reconstruction; individual net evidence in reconstruction.json"/>
+      <property name="Evidence" value="v0.9.37: Measured C11.1-ANT2 = 1.4 ohm (B52). Pin1 is ANT2/H_ANT_B, not GND; pin2 retains its local tuning midpoint. Capacitance unknown. Old V087/V088 association withdrawn; rear-capacitor GND returns unchanged."/>
       <property name="LibraryPolicy" value="Unmodified KiCad 10 stock symbol"/>
       <property name="FootprintConfidence" value="user dimensional match"/>
       <property name="FootprintBasis" value="User reports approximately 3.2 x 1.5 mm, matching nominal 1206 / 3216 metric. Capacitance remains unknown."/>
@@ -548,9 +550,10 @@
       <footprint>Capacitor_SMD:C_1206_3216Metric</footprint>
       <description>Unpolarized capacitor</description>
       <fields>
-        <field name="ViaEvidence">v0.9: pin1 ground return from user-reviewed via/photo comparison. Pin2 retains local tuning midpoint. Hidden antenna links remain unresolved; earlier complete series-bank hypothesis withdrawn.</field>
+        <field name="ViaEvidence">v0.9.37: former front-band association to V087/V088 withdrawn. See antenna_outer_rail_correction_v0937.json.</field>
+        <field name="CurrentEvidence">v0.9.37: IMG_2433 shows its outer pad on the same continuous front band as C11; C11-ANT2 measured 1.4 ohm. Pin1 is ANT2/H_ANT_B, not GND; pin2 retains its local tuning midpoint. Capacitance unknown. Old V087/V088 association withdrawn; rear-capacitor GND returns unchanged.</field>
         <field name="OriginalReference">C14</field>
-        <field name="Evidence">Photo reconstruction; individual net evidence in reconstruction.json</field>
+        <field name="Evidence">v0.9.37: IMG_2433 shows its outer pad on the same continuous front band as C11; C11-ANT2 measured 1.4 ohm. Pin1 is ANT2/H_ANT_B, not GND; pin2 retains its local tuning midpoint. Capacitance unknown. Old V087/V088 association withdrawn; rear-capacitor GND returns unchanged.</field>
         <field name="LibraryPolicy">Unmodified KiCad 10 stock symbol</field>
         <field name="FootprintConfidence">medium</field>
         <field name="FootprintBasis">Photo family and body/land proportions compared with adjacent known IC lead pitch. Size is independent of capacitance, dielectric and voltage rating.</field>
@@ -560,9 +563,10 @@
         <field name="Description">Unpolarized capacitor</field>
       </fields>
       <libsource lib="Device" part="C" description="Unpolarized capacitor"/>
-      <property name="ViaEvidence" value="v0.9: pin1 ground return from user-reviewed via/photo comparison. Pin2 retains local tuning midpoint. Hidden antenna links remain unresolved; earlier complete series-bank hypothesis withdrawn."/>
+      <property name="ViaEvidence" value="v0.9.37: former front-band association to V087/V088 withdrawn. See antenna_outer_rail_correction_v0937.json."/>
+      <property name="CurrentEvidence" value="v0.9.37: IMG_2433 shows its outer pad on the same continuous front band as C11; C11-ANT2 measured 1.4 ohm. Pin1 is ANT2/H_ANT_B, not GND; pin2 retains its local tuning midpoint. Capacitance unknown. Old V087/V088 association withdrawn; rear-capacitor GND returns unchanged."/>
       <property name="OriginalReference" value="C14"/>
-      <property name="Evidence" value="Photo reconstruction; individual net evidence in reconstruction.json"/>
+      <property name="Evidence" value="v0.9.37: IMG_2433 shows its outer pad on the same continuous front band as C11; C11-ANT2 measured 1.4 ohm. Pin1 is ANT2/H_ANT_B, not GND; pin2 retains its local tuning midpoint. Capacitance unknown. Old V087/V088 association withdrawn; rear-capacitor GND returns unchanged."/>
       <property name="LibraryPolicy" value="Unmodified KiCad 10 stock symbol"/>
       <property name="FootprintConfidence" value="medium"/>
       <property name="FootprintBasis" value="Photo family and body/land proportions compared with adjacent known IC lead pitch. Size is independent of capacitance, dielectric and voltage rating."/>
@@ -1119,9 +1123,10 @@
       <footprint>Capacitor_SMD:C_1206_3216Metric</footprint>
       <description>Unpolarized capacitor</description>
       <fields>
-        <field name="ViaEvidence">v0.9: pin1 ground return from user-reviewed via/photo comparison. Pin2 retains local tuning midpoint. Hidden antenna links remain unresolved; earlier complete series-bank hypothesis withdrawn.</field>
+        <field name="ViaEvidence">v0.9.37: former front-band association to V087/V088 withdrawn. See antenna_outer_rail_correction_v0937.json.</field>
+        <field name="CurrentEvidence">v0.9.37: IMG_2433 shows its outer pad on the same continuous front band as C11; C11-ANT2 measured 1.4 ohm. Pin1 is ANT2/H_ANT_B, not GND; pin2 retains its local tuning midpoint. Capacitance unknown. Old V087/V088 association withdrawn; rear-capacitor GND returns unchanged.</field>
         <field name="OriginalReference">C29</field>
-        <field name="Evidence">Photo reconstruction; individual net evidence in reconstruction.json</field>
+        <field name="Evidence">v0.9.37: IMG_2433 shows its outer pad on the same continuous front band as C11; C11-ANT2 measured 1.4 ohm. Pin1 is ANT2/H_ANT_B, not GND; pin2 retains its local tuning midpoint. Capacitance unknown. Old V087/V088 association withdrawn; rear-capacitor GND returns unchanged.</field>
         <field name="LibraryPolicy">Unmodified KiCad 10 stock symbol</field>
         <field name="FootprintConfidence">medium</field>
         <field name="FootprintBasis">Photo family and body/land proportions compared with adjacent known IC lead pitch. Size is independent of capacitance, dielectric and voltage rating.</field>
@@ -1131,9 +1136,10 @@
         <field name="Description">Unpolarized capacitor</field>
       </fields>
       <libsource lib="Device" part="C" description="Unpolarized capacitor"/>
-      <property name="ViaEvidence" value="v0.9: pin1 ground return from user-reviewed via/photo comparison. Pin2 retains local tuning midpoint. Hidden antenna links remain unresolved; earlier complete series-bank hypothesis withdrawn."/>
+      <property name="ViaEvidence" value="v0.9.37: former front-band association to V087/V088 withdrawn. See antenna_outer_rail_correction_v0937.json."/>
+      <property name="CurrentEvidence" value="v0.9.37: IMG_2433 shows its outer pad on the same continuous front band as C11; C11-ANT2 measured 1.4 ohm. Pin1 is ANT2/H_ANT_B, not GND; pin2 retains its local tuning midpoint. Capacitance unknown. Old V087/V088 association withdrawn; rear-capacitor GND returns unchanged."/>
       <property name="OriginalReference" value="C29"/>
-      <property name="Evidence" value="Photo reconstruction; individual net evidence in reconstruction.json"/>
+      <property name="Evidence" value="v0.9.37: IMG_2433 shows its outer pad on the same continuous front band as C11; C11-ANT2 measured 1.4 ohm. Pin1 is ANT2/H_ANT_B, not GND; pin2 retains its local tuning midpoint. Capacitance unknown. Old V087/V088 association withdrawn; rear-capacitor GND returns unchanged."/>
       <property name="LibraryPolicy" value="Unmodified KiCad 10 stock symbol"/>
       <property name="FootprintConfidence" value="medium"/>
       <property name="FootprintBasis" value="Photo family and body/land proportions compared with adjacent known IC lead pitch. Size is independent of capacitance, dielectric and voltage rating."/>
@@ -1697,9 +1703,10 @@
       <footprint>Capacitor_SMD:C_1206_3216Metric</footprint>
       <description>Unpolarized capacitor</description>
       <fields>
-        <field name="ViaEvidence">v0.9: pin1 ground return from user-reviewed via/photo comparison. Pin2 retains local tuning midpoint. Hidden antenna links remain unresolved; earlier complete series-bank hypothesis withdrawn.</field>
+        <field name="ViaEvidence">v0.9.37: former front-band association to V087/V088 withdrawn. See antenna_outer_rail_correction_v0937.json.</field>
+        <field name="CurrentEvidence">v0.9.37: IMG_2433 shows its outer pad on the same continuous front band as C11; C11-ANT2 measured 1.4 ohm. Pin1 is ANT2/H_ANT_B, not GND; pin2 retains its local tuning midpoint. Capacitance unknown. Old V087/V088 association withdrawn; rear-capacitor GND returns unchanged.</field>
         <field name="OriginalReference">C44</field>
-        <field name="Evidence">Photo reconstruction; individual net evidence in reconstruction.json</field>
+        <field name="Evidence">v0.9.37: IMG_2433 shows its outer pad on the same continuous front band as C11; C11-ANT2 measured 1.4 ohm. Pin1 is ANT2/H_ANT_B, not GND; pin2 retains its local tuning midpoint. Capacitance unknown. Old V087/V088 association withdrawn; rear-capacitor GND returns unchanged.</field>
         <field name="LibraryPolicy">Unmodified KiCad 10 stock symbol</field>
         <field name="FootprintConfidence">medium</field>
         <field name="FootprintBasis">Photo family and body/land proportions compared with adjacent known IC lead pitch. Size is independent of capacitance, dielectric and voltage rating.</field>
@@ -1709,9 +1716,10 @@
         <field name="Description">Unpolarized capacitor</field>
       </fields>
       <libsource lib="Device" part="C" description="Unpolarized capacitor"/>
-      <property name="ViaEvidence" value="v0.9: pin1 ground return from user-reviewed via/photo comparison. Pin2 retains local tuning midpoint. Hidden antenna links remain unresolved; earlier complete series-bank hypothesis withdrawn."/>
+      <property name="ViaEvidence" value="v0.9.37: former front-band association to V087/V088 withdrawn. See antenna_outer_rail_correction_v0937.json."/>
+      <property name="CurrentEvidence" value="v0.9.37: IMG_2433 shows its outer pad on the same continuous front band as C11; C11-ANT2 measured 1.4 ohm. Pin1 is ANT2/H_ANT_B, not GND; pin2 retains its local tuning midpoint. Capacitance unknown. Old V087/V088 association withdrawn; rear-capacitor GND returns unchanged."/>
       <property name="OriginalReference" value="C44"/>
-      <property name="Evidence" value="Photo reconstruction; individual net evidence in reconstruction.json"/>
+      <property name="Evidence" value="v0.9.37: IMG_2433 shows its outer pad on the same continuous front band as C11; C11-ANT2 measured 1.4 ohm. Pin1 is ANT2/H_ANT_B, not GND; pin2 retains its local tuning midpoint. Capacitance unknown. Old V087/V088 association withdrawn; rear-capacitor GND returns unchanged."/>
       <property name="LibraryPolicy" value="Unmodified KiCad 10 stock symbol"/>
       <property name="FootprintConfidence" value="medium"/>
       <property name="FootprintBasis" value="Photo family and body/land proportions compared with adjacent known IC lead pitch. Size is independent of capacitance, dielectric and voltage rating."/>
@@ -1812,9 +1820,10 @@
       <footprint>Capacitor_SMD:C_1206_3216Metric</footprint>
       <description>Unpolarized capacitor</description>
       <fields>
-        <field name="ViaEvidence">v0.9: pin1 ground return from user-reviewed via/photo comparison. Pin2 retains local tuning midpoint. Hidden antenna links remain unresolved; earlier complete series-bank hypothesis withdrawn.</field>
+        <field name="ViaEvidence">v0.9.37: former front-band association to V087/V088 withdrawn. See antenna_outer_rail_correction_v0937.json.</field>
+        <field name="CurrentEvidence">v0.9.37: IMG_2433 shows its outer pad on the same continuous front band as C11; C11-ANT2 measured 1.4 ohm. Pin1 is ANT2/H_ANT_B, not GND; pin2 retains its local tuning midpoint. Capacitance unknown. Old V087/V088 association withdrawn; rear-capacitor GND returns unchanged.</field>
         <field name="OriginalReference">C47</field>
-        <field name="Evidence">Photo reconstruction; individual net evidence in reconstruction.json</field>
+        <field name="Evidence">v0.9.37: IMG_2433 shows its outer pad on the same continuous front band as C11; C11-ANT2 measured 1.4 ohm. Pin1 is ANT2/H_ANT_B, not GND; pin2 retains its local tuning midpoint. Capacitance unknown. Old V087/V088 association withdrawn; rear-capacitor GND returns unchanged.</field>
         <field name="LibraryPolicy">Unmodified KiCad 10 stock symbol</field>
         <field name="FootprintConfidence">medium</field>
         <field name="FootprintBasis">Photo family and body/land proportions compared with adjacent known IC lead pitch. Size is independent of capacitance, dielectric and voltage rating.</field>
@@ -1824,9 +1833,10 @@
         <field name="Description">Unpolarized capacitor</field>
       </fields>
       <libsource lib="Device" part="C" description="Unpolarized capacitor"/>
-      <property name="ViaEvidence" value="v0.9: pin1 ground return from user-reviewed via/photo comparison. Pin2 retains local tuning midpoint. Hidden antenna links remain unresolved; earlier complete series-bank hypothesis withdrawn."/>
+      <property name="ViaEvidence" value="v0.9.37: former front-band association to V087/V088 withdrawn. See antenna_outer_rail_correction_v0937.json."/>
+      <property name="CurrentEvidence" value="v0.9.37: IMG_2433 shows its outer pad on the same continuous front band as C11; C11-ANT2 measured 1.4 ohm. Pin1 is ANT2/H_ANT_B, not GND; pin2 retains its local tuning midpoint. Capacitance unknown. Old V087/V088 association withdrawn; rear-capacitor GND returns unchanged."/>
       <property name="OriginalReference" value="C47"/>
-      <property name="Evidence" value="Photo reconstruction; individual net evidence in reconstruction.json"/>
+      <property name="Evidence" value="v0.9.37: IMG_2433 shows its outer pad on the same continuous front band as C11; C11-ANT2 measured 1.4 ohm. Pin1 is ANT2/H_ANT_B, not GND; pin2 retains its local tuning midpoint. Capacitance unknown. Old V087/V088 association withdrawn; rear-capacitor GND returns unchanged."/>
       <property name="LibraryPolicy" value="Unmodified KiCad 10 stock symbol"/>
       <property name="FootprintConfidence" value="medium"/>
       <property name="FootprintBasis" value="Photo family and body/land proportions compared with adjacent known IC lead pitch. Size is independent of capacitance, dielectric and voltage rating."/>
@@ -2862,7 +2872,6 @@
       <datasheet>https://static.chipdip.ru/lib/761/DOC050761871.pdf</datasheet>
       <description>MCC SIL3724A dual N/P MOSFET, marking 3724A; candidate for Q8, fitted manufacturer unconfirmed. Pin map verified from manufacturer page 1. KiCad generic MOSFET artwork imported through MCP.</description>
       <fields>
-        <field name="ViaEvidence">v0.9.5: V113/V115 reach centre B2/pin5 GND. V114 belongs to U2.T2 and supplies no evidence about Q8.T2. Existing Q8.T2 supply hypothesis and outer-drain join remain independently qualified.</field>
         <field name="CurrentEvidence">3724A supports the SIL3724A complementary MOSFET candidate; fitted maker unconfirmed. B37 P-F = 1 ohm supports Q8.T2/native2 joining C6.1 on H_RF_VDD. The earlier 10-ohm reading is superseded for the current connection assessment; no fresh probe baseline or stability statement was supplied. V113/V115 centre B2/native5 GND and the outer-drain join retain earlier evidence; V114 belongs to U2.T2. Candidate pin functions, gate drive and operating levels remain unverified.</field>
         <field name="OriginalReference">Q8</field>
         <field name="Evidence">3724A supports the SIL3724A complementary MOSFET candidate; fitted maker unconfirmed. B37 P-F = 1 ohm supports Q8.T2/native2 joining C6.1 on H_RF_VDD. The earlier 10-ohm reading is superseded for the current connection assessment; no fresh probe baseline or stability statement was supplied. V113/V115 centre B2/native5 GND and the outer-drain join retain earlier evidence; V114 belongs to U2.T2. Candidate pin functions, gate drive and operating levels remain unverified.</field>
@@ -2870,6 +2879,7 @@
         <field name="FootprintConfidence">datasheet/package candidate</field>
         <field name="FootprintBasis">Existing assignment; see component identity evidence.</field>
         <field name="PinMapping">See evidence/pin_crosswalk.json; physical orientation may be provisional</field>
+        <field name="ViaEvidence">v0.9.5: V113/V115 reach centre B2/pin5 GND. V114 belongs to U2.T2 and supplies no evidence about Q8.T2. Existing Q8.T2 supply hypothesis and outer-drain join remain independently qualified.</field>
         <field name="Footprint">Package_TO_SOT_SMD:SOT-23-6</field>
         <field name="Datasheet">https://static.chipdip.ru/lib/761/DOC050761871.pdf</field>
         <field name="Description">MCC SIL3724A dual N/P MOSFET, marking 3724A; candidate for Q8, fitted manufacturer unconfirmed. Pin map verified from manufacturer page 1. KiCad generic MOSFET artwork imported through MCP.</field>
@@ -5555,13 +5565,13 @@
       <datasheet>https://www.ti.com/lit/ds/symlink/sn74lvc2g14.pdf</datasheet>
       <description>Dual NOT Gate, Schmitt Triggered, Low-Voltage CMOS</description>
       <fields>
-        <field name="ViaEvidence">v0.9.5: V114 reaches U2.T2, not Q8.T2. Earlier user GND assignment retained; native U2 pin2 already GND. This resolves the via annotation conflict.</field>
         <field name="OriginalReference">U2</field>
         <field name="Evidence">Photo reconstruction; individual net evidence in reconstruction.json</field>
         <field name="LibraryPolicy">Unmodified KiCad 10 stock symbol</field>
         <field name="FootprintConfidence">datasheet/package candidate</field>
         <field name="FootprintBasis">Existing assignment; see component identity evidence.</field>
         <field name="PinMapping">See evidence/pin_crosswalk.json; physical orientation may be provisional</field>
+        <field name="ViaEvidence">v0.9.5: V114 reaches U2.T2, not Q8.T2. Earlier user GND assignment retained; native U2 pin2 already GND. This resolves the via annotation conflict.</field>
         <field name="Footprint">Package_TO_SOT_SMD:SOT-23-6</field>
         <field name="Datasheet">https://www.ti.com/lit/ds/symlink/sn74lvc2g14.pdf</field>
         <field name="Description">Dual NOT Gate, Schmitt Triggered, Low-Voltage CMOS</field>
@@ -5578,7 +5588,7 @@
       <property name="ki_keywords" value="Dual Gate NOT Schmitt LVC CMOS"/>
       <property name="ki_fp_filters" value="SG-* SOT*"/>
       <sheetpath names="/" tstamps="/"/>
-      <tstamps>d0ce7cd7-6c1d-460b-bc83-44a9736c68fd c2038b9c-b36c-4670-ab94-21c1a9753278 3fee6f3a-8cd1-4f78-bc72-965c744b6fd1</tstamps>
+      <tstamps>c2038b9c-b36c-4670-ab94-21c1a9753278 d0ce7cd7-6c1d-460b-bc83-44a9736c68fd 3fee6f3a-8cd1-4f78-bc72-965c744b6fd1</tstamps>
       <units>
         <unit name="A">
           <pins>
@@ -6520,9 +6530,7 @@
       <node ref="C1" pin="2" pintype="passive"/>
       <node ref="C101" pin="2" pintype="passive"/>
       <node ref="C102" pin="2" pintype="passive"/>
-      <node ref="C11" pin="1" pintype="passive"/>
       <node ref="C12" pin="1" pintype="passive"/>
-      <node ref="C14" pin="1" pintype="passive"/>
       <node ref="C15" pin="1" pintype="passive"/>
       <node ref="C17" pin="2" pintype="passive"/>
       <node ref="C19" pin="2" pintype="passive"/>
@@ -6533,7 +6541,6 @@
       <node ref="C26" pin="2" pintype="passive"/>
       <node ref="C27" pin="2" pintype="passive"/>
       <node ref="C28" pin="2" pintype="passive"/>
-      <node ref="C29" pin="1" pintype="passive"/>
       <node ref="C30" pin="2" pintype="passive"/>
       <node ref="C31" pin="1" pintype="passive"/>
       <node ref="C32" pin="2" pintype="passive"/>
@@ -6548,9 +6555,7 @@
       <node ref="C40" pin="2" pintype="passive"/>
       <node ref="C41" pin="2" pintype="passive"/>
       <node ref="C42" pin="1" pintype="passive"/>
-      <node ref="C44" pin="1" pintype="passive"/>
       <node ref="C45" pin="1" pintype="passive"/>
-      <node ref="C47" pin="1" pintype="passive"/>
       <node ref="C48" pin="1" pintype="passive"/>
       <node ref="C49" pin="2" pintype="passive"/>
       <node ref="C5" pin="2" pintype="passive"/>
@@ -6600,6 +6605,11 @@
       <node ref="TP105" pin="1" pinfunction="1_1" pintype="passive"/>
     </net>
     <net code="4" name="/H_ANT_B" class="Default">
+      <node ref="C11" pin="1" pintype="passive"/>
+      <node ref="C14" pin="1" pintype="passive"/>
+      <node ref="C29" pin="1" pintype="passive"/>
+      <node ref="C44" pin="1" pintype="passive"/>
+      <node ref="C47" pin="1" pintype="passive"/>
       <node ref="C49" pin="1" pintype="passive"/>
       <node ref="D2" pin="1" pinfunction="Pin_1_1" pintype="passive"/>
       <node ref="R46" pin="1" pintype="passive"/>

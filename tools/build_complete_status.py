@@ -26,6 +26,7 @@ local={1:'J1.1/VPP plus D6 cathode; D6 W-VPP 1 ohm, forward 0.7V from GND',2:'C2
 21:'TP16/Q2.S; user correction. Old VREF join rejected; TP16-VREF 800 kohm',22:'TP2 / R31 / green LED branch; user meter, visible trace and B42 colour',23:'TP1 / R30 / red LED branch; user meter, visible trace and B43 colour',24:'R4; photo-derived; sensing role remains inferred',25:'TP4 / V017 / R42.1 / R44.1; user continuity; C41 photo-derived',26:'TP10 / R35; user meter / visible trace',27:'ICSP CLK / D4 / R32; photo-derived',28:'ICSP DAT / D5 / R40; photo-derived'}
 pins=[dict(pin=n,gpio=func[n],net=member.get(f'U4.{n}'),open_pad=n in gpios,evidence=local[n]) for n in range(1,29)]
 status=current_state()
+queue=read('evidence/finishing_measurements.json')
 save('evidence/completion_status.json',status)
 save('evidence/pic_gpio_status.json',dict(revision=m['revision'],pins=pins,open_gpio_pins=gpios,qualification='A modeled local net does not certify its remote role or all attached inferred branches.'))
 with (R/'evidence/pic_gpio_status.csv').open('w',newline='',encoding='utf-8') as f:
@@ -48,7 +49,7 @@ doc=SimpleDocTemplate(str(out),pagesize=A4,rightMargin=32,leftMargin=32,topMargi
 W=A4[0]-64
 audit=read('evidence/finalization_audit.json')
 story=[P('Remaining schematic work','TitlePS'),P(f'PetSafe 100-1339 | {m["revision"]} | {status["date"]}'),
-P(f'<b>{len(status["items"])} active issues.</b> Next: B44-B46, one tuning midpoint to ANT1/ANT2 plus the antenna-loop reading. Q3 stays fitted. J5 board contacts are mapped from photos; I02 is archived. Completed steps are not new bench requests.'),
+P(f'<b>{len(status["items"])} active issues.</b> {escape(queue["instructions"])} Q3 stays fitted. Completed steps are not new bench requests.'),
 table([['Drawing / connectivity','Remaining data','ERC'],[f'{len(fitted)} fitted open pads; {len(gpios)} open PIC pads; {audit["dangling_wire_ends"]} dangling wire ends. {len(m["nets"])} native/model net partitions match.',f'{len(status["unknown_ceramic_values"])} ceramic values; LED1 footprint blank. Three local-only PIC branches remain explicit; unsupported R33 withdrawn.',f'{status["erc_total"]} retained U6/U6A output conflict. Five stock power-source flags retained; no new copper joins.']],[W/3]*3),
 P('Audit boundary','HeadPS'),P('Native wire geometry, library definitions, all catalog pad assignments and existing evidence were checked. Zero open pads does not establish hidden copper or functional behavior. U6A is DNP; its regulator symbol and visible conflict remain by user choice. No new NC markers, net merges or ERC exclusions.'),
 P('Order of work','HeadPS')]

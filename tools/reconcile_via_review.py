@@ -100,11 +100,13 @@ def apply(out):
         annotate([i],[r+'.1'],'User identifies resistor; free upper photo pad1 selected. Tuning control role remains a hypothesis and onward GPIO is not identified.',f'H_TUNE_{n}')
     for i,q in [(89,'Q11'),(94,'Q6'),(99,'Q5'),(104,'Q4')]:
         annotate([i],[q+'.L'],'Photo left transistor pad to user GND via; assumed emitter role not confirmed.','GND')
-    annotate([87,88],[c+'.1' for c in ['C47','C44','C29','C14','C11']],'Shared lower front-capacitor band; old antenna rail assumption withdrawn.','GND')
+    annotate([87,88],[],'User GND reports retained. Former photo association to the front capacitor band withdrawn by C11-ANT2 = 1.4 ohm; do not expand these via reports onto the band.','GND')
+    for i in [87,88]:
+        sites[f'V{i:03d}'].update(excluded_endpoints=[c+'.1' for c in ['C47','C44','C29','C14','C11']],confidence='User GND report; earlier capacitor-band photo inference explicitly rejected in v0.9.37')
     for i,c in [(93,'C48'),(96,'C45'),(101,'C38'),(105,'C15')]:
         annotate([i],[c+'.1'],'Rear capacitor ground-side land; other pad joins local tuning midpoint.','GND')
     for i,n,cs in [(90,5,['C46','C47','C48']),(95,4,['C43','C44','C45']),(100,3,['C16','C29','C38']),(103,2,['C13','C14','C15']),(107,1,['C10','C11','C12'])]:
-        annotate([i],[c+'.2' for c in cs],'User front-pair junction plus rear-land photo pairing; onward hidden connection to antenna remains unknown.',f'TUNE_{n}_MID')
+        annotate([i],[c+'.2' for c in cs],'User front-pair junction plus rear-land photo pairing; front capacitor opposite pad joins ANT2 by v0.9.37 shared-band evidence. No direct midpoint-to-antenna copper join inferred.',f'TUNE_{n}_MID')
     annotate([112],['C8.2'],'User adds C8 to earlier GND report; lower photo return pad selected.','GND')
     annotate([113,115],['Q8.B2'],'User corrects island destination to the centre pad: B2/package pin5, already modeled as GND. Previous B1/B3 annotation was wrong. Independent earlier D-E low-resistance evidence for the outer-pad join is retained.','GND')
     for i in [113,115]:

@@ -39,3 +39,9 @@ B37 P-F = 1 ohm supports the existing Q8.T2/native2 to C6.1 supply join. The old
 ## v0.9.36 motor board-contact mapping
 
 [I02 closure and source-photo hashes](../../evidence/j5_photo_review_20261009.json): both board contacts are mapped from visible front copper, with the J5 connector body on the rear. No net partition changed. External harness colours and exact footprint fit stay under M01/reproduction requirements; no board-continuity repeat is requested. The active bench task is now B44-B46, one antenna tuning midpoint and the connected antenna loop.
+
+## 2026-10-14 antenna midpoint batch
+
+[B44-B46](../../evidence/antenna_midpoint_results_20261014.json) are complete: midpoint M to ANT1/ANT2 both OL, ANT1-ANT2 approximately 5 ohms. Do not repeat them. The physical bank still needs a supported antenna path; no nets were merged.
+
+- 2026-10-14: B47-B52 recorded in [outer-rail result record](../../evidence/antenna_outer_rail_results_20261014.json). User corrected the apparent N-ANT2 414-kohm result to ANT2-GND, then measured N-ANT2 = 1.4 ohm. Raw reports and correction retained. The v0.9.37 update moves five shared front capacitor outer pads to ANT2; rear returns stay GND.

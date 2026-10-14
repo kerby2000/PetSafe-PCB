@@ -173,6 +173,10 @@ assert len(m['intentional_no_connects'])==1 and 'U6.L1' not in m['unresolved_pin
 for path,digest in open_batch['photos'].items():assert sha(path)==digest
 completed_ids|={x['id'] for x in open_batch['readings']+open_batch['diode_readings']}
 completed_ids|={f'B{n}' for n in range(31,44)}|{'X02'}
+for result_file in ['evidence/antenna_midpoint_results_20261014.json','evidence/antenna_outer_rail_results_20261014.json']:
+ readings=read(result_file)['measurements']
+ for reading in readings:assert reading in queue['completed_tests'], (result_file,reading['id'])
+ completed_ids|={r['id'] for r in readings}
 assert {r['id'] for r in queue['completed_tests']}==completed_ids
 assert not completed_ids&{r['id'] for r in queue['tests']}, 'Do not repeat completed finishing readings'
 for ref in ['U4','R11','R14','R15','R16','R37','R39','Q1','U2','Q8','C5','LED1','R18','R19','Q7','TP3','TP104','U106','J3','R43','TP14','R42','R44','TP4','TP103','R21','R22','R23','R48']:

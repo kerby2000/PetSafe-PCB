@@ -1,0 +1,70 @@
+{
+  "date": "2026-10-14",
+  "schematic_revision": "v0.9.36",
+  "baseline_commit": "2bd82bc",
+  "raw_user_statements": [
+    "MA & MB are OL",
+    "A-B gives ~5 Ohm"
+  ],
+  "measurements": [
+    {
+      "id": "B44",
+      "group": "antenna-one-cell",
+      "from": "M",
+      "to": "A",
+      "mode": "resistance",
+      "unit": "ohms / OL",
+      "state": "Unpowered",
+      "purpose": "Test whether the first tuning midpoint reaches ANT1 through hidden copper or a resistive path.",
+      "date": "2026-10-14",
+      "result": "OL",
+      "resistance_ohms": null,
+      "approximate": false,
+      "raw_user_statement": "MA & MB are OL",
+      "conditions": "Requested resistance mode, battery/programmer disconnected, antenna wires and Q3 left fitted; user reported readings without separately restating setup."
+    },
+    {
+      "id": "B45",
+      "group": "antenna-one-cell",
+      "from": "M",
+      "to": "B",
+      "mode": "resistance",
+      "unit": "ohms / OL",
+      "state": "Unpowered",
+      "purpose": "Test the alternative continuation to ANT2.",
+      "date": "2026-10-14",
+      "result": "OL",
+      "resistance_ohms": null,
+      "approximate": false,
+      "raw_user_statement": "MA & MB are OL",
+      "conditions": "Requested resistance mode, battery/programmer disconnected, antenna wires and Q3 left fitted; user reported readings without separately restating setup."
+    },
+    {
+      "id": "B46",
+      "group": "antenna-one-cell",
+      "from": "A",
+      "to": "B",
+      "mode": "resistance",
+      "unit": "ohms / OL",
+      "state": "Unpowered",
+      "purpose": "Measure the existing antenna loop path so it cannot be mistaken for a direct PCB join.",
+      "date": "2026-10-14",
+      "result": "~5 ohm",
+      "resistance_ohms": 5,
+      "approximate": true,
+      "raw_user_statement": "A-B gives ~5 Ohm",
+      "conditions": "Requested resistance mode, battery/programmer disconnected, antenna wires and Q3 left fitted; user reported readings without separately restating setup."
+    }
+  ],
+  "assessment": "B44 M-ANT1 = OL and B45 M-ANT2 = OL; B46 ANT1-ANT2 approximately 5 ohms with antenna requested fitted. No detected DC continuity from the first tuning midpoint to either antenna terminal; a conductive antenna-terminal path is present. This does not establish its exact copper/loop contribution or exclude capacitive RF coupling. No nets merged.",
+  "electrical_change": false,
+  "endpoint_mapping": {
+    "M": "C11.2 / TUNE_1_MID / V107",
+    "A": "ANT1.1 / H_ANT_A",
+    "B": "ANT2.1 / H_ANT_B"
+  },
+  "remaining": "The opposite C11 end is currently modeled as GND. Verify that assignment against printed GND and ANT1, since the present ground-to-ground tuning-cell model has no supported antenna path.",
+  "photos": {
+    "photos/user/2026-10-08/board_upper.png": "66b7c33e78b3b37d1acf8d42b28e781b7c9904c1ff469b35b19df1abeda7af28"
+  }
+}

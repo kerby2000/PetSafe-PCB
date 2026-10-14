@@ -6339,7 +6339,11 @@
         },
         "rotation": 0,
         "includePins": true,
-        "footprint": "Capacitor_SMD:C_1206_3216Metric"
+        "footprint": "Capacitor_SMD:C_1206_3216Metric",
+        "properties": {
+          "CurrentEvidence": "v0.9.37: Measured C11.1-ANT2 = 1.4 ohm (B52). Pin1 is ANT2/H_ANT_B, not GND; pin2 retains its local tuning midpoint. Capacitance unknown. Old V087/V088 association withdrawn; rear-capacitor GND returns unchanged.",
+          "ViaEvidence": "v0.9.37: former front-band association to V087/V088 withdrawn. See antenna_outer_rail_correction_v0937.json."
+        }
       }
     },
     {
@@ -6622,7 +6626,11 @@
         },
         "rotation": 0,
         "includePins": true,
-        "footprint": "Capacitor_SMD:C_1206_3216Metric"
+        "footprint": "Capacitor_SMD:C_1206_3216Metric",
+        "properties": {
+          "CurrentEvidence": "v0.9.37: IMG_2433 shows its outer pad on the same continuous front band as C11; C11-ANT2 measured 1.4 ohm. Pin1 is ANT2/H_ANT_B, not GND; pin2 retains its local tuning midpoint. Capacitance unknown. Old V087/V088 association withdrawn; rear-capacitor GND returns unchanged.",
+          "ViaEvidence": "v0.9.37: former front-band association to V087/V088 withdrawn. See antenna_outer_rail_correction_v0937.json."
+        }
       }
     },
     {
@@ -6905,7 +6913,11 @@
         },
         "rotation": 0,
         "includePins": true,
-        "footprint": "Capacitor_SMD:C_1206_3216Metric"
+        "footprint": "Capacitor_SMD:C_1206_3216Metric",
+        "properties": {
+          "CurrentEvidence": "v0.9.37: IMG_2433 shows its outer pad on the same continuous front band as C11; C11-ANT2 measured 1.4 ohm. Pin1 is ANT2/H_ANT_B, not GND; pin2 retains its local tuning midpoint. Capacitance unknown. Old V087/V088 association withdrawn; rear-capacitor GND returns unchanged.",
+          "ViaEvidence": "v0.9.37: former front-band association to V087/V088 withdrawn. See antenna_outer_rail_correction_v0937.json."
+        }
       }
     },
     {
@@ -7188,7 +7200,11 @@
         },
         "rotation": 0,
         "includePins": true,
-        "footprint": "Capacitor_SMD:C_1206_3216Metric"
+        "footprint": "Capacitor_SMD:C_1206_3216Metric",
+        "properties": {
+          "CurrentEvidence": "v0.9.37: IMG_2433 shows its outer pad on the same continuous front band as C11; C11-ANT2 measured 1.4 ohm. Pin1 is ANT2/H_ANT_B, not GND; pin2 retains its local tuning midpoint. Capacitance unknown. Old V087/V088 association withdrawn; rear-capacitor GND returns unchanged.",
+          "ViaEvidence": "v0.9.37: former front-band association to V087/V088 withdrawn. See antenna_outer_rail_correction_v0937.json."
+        }
       }
     },
     {
@@ -7471,7 +7487,11 @@
         },
         "rotation": 0,
         "includePins": true,
-        "footprint": "Capacitor_SMD:C_1206_3216Metric"
+        "footprint": "Capacitor_SMD:C_1206_3216Metric",
+        "properties": {
+          "CurrentEvidence": "v0.9.37: IMG_2433 shows its outer pad on the same continuous front band as C11; C11-ANT2 measured 1.4 ohm. Pin1 is ANT2/H_ANT_B, not GND; pin2 retains its local tuning midpoint. Capacitance unknown. Old V087/V088 association withdrawn; rear-capacitor GND returns unchanged.",
+          "ViaEvidence": "v0.9.37: former front-band association to V087/V088 withdrawn. See antenna_outer_rail_correction_v0937.json."
+        }
       }
     },
     {
@@ -12245,13 +12265,13 @@
       ]
     },
     {
-      "net": "GND",
+      "net": "H_ANT_B",
       "a": [
         36,
         235
       ],
       "b": [
-        216,
+        204,
         235
       ]
     },
@@ -12366,7 +12386,7 @@
       ]
     },
     {
-      "net": "GND",
+      "net": "H_ANT_B",
       "a": [
         36,
         244
@@ -12384,7 +12404,7 @@
       ],
       "b": [
         48,
-        235
+        240
       ]
     },
     {
@@ -12487,7 +12507,7 @@
       ]
     },
     {
-      "net": "GND",
+      "net": "H_ANT_B",
       "a": [
         78,
         244
@@ -12505,7 +12525,7 @@
       ],
       "b": [
         90,
-        235
+        240
       ]
     },
     {
@@ -12608,7 +12628,7 @@
       ]
     },
     {
-      "net": "GND",
+      "net": "H_ANT_B",
       "a": [
         120,
         244
@@ -12626,7 +12646,7 @@
       ],
       "b": [
         132,
-        235
+        240
       ]
     },
     {
@@ -12729,7 +12749,7 @@
       ]
     },
     {
-      "net": "GND",
+      "net": "H_ANT_B",
       "a": [
         162,
         244
@@ -12747,7 +12767,7 @@
       ],
       "b": [
         174,
-        235
+        240
       ]
     },
     {
@@ -12850,7 +12870,7 @@
       ]
     },
     {
-      "net": "GND",
+      "net": "H_ANT_B",
       "a": [
         204,
         244
@@ -12868,7 +12888,7 @@
       ],
       "b": [
         216,
-        235
+        240
       ]
     },
     {
@@ -13752,7 +13772,7 @@
       ]
     },
     {
-      "net": "GND",
+      "net": "H_ANT_B",
       "p": [
         36,
         235
@@ -13910,6 +13930,41 @@
       "p": [
         379,
         183
+      ]
+    },
+    {
+      "net": "GND",
+      "p": [
+        48,
+        240
+      ]
+    },
+    {
+      "net": "GND",
+      "p": [
+        90,
+        240
+      ]
+    },
+    {
+      "net": "GND",
+      "p": [
+        132,
+        240
+      ]
+    },
+    {
+      "net": "GND",
+      "p": [
+        174,
+        240
+      ]
+    },
+    {
+      "net": "GND",
+      "p": [
+        216,
+        240
       ]
     }
   ],

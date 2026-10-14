@@ -1,6 +1,6 @@
 # Recorded measurements and observations
 
-Recorded evidence, retained through v0.9.36, 2026-10-09. These are user reports, not measurements made by software. The [active batch](FINISHING_MEASUREMENTS.html) asks only B44-B46: one tuning midpoint to ANT1, to ANT2, and ANT1-to-ANT2 with the antenna fitted. No result is recorded yet. LED1 colour checks are complete, with 0.96 V confirmed for both channels; no repeat is requested. Dated raw JSON events and completed photo-guide contacts are preserved here as reference, not new requests. Earlier requests are archived in [the previous narrative](history/cleanup_v0928/docs/MEASUREMENTS.md); do not repeat a reading just because it occurs there.
+Recorded evidence, retained through v0.9.37, updated 2026-10-14. These are user reports. The antenna batch is complete: M-ANT1 OL, M-ANT2 OL, ANT1-ANT2 approximately 5 ohms; C11 outer end N to GND 414 kohm, N-ANT1 5 ohms (repeated), ANT1-GND 414 kohm. The follow-up 414 kohm initially attributed to N-ANT2 was corrected by the user to ANT2-GND. The actual N-ANT2 measurement is **1.4 ohm**, supporting the corrected ANT2 connection. The earlier “below 1 ohm” was an expectation, not a measured value. No repeat requested. See the [result record](../evidence/antenna_outer_rail_results_20261014.json) and [bounded schematic correction](../evidence/antenna_outer_rail_correction_v0937.json). Completed readings and raw corrections are preserved; older questions are history, not new requests.
 
 Available instruments reported by the user: LCR meter, Fluke 179 and Fluke 87 III. The earlier Fluke 114 inference is superseded. No actual rail voltages or powered functional results have been supplied. The 44 fitted ceramic values remain unmeasured; L1/L2 readings are recorded below.
 
@@ -120,3 +120,7 @@ A-B and C-D: 1 ohm each. B-D: OL released, 1 ohm held pressed. Additional A-C: O
 ## LED1 colour results, v0.9.35
 
 With black on K, A lights green and B lights red. Photo A reaches R31/PIC22/native LED1 pin2; B reaches R30/PIC23/native pin1. The user reported 0.96 V and then clarified that it applies to both A-K and B-K. Both readings are recorded as in-circuit diode-mode observations. No isolated LED forward-voltage specification or manufacturer pad numbering is inferred. [Raw results](../evidence/led1_colour_results_20261009.json).
+
+## Antenna midpoint results, 2026-10-14
+
+[Raw reports and interpretation](../evidence/antenna_midpoint_results_20261014.json): B44 M-A = OL; B45 M-B = OL; B46 A-B approximately 5 ohms. Requested setup was resistance mode, battery/programmer disconnected and antenna left fitted. No direct midpoint-to-antenna DC path was detected; capacitive coupling remains possible. The 5-ohm path does not turn ANT1 and ANT2 into one PCB copper net. Schematic connectivity is unchanged.

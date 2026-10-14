@@ -1,6 +1,6 @@
 {
   "date": "2026-10-08",
-  "revision": "v0.9.36",
+  "revision": "v0.9.37",
   "source_front": "photos/front_registered.jpg",
   "source_rear": "photos/back_mirrored_registered.jpg",
   "images_are_original_photographic_mosaics": true,
@@ -2892,15 +2892,9 @@
       ],
       "rear_appearance": "MAIN_REAR_COPPER",
       "front_match": "PROJECTED: inspect original front photo; may be under a component",
-      "endpoints": [
-        "C47.1",
-        "C44.1",
-        "C29.1",
-        "C14.1",
-        "C11.1"
-      ],
+      "endpoints": [],
       "net": "GND",
-      "confidence": "User GND report; no per-site ohms supplied",
+      "confidence": "User GND report; earlier capacitor-band photo inference explicitly rejected in v0.9.37",
       "note": "No isolating rear clearance apparent. Main copper is associated with PIC VSS through the reviewed anchors. Individual front endpoint not yet assigned.",
       "id": "V087",
       "active": true,
@@ -2912,9 +2906,14 @@
         }
       ],
       "review_status": "ASSIGNED",
-      "component_crosscheck": "Shared lower front-capacitor band; old antenna rail assumption withdrawn.",
-      "modeled_nets": [
-        "GND"
+      "component_crosscheck": "User GND reports retained. Former photo association to the front capacitor band withdrawn by C11-ANT2 = 1.4 ohm; do not expand these via reports onto the band.",
+      "modeled_nets": [],
+      "excluded_endpoints": [
+        "C47.1",
+        "C44.1",
+        "C29.1",
+        "C14.1",
+        "C11.1"
       ]
     },
     {
@@ -2928,15 +2927,9 @@
       ],
       "rear_appearance": "MAIN_REAR_COPPER",
       "front_match": "PROJECTED: inspect original front photo; may be under a component",
-      "endpoints": [
-        "C47.1",
-        "C44.1",
-        "C29.1",
-        "C14.1",
-        "C11.1"
-      ],
+      "endpoints": [],
       "net": "GND",
-      "confidence": "User GND report; no per-site ohms supplied",
+      "confidence": "User GND report; earlier capacitor-band photo inference explicitly rejected in v0.9.37",
       "note": "No isolating rear clearance apparent. Main copper is associated with PIC VSS through the reviewed anchors. Individual front endpoint not yet assigned.",
       "id": "V088",
       "active": true,
@@ -2948,9 +2941,14 @@
         }
       ],
       "review_status": "ASSIGNED",
-      "component_crosscheck": "Shared lower front-capacitor band; old antenna rail assumption withdrawn.",
-      "modeled_nets": [
-        "GND"
+      "component_crosscheck": "User GND reports retained. Former photo association to the front capacitor band withdrawn by C11-ANT2 = 1.4 ohm; do not expand these via reports onto the band.",
+      "modeled_nets": [],
+      "excluded_endpoints": [
+        "C47.1",
+        "C44.1",
+        "C29.1",
+        "C14.1",
+        "C11.1"
       ]
     },
     {
@@ -3014,7 +3012,7 @@
         }
       ],
       "review_status": "ASSIGNED",
-      "component_crosscheck": "User front-pair junction plus rear-land photo pairing; onward hidden connection to antenna remains unknown.",
+      "component_crosscheck": "User front-pair junction plus rear-land photo pairing; front capacitor opposite pad joins ANT2 by v0.9.37 shared-band evidence. No direct midpoint-to-antenna copper join inferred.",
       "modeled_nets": [
         "TUNE_5_MID"
       ],
@@ -3182,7 +3180,7 @@
         }
       ],
       "review_status": "ASSIGNED",
-      "component_crosscheck": "User front-pair junction plus rear-land photo pairing; onward hidden connection to antenna remains unknown.",
+      "component_crosscheck": "User front-pair junction plus rear-land photo pairing; front capacitor opposite pad joins ANT2 by v0.9.37 shared-band evidence. No direct midpoint-to-antenna copper join inferred.",
       "modeled_nets": [
         "TUNE_4_MID"
       ],
@@ -3350,7 +3348,7 @@
         }
       ],
       "review_status": "ASSIGNED",
-      "component_crosscheck": "User front-pair junction plus rear-land photo pairing; onward hidden connection to antenna remains unknown.",
+      "component_crosscheck": "User front-pair junction plus rear-land photo pairing; front capacitor opposite pad joins ANT2 by v0.9.37 shared-band evidence. No direct midpoint-to-antenna copper join inferred.",
       "modeled_nets": [
         "TUNE_3_MID"
       ],
@@ -3457,7 +3455,7 @@
         }
       ],
       "review_status": "ASSIGNED",
-      "component_crosscheck": "User front-pair junction plus rear-land photo pairing; onward hidden connection to antenna remains unknown.",
+      "component_crosscheck": "User front-pair junction plus rear-land photo pairing; front capacitor opposite pad joins ANT2 by v0.9.37 shared-band evidence. No direct midpoint-to-antenna copper join inferred.",
       "modeled_nets": [
         "TUNE_2_MID"
       ],
@@ -3586,7 +3584,7 @@
         }
       ],
       "review_status": "ASSIGNED",
-      "component_crosscheck": "User front-pair junction plus rear-land photo pairing; onward hidden connection to antenna remains unknown.",
+      "component_crosscheck": "User front-pair junction plus rear-land photo pairing; front capacitor opposite pad joins ANT2 by v0.9.37 shared-band evidence. No direct midpoint-to-antenna copper join inferred.",
       "modeled_nets": [
         "TUNE_1_MID"
       ],

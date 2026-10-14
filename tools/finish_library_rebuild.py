@@ -23,6 +23,7 @@ def mm(p):return tuple(rnd(round(v)*1.27) for v in p)
 STAGE.mkdir(parents=True,exist_ok=True)
 layout=json.loads((R/'evidence/library_layout.json').read_text())
 model=json.loads((R/'evidence/reconstruction.json').read_text())
+model.update(revision='v0.9.37',review_date='2026-10-14')
 template=R/'tools/templates/mcp_standard_placements.kicad_sch'
 if not template.exists():
     template.parent.mkdir(parents=True,exist_ok=True)
@@ -340,8 +341,8 @@ for n in layout['notes']:
     if t.startswith('H07:'):t='H07: C14R inverter candidate. C6 parallels C5 by photo; Q8 source rail supported by B37.'
     if t.startswith('No invented ties'):t='D4/D5 ground returns photo-supported. D6: A=GND, K=VPP measured; breakdown unknown.'
     if t.startswith('H02:'):t='User: RA3/R14, RA4/R15, RA5/R16, RC0/R11, RC6/R13. RC2 -> TP3; RB0 -> TP16 / Q2; VREF tie withdrawn. RC1 -> R18 via V053-V070.'
-    if t.startswith('Selected working hypothesis:'):t='v0.9: user-reviewed GND returns replace previous antenna rails on this capacitor bank.'
-    if t.startswith('Ceff ='):t='Local three-capacitor junctions retained. Hidden links from these midpoints to antenna remain unknown.'
+    if t.startswith('Selected working hypothesis:'):t='Front outer-capacitor band = ANT2: C11 measured 1.4 ohm; other four share visible copper.'
+    if t.startswith('Ceff ='):t='Rear capacitor returns remain GND. Front and rear capacitors are not drawn in parallel.'
     if t.startswith('All-parallel'):t='Q3 diode pattern disputes PNP pinout; 2H family and RF switching role remain unverified.'
     if t.startswith('C27 role unresolved'):t='C27: motor-supply bypass; value unmeasured.'
     if t.startswith('Optional R1/R2/C3/C4'):t='Empty options: R1/C3 free ends join regulated VDD; R2/C4 free ends join GND.'
@@ -425,7 +426,7 @@ for net,edges in adj.items():
 for l in L:
     x,y=l['p'];G.append(expr(f'(label {q(l["net"])} (at {x} {y} 0) (effects (font (size .762 .762)) (justify left bottom)) (uuid {q(uid())}))'))
 tree.extend(G)
-tree.append(expr('(title_block (title "PetSafe 100-1339 R03 A | single-sheet reconstruction") (date "2026-10-09") (rev "0.9.36") (company "KiCad 10 libraries + four datasheet symbols | MCP authoring") (comment 1 "J5 board contacts mapped from photos. Antenna topology remains under review."))'))
+tree.append(expr('(title_block (title "PetSafe 100-1339 R03 A | single-sheet reconstruction") (date "2026-10-14") (rev "0.9.37") (company "KiCad 10 libraries + four datasheet symbols | MCP authoring") (comment 1 "C11-ANT2 measured; tuning-device roles remain open."))'))
 # Canonical pretty printer supplied by the installed MCP server.
 sys.path.insert(0,str(Path.home()/'Documents/VS.Code.Projects/KiCAD-MCP-Server/python'))
 from utils.sexpr_format import prettify
@@ -445,7 +446,7 @@ out.write_text(prettify(sx.dumps(tree)),encoding='utf-8',newline='\n')
 def wire_key(w):return w['net'],tuple(w['a']),tuple(w['b'])
 prior_order={wire_key(w):i for i,w in enumerate(model.get('geometric_wires',[]))}
 ordered_segments=sorted(segments,key=lambda s:(prior_order.get(s,len(prior_order)),s))
-model.update(revision='v0.9.36',coordinate_units='mm',native_pin_crosswalk=layout['crosswalk'],pin_positions={e:list(p) for e,p in P.items()},
+model.update(revision='v0.9.37',coordinate_units='mm',native_pin_crosswalk=layout['crosswalk'],pin_positions={e:list(p) for e,p in P.items()},
              geometric_wires=[dict(net=n,a=a,b=b) for n,a,b in ordered_segments],library_policy='KiCad 10 stock symbols plus four explicitly authorized MCP-authored datasheet symbols for U1/U5/U6/Q8')
 for c in model['components']:
     entry=next(x for x in layout['catalog'] if x['original_ref']==c['ref'])

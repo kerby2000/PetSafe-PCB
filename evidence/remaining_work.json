@@ -1,7 +1,7 @@
 {
-  "date": "2026-10-09",
-  "review_revision": "v0.9.36",
-  "basis_revision": "v0.9.36",
+  "date": "2026-10-14",
+  "review_revision": "v0.9.37",
+  "basis_revision": "v0.9.37",
   "scope": "Current main-board finishing register. Supported connections and completed measurements are recorded in the current model; resolved issues are archived. Remaining hidden paths, candidate identities, values and operating behavior are listed below.",
   "rails": [
     {
@@ -98,10 +98,10 @@
       ],
       "priority": 1,
       "state": "open",
-      "known": "Five PIC-to-control-resistor routes and visible Q3/R13/C10 joins are mapped. Seven midpoint-pair OL exclusions retained. Q3 diode batch complete: L->S latest 0.48 V, L->R 2.3 V; reverse directions and R/S both ways OL.",
-      "unknown": "The diode pattern does not confirm the drawn PNP B=R/E=L/C=S mapping. In-circuit paths or contact effects prevent device identification; a single 0.48 V path does not prove a MOSFET. Five capacitor midpoints still lack an established antenna continuation.",
-      "next_action": "Active batch B44-B46: measure the C10/C11/C12 midpoint V107 at C11 left metal end to ANT1, then ANT2, and ANT1-to-ANT2. Account for the connected antenna loop before interpreting low readings. Q3 stays fitted; isolated identity testing is deferred.",
-      "closed_when": "One cell has a supported device map and functional antenna path; the other four are checked only where needed.",
+      "known": "PIC-to-control resistors and local tuning midpoints are mapped. B44/B45 midpoint-to-antenna DC readings are OL. B52 C11 outer end to ANT2 = 1.4 ohm; photo-shared outer pads of C14/C29/C44/C47 now join ANT2. Rear capacitor returns remain GND. ANT1-ANT2 is about 5 ohm with antenna fitted. The mistaken 414 kohm N-B report was corrected to B-G. Q3 L-S latest 0.48 V, L-R 2.3 V; all other diode directions OL.",
+      "unknown": "The drawn PNP B=R/E=L/C=S candidate is still not confirmed by in-circuit junction readings. Capacitor values and actual switching/resonance behavior remain unknown. The front capacitor-bank antenna connection is now established.",
+      "next_action": "No more antenna continuity sweep. Leave Q3 fitted as requested. Agent reviews candidate device roles against the corrected topology; isolate-device identification is deferred. RF operating checks follow only after values and suitable instrumentation are addressed.",
+      "closed_when": "Tuning device pin roles and switched RF behavior are supported; outer ANT2 path is already resolved.",
       "open_pads": [],
       "nets": [
         "H_ANT_A",
@@ -117,7 +117,10 @@
         "docs/history/v0.9.30-before-finalization/evidence/remaining_work.json",
         "evidence/q3_diode_results_20261009.json",
         "evidence/q3_deferred_q8_followup_20261009.json",
-        "evidence/finishing_measurements.json"
+        "evidence/finishing_measurements.json",
+        "evidence/antenna_midpoint_results_20261014.json",
+        "evidence/antenna_outer_rail_results_20261014.json",
+        "evidence/antenna_outer_rail_correction_v0937.json"
       ],
       "owner": "Agent evidence review; targeted owner test only as listed",
       "category": "connectivity/behavior"
@@ -430,8 +433,8 @@
         "E10",
         "I01"
       ],
-      "summary": "S1 contacts are verified and removed from active work. Q3 stays fitted with identification deferred. Three local-only PIC branches, antenna continuations and powered behavior remain.",
-      "next_action": "Start with B44-B46 on one tuning cell. Agent reviews remaining hidden-path candidates; powered rail/behavior checks follow as one staged session. No repeat LED or S1 tests."
+      "summary": "S1 contacts and the front capacitor-bank ANT2 connection are established. Q3 stays fitted with identification deferred. Three local-only PIC branches, candidate device roles and powered behavior remain.",
+      "next_action": "Antenna outer-rail batch completed. Next agent review: local-only RA0/C25, RC3/TP11 and RC7/TP17 paths before proposing a targeted hidden-connection test. Q3 stays fitted."
     },
     {
       "id": "F2",
@@ -463,7 +466,7 @@
       "item": "Electrical design",
       "remaining": "Close the 10 active main-board issue groups, recover critical values, and qualify candidate pin functions/ratings.",
       "agent_work": "Trace visible copper, review datasheets and keep the model/native files consistent.",
-      "owner_input": "Current B44-B46, followed by selected powered and LCR measurements."
+      "owner_input": "Antenna outer-rail continuity complete. Future measurements are selected individually after photo review; powered behavior remains unverified."
     },
     {
       "item": "Mechanical fit",

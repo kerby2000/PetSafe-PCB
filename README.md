@@ -1,10 +1,12 @@
 # PetSafe PCB reverse engineering
 
-Current schematic and review: **v0.9.36**, 2026-10-09. PetSafe PPA19-16811 main board, **100-1339 R03 A**. All 148 catalog entries, including test pads and empty options, are on one A2 KiCad 10 sheet.
+Schematic **v0.9.37**; evidence review updated 2026-10-14. PetSafe PPA19-16811 main board, **100-1339 R03 A**. All 148 catalog entries, including test pads and empty options, are on one A2 KiCad 10 sheet.
 
-Open [the current overview](index.html), [the completion checklist](docs/FINISHING_CHECKLIST.html), [the native schematic](schematic/PetSafe_1001339.kicad_sch), or [the schematic PDF](output/pdf/PetSafe_single_sheet.pdf). The [printable status](output/pdf/PetSafe_completion_status.pdf) includes only current questions and closure criteria. The [measurement page](docs/FINISHING_MEASUREMENTS.html) shows the **active antenna checks B44-B46**; completed LED1 results B42/B43 are retained without requesting a repeat.
+Open [the current overview](index.html), [the completion checklist](docs/FINISHING_CHECKLIST.html), [the native schematic](schematic/PetSafe_1001339.kicad_sch), or [the schematic PDF](output/pdf/PetSafe_single_sheet.pdf). The [printable status](output/pdf/PetSafe_completion_status.pdf) includes only current questions and closure criteria. The [measurement page](docs/FINISHING_MEASUREMENTS.html) shows the **completed antenna connection check**: C11 outer end to ANT2 is 1.4 ohm. C11/C14/C29/C44/C47 share that front copper band and are corrected to ANT2. Rear capacitor returns remain GND. No repeat antenna measurement is requested.
 
 ## Current state
+
+The checked v0.9.36 native file was restored on 2026-10-14 at the owner's request. The older restored file is preserved separately. The subsequent v0.9.37 correction moves only five front capacitor outer pads from GND to ANT2, supported by the C11-ANT2 1.4-ohm measurement and continuous visible copper. The mistaken 414-kohm N-ANT2 report was explicitly corrected to ANT2-GND.
 
 | Area | Status |
 |---|---|
@@ -21,7 +23,7 @@ The [current finalization audit](docs/reviews/2026-10-09_finalization_cleanup_v0
 
 ## What remains to finalize the schematic
 
-1. **Resolve hidden paths and device behavior.** Q3 stays fitted by user choice; isolated identification is deferred. Q8 supply continuity is supported. S1 contacts and normally-open action are verified; E05 is closed. LED colour mapping is now established. Remaining gaps include three local-only PIC branches, antenna continuations, candidate pin functions and operating levels, tracked individually in the checklist.
+1. **Resolve hidden paths and device behavior.** Q3 stays fitted by user choice; isolated identification is deferred. Q8 supply continuity is supported. S1 contacts and normally-open action are verified; E05 is closed. LED colour mapping is now established. Remaining gaps include three local-only PIC branches, tuning-device behavior, candidate pin functions and operating levels, tracked individually in the checklist.
 2. **Recover critical component values.** 44 ceramic values remain. Prioritize antenna/RF/receiver components after topology, accounting for parallel paths in LCR readings.
 3. **Finish interface and package mapping.** LED pad geometry/numbering and its missing footprint, plus connector fit and external motor harness orientation. J5 board contacts are now photo-mapped to the H-bridge outputs. Exact package fit, routed PCB/layer stack, daughterboard and firmware are later reproduction work, not extra unfinished main-board wires.
 

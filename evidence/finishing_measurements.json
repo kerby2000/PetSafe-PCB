@@ -1,9 +1,9 @@
 {
-  "date": "2026-10-09",
-  "basis_revision": "v0.9.35",
-  "status": "AWAITING_ONE_TUNING_CELL_ANTENNA_CHECK",
-  "scope": "Resolve the hidden continuation of one tuning-capacitor midpoint before testing the remaining four.",
-  "setup": "Battery and programmer disconnected; resistance mode. Leave Q3 and the antenna wires fitted. Probe exposed metal, not insulation.",
+  "date": "2026-10-14",
+  "basis_revision": "v0.9.36",
+  "status": "COMPLETED_ANTENNA_OUTER_RAIL",
+  "scope": "Resolve conflicting interpretation of the capacitor-bank outer rail. Current model assigns C11 outer end to GND, but the bank still has no established antenna path.",
+  "setup": "Battery and programmer disconnected; resistance mode. Leave Q3 and antenna wires fitted. G is the printed GND test point beside C5.",
   "photos": [
     {
       "id": "receiver",
@@ -717,41 +717,132 @@
           "role": "reference"
         }
       }
-    }
-  ],
-  "tests": [
-    {
-      "id": "B44",
-      "group": "antenna-one-cell",
-      "from": "M",
-      "to": "A",
-      "mode": "resistance",
-      "unit": "ohms / OL",
-      "state": "Unpowered",
-      "purpose": "Test whether the first tuning midpoint reaches ANT1 through hidden copper or a resistive path."
     },
     {
-      "id": "B45",
-      "group": "antenna-one-cell",
-      "from": "M",
-      "to": "B",
-      "mode": "resistance",
-      "unit": "ohms / OL",
-      "state": "Unpowered",
-      "purpose": "Test the alternative continuation to ANT2."
+      "id": "antenna-outer-rail",
+      "title": "N: opposite end of C11; A: ANT1; G: printed GND",
+      "source": "photos/user/2026-10-08/board_upper.png",
+      "coordinate_space": [
+        2736,
+        3646
+      ],
+      "view_box": [
+        920,
+        0,
+        1060,
+        1210
+      ],
+      "points": {
+        "N": {
+          "xy": [
+            1342,
+            1026
+          ],
+          "label": [
+            1390,
+            1150
+          ],
+          "description": "C11 right metal end, nearest ANT1 and away from C10. This is the opposite end from the completed M reading; currently model C11.1 / GND."
+        },
+        "A": {
+          "xy": [
+            1604,
+            1008
+          ],
+          "label": [
+            1810,
+            1008
+          ],
+          "description": "ANT1 exposed solder terminal, same A as the completed test.",
+          "role": "reference"
+        },
+        "G": {
+          "xy": [
+            1587,
+            41
+          ],
+          "label": [
+            1800,
+            155
+          ],
+          "description": "Plated test hole printed GND at the top edge beside C5.",
+          "role": "reference"
+        }
+      }
     },
     {
-      "id": "B46",
-      "group": "antenna-one-cell",
-      "from": "A",
-      "to": "B",
-      "mode": "resistance",
-      "unit": "ohms / OL",
-      "state": "Unpowered",
-      "purpose": "Measure the existing antenna loop path so it cannot be mistaken for a direct PCB join."
+      "id": "antenna-contact-check",
+      "source": "photos/user/2026-10-08/board_upper.png",
+      "view_box": [
+        920,
+        0,
+        1060,
+        1480
+      ],
+      "coordinate_space": [
+        2736,
+        3646
+      ],
+      "title": "C11 and both antenna terminals on one photo",
+      "points": {
+        "N": {
+          "xy": [
+            1342,
+            1026
+          ],
+          "label": [
+            1410,
+            1050
+          ],
+          "description": "C11 right metal end, nearest ANT1 and away from C10. This is the opposite end from the completed M reading; currently model C11.1 / GND."
+        },
+        "A": {
+          "xy": [
+            1604,
+            1008
+          ],
+          "label": [
+            1810,
+            1008
+          ],
+          "description": "ANT1 exposed solder terminal, same A as the completed test.",
+          "role": "reference"
+        },
+        "G": {
+          "xy": [
+            1587,
+            41
+          ],
+          "label": [
+            1800,
+            155
+          ],
+          "description": "Plated test hole printed GND at the top edge beside C5.",
+          "role": "reference"
+        },
+        "B": {
+          "xy": [
+            1608,
+            1310
+          ],
+          "label": [
+            1810,
+            1345
+          ],
+          "description": "ANT2 lower antenna solder terminal; not the GND test point",
+          "role": "reference"
+        }
+      },
+      "context_points": [
+        "N",
+        "A",
+        "B",
+        "G"
+      ]
     }
   ],
-  "interpretation": "Near-baseline resistance supports a conductive path; it does not prove direct PCB copper if the antenna loop or another component is in the path. High or OL readings reject a direct short under the test conditions, but do not exclude capacitive RF coupling. No new nets will be joined until the results are interpreted together.",
+  "tests": [],
+  "interpretation": "C11 outer end N to ANT2 = 1.4 ohm supports a direct connection. N-ANT1 = 5 ohm agrees with the approximately 5-ohm fitted antenna path. N-GND, ANT1-GND and corrected ANT2-GND reports are 414 kohm. The apparent contradiction was a misidentified probe pair, now explicitly corrected by the user. The five front capacitor outer pads share continuous visible copper in IMG_2433; only C11-to-ANT2 was measured. Rear capacitor returns and transistor pads are not reassigned by this evidence.",
   "next_stages": [
     {
       "stage": "Resolve the remaining functional paths",
@@ -1240,11 +1331,152 @@
       "raw_user_statement": "BK - red",
       "conditions": "Requested in-circuit diode mode, red A/B and black K, with battery/programmer disconnected. User supplied emitted colours.",
       "voltage_evidence": "User report 0.96V, followed by clarification Both on 2026-10-09."
+    },
+    {
+      "id": "B44",
+      "group": "antenna-one-cell",
+      "from": "M",
+      "to": "A",
+      "mode": "resistance",
+      "unit": "ohms / OL",
+      "state": "Unpowered",
+      "purpose": "Test whether the first tuning midpoint reaches ANT1 through hidden copper or a resistive path.",
+      "date": "2026-10-14",
+      "result": "OL",
+      "resistance_ohms": null,
+      "approximate": false,
+      "raw_user_statement": "MA & MB are OL",
+      "conditions": "Requested resistance mode, battery/programmer disconnected, antenna wires and Q3 left fitted; user reported readings without separately restating setup."
+    },
+    {
+      "id": "B45",
+      "group": "antenna-one-cell",
+      "from": "M",
+      "to": "B",
+      "mode": "resistance",
+      "unit": "ohms / OL",
+      "state": "Unpowered",
+      "purpose": "Test the alternative continuation to ANT2.",
+      "date": "2026-10-14",
+      "result": "OL",
+      "resistance_ohms": null,
+      "approximate": false,
+      "raw_user_statement": "MA & MB are OL",
+      "conditions": "Requested resistance mode, battery/programmer disconnected, antenna wires and Q3 left fitted; user reported readings without separately restating setup."
+    },
+    {
+      "id": "B46",
+      "group": "antenna-one-cell",
+      "from": "A",
+      "to": "B",
+      "mode": "resistance",
+      "unit": "ohms / OL",
+      "state": "Unpowered",
+      "purpose": "Measure the existing antenna loop path so it cannot be mistaken for a direct PCB join.",
+      "date": "2026-10-14",
+      "result": "~5 ohm",
+      "resistance_ohms": 5,
+      "approximate": true,
+      "raw_user_statement": "A-B gives ~5 Ohm",
+      "conditions": "Requested resistance mode, battery/programmer disconnected, antenna wires and Q3 left fitted; user reported readings without separately restating setup."
+    },
+    {
+      "id": "B47",
+      "group": "antenna-outer-rail",
+      "from": "N",
+      "to": "G",
+      "mode": "resistance",
+      "unit": "ohms / OL",
+      "state": "Unpowered",
+      "purpose": "Test the disputed C11 outer-rail ground assignment.",
+      "date": "2026-10-14",
+      "result": "414 kohm",
+      "resistance_ohms": 414000,
+      "raw_user_statement": "B47 red N / black G (Unpowered): 414kohm\nB48 red N / black A (Unpowered): 5ohm\nB49 red A / black G (Unpowered): 414kohm",
+      "conditions": "User explicitly labels these readings Unpowered. Antenna fitted and resistance mode were requested; not separately restated."
+    },
+    {
+      "id": "B48",
+      "group": "antenna-outer-rail",
+      "from": "N",
+      "to": "A",
+      "mode": "resistance",
+      "unit": "ohms / OL",
+      "state": "Unpowered",
+      "purpose": "Test an antenna connection at the opposite C11 end; its midpoint already read OL.",
+      "date": "2026-10-14",
+      "result": "5 ohm",
+      "resistance_ohms": 5,
+      "raw_user_statement": "B47 red N / black G (Unpowered): 414kohm\nB48 red N / black A (Unpowered): 5ohm\nB49 red A / black G (Unpowered): 414kohm",
+      "conditions": "User explicitly labels these readings Unpowered. Antenna fitted and resistance mode were requested; not separately restated."
+    },
+    {
+      "id": "B49",
+      "group": "antenna-outer-rail",
+      "from": "A",
+      "to": "G",
+      "mode": "resistance",
+      "unit": "ohms / OL",
+      "state": "Unpowered",
+      "purpose": "Establish the antenna-to-ground path to interpret low N-A or N-G readings without merging distinct rails.",
+      "date": "2026-10-14",
+      "result": "414 kohm",
+      "resistance_ohms": 414000,
+      "raw_user_statement": "B47 red N / black G (Unpowered): 414kohm\nB48 red N / black A (Unpowered): 5ohm\nB49 red A / black G (Unpowered): 414kohm",
+      "conditions": "User explicitly labels these readings Unpowered. Antenna fitted and resistance mode were requested; not separately restated."
+    },
+    {
+      "id": "B50",
+      "group": "antenna-contact-check",
+      "from": "B",
+      "to": "G",
+      "mode": "resistance",
+      "unit": "ohms / OL",
+      "state": "Unpowered requested",
+      "purpose": "Distinguish a direct ANT2 connection from the previously reported 5-ohm path to ANT1.",
+      "date": "2026-10-14",
+      "result": "414 kohm",
+      "resistance_ohms": 414000,
+      "raw_user_statement": "same 414kohm What did you expect? Quite understand. Why do you need that?",
+      "conditions": "User corrects the pair to ANT2-GND. Original N-B request was not performed in this reading.",
+      "from_original_request": "N",
+      "to_original_request": "B",
+      "original_interpretation": "N-B = 414 kohm; superseded by user identification of actual pair B-G",
+      "correction_statement": "My mistake I measured B-G first\nN-A gives 5 Ohm which is logical as N- B should be <1 ohm"
+    },
+    {
+      "id": "B51",
+      "group": "antenna-contact-check",
+      "from": "N",
+      "to": "A",
+      "mode": "resistance",
+      "unit": "ohms / OL",
+      "state": "Unpowered",
+      "purpose": "Repeat only the conflicting N-ANT1 low reading, using one consolidated contact picture. B48 remains preserved; do not replace its historical value.",
+      "date": "2026-10-14",
+      "result": "5 ohm",
+      "resistance_ohms": 5,
+      "raw_user_statement": "My mistake I measured B-G first\nN-A gives 5 Ohm which is logical as N- B should be <1 ohm",
+      "stability": null
+    },
+    {
+      "id": "B52",
+      "group": "antenna-contact-check",
+      "from": "N",
+      "to": "B",
+      "mode": "resistance",
+      "unit": "ohms / OL",
+      "state": "Unpowered requested",
+      "date": "2026-10-14",
+      "result": "1.4 ohm",
+      "resistance_ohms": 1.4,
+      "raw_user_statement": "I measure 1.4 ohm, does it make a difference?",
+      "conditions": "Battery/programmer disconnected and antenna fitted were requested; fresh shorted-probe baseline and stability not separately supplied."
     }
   ],
-  "batch_title": "Tuning cell to antenna: three resistance readings",
-  "instructions": "Measure M-A, M-B and A-B. Report numeric resistance or OL, and note a changing reading. The A-B check accounts for the external antenna loop; it is not a request to desolder anything.",
-  "result_summary": "B42/B43 user diode-mode colour report: photo A-K lights GREEN via R31/PIC22 (LED1 native pin2); B-K lights RED via R30/PIC23 (native pin1). Black probe at grounded K. Both native cathodes 3/4 remain on GND; internal die-to-cathode pairing and manufacturer pad numbers are not established by this in-circuit test. Body 1.5 x 1.5 mm; footprint remains unassigned.",
+  "batch_title": "C11 antenna connection resolved",
+  "instructions": "Completed: C11 N to ANT2 B = 1.4 ohm; N to ANT1 A = 5 ohm. The earlier 414 kohm follow-up was ANT2 to GND, corrected by the user. No repeat antenna reading is requested.",
+  "result_summary": "C11 outer end N to ANT2 = 1.4 ohm supports a direct connection. N-ANT1 = 5 ohm agrees with the approximately 5-ohm fitted antenna path. N-GND, ANT1-GND and corrected ANT2-GND reports are 414 kohm. The apparent contradiction was a misidentified probe pair, now explicitly corrected by the user. The five front capacitor outer pads share continuous visible copper in IMG_2433; only C11-to-ANT2 was measured. Rear capacitor returns and transistor pads are not reassigned by this evidence.",
   "cancelled_tests": [
     {
       "id": "B20",
@@ -1256,7 +1488,7 @@
       "reason": "User identifies PIC21/RB0 destination; reconcile the older VREF assignment instead."
     }
   ],
-  "revision": "v0.9.36",
+  "revision": "v0.9.37",
   "photo_updates": [
     {
       "evidence": "evidence/c25_c26_mapping_20261009.json",
@@ -1279,7 +1511,7 @@
       "result": "v0.9.22 user annotated U6A option: single left pad/model L/native U106.1 joins U6 pin5 and the existing input node after R37; upper-right/model R1/native2 joins J3.1 (red PIR wire); lower-right/model R2/native3 joins GND. All three external pads mapped, option remains DNP. User called the input VDD; retain VDD -> R37 (22 ohm) -> H_AUX_IN because the annotation ends at U6 pin5 and prior B28 confirms pin5-pin2, not a bypass across R37. No fitted IC identity or voltage measurement implied."
     }
   ],
-  "batch_id": "antenna-one-cell-20261009",
+  "batch_id": "antenna-contact-check-20261014",
   "location_review": {
     "reference": "TP9",
     "status": "REMOVED_UNSUPPORTED_ENTRY",
@@ -1332,13 +1564,13 @@
     "pending_check": null,
     "model_status": "Applied v0.9.20: pin5-VIN measured 1 ohm; R37 and U6A single-pad local joins from the annotation; pin4 explicitly unused."
   },
-  "next_prompt": "Report B44 M-A, B45 M-B and B46 A-B in resistance mode, battery/programmer disconnected.",
-  "review_revision": "v0.9.36",
+  "next_prompt": "No further antenna continuity reading requested. Agent reviews remaining local-only PIC branches next; Q3 stays fitted and its device identity remains deferred.",
+  "review_revision": "v0.9.37",
   "request_probe_baseline": false,
   "q3_decision": "Defer isolated Q3 identification; retain candidate qualification and existing copper. No desoldering or repeat Q3 batch requested.",
   "last_completed_test_ids": [
-    "B42",
-    "B43"
+    "B51",
+    "B52"
   ],
-  "last_result_evidence": "evidence/led1_colour_results_20261009.json"
+  "last_result_evidence": "evidence/antenna_outer_rail_results_20261014.json"
 }

@@ -7,6 +7,7 @@ from current_state import current_state, value_is_known, component_summary
 R=Path(__file__).resolve().parents[1]
 m=json.loads((R/'evidence/reconstruction.json').read_text(encoding='utf-8'))
 status=current_state()
+queue=json.loads((R/'evidence/finishing_measurements.json').read_text(encoding='utf-8'))
 openpins=Counter(p.rsplit('.',1)[0] for p in m['unresolved_pins'])
 rows=[]
 for c in m['components']:
@@ -70,7 +71,7 @@ page=f'''<!doctype html><html lang="en"><meta charset="utf-8"><meta name="viewpo
 <a href="../index.html">Schematic overview</a> | <a href="FINISHING_MEASUREMENTS.html">Current measurement screen</a> | <a href="../output/pdf/PetSafe_completion_status.pdf">Printable remaining work</a> | <a href="history/README.md">History and resolved items</a>
 <h1>What remains to finish</h1><p>{e(status['revision'])} Â· {len(status['items'])} active issues. Each card states what is established, the specific gap and its closure criterion.</p>
 <div class="metrics"><div><strong>{len(status['current_fitted_open_pads'])}</strong>unassigned fitted pads</div><div><strong>{audit.get('dangling_wire_ends','pending')}</strong>dangling wire ends</div><div><strong>{status['erc_total']}</strong>retained ERC conflict</div><div><strong>{len(status['unknown_ceramic_values'])}</strong>unknown ceramic values</div></div>
-<div class="card"><b>Next measurement: B44-B46.</b> <a href="FINISHING_MEASUREMENTS.html">C11 midpoint to ANT1/ANT2, plus the antenna-loop reading</a>. Q3 stays fitted. J5 board contacts are established from photos; I02 is archived. Other listed tests are staged, not requested together.</div>
+<div class="card"><b>{e(queue["batch_title"])}</b> <a href="FINISHING_MEASUREMENTS.html">Open measurement screen</a>. {e(queue["instructions"])} Q3 stays fitted. Other listed tests are staged, not requested together.</div>
 <h2>Finish in this order</h2><ol>{plan}</ol>
 <p><b>Audit boundary:</b> {status['modeled_nets']} modeled net partitions agree with KiCad. Zero open pads or wire tails does not establish hidden copper or circuit operation. Three PIC branches (RA0/C25, RC3/TP11, RC7/TP17) remain under E06. Q3 device identity remains under E04. <a href="../evidence/finalization_audit.json">Detailed audit</a>.</p>
 <h2>Remaining questions</h2>{''.join(issue_cards)}

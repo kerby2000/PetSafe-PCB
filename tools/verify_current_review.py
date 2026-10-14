@@ -61,6 +61,25 @@ assert 'RB0/V026 to VREF.' not in via_intro and 'TP104, V026/PIC21' not in via_i
 checklist=(ROOT/'docs/FINISHING_CHECKLIST.html').read_text(encoding='utf-8')
 for i in ids:assert f'id="{i}"' in checklist
 measurements=read('evidence/finishing_measurements.json')
+antenna=read('evidence/antenna_outer_rail_results_20261014.json')
+outer=read('evidence/antenna_outer_rail_correction_v0937.json')
+assert antenna['status']=='C11_ANT2_CONNECTION_SUPPORTED'
+by_id={t['id']:t for t in antenna['measurements']}
+assert (by_id['B50']['from'],by_id['B50']['to'],by_id['B50']['resistance_ohms'])==('B','G',414000)
+assert by_id['B50']['from_original_request']=='N' and by_id['B50']['to_original_request']=='B'
+assert (by_id['B52']['from'],by_id['B52']['to'],by_id['B52']['resistance_ohms'])==('N','B',1.4)
+for row in antenna['measurements']:
+    assert row in measurements['completed_tests']
+    assert not any(t['id']==row['id'] for t in measurements['tests'])
+ant1=members['TP105.1'];ant2=members['TP106.1'];ground=members['U4.8']
+assert len({ant1,ant2,ground})==3, 'Do not merge antenna terminals or ground through the fitted loop'
+for front,rear in [('C11','C12'),('C14','C15'),('C29','C38'),('C44','C45'),('C47','C48')]:
+    assert members[front+'.1']==ant2 and members[rear+'.1']==ground
+    assert members[front+'.2']==members[rear+'.2'] not in {ant1,ant2,ground}
+for site in read('evidence/via_audit.json')['sites']:
+    if site['id'] in {'V087','V088'}:
+        assert site['net']=='GND' and site['endpoints']==[]
+for path,digest in outer['photos'].items():assert hashlib.sha256((ROOT/path).read_bytes()).hexdigest()==digest
 led=read('evidence/led1_colour_results_20261009.json')
 for test_id,red,colour,pin,resistor in [('B42','A','green','2','R31'),('B43','B','red','1','R30')]:
     recorded=next(t for t in led['measurements'] if t['id']==test_id)
