@@ -205,6 +205,12 @@ assert q7_voltage['electrical_change'] is False
 for row in q7_voltage['measurements']:
  assert row in queue['completed_tests'] and row['stability'] is None
  completed_ids.add(row['id'])
+q7_joins=read('evidence/q7_r19_join_results_20261014.json')
+assert q7_joins['confirmed_pairs']==[['Q7.L','R19.1'],['Q7.R','R19.2']]
+for row in q7_joins['measurements']:
+ assert row['resistance_ohms']==1.5 and row in queue['completed_tests']
+ assert row['id'] not in {t['id'] for t in queue['tests']}
+ completed_ids.add(row['id'])
 assert {r['id'] for r in queue['completed_tests']}==completed_ids
 assert not completed_ids&{r['id'] for r in queue['tests']}, 'Do not repeat completed finishing readings'
 for ref in ['U4','R11','R14','R15','R16','R37','R39','Q1','U2','Q8','C5','LED1','R18','R19','Q7','TP3','TP104','U106','J3','R43','TP14','R42','R44','TP4','TP103','R21','R22','R23','R48']:
@@ -306,6 +312,6 @@ assert xml.find('./components/comp[@ref="Q1"]/libsource').attrib['part']=='Q_PMO
 assert xml.findtext('./components/comp[@ref="Q1"]/value')=='FMOS3401A?'
 assert xml.findtext('./components/comp[@ref="TP107"]/value')=='BATTERY (+)'
 assert xml.findtext('./components/comp[@ref="TP108"]/value')=='BATTERY (-)'
-out=dict(revision=m['revision'],result='PASS',schematic_sha256=v['schematic_sha256'],modeled_nets=v['proposed_net_partitions'],open_pads=len(m['unresolved_pins']),erc_total=v['erc_total'],gpio_pins_still_open=gpio,recorded_resistance_ohms=11200,qualified_q7_topology='R18 input - base; R19 base-emitter pull-up; emitter VDD; collector R20. Photo/resistance-supported inference.',unmeasured_gpio_connections='None introduced',prior_independent_electrical_contracts='PASS',review_replay='PASS',mcp_properties_match='PASS',original_photo_checksums=v['original_photo_checksums'],pdfs={k:dict(pages=n,sha256=sha(k)) for k,n in pdfs.items()},pic_map_basis='Updated v0.9.9: V035/RA2 to VREF, V042 to VDD; zero open PIC pads; qualified local connections remain. Original photo pixels retained.')
+out=dict(revision=m['revision'],result='PASS',schematic_sha256=v['schematic_sha256'],modeled_nets=v['proposed_net_partitions'],open_pads=len(m['unresolved_pins']),erc_total=v['erc_total'],gpio_pins_still_open=gpio,recorded_resistance_ohms=11200,qualified_q7_topology='B65/B66 confirm Q7.L-R19.1 and Q7.R-R19.2 at 1.5 ohm. PNP terminal roles remain candidate; operating voltages conflict with simple healthy PNP behavior.',unmeasured_gpio_connections='None introduced',prior_independent_electrical_contracts='PASS',review_replay='PASS',mcp_properties_match='PASS',original_photo_checksums=v['original_photo_checksums'],pdfs={k:dict(pages=n,sha256=sha(k)) for k,n in pdfs.items()},pic_map_basis='Updated v0.9.9: V035/RA2 to VREF, V042 to VDD; zero open PIC pads; qualified local connections remain. Original photo pixels retained.')
 (R/'evidence/live_evidence_verification.json').write_text(json.dumps(out,indent=2)+'\n',encoding='utf-8')
 print('PASS: RC1-R18, RC2-TP3, RB0-TP16/Q2, U6A-J3.1; rejected RC1-VREF; prior independent contracts; native/model and MCP properties.')

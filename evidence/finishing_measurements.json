@@ -1,9 +1,9 @@
 {
   "date": "2026-10-14",
   "basis_revision": "v0.9.37",
-  "status": "AWAITING_Q7_R19_JOIN_CHECKS",
-  "scope": "Two specific disputed joins after B63/B64 contradicted the R19-as-base/emitter interpretation.",
-  "setup": "DISCONNECT BATTERY AND PROGRAMMER. Allow supply capacitors to discharge; confirm power is off before selecting resistance (ohms). Leave Q7 fitted. These tests are between the marked contacts, not to GND.",
+  "status": "AWAITING_Q7_JUNCTION_READINGS",
+  "scope": "Both R19-to-Q7 copper joins are confirmed. Check junction behavior without changing topology or removing Q7.",
+  "setup": "DISCONNECT BATTERY AND PROGRAMMER. Let supply capacitors discharge. Select DIODE TEST (volts, not resistance); leave Q7 fitted.",
   "photos": [
     {
       "id": "receiver",
@@ -1309,33 +1309,108 @@
           "role": "reference"
         }
       }
+    },
+    {
+      "id": "q7-junctions",
+      "source": "photos/originals/IMG_2434.jpg",
+      "coordinate_space": [
+        1368,
+        1823
+      ],
+      "view_box": [
+        30,
+        160,
+        570,
+        500
+      ],
+      "title": "Q7 junction check: physical contacts, not assumed pin roles",
+      "points": {
+        "QL": {
+          "xy": [
+            158,
+            432
+          ],
+          "label": [
+            84,
+            570
+          ],
+          "description": "Q7 lower-left contact. Confirmed to R19 left end at 1.5 ohm. Candidate base only; use the label, not an assumed terminal role.",
+          "native_endpoint": "Q7.1"
+        },
+        "QR": {
+          "xy": [
+            276,
+            432
+          ],
+          "label": [
+            505,
+            485
+          ],
+          "description": "Q7 lower-right contact. Confirmed to R19 right end at 1.5 ohm. Candidate emitter only.",
+          "native_endpoint": "Q7.2"
+        },
+        "QS": {
+          "xy": [
+            218,
+            299
+          ],
+          "label": [
+            295,
+            210
+          ],
+          "description": "Q7 single upper contact, toward R20. Candidate collector only.",
+          "native_endpoint": "Q7.3"
+        }
+      }
     }
   ],
   "tests": [
     {
-      "id": "B65",
-      "group": "q7-r19-joins",
-      "from": "QL",
-      "to": "B",
-      "mode": "Resistance",
-      "unit": "ohms / kohms / OL",
+      "id": "B67",
+      "group": "q7-junctions",
+      "from": "QR",
+      "to": "QL",
+      "mode": "Diode test",
+      "unit": "V / OL",
       "state": "Unpowered",
       "issue": "E08",
-      "purpose": "Verify the disputed R19-left to Q7-left candidate base join."
+      "purpose": "Candidate PNP emitter-to-base forward junction."
     },
     {
-      "id": "B66",
-      "group": "q7-r19-joins",
-      "from": "QR",
-      "to": "E",
-      "mode": "Resistance",
-      "unit": "ohms / kohms / OL",
+      "id": "B68",
+      "group": "q7-junctions",
+      "from": "QL",
+      "to": "QR",
+      "mode": "Diode test",
+      "unit": "V / OL",
       "state": "Unpowered",
       "issue": "E08",
-      "purpose": "Verify R19-right to Q7-right candidate emitter join before assigning its voltage to Q7."
+      "purpose": "Reverse the same candidate base-emitter pair; R19 remains in parallel."
+    },
+    {
+      "id": "B69",
+      "group": "q7-junctions",
+      "from": "QS",
+      "to": "QL",
+      "mode": "Diode test",
+      "unit": "V / OL",
+      "state": "Unpowered",
+      "issue": "E08",
+      "purpose": "Candidate PNP collector-to-base forward junction."
+    },
+    {
+      "id": "B70",
+      "group": "q7-junctions",
+      "from": "QL",
+      "to": "QS",
+      "mode": "Diode test",
+      "unit": "V / OL",
+      "state": "Unpowered",
+      "issue": "E08",
+      "purpose": "Reverse the same candidate base-collector pair."
     }
   ],
-  "interpretation": "R19 left=0 V and right=4.5 V do not support the simple Q7-held-off explanation. The earlier local joins were photo/circuit inferences. Near shorted-probe resistance supports each copper join; a resistor-sized reading or OL does not. Do not conclude a bad Q7 or change its pinout from these voltage readings alone.",
+  "interpretation": "The two 1.5 ohm results confirm the existing joins. These four diode readings test the PNP candidate against the surprising 0/4.5 V result. Parallel board paths can affect diode mode: readings do not by themselves establish an exact part or prove failure. No previous continuity or powered reading is repeated.",
   "next_stages": [
     {
       "stage": "Resolve the remaining functional paths",
@@ -1385,7 +1460,7 @@
     "B42/B43 LED colours: A/R31/PIC22 green; B/R30/PIC23 red. No repeated colour check requested.",
     "B44-B52 antenna continuity completed: C11 outer end ANT2, distinct ANT1 and GND. Corrected pair labels retained in the raw result evidence."
   ],
-  "deferred": "Q3 and Q7 remain fitted. Candidate Q7 terminals and the red-blinking cause remain unverified.",
+  "deferred": "Q3 and Q7 remain fitted. No replacement or fault conclusion; no extra wire inferred.",
   "sources": [
     "evidence/remaining_work.json",
     "evidence/reconstruction.json",
@@ -2204,11 +2279,55 @@
       "native_endpoint": "R19.2",
       "source_worksheet_revision": "v0.9.39",
       "raw_user_statement": "PetSafe Q7: local supply or off-state control? / v0.9.39\nB63 red B / black G (Powered, same red-blinking state; PIR connected): 0\nB64 red E / black G (Powered, same red-blinking state; PIR connected): 4.5"
+    },
+    {
+      "id": "B65",
+      "group": "q7-r19-joins",
+      "from": "QL",
+      "to": "B",
+      "mode": "Resistance",
+      "unit": "ohms / kohms / OL",
+      "state": "Unpowered",
+      "issue": "E08",
+      "purpose": "Verify the disputed R19-left to Q7-left candidate base join.",
+      "date": "2026-10-14",
+      "result": "1.5 ohm",
+      "resistance_ohms": 1.5,
+      "physical_pair": [
+        "Q7.L",
+        "R19.1"
+      ],
+      "shorted_probe_ohms": null,
+      "stability": null,
+      "source_worksheet_revision": "v0.9.39",
+      "raw_user_statement": "PetSafe Q7: verify the disputed local joins / v0.9.39\nB65 red QL / black B (Unpowered): 1.5ohm\nB66 red QR / black E (Unpowered): 1.5ohm"
+    },
+    {
+      "id": "B66",
+      "group": "q7-r19-joins",
+      "from": "QR",
+      "to": "E",
+      "mode": "Resistance",
+      "unit": "ohms / kohms / OL",
+      "state": "Unpowered",
+      "issue": "E08",
+      "purpose": "Verify R19-right to Q7-right candidate emitter join before assigning its voltage to Q7.",
+      "date": "2026-10-14",
+      "result": "1.5 ohm",
+      "resistance_ohms": 1.5,
+      "physical_pair": [
+        "Q7.R",
+        "R19.2"
+      ],
+      "shorted_probe_ohms": null,
+      "stability": null,
+      "source_worksheet_revision": "v0.9.39",
+      "raw_user_statement": "PetSafe Q7: verify the disputed local joins / v0.9.39\nB65 red QL / black B (Unpowered): 1.5ohm\nB66 red QR / black E (Unpowered): 1.5ohm"
     }
   ],
-  "batch_title": "Q7: verify the disputed local joins",
-  "instructions": "B65: red QL (Q7 lower-left contact), black B (R19 left end). B66: red QR (Q7 lower-right contact), black E (R19 right end). Report ohms, kohms or OL; say changing if unsettled.",
-  "result_summary": "R19 left 0 V / right 4.5 V. Photo-derived associations to Q7 require checking; no off-state or fault conclusion.",
+  "batch_title": "Q7: check the two candidate junctions",
+  "instructions": "B67 red QR / black QL; B68 red QL / black QR; B69 red QS / black QL; B70 red QL / black QS. Report volts or OL for each; say changing if unsettled.",
+  "result_summary": "Both R19-to-Q7 joins confirmed at 1.5 ohm. Copper mapping closed; candidate identity and operating behavior remain open.",
   "cancelled_tests": [
     {
       "id": "B20",
@@ -2243,7 +2362,7 @@
       "result": "v0.9.22 user annotated U6A option: single left pad/model L/native U106.1 joins U6 pin5 and the existing input node after R37; upper-right/model R1/native2 joins J3.1 (red PIR wire); lower-right/model R2/native3 joins GND. All three external pads mapped, option remains DNP. User called the input VDD; retain VDD -> R37 (22 ohm) -> H_AUX_IN because the annotation ends at U6 pin5 and prior B28 confirms pin5-pin2, not a bypass across R37. No fitted IC identity or voltage measurement implied."
     }
   ],
-  "batch_id": "q7-r19-joins-20261014",
+  "batch_id": "q7-junctions-20261014",
   "location_review": {
     "reference": "TP9",
     "status": "REMOVED_UNSUPPORTED_ENTRY",
@@ -2299,14 +2418,14 @@
     "pending_check": null,
     "model_status": "Applied v0.9.20: pin5-VIN measured 1 ohm; R37 and U6A single-pad local joins from the annotation; pin4 explicitly unused."
   },
-  "next_prompt": "B65 QL-B and B66 QR-E, resistance with battery/programmer disconnected. These are specific disputed joins, not a general continuity sweep.",
+  "next_prompt": "B67-B70 diode mode at Q7, power disconnected; both directions for QR-QL and QS-QL.",
   "review_revision": "v0.9.39",
   "request_probe_baseline": false,
   "q3_decision": "Defer isolated Q3 identification; retain candidate qualification and existing copper. No desoldering or repeat Q3 batch requested.",
   "last_completed_test_ids": [
-    "B63",
-    "B64"
+    "B65",
+    "B66"
   ],
-  "last_result_evidence": "evidence/q7_r19_voltage_results_20261014.json",
+  "last_result_evidence": "evidence/q7_r19_join_results_20261014.json",
   "staged_batches": []
 }

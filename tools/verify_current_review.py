@@ -92,7 +92,12 @@ assert members['TP5.1']==members['U3.8']==members['R20.2']
 assert len({members[e] for e in ['TP5.1','R19.1','R19.2','U4.8']})==4
 for path,digest in rx['photo_sources'].items():assert hashlib.sha256((ROOT/path).read_bytes()).hexdigest()==digest
 q7_voltage=read('evidence/q7_r19_voltage_results_20261014.json')
-assert q7_voltage['status']=='R19_Q7_PROXY_ASSIGNMENTS_DISPUTED'
+assert q7_voltage['status']=='Q7_R19_JOINS_CONFIRMED_DEVICE_BEHAVIOR_OPEN'
+q7_joins=read('evidence/q7_r19_join_results_20261014.json')
+assert q7_joins['electrical_change'] is False
+assert all(row in measurements['completed_tests'] for row in q7_joins['measurements'])
+assert members['Q7.1']==members['R19.1'] and members['Q7.2']==members['R19.2']
+assert not q7_voltage['contested_pairs']
 assert all(r in measurements['completed_tests'] for r in q7_voltage['measurements'])
 for path,digest in q7_voltage['photos'].items():assert hashlib.sha256((ROOT/path).read_bytes()).hexdigest()==digest
 manual=read('evidence/product_manual_led_review_20261014.json')

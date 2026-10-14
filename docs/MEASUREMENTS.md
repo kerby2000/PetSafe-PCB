@@ -127,4 +127,6 @@ With black on K, A lights green and B lights red. Photo A reaches R31/PIC22/nati
 
 B62 TP5/H_RX_VDD to GND: **0.066 V (66 mV)**, powered in the same red-blinking state with PIR connected. Stability was not reported. This does not establish a short or a defective Q7. See [receiver supply evidence](../evidence/receiver_supply_results_20261014.json); subsequent B63/B64 readings are below.
 
-B63/B64 R19 left/right to GND: **0 V / 4.5 V** in the same powered red-blinking state. Stability not supplied. The inferred R19-to-Q7 joins require direct continuity checks before these can be called transistor terminal voltages. See [Q7/R19 conflict and next checks](../evidence/q7_r19_voltage_results_20261014.json).
+B63/B64 R19 left/right to GND: **0 V / 4.5 V** in the same powered red-blinking state. Stability not supplied. B65/B66 below subsequently confirmed the R19-to-Q7 joins. See [Q7/R19 conflict and next checks](../evidence/q7_r19_voltage_results_20261014.json).
+
+B65/B66: **Q7.L-R19.1 = 1.5 ohm; Q7.R-R19.2 = 1.5 ohm**, unpowered. Both existing joins are now measurement-supported, without changing nets. Candidate terminal roles and operating behavior remain open; next is the four-reading Q7 diode check. See [join results](../evidence/q7_r19_join_results_20261014.json).

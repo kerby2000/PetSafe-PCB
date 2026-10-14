@@ -36,7 +36,7 @@ Five PIC tuning controls are mapped. The v0.9.37 antenna correction is supported
 
 ## Receiver
 
-U3.5/R22.2 is VREF; R22.1 is GND. U3.6 reaches R23.1; R23.2 joins C40.1 and R42.1 at measured low resistance, retaining the independent TP4/PIC25/R44.1 association. The old R23-VREF and C40-to-output assumptions are withdrawn. Q7 supply-switch behavior and selected transistor terminals remain inferred. B63/B64 found R19 left=0 V and right=4.5 V; these conflict with the simple held-off interpretation of the candidate PNP circuit. The photo-derived R19.1-Q7.L and R19.2-Q7.R joins are specifically under review. Do not treat those resistor-end readings as independently measured Q7 pad voltages or evidence of device failure.
+U3.5/R22.2 is VREF; R22.1 is GND. U3.6 reaches R23.1; R23.2 joins C40.1 and R42.1 at measured low resistance, retaining the independent TP4/PIC25/R44.1 association. The old R23-VREF and C40-to-output assumptions are withdrawn. Q7 supply-switch behavior and selected transistor terminals remain inferred. B63/B64 found R19 left=0 V and right=4.5 V; these conflict with the simple held-off interpretation of the candidate PNP circuit. B65/B66 subsequently confirmed R19.1-Q7.L and R19.2-Q7.R at 1.5 ohm each. Copper joins are resolved; candidate terminal roles and device behavior remain open. The voltage results do not by themselves establish device failure.
 
 D3.L is GND, D3.R is VDD via V082 and D3.S reaches R42 at 1.2 ohm (model2/photo-selected end). Its rail association is resolved; its signal function and exact maker remain qualified. D2.R (photo upper-left) reaches C20 lower; D2.L reaches ANT2/R46 upper; D2.S reaches empty R46 lower. Diode readings support R -> S -> L junctions in circuit, without uniquely identifying the 4P device.
 

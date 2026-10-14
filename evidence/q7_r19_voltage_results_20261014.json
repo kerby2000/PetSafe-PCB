@@ -4,7 +4,7 @@
   "baseline_commit": "6be71cb",
   "schematic_sha256": "87faf8d1bd6df103352c95404d0ef3eaf904c7dbc5ba1bd3149667cc80818ec3",
   "electrical_change": false,
-  "status": "R19_Q7_PROXY_ASSIGNMENTS_DISPUTED",
+  "status": "Q7_R19_JOINS_CONFIRMED_DEVICE_BEHAVIOR_OPEN",
   "measurements": [
     {
       "id": "B63",
@@ -44,17 +44,8 @@
     }
   ],
   "established": "R19 left=0 V; R19 right=4.5 V; earlier TP5=0.066 V, all reported in the same powered red-blinking state with PIR attached. No stability statement supplied. These are resistor-end readings, not direct Q7 pad measurements.",
-  "assessment": "If both photo-derived R19-to-Q7 joins and the PNP candidate are correct, these values imply V(B)-V(E) about -4.5 V. That is inconsistent with the simple held-off explanation and ordinary healthy forward-biased B-E behavior. This is a conditional contradiction, not proof of a failed transistor. Check the local proxy joins before changing pin roles or invoking a fault.",
-  "contested_pairs": [
-    [
-      "R19.1",
-      "Q7.L"
-    ],
-    [
-      "R19.2",
-      "Q7.R"
-    ]
-  ],
+  "assessment": "B65/B66 subsequently confirmed both R19-to-Q7 joins at 1.5 ohm. The candidate PNP interpretation still implies about -4.5 V base-to-emitter from B63/B64, inconsistent with ordinary healthy forward-junction behavior. Identity/pin roles, measurement conditions and device behavior remain open; no fault is established.",
+  "contested_pairs": [],
   "photo_review": {
     "photos": [
       "photos/originals/IMG_2434.jpg",
@@ -68,10 +59,21 @@
     "accessed": "2026-10-14",
     "reference": "Rev.9 Table3 gives base1, emitter2, collector3; Table8 gives typical VBE=-650 mV at IC=-2 mA/VCE=-5 V. This is a candidate-device comparison under specified test conditions, not an exact required board voltage."
   },
-  "next_action": "Unpowered resistance checks Q7 lower-left contact to R19 left metal end, and Q7 lower-right contact to R19 right metal end. These target disputed modeled copper joins; no desoldering or repeat powered resistor reading.",
+  "next_action": "Four unpowered diode readings across candidate base-emitter and base-collector pairs, both polarities. Q7 remains fitted; R19 and the surrounding circuitry can affect results, so do not identify a replacement or diagnose failure from these readings alone.",
   "photos": {
     "photos/originals/IMG_2434.jpg": "2feac8570055753400b337f4cfe8a79256da8f3bcd706e0d972dfd9672b50d0a",
     "photos/originals/IMG_2429.jpg": "361196f08e930c6646db12a5ff80ab6829fbb9d49dace975bdb3a2f02e830aff",
     "photos/originals/IMG_2430.jpg": "649d510712fd27450662a96ce03c1d26dcc20c3dabdbd86ace20561b35382b15"
-  }
+  },
+  "followup": "evidence/q7_r19_join_results_20261014.json",
+  "confirmed_pairs": [
+    [
+      "Q7.L",
+      "R19.1"
+    ],
+    [
+      "Q7.R",
+      "R19.2"
+    ]
+  ]
 }
