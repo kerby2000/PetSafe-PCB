@@ -2892,13 +2892,14 @@
         "C": "S"
       },
       "proposed_value": "BC857C?",
-      "hypothesis": "3GW supports BC857C PNP. Photo and 11.2 kohm R18+R19 path support B=L, E=R/VDD, C=S/R20; terminal selection and switching role remain inferred. Control input R18.1 is now user-confirmed to PIC12/RC1 via V053-V070.",
+      "hypothesis": "B65/B66 confirm Q7.L-R19.1 and Q7.R-R19.2 at 1.5 ohm. B67-B70 diode polarity supports PNP/base at L; R=emitter/S=collector remains the 3GW/BC857C datasheet/circuit assignment, not a unique diode-test result. B71 direct V(R)-V(L)=0 V is consistent with no forward base-emitter bias in the latest powered state; this fits low TP5/VREF. Earlier separate R19 0/4.5 V readings remain conflicting history, not a failure diagnosis. Exact part, switching pulses and enabled-state behavior remain unverified.",
       "library_symbol": "Transistor_BJT:BC857",
       "footprint": "Package_TO_SOT_SMD:SOT-23",
       "footprint_confidence": "datasheet/package candidate",
       "footprint_basis": "Existing assignment; see component identity evidence.",
       "via_evidence": "v0.9.7: V064-V075 confirmed; V064-V070 measured 11.2 kohm. IMG_2434 plus R18 1.2k + R19 10k supports PNP supply switch: E/R pin2 at VDD, B/L pin1 through R18 control and R19 pull-up. Terminal selection is a supported photo/circuit inference, not a separate user pad measurement.",
-      "current_summary": "3GW supports BC857C PNP. Photo and 11.2 kohm R18+R19 path support B=L, E=R/VDD, C=S/R20; terminal selection and switching role remain inferred. Control input R18.1 is now user-confirmed to PIC12/RC1 via V053-V070."
+      "current_summary": "B65/B66 confirm Q7.L-R19.1 and Q7.R-R19.2 at 1.5 ohm. B67-B70 diode polarity supports PNP/base at L; R=emitter/S=collector remains the 3GW/BC857C datasheet/circuit assignment, not a unique diode-test result. B71 direct V(R)-V(L)=0 V is consistent with no forward base-emitter bias in the latest powered state; this fits low TP5/VREF. Earlier separate R19 0/4.5 V readings remain conflicting history, not a failure diagnosis. Exact part, switching pulses and enabled-state behavior remain unverified.",
+      "junction_evidence": "evidence/q7_diode_results_20261014.json"
     },
     {
       "ref": "Q8",
@@ -4914,7 +4915,7 @@
           "R43.2"
         ],
         "reason": "User confirms V011-V014 to Q1.L, excludes R43.2 and explicitly requests removal of this old photo-derived connection.",
-        "user_authorization": "Remove Q1.L\u2013R43.2 connection",
+        "user_authorization": "Remove Q1.L–R43.2 connection",
         "revision": "v0.9.4"
       }
     },
@@ -12412,7 +12413,7 @@
         "R43.2"
       ],
       "reason": "User confirms V011-V014 to Q1.L, excludes R43.2 and explicitly requests removal of this old photo-derived connection.",
-      "user_authorization": "Remove Q1.L\u2013R43.2 connection",
+      "user_authorization": "Remove Q1.L–R43.2 connection",
       "revision": "v0.9.4"
     }
   ],

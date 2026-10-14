@@ -129,4 +129,10 @@ B62 TP5/H_RX_VDD to GND: **0.066 V (66 mV)**, powered in the same red-blinking s
 
 B63/B64 R19 left/right to GND: **0 V / 4.5 V** in the same powered red-blinking state. Stability not supplied. B65/B66 below subsequently confirmed the R19-to-Q7 joins. See [Q7/R19 conflict and next checks](../evidence/q7_r19_voltage_results_20261014.json).
 
-B65/B66: **Q7.L-R19.1 = 1.5 ohm; Q7.R-R19.2 = 1.5 ohm**, unpowered. Both existing joins are now measurement-supported, without changing nets. Candidate terminal roles and operating behavior remain open; next is the four-reading Q7 diode check. See [join results](../evidence/q7_r19_join_results_20261014.json).
+B65/B66: **Q7.L-R19.1 = 1.5 ohm; Q7.R-R19.2 = 1.5 ohm**, unpowered. Both existing joins are now measurement-supported, without changing nets. Candidate terminal roles and operating behavior remain open; the subsequent diode results are below. See [join results](../evidence/q7_r19_join_results_20261014.json).
+
+B67-B70, Q7 fitted and power disconnected: **QR->QL 0.74 V; QL->QR 1.74 V; QS->QL 0.74 V; QL->QS OL**. Supports PNP/base-at-QL polarity; E/C and exact identity are not independently established. Parallel circuit paths can explain finite reverse readings. B71 below supplies the direct powered comparison. See [diode evidence](../evidence/q7_diode_results_20261014.json).
+
+B71 direct powered **QR-QL = 0 V**, original battery and PIR connected. Stability not supplied. Supports no forward base-emitter bias in the latest state, consistent with inactive Q7/low receiver supply. Earlier separate 0/4.5 V readings remain conflicting historical observations; no part failure is inferred. See [direct bias result](../evidence/q7_direct_bias_result_20261014.json). Next: E03 Q8 gate-source voltages.
+
+B72/B73 powered at rest: **Q8 candidate P-channel VGS = 0 V; N-channel VGS = +6.3 V**. Stability not supplied. Supports P off/N on bias, not waveform or current verification. U2 is modeled on 4.5 V VDD, so B74/B75 now check its supply against C6/RF and printed VDD separately. See [Q8 gate-bias evidence](../evidence/q8_gate_bias_results_20261014.json).

@@ -1,0 +1,28 @@
+{
+  "date": "2026-10-14",
+  "schematic_revision": "v0.9.39",
+  "electrical_change": false,
+  "status": "LATEST_Q7_BIAS_CONSISTENT_WITH_OFF_STATE",
+  "measurements": [
+    {
+      "id": "B71",
+      "group": "q7-dc-bias",
+      "from": "QR",
+      "to": "QL",
+      "mode": "DC voltage",
+      "unit": "signed V; steady / varying",
+      "state": "Powered; original battery and PIR connected; programmer disconnected",
+      "issue": "E08",
+      "purpose": "Measure V(QR)-V(QL) simultaneously to resolve the earlier 0/4.5 V contradiction.",
+      "date": "2026-10-14",
+      "result": "0 V",
+      "voltage_v": 0,
+      "stability": null,
+      "source_worksheet_revision": "v0.9.39",
+      "raw_user_statement": "PetSafe Q7: resolve the powered base-emitter voltage / v0.9.39\nB71 red QR / black QL (Powered; original battery and PIR connected; programmer disconnected): 0"
+    }
+  ],
+  "current_summary": "B65/B66 confirm Q7.L-R19.1 and Q7.R-R19.2 at 1.5 ohm. B67-B70 diode polarity supports PNP/base at L; R=emitter/S=collector remains the 3GW/BC857C datasheet/circuit assignment, not a unique diode-test result. B71 direct V(R)-V(L)=0 V is consistent with no forward base-emitter bias in the latest powered state; this fits low TP5/VREF. Earlier separate R19 0/4.5 V readings remain conflicting history, not a failure diagnosis. Exact part, switching pulses and enabled-state behavior remain unverified.",
+  "interpretation": "Direct QR-QL=0 V supports no forward base-emitter bias in this latest state, consistent with Q7 off in the candidate PNP circuit and prior low TP5/VREF. Steadiness was not supplied. It does not establish absence of pulses, collector current, why firmware disabled the receiver, or enabled-state operation. It is inconsistent with the difference calculated from the earlier separate R19-to-GND readings; preserve those readings without silently correcting either one or assuming identical instantaneous states.",
+  "next_action": "No repeat Q7 diode/continuity/DC check now. Move to E03 Q8 gate-source voltages. Receiver enabled-state behavior remains an explicit later issue."
+}

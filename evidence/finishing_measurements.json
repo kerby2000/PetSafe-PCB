@@ -1,9 +1,9 @@
 {
   "date": "2026-10-14",
   "basis_revision": "v0.9.37",
-  "status": "AWAITING_Q7_JUNCTION_READINGS",
-  "scope": "Both R19-to-Q7 copper joins are confirmed. Check junction behavior without changing topology or removing Q7.",
-  "setup": "DISCONNECT BATTERY AND PROGRAMMER. Let supply capacitors discharge. Select DIODE TEST (volts, not resistance); leave Q7 fitted.",
+  "status": "AWAITING_U2_SUPPLY_RAIL_MEMBERSHIP",
+  "scope": "Resolve the specific U2 supply assignment challenged by the 6.3 V Q8 gate reading; no rail merge from voltage alone.",
+  "setup": "DISCONNECT BATTERY AND PROGRAMMER. Let the supply capacitors discharge and select RESISTANCE (ohms). Keep all parts fitted. UV is on U2, not Q8.",
   "photos": [
     {
       "id": "receiver",
@@ -1362,55 +1362,218 @@
           "native_endpoint": "Q7.3"
         }
       }
+    },
+    {
+      "id": "q7-dc-bias",
+      "source": "photos/originals/IMG_2434.jpg",
+      "coordinate_space": [
+        1368,
+        1823
+      ],
+      "view_box": [
+        30,
+        160,
+        570,
+        500
+      ],
+      "title": "Q7 powered bias: red QR, black QL; no GND probe",
+      "points": {
+        "QL": {
+          "xy": [
+            158,
+            432
+          ],
+          "label": [
+            84,
+            570
+          ],
+          "description": "Q7 lower-left contact, supported base; BLACK probe here. Confirmed to R19 left end. Do not use GND for this reading.",
+          "native_endpoint": "Q7.1",
+          "role": "reference"
+        },
+        "QR": {
+          "xy": [
+            276,
+            432
+          ],
+          "label": [
+            505,
+            485
+          ],
+          "description": "Q7 lower-right contact, candidate emitter; RED probe here. Confirmed to R19 right end / VDD.",
+          "native_endpoint": "Q7.2"
+        }
+      }
+    },
+    {
+      "id": "q8-gate-bias",
+      "source": "photos/originals/IMG_2431.jpg",
+      "coordinate_space": [
+        1368,
+        1823
+      ],
+      "view_box": [
+        290,
+        1190,
+        890,
+        600
+      ],
+      "title": "Q8: two gate-to-source voltages",
+      "points": {
+        "PG": {
+          "xy": [
+            508,
+            1338
+          ],
+          "label": [
+            350,
+            1230
+          ],
+          "description": "Q8 upper-LEFT contact in this photo, below R8. Candidate P-channel gate / physical T1 / native pin3. Red probe for B72.",
+          "native_endpoint": "Q8.3"
+        },
+        "PS": {
+          "xy": [
+            925,
+            1422
+          ],
+          "label": [
+            1090,
+            1330
+          ],
+          "description": "C6 UPPER metal end: confirmed source-supply node shared with Q8 top-centre pin2. Black probe for B72. Use this larger pad rather than the neighbouring Q8 centre contact.",
+          "native_endpoint": "C6.1",
+          "role": "reference"
+        },
+        "NG": {
+          "xy": [
+            653,
+            1338
+          ],
+          "label": [
+            745,
+            1230
+          ],
+          "description": "Q8 upper-RIGHT contact in this photo, below R9. Candidate N-channel gate / physical T3 / native pin1. Red probe for B73.",
+          "native_endpoint": "Q8.1"
+        },
+        "NS": {
+          "xy": [
+            580,
+            1548
+          ],
+          "label": [
+            445,
+            1720
+          ],
+          "description": "Q8 lower-CENTRE contact, physical B2/native pin5, confirmed GND/source return. Black probe for B73.",
+          "native_endpoint": "Q8.5",
+          "role": "reference"
+        }
+      }
+    },
+    {
+      "id": "u2-supply-joins",
+      "source": "photos/originals/IMG_2431.jpg",
+      "coordinate_space": [
+        1368,
+        1823
+      ],
+      "view_box": [
+        370,
+        750,
+        850,
+        1020
+      ],
+      "title": "U2 supply contact versus the two distinct rails",
+      "points": {
+        "UV": {
+          "xy": [
+            580,
+            936
+          ],
+          "label": [
+            695,
+            1005
+          ],
+          "description": "U2 LOWER-CENTRE contact in this photo, directly above the space between R8 and R9. Physical B2 / candidate VCC pin5. Red probe for both tests.",
+          "native_endpoint": "U2.5"
+        },
+        "PS": {
+          "xy": [
+            925,
+            1422
+          ],
+          "label": [
+            1100,
+            1320
+          ],
+          "description": "C6 UPPER metal end, the same source-supply point used in B72. Black probe for B74.",
+          "native_endpoint": "C6.1",
+          "role": "reference"
+        }
+      }
+    },
+    {
+      "id": "u2-supply-vdd-reference",
+      "source": "photos/originals/IMG_2435.jpg",
+      "coordinate_space": [
+        1368,
+        1823
+      ],
+      "view_box": [
+        130,
+        210,
+        790,
+        620
+      ],
+      "title": "B75 black probe: printed VDD test hole",
+      "reference_for": [
+        "u2-supply-joins"
+      ],
+      "points": {
+        "VD": {
+          "xy": [
+            604,
+            396
+          ],
+          "label": [
+            422,
+            290
+          ],
+          "description": "Printed VDD test hole beside C2 and U1. Black probe for B75. This is the regulated logic test point, not C6 or the battery terminal.",
+          "native_endpoint": "TP103.1",
+          "net": "VDD",
+          "role": "reference"
+        }
+      }
     }
   ],
   "tests": [
     {
-      "id": "B67",
-      "group": "q7-junctions",
-      "from": "QR",
-      "to": "QL",
-      "mode": "Diode test",
-      "unit": "V / OL",
+      "id": "B74",
+      "group": "u2-supply-joins",
+      "from": "UV",
+      "to": "PS",
+      "mode": "Resistance",
+      "unit": "ohms / kohms / OL",
       "state": "Unpowered",
-      "issue": "E08",
-      "purpose": "Candidate PNP emitter-to-base forward junction."
+      "issue": "E03",
+      "purpose": "Test U2 candidate supply pin5 to confirmed RF supply node C6.1."
     },
     {
-      "id": "B68",
-      "group": "q7-junctions",
-      "from": "QL",
-      "to": "QR",
-      "mode": "Diode test",
-      "unit": "V / OL",
+      "id": "B75",
+      "group": "u2-supply-joins",
+      "from": "UV",
+      "to": "VD",
+      "mode": "Resistance",
+      "unit": "ohms / kohms / OL",
       "state": "Unpowered",
-      "issue": "E08",
-      "purpose": "Reverse the same candidate base-emitter pair; R19 remains in parallel."
-    },
-    {
-      "id": "B69",
-      "group": "q7-junctions",
-      "from": "QS",
-      "to": "QL",
-      "mode": "Diode test",
-      "unit": "V / OL",
-      "state": "Unpowered",
-      "issue": "E08",
-      "purpose": "Candidate PNP collector-to-base forward junction."
-    },
-    {
-      "id": "B70",
-      "group": "q7-junctions",
-      "from": "QL",
-      "to": "QS",
-      "mode": "Diode test",
-      "unit": "V / OL",
-      "state": "Unpowered",
-      "issue": "E08",
-      "purpose": "Reverse the same candidate base-collector pair."
+      "issue": "E03",
+      "purpose": "Test the competing currently modeled U2-to-regulated-VDD association."
     }
   ],
-  "interpretation": "The two 1.5 ohm results confirm the existing joins. These four diode readings test the PNP candidate against the surprising 0/4.5 V result. Parallel board paths can affect diode mode: readings do not by themselves establish an exact part or prove failure. No previous continuity or powered reading is repeated.",
+  "interpretation": "Near probe resistance supports a direct join; high resistance or OL does not. These two tests distinguish the RF supply from regulated VDD. Q8 rest bias is recorded, but U2 pin roles and the exact device remain candidates; do not change rails or diagnose overvoltage from the gate readings alone.",
   "next_stages": [
     {
       "stage": "Resolve the remaining functional paths",
@@ -1460,7 +1623,7 @@
     "B42/B43 LED colours: A/R31/PIC22 green; B/R30/PIC23 red. No repeated colour check requested.",
     "B44-B52 antenna continuity completed: C11 outer end ANT2, distinct ANT1 and GND. Corrected pair labels retained in the raw result evidence."
   ],
-  "deferred": "Q3 and Q7 remain fitted. No replacement or fault conclusion; no extra wire inferred.",
+  "deferred": "Q3 stays fitted. RF waveforms, U2 identity/ratings and receiver enabled-state behavior remain open.",
   "sources": [
     "evidence/remaining_work.json",
     "evidence/reconstruction.json",
@@ -2323,11 +2486,134 @@
       "stability": null,
       "source_worksheet_revision": "v0.9.39",
       "raw_user_statement": "PetSafe Q7: verify the disputed local joins / v0.9.39\nB65 red QL / black B (Unpowered): 1.5ohm\nB66 red QR / black E (Unpowered): 1.5ohm"
+    },
+    {
+      "id": "B67",
+      "group": "q7-junctions",
+      "from": "QR",
+      "to": "QL",
+      "mode": "Diode test",
+      "unit": "V / OL",
+      "state": "Unpowered",
+      "issue": "E08",
+      "purpose": "Candidate PNP emitter-to-base forward junction.",
+      "date": "2026-10-14",
+      "result": "0.74 V",
+      "voltage_v": 0.74,
+      "over_range": false,
+      "stability": null,
+      "source_worksheet_revision": "v0.9.39",
+      "raw_user_statement": "PetSafe Q7: check the two candidate junctions / v0.9.39\nB67 red QR / black QL (Unpowered): 0.74\nB68 red QL / black QR (Unpowered): 1.74\nB69 red QS / black QL (Unpowered): 0.74\nB70 red QL / black QS (Unpowered): ol"
+    },
+    {
+      "id": "B68",
+      "group": "q7-junctions",
+      "from": "QL",
+      "to": "QR",
+      "mode": "Diode test",
+      "unit": "V / OL",
+      "state": "Unpowered",
+      "issue": "E08",
+      "purpose": "Reverse the same candidate base-emitter pair; R19 remains in parallel.",
+      "date": "2026-10-14",
+      "result": "1.74 V",
+      "voltage_v": 1.74,
+      "over_range": false,
+      "stability": null,
+      "source_worksheet_revision": "v0.9.39",
+      "raw_user_statement": "PetSafe Q7: check the two candidate junctions / v0.9.39\nB67 red QR / black QL (Unpowered): 0.74\nB68 red QL / black QR (Unpowered): 1.74\nB69 red QS / black QL (Unpowered): 0.74\nB70 red QL / black QS (Unpowered): ol"
+    },
+    {
+      "id": "B69",
+      "group": "q7-junctions",
+      "from": "QS",
+      "to": "QL",
+      "mode": "Diode test",
+      "unit": "V / OL",
+      "state": "Unpowered",
+      "issue": "E08",
+      "purpose": "Candidate PNP collector-to-base forward junction.",
+      "date": "2026-10-14",
+      "result": "0.74 V",
+      "voltage_v": 0.74,
+      "over_range": false,
+      "stability": null,
+      "source_worksheet_revision": "v0.9.39",
+      "raw_user_statement": "PetSafe Q7: check the two candidate junctions / v0.9.39\nB67 red QR / black QL (Unpowered): 0.74\nB68 red QL / black QR (Unpowered): 1.74\nB69 red QS / black QL (Unpowered): 0.74\nB70 red QL / black QS (Unpowered): ol"
+    },
+    {
+      "id": "B70",
+      "group": "q7-junctions",
+      "from": "QL",
+      "to": "QS",
+      "mode": "Diode test",
+      "unit": "V / OL",
+      "state": "Unpowered",
+      "issue": "E08",
+      "purpose": "Reverse the same candidate base-collector pair.",
+      "date": "2026-10-14",
+      "result": "OL",
+      "voltage_v": null,
+      "over_range": true,
+      "stability": null,
+      "source_worksheet_revision": "v0.9.39",
+      "raw_user_statement": "PetSafe Q7: check the two candidate junctions / v0.9.39\nB67 red QR / black QL (Unpowered): 0.74\nB68 red QL / black QR (Unpowered): 1.74\nB69 red QS / black QL (Unpowered): 0.74\nB70 red QL / black QS (Unpowered): ol"
+    },
+    {
+      "id": "B71",
+      "group": "q7-dc-bias",
+      "from": "QR",
+      "to": "QL",
+      "mode": "DC voltage",
+      "unit": "signed V; steady / varying",
+      "state": "Powered; original battery and PIR connected; programmer disconnected",
+      "issue": "E08",
+      "purpose": "Measure V(QR)-V(QL) simultaneously to resolve the earlier 0/4.5 V contradiction.",
+      "date": "2026-10-14",
+      "result": "0 V",
+      "voltage_v": 0,
+      "stability": null,
+      "source_worksheet_revision": "v0.9.39",
+      "raw_user_statement": "PetSafe Q7: resolve the powered base-emitter voltage / v0.9.39\nB71 red QR / black QL (Powered; original battery and PIR connected; programmer disconnected): 0"
+    },
+    {
+      "id": "B72",
+      "group": "q8-gate-bias",
+      "from": "PG",
+      "to": "PS",
+      "mode": "DC voltage",
+      "unit": "signed V; steady / varying",
+      "state": "Powered; at rest; original battery and PIR connected",
+      "issue": "E03",
+      "purpose": "Measure candidate P-channel gate-source bias, using confirmed C6.1 source node.",
+      "date": "2026-10-14",
+      "result": "0 V",
+      "voltage_v": 0,
+      "stability": null,
+      "source_worksheet_revision": "v0.9.39",
+      "raw_user_statement": "PetSafe Q8: measure the two gate-to-source voltages / v0.9.39\nB72 red PG / black PS (Powered; at rest; original battery and PIR connected): 0\nB73 red NG / black NS (Powered; at rest; original battery and PIR connected): 6.3"
+    },
+    {
+      "id": "B73",
+      "group": "q8-gate-bias",
+      "from": "NG",
+      "to": "NS",
+      "mode": "DC voltage",
+      "unit": "signed V; steady / varying",
+      "state": "Powered; at rest; original battery and PIR connected",
+      "issue": "E03",
+      "purpose": "Measure candidate N-channel gate-source bias.",
+      "date": "2026-10-14",
+      "result": "6.3 V",
+      "voltage_v": 6.3,
+      "stability": null,
+      "source_worksheet_revision": "v0.9.39",
+      "raw_user_statement": "PetSafe Q8: measure the two gate-to-source voltages / v0.9.39\nB72 red PG / black PS (Powered; at rest; original battery and PIR connected): 0\nB73 red NG / black NS (Powered; at rest; original battery and PIR connected): 6.3"
     }
   ],
-  "batch_title": "Q7: check the two candidate junctions",
-  "instructions": "B67 red QR / black QL; B68 red QL / black QR; B69 red QS / black QL; B70 red QL / black QS. Report volts or OL for each; say changing if unsettled.",
-  "result_summary": "Both R19-to-Q7 joins confirmed at 1.5 ohm. Copper mapping closed; candidate identity and operating behavior remain open.",
+  "batch_title": "U2: RF supply or regulated VDD?",
+  "instructions": "B74: red UV (U2 lower-centre contact) / black PS (C6 upper end). B75: red UV / black VD (printed VDD hole in the second photo). Report ohms, kohms or OL; say changing if unsettled.",
+  "result_summary": "Q8 candidate P VGS=0 V and N VGS=6.3 V. Rest bias recorded; U2 rail assignment now needs direct evidence.",
   "cancelled_tests": [
     {
       "id": "B20",
@@ -2362,7 +2648,7 @@
       "result": "v0.9.22 user annotated U6A option: single left pad/model L/native U106.1 joins U6 pin5 and the existing input node after R37; upper-right/model R1/native2 joins J3.1 (red PIR wire); lower-right/model R2/native3 joins GND. All three external pads mapped, option remains DNP. User called the input VDD; retain VDD -> R37 (22 ohm) -> H_AUX_IN because the annotation ends at U6 pin5 and prior B28 confirms pin5-pin2, not a bypass across R37. No fitted IC identity or voltage measurement implied."
     }
   ],
-  "batch_id": "q7-junctions-20261014",
+  "batch_id": "u2-supply-joins-20261014",
   "location_review": {
     "reference": "TP9",
     "status": "REMOVED_UNSUPPORTED_ENTRY",
@@ -2418,14 +2704,14 @@
     "pending_check": null,
     "model_status": "Applied v0.9.20: pin5-VIN measured 1 ohm; R37 and U6A single-pad local joins from the annotation; pin4 explicitly unused."
   },
-  "next_prompt": "B67-B70 diode mode at Q7, power disconnected; both directions for QR-QL and QS-QL.",
+  "next_prompt": "B74 UV-PS and B75 UV-VD, resistance with battery/programmer disconnected.",
   "review_revision": "v0.9.39",
   "request_probe_baseline": false,
   "q3_decision": "Defer isolated Q3 identification; retain candidate qualification and existing copper. No desoldering or repeat Q3 batch requested.",
   "last_completed_test_ids": [
-    "B65",
-    "B66"
+    "B72",
+    "B73"
   ],
-  "last_result_evidence": "evidence/q7_r19_join_results_20261014.json",
+  "last_result_evidence": "evidence/q8_gate_bias_results_20261014.json",
   "staged_batches": []
 }

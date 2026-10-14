@@ -62,7 +62,8 @@
     ]
   ],
   "interpretation": "Both 1.5 ohm readings support the existing direct copper joins. No native net change is needed. B63/B64 now have continuity-supported associations to Q7.L and Q7.R, but the 0/4.5 V operating result still conflicts with a simple healthy PNP interpretation. This does not identify Q7 or prove failure.",
-  "next_action": "Four unpowered diode readings across candidate base-emitter and base-collector pairs, both polarities. Q7 remains fitted; R19 and the surrounding circuitry can affect results, so do not identify a replacement or diagnose failure from these readings alone.",
+  "next_action": "No repeat Q7 diode/continuity/DC check now. Move to E03 Q8 gate-source voltages. Receiver enabled-state behavior remains an explicit later issue.",
   "photo_sha256": "2feac8570055753400b337f4cfe8a79256da8f3bcd706e0d972dfd9672b50d0a",
-  "candidate_source": "https://assets.nexperia.com/documents/data-sheet/BC856_BC857_BC858.pdf"
+  "candidate_source": "https://assets.nexperia.com/documents/data-sheet/BC856_BC857_BC858.pdf",
+  "followup": "evidence/q7_direct_bias_result_20261014.json"
 }

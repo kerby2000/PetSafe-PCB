@@ -1731,7 +1731,7 @@
       "observed": "UNKNOWN",
       "displayed": "BC857C?",
       "marking": "3GW / 54",
-      "value_or_identity": "3GW supports BC857C PNP. Photo and 11.2 kohm R18+R19 path support B=L, E=R/VDD, C=S/R20; terminal selection and switching role remain inferred. Control input R18.1 is now user-confirmed to PIC12/RC1 via V053-V070.",
+      "value_or_identity": "B65/B66 confirm Q7.L-R19.1 and Q7.R-R19.2 at 1.5 ohm. B67-B70 diode polarity supports PNP/base at L; R=emitter/S=collector remains the 3GW/BC857C datasheet/circuit assignment, not a unique diode-test result. B71 direct V(R)-V(L)=0 V is consistent with no forward base-emitter bias in the latest powered state; this fits low TP5/VREF. Earlier separate R19 0/4.5 V readings remain conflicting history, not a failure diagnosis. Exact part, switching pulses and enabled-state behavior remain unverified.",
       "footprint": "Package_TO_SOT_SMD:SOT-23",
       "footprint_confidence": "datasheet/package candidate",
       "footprint_basis": "Existing assignment; see component identity evidence.",

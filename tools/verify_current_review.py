@@ -100,6 +100,10 @@ assert members['Q7.1']==members['R19.1'] and members['Q7.2']==members['R19.2']
 assert not q7_voltage['contested_pairs']
 assert all(r in measurements['completed_tests'] for r in q7_voltage['measurements'])
 for path,digest in q7_voltage['photos'].items():assert hashlib.sha256((ROOT/path).read_bytes()).hexdigest()==digest
+q7_diode=read('evidence/q7_diode_results_20261014.json')
+assert q7_diode['electrical_change'] is False
+assert all(row in measurements['completed_tests'] for row in q7_diode['measurements'])
+assert hashlib.sha256((ROOT/'photos/originals/IMG_2434.jpg').read_bytes()).hexdigest()==q7_diode['photo_sha256']
 manual=read('evidence/product_manual_led_review_20261014.json')
 assert manual['model']=='PPA19-16811'
 pack=manual['model_evidence'];assert hashlib.sha256((ROOT/pack['file']).read_bytes()).hexdigest()==pack['sha256']

@@ -48,9 +48,9 @@
       ],
       "priority": 1,
       "state": "open",
-      "known": "C5/C6 parallel wiring and Q8 ground/output joins are established. B37 P-F = 1 ohm supports Q8.T2/native2 to C6.1 on H_RF_VDD; no fresh baseline or stability statement supplied. SIL3724A and the U2 inverter remain candidates. B54/B55 measured VSYS and RF supply at 6.3 V in the red-blinking bench state.",
-      "unknown": "Candidate gate/source roles, P-channel turn-off margin and RF timing remain unverified. The source-supply continuity question no longer requires a bench check.",
-      "next_action": "Later operating check on the original hardware: establish source/gate voltages and actual gate-to-source drive, then RF timing if suitable equipment is available. Do not repeat P-F continuity.",
+      "known": "C5/C6 parallel wiring and Q8 ground/output joins are established. B37 P-F = 1 ohm supports Q8.T2/native2 to C6.1 on H_RF_VDD; no fresh baseline or stability statement supplied. SIL3724A and the U2 inverter remain candidates. B54/B55 measured VSYS and RF supply at 6.3 V in the red-blinking bench state. B72/B73 measured candidate P-channel VGS=0 V and N-channel VGS=+6.3 V at rest, consistent with P off/N on bias. Stability not supplied.",
+      "unknown": "U2 supply membership is specifically disputed: the drawing places U2/C7 on 4.5 V VDD, whereas its driven N-gate measured 6.3 V. Candidate identities/pin roles, dynamic turn-off margin and RF timing remain unverified. Source continuity and these rest-bias readings need no repeat.",
+      "next_action": "B74 U2 lower-centre supply contact to C6 upper end; B75 same U2 contact to printed VDD test point. Resistance with battery/programmer disconnected. These discriminate the RF supply from regulated VDD.",
       "closed_when": "Source path and actual gate-to-source drive are supported; C6 value is handled by V01.",
       "open_pads": [],
       "nets": [
@@ -65,7 +65,8 @@
         "docs/history/v0.9.30-before-finalization/evidence/remaining_work.json",
         "evidence/q3_deferred_q8_followup_20261009.json",
         "evidence/q8_supply_result_20261009.json",
-        "evidence/supply_baseline_results_20261014.json"
+        "evidence/supply_baseline_results_20261014.json",
+        "evidence/q8_gate_bias_results_20261014.json"
       ],
       "owner": "Agent evidence review; targeted owner test only as listed",
       "category": "connectivity/behavior"
@@ -138,7 +139,7 @@
       "state": "open",
       "known": "PIC14/RC3 reaches TP11; PIC18/RC7 reaches TP17. Front/rear photos show no onward surface trace at those test points. Both are valid endpoints, not dangling wires. RA0/C25 to TP6 measured 1.5 ohm in B59 and is now resolved on RX_A_FILTER.",
       "unknown": "Only the possibility of additional inner-layer connections on RC3/TP11 and RC7/TP17 remains. A test-only purpose is plausible but not established by photographs.",
-      "next_action": "No justified new continuity pair is identified. Retain the two known PIC-to-test-point routes and the explicit inner-layer limitation; do not repeat TP16-to-TP11/TP17. Continue the prepared supply-voltage batch for the operating issues.",
+      "next_action": "No justified new continuity pair is identified. Retain the two known PIC-to-test-point routes and explicit inner-layer limitation; do not repeat TP16-to-TP11/TP17. Proceed with the active operating check under E03.",
       "closed_when": "Additional continuation is traced, or physical layer evidence establishes these are test-only branches. Until then, reproduce the known local routes without asserting that hidden continuations are absent.",
       "open_pads": [],
       "nets": [
@@ -216,9 +217,9 @@
       ],
       "priority": 2,
       "state": "open",
-      "known": "U3 input returns and R23/R42/C40, C23/R25/R48 and DNP R47/C42 paths are reconciled. VREF supplies U3 pin5. B59 C25.1-TP6.1 = 1.5 ohm establishes the receiver filter connection to PIC2/RA0; R27 remains between that node and U3.1. B57 measured the printed VREF test point at 0 V while the red LED blinked about once per second. B62 TP5/H_RX_VDD measured 0.066 V (66 mV) in the same state with PIR connected; stability not supplied. B63/B64: R19 left=0 V and right=4.5 V. B65/B66 then confirmed R19.1-Q7.L and R19.2-Q7.R at 1.5 ohm each; those copper joins are closed. The earlier voltages therefore have continuity-supported Q7 associations; no stability statement was supplied.",
-      "unknown": "Q7 candidate identity, terminal roles and operating behavior remain unresolved: 0/4.5 V at its confirmed paired contacts conflicts with the simple healthy PNP interpretation. No device fault is established. Receiver gain/filter response and MCU interface roles remain unverified; DC readings cannot exclude switching pulses.",
-      "next_action": "B67-B70: unpowered diode mode, QR-QL and QS-QL in both polarities. These test candidate junction behavior with Q7 fitted; no repeat local continuity or powered R19/TP5/VREF readings.",
+      "known": "U3 input returns and R23/R42/C40, C23/R25/R48 and DNP R47/C42 paths are reconciled. VREF supplies U3 pin5; C25.1-TP6.1 measured 1.5 ohm joins the receiver filter to PIC2/RA0. Powered: VREF 0 V, TP5 0.066 V, R19 left/right 0/4.5 V. Both R19-to-Q7 joins measured 1.5 ohm. Q7 diode results: R->L 0.74 V, L->R 1.74 V, S->L 0.74 V, L->S OL. These support PNP polarity with L as base; reverse finite reading can include parallel-board paths. B71 direct QR-QL measured 0 V, consistent with no forward base-emitter bias in the latest state and the low receiver supply; stability not reported.",
+      "unknown": "Why the receiver is inactive and its enabled-state behavior remain unverified. Earlier separate 0/4.5 V readings conflict with the later direct 0 V; do not diagnose failure or assume simultaneous identical states. Exact Q7 identity and E/C selection remain qualified. Receiver gain/filter response and MCU interface roles are unverified; DC readings do not exclude pulses.",
+      "next_action": "No repeat Q7 diode, continuity or baseline DC readings. Proceed with E03 Q8 gate-source checks. Later characterize receiver enable during a defined PIR/read event if suitable instrumentation is available; retain the inactive-state result without claiming full operation.",
       "closed_when": "Receiver supply, bias and the existing RA0/RA1/RB4 interfaces have supported operating roles; no presumed extra output wire is required.",
       "open_pads": [],
       "nets": [
@@ -243,7 +244,9 @@
         "evidence/supply_baseline_results_20261014.json",
         "evidence/receiver_supply_results_20261014.json",
         "evidence/q7_r19_voltage_results_20261014.json",
-        "evidence/q7_r19_join_results_20261014.json"
+        "evidence/q7_r19_join_results_20261014.json",
+        "evidence/q7_diode_results_20261014.json",
+        "evidence/q7_direct_bias_result_20261014.json"
       ],
       "owner": "Agent evidence review; targeted owner test only as listed",
       "category": "connectivity/behavior"
@@ -268,7 +271,7 @@
       "state": "open",
       "known": "VSYS/RF 6.3 V, printed VDD 4.5 V, PIR supply 3.3 V with PIR attached; VREF 0 V and red LED approximately 1 Hz. TP14 is now established on U5.8/OUTA at 1.5 ohm; R43.2/V015 follows its existing TP14 association. BATTERY+ stays separate. TP14-Q1 gate measured 516 ohm. B62: receiver TP5 supply is 0.066 V; this may explain absent VREF bias without implying a ground short.",
       "unknown": "Q1 control behavior, motor-output states, the path giving 516 ohm from OUTA to Q1 gate, zero VREF and the red-flashing state remain unresolved. R3/R4/C28-to-RB3 functional role is inferred.",
-      "next_action": "Q7 local copper joins are confirmed. Check candidate junction behavior with B67-B70 under E08 before interpreting the low receiver supply. Q1/motor state remains separate.",
+      "next_action": "Q7 latest direct bias supports an inactive receiver in this state. Proceed with E03 gate-source checks; Q1/motor control and the red-blinking cause remain separate open questions.",
       "closed_when": "Actual supply levels and control behavior are recorded without merging battery, VSYS or filtered branches.",
       "open_pads": [],
       "nets": [
@@ -443,7 +446,7 @@
         "I01"
       ],
       "summary": "S1 contacts and the front capacitor-bank ANT2 connection are established. Q3 stays fitted with identification deferred. Two local-only PIC branches, candidate device roles and powered behavior remain.",
-      "next_action": "Q7/R19 joins are confirmed at 1.5 ohm each. Four unpowered diode readings now check Q7 candidate junctions. TP11/TP17 hidden continuation remains qualified; Q3 stays fitted."
+      "next_action": "Q7 and Q8 rest-bias checks are recorded. B74/B75 now resolve U2 supply membership without merging rails from voltage alone. TP11/TP17 inner continuations and Q3 identity remain qualified."
     },
     {
       "id": "F2",
