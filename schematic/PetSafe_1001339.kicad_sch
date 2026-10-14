@@ -6854,7 +6854,7 @@
 				)
 			)
 		)
-		(property "ViaEvidence" "v0.9.9: User corrects raw battery+ versus post-Q1 rail. BATP -> Q1.S (single physical pad/native3, candidate drain); Q1.L/native2 (candidate source) -> U5.4/V011-V014. These are distinct copper nets, connected through Q1. IMG_2438 also supports TP14 on battery+; V015/R43.2-TP14 user confirmation retained. Q1.R/native1 is candidate gate at R44.2. Photo S means SINGLE, not MOSFET source."
+		(property "ViaEvidence" "v0.9.9: User corrects raw battery+ versus post-Q1 rail. BATP -> Q1.S (single physical pad/native3, candidate drain); Q1.L/native2 (candidate source) -> U5.4/V011-V014. These are distinct copper nets, connected through Q1. TP14/R43.2/V015 is OUTA/H_MOTOR_A, supported by TP14-U5.8 = 1.5 ohm; the earlier battery-side photo interpretation is withdrawn. Q1.R/native1 is candidate gate at R44.2. Photo S means SINGLE, not MOSFET source."
 			(at 20.32 53.34 0)
 			(effects
 				(font
@@ -8525,7 +8525,7 @@
 				)
 			)
 		)
-		(property "UserGPIOEvidence" "v0.8: user confirms multimeter + visual trace. 3-TP7/R28/R29; 17-R13; 22-TP2; 23-TP1; 25-TP4; 26-TP10. No numerical resistance values supplied. Nine GPIO destinations remain unresolved."
+		(property "UserGPIOEvidence" "Measured and photo-supported destinations are recorded in pic_gpio_status.json. RA0 now reaches TP6 (B59); TP11/RC3 and TP17/RC7 have local traces but unexcluded inner-layer continuations. PIC21 remains TP16/Q2, not VREF."
 			(at 262.89 78.74 0)
 			(effects
 				(font
@@ -8553,6 +8553,24 @@
 			)
 		)
 		(property "ConnectionEvidence" "v0.9.17 user-annotated photo: C25 right pad/model1 -> PIC2/RA0; C26 right pad/model1 -> PIC3/RA1. Left pads/model2 are common, retaining earlier V029-GND evidence. No new numeric resistance or capacitance supplied. C26 joins the existing RA1/R28/R29/TP7 net, separate from RA0 and VREF."
+			(at 262.89 78.74 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "CurrentEvidence" "v0.9.38: B59 C25.1 to TP6.1 = 1.5 ohm unpowered supports PIC2/RA0 on RX_A_FILTER. This joins the existing R27.1/C18.2/TP6 branch; V031/V072 associations are retained. R27 to U3.1, C18 to VREF, and C25 to GND remain component-separated. Firmware role unverified."
+			(at 262.89 78.74 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "RA0Evidence" "v0.9.38: B59 C25.1 to TP6.1 = 1.5 ohm unpowered supports PIC2/RA0 on RX_A_FILTER. This joins the existing R27.1/C18.2/TP6 branch; V031/V072 associations are retained. R27 to U3.1, C18 to VREF, and C25 to GND remain component-separated. Firmware role unverified."
 			(at 262.89 78.74 0)
 			(effects
 				(font
@@ -8660,7 +8678,7 @@
 					(size 1 1)
 				) hide)
 		)
-		(property "Evidence" "Photo reconstruction; individual net evidence in reconstruction.json"
+		(property "Evidence" "v0.9.38: B59 C25.1 to TP6.1 = 1.5 ohm unpowered supports PIC2/RA0 on RX_A_FILTER. This joins the existing R27.1/C18.2/TP6 branch; V031/V072 associations are retained. R27 to U3.1, C18 to VREF, and C25 to GND remain component-separated. Firmware role unverified."
 			(at 262.89 78.74 0)
 			(effects
 				(font
@@ -8912,6 +8930,24 @@
 				(hide yes)
 			)
 		)
+		(property "CurrentEvidence" "v0.9.38: B59 C25.1 to TP6.1 = 1.5 ohm unpowered supports PIC2/RA0 on RX_A_FILTER. This joins the existing R27.1/C18.2/TP6 branch; V031/V072 associations are retained. R27 to U3.1, C18 to VREF, and C25 to GND remain component-separated. Firmware role unverified."
+			(at 322.58 78.74 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "RA0Evidence" "v0.9.38: B59 C25.1 to TP6.1 = 1.5 ohm unpowered supports PIC2/RA0 on RX_A_FILTER. This joins the existing R27.1/C18.2/TP6 branch; V031/V072 associations are retained. R27 to U3.1, C18 to VREF, and C25 to GND remain component-separated. Firmware role unverified."
+			(at 322.58 78.74 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
 		(pin "1"
 			(uuid "93aa6bb4-01cf-4128-b3a6-03fb38542beb")
 		)
@@ -8933,7 +8969,7 @@
 					(size 1 1)
 				) hide)
 		)
-		(property "Evidence" "Photo reconstruction; individual net evidence in reconstruction.json"
+		(property "Evidence" "v0.9.38: B59 C25.1 to TP6.1 = 1.5 ohm unpowered supports PIC2/RA0 on RX_A_FILTER. This joins the existing R27.1/C18.2/TP6 branch; V031/V072 associations are retained. R27 to U3.1, C18 to VREF, and C25 to GND remain component-separated. Firmware role unverified."
 			(at 322.58 78.74 0)
 			(effects
 				(font
@@ -9782,7 +9818,7 @@
 				)
 			)
 		)
-		(property "ViaEvidence" "v0.9.9: User corrects raw battery+ versus post-Q1 rail. BATP -> Q1.S (single physical pad/native3, candidate drain); Q1.L/native2 (candidate source) -> U5.4/V011-V014. These are distinct copper nets, connected through Q1. IMG_2438 also supports TP14 on battery+; V015/R43.2-TP14 user confirmation retained. Q1.R/native1 is candidate gate at R44.2. Photo S means SINGLE, not MOSFET source."
+		(property "ViaEvidence" "v0.9.9: User corrects raw battery+ versus post-Q1 rail. BATP -> Q1.S (single physical pad/native3, candidate drain); Q1.L/native2 (candidate source) -> U5.4/V011-V014. These are distinct copper nets, connected through Q1. TP14/R43.2/V015 is OUTA/H_MOTOR_A, supported by TP14-U5.8 = 1.5 ohm; the earlier battery-side photo interpretation is withdrawn. Q1.R/native1 is candidate gate at R44.2. Photo S means SINGLE, not MOSFET source."
 			(at 355.6 86.36 0)
 			(effects
 				(font
@@ -10276,7 +10312,25 @@
 				)
 			)
 		)
-		(property "ViaEvidence" "v0.9.9: User corrects raw battery+ versus post-Q1 rail. BATP -> Q1.S (single physical pad/native3, candidate drain); Q1.L/native2 (candidate source) -> U5.4/V011-V014. These are distinct copper nets, connected through Q1. IMG_2438 also supports TP14 on battery+; V015/R43.2-TP14 user confirmation retained. Q1.R/native1 is candidate gate at R44.2. Photo S means SINGLE, not MOSFET source."
+		(property "ViaEvidence" "v0.9.9: User corrects raw battery+ versus post-Q1 rail. BATP -> Q1.S (single physical pad/native3, candidate drain); Q1.L/native2 (candidate source) -> U5.4/V011-V014. These are distinct copper nets, connected through Q1. TP14/R43.2/V015 is OUTA/H_MOTOR_A, supported by TP14-U5.8 = 1.5 ohm; the earlier battery-side photo interpretation is withdrawn. Q1.R/native1 is candidate gate at R44.2. Photo S means SINGLE, not MOSFET source."
+			(at 458.47 60.96 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "CurrentEvidence" "v0.9.39: TP14 to MX512H/U5 pin8 = 1.5 ohm supports OUTA/H_MOTOR_A. Established R43.2/V015-TP14 joins retained. TP14/R43.2 removed from BATTERY+ after BP-TP14 = 6.3 V. TP14-Q1.R = 516 ohm does not establish a direct join. Q1 gate and motor behavior remain qualified."
+			(at 458.47 60.96 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "TP14Evidence" "v0.9.39: TP14 to MX512H/U5 pin8 = 1.5 ohm supports OUTA/H_MOTOR_A. Established R43.2/V015-TP14 joins retained. TP14/R43.2 removed from BATTERY+ after BP-TP14 = 6.3 V. TP14-Q1.R = 516 ohm does not establish a direct join. Q1 gate and motor behavior remain qualified."
 			(at 458.47 60.96 0)
 			(effects
 				(font
@@ -10324,7 +10378,7 @@
 					(size 1 1)
 				) hide)
 		)
-		(property "Evidence" "Photo reconstruction; individual net evidence in reconstruction.json"
+		(property "Evidence" "v0.9.39: TP14 to MX512H/U5 pin8 = 1.5 ohm supports OUTA/H_MOTOR_A. Established R43.2/V015-TP14 joins retained. TP14/R43.2 removed from BATTERY+ after BP-TP14 = 6.3 V. TP14-Q1.R = 516 ohm does not establish a direct join. Q1 gate and motor behavior remain qualified."
 			(at 458.47 60.96 0)
 			(effects
 				(font
@@ -10426,7 +10480,7 @@
 				)
 			)
 		)
-		(property "ViaEvidence" "v0.9.9: User corrects raw battery+ versus post-Q1 rail. BATP -> Q1.S (single physical pad/native3, candidate drain); Q1.L/native2 (candidate source) -> U5.4/V011-V014. These are distinct copper nets, connected through Q1. IMG_2438 also supports TP14 on battery+; V015/R43.2-TP14 user confirmation retained. Q1.R/native1 is candidate gate at R44.2. Photo S means SINGLE, not MOSFET source."
+		(property "ViaEvidence" "v0.9.9: User corrects raw battery+ versus post-Q1 rail. BATP -> Q1.S (single physical pad/native3, candidate drain); Q1.L/native2 (candidate source) -> U5.4/V011-V014. These are distinct copper nets, connected through Q1. TP14/R43.2/V015 is OUTA/H_MOTOR_A, supported by TP14-U5.8 = 1.5 ohm; the earlier battery-side photo interpretation is withdrawn. Q1.R/native1 is candidate gate at R44.2. Photo S means SINGLE, not MOSFET source."
 			(at 430.53 49.53 0)
 			(effects
 				(font
@@ -11470,7 +11524,7 @@
 				)
 			)
 		)
-		(property "ViaEvidence" "v0.9.9: User corrects raw battery+ versus post-Q1 rail. BATP -> Q1.S (single physical pad/native3, candidate drain); Q1.L/native2 (candidate source) -> U5.4/V011-V014. These are distinct copper nets, connected through Q1. IMG_2438 also supports TP14 on battery+; V015/R43.2-TP14 user confirmation retained. Q1.R/native1 is candidate gate at R44.2. Photo S means SINGLE, not MOSFET source."
+		(property "ViaEvidence" "v0.9.9: User corrects raw battery+ versus post-Q1 rail. BATP -> Q1.S (single physical pad/native3, candidate drain); Q1.L/native2 (candidate source) -> U5.4/V011-V014. These are distinct copper nets, connected through Q1. TP14/R43.2/V015 is OUTA/H_MOTOR_A, supported by TP14-U5.8 = 1.5 ohm; the earlier battery-side photo interpretation is withdrawn. Q1.R/native1 is candidate gate at R44.2. Photo S means SINGLE, not MOSFET source."
 			(at 511.81 80.01 0)
 			(effects
 				(font
@@ -11609,7 +11663,7 @@
 				)
 			)
 		)
-		(property "ViaEvidence" "v0.9.9: User corrects raw battery+ versus post-Q1 rail. BATP -> Q1.S (single physical pad/native3, candidate drain); Q1.L/native2 (candidate source) -> U5.4/V011-V014. These are distinct copper nets, connected through Q1. IMG_2438 also supports TP14 on battery+; V015/R43.2-TP14 user confirmation retained. Q1.R/native1 is candidate gate at R44.2. Photo S means SINGLE, not MOSFET source."
+		(property "ViaEvidence" "v0.9.9: User corrects raw battery+ versus post-Q1 rail. BATP -> Q1.S (single physical pad/native3, candidate drain); Q1.L/native2 (candidate source) -> U5.4/V011-V014. These are distinct copper nets, connected through Q1. TP14/R43.2/V015 is OUTA/H_MOTOR_A, supported by TP14-U5.8 = 1.5 ohm; the earlier battery-side photo interpretation is withdrawn. Q1.R/native1 is candidate gate at R44.2. Photo S means SINGLE, not MOSFET source."
 			(at 431.8 111.76 0)
 			(effects
 				(font
@@ -11739,7 +11793,25 @@
 				)
 			)
 		)
-		(property "ViaEvidence" "v0.9.9: User corrects raw battery+ versus post-Q1 rail. BATP -> Q1.S (single physical pad/native3, candidate drain); Q1.L/native2 (candidate source) -> U5.4/V011-V014. These are distinct copper nets, connected through Q1. IMG_2438 also supports TP14 on battery+; V015/R43.2-TP14 user confirmation retained. Q1.R/native1 is candidate gate at R44.2. Photo S means SINGLE, not MOSFET source."
+		(property "ViaEvidence" "V015 joins R43.2 and TP14. User TP14-U5.8 = 1.5 ohm resolves this as H_MOTOR_A / OUTA. Earlier BATTERY+ photo assignment withdrawn; Q1.L remains excluded."
+			(at 462.28 124.46 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "CurrentEvidence" "v0.9.39: TP14 to MX512H/U5 pin8 = 1.5 ohm supports OUTA/H_MOTOR_A. Established R43.2/V015-TP14 joins retained. TP14/R43.2 removed from BATTERY+ after BP-TP14 = 6.3 V. TP14-Q1.R = 516 ohm does not establish a direct join. Q1 gate and motor behavior remain qualified."
+			(at 462.28 124.46 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "TP14Evidence" "v0.9.39: TP14 to MX512H/U5 pin8 = 1.5 ohm supports OUTA/H_MOTOR_A. Established R43.2/V015-TP14 joins retained. TP14/R43.2 removed from BATTERY+ after BP-TP14 = 6.3 V. TP14-Q1.R = 516 ohm does not establish a direct join. Q1 gate and motor behavior remain qualified."
 			(at 462.28 124.46 0)
 			(effects
 				(font
@@ -11769,7 +11841,7 @@
 					(size 1 1)
 				) hide)
 		)
-		(property "Evidence" "Photo reconstruction; individual net evidence in reconstruction.json"
+		(property "Evidence" "v0.9.39: TP14 to MX512H/U5 pin8 = 1.5 ohm supports OUTA/H_MOTOR_A. Established R43.2/V015-TP14 joins retained. TP14/R43.2 removed from BATTERY+ after BP-TP14 = 6.3 V. TP14-Q1.R = 516 ohm does not establish a direct join. Q1 gate and motor behavior remain qualified."
 			(at 462.28 124.46 0)
 			(effects
 				(font
@@ -11869,7 +11941,25 @@
 				)
 			)
 		)
-		(property "ViaEvidence" "v0.9.9: User corrects raw battery+ versus post-Q1 rail. BATP -> Q1.S (single physical pad/native3, candidate drain); Q1.L/native2 (candidate source) -> U5.4/V011-V014. These are distinct copper nets, connected through Q1. IMG_2438 also supports TP14 on battery+; V015/R43.2-TP14 user confirmation retained. Q1.R/native1 is candidate gate at R44.2. Photo S means SINGLE, not MOSFET source."
+		(property "ViaEvidence" "V015 joins R43.2 and TP14. User TP14-U5.8 = 1.5 ohm resolves this as H_MOTOR_A / OUTA. Earlier BATTERY+ photo assignment withdrawn; Q1.L remains excluded."
+			(at 486.41 104.14 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "CurrentEvidence" "v0.9.39: TP14 to MX512H/U5 pin8 = 1.5 ohm supports OUTA/H_MOTOR_A. Established R43.2/V015-TP14 joins retained. TP14/R43.2 removed from BATTERY+ after BP-TP14 = 6.3 V. TP14-Q1.R = 516 ohm does not establish a direct join. Q1 gate and motor behavior remain qualified."
+			(at 486.41 104.14 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "TP14Evidence" "v0.9.39: TP14 to MX512H/U5 pin8 = 1.5 ohm supports OUTA/H_MOTOR_A. Established R43.2/V015-TP14 joins retained. TP14/R43.2 removed from BATTERY+ after BP-TP14 = 6.3 V. TP14-Q1.R = 516 ohm does not establish a direct join. Q1 gate and motor behavior remain qualified."
 			(at 486.41 104.14 0)
 			(effects
 				(font
@@ -11896,7 +11986,7 @@
 					(size 1 1)
 				) hide)
 		)
-		(property "Evidence" "Photo reconstruction; individual net evidence in reconstruction.json"
+		(property "Evidence" "v0.9.39: TP14 to MX512H/U5 pin8 = 1.5 ohm supports OUTA/H_MOTOR_A. Established R43.2/V015-TP14 joins retained. TP14/R43.2 removed from BATTERY+ after BP-TP14 = 6.3 V. TP14-Q1.R = 516 ohm does not establish a direct join. Q1 gate and motor behavior remain qualified."
 			(at 486.41 104.14 0)
 			(effects
 				(font
@@ -15627,6 +15717,24 @@
 				(hide yes)
 			)
 		)
+		(property "CurrentEvidence" "v0.9.38: B59 C25.1 to TP6.1 = 1.5 ohm unpowered supports PIC2/RA0 on RX_A_FILTER. This joins the existing R27.1/C18.2/TP6 branch; V031/V072 associations are retained. R27 to U3.1, C18 to VREF, and C25 to GND remain component-separated. Firmware role unverified."
+			(at 425.45 200.66 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "RA0Evidence" "v0.9.38: B59 C25.1 to TP6.1 = 1.5 ohm unpowered supports PIC2/RA0 on RX_A_FILTER. This joins the existing R27.1/C18.2/TP6 branch; V031/V072 associations are retained. R27 to U3.1, C18 to VREF, and C25 to GND remain component-separated. Firmware role unverified."
+			(at 425.45 200.66 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
 		(pin "1"
 			(uuid "9ed0f60d-7cc7-41d8-a95a-4bdecaa99809")
 		)
@@ -15645,7 +15753,7 @@
 					(size 1 1)
 				) hide)
 		)
-		(property "Evidence" "Photo reconstruction; individual net evidence in reconstruction.json"
+		(property "Evidence" "v0.9.38: B59 C25.1 to TP6.1 = 1.5 ohm unpowered supports PIC2/RA0 on RX_A_FILTER. This joins the existing R27.1/C18.2/TP6 branch; V031/V072 associations are retained. R27 to U3.1, C18 to VREF, and C25 to GND remain component-separated. Firmware role unverified."
 			(at 425.45 200.66 0)
 			(effects
 				(font
@@ -25608,7 +25716,7 @@
 				)
 			)
 		)
-		(property "ViaEvidence" "v0.9.9: User corrects raw battery+ versus post-Q1 rail. BATP -> Q1.S (single physical pad/native3, candidate drain); Q1.L/native2 (candidate source) -> U5.4/V011-V014. These are distinct copper nets, connected through Q1. IMG_2438 also supports TP14 on battery+; V015/R43.2-TP14 user confirmation retained. Q1.R/native1 is candidate gate at R44.2. Photo S means SINGLE, not MOSFET source."
+		(property "ViaEvidence" "v0.9.9: User corrects raw battery+ versus post-Q1 rail. BATP -> Q1.S (single physical pad/native3, candidate drain); Q1.L/native2 (candidate source) -> U5.4/V011-V014. These are distinct copper nets, connected through Q1. TP14/R43.2/V015 is OUTA/H_MOTOR_A, supported by TP14-U5.8 = 1.5 ohm; the earlier battery-side photo interpretation is withdrawn. Q1.R/native1 is candidate gate at R44.2. Photo S means SINGLE, not MOSFET source."
 			(at 453.39 111.76 0)
 			(effects
 				(font
@@ -25626,7 +25734,16 @@
 				(hide yes)
 			)
 		)
-		(property "CurrentEvidence" "R1A marking matches Formosa FMOS3401A datasheet p5; SOT-23 PMOS with G=1 (photo R), S=2 (photo L), D=3 (photo single S). Candidate identification, not manufacturer proof. Drain at battery+ and source at load support reverse-polarity protection; gate-control behavior not verified. Earlier MMBT3904 NPN hypothesis withdrawn."
+		(property "CurrentEvidence" "v0.9.39: TP14 to MX512H/U5 pin8 = 1.5 ohm supports OUTA/H_MOTOR_A. Established R43.2/V015-TP14 joins retained. TP14/R43.2 removed from BATTERY+ after BP-TP14 = 6.3 V. TP14-Q1.R = 516 ohm does not establish a direct join. Q1 gate and motor behavior remain qualified."
+			(at 453.39 111.76 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "TP14Evidence" "v0.9.39: TP14 to MX512H/U5 pin8 = 1.5 ohm supports OUTA/H_MOTOR_A. Established R43.2/V015-TP14 joins retained. TP14/R43.2 removed from BATTERY+ after BP-TP14 = 6.3 V. TP14-Q1.R = 516 ohm does not establish a direct join. Q1 gate and motor behavior remain qualified."
 			(at 453.39 111.76 0)
 			(effects
 				(font
@@ -25659,7 +25776,7 @@
 					(size 1 1)
 				) hide)
 		)
-		(property "Evidence" "R1A marking matches Formosa FMOS3401A datasheet p5; SOT-23 PMOS with G=1 (photo R), S=2 (photo L), D=3 (photo single S). Candidate identification, not manufacturer proof. Drain at battery+ and source at load support reverse-polarity protection; gate-control behavior not verified. Earlier MMBT3904 NPN hypothesis withdrawn."
+		(property "Evidence" "v0.9.39: TP14 to MX512H/U5 pin8 = 1.5 ohm supports OUTA/H_MOTOR_A. Established R43.2/V015-TP14 joins retained. TP14/R43.2 removed from BATTERY+ after BP-TP14 = 6.3 V. TP14-Q1.R = 516 ohm does not establish a direct join. Q1 gate and motor behavior remain qualified."
 			(at 453.39 111.76 0)
 			(effects
 				(font
@@ -28452,7 +28569,7 @@
 		)
 		(uuid "eb677a0d-3314-438d-a4eb-3a767b18d378")
 	)
-	(text "PIC pads have local nets; some onward routes remain unresolved."
+	(text "RA0 reaches TP6 (B59). TP11/TP17 onward paths remain qualified."
 		(at 433.07 321.31 0)
 		(effects
 			(font
@@ -28460,7 +28577,7 @@
 			)
 			(justify left)
 		)
-		(uuid "b60c7d54-e7de-4d47-a92b-e8da0de586da")
+		(uuid "57f46565-3f6b-4d1e-98ca-444f2ec6ae62")
 	)
 	(text "DNP = unpopulated. An open pin means unresolved, not a certified no-connect."
 		(at 433.07 326.39 0)
@@ -28502,7 +28619,7 @@
 		)
 		(uuid "72170deb-1c9a-4731-84df-32524cd970ab")
 	)
-	(text "v0.9.37 | KiCad 10.0.5 | 2026-10-14"
+	(text "v0.9.39 | KiCad 10.0.5 | 2026-10-14"
 		(at 514.35 370.84000000000003 0)
 		(effects
 			(font
@@ -28510,7 +28627,7 @@
 			)
 			(justify left)
 		)
-		(uuid "08425181-2ae7-44fa-b6b2-25059ed8305c")
+		(uuid "18d0b79d-6e45-45b2-bbd6-64749a719b08")
 	)
 	(text "LED1 RED: R30 / PIC23 / pin1; GREEN: R31 / PIC22 / pin2."
 		(at 194.31 260.35 0)
@@ -28532,7 +28649,17 @@
 		)
 		(uuid "fac6ca2c-ccfc-46d2-a665-2c132404b9a8")
 	)
-	(text "VDD / TP103: regulated logic supply VDD; candidate 4.5V, not measured. V082 confirmed here."
+	(text "TP14 / R43.2 = OUTA / U5 pin8: measured 1.5 ohm. Separate from BATTERY+."
+		(at 406.4 102.87 0)
+		(effects
+			(font
+				(size 0.762 0.762)
+			)
+			(justify left)
+		)
+		(uuid "e2dd763c-ff90-451c-9b76-b61e9d79a2ed")
+	)
+	(text "VDD / TP103: logic supply measured 4.5 V (B56, red-blinking state). V082 confirmed here."
 		(at 16.51 96.52 0)
 		(effects
 			(font
@@ -28540,7 +28667,7 @@
 			)
 			(justify left)
 		)
-		(uuid "ebcfb5bc-3103-41bd-8aa5-80b384be2b74")
+		(uuid "bf6e19fd-79fe-4866-88d5-c688967aa46b")
 	)
 	(text "User: D3.R -> V082 / VDD; D3.L -> GND; D3.S -> R42 1.2 ohm (photo selects pad2)."
 		(at 419.1 160.02 0)
@@ -28582,17 +28709,7 @@
 		)
 		(uuid "f1fcd8d5-3099-4bb4-b20c-f3171db2fcfd")
 	)
-	(text "U5 alternative: DRV8212PDSGR. Different package/pins; redesign required."
-		(at 406.4 102.87 0)
-		(effects
-			(font
-				(size 0.762 0.762)
-			)
-			(justify left)
-		)
-		(uuid "edfdad57-07bb-47b3-b1e4-784ef5fb0e63")
-	)
-	(text "U6: pin5 joins VIN (1 ohm); pin4 unused by user/photo. 3.3V is candidate rating."
+	(text "U6: pin5 joins VIN (1 ohm); pin4 unused. PIR supply measured 3.3 V with sensor attached."
 		(at 297.18 387.35 0)
 		(effects
 			(font
@@ -28600,7 +28717,7 @@
 			)
 			(justify left)
 		)
-		(uuid "30bdf5e8-fe3a-4692-9b20-b6fca64acc11")
+		(uuid "11522561-e4dc-436a-85d4-145196818a98")
 	)
 	(text "IMG_2431: TP3/PIC13 drives R6/R7/D1 midpoint. Diode identity and timing unverified."
 		(at 16.51 267.97 0)
@@ -28661,56 +28778,6 @@
 			(type default)
 		)
 		(uuid "27b4fc97-7366-4061-8730-47d160350e90")
-	)
-	(wire
-		(pts
-			(xy 455.93 104.14) (xy 481.33 104.14)
-		)
-		(stroke
-			(width 0)
-			(type default)
-		)
-		(uuid "81c4a7ee-8479-47a0-99c5-f06ab2d5232f")
-	)
-	(wire
-		(pts
-			(xy 466.09 124.46) (xy 466.09 129.54)
-		)
-		(stroke
-			(width 0)
-			(type default)
-		)
-		(uuid "8e217d15-0c1c-4222-afbc-c63d52bc99c8")
-	)
-	(wire
-		(pts
-			(xy 466.09 129.54) (xy 481.33 129.54)
-		)
-		(stroke
-			(width 0)
-			(type default)
-		)
-		(uuid "26489bdd-2ba4-45c4-ace0-cfd875686075")
-	)
-	(wire
-		(pts
-			(xy 481.33 104.14) (xy 481.33 129.54)
-		)
-		(stroke
-			(width 0)
-			(type default)
-		)
-		(uuid "143c0b99-8314-476a-af51-6b9c5d68f05b")
-	)
-	(wire
-		(pts
-			(xy 481.33 104.14) (xy 486.41 104.14)
-		)
-		(stroke
-			(width 0)
-			(type default)
-		)
-		(uuid "3c389c46-028c-4316-8648-43ffbb3153b0")
 	)
 	(wire
 		(pts
@@ -30524,6 +30591,26 @@
 	)
 	(wire
 		(pts
+			(xy 466.09 124.46) (xy 466.09 129.54)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "8e217d15-0c1c-4222-afbc-c63d52bc99c8")
+	)
+	(wire
+		(pts
+			(xy 466.09 129.54) (xy 481.33 129.54)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "26489bdd-2ba4-45c4-ace0-cfd875686075")
+	)
+	(wire
+		(pts
 			(xy 471.17 55.88) (xy 487.68 55.88)
 		)
 		(stroke
@@ -30531,6 +30618,26 @@
 			(type default)
 		)
 		(uuid "d4b98198-b1e2-4187-a752-490dd01199c9")
+	)
+	(wire
+		(pts
+			(xy 481.33 104.14) (xy 481.33 129.54)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "143c0b99-8314-476a-af51-6b9c5d68f05b")
+	)
+	(wire
+		(pts
+			(xy 481.33 104.14) (xy 486.41 104.14)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "3c389c46-028c-4316-8648-43ffbb3153b0")
 	)
 	(wire
 		(pts
@@ -31664,26 +31771,6 @@
 	)
 	(wire
 		(pts
-			(xy 283.21 58.42) (xy 322.58 58.42)
-		)
-		(stroke
-			(width 0)
-			(type default)
-		)
-		(uuid "6263d3f5-42d6-4a6a-a4bf-fedbb3c85629")
-	)
-	(wire
-		(pts
-			(xy 322.58 58.42) (xy 322.58 74.93)
-		)
-		(stroke
-			(width 0)
-			(type default)
-		)
-		(uuid "97c25917-f6e5-431e-8fb5-d7cdfb542768")
-	)
-	(wire
-		(pts
 			(xy 283.21 60.96) (xy 287.02 60.96)
 		)
 		(stroke
@@ -32221,6 +32308,26 @@
 			(type default)
 		)
 		(uuid "6acf003d-0cc9-4f4b-8534-95ffbb7cc306")
+	)
+	(wire
+		(pts
+			(xy 283.21 58.42) (xy 322.58 58.42)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "6263d3f5-42d6-4a6a-a4bf-fedbb3c85629")
+	)
+	(wire
+		(pts
+			(xy 322.58 58.42) (xy 322.58 74.93)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "97c25917-f6e5-431e-8fb5-d7cdfb542768")
 	)
 	(wire
 		(pts
@@ -33659,52 +33766,10 @@
 		(uuid "d5433ea0-a187-48d9-9540-feb402163ca0")
 	)
 	(junction
-		(at 330.2 326.39)
+		(at 528.32 87.63)
 		(diameter 0)
 		(color 0 0 0 0)
-		(uuid "4228a21d-ff5d-4f38-b071-98614070bc7b")
-	)
-	(junction
-		(at 114.3 81.28)
-		(diameter 0)
-		(color 0 0 0 0)
-		(uuid "18d6d367-4f62-48de-9ccf-fcb1d876df8e")
-	)
-	(junction
-		(at 134.62 81.28)
-		(diameter 0)
-		(color 0 0 0 0)
-		(uuid "f23fab32-8460-4d95-a81f-8fb98fe53d3f")
-	)
-	(junction
-		(at 430.53 87.63)
-		(diameter 0)
-		(color 0 0 0 0)
-		(uuid "501383c6-a7d4-46e1-b9a3-3bc243b9b9ee")
-	)
-	(junction
-		(at 455.93 87.63)
-		(diameter 0)
-		(color 0 0 0 0)
-		(uuid "cea57495-3352-471d-969d-fe5e10858952")
-	)
-	(junction
-		(at 461.01 87.63)
-		(diameter 0)
-		(color 0 0 0 0)
-		(uuid "6dd4dac3-6da4-4860-a0ce-745e2da20451")
-	)
-	(junction
-		(at 302.26 132.08)
-		(diameter 0)
-		(color 0 0 0 0)
-		(uuid "955b082b-0c0d-4351-b646-c6a15123a8df")
-	)
-	(junction
-		(at 322.58 132.08)
-		(diameter 0)
-		(color 0 0 0 0)
-		(uuid "4c105cdd-7833-4f9b-bf36-af2bfa6ceda7")
+		(uuid "ae52c3b3-951b-4eda-b1cb-6268ff6893e1")
 	)
 	(junction
 		(at 262.89 132.08)
@@ -33713,22 +33778,22 @@
 		(uuid "d11d53fe-990f-4161-a7ad-ab9e6f7c7f1a")
 	)
 	(junction
-		(at 528.32 87.63)
+		(at 461.01 87.63)
 		(diameter 0)
 		(color 0 0 0 0)
-		(uuid "ae52c3b3-951b-4eda-b1cb-6268ff6893e1")
+		(uuid "6dd4dac3-6da4-4860-a0ce-745e2da20451")
 	)
 	(junction
-		(at 160.02 364.49)
+		(at 330.2 326.39)
 		(diameter 0)
 		(color 0 0 0 0)
-		(uuid "c4f8236f-6c86-45eb-b8fe-d1fef7ddfc35")
+		(uuid "4228a21d-ff5d-4f38-b071-98614070bc7b")
 	)
 	(junction
-		(at 106.68 364.49)
+		(at 322.58 132.08)
 		(diameter 0)
 		(color 0 0 0 0)
-		(uuid "7f61c69e-8124-43cb-a627-17f05eda5658")
+		(uuid "4c105cdd-7833-4f9b-bf36-af2bfa6ceda7")
 	)
 	(junction
 		(at 213.36 364.49)
@@ -33749,64 +33814,52 @@
 		(uuid "9e8a5191-1848-45f9-9472-5dc797b666db")
 	)
 	(junction
+		(at 302.26 132.08)
+		(diameter 0)
+		(color 0 0 0 0)
+		(uuid "955b082b-0c0d-4351-b646-c6a15123a8df")
+	)
+	(junction
+		(at 114.3 81.28)
+		(diameter 0)
+		(color 0 0 0 0)
+		(uuid "18d6d367-4f62-48de-9ccf-fcb1d876df8e")
+	)
+	(junction
+		(at 430.53 87.63)
+		(diameter 0)
+		(color 0 0 0 0)
+		(uuid "501383c6-a7d4-46e1-b9a3-3bc243b9b9ee")
+	)
+	(junction
+		(at 455.93 87.63)
+		(diameter 0)
+		(color 0 0 0 0)
+		(uuid "cea57495-3352-471d-969d-fe5e10858952")
+	)
+	(junction
 		(at 342.9 52.07)
 		(diameter 0)
 		(color 0 0 0 0)
 		(uuid "11659ad2-1e8c-47c9-a019-2f6ff084161c")
 	)
 	(junction
-		(at 134.62 53.34)
+		(at 134.62 81.28)
 		(diameter 0)
 		(color 0 0 0 0)
-		(uuid "79e88e98-634f-4837-9e62-40490c197fb8")
+		(uuid "f23fab32-8460-4d95-a81f-8fb98fe53d3f")
 	)
 	(junction
-		(at 114.3 53.34)
+		(at 106.68 364.49)
 		(diameter 0)
 		(color 0 0 0 0)
-		(uuid "e512d067-ec38-4db0-adfe-13528224a81b")
+		(uuid "7f61c69e-8124-43cb-a627-17f05eda5658")
 	)
 	(junction
-		(at 314.96 302.26)
+		(at 160.02 364.49)
 		(diameter 0)
 		(color 0 0 0 0)
-		(uuid "8d21dcc9-64dd-4bbc-984b-cfceec7b5bf8")
-	)
-	(junction
-		(at 349.25 182.88)
-		(diameter 0)
-		(color 0 0 0 0)
-		(uuid "1cafcb22-541c-4d14-8710-e2e0a91d7ea0")
-	)
-	(junction
-		(at 363.22 180.34)
-		(diameter 0)
-		(color 0 0 0 0)
-		(uuid "5a68bba2-1880-4c3a-b039-68235a197f28")
-	)
-	(junction
-		(at 363.22 203.2)
-		(diameter 0)
-		(color 0 0 0 0)
-		(uuid "759b4aac-a1bc-460f-8eee-fda17dae94f4")
-	)
-	(junction
-		(at 302.26 113.03)
-		(diameter 0)
-		(color 0 0 0 0)
-		(uuid "8d8943ab-42b1-4e7f-bb05-71475b84a6f9")
-	)
-	(junction
-		(at 351.79 345.44)
-		(diameter 0)
-		(color 0 0 0 0)
-		(uuid "420b1295-67a1-400a-b319-b30c9acb4470")
-	)
-	(junction
-		(at 360.68 198.12)
-		(diameter 0)
-		(color 0 0 0 0)
-		(uuid "6d8cbb89-f3aa-41df-a1e3-686f0638e8d9")
+		(uuid "c4f8236f-6c86-45eb-b8fe-d1fef7ddfc35")
 	)
 	(junction
 		(at 445.77 250.19)
@@ -33815,16 +33868,64 @@
 		(uuid "139b1c9f-8336-4753-a524-c99e93a224fd")
 	)
 	(junction
-		(at 237.49 167.64)
+		(at 360.68 198.12)
 		(diameter 0)
 		(color 0 0 0 0)
-		(uuid "c0f6d62b-791e-4c25-8d6d-73666a9baa71")
+		(uuid "6d8cbb89-f3aa-41df-a1e3-686f0638e8d9")
 	)
 	(junction
-		(at 377.19 231.14)
+		(at 213.36 322.58)
 		(diameter 0)
 		(color 0 0 0 0)
-		(uuid "f1c6271e-5515-4cc8-9ecc-e96804a7009c")
+		(uuid "966acaa8-73cd-49dc-951b-6fb15385ca5e")
+	)
+	(junction
+		(at 302.26 113.03)
+		(diameter 0)
+		(color 0 0 0 0)
+		(uuid "8d8943ab-42b1-4e7f-bb05-71475b84a6f9")
+	)
+	(junction
+		(at 388.62 327.66)
+		(diameter 0)
+		(color 0 0 0 0)
+		(uuid "fc587719-c815-49d8-a017-9217efa72deb")
+	)
+	(junction
+		(at 53.34 322.58)
+		(diameter 0)
+		(color 0 0 0 0)
+		(uuid "a0e14ee9-ee69-4930-ac64-5666652304da")
+	)
+	(junction
+		(at 160.02 322.58)
+		(diameter 0)
+		(color 0 0 0 0)
+		(uuid "6307663a-fec3-4fdc-b200-a2d45a65a001")
+	)
+	(junction
+		(at 469.9 180.34)
+		(diameter 0)
+		(color 0 0 0 0)
+		(uuid "9a0ee961-691f-455e-be6d-ed65bb2b618b")
+	)
+	(junction
+		(at 469.9 203.2)
+		(diameter 0)
+		(color 0 0 0 0)
+		(uuid "fcca1c45-a7a0-4ed2-aadc-0cf4859ad620")
+	)
+	(junction
+		(at 349.25 182.88)
+		(diameter 0)
+		(color 0 0 0 0)
+		(uuid "1cafcb22-541c-4d14-8710-e2e0a91d7ea0")
+	)
+	(junction
+		(at 22.86 226.06)
+		(diameter 0)
+		(color 0 0 0 0)
+		(uuid "4e5632ed-ea94-44aa-b4b3-75f32262915c")
 	)
 	(junction
 		(at 22.86 251.46)
@@ -33839,46 +33940,22 @@
 		(uuid "eb99fd0f-4678-4ae8-ac42-dd73de4ca6ca")
 	)
 	(junction
-		(at 22.86 226.06)
+		(at 134.62 53.34)
 		(diameter 0)
 		(color 0 0 0 0)
-		(uuid "4e5632ed-ea94-44aa-b4b3-75f32262915c")
+		(uuid "79e88e98-634f-4837-9e62-40490c197fb8")
 	)
 	(junction
-		(at 398.78 180.34)
+		(at 114.3 53.34)
 		(diameter 0)
 		(color 0 0 0 0)
-		(uuid "98c3a918-c95c-4ec3-afa7-521c36a88168")
+		(uuid "e512d067-ec38-4db0-adfe-13528224a81b")
 	)
 	(junction
-		(at 398.78 200.66)
+		(at 237.49 167.64)
 		(diameter 0)
 		(color 0 0 0 0)
-		(uuid "fb67fda0-f5f8-421b-855d-9b5e023c70bc")
-	)
-	(junction
-		(at 165.1 220.98)
-		(diameter 0)
-		(color 0 0 0 0)
-		(uuid "a34ccbda-762c-4be3-ac42-8f265884e6e2")
-	)
-	(junction
-		(at 160.02 322.58)
-		(diameter 0)
-		(color 0 0 0 0)
-		(uuid "6307663a-fec3-4fdc-b200-a2d45a65a001")
-	)
-	(junction
-		(at 558.8 58.42)
-		(diameter 0)
-		(color 0 0 0 0)
-		(uuid "560dd695-fc4e-4ff6-8b50-a3973da95055")
-	)
-	(junction
-		(at 48.26 53.34)
-		(diameter 0)
-		(color 0 0 0 0)
-		(uuid "332e1ef0-f77d-4a76-826b-72fad77c305c")
+		(uuid "c0f6d62b-791e-4c25-8d6d-73666a9baa71")
 	)
 	(junction
 		(at 55.88 53.34)
@@ -33893,16 +33970,10 @@
 		(uuid "3e8f800a-87c5-483d-91f2-40bf3178b3c7")
 	)
 	(junction
-		(at 488.95 237.49)
+		(at 48.26 53.34)
 		(diameter 0)
 		(color 0 0 0 0)
-		(uuid "54f67cf7-ce94-43cd-9539-45050111a48c")
-	)
-	(junction
-		(at 388.62 327.66)
-		(diameter 0)
-		(color 0 0 0 0)
-		(uuid "fc587719-c815-49d8-a017-9217efa72deb")
+		(uuid "332e1ef0-f77d-4a76-826b-72fad77c305c")
 	)
 	(junction
 		(at 91.44 102.87)
@@ -33923,16 +33994,28 @@
 		(uuid "41c84140-13b7-416b-9b5a-871de4b9c148")
 	)
 	(junction
-		(at 483.87 69.85)
+		(at 314.96 302.26)
 		(diameter 0)
 		(color 0 0 0 0)
-		(uuid "6607cd53-e8e3-4d9b-a65c-624664ec5f5f")
+		(uuid "8d21dcc9-64dd-4bbc-984b-cfceec7b5bf8")
 	)
 	(junction
-		(at 502.92 200.66)
+		(at 558.8 58.42)
 		(diameter 0)
 		(color 0 0 0 0)
-		(uuid "5e29039a-295e-4b41-bcae-d28cd393e0ef")
+		(uuid "560dd695-fc4e-4ff6-8b50-a3973da95055")
+	)
+	(junction
+		(at 398.78 200.66)
+		(diameter 0)
+		(color 0 0 0 0)
+		(uuid "fb67fda0-f5f8-421b-855d-9b5e023c70bc")
+	)
+	(junction
+		(at 398.78 180.34)
+		(diameter 0)
+		(color 0 0 0 0)
+		(uuid "98c3a918-c95c-4ec3-afa7-521c36a88168")
 	)
 	(junction
 		(at 502.92 180.34)
@@ -33941,16 +34024,16 @@
 		(uuid "bbf95d22-37c5-4fd4-b306-74bd94ff30d3")
 	)
 	(junction
-		(at 322.58 113.03)
+		(at 502.92 200.66)
 		(diameter 0)
 		(color 0 0 0 0)
-		(uuid "3d37da29-ec64-4974-a469-70068f455ca1")
+		(uuid "5e29039a-295e-4b41-bcae-d28cd393e0ef")
 	)
 	(junction
-		(at 53.34 322.58)
+		(at 236.22 114.3)
 		(diameter 0)
 		(color 0 0 0 0)
-		(uuid "a0e14ee9-ee69-4930-ac64-5666652304da")
+		(uuid "2fcdba67-a8dc-4923-920f-456f428b2da2")
 	)
 	(junction
 		(at 152.4 298.45)
@@ -33971,16 +34054,10 @@
 		(uuid "098bd2eb-969f-4ca8-b27f-3a9c923d1c52")
 	)
 	(junction
-		(at 368.3 306.07)
+		(at 488.95 237.49)
 		(diameter 0)
 		(color 0 0 0 0)
-		(uuid "056075d1-ef0c-4559-8be4-62f737c0b22b")
-	)
-	(junction
-		(at 355.6 306.07)
-		(diameter 0)
-		(color 0 0 0 0)
-		(uuid "46b8120f-fd51-466b-86ae-c06cd5cde609")
+		(uuid "54f67cf7-ce94-43cd-9539-45050111a48c")
 	)
 	(junction
 		(at 58.42 185.42)
@@ -33995,40 +34072,46 @@
 		(uuid "c9fa9a2d-1869-4644-a62e-cef467ad180f")
 	)
 	(junction
-		(at 67.31 217.17)
-		(diameter 0)
-		(color 0 0 0 0)
-		(uuid "32a559c1-30f6-47da-8089-e219f2ce2b3e")
-	)
-	(junction
 		(at 38.1 217.17)
 		(diameter 0)
 		(color 0 0 0 0)
 		(uuid "03b54150-3c06-4446-8b67-ccee647fe20f")
 	)
 	(junction
-		(at 469.9 180.34)
+		(at 67.31 217.17)
 		(diameter 0)
 		(color 0 0 0 0)
-		(uuid "9a0ee961-691f-455e-be6d-ed65bb2b618b")
+		(uuid "32a559c1-30f6-47da-8089-e219f2ce2b3e")
 	)
 	(junction
-		(at 469.9 203.2)
+		(at 351.79 345.44)
 		(diameter 0)
 		(color 0 0 0 0)
-		(uuid "fcca1c45-a7a0-4ed2-aadc-0cf4859ad620")
+		(uuid "420b1295-67a1-400a-b319-b30c9acb4470")
 	)
 	(junction
-		(at 213.36 322.58)
+		(at 355.6 306.07)
 		(diameter 0)
 		(color 0 0 0 0)
-		(uuid "966acaa8-73cd-49dc-951b-6fb15385ca5e")
+		(uuid "46b8120f-fd51-466b-86ae-c06cd5cde609")
 	)
 	(junction
-		(at 236.22 114.3)
+		(at 368.3 306.07)
 		(diameter 0)
 		(color 0 0 0 0)
-		(uuid "2fcdba67-a8dc-4923-920f-456f428b2da2")
+		(uuid "056075d1-ef0c-4559-8be4-62f737c0b22b")
+	)
+	(junction
+		(at 322.58 113.03)
+		(diameter 0)
+		(color 0 0 0 0)
+		(uuid "3d37da29-ec64-4974-a469-70068f455ca1")
+	)
+	(junction
+		(at 483.87 69.85)
+		(diameter 0)
+		(color 0 0 0 0)
+		(uuid "6607cd53-e8e3-4d9b-a65c-624664ec5f5f")
 	)
 	(junction
 		(at 106.68 322.58)
@@ -34037,10 +34120,16 @@
 		(uuid "afd72549-9a1e-4b56-8d0d-9cc88c0dcd6f")
 	)
 	(junction
-		(at 300.99 182.88)
+		(at 363.22 203.2)
 		(diameter 0)
 		(color 0 0 0 0)
-		(uuid "694243c7-bfed-4d2d-99a1-4321250f8c55")
+		(uuid "759b4aac-a1bc-460f-8eee-fda17dae94f4")
+	)
+	(junction
+		(at 363.22 180.34)
+		(diameter 0)
+		(color 0 0 0 0)
+		(uuid "5a68bba2-1880-4c3a-b039-68235a197f28")
 	)
 	(junction
 		(at 266.7 322.58)
@@ -34049,10 +34138,22 @@
 		(uuid "6680132f-fc5e-4991-b18b-2f302e421dcf")
 	)
 	(junction
-		(at 481.33 104.14)
+		(at 377.19 231.14)
 		(diameter 0)
 		(color 0 0 0 0)
-		(uuid "cd1e7e63-f0e8-40bb-a1f4-345e821458bb")
+		(uuid "f1c6271e-5515-4cc8-9ecc-e96804a7009c")
+	)
+	(junction
+		(at 165.1 220.98)
+		(diameter 0)
+		(color 0 0 0 0)
+		(uuid "a34ccbda-762c-4be3-ac42-8f265884e6e2")
+	)
+	(junction
+		(at 300.99 182.88)
+		(diameter 0)
+		(color 0 0 0 0)
+		(uuid "694243c7-bfed-4d2d-99a1-4321250f8c55")
 	)
 	(label "PIC_TP4_C41"
 		(at 416.56 111.76 0)
@@ -34504,6 +34605,16 @@
 		)
 		(uuid "bb24cd50-772e-41b6-a644-da8624d83cf4")
 	)
+	(label "RX_A_FILTER"
+		(at 436.88 200.66 0)
+		(effects
+			(font
+				(size 0.762 0.762)
+			)
+			(justify left bottom)
+		)
+		(uuid "f5b6c626-3dfb-4e09-b1fc-8f59d3ef6db8")
+	)
 	(label "H_BUTTON"
 		(at 558.8 58.42 0)
 		(effects
@@ -34653,6 +34764,16 @@
 			(justify left bottom)
 		)
 		(uuid "85e2179b-9b89-456d-8932-cc71fd3c7b5b")
+	)
+	(label "RX_A_FILTER"
+		(at 322.58 58.42 0)
+		(effects
+			(font
+				(size 0.762 0.762)
+			)
+			(justify left bottom)
+		)
+		(uuid "2fb7038f-d491-41ef-b411-fdfc35820b0a")
 	)
 	(label "PIC_RA1_RX_REF"
 		(at 287.02 60.96 0)
@@ -35084,6 +35205,16 @@
 		)
 		(uuid "1252745b-06f6-4144-af70-99e117c50cee")
 	)
+	(label "H_MOTOR_A"
+		(at 481.33 104.14 0)
+		(effects
+			(font
+				(size 0.762 0.762)
+			)
+			(justify left bottom)
+		)
+		(uuid "b9b86cf7-c98d-4fc0-998f-ef75d7430f08")
+	)
 	(label "VSYS"
 		(at 430.53 41.91 0)
 		(effects
@@ -35354,16 +35485,6 @@
 		)
 		(uuid "486b5fb8-9371-4443-a769-42fd19a69fe0")
 	)
-	(label "PIC_TP4_C41"
-		(at 198.12 76.2 0)
-		(effects
-			(font
-				(size 0.762 0.762)
-			)
-			(justify left bottom)
-		)
-		(uuid "bf400a70-223b-489b-a54d-d0e24a0b8c8b")
-	)
 	(label "VREF"
 		(at 464.82 198.12 0)
 		(effects
@@ -35373,6 +35494,26 @@
 			(justify left bottom)
 		)
 		(uuid "bd0fda3e-cb38-4d8a-b159-13875ef9a24b")
+	)
+	(label "H_MOTOR_A"
+		(at 471.17 55.88 0)
+		(effects
+			(font
+				(size 0.762 0.762)
+			)
+			(justify left bottom)
+		)
+		(uuid "93a8ee93-a8ff-4778-b430-9b73469a92ad")
+	)
+	(label "PIC_TP4_C41"
+		(at 198.12 76.2 0)
+		(effects
+			(font
+				(size 0.762 0.762)
+			)
+			(justify left bottom)
+		)
+		(uuid "bf400a70-223b-489b-a54d-d0e24a0b8c8b")
 	)
 	(label "H_BAT_SENSE"
 		(at 355.6 90.17 0)
@@ -35397,8 +35538,8 @@
 	(title_block
 		(title "PetSafe 100-1339 R03 A | single-sheet reconstruction")
 		(date "2026-10-14")
-		(rev "0.9.37")
+		(rev "0.9.39")
 		(company "KiCad 10 libraries + four datasheet symbols | MCP authoring")
-		(comment 1 "C11-ANT2 measured; tuning-device roles remain open.")
+		(comment 1 "RA0-TP6 and TP14-OUTA measured; operating qualifications remain.")
 	)
 )

@@ -1,0 +1,21 @@
+{
+  "date": "2026-10-14",
+  "model": "PPA19-16811",
+  "model_evidence": {
+    "file": "photos/user_annotations/packaging_PPA19-16811_20261014.png",
+    "sha256": "4a6d6f217c8c6ecc3b5946308293ccde4228ff765075099789dd7bd4eac238c4"
+  },
+  "official_product_page": "https://support.petsafe.net/product-support/microchip-cat-door/",
+  "manual_url": "https://cdn.sanity.io/files/d075r9p6/production/f44aec4fa5fc6707478b757fdf49958e14a8cf00.pdf",
+  "manual_title": "400-2125-19-4 Quick Start Guide",
+  "manual_location": "English Basic Operation table, printed page 7",
+  "support_url": "https://support.petsafe.net/articles/my-petsafe-microchip-cat-door-is-blinking-red/",
+  "findings": {
+    "low_battery": "Red flash every 10 seconds.",
+    "error": "Continuous rapid red flashing; exact flash frequency not specified.",
+    "normal_battery_insertion": "Three quick green flashes; automatic mode.",
+    "reset_caution": "The separate 15-second button factory reset erases programmed chip IDs. No factory reset requested."
+  },
+  "interpretation": "User approximately 1-Hz red blink is closer to the error pattern than the 10-second low-battery pattern. This does not diagnose a failed component or prove an exact 1-Hz code. Complete antenna/motor bench configuration and startup calibration conditions still matter.",
+  "action": "Record state without factory reset or changing the existing PIC configuration. Resolve TP14 voltage conflict, then review receiver/reference behavior."
+}

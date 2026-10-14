@@ -61,6 +61,34 @@ assert 'RB0/V026 to VREF.' not in via_intro and 'TP104, V026/PIC21' not in via_i
 checklist=(ROOT/'docs/FINISHING_CHECKLIST.html').read_text(encoding='utf-8')
 for i in ids:assert f'id="{i}"' in checklist
 measurements=read('evidence/finishing_measurements.json')
+ra0=read('evidence/ra0_tp6_connection_v0938.json')
+b59=ra0['measurement']
+assert (b59['id'],b59['from'],b59['to'],b59['resistance_ohms'])==('B59','A0','T6',1.5)
+assert b59['shorted_probe_ohms'] is None and b59['stability'] is None
+assert b59 in measurements['completed_tests'] and all(t['id']!='B59' for t in measurements['tests'])
+assert len({members[e] for e in ['C25.1','U4.2','TP6.1','R27.1','C18.2']})==1
+assert len({members[e] for e in ['TP6.1','U3.1','C18.1','C25.2','C26.1']})==5
+assert members['U3.1']==members['R27.2']
+assert 'PIC_RA0_FILTER' not in {n['net'] for n in m['nets']} and len(m['nets'])==82
+for site in read('evidence/via_audit.json')['sites']:
+    if site['id'] in {'V031','V072'}:
+        assert site['net']=='RX_A_FILTER' and site['joined_vias']==['V031','V072']
+for path,digest in ra0['source_sha256'].items():assert hashlib.sha256((ROOT/path).read_bytes()).hexdigest()==digest
+supply=read('evidence/supply_baseline_results_20261014.json')
+assert supply['electrical_change'] is False
+assert supply['measurements'][0]['native_endpoint']=='TP14.1'
+assert 'DISPUTED' in supply['measurements'][0]['net_assignment_status']
+assert all(r in measurements['completed_tests'] for r in supply['measurements'])
+assert not {r['id'] for r in supply['measurements']}&{r['id'] for r in measurements['tests']}
+tp14=read('evidence/tp14_motor_output_correction_v0939.json')
+assert tp14['measured_pair']==['TP14.1','U5.8'] and tp14['measured_ohms']==1.5
+assert tp14['measurement'] in measurements['completed_tests']
+assert members['TP14.1']==members['R43.2']==members['U5.8']==members['J5.1']
+assert len({members[e] for e in ['TP14.1','Q1.1','Q1.2','Q1.3','U4.8']})==5
+assert next(s for s in read('evidence/via_audit.json')['sites'] if s['id']=='V015')['net']=='H_MOTOR_A'
+manual=read('evidence/product_manual_led_review_20261014.json')
+assert manual['model']=='PPA19-16811'
+pack=manual['model_evidence'];assert hashlib.sha256((ROOT/pack['file']).read_bytes()).hexdigest()==pack['sha256']
 antenna=read('evidence/antenna_outer_rail_results_20261014.json')
 outer=read('evidence/antenna_outer_rail_correction_v0937.json')
 assert antenna['status']=='C11_ANT2_CONNECTION_SUPPORTED'

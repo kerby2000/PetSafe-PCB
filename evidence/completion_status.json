@@ -1,7 +1,7 @@
 {
   "date": "2026-10-14",
-  "revision": "v0.9.37",
-  "review_revision": "v0.9.37",
+  "revision": "v0.9.39",
+  "review_revision": "v0.9.39",
   "interpretation": "Every catalog entry is drawn. Hardware connectivity, values and identities are only partially verified. No routed PCB exists.",
   "catalog_entries": 148,
   "physical_pins": 349,
@@ -69,8 +69,8 @@
   "erc_by_type": {
     "pin_to_pin": 1
   },
-  "modeled_nets": 83,
-  "schematic_sha256": "eb20c2a81dee401e608590234b55c94a843435d94421836c99ebcee7ac1d44ea",
+  "modeled_nets": 82,
+  "schematic_sha256": "87faf8d1bd6df103352c95404d0ef3eaf904c7dbc5ba1bd3149667cc80818ec3",
   "known_identified_ICs_needing_new_symbols": [],
   "complete_symbols_for_selected_candidates": true,
   "available_instruments": [
@@ -119,27 +119,27 @@
     },
     {
       "id": "E06",
-      "area": "PIC local branches: RA0/V031, TP11 and TP17",
-      "gap": "RA0/V031 has no established signal source. TP6/R27/V072 is a specific hidden-link candidate. RC3/TP11 and RC7/TP17 may be test-only branches, but an inner-layer continuation cannot be excluded from the photographs; test-only purpose remains an inference.",
-      "method": "B59, unpowered: C25 signal end (PIC2/RA0/V031) to TP6 (R27/V072), resistance in ohms or OL. Both are local signal branches with no established onward endpoint. Do not repeat TP16-to-TP11/TP17. No additional RC3/RC7 pair is proposed without evidence."
+      "area": "PIC test branches: TP11 and TP17",
+      "gap": "Only the possibility of additional inner-layer connections on RC3/TP11 and RC7/TP17 remains. A test-only purpose is plausible but not established by photographs.",
+      "method": "No justified new continuity pair is identified. Retain the two known PIC-to-test-point routes and the explicit inner-layer limitation; do not repeat TP16-to-TP11/TP17. Continue the prepared supply-voltage batch for the operating issues."
     },
     {
       "id": "E07",
       "area": "PIR: Q2 behavior and operating supply",
-      "gap": "Q2 terminal functions, signal behavior and actual U6/PIR operating voltage remain unverified.",
-      "method": "Later powered check: record U6 output/J3.1 voltage and compare J3.2 raw signal with PIC21/TP16 as PIR changes state. Agent retains the measured connectivity; no repeat connector or NC-pad checks."
+      "gap": "Q2 terminal functions, PIR raw-signal behavior and PIC input response remain unverified. The loaded PIR supply is established at 3.3 V in the reported state; transients and other states are not characterized.",
+      "method": "After the receiver supply check, compare J3.2 raw signal and TP16/PIC21 as PIR state changes. Do not repeat the 3.3 V baseline or established connector continuity."
     },
     {
       "id": "E08",
       "area": "Receiver and Q7 operating behavior",
-      "gap": "Q7 transistor pin roles/supply switching, receiver gain/filter response and the functional MCU interface are unverified. H_RX_DETECT is only a series junction, not proof of a missing output wire. D3/R42-to-PIC25/RB4 wiring is established; its functional role belongs to receiver/Q1 operating validation, not an assumed missing wire.",
-      "method": "Do not invent another detector wire. In one powered session measure VDD, U3 pin8, VREF and U3 outputs pins1/7, idle and active. Interpret waveforms only after critical capacitor values are recovered."
+      "gap": "Q7 transistor pin roles/supply switching, receiver gain/filter response and the functional MCU interface are unverified. H_RX_DETECT is only a series junction, not proof of a missing output wire. D3/R42-to-PIC25/RB4 wiring is established; its functional role belongs to receiver/Q1 operating validation, not an assumed missing wire. VREF at 0 V must be interpreted against PIC/receiver state; receiver supply and amplifier output voltages remain unmeasured.",
+      "method": "B62: red TP5 receiver-supply test point to black GND, DC volts in the same red-blinking state. This distinguishes absent receiver supply from a bias-path issue; no baseline rail repeats."
     },
     {
       "id": "E09",
       "area": "Supply voltages and Q1 control",
-      "gap": "Actual voltages and Q1 gate behavior have not been measured. Candidate regulator ratings are not measured board voltages. R3/R4/C28-to-PIC24/RB3 wiring is modeled; its sensing/control role is not yet verified.",
-      "method": "Later powered session using the original battery: BATTERY+, VSYS, VDD, VREF, U6 output, Q1 gate and switched receiver supply, idle and active. Keep Q8 timing with E03."
+      "gap": "Q1 control behavior, motor-output states, the path giving 516 ohm from OUTA to Q1 gate, zero VREF and the red-flashing state remain unresolved. R3/R4/C28-to-RB3 functional role is inferred.",
+      "method": "First B62: TP5 receiver supply to GND in the same powered state. Then choose operating-state checks for Q1 and the bridge, using the corrected TP14/OUTA assignment; no repeat continuity requested."
     },
     {
       "id": "E10",
@@ -178,7 +178,7 @@
       ],
       "priority": 1,
       "state": "open",
-      "known": "C5/C6 parallel wiring and Q8 ground/output joins are established. B37 P-F = 1 ohm supports Q8.T2/native2 to C6.1 on H_RF_VDD; no fresh baseline or stability statement supplied. SIL3724A and the U2 inverter remain candidates.",
+      "known": "C5/C6 parallel wiring and Q8 ground/output joins are established. B37 P-F = 1 ohm supports Q8.T2/native2 to C6.1 on H_RF_VDD; no fresh baseline or stability statement supplied. SIL3724A and the U2 inverter remain candidates. B54/B55 measured VSYS and RF supply at 6.3 V in the red-blinking bench state.",
       "unknown": "Candidate gate/source roles, P-channel turn-off margin and RF timing remain unverified. The source-supply continuity question no longer requires a bench check.",
       "next_action": "Later operating check on the original hardware: establish source/gate voltages and actual gate-to-source drive, then RF timing if suitable equipment is available. Do not repeat P-F continuity.",
       "closed_when": "Source path and actual gate-to-source drive are supported; C6 value is handled by V01.",
@@ -194,7 +194,8 @@
       "supporting_evidence": [
         "docs/history/v0.9.30-before-finalization/evidence/remaining_work.json",
         "evidence/q3_deferred_q8_followup_20261009.json",
-        "evidence/q8_supply_result_20261009.json"
+        "evidence/q8_supply_result_20261009.json",
+        "evidence/supply_baseline_results_20261014.json"
       ],
       "owner": "Agent evidence review; targeted owner test only as listed",
       "category": "connectivity/behavior"
@@ -257,35 +258,27 @@
     },
     {
       "id": "E06",
-      "area": "PIC local branches: RA0/V031, TP11 and TP17",
+      "area": "PIC test branches: TP11 and TP17",
       "refs": [
         "U4",
-        "C25",
-        "C26",
-        "D1",
         "TP11",
-        "TP17",
-        "R6",
-        "R7"
+        "TP17"
       ],
       "priority": 2,
       "state": "open",
-      "known": "PIC2/RA0 reaches C25.1 and V031; PIC14/RC3 reaches TP11; PIC18/RC7 reaches TP17. Front/rear photo comparison confirms these local routes and shows no onward rear-surface trace at the corresponding sites. TP11/TP17 are valid test-point endpoints, not dangling wires.",
-      "unknown": "RA0/V031 has no established signal source. TP6/R27/V072 is a specific hidden-link candidate. RC3/TP11 and RC7/TP17 may be test-only branches, but an inner-layer continuation cannot be excluded from the photographs; test-only purpose remains an inference.",
-      "next_action": "B59, unpowered: C25 signal end (PIC2/RA0/V031) to TP6 (R27/V072), resistance in ohms or OL. Both are local signal branches with no established onward endpoint. Do not repeat TP16-to-TP11/TP17. No additional RC3/RC7 pair is proposed without evidence.",
-      "closed_when": "Resolve or explicitly bound RA0 onward routing and the TP11/TP17 hidden-layer limitation. Keep test-only purpose qualified unless supported; GPIO firmware roles are handled separately from missing copper.",
+      "known": "PIC14/RC3 reaches TP11; PIC18/RC7 reaches TP17. Front/rear photos show no onward surface trace at those test points. Both are valid endpoints, not dangling wires. RA0/C25 to TP6 measured 1.5 ohm in B59 and is now resolved on RX_A_FILTER.",
+      "unknown": "Only the possibility of additional inner-layer connections on RC3/TP11 and RC7/TP17 remains. A test-only purpose is plausible but not established by photographs.",
+      "next_action": "No justified new continuity pair is identified. Retain the two known PIC-to-test-point routes and the explicit inner-layer limitation; do not repeat TP16-to-TP11/TP17. Continue the prepared supply-voltage batch for the operating issues.",
+      "closed_when": "Additional continuation is traced, or physical layer evidence establishes these are test-only branches. Until then, reproduce the known local routes without asserting that hidden continuations are absent.",
       "open_pads": [],
       "nets": [
-        "PIC_RA0_FILTER",
         "PIC_RC3",
-        "PIC_RC7_TP17",
-        "RF_MONITOR_PAD",
-        "H_RF_IN_A",
-        "H_RF_IN_B"
+        "PIC_RC7_TP17"
       ],
       "supporting_evidence": [
         "docs/history/v0.9.30-before-finalization/evidence/remaining_work.json",
-        "evidence/e06_photo_review_20261014.json"
+        "evidence/e06_photo_review_20261014.json",
+        "evidence/ra0_tp6_connection_v0938.json"
       ],
       "owner": "Agent evidence review; targeted owner test only as listed",
       "category": "connectivity/behavior"
@@ -306,9 +299,9 @@
       ],
       "priority": 2,
       "state": "open",
-      "known": "J3/U7 ordering, U6 external pads and PIC21/TP16/Q2 output routing are established. U6 pin5 is tied to VIN; pin4 is unused.",
-      "unknown": "Q2 terminal functions, signal behavior and actual U6/PIR operating voltage remain unverified.",
-      "next_action": "Later powered check: record U6 output/J3.1 voltage and compare J3.2 raw signal with PIC21/TP16 as PIR changes state. Agent retains the measured connectivity; no repeat connector or NC-pad checks.",
+      "known": "J3/U7 ordering, U6 external pads and PIC21/TP16/Q2 output routing are established. U6 pin5 is tied to VIN; pin4 is unused. B58 measured 3.3 V at J3.1 with PIR connected; logic VDD was 4.5 V.",
+      "unknown": "Q2 terminal functions, PIR raw-signal behavior and PIC input response remain unverified. The loaded PIR supply is established at 3.3 V in the reported state; transients and other states are not characterized.",
+      "next_action": "After the receiver supply check, compare J3.2 raw signal and TP16/PIC21 as PIR state changes. Do not repeat the 3.3 V baseline or established connector continuity.",
       "closed_when": "Q2 signal behavior and U6 output are supported by device or operating evidence.",
       "open_pads": [],
       "nets": [
@@ -320,7 +313,8 @@
       ],
       "supporting_evidence": [
         "docs/history/v0.9.30-before-finalization/evidence/remaining_work.json",
-        "evidence/r33_withdrawal_v0932.json"
+        "evidence/r33_withdrawal_v0932.json",
+        "evidence/supply_baseline_results_20261014.json"
       ],
       "owner": "Agent evidence review; targeted owner test only as listed",
       "category": "connectivity/behavior"
@@ -345,14 +339,16 @@
         "C42",
         "C23",
         "D3",
-        "R42"
+        "R42",
+        "C25",
+        "R27"
       ],
       "priority": 2,
       "state": "open",
-      "known": "U3 input returns and R23/R42/C40, C23/R25/R48 and DNP R47/C42 paths are reconciled. VREF supplies U3 pin5.",
-      "unknown": "Q7 transistor pin roles/supply switching, receiver gain/filter response and the functional MCU interface are unverified. H_RX_DETECT is only a series junction, not proof of a missing output wire. D3/R42-to-PIC25/RB4 wiring is established; its functional role belongs to receiver/Q1 operating validation, not an assumed missing wire.",
-      "next_action": "Do not invent another detector wire. In one powered session measure VDD, U3 pin8, VREF and U3 outputs pins1/7, idle and active. Interpret waveforms only after critical capacitor values are recovered.",
-      "closed_when": "Receiver power and bias are supported and the existing PIC25/RA1 interfaces have a documented role; no presumed output destination is used as a closure criterion.",
+      "known": "U3 input returns and R23/R42/C40, C23/R25/R48 and DNP R47/C42 paths are reconciled. VREF supplies U3 pin5. B59 C25.1-TP6.1 = 1.5 ohm establishes the receiver filter connection to PIC2/RA0; R27 remains between that node and U3.1. B57 measured the printed VREF test point at 0 V while the red LED blinked about once per second.",
+      "unknown": "Q7 transistor pin roles/supply switching, receiver gain/filter response and the functional MCU interface are unverified. H_RX_DETECT is only a series junction, not proof of a missing output wire. D3/R42-to-PIC25/RB4 wiring is established; its functional role belongs to receiver/Q1 operating validation, not an assumed missing wire. VREF at 0 V must be interpreted against PIC/receiver state; receiver supply and amplifier output voltages remain unmeasured.",
+      "next_action": "B62: red TP5 receiver-supply test point to black GND, DC volts in the same red-blinking state. This distinguishes absent receiver supply from a bias-path issue; no baseline rail repeats.",
+      "closed_when": "Receiver supply, bias and the existing RA0/RA1/RB4 interfaces have supported operating roles; no presumed extra output wire is required.",
       "open_pads": [],
       "nets": [
         "H_RX_ENABLE",
@@ -370,7 +366,9 @@
         "H_D3_SIGNAL"
       ],
       "supporting_evidence": [
-        "docs/history/v0.9.30-before-finalization/evidence/remaining_work.json"
+        "docs/history/v0.9.30-before-finalization/evidence/remaining_work.json",
+        "evidence/ra0_tp6_connection_v0938.json",
+        "evidence/supply_baseline_results_20261014.json"
       ],
       "owner": "Agent evidence review; targeted owner test only as listed",
       "category": "connectivity/behavior"
@@ -388,13 +386,14 @@
         "U5",
         "R3",
         "R4",
-        "C28"
+        "C28",
+        "TP14"
       ],
       "priority": 2,
       "state": "open",
-      "known": "BATTERY+, post-Q1 VSYS, VDD and VREF are separate nets. L1/L2 supply sides share VSYS. Five ERC source declarations now describe existing supply paths.",
-      "unknown": "Actual voltages and Q1 gate behavior have not been measured. Candidate regulator ratings are not measured board voltages. R3/R4/C28-to-PIC24/RB3 wiring is modeled; its sensing/control role is not yet verified.",
-      "next_action": "Later powered session using the original battery: BATTERY+, VSYS, VDD, VREF, U6 output, Q1 gate and switched receiver supply, idle and active. Keep Q8 timing with E03.",
+      "known": "VSYS/RF 6.3 V, printed VDD 4.5 V, PIR supply 3.3 V with PIR attached; VREF 0 V and red LED approximately 1 Hz. TP14 is now established on U5.8/OUTA at 1.5 ohm; R43.2/V015 follows its existing TP14 association. BATTERY+ stays separate. TP14-Q1 gate measured 516 ohm.",
+      "unknown": "Q1 control behavior, motor-output states, the path giving 516 ohm from OUTA to Q1 gate, zero VREF and the red-flashing state remain unresolved. R3/R4/C28-to-RB3 functional role is inferred.",
+      "next_action": "First B62: TP5 receiver supply to GND in the same powered state. Then choose operating-state checks for Q1 and the bridge, using the corrected TP14/OUTA assignment; no repeat continuity requested.",
       "closed_when": "Actual supply levels and control behavior are recorded without merging battery, VSYS or filtered branches.",
       "open_pads": [],
       "nets": [
@@ -408,7 +407,10 @@
         "PIC_RB3_RETURN"
       ],
       "supporting_evidence": [
-        "docs/history/v0.9.30-before-finalization/evidence/remaining_work.json"
+        "docs/history/v0.9.30-before-finalization/evidence/remaining_work.json",
+        "evidence/supply_baseline_results_20261014.json",
+        "evidence/product_manual_led_review_20261014.json",
+        "evidence/tp14_motor_output_correction_v0939.json"
       ],
       "owner": "Agent evidence review; targeted owner test only as listed",
       "category": "connectivity/behavior"
@@ -545,8 +547,8 @@
         "E10",
         "I01"
       ],
-      "summary": "S1 contacts and the front capacitor-bank ANT2 connection are established. Q3 stays fitted with identification deferred. Three local-only PIC branches, candidate device roles and powered behavior remain.",
-      "next_action": "First B59: one unpowered RA0/C25-to-TP6 candidate test after front/rear photo review. Six powered supply readings are prepared for afterward. Q3 stays fitted."
+      "summary": "S1 contacts and the front capacitor-bank ANT2 connection are established. Q3 stays fitted with identification deferred. Two local-only PIC branches, candidate device roles and powered behavior remain.",
+      "next_action": "RA0-TP6 and TP14-OUTA are now resolved. B62 checks receiver supply at TP5 to interpret zero VREF. TP11/TP17 hidden continuation remains qualified; Q3 stays fitted."
     },
     {
       "id": "F2",
@@ -575,8 +577,8 @@
     {
       "name": "BATTERY+",
       "board_label": "BATTERY (+)",
-      "path": "Battery positive -> Q1 single pad/native3 (candidate drain); TP14/R43.2 on the raw side.",
-      "basis": "User battery-path report; TP14 raw-side placement from photo plus V015-TP14/R43.2 confirmation."
+      "path": "Actual positive battery terminal -> Q1 single pad/native3 (candidate drain). TP14 is OUTA, separate from this rail.",
+      "basis": "User battery-path report. TP14-U5.8 measured 1.5 ohm; BP-TP14 measured 6.3 V, rejecting the former battery-side photo assignment."
     },
     {
       "name": "VSYS",

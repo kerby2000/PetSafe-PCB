@@ -1,6 +1,6 @@
 {
   "board": "100-1339 R03 A",
-  "revision": "v0.9.37",
+  "revision": "v0.9.39",
   "status": "PARTIALLY VERIFIED RECONSTRUCTION; USER MEASUREMENTS, PHOTO TRACES AND QUALIFIED HYPOTHESES",
   "components": [
     {
@@ -22,7 +22,7 @@
       "footprint": "Resistor_SMD:R_0603_1608Metric",
       "footprint_confidence": "medium - revised family estimate",
       "footprint_basis": "User reports R8 approximately 1.6 x 0.77 mm, consistent with 0603 (1608 metric). Repeated fitted resistor family revised using R8 as a scale reference. This individual body has not been measured; earlier 0805 estimate superseded.",
-      "via_evidence": "v0.9.9: User corrects raw battery+ versus post-Q1 rail. BATP -> Q1.S (single physical pad/native3, candidate drain); Q1.L/native2 (candidate source) -> U5.4/V011-V014. These are distinct copper nets, connected through Q1. IMG_2438 also supports TP14 on battery+; V015/R43.2-TP14 user confirmation retained. Q1.R/native1 is candidate gate at R44.2. Photo S means SINGLE, not MOSFET source."
+      "via_evidence": "v0.9.9: User corrects raw battery+ versus post-Q1 rail. BATP -> Q1.S (single physical pad/native3, candidate drain); Q1.L/native2 (candidate source) -> U5.4/V011-V014. These are distinct copper nets, connected through Q1. TP14/R43.2/V015 is OUTA/H_MOTOR_A, supported by TP14-U5.8 = 1.5 ohm; the earlier battery-side photo interpretation is withdrawn. Q1.R/native1 is candidate gate at R44.2. Photo S means SINGLE, not MOSFET source."
     },
     {
       "ref": "R4",
@@ -794,8 +794,10 @@
       "footprint": "Resistor_SMD:R_0603_1608Metric",
       "footprint_confidence": "medium - revised family estimate",
       "footprint_basis": "User reports R8 approximately 1.6 x 0.77 mm, consistent with 0603 (1608 metric). Repeated fitted resistor family revised using R8 as a scale reference. This individual body has not been measured; earlier 0805 estimate superseded.",
-      "via_evidence": "v0.9.9: User corrects raw battery+ versus post-Q1 rail. BATP -> Q1.S (single physical pad/native3, candidate drain); Q1.L/native2 (candidate source) -> U5.4/V011-V014. These are distinct copper nets, connected through Q1. IMG_2438 also supports TP14 on battery+; V015/R43.2-TP14 user confirmation retained. Q1.R/native1 is candidate gate at R44.2. Photo S means SINGLE, not MOSFET source.",
-      "v094_summary": "v0.9.4: lower pad2 reaches V015, not V011-V014. User explicitly rejects the old Q1.L-R43.2 photo-derived connection; withdrawn in native schematic and retained only as historical evidence."
+      "via_evidence": "v0.9.9: User corrects raw battery+ versus post-Q1 rail. BATP -> Q1.S (single physical pad/native3, candidate drain); Q1.L/native2 (candidate source) -> U5.4/V011-V014. These are distinct copper nets, connected through Q1. TP14/R43.2/V015 is OUTA/H_MOTOR_A, supported by TP14-U5.8 = 1.5 ohm; the earlier battery-side photo interpretation is withdrawn. Q1.R/native1 is candidate gate at R44.2. Photo S means SINGLE, not MOSFET source.",
+      "v094_summary": "v0.9.4: lower pad2 reaches V015, not V011-V014. User explicitly rejects the old Q1.L-R43.2 photo-derived connection; withdrawn in native schematic and retained only as historical evidence.",
+      "current_summary": "v0.9.39: TP14 to MX512H/U5 pin8 = 1.5 ohm supports OUTA/H_MOTOR_A. Established R43.2/V015-TP14 joins retained. TP14/R43.2 removed from BATTERY+ after BP-TP14 = 6.3 V. TP14-Q1.R = 516 ohm does not establish a direct join. Q1 gate and motor behavior remain qualified.",
+      "tp14_output_evidence": "evidence/tp14_motor_output_correction_v0939.json"
     },
     {
       "ref": "R44",
@@ -818,7 +820,7 @@
       "hypothesis": "Re-read existing photo crop: 18C is legible. EIA-96 code18=150, multiplierC=100: nominal15kohm. No electrical value measurement.",
       "footprint_confidence": "medium - revised family estimate",
       "footprint_basis": "User reports R8 approximately 1.6 x 0.77 mm, consistent with 0603 (1608 metric). Repeated fitted resistor family revised using R8 as a scale reference. This individual body has not been measured; earlier 0805 estimate superseded.",
-      "via_evidence": "v0.9.9: User corrects raw battery+ versus post-Q1 rail. BATP -> Q1.S (single physical pad/native3, candidate drain); Q1.L/native2 (candidate source) -> U5.4/V011-V014. These are distinct copper nets, connected through Q1. IMG_2438 also supports TP14 on battery+; V015/R43.2-TP14 user confirmation retained. Q1.R/native1 is candidate gate at R44.2. Photo S means SINGLE, not MOSFET source."
+      "via_evidence": "v0.9.9: User corrects raw battery+ versus post-Q1 rail. BATP -> Q1.S (single physical pad/native3, candidate drain); Q1.L/native2 (candidate source) -> U5.4/V011-V014. These are distinct copper nets, connected through Q1. TP14/R43.2/V015 is OUTA/H_MOTOR_A, supported by TP14-U5.8 = 1.5 ohm; the earlier battery-side photo interpretation is withdrawn. Q1.R/native1 is candidate gate at R44.2. Photo S means SINGLE, not MOSFET source."
     },
     {
       "ref": "R48",
@@ -1651,7 +1653,12 @@
         "state": "estimated",
         "source": "No individual measured value supplied; any displayed estimate is a hypothesis."
       },
-      "connection_evidence": "v0.9.17 user-annotated photo: C25 right pad/model1 -> PIC2/RA0; C26 right pad/model1 -> PIC3/RA1. Left pads/model2 are common, retaining earlier V029-GND evidence. No new numeric resistance or capacitance supplied. C26 joins the existing RA1/R28/R29/TP7 net, separate from RA0 and VREF."
+      "connection_evidence": "v0.9.17 user-annotated photo: C25 right pad/model1 -> PIC2/RA0; C26 right pad/model1 -> PIC3/RA1. Left pads/model2 are common, retaining earlier V029-GND evidence. No new numeric resistance or capacitance supplied. C26 joins the existing RA1/R28/R29/TP7 net, separate from RA0 and VREF.",
+      "current_summary": "v0.9.38: B59 C25.1 to TP6.1 = 1.5 ohm unpowered supports PIC2/RA0 on RX_A_FILTER. This joins the existing R27.1/C18.2/TP6 branch; V031/V072 associations are retained. R27 to U3.1, C18 to VREF, and C25 to GND remain component-separated. Firmware role unverified.",
+      "ra0_tp6_evidence": {
+        "source": "evidence/ra0_tp6_connection_v0938.json",
+        "test": "B59"
+      }
     },
     {
       "ref": "C26",
@@ -1704,7 +1711,7 @@
         "C27.2": "C27 photo right pad to V008/V009/V010 user GND."
       },
       "hypothesis": "Motor supply bypass across VSYS (U5 pin4 supply) and GND from user via reports/photo pad selection. VSYS is distinct from the printed VDD logic rail. Capacitance is unknown.",
-      "via_evidence": "v0.9.9: User corrects raw battery+ versus post-Q1 rail. BATP -> Q1.S (single physical pad/native3, candidate drain); Q1.L/native2 (candidate source) -> U5.4/V011-V014. These are distinct copper nets, connected through Q1. IMG_2438 also supports TP14 on battery+; V015/R43.2-TP14 user confirmation retained. Q1.R/native1 is candidate gate at R44.2. Photo S means SINGLE, not MOSFET source.",
+      "via_evidence": "v0.9.9: User corrects raw battery+ versus post-Q1 rail. BATP -> Q1.S (single physical pad/native3, candidate drain); Q1.L/native2 (candidate source) -> U5.4/V011-V014. These are distinct copper nets, connected through Q1. TP14/R43.2/V015 is OUTA/H_MOTOR_A, supported by TP14-U5.8 = 1.5 ohm; the earlier battery-side photo interpretation is withdrawn. Q1.R/native1 is candidate gate at R44.2. Photo S means SINGLE, not MOSFET source.",
       "value_evidence": {
         "state": "unknown",
         "source": "No individual measured value supplied; any displayed estimate is a hypothesis."
@@ -1864,7 +1871,7 @@
       "footprint": "Capacitor_SMD:C_0805_2012Metric",
       "footprint_confidence": "medium",
       "footprint_basis": "Photo family and body/land proportions compared with adjacent known IC lead pitch. Size is independent of capacitance, dielectric and voltage rating.",
-      "via_evidence": "v0.9.9: User corrects raw battery+ versus post-Q1 rail. BATP -> Q1.S (single physical pad/native3, candidate drain); Q1.L/native2 (candidate source) -> U5.4/V011-V014. These are distinct copper nets, connected through Q1. IMG_2438 also supports TP14 on battery+; V015/R43.2-TP14 user confirmation retained. Q1.R/native1 is candidate gate at R44.2. Photo S means SINGLE, not MOSFET source.",
+      "via_evidence": "v0.9.9: User corrects raw battery+ versus post-Q1 rail. BATP -> Q1.S (single physical pad/native3, candidate drain); Q1.L/native2 (candidate source) -> U5.4/V011-V014. These are distinct copper nets, connected through Q1. TP14/R43.2/V015 is OUTA/H_MOTOR_A, supported by TP14-U5.8 = 1.5 ohm; the earlier battery-side photo interpretation is withdrawn. Q1.R/native1 is candidate gate at R44.2. Photo S means SINGLE, not MOSFET source.",
       "value_evidence": {
         "state": "estimated",
         "source": "No individual measured value supplied; any displayed estimate is a hypothesis."
@@ -2490,7 +2497,12 @@
       "v096_summary": "v0.9.6 user working pairs: 5/RA3 V036-V108 R14; 6/RA4 V037-V102 R15; 7/RA5 V039-V097 R16; 11/RC0 V047-V091 R11. Existing RC6-R13 retained. Only 13/RC2 and 21/RB0 remain without modeled onward routes.",
       "via_evidence": "v0.9.16 CORRECTION: user confirms PIC21/RB0 -> TP16 -> Q2 single pad; TP16-VREF = 0.8 Mohm. User explicitly withdraws PIC21-VREF. PIC21/V026 belongs to H_PIR_SIG, separate from VREF. RA2/V035 and R21/V071 remain VREF. This supersedes every earlier RB0/V026-to-VREF statement.",
       "measurement_evidence": "v0.9.16 CORRECTION: user confirms PIC21/RB0 -> TP16 -> Q2 single pad; TP16-VREF = 0.8 Mohm. User explicitly withdraws PIC21-VREF. PIC21/V026 belongs to H_PIR_SIG, separate from VREF. RA2/V035 and R21/V071 remain VREF. This supersedes every earlier RB0/V026-to-VREF statement.",
-      "c25_c26_evidence": "v0.9.17 user-annotated photo: C25 right pad/model1 -> PIC2/RA0; C26 right pad/model1 -> PIC3/RA1. Left pads/model2 are common, retaining earlier V029-GND evidence. No new numeric resistance or capacitance supplied. C26 joins the existing RA1/R28/R29/TP7 net, separate from RA0 and VREF."
+      "c25_c26_evidence": "v0.9.17 user-annotated photo: C25 right pad/model1 -> PIC2/RA0; C26 right pad/model1 -> PIC3/RA1. Left pads/model2 are common, retaining earlier V029-GND evidence. No new numeric resistance or capacitance supplied. C26 joins the existing RA1/R28/R29/TP7 net, separate from RA0 and VREF.",
+      "current_summary": "v0.9.38: B59 C25.1 to TP6.1 = 1.5 ohm unpowered supports PIC2/RA0 on RX_A_FILTER. This joins the existing R27.1/C18.2/TP6 branch; V031/V072 associations are retained. R27 to U3.1, C18 to VREF, and C25 to GND remain component-separated. Firmware role unverified.",
+      "ra0_tp6_evidence": {
+        "source": "evidence/ra0_tp6_connection_v0938.json",
+        "test": "B59"
+      }
     },
     {
       "ref": "U5",
@@ -2518,7 +2530,9 @@
       "footprint_confidence": "datasheet/package candidate",
       "footprint_basis": "Existing assignment; see component identity evidence.",
       "v094_summary": "v0.9.4: user confirms INA pin2 via V016-V022 to PIC15/RC4 and INB pin3 via V019-V023 to PIC16/RC5. Control mapping established; logic VCC and motor VDD remain separate.",
-      "via_evidence": "v0.9.9: User corrects raw battery+ versus post-Q1 rail. BATP -> Q1.S (single physical pad/native3, candidate drain); Q1.L/native2 (candidate source) -> U5.4/V011-V014. These are distinct copper nets, connected through Q1. IMG_2438 also supports TP14 on battery+; V015/R43.2-TP14 user confirmation retained. Q1.R/native1 is candidate gate at R44.2. Photo S means SINGLE, not MOSFET source."
+      "via_evidence": "v0.9.9: User corrects raw battery+ versus post-Q1 rail. BATP -> Q1.S (single physical pad/native3, candidate drain); Q1.L/native2 (candidate source) -> U5.4/V011-V014. These are distinct copper nets, connected through Q1. TP14/R43.2/V015 is OUTA/H_MOTOR_A, supported by TP14-U5.8 = 1.5 ohm; the earlier battery-side photo interpretation is withdrawn. Q1.R/native1 is candidate gate at R44.2. Photo S means SINGLE, not MOSFET source.",
+      "current_summary": "v0.9.39: TP14 to MX512H/U5 pin8 = 1.5 ohm supports OUTA/H_MOTOR_A. Established R43.2/V015-TP14 joins retained. TP14/R43.2 removed from BATTERY+ after BP-TP14 = 6.3 V. TP14-Q1.R = 516 ohm does not establish a direct join. Q1 gate and motor behavior remain qualified.",
+      "tp14_output_evidence": "evidence/tp14_motor_output_correction_v0939.json"
     },
     {
       "ref": "U3",
@@ -2714,10 +2728,11 @@
       "footprint_confidence": "datasheet/package candidate",
       "footprint_basis": "SOT-23 photo and FMOS3401A datasheet package agree. Manufacturer identity remains a candidate.",
       "v094_summary": "v0.9.4: V011-V014 reach Q1.L. User explicitly requests removal of old photo-derived Q1.L-R43.2 connection. Q1.L onward destination and physical transistor role remain unresolved.",
-      "via_evidence": "v0.9.9: User corrects raw battery+ versus post-Q1 rail. BATP -> Q1.S (single physical pad/native3, candidate drain); Q1.L/native2 (candidate source) -> U5.4/V011-V014. These are distinct copper nets, connected through Q1. IMG_2438 also supports TP14 on battery+; V015/R43.2-TP14 user confirmation retained. Q1.R/native1 is candidate gate at R44.2. Photo S means SINGLE, not MOSFET source.",
+      "via_evidence": "v0.9.9: User corrects raw battery+ versus post-Q1 rail. BATP -> Q1.S (single physical pad/native3, candidate drain); Q1.L/native2 (candidate source) -> U5.4/V011-V014. These are distinct copper nets, connected through Q1. TP14/R43.2/V015 is OUTA/H_MOTOR_A, supported by TP14-U5.8 = 1.5 ohm; the earlier battery-side photo interpretation is withdrawn. Q1.R/native1 is candidate gate at R44.2. Photo S means SINGLE, not MOSFET source.",
       "v095_summary": "v0.9.5: V011-V014 reach Q1.L and user reports VDD. Which VDD rail remains to be distinguished (V064 regulated versus V001 motor supply). R43.2/V015 remains explicitly separate. No transistor polarity inferred from the supply report.",
       "datasheet": "https://www.formosams.com/upload/product/Mosfets/FMOS3401A_REV_C.pdf",
-      "current_summary": "R1A marking matches Formosa FMOS3401A datasheet p5; SOT-23 PMOS with G=1 (photo R), S=2 (photo L), D=3 (photo single S). Candidate identification, not manufacturer proof. Drain at battery+ and source at load support reverse-polarity protection; gate-control behavior not verified. Earlier MMBT3904 NPN hypothesis withdrawn."
+      "current_summary": "v0.9.39: TP14 to MX512H/U5 pin8 = 1.5 ohm supports OUTA/H_MOTOR_A. Established R43.2/V015-TP14 joins retained. TP14/R43.2 removed from BATTERY+ after BP-TP14 = 6.3 V. TP14-Q1.R = 516 ohm does not establish a direct join. Q1 gate and motor behavior remain qualified.",
+      "tp14_output_evidence": "evidence/tp14_motor_output_correction_v0939.json"
     },
     {
       "ref": "Q2",
@@ -3445,7 +3460,12 @@
       "footprint": "TestPoint:TestPoint_THTPad_D2.0mm_Drill1.0mm",
       "footprint_confidence": "low",
       "footprint_basis": "Stock plated-hole approximation from photographs. Exact drill and annular ring remain unmeasured; these are board pads, not fitted components.",
-      "v093_summary": "v0.9.3 user identifies V072 as TP6, explicitly not R22.2. Existing C18.2/R27.1 branches remain hypotheses; this report does not confirm the whole modeled RX_A_FILTER net."
+      "v093_summary": "v0.9.3 user identifies V072 as TP6, explicitly not R22.2. Existing C18.2/R27.1 branches remain hypotheses; this report does not confirm the whole modeled RX_A_FILTER net.",
+      "current_summary": "v0.9.38: B59 C25.1 to TP6.1 = 1.5 ohm unpowered supports PIC2/RA0 on RX_A_FILTER. This joins the existing R27.1/C18.2/TP6 branch; V031/V072 associations are retained. R27 to U3.1, C18 to VREF, and C25 to GND remain component-separated. Firmware role unverified.",
+      "ra0_tp6_evidence": {
+        "source": "evidence/ra0_tp6_connection_v0938.json",
+        "test": "B59"
+      }
     },
     {
       "ref": "TP7",
@@ -3525,7 +3545,9 @@
       "footprint": "TestPoint:TestPoint_THTPad_D2.0mm_Drill1.0mm",
       "footprint_confidence": "low",
       "footprint_basis": "Stock plated-hole approximation from photographs. Exact drill and annular ring remain unmeasured; these are board pads, not fitted components.",
-      "via_evidence": "v0.9.9: User corrects raw battery+ versus post-Q1 rail. BATP -> Q1.S (single physical pad/native3, candidate drain); Q1.L/native2 (candidate source) -> U5.4/V011-V014. These are distinct copper nets, connected through Q1. IMG_2438 also supports TP14 on battery+; V015/R43.2-TP14 user confirmation retained. Q1.R/native1 is candidate gate at R44.2. Photo S means SINGLE, not MOSFET source."
+      "via_evidence": "v0.9.9: User corrects raw battery+ versus post-Q1 rail. BATP -> Q1.S (single physical pad/native3, candidate drain); Q1.L/native2 (candidate source) -> U5.4/V011-V014. These are distinct copper nets, connected through Q1. TP14/R43.2/V015 is OUTA/H_MOTOR_A, supported by TP14-U5.8 = 1.5 ohm; the earlier battery-side photo interpretation is withdrawn. Q1.R/native1 is candidate gate at R44.2. Photo S means SINGLE, not MOSFET source.",
+      "current_summary": "v0.9.39: TP14 to MX512H/U5 pin8 = 1.5 ohm supports OUTA/H_MOTOR_A. Established R43.2/V015-TP14 joins retained. TP14/R43.2 removed from BATTERY+ after BP-TP14 = 6.3 V. TP14-Q1.R = 516 ohm does not establish a direct join. Q1 gate and motor behavior remain qualified.",
+      "tp14_output_evidence": "evidence/tp14_motor_output_correction_v0939.json"
     },
     {
       "ref": "TP15",
@@ -3733,7 +3755,7 @@
       "footprint": "TestPoint:TestPoint_THTPad_2.5x2.5mm_Drill1.2mm",
       "footprint_confidence": "low",
       "footprint_basis": "Stock plated-hole approximation from photographs. Exact drill and annular ring remain unmeasured; these are board pads, not fitted components.",
-      "via_evidence": "v0.9.9: User corrects raw battery+ versus post-Q1 rail. BATP -> Q1.S (single physical pad/native3, candidate drain); Q1.L/native2 (candidate source) -> U5.4/V011-V014. These are distinct copper nets, connected through Q1. IMG_2438 also supports TP14 on battery+; V015/R43.2-TP14 user confirmation retained. Q1.R/native1 is candidate gate at R44.2. Photo S means SINGLE, not MOSFET source."
+      "via_evidence": "v0.9.9: User corrects raw battery+ versus post-Q1 rail. BATP -> Q1.S (single physical pad/native3, candidate drain); Q1.L/native2 (candidate source) -> U5.4/V011-V014. These are distinct copper nets, connected through Q1. TP14/R43.2/V015 is OUTA/H_MOTOR_A, supported by TP14-U5.8 = 1.5 ohm; the earlier battery-side photo interpretation is withdrawn. Q1.R/native1 is candidate gate at R44.2. Photo S means SINGLE, not MOSFET source."
     },
     {
       "ref": "BATN",
@@ -3801,11 +3823,9 @@
       "net": "BATTERY+",
       "endpoints": [
         "Q1.S",
-        "TP14.1",
-        "R43.2",
         "BATP.1"
       ],
-      "status": "Battery+ to Q1 single pad user/photo-confirmed; TP14 copper photo-supported; R43.2 to TP14 user-confirmed",
+      "status": "Actual positive battery terminal to Q1 single pad user/photo-supported. TP14/R43.2 removed to OUTA in v0.9.39.",
       "original_fragments": []
     },
     {
@@ -3989,9 +4009,11 @@
       "net": "H_MOTOR_A",
       "endpoints": [
         "J5.A",
-        "U5.8"
+        "U5.8",
+        "R43.2",
+        "TP14.1"
       ],
-      "status": "HYPOTHESIS / retains visual fragments where listed",
+      "status": "U5.8 to J5.A retained. TP14-U5.8 = 1.5 ohm supports added TP14/R43.2; output state and motor direction unverified.",
       "original_fragments": []
     },
     {
@@ -4329,17 +4351,6 @@
       ]
     },
     {
-      "net": "PIC_RA0_FILTER",
-      "endpoints": [
-        "C25.1",
-        "U4.2"
-      ],
-      "status": "PHOTO_TRACE / not electrically measured",
-      "original_fragments": [],
-      "v07_evidence": "IMG_2436: pin2 to C25 right pad",
-      "v0917_evidence": "v0.9.17 user-annotated photo: C25 right pad/model1 -> PIC2/RA0; C26 right pad/model1 -> PIC3/RA1. Left pads/model2 are common, retaining earlier V029-GND evidence. No new numeric resistance or capacitance supplied. C26 joins the existing RA1/R28/R29/TP7 net, separate from RA0 and VREF."
-    },
-    {
       "net": "PIC_RA1_RX_REF",
       "endpoints": [
         "R28.1",
@@ -4511,8 +4522,10 @@
       "net": "RX_A_FILTER",
       "endpoints": [
         "C18.2",
+        "C25.1",
         "R27.1",
-        "TP6.1"
+        "TP6.1",
+        "U4.2"
       ],
       "status": "HYPOTHESIS / retains visual fragments where listed",
       "original_fragments": []
@@ -6938,17 +6951,6 @@
       ]
     },
     {
-      "net": "BATTERY+",
-      "a": [
-        466.09,
-        129.54
-      ],
-      "b": [
-        481.33,
-        129.54
-      ]
-    },
-    {
       "net": "VDD",
       "a": [
         210.82,
@@ -7257,17 +7259,6 @@
       ]
     },
     {
-      "net": "BATTERY+",
-      "a": [
-        481.33,
-        104.14
-      ],
-      "b": [
-        481.33,
-        129.54
-      ]
-    },
-    {
       "net": "GND",
       "a": [
         419.1,
@@ -7408,17 +7399,6 @@
       "b": [
         266.7,
         364.49
-      ]
-    },
-    {
-      "net": "BATTERY+",
-      "a": [
-        481.33,
-        104.14
-      ],
-      "b": [
-        486.41,
-        104.14
       ]
     },
     {
@@ -8104,17 +8084,6 @@
       ]
     },
     {
-      "net": "BATTERY+",
-      "a": [
-        455.93,
-        104.14
-      ],
-      "b": [
-        481.33,
-        104.14
-      ]
-    },
-    {
       "net": "H_MOTOR_B",
       "a": [
         483.87,
@@ -8662,17 +8631,6 @@
       "b": [
         262.89,
         53.34
-      ]
-    },
-    {
-      "net": "BATTERY+",
-      "a": [
-        466.09,
-        124.46
-      ],
-      "b": [
-        466.09,
-        129.54
       ]
     },
     {
@@ -9721,28 +9679,6 @@
       ]
     },
     {
-      "net": "PIC_RA0_FILTER",
-      "a": [
-        283.21,
-        58.42
-      ],
-      "b": [
-        322.58,
-        58.42
-      ]
-    },
-    {
-      "net": "PIC_RA0_FILTER",
-      "a": [
-        322.58,
-        58.42
-      ],
-      "b": [
-        322.58,
-        74.93
-      ]
-    },
-    {
       "net": "PIC_RA1_RX_REF",
       "a": [
         283.21,
@@ -10642,6 +10578,72 @@
       "b": [
         259.08,
         309.88
+      ]
+    },
+    {
+      "net": "RX_A_FILTER",
+      "a": [
+        283.21,
+        58.42
+      ],
+      "b": [
+        322.58,
+        58.42
+      ]
+    },
+    {
+      "net": "RX_A_FILTER",
+      "a": [
+        322.58,
+        58.42
+      ],
+      "b": [
+        322.58,
+        74.93
+      ]
+    },
+    {
+      "net": "H_MOTOR_A",
+      "a": [
+        466.09,
+        124.46
+      ],
+      "b": [
+        466.09,
+        129.54
+      ]
+    },
+    {
+      "net": "H_MOTOR_A",
+      "a": [
+        466.09,
+        129.54
+      ],
+      "b": [
+        481.33,
+        129.54
+      ]
+    },
+    {
+      "net": "H_MOTOR_A",
+      "a": [
+        481.33,
+        104.14
+      ],
+      "b": [
+        481.33,
+        129.54
+      ]
+    },
+    {
+      "net": "H_MOTOR_A",
+      "a": [
+        481.33,
+        104.14
+      ],
+      "b": [
+        486.41,
+        104.14
       ]
     }
   ],

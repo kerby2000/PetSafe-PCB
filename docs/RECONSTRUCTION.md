@@ -1,10 +1,10 @@
 # Current circuit interpretation
 
-Schematic v0.9.37, 2026-10-14. This is the current interpretation, not a chronological log. The [previous narrative](history/cleanup_v0928/docs/RECONSTRUCTION.md) is archived; older requests there are superseded. Use [the checklist](FINISHING_CHECKLIST.html) for remaining questions.
+Schematic v0.9.39, 2026-10-14. This is the current interpretation, not a chronological log. The [previous narrative](history/cleanup_v0928/docs/RECONSTRUCTION.md) is archived; older requests there are superseded. Use [the checklist](FINISHING_CHECKLIST.html) for remaining questions.
 
 ## Power and references
 
-BATTERY+ is the raw positive terminal before Q1. User continuity puts Q1.L, U5/MX512H pin4 and the input sides of L1/L2 on VSYS. Printed VDD is the distinct logic rail, including U5 pin1, PIC20 and V063/V064. VREF is the printed reference point, PIC4/RA2 and the confirmed receiver bias node. GND includes BATTERY (-). The Q1 PMOS/reverse-polarity role remains a candidate interpretation; source, gate and rail operating voltages are unmeasured.
+BATTERY+ is the raw positive terminal before Q1. User continuity puts Q1.L, U5/MX512H pin4 and the input sides of L1/L2 on VSYS. Printed VDD is the distinct logic rail, including U5 pin1, PIC20 and V063/V064. VREF is the printed reference point, PIC4/RA2 and the confirmed receiver bias node. GND includes BATTERY (-). The Q1 PMOS/reverse-polarity role remains a candidate interpretation. B54/B55 measured VSYS/RF at 6.3 V, VDD at 4.5 V and PIR supply at 3.3 V with the PIR attached. VREF read 0 V. TP14 read 0 V; B60 measured 6.3 V between actual battery+ and TP14. Subsequent TP14-to-U5.8 continuity at 1.5 ohm establishes TP14/R43.2 on OUTA/H_MOTOR_A. The previous BATTERY+ assignment is withdrawn. TP14-to-Q1 gate measured 516 ohm, which does not establish a direct join. Q1 gate and receiver supply behavior remain unmeasured.
 
 L1 = 1.4 uH and L2 = 2.2 uH are user LCR readings. Their output branches are separate: H_RF_VDD after L1 and H_LDO_IN after L2. Conditions and exact magnetic parts/ratings remain unspecified. H_RX_VDD and H_PIR_VDD are descriptive local branches, not additional independently measured power supplies.
 
@@ -12,7 +12,7 @@ U1 uses a datasheet-derived S-1200B45 symbol. U6/C2NM supports S-812C33AMC. U6 p
 
 ## PIC, button and interfaces
 
-All PIC pads have modeled local nets. PIC21/RB0 reaches TP16/Q2.S; the old VREF association was explicitly withdrawn after TP16-VREF measured 0.8 Mohm. PIC2/C25, PIC14/TP11 and PIC18/TP17 still need their onward connections or operating roles assessed. C26 reaches PIC3/RA1 with R28/R29/TP7. C25/C26 have common ground ends; C39/PIC4 belongs to VREF.
+All PIC pads have modeled local nets. PIC21/RB0 reaches TP16/Q2.S; the old VREF association was explicitly withdrawn after TP16-VREF measured 0.8 Mohm. PIC2/RA0/C25 reaches TP6/R27.1/C18.2 on RX_A_FILTER: B59 measured 1.5 ohm. R27 remains between this node and U3.1; C18 remains between it and VREF. PIC14/TP11 and PIC18/TP17 have visible local routes, but hidden continuations cannot yet be excluded. Firmware roles remain unverified. C26 reaches PIC3/RA1 with R28/R29/TP7. C25/C26 have common ground ends; C39/PIC4 belongs to VREF.
 
 R41 is 330 ohm and its model1/right end reaches **J1 VPP**. Its model2 end joins H_BUTTON/R40.2/C35.1. The former isolated H_R41_FREE node is obsolete. R40's other end is ICSP_DAT/PIC28. S1 currently uses stock SW_Push: physical upper row TL/TR maps to native pin1/GND; lower BL/BR to native pin2/H_BUTTON. B38/B39 each measure 1 ohm across the two common pairs; B40 is OL released and B41 is 1 ohm pressed across them. These verify normally-open contact behavior; E05 is closed. Extra A-C OL is preserved in the result ledger. Old four-native-pin connector numbering is superseded.
 
@@ -44,6 +44,6 @@ C23.2 and R25.1 form a series junction still named H_RX_DETECT. It **continues t
 
 ## Completion criteria
 
-The model and native drawing agree on 83 net partitions. Native geometry has zero dangling wire ends or pinless wire fragments. Zero unassigned pads and the retained U6 pin4 NC do not certify all onward routes. Five stock power-source declarations now resolve the undriven-input checks without changing physical partitions. Only the user-retained U6/U6A output conflict remains. No ERC exclusion or new NC was introduced. R33 and its two assumed endpoints have been removed. In v0.9.37, five front capacitor outer pads (C11/C14/C29/C44/C47) moved from GND to ANT2 using measured C11 continuity and the visible shared copper. Physical-to-native pin mappings are unchanged; rear capacitor returns remain GND.
+The model and native drawing agree on 82 net partitions after the measured RA0-to-TP6 merge in v0.9.39. Native geometry has zero dangling wire ends or pinless wire fragments. Zero unassigned pads and the retained U6 pin4 NC do not certify all onward routes. Five stock power-source declarations now resolve the undriven-input checks without changing physical partitions. Only the user-retained U6/U6A output conflict remains. No ERC exclusion or new NC was introduced. R33 and its two assumed endpoints have been removed. In v0.9.37, five front capacitor outer pads (C11/C14/C29/C44/C47) moved from GND to ANT2 using measured C11 continuity and the visible shared copper. Physical-to-native pin mappings are unchanged; rear capacitor returns remain GND.
 
 Topology, device behavior, 44 ceramic values, LED footprint/pad geometry and remaining geometry are tracked separately. A routed PCB, actual layer stack, firmware and powered validation are separate milestones. [Recorded measurements](MEASUREMENTS.md) are user evidence; [library choices](LIBRARIES_AND_ALTERNATIVES.md) retain candidate qualifications.

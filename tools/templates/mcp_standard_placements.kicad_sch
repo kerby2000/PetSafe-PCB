@@ -6854,7 +6854,7 @@
 				)
 			)
 		)
-		(property "ViaEvidence" "v0.9.9: User corrects raw battery+ versus post-Q1 rail. BATP -> Q1.S (single physical pad/native3, candidate drain); Q1.L/native2 (candidate source) -> U5.4/V011-V014. These are distinct copper nets, connected through Q1. IMG_2438 also supports TP14 on battery+; V015/R43.2-TP14 user confirmation retained. Q1.R/native1 is candidate gate at R44.2. Photo S means SINGLE, not MOSFET source."
+		(property "ViaEvidence" "v0.9.9: User corrects raw battery+ versus post-Q1 rail. BATP -> Q1.S (single physical pad/native3, candidate drain); Q1.L/native2 (candidate source) -> U5.4/V011-V014. These are distinct copper nets, connected through Q1. TP14/R43.2/V015 is OUTA/H_MOTOR_A, supported by TP14-U5.8 = 1.5 ohm; the earlier battery-side photo interpretation is withdrawn. Q1.R/native1 is candidate gate at R44.2. Photo S means SINGLE, not MOSFET source."
 			(at 20.32 53.34 0)
 			(effects
 				(font
@@ -8019,7 +8019,7 @@
 				)
 			)
 		)
-		(property "UserGPIOEvidence" "v0.8: user confirms multimeter + visual trace. 3-TP7/R28/R29; 17-R13; 22-TP2; 23-TP1; 25-TP4; 26-TP10. No numerical resistance values supplied. Nine GPIO destinations remain unresolved."
+		(property "UserGPIOEvidence" "Measured and photo-supported destinations are recorded in pic_gpio_status.json. RA0 now reaches TP6 (B59); TP11/RC3 and TP17/RC7 have local traces but unexcluded inner-layer continuations. PIC21 remains TP16/Q2, not VREF."
 			(at 262.89 78.74 0)
 			(effects
 				(font
@@ -8055,6 +8055,12 @@
 				(hide yes)
 			)
 		)
+    (property "CurrentEvidence" "v0.9.38: B59 C25.1 to TP6.1 = 1.5 ohm unpowered supports PIC2/RA0 on RX_A_FILTER. This joins the existing R27.1/C18.2/TP6 branch; V031/V072 associations are retained. R27 to U3.1, C18 to VREF, and C25 to GND remain component-separated. Firmware role unverified." (at 262.89 78.74 0)
+      (effects (font (size 1.27 1.27)) (hide yes))
+    )
+    (property "RA0Evidence" "v0.9.38: B59 C25.1 to TP6.1 = 1.5 ohm unpowered supports PIC2/RA0 on RX_A_FILTER. This joins the existing R27.1/C18.2/TP6 branch; V031/V072 associations are retained. R27 to U3.1, C18 to VREF, and C25 to GND remain component-separated. Firmware role unverified." (at 262.89 78.74 0)
+      (effects (font (size 1.27 1.27)) (hide yes))
+    )
 		(pin "1"
 			(uuid "2cc68a08-ab7c-4f62-837a-672a9475163e")
 		)
@@ -8320,6 +8326,12 @@
 				(hide yes)
 			)
 		)
+    (property "CurrentEvidence" "v0.9.38: B59 C25.1 to TP6.1 = 1.5 ohm unpowered supports PIC2/RA0 on RX_A_FILTER. This joins the existing R27.1/C18.2/TP6 branch; V031/V072 associations are retained. R27 to U3.1, C18 to VREF, and C25 to GND remain component-separated. Firmware role unverified." (at 322.58 78.74 0)
+      (effects (font (size 1.27 1.27)) (hide yes))
+    )
+    (property "RA0Evidence" "v0.9.38: B59 C25.1 to TP6.1 = 1.5 ohm unpowered supports PIC2/RA0 on RX_A_FILTER. This joins the existing R27.1/C18.2/TP6 branch; V031/V072 associations are retained. R27 to U3.1, C18 to VREF, and C25 to GND remain component-separated. Firmware role unverified." (at 322.58 78.74 0)
+      (effects (font (size 1.27 1.27)) (hide yes))
+    )
 		(pin "1"
 			(uuid "93aa6bb4-01cf-4128-b3a6-03fb38542beb")
 		)
@@ -8896,7 +8908,7 @@
 				)
 			)
 		)
-		(property "ViaEvidence" "v0.9.9: User corrects raw battery+ versus post-Q1 rail. BATP -> Q1.S (single physical pad/native3, candidate drain); Q1.L/native2 (candidate source) -> U5.4/V011-V014. These are distinct copper nets, connected through Q1. IMG_2438 also supports TP14 on battery+; V015/R43.2-TP14 user confirmation retained. Q1.R/native1 is candidate gate at R44.2. Photo S means SINGLE, not MOSFET source."
+		(property "ViaEvidence" "v0.9.9: User corrects raw battery+ versus post-Q1 rail. BATP -> Q1.S (single physical pad/native3, candidate drain); Q1.L/native2 (candidate source) -> U5.4/V011-V014. These are distinct copper nets, connected through Q1. TP14/R43.2/V015 is OUTA/H_MOTOR_A, supported by TP14-U5.8 = 1.5 ohm; the earlier battery-side photo interpretation is withdrawn. Q1.R/native1 is candidate gate at R44.2. Photo S means SINGLE, not MOSFET source."
 			(at 355.6 86.36 0)
 			(effects
 				(font
@@ -9256,7 +9268,7 @@
 				(hide yes)
 			)
 		)
-		(property "ViaEvidence" "v0.9.9: User corrects raw battery+ versus post-Q1 rail. BATP -> Q1.S (single physical pad/native3, candidate drain); Q1.L/native2 (candidate source) -> U5.4/V011-V014. These are distinct copper nets, connected through Q1. IMG_2438 also supports TP14 on battery+; V015/R43.2-TP14 user confirmation retained. Q1.R/native1 is candidate gate at R44.2. Photo S means SINGLE, not MOSFET source."
+		(property "ViaEvidence" "v0.9.9: User corrects raw battery+ versus post-Q1 rail. BATP -> Q1.S (single physical pad/native3, candidate drain); Q1.L/native2 (candidate source) -> U5.4/V011-V014. These are distinct copper nets, connected through Q1. TP14/R43.2/V015 is OUTA/H_MOTOR_A, supported by TP14-U5.8 = 1.5 ohm; the earlier battery-side photo interpretation is withdrawn. Q1.R/native1 is candidate gate at R44.2. Photo S means SINGLE, not MOSFET source."
 			(at 458.47 60.96 0)
 			(effects
 				(font
@@ -9265,6 +9277,12 @@
 				(hide yes)
 			)
 		)
+    (property "CurrentEvidence" "v0.9.39: TP14 to MX512H/U5 pin8 = 1.5 ohm supports OUTA/H_MOTOR_A. Established R43.2/V015-TP14 joins retained. TP14/R43.2 removed from BATTERY+ after BP-TP14 = 6.3 V. TP14-Q1.R = 516 ohm does not establish a direct join. Q1 gate and motor behavior remain qualified." (at 458.47 60.96 0)
+      (effects (font (size 1.27 1.27)) (hide yes))
+    )
+    (property "TP14Evidence" "v0.9.39: TP14 to MX512H/U5 pin8 = 1.5 ohm supports OUTA/H_MOTOR_A. Established R43.2/V015-TP14 joins retained. TP14/R43.2 removed from BATTERY+ after BP-TP14 = 6.3 V. TP14-Q1.R = 516 ohm does not establish a direct join. Q1 gate and motor behavior remain qualified." (at 458.47 60.96 0)
+      (effects (font (size 1.27 1.27)) (hide yes))
+    )
 		(pin "1"
 			(uuid "511d8a12-a8c5-4de3-9ed0-71f5acd4d290")
 		)
@@ -9364,7 +9382,7 @@
 				)
 			)
 		)
-		(property "ViaEvidence" "v0.9.9: User corrects raw battery+ versus post-Q1 rail. BATP -> Q1.S (single physical pad/native3, candidate drain); Q1.L/native2 (candidate source) -> U5.4/V011-V014. These are distinct copper nets, connected through Q1. IMG_2438 also supports TP14 on battery+; V015/R43.2-TP14 user confirmation retained. Q1.R/native1 is candidate gate at R44.2. Photo S means SINGLE, not MOSFET source."
+		(property "ViaEvidence" "v0.9.9: User corrects raw battery+ versus post-Q1 rail. BATP -> Q1.S (single physical pad/native3, candidate drain); Q1.L/native2 (candidate source) -> U5.4/V011-V014. These are distinct copper nets, connected through Q1. TP14/R43.2/V015 is OUTA/H_MOTOR_A, supported by TP14-U5.8 = 1.5 ohm; the earlier battery-side photo interpretation is withdrawn. Q1.R/native1 is candidate gate at R44.2. Photo S means SINGLE, not MOSFET source."
 			(at 430.53 49.53 0)
 			(effects
 				(font
@@ -10062,7 +10080,7 @@
 				)
 			)
 		)
-		(property "ViaEvidence" "v0.9.9: User corrects raw battery+ versus post-Q1 rail. BATP -> Q1.S (single physical pad/native3, candidate drain); Q1.L/native2 (candidate source) -> U5.4/V011-V014. These are distinct copper nets, connected through Q1. IMG_2438 also supports TP14 on battery+; V015/R43.2-TP14 user confirmation retained. Q1.R/native1 is candidate gate at R44.2. Photo S means SINGLE, not MOSFET source."
+		(property "ViaEvidence" "v0.9.9: User corrects raw battery+ versus post-Q1 rail. BATP -> Q1.S (single physical pad/native3, candidate drain); Q1.L/native2 (candidate source) -> U5.4/V011-V014. These are distinct copper nets, connected through Q1. TP14/R43.2/V015 is OUTA/H_MOTOR_A, supported by TP14-U5.8 = 1.5 ohm; the earlier battery-side photo interpretation is withdrawn. Q1.R/native1 is candidate gate at R44.2. Photo S means SINGLE, not MOSFET source."
 			(at 511.81 80.01 0)
 			(effects
 				(font
@@ -10159,7 +10177,7 @@
 				)
 			)
 		)
-		(property "ViaEvidence" "v0.9.9: User corrects raw battery+ versus post-Q1 rail. BATP -> Q1.S (single physical pad/native3, candidate drain); Q1.L/native2 (candidate source) -> U5.4/V011-V014. These are distinct copper nets, connected through Q1. IMG_2438 also supports TP14 on battery+; V015/R43.2-TP14 user confirmation retained. Q1.R/native1 is candidate gate at R44.2. Photo S means SINGLE, not MOSFET source."
+		(property "ViaEvidence" "v0.9.9: User corrects raw battery+ versus post-Q1 rail. BATP -> Q1.S (single physical pad/native3, candidate drain); Q1.L/native2 (candidate source) -> U5.4/V011-V014. These are distinct copper nets, connected through Q1. TP14/R43.2/V015 is OUTA/H_MOTOR_A, supported by TP14-U5.8 = 1.5 ohm; the earlier battery-side photo interpretation is withdrawn. Q1.R/native1 is candidate gate at R44.2. Photo S means SINGLE, not MOSFET source."
 			(at 431.8 111.76 0)
 			(effects
 				(font
@@ -10247,7 +10265,7 @@
 				)
 			)
 		)
-		(property "ViaEvidence" "v0.9.9: User corrects raw battery+ versus post-Q1 rail. BATP -> Q1.S (single physical pad/native3, candidate drain); Q1.L/native2 (candidate source) -> U5.4/V011-V014. These are distinct copper nets, connected through Q1. IMG_2438 also supports TP14 on battery+; V015/R43.2-TP14 user confirmation retained. Q1.R/native1 is candidate gate at R44.2. Photo S means SINGLE, not MOSFET source."
+		(property "ViaEvidence" "V015 joins R43.2 and TP14. User TP14-U5.8 = 1.5 ohm resolves this as H_MOTOR_A / OUTA. Earlier BATTERY+ photo assignment withdrawn; Q1.L remains excluded."
 			(at 462.28 124.46 0)
 			(effects
 				(font
@@ -10256,6 +10274,12 @@
 				(hide yes)
 			)
 		)
+    (property "CurrentEvidence" "v0.9.39: TP14 to MX512H/U5 pin8 = 1.5 ohm supports OUTA/H_MOTOR_A. Established R43.2/V015-TP14 joins retained. TP14/R43.2 removed from BATTERY+ after BP-TP14 = 6.3 V. TP14-Q1.R = 516 ohm does not establish a direct join. Q1 gate and motor behavior remain qualified." (at 462.28 124.46 0)
+      (effects (font (size 1.27 1.27)) (hide yes))
+    )
+    (property "TP14Evidence" "v0.9.39: TP14 to MX512H/U5 pin8 = 1.5 ohm supports OUTA/H_MOTOR_A. Established R43.2/V015-TP14 joins retained. TP14/R43.2 removed from BATTERY+ after BP-TP14 = 6.3 V. TP14-Q1.R = 516 ohm does not establish a direct join. Q1 gate and motor behavior remain qualified." (at 462.28 124.46 0)
+      (effects (font (size 1.27 1.27)) (hide yes))
+    )
 		(pin "1"
 			(uuid "008b3ba9-638d-470c-a304-51fef34aec55")
 		)
@@ -10335,7 +10359,7 @@
 				)
 			)
 		)
-		(property "ViaEvidence" "v0.9.9: User corrects raw battery+ versus post-Q1 rail. BATP -> Q1.S (single physical pad/native3, candidate drain); Q1.L/native2 (candidate source) -> U5.4/V011-V014. These are distinct copper nets, connected through Q1. IMG_2438 also supports TP14 on battery+; V015/R43.2-TP14 user confirmation retained. Q1.R/native1 is candidate gate at R44.2. Photo S means SINGLE, not MOSFET source."
+		(property "ViaEvidence" "V015 joins R43.2 and TP14. User TP14-U5.8 = 1.5 ohm resolves this as H_MOTOR_A / OUTA. Earlier BATTERY+ photo assignment withdrawn; Q1.L remains excluded."
 			(at 486.41 104.14 0)
 			(effects
 				(font
@@ -10344,6 +10368,12 @@
 				(hide yes)
 			)
 		)
+    (property "CurrentEvidence" "v0.9.39: TP14 to MX512H/U5 pin8 = 1.5 ohm supports OUTA/H_MOTOR_A. Established R43.2/V015-TP14 joins retained. TP14/R43.2 removed from BATTERY+ after BP-TP14 = 6.3 V. TP14-Q1.R = 516 ohm does not establish a direct join. Q1 gate and motor behavior remain qualified." (at 486.41 104.14 0)
+      (effects (font (size 1.27 1.27)) (hide yes))
+    )
+    (property "TP14Evidence" "v0.9.39: TP14 to MX512H/U5 pin8 = 1.5 ohm supports OUTA/H_MOTOR_A. Established R43.2/V015-TP14 joins retained. TP14/R43.2 removed from BATTERY+ after BP-TP14 = 6.3 V. TP14-Q1.R = 516 ohm does not establish a direct join. Q1 gate and motor behavior remain qualified." (at 486.41 104.14 0)
+      (effects (font (size 1.27 1.27)) (hide yes))
+    )
 		(pin "1"
 			(uuid "3090f941-9fbd-41e7-89c4-f26733175ad2")
 		)
@@ -12893,6 +12923,12 @@
 				(hide yes)
 			)
 		)
+    (property "CurrentEvidence" "v0.9.38: B59 C25.1 to TP6.1 = 1.5 ohm unpowered supports PIC2/RA0 on RX_A_FILTER. This joins the existing R27.1/C18.2/TP6 branch; V031/V072 associations are retained. R27 to U3.1, C18 to VREF, and C25 to GND remain component-separated. Firmware role unverified." (at 425.45 200.66 0)
+      (effects (font (size 1.27 1.27)) (hide yes))
+    )
+    (property "RA0Evidence" "v0.9.38: B59 C25.1 to TP6.1 = 1.5 ohm unpowered supports PIC2/RA0 on RX_A_FILTER. This joins the existing R27.1/C18.2/TP6 branch; V031/V072 associations are retained. R27 to U3.1, C18 to VREF, and C25 to GND remain component-separated. Firmware role unverified." (at 425.45 200.66 0)
+      (effects (font (size 1.27 1.27)) (hide yes))
+    )
 		(pin "1"
 			(uuid "9ed0f60d-7cc7-41d8-a95a-4bdecaa99809")
 		)
@@ -19694,7 +19730,7 @@
 				)
 			)
 		)
-		(property "ViaEvidence" "v0.9.9: User corrects raw battery+ versus post-Q1 rail. BATP -> Q1.S (single physical pad/native3, candidate drain); Q1.L/native2 (candidate source) -> U5.4/V011-V014. These are distinct copper nets, connected through Q1. IMG_2438 also supports TP14 on battery+; V015/R43.2-TP14 user confirmation retained. Q1.R/native1 is candidate gate at R44.2. Photo S means SINGLE, not MOSFET source."
+		(property "ViaEvidence" "v0.9.9: User corrects raw battery+ versus post-Q1 rail. BATP -> Q1.S (single physical pad/native3, candidate drain); Q1.L/native2 (candidate source) -> U5.4/V011-V014. These are distinct copper nets, connected through Q1. TP14/R43.2/V015 is OUTA/H_MOTOR_A, supported by TP14-U5.8 = 1.5 ohm; the earlier battery-side photo interpretation is withdrawn. Q1.R/native1 is candidate gate at R44.2. Photo S means SINGLE, not MOSFET source."
 			(at 453.39 111.76 0)
 			(effects
 				(font
@@ -19712,7 +19748,7 @@
 				(hide yes)
 			)
 		)
-		(property "CurrentEvidence" "R1A marking matches Formosa FMOS3401A datasheet p5; SOT-23 PMOS with G=1 (photo R), S=2 (photo L), D=3 (photo single S). Candidate identification, not manufacturer proof. Drain at battery+ and source at load support reverse-polarity protection; gate-control behavior not verified. Earlier MMBT3904 NPN hypothesis withdrawn."
+		(property "CurrentEvidence" "v0.9.39: TP14 to MX512H/U5 pin8 = 1.5 ohm supports OUTA/H_MOTOR_A. Established R43.2/V015-TP14 joins retained. TP14/R43.2 removed from BATTERY+ after BP-TP14 = 6.3 V. TP14-Q1.R = 516 ohm does not establish a direct join. Q1 gate and motor behavior remain qualified."
 			(at 453.39 111.76 0)
 			(effects
 				(font
@@ -19721,6 +19757,9 @@
 				(hide yes)
 			)
 		)
+    (property "TP14Evidence" "v0.9.39: TP14 to MX512H/U5 pin8 = 1.5 ohm supports OUTA/H_MOTOR_A. Established R43.2/V015-TP14 joins retained. TP14/R43.2 removed from BATTERY+ after BP-TP14 = 6.3 V. TP14-Q1.R = 516 ohm does not establish a direct join. Q1 gate and motor behavior remain qualified." (at 453.39 111.76 0)
+      (effects (font (size 1.27 1.27)) (hide yes))
+    )
 		(pin "1"
 			(uuid "0c014e4c-69ec-41f4-ab62-8b94ba78bf1f")
 		)

@@ -23,7 +23,7 @@ def mm(p):return tuple(rnd(round(v)*1.27) for v in p)
 STAGE.mkdir(parents=True,exist_ok=True)
 layout=json.loads((R/'evidence/library_layout.json').read_text())
 model=json.loads((R/'evidence/reconstruction.json').read_text())
-model.update(revision='v0.9.37',review_date='2026-10-14')
+model.update(revision='v0.9.39',review_date='2026-10-14')
 template=R/'tools/templates/mcp_standard_placements.kicad_sch'
 if not template.exists():
     template.parent.mkdir(parents=True,exist_ok=True)
@@ -202,7 +202,7 @@ stub('GND','R2.1',0,5);stub('GND','C4.1',0,5)
 # PIC: official SOIC symbol; both ground pins share the library endpoint.
 bus('VDD',32,['U4.20','C32.1']);bus('GND',44,['C32.2'])
 # User annotated photo: C25/RA0 and C26/RA1 share GND; RA2/C39 remains VREF.
-wire('PIC_RA0_FILTER','U4.2',(254,46),'C25.1')
+wire('RX_A_FILTER','U4.2',(254,46),'C25.1');label('RX_A_FILTER',(254,46))
 wire('PIC_RA1_RX_REF','U4.3',(246,48),'C26.1');label('PIC_RA1_RX_REF',(226,48))
 wire('VREF','U4.4',(237,50),'C39.1');label('VREF',(237,50))
 bus('GND',66,['C25.2','C26.2','C39.2'])
@@ -251,7 +251,7 @@ label('Q9_J6_1',(186,90));label('J6_OPTION_2',(186,81))
 stub('GND','R32.1',3)
 
 wire('VSYS','Q1.L',(359,94),(352,94));label('VSYS',(352,94));label('BATTERY+',(359,82)) # User post-Q1 supply; keep its label clear of R43 ground.
-wire('BATTERY+','R43.2',(367,102),(379,102),(379,82),'TP14.1') # V015-TP14
+wire('H_MOTOR_A','R43.2',(367,102),(379,102),(379,82),'TP14.1');label('H_MOTOR_A',(379,82)) # V015-TP14
 # MX512H physical pin numbering, not a DRV8837 pin substitution.
 wire('VSYS','C33.1',(339,33),(361,33),'U5.4');label('VSYS',(339,33))
 wire('VDD','U5.1',(345,44),(345,43),(330,43),'C34.1');label('VDD',(330,43))
@@ -328,7 +328,7 @@ for g in layout['graphics']:
 for n in layout['notes']:
     t=n['text']
     if t.startswith('Spare footprints /'):continue
-    if t.startswith('PIC GPIOs are intentionally'):t='PIC pads have local nets; some onward routes remain unresolved.'
+    if t.startswith('PIC GPIOs are intentionally'):t='RA0 reaches TP6 (B59). TP11/TP17 onward paths remain qualified.'
     if t.startswith('Original pad IDs on U1.'):
         t='U1 datasheet symbol: S-1200B45 SOT-23-5. Pin 4 is internally open; option pads retained.'
     if 'Original photographed pad names remain' in t:
@@ -353,13 +353,13 @@ for n in layout['notes']:
     text(t,n['x'],n['y'],1.27 if n['size']>=1 else max(.762,n['size']*1.27))
 text('LED1 RED: R30 / PIC23 / pin1; GREEN: R31 / PIC22 / pin2.',153,205,.762)
 text('BATTERY+ -> Q1 -> VSYS / U5 pin4. Board VDD / TP103 = VDD -> U5 pin1.',320,77,.762)
-text('VDD / TP103: regulated logic supply VDD; candidate 4.5V, not measured. V082 confirmed here.',13,76,.762)
+text('TP14 / R43.2 = OUTA / U5 pin8: measured 1.5 ohm. Separate from BATTERY+.',320,81,.762)
+text('VDD / TP103: logic supply measured 4.5 V (B56, red-blinking state). V082 confirmed here.',13,76,.762)
 text('User: D3.R -> V082 / VDD; D3.L -> GND; D3.S -> R42 1.2 ohm (photo selects pad2).',330,126,.762)
 text('D2: R-C20 lower; L-ANT2/R46 upper; S-R46 lower. R46 empty; 4P identity unknown.',350,202,.762)
 text('User: U3 pin5 / V079 / V080 = VREF (1 ohm); TP6 remains separate across C18.',288,211,.762)
 text('U3 alternative: MCP6002-I/SN; same pin roles, electrical suitability to verify.',288,208,.762)
-text('U5 alternative: DRV8212PDSGR. Different package/pins; redesign required.',320,81,.762)
-text('U6: pin5 joins VIN (1 ohm); pin4 unused by user/photo. 3.3V is candidate rating.',234,305,.762)
+text('U6: pin5 joins VIN (1 ohm); pin4 unused. PIR supply measured 3.3 V with sensor attached.',234,305,.762)
 text('IMG_2431: TP3/PIC13 drives R6/R7/D1 midpoint. Diode identity and timing unverified.',13,211,.762)
 text('C6 parallels C5 (photo); Q8 P-F = 1 ohm supports H_RF_VDD join. Gate drive unverified.',90,202,.762)
 text('U6A: DNP alternative regulator; stock symbol does not identify the original part.',234,309,.762)
@@ -426,7 +426,7 @@ for net,edges in adj.items():
 for l in L:
     x,y=l['p'];G.append(expr(f'(label {q(l["net"])} (at {x} {y} 0) (effects (font (size .762 .762)) (justify left bottom)) (uuid {q(uid())}))'))
 tree.extend(G)
-tree.append(expr('(title_block (title "PetSafe 100-1339 R03 A | single-sheet reconstruction") (date "2026-10-14") (rev "0.9.37") (company "KiCad 10 libraries + four datasheet symbols | MCP authoring") (comment 1 "C11-ANT2 measured; tuning-device roles remain open."))'))
+tree.append(expr('(title_block (title "PetSafe 100-1339 R03 A | single-sheet reconstruction") (date "2026-10-14") (rev "0.9.39") (company "KiCad 10 libraries + four datasheet symbols | MCP authoring") (comment 1 "RA0-TP6 and TP14-OUTA measured; operating qualifications remain."))'))
 # Canonical pretty printer supplied by the installed MCP server.
 sys.path.insert(0,str(Path.home()/'Documents/VS.Code.Projects/KiCAD-MCP-Server/python'))
 from utils.sexpr_format import prettify
@@ -446,7 +446,7 @@ out.write_text(prettify(sx.dumps(tree)),encoding='utf-8',newline='\n')
 def wire_key(w):return w['net'],tuple(w['a']),tuple(w['b'])
 prior_order={wire_key(w):i for i,w in enumerate(model.get('geometric_wires',[]))}
 ordered_segments=sorted(segments,key=lambda s:(prior_order.get(s,len(prior_order)),s))
-model.update(revision='v0.9.37',coordinate_units='mm',native_pin_crosswalk=layout['crosswalk'],pin_positions={e:list(p) for e,p in P.items()},
+model.update(revision='v0.9.39',coordinate_units='mm',native_pin_crosswalk=layout['crosswalk'],pin_positions={e:list(p) for e,p in P.items()},
              geometric_wires=[dict(net=n,a=a,b=b) for n,a,b in ordered_segments],library_policy='KiCad 10 stock symbols plus four explicitly authorized MCP-authored datasheet symbols for U1/U5/U6/Q8')
 for c in model['components']:
     entry=next(x for x in layout['catalog'] if x['original_ref']==c['ref'])

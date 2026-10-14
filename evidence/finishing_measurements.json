@@ -1,9 +1,9 @@
 {
   "date": "2026-10-14",
   "basis_revision": "v0.9.37",
-  "status": "AWAITING_E06_RA0_TP6",
-  "scope": "Test one candidate internal connection between PIC RA0/C25/V031 and TP6/R27/V072. No net merge until a result supports it.",
-  "setup": "BATTERY AND PROGRAMMER DISCONNECTED. Use resistance (ohms), not the powered voltage setup from the previous screen. Leave Q3 fitted. Measure between A0 and T6 below; neither probe goes to GND.",
+  "status": "AWAITING_RECEIVER_SUPPLY_VOLTAGE",
+  "scope": "One receiver supply reading, following the resolved TP14 motor-output assignment.",
+  "setup": "Connect the original battery, keep PIR connected and programmer disconnected. Use DC VOLTS with leads in COM and V/ohms. Keep the same red-blinking state and avoid bridging nearby pads.",
   "photos": [
     {
       "id": "receiver",
@@ -1007,7 +1007,7 @@
           ],
           "description": "Right metal end of C25, nearest C39; the upper capacitor above C26. Existing PIC pin 2 / RA0 / V031 node. Red probe here.",
           "native_endpoint": "C25.1",
-          "net": "PIC_RA0_FILTER"
+          "net": "RX_A_FILTER"
         }
       }
     },
@@ -1044,22 +1044,174 @@
           "net": "RX_A_FILTER"
         }
       }
+    },
+    {
+      "id": "battery-tp14",
+      "source": "photos/originals/IMG_2438.jpg",
+      "coordinate_space": [
+        1368,
+        1823
+      ],
+      "view_box": [
+        580,
+        1215,
+        650,
+        560
+      ],
+      "title": "Compare the actual battery positive terminal with TP14",
+      "points": {
+        "BP": {
+          "xy": [
+            854,
+            1670
+          ],
+          "label": [
+            697,
+            1690
+          ],
+          "description": "Actual BATTERY + solder joint where the red battery wire is attached, beside the printed +. Red probe here.",
+          "native_endpoint": "BATP.1",
+          "net": "BATTERY+"
+        },
+        "T14": {
+          "xy": [
+            856,
+            1438
+          ],
+          "label": [
+            716,
+            1365
+          ],
+          "description": "Plated TP14 test hole beside Q1, the earlier P1 location. Black probe here for this comparison; do not use GND for B60.",
+          "native_endpoint": "TP14.1",
+          "net": "BATTERY+ (disputed)",
+          "role": "reference"
+        }
+      }
+    },
+    {
+      "id": "tp14-gate",
+      "source": "photos/originals/IMG_2438.jpg",
+      "coordinate_space": [
+        1368,
+        1823
+      ],
+      "view_box": [
+        700,
+        1160,
+        550,
+        415
+      ],
+      "title": "TP14 to Q1 control pad: one unpowered reading",
+      "points": {
+        "T14": {
+          "xy": [
+            856,
+            1438
+          ],
+          "label": [
+            740,
+            1375
+          ],
+          "description": "Plated TP14 test hole. Red probe here.",
+          "native_endpoint": "TP14.1",
+          "net": "TP14_R43 (BATTERY+ assignment rejected)"
+        },
+        "G1": {
+          "xy": [
+            1080,
+            1340
+          ],
+          "label": [
+            1170,
+            1230
+          ],
+          "description": "Q1 upper-right metal contact, directly below R44 in this photo. This is model Q1.R, the candidate gate node joined to R44.2. Black probe here; avoid the adjacent contact.",
+          "native_endpoint": "Q1.1",
+          "net": "Q1_GATE",
+          "role": "reference"
+        }
+      }
+    },
+    {
+      "id": "receiver-supply",
+      "source": "photos/originals/IMG_2434.jpg",
+      "coordinate_space": [
+        1368,
+        1823
+      ],
+      "view_box": [
+        70,
+        60,
+        1040,
+        980
+      ],
+      "title": "Receiver supply: TP5 above U3",
+      "points": {
+        "RX": {
+          "xy": [
+            707,
+            278
+          ],
+          "label": [
+            935,
+            140
+          ],
+          "description": "TP5 plated hole, above U3 and beside C17. Red probe here; this is the receiver supply H_RX_VDD.",
+          "native_endpoint": "TP5.1",
+          "net": "H_RX_VDD"
+        }
+      }
+    },
+    {
+      "id": "receiver-supply-ground",
+      "source": "photos/originals/IMG_2435.jpg",
+      "coordinate_space": [
+        1368,
+        1823
+      ],
+      "view_box": [
+        120,
+        210,
+        1130,
+        1580
+      ],
+      "title": "Black probe: printed GND hole",
+      "reference_for": [
+        "receiver-supply"
+      ],
+      "points": {
+        "G": {
+          "xy": [
+            372,
+            1602
+          ],
+          "label": [
+            210,
+            1525
+          ],
+          "description": "The same printed GND test hole used for the six supply readings. Black probe here.",
+          "native_endpoint": "TP101.1",
+          "net": "GND",
+          "role": "reference"
+        }
+      }
     }
   ],
   "tests": [
     {
-      "id": "B59",
-      "group": "e06-ra0",
-      "from": "A0",
-      "to": "T6",
-      "mode": "Resistance",
-      "unit": "ohms / kohms / OL",
-      "state": "Unpowered",
-      "issue": "E06",
-      "purpose": "Distinguish a direct RA0/V031-to-receiver-TP6/V072 continuation from two separate nets."
+      "id": "B62",
+      "group": "receiver-supply",
+      "from": "RX",
+      "to": "G",
+      "mode": "DC voltage",
+      "unit": "V; steady or varying",
+      "state": "Powered, same red-blinking state; PIR connected",
+      "issue": "E08",
+      "purpose": "Establish whether receiver supply H_RX_VDD is available while printed VREF reads zero."
     }
   ],
-  "interpretation": "Why this pair: C25/RA0/V031 and TP6/R27/V072 are two signal branches whose onward routes disappear internally. TP6 is connected through R27 to the first receiver amplifier output, making it a concrete candidate for the filtered PIC input. This is a hypothesis, not a claimed wire. A near-probe result supports one net; a kilohm reading indicates a component path and must not be treated as continuity. OL rejects only this pair, not every possible route.",
+  "interpretation": "TP14 is now OUTA, established by 1.5 ohm to U5 pin8. The remaining 0 V at VREF is a separate question: TP5 powers U3 and feeds the R21/R22 bias network. A low TP5 reading could explain absent bias; a nonzero TP5 reading directs the next check to the bias path. A multimeter reading alone cannot resolve brief pulses or establish a failed part.",
   "next_stages": [
     {
       "stage": "Resolve the remaining functional paths",
@@ -1109,7 +1261,7 @@
     "B42/B43 LED colours: A/R31/PIC22 green; B/R30/PIC23 red. No repeated colour check requested.",
     "B44-B52 antenna continuity completed: C11 outer end ANT2, distinct ANT1 and GND. Corrected pair labels retained in the raw result evidence."
   ],
-  "deferred": "Six powered supply readings B53-B58 are preserved in evidence/supply_baseline_plan_20261014.json. Do not mix the powered and resistance setups. Q3 stays fitted.",
+  "deferred": "Q3 stays fitted. Receiver bias and red-blinking behavior remain unverified; do not mix powered voltage checks with resistance mode.",
   "sources": [
     "evidence/remaining_work.json",
     "evidence/reconstruction.json",
@@ -1690,11 +1842,195 @@
       "resistance_ohms": 1.4,
       "raw_user_statement": "I measure 1.4 ohm, does it make a difference?",
       "conditions": "Battery/programmer disconnected and antenna fitted were requested; fresh shorted-probe baseline and stability not separately supplied."
+    },
+    {
+      "id": "B59",
+      "group": "e06-ra0",
+      "from": "A0",
+      "to": "T6",
+      "mode": "Resistance",
+      "unit": "ohms / kohms / OL",
+      "state": "Unpowered",
+      "issue": "E06",
+      "purpose": "Distinguish a direct RA0/V031-to-receiver-TP6/V072 continuation from two separate nets.",
+      "date": "2026-10-14",
+      "result": "1.5 ohm",
+      "resistance_ohms": 1.5,
+      "raw_user_statement": "PetSafe E06: one hidden receiver-to-PIC connection / v0.9.37\nB59 red A0 / black T6 (Unpowered): 1.5 ohm",
+      "shorted_probe_ohms": null,
+      "stability": null,
+      "reverse_reading": null,
+      "conditions": "Unpowered reported. Battery/programmer disconnection requested. No fresh probe baseline or stability report supplied."
+    },
+    {
+      "id": "B53",
+      "group": "supply-battery",
+      "from": "P1",
+      "to": "G",
+      "mode": "DC voltage",
+      "unit": "V / varying range",
+      "state": "Powered, at rest after startup",
+      "issue": "E09",
+      "net": "BATTERY+",
+      "purpose": "Record actual BATTERY+ voltage relative to GND; no previously measured voltage exists.",
+      "date": "2026-10-14",
+      "result": "0 V",
+      "voltage_v": 0,
+      "source_worksheet_revision": "v0.9.37",
+      "native_endpoint": "TP14.1",
+      "operating_state": "Red LED blinking approximately once per second after startup; PIR connected",
+      "conditions": "Battery inserted. Original powered-at-rest worksheet used. Programmer disconnected requested; exact meter/range, elapsed startup time, transient minimum and scope waveform not reported.",
+      "net_assignment_status": "DISPUTED: P1 is physical TP14; 0 V conflicts with the current BATTERY+ association. This is not a direct battery-terminal voltage measurement."
+    },
+    {
+      "id": "B54",
+      "group": "supply-rf",
+      "from": "P2",
+      "to": "G",
+      "mode": "DC voltage",
+      "unit": "V / varying range",
+      "state": "Powered, at rest after startup",
+      "issue": "E09",
+      "net": "VSYS",
+      "purpose": "Record actual VSYS voltage relative to GND; no previously measured voltage exists.",
+      "date": "2026-10-14",
+      "result": "6.3 V",
+      "voltage_v": 6.3,
+      "source_worksheet_revision": "v0.9.37",
+      "native_endpoint": "L1.1",
+      "operating_state": "Red LED blinking approximately once per second after startup; PIR connected",
+      "conditions": "Battery inserted. Original powered-at-rest worksheet used. Programmer disconnected requested; exact meter/range, elapsed startup time, transient minimum and scope waveform not reported."
+    },
+    {
+      "id": "B55",
+      "group": "supply-rf",
+      "from": "P3",
+      "to": "G",
+      "mode": "DC voltage",
+      "unit": "V / varying range",
+      "state": "Powered, at rest after startup",
+      "issue": "E03",
+      "net": "H_RF_VDD",
+      "purpose": "Record actual H_RF_VDD voltage relative to GND; no previously measured voltage exists.",
+      "date": "2026-10-14",
+      "result": "6.3 V",
+      "voltage_v": 6.3,
+      "source_worksheet_revision": "v0.9.37",
+      "native_endpoint": "L1.2",
+      "operating_state": "Red LED blinking approximately once per second after startup; PIR connected",
+      "conditions": "Battery inserted. Original powered-at-rest worksheet used. Programmer disconnected requested; exact meter/range, elapsed startup time, transient minimum and scope waveform not reported."
+    },
+    {
+      "id": "B56",
+      "group": "supply-logic-pir",
+      "from": "P4",
+      "to": "G",
+      "mode": "DC voltage",
+      "unit": "V / varying range",
+      "state": "Powered, at rest after startup",
+      "issue": "E09",
+      "net": "VDD",
+      "purpose": "Record actual VDD voltage relative to GND; no previously measured voltage exists.",
+      "date": "2026-10-14",
+      "result": "4.5 V",
+      "voltage_v": 4.5,
+      "source_worksheet_revision": "v0.9.37",
+      "native_endpoint": "TP103.1",
+      "operating_state": "Red LED blinking approximately once per second after startup; PIR connected",
+      "conditions": "Battery inserted. Original powered-at-rest worksheet used. Programmer disconnected requested; exact meter/range, elapsed startup time, transient minimum and scope waveform not reported."
+    },
+    {
+      "id": "B57",
+      "group": "supply-logic-pir",
+      "from": "P5",
+      "to": "G",
+      "mode": "DC voltage",
+      "unit": "V / varying range",
+      "state": "Powered, at rest after startup",
+      "issue": "E09",
+      "net": "VREF",
+      "purpose": "Record actual VREF voltage relative to GND; no previously measured voltage exists.",
+      "date": "2026-10-14",
+      "result": "0 V",
+      "voltage_v": 0,
+      "source_worksheet_revision": "v0.9.37",
+      "native_endpoint": "TP104.1",
+      "operating_state": "Red LED blinking approximately once per second after startup; PIR connected",
+      "conditions": "Battery inserted. Original powered-at-rest worksheet used. Programmer disconnected requested; exact meter/range, elapsed startup time, transient minimum and scope waveform not reported."
+    },
+    {
+      "id": "B58",
+      "group": "supply-logic-pir",
+      "from": "P6",
+      "to": "G",
+      "mode": "DC voltage",
+      "unit": "V / varying range",
+      "state": "Powered, at rest after startup",
+      "issue": "E07",
+      "net": "H_PIR_VDD",
+      "purpose": "Record actual H_PIR_VDD voltage relative to GND; no previously measured voltage exists.",
+      "date": "2026-10-14",
+      "result": "3.3 V",
+      "voltage_v": 3.3,
+      "source_worksheet_revision": "v0.9.37",
+      "native_endpoint": "J3.1",
+      "operating_state": "Red LED blinking approximately once per second after startup; PIR connected",
+      "conditions": "Battery inserted. Original powered-at-rest worksheet used. Programmer disconnected requested; exact meter/range, elapsed startup time, transient minimum and scope waveform not reported."
+    },
+    {
+      "id": "B60",
+      "group": "battery-tp14",
+      "from": "BP",
+      "to": "T14",
+      "mode": "DC voltage",
+      "unit": "signed V; steady or varying",
+      "state": "Powered, same red-blinking state",
+      "issue": "E09",
+      "purpose": "Test the disputed TP14/BATTERY+ same-net prediction directly.",
+      "date": "2026-10-14",
+      "result": "6.3 V",
+      "voltage_v": 6.3,
+      "stability": null,
+      "raw_user_statement": "PetSafe Resolve TP14 versus the actual battery terminal / v0.9.38\nB60 red BP / black T14 (Powered, same red-blinking state): 6.3"
+    },
+    {
+      "id": "B61",
+      "group": "tp14-gate",
+      "from": "T14",
+      "to": "G1",
+      "mode": "Resistance",
+      "unit": "ohms / kohms / OL",
+      "state": "Unpowered",
+      "issue": "E09",
+      "purpose": "Locate TP14/R43.2 on Q1 gate-control node after rejecting its battery-positive assignment.",
+      "date": "2026-10-14",
+      "result": "516 ohm",
+      "resistance_ohms": 516,
+      "raw_user_statement": "PetSafe TP14: locate the Q1 control connection / v0.9.38\nB61 red T14 / black G1 (Unpowered): 516ohm"
+    },
+    {
+      "id": "X03",
+      "group": "tp14-motor-discovery",
+      "from": "TP14",
+      "to": "U5.8",
+      "date": "2026-10-14",
+      "result": "1.5 ohm",
+      "resistance_ohms": 1.5,
+      "mode": "Resistance",
+      "state": "Not separately restated; follows unpowered B61",
+      "issue": "E09",
+      "native_endpoints": [
+        "TP14.1",
+        "U5.8"
+      ],
+      "raw_user_statement": "TP14 and pin 8 of the MX512H are connected - 1.5ohm",
+      "shorted_probe_ohms": null,
+      "stability": null
     }
   ],
-  "batch_title": "E06: one hidden receiver-to-PIC connection",
-  "instructions": "B59: red probe A0, the right metal end of C25 nearest C39 in the PIC photo; black probe T6, the plated TP6 hole beside R27 in the receiver photo. Report the resistance in ohms, kohms, or OL. If it changes, report the range. This is one reading across two photographs.",
-  "result_summary": "C11 outer end N to ANT2 = 1.4 ohm supports a direct connection. N-ANT1 = 5 ohm agrees with the approximately 5-ohm fitted antenna path. N-GND, ANT1-GND and corrected ANT2-GND reports are 414 kohm. The apparent contradiction was a misidentified probe pair, now explicitly corrected by the user. The five front capacitor outer pads share continuous visible copper in IMG_2433; only C11-to-ANT2 was measured. Rear capacitor returns and transistor pads are not reassigned by this evidence.",
+  "batch_title": "Receiver supply while VREF reads zero",
+  "instructions": "B62: red RX (TP5 above U3), black G (printed GND test hole). Report volts and whether steady or varying. No other supply or continuity readings need repeating.",
+  "result_summary": "TP14-U5.8 = 1.5 ohm: TP14/R43.2 moved to OUTA. TP14-Q1.R = 516 ohm is not a direct join.",
   "cancelled_tests": [
     {
       "id": "B20",
@@ -1706,7 +2042,7 @@
       "reason": "User identifies PIC21/RB0 destination; reconcile the older VREF assignment instead."
     }
   ],
-  "revision": "v0.9.37",
+  "revision": "v0.9.39",
   "photo_updates": [
     {
       "evidence": "evidence/c25_c26_mapping_20261009.json",
@@ -1729,7 +2065,7 @@
       "result": "v0.9.22 user annotated U6A option: single left pad/model L/native U106.1 joins U6 pin5 and the existing input node after R37; upper-right/model R1/native2 joins J3.1 (red PIR wire); lower-right/model R2/native3 joins GND. All three external pads mapped, option remains DNP. User called the input VDD; retain VDD -> R37 (22 ohm) -> H_AUX_IN because the annotation ends at U6 pin5 and prior B28 confirms pin5-pin2, not a bypass across R37. No fitted IC identity or voltage measurement implied."
     }
   ],
-  "batch_id": "e06-ra0-tp6-20261014",
+  "batch_id": "receiver-supply-20261014",
   "location_review": {
     "reference": "TP9",
     "status": "REMOVED_UNSUPPORTED_ENTRY",
@@ -1785,94 +2121,14 @@
     "pending_check": null,
     "model_status": "Applied v0.9.20: pin5-VIN measured 1 ohm; R37 and U6A single-pad local joins from the annotation; pin4 explicitly unused."
   },
-  "next_prompt": "E06 photo review is complete. Please take the single unpowered B59 reading, C25 signal end A0 to TP6 T6. The prepared six-voltage batch is staged for afterward.",
-  "review_revision": "v0.9.37",
+  "next_prompt": "One powered DC reading: TP5 to printed GND. This checks receiver supply availability while VREF is zero.",
+  "review_revision": "v0.9.39",
   "request_probe_baseline": false,
   "q3_decision": "Defer isolated Q3 identification; retain candidate qualification and existing copper. No desoldering or repeat Q3 batch requested.",
   "last_completed_test_ids": [
-    "B51",
-    "B52"
+    "B61",
+    "X03"
   ],
-  "last_result_evidence": "evidence/antenna_outer_rail_results_20261014.json",
-  "staged_batches": [
-    {
-      "id": "supply-baseline-20261014",
-      "plan": "evidence/supply_baseline_plan_20261014.json",
-      "status": "Prepared; resume after the unpowered E06 check. Not cancelled or completed.",
-      "tests": [
-        {
-          "id": "B53",
-          "group": "supply-battery",
-          "from": "P1",
-          "to": "G",
-          "mode": "DC voltage",
-          "unit": "V / varying range",
-          "state": "Powered, at rest after startup",
-          "issue": "E09",
-          "net": "BATTERY+",
-          "purpose": "Record actual BATTERY+ voltage relative to GND; no previously measured voltage exists."
-        },
-        {
-          "id": "B54",
-          "group": "supply-rf",
-          "from": "P2",
-          "to": "G",
-          "mode": "DC voltage",
-          "unit": "V / varying range",
-          "state": "Powered, at rest after startup",
-          "issue": "E09",
-          "net": "VSYS",
-          "purpose": "Record actual VSYS voltage relative to GND; no previously measured voltage exists."
-        },
-        {
-          "id": "B55",
-          "group": "supply-rf",
-          "from": "P3",
-          "to": "G",
-          "mode": "DC voltage",
-          "unit": "V / varying range",
-          "state": "Powered, at rest after startup",
-          "issue": "E03",
-          "net": "H_RF_VDD",
-          "purpose": "Record actual H_RF_VDD voltage relative to GND; no previously measured voltage exists."
-        },
-        {
-          "id": "B56",
-          "group": "supply-logic-pir",
-          "from": "P4",
-          "to": "G",
-          "mode": "DC voltage",
-          "unit": "V / varying range",
-          "state": "Powered, at rest after startup",
-          "issue": "E09",
-          "net": "VDD",
-          "purpose": "Record actual VDD voltage relative to GND; no previously measured voltage exists."
-        },
-        {
-          "id": "B57",
-          "group": "supply-logic-pir",
-          "from": "P5",
-          "to": "G",
-          "mode": "DC voltage",
-          "unit": "V / varying range",
-          "state": "Powered, at rest after startup",
-          "issue": "E09",
-          "net": "VREF",
-          "purpose": "Record actual VREF voltage relative to GND; no previously measured voltage exists."
-        },
-        {
-          "id": "B58",
-          "group": "supply-logic-pir",
-          "from": "P6",
-          "to": "G",
-          "mode": "DC voltage",
-          "unit": "V / varying range",
-          "state": "Powered, at rest after startup",
-          "issue": "E07",
-          "net": "H_PIR_VDD",
-          "purpose": "Record actual H_PIR_VDD voltage relative to GND; no previously measured voltage exists."
-        }
-      ]
-    }
-  ]
+  "last_result_evidence": "evidence/tp14_motor_output_correction_v0939.json",
+  "staged_batches": []
 }

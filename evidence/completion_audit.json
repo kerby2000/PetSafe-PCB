@@ -1,5 +1,5 @@
 {
-  "revision": "v0.9.37",
+  "revision": "v0.9.39",
   "instruments": [
     "LCR meter",
     "multimeter"
@@ -1521,7 +1521,7 @@
       "observed": "PIC16F18855",
       "displayed": "PIC16F18855",
       "marking": "PIC16F18855 /SO",
-      "value_or_identity": "Microchip 28-pin SOIC pinout. Factory firmware unchanged.",
+      "value_or_identity": "v0.9.38: B59 C25.1 to TP6.1 = 1.5 ohm unpowered supports PIC2/RA0 on RX_A_FILTER. This joins the existing R27.1/C18.2/TP6 branch; V031/V072 associations are retained. R27 to U3.1, C18 to VREF, and C25 to GND remain component-separated. Firmware role unverified.",
       "footprint": "Package_SO:SOIC-28W_7.5x17.9mm_P1.27mm",
       "footprint_confidence": "datasheet/package candidate",
       "footprint_basis": "Existing assignment; see component identity evidence.",
@@ -1536,7 +1536,7 @@
       "observed": "MX512H",
       "displayed": "MX512H",
       "marking": "MX512H",
-      "value_or_identity": "Motor driver pinout from manufacturer document; logic and motor supply nets kept distinct.",
+      "value_or_identity": "v0.9.39: TP14 to MX512H/U5 pin8 = 1.5 ohm supports OUTA/H_MOTOR_A. Established R43.2/V015-TP14 joins retained. TP14/R43.2 removed from BATTERY+ after BP-TP14 = 6.3 V. TP14-Q1.R = 516 ohm does not establish a direct join. Q1 gate and motor behavior remain qualified.",
       "footprint": "Package_SO:SOIC-8_3.9x4.9mm_P1.27mm",
       "footprint_confidence": "datasheet/package candidate",
       "footprint_basis": "Existing assignment; see component identity evidence.",
@@ -1641,7 +1641,7 @@
       "observed": "UNKNOWN",
       "displayed": "FMOS3401A?",
       "marking": "R1A",
-      "value_or_identity": "R1A marking matches Formosa FMOS3401A datasheet p5; SOT-23 PMOS with G=1 (photo R), S=2 (photo L), D=3 (photo single S). Candidate identification, not manufacturer proof. Drain at battery+ and source at load support reverse-polarity protection; gate-control behavior not verified. Earlier MMBT3904 NPN hypothesis withdrawn.",
+      "value_or_identity": "v0.9.39: TP14 to MX512H/U5 pin8 = 1.5 ohm supports OUTA/H_MOTOR_A. Established R43.2/V015-TP14 joins retained. TP14/R43.2 removed from BATTERY+ after BP-TP14 = 6.3 V. TP14-Q1.R = 516 ohm does not establish a direct join. Q1 gate and motor behavior remain qualified.",
       "footprint": "Package_TO_SOT_SMD:SOT-23",
       "footprint_confidence": "datasheet/package candidate",
       "footprint_basis": "SOT-23 photo and FMOS3401A datasheet package agree. Manufacturer identity remains a candidate.",

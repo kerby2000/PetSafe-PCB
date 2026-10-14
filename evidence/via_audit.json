@@ -1,6 +1,6 @@
 {
   "date": "2026-10-08",
-  "revision": "v0.9.37",
+  "revision": "v0.9.39",
   "source_front": "photos/front_registered.jpg",
   "source_rear": "photos/back_mirrored_registered.jpg",
   "images_are_original_photographic_mosaics": true,
@@ -495,9 +495,10 @@
       "front_match": "PROJECTED: inspect original front photo; may be under a component",
       "endpoints": [
         "R43.2",
-        "TP14.1"
+        "TP14.1",
+        "U5.8"
       ],
-      "net": "BATTERY+",
+      "net": "H_MOTOR_A",
       "confidence": "rear visible; global front projection approximate",
       "note": "Visible clearance separates this site from the surrounding rear copper; this alone does not identify an internal net.",
       "id": "V015",
@@ -511,12 +512,16 @@
       ],
       "review_status": "ASSIGNED",
       "modeled_nets": [
-        "BATTERY+"
+        "H_MOTOR_A"
       ],
-      "component_crosscheck": "User confirms V015-TP14 and R43.2. IMG_2438 places TP14 on battery-positive copper to Q1 single pad3. Raw battery stays separate from post-Q1 motor VDD; the former battery-detect net name is withdrawn.",
+      "component_crosscheck": "User TP14-U5.8 = 1.5 ohm supports OUTA. Prior V015-TP14/R43.2 association retained. Battery photo assignment rejected by 6.3 V differential; 516 ohm to Q1.R does not support a direct join.",
       "excluded_endpoints": [
-        "Q1.L"
-      ]
+        "Q1.L",
+        "BATP.1",
+        "Q1.S",
+        "Q1.R"
+      ],
+      "measurement_source": "evidence/tp14_motor_output_correction_v0939.json"
     },
     {
       "rear_xy": [
@@ -1025,10 +1030,11 @@
       "front_match": "PROJECTED: inspect original front photo; may be under a component",
       "endpoints": [
         "U4.2",
-        "C25.1"
+        "C25.1",
+        "TP6.1"
       ],
-      "net": "PIC_RA0_FILTER",
-      "confidence": "rear visible; global front projection approximate",
+      "net": "RX_A_FILTER",
+      "confidence": "Measured C25-TP6 1.5 ohm plus earlier local via associations; individual vias not reprobed in B59",
       "note": "Visible clearance separates this site from the surrounding rear copper; this alone does not identify an internal net.",
       "id": "V031",
       "active": true,
@@ -1040,10 +1046,15 @@
         }
       ],
       "review_status": "ASSIGNED",
-      "component_crosscheck": "User RA0/C25 association corroborates existing local signal node.",
+      "component_crosscheck": "B59 C25-TP6 = 1.5 ohm resolves the hidden RA0 continuation. Existing V031 association retained.",
       "modeled_nets": [
-        "PIC_RA0_FILTER"
-      ]
+        "RX_A_FILTER"
+      ],
+      "joined_vias": [
+        "V031",
+        "V072"
+      ],
+      "measurement_source": "evidence/ra0_tp6_connection_v0938.json"
     },
     {
       "rear_xy": [
@@ -2419,7 +2430,7 @@
         "TP6.1"
       ],
       "net": "RX_A_FILTER",
-      "confidence": "User identifies TP6 and explicitly excludes R22.2",
+      "confidence": "Measured C25-TP6 1.5 ohm plus earlier local via associations; individual vias not reprobed in B59",
       "note": "Visible clearance separates this site from the surrounding rear copper; this alone does not identify an internal net.",
       "id": "V072",
       "active": true,
@@ -2431,13 +2442,18 @@
         }
       ],
       "review_status": "ASSIGNED",
-      "component_crosscheck": "User identifies TP6. Existing C18.2/R27.1 branches on RX_A_FILTER remain hypotheses; the via report does not certify the whole modeled net. TP6 remains separate from U3.5 across C18.",
+      "component_crosscheck": "B59 C25-TP6 = 1.5 ohm joins PIC RA0. Existing C18.2/R27.1 local traces retained; not remeasured in B59. TP6 remains separate from U3.5/VREF across C18.",
       "modeled_nets": [
         "RX_A_FILTER"
       ],
       "excluded_endpoints": [
         "R22.2"
-      ]
+      ],
+      "joined_vias": [
+        "V031",
+        "V072"
+      ],
+      "measurement_source": "evidence/ra0_tp6_connection_v0938.json"
     },
     {
       "rear_xy": [
@@ -4937,5 +4953,5 @@
       "REJECTED_NOT_VIA": 7
     }
   },
-  "review_update_id": "pic21-tp16-vref-correction"
+  "review_update_id": "ra0-tp6-v0938"
 }

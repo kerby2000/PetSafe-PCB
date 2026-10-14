@@ -34,3 +34,30 @@ def with_antenna_outer_rail(partitions):
         result['GND'].remove(pad);result['H_ANT_B'].append(pad)
     assert set(record['unchanged_rear_ground_pads']) <= set(result['GND'])
     return {name:sorted(pads) for name,pads in result.items()}
+
+def with_ra0_tp6(partitions):
+    """Allow only the B59-supported union; preserve every other partition."""
+    record=json.loads((ROOT/'evidence/ra0_tp6_connection_v0938.json').read_text())
+    assert record['baseline_commit']=='9c71f92'
+    assert record['measured_pair']==['C25.1','TP6.1'] and record['measured_ohms']==1.5
+    expected={'PIC_RA0_FILTER':['C25.1','U4.2'],'RX_A_FILTER':['C18.2','R27.1','TP6.1']}
+    assert record['before']==expected
+    result={name:sorted(pads) for name,pads in partitions.items()}
+    for net,pads in expected.items():assert result[net]==pads,(net,result[net])
+    result['RX_A_FILTER']=sorted(result.pop('PIC_RA0_FILTER')+result['RX_A_FILTER'])
+    assert record['after']=={'RX_A_FILTER':result['RX_A_FILTER']}
+    assert len(result)==len(partitions)-1
+    return result
+
+def with_tp14_motor_output(partitions):
+    """Move only TP14 and its established R43 pad, following measured OUTA continuity."""
+    record=json.loads((ROOT/'evidence/tp14_motor_output_correction_v0939.json').read_text())
+    assert record['baseline_commit']=='9c71f92'
+    assert record['measured_pair']==['TP14.1','U5.8'] and record['measured_ohms']==1.5
+    before={'BATTERY+':['BATP.1','Q1.S','R43.2','TP14.1'],'H_MOTOR_A':['J5.A','U5.8']}
+    after={'BATTERY+':['BATP.1','Q1.S'],'H_MOTOR_A':['J5.A','R43.2','TP14.1','U5.8']}
+    assert record['before']==before and record['after']==after
+    result={name:sorted(pads) for name,pads in partitions.items()}
+    for net,pads in before.items():assert result[net]==pads,(net,result[net])
+    result.update(after)
+    return result

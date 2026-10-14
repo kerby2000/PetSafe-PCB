@@ -19,7 +19,7 @@ fitted=sorted(e for e in m['unresolved_pins'] if cs[e.rsplit('.',1)[0]]['populat
 dnp=sorted(e for e in m['unresolved_pins'] if cs[e.rsplit('.',1)[0]]['population']=='DNP')
 gpios=[int(e.split('.')[1]) for e in fitted if e.startswith('U4.')];gpios.sort()
 func={p['pin']:p['function'] for p in read('evidence/pic_trace_audit.json')['pins']}
-local={1:'J1.1/VPP plus D6 cathode; D6 W-VPP 1 ohm, forward 0.7V from GND',2:'C25 signal pad / V031; onward destination unknown',3:'C26 signal pad (user annotation); R28 + R29 + TP7 (earlier meter/trace)',4:'VREF TP via V035; user confirms via-to-TP; C39.1 local photo route',
+local={1:'J1.1/VPP plus D6 cathode; D6 W-VPP 1 ohm, forward 0.7V from GND',2:'C25 / V031 to TP6 / R27.1 / C18.2: B59 = 1.5 ohm; RX_A_FILTER',3:'C26 signal pad (user annotation); R28 + R29 + TP7 (earlier meter/trace)',4:'VREF TP via V035; user confirms via-to-TP; C39.1 local photo route',
 5:'V036-V108 to R14; user continuity report',6:'V037-V102 to R15; user continuity report',7:'V039-V097 to R16; user continuity report',8:'GND / V041 photo anchor',9:'Y1 oscillator; photo-derived',10:'Y1 oscillator; photo-derived',
 11:'V047-V091 to R11; user continuity report',12:'R18.1 via V053-V070; user-confirmed; VREF link explicitly rejected',13:'TP3 via V049 (user); R10/R6/R7/D1 midpoint from IMG_2431; excitation waveform unmeasured',14:'TP11; visible route; onward destination unknown',
 15:'V022-V016 to U5 pin2 / INA; user-confirmed',16:'V023-V019 to U5 pin3 / INB; user-confirmed',17:'R13; user meter / visible trace',18:'TP17; visible route; old R13 guess withdrawn',19:'GND / C32 / V045 photo anchor',20:'V042 to board VDD TP user-confirmed; C32.1 local photo route',
@@ -50,8 +50,8 @@ W=A4[0]-64
 audit=read('evidence/finalization_audit.json')
 story=[P('Remaining schematic work','TitlePS'),P(f'PetSafe 100-1339 | {m["revision"]} | {status["date"]}'),
 P(f'<b>{len(status["items"])} active issues.</b> {escape(queue["instructions"])} Q3 stays fitted. Completed steps are not new bench requests.'),
-table([['Drawing / connectivity','Remaining data','ERC'],[f'{len(fitted)} fitted open pads; {len(gpios)} open PIC pads; {audit["dangling_wire_ends"]} dangling wire ends. {len(m["nets"])} native/model net partitions match.',f'{len(status["unknown_ceramic_values"])} ceramic values; LED1 footprint blank. Three local-only PIC branches remain explicit; unsupported R33 withdrawn.',f'{status["erc_total"]} retained U6/U6A output conflict. Five stock power-source flags retained; no new copper joins.']],[W/3]*3),
-P('Audit boundary','HeadPS'),P('Native wire geometry, library definitions, all catalog pad assignments and existing evidence were checked. Zero open pads does not establish hidden copper or functional behavior. U6A is DNP; its regulator symbol and visible conflict remain by user choice. No new NC markers, net merges or ERC exclusions.'),
+table([['Drawing / connectivity','Remaining data','ERC'],[f'{len(fitted)} fitted open pads; {len(gpios)} open PIC pads; {audit["dangling_wire_ends"]} dangling wire ends. {len(m["nets"])} native/model net partitions match.',f'{len(status["unknown_ceramic_values"])} ceramic values; LED1 footprint blank. Two local-only PIC branches remain explicit; unsupported R33 withdrawn.',f'{status["erc_total"]} retained U6/U6A output conflict. Five stock power-source flags retained; B59 RA0-TP6 join recorded.']],[W/3]*3),
+P('Audit boundary','HeadPS'),P('Native wire geometry, library definitions, all catalog pad assignments and existing evidence were checked. Zero open pads does not establish hidden copper or functional behavior. U6A is DNP; its regulator symbol and visible conflict remain by user choice. B59 supports the RA0-TP6 net merge. No new NC markers or ERC exclusions.'),
 P('Order of work','HeadPS')]
 for group in status['finish_plan']:
     story.append(P('<b>'+escape(group['title'])+':</b> '+escape(group['summary'])+' '+escape(group['next_action'])))

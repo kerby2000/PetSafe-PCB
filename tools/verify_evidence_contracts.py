@@ -177,6 +177,22 @@ for result_file in ['evidence/antenna_midpoint_results_20261014.json','evidence/
  readings=read(result_file)['measurements']
  for reading in readings:assert reading in queue['completed_tests'], (result_file,reading['id'])
  completed_ids|={r['id'] for r in readings}
+b59=read('evidence/ra0_tp6_connection_v0938.json')['measurement']
+assert b59['id']=='B59' and b59['resistance_ohms']==1.5 and b59 in queue['completed_tests']
+assert net('C25.1')==net('U4.2')==net('TP6.1')==net('R27.1')==net('C18.2')
+assert len({net(e) for e in ['TP6.1','R27.2','VREF.1','GND.1']})==4
+completed_ids.add('B59')
+supply=read('evidence/supply_baseline_results_20261014.json')
+assert [r['voltage_v'] for r in supply['measurements']]==[0,6.3,6.3,4.5,0,3.3]
+assert supply['operating_state']['pir_connected'] is True
+for row in supply['measurements']:
+ assert row in queue['completed_tests']
+ completed_ids.add(row['id'])
+follow=read('evidence/tp14_followup_results_20261014.json')
+assert [(r['id'],r['result']) for r in follow['measurements']]==[('B60','6.3 V'),('B61','516 ohm'),('X03','1.5 ohm')]
+for row in follow['measurements']:
+ assert row in queue['completed_tests']
+ completed_ids.add(row['id'])
 assert {r['id'] for r in queue['completed_tests']}==completed_ids
 assert not completed_ids&{r['id'] for r in queue['tests']}, 'Do not repeat completed finishing readings'
 for ref in ['U4','R11','R14','R15','R16','R37','R39','Q1','U2','Q8','C5','LED1','R18','R19','Q7','TP3','TP104','U106','J3','R43','TP14','R42','R44','TP4','TP103','R21','R22','R23','R48']:
@@ -262,7 +278,9 @@ assert sites['V067']['endpoints']==['U6A.R1','J3.1']
 assert xml.findtext('./components/comp[@ref="TP104"]/value')=='VREF'
 assert sites['V049']['inconclusive_vias']==['V070']
 assert sites['V070']['resistive_measurements'][-1]['resistance_range_ohms']==[200000,300000]
-assert net('BATP.1')==net('Q1.S')==net('TP14.1')==net('R43.2')=='BATTERY+'
+assert net('BATP.1')==net('Q1.S')=='BATTERY+'
+assert net('TP14.1')==net('R43.2')==net('U5.8')==net('J5.A')=='H_MOTOR_A'
+assert len({net(e) for e in ['TP14.1','Q1.S','Q1.R','Q1.L','GND.1']})==5
 assert net('Q1.L')==net('U5.4')==net('L2.1')==net('L1.1')=='VSYS'
 assert net('L1.1')!=net('L1.2') and net('L2.1')!=net('L2.2'), 'Supply report must not short the filter components'
 assert net('Q1.R')==net('R44.2')!=net('Q1.L')

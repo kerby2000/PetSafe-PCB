@@ -2,7 +2,7 @@
   "date": "2026-10-14",
   "basis_revision": "v0.9.37",
   "electrical_change": false,
-  "status": "LOCAL_PATHS_REVIEWED_ONE_TARGETED_PAIR_PENDING",
+  "status": "RA0_CANDIDATE_CONFIRMED_TP11_TP17_REMAIN_QUALIFIED",
   "source_sha256": {
     "photos/originals/IMG_2436.jpg": "8870fa15bfcc55dcaca5535ca33af2a242edadc07ad4c95db49fb32245e0cdaf",
     "photos/originals/IMG_2437.jpg": "3c7c58fea79ea903a3099f204c1d97406c0884edb6d54fd5e7441363e71467a7",
@@ -72,5 +72,11 @@
     "TP16-TP11 = 400 kohm",
     "TP16-TP17 = 400 kohm"
   ],
-  "conclusion": "E06 narrowed but not falsely closed. No copper changes, NC flags, or inferred net joins."
+  "conclusion": "Original photo review retained below as dated provenance. Subsequent B59 resolves the RA0 candidate in v0.9.38; TP11/TP17 limitations remain.",
+  "measurement_followup": {
+    "source": "evidence/ra0_tp6_connection_v0938.json",
+    "test": "B59",
+    "result": "1.5 ohm",
+    "applied_revision": "v0.9.38"
+  }
 }
