@@ -1,7 +1,7 @@
 {
-  "revision": "v0.9.40",
+  "revision": "v0.9.41",
   "result": "PASS",
-  "schematic_sha256": "769239d9aec2b10ca2e8ebb4d83b0dbe60d730e9cf1f15932d1f2c4a180dcc88",
+  "schematic_sha256": "cae37cf01eb46f01a0839979282deeffa1243ac58bfb98bbf2226d53f9498e3a",
   "physical_net_partitions": 82,
   "pad_membership_baseline": "ecd683d",
   "documented_pad_moves": "evidence/antenna_outer_rail_correction_v0937.json",
@@ -87,11 +87,11 @@
     }
   ],
   "local_only_branches": {
-    "PIC_RC3": "E06",
-    "PIC_RC7_TP17": "E06"
+    "PIC_RC3": "evidence/e06_disposition_v0941.json",
+    "PIC_RC7_TP17": "evidence/e06_disposition_v0941.json"
   },
   "current_device_gap": "E04: Q3 in-circuit pattern disputes PNP pinout; isolated identification remains optional.",
-  "active_issue_count": 10,
+  "active_issue_count": 9,
   "uncertainty_coverage": [
     {
       "reference": "R3",
@@ -762,7 +762,6 @@
     {
       "reference": "U4",
       "issues": [
-        "E06",
         "E10"
       ],
       "population": "populated"
@@ -1036,7 +1035,7 @@
     {
       "reference": "TP11",
       "issues": [
-        "E06"
+        "E06-documented-reconstruction-limitation"
       ],
       "population": "populated"
     },
@@ -1060,7 +1059,7 @@
     {
       "reference": "TP17",
       "issues": [
-        "E06"
+        "E06-documented-reconstruction-limitation"
       ],
       "population": "populated"
     },

@@ -21,13 +21,22 @@ gpios=[int(e.split('.')[1]) for e in fitted if e.startswith('U4.')];gpios.sort()
 func={p['pin']:p['function'] for p in read('evidence/pic_trace_audit.json')['pins']}
 local={1:'J1.1/VPP plus D6 cathode; D6 W-VPP 1 ohm, forward 0.7V from GND',2:'C25 / V031 to TP6 / R27.1 / C18.2: B59 = 1.5 ohm; RX_A_FILTER',3:'C26 signal pad (user annotation); R28 + R29 + TP7 (earlier meter/trace)',4:'VREF TP via V035; user confirms via-to-TP; C39.1 local photo route',
 5:'V036-V108 to R14; user continuity report',6:'V037-V102 to R15; user continuity report',7:'V039-V097 to R16; user continuity report',8:'GND / V041 photo anchor',9:'Y1 oscillator; photo-derived',10:'Y1 oscillator; photo-derived',
-11:'V047-V091 to R11; user continuity report',12:'R18.1 via V053-V070; user-confirmed; VREF link explicitly rejected',13:'TP3 via V049 (user); R10/R6/R7/D1 midpoint from IMG_2431; excitation waveform unmeasured',14:'TP11; visible route; onward destination unknown',
-15:'V022-V016 to U5 pin2 / INA; user-confirmed',16:'V023-V019 to U5 pin3 / INB; user-confirmed',17:'R13; user meter / visible trace',18:'TP17; visible route; old R13 guess withdrawn',19:'GND / C32 / V045 photo anchor',20:'V042 to board VDD TP user-confirmed; C32.1 local photo route',
+11:'V047-V091 to R11; user continuity report',12:'R18.1 via V053-V070; user-confirmed; VREF link explicitly rejected',13:'TP3 via V049 (user); R10/R6/R7/D1 midpoint from IMG_2431; excitation waveform unmeasured',14:'TP11; supported local route; hidden continuation/firmware purpose unproved (E06 limitation)',
+15:'V022-V016 to U5 pin2 / INA; user-confirmed',16:'V023-V019 to U5 pin3 / INB; user-confirmed',17:'R13; user meter / visible trace',18:'TP17; supported local route; hidden continuation/firmware purpose unproved; R13 belongs to RC6',19:'GND / C32 / V045 photo anchor',20:'V042 to board VDD TP user-confirmed; C32.1 local photo route',
 21:'TP16/Q2.S; user correction. Old VREF join rejected; TP16-VREF 800 kohm',22:'TP2 / R31 / green LED branch; user meter, visible trace and B42 colour',23:'TP1 / R30 / red LED branch; user meter, visible trace and B43 colour',24:'R4; photo-derived; sensing role remains inferred',25:'TP4 / V017 / R42.1 / R44.1; user continuity; C41 photo-derived',26:'TP10 / R35; user meter / visible trace',27:'ICSP CLK / D4 / R32; photo-derived',28:'ICSP DAT / D5 / R40; photo-derived'}
 pins=[dict(pin=n,gpio=func[n],net=member.get(f'U4.{n}'),open_pad=n in gpios,evidence=local[n]) for n in range(1,29)]
 status=current_state()
 queue=read('evidence/finishing_measurements.json')
 save('evidence/completion_status.json',status)
+# Refresh the formerly stale v0.7 audit from the maintained per-pin register.
+# Function names retain their manufacturer pinout source; recorded evidence is not upgraded.
+pin_audit=read('evidence/pic_trace_audit.json')
+save('evidence/pic_trace_audit.json',dict(revision=m['revision'],
+    pin_number_source=pin_audit['pin_number_source'],source_url=pin_audit['source_url'],
+    interpretation='Current modeled routes and evidence qualifications. No claim of exhaustive hidden-layer connectivity.',
+    historical_source='docs/history/e06-v0941/pic_trace_audit.json',
+    open_gpio_pins=gpios,
+    pins=[dict(pin=p['pin'],function=p['gpio'],net=p['net'],status='LOCAL_ROUTE_MODELED',evidence=p['evidence']) for p in pins]))
 save('evidence/pic_gpio_status.json',dict(revision=m['revision'],pins=pins,open_gpio_pins=gpios,qualification='A modeled local net does not certify its remote role or all attached inferred branches.'))
 with (R/'evidence/pic_gpio_status.csv').open('w',newline='',encoding='utf-8') as f:
     w=csv.DictWriter(f,fieldnames=list(pins[0]));w.writeheader();w.writerows(pins)
@@ -50,7 +59,7 @@ W=A4[0]-64
 audit=read('evidence/finalization_audit.json')
 story=[P('Remaining schematic work','TitlePS'),P(f'PetSafe 100-1339 | {m["revision"]} | {status["date"]}'),
 P(f'<b>{len(status["items"])} active issues.</b> {escape(queue["instructions"])} Q3 stays fitted. Completed steps are not new bench requests.'),
-table([['Drawing / connectivity','Remaining data','ERC'],[f'{len(fitted)} fitted open pads; {len(gpios)} open PIC pads; {audit["dangling_wire_ends"]} dangling wire ends. {len(m["nets"])} native/model net partitions match.',f'{len(status["unknown_ceramic_values"])} ceramic values; LED1 footprint blank. Two local-only PIC branches remain explicit; unsupported R33 withdrawn.',f'{status["erc_total"]} retained U6/U6A output conflict. Six documented power-source flags; R5 supplies U2/C7 from RF rail.']],[W/3]*3),
+table([['Drawing / connectivity','Remaining data','ERC'],[f'{len(fitted)} fitted open pads; {len(gpios)} open PIC pads; {audit["dangling_wire_ends"]} dangling wire ends. {len(m["nets"])} native/model net partitions match.',f'{len(status["unknown_ceramic_values"])} ceramic values; LED1 footprint blank. TP11/TP17 hidden-layer limit retained; unsupported R33 withdrawn.',f'{status["erc_total"]} retained U6/U6A output conflict. Six documented power-source flags; R5 supplies U2/C7 from RF rail.']],[W/3]*3),
 P('Audit boundary','HeadPS'),P('Native wire geometry, library definitions, all catalog pad assignments and existing evidence were checked. Zero open pads does not establish hidden copper or functional behavior. U6A is DNP; its regulator symbol and visible conflict remain by user choice. B59 supports the RA0-TP6 net merge. No new NC markers or ERC exclusions.'),
 P('Order of work','HeadPS')]
 for group in status['finish_plan']:
@@ -64,6 +73,13 @@ for group in status['finish_plan']:
     if 'V01' in group['issues']:
         story.extend([P('All unrecovered ceramic values','HeadPS'),P(escape(', '.join(status['unknown_ceramic_values'])))])
     story.append(PageBreak())
+story.append(P('Documented reconstruction limitations','TitlePS'))
+for item in status['reconstruction_limitations']:
+    story.extend([P(escape(item['id']+' - '+item['area']),'HeadPS'),
+        P('<b>Disposition:</b> '+escape(item['disposition'])),P(escape(item['known'])),
+        P('<b>Unproved:</b> '+escape(item['unknown'])),P('<b>Next:</b> '+escape(item['next_action'])),
+        P('<b>Reopen if:</b> '+escape(item['reopen_when'])),P(escape(item['evidence']))])
+story.append(PageBreak())
 story.append(P('PCB reproduction requirements','TitlePS'))
 for row in read('evidence/remaining_work.json')['reproduction_requirements']:
     story.append(KeepTogether([P(escape(row['item']),'HeadPS'),P(escape(row['remaining'])),P('<b>Agent:</b> '+escape(row['agent_work'])),P('<b>Owner input:</b> '+escape(row['owner_input']))]))

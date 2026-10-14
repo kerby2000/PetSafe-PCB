@@ -298,7 +298,10 @@
       },
       "rotation": 90,
       "includePins": true,
-      "footprint": "TestPoint:TestPoint_THTPad_D2.0mm_Drill1.0mm"
+      "footprint": "TestPoint:TestPoint_THTPad_D2.0mm_Drill1.0mm",
+      "properties": {
+        "CurrentEvidence": "PIC14/RC3 to TP11 is photo-supported. Retain the local route; no onward surface trace identified. Additional inner-layer branches and firmware purpose are unverified. E06 is a documented reconstruction limitation, not an open pad or a certified test-only pin."
+      }
     },
     {
       "symbol": "Device:R",
@@ -349,7 +352,10 @@
       },
       "rotation": 270,
       "includePins": true,
-      "footprint": "TestPoint:TestPoint_THTPad_D2.0mm_Drill1.0mm"
+      "footprint": "TestPoint:TestPoint_THTPad_D2.0mm_Drill1.0mm",
+      "properties": {
+        "CurrentEvidence": "PIC18/RC7 to TP17 is photo-supported. The old onward-R13 guess is withdrawn; R13 belongs to PIC17/RC6. Retain the local route; additional inner-layer branches and firmware purpose remain unverified. E06 is a documented reconstruction limitation."
+      }
     },
     {
       "symbol": "PetSafe_Datasheet:MX512H",

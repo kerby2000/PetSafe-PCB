@@ -1,6 +1,6 @@
 # PetSafe PCB reverse engineering
 
-Schematic **v0.9.40**; evidence review updated 2026-10-15. PetSafe PPA19-16811 main board, **100-1339 R03 A**. All 148 catalog entries, including test pads and empty options, are on one A2 KiCad 10 sheet.
+Schematic **v0.9.41**; evidence review updated 2026-10-15. PetSafe PPA19-16811 main board, **100-1339 R03 A**. All 148 catalog entries, including test pads and empty options, are on one A2 KiCad 10 sheet.
 
 Open [the current overview](index.html), [the completion checklist](docs/FINISHING_CHECKLIST.html), [the native schematic](schematic/PetSafe_1001339.kicad_sch), or [the schematic PDF](output/pdf/PetSafe_single_sheet.pdf). The [printable status](output/pdf/PetSafe_completion_status.pdf) includes only current questions and closure criteria. The [measurement page](docs/FINISHING_MEASUREMENTS.html) records the completed RF batch. **R5 (22 ohm) feeds U2/C7 from H_RF_VDD; it is not an antenna series resistor.** The former direct U2-to-printed-VDD tie is removed: U2 measured 6.3 V and a direct +1.8 V difference to printed VDD. Q8 output-to-ANT1 is photo-supported, with a compatible 4.5-ohm reading; that reading alone cannot distinguish contact resistance from the fitted antenna winding. U2 identity/voltage compatibility remains unresolved. The owner has an oscilloscope but defers waveform work and requests all components remain fitted. Current priority is schematic values, identities and package geometry; in-circuit LCR results remain qualified estimates unless individual extraction is justified.
 
@@ -25,7 +25,7 @@ The [current finalization audit](docs/reviews/2026-10-09_finalization_cleanup_v0
 
 ## What remains to finalize the schematic
 
-1. **Resolve hidden paths and device behavior.** Q3 stays fitted by user choice; isolated identification is deferred. Q8 supply continuity is supported. S1 contacts and normally-open action are verified; E05 is closed. LED colour mapping is now established. Remaining gaps include two local-only PIC branches, tuning-device behavior, candidate pin functions and operating levels, tracked individually in the checklist.
+1. **Resolve hidden paths and device behavior.** Q3 stays fitted by user choice; isolated identification is deferred. Q8 supply continuity is supported. S1 contacts and normally-open action are verified; E05 is closed. LED colour mapping is now established. Remaining gaps include tuning-device behavior, candidate pin functions and operating levels, tracked individually in the checklist. PIC14/TP11 and PIC18/TP17 retain their supported local routes; possible hidden branches and firmware purpose are documented reconstruction limitations, not pending continuity requests.
 2. **Recover critical component values.** 44 ceramic values remain. Prioritize antenna/RF/receiver components after topology, accounting for parallel paths in LCR readings.
 3. **Finish interface and package mapping.** LED pad geometry/numbering and its missing footprint, plus connector fit and external motor harness orientation. J5 board contacts are now photo-mapped to the H-bridge outputs. Exact package fit, routed PCB/layer stack, daughterboard and firmware are later reproduction work, not extra unfinished main-board wires.
 
@@ -39,7 +39,7 @@ A functioning new assembly also needs the PIC program/configuration, motor/anten
 
 ## History
 
-Resolved investigation is preserved in [history](docs/history/README.md). The active checklist has 10 issue groups; [every previous item has a disposition](evidence/finalization_review_v0931.json). No physical net partition was changed by this cleanup.
+Resolved investigation is preserved in [history](docs/history/README.md). The active checklist has 9 issue groups plus the explicit E06 reconstruction limitation; [every previous item has a disposition](evidence/finalization_review_v0931.json). No physical net partition was changed by this cleanup.
 
 ## Evidence and history
 

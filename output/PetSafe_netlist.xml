@@ -2,16 +2,16 @@
 <export version="E">
   <design>
     <source>C:\Users\lukin\Documents\ChatGPT\PetSafe-PCB\schematic\PetSafe_1001339.kicad_sch</source>
-    <date>2026-10-15T00:25:37</date>
+    <date>2026-10-15T00:37:49</date>
     <tool>Eeschema 10.0.5</tool>
     <sheet number="1" name="/" tstamps="/">
       <title_block>
         <title>PetSafe 100-1339 R03 A | single-sheet reconstruction</title>
         <company>KiCad 10 libraries + four datasheet symbols | MCP authoring</company>
-        <rev>0.9.40</rev>
+        <rev>0.9.41</rev>
         <date>2026-10-15</date>
         <source>PetSafe_1001339.kicad_sch</source>
-        <comment number="1" value="RF supply/output corrected; device ratings remain qualified."/>
+        <comment number="1" value="TP11/TP17 retained; hidden branches and device roles remain qualified."/>
         <comment number="2" value=""/>
         <comment number="3" value=""/>
         <comment number="4" value=""/>
@@ -5060,8 +5060,9 @@
       <footprint>TestPoint:TestPoint_THTPad_D2.0mm_Drill1.0mm</footprint>
       <description>test point</description>
       <fields>
+        <field name="CurrentEvidence">PIC14/RC3 to TP11 is photo-supported. Retain the local route; no onward surface trace identified. Additional inner-layer branches and firmware purpose are unverified. E06 is a documented reconstruction limitation, not an open pad or a certified test-only pin.</field>
         <field name="OriginalReference">TP11</field>
-        <field name="Evidence">Photo reconstruction; individual net evidence in reconstruction.json</field>
+        <field name="Evidence">PIC14/RC3 to TP11 is photo-supported. Retain the local route; no onward surface trace identified. Additional inner-layer branches and firmware purpose are unverified. E06 is a documented reconstruction limitation, not an open pad or a certified test-only pin.</field>
         <field name="LibraryPolicy">Unmodified KiCad 10 stock symbol</field>
         <field name="FootprintConfidence">low</field>
         <field name="FootprintBasis">Stock plated-hole approximation from photographs. Exact drill and annular ring remain unmeasured; these are board pads, not fitted components.</field>
@@ -5071,8 +5072,9 @@
         <field name="Description">test point</field>
       </fields>
       <libsource lib="Connector" part="TestPoint" description="test point"/>
+      <property name="CurrentEvidence" value="PIC14/RC3 to TP11 is photo-supported. Retain the local route; no onward surface trace identified. Additional inner-layer branches and firmware purpose are unverified. E06 is a documented reconstruction limitation, not an open pad or a certified test-only pin."/>
       <property name="OriginalReference" value="TP11"/>
-      <property name="Evidence" value="Photo reconstruction; individual net evidence in reconstruction.json"/>
+      <property name="Evidence" value="PIC14/RC3 to TP11 is photo-supported. Retain the local route; no onward surface trace identified. Additional inner-layer branches and firmware purpose are unverified. E06 is a documented reconstruction limitation, not an open pad or a certified test-only pin."/>
       <property name="LibraryPolicy" value="Unmodified KiCad 10 stock symbol"/>
       <property name="FootprintConfidence" value="low"/>
       <property name="FootprintBasis" value="Stock plated-hole approximation from photographs. Exact drill and annular ring remain unmeasured; these are board pads, not fitted components."/>
@@ -5214,8 +5216,9 @@
       <footprint>TestPoint:TestPoint_THTPad_D2.0mm_Drill1.0mm</footprint>
       <description>test point</description>
       <fields>
+        <field name="CurrentEvidence">PIC18/RC7 to TP17 is photo-supported. The old onward-R13 guess is withdrawn; R13 belongs to PIC17/RC6. Retain the local route; additional inner-layer branches and firmware purpose remain unverified. E06 is a documented reconstruction limitation.</field>
         <field name="OriginalReference">TP17</field>
-        <field name="Evidence">Photo reconstruction; individual net evidence in reconstruction.json</field>
+        <field name="Evidence">PIC18/RC7 to TP17 is photo-supported. The old onward-R13 guess is withdrawn; R13 belongs to PIC17/RC6. Retain the local route; additional inner-layer branches and firmware purpose remain unverified. E06 is a documented reconstruction limitation.</field>
         <field name="LibraryPolicy">Unmodified KiCad 10 stock symbol</field>
         <field name="FootprintConfidence">low</field>
         <field name="FootprintBasis">Stock plated-hole approximation from photographs. Exact drill and annular ring remain unmeasured; these are board pads, not fitted components.</field>
@@ -5225,8 +5228,9 @@
         <field name="Description">test point</field>
       </fields>
       <libsource lib="Connector" part="TestPoint" description="test point"/>
+      <property name="CurrentEvidence" value="PIC18/RC7 to TP17 is photo-supported. The old onward-R13 guess is withdrawn; R13 belongs to PIC17/RC6. Retain the local route; additional inner-layer branches and firmware purpose remain unverified. E06 is a documented reconstruction limitation."/>
       <property name="OriginalReference" value="TP17"/>
-      <property name="Evidence" value="Photo reconstruction; individual net evidence in reconstruction.json"/>
+      <property name="Evidence" value="PIC18/RC7 to TP17 is photo-supported. The old onward-R13 guess is withdrawn; R13 belongs to PIC17/RC6. Retain the local route; additional inner-layer branches and firmware purpose remain unverified. E06 is a documented reconstruction limitation."/>
       <property name="LibraryPolicy" value="Unmodified KiCad 10 stock symbol"/>
       <property name="FootprintConfidence" value="low"/>
       <property name="FootprintBasis" value="Stock plated-hole approximation from photographs. Exact drill and annular ring remain unmeasured; these are board pads, not fitted components."/>

@@ -1,6 +1,6 @@
 # Current circuit interpretation
 
-Schematic v0.9.40, 2026-10-15. This is the current interpretation, not a chronological log. The [previous narrative](history/cleanup_v0928/docs/RECONSTRUCTION.md) is archived; older requests there are superseded. Use [the checklist](FINISHING_CHECKLIST.html) for remaining questions. Oscilloscope work is deferred at the owner's request; prioritize schematic values, identities and package geometry.
+Schematic v0.9.41, 2026-10-15. This is the current interpretation, not a chronological log. The [previous narrative](history/cleanup_v0928/docs/RECONSTRUCTION.md) is archived; older requests there are superseded. Use [the checklist](FINISHING_CHECKLIST.html) for remaining questions. Oscilloscope work is deferred at the owner's request; prioritize schematic values, identities and package geometry.
 
 ## Power and references
 
@@ -12,7 +12,7 @@ U1 uses a datasheet-derived S-1200B45 symbol. U6/C2NM supports S-812C33AMC. U6 p
 
 ## PIC, button and interfaces
 
-All PIC pads have modeled local nets. PIC21/RB0 reaches TP16/Q2.S; the old VREF association was explicitly withdrawn after TP16-VREF measured 0.8 Mohm. PIC2/RA0/C25 reaches TP6/R27.1/C18.2 on RX_A_FILTER: B59 measured 1.5 ohm. R27 remains between this node and U3.1; C18 remains between it and VREF. PIC14/TP11 and PIC18/TP17 have visible local routes, but hidden continuations cannot yet be excluded. Firmware roles remain unverified. C26 reaches PIC3/RA1 with R28/R29/TP7. C25/C26 have common ground ends; C39/PIC4 belongs to VREF.
+All PIC pads have modeled local nets. PIC21/RB0 reaches TP16/Q2.S; the old VREF association was explicitly withdrawn after TP16-VREF measured 0.8 Mohm. PIC2/RA0/C25 reaches TP6/R27.1/C18.2 on RX_A_FILTER: B59 measured 1.5 ohm. R27 remains between this node and U3.1; C18 remains between it and VREF. PIC14/RC3-TP11 and PIC18/RC7-TP17 are retained as supported local routes. E06 is resolved as a drawing disposition, with physical completeness explicitly unproved: additional inner-layer branches are not excluded and firmware/test-only purpose is unverified. No new continuity pair is justified. A specific onward destination or contradictory evidence reopens the issue; the old RC7-to-R13 inference is withdrawn because R13 belongs to PIC17/RC6. C26 reaches PIC3/RA1 with R28/R29/TP7. C25/C26 have common ground ends; C39/PIC4 belongs to VREF.
 
 R41 is 330 ohm and its model1/right end reaches **J1 VPP**. Its model2 end joins H_BUTTON/R40.2/C35.1. The former isolated H_R41_FREE node is obsolete. R40's other end is ICSP_DAT/PIC28. S1 currently uses stock SW_Push: physical upper row TL/TR maps to native pin1/GND; lower BL/BR to native pin2/H_BUTTON. B38/B39 each measure 1 ohm across the two common pairs; B40 is OL released and B41 is 1 ohm pressed across them. These verify normally-open contact behavior; E05 is closed. Extra A-C OL is preserved in the result ledger. Old four-native-pin connector numbering is superseded.
 

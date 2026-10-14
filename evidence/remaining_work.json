@@ -1,7 +1,7 @@
 {
   "date": "2026-10-15",
-  "review_revision": "v0.9.40",
-  "basis_revision": "v0.9.40",
+  "review_revision": "v0.9.41",
+  "basis_revision": "v0.9.41",
   "scope": "Current main-board finishing register. Supported connections and completed measurements are recorded in the current model; resolved issues are archived. Remaining hidden paths, candidate identities, values and operating behavior are listed below.",
   "rails": [
     {
@@ -132,33 +132,6 @@
         "evidence/antenna_midpoint_results_20261014.json",
         "evidence/antenna_outer_rail_results_20261014.json",
         "evidence/antenna_outer_rail_correction_v0937.json"
-      ],
-      "owner": "Agent evidence review; targeted owner test only as listed",
-      "category": "connectivity/behavior"
-    },
-    {
-      "id": "E06",
-      "area": "PIC test branches: TP11 and TP17",
-      "refs": [
-        "U4",
-        "TP11",
-        "TP17"
-      ],
-      "priority": 2,
-      "state": "open",
-      "known": "PIC14/RC3 reaches TP11; PIC18/RC7 reaches TP17. Front/rear photos show no onward surface trace at those test points. Both are valid endpoints, not dangling wires. RA0/C25 to TP6 measured 1.5 ohm in B59 and is now resolved on RX_A_FILTER.",
-      "unknown": "Only the possibility of additional inner-layer connections on RC3/TP11 and RC7/TP17 remains. A test-only purpose is plausible but not established by photographs.",
-      "next_action": "No justified new continuity pair identified. Retain the known PIC-to-TP11/TP17 routes and explicit inner-layer limitation; no repeated TP16 tests. These are valid local endpoints. Continue values and package details; firmware/test-point purpose may remain qualified.",
-      "closed_when": "Additional continuation is traced, or physical layer evidence establishes these are test-only branches. Until then, reproduce the known local routes without asserting that hidden continuations are absent.",
-      "open_pads": [],
-      "nets": [
-        "PIC_RC3",
-        "PIC_RC7_TP17"
-      ],
-      "supporting_evidence": [
-        "docs/history/v0.9.30-before-finalization/evidence/remaining_work.json",
-        "evidence/e06_photo_review_20261014.json",
-        "evidence/ra0_tp6_connection_v0938.json"
       ],
       "owner": "Agent evidence review; targeted owner test only as listed",
       "category": "connectivity/behavior"
@@ -447,14 +420,13 @@
       "issues": [
         "E03",
         "E04",
-        "E06",
         "E07",
         "E08",
         "E09",
         "E10",
         "I01"
       ],
-      "summary": "RF feed/output wiring, switch contacts and front-bank ANT2 routing are supported. Two local-only PIC branches and candidate roles remain qualified. Scope work and component isolation are deferred by owner.",
+      "summary": "RF feed/output wiring, switch contacts and front-bank ANT2 routing are supported. Candidate device roles remain unresolved. TP11/TP17 routes are complete as drawn, with hidden-layer uncertainty retained as a reconstruction limitation. Scope work and component isolation are deferred by owner.",
       "next_action": "No further RF continuity repeat requested. Oscilloscope available, but waveform checks explicitly deferred by the owner on 2026-10-15. Continue schematic values, identities and package geometry without scope measurements."
     },
     {
@@ -485,7 +457,7 @@
   "reproduction_requirements": [
     {
       "item": "Electrical design",
-      "remaining": "Close the 10 active main-board issue groups, recover critical values, and qualify candidate pin functions/ratings.",
+      "remaining": "Resolve the active main-board issue groups, recover critical values, and qualify candidate pin functions/ratings. TP11/TP17 hidden-layer completeness remains a documented reconstruction limitation.",
       "agent_work": "Trace visible copper, review datasheets and keep the model/native files consistent.",
       "owner_input": "Antenna outer-rail continuity complete. Future measurements are selected individually after photo review; powered behavior remains unverified."
     },
@@ -519,5 +491,17 @@
     "oscilloscope_available": true,
     "oscilloscope_measurements": "Deferred by explicit owner request; finalize schematic as far as possible without scope first.",
     "component_isolation": "Owner requests all components remain fitted; no lifting or desoldering requests."
-  }
+  },
+  "reconstruction_limitations": [
+    {
+      "id": "E06",
+      "area": "PIC14/TP11 and PIC18/TP17: hidden continuation not excluded",
+      "disposition": "Drawing resolved; physical completeness unproved",
+      "known": "PIC14/RC3 reaches TP11; PIC18/RC7 reaches TP17. Front/rear photos show no onward surface route. Both local routes are represented and are valid endpoints.",
+      "unknown": "Additional inner-layer branches and firmware purpose remain unverified; test-only use is not asserted.",
+      "next_action": "None justified for E06. Do not repeat the rejected TP16-TP11 or TP16-TP17 checks.",
+      "reopen_when": "A specific unassigned destination, contradictory continuity result, inner-layer image or firmware evidence identifies an onward connection that the current drawing omits.",
+      "evidence": "evidence/e06_disposition_v0941.json"
+    }
+  ]
 }

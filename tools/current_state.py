@@ -80,6 +80,7 @@ def current_state(model=None, validation=None, work=None):
         current_gaps=[dict(id=i['id'], area=i['area'], gap=i['unknown'], method=i['next_action']) for i in work['issues'] if i['state']!='closed'],
         items=[i for i in work['issues'] if i['state']!='closed'],
         finish_plan=work.get('finish_plan', []),
+        reconstruction_limitations=work.get('reconstruction_limitations', []),
         settled_summary=work.get('settled_summary', []),
         closed_items=[i for i in work['issues'] if i['state']=='closed'], rails=work['rails'],
         milestones=work.get('milestones', []),

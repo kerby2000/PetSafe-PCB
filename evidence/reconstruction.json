@@ -1,6 +1,6 @@
 {
   "board": "100-1339 R03 A",
-  "revision": "v0.9.40",
+  "revision": "v0.9.41",
   "status": "PARTIALLY VERIFIED RECONSTRUCTION; USER MEASUREMENTS, PHOTO TRACES AND QUALIFIED HYPOTHESES",
   "components": [
     {
@@ -3529,7 +3529,8 @@
       "library_symbol": "Connector:TestPoint",
       "footprint": "TestPoint:TestPoint_THTPad_D2.0mm_Drill1.0mm",
       "footprint_confidence": "low",
-      "footprint_basis": "Stock plated-hole approximation from photographs. Exact drill and annular ring remain unmeasured; these are board pads, not fitted components."
+      "footprint_basis": "Stock plated-hole approximation from photographs. Exact drill and annular ring remain unmeasured; these are board pads, not fitted components.",
+      "current_summary": "PIC14/RC3 to TP11 is photo-supported. Retain the local route; no onward surface trace identified. Additional inner-layer branches and firmware purpose are unverified. E06 is a documented reconstruction limitation, not an open pad or a certified test-only pin."
     },
     {
       "ref": "TP14",
@@ -3611,7 +3612,8 @@
       "footprint": "TestPoint:TestPoint_THTPad_D2.0mm_Drill1.0mm",
       "footprint_confidence": "low",
       "footprint_basis": "Stock plated-hole approximation from photographs. Exact drill and annular ring remain unmeasured; these are board pads, not fitted components.",
-      "hypothesis": "v0.8: local U4.18/RC7 connection retained; earlier onward R13 guess withdrawn after user reports R13 on RC6."
+      "hypothesis": "v0.8: local U4.18/RC7 connection retained; earlier onward R13 guess withdrawn after user reports R13 on RC6.",
+      "current_summary": "PIC18/RC7 to TP17 is photo-supported. The old onward-R13 guess is withdrawn; R13 belongs to PIC17/RC6. Retain the local route; additional inner-layer branches and firmware purpose remain unverified. E06 is a documented reconstruction limitation."
     },
     {
       "ref": "GND",

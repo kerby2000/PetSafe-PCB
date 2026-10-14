@@ -1,0 +1,589 @@
+{
+  "date": "2026-10-15",
+  "revision": "v0.9.41",
+  "status": "DRAWING_DISPOSITION_RESOLVED_PHYSICAL_COMPLETENESS_UNPROVEN",
+  "electrical_change": false,
+  "new_measurements": [],
+  "result": "Retain PIC14/RC3-TP11 and PIC18/RC7-TP17 as supported local routes. Neither is a dangling wire. Move E06 from actionable schematic questions to a documented reconstruction limitation; this is a scope disposition, not new proof of absent inner-layer branches.",
+  "criterion_change": "The old criterion demanded physical proof that no hidden continuation exists. That cannot be established from the available surface photographs or by an untargeted continuity sweep. Local route representation is complete; exhaustive physical-net completeness remains unproved.",
+  "retained_branches": [
+    {
+      "net": "PIC_RC3",
+      "endpoints": [
+        "TP11.1",
+        "U4.14"
+      ]
+    },
+    {
+      "net": "PIC_RC7_TP17",
+      "endpoints": [
+        "TP17.1",
+        "U4.18"
+      ]
+    }
+  ],
+  "limits": [
+    "Additional inner-layer connections are not excluded.",
+    "Firmware purpose and a test-only function are not established.",
+    "No no-connect markers, additional wires, net merges or power flags are introduced."
+  ],
+  "reopen_when": "A specific unassigned destination, contradictory continuity result, inner-layer image or firmware evidence identifies an onward connection that the current drawing omits.",
+  "next_measurement": "None justified for E06. Do not repeat the rejected TP16-TP11 or TP16-TP17 checks.",
+  "prior_issue": {
+    "id": "E06",
+    "area": "PIC test branches: TP11 and TP17",
+    "refs": [
+      "U4",
+      "TP11",
+      "TP17"
+    ],
+    "priority": 2,
+    "state": "open",
+    "known": "PIC14/RC3 reaches TP11; PIC18/RC7 reaches TP17. Front/rear photos show no onward surface trace at those test points. Both are valid endpoints, not dangling wires. RA0/C25 to TP6 measured 1.5 ohm in B59 and is now resolved on RX_A_FILTER.",
+    "unknown": "Only the possibility of additional inner-layer connections on RC3/TP11 and RC7/TP17 remains. A test-only purpose is plausible but not established by photographs.",
+    "next_action": "No justified new continuity pair identified. Retain the known PIC-to-TP11/TP17 routes and explicit inner-layer limitation; no repeated TP16 tests. These are valid local endpoints. Continue values and package details; firmware/test-point purpose may remain qualified.",
+    "closed_when": "Additional continuation is traced, or physical layer evidence establishes these are test-only branches. Until then, reproduce the known local routes without asserting that hidden continuations are absent.",
+    "open_pads": [],
+    "nets": [
+      "PIC_RC3",
+      "PIC_RC7_TP17"
+    ],
+    "supporting_evidence": [
+      "docs/history/v0.9.30-before-finalization/evidence/remaining_work.json",
+      "evidence/e06_photo_review_20261014.json",
+      "evidence/ra0_tp6_connection_v0938.json"
+    ],
+    "owner": "Agent evidence review; targeted owner test only as listed",
+    "category": "connectivity/behavior"
+  },
+  "supporting_evidence": [
+    "evidence/e06_photo_review_20261014.json",
+    "evidence/ra0_tp6_connection_v0938.json",
+    "evidence/pic_gpio_user_mapping.json"
+  ],
+  "photos": {
+    "photos/originals/IMG_2436.jpg": "8870fa15bfcc55dcaca5535ca33af2a242edadc07ad4c95db49fb32245e0cdaf",
+    "photos/originals/IMG_2440.jpg": "65f1441dd9028c8aee8ef37b60e839d41dbfe143992736e07047fb3cf5ca15bf"
+  },
+  "stale_inference_correction": "The v0.7 RC7/TP17-to-R13 inference is superseded by user-established PIC17/RC6-to-R13. Native nets already distinguish these branches.",
+  "archived_sha256": {
+    "docs/history/e06-v0941/pic_trace_audit.json": "10946e2bb91c22d9dbe757f7af42e7331fbd0f2d9dd5b9eeeb522f5ddd587202",
+    "docs/history/e06-v0941/build_pic_trace_review.py": "0e30b7e8c8ca1d94e71ea07fcf1b870fc51e0c5e49f642295a846dd517902feb",
+    "docs/history/e06-v0941/PetSafe_PIC_trace_review.pdf": "11f721a93603d4488c487bab64e49190e03f9d04d652e68a84190b8eb1a583a0"
+  },
+  "baseline_commit": "0742f49",
+  "unchanged_net_partitions": {
+    "H_ANT_A": [
+      "ANT1.1",
+      "Q8.B1",
+      "Q8.B3"
+    ],
+    "H_ANT_B": [
+      "ANT2.1",
+      "C11.1",
+      "C14.1",
+      "C29.1",
+      "C44.1",
+      "C47.1",
+      "C49.1",
+      "D2.L",
+      "R46.1"
+    ],
+    "H_AUX_IN": [
+      "C36.1",
+      "R37.2",
+      "U6.L2",
+      "U6.R2",
+      "U6A.L"
+    ],
+    "BATTERY+": [
+      "BATP.1",
+      "Q1.S"
+    ],
+    "H_BAT_SENSE": [
+      "C28.1",
+      "R3.2",
+      "R4.1"
+    ],
+    "H_BUTTON": [
+      "C35.1",
+      "R40.2",
+      "R41.2",
+      "S1.BL",
+      "S1.BR"
+    ],
+    "GND": [
+      "BATN.1",
+      "C1.2",
+      "C12.1",
+      "C15.1",
+      "C17.2",
+      "C19.2",
+      "C1A.2",
+      "C2.2",
+      "C20.1",
+      "C24.2",
+      "C25.2",
+      "C26.2",
+      "C27.2",
+      "C28.2",
+      "C2A.2",
+      "C30.2",
+      "C31.1",
+      "C32.2",
+      "C33.2",
+      "C34.2",
+      "C35.2",
+      "C36.2",
+      "C37.2",
+      "C38.1",
+      "C39.2",
+      "C4.1",
+      "C40.2",
+      "C41.2",
+      "C42.1",
+      "C45.1",
+      "C48.1",
+      "C49.2",
+      "C5.2",
+      "C6.2",
+      "C7.2",
+      "C8.2",
+      "C9.2",
+      "D3.L",
+      "D4.2",
+      "D5.2",
+      "D6.2",
+      "GND.1",
+      "GND_RF.1",
+      "J1.GND",
+      "J3.3",
+      "LED1.BL",
+      "LED1.BR",
+      "Q11.L",
+      "Q2.L",
+      "Q3.L",
+      "Q4.L",
+      "Q5.L",
+      "Q6.L",
+      "Q8.B2",
+      "Q9.R",
+      "R10.2",
+      "R2.1",
+      "R22.1",
+      "R29.2",
+      "R32.1",
+      "R43.1",
+      "S1.TL",
+      "S1.TR",
+      "U1.L2",
+      "U2.T2",
+      "U3.4",
+      "U4.19",
+      "U4.8",
+      "U5.6",
+      "U5.7",
+      "U6.R3",
+      "U6A.R2",
+      "U7.1"
+    ],
+    "H_LDO_IN": [
+      "C1.1",
+      "C1A.1",
+      "L2.2",
+      "U1.L1",
+      "U1.L3"
+    ],
+    "H_LED_A": [
+      "LED1.TL",
+      "R30.2"
+    ],
+    "H_LED_B": [
+      "LED1.TR",
+      "R31.2"
+    ],
+    "H_LED_CTL_A": [
+      "R30.1",
+      "TP1.1",
+      "U4.23"
+    ],
+    "H_LED_CTL_B": [
+      "R31.1",
+      "TP2.1",
+      "U4.22"
+    ],
+    "H_MOTOR_A": [
+      "J5.A",
+      "R43.2",
+      "TP14.1",
+      "U5.8"
+    ],
+    "H_MOTOR_B": [
+      "J5.B",
+      "TP15.1",
+      "U5.5"
+    ],
+    "MOTOR_INA": [
+      "U4.15",
+      "U5.2"
+    ],
+    "MOTOR_INB": [
+      "U4.16",
+      "U5.3"
+    ],
+    "H_PIR_RAW": [
+      "J3.2",
+      "R38.1",
+      "U7.2"
+    ],
+    "H_PIR_SIG": [
+      "Q2.S",
+      "TP16.1",
+      "U4.21"
+    ],
+    "H_PIR_VDD": [
+      "C37.1",
+      "J3.1",
+      "U6.R1",
+      "U6A.R1",
+      "U7.3"
+    ],
+    "H_RF_IN_A": [
+      "C9.1",
+      "D1.R",
+      "R7.2",
+      "U2.T3"
+    ],
+    "H_RF_IN_B": [
+      "C8.1",
+      "D1.L",
+      "R6.1",
+      "U2.T1"
+    ],
+    "H_RF_VDD": [
+      "C5.1",
+      "C6.1",
+      "L1.2",
+      "Q8.T2",
+      "R5.1"
+    ],
+    "H_RX_DETECT": [
+      "C23.2",
+      "R25.1"
+    ],
+    "H_RX_ENABLE": [
+      "Q7.L",
+      "R18.2",
+      "R19.1"
+    ],
+    "H_RX_ENABLE_CTL": [
+      "R18.1",
+      "U4.12"
+    ],
+    "H_D3_SIGNAL": [
+      "D3.S",
+      "R42.2"
+    ],
+    "H_RX_VDD": [
+      "C17.1",
+      "C24.1",
+      "R20.2",
+      "R21.1",
+      "TP5.1",
+      "U3.8"
+    ],
+    "H_TUNE_1": [
+      "R13.1",
+      "U4.17"
+    ],
+    "H_TUNE_2": [
+      "R14.1",
+      "U4.5"
+    ],
+    "H_TUNE_3": [
+      "R15.1",
+      "U4.6"
+    ],
+    "H_TUNE_4": [
+      "R16.1",
+      "U4.7"
+    ],
+    "H_TUNE_5": [
+      "R11.1",
+      "U4.11"
+    ],
+    "VSYS": [
+      "C27.1",
+      "C33.1",
+      "L1.1",
+      "L2.1",
+      "Q1.L",
+      "R3.1",
+      "U5.4"
+    ],
+    "VDD": [
+      "C2.1",
+      "C2A.1",
+      "C3.1",
+      "C32.1",
+      "C34.1",
+      "D3.R",
+      "J1.VDD",
+      "Q7.R",
+      "R1.1",
+      "R19.2",
+      "R37.1",
+      "R39.2",
+      "U1.R1",
+      "U4.20",
+      "U5.1",
+      "VDD.1"
+    ],
+    "ICSP_CLK": [
+      "D4.1",
+      "J1.CLK",
+      "R32.2",
+      "U4.27"
+    ],
+    "ICSP_DAT": [
+      "D5.1",
+      "J1.DAT",
+      "R40.1",
+      "U4.28"
+    ],
+    "MCLR_VPP": [
+      "D6.1",
+      "J1.VPP",
+      "R41.1",
+      "U4.1"
+    ],
+    "OSC1": [
+      "C30.1",
+      "U4.9",
+      "Y1.1"
+    ],
+    "OSC2": [
+      "C31.2",
+      "U4.10",
+      "Y1.2"
+    ],
+    "PIC_RA1_RX_REF": [
+      "C26.1",
+      "R28.1",
+      "R29.1",
+      "TP7.1",
+      "U4.3"
+    ],
+    "PIC_RB3_RETURN": [
+      "R4.2",
+      "U4.24"
+    ],
+    "VREF": [
+      "C18.1",
+      "C39.1",
+      "R21.2",
+      "R22.2",
+      "U3.5",
+      "U4.4",
+      "VREF.1"
+    ],
+    "PIC_RC3": [
+      "TP11.1",
+      "U4.14"
+    ],
+    "PIC_RC7_TP17": [
+      "TP17.1",
+      "U4.18"
+    ],
+    "PIC_TP4_C41": [
+      "C40.1",
+      "C41.1",
+      "R23.2",
+      "R42.1",
+      "R44.1",
+      "TP4.1",
+      "U4.25"
+    ],
+    "PIR_BASE": [
+      "Q2.R",
+      "R38.2",
+      "R39.1"
+    ],
+    "Q1_GATE": [
+      "Q1.R",
+      "R44.2"
+    ],
+    "Q8_DRIVE_A": [
+      "Q8.T3",
+      "R9.2"
+    ],
+    "Q8_DRIVE_B": [
+      "Q8.T1",
+      "R8.2"
+    ],
+    "R35_Q9": [
+      "Q9.L",
+      "R35.2"
+    ],
+    "RB5_OPT": [
+      "R35.1",
+      "TP10.1",
+      "U4.26"
+    ],
+    "RF_MONITOR_PAD": [
+      "D1.S",
+      "R10.1",
+      "R6.2",
+      "R7.1",
+      "TP3.1",
+      "U4.13"
+    ],
+    "RX_A_FB": [
+      "C22.2",
+      "R26.2",
+      "R48.1",
+      "U3.2"
+    ],
+    "RX_A_FILTER": [
+      "C18.2",
+      "C25.1",
+      "R27.1",
+      "TP6.1",
+      "U4.2"
+    ],
+    "RX_A_OUT": [
+      "C22.1",
+      "R26.1",
+      "R27.2",
+      "R47.1",
+      "U3.1"
+    ],
+    "RX_A_PLUS": [
+      "C19.1",
+      "C20.2",
+      "D2.R",
+      "R28.2",
+      "U3.3"
+    ],
+    "RX_B_FB": [
+      "C21.2",
+      "R23.1",
+      "R24.2",
+      "U3.6"
+    ],
+    "RX_B_OUT": [
+      "C21.1",
+      "C23.1",
+      "R24.1",
+      "U3.7"
+    ],
+    "RX_SUPPLY_SERIES": [
+      "Q7.S",
+      "R20.1"
+    ],
+    "TUNE_1_BASE": [
+      "Q3.R",
+      "R13.2"
+    ],
+    "TUNE_1_MID": [
+      "C10.2",
+      "C11.2",
+      "C12.2"
+    ],
+    "TUNE_1_SW": [
+      "C10.1",
+      "Q3.S"
+    ],
+    "TUNE_2_BASE": [
+      "Q4.R",
+      "R14.2"
+    ],
+    "TUNE_2_MID": [
+      "C13.2",
+      "C14.2",
+      "C15.2"
+    ],
+    "TUNE_2_SW": [
+      "C13.1",
+      "Q4.S"
+    ],
+    "TUNE_3_BASE": [
+      "Q5.R",
+      "R15.2"
+    ],
+    "TUNE_3_MID": [
+      "C16.2",
+      "C29.2",
+      "C38.2"
+    ],
+    "TUNE_3_SW": [
+      "C16.1",
+      "Q5.S"
+    ],
+    "TUNE_4_BASE": [
+      "Q6.R",
+      "R16.2"
+    ],
+    "TUNE_4_MID": [
+      "C43.2",
+      "C44.2",
+      "C45.2"
+    ],
+    "TUNE_4_SW": [
+      "C43.1",
+      "Q6.S"
+    ],
+    "TUNE_5_BASE": [
+      "Q11.R",
+      "R11.2"
+    ],
+    "TUNE_5_MID": [
+      "C46.2",
+      "C47.2",
+      "C48.2"
+    ],
+    "TUNE_5_SW": [
+      "C46.1",
+      "Q11.S"
+    ],
+    "U1_ALT_PAD": [
+      "C3.2",
+      "C4.2",
+      "R1.2",
+      "R2.2",
+      "U1.R2"
+    ],
+    "U2_DRIVE_A": [
+      "R9.1",
+      "U2.B3"
+    ],
+    "U2_DRIVE_B": [
+      "R8.1",
+      "U2.B1"
+    ],
+    "D2_MID": [
+      "D2.S",
+      "R46.2"
+    ],
+    "RX_STAGE_LINK": [
+      "C42.2",
+      "R25.2",
+      "R47.2",
+      "R48.2"
+    ],
+    "Q9_J6_1": [
+      "J6.1",
+      "Q9.S",
+      "R36.2"
+    ],
+    "J6_OPTION_2": [
+      "J6.2",
+      "R36.1"
+    ],
+    "U2_VCC": [
+      "C7.1",
+      "R5.2",
+      "U2.B2"
+    ]
+  }
+}

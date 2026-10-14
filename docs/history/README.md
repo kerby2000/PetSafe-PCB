@@ -45,3 +45,7 @@ B37 P-F = 1 ohm supports the existing Q8.T2/native2 to C6.1 supply join. The old
 [B44-B46](../../evidence/antenna_midpoint_results_20261014.json) are complete: midpoint M to ANT1/ANT2 both OL, ANT1-ANT2 approximately 5 ohms. Do not repeat them. The physical bank still needs a supported antenna path; no nets were merged.
 
 - 2026-10-14: B47-B52 recorded in [outer-rail result record](../../evidence/antenna_outer_rail_results_20261014.json). User corrected the apparent N-ANT2 414-kohm result to ANT2-GND, then measured N-ANT2 = 1.4 ohm. Raw reports and correction retained. The v0.9.37 update moves five shared front capacitor outer pads to ANT2; rear returns stay GND.
+
+## v0.9.41 PIC test-branch disposition
+
+[E06 drawing disposition and archived v0.7 inference](e06-v0941/README.md): known local routes retained; hidden-layer completeness and firmware purpose remain explicitly unproved. No new measurement or electrical change.

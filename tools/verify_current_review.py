@@ -21,12 +21,38 @@ assert s['unknown_ceramic_values']==audit['unknown_ceramic_values']
 assert s['current_gpio_pins']==read('evidence/pic_gpio_status.json')['open_gpio_pins']
 assert s['modeled_nets']==len(m['nets'])
 assert 'PIC21' not in next(r for r in work['rails'] if r['name']=='VREF')['path'], 'Removed RB0/VREF assignment remains in the rail summary'
+# E06 is a documented limitation, never a claim that absent hidden copper was proved.
+e06=read('evidence/e06_disposition_v0941.json')
+assert e06['electrical_change'] is False and e06['new_measurements']==[]
+assert {n['net']:sorted(n['endpoints']) for n in m['nets']}==e06['unchanged_net_partitions']
+assert 'E06' not in ids and 'E06' not in planned
+limitation=next(i for i in work['reconstruction_limitations'] if i['id']=='E06')
+assert limitation['disposition']=='Drawing resolved; physical completeness unproved'
+assert 'test-only use is not asserted' in limitation['unknown']
+for path,digest in {**e06['photos'],**e06['archived_sha256']}.items():
+    assert hashlib.sha256((ROOT/path).read_bytes()).hexdigest()==digest
+pin_audit=read('evidence/pic_trace_audit.json')
+assert pin_audit['revision']==m['revision'] and pin_audit['open_gpio_pins']==[]
 erc=read('output/erc.json'); findings=[i for sheet in erc['sheets'] for i in sheet['violations']]
 assert s['erc_total']==len(findings)
 # Verify physical J1 numbers separately from logical signal destinations.
 mapping=read('evidence/j1_physical_mapping.json')['signal_to_native_pin']
 xml=ET.parse(ROOT/'output/PetSafe_netlist.xml')
 members={n.attrib['ref']+'.'+n.attrib['pin']:net.attrib['name'] for net in xml.findall('./nets/net') for n in net.findall('node')}
+for branch in e06['retained_branches']:
+    endpoint_set=set(branch['endpoints'])
+    netname=members[next(iter(endpoint_set))]
+    assert {e for e,n in members.items() if n==netname}==endpoint_set
+assert members['U4.17']==members['R13.1']!=members['U4.18']
+for pin in pin_audit['pins']:
+    model_net=next(n for n in m['nets'] if n['net']==pin['net'])
+    expected={m['native_pin_crosswalk'].get(e,e) for e in model_net['endpoints']}
+    native_net=members['U4.'+str(pin['pin'])]
+    actual={e for e,n in members.items() if n==native_net and not e.startswith('#FLG')}
+    assert actual==expected, (pin['pin'], actual, expected)
+for ref in ['TP11','TP17']:
+    summary=next(c for c in m['components'] if c['ref']==ref)['current_summary']
+    assert xml.findtext('./components/comp[@ref="'+ref+'"]/fields/field[@name="CurrentEvidence"]')==summary
 destinations={'VPP':'U4.1','VDD':'U4.20','GND':'U4.8','DAT':'U4.28','CLK':'U4.27'}
 assert mapping=={'VPP':1,'VDD':2,'GND':3,'DAT':4,'CLK':5}
 for name,pin in mapping.items():
