@@ -125,4 +125,6 @@ With black on K, A lights green and B lights red. Photo A reaches R31/PIC22/nati
 
 [Raw reports and interpretation](../evidence/antenna_midpoint_results_20261014.json): B44 M-A = OL; B45 M-B = OL; B46 A-B approximately 5 ohms. Requested setup was resistance mode, battery/programmer disconnected and antenna left fitted. No direct midpoint-to-antenna DC path was detected; capacitive coupling remains possible. The 5-ohm path does not turn ANT1 and ANT2 into one PCB copper net. Schematic connectivity is unchanged.
 
-B62 TP5/H_RX_VDD to GND: **0.066 V (66 mV)**, powered in the same red-blinking state with PIR connected. Stability was not reported. This does not establish a short or a defective Q7. See [receiver supply evidence](../evidence/receiver_supply_results_20261014.json); next checks are the two R19-end voltages to GND.
+B62 TP5/H_RX_VDD to GND: **0.066 V (66 mV)**, powered in the same red-blinking state with PIR connected. Stability was not reported. This does not establish a short or a defective Q7. See [receiver supply evidence](../evidence/receiver_supply_results_20261014.json); subsequent B63/B64 readings are below.
+
+B63/B64 R19 left/right to GND: **0 V / 4.5 V** in the same powered red-blinking state. Stability not supplied. The inferred R19-to-Q7 joins require direct continuity checks before these can be called transistor terminal voltages. See [Q7/R19 conflict and next checks](../evidence/q7_r19_voltage_results_20261014.json).

@@ -91,6 +91,10 @@ assert rx['electrical_change'] is False and rx['measurements'][0] in measurement
 assert members['TP5.1']==members['U3.8']==members['R20.2']
 assert len({members[e] for e in ['TP5.1','R19.1','R19.2','U4.8']})==4
 for path,digest in rx['photo_sources'].items():assert hashlib.sha256((ROOT/path).read_bytes()).hexdigest()==digest
+q7_voltage=read('evidence/q7_r19_voltage_results_20261014.json')
+assert q7_voltage['status']=='R19_Q7_PROXY_ASSIGNMENTS_DISPUTED'
+assert all(r in measurements['completed_tests'] for r in q7_voltage['measurements'])
+for path,digest in q7_voltage['photos'].items():assert hashlib.sha256((ROOT/path).read_bytes()).hexdigest()==digest
 manual=read('evidence/product_manual_led_review_20261014.json')
 assert manual['model']=='PPA19-16811'
 pack=manual['model_evidence'];assert hashlib.sha256((ROOT/pack['file']).read_bytes()).hexdigest()==pack['sha256']

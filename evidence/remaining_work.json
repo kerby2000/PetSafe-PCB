@@ -216,9 +216,9 @@
       ],
       "priority": 2,
       "state": "open",
-      "known": "U3 input returns and R23/R42/C40, C23/R25/R48 and DNP R47/C42 paths are reconciled. VREF supplies U3 pin5. B59 C25.1-TP6.1 = 1.5 ohm establishes the receiver filter connection to PIC2/RA0; R27 remains between that node and U3.1. B57 measured the printed VREF test point at 0 V while the red LED blinked about once per second. B62 TP5/H_RX_VDD measured 0.066 V (66 mV) in the same state with PIR connected; stability not supplied.",
-      "unknown": "Q7 transistor pin roles/supply switching, receiver gain/filter response and the functional MCU interface are unverified. H_RX_DETECT is only a series junction, not proof of a missing output wire. D3/R42-to-PIC25/RB4 wiring is established; its functional role belongs to receiver/Q1 operating validation, not an assumed missing wire. VREF at 0 V must be interpreted against PIC/receiver state; receiver supply is now measured low, but its cause and amplifier output behavior remain unverified. A low DC reading cannot exclude switching pulses.",
-      "next_action": "B63/B64: R19 left (candidate Q7 base) and right (candidate emitter/VDD) ends to GND in DC volts, same powered state. This distinguishes a missing local feed from off-state control; do not repeat TP5 or VREF.",
+      "known": "U3 input returns and R23/R42/C40, C23/R25/R48 and DNP R47/C42 paths are reconciled. VREF supplies U3 pin5. B59 C25.1-TP6.1 = 1.5 ohm establishes the receiver filter connection to PIC2/RA0; R27 remains between that node and U3.1. B57 measured the printed VREF test point at 0 V while the red LED blinked about once per second. B62 TP5/H_RX_VDD measured 0.066 V (66 mV) in the same state with PIR connected; stability not supplied. B63/B64: R19 left=0 V and right=4.5 V. These are resistor-pad readings; Q7 pad voltages were not directly measured.",
+      "unknown": "Priority conflict: the modeled R19.1-Q7.L and R19.2-Q7.R joins would imply about -4.5 V across the candidate PNP base-emitter junction, which does not fit the held-off explanation. Exact local joins, candidate pin roles/identity and operating behavior require separation before diagnosing a fault. Receiver gain/filter response and MCU interface roles remain unverified; no extra detector wire is assumed. TP5 is low, but DC readings cannot exclude pulses.",
+      "next_action": "B65 Q7 lower-left contact to R19 left end; B66 Q7 lower-right contact to R19 right end. Battery/programmer disconnected, resistance mode. These verify the two specifically disputed local joins; no repeat powered R19/TP5/VREF readings.",
       "closed_when": "Receiver supply, bias and the existing RA0/RA1/RB4 interfaces have supported operating roles; no presumed extra output wire is required.",
       "open_pads": [],
       "nets": [
@@ -241,7 +241,8 @@
         "docs/history/v0.9.30-before-finalization/evidence/remaining_work.json",
         "evidence/ra0_tp6_connection_v0938.json",
         "evidence/supply_baseline_results_20261014.json",
-        "evidence/receiver_supply_results_20261014.json"
+        "evidence/receiver_supply_results_20261014.json",
+        "evidence/q7_r19_voltage_results_20261014.json"
       ],
       "owner": "Agent evidence review; targeted owner test only as listed",
       "category": "connectivity/behavior"
@@ -266,7 +267,7 @@
       "state": "open",
       "known": "VSYS/RF 6.3 V, printed VDD 4.5 V, PIR supply 3.3 V with PIR attached; VREF 0 V and red LED approximately 1 Hz. TP14 is now established on U5.8/OUTA at 1.5 ohm; R43.2/V015 follows its existing TP14 association. BATTERY+ stays separate. TP14-Q1 gate measured 516 ohm. B62: receiver TP5 supply is 0.066 V; this may explain absent VREF bias without implying a ground short.",
       "unknown": "Q1 control behavior, motor-output states, the path giving 516 ohm from OUTA to Q1 gate, zero VREF and the red-flashing state remain unresolved. R3/R4/C28-to-RB3 functional role is inferred.",
-      "next_action": "B63/B64 first check Q7 local feed and control through the two R19 ends. Q1/motor operating checks follow separately; no repeat established continuity.",
+      "next_action": "Resolve the Q7/R19 local-join contradiction with B65/B66 under E08 before further powered receiver checks. Q1/motor state remains a separate question.",
       "closed_when": "Actual supply levels and control behavior are recorded without merging battery, VSYS or filtered branches.",
       "open_pads": [],
       "nets": [
@@ -441,7 +442,7 @@
         "I01"
       ],
       "summary": "S1 contacts and the front capacitor-bank ANT2 connection are established. Q3 stays fitted with identification deferred. Two local-only PIC branches, candidate device roles and powered behavior remain.",
-      "next_action": "RA0-TP6 and TP14-OUTA are resolved. TP5 receiver supply measured 66 mV; B63/B64 now compare Q7 control and supply at R19. TP11/TP17 hidden continuation remains qualified; Q3 stays fitted."
+      "next_action": "TP5 measured 66 mV; R19 measured 0/4.5 V. B65/B66 now verify its two disputed Q7 joins. No component fault or new net change is inferred. TP11/TP17 hidden continuation remains qualified; Q3 stays fitted."
     },
     {
       "id": "F2",

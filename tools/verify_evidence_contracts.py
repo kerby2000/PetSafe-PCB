@@ -199,6 +199,12 @@ assert (b62['id'],b62['voltage_v'],b62['native_endpoint'])==('B62',0.066,'TP5.1'
 assert b62['stability'] is None and receiver['electrical_change'] is False
 assert b62 in queue['completed_tests']
 completed_ids.add('B62')
+q7_voltage=read('evidence/q7_r19_voltage_results_20261014.json')
+assert [(r['id'],r['native_endpoint'],r['voltage_v']) for r in q7_voltage['measurements']]==[('B63','R19.1',0),('B64','R19.2',4.5)]
+assert q7_voltage['electrical_change'] is False
+for row in q7_voltage['measurements']:
+ assert row in queue['completed_tests'] and row['stability'] is None
+ completed_ids.add(row['id'])
 assert {r['id'] for r in queue['completed_tests']}==completed_ids
 assert not completed_ids&{r['id'] for r in queue['tests']}, 'Do not repeat completed finishing readings'
 for ref in ['U4','R11','R14','R15','R16','R37','R39','Q1','U2','Q8','C5','LED1','R18','R19','Q7','TP3','TP104','U106','J3','R43','TP14','R42','R44','TP4','TP103','R21','R22','R23','R48']:

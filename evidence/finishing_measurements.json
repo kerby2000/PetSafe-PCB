@@ -1,9 +1,9 @@
 {
   "date": "2026-10-14",
   "basis_revision": "v0.9.37",
-  "status": "AWAITING_Q7_SUPPLY_AND_BASE_VOLTAGES",
-  "scope": "Two local voltages after B62 established receiver supply at 66 mV. No topology change or repeat TP5 reading.",
-  "setup": "Keep the original battery and PIR connected, programmer disconnected, in the same red-blinking state. Use DC VOLTS with leads in COM and V/ohms. Keep black on the printed GND hole; touch one resistor metal end at a time with red.",
+  "status": "AWAITING_Q7_R19_JOIN_CHECKS",
+  "scope": "Two specific disputed joins after B63/B64 contradicted the R19-as-base/emitter interpretation.",
+  "setup": "DISCONNECT BATTERY AND PROGRAMMER. Allow supply capacitors to discharge; confirm power is off before selecting resistance (ohms). Leave Q7 fitted. These tests are between the marked contacts, not to GND.",
   "photos": [
     {
       "id": "receiver",
@@ -1240,33 +1240,102 @@
           "net": "VDD"
         }
       }
+    },
+    {
+      "id": "q7-r19-joins",
+      "source": "photos/originals/IMG_2434.jpg",
+      "coordinate_space": [
+        1368,
+        1823
+      ],
+      "view_box": [
+        30,
+        180,
+        620,
+        620
+      ],
+      "title": "Verify the two disputed R19-to-Q7 joins",
+      "points": {
+        "QL": {
+          "xy": [
+            158,
+            432
+          ],
+          "label": [
+            95,
+            255
+          ],
+          "description": "Q7 LOWER-LEFT metal contact of the two-contact side. Red probe for B65; physical Q7.L. The single upper contact is not used.",
+          "native_endpoint": "Q7.1",
+          "net": "H_RX_ENABLE (disputed local association)"
+        },
+        "QR": {
+          "xy": [
+            276,
+            432
+          ],
+          "label": [
+            518,
+            410
+          ],
+          "description": "Q7 LOWER-RIGHT metal contact of the two-contact side. Red probe for B66; physical Q7.R.",
+          "native_endpoint": "Q7.2",
+          "net": "VDD (local association under check)"
+        },
+        "B": {
+          "xy": [
+            151,
+            540
+          ],
+          "label": [
+            107,
+            706
+          ],
+          "description": "R19 LEFT metal end: the point that read 0 V. Black probe for B65.",
+          "native_endpoint": "R19.1",
+          "role": "reference"
+        },
+        "E": {
+          "xy": [
+            274,
+            540
+          ],
+          "label": [
+            450,
+            610
+          ],
+          "description": "R19 RIGHT metal end: the point that read 4.5 V. Black probe for B66.",
+          "native_endpoint": "R19.2",
+          "role": "reference"
+        }
+      }
     }
   ],
   "tests": [
     {
-      "id": "B63",
-      "group": "q7-drive",
-      "from": "B",
-      "to": "G",
-      "mode": "DC voltage",
-      "unit": "V; steady or varying",
-      "state": "Powered, same red-blinking state; PIR connected",
+      "id": "B65",
+      "group": "q7-r19-joins",
+      "from": "QL",
+      "to": "B",
+      "mode": "Resistance",
+      "unit": "ohms / kohms / OL",
+      "state": "Unpowered",
       "issue": "E08",
-      "purpose": "Measure the candidate Q7 base/control node at R19.1."
+      "purpose": "Verify the disputed R19-left to Q7-left candidate base join."
     },
     {
-      "id": "B64",
-      "group": "q7-drive",
-      "from": "E",
-      "to": "G",
-      "mode": "DC voltage",
-      "unit": "V; steady or varying",
-      "state": "Powered, same red-blinking state; PIR connected",
+      "id": "B66",
+      "group": "q7-r19-joins",
+      "from": "QR",
+      "to": "E",
+      "mode": "Resistance",
+      "unit": "ohms / kohms / OL",
+      "state": "Unpowered",
       "issue": "E08",
-      "purpose": "Verify local Q7 input supply at R19.2 and compare with its candidate base."
+      "purpose": "Verify R19-right to Q7-right candidate emitter join before assigning its voltage to Q7."
     }
   ],
-  "interpretation": "B62 TP5=0.066 V supports a low receiver supply but does not identify the cause. In the candidate PNP circuit, E near the previously measured 4.5 V and B close to E would support Q7 being held off. B substantially lower than E would prompt a collector/R20/load check. Both points low would instead question the local feed or its assumed routing. These DC readings cannot exclude brief pulses or establish a defective part.",
+  "interpretation": "R19 left=0 V and right=4.5 V do not support the simple Q7-held-off explanation. The earlier local joins were photo/circuit inferences. Near shorted-probe resistance supports each copper join; a resistor-sized reading or OL does not. Do not conclude a bad Q7 or change its pinout from these voltage readings alone.",
   "next_stages": [
     {
       "stage": "Resolve the remaining functional paths",
@@ -1316,7 +1385,7 @@
     "B42/B43 LED colours: A/R31/PIC22 green; B/R30/PIC23 red. No repeated colour check requested.",
     "B44-B52 antenna continuity completed: C11 outer end ANT2, distinct ANT1 and GND. Corrected pair labels retained in the raw result evidence."
   ],
-  "deferred": "Q3 stays fitted. Q7 identity, switching pulses and the red-blinking cause remain unverified.",
+  "deferred": "Q3 and Q7 remain fitted. Candidate Q7 terminals and the red-blinking cause remain unverified.",
   "sources": [
     "evidence/remaining_work.json",
     "evidence/reconstruction.json",
@@ -2099,11 +2168,47 @@
       "source_worksheet_revision": "v0.9.39",
       "native_endpoint": "TP5.1",
       "raw_user_statement": "PetSafe Receiver supply while VREF reads zero / v0.9.39\nB62 red RX / black G (Powered, same red-blinking state; PIR connected): 0.066"
+    },
+    {
+      "id": "B63",
+      "group": "q7-drive",
+      "from": "B",
+      "to": "G",
+      "mode": "DC voltage",
+      "unit": "V; steady or varying",
+      "state": "Powered, same red-blinking state; PIR connected",
+      "issue": "E08",
+      "purpose": "Measure the candidate Q7 base/control node at R19.1.",
+      "date": "2026-10-14",
+      "result": "0 V",
+      "voltage_v": 0,
+      "stability": null,
+      "native_endpoint": "R19.1",
+      "source_worksheet_revision": "v0.9.39",
+      "raw_user_statement": "PetSafe Q7: local supply or off-state control? / v0.9.39\nB63 red B / black G (Powered, same red-blinking state; PIR connected): 0\nB64 red E / black G (Powered, same red-blinking state; PIR connected): 4.5"
+    },
+    {
+      "id": "B64",
+      "group": "q7-drive",
+      "from": "E",
+      "to": "G",
+      "mode": "DC voltage",
+      "unit": "V; steady or varying",
+      "state": "Powered, same red-blinking state; PIR connected",
+      "issue": "E08",
+      "purpose": "Verify local Q7 input supply at R19.2 and compare with its candidate base.",
+      "date": "2026-10-14",
+      "result": "4.5 V",
+      "voltage_v": 4.5,
+      "stability": null,
+      "native_endpoint": "R19.2",
+      "source_worksheet_revision": "v0.9.39",
+      "raw_user_statement": "PetSafe Q7: local supply or off-state control? / v0.9.39\nB63 red B / black G (Powered, same red-blinking state; PIR connected): 0\nB64 red E / black G (Powered, same red-blinking state; PIR connected): 4.5"
     }
   ],
-  "batch_title": "Q7: local supply or off-state control?",
-  "instructions": "B63: red B (R19 LEFT end) to black G. B64: red E (R19 RIGHT end) to black G. Report volts for each and whether steady or varying. Do not measure resistance while powered.",
-  "result_summary": "B62 TP5-GND = 0.066 V (66 mV). Receiver supply is low in the reported state; Q7 drive and local feed not yet measured.",
+  "batch_title": "Q7: verify the disputed local joins",
+  "instructions": "B65: red QL (Q7 lower-left contact), black B (R19 left end). B66: red QR (Q7 lower-right contact), black E (R19 right end). Report ohms, kohms or OL; say changing if unsettled.",
+  "result_summary": "R19 left 0 V / right 4.5 V. Photo-derived associations to Q7 require checking; no off-state or fault conclusion.",
   "cancelled_tests": [
     {
       "id": "B20",
@@ -2138,7 +2243,7 @@
       "result": "v0.9.22 user annotated U6A option: single left pad/model L/native U106.1 joins U6 pin5 and the existing input node after R37; upper-right/model R1/native2 joins J3.1 (red PIR wire); lower-right/model R2/native3 joins GND. All three external pads mapped, option remains DNP. User called the input VDD; retain VDD -> R37 (22 ohm) -> H_AUX_IN because the annotation ends at U6 pin5 and prior B28 confirms pin5-pin2, not a bypass across R37. No fitted IC identity or voltage measurement implied."
     }
   ],
-  "batch_id": "q7-drive-20261014",
+  "batch_id": "q7-r19-joins-20261014",
   "location_review": {
     "reference": "TP9",
     "status": "REMOVED_UNSUPPORTED_ENTRY",
@@ -2194,13 +2299,14 @@
     "pending_check": null,
     "model_status": "Applied v0.9.20: pin5-VIN measured 1 ohm; R37 and U6A single-pad local joins from the annotation; pin4 explicitly unused."
   },
-  "next_prompt": "B63 and B64: both R19 metal ends to printed GND, DC volts. No repeat TP5 reading.",
+  "next_prompt": "B65 QL-B and B66 QR-E, resistance with battery/programmer disconnected. These are specific disputed joins, not a general continuity sweep.",
   "review_revision": "v0.9.39",
   "request_probe_baseline": false,
   "q3_decision": "Defer isolated Q3 identification; retain candidate qualification and existing copper. No desoldering or repeat Q3 batch requested.",
   "last_completed_test_ids": [
-    "B62"
+    "B63",
+    "B64"
   ],
-  "last_result_evidence": "evidence/receiver_supply_results_20261014.json",
+  "last_result_evidence": "evidence/q7_r19_voltage_results_20261014.json",
   "staged_batches": []
 }
