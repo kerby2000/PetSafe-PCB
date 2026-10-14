@@ -9,7 +9,7 @@ Stock graphics and pin numbers are retained. U1/U5 and subsequently U6/Q8 were e
 | References | Library symbol | Reason / status |
 |---|---|---|
 | U4 | `MCU_Microchip_PIC16:PIC16F18855-xSO` | Exact SOIC family symbol; default SOIC-28W footprint. |
-| U2 A/B/C | `74xGxx:74LVC2G14` | Standard multi-unit Schmitt inverter, value `SN74LVC2G14DBV?`, SOT-23-6 footprint. This preserves separate readable gates and supply unit. The exact monolithic `SN74LVC2G14DBV` also exists. |
+| U2 A/B/C | `74xGxx:74LVC2G14` | Standard multi-unit Schmitt inverter, value `SN74LVC2G14DBV?`, SOT-23-6 footprint. This preserves separate readable gates and supply unit. U2_VCC is now fed through R5 from H_RF_VDD and measured 6.3 V, above the candidate recommended 5.5 V maximum; identity/compatibility remains open. The exact monolithic `SN74LVC2G14DBV` also exists. |
 | U3 A/B/C | `Amplifier_Operational:Opamp_Dual` | Standard generic dual op-amp with matching 1-8 pin functions; value remains SGM8542XS. No modified or custom op-amp symbol. |
 | Q1 | `Transistor_FET:Q_PMOS_GSD` | v0.9.9: FMOS3401A candidate, matching manufacturer R1A marking and SOT-23 G1/S2/D3 pinout. Photo R=gate, L=source, single S=drain. Original NPN hypothesis withdrawn. Exact fitted maker unconfirmed. |
 | Q2, Q7 | `Transistor_BJT:BC847`, `Transistor_BJT:BC857` | Standard family symbols; values preserve the B/C gain-bin candidates. |

@@ -228,6 +228,43 @@ assert q8_bias['electrical_change'] is False
 for row in q8_bias['measurements']:
  assert row in queue['completed_tests'] and row['stability'] is None
  completed_ids.add(row['id'])
+u2_joins=read('evidence/u2_supply_join_results_20261014.json')
+assert [(r['id'],r['from'],r['to'],r['resistance_ohms']) for r in u2_joins['measurements']]==[('B74','UV','PS',24),('B75','UV','VD',48)]
+assert u2_joins['electrical_change'] is False
+for row in u2_joins['measurements']:
+ assert row in queue['completed_tests'] and row['stability'] is None and row['shorted_probe_ohms'] is None
+ completed_ids.add(row['id'])
+u2_voltage=read('evidence/u2_supply_voltage_result_20261014.json')
+b76=u2_voltage['measurements'][0]
+assert (b76['id'],b76['from'],b76['to'],b76['voltage_v'])==('B76','UV','NS',6.3)
+assert b76 in queue['completed_tests'] and b76['stability'] is None
+assert u2_voltage['electrical_change'] is False
+completed_ids.add('B76')
+u2_separation=read('evidence/u2_vdd_separation_result_20261014.json')
+b77=u2_separation['measurements'][0]
+assert (b77['id'],b77['from'],b77['to'],b77['voltage_v'])==('B77','UV','VD',1.8)
+assert b77 in queue['completed_tests'] and b77['stability'] is None
+completed_ids.add('B77')
+u2_c7=read('evidence/u2_c7_feed_results_20261015.json')
+assert [(r['id'],r['resistance_ohms']) for r in u2_c7['measurements']]==[('B78',1.5),('B79',27)]
+for row in u2_c7['measurements']:
+ assert row in queue['completed_tests'] and row['stability'] is None
+ completed_ids.add(row['id'])
+r5_feed=read('evidence/r5_supply_feed_results_20261015.json')
+assert [(r['id'],r['resistance_ohms']) for r in r5_feed['measurements']]==[('B80',4),('B81',3.3)]
+for row in r5_feed['measurements']:
+ assert row in queue['completed_tests'] and row['stability'] is None
+ completed_ids.add(row['id'])
+q8_output=read('evidence/q8_output_antenna_result_20261015.json')
+assert (q8_output['measurement']['id'],q8_output['measurement']['resistance_ohms'])==('B82',4.5)
+assert q8_output['measurement'] in queue['completed_tests']
+for path,digest in q8_output['photos'].items():assert sha(path)==digest
+completed_ids.add('B82')
+assert net('U2.B2')==net('C7.1')==net('R5.2')=='U2_VCC'
+assert net('R5.1')==net('C6.1')==net('Q8.T2')=='H_RF_VDD'
+assert len({net('R5.1'),net('R5.2'),net('VDD.1')})==3
+assert net('Q8.B1')==net('Q8.B3')==net('ANT1.1')=='H_ANT_A'
+assert net('ANT1.1')!=net('ANT2.1'), 'Fitted antenna winding must not merge distinct PCB nets'
 assert {r['id'] for r in queue['completed_tests']}==completed_ids
 assert not completed_ids&{r['id'] for r in queue['tests']}, 'Do not repeat completed finishing readings'
 for ref in ['U4','R11','R14','R15','R16','R37','R39','Q1','U2','Q8','C5','LED1','R18','R19','Q7','TP3','TP104','U106','J3','R43','TP14','R42','R44','TP4','TP103','R21','R22','R23','R48']:

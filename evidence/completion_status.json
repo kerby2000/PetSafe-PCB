@@ -1,7 +1,7 @@
 {
-  "date": "2026-10-14",
-  "revision": "v0.9.39",
-  "review_revision": "v0.9.39",
+  "date": "2026-10-15",
+  "revision": "v0.9.40",
+  "review_revision": "v0.9.40",
   "interpretation": "Every catalog entry is drawn. Hardware connectivity, values and identities are only partially verified. No routed PCB exists.",
   "catalog_entries": 148,
   "physical_pins": 349,
@@ -70,7 +70,7 @@
     "pin_to_pin": 1
   },
   "modeled_nets": 82,
-  "schematic_sha256": "6f922b94676bac4fcce763e1bc14d4f3608b1d8ec1685b33c021c4ab08d7a533",
+  "schematic_sha256": "769239d9aec2b10ca2e8ebb4d83b0dbe60d730e9cf1f15932d1f2c4a180dcc88",
   "known_identified_ICs_needing_new_symbols": [],
   "complete_symbols_for_selected_candidates": true,
   "available_instruments": [
@@ -108,8 +108,8 @@
     {
       "id": "E03",
       "area": "RF supply and Q8 drive",
-      "gap": "U2 supply membership is specifically disputed: the drawing places U2/C7 on 4.5 V VDD, whereas its driven N-gate measured 6.3 V. Candidate identities/pin roles, dynamic turn-off margin and RF timing remain unverified. Source continuity and these rest-bias readings need no repeat.",
-      "method": "B74 U2 lower-centre supply contact to C6 upper end; B75 same U2 contact to printed VDD test point. Resistance with battery/programmer disconnected. These discriminate the RF supply from regulated VDD."
+      "gap": "Exact U2 identity and compatibility with measured 6.3 V remain unresolved; candidate SN74LVC2G14 recommended supply maximum is 5.5 V. Q8 switching margin, timing and RF waveform validation are deferred by owner. B82 alone is not a zero-ohm proof; output route is photo-supported.",
+      "method": "Finish non-scope schematic items first. Review U2 fitted identification and candidate ratings from marking/datasheet evidence. Owner has an oscilloscope but explicitly defers waveform measurements until later."
     },
     {
       "id": "E04",
@@ -121,31 +121,31 @@
       "id": "E06",
       "area": "PIC test branches: TP11 and TP17",
       "gap": "Only the possibility of additional inner-layer connections on RC3/TP11 and RC7/TP17 remains. A test-only purpose is plausible but not established by photographs.",
-      "method": "No justified new continuity pair is identified. Retain the two known PIC-to-test-point routes and explicit inner-layer limitation; do not repeat TP16-to-TP11/TP17. Proceed with the active operating check under E03."
+      "method": "No justified new continuity pair identified. Retain the known PIC-to-TP11/TP17 routes and explicit inner-layer limitation; no repeated TP16 tests. These are valid local endpoints. Continue values and package details; firmware/test-point purpose may remain qualified."
     },
     {
       "id": "E07",
       "area": "PIR: Q2 behavior and operating supply",
       "gap": "Q2 terminal functions, PIR raw-signal behavior and PIC input response remain unverified. The loaded PIR supply is established at 3.3 V in the reported state; transients and other states are not characterized.",
-      "method": "After the receiver supply check, compare J3.2 raw signal and TP16/PIC21 as PIR state changes. Do not repeat the 3.3 V baseline or established connector continuity."
+      "method": "Local PIR connections and 3.3 V baseline are settled. Keep Q2 identity/pin-role qualification explicit. Defer raw-signal/TP16 response and supply-transient characterization to the later scope session, as requested."
     },
     {
       "id": "E08",
       "area": "Receiver and Q7 operating behavior",
       "gap": "Why the receiver is inactive and its enabled-state behavior remain unverified. Earlier separate 0/4.5 V readings conflict with the later direct 0 V; do not diagnose failure or assume simultaneous identical states. Exact Q7 identity and E/C selection remain qualified. Receiver gain/filter response and MCU interface roles are unverified; DC readings do not exclude pulses.",
-      "method": "No repeat Q7 diode, continuity or baseline DC readings. Proceed with E03 Q8 gate-source checks. Later characterize receiver enable during a defined PIR/read event if suitable instrumentation is available; retain the inactive-state result without claiming full operation."
+      "method": "No repeat Q7 diode, continuity or baseline DC readings. Preserve latest 0 V direct bias and 0.066 V receiver-supply result. Enabled-state receiver timing and filter response are deferred to the later scope session; exact Q7 identity/E-C mapping stays qualified."
     },
     {
       "id": "E09",
       "area": "Supply voltages and Q1 control",
       "gap": "Q1 control behavior, motor-output states, the path giving 516 ohm from OUTA to Q1 gate, zero VREF and the red-flashing state remain unresolved. R3/R4/C28-to-RB3 functional role is inferred.",
-      "method": "Q7 latest direct bias supports an inactive receiver in this state. Proceed with E03 gate-source checks; Q1/motor control and the red-blinking cause remain separate open questions."
+      "method": "Retain established battery, VSYS, VDD, TP14/OUTA and receiver supply measurements. No repeat Q8 resting gate checks. Dynamic Q1/motor behavior and blinking-cause diagnosis are separate later functional checks; 516-ohm OUTA-to-gate path remains documented, not a copper tie."
     },
     {
       "id": "E10",
       "area": "D6 breakdown and ICSP compatibility",
       "gap": "G3 is nonunique: MMSZ5228BS is 3.9 V; PZU2.4B is 2.4 V. Neither rating has been measured on this board. A directly connected clamp of either rating would load the required high-voltage ICSP level. The current PIC LVP configuration and actual D6 breakdown are unknown.",
-      "method": "No repeated continuity or diode-mode check. Marking research establishes ambiguity, not a rating. Keep D6 fitted for now; resolve its rating by an isolated current-limited test only if needed. Before any programmer session, establish the supported entry method; do not apply a breakdown test through the PIC."
+      "method": "No repeated continuity or diode-mode check. Keep D6 fitted as requested. Isolated breakdown testing is deferred. Retain the unknown breakdown/ICSP compatibility qualification; do not infer it from the G3 marking or perform a breakdown test through the PIC."
     },
     {
       "id": "I01",
@@ -157,7 +157,7 @@
       "id": "V01",
       "area": "Capacitor values and passive ratings",
       "gap": "44 fitted ceramic values remain unknown. L1/L2 measurement conditions and component ratings are not established.",
-      "method": "After tuning topology, prioritize antenna/RF/receiver capacitors with the LCR meter. Record frequency, mode and isolation. Parallel parts give a combined reading; lift one terminal only where an individual value is needed. Report existing L1/L2 measurement conditions without remeasuring yet."
+      "method": "Keep all components fitted, as requested on 2026-10-15. Any later in-circuit LCR readings must include frequency, mode and loss indication, and remain network estimates unless the surrounding circuit permits individual extraction. Do not turn estimates into measured individual values. Isolated value recovery is deferred; existing L1/L2 conditions can be supplied without repeating measurements."
     },
     {
       "id": "M01",
@@ -174,18 +174,20 @@
         "Q8",
         "C6",
         "U2",
-        "L1"
+        "L1",
+        "R5"
       ],
       "priority": 1,
       "state": "open",
-      "known": "C5/C6 parallel wiring and Q8 ground/output joins are established. B37 P-F = 1 ohm supports Q8.T2/native2 to C6.1 on H_RF_VDD; no fresh baseline or stability statement supplied. SIL3724A and the U2 inverter remain candidates. B54/B55 measured VSYS and RF supply at 6.3 V in the red-blinking bench state. B72/B73 measured candidate P-channel VGS=0 V and N-channel VGS=+6.3 V at rest, consistent with P off/N on bias. Stability not supplied.",
-      "unknown": "U2 supply membership is specifically disputed: the drawing places U2/C7 on 4.5 V VDD, whereas its driven N-gate measured 6.3 V. Candidate identities/pin roles, dynamic turn-off margin and RF timing remain unverified. Source continuity and these rest-bias readings need no repeat.",
-      "next_action": "B74 U2 lower-centre supply contact to C6 upper end; B75 same U2 contact to printed VDD test point. Resistance with battery/programmer disconnected. These discriminate the RF supply from regulated VDD.",
-      "closed_when": "Source path and actual gate-to-source drive are supported; C6 value is handled by V01.",
+      "known": "C5/C6 and Q8 source/ground/outer-drain joins supported. U2/C7 supply now fed from H_RF_VDD through R5 (22 ohm): local and endpoint readings B78-B81 support this route. U2 supply = 6.3 V; direct difference to printed VDD = +1.8 V rejects old VDD tie. Q8 output-to-ANT1 accepted from visible copper and compatible B82 4.5-ohm reading with antenna fitted. Rest gate-source voltages: P=0 V, N=+6.3 V.",
+      "unknown": "Exact U2 identity and compatibility with measured 6.3 V remain unresolved; candidate SN74LVC2G14 recommended supply maximum is 5.5 V. Q8 switching margin, timing and RF waveform validation are deferred by owner. B82 alone is not a zero-ohm proof; output route is photo-supported.",
+      "next_action": "Finish non-scope schematic items first. Review U2 fitted identification and candidate ratings from marking/datasheet evidence. Owner has an oscilloscope but explicitly defers waveform measurements until later.",
+      "closed_when": "U2 identity and voltage compatibility resolved; RF operating waveform validation recorded separately when the owner resumes scope work. Local RF supply/output drawing is corrected; unknown C6/C7 values remain V01.",
       "open_pads": [],
       "nets": [
         "H_RF_VDD",
-        "H_RF_OUT_CAND"
+        "U2_VCC",
+        "H_ANT_A"
       ],
       "source_documents": [
         "docs/datasheets/SIL3724A.pdf, P-channel table p3",
@@ -196,7 +198,14 @@
         "evidence/q3_deferred_q8_followup_20261009.json",
         "evidence/q8_supply_result_20261009.json",
         "evidence/supply_baseline_results_20261014.json",
-        "evidence/q8_gate_bias_results_20261014.json"
+        "evidence/q8_gate_bias_results_20261014.json",
+        "evidence/u2_supply_join_results_20261014.json",
+        "evidence/u2_supply_voltage_result_20261014.json",
+        "evidence/u2_vdd_separation_result_20261014.json",
+        "evidence/u2_c7_feed_results_20261015.json",
+        "evidence/r5_supply_feed_results_20261015.json",
+        "evidence/q8_output_antenna_result_20261015.json",
+        "evidence/u2_r5_topology_correction_v0940.json"
       ],
       "owner": "Agent evidence review; targeted owner test only as listed",
       "category": "connectivity/behavior"
@@ -269,7 +278,7 @@
       "state": "open",
       "known": "PIC14/RC3 reaches TP11; PIC18/RC7 reaches TP17. Front/rear photos show no onward surface trace at those test points. Both are valid endpoints, not dangling wires. RA0/C25 to TP6 measured 1.5 ohm in B59 and is now resolved on RX_A_FILTER.",
       "unknown": "Only the possibility of additional inner-layer connections on RC3/TP11 and RC7/TP17 remains. A test-only purpose is plausible but not established by photographs.",
-      "next_action": "No justified new continuity pair is identified. Retain the two known PIC-to-test-point routes and explicit inner-layer limitation; do not repeat TP16-to-TP11/TP17. Proceed with the active operating check under E03.",
+      "next_action": "No justified new continuity pair identified. Retain the known PIC-to-TP11/TP17 routes and explicit inner-layer limitation; no repeated TP16 tests. These are valid local endpoints. Continue values and package details; firmware/test-point purpose may remain qualified.",
       "closed_when": "Additional continuation is traced, or physical layer evidence establishes these are test-only branches. Until then, reproduce the known local routes without asserting that hidden continuations are absent.",
       "open_pads": [],
       "nets": [
@@ -302,7 +311,7 @@
       "state": "open",
       "known": "J3/U7 ordering, U6 external pads and PIC21/TP16/Q2 output routing are established. U6 pin5 is tied to VIN; pin4 is unused. B58 measured 3.3 V at J3.1 with PIR connected; logic VDD was 4.5 V.",
       "unknown": "Q2 terminal functions, PIR raw-signal behavior and PIC input response remain unverified. The loaded PIR supply is established at 3.3 V in the reported state; transients and other states are not characterized.",
-      "next_action": "After the receiver supply check, compare J3.2 raw signal and TP16/PIC21 as PIR state changes. Do not repeat the 3.3 V baseline or established connector continuity.",
+      "next_action": "Local PIR connections and 3.3 V baseline are settled. Keep Q2 identity/pin-role qualification explicit. Defer raw-signal/TP16 response and supply-transient characterization to the later scope session, as requested.",
       "closed_when": "Q2 signal behavior and U6 output are supported by device or operating evidence.",
       "open_pads": [],
       "nets": [
@@ -349,7 +358,7 @@
       "state": "open",
       "known": "U3 input returns and R23/R42/C40, C23/R25/R48 and DNP R47/C42 paths are reconciled. VREF supplies U3 pin5; C25.1-TP6.1 measured 1.5 ohm joins the receiver filter to PIC2/RA0. Powered: VREF 0 V, TP5 0.066 V, R19 left/right 0/4.5 V. Both R19-to-Q7 joins measured 1.5 ohm. Q7 diode results: R->L 0.74 V, L->R 1.74 V, S->L 0.74 V, L->S OL. These support PNP polarity with L as base; reverse finite reading can include parallel-board paths. B71 direct QR-QL measured 0 V, consistent with no forward base-emitter bias in the latest state and the low receiver supply; stability not reported.",
       "unknown": "Why the receiver is inactive and its enabled-state behavior remain unverified. Earlier separate 0/4.5 V readings conflict with the later direct 0 V; do not diagnose failure or assume simultaneous identical states. Exact Q7 identity and E/C selection remain qualified. Receiver gain/filter response and MCU interface roles are unverified; DC readings do not exclude pulses.",
-      "next_action": "No repeat Q7 diode, continuity or baseline DC readings. Proceed with E03 Q8 gate-source checks. Later characterize receiver enable during a defined PIR/read event if suitable instrumentation is available; retain the inactive-state result without claiming full operation.",
+      "next_action": "No repeat Q7 diode, continuity or baseline DC readings. Preserve latest 0 V direct bias and 0.066 V receiver-supply result. Enabled-state receiver timing and filter response are deferred to the later scope session; exact Q7 identity/E-C mapping stays qualified.",
       "closed_when": "Receiver supply, bias and the existing RA0/RA1/RB4 interfaces have supported operating roles; no presumed extra output wire is required.",
       "open_pads": [],
       "nets": [
@@ -401,7 +410,7 @@
       "state": "open",
       "known": "VSYS/RF 6.3 V, printed VDD 4.5 V, PIR supply 3.3 V with PIR attached; VREF 0 V and red LED approximately 1 Hz. TP14 is now established on U5.8/OUTA at 1.5 ohm; R43.2/V015 follows its existing TP14 association. BATTERY+ stays separate. TP14-Q1 gate measured 516 ohm. B62: receiver TP5 supply is 0.066 V; this may explain absent VREF bias without implying a ground short.",
       "unknown": "Q1 control behavior, motor-output states, the path giving 516 ohm from OUTA to Q1 gate, zero VREF and the red-flashing state remain unresolved. R3/R4/C28-to-RB3 functional role is inferred.",
-      "next_action": "Q7 latest direct bias supports an inactive receiver in this state. Proceed with E03 gate-source checks; Q1/motor control and the red-blinking cause remain separate open questions.",
+      "next_action": "Retain established battery, VSYS, VDD, TP14/OUTA and receiver supply measurements. No repeat Q8 resting gate checks. Dynamic Q1/motor behavior and blinking-cause diagnosis are separate later functional checks; 516-ohm OUTA-to-gate path remains documented, not a copper tie.",
       "closed_when": "Actual supply levels and control behavior are recorded without merging battery, VSYS or filtered branches.",
       "open_pads": [],
       "nets": [
@@ -438,7 +447,7 @@
       "state": "open",
       "known": "D6 anode is GND and cathode is VPP; forward drop is about 0.7V and reverse diode mode is OL. J1 pin order is resolved. Primary programming specification DS40001753B requires 8.0-9.0 V for high-voltage entry; low-voltage entry exists only when LVP is enabled.",
       "unknown": "G3 is nonunique: MMSZ5228BS is 3.9 V; PZU2.4B is 2.4 V. Neither rating has been measured on this board. A directly connected clamp of either rating would load the required high-voltage ICSP level. The current PIC LVP configuration and actual D6 breakdown are unknown.",
-      "next_action": "No repeated continuity or diode-mode check. Marking research establishes ambiguity, not a rating. Keep D6 fitted for now; resolve its rating by an isolated current-limited test only if needed. Before any programmer session, establish the supported entry method; do not apply a breakdown test through the PIC.",
+      "next_action": "No repeated continuity or diode-mode check. Keep D6 fitted as requested. Isolated breakdown testing is deferred. Retain the unknown breakdown/ICSP compatibility qualification; do not infer it from the G3 marking or perform a breakdown test through the PIC.",
       "closed_when": "Clamp class/rating is established or explicitly bounded for reconstruction, and programming compatibility is checked.",
       "open_pads": [],
       "nets": [
@@ -502,7 +511,7 @@
       "state": "open",
       "known": "C5 is 470uF/16V. L1/L2 readings are 1.4/2.2uH. Retained marked resistor nominal values are recorded.",
       "unknown": "44 fitted ceramic values remain unknown. L1/L2 measurement conditions and component ratings are not established.",
-      "next_action": "After tuning topology, prioritize antenna/RF/receiver capacitors with the LCR meter. Record frequency, mode and isolation. Parallel parts give a combined reading; lift one terminal only where an individual value is needed. Report existing L1/L2 measurement conditions without remeasuring yet.",
+      "next_action": "Keep all components fitted, as requested on 2026-10-15. Any later in-circuit LCR readings must include frequency, mode and loss indication, and remain network estimates unless the surrounding circuit permits individual extraction. Do not turn estimates into measured individual values. Isolated value recovery is deferred; existing L1/L2 conditions can be supplied without repeating measurements.",
       "closed_when": "Critical individual values are recovered; any bypass substitutions and unverified ratings are explicitly identified assumptions.",
       "open_pads": [],
       "nets": [],
@@ -556,8 +565,8 @@
         "E10",
         "I01"
       ],
-      "summary": "S1 contacts and the front capacitor-bank ANT2 connection are established. Q3 stays fitted with identification deferred. Two local-only PIC branches, candidate device roles and powered behavior remain.",
-      "next_action": "Q7 and Q8 rest-bias checks are recorded. B74/B75 now resolve U2 supply membership without merging rails from voltage alone. TP11/TP17 inner continuations and Q3 identity remain qualified."
+      "summary": "RF feed/output wiring, switch contacts and front-bank ANT2 routing are supported. Two local-only PIC branches and candidate roles remain qualified. Scope work and component isolation are deferred by owner.",
+      "next_action": "No further RF continuity repeat requested. Oscilloscope available, but waveform checks explicitly deferred by the owner on 2026-10-15. Continue schematic values, identities and package geometry without scope measurements."
     },
     {
       "id": "F2",
@@ -567,7 +576,7 @@
         "V01"
       ],
       "summary": "44 ceramic values; prioritize tuning and receiver after topology.",
-      "next_action": "Use the LCR meter with known test conditions and account for parallel components."
+      "next_action": "Keep components fitted. In-circuit LCR can provide qualified estimates; reliable individual values may remain open. No lifting/desoldering batch is active."
     },
     {
       "id": "F3",

@@ -23,7 +23,7 @@ def mm(p):return tuple(rnd(round(v)*1.27) for v in p)
 STAGE.mkdir(parents=True,exist_ok=True)
 layout=json.loads((R/'evidence/library_layout.json').read_text())
 model=json.loads((R/'evidence/reconstruction.json').read_text())
-model.update(revision='v0.9.39',review_date='2026-10-14')
+model.update(revision='v0.9.40',review_date='2026-10-15')
 template=R/'tools/templates/mcp_standard_placements.kicad_sch'
 if not template.exists():
     template.parent.mkdir(parents=True,exist_ok=True)
@@ -36,7 +36,7 @@ annotations=[i for i in all_instances if one(i,'lib_id')[1]=='power:PWR_FLAG']
 instances=[i for i in all_instances if i not in annotations]
 assert len(instances)==len(layout['catalog'])
 declarations=json.loads((R/'evidence/power_source_declarations.json').read_text())['declarations']
-assert len(annotations)==len(declarations)==5
+assert len(annotations)==len(declarations)==6
 catalog={(i['reference'],i['unit']):i for i in layout['catalog']}
 P={}; PIN_ANGLE={}; BYREF={}; ALL_NATIVE={}
 for inst in instances:
@@ -293,8 +293,9 @@ label('RF_MONITOR_PAD',(18,137))
 # Q8: 3724A marking supports SIL3724A pinout; manufacturer and routing provisional.
 wire('Q8_DRIVE_A','R9.2',(111,146),(111,182),'Q8.T3')
 wire('Q8_DRIVE_B','R8.2',(106,171),(106,163),'Q8.T1')
-wire('H_RF_OUT_CAND','Q8.B1',(130,174),'Q8.B3')
-wire('H_RF_OUT_CAND',(130,174),'R5.1')
+wire('H_ANT_A','Q8.B1',(130,174),'Q8.B3');stub('H_ANT_A','Q8.B3',8)
+# B78-B81: R5 is the 22-ohm supply feed, not an antenna series element.
+stub('H_RF_VDD','R5.1',-10);stub('U2_VCC','R5.2',8)
 wire('GND','Q8.B2',(130,188),(134,188));label('GND',(134,188))
 wire('H_RF_VDD','Q8.T2',(177,159),(177,132),'L1.2')
 wire('H_RF_VDD','L1.2',(187,132),'C5.1')
@@ -338,7 +339,7 @@ for n in layout['notes']:
     if t.startswith('H09:'):t='H09: 3724A matches SIL3724A N/P MOSFET pair. Both units share one package.'
     if t.startswith('Q8 T2/B1/B2'):t='V113/V115: Q8 centre pin5 GND. V114 is U2 pin2 GND, not Q8 pin2.'
     if t.startswith('H06:'):t='H06: S1 common pairs and normally-open action measured. RC timing unmeasured.'
-    if t.startswith('H07:'):t='H07: C14R inverter candidate. C6 parallels C5 by photo; Q8 source rail supported by B37.'
+    if t.startswith('H07:'):t='H07: RF supply -> R5 (22 ohm) -> U2/C7. U2 measured 6.3 V; candidate rating unresolved.'
     if t.startswith('No invented ties'):t='D4/D5 ground returns photo-supported. D6: A=GND, K=VPP measured; breakdown unknown.'
     if t.startswith('H02:'):t='User: RA3/R14, RA4/R15, RA5/R16, RC0/R11, RC6/R13. RC2 -> TP3; RB0 -> TP16 / Q2; VREF tie withdrawn. RC1 -> R18 via V053-V070.'
     if t.startswith('Selected working hypothesis:'):t='Front outer-capacitor band = ANT2: C11 measured 1.4 ohm; other four share visible copper.'
@@ -361,7 +362,7 @@ text('User: U3 pin5 / V079 / V080 = VREF (1 ohm); TP6 remains separate across C1
 text('U3 alternative: MCP6002-I/SN; same pin roles, electrical suitability to verify.',288,208,.762)
 text('U6: pin5 joins VIN (1 ohm); pin4 unused. PIR supply measured 3.3 V with sensor attached.',234,305,.762)
 text('IMG_2431: TP3/PIC13 drives R6/R7/D1 midpoint. Diode identity and timing unverified.',13,211,.762)
-text('C6 parallels C5 (photo); Q8 P-F = 1 ohm supports H_RF_VDD join. Gate drive unverified.',90,202,.762)
+text('Q8 output -> ANT1 photo-supported (B82: 4.5 ohm). Rest VGS: P=0 V, N=6.3 V; scope deferred.',90,202,.762)
 text('U6A: DNP alternative regulator; stock symbol does not identify the original part.',234,309,.762)
 text('Q7: 11.2 kohm V064-V070 fits R18+R19. Supply-switch topology inferred; RC1 drives R18 via V053-V070.',229,126,.762)
 
@@ -426,7 +427,7 @@ for net,edges in adj.items():
 for l in L:
     x,y=l['p'];G.append(expr(f'(label {q(l["net"])} (at {x} {y} 0) (effects (font (size .762 .762)) (justify left bottom)) (uuid {q(uid())}))'))
 tree.extend(G)
-tree.append(expr('(title_block (title "PetSafe 100-1339 R03 A | single-sheet reconstruction") (date "2026-10-14") (rev "0.9.39") (company "KiCad 10 libraries + four datasheet symbols | MCP authoring") (comment 1 "RA0-TP6 and TP14-OUTA measured; operating qualifications remain."))'))
+tree.append(expr('(title_block (title "PetSafe 100-1339 R03 A | single-sheet reconstruction") (date "2026-10-15") (rev "0.9.40") (company "KiCad 10 libraries + four datasheet symbols | MCP authoring") (comment 1 "RF supply/output corrected; device ratings remain qualified."))'))
 # Canonical pretty printer supplied by the installed MCP server.
 sys.path.insert(0,str(Path.home()/'Documents/VS.Code.Projects/KiCAD-MCP-Server/python'))
 from utils.sexpr_format import prettify
@@ -446,7 +447,7 @@ out.write_text(prettify(sx.dumps(tree)),encoding='utf-8',newline='\n')
 def wire_key(w):return w['net'],tuple(w['a']),tuple(w['b'])
 prior_order={wire_key(w):i for i,w in enumerate(model.get('geometric_wires',[]))}
 ordered_segments=sorted(segments,key=lambda s:(prior_order.get(s,len(prior_order)),s))
-model.update(revision='v0.9.39',coordinate_units='mm',native_pin_crosswalk=layout['crosswalk'],pin_positions={e:list(p) for e,p in P.items()},
+model.update(revision='v0.9.40',coordinate_units='mm',native_pin_crosswalk=layout['crosswalk'],pin_positions={e:list(p) for e,p in P.items()},
              geometric_wires=[dict(net=n,a=a,b=b) for n,a,b in ordered_segments],library_policy='KiCad 10 stock symbols plus four explicitly authorized MCP-authored datasheet symbols for U1/U5/U6/Q8')
 for c in model['components']:
     entry=next(x for x in layout['catalog'] if x['original_ref']==c['ref'])

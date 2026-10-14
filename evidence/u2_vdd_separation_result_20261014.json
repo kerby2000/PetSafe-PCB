@@ -1,0 +1,32 @@
+{
+  "date": "2026-10-14",
+  "schematic_revision": "v0.9.39",
+  "status": "DIRECT_U2_TO_PRINTED_VDD_JOIN_REJECTED",
+  "measurements": [
+    {
+      "id": "B77",
+      "group": "u2-vdd-direct-voltage",
+      "from": "UV",
+      "to": "VD",
+      "mode": "DC voltage",
+      "unit": "signed V; steady / varying",
+      "state": "Powered; original battery and PIR connected; programmer disconnected",
+      "issue": "E03",
+      "purpose": "Directly test U2-to-printed-VDD potential difference in one state; resolve time-separated6.3/4.5V comparison.",
+      "date": "2026-10-14",
+      "result": "1.8 V",
+      "voltage_v": 1.8,
+      "stability": null,
+      "source_worksheet_revision": "v0.9.39",
+      "raw_user_statement": "PetSafe U2: compare its supply directly with printed VDD / v0.9.39\nB77 red UV / black VD (Powered; original battery and PIR connected; programmer disconnected): 1.8"
+    }
+  ],
+  "interpretation": "Direct U2 candidate supply-to-printed VDD measured +1.8 V in one powered state. The nodes cannot be joined by the copper-only path currently drawn. Reject that supply association; neither B77 nor the separate 6.3 V readings proves U2 is directly joined to C6. No established series resistor yet explains the 24/48-ohm measurements.",
+  "rejected_direct_pair": [
+    "U2.B2",
+    "VDD.1"
+  ],
+  "next_action": "No further RF continuity repeat requested. Oscilloscope available, but waveform checks explicitly deferred by the owner on 2026-10-15. Continue schematic values, identities and package geometry without scope measurements.",
+  "followup_evidence": "evidence/r5_supply_feed_results_20261015.json",
+  "topology_correction": "evidence/u2_r5_topology_correction_v0940.json"
+}

@@ -1,6 +1,6 @@
 # Current circuit interpretation
 
-Schematic v0.9.39, 2026-10-14. This is the current interpretation, not a chronological log. The [previous narrative](history/cleanup_v0928/docs/RECONSTRUCTION.md) is archived; older requests there are superseded. Use [the checklist](FINISHING_CHECKLIST.html) for remaining questions.
+Schematic v0.9.40, 2026-10-15. This is the current interpretation, not a chronological log. The [previous narrative](history/cleanup_v0928/docs/RECONSTRUCTION.md) is archived; older requests there are superseded. Use [the checklist](FINISHING_CHECKLIST.html) for remaining questions. Oscilloscope work is deferred at the owner's request; prioritize schematic values, identities and package geometry.
 
 ## Power and references
 
@@ -28,7 +28,11 @@ Q9/J6/R35/R36/TP10 are DNP options in the PIC block. Q9's NPN symbol expresses a
 
 ## RF excitation and tuning
 
-Q8/3724A uses a SIL3724A N/P MOSFET candidate. Its centre B2/native5 ground and outer-drain join have evidence. B37 P-F = 1 ohm supports Q8.T2/native2 joining C6.1 on H_RF_VDD, superseding the earlier 10-ohm connection ambiguity. No fresh probe baseline or stability statement was supplied, so exact copper resistance is not established. Candidate source/gate roles and gate-drive headroom remain qualified. C6 is in parallel with C5 across H_RF_VDD/GND by photo-supported reconstruction. C5 is 470 uF / 16 V; C6 is unmeasured.
+Q8/3724A uses a SIL3724A N/P MOSFET candidate. Its centre B2/native5 ground and outer-drain join have evidence. B37 P-F = 1 ohm supports Q8.T2/native2 joining C6.1 on H_RF_VDD. B72/B73 rest gate-source readings are 0 V for the P channel and +6.3 V for the N channel; dynamic timing remains unmeasured. C6 is parallel with C5 across H_RF_VDD/GND. C5 is 470 uF / 16 V; C6 is unmeasured.
+
+**R5 is the 22-ohm supply feed from H_RF_VDD to U2/C7, now named U2_VCC.** B78 U2-C7 = 1.5 ohm, B80 C7-R5 upper = 4 ohm, B81 C6-R5 lower = 3.3 ohm, and B79 C7-C6 = 27 ohm support this placement. Contact contributions are unquantified; no extra resistor is invented. B76 U2 supply = 6.3 V and B77 U2-to-printed-VDD = +1.8 V reject the former direct VDD tie. The SN74LVC2G14 candidate has a recommended maximum supply of 5.5 V; its fitted identity and suitability remain unresolved, without diagnosing a failure.
+
+Q8's joined output reaches ANT1 by photo-supported copper. B82 measured 4.5 ohm with the antenna fitted. This is compatible with the route but cannot independently distinguish contact resistance from the approximately 5-ohm antenna winding. R5's old output-to-ANT1 placement is withdrawn. ANT1 and ANT2 remain separate board nets. See the [bounded correction and evidence](../evidence/u2_r5_topology_correction_v0940.json).
 
 The [IMG_2431 trace review](RF_TRACE_REVIEW.html) establishes PIC13/TP3/R10.1/R6.2/R7.1/D1.S on RF_MONITOR_PAD. D1.R/native2 joins R7.2/C9.1/U2.1 (H_RF_IN_A); D1.L/native1 retains R6.1/C8.1/U2.3 (H_RF_IN_B). The prior H_RF_CONTROL/H_D1_FREE nodes are retired. These are photo-supported connections combined with the earlier measured PIC13-to-TP3 destination, not new meter readings. With the BAV99/U2 candidates, this is consistent with opposite charge/discharge delays at the two gate-driver inputs. Actual switching timing, dead time and Q8 gate headroom are unmeasured.
 
@@ -44,6 +48,6 @@ C23.2 and R25.1 form a series junction still named H_RX_DETECT. It **continues t
 
 ## Completion criteria
 
-The model and native drawing agree on 82 net partitions after the measured RA0-to-TP6 merge in v0.9.39. Native geometry has zero dangling wire ends or pinless wire fragments. Zero unassigned pads and the retained U6 pin4 NC do not certify all onward routes. Five stock power-source declarations now resolve the undriven-input checks without changing physical partitions. Only the user-retained U6/U6A output conflict remains. No ERC exclusion or new NC was introduced. R33 and its two assumed endpoints have been removed. In v0.9.37, five front capacitor outer pads (C11/C14/C29/C44/C47) moved from GND to ANT2 using measured C11 continuity and the visible shared copper. Physical-to-native pin mappings are unchanged; rear capacitor returns remain GND.
+The model and native drawing agree on 82 net partitions after the RF supply/output correction in v0.9.40. Native geometry has zero dangling wire ends or pinless wire fragments. Zero unassigned pads and the retained U6 pin4 NC do not certify all onward routes. Six stock power-source declarations resolve undriven-input checks, including the evidenced supply through R5. Only the user-retained U6/U6A output conflict remains. No ERC exclusion or new NC was introduced. R33 and its two assumed endpoints remain withdrawn. Five front capacitor outer pads (C11/C14/C29/C44/C47) join ANT2 using measured C11 continuity and visible shared copper. Physical-to-native pin mappings are unchanged; rear capacitor returns remain GND.
 
 Topology, device behavior, 44 ceramic values, LED footprint/pad geometry and remaining geometry are tracked separately. A routed PCB, actual layer stack, firmware and powered validation are separate milestones. [Recorded measurements](MEASUREMENTS.md) are user evidence; [library choices](LIBRARIES_AND_ALTERNATIVES.md) retain candidate qualifications.

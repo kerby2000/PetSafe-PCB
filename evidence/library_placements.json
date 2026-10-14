@@ -607,7 +607,8 @@
       "includePins": true,
       "footprint": "Package_TO_SOT_SMD:SOT-23-6",
       "properties": {
-        "ViaEvidence": "v0.9.5: V114 reaches U2.T2, not Q8.T2. Earlier user GND assignment retained; native U2 pin2 already GND. This resolves the via annotation conflict."
+        "ViaEvidence": "v0.9.5: V114 reaches U2.T2, not Q8.T2. Earlier user GND assignment retained; native U2 pin2 already GND. This resolves the via annotation conflict.",
+        "CurrentEvidence": "C14R / SN74LVC2G14 remains a candidate. B76 supply-to-ground = 6.3 V; B77 supply-to-printed VDD = +1.8 V rejects direct VDD tie. B78 supply-C7 upper = 1.5 ohm; B79-B81 support feed from H_RF_VDD through R5 (22 ohm), named U2_VCC. Measured 6.3 V exceeds candidate recommended 5.5 V; identity/compatibility unresolved, no failure inferred. Scope checks deferred by owner."
       }
     },
     {
@@ -622,7 +623,8 @@
       "includePins": true,
       "footprint": "Capacitor_SMD:C_0805_2012Metric",
       "properties": {
-        "ViaEvidence": "v0.9.2: V118 associated with C7; earlier GND report retained for photo-selected return pad2."
+        "ViaEvidence": "v0.9.2: V118 associated with C7; earlier GND report retained for photo-selected return pad2.",
+        "CurrentEvidence": "Upper/model1 shares U2 pin5 supply at 1.5 ohm (B78); R5 supplies that U2_VCC node from H_RF_VDD. Earlier direct printed VDD association withdrawn by B77. Lower/model2 GND photo/via-supported. Capacitance remains unknown."
       }
     },
     {
@@ -738,7 +740,7 @@
       "unit": 1,
       "properties": {
         "ViaEvidence": "v0.9.5: V113/V115 reach centre B2/pin5 GND. V114 belongs to U2.T2 and supplies no evidence about Q8.T2. Existing Q8.T2 supply hypothesis and outer-drain join remain independently qualified.",
-        "CurrentEvidence": "3724A supports the SIL3724A complementary MOSFET candidate; fitted maker unconfirmed. B37 P-F = 1 ohm supports Q8.T2/native2 joining C6.1 on H_RF_VDD. The earlier 10-ohm reading is superseded for the current connection assessment; no fresh probe baseline or stability statement was supplied. V113/V115 centre B2/native5 GND and the outer-drain join retain earlier evidence; V114 belongs to U2.T2. Candidate pin functions, gate drive and operating levels remain unverified."
+        "CurrentEvidence": "3724A supports SIL3724A complementary MOSFET candidate; fitted maker unconfirmed. B37 source-C6 = 1 ohm; centre native5 GND; outer native4/6 drains joined. B82 output-ANT1 = 4.5 ohm with antenna fitted; direct route accepted from photos plus compatible reading, not resistance alone. R5 is a supply-feed resistor, not an output resistor. Rest VGS P=0 V / N=6.3 V; RF waveforms deferred by owner."
       }
     },
     {
@@ -826,11 +828,14 @@
       "value": "22",
       "position": {
         "x": 199.39,
-        "y": 220.98
+        "y": 153.67
       },
       "rotation": 90,
       "includePins": true,
-      "footprint": "Resistor_SMD:R_0603_1608Metric"
+      "footprint": "Resistor_SMD:R_0603_1608Metric",
+      "properties": {
+        "CurrentEvidence": "Marking 220 = 22 ohm. B80 C7 upper-R5 upper = 4 ohm; B81 C6 upper-R5 lower = 3.3 ohm. With B79 C7-C6 = 27 ohm, supports series feed H_RF_VDD -> R5 -> U2_VCC. Model pin1 is lower/Q8-side, pin2 upper/U2-side in IMG_2431. Previous output/ANT1 placement withdrawn; contact resistance unquantified."
+      }
     },
     {
       "symbol": "Device:R",
@@ -1418,7 +1423,10 @@
       },
       "rotation": 270,
       "includePins": true,
-      "footprint": "TestPoint:TestPoint_THTPad_D2.0mm_Drill1.0mm"
+      "footprint": "TestPoint:TestPoint_THTPad_D2.0mm_Drill1.0mm",
+      "properties": {
+        "CurrentEvidence": "Q8 joined outer drain/output pads reach ANT1 by photo-supported copper; B82 measured 4.5 ohm with antenna fitted. The reading alone cannot exclude a path through the approximately 5-ohm antenna. ANT1 and ANT2 remain distinct board nets; R5 has moved to the U2 supply feed."
+      }
     },
     {
       "symbol": "Connector:TestPoint",
@@ -2170,7 +2178,10 @@
       },
       "footprint": "Package_TO_SOT_SMD:SOT-23-6",
       "angle": 0,
-      "unit": 2
+      "unit": 2,
+      "properties": {
+        "CurrentEvidence": "C14R / SN74LVC2G14 remains a candidate. B76 supply-to-ground = 6.3 V; B77 supply-to-printed VDD = +1.8 V rejects direct VDD tie. B78 supply-C7 upper = 1.5 ohm; B79-B81 support feed from H_RF_VDD through R5 (22 ohm), named U2_VCC. Measured 6.3 V exceeds candidate recommended 5.5 V; identity/compatibility unresolved, no failure inferred. Scope checks deferred by owner."
+      }
     },
     {
       "symbol": "74xGxx:74LVC2G14",
@@ -2182,7 +2193,10 @@
       },
       "footprint": "Package_TO_SOT_SMD:SOT-23-6",
       "angle": 0,
-      "unit": 3
+      "unit": 3,
+      "properties": {
+        "CurrentEvidence": "C14R / SN74LVC2G14 remains a candidate. B76 supply-to-ground = 6.3 V; B77 supply-to-printed VDD = +1.8 V rejects direct VDD tie. B78 supply-C7 upper = 1.5 ohm; B79-B81 support feed from H_RF_VDD through R5 (22 ohm), named U2_VCC. Measured 6.3 V exceeds candidate recommended 5.5 V; identity/compatibility unresolved, no failure inferred. Scope checks deferred by owner."
+      }
     },
     {
       "symbol": "Amplifier_Operational:Opamp_Dual",
@@ -2230,7 +2244,7 @@
       "includePins": true,
       "properties": {
         "ViaEvidence": "v0.9.2: V113/V115 connect centre B2/pin5 to GND; earlier outer B1/B3 via annotation withdrawn. V114 reaches opposite centre T2/pin2, with GND versus source supply unresolved. Outer drain join retains earlier D-E resistance evidence.",
-        "CurrentEvidence": "3724A supports the SIL3724A complementary MOSFET candidate; fitted maker unconfirmed. B37 P-F = 1 ohm supports Q8.T2/native2 joining C6.1 on H_RF_VDD. The earlier 10-ohm reading is superseded for the current connection assessment; no fresh probe baseline or stability statement was supplied. V113/V115 centre B2/native5 GND and the outer-drain join retain earlier evidence; V114 belongs to U2.T2. Candidate pin functions, gate drive and operating levels remain unverified."
+        "CurrentEvidence": "3724A supports SIL3724A complementary MOSFET candidate; fitted maker unconfirmed. B37 source-C6 = 1 ohm; centre native5 GND; outer native4/6 drains joined. B82 output-ANT1 = 4.5 ohm with antenna fitted; direct route accepted from photos plus compatible reading, not resistance alone. R5 is a supply-feed resistor, not an output resistor. Rest VGS P=0 V / N=6.3 V; RF waveforms deferred by owner."
       }
     }
   ],

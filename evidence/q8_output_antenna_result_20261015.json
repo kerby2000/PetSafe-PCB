@@ -1,0 +1,37 @@
+{
+  "date": "2026-10-15",
+  "measurement": {
+    "id": "B82",
+    "group": "q8-output-antenna",
+    "from": "OD",
+    "to": "A",
+    "mode": "Resistance",
+    "unit": "ohms / OL",
+    "state": "Unpowered; antenna wires fitted",
+    "issue": "E03",
+    "purpose": "Check Q8 joined-drain output to ANT1 after the old series R5 placement was disproved.",
+    "date": "2026-10-15",
+    "result": "4.5 ohm",
+    "resistance_ohms": 4.5,
+    "stability": null,
+    "shorted_probe_ohms": null,
+    "source_worksheet_revision": "v0.9.39",
+    "raw_user_statement": "PetSafe Q8 output: check the onward ANT1 connection / v0.9.39\nB82 red OD / black A (Unpowered; antenna wires fitted): 4.5"
+  },
+  "assessment": "B82 OD-ANT1 = 4.5 ohm. Alone this cannot distinguish contact resistance from a path through the fitted approximately 5-ohm antenna. IMG_2431 shows the joined outer Q8 pads; board_upper.png shows that output copper continuing around Q8 toward ANT1. The direct output-to-ANT1 route is accepted as photo-supported with a compatible low-resistance reading, not proved by resistance magnitude alone. R5 is not in this output path.",
+  "status": "PHOTO_SUPPORTED_OUTPUT_TO_ANT1",
+  "supported_pairs": [
+    [
+      "Q8.B1",
+      "ANT1.1"
+    ],
+    [
+      "Q8.B3",
+      "ANT1.1"
+    ]
+  ],
+  "photos": {
+    "photos/originals/IMG_2431.jpg": "d2b09a11ac056eb624fb9052e8e653d1885cc1a3a9c148c88d677c3307d73880",
+    "photos/user/2026-10-08/board_upper.png": "66b7c33e78b3b37d1acf8d42b28e781b7c9904c1ff469b35b19df1abeda7af28"
+  }
+}

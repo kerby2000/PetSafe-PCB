@@ -61,3 +61,22 @@ def with_tp14_motor_output(partitions):
     for net,pads in before.items():assert result[net]==pads,(net,result[net])
     result.update(after)
     return result
+
+
+def with_u2_r5_topology(partitions):
+    """Allow only the measured supply correction and photo-supported output route."""
+    record=json.loads((ROOT/'evidence/u2_r5_topology_correction_v0940.json').read_text())
+    assert record['baseline_commit']=='476ebfe'
+    result={name:sorted(pads) for name,pads in partitions.items()}
+    for net,pads in record['before'].items():assert result[net]==pads,(net,result[net])
+    assert result['H_RF_OUT_CAND']==['Q8.B1','Q8.B3','R5.1']
+    assert result['H_ANT_A']==['ANT1.1','R5.2']
+    assert 'U2_VCC' not in result
+    for pad in ['C7.1','U2.B2']:result['VDD'].remove(pad)
+    result['H_RF_VDD']=sorted(result['H_RF_VDD']+['R5.1'])
+    result['U2_VCC']=['C7.1','R5.2','U2.B2']
+    result['H_ANT_A']=['ANT1.1','Q8.B1','Q8.B3']
+    del result['H_RF_OUT_CAND']
+    assert record['after']=={k:result[k] for k in ['VDD','H_RF_VDD','U2_VCC','H_ANT_A']}
+    assert len(result)==len(partitions)
+    return result

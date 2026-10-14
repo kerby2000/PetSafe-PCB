@@ -1,0 +1,49 @@
+{
+  "date": "2026-10-15",
+  "schematic_revision": "v0.9.39",
+  "status": "U2_C7_LOCAL_JOIN_SUPPORTED_RF_FEED_RESISTIVE",
+  "measurements": [
+    {
+      "id": "B78",
+      "group": "u2-c7-feed",
+      "from": "UV",
+      "to": "CP",
+      "mode": "Resistance",
+      "unit": "ohms / OL; steady / changing",
+      "state": "Unpowered",
+      "issue": "E03",
+      "purpose": "Check the local bypass-to-U2 association after its rail assignment was disproved.",
+      "date": "2026-10-15",
+      "result": "1.5 ohm",
+      "resistance_ohms": 1.5,
+      "stability": null,
+      "source_worksheet_revision": "v0.9.39",
+      "raw_user_statement": "PetSafe U2 supply: locate the feed through C7 / v0.9.39\nB78 red UV / black CP (Unpowered): 1.5\nB79 red CP / black PS (Unpowered): 27"
+    },
+    {
+      "id": "B79",
+      "group": "u2-c7-feed",
+      "from": "CP",
+      "to": "PS",
+      "mode": "Resistance",
+      "unit": "ohms / OL; steady / changing",
+      "state": "Unpowered",
+      "issue": "E03",
+      "purpose": "Test C7 supply-side to RF supply at C6 with larger capacitor probe contacts.",
+      "date": "2026-10-15",
+      "result": "27 ohm",
+      "resistance_ohms": 27,
+      "stability": null,
+      "source_worksheet_revision": "v0.9.39",
+      "raw_user_statement": "PetSafe U2 supply: locate the feed through C7 / v0.9.39\nB78 red UV / black CP (Unpowered): 1.5\nB79 red CP / black PS (Unpowered): 27"
+    }
+  ],
+  "confirmed_pair": [
+    "U2.B2",
+    "C7.1"
+  ],
+  "interpretation": "U2-to-C7 upper end = 1.5 ohm supports their local join. C7 upper-to-C6 upper = 27 ohm still does not support a direct copper join. Together with earlier U2-to-C6 = 24 ohm, a real series component is more plausible, though stability and contact contributions are unreported. R5 marked220=22ohm is a test candidate, not yet established as that component.",
+  "next_action": "No further RF continuity repeat requested. Oscilloscope available, but waveform checks explicitly deferred by the owner on 2026-10-15. Continue schematic values, identities and package geometry without scope measurements.",
+  "followup_evidence": "evidence/r5_supply_feed_results_20261015.json",
+  "topology_correction": "evidence/u2_r5_topology_correction_v0940.json"
+}

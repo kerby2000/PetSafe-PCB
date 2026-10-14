@@ -1,0 +1,57 @@
+{
+  "date": "2026-10-15",
+  "status": "R5_SERIES_SUPPLY_FEED_SUPPORTED",
+  "measurements": [
+    {
+      "id": "B80",
+      "group": "u2-r5-feed",
+      "from": "CP",
+      "to": "RT",
+      "mode": "Resistance",
+      "unit": "ohms / OL",
+      "state": "Unpowered",
+      "issue": "E03",
+      "purpose": "Test R5 upper end to established U2/C7 supply node.",
+      "date": "2026-10-15",
+      "result": "4 ohm",
+      "resistance_ohms": 4,
+      "stability": null,
+      "source_worksheet_revision": "v0.9.39",
+      "raw_user_statement": "PetSafe U2 supply: is R5 the 22-ohm feed? / v0.9.39\nB80 red CP / black RT (Unpowered): 4\nB81 red PS / black RB (Unpowered): 3.3"
+    },
+    {
+      "id": "B81",
+      "group": "u2-r5-feed",
+      "from": "PS",
+      "to": "RB",
+      "mode": "Resistance",
+      "unit": "ohms / OL",
+      "state": "Unpowered",
+      "issue": "E03",
+      "purpose": "Test R5 lower end to RF supply at C6.",
+      "date": "2026-10-15",
+      "result": "3.3 ohm",
+      "resistance_ohms": 3.3,
+      "stability": null,
+      "source_worksheet_revision": "v0.9.39",
+      "raw_user_statement": "PetSafe U2 supply: is R5 the 22-ohm feed? / v0.9.39\nB80 red CP / black RT (Unpowered): 4\nB81 red PS / black RB (Unpowered): 3.3"
+    }
+  ],
+  "interpretation": "C7 upper-to-R5 upper = 4 ohm; C6 upper-to-R5 lower = 3.3 ohm. Together with U2-C7 = 1.5 ohm, C7-C6 = 27 ohm, U2-C6 = 24 ohm and R5 marking220 (22 ohm), the evidence strongly supports R5 feeding U2/C7 from H_RF_VDD. A few ohms may include contact contributions; exact copper resistance was not measured. No extra resistor is invented. Old R5 output/antenna placement is withdrawn as an incorrect inference.",
+  "physical_mapping": {
+    "R5.1": "Lower end nearest Q8 in IMG_2431",
+    "R5.2": "Upper end nearest U2 in IMG_2431"
+  },
+  "supported_pairs": [
+    [
+      "R5.1",
+      "C6.1"
+    ],
+    [
+      "R5.2",
+      "C7.1"
+    ]
+  ],
+  "next_action": "No further RF continuity repeat requested. Oscilloscope available, but waveform checks explicitly deferred by the owner on 2026-10-15. Continue schematic values, identities and package geometry without scope measurements.",
+  "topology_correction": "evidence/u2_r5_topology_correction_v0940.json"
+}

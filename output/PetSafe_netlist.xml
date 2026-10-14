@@ -2,16 +2,16 @@
 <export version="E">
   <design>
     <source>C:\Users\lukin\Documents\ChatGPT\PetSafe-PCB\schematic\PetSafe_1001339.kicad_sch</source>
-    <date>2026-10-14T23:39:47</date>
+    <date>2026-10-15T00:25:37</date>
     <tool>Eeschema 10.0.5</tool>
     <sheet number="1" name="/" tstamps="/">
       <title_block>
         <title>PetSafe 100-1339 R03 A | single-sheet reconstruction</title>
         <company>KiCad 10 libraries + four datasheet symbols | MCP authoring</company>
-        <rev>0.9.39</rev>
-        <date>2026-10-14</date>
+        <rev>0.9.40</rev>
+        <date>2026-10-15</date>
         <source>PetSafe_1001339.kicad_sch</source>
-        <comment number="1" value="RA0-TP6 and TP14-OUTA measured; operating qualifications remain."/>
+        <comment number="1" value="RF supply/output corrected; device ratings remain qualified."/>
         <comment number="2" value=""/>
         <comment number="3" value=""/>
         <comment number="4" value=""/>
@@ -280,8 +280,9 @@
       <description>Unpolarized capacitor</description>
       <fields>
         <field name="ViaEvidence">v0.9.2: V118 associated with C7; earlier GND report retained for photo-selected return pad2.</field>
+        <field name="CurrentEvidence">Upper/model1 shares U2 pin5 supply at 1.5 ohm (B78); R5 supplies that U2_VCC node from H_RF_VDD. Earlier direct printed VDD association withdrawn by B77. Lower/model2 GND photo/via-supported. Capacitance remains unknown.</field>
         <field name="OriginalReference">C7</field>
-        <field name="Evidence">Photo reconstruction; individual net evidence in reconstruction.json</field>
+        <field name="Evidence">Upper/model1 shares U2 pin5 supply at 1.5 ohm (B78); R5 supplies that U2_VCC node from H_RF_VDD. Earlier direct printed VDD association withdrawn by B77. Lower/model2 GND photo/via-supported. Capacitance remains unknown.</field>
         <field name="LibraryPolicy">Unmodified KiCad 10 stock symbol</field>
         <field name="FootprintConfidence">medium</field>
         <field name="FootprintBasis">Photo family and body/land proportions compared with adjacent known IC lead pitch. Size is independent of capacitance, dielectric and voltage rating.</field>
@@ -292,8 +293,9 @@
       </fields>
       <libsource lib="Device" part="C" description="Unpolarized capacitor"/>
       <property name="ViaEvidence" value="v0.9.2: V118 associated with C7; earlier GND report retained for photo-selected return pad2."/>
+      <property name="CurrentEvidence" value="Upper/model1 shares U2 pin5 supply at 1.5 ohm (B78); R5 supplies that U2_VCC node from H_RF_VDD. Earlier direct printed VDD association withdrawn by B77. Lower/model2 GND photo/via-supported. Capacitance remains unknown."/>
       <property name="OriginalReference" value="C7"/>
-      <property name="Evidence" value="Photo reconstruction; individual net evidence in reconstruction.json"/>
+      <property name="Evidence" value="Upper/model1 shares U2 pin5 supply at 1.5 ohm (B78); R5 supplies that U2_VCC node from H_RF_VDD. Earlier direct printed VDD association withdrawn by B77. Lower/model2 GND photo/via-supported. Capacitance remains unknown."/>
       <property name="LibraryPolicy" value="Unmodified KiCad 10 stock symbol"/>
       <property name="FootprintConfidence" value="medium"/>
       <property name="FootprintBasis" value="Photo family and body/land proportions compared with adjacent known IC lead pitch. Size is independent of capacitance, dielectric and voltage rating."/>
@@ -2878,9 +2880,9 @@
       <datasheet>https://static.chipdip.ru/lib/761/DOC050761871.pdf</datasheet>
       <description>MCC SIL3724A dual N/P MOSFET, marking 3724A; candidate for Q8, fitted manufacturer unconfirmed. Pin map verified from manufacturer page 1. KiCad generic MOSFET artwork imported through MCP.</description>
       <fields>
-        <field name="CurrentEvidence">3724A supports the SIL3724A complementary MOSFET candidate; fitted maker unconfirmed. B37 P-F = 1 ohm supports Q8.T2/native2 joining C6.1 on H_RF_VDD. The earlier 10-ohm reading is superseded for the current connection assessment; no fresh probe baseline or stability statement was supplied. V113/V115 centre B2/native5 GND and the outer-drain join retain earlier evidence; V114 belongs to U2.T2. Candidate pin functions, gate drive and operating levels remain unverified.</field>
+        <field name="CurrentEvidence">3724A supports SIL3724A complementary MOSFET candidate; fitted maker unconfirmed. B37 source-C6 = 1 ohm; centre native5 GND; outer native4/6 drains joined. B82 output-ANT1 = 4.5 ohm with antenna fitted; direct route accepted from photos plus compatible reading, not resistance alone. R5 is a supply-feed resistor, not an output resistor. Rest VGS P=0 V / N=6.3 V; RF waveforms deferred by owner.</field>
         <field name="OriginalReference">Q8</field>
-        <field name="Evidence">3724A supports the SIL3724A complementary MOSFET candidate; fitted maker unconfirmed. B37 P-F = 1 ohm supports Q8.T2/native2 joining C6.1 on H_RF_VDD. The earlier 10-ohm reading is superseded for the current connection assessment; no fresh probe baseline or stability statement was supplied. V113/V115 centre B2/native5 GND and the outer-drain join retain earlier evidence; V114 belongs to U2.T2. Candidate pin functions, gate drive and operating levels remain unverified.</field>
+        <field name="Evidence">3724A supports SIL3724A complementary MOSFET candidate; fitted maker unconfirmed. B37 source-C6 = 1 ohm; centre native5 GND; outer native4/6 drains joined. B82 output-ANT1 = 4.5 ohm with antenna fitted; direct route accepted from photos plus compatible reading, not resistance alone. R5 is a supply-feed resistor, not an output resistor. Rest VGS P=0 V / N=6.3 V; RF waveforms deferred by owner.</field>
         <field name="LibraryPolicy">User-authorized datasheet symbol created through KiCad MCP</field>
         <field name="FootprintConfidence">datasheet/package candidate</field>
         <field name="FootprintBasis">Existing assignment; see component identity evidence.</field>
@@ -2892,9 +2894,9 @@
       </fields>
       <libsource lib="PetSafe_Datasheet" part="SIL3724A" description="MCC SIL3724A dual N/P MOSFET, marking 3724A; candidate for Q8, fitted manufacturer unconfirmed. Pin map verified from manufacturer page 1. KiCad generic MOSFET artwork imported through MCP."/>
       <property name="ViaEvidence" value="v0.9.5: V113/V115 reach centre B2/pin5 GND. V114 belongs to U2.T2 and supplies no evidence about Q8.T2. Existing Q8.T2 supply hypothesis and outer-drain join remain independently qualified."/>
-      <property name="CurrentEvidence" value="3724A supports the SIL3724A complementary MOSFET candidate; fitted maker unconfirmed. B37 P-F = 1 ohm supports Q8.T2/native2 joining C6.1 on H_RF_VDD. The earlier 10-ohm reading is superseded for the current connection assessment; no fresh probe baseline or stability statement was supplied. V113/V115 centre B2/native5 GND and the outer-drain join retain earlier evidence; V114 belongs to U2.T2. Candidate pin functions, gate drive and operating levels remain unverified."/>
+      <property name="CurrentEvidence" value="3724A supports SIL3724A complementary MOSFET candidate; fitted maker unconfirmed. B37 source-C6 = 1 ohm; centre native5 GND; outer native4/6 drains joined. B82 output-ANT1 = 4.5 ohm with antenna fitted; direct route accepted from photos plus compatible reading, not resistance alone. R5 is a supply-feed resistor, not an output resistor. Rest VGS P=0 V / N=6.3 V; RF waveforms deferred by owner."/>
       <property name="OriginalReference" value="Q8"/>
-      <property name="Evidence" value="3724A supports the SIL3724A complementary MOSFET candidate; fitted maker unconfirmed. B37 P-F = 1 ohm supports Q8.T2/native2 joining C6.1 on H_RF_VDD. The earlier 10-ohm reading is superseded for the current connection assessment; no fresh probe baseline or stability statement was supplied. V113/V115 centre B2/native5 GND and the outer-drain join retain earlier evidence; V114 belongs to U2.T2. Candidate pin functions, gate drive and operating levels remain unverified."/>
+      <property name="Evidence" value="3724A supports SIL3724A complementary MOSFET candidate; fitted maker unconfirmed. B37 source-C6 = 1 ohm; centre native5 GND; outer native4/6 drains joined. B82 output-ANT1 = 4.5 ohm with antenna fitted; direct route accepted from photos plus compatible reading, not resistance alone. R5 is a supply-feed resistor, not an output resistor. Rest VGS P=0 V / N=6.3 V; RF waveforms deferred by owner."/>
       <property name="LibraryPolicy" value="User-authorized datasheet symbol created through KiCad MCP"/>
       <property name="FootprintConfidence" value="datasheet/package candidate"/>
       <property name="FootprintBasis" value="Existing assignment; see component identity evidence."/>
@@ -3170,8 +3172,9 @@
       <footprint>Resistor_SMD:R_0603_1608Metric</footprint>
       <description>Resistor</description>
       <fields>
+        <field name="CurrentEvidence">Marking 220 = 22 ohm. B80 C7 upper-R5 upper = 4 ohm; B81 C6 upper-R5 lower = 3.3 ohm. With B79 C7-C6 = 27 ohm, supports series feed H_RF_VDD -&gt; R5 -&gt; U2_VCC. Model pin1 is lower/Q8-side, pin2 upper/U2-side in IMG_2431. Previous output/ANT1 placement withdrawn; contact resistance unquantified.</field>
         <field name="OriginalReference">R5</field>
-        <field name="Evidence">Photo reconstruction; individual net evidence in reconstruction.json</field>
+        <field name="Evidence">Marking 220 = 22 ohm. B80 C7 upper-R5 upper = 4 ohm; B81 C6 upper-R5 lower = 3.3 ohm. With B79 C7-C6 = 27 ohm, supports series feed H_RF_VDD -&gt; R5 -&gt; U2_VCC. Model pin1 is lower/Q8-side, pin2 upper/U2-side in IMG_2431. Previous output/ANT1 placement withdrawn; contact resistance unquantified.</field>
         <field name="LibraryPolicy">Unmodified KiCad 10 stock symbol</field>
         <field name="FootprintConfidence">medium - revised family estimate</field>
         <field name="FootprintBasis">User reports R8 approximately 1.6 x 0.77 mm, consistent with 0603 (1608 metric). Repeated fitted resistor family revised using R8 as a scale reference. This individual body has not been measured; earlier 0805 estimate superseded.</field>
@@ -3181,8 +3184,9 @@
         <field name="Description">Resistor</field>
       </fields>
       <libsource lib="Device" part="R" description="Resistor"/>
+      <property name="CurrentEvidence" value="Marking 220 = 22 ohm. B80 C7 upper-R5 upper = 4 ohm; B81 C6 upper-R5 lower = 3.3 ohm. With B79 C7-C6 = 27 ohm, supports series feed H_RF_VDD -&gt; R5 -&gt; U2_VCC. Model pin1 is lower/Q8-side, pin2 upper/U2-side in IMG_2431. Previous output/ANT1 placement withdrawn; contact resistance unquantified."/>
       <property name="OriginalReference" value="R5"/>
-      <property name="Evidence" value="Photo reconstruction; individual net evidence in reconstruction.json"/>
+      <property name="Evidence" value="Marking 220 = 22 ohm. B80 C7 upper-R5 upper = 4 ohm; B81 C6 upper-R5 lower = 3.3 ohm. With B79 C7-C6 = 27 ohm, supports series feed H_RF_VDD -&gt; R5 -&gt; U2_VCC. Model pin1 is lower/Q8-side, pin2 upper/U2-side in IMG_2431. Previous output/ANT1 placement withdrawn; contact resistance unquantified."/>
       <property name="LibraryPolicy" value="Unmodified KiCad 10 stock symbol"/>
       <property name="FootprintConfidence" value="medium - revised family estimate"/>
       <property name="FootprintBasis" value="User reports R8 approximately 1.6 x 0.77 mm, consistent with 0603 (1608 metric). Repeated fitted resistor family revised using R8 as a scale reference. This individual body has not been measured; earlier 0805 estimate superseded."/>
@@ -5396,8 +5400,9 @@
       <footprint>TestPoint:TestPoint_THTPad_D2.0mm_Drill1.0mm</footprint>
       <description>test point</description>
       <fields>
+        <field name="CurrentEvidence">Q8 joined outer drain/output pads reach ANT1 by photo-supported copper; B82 measured 4.5 ohm with antenna fitted. The reading alone cannot exclude a path through the approximately 5-ohm antenna. ANT1 and ANT2 remain distinct board nets; R5 has moved to the U2 supply feed.</field>
         <field name="OriginalReference">ANT1</field>
-        <field name="Evidence">Photo reconstruction; individual net evidence in reconstruction.json</field>
+        <field name="Evidence">Q8 joined outer drain/output pads reach ANT1 by photo-supported copper; B82 measured 4.5 ohm with antenna fitted. The reading alone cannot exclude a path through the approximately 5-ohm antenna. ANT1 and ANT2 remain distinct board nets; R5 has moved to the U2 supply feed.</field>
         <field name="LibraryPolicy">Unmodified KiCad 10 stock symbol</field>
         <field name="FootprintConfidence">low</field>
         <field name="FootprintBasis">Stock plated-hole approximation from photographs. Exact drill and annular ring remain unmeasured; these are board pads, not fitted components.</field>
@@ -5407,8 +5412,9 @@
         <field name="Description">test point</field>
       </fields>
       <libsource lib="Connector" part="TestPoint" description="test point"/>
+      <property name="CurrentEvidence" value="Q8 joined outer drain/output pads reach ANT1 by photo-supported copper; B82 measured 4.5 ohm with antenna fitted. The reading alone cannot exclude a path through the approximately 5-ohm antenna. ANT1 and ANT2 remain distinct board nets; R5 has moved to the U2 supply feed."/>
       <property name="OriginalReference" value="ANT1"/>
-      <property name="Evidence" value="Photo reconstruction; individual net evidence in reconstruction.json"/>
+      <property name="Evidence" value="Q8 joined outer drain/output pads reach ANT1 by photo-supported copper; B82 measured 4.5 ohm with antenna fitted. The reading alone cannot exclude a path through the approximately 5-ohm antenna. ANT1 and ANT2 remain distinct board nets; R5 has moved to the U2 supply feed."/>
       <property name="LibraryPolicy" value="Unmodified KiCad 10 stock symbol"/>
       <property name="FootprintConfidence" value="low"/>
       <property name="FootprintBasis" value="Stock plated-hole approximation from photographs. Exact drill and annular ring remain unmeasured; these are board pads, not fitted components."/>
@@ -5583,20 +5589,21 @@
       <datasheet>https://www.ti.com/lit/ds/symlink/sn74lvc2g14.pdf</datasheet>
       <description>Dual NOT Gate, Schmitt Triggered, Low-Voltage CMOS</description>
       <fields>
-        <field name="ViaEvidence">v0.9.5: V114 reaches U2.T2, not Q8.T2. Earlier user GND assignment retained; native U2 pin2 already GND. This resolves the via annotation conflict.</field>
         <field name="OriginalReference">U2</field>
-        <field name="Evidence">Photo reconstruction; individual net evidence in reconstruction.json</field>
+        <field name="Evidence">C14R / SN74LVC2G14 remains a candidate. B76 supply-to-ground = 6.3 V; B77 supply-to-printed VDD = +1.8 V rejects direct VDD tie. B78 supply-C7 upper = 1.5 ohm; B79-B81 support feed from H_RF_VDD through R5 (22 ohm), named U2_VCC. Measured 6.3 V exceeds candidate recommended 5.5 V; identity/compatibility unresolved, no failure inferred. Scope checks deferred by owner.</field>
         <field name="LibraryPolicy">Unmodified KiCad 10 stock symbol</field>
         <field name="FootprintConfidence">datasheet/package candidate</field>
         <field name="FootprintBasis">Existing assignment; see component identity evidence.</field>
         <field name="PinMapping">See evidence/pin_crosswalk.json; physical orientation may be provisional</field>
+        <field name="ViaEvidence">v0.9.5: V114 reaches U2.T2, not Q8.T2. Earlier user GND assignment retained; native U2 pin2 already GND. This resolves the via annotation conflict.</field>
+        <field name="CurrentEvidence">C14R / SN74LVC2G14 remains a candidate. B76 supply-to-ground = 6.3 V; B77 supply-to-printed VDD = +1.8 V rejects direct VDD tie. B78 supply-C7 upper = 1.5 ohm; B79-B81 support feed from H_RF_VDD through R5 (22 ohm), named U2_VCC. Measured 6.3 V exceeds candidate recommended 5.5 V; identity/compatibility unresolved, no failure inferred. Scope checks deferred by owner.</field>
         <field name="Footprint">Package_TO_SOT_SMD:SOT-23-6</field>
         <field name="Datasheet">https://www.ti.com/lit/ds/symlink/sn74lvc2g14.pdf</field>
         <field name="Description">Dual NOT Gate, Schmitt Triggered, Low-Voltage CMOS</field>
       </fields>
       <libsource lib="74xGxx" part="74LVC2G14" description="Dual NOT Gate, Schmitt Triggered, Low-Voltage CMOS"/>
       <property name="OriginalReference" value="U2"/>
-      <property name="Evidence" value="Photo reconstruction; individual net evidence in reconstruction.json"/>
+      <property name="Evidence" value="C14R / SN74LVC2G14 remains a candidate. B76 supply-to-ground = 6.3 V; B77 supply-to-printed VDD = +1.8 V rejects direct VDD tie. B78 supply-C7 upper = 1.5 ohm; B79-B81 support feed from H_RF_VDD through R5 (22 ohm), named U2_VCC. Measured 6.3 V exceeds candidate recommended 5.5 V; identity/compatibility unresolved, no failure inferred. Scope checks deferred by owner."/>
       <property name="LibraryPolicy" value="Unmodified KiCad 10 stock symbol"/>
       <property name="FootprintConfidence" value="datasheet/package candidate"/>
       <property name="FootprintBasis" value="Existing assignment; see component identity evidence."/>
@@ -5606,7 +5613,7 @@
       <property name="ki_keywords" value="Dual Gate NOT Schmitt LVC CMOS"/>
       <property name="ki_fp_filters" value="SG-* SOT*"/>
       <sheetpath names="/" tstamps="/"/>
-      <tstamps>c2038b9c-b36c-4670-ab94-21c1a9753278 d0ce7cd7-6c1d-460b-bc83-44a9736c68fd 3fee6f3a-8cd1-4f78-bc72-965c744b6fd1</tstamps>
+      <tstamps>d0ce7cd7-6c1d-460b-bc83-44a9736c68fd c2038b9c-b36c-4670-ab94-21c1a9753278 3fee6f3a-8cd1-4f78-bc72-965c744b6fd1</tstamps>
       <units>
         <unit name="A">
           <pins>
@@ -6625,7 +6632,8 @@
       <node ref="U7" pin="1" pinfunction="Pin_1_1" pintype="passive"/>
     </net>
     <net code="3" name="/H_ANT_A" class="Default">
-      <node ref="R5" pin="2" pintype="passive"/>
+      <node ref="Q8" pin="4" pinfunction="D_4" pintype="passive"/>
+      <node ref="Q8" pin="6" pinfunction="D_6" pintype="passive"/>
       <node ref="TP105" pin="1" pinfunction="1_1" pintype="passive"/>
     </net>
     <net code="4" name="/H_ANT_B" class="Default">
@@ -6690,6 +6698,7 @@
       <node ref="C6" pin="1" pintype="passive"/>
       <node ref="L1" pin="2" pinfunction="2_2" pintype="passive"/>
       <node ref="Q8" pin="2" pinfunction="S_2" pintype="passive"/>
+      <node ref="R5" pin="1" pintype="passive"/>
     </net>
     <net code="14" name="/H_RX_DETECT" class="Default">
       <node ref="C23" pin="2" pintype="passive"/>
@@ -6819,13 +6828,17 @@
       <node ref="R2" pin="2" pintype="passive"/>
       <node ref="U1" pin="4" pinfunction="NC_4" pintype="passive"/>
     </net>
-    <net code="38" name="/VDD" class="Default">
+    <net code="38" name="/U2_VCC" class="Default">
+      <node ref="C7" pin="1" pintype="passive"/>
+      <node ref="R5" pin="2" pintype="passive"/>
+      <node ref="U2" pin="5" pinfunction="VCC_5" pintype="power_in"/>
+    </net>
+    <net code="39" name="/VDD" class="Default">
       <node ref="C102" pin="1" pintype="passive"/>
       <node ref="C2" pin="1" pintype="passive"/>
       <node ref="C3" pin="1" pintype="passive"/>
       <node ref="C32" pin="1" pintype="passive"/>
       <node ref="C34" pin="1" pintype="passive"/>
-      <node ref="C7" pin="1" pintype="passive"/>
       <node ref="D3" pin="2" pinfunction="A_2" pintype="passive"/>
       <node ref="J1" pin="2" pinfunction="Pin_2_2" pintype="passive"/>
       <node ref="Q7" pin="2" pinfunction="E_2" pintype="passive"/>
@@ -6835,11 +6848,10 @@
       <node ref="R39" pin="2" pintype="passive"/>
       <node ref="TP103" pin="1" pinfunction="1_1" pintype="passive"/>
       <node ref="U1" pin="5" pinfunction="VOUT_5" pintype="power_out"/>
-      <node ref="U2" pin="5" pinfunction="VCC_5" pintype="power_in"/>
       <node ref="U4" pin="20" pinfunction="VDD_20" pintype="power_in"/>
       <node ref="U5" pin="1" pinfunction="VCC_1" pintype="power_in"/>
     </net>
-    <net code="39" name="/VREF" class="Default">
+    <net code="40" name="/VREF" class="Default">
       <node ref="C18" pin="1" pintype="passive"/>
       <node ref="C39" pin="1" pintype="passive"/>
       <node ref="R21" pin="2" pintype="passive"/>
@@ -6848,7 +6860,7 @@
       <node ref="U3" pin="5" pinfunction="+_5" pintype="input"/>
       <node ref="U4" pin="4" pinfunction="RA2_4" pintype="bidirectional"/>
     </net>
-    <net code="40" name="/VSYS" class="Default">
+    <net code="41" name="/VSYS" class="Default">
       <node ref="C27" pin="1" pintype="passive"/>
       <node ref="C33" pin="1" pintype="passive"/>
       <node ref="L1" pin="1" pinfunction="1_1" pintype="passive"/>
@@ -6857,143 +6869,138 @@
       <node ref="R3" pin="1" pintype="passive"/>
       <node ref="U5" pin="4" pinfunction="VDD_4" pintype="power_in"/>
     </net>
-    <net code="41" name="Net-(C8-Pad1)" class="Default">
+    <net code="42" name="Net-(C8-Pad1)" class="Default">
       <node ref="C8" pin="1" pintype="passive"/>
       <node ref="D1" pin="1" pinfunction="K_1" pintype="passive"/>
       <node ref="R6" pin="1" pintype="passive"/>
       <node ref="U2" pin="3" pintype="input"/>
     </net>
-    <net code="42" name="Net-(C10-Pad2)" class="Default">
+    <net code="43" name="Net-(C10-Pad2)" class="Default">
       <node ref="C10" pin="2" pintype="passive"/>
       <node ref="C11" pin="2" pintype="passive"/>
       <node ref="C12" pin="2" pintype="passive"/>
     </net>
-    <net code="43" name="Net-(C13-Pad2)" class="Default">
+    <net code="44" name="Net-(C13-Pad2)" class="Default">
       <node ref="C13" pin="2" pintype="passive"/>
       <node ref="C14" pin="2" pintype="passive"/>
       <node ref="C15" pin="2" pintype="passive"/>
     </net>
-    <net code="44" name="Net-(C16-Pad2)" class="Default">
+    <net code="45" name="Net-(C16-Pad2)" class="Default">
       <node ref="C16" pin="2" pintype="passive"/>
       <node ref="C29" pin="2" pintype="passive"/>
       <node ref="C38" pin="2" pintype="passive"/>
     </net>
-    <net code="45" name="Net-(C21-Pad1)" class="Default">
+    <net code="46" name="Net-(C21-Pad1)" class="Default">
       <node ref="C21" pin="1" pintype="passive"/>
       <node ref="C23" pin="1" pintype="passive"/>
       <node ref="R24" pin="1" pintype="passive"/>
       <node ref="U3" pin="7" pintype="output"/>
     </net>
-    <net code="46" name="Net-(C22-Pad1)" class="Default">
+    <net code="47" name="Net-(C22-Pad1)" class="Default">
       <node ref="C22" pin="1" pintype="passive"/>
       <node ref="R26" pin="1" pintype="passive"/>
       <node ref="R27" pin="2" pintype="passive"/>
       <node ref="R47" pin="1" pintype="passive"/>
       <node ref="U3" pin="1" pintype="output"/>
     </net>
-    <net code="47" name="Net-(C43-Pad2)" class="Default">
+    <net code="48" name="Net-(C43-Pad2)" class="Default">
       <node ref="C43" pin="2" pintype="passive"/>
       <node ref="C44" pin="2" pintype="passive"/>
       <node ref="C45" pin="2" pintype="passive"/>
     </net>
-    <net code="48" name="Net-(C46-Pad2)" class="Default">
+    <net code="49" name="Net-(C46-Pad2)" class="Default">
       <node ref="C46" pin="2" pintype="passive"/>
       <node ref="C47" pin="2" pintype="passive"/>
       <node ref="C48" pin="2" pintype="passive"/>
     </net>
-    <net code="49" name="Net-(D1-A)" class="Default">
+    <net code="50" name="Net-(D1-A)" class="Default">
       <node ref="C9" pin="1" pintype="passive"/>
       <node ref="D1" pin="2" pinfunction="A_2" pintype="passive"/>
       <node ref="R7" pin="2" pintype="passive"/>
       <node ref="U2" pin="1" pintype="input"/>
     </net>
-    <net code="50" name="Net-(D2-Pin_2)" class="Default">
+    <net code="51" name="Net-(D2-Pin_2)" class="Default">
       <node ref="C19" pin="1" pintype="passive"/>
       <node ref="C20" pin="2" pintype="passive"/>
       <node ref="D2" pin="2" pinfunction="Pin_2_2" pintype="passive"/>
       <node ref="R28" pin="2" pintype="passive"/>
       <node ref="U3" pin="3" pinfunction="+_3" pintype="input"/>
     </net>
-    <net code="51" name="Net-(D2-Pin_3)" class="Default">
+    <net code="52" name="Net-(D2-Pin_3)" class="Default">
       <node ref="D2" pin="3" pinfunction="Pin_3_3" pintype="passive"/>
       <node ref="R46" pin="2" pintype="passive"/>
     </net>
-    <net code="52" name="Net-(D3-K-Pad3)" class="Default">
+    <net code="53" name="Net-(D3-K-Pad3)" class="Default">
       <node ref="D3" pin="3" pinfunction="K_3" pintype="passive"/>
       <node ref="R42" pin="2" pintype="passive"/>
     </net>
-    <net code="53" name="Net-(J3-Pin_2)" class="Default">
+    <net code="54" name="Net-(J3-Pin_2)" class="Default">
       <node ref="J3" pin="2" pinfunction="Pin_2_2" pintype="passive"/>
       <node ref="R38" pin="1" pintype="passive"/>
       <node ref="U7" pin="2" pinfunction="Pin_2_2" pintype="passive"/>
     </net>
-    <net code="54" name="Net-(J5-Pin_2)" class="Default">
+    <net code="55" name="Net-(J5-Pin_2)" class="Default">
       <node ref="J5" pin="2" pinfunction="Pin_2_2" pintype="passive"/>
       <node ref="TP15" pin="1" pinfunction="1_1" pintype="passive"/>
       <node ref="U5" pin="5" pinfunction="OUTB_5" pintype="tri_state"/>
     </net>
-    <net code="55" name="Net-(LED1-A1)" class="Default">
+    <net code="56" name="Net-(LED1-A1)" class="Default">
       <node ref="LED1" pin="1" pinfunction="A1_1" pintype="input"/>
       <node ref="R30" pin="2" pintype="passive"/>
     </net>
-    <net code="56" name="Net-(LED1-A2)" class="Default">
+    <net code="57" name="Net-(LED1-A2)" class="Default">
       <node ref="LED1" pin="2" pinfunction="A2_2" pintype="input"/>
       <node ref="R31" pin="2" pintype="passive"/>
     </net>
-    <net code="57" name="Net-(Q1-G)" class="Default">
+    <net code="58" name="Net-(Q1-G)" class="Default">
       <node ref="Q1" pin="1" pinfunction="G_1" pintype="input"/>
       <node ref="R44" pin="2" pintype="passive"/>
     </net>
-    <net code="58" name="Net-(Q2-B)" class="Default">
+    <net code="59" name="Net-(Q2-B)" class="Default">
       <node ref="Q2" pin="1" pinfunction="B_1" pintype="input"/>
       <node ref="R38" pin="2" pintype="passive"/>
       <node ref="R39" pin="1" pintype="passive"/>
     </net>
-    <net code="59" name="Net-(Q3-B)" class="Default">
+    <net code="60" name="Net-(Q3-B)" class="Default">
       <node ref="Q3" pin="1" pinfunction="B_1" pintype="input"/>
       <node ref="R13" pin="2" pintype="passive"/>
     </net>
-    <net code="60" name="Net-(Q3-C)" class="Default">
+    <net code="61" name="Net-(Q3-C)" class="Default">
       <node ref="C10" pin="1" pintype="passive"/>
       <node ref="Q3" pin="3" pinfunction="C_3" pintype="passive"/>
     </net>
-    <net code="61" name="Net-(Q4-B)" class="Default">
+    <net code="62" name="Net-(Q4-B)" class="Default">
       <node ref="Q4" pin="1" pinfunction="B_1" pintype="input"/>
       <node ref="R14" pin="2" pintype="passive"/>
     </net>
-    <net code="62" name="Net-(Q4-C)" class="Default">
+    <net code="63" name="Net-(Q4-C)" class="Default">
       <node ref="C13" pin="1" pintype="passive"/>
       <node ref="Q4" pin="3" pinfunction="C_3" pintype="passive"/>
     </net>
-    <net code="63" name="Net-(Q5-B)" class="Default">
+    <net code="64" name="Net-(Q5-B)" class="Default">
       <node ref="Q5" pin="1" pinfunction="B_1" pintype="input"/>
       <node ref="R15" pin="2" pintype="passive"/>
     </net>
-    <net code="64" name="Net-(Q5-C)" class="Default">
+    <net code="65" name="Net-(Q5-C)" class="Default">
       <node ref="C16" pin="1" pintype="passive"/>
       <node ref="Q5" pin="3" pinfunction="C_3" pintype="passive"/>
     </net>
-    <net code="65" name="Net-(Q6-B)" class="Default">
+    <net code="66" name="Net-(Q6-B)" class="Default">
       <node ref="Q6" pin="1" pinfunction="B_1" pintype="input"/>
       <node ref="R16" pin="2" pintype="passive"/>
     </net>
-    <net code="66" name="Net-(Q6-C)" class="Default">
+    <net code="67" name="Net-(Q6-C)" class="Default">
       <node ref="C43" pin="1" pintype="passive"/>
       <node ref="Q6" pin="3" pinfunction="C_3" pintype="passive"/>
     </net>
-    <net code="67" name="Net-(Q7-B)" class="Default">
+    <net code="68" name="Net-(Q7-B)" class="Default">
       <node ref="Q7" pin="1" pinfunction="B_1" pintype="input"/>
       <node ref="R18" pin="2" pintype="passive"/>
       <node ref="R19" pin="1" pintype="passive"/>
     </net>
-    <net code="68" name="Net-(Q7-C)" class="Default">
+    <net code="69" name="Net-(Q7-C)" class="Default">
       <node ref="Q7" pin="3" pinfunction="C_3" pintype="passive"/>
       <node ref="R20" pin="1" pintype="passive"/>
-    </net>
-    <net code="69" name="Net-(Q8NMOS-D)" class="Default">
-      <node ref="Q8" pin="4" pinfunction="D_4" pintype="passive"/>
-      <node ref="Q8" pin="6" pinfunction="D_6" pintype="passive"/>
-      <node ref="R5" pin="1" pintype="passive"/>
     </net>
     <net code="70" name="Net-(Q8NMOS-G)" class="Default">
       <node ref="Q8" pin="1" pinfunction="G_1" pintype="input"/>

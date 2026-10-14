@@ -1,8 +1,10 @@
 # PetSafe PCB reverse engineering
 
-Schematic **v0.9.39**; evidence review updated 2026-10-14. PetSafe PPA19-16811 main board, **100-1339 R03 A**. All 148 catalog entries, including test pads and empty options, are on one A2 KiCad 10 sheet.
+Schematic **v0.9.40**; evidence review updated 2026-10-15. PetSafe PPA19-16811 main board, **100-1339 R03 A**. All 148 catalog entries, including test pads and empty options, are on one A2 KiCad 10 sheet.
 
-Open [the current overview](index.html), [the completion checklist](docs/FINISHING_CHECKLIST.html), [the native schematic](schematic/PetSafe_1001339.kicad_sch), or [the schematic PDF](output/pdf/PetSafe_single_sheet.pdf). The [printable status](output/pdf/PetSafe_completion_status.pdf) includes only current questions and closure criteria. The [measurement page](docs/FINISHING_MEASUREMENTS.html) now asks for two unpowered U2 supply-to-rail checks under E03. Q8 measured P-channel VGS=0 V and N-channel VGS=6.3 V; the modeled U2-to-4.5-V supply association is under review. Q7 joins and PNP/base polarity are supported; its latest direct QR-QL reading is 0 V, consistent with an inactive receiver in this state. Earlier separate 0/4.5 V readings remain preserved as conflicting history, not a fault diagnosis. RA0/C25-to-TP6 and TP14-to-U5.8/OUTA are each supported by 1.5 ohm readings. TP14/R43.2 has moved from BATTERY+ to H_MOTOR_A. Six DC levels are recorded: VSYS/RF 6.3 V, logic VDD 4.5 V, PIR 3.3 V, VREF 0 V and OUTA/TP14 0 V. Receiver TP5 supply subsequently measured 0.066 V (B62). The R19-to-Q7 joins are now measurement-confirmed; Q7 PNP/base polarity now has diode-test support; exact part, emitter/collector assignment and powered operating state remain qualified.
+Open [the current overview](index.html), [the completion checklist](docs/FINISHING_CHECKLIST.html), [the native schematic](schematic/PetSafe_1001339.kicad_sch), or [the schematic PDF](output/pdf/PetSafe_single_sheet.pdf). The [printable status](output/pdf/PetSafe_completion_status.pdf) includes only current questions and closure criteria. The [measurement page](docs/FINISHING_MEASUREMENTS.html) records the completed RF batch. **R5 (22 ohm) feeds U2/C7 from H_RF_VDD; it is not an antenna series resistor.** The former direct U2-to-printed-VDD tie is removed: U2 measured 6.3 V and a direct +1.8 V difference to printed VDD. Q8 output-to-ANT1 is photo-supported, with a compatible 4.5-ohm reading; that reading alone cannot distinguish contact resistance from the fitted antenna winding. U2 identity/voltage compatibility remains unresolved. The owner has an oscilloscope but defers waveform work and requests all components remain fitted. Current priority is schematic values, identities and package geometry; in-circuit LCR results remain qualified estimates unless individual extraction is justified.
+
+RA0/C25-to-TP6 and TP14-to-U5.8/OUTA remain supported by 1.5-ohm readings. Printed VDD is 4.5 V, VSYS/RF 6.3 V and PIR supply 3.3 V in the measured resting state. Receiver supply measured 0.066 V; this does not establish a fault cause.
 
 ## Current state
 
@@ -13,10 +15,10 @@ The checked v0.9.36 native file was restored on 2026-10-14 at the owner's reques
 | Drawing | One A2 sheet, 148 entries / 153 symbol units, normal local wires and named inter-block nets |
 | Physical pads | 348 assigned to modeled local nets, one supported intentional NC at U6 pin4; zero unassigned pads |
 | Connectivity check | 82 model/native net partitions agree; this checks file consistency, not every physical assumption |
-| ERC | One user-retained U6/U6A output conflict; five source declarations resolved; no missing-library findings or isolated labels |
+| ERC | One user-retained U6/U6A output conflict; six source declarations resolved; no missing-library findings or isolated labels |
 | Values | 44 fitted ceramic values unknown; C5 470 uF / 16 V; L1 1.4 uH / L2 2.2 uH readings recorded |
 | Packages | 147/148 candidates assigned; LED1 remains blank; exact fit and pin maps remain qualified |
-| Libraries | 22 stock device definitions plus four datasheet candidate definitions; five additional stock PWR_FLAG annotations |
+| Libraries | 22 stock device definitions plus four datasheet candidate definitions; six additional stock PWR_FLAG annotations |
 | Hardware | Six DC readings recorded; red-blinking error-like state and receiver bias under review; no routed PCB |
 
 The [current finalization audit](docs/reviews/2026-10-09_finalization_cleanup_v0.9.31.md) resolves power declarations and library registration, audits native wire ends and dispositions every earlier issue. Previous reviews are preserved in history. The earlier review ZIP remains frozen at v0.9.28 / `6ae4eaa`.

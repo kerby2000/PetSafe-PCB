@@ -136,3 +136,21 @@ B67-B70, Q7 fitted and power disconnected: **QR->QL 0.74 V; QL->QR 1.74 V; QS->Q
 B71 direct powered **QR-QL = 0 V**, original battery and PIR connected. Stability not supplied. Supports no forward base-emitter bias in the latest state, consistent with inactive Q7/low receiver supply. Earlier separate 0/4.5 V readings remain conflicting historical observations; no part failure is inferred. See [direct bias result](../evidence/q7_direct_bias_result_20261014.json). Next: E03 Q8 gate-source voltages.
 
 B72/B73 powered at rest: **Q8 candidate P-channel VGS = 0 V; N-channel VGS = +6.3 V**. Stability not supplied. Supports P off/N on bias, not waveform or current verification. U2 is modeled on 4.5 V VDD, so B74/B75 now check its supply against C6/RF and printed VDD separately. See [Q8 gate-bias evidence](../evidence/q8_gate_bias_results_20261014.json).
+
+B74/B75, unpowered: **U2 UV to C6 PS = 24 ohm; U2 UV to printed VDD = 48 ohm**. No new probe baseline or stability report supplied. Neither establishes a direct copper join; no rail merge or added resistor follows. B76 now requests U2 local supply voltage against confirmed ground. See [U2 supply-join evidence](../evidence/u2_supply_join_results_20261014.json).
+
+The user additionally reports continuity beeps on both B74/B75 pairs (Fluke model/range unspecified). This does not establish a copper join. Current-model review finds no series resistor in U2.5-to-VDD; R5=22 ohm is in the RF output/antenna branch, R8/R9=220 ohm are gate resistors, and R37=22 ohm feeds the PIR regulator. RF-to-VDD includes L1/L2 and active regulator U1; that is not a simple resistance calculation. The cause of 24/48 ohm remains unresolved.
+
+B76, powered: **U2 supply UV to Q8 confirmed ground NS=6.3V**. Stability not supplied. This challenges the modeled U2-to-regulated-VDD association but does not establish a new copper join; B77 compares these nodes directly in one state. If U2 is the SN74LVC2G14 candidate,6.3V exceeds its recommended5.5V supply maximum; identity/operation remain qualified. See [U2 local voltage evidence](../evidence/u2_supply_voltage_result_20261014.json).
+
+B77, powered direct **U2 UV to printed VDD = +1.8 V**. This rejects their drawn direct copper connection. Actual U2 supply feed remains to be traced; B78/B79 check U2-to-C7 and C7-to-C6. See [direct separation evidence](../evidence/u2_vdd_separation_result_20261014.json).
+
+B78/B79, unpowered: **U2-to-C7 upper end = 1.5 ohm; C7 upper-to-C6 upper = 27 ohm**. Local bypass join is supported; direct RF rail join is not. R5=22 ohm is now the targeted series-feed candidate; its inherited RF output placement was inferred. See [C7 feed evidence](../evidence/u2_c7_feed_results_20261015.json).
+
+B80/B81: **C7 upper-R5 upper = 4 ohm; C6 upper-R5 lower = 3.3 ohm**. Combined evidence supports R5 as the 22-ohm U2 supply feed; old output/antenna placement withdrawn. Contact contributions remain unquantified. B82 checks Q8 output-to-ANT1. [R5 evidence](../evidence/r5_supply_feed_results_20261015.json).
+
+## 2026-10-15 - RF output and supply correction
+
+B82 Q8 joined output to ANT1: **4.5 ohm**, antenna fitted. B82 OD-ANT1 = 4.5 ohm. Alone this cannot distinguish contact resistance from a path through the fitted approximately 5-ohm antenna. IMG_2431 shows the joined outer Q8 pads; board_upper.png shows that output copper continuing around Q8 toward ANT1. The direct output-to-ANT1 route is accepted as photo-supported with a compatible low-resistance reading, not proved by resistance magnitude alone. R5 is not in this output path.
+
+Current topology: RF supply -> R5 (22 ohm) -> U2/C7; Q8 output -> ANT1. Printed VDD remains separate. [Bounded correction](../evidence/u2_r5_topology_correction_v0940.json). Owner has a scope but defers its use; continue schematic values, identities and packages first.

@@ -1,0 +1,35 @@
+{
+  "date": "2026-10-14",
+  "schematic_revision": "v0.9.39",
+  "electrical_change": false,
+  "status": "U2_LOCAL_SUPPLY_6V3_RECORDED_VDD_ASSOCIATION_DISPUTED",
+  "measurements": [
+    {
+      "id": "B76",
+      "group": "u2-supply-voltage",
+      "from": "UV",
+      "to": "NS",
+      "mode": "DC voltage",
+      "unit": "V; steady / varying",
+      "state": "Powered; at rest; original battery and PIR connected; programmer disconnected",
+      "issue": "E03",
+      "purpose": "Establish operating voltage directly at U2 candidate supply pin5 against confirmed ground; rail topology remains separate.",
+      "date": "2026-10-14",
+      "result": "6.3 V",
+      "voltage_v": 6.3,
+      "stability": null,
+      "raw_user_statement": "PetSafe U2: measure its local supply voltage / v0.9.39\nB76 red UV / black NS (Powered; at rest; original battery and PIR connected; programmer disconnected): 6.3",
+      "source_worksheet_revision": "v0.9.39"
+    }
+  ],
+  "interpretation": "U2 candidate supply pin5 measured 6.3 V relative to Q8 confirmed ground. Stability was not supplied. This agrees numerically with the earlier RF-supply and N-gate readings and differs from the earlier printed-VDD reading of4.5V. Those readings were not simultaneous, so no rail join is inferred and no fault is diagnosed. B74/B75 resistances24/48ohm remain unexplained; the drawn direct U2-to-VDD assignment is disputed.",
+  "candidate_qualification": "If the fitted U2 is SN74LVC2G14 and these are its supply/ground pins,6.3V is above the manufacturer recommended5.5V operating maximum. Keep identity and supply assignment qualified; do not treat absolute maximum as an operating recommendation or infer device failure.",
+  "next_action": "B80 CP (C7 upper end) to RT (R5 upper end); B81 PS (C6 upper end) to RB (R5 lower end). Battery/programmer disconnected, resistance mode. These test whether marked 22-ohm R5 is the missing supply resistor; its current output-branch placement is inferred.",
+  "sources": [
+    {
+      "url": "https://www.ti.com/product/SN74LVC2G14",
+      "description": "TI primary product specification: recommended VCC1.65-5.5V. Fitted identity remains a candidate."
+    }
+  ],
+  "followup_evidence": "evidence/u2_c7_feed_results_20261015.json"
+}

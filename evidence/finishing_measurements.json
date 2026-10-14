@@ -1,9 +1,9 @@
 {
   "date": "2026-10-14",
   "basis_revision": "v0.9.37",
-  "status": "AWAITING_U2_SUPPLY_RAIL_MEMBERSHIP",
-  "scope": "Resolve the specific U2 supply assignment challenged by the 6.3 V Q8 gate reading; no rail merge from voltage alone.",
-  "setup": "DISCONNECT BATTERY AND PROGRAMMER. Let the supply capacitors discharge and select RESISTANCE (ohms). Keep all parts fitted. UV is on U2, not Q8.",
+  "status": "RF_TOPOLOGY_UPDATED_SCOPE_DEFERRED",
+  "scope": "U2 supply feed and Q8 output routing corrected from measurements and photos.",
+  "setup": "Battery and programmer DISCONNECTED; antenna wires still fitted. Select RESISTANCE (ohms).",
   "photos": [
     {
       "id": "receiver",
@@ -1547,33 +1547,295 @@
           "role": "reference"
         }
       }
-    }
-  ],
-  "tests": [
-    {
-      "id": "B74",
-      "group": "u2-supply-joins",
-      "from": "UV",
-      "to": "PS",
-      "mode": "Resistance",
-      "unit": "ohms / kohms / OL",
-      "state": "Unpowered",
-      "issue": "E03",
-      "purpose": "Test U2 candidate supply pin5 to confirmed RF supply node C6.1."
     },
     {
-      "id": "B75",
-      "group": "u2-supply-joins",
-      "from": "UV",
-      "to": "VD",
-      "mode": "Resistance",
-      "unit": "ohms / kohms / OL",
-      "state": "Unpowered",
-      "issue": "E03",
-      "purpose": "Test the competing currently modeled U2-to-regulated-VDD association."
+      "id": "u2-supply-voltage",
+      "source": "photos/originals/IMG_2431.jpg",
+      "coordinate_space": [
+        1368,
+        1823
+      ],
+      "view_box": [
+        330,
+        620,
+        800,
+        1080
+      ],
+      "title": "B76: voltage directly at U2, referenced to confirmed ground",
+      "points": {
+        "UV": {
+          "xy": [
+            580,
+            936
+          ],
+          "label": [
+            790,
+            1000
+          ],
+          "description": "U2 LOWER-CENTRE metal contact, above the gap between R8 and R9. Same UV pad as B74/B75. Candidate supply pin5; red probe.",
+          "native_endpoint": "U2.5"
+        },
+        "NS": {
+          "xy": [
+            580,
+            1548
+          ],
+          "label": [
+            800,
+            1620
+          ],
+          "description": "Q8 LOWER-CENTRE metal contact: confirmed GND, the same black-probe point used for B73. Black probe; do not use either adjacent contact.",
+          "native_endpoint": "Q8.5",
+          "role": "reference"
+        }
+      }
+    },
+    {
+      "id": "u2-vdd-direct-voltage",
+      "source": "photos/originals/IMG_2431.jpg",
+      "coordinate_space": [
+        1368,
+        1823
+      ],
+      "view_box": [
+        330,
+        620,
+        800,
+        580
+      ],
+      "title": "B77 red probe: U2 supply contact (same UV as before)",
+      "points": {
+        "UV": {
+          "xy": [
+            580,
+            936
+          ],
+          "label": [
+            790,
+            1000
+          ],
+          "description": "U2 LOWER-CENTRE metal contact, above the gap between R8 and R9. Same UV pad as B74/B75. Candidate supply pin5; red probe.",
+          "native_endpoint": "U2.5"
+        }
+      }
+    },
+    {
+      "id": "u2-vdd-direct-reference",
+      "source": "photos/originals/IMG_2435.jpg",
+      "coordinate_space": [
+        1368,
+        1823
+      ],
+      "view_box": [
+        130,
+        210,
+        790,
+        620
+      ],
+      "title": "B77 black probe: printed VDD test hole, not ground",
+      "reference_for": [
+        "u2-vdd-direct-voltage"
+      ],
+      "points": {
+        "VD": {
+          "xy": [
+            604,
+            396
+          ],
+          "label": [
+            422,
+            290
+          ],
+          "description": "Printed VDD test hole beside C2 and U1. Black probe for B77; this is NOT the GND test hole.",
+          "native_endpoint": "TP103.1",
+          "net": "VDD",
+          "role": "reference"
+        }
+      }
+    },
+    {
+      "id": "u2-c7-feed",
+      "source": "photos/originals/IMG_2431.jpg",
+      "coordinate_space": [
+        1368,
+        1823
+      ],
+      "view_box": [
+        370,
+        620,
+        850,
+        1020
+      ],
+      "title": "U2 supply: use C7 to locate the feed",
+      "points": {
+        "UV": {
+          "xy": [
+            580,
+            936
+          ],
+          "label": [
+            695,
+            1005
+          ],
+          "description": "U2 lower-centre metal contact, same UV as previous readings. Red probe for B78.",
+          "native_endpoint": "U2.5"
+        },
+        "PS": {
+          "xy": [
+            925,
+            1422
+          ],
+          "label": [
+            1100,
+            1320
+          ],
+          "description": "C6 upper metal end on RF supply, same PS as B74. Black probe for B79.",
+          "native_endpoint": "C6.1",
+          "role": "reference"
+        },
+        "CP": {
+          "xy": [
+            790,
+            810
+          ],
+          "label": [
+            1100,
+            850
+          ],
+          "description": "C7 UPPER metal end nearest U2 body. Black for B78; red for B79. Tests the local bypass supply connection; do not use the lower grounded end.",
+          "native_endpoint": "C7.1"
+        }
+      }
+    },
+    {
+      "id": "u2-r5-feed",
+      "source": "photos/originals/IMG_2431.jpg",
+      "coordinate_space": [
+        1368,
+        1823
+      ],
+      "view_box": [
+        90,
+        620,
+        1130,
+        1020
+      ],
+      "title": "Test R5 as the U2 supply-feed resistor",
+      "points": {
+        "PS": {
+          "xy": [
+            925,
+            1422
+          ],
+          "label": [
+            1100,
+            1320
+          ],
+          "description": "C6 upper metal end, same PS as B79. Red probe for B81.",
+          "native_endpoint": "C6.1"
+        },
+        "CP": {
+          "xy": [
+            790,
+            810
+          ],
+          "label": [
+            1100,
+            850
+          ],
+          "description": "C7 upper metal end, same CP as B78/B79. Red probe for B80.",
+          "native_endpoint": "C7.1"
+        },
+        "RT": {
+          "xy": [
+            352,
+            938
+          ],
+          "label": [
+            160,
+            855
+          ],
+          "description": "R5 UPPER metal end, nearest the U2 body. Black probe for B80. R5 is marked220 (22 ohm).",
+          "role": "reference"
+        },
+        "RB": {
+          "xy": [
+            352,
+            1046
+          ],
+          "label": [
+            160,
+            1150
+          ],
+          "description": "R5 LOWER metal end, nearest Q8. Black probe for B81.",
+          "role": "reference"
+        }
+      }
+    },
+    {
+      "id": "q8-output-antenna",
+      "source": "photos/originals/IMG_2431.jpg",
+      "coordinate_space": [
+        1368,
+        1823
+      ],
+      "view_box": [
+        280,
+        1180,
+        820,
+        580
+      ],
+      "title": "B82 red probe: Q8 joined output node",
+      "points": {
+        "OD": {
+          "xy": [
+            505,
+            1548
+          ],
+          "label": [
+            380,
+            1680
+          ],
+          "description": "Q8 LOWER-LEFT outer contact in this photo, native pin4/candidate P drain. It is joined to the opposite outer drain; do NOT use the centre ground contact.",
+          "native_endpoint": "Q8.4"
+        }
+      }
+    },
+    {
+      "id": "q8-output-antenna-reference",
+      "title": "B82 black probe: ANT1 solder terminal",
+      "source": "photos/user/2026-10-08/board_upper.png",
+      "coordinate_space": [
+        2736,
+        3646
+      ],
+      "view_box": [
+        880,
+        780,
+        820,
+        730
+      ],
+      "points": {
+        "A": {
+          "xy": [
+            1604,
+            1008
+          ],
+          "label": [
+            1650,
+            900
+          ],
+          "description": "ANT1 solder terminal, next to the printed ANT1 label.",
+          "role": "reference"
+        }
+      },
+      "reference_for": [
+        "q8-output-antenna"
+      ]
     }
   ],
-  "interpretation": "Near probe resistance supports a direct join; high resistance or OL does not. These two tests distinguish the RF supply from regulated VDD. Q8 rest bias is recorded, but U2 pin roles and the exact device remain candidates; do not change rails or diagnose overvoltage from the gate readings alone.",
+  "tests": [],
+  "interpretation": "B82 OD-ANT1 = 4.5 ohm. Alone this cannot distinguish contact resistance from a path through the fitted approximately 5-ohm antenna. IMG_2431 shows the joined outer Q8 pads; board_upper.png shows that output copper continuing around Q8 toward ANT1. The direct output-to-ANT1 route is accepted as photo-supported with a compatible low-resistance reading, not proved by resistance magnitude alone. R5 is not in this output path.",
   "next_stages": [
     {
       "stage": "Resolve the remaining functional paths",
@@ -2609,11 +2871,167 @@
       "stability": null,
       "source_worksheet_revision": "v0.9.39",
       "raw_user_statement": "PetSafe Q8: measure the two gate-to-source voltages / v0.9.39\nB72 red PG / black PS (Powered; at rest; original battery and PIR connected): 0\nB73 red NG / black NS (Powered; at rest; original battery and PIR connected): 6.3"
+    },
+    {
+      "id": "B74",
+      "group": "u2-supply-joins",
+      "from": "UV",
+      "to": "PS",
+      "mode": "Resistance",
+      "unit": "ohms / kohms / OL",
+      "state": "Unpowered",
+      "issue": "E03",
+      "purpose": "Test U2 candidate supply pin5 to confirmed RF supply node C6.1.",
+      "date": "2026-10-14",
+      "result": "24 ohm",
+      "resistance_ohms": 24,
+      "stability": null,
+      "shorted_probe_ohms": null,
+      "source_worksheet_revision": "v0.9.39",
+      "raw_user_statement": "PetSafe U2: RF supply or regulated VDD? / v0.9.39\nB74 red UV / black PS (Unpowered): 24ohm\nB75 red UV / black VD (Unpowered): 48ohm"
+    },
+    {
+      "id": "B75",
+      "group": "u2-supply-joins",
+      "from": "UV",
+      "to": "VD",
+      "mode": "Resistance",
+      "unit": "ohms / kohms / OL",
+      "state": "Unpowered",
+      "issue": "E03",
+      "purpose": "Test the competing currently modeled U2-to-regulated-VDD association.",
+      "date": "2026-10-14",
+      "result": "48 ohm",
+      "resistance_ohms": 48,
+      "stability": null,
+      "shorted_probe_ohms": null,
+      "source_worksheet_revision": "v0.9.39",
+      "raw_user_statement": "PetSafe U2: RF supply or regulated VDD? / v0.9.39\nB74 red UV / black PS (Unpowered): 24ohm\nB75 red UV / black VD (Unpowered): 48ohm"
+    },
+    {
+      "id": "B76",
+      "group": "u2-supply-voltage",
+      "from": "UV",
+      "to": "NS",
+      "mode": "DC voltage",
+      "unit": "V; steady / varying",
+      "state": "Powered; at rest; original battery and PIR connected; programmer disconnected",
+      "issue": "E03",
+      "purpose": "Establish operating voltage directly at U2 candidate supply pin5 against confirmed ground; rail topology remains separate.",
+      "date": "2026-10-14",
+      "result": "6.3 V",
+      "voltage_v": 6.3,
+      "stability": null,
+      "raw_user_statement": "PetSafe U2: measure its local supply voltage / v0.9.39\nB76 red UV / black NS (Powered; at rest; original battery and PIR connected; programmer disconnected): 6.3",
+      "source_worksheet_revision": "v0.9.39"
+    },
+    {
+      "id": "B77",
+      "group": "u2-vdd-direct-voltage",
+      "from": "UV",
+      "to": "VD",
+      "mode": "DC voltage",
+      "unit": "signed V; steady / varying",
+      "state": "Powered; original battery and PIR connected; programmer disconnected",
+      "issue": "E03",
+      "purpose": "Directly test U2-to-printed-VDD potential difference in one state; resolve time-separated6.3/4.5V comparison.",
+      "date": "2026-10-14",
+      "result": "1.8 V",
+      "voltage_v": 1.8,
+      "stability": null,
+      "source_worksheet_revision": "v0.9.39",
+      "raw_user_statement": "PetSafe U2: compare its supply directly with printed VDD / v0.9.39\nB77 red UV / black VD (Powered; original battery and PIR connected; programmer disconnected): 1.8"
+    },
+    {
+      "id": "B78",
+      "group": "u2-c7-feed",
+      "from": "UV",
+      "to": "CP",
+      "mode": "Resistance",
+      "unit": "ohms / OL; steady / changing",
+      "state": "Unpowered",
+      "issue": "E03",
+      "purpose": "Check the local bypass-to-U2 association after its rail assignment was disproved.",
+      "date": "2026-10-15",
+      "result": "1.5 ohm",
+      "resistance_ohms": 1.5,
+      "stability": null,
+      "source_worksheet_revision": "v0.9.39",
+      "raw_user_statement": "PetSafe U2 supply: locate the feed through C7 / v0.9.39\nB78 red UV / black CP (Unpowered): 1.5\nB79 red CP / black PS (Unpowered): 27"
+    },
+    {
+      "id": "B79",
+      "group": "u2-c7-feed",
+      "from": "CP",
+      "to": "PS",
+      "mode": "Resistance",
+      "unit": "ohms / OL; steady / changing",
+      "state": "Unpowered",
+      "issue": "E03",
+      "purpose": "Test C7 supply-side to RF supply at C6 with larger capacitor probe contacts.",
+      "date": "2026-10-15",
+      "result": "27 ohm",
+      "resistance_ohms": 27,
+      "stability": null,
+      "source_worksheet_revision": "v0.9.39",
+      "raw_user_statement": "PetSafe U2 supply: locate the feed through C7 / v0.9.39\nB78 red UV / black CP (Unpowered): 1.5\nB79 red CP / black PS (Unpowered): 27"
+    },
+    {
+      "id": "B80",
+      "group": "u2-r5-feed",
+      "from": "CP",
+      "to": "RT",
+      "mode": "Resistance",
+      "unit": "ohms / OL",
+      "state": "Unpowered",
+      "issue": "E03",
+      "purpose": "Test R5 upper end to established U2/C7 supply node.",
+      "date": "2026-10-15",
+      "result": "4 ohm",
+      "resistance_ohms": 4,
+      "stability": null,
+      "source_worksheet_revision": "v0.9.39",
+      "raw_user_statement": "PetSafe U2 supply: is R5 the 22-ohm feed? / v0.9.39\nB80 red CP / black RT (Unpowered): 4\nB81 red PS / black RB (Unpowered): 3.3"
+    },
+    {
+      "id": "B81",
+      "group": "u2-r5-feed",
+      "from": "PS",
+      "to": "RB",
+      "mode": "Resistance",
+      "unit": "ohms / OL",
+      "state": "Unpowered",
+      "issue": "E03",
+      "purpose": "Test R5 lower end to RF supply at C6.",
+      "date": "2026-10-15",
+      "result": "3.3 ohm",
+      "resistance_ohms": 3.3,
+      "stability": null,
+      "source_worksheet_revision": "v0.9.39",
+      "raw_user_statement": "PetSafe U2 supply: is R5 the 22-ohm feed? / v0.9.39\nB80 red CP / black RT (Unpowered): 4\nB81 red PS / black RB (Unpowered): 3.3"
+    },
+    {
+      "id": "B82",
+      "group": "q8-output-antenna",
+      "from": "OD",
+      "to": "A",
+      "mode": "Resistance",
+      "unit": "ohms / OL",
+      "state": "Unpowered; antenna wires fitted",
+      "issue": "E03",
+      "purpose": "Check Q8 joined-drain output to ANT1 after the old series R5 placement was disproved.",
+      "date": "2026-10-15",
+      "result": "4.5 ohm",
+      "resistance_ohms": 4.5,
+      "stability": null,
+      "shorted_probe_ohms": null,
+      "source_worksheet_revision": "v0.9.39",
+      "raw_user_statement": "PetSafe Q8 output: check the onward ANT1 connection / v0.9.39\nB82 red OD / black A (Unpowered; antenna wires fitted): 4.5"
     }
   ],
-  "batch_title": "U2: RF supply or regulated VDD?",
-  "instructions": "B74: red UV (U2 lower-centre contact) / black PS (C6 upper end). B75: red UV / black VD (printed VDD hole in the second photo). Report ohms, kohms or OL; say changing if unsettled.",
-  "result_summary": "Q8 candidate P VGS=0 V and N VGS=6.3 V. Rest bias recorded; U2 rail assignment now needs direct evidence.",
+  "batch_title": "RF wiring correction recorded; scope checks deferred",
+  "instructions": "B82 recorded. No repeat requested; all components stay fitted and scope work is deferred.",
+  "result_summary": "U2/C7 fed through R5 (22 ohm) from RF supply. Q8 joined output photo-supported to ANT1. Scope checks deferred.",
   "cancelled_tests": [
     {
       "id": "B20",
@@ -2648,7 +3066,7 @@
       "result": "v0.9.22 user annotated U6A option: single left pad/model L/native U106.1 joins U6 pin5 and the existing input node after R37; upper-right/model R1/native2 joins J3.1 (red PIR wire); lower-right/model R2/native3 joins GND. All three external pads mapped, option remains DNP. User called the input VDD; retain VDD -> R37 (22 ohm) -> H_AUX_IN because the annotation ends at U6 pin5 and prior B28 confirms pin5-pin2, not a bypass across R37. No fitted IC identity or voltage measurement implied."
     }
   ],
-  "batch_id": "u2-supply-joins-20261014",
+  "batch_id": "q8-output-antenna-20261015",
   "location_review": {
     "reference": "TP9",
     "status": "REMOVED_UNSUPPORTED_ENTRY",
@@ -2704,14 +3122,13 @@
     "pending_check": null,
     "model_status": "Applied v0.9.20: pin5-VIN measured 1 ohm; R37 and U6A single-pad local joins from the annotation; pin4 explicitly unused."
   },
-  "next_prompt": "B74 UV-PS and B75 UV-VD, resistance with battery/programmer disconnected.",
+  "next_prompt": "No active measurement request. Keep all components fitted; scope work deferred. Current schematic corrections are applied. Individual capacitor values, candidate identities and package qualifications remain explicit.",
   "review_revision": "v0.9.39",
   "request_probe_baseline": false,
   "q3_decision": "Defer isolated Q3 identification; retain candidate qualification and existing copper. No desoldering or repeat Q3 batch requested.",
   "last_completed_test_ids": [
-    "B72",
-    "B73"
+    "B82"
   ],
-  "last_result_evidence": "evidence/q8_gate_bias_results_20261014.json",
+  "last_result_evidence": "evidence/q8_output_antenna_result_20261015.json",
   "staged_batches": []
 }

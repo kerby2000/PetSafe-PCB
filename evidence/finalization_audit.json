@@ -1,12 +1,13 @@
 {
-  "revision": "v0.9.39",
+  "revision": "v0.9.40",
   "result": "PASS",
-  "schematic_sha256": "6f922b94676bac4fcce763e1bc14d4f3608b1d8ec1685b33c021c4ab08d7a533",
+  "schematic_sha256": "769239d9aec2b10ca2e8ebb4d83b0dbe60d730e9cf1f15932d1f2c4a180dcc88",
   "physical_net_partitions": 82,
   "pad_membership_baseline": "ecd683d",
   "documented_pad_moves": "evidence/antenna_outer_rail_correction_v0937.json",
   "documented_net_merge": "evidence/ra0_tp6_connection_v0938.json",
   "documented_tp14_move": "evidence/tp14_motor_output_correction_v0939.json",
+  "documented_rf_supply_output_correction": "evidence/u2_r5_topology_correction_v0940.json",
   "withdrawn_catalog_entries": [
     "R33"
   ],
@@ -16,7 +17,7 @@
   ],
   "dangling_wire_ends": 0,
   "wire_islands_without_pins": 0,
-  "native_wire_segments": 500,
+  "native_wire_segments": 501,
   "unassigned_model_pads": 0,
   "isolated_modeled_nets": [],
   "erc": {
@@ -74,6 +75,15 @@
         172.72
       ],
       "basis": "Modeled switched supply VDD -> Q7 -> R20 -> U3 pin8. Flag declares intended power distribution only; Q7 identity/switching and rail voltage remain E08/E09 open."
+    },
+    {
+      "reference": "#FLG06",
+      "net": "U2_VCC",
+      "position_mm": [
+        190.5,
+        166.37
+      ],
+      "basis": "B78-B81 support H_RF_VDD -> passive R5 (22 ohm) -> U2/C7. B76 measured 6.3 V here. Passive resistor does not propagate power-output pin type. This flag does not approve candidate U2 voltage compatibility."
     }
   ],
   "local_only_branches": {
@@ -99,7 +109,9 @@
     },
     {
       "reference": "R5",
-      "issues": [],
+      "issues": [
+        "E03"
+      ],
       "population": "populated"
     },
     {

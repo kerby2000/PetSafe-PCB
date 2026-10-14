@@ -1,5 +1,5 @@
 {
-  "revision": "v0.9.39",
+  "revision": "v0.9.40",
   "instruments": [
     "LCR meter",
     "multimeter"
@@ -1581,7 +1581,7 @@
       "observed": "UNKNOWN_6PIN",
       "displayed": "74LVC2G14?",
       "marking": "C14R?",
-      "value_or_identity": "H07: exact TI C14R marking and 6-pin DBV package match. Photo top row left to right = 3,2,1; bottom = 4,5,6.",
+      "value_or_identity": "C14R / SN74LVC2G14 remains a candidate. B76 supply-to-ground = 6.3 V; B77 supply-to-printed VDD = +1.8 V rejects direct VDD tie. B78 supply-C7 upper = 1.5 ohm; B79-B81 support feed from H_RF_VDD through R5 (22 ohm), named U2_VCC. Measured 6.3 V exceeds candidate recommended 5.5 V; identity/compatibility unresolved, no failure inferred. Scope checks deferred by owner.",
       "footprint": "Package_TO_SOT_SMD:SOT-23-6",
       "footprint_confidence": "datasheet/package candidate",
       "footprint_basis": "Existing assignment; see component identity evidence.",
@@ -1746,7 +1746,7 @@
       "observed": "UNKNOWN",
       "displayed": "SIL3724A?",
       "marking": "3724A",
-      "value_or_identity": "3724A supports the SIL3724A complementary MOSFET candidate; fitted maker unconfirmed. B37 P-F = 1 ohm supports Q8.T2/native2 joining C6.1 on H_RF_VDD. The earlier 10-ohm reading is superseded for the current connection assessment; no fresh probe baseline or stability statement was supplied. V113/V115 centre B2/native5 GND and the outer-drain join retain earlier evidence; V114 belongs to U2.T2. Candidate pin functions, gate drive and operating levels remain unverified.",
+      "value_or_identity": "3724A supports SIL3724A complementary MOSFET candidate; fitted maker unconfirmed. B37 source-C6 = 1 ohm; centre native5 GND; outer native4/6 drains joined. B82 output-ANT1 = 4.5 ohm with antenna fitted; direct route accepted from photos plus compatible reading, not resistance alone. R5 is a supply-feed resistor, not an output resistor. Rest VGS P=0 V / N=6.3 V; RF waveforms deferred by owner.",
       "footprint": "Package_TO_SOT_SMD:SOT-23-6",
       "footprint_confidence": "datasheet/package candidate",
       "footprint_basis": "Existing assignment; see component identity evidence.",
@@ -1871,7 +1871,7 @@
       "footprint_confidence": "datasheet/package candidate",
       "footprint_basis": "Existing assignment; see component identity evidence.",
       "open_pads": 0,
-      "next_method": "No repeated continuity or diode-mode check. Marking research establishes ambiguity, not a rating. Keep D6 fitted for now; resolve its rating by an isolated current-limited test only if needed. Before any programmer session, establish the supported entry method; do not apply a breakdown test through the PIC.",
+      "next_method": "No repeated continuity or diode-mode check. Keep D6 fitted as requested. Isolated breakdown testing is deferred. Retain the unknown breakdown/ICSP compatibility qualification; do not infer it from the G3 marking or perform a breakdown test through the PIC.",
       "photos": "IMG_2437.jpg"
     },
     {

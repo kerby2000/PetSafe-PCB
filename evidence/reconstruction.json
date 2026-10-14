@@ -1,6 +1,6 @@
 {
   "board": "100-1339 R03 A",
-  "revision": "v0.9.39",
+  "revision": "v0.9.40",
   "status": "PARTIALLY VERIFIED RECONSTRUCTION; USER MEASUREMENTS, PHOTO TRACES AND QUALIFIED HYPOTHESES",
   "components": [
     {
@@ -63,7 +63,8 @@
       "library_symbol": "Device:R",
       "footprint": "Resistor_SMD:R_0603_1608Metric",
       "footprint_confidence": "medium - revised family estimate",
-      "footprint_basis": "User reports R8 approximately 1.6 x 0.77 mm, consistent with 0603 (1608 metric). Repeated fitted resistor family revised using R8 as a scale reference. This individual body has not been measured; earlier 0805 estimate superseded."
+      "footprint_basis": "User reports R8 approximately 1.6 x 0.77 mm, consistent with 0603 (1608 metric). Repeated fitted resistor family revised using R8 as a scale reference. This individual body has not been measured; earlier 0805 estimate superseded.",
+      "current_summary": "Marking 220 = 22 ohm. B80 C7 upper-R5 upper = 4 ohm; B81 C6 upper-R5 lower = 3.3 ohm. With B79 C7-C6 = 27 ohm, supports series feed H_RF_VDD -> R5 -> U2_VCC. Model pin1 is lower/Q8-side, pin2 upper/U2-side in IMG_2431. Previous output/ANT1 placement withdrawn; contact resistance unquantified."
     },
     {
       "ref": "R6",
@@ -1183,7 +1184,8 @@
       "value_evidence": {
         "state": "estimated",
         "source": "No individual measured value supplied; any displayed estimate is a hypothesis."
-      }
+      },
+      "current_summary": "Upper/model1 shares U2 pin5 supply at 1.5 ohm (B78); R5 supplies that U2_VCC node from H_RF_VDD. Earlier direct printed VDD association withdrawn by B77. Lower/model2 GND photo/via-supported. Capacitance remains unknown."
     },
     {
       "ref": "C8",
@@ -2609,13 +2611,14 @@
       "side": "front",
       "traced_pin_count": 0,
       "proposed_value": "74LVC2G14?",
-      "hypothesis": "H07: exact TI C14R marking and 6-pin DBV package match. Photo top row left to right = 3,2,1; bottom = 4,5,6.",
+      "hypothesis": "C14R / SN74LVC2G14 remains a candidate. B76 supply-to-ground = 6.3 V; B77 supply-to-printed VDD = +1.8 V rejects direct VDD tie. B78 supply-C7 upper = 1.5 ohm; B79-B81 support feed from H_RF_VDD through R5 (22 ohm), named U2_VCC. Measured 6.3 V exceeds candidate recommended 5.5 V; identity/compatibility unresolved, no failure inferred. Scope checks deferred by owner.",
       "library_symbol": "74xGxx:74LVC2G14",
       "footprint": "Package_TO_SOT_SMD:SOT-23-6",
       "footprint_confidence": "datasheet/package candidate",
       "footprint_basis": "Existing assignment; see component identity evidence.",
       "via_evidence": "v0.9.5: V114 reaches U2.T2, not Q8.T2. Earlier user GND assignment retained; native U2 pin2 already GND. This resolves the via annotation conflict.",
-      "v095_summary": "v0.9.5: V114 reaches U2.T2, not Q8.T2. Earlier user GND assignment retained; native U2 pin2 already GND. This resolves the via annotation conflict."
+      "v095_summary": "v0.9.5: V114 reaches U2.T2, not Q8.T2. Earlier user GND assignment retained; native U2 pin2 already GND. This resolves the via annotation conflict.",
+      "current_summary": "C14R / SN74LVC2G14 remains a candidate. B76 supply-to-ground = 6.3 V; B77 supply-to-printed VDD = +1.8 V rejects direct VDD tie. B78 supply-C7 upper = 1.5 ohm; B79-B81 support feed from H_RF_VDD through R5 (22 ohm), named U2_VCC. Measured 6.3 V exceeds candidate recommended 5.5 V; identity/compatibility unresolved, no failure inferred. Scope checks deferred by owner."
     },
     {
       "ref": "U6",
@@ -2921,7 +2924,7 @@
       "side": "front",
       "traced_pin_count": 0,
       "proposed_value": "SIL3724A?",
-      "hypothesis": "3724A supports the SIL3724A complementary MOSFET candidate; fitted maker unconfirmed. B37 P-F = 1 ohm supports Q8.T2/native2 joining C6.1 on H_RF_VDD. The earlier 10-ohm reading is superseded for the current connection assessment; no fresh probe baseline or stability statement was supplied. V113/V115 centre B2/native5 GND and the outer-drain join retain earlier evidence; V114 belongs to U2.T2. Candidate pin functions, gate drive and operating levels remain unverified.",
+      "hypothesis": "3724A supports SIL3724A complementary MOSFET candidate; fitted maker unconfirmed. B37 source-C6 = 1 ohm; centre native5 GND; outer native4/6 drains joined. B82 output-ANT1 = 4.5 ohm with antenna fitted; direct route accepted from photos plus compatible reading, not resistance alone. R5 is a supply-feed resistor, not an output resistor. Rest VGS P=0 V / N=6.3 V; RF waveforms deferred by owner.",
       "library_symbol": "PetSafe_Datasheet:SIL3724A",
       "footprint": "Package_TO_SOT_SMD:SOT-23-6",
       "previous_marking": "372A (missing digit)",
@@ -2930,7 +2933,7 @@
       "footprint_basis": "Existing assignment; see component identity evidence.",
       "via_evidence": "v0.9.5: V113/V115 reach centre B2/pin5 GND. V114 belongs to U2.T2 and supplies no evidence about Q8.T2. Existing Q8.T2 supply hypothesis and outer-drain join remain independently qualified.",
       "v095_summary": "v0.9.5: V113/V115 reach centre B2/pin5 GND. V114 belongs to U2.T2 and supplies no evidence about Q8.T2. Existing Q8.T2 supply hypothesis and outer-drain join remain independently qualified.",
-      "current_summary": "3724A supports the SIL3724A complementary MOSFET candidate; fitted maker unconfirmed. B37 P-F = 1 ohm supports Q8.T2/native2 joining C6.1 on H_RF_VDD. The earlier 10-ohm reading is superseded for the current connection assessment; no fresh probe baseline or stability statement was supplied. V113/V115 centre B2/native5 GND and the outer-drain join retain earlier evidence; V114 belongs to U2.T2. Candidate pin functions, gate drive and operating levels remain unverified."
+      "current_summary": "3724A supports SIL3724A complementary MOSFET candidate; fitted maker unconfirmed. B37 source-C6 = 1 ohm; centre native5 GND; outer native4/6 drains joined. B82 output-ANT1 = 4.5 ohm with antenna fitted; direct route accepted from photos plus compatible reading, not resistance alone. R5 is a supply-feed resistor, not an output resistor. Rest VGS P=0 V / N=6.3 V; RF waveforms deferred by owner."
     },
     {
       "ref": "Q9",
@@ -3715,7 +3718,8 @@
       "library_symbol": "Connector:TestPoint",
       "footprint": "TestPoint:TestPoint_THTPad_D2.0mm_Drill1.0mm",
       "footprint_confidence": "low",
-      "footprint_basis": "Stock plated-hole approximation from photographs. Exact drill and annular ring remain unmeasured; these are board pads, not fitted components."
+      "footprint_basis": "Stock plated-hole approximation from photographs. Exact drill and annular ring remain unmeasured; these are board pads, not fitted components.",
+      "current_summary": "Q8 joined outer drain/output pads reach ANT1 by photo-supported copper; B82 measured 4.5 ohm with antenna fitted. The reading alone cannot exclude a path through the approximately 5-ohm antenna. ANT1 and ANT2 remain distinct board nets; R5 has moved to the U2 supply feed."
     },
     {
       "ref": "ANT2",
@@ -3784,23 +3788,24 @@
       "net": "H_ANT_A",
       "endpoints": [
         "ANT1.1",
-        "R5.2"
+        "Q8.B1",
+        "Q8.B3"
       ],
-      "status": "HYPOTHESIS / retains visual fragments where listed",
+      "status": "PHOTO-SUPPORTED: joined Q8 output copper toward ANT1; B82 4.5 ohm compatible but not independently decisive with antenna fitted.",
       "original_fragments": []
     },
     {
       "net": "H_ANT_B",
       "endpoints": [
         "ANT2.1",
-        "D2.L",
-        "R46.1",
-        "C49.1",
         "C11.1",
         "C14.1",
         "C29.1",
         "C44.1",
-        "C47.1"
+        "C47.1",
+        "C49.1",
+        "D2.L",
+        "R46.1"
       ],
       "status": "User-confirmed D2.L to ANT2 continuity; numerical resistance not supplied",
       "original_fragments": [],
@@ -3812,8 +3817,8 @@
       "endpoints": [
         "C36.1",
         "R37.2",
-        "U6.R2",
         "U6.L2",
+        "U6.R2",
         "U6A.L"
       ],
       "status": "HYPOTHESIS: regulator input after R37, based on photo and S-812C33 pinout",
@@ -3823,8 +3828,8 @@
     {
       "net": "BATTERY+",
       "endpoints": [
-        "Q1.S",
-        "BATP.1"
+        "BATP.1",
+        "Q1.S"
       ],
       "status": "Actual positive battery terminal to Q1 single pad user/photo-supported. TP14/R43.2 removed to OUTA in v0.9.39.",
       "original_fragments": []
@@ -3845,8 +3850,8 @@
         "C35.1",
         "R40.2",
         "R41.2",
-        "S1.BR",
-        "S1.BL"
+        "S1.BL",
+        "S1.BR"
       ],
       "status": "User annotated C35 lower/R40 lower/R41 left/S1 lower-right; S1 lower-left common-row tie remains inferred.",
       "original_fragments": []
@@ -3882,8 +3887,10 @@
         "C4.1",
         "C40.2",
         "C41.2",
+        "C42.1",
         "C45.1",
         "C48.1",
+        "C49.2",
         "C5.2",
         "C6.2",
         "C7.2",
@@ -3892,9 +3899,11 @@
         "D3.L",
         "D4.2",
         "D5.2",
+        "D6.2",
         "GND.1",
         "GND_RF.1",
         "J1.GND",
+        "J3.3",
         "LED1.BL",
         "LED1.BR",
         "Q11.L",
@@ -3912,6 +3921,7 @@
         "R32.1",
         "R43.1",
         "S1.TL",
+        "S1.TR",
         "U1.L2",
         "U2.T2",
         "U3.4",
@@ -3920,13 +3930,8 @@
         "U5.6",
         "U5.7",
         "U6.R3",
-        "J3.3",
-        "U7.1",
-        "C42.1",
-        "D6.2",
-        "S1.TR",
         "U6A.R2",
-        "C49.2"
+        "U7.1"
       ],
       "status": "HYPOTHESIS / retains visual fragments where listed",
       "original_fragments": [
@@ -4010,9 +4015,9 @@
       "net": "H_MOTOR_A",
       "endpoints": [
         "J5.A",
-        "U5.8",
         "R43.2",
-        "TP14.1"
+        "TP14.1",
+        "U5.8"
       ],
       "status": "U5.8 to J5.A retained. TP14-U5.8 = 1.5 ohm supports added TP14/R43.2; output state and motor direction unverified.",
       "original_fragments": []
@@ -4052,8 +4057,8 @@
     {
       "net": "H_PIR_RAW",
       "endpoints": [
-        "R38.1",
         "J3.2",
+        "R38.1",
         "U7.2"
       ],
       "status": "User J3.2-to-R38 K/right/model1 = 1 ohm. Opposite R38 J/left/model2 = 10 kohm. R33 branch remains photo/circuit hypothesis.",
@@ -4090,9 +4095,9 @@
       "net": "H_RF_IN_A",
       "endpoints": [
         "C9.1",
+        "D1.R",
         "R7.2",
-        "U2.T3",
-        "D1.R"
+        "U2.T3"
       ],
       "status": "PHOTO_SUPPORTED IMG_2431: R7 lower/C9 upper/D1 paired-right/U2 top-right (native1)",
       "original_fragments": []
@@ -4109,22 +4114,13 @@
       "original_fragments": []
     },
     {
-      "net": "H_RF_OUT_CAND",
-      "endpoints": [
-        "Q8.B1",
-        "Q8.B3",
-        "R5.1"
-      ],
-      "status": "MIXED: Q8 B1-B3 supported by 2ohm D-E; R5 continuation inferred. C6 output tie refuted by 400kohm E-F.",
-      "original_fragments": []
-    },
-    {
       "net": "H_RF_VDD",
       "endpoints": [
         "C5.1",
+        "C6.1",
         "L1.2",
         "Q8.T2",
-        "C6.1"
+        "R5.1"
       ],
       "status": "HYPOTHESIS / retains visual fragments where listed",
       "original_fragments": [],
@@ -4244,9 +4240,9 @@
         "C33.1",
         "L1.1",
         "L2.1",
+        "Q1.L",
         "R3.1",
-        "U5.4",
-        "Q1.L"
+        "U5.4"
       ],
       "status": "User-confirmed Q1.L/U5.4 motor rail; other branches retain individual earlier evidence",
       "original_fragments": [
@@ -4264,7 +4260,6 @@
         "C3.1",
         "C32.1",
         "C34.1",
-        "C7.1",
         "D3.R",
         "J1.VDD",
         "Q7.R",
@@ -4273,7 +4268,6 @@
         "R37.1",
         "R39.2",
         "U1.R1",
-        "U2.B2",
         "U4.20",
         "U5.1",
         "VDD.1"
@@ -4317,10 +4311,10 @@
     {
       "net": "MCLR_VPP",
       "endpoints": [
-        "J1.VPP",
-        "U4.1",
         "D6.1",
-        "R41.1"
+        "J1.VPP",
+        "R41.1",
+        "U4.1"
       ],
       "status": "HYPOTHESIS / retains visual fragments where listed",
       "original_fragments": [],
@@ -4354,11 +4348,11 @@
     {
       "net": "PIC_RA1_RX_REF",
       "endpoints": [
+        "C26.1",
         "R28.1",
         "R29.1",
         "TP7.1",
-        "U4.3",
-        "C26.1"
+        "U4.3"
       ],
       "status": "USER_REPORTED_CONTINUITY + photo-selected resistor pads",
       "original_fragments": [],
@@ -4378,13 +4372,13 @@
     {
       "net": "VREF",
       "endpoints": [
-        "VREF.1",
+        "C18.1",
+        "C39.1",
         "R21.2",
         "R22.2",
-        "C39.1",
+        "U3.5",
         "U4.4",
-        "C18.1",
-        "U3.5"
+        "VREF.1"
       ],
       "status": "Mixed evidence: user measures U3.5/R22.2/VREF at 1 ohm. Original C18.1 local fragment retained; other bias branches individually qualified. R23-VREF hypothesis rejected.",
       "original_fragments": [],
@@ -4416,13 +4410,13 @@
     {
       "net": "PIC_TP4_C41",
       "endpoints": [
+        "C40.1",
         "C41.1",
-        "TP4.1",
-        "U4.25",
+        "R23.2",
         "R42.1",
         "R44.1",
-        "R23.2",
-        "C40.1"
+        "TP4.1",
+        "U4.25"
       ],
       "status": "USER_REPORTED_CONTINUITY + PHOTO_TRACE",
       "original_fragments": [],
@@ -4495,12 +4489,12 @@
     {
       "net": "RF_MONITOR_PAD",
       "endpoints": [
+        "D1.S",
         "R10.1",
-        "TP3.1",
-        "U4.13",
         "R6.2",
         "R7.1",
-        "D1.S"
+        "TP3.1",
+        "U4.13"
       ],
       "status": "USER_CONFIRMED PIC13-TP3; PHOTO_SUPPORTED local R10/R6/R7/D1 midpoint, IMG_2431; RF timing unmeasured",
       "original_fragments": [],
@@ -4537,8 +4531,8 @@
         "C22.1",
         "R26.1",
         "R27.2",
-        "U3.1",
-        "R47.1"
+        "R47.1",
+        "U3.1"
       ],
       "status": "HYPOTHESIS / retains visual fragments where listed",
       "original_fragments": [
@@ -4550,9 +4544,9 @@
       "endpoints": [
         "C19.1",
         "C20.2",
+        "D2.R",
         "R28.2",
-        "U3.3",
-        "D2.R"
+        "U3.3"
       ],
       "status": "HYPOTHESIS / retains visual fragments where listed",
       "original_fragments": [],
@@ -4797,10 +4791,10 @@
     {
       "net": "RX_STAGE_LINK",
       "endpoints": [
+        "C42.2",
         "R25.2",
-        "R48.2",
         "R47.2",
-        "C42.2"
+        "R48.2"
       ],
       "status": "PHOTO_SUPPORTED: annotated local junction after R25, feeding R48; R47/C42 empty options.",
       "original_fragments": []
@@ -4808,8 +4802,8 @@
     {
       "net": "Q9_J6_1",
       "endpoints": [
-        "Q9.S",
         "J6.1",
+        "Q9.S",
         "R36.2"
       ],
       "status": "User annotated single Q9 pad, left J6 hole and right R36 pad. Empty options; Q9 function unassigned.",
@@ -4822,6 +4816,16 @@
         "R36.1"
       ],
       "status": "User annotated right J6 hole to left R36 pad. Onward rail/load remains unknown.",
+      "original_fragments": []
+    },
+    {
+      "net": "U2_VCC",
+      "endpoints": [
+        "C7.1",
+        "R5.2",
+        "U2.B2"
+      ],
+      "status": "MEASUREMENT-SUPPORTED: B78 local join; B79-B81 support 22-ohm R5 feed from H_RF_VDD. B77 rejects printed VDD tie.",
       "original_fragments": []
     }
   ],
@@ -4915,7 +4919,7 @@
           "R43.2"
         ],
         "reason": "User confirms V011-V014 to Q1.L, excludes R43.2 and explicitly requests removal of this old photo-derived connection.",
-        "user_authorization": "Remove Q1.L–R43.2 connection",
+        "user_authorization": "Remove Q1.L\u2013R43.2 connection",
         "revision": "v0.9.4"
       }
     },
@@ -5863,17 +5867,6 @@
       ]
     },
     {
-      "net": "H_RF_OUT_CAND",
-      "a": [
-        165.1,
-        212.09
-      ],
-      "b": [
-        165.1,
-        220.98
-      ]
-    },
-    {
       "net": "RX_B_OUT",
       "a": [
         502.92,
@@ -6204,17 +6197,6 @@
       ]
     },
     {
-      "net": "VDD",
-      "a": [
-        190.5,
-        166.37
-      ],
-      "b": [
-        190.5,
-        175.26
-      ]
-    },
-    {
       "net": "H_RF_IN_A",
       "a": [
         67.31,
@@ -6446,17 +6428,6 @@
       ]
     },
     {
-      "net": "H_ANT_A",
-      "a": [
-        203.2,
-        220.98
-      ],
-      "b": [
-        210.82,
-        220.98
-      ]
-    },
-    {
       "net": "VDD",
       "a": [
         78.74,
@@ -6534,17 +6505,6 @@
       ]
     },
     {
-      "net": "H_RF_OUT_CAND",
-      "a": [
-        165.1,
-        220.98
-      ],
-      "b": [
-        195.58,
-        220.98
-      ]
-    },
-    {
       "net": "VDD",
       "a": [
         298.45,
@@ -6564,17 +6524,6 @@
       "b": [
         293.37,
         99.06
-      ]
-    },
-    {
-      "net": "VDD",
-      "a": [
-        168.91,
-        166.37
-      ],
-      "b": [
-        168.91,
-        168.91
       ]
     },
     {
@@ -7634,17 +7583,6 @@
       ]
     },
     {
-      "net": "VDD",
-      "a": [
-        168.91,
-        166.37
-      ],
-      "b": [
-        190.5,
-        166.37
-      ]
-    },
-    {
       "net": "H_RX_DETECT",
       "a": [
         515.62,
@@ -8049,17 +7987,6 @@
       "b": [
         558.8,
         87.63
-      ]
-    },
-    {
-      "net": "H_RF_OUT_CAND",
-      "a": [
-        165.1,
-        220.98
-      ],
-      "b": [
-        165.1,
-        226.06
       ]
     },
     {
@@ -10646,6 +10573,94 @@
         486.41,
         104.14
       ]
+    },
+    {
+      "net": "H_ANT_A",
+      "a": [
+        165.1,
+        212.09
+      ],
+      "b": [
+        165.1,
+        220.98
+      ]
+    },
+    {
+      "net": "H_ANT_A",
+      "a": [
+        165.1,
+        220.98
+      ],
+      "b": [
+        165.1,
+        226.06
+      ]
+    },
+    {
+      "net": "H_ANT_A",
+      "a": [
+        165.1,
+        226.06
+      ],
+      "b": [
+        175.26,
+        226.06
+      ]
+    },
+    {
+      "net": "H_RF_VDD",
+      "a": [
+        182.88,
+        153.67
+      ],
+      "b": [
+        195.58,
+        153.67
+      ]
+    },
+    {
+      "net": "U2_VCC",
+      "a": [
+        168.91,
+        166.37
+      ],
+      "b": [
+        168.91,
+        168.91
+      ]
+    },
+    {
+      "net": "U2_VCC",
+      "a": [
+        168.91,
+        166.37
+      ],
+      "b": [
+        190.5,
+        166.37
+      ]
+    },
+    {
+      "net": "U2_VCC",
+      "a": [
+        190.5,
+        166.37
+      ],
+      "b": [
+        190.5,
+        175.26
+      ]
+    },
+    {
+      "net": "U2_VCC",
+      "a": [
+        203.2,
+        153.67
+      ],
+      "b": [
+        213.36,
+        153.67
+      ]
     }
   ],
   "pin_positions": {
@@ -11259,11 +11274,11 @@
     ],
     "R5.1": [
       195.58,
-      220.98
+      153.67
     ],
     "R5.2": [
       203.2,
-      220.98
+      153.67
     ],
     "R10.1": [
       30.48,
@@ -12413,11 +12428,11 @@
         "R43.2"
       ],
       "reason": "User confirms V011-V014 to Q1.L, excludes R43.2 and explicitly requests removal of this old photo-derived connection.",
-      "user_authorization": "Remove Q1.L–R43.2 connection",
+      "user_authorization": "Remove Q1.L\u2013R43.2 connection",
       "revision": "v0.9.4"
     }
   ],
-  "review_date": "2026-10-14",
+  "review_date": "2026-10-15",
   "pending_connection_reports": [
     {
       "endpoints": [
