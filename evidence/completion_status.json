@@ -114,8 +114,8 @@
     {
       "id": "E04",
       "area": "Antenna and tuning-cell topology",
-      "gap": "The drawn PNP B=R/E=L/C=S candidate is still not confirmed by in-circuit junction readings. Capacitor values and actual switching/resonance behavior remain unknown. The front capacitor-bank antenna connection is now established.",
-      "method": "Photo and device-consistency review completed in TOPOLOGY_AUDIT.md. Visible cell wiring is supported; PNP function and front/rear midpoint correspondence remain qualified. No NPN/MOSFET substitution is proved. None now. Scope and component-isolation work are deferred by owner."
+      "gap": "Tuning transistor family, native pin-role interpretation and switching behavior remain unresolved. The five midpoint correspondences now have owner-report plus original-photo support; this does not validate the PNP device model or capacitor estimates.",
+      "method": "Keep copper and starred values unchanged. Preserve Q3 diode results and qualify the device model independently of the now-supported midpoint joins. Scope and component isolation remain deferred; no owner test requested."
     },
     {
       "id": "E07",
@@ -162,8 +162,8 @@
     {
       "id": "E11",
       "area": "Inherited copper joins without independent closure",
-      "gap": "C19.1-U3.3 and C20.1-GND remain inherited, unverified assignments. The complete path behind 1.023 Mohm to U3.3 is not identified. U1.L3/CE-to-VIN and other independent-evidence gaps remain as listed in TOPOLOGY_AUDIT.md.",
-      "method": "Bounded split implemented and checked against v0.9.45. Do not reconnect the detector to U3.3, treat the 1-Mohm path as copper, or infer an onward route from circuit plausibility. Revisit original photos for remaining C19/C20 upper-side paths before any new owner check. None now for this correction. C20 lower-to-U3.3, TP7 and R28 right are completed; do not repeat them. Any later check must target the still-unverified C20 upper or U3.3 continuation."
+      "gap": "Still unproved: C19 lower/model1-U3.3; C20 upper/model1-GND; U1 lower-left/native3-VIN; R18 upper/model2-Q7.L; R20.2/TP5 to C24.1 receiver supply; R3.2/R4.1/C28.1 junction; U5.1 and J1.VDD to printed VDD. Remaining ground branches are individually enumerated in TOPOLOGY_AUDIT.md. Missing selected evidence is not a demonstrated wiring fault.",
+      "method": "Existing-evidence review completed for this round; keep each unresolved physical link qualified. TOPOLOGY_AUDIT.md gives exact endpoints, original images and possible discriminating checks. Device/operating questions stay in their own issues. None requested in this round. C20 lower-to-U3.3 and its TP7/R28 follow-ups are completed. Do not repeat them; no automatic follow-up campaign, lifting or scope request."
     }
   ],
   "items": [
@@ -244,9 +244,9 @@
       ],
       "priority": 1,
       "state": "open",
-      "known": "PIC-to-control resistors and local tuning midpoints are mapped. B44/B45 midpoint-to-antenna DC readings are OL. B52 C11 outer end to ANT2 = 1.4 ohm; photo-shared outer pads of C14/C29/C44/C47 now join ANT2. Rear capacitor returns remain GND. ANT1-ANT2 is about 5 ohm with antenna fitted. The mistaken 414 kohm N-B report was corrected to B-G. Q3 L-S latest 0.48 V, L-R 2.3 V; all other diode directions OL. Antenna inductance now reported as 500 uH; test conditions not specified.",
-      "unknown": "The drawn PNP B=R/E=L/C=S candidate is still not confirmed by in-circuit junction readings. Capacitor values and actual switching/resonance behavior remain unknown. The front capacitor-bank antenna connection is now established.",
-      "next_action": "Photo and device-consistency review completed in TOPOLOGY_AUDIT.md. Visible cell wiring is supported; PNP function and front/rear midpoint correspondence remain qualified. No NPN/MOSFET substitution is proved. None now. Scope and component-isolation work are deferred by owner.",
+      "known": "PIC-to-control resistors and local tuning midpoints are mapped. B44/B45 midpoint-to-antenna DC readings are OL. B52 C11 outer end to ANT2 = 1.4 ohm; photo-shared outer pads of C14/C29/C44/C47 now join ANT2. Rear capacitor returns remain GND. ANT1-ANT2 is about 5 ohm with antenna fitted. The mistaken 414 kohm N-B report was corrected to B-G. Q3 L-S latest 0.48 V, L-R 2.3 V; all other diode directions OL. Antenna inductance now reported as 500 uH; test conditions not specified. Existing V090/095/100/103/107 owner reports reconciled individually with original rear lands in IMG_2442 now support all five front/rear midpoint links. Seven OL midpoint exclusions remain.",
+      "unknown": "Tuning transistor family, native pin-role interpretation and switching behavior remain unresolved. The five midpoint correspondences now have owner-report plus original-photo support; this does not validate the PNP device model or capacitor estimates.",
+      "next_action": "Keep copper and starred values unchanged. Preserve Q3 diode results and qualify the device model independently of the now-supported midpoint joins. Scope and component isolation remain deferred; no owner test requested.",
       "closed_when": "Tuning device pin roles and switched RF behavior are supported; outer ANT2 path is already resolved.",
       "open_pads": [],
       "nets": [
@@ -272,7 +272,7 @@
       ],
       "owner": "Codex evidence audit; no active bench request",
       "category": "Physical pin mapping; device function/rating",
-      "codex_action": "Photo and device-consistency review completed in TOPOLOGY_AUDIT.md. Visible cell wiring is supported; PNP function and front/rear midpoint correspondence remain qualified. No NPN/MOSFET substitution is proved.",
+      "codex_action": "Keep copper and starred values unchanged. Preserve Q3 diode results and qualify the device model independently of the now-supported midpoint joins.",
       "owner_input": "None now. Scope and component-isolation work are deferred by owner."
     },
     {
@@ -582,21 +582,22 @@
       "priority": 1,
       "state": "open",
       "category": "Copper connection; evidence coverage",
-      "known": "C20 lower-D2.R=1 ohm (earlier); C20 lower-R28 right=1.5 ohm; C20 lower-TP7=998 kohm; C20 lower-U3.3=1.023 Mohm (corrected from initial 1 Mohm report). D2.R/C20.2/R28.2 are now a separate net. R28 still links that group to TP7/PIC RA1 through 1 Mohm. R39 correction retained.",
-      "unknown": "C19.1-U3.3 and C20.1-GND remain inherited, unverified assignments. The complete path behind 1.023 Mohm to U3.3 is not identified. U1.L3/CE-to-VIN and other independent-evidence gaps remain as listed in TOPOLOGY_AUDIT.md.",
-      "codex_action": "Bounded split implemented and checked against v0.9.45. Do not reconnect the detector to U3.3, treat the 1-Mohm path as copper, or infer an onward route from circuit plausibility. Revisit original photos for remaining C19/C20 upper-side paths before any new owner check.",
-      "owner_input": "None now for this correction. C20 lower-to-U3.3, TP7 and R28 right are completed; do not repeat them. Any later check must target the still-unverified C20 upper or U3.3 continuation.",
-      "closed_when": "Each remaining named inherited join has a continuous photo route or applicable direct continuity evidence, or is corrected with a bounded supported change. The rejected D2/C20/R28-to-U3.3 join is corrected; that does not close the whole receiver.",
+      "known": "C20/D2/R28 split is supported by the completed 1.023 Mohm, 998 kohm and 1.5 ohm results. Existing originals and via reports now close LED-control, crystal, PIC24/R4, L2-to-C1, R44/TP4, VSYS/C27/R3, C2-ground and five rear-midpoint coverage gaps. C17/R21/C24/U3.8 receiver supply subgroup is visible. No values or other wiring changed. Selected C27, PIC VSS/C32, Q9/R32/C41 and four tuning-pad ground branches also reconciled with existing owner via reports.",
+      "unknown": "Still unproved: C19 lower/model1-U3.3; C20 upper/model1-GND; U1 lower-left/native3-VIN; R18 upper/model2-Q7.L; R20.2/TP5 to C24.1 receiver supply; R3.2/R4.1/C28.1 junction; U5.1 and J1.VDD to printed VDD. Remaining ground branches are individually enumerated in TOPOLOGY_AUDIT.md. Missing selected evidence is not a demonstrated wiring fault.",
+      "codex_action": "Existing-evidence review completed for this round; keep each unresolved physical link qualified. TOPOLOGY_AUDIT.md gives exact endpoints, original images and possible discriminating checks. Device/operating questions stay in their own issues.",
+      "owner_input": "None requested in this round. C20 lower-to-U3.3 and its TP7/R28 follow-ups are completed. Do not repeat them; no automatic follow-up campaign, lifting or scope request.",
+      "closed_when": "Every remaining physical link has direct photo/owner evidence or a supported correction. The five midpoint evidence gaps are closed, but E11 as a whole remains open; documentation or deferred tests do not close it.",
       "open_pads": [],
       "nets": [
-        "RX_A_PLUS",
+        "GND",
+        "H_BAT_SENSE",
         "H_LDO_IN",
         "H_RX_ENABLE",
         "H_RX_VDD",
-        "GND",
-        "D2_C20"
+        "RX_A_PLUS",
+        "VDD"
       ],
-      "owner": "Codex evidence review; current three readings completed",
+      "owner": "Codex: evidence reconciled; specific hidden joins remain qualified",
       "supporting_evidence": [
         "evidence/physical_evidence_review_20261015.json",
         "evidence/topology_closure_audit.json",
@@ -605,7 +606,7 @@
         "evidence/receiver_input_results_20261015.json",
         "evidence/receiver_input_correction_v0946.json"
       ],
-      "next_action": "Bounded split implemented and checked against v0.9.45. Do not reconnect the detector to U3.3, treat the 1-Mohm path as copper, or infer an onward route from circuit plausibility. Revisit original photos for remaining C19/C20 upper-side paths before any new owner check. None now for this correction. C20 lower-to-U3.3, TP7 and R28 right are completed; do not repeat them. Any later check must target the still-unverified C20 upper or U3.3 continuation."
+      "next_action": "Existing-evidence review completed for this round; keep each unresolved physical link qualified. TOPOLOGY_AUDIT.md gives exact endpoints, original images and possible discriminating checks. Device/operating questions stay in their own issues. None requested in this round. C20 lower-to-U3.3 and its TP7/R28 follow-ups are completed. Do not repeat them; no automatic follow-up campaign, lifting or scope request."
     }
   ],
   "finish_plan": [
