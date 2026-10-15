@@ -282,6 +282,15 @@ assert net('R5.1')==net('C6.1')==net('Q8.T2')=='H_RF_VDD'
 assert len({net('R5.1'),net('R5.2'),net('VDD.1')})==3
 assert net('Q8.B1')==net('Q8.B3')==net('ANT1.1')=='H_ANT_A'
 assert net('ANT1.1')!=net('ANT2.1'), 'Fitted antenna winding must not merge distinct PCB nets'
+receiver_input=read('evidence/receiver_input_results_20261015.json')
+for row in receiver_input['measurements']:
+    saved=next(r for r in queue['completed_tests'] if r['id']==row['id'])
+    assert saved['resistance_ohms']==row['resistance_ohms']
+    assert saved['source']=='evidence/receiver_input_results_20261015.json'
+    assert row['id'] not in {r['id'] for r in queue['tests']}
+    completed_ids.add(row['id'])
+assert net('C20.2')==net('D2.R')==net('R28.2')!=net('U3.3')
+assert net('C20.2')!=net('TP7.1')==net('R28.1')
 assert {r['id'] for r in queue['completed_tests']}==completed_ids
 assert not completed_ids&{r['id'] for r in queue['tests']}, 'Do not repeat completed finishing readings'
 for ref in ['U4','R11','R14','R15','R16','R37','R39','Q1','U2','Q8','C5','LED1','R18','R19','Q7','TP3','TP104','U106','J3','R43','TP14','R42','R44','TP4','TP103','R21','R22','R23','R48']:

@@ -1,7 +1,7 @@
 {
   "date": "2026-10-15",
-  "revision": "v0.9.45",
-  "review_revision": "v0.9.45",
+  "revision": "v0.9.46",
+  "review_revision": "v0.9.46",
   "interpretation": "Every catalog entry is drawn. Hardware connectivity, values and identities are only partially verified. No routed PCB exists.",
   "catalog_entries": 148,
   "physical_pins": 349,
@@ -69,8 +69,8 @@
   "erc_by_type": {
     "pin_to_pin": 1
   },
-  "modeled_nets": 82,
-  "schematic_sha256": "87b952bb0439b3c6cea2a97e6c6efd8f321ca9470de866b3a5d5ea8568b04abc",
+  "modeled_nets": 83,
+  "schematic_sha256": "69165286f5c859c8e60d4d292c1805c4d30240df4ceda69de8a5fdda77b3c3f3",
   "known_identified_ICs_needing_new_symbols": [],
   "complete_symbols_for_selected_candidates": true,
   "available_instruments": [
@@ -162,8 +162,8 @@
     {
       "id": "E11",
       "area": "Inherited copper joins without independent closure",
-      "gap": "RX_A_PLUS still combines {D2.R,C20.2}, {C19.1}, {R28.2} and {U3.3} without a complete independent evidence path. C20.1-to-GND and U1.L3/CE-to-VIN remain unverified inherited joins. Other disconnected evidence groups, including rail fan-out, are listed by physical endpoint in TOPOLOGY_AUDIT.md; missing encoded support is not itself a hardware fault.",
-      "method": "Original close-ups IMG_2429/2434 do not expose the whole detector-to-input route. Preserve present assignments as qualified, not certified. Use the named graph gaps to revisit existing evidence before proposing any further bench test. No all-pairs testing. One staged check only: with battery and programmer disconnected, resistance from C20 lower metal end (nearest printed C20; D in the linked photo) to U3 pin 3 (third lower lead from the pin-1 dot end; P3). Report resistance and shorted-probe baseline. Near probe resistance supports this hidden join; a stable kOhm/OL result rejects it. No component removal."
+      "gap": "C19.1-U3.3 and C20.1-GND remain inherited, unverified assignments. The complete path behind 1.023 Mohm to U3.3 is not identified. U1.L3/CE-to-VIN and other independent-evidence gaps remain as listed in TOPOLOGY_AUDIT.md.",
+      "method": "Bounded split implemented and checked against v0.9.45. Do not reconnect the detector to U3.3, treat the 1-Mohm path as copper, or infer an onward route from circuit plausibility. Revisit original photos for remaining C19/C20 upper-side paths before any new owner check. None now for this correction. C20 lower-to-U3.3, TP7 and R28 right are completed; do not repeat them. Any later check must target the still-unverified C20 upper or U3.3 continuation."
     }
   ],
   "items": [
@@ -582,27 +582,30 @@
       "priority": 1,
       "state": "open",
       "category": "Copper connection; evidence coverage",
-      "known": "Independent sourced photo/meter pairs agree with the current model. D2.R-to-C20.2 is measured at 1 ohm; U3 feedback tracks are visible. R39 is corrected. No additional unequivocal wiring correction was established.",
-      "unknown": "RX_A_PLUS still combines {D2.R,C20.2}, {C19.1}, {R28.2} and {U3.3} without a complete independent evidence path. C20.1-to-GND and U1.L3/CE-to-VIN remain unverified inherited joins. Other disconnected evidence groups, including rail fan-out, are listed by physical endpoint in TOPOLOGY_AUDIT.md; missing encoded support is not itself a hardware fault.",
-      "codex_action": "Original close-ups IMG_2429/2434 do not expose the whole detector-to-input route. Preserve present assignments as qualified, not certified. Use the named graph gaps to revisit existing evidence before proposing any further bench test. No all-pairs testing.",
-      "owner_input": "One staged check only: with battery and programmer disconnected, resistance from C20 lower metal end (nearest printed C20; D in the linked photo) to U3 pin 3 (third lower lead from the pin-1 dot end; P3). Report resistance and shorted-probe baseline. Near probe resistance supports this hidden join; a stable kOhm/OL result rejects it. No component removal.",
-      "closed_when": "Each named inherited join has a continuous photo route or applicable direct continuity evidence, or is corrected with a bounded source-supported change. The one proposed input check closes only D2/C20-to-U3.3, not the other branches or every graph gap.",
+      "known": "C20 lower-D2.R=1 ohm (earlier); C20 lower-R28 right=1.5 ohm; C20 lower-TP7=998 kohm; C20 lower-U3.3=1.023 Mohm (corrected from initial 1 Mohm report). D2.R/C20.2/R28.2 are now a separate net. R28 still links that group to TP7/PIC RA1 through 1 Mohm. R39 correction retained.",
+      "unknown": "C19.1-U3.3 and C20.1-GND remain inherited, unverified assignments. The complete path behind 1.023 Mohm to U3.3 is not identified. U1.L3/CE-to-VIN and other independent-evidence gaps remain as listed in TOPOLOGY_AUDIT.md.",
+      "codex_action": "Bounded split implemented and checked against v0.9.45. Do not reconnect the detector to U3.3, treat the 1-Mohm path as copper, or infer an onward route from circuit plausibility. Revisit original photos for remaining C19/C20 upper-side paths before any new owner check.",
+      "owner_input": "None now for this correction. C20 lower-to-U3.3, TP7 and R28 right are completed; do not repeat them. Any later check must target the still-unverified C20 upper or U3.3 continuation.",
+      "closed_when": "Each remaining named inherited join has a continuous photo route or applicable direct continuity evidence, or is corrected with a bounded supported change. The rejected D2/C20/R28-to-U3.3 join is corrected; that does not close the whole receiver.",
       "open_pads": [],
       "nets": [
         "RX_A_PLUS",
         "H_LDO_IN",
         "H_RX_ENABLE",
         "H_RX_VDD",
-        "GND"
+        "GND",
+        "D2_C20"
       ],
-      "owner": "Codex evidence review; one staged owner check",
+      "owner": "Codex evidence review; current three readings completed",
       "supporting_evidence": [
         "evidence/physical_evidence_review_20261015.json",
         "evidence/topology_closure_audit.json",
         "evidence/d2_diode_20261009.json",
-        "docs/measurement-images/receiver_input_bridge.svg"
+        "docs/measurement-images/receiver_input_bridge.svg",
+        "evidence/receiver_input_results_20261015.json",
+        "evidence/receiver_input_correction_v0946.json"
       ],
-      "next_action": "Original close-ups IMG_2429/2434 do not expose the whole detector-to-input route. Preserve present assignments as qualified, not certified. Use the named graph gaps to revisit existing evidence before proposing any further bench test. No all-pairs testing. One staged check only: with battery and programmer disconnected, resistance from C20 lower metal end (nearest printed C20; D in the linked photo) to U3 pin 3 (third lower lead from the pin-1 dot end; P3). Report resistance and shorted-probe baseline. Near probe resistance supports this hidden join; a stable kOhm/OL result rejects it. No component removal."
+      "next_action": "Bounded split implemented and checked against v0.9.45. Do not reconnect the detector to U3.3, treat the 1-Mohm path as copper, or infer an onward route from circuit plausibility. Revisit original photos for remaining C19/C20 upper-side paths before any new owner check. None now for this correction. C20 lower-to-U3.3, TP7 and R28 right are completed; do not repeat them. Any later check must target the still-unverified C20 upper or U3.3 continuation."
     }
   ],
   "finish_plan": [
@@ -620,7 +623,7 @@
         "E10",
         "I01"
       ],
-      "summary": "R39 is corrected; independent photo/meter audit distinguishes remaining copper-evidence gaps from device-role and operating limitations. One receiver input check is staged; no broad bench batch.",
+      "summary": "R39 and receiver-input split are corrected. E11 retains specific upper-capacitor/input and other copper-evidence gaps; no new bench batch.",
       "next_action": "Review TOPOLOGY_AUDIT.md and E11 before further hardware work; retain deferred scope/isolation choices."
     },
     {

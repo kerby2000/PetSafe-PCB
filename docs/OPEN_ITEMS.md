@@ -1,10 +1,10 @@
 # Remaining open items
 
-Current schematic **v0.9.45**. Generated from [the authoritative register](../evidence/remaining_work.json); edit that source, not this view.
+Current schematic **v0.9.46**. Generated from [the authoritative register](../evidence/remaining_work.json); edit that source, not this view.
 
 [Schematic and PCB photographs](../README.md) | [HTML checklist](FINISHING_CHECKLIST.html) | [History and closed findings](history/README.md)
 
-No active bench batch. One next continuity check is staged under E11: C20 lower metal end to U3 pin 3, unpowered. Scope work and component lifting remain deferred. [Independent connection audit](TOPOLOGY_AUDIT.md). Supported copper, device interpretation and operating validation are distinct claims.
+E11 receiver split corrected from three readings: C20 lower joins D2.R/R28.2, not U3.3 or TP7 directly. No further bench reading requested for this correction; scope and lifting remain deferred. [Independent connection audit](TOPOLOGY_AUDIT.md). Supported copper, device interpretation and operating validation are distinct claims.
 
 | ID | Area | Category |
 |---|---|---|
@@ -151,13 +151,13 @@ Evidence: [remaining_work.json](../docs/history/v0.9.30-before-finalization/evid
 | Field | Current position |
 |---|---|
 | Category | Copper connection; evidence coverage |
-| Known | Independent sourced photo/meter pairs agree with the current model. D2.R-to-C20.2 is measured at 1 ohm; U3 feedback tracks are visible. R39 is corrected. No additional unequivocal wiring correction was established. |
-| Unresolved claim | RX_A_PLUS still combines {D2.R,C20.2}, {C19.1}, {R28.2} and {U3.3} without a complete independent evidence path. C20.1-to-GND and U1.L3/CE-to-VIN remain unverified inherited joins. Other disconnected evidence groups, including rail fan-out, are listed by physical endpoint in TOPOLOGY_AUDIT.md; missing encoded support is not itself a hardware fault. |
-| Next Codex action | Original close-ups IMG_2429/2434 do not expose the whole detector-to-input route. Preserve present assignments as qualified, not certified. Use the named graph gaps to revisit existing evidence before proposing any further bench test. No all-pairs testing. |
-| Owner input | One staged check only: with battery and programmer disconnected, resistance from C20 lower metal end (nearest printed C20; D in the linked photo) to U3 pin 3 (third lower lead from the pin-1 dot end; P3). Report resistance and shorted-probe baseline. Near probe resistance supports this hidden join; a stable kOhm/OL result rejects it. No component removal. |
-| Closure evidence | Each named inherited join has a continuous photo route or applicable direct continuity evidence, or is corrected with a bounded source-supported change. The one proposed input check closes only D2/C20-to-U3.3, not the other branches or every graph gap. |
+| Known | C20 lower-D2.R=1 ohm (earlier); C20 lower-R28 right=1.5 ohm; C20 lower-TP7=998 kohm; C20 lower-U3.3=1.023 Mohm (corrected from initial 1 Mohm report). D2.R/C20.2/R28.2 are now a separate net. R28 still links that group to TP7/PIC RA1 through 1 Mohm. R39 correction retained. |
+| Unresolved claim | C19.1-U3.3 and C20.1-GND remain inherited, unverified assignments. The complete path behind 1.023 Mohm to U3.3 is not identified. U1.L3/CE-to-VIN and other independent-evidence gaps remain as listed in TOPOLOGY_AUDIT.md. |
+| Next Codex action | Bounded split implemented and checked against v0.9.45. Do not reconnect the detector to U3.3, treat the 1-Mohm path as copper, or infer an onward route from circuit plausibility. Revisit original photos for remaining C19/C20 upper-side paths before any new owner check. |
+| Owner input | None now for this correction. C20 lower-to-U3.3, TP7 and R28 right are completed; do not repeat them. Any later check must target the still-unverified C20 upper or U3.3 continuation. |
+| Closure evidence | Each remaining named inherited join has a continuous photo route or applicable direct continuity evidence, or is corrected with a bounded supported change. The rejected D2/C20/R28-to-U3.3 join is corrected; that does not close the whole receiver. |
 
-Evidence: [physical_evidence_review_20261015.json](../evidence/physical_evidence_review_20261015.json), [topology_closure_audit.json](../evidence/topology_closure_audit.json), [d2_diode_20261009.json](../evidence/d2_diode_20261009.json), [receiver_input_bridge.svg](../docs/measurement-images/receiver_input_bridge.svg).
+Evidence: [physical_evidence_review_20261015.json](../evidence/physical_evidence_review_20261015.json), [topology_closure_audit.json](../evidence/topology_closure_audit.json), [d2_diode_20261009.json](../evidence/d2_diode_20261009.json), [receiver_input_bridge.svg](../docs/measurement-images/receiver_input_bridge.svg), [receiver_input_results_20261015.json](../evidence/receiver_input_results_20261015.json), [receiver_input_correction_v0946.json](../evidence/receiver_input_correction_v0946.json).
 
 ## Accepted reconstruction boundaries
 

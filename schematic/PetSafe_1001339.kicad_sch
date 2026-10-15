@@ -17693,7 +17693,7 @@
 					(size 1 1)
 				) hide)
 		)
-		(property "Evidence" "Photo reconstruction; individual net evidence in reconstruction.json"
+		(property "Evidence" "Marked 1004 / 1 Mohm. Model1 joins TP7/PIC RA1; model2/right pad nearest C19 measures 1.5 ohm to C20 lower and shares D2.R. C20-to-TP7=998 kohm supports this resistor path; old direct U3.3 membership withdrawn."
 			(at 346.71 220.98 0)
 			(effects
 				(font
@@ -17722,6 +17722,13 @@
 				) hide)
 		)
 		(property "PinMapping" "See evidence/pin_crosswalk.json; physical orientation may be provisional"
+			(at 346.71 220.98 0)
+			(effects
+				(font
+					(size 1 1)
+				) hide)
+		)
+		(property "CurrentEvidence" "Marked 1004 / 1 Mohm. Model1 joins TP7/PIC RA1; model2/right pad nearest C19 measures 1.5 ohm to C20 lower and shares D2.R. C20-to-TP7=998 kohm supports this resistor path; old direct U3.3 membership withdrawn."
 			(at 346.71 220.98 0)
 			(effects
 				(font
@@ -17823,7 +17830,7 @@
 					(size 1 1)
 				) hide)
 		)
-		(property "Evidence" "Photo reconstruction; individual net evidence in reconstruction.json"
+		(property "Evidence" "Model1-to-U3.3 remains an inherited input connection; model2 ground has V077 owner support. C20 now belongs to a separate measured node; no verified parallel 200-pF load. 100pF* retained."
 			(at 466.09 250.19 0)
 			(effects
 				(font
@@ -17858,33 +17865,40 @@
 					(size 1 1)
 				) hide)
 		)
-    (property "NominalEstimate" "100 pF" (at 466.09 250.19 0)
+		(property "NominalEstimate" "100 pF" (at 466.09 250.19 0)
       (effects (font (size 1.27 1.27)) (hide yes))
     )
-    (property "ValueStatus" "ESTIMATED - not factory verified" (at 466.09 250.19 0)
+		(property "ValueStatus" "ESTIMATED - not factory verified" (at 466.09 250.19 0)
       (effects (font (size 1.27 1.27)) (hide yes))
     )
-    (property "Voltage" "100 V (proposed)" (at 466.09 250.19 0)
+		(property "Voltage" "100 V (proposed)" (at 466.09 250.19 0)
       (effects (font (size 1.27 1.27)) (hide yes))
     )
-    (property "Dielectric" "C0G/NP0 (proposed)" (at 466.09 250.19 0)
+		(property "Dielectric" "C0G/NP0 (proposed)" (at 466.09 250.19 0)
       (effects (font (size 1.27 1.27)) (hide yes))
     )
-    (property "Tolerance" "5% (proposed)" (at 466.09 250.19 0)
+		(property "Tolerance" "5% (proposed)" (at 466.09 250.19 0)
       (effects (font (size 1.27 1.27)) (hide yes))
     )
-    (property "ValueBasis" "100 pF plus C20=100 pF gives a deliberately small 200-pF detector load. A simple 1-Mohm discharge approximation gives 200 us, versus a 7.45-us RF period." (at 466.09 250.19 0)
+		(property "ValueBasis" "100 pF plus C20=100 pF gives a deliberately small 200-pF detector load. A simple 1-Mohm discharge approximation gives 200 us, versus a 7.45-us RF period." (at 466.09 250.19 0)
       (effects (font (size 1.27 1.27)) (hide yes))
     )
-    (property "ValueQualification" "Very low confidence: diode conduction, input impedance and signal modulation determine the real envelope response. Equal division across two parallel capacitors is not identifiable from function. Rating is a conservative candidate for an antenna-coupled node." (at 466.09 250.19 0)
+		(property "ValueQualification" "Very low confidence: diode conduction, input impedance and signal modulation determine the real envelope response. Equal division across two parallel capacitors is not identifiable from function. Rating is a conservative candidate for an antenna-coupled node." (at 466.09 250.19 0)
       (effects (font (size 1.27 1.27)) (hide yes))
     )
-    (property "ValueSource" "evidence/capacitor_value_review_20261015.json" (at 466.09 250.19 0)
+		(property "ValueSource" "evidence/capacitor_value_review_20261015.json" (at 466.09 250.19 0)
       (effects (font (size 1.27 1.27)) (hide yes))
     )
-    (property "DesignSeed" "Function-based candidate; circuit validation pending" (at 466.09 250.19 0)
+		(property "DesignSeed" "Function-based candidate; circuit validation pending" (at 466.09 250.19 0)
       (effects (font (size 1.27 1.27)) (hide yes))
     )
+		(property "CurrentEvidence" "Model1-to-U3.3 remains an inherited input connection; model2 ground has V077 owner support. C20 now belongs to a separate measured node; no verified parallel 200-pF load. 100pF* retained."
+			(at 466.09 250.19 0)
+			(effects
+				(font
+					(size 1 1)
+				) hide)
+		)
 	)
 	(symbol
 		(lib_id "Device:C")
@@ -17973,7 +17987,7 @@
 					(size 1 1)
 				) hide)
 		)
-		(property "Evidence" "Photo reconstruction; individual net evidence in reconstruction.json"
+		(property "Evidence" "Lower/model2 joins D2.R and R28.2 by 1/1.5-ohm readings; 1.023 Mohm to U3.3 rejects the old parallel/input-node join. Upper/model1 ground remains inherited and unverified. 100pF* retained; old combined-200pF rationale is superseded."
 			(at 445.77 241.3 0)
 			(effects
 				(font
@@ -18008,33 +18022,40 @@
 					(size 1 1)
 				) hide)
 		)
-    (property "NominalEstimate" "100 pF" (at 445.77 241.3 0)
+		(property "NominalEstimate" "100 pF" (at 445.77 241.3 0)
       (effects (font (size 1.27 1.27)) (hide yes))
     )
-    (property "ValueStatus" "ESTIMATED - not factory verified" (at 445.77 241.3 0)
+		(property "ValueStatus" "ESTIMATED - not factory verified" (at 445.77 241.3 0)
       (effects (font (size 1.27 1.27)) (hide yes))
     )
-    (property "Voltage" "100 V (proposed)" (at 445.77 241.3 0)
+		(property "Voltage" "100 V (proposed)" (at 445.77 241.3 0)
       (effects (font (size 1.27 1.27)) (hide yes))
     )
-    (property "Dielectric" "C0G/NP0 (proposed)" (at 445.77 241.3 0)
+		(property "Dielectric" "C0G/NP0 (proposed)" (at 445.77 241.3 0)
       (effects (font (size 1.27 1.27)) (hide yes))
     )
-    (property "Tolerance" "5% (proposed)" (at 445.77 241.3 0)
+		(property "Tolerance" "5% (proposed)" (at 445.77 241.3 0)
       (effects (font (size 1.27 1.27)) (hide yes))
     )
-    (property "ValueBasis" "100 pF plus C19=100 pF gives 200 pF at RX_A_PLUS. The larger 1206 body can accommodate voltage/low-loss needs without implying a large capacitance." (at 445.77 241.3 0)
+		(property "ValueBasis" "100 pF plus C19=100 pF gives 200 pF at RX_A_PLUS. The larger 1206 body can accommodate voltage/low-loss needs without implying a large capacitance." (at 445.77 241.3 0)
       (effects (font (size 1.27 1.27)) (hide yes))
     )
-    (property "ValueQualification" "Very low confidence: nonlinear diode path and a 1-Mohm bias path do not uniquely determine the needed envelope capacitance. Equal division is arbitrary; qualify antenna-coupled voltage." (at 445.77 241.3 0)
+		(property "ValueQualification" "Very low confidence: nonlinear diode path and a 1-Mohm bias path do not uniquely determine the needed envelope capacitance. Equal division is arbitrary; qualify antenna-coupled voltage." (at 445.77 241.3 0)
       (effects (font (size 1.27 1.27)) (hide yes))
     )
-    (property "ValueSource" "evidence/capacitor_value_review_20261015.json" (at 445.77 241.3 0)
+		(property "ValueSource" "evidence/capacitor_value_review_20261015.json" (at 445.77 241.3 0)
       (effects (font (size 1.27 1.27)) (hide yes))
     )
-    (property "DesignSeed" "Function-based candidate; circuit validation pending" (at 445.77 241.3 0)
+		(property "DesignSeed" "Function-based candidate; circuit validation pending" (at 445.77 241.3 0)
       (effects (font (size 1.27 1.27)) (hide yes))
     )
+		(property "CurrentEvidence" "Lower/model2 joins D2.R and R28.2 by 1/1.5-ohm readings; 1.023 Mohm to U3.3 rejects the old parallel/input-node join. Upper/model1 ground remains inherited and unverified. 100pF* retained; old combined-200pF rationale is superseded."
+			(at 445.77 241.3 0)
+			(effects
+				(font
+					(size 1 1)
+				) hide)
+		)
 	)
 	(symbol
 		(lib_id "Connector:TestPoint")
@@ -29984,7 +30005,7 @@
 		)
 		(uuid "72170deb-1c9a-4731-84df-32524cd970ab")
 	)
-	(text "v0.9.45 | KiCad 10.0.5 | 2026-10-15"
+	(text "v0.9.46 | KiCad 10.0.5 | 2026-10-15"
 		(at 514.35 370.84000000000003 0)
 		(effects
 			(font
@@ -30064,7 +30085,7 @@
 		)
 		(uuid "c11a372d-46ba-4e54-89be-ba1e3a42b8f8")
 	)
-	(text "D2: R-C20 lower; L-ANT2/R46 upper; S-R46 lower. R46 empty; 4P identity unknown."
+	(text "D2/C20 lower/R28.2 separate from U3.3: 1.023 Mohm measured. C20 upper route unverified."
 		(at 444.5 256.54 0)
 		(effects
 			(font
@@ -33354,7 +33375,6 @@
 		)
 		(uuid "853ffa73-53b2-49f9-90fe-20448db33afc")
 	)
-
 	(wire
 		(pts
 			(xy 351.79 345.44) (xy 360.68 345.44)
@@ -33837,26 +33857,6 @@
 	)
 	(wire
 		(pts
-			(xy 353.06 198.12) (xy 353.06 229.87)
-		)
-		(stroke
-			(width 0)
-			(type default)
-		)
-		(uuid "0f7d29a3-5551-447f-aea8-95b34920c6b7")
-	)
-	(wire
-		(pts
-			(xy 353.06 198.12) (xy 360.68 198.12)
-		)
-		(stroke
-			(width 0)
-			(type default)
-		)
-		(uuid "b680b1f5-b947-45a0-8000-72b9f9ad4afc")
-	)
-	(wire
-		(pts
 			(xy 360.68 198.12) (xy 360.68 236.22)
 		)
 		(stroke
@@ -33904,16 +33904,6 @@
 			(type default)
 		)
 		(uuid "43e7590e-5141-40a8-8efa-85d07d1434e7")
-	)
-	(wire
-		(pts
-			(xy 445.77 245.11) (xy 445.77 250.19)
-		)
-		(stroke
-			(width 0)
-			(type default)
-		)
-		(uuid "e187131c-5b88-49ac-be00-9b0d5ce4a6c1")
 	)
 	(wire
 		(pts
@@ -34905,7 +34895,6 @@
 		)
 		(uuid "9c9cc840-d0a1-4ec6-bf8d-0507cde04677")
 	)
-
 	(wire
 		(pts
 			(xy 419.1 54.61) (xy 419.1 64.77)
@@ -35155,18 +35144,6 @@
 		(uuid "eb99fd0f-4678-4ae8-ac42-dd73de4ca6ca")
 	)
 	(junction
-		(at 360.68 198.12)
-		(diameter 0)
-		(color 0 0 0 0)
-		(uuid "6d8cbb89-f3aa-41df-a1e3-686f0638e8d9")
-	)
-	(junction
-		(at 445.77 250.19)
-		(diameter 0)
-		(color 0 0 0 0)
-		(uuid "139b1c9f-8336-4753-a524-c99e93a224fd")
-	)
-	(junction
 		(at 377.19 231.14)
 		(diameter 0)
 		(color 0 0 0 0)
@@ -35328,7 +35305,6 @@
 		(color 0 0 0 0)
 		(uuid "056075d1-ef0c-4559-8be4-62f737c0b22b")
 	)
-
 	(junction
 		(at 469.9 180.34)
 		(diameter 0)
@@ -36924,25 +36900,10 @@
 	(title_block
 		(title "PetSafe 100-1339 R03 A | single-sheet reconstruction")
 		(date "2026-10-15")
-		(rev "0.9.45")
+		(rev "0.9.46")
 		(company "KiCad 10 libraries + four datasheet symbols | MCP authoring")
 		(comment 1 "44 starred capacitor estimates; antenna reported 500uH; RF weights unverified.")
 	)
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 	(wire
 		(pts
 			(xy 368.3 340.36) (xy 391.16 340.36)
@@ -36979,5 +36940,24 @@
 		)
 		(uuid "845c84d9-5e12-4b1b-9ac6-f869d95a87c5")
 	)
-
+	(label "D2_C20"
+		(at 488.95 245.11 0)
+		(effects
+			(font
+				(size 0.762 0.762)
+			)
+			(justify left bottom)
+		)
+		(uuid "e48344ca-3d39-4711-9129-264a6afe842d")
+	)
+	(label "D2_C20"
+		(at 353.06 229.87 0)
+		(effects
+			(font
+				(size 0.762 0.762)
+			)
+			(justify right bottom)
+		)
+		(uuid "081eacf9-c5db-44fe-9bd6-6087fe520fc8")
+	)
 )

@@ -6,7 +6,7 @@ import hashlib, json, subprocess, math
 from pypdf import PdfReader
 from current_state import current_state, validate_issue_register, read, ROOT
 import xml.etree.ElementTree as ET
-from inventory_contracts import with_r39_output_pullup
+from inventory_contracts import with_r39_output_pullup, with_receiver_input_split
 
 s=current_state(); saved=read('evidence/completion_status.json')
 assert s==saved, 'Generated status is stale; run refresh_review.ps1'
@@ -29,7 +29,7 @@ assert consistency['followup_measurements']==['B84','B85']
 assert next(f for f in consistency['findings'] if f['id']=='C01')['status']=='RESOLVED_BY_RECHECK'
 assert all(f['id']!='C01' for f in work['consistency_review']['findings'])
 assert 'E09' in ids, 'Resolving one reading conflict must not falsely close Q1 behavior'
-assert {n['net']:sorted(n['endpoints']) for n in m['nets']}==with_r39_output_pullup(consistency['unchanged_net_partitions'])
+assert {n['net']:sorted(n['endpoints']) for n in m['nets']}==with_receiver_input_split(with_r39_output_pullup(consistency['unchanged_net_partitions']))
 assert set(next(n['endpoints'] for n in m['nets'] if n['net']=='Q1_GATE'))=={'Q1.R','R44.2'}
 for ref,value in [('R44','15k'),('R26','120k'),('R24','120k'),('R21','10k'),('R22','10k')]:
     assert next(c for c in m['components'] if c['ref']==ref)['value']==value
@@ -40,7 +40,7 @@ assert epnet['U3.1']!=epnet['U3.2'] and epnet['U3.7']!=epnet['U3.6']
 assert next(c for c in m['components'] if c['ref']=='D6')['proposed_value']=='G3 / Vbr TBD'
 e06=read('evidence/e06_disposition_v0941.json')
 assert e06['electrical_change'] is False and e06['new_measurements']==[]
-assert {n['net']:sorted(n['endpoints']) for n in m['nets']}==with_r39_output_pullup(e06['unchanged_net_partitions'])
+assert {n['net']:sorted(n['endpoints']) for n in m['nets']}==with_receiver_input_split(with_r39_output_pullup(e06['unchanged_net_partitions']))
 assert 'E06' not in ids and 'E06' not in planned
 limitation=next(i for i in work['reconstruction_limitations'] if i['id']=='E06')
 assert limitation['disposition']=='Drawing resolved; physical completeness unproved'
@@ -153,7 +153,9 @@ assert b59 in measurements['completed_tests'] and all(t['id']!='B59' for t in me
 assert len({members[e] for e in ['C25.1','U4.2','TP6.1','R27.1','C18.2']})==1
 assert len({members[e] for e in ['TP6.1','U3.1','C18.1','C25.2','C26.1']})==5
 assert members['U3.1']==members['R27.2']
-assert 'PIC_RA0_FILTER' not in {n['net'] for n in m['nets']} and len(m['nets'])==82
+assert 'PIC_RA0_FILTER' not in {n['net'] for n in m['nets']}
+assert members['C20.2']==members['D2.2']==members['R28.2']!=members['U3.3']
+assert members['C20.2']!=members['TP7.1']
 for site in read('evidence/via_audit.json')['sites']:
     if site['id'] in {'V031','V072'}:
         assert site['net']=='RX_A_FILTER' and site['joined_vias']==['V031','V072']

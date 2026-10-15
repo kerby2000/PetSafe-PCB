@@ -114,7 +114,7 @@ def run():
              '| Area | Assessment / missing evidence | Action |', '|---|---|---|']
     for q in spec['targeted_questions']:
         lines.append('| '+q['area']+' | '+q['assessment']+' | '+q['action']+' |')
-    lines += ['', 'The issue register owns owner actions and closure criteria: [OPEN_ITEMS.md](OPEN_ITEMS.md#e11). One staged input-link check is located on the [original-photo probe guide](measurement-images/receiver_input_bridge.svg). Generic graph gaps below are not an all-to-all bench queue.', '',
+    lines += ['', 'The issue register owns owner actions and closure criteria: [OPEN_ITEMS.md](OPEN_ITEMS.md#e11). The [completed original-photo probe guide](measurement-images/receiver_input_bridge.svg) is retained for orientation; C20-to-U3.3, TP7 and R28 results are recorded and must not be repeated. Generic graph gaps below are not an all-to-all bench queue.', '',
               '## Original-photo review', '', '| Region | Source | Finding |', '|---|---|---|']
     for r in spec['photo_reviews']:
         sources='; '.join(f'[{Path(p).name}](../{p})' for p in r['photos'])

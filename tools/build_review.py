@@ -99,7 +99,7 @@ $env:PYTHONUTF8 = '1'
 
 The normal build exports/checks the current native file. `-Regenerate` explicitly replaces it from the synchronized MCP template/layout; do not use it against stale sources. [The physical crosswalk](evidence/pin_crosswalk.json) preserves original pad labels. Original photos and raw results are not rewritten when interpretations change.
 
-[PR #1](https://github.com/kerby2000/PetSafe-PCB/pull/1) remains the independent-review entry point.
+[Original architect review: PR #1](https://github.com/kerby2000/PetSafe-PCB/pull/1) is merged. Later corrections are reviewed in follow-up pull requests.
 '''
 (R/'README.md').write_text(readme,encoding='utf-8',newline='\n')
 (R/'index.html').write_text(page,encoding='utf-8',newline='\n')
