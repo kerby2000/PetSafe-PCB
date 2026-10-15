@@ -289,14 +289,14 @@
       "meaning": "Missing independent support in this encoded corpus; not proof of a board error or a measurement request."
     }
   ],
-  "supported_net_groups": 80,
+  "supported_net_groups": 77,
   "date": "2026-10-15",
-  "revision": "v0.9.47",
+  "revision": "v0.9.48",
   "result": "PASS_WITH_EVIDENCE_GAPS",
   "source_record": "evidence/physical_evidence_review_20261015.json",
-  "direct_observations": 263,
+  "direct_observations": 269,
   "separation_observations": 36,
-  "modeled_nets": 85,
+  "modeled_nets": 82,
   "joins": [
     {
       "pair": [
@@ -801,6 +801,60 @@
       "source": "evidence/receiver_input_results_20261015.json#confirmed_pairs",
       "basis": "E11 owner follow-up: corrected 1.023 Mohm to U3.3, 998 kohm to TP7, 1.5 ohm to R28 right; all parts fitted, power-off requested; lead resistance/stability not supplied.",
       "kind": "meter"
+    },
+    {
+      "pair": [
+        "U3.3",
+        "VREF.1"
+      ],
+      "source": "evidence/receiver_connections_v0948.json#confirmed_pairs",
+      "basis": "Exact physical endpoints reported or drawn by the owner. No numeric resistance supplied for these new joins; earlier exclusions and readings remain independent.",
+      "kind": "owner_report_and_annotated_photo"
+    },
+    {
+      "pair": [
+        "C20.1",
+        "R42.2"
+      ],
+      "source": "evidence/receiver_connections_v0948.json#confirmed_pairs",
+      "basis": "Exact physical endpoints reported or drawn by the owner. No numeric resistance supplied for these new joins; earlier exclusions and readings remain independent.",
+      "kind": "owner_report_and_annotated_photo"
+    },
+    {
+      "pair": [
+        "C19.1",
+        "R28.2"
+      ],
+      "source": "evidence/receiver_connections_v0948.json#confirmed_pairs",
+      "basis": "Exact physical endpoints reported or drawn by the owner. No numeric resistance supplied for these new joins; earlier exclusions and readings remain independent.",
+      "kind": "owner_report_and_annotated_photo"
+    },
+    {
+      "pair": [
+        "C19.1",
+        "C20.2"
+      ],
+      "source": "evidence/receiver_connections_v0948.json#confirmed_pairs",
+      "basis": "Exact physical endpoints reported or drawn by the owner. No numeric resistance supplied for these new joins; earlier exclusions and readings remain independent.",
+      "kind": "owner_report_and_annotated_photo"
+    },
+    {
+      "pair": [
+        "C19.2",
+        "R29.2"
+      ],
+      "source": "evidence/receiver_connections_v0948.json#confirmed_pairs",
+      "basis": "Exact physical endpoints reported or drawn by the owner. No numeric resistance supplied for these new joins; earlier exclusions and readings remain independent.",
+      "kind": "owner_report_and_annotated_photo"
+    },
+    {
+      "pair": [
+        "TP7.1",
+        "R28.1"
+      ],
+      "source": "evidence/receiver_connections_v0948.json#confirmed_pairs",
+      "basis": "Exact physical endpoints reported or drawn by the owner. No numeric resistance supplied for these new joins; earlier exclusions and readings remain independent.",
+      "kind": "owner_report_and_annotated_photo"
     },
     {
       "pair": [
@@ -3007,7 +3061,7 @@
         "photos/originals/IMG_2429.jpg",
         "photos/originals/IMG_2434.jpg"
       ],
-      "finding": "Feedback/DNP local copper remains corroborated. Owner E11 follow-up now separates D2.R/C20.2/R28.2 from U3.3. At that review C19.1-U3.3 and C20.1-GND remained unverified; subsequent RX-1/RX-2 reject both and supersede those inherited joins."
+      "finding": "Original-photo-only assessment before the new owner annotation (see current decisions above): Feedback/DNP local copper remains corroborated. Owner E11 follow-up now separates D2.R/C20.2/R28.2 from U3.3. At that review C19.1-U3.3 and C20.1-GND remained unverified; subsequent RX-1/RX-2 reject both and supersede those inherited joins."
     },
     {
       "region": "RF supply/driver",
@@ -3056,7 +3110,7 @@
         "photos/originals/IMG_2434.jpg",
         "photos/originals/IMG_2429.jpg"
       ],
-      "finding": "C17 lower and R21 right join C24 upper/U3.8 visibly. R20.2/TP5 supply continuation remains hidden. R18 upper trace disappears under Q7; do not upgrade it to direct copper proof. C19 lower-to-U3.3 and C20 upper-to-GND remain unproved."
+      "finding": "Original-photo-only assessment before the new owner annotation (see current decisions above): C17 lower and R21 right join C24 upper/U3.8 visibly. R20.2/TP5 supply continuation remains hidden. R18 upper trace disappears under Q7; do not upgrade it to direct copper proof. C19 lower-to-U3.3 and C20 upper-to-GND remain unproved."
     },
     {
       "region": "Five numbered rear midpoint lands",
@@ -3086,7 +3140,7 @@
         "photos/originals/IMG_2441.jpg",
         "photos/user_updates/D2_user_pad_labels_20261009.png"
       ],
-      "finding": "U3 pin1 dot confirms lower pins 1/2/3/4 from left. Pin3 has no exposed trace identifying an external feed; its continuation is obscured under/along the package. C19 lower and C20 upper destinations cannot be followed continuously from the front; the rear original supplies no uniquely traceable alternate route. TP7/R28/R29 visible local routes and the completed C20 measurements do not resolve U3.3. C24 lower-to-R22 ground end is continuous; C30/C31 inner ends share a visible local neck, but its ground bridge remains unproved. No new electrical correction is justified."
+      "finding": "Original-photo-only assessment before the new owner annotation (see current decisions above): U3 pin1 dot confirms lower pins 1/2/3/4 from left. Pin3 has no exposed trace identifying an external feed; its continuation is obscured under/along the package. C19 lower and C20 upper destinations cannot be followed continuously from the front; the rear original supplies no uniquely traceable alternate route. TP7/R28/R29 visible local routes and the completed C20 measurements do not resolve U3.3. C24 lower-to-R22 ground end is continuous; C30/C31 inner ends share a visible local neck, but its ground bridge remains unproved. No new electrical correction is justified."
     },
     {
       "region": "R10 and U1 empty-option ground bridges",
@@ -3096,6 +3150,13 @@
         "photos/originals/IMG_2430.jpg"
       ],
       "finding": "Supported: R10.2 reaches the unique adjacent V116 ground via. R2.1/C4.1 share continuous exposed copper with U1 native2, distinct from native3 enable. Both close evidence gaps on existing GND membership; no topology, device role, value or population changes."
+    },
+    {
+      "region": "Receiver destinations / owner annotation and explicit clarification",
+      "photos": [
+        "evidence/owner_receiver_connections_20261015.png"
+      ],
+      "finding": "New evidence establishes U3.3-VREF, C20 upper-R42 lower/D3.S and C19 lower-C20 lower/R28 right/D2.R. Existing R29 right-C19 upper/GND and TP7-R28 left remain. Original numerical results are unchanged."
     }
   ],
   "device_qualifications": [
@@ -3167,14 +3228,15 @@
       ]
     },
     {
-      "area": "E11 / receiver signal and DC bias: conditional analysis, not recovered wiring",
-      "assessment": "SGMICRO identifies U3 pin3 as amplifier-A non-inverting input and pin5 as the separate amplifier-B non-inverting input; its typical input bias current is 0.5 pA. VREF on pin5 is therefore not an internal reference connection to pin3. In the current external topology, DC opens C21/C22/C23 and the empty R47/C42 footprints. R26 (120 kohm) feeds U3.1 back to U3.2; the R48 (5.6 kohm)-R25 (1.2 kohm) branch stops at open C23. This network cannot supply the missing external DC reference to U3.3. Conditional on powered linear operation and an externally defined pin3 voltage, stage A tends to unity DC gain, not 1+120k/5.6k. The AC transfer remains conditional on the unknown input route and starred capacitor choices. Separately, the established D2_C20-R28(1 Mohm)-TP7/R29(15 kohm)-GND path provides a nominal 1.015-Mohm resistive return if the PIC RA1 pin is high impedance and other fitted paths are neglected. This does not identify the U3.3 route or derive a new resistor from two meter readings. Two unresolved possibilities suffice: (1) U3.3 has a buried join to TP7/RA1, putting the existing R28 between it and D2_C20; this is compatible with the high-resistance exclusions but unproved (RX-3 deferred). (2) U3.3 has a different buried signal/bias feed; the meter sees the fitted network through component paths. C19.1 and C20.1 remain independently unknown in both cases. Neither is drawn as an alternative circuit, and no PIC ADC/output function is asserted.",
+      "area": "E11 / receiver reference and coupling: current copper versus function",
+      "assessment": "The latest owner report establishes an external VREF connection to U3 pin3, in addition to the already established pin5/VREF connection. It does not imply an internal connection between the two amplifier inputs. C19 lower joins C20 lower/D2.R/R28 right; C19 upper is GND. C20 upper joins R42 lower/D3.S. Thus C19 shunts the D2_C20 node to ground, while C20 couples that node to the R42/D3 junction; they are not parallel capacitors. At DC, C21/C22/C23 open and DNP R47/C42 remain absent. R26 (120 kohm) supplies negative feedback to U3.2; the R48 (5.6 kohm)-R25 (1.2 kohm) branch terminates through C23. Under powered linear operation the first amplifier can follow VREF at DC; this conditional circuit interpretation does not establish the dynamic transfer or PIC function. The existing R28 (1 Mohm)/R29 (15 kohm) path remains a conditional resistive return if RA1 is high impedance. No new resistor or capacitor value is inferred. RX-3 remains deferred, not measured. Prior alternatives for an unknown U3.3 feed are superseded by the owner VREF report.",
       "sources": [
         "https://www.sg-micro.com/rect/assets/537cce2c-8022-4ea6-97f4-6524851a35e8/SGM8541_SGM8542_SGM8544.pdf",
         "docs/datasheets/SGM8542.pdf",
         "evidence/receiver_input_results_20261015.json",
         "photos/originals/IMG_2429.jpg",
-        "photos/originals/IMG_2434.jpg"
+        "photos/originals/IMG_2434.jpg",
+        "evidence/receiver_connections_v0948.json"
       ]
     }
   ],
@@ -3186,18 +3248,18 @@
     },
     {
       "area": "E11 / U3.3 destination",
-      "assessment": "Undetermined. In originals IMG_2429/2434, the U3 pin-1 dot is at the lower-left: bottom contacts are 1,2,3,4 left-to-right. Pin3 is the third bottom contact, between the feedback input and supply-return pin. Its exposed solder/land ends at the package edge; no continuous external neck to an independently identified via or component is visible. Rear IMG_2441 supplies no unique matching destination. No via-ID report names this terminal. The previously reported C20.2-to-U3.3 and RX-1 C19.1-to-U3.3 readings are both 1.023 Mohm, not copper.",
-      "action": "Keep RX_A_PLUS = U3.3 only and its two receiver ERC findings. No intentional-NC claim. RX-3 remains unmeasured and deferred; owner action: none."
+      "assessment": "Resolved by new owner report and annotated photo: U3 pin3 (third lower contact from the pin1 dot) joins printed VREF. The earlier C19.1/C20.2-to-U3.3 high-resistance readings remain exclusions, not copper links.",
+      "action": "Join U3.3 to VREF. RX-3 stays deferred and unmeasured; no owner action."
     },
     {
       "area": "E11 / C19.1 destination",
-      "assessment": "Undetermined. C19 is the small vertical capacitor below TP7, left of the larger C20 in IMG_2434; model1 is its lower metal end. The short land at that end has no continuously visible onward track or uniquely reachable numbered via in IMG_2434/2429 or rear IMG_2441. Owner V077 supports the opposite/model2 GND end, not a crossing through C19. RX-1 raw 1.023mohm remains interpreted as megaohms; the 1-ohm probe baseline and unreported settling behavior are preserved. A numerically similar C20 reading is not evidence of a C19-C20 junction.",
-      "action": "Keep C19_LOWER = C19.1 only and its isolated-label ERC finding. Actual destination unknown; owner action: none."
+      "assessment": "Resolved by explicit owner clarification: C19 lower/model1 joins R28 right/model2 and C20 lower/model2, hence the established D2.R group. Upper/model2 joins R29 right/model2 on GND. This explains the matching 1.023-Mohm readings from C19/C20 lower to U3.3 without inventing a new resistor.",
+      "action": "Join C19.1 to D2_C20; preserve RX-1 and the 100pF* estimate."
     },
     {
       "area": "E11 / C20.1 destination",
-      "assessment": "Undetermined. C20 is the large vertical capacitor immediately left of D3/D2 in IMG_2434; model1 is its upper metal end. A small exposed land/edge beside the upper termination cannot be followed continuously to another pad or a uniquely identified via. Rear IMG_2441 does not resolve it. Model2/lower is independently D2.R/R28.2; that does not identify the upper side. RX-2 upper-to-printed-GND is 271 kohm against 1-ohm probes, with settling unreported. No raw via record establishes another destination for model1.",
-      "action": "Keep C20_UPPER = C20.1 only and its isolated-label ERC finding. Retain the measured exclusion from GND; owner action: none."
+      "assessment": "Resolved by owner annotation: C20 upper/model1 follows the drawn route to R42 lower/model2 and the existing D3.S junction. R42 is the cropped 122 resistor at the upper-right, distinct from R25 below C23. RX-2 = 271 kohm to GND remains valid. C19 and C20 share only their lower-terminal group, not both terminals.",
+      "action": "Join C20.1 to H_D3_SIGNAL; preserve RX-2 and the 100pF* estimate."
     },
     {
       "area": "E11 / U1 enable",
@@ -3308,7 +3370,8 @@
     "v0.9.46: the initial 1 Mohm C20-U3.3 report is refined to 1.023 Mohm. The inherited D2.R/C20.2/R28.2-to-U3.3 copper join is withdrawn. C19/C20 parallel-200pF rationale is no longer applicable; individual starred estimates remain unchanged.",
     "Topology closure round1: the five rear-midpoint evidence gaps are resolved by individually reconciling the existing V090/095/100/103/107 owner reports with IMG_2442. This upgrades evidence coverage only, not values, device types, or modeled copper. The former approximate front-marker interpretation is not used as proof.",
     "Topology round2 leaves the v0.9.46 electrical partitions unchanged. C24.2 joins grounded R22.1 by visible local copper; C30.2/C31.1 form one local group, whose ground bridge is still unproved. E11 now explicitly includes the missing external signal/DC-bias feed into U3.3; confirming C19 alone cannot close it. RX-1/RX-2 are the only staged new checks.",
-    "RX-1 C19 lower/model1 to U3.3 = 1.023 Mohm (raw 1.023mohm, interpreted as megaohms); RX-2 C20 upper/model1 to printed GND = 271 kohm; shorted probes = 1 ohm. Settling/drift not reported. Both inherited direct joins withdrawn in v0.9.47; replacement destinations remain unknown."
+    "RX-1 C19 lower/model1 to U3.3 = 1.023 Mohm (raw 1.023mohm, interpreted as megaohms); RX-2 C20 upper/model1 to printed GND = 271 kohm; shorted probes = 1 ohm. Settling/drift not reported. Both inherited direct joins withdrawn in v0.9.47; replacement destinations remain unknown.",
+    "v0.9.48: owner VREF report, annotated R42/C20 route and explicit C19/C20 lower common-node clarification supersede only the three unknown destination placeholders from v0.9.47. All measured separations and raw results remain. No reading is pending."
   ],
   "coverage_limit": "A selected independent corpus, not a whole-board certification. Unrepresented source evidence may already resolve generic gaps. No netlist-derived support edges; no component/coil/DNP bridges."
 }

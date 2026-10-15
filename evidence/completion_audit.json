@@ -1,5 +1,5 @@
 {
-  "revision": "v0.9.47",
+  "revision": "v0.9.48",
   "instruments": [
     "LCR meter",
     "multimeter"
@@ -1551,7 +1551,7 @@
       "observed": "SGM8542XS",
       "displayed": "SGM8542XS",
       "marking": "SGM8542XS / 2531C",
-      "value_or_identity": "SGM8542 marking; pin5/VREF and visible feedback retained. C20.2-U3.3 and C19.1-U3.3 both report 1.023 Mohm; neither is direct copper. Pin3 external signal/DC-bias feed remains unresolved.",
+      "value_or_identity": "Owner explicitly reports pin3 connected to printed VREF; pin5/VREF and feedback retained. C19.1/C20.2 remain separate from pin3, consistent with their 1.023-Mohm readings. No new numeric measurement supplied.",
       "footprint": "Package_SO:SOIC-8_3.9x4.9mm_P1.27mm",
       "footprint_confidence": "datasheet/package candidate",
       "footprint_basis": "Existing assignment; see component identity evidence.",
