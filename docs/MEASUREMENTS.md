@@ -71,7 +71,7 @@ The subsequent local checks resolve all three D2 destinations:
 
 | Check | User result | Model interpretation |
 |---|---|---|
-| R -> C20 lower metal end | 1 ohm | D2.R/native2 joins C20.2 on RX_A_PLUS |
+| R -> C20 lower metal end | 1 ohm | D2.R/native2 joins C20.2 on D2_C20; the former RX_A_PLUS assignment is superseded by the v0.9.46 measurements |
 | S -> requested ANT2 terminal | OL | No direct copper join; preserve separate nodes |
 | L -> ANT2 | Directly connected | D2.L/native1 joins ANT2 on H_ANT_B |
 | S -> GND TP | 700 kohm | No direct GND connection established |
@@ -79,7 +79,7 @@ The subsequent local checks resolve all three D2 destinations:
 | S -> R46 lower pad | Clearly connected | D2.S/native3 joins R46.2 on D2_MID |
 | R46 upper pad -> L / ANT2 | Connected | R46.1 joins H_ANT_B |
 
-The user confirms **R46 is unpopulated**. Its pads sit across the probable S-to-L junction, but there is no fitted resistor or jumper between them. Upper=1/lower=2 are model assignments for this empty nonpolar option. This establishes D2's local antenna/receiver connections; it does not identify the exact 4P component, validate package numbering, or confirm the other inferred C20/C19/R28/U3.3 branches. All local/rail tests are recorded in [the D2 evidence record](../evidence/d2_diode_20261009.json); no repeat sweep is needed.
+The user confirms **R46 is unpopulated**. Its pads sit across the probable S-to-L junction, but there is no fitted resistor or jumper between them. Upper=1/lower=2 are model assignments for this empty nonpolar option. This establishes D2's local connections, not the exact 4P identity or package numbering. The later [receiver-input results](../evidence/receiver_input_results_20261015.json) establish D2_C20 = D2.R/C20.2/R28.2 and reject a direct join to U3.3 or TP7. R28.1 remains on TP7/PIC RA1 through the existing 1-Mohm resistor. C19.1-to-U3.3 and C20.1-to-GND remain qualified separately. C19 and C20 are not a verified parallel pair; their individual starred estimates are unchanged. All local/rail tests are recorded in [the D2 evidence record](../evidence/d2_diode_20261009.json); no repeat sweep is needed.
 
 ## Further completed readings and corrections
 
