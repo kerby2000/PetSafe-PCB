@@ -35,7 +35,7 @@ The [full Markdown register](docs/OPEN_ITEMS.md), [HTML checklist](docs/FINISHIN
 | [M01](docs/OPEN_ITEMS.md#m01) | LED footprint and mechanical qualification | Reproduction/package |
 | [E11](docs/OPEN_ITEMS.md#e11) | Inherited copper joins without independent closure | Copper connection; evidence coverage |
 
-TP11/TP17 hidden continuations remain a separately documented reconstruction boundary. E11 receiver split corrected from three readings: C20 lower joins D2.R/R28.2, not U3.3 or TP7 directly. No further bench reading requested for this correction; scope and lifting remain deferred. Package geometry, routing/stackup, external assemblies and firmware remain prerequisites for a working reproduction.
+TP11/TP17 hidden continuations remain a separately documented reconstruction boundary. Next: only RX-1 (C19 lower to U3 pin3) and RX-2 (C20 upper to printed GND), using the two-pair original-photo guide. U3.3 signal/DC-bias feed remains unknown; the completed C20-lower checks are preserved and must not be repeated. Package geometry, routing/stackup, external assemblies and firmware remain prerequisites for a working reproduction.
 
 ## Evidence and rebuild
 

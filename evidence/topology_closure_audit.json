@@ -17,6 +17,7 @@
           "C19.2",
           "C1A.2",
           "C2.2",
+          "C24.2",
           "C25.2",
           "C26.2",
           "C27.2",
@@ -68,12 +69,7 @@
           "C20.1"
         ],
         [
-          "C24.2"
-        ],
-        [
-          "C30.2"
-        ],
-        [
+          "C30.2",
           "C31.1"
         ],
         [
@@ -127,15 +123,7 @@
         ],
         [
           "BATN.1",
-          "C24.2"
-        ],
-        [
-          "BATN.1",
           "C30.2"
-        ],
-        [
-          "BATN.1",
-          "C31.1"
         ],
         [
           "BATN.1",
@@ -343,7 +331,7 @@
   "revision": "v0.9.46",
   "result": "PASS_WITH_EVIDENCE_GAPS",
   "source_record": "evidence/physical_evidence_review_20261015.json",
-  "direct_observations": 259,
+  "direct_observations": 261,
   "separation_observations": 34,
   "modeled_nets": 83,
   "joins": [
@@ -2677,6 +2665,24 @@
       "source": "evidence/via_user_review.json",
       "basis": "Owner V089/094/099/104 ground reports reconciled with the separate upper-left transistor pad/via in each row. Rear IMG_2442 original sites lie around (327,796)/(329,947)/(330,1101)/(332,1248). Unique ordered row and paired-pad neck distinguish these from resistor control vias and midpoint islands. Q3 ground assignment is not extrapolated from these four. Transistor emitter/base roles are not established. Original: photos/originals/IMG_2433.jpg",
       "kind": "owner_via_report_and_photo"
+    },
+    {
+      "pair": [
+        "C24.2",
+        "R22.1"
+      ],
+      "source": "photos/originals/IMG_2434.jpg",
+      "basis": "Round2: C24 LOWER/model2 and R22 RIGHT/model1 have a continuous local copper land around the via between them. Original crop x210..655/y665..925 shows the neck to the capacitor metal and the resistor land; IMG_2429 corroborates it. R22.1-to-GND is already measured in batch2. No jump across U3, either capacitor, or a generalized plane assumption.",
+      "kind": "photo"
+    },
+    {
+      "pair": [
+        "C30.2",
+        "C31.1"
+      ],
+      "source": "photos/originals/IMG_2436.jpg",
+      "basis": "Round2: crystal load-capacitor inward terminals (C30 RIGHT/model2 and C31 LEFT/model1) are joined by the visible T-shaped neck immediately below the crystal, original crop x490..960/y1560..1810. This closes only their local common connection. The common land-to-established-GND bridge is still unproved; neither crystal terminal is bridged.",
+      "kind": "photo"
     }
   ],
   "separations": [
@@ -3071,6 +3077,17 @@
         "photos/originals/IMG_2442.jpg"
       ],
       "finding": "Existing ground reports now paired with original local pad-to-via necks: C27 right, PIC8/PIC19/C32 right, Q9 lower-right, R32 upper, C41 left, and Q11/Q6/Q5/Q4 left. Q3 and unlocated ground branches remain qualified; no assumed device-role edge."
+    },
+    {
+      "region": "Round2 receiver path and remaining local grounds",
+      "photos": [
+        "photos/originals/IMG_2429.jpg",
+        "photos/originals/IMG_2434.jpg",
+        "photos/originals/IMG_2436.jpg",
+        "photos/originals/IMG_2441.jpg",
+        "photos/user_updates/D2_user_pad_labels_20261009.png"
+      ],
+      "finding": "U3 pin1 dot confirms lower pins 1/2/3/4 from left. Pin3 has no exposed trace identifying an external feed; its continuation is obscured under/along the package. C19 lower and C20 upper destinations cannot be followed continuously from the front; the rear original supplies no uniquely traceable alternate route. TP7/R28/R29 visible local routes and the completed C20 measurements do not resolve U3.3. C24 lower-to-R22 ground end is continuous; C30/C31 inner ends share a visible local neck, but its ground bridge remains unproved. No new electrical correction is justified."
     }
   ],
   "device_qualifications": [
@@ -3109,7 +3126,7 @@
     },
     {
       "area": "E08: Q7 and receiver",
-      "assessment": "B65/B66 directly support Q7.L-R19.1 and Q7.R-R19.2. Diode results favor a PNP-like base at L, but do not isolate E/C or maker. Later direct QR-QL=0V is consistent with no forward base-emitter bias at rest; TP5=0.066V and VREF=0V were recorded in the red-blinking state. Earlier R19-to-ground readings must not be subtracted as one simultaneous state. Equal 10 kohm R21/R22 imply half-rail VREF only with negligible loading. Visible feedback around both op-amps is supported; detector/input and enabled behavior remain separate questions. E11 follow-up rejects the former detector/R28-to-U3.3 copper join; C20 and C19 are no longer modeled in parallel. No new transfer-function claim is supported.",
+      "assessment": "B65/B66 directly support Q7.L-R19.1 and Q7.R-R19.2. Diode results favor a PNP-like base at L, but do not isolate E/C or maker. Later direct QR-QL=0V is consistent with no forward base-emitter bias at rest; TP5=0.066V and VREF=0V were recorded in the red-blinking state. Earlier R19-to-ground readings must not be subtracted as one simultaneous state. Equal 10 kohm R21/R22 imply half-rail VREF only with negligible loading. Visible feedback around both op-amps is supported; detector/input and enabled behavior remain separate questions. E11 follow-up rejects the former detector/R28-to-U3.3 copper join; C20 and C19 are no longer modeled in parallel. No new transfer-function claim is supported. After the split, U3.3 has only the qualified C19-to-ground branch in the model. Its actual external signal/DC-return path is unresolved under E11; a capacitor does not establish a DC return. U3.5/VREF remains settled. This is a reconstruction gap, not evidence of a defective board.",
       "sources": [
         "evidence/q7_r19_join_results_20261014.json",
         "evidence/q7_diode_results_20261014.json",
@@ -3150,28 +3167,28 @@
     },
     {
       "area": "E11 / receiver input still hidden",
-      "assessment": "C19 LOWER/model1 to U3 pin3 (third bottom lead from pin1 dot) and C20 UPPER/model1 to GND remain unproved. IMG_2429/2434 and rear IMG_2441 do not expose a continuous route; the C20 lower-end readings prove neither link.",
-      "action": "Physical links genuinely unproved. Keep inherited routes qualified. Smallest distinct future checks would be C19 lower-to-U3.3 and C20 upper-to-GND; not staged or requested in this round."
+      "assessment": "U3.3 currently has only the qualified C19 lower/model1-to-input route and C19 ground return: no external signal or DC-bias feed is represented. IMG_2429/2434, annotated D2 photo, IMG_2441 and the existing via/results records do not identify the hidden continuation. C20 upper/model1-to-GND is independent and unproved. U3.5/VREF is already settled.",
+      "action": "Specific hardware uncertainty. Only RX-1 (C19 lower to U3 pin3) and RX-2 (C20 upper to printed GND) are staged in FINISHING_MEASUREMENTS.html. Even two low readings would not establish the missing U3.3 feed. After results, consider one conditional U3.3-TP7 check if no better physical target emerges; it is NOT an active third test. Never subtract old fitted resistances to invent a component."
     },
     {
       "area": "E11 / U1 enable",
       "assessment": "L2 LEFT/model2-C1 UPPER/model1-U1 upper-left/native1 VIN now has visible support in IMG_2430/2435. Only U1 lower-left/native3 ON/OFF-to-VIN remains hidden under the package.",
-      "action": "Physical link genuinely unproved; retain qualified drawing. A future U1 native3-to-native1 resistance check would discriminate it; no new request."
+      "action": "Round2 bounded review: specific hardware uncertainty; no new direct source was found. Physical link genuinely unproved; retain qualified drawing. A future U1 native3-to-native1 resistance check would discriminate it; no new request."
     },
     {
       "area": "E11 / R18 and receiver supply",
       "assessment": "R18 upper/model2-to-Q7.L remains partly under the Q7 body in IMG_2434. B65 proves Q7.L-R19.1, not R18. R21 right/C17 lower/C24 upper/U3.8 form a visible group; R20.2 and TP5 remain separate evidence groups on H_RX_VDD.",
-      "action": "Physical links genuinely unproved. Exact future discriminating pairs: R18.2-Q7.L, R20.2-C24.1, TP5.1-C24.1. Existing 11.2-kohm and powered voltages are not copper edges. No tests staged."
+      "action": "Round2 bounded review: specific hardware uncertainty; no new direct source was found. Physical links genuinely unproved. Exact future discriminating pairs: R18.2-Q7.L, R20.2-C24.1, TP5.1-C24.1. Existing 11.2-kohm and powered voltages are not copper edges. No tests staged."
     },
     {
       "area": "E11 / battery-divider junction",
       "assessment": "R3 lower/model2, R4 upper/model1 and C28 lower/model1 still lack visible common copper in IMG_2436/2437. R4 lower-to-PIC24 and R3 upper-to-VSYS are separately supported.",
-      "action": "Physical links genuinely unproved; retain the junction as a hypothesis. Future discriminating pairs would be R3.2-R4.1 and R3.2-C28.1, not measurements across either 330-kohm resistor. No request."
+      "action": "Round2 bounded review: specific hardware uncertainty; no new direct source was found. Physical links genuinely unproved; retain the junction as a hypothesis. Future discriminating pairs would be R3.2-R4.1 and R3.2-C28.1, not measurements across either 330-kohm resistor. No request."
     },
     {
       "area": "E11 / VDD fan-out",
       "assessment": "C34.1-U5.1 is locally visible in IMG_2438; its join to printed VDD, and J1.VDD-to-printed VDD, still lack independently selected direct evidence. Do not use the motor pin4 rail or IC pin names as proof.",
-      "action": "Physical links unproved in this corpus. Later discriminate U5.1-VDD TP and J1.VDD-VDD TP if needed. No repeated supply-voltage check or new request."
+      "action": "Round2 bounded review: specific hardware uncertainty; no new direct source was found. Physical links unproved in this corpus. Later discriminate U5.1-VDD TP and J1.VDD-VDD TP if needed. No repeated supply-voltage check or new request."
     },
     {
       "area": "E04 / five rear midpoints - evidence reconciled",
@@ -3180,8 +3197,8 @@
     },
     {
       "area": "E11 / ground fan-out",
-      "assessment": "Each remaining GND group is listed below by physical pad. Exact unresolved links to GND TP: BATN.1; C20 upper/model1; C24 lower/model2; C30.2; C31.1; C39.2; C4.1/R2.1; C42.1/U3.4; D4.2; D5.2; D6.2/J1.GND; printed RF GND pad; Q3.L; R10.2; R43.1; U5.6 and U5.7. These correspond to IMG_2430/2431/2432/2433/2434/2436/2437/2438 and rear IMG_2440/2441/2442/2443. Other named ground groups are now supported by existing owner via reports plus original necks.",
-      "action": "Physical links unproved in the selected corpus, not proof of faults. C20 upper-to-GND remains the receiver-specific priority. For any other branch, the discriminating pair is the listed physical endpoint to printed GND; these are not staged tests or a sweep request. Keep plane/hidden branches qualified and do not infer ground from device pin function."
+      "assessment": "C24 lower/model2 now joins measured-ground R22 right/model1 by continuous local copper (IMG_2434/2429). C30 right/model2 and C31 left/model1 now form one local group (IMG_2436); the group-to-GND bridge remains unproved. Remaining separate candidate ground groups: BATN.1; C20.1; C30.2/C31.1; C39.2; C4.1/R2.1; C42.1/U3.4; D4.2; D5.2; D6.2/J1.GND; GND_RF.1; Q3.L; R10.2; R43.1; U5.6; U5.7. Sources remain IMG_2430/2431/2432/2433/2434/2436/2437/2438 and rear IMG_2440/2441/2442/2443. No plane-wide promotion from a nearby via.",
+      "action": "Specific hardware uncertainties, not demonstrated faults. RX-2 is the only staged ground check. For the remaining local groups, one missing bridge from each listed group to the established ground group remains; the empty C4/R2 option is lower priority. No blanket bench campaign."
     },
     {
       "area": "E06 / accepted reconstruction boundary",
@@ -3200,7 +3217,8 @@
     "C49 present on rear; TP9/R33 unsupported inventory withdrawn; rejected via artifacts do not become physical endpoints.",
     "S1 inferred common rows replaced by measured B38/B39; pressed B41 remains a switch state, not permanent copper.",
     "v0.9.46: the initial 1 Mohm C20-U3.3 report is refined to 1.023 Mohm. The inherited D2.R/C20.2/R28.2-to-U3.3 copper join is withdrawn. C19/C20 parallel-200pF rationale is no longer applicable; individual starred estimates remain unchanged.",
-    "Topology closure round1: the five rear-midpoint evidence gaps are resolved by individually reconciling the existing V090/095/100/103/107 owner reports with IMG_2442. This upgrades evidence coverage only, not values, device types, or modeled copper. The former approximate front-marker interpretation is not used as proof."
+    "Topology closure round1: the five rear-midpoint evidence gaps are resolved by individually reconciling the existing V090/095/100/103/107 owner reports with IMG_2442. This upgrades evidence coverage only, not values, device types, or modeled copper. The former approximate front-marker interpretation is not used as proof.",
+    "Topology round2 leaves the v0.9.46 electrical partitions unchanged. C24.2 joins grounded R22.1 by visible local copper; C30.2/C31.1 form one local group, whose ground bridge is still unproved. E11 now explicitly includes the missing external signal/DC-bias feed into U3.3; confirming C19 alone cannot close it. RX-1/RX-2 are the only staged new checks."
   ],
   "coverage_limit": "A selected independent corpus, not a whole-board certification. Unrepresented source evidence may already resolve generic gaps. No netlist-derived support edges; no component/coil/DNP bridges."
 }

@@ -1,9 +1,9 @@
 {
   "date": "2026-10-15",
   "basis_revision": "v0.9.46",
-  "status": "COMPLETED_RECEIVER_INPUT_SPLIT",
-  "scope": "Three E11 resistance readings recorded; bounded D2/C20/R28 split corrected.",
-  "setup": "No new readings requested. The completed tests requested battery/programmer disconnected and all components fitted.",
+  "status": "STAGED_RECEIVER_INPUT_ROUND2",
+  "scope": "Two distinct unresolved capacitor-side joins; external U3.3 input feed remains open.",
+  "setup": "Battery, programmer and all external supplies disconnected. Check the board is discharged before selecting resistance mode. Leave every component fitted.",
   "photos": [
     {
       "id": "receiver",
@@ -2069,22 +2069,136 @@
           "description": "R28 right metal end nearest C19; model R28.2"
         }
       }
+    },
+    {
+      "id": "receiver-input-round2",
+      "source": "photos/originals/IMG_2434.jpg",
+      "coordinate_space": [
+        1368,
+        1823
+      ],
+      "view_box": [
+        530,
+        700,
+        760,
+        1080
+      ],
+      "title": "RX-1 and RX-2: U3 pin3, C19 lower and C20 upper",
+      "context_points": [
+        "1"
+      ],
+      "points": {
+        "IL": {
+          "xy": [
+            697,
+            1693
+          ],
+          "label": [
+            590,
+            1740
+          ],
+          "description": "C19 LOWER/model1 metal terminal, immediately above the bottom silkscreen line. RX-1 red probe."
+        },
+        "IN": {
+          "xy": [
+            790,
+            978
+          ],
+          "label": [
+            1050,
+            1030
+          ],
+          "description": "U3 native pin3: third LOWER lead from the left. Pin1 is beside the package dot at lower-left. RX-1 black probe."
+        },
+        "CU": {
+          "xy": [
+            875,
+            1453
+          ],
+          "label": [
+            1080,
+            1335
+          ],
+          "description": "C20 UPPER/model1 metal terminal, nearest D3; NOT the lower end used in the completed tests. RX-2 red probe."
+        },
+        "1": {
+          "xy": [
+            635,
+            978
+          ],
+          "label": [
+            575,
+            895
+          ],
+          "description": "Orientation only: U3 pin1 is the first lower lead beside the visible pin1 dot. No reading requested here.",
+          "role": "reference"
+        }
+      }
+    },
+    {
+      "id": "receiver-input-round2-ground",
+      "source": "photos/originals/IMG_2435.jpg",
+      "coordinate_space": [
+        1368,
+        1823
+      ],
+      "view_box": [
+        75,
+        1325,
+        1160,
+        440
+      ],
+      "title": "RX-2 black probe: the printed GND hole beside J3",
+      "reference_for": [
+        "receiver-input-round2"
+      ],
+      "points": {
+        "RG": {
+          "xy": [
+            372,
+            1602
+          ],
+          "label": [
+            650,
+            1635
+          ],
+          "description": "Printed PCB GND test hole beside J3; model GND.1/native TP101.1. RX-2 black probe.",
+          "role": "reference"
+        }
+      }
     }
   ],
-  "tests": [],
-  "interpretation": "The frequency dependence and unspecified equivalent mode prevent treating these as isolated nominal values. The capacitor review separates reference-based replacement choices, conditional candidates and unresolved RF/filter parameters.",
+  "tests": [
+    {
+      "id": "RX-1",
+      "group": "receiver-input-round2",
+      "from": "IL",
+      "to": "IN",
+      "unit": "ohms or OL; steady/drifting",
+      "state": "Unpowered; resistance; all components fitted",
+      "issue": "E11",
+      "purpose": "Confirm or reject C19.1-U3.3; does not identify external input feed"
+    },
+    {
+      "id": "RX-2",
+      "group": "receiver-input-round2",
+      "from": "CU",
+      "to": "RG",
+      "unit": "ohms or OL; steady/drifting",
+      "state": "Unpowered; resistance; all components fitted",
+      "issue": "E11",
+      "purpose": "Confirm or reject C20.1-GND independently of the measured lower terminal"
+    }
+  ],
+  "interpretation": "A stable resistance comparable with shorted probes supports a local join, subject to fitted-board paths. Stable high resistance or OL with good contact rejects it; drifting, intermediate or polarity-dependent readings remain ambiguous. A rejected join does not identify its replacement. Even two confirmed joins do not identify U3 pin3 signal/DC-bias feed.",
   "next_stages": [
     {
-      "stage": "Receiver coupling/filter values",
-      "work": "Select C18/C23/C25 only after this first batch shows whether the method is useful; no all-capacitor sweep yet."
-    },
-    {
-      "stage": "Mechanical fit",
-      "work": "C5 lead pitch and LED pad geometry can be measured without repeating the known body sizes; select exact dimensions only if accessible while fitted."
-    },
-    {
-      "stage": "Device behavior",
-      "work": "RF, PIR, receiver enable and motor/control timing remain queued for the user-deferred scope session; no repeated DC or diode sweep."
+      "status": "CONDITIONAL_NOT_REQUESTED",
+      "pair": [
+        "U3.3",
+        "TP7.1"
+      ],
+      "reason": "Only after RX-1/RX-2 and evidence review, if input feed remains unresolved and no better photo target exists. A low reading would support a relation to the PIC-RA1/TP7 node; high/OL rejects direct membership; intermediate/drifting is ambiguous. No 25-kohm resistor is inferred."
     }
   ],
   "do_not_repeat": [
@@ -3507,8 +3621,8 @@
       "from": "D"
     }
   ],
-  "batch_title": "PetSafe receiver-input split: completed measurements",
-  "instructions": "Completed E11 results: C20 lower to U3 pin 3 = 1.023 Mohm, to TP7 = 998 kohm, and to R28 right = 1.5 ohm. The confirmed D2/C20/R28 group is now separate from U3.3. No new readings requested for this correction.",
+  "batch_title": "Receiver input: two unresolved capacitor connections",
+  "instructions": "RX-1 checks C19 lower to U3 pin3. RX-2 separately checks C20 upper to the printed GND hole. These are new endpoint pairs; do not repeat C20 lower-to-U3/TP7/R28. Markers identify probe contacts, not inferred tracks.",
   "result_summary": "C20 lower: U3.3 = 1.023 Mohm (corrected from 1 Mohm), TP7 = 998 kohm, R28 right = 1.5 ohm. D2/C20/R28 group is separate from U3.3; R28 connects it to TP7 through its existing 1 Mohm.",
   "cancelled_tests": [
     {
@@ -3544,7 +3658,7 @@
       "result": "v0.9.22 user annotated U6A option: single left pad/model L/native U106.1 joins U6 pin5 and the existing input node after R37; upper-right/model R1/native2 joins J3.1 (red PIR wire); lower-right/model R2/native3 joins GND. All three external pads mapped, option remains DNP. User called the input VDD; retain VDD -> R37 (22 ohm) -> H_AUX_IN because the annotation ends at U6 pin5 and prior B28 confirms pin5-pin2, not a bypass across R37. No fitted IC identity or voltage measurement implied."
     }
   ],
-  "batch_id": "receiver-input-split-20261015",
+  "batch_id": "receiver-input-round2-20261015",
   "location_review": {
     "reference": "TP9",
     "status": "REMOVED_UNSUPPORTED_ENTRY",
@@ -3563,7 +3677,8 @@
     "review_evidence": "evidence/options_reorganization_20261009.json"
   },
   "batch_source_sha256": {
-    "photos/originals/IMG_2434.jpg": "2feac8570055753400b337f4cfe8a79256da8f3bcd706e0d972dfd9672b50d0a"
+    "photos/originals/IMG_2434.jpg": "2feac8570055753400b337f4cfe8a79256da8f3bcd706e0d972dfd9672b50d0a",
+    "photos/originals/IMG_2435.jpg": "04f1464e2fceeec695365b25183dc96505034434565d20713f55c5b13b18fac1"
   },
   "candidate_datasheet_note": "S-812C datasheet Rev.7.0_01, page 11, Table 5: pin4 NC; pin5 NC for A/E variants. Electrically open internally; external connection to VIN or VSS is allowed. Pin numbering checked against Figure 5 and the existing physical crosswalk.",
   "u6_annotation": {
@@ -3594,9 +3709,9 @@
     "pending_check": null,
     "model_status": "Applied v0.9.20: pin5-VIN measured 1 ohm; R37 and U6A single-pad local joins from the annotation; pin4 explicitly unused."
   },
-  "next_prompt": "No further reading needed for this correction. C20 upper and the remaining U3 input route are still qualified.",
+  "next_prompt": "Report shorted probes and RX-1/RX-2 in ohms or OL, including settled/drifting behavior.",
   "review_revision": "v0.9.46",
-  "request_probe_baseline": false,
+  "request_probe_baseline": true,
   "q3_decision": "Defer isolated Q3 identification; retain candidate qualification and existing copper. No desoldering or repeat Q3 batch requested.",
   "last_completed_test_ids": [
     "E11-R1",
@@ -3606,21 +3721,26 @@
   "last_result_evidence": "evidence/receiver_input_results_20261015.json",
   "staged_batches": [
     {
-      "id": "function-based-capacitor-review",
-      "status": "NO_BENCH_BATCH",
-      "reason": "Owner requests inference from function and reference circuits; isolate the remaining design-critical constraints before another test."
+      "id": "receiver-input-round2-20261015",
+      "status": "TWO_PAIRS_ONLY",
+      "tests": [
+        "RX-1",
+        "RX-2"
+      ]
     }
   ],
   "setup_steps": [
-    "Completed results shown below; no active bench request.",
-    "R28 remains the original 1 Mohm part; high-resistance paths are not treated as copper.",
-    "Scope work and component lifting remain deferred."
+    "Disconnect all power and check for residual DC voltage; allow capacitors to discharge without shorting them with a tool.",
+    "Select resistance mode. Touch probe tips together and record the baseline.",
+    "RX-1: IL is C19 lower metal end; IN is U3 pin3, third lower lead from the pin1-dot end. The marker 1 is orientation only.",
+    "RX-2: CU is C20 upper metal end; RG is the separate printed GND test hole in the second panel.",
+    "Hold each reading long enough to report settling or drift; give numeric ohms or OL rather than buzzer status."
   ],
   "measurement_sources": [],
   "contact_labels": [
-    "tip 1",
-    "tip 2"
+    "red probe",
+    "black probe"
   ],
-  "active_plan_evidence": null,
-  "review_link": "CAPACITOR_VALUE_REVIEW.html"
+  "active_plan_evidence": "evidence/remaining_work.json",
+  "review_link": null
 }
