@@ -1,7 +1,7 @@
 {
   "date": "2026-10-15",
-  "revision": "v0.9.48",
-  "review_revision": "v0.9.48",
+  "revision": "v0.9.49",
+  "review_revision": "v0.9.49",
   "interpretation": "Every catalog entry is drawn. Hardware connectivity, values and identities are only partially verified. No routed PCB exists.",
   "catalog_entries": 148,
   "physical_pins": 349,
@@ -70,7 +70,7 @@
     "pin_to_pin": 1
   },
   "modeled_nets": 82,
-  "schematic_sha256": "f881b37a5e36e7716e5950199ee7f3944f85017f7badc160e3ac6883494d4328",
+  "schematic_sha256": "3cdb0e3121e3586d3e929da235cf468eb0482a51efcf20b89811814acad789d6",
   "known_identified_ICs_needing_new_symbols": [],
   "complete_symbols_for_selected_candidates": true,
   "available_instruments": [
@@ -625,7 +625,7 @@
         "E10",
         "I01"
       ],
-      "summary": "The autonomous pass closes two ground evidence gaps without changing topology. Three receiver destinations, six nets with specific incomplete evidence groups, and qualified device functions remain; see the existing audit for exact stopping points.",
+      "summary": "Six modeled nets retain specific gaps in independent copper evidence. Device functions, voltage ratings and operating behavior remain qualified. The three receiver destinations are established; see the existing audit for the remaining groups.",
       "next_action": "Owner action: none. No pending readings. RX-3 is deferred and unmeasured; completed RX-1/RX-2 and earlier C20 checks are not repeated."
     },
     {
@@ -685,7 +685,7 @@
     {
       "name": "VREF",
       "board_label": "VREF test point",
-      "path": "TP104, PIC4/RA2/V035/C39, R21.2/V071. U3.5 and R22 D/left/model2 at 1 ohm.",
+      "path": "TP104, PIC4/RA2/V035/C39, R21.2/V071, U3.3 and U3.5. U3.5/R22 D/left/model2 measured 1 ohm; U3.3 joins VREF by the later owner report.",
       "basis": "User-confirmed core plus U3.5/R22 D/left. R48.2 removed: user annotation groups it with R25/R47/C42; R23 branch rejected. PIC21/RB0/V026 explicitly withdrawn; TP16-VREF measured 800 kohm."
     },
     {

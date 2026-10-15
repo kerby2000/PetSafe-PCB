@@ -1,6 +1,6 @@
 # Remaining open items
 
-Current schematic **v0.9.48**. Generated from [the authoritative register](../evidence/remaining_work.json); edit that source, not this view.
+Current schematic **v0.9.49**. Generated from [the authoritative register](../evidence/remaining_work.json); edit that source, not this view.
 
 [Schematic and PCB photographs](../README.md) | [HTML checklist](FINISHING_CHECKLIST.html) | [History and closed findings](history/README.md)
 

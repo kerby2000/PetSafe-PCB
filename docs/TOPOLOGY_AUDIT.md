@@ -1,6 +1,6 @@
 # Physical-evidence closure audit
 
-Generated for **v0.9.48** by `verify_evidence_contracts.py`. Source: [selected independent evidence](../evidence/physical_evidence_review_20261015.json); [machine-readable comparison](../evidence/topology_closure_audit.json).
+Generated for **v0.9.49** by `verify_evidence_contracts.py`. Source: [selected independent evidence](../evidence/physical_evidence_review_20261015.json); [machine-readable comparison](../evidence/topology_closure_audit.json).
 
 **0 supported joins split; 0 measured separations merged; 0 photographed pads missing mappings in the reviewed regions.**
 
