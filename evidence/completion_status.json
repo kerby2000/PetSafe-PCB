@@ -164,8 +164,8 @@
     {
       "id": "E11",
       "area": "Inherited copper joins without independent closure",
-      "gap": "U3.3 external signal/DC-bias feed, C19 lower/model1 onward destination, and C20 upper/model1 onward destination remain unknown. The three are isolated modeled nodes, not intentional NCs. Other hidden relationships remain: U1 native3-VIN; R18.2-Q7.L; R20.2/TP5-C24.1; R3.2/R4.1/C28.1; U5.1 and J1.VDD-to-printed VDD, and twelve remaining candidate ground groups listed in TOPOLOGY_AUDIT.md. Evidence-gap counts do not establish a defective board.",
-      "method": "Retain the two measured separations and all earlier positive/negative evidence and estimates. Keep the three unresolved receiver endpoints explicit; do not infer a C19-C20 join from similar high readings. RX-3 is deferred, not completed. No pending readings. RX-3 (U3 native pin3 to TP7) is deferred by owner request on 2026-10-15; it has not been measured. RX-1/RX-2 and the earlier C20-lower checks are completed and must not be repeated."
+      "gap": "U3.3 signal/DC-bias feed, C19 lower/model1 destination and C20 upper/model1 destination remain unknown; each photo stopping point is recorded in TOPOLOGY_AUDIT.md. These are three separate unresolved nodes, not intentional NCs. Other undetermined bridges: U1 native3-VIN; R18.2-Q7.L; R20.2 and TP5.1 to C24.1/U3.8; R3.2-R4.1-C28.1; U5.1/C34.1 and J1.VDD to printed VDD; twelve candidate ground groups individually listed in the same audit. Six modeled nets have incomplete evidence groups in addition to the three receiver singletons.",
+      "method": "Autonomous pass completed. Preserve the specific unproved bridges and receiver singletons; no new physical destination is established for the three receiver terminals. Retain four receiver ERC findings and the intentional U6A conflict. Device identity/behavior remains separate from copper evidence. Owner action: none. No pending readings. RX-3 is deferred and unmeasured; completed RX-1/RX-2 and earlier C20 checks are not repeated."
     }
   ],
   "items": [
@@ -584,10 +584,10 @@
       "priority": 1,
       "state": "open",
       "category": "Copper connection; evidence coverage",
-      "known": "C20/D2/R28 split is supported by the completed 1.023 Mohm, 998 kohm and 1.5 ohm results. Existing originals and via reports now close LED-control, crystal, PIC24/R4, L2-to-C1, R44/TP4, VSYS/C27/R3, C2-ground and five rear-midpoint coverage gaps. C17/R21/C24/U3.8 receiver supply subgroup is visible. No values or other wiring changed. Selected C27, PIC VSS/C32, Q9/R32/C41 and four tuning-pad ground branches also reconciled with existing owner via reports. Round2 original-photo review closes C24.2-R22.1 and the C30.2-C31.1 local common land; no electrical partition changes. Subsequent owner results: RX-1 C19 lower/model1 to U3.3 = 1.023 Mohm (raw 1.023mohm, interpreted as megaohms); RX-2 C20 upper/model1 to printed GND = 271 kohm; shorted probes = 1 ohm. Settling/drift not reported. Both inherited direct joins withdrawn in v0.9.47; replacement destinations remain unknown. Autonomous finalization independently closes R10.2-GND via V116 and R2.1/C4.1-U1.2 through exposed copper, without changing topology.",
-      "unknown": "U3.3 external signal/DC-bias feed, C19 lower/model1 onward destination, and C20 upper/model1 onward destination remain unknown. The three are isolated modeled nodes, not intentional NCs. Other hidden relationships remain: U1 native3-VIN; R18.2-Q7.L; R20.2/TP5-C24.1; R3.2/R4.1/C28.1; U5.1 and J1.VDD-to-printed VDD, and twelve remaining candidate ground groups listed in TOPOLOGY_AUDIT.md. Evidence-gap counts do not establish a defective board.",
-      "codex_action": "Retain the two measured separations and all earlier positive/negative evidence and estimates. Keep the three unresolved receiver endpoints explicit; do not infer a C19-C20 join from similar high readings. RX-3 is deferred, not completed.",
-      "owner_input": "No pending readings. RX-3 (U3 native pin3 to TP7) is deferred by owner request on 2026-10-15; it has not been measured. RX-1/RX-2 and the earlier C20-lower checks are completed and must not be repeated.",
+      "known": "D2.R/C20.2/R28.2 is separated from U3.3 and TP7 by the completed 1.023-Mohm, 998-kohm and 1.5-ohm results. RX-1 C19.1-to-U3.3 = 1.023 Mohm (raw 1.023mohm); RX-2 C20.1-to-GND = 271 kohm; probes = 1 ohm; settling unreported. All four exclusions remain. The original-photo/via pass additionally supports R10.2-GND via V116 and R2.1/C4.1-U1.L2/native2, without changing wiring. Existing feedback and R28/R29 paths are explained conditionally in the audit; neither provides a recovered input wire. Prior local copper recoveries and the five rear midpoints remain supported.",
+      "unknown": "U3.3 signal/DC-bias feed, C19 lower/model1 destination and C20 upper/model1 destination remain unknown; each photo stopping point is recorded in TOPOLOGY_AUDIT.md. These are three separate unresolved nodes, not intentional NCs. Other undetermined bridges: U1 native3-VIN; R18.2-Q7.L; R20.2 and TP5.1 to C24.1/U3.8; R3.2-R4.1-C28.1; U5.1/C34.1 and J1.VDD to printed VDD; twelve candidate ground groups individually listed in the same audit. Six modeled nets have incomplete evidence groups in addition to the three receiver singletons.",
+      "codex_action": "Autonomous pass completed. Preserve the specific unproved bridges and receiver singletons; no new physical destination is established for the three receiver terminals. Retain four receiver ERC findings and the intentional U6A conflict. Device identity/behavior remains separate from copper evidence.",
+      "owner_input": "Owner action: none. No pending readings. RX-3 is deferred and unmeasured; completed RX-1/RX-2 and earlier C20 checks are not repeated.",
       "closed_when": "The actual U3.3 signal/DC-bias feed and the newly isolated capacitor-terminal destinations have independent evidence, and remaining named copper gaps are supported or specifically qualified. A rejected old join is not a completed circuit.",
       "open_pads": [],
       "nets": [
@@ -612,7 +612,7 @@
         "evidence/finishing_measurements.json",
         "evidence/receiver_input_correction_v0947.json"
       ],
-      "next_action": "Retain the two measured separations and all earlier positive/negative evidence and estimates. Keep the three unresolved receiver endpoints explicit; do not infer a C19-C20 join from similar high readings. RX-3 is deferred, not completed. No pending readings. RX-3 (U3 native pin3 to TP7) is deferred by owner request on 2026-10-15; it has not been measured. RX-1/RX-2 and the earlier C20-lower checks are completed and must not be repeated."
+      "next_action": "Autonomous pass completed. Preserve the specific unproved bridges and receiver singletons; no new physical destination is established for the three receiver terminals. Retain four receiver ERC findings and the intentional U6A conflict. Device identity/behavior remains separate from copper evidence. Owner action: none. No pending readings. RX-3 is deferred and unmeasured; completed RX-1/RX-2 and earlier C20 checks are not repeated."
     }
   ],
   "finish_plan": [
@@ -630,8 +630,8 @@
         "E10",
         "I01"
       ],
-      "summary": "R39 and the D2/C20/R28 separation remain preserved. RX-1/RX-2 withdraw C19.1-U3.3 and C20.1-GND. Three isolated receiver destinations remain unknown, alongside six nets with selected-evidence gaps.",
-      "next_action": "No pending readings. RX-3 (U3 native pin3 to TP7) is deferred by owner request on 2026-10-15; it has not been measured. RX-1/RX-2 and the earlier C20-lower checks are completed and must not be repeated. The U3.3 signal/bias feed and the onward destinations of C19.1 and C20.1 remain unresolved. Deferral supplies no new connection evidence and does not close E11."
+      "summary": "The autonomous pass closes two ground evidence gaps without changing topology. Three receiver destinations, six nets with specific incomplete evidence groups, and qualified device functions remain; see the existing audit for exact stopping points.",
+      "next_action": "Owner action: none. No pending readings. RX-3 is deferred and unmeasured; completed RX-1/RX-2 and earlier C20 checks are not repeated."
     },
     {
       "id": "F2",

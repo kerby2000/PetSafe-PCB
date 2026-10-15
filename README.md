@@ -20,7 +20,7 @@ These mosaics contain original photographic pixels. The rear is **mirrored and a
 
 ## Open items
 
-The [full Markdown register](docs/OPEN_ITEMS.md), [HTML checklist](docs/FINISHING_CHECKLIST.html) and [printable status](output/pdf/PetSafe_completion_status.pdf) are generated from [remaining_work.json](evidence/remaining_work.json).
+The [full Markdown register](docs/OPEN_ITEMS.md) and [HTML checklist](docs/FINISHING_CHECKLIST.html) reflect [remaining_work.json](evidence/remaining_work.json). The [printable PDF](output/pdf/PetSafe_completion_status.pdf) is an offline snapshot and may predate the live register.
 
 | ID | Area | Category |
 |---|---|---|
@@ -35,7 +35,7 @@ The [full Markdown register](docs/OPEN_ITEMS.md), [HTML checklist](docs/FINISHIN
 | [M01](docs/OPEN_ITEMS.md#m01) | LED footprint and mechanical qualification | Reproduction/package |
 | [E11](docs/OPEN_ITEMS.md#e11) | Inherited copper joins without independent closure | Copper connection; evidence coverage |
 
-TP11/TP17 hidden continuations remain a separately documented reconstruction boundary. No pending readings. RX-3 (U3 native pin3 to TP7) is deferred by owner request on 2026-10-15; it has not been measured. RX-1/RX-2 and the earlier C20-lower checks are completed and must not be repeated. Package geometry, routing/stackup, external assemblies and firmware remain prerequisites for a working reproduction.
+TP11/TP17 hidden continuations remain a separately documented reconstruction boundary. Owner action: none. No pending readings. RX-3 is deferred and unmeasured; completed RX-1/RX-2 and earlier C20 checks are not repeated. Package geometry, routing/stackup, external assemblies and firmware remain prerequisites for a working reproduction.
 
 ## Evidence and rebuild
 
