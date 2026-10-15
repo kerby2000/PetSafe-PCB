@@ -75,5 +75,54 @@
     "resistance_ohms": 1,
     "source": "evidence/d2_diode_20261009.json"
   },
-  "qualification": "R28 is the supported resistor path from D2.R/C20.2 to TP7/PIC RA1: its right end measures 1.5 ohm to C20 and its left end already reaches TP7. No new component is inserted. The 1.023 Mohm to U3.3 rejects their direct join but does not identify the complete remaining path. C20 opposite-end ground association remains unverified."
+  "qualification": "R28 is the supported resistor path from D2.R/C20.2 to TP7/PIC RA1: its right end measures 1.5 ohm to C20 and its left end already reaches TP7. No new component is inserted. The 1.023 Mohm to U3.3 rejects their direct join but does not identify the complete remaining path. C20 opposite-end ground association remains unverified.",
+  "round2": {
+    "basis_revision": "v0.9.46",
+    "source": "Owner reply to receiver-input-round2-20261015 in this conversation",
+    "raw_report": "PetSafe Receiver input: two unresolved capacitor connections / v0.9.46\nShorted probes:  1 ohms\nRX-1 red probe IL / black probe IN (Unpowered; resistance; all components fitted): 1.023mohm\nRX-2 red probe CU / black probe RG (Unpowered; resistance; all components fitted): 271kohm",
+    "shorted_probe_ohms": 1,
+    "conditions": "Unpowered; resistance mode; all components fitted, as supplied in the reply.",
+    "discharge_explicitly_confirmed": false,
+    "settling_or_drift": null,
+    "measurements": [
+      {
+        "id": "RX-1",
+        "pair": [
+          "C19.1",
+          "U3.3"
+        ],
+        "physical_endpoints": [
+          "C19 lower metal terminal (IL)",
+          "U3 native pin 3 (IN)"
+        ],
+        "raw_reading": "1.023mohm",
+        "resistance_ohms": 1023000,
+        "unit_interpretation": "Mohm (megaohm), consistent with owner notation and prior 1.023 Mohm reports; raw lower-case text retained."
+      },
+      {
+        "id": "RX-2",
+        "pair": [
+          "C20.1",
+          "GND.1"
+        ],
+        "physical_endpoints": [
+          "C20 upper metal terminal (CU)",
+          "Printed GND test hole (RG)"
+        ],
+        "raw_reading": "271kohm",
+        "resistance_ohms": 271000
+      }
+    ],
+    "rejected_direct_pairs": [
+      [
+        "C19.1",
+        "U3.3"
+      ],
+      [
+        "C20.1",
+        "GND.1"
+      ]
+    ],
+    "interpretation": "Both reported resistances are far above the 1-ohm probe baseline and contradict the assumed direct joins. Withdraw those inherited joins; replacement destinations remain unknown. Settling/contact quality is not independently established. Do not infer a resistance value or a new join from matching/differenced in-circuit readings."
+  }
 }
