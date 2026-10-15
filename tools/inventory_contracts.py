@@ -80,3 +80,13 @@ def with_u2_r5_topology(partitions):
     assert record['after']=={k:result[k] for k in ['VDD','H_RF_VDD','U2_VCC','H_ANT_A']}
     assert len(result)==len(partitions)
     return result
+
+
+def with_r39_output_pullup(partitions):
+    """Original IMG_2425 moves only R39.1 from Q2 base to its single-pad output."""
+    result={name:sorted(pads) for name,pads in partitions.items()}
+    assert result['PIR_BASE']==['Q2.R','R38.2','R39.1']
+    assert result['H_PIR_SIG']==['Q2.S','TP16.1','U4.21']
+    result['PIR_BASE'].remove('R39.1')
+    result['H_PIR_SIG']=sorted(result['H_PIR_SIG']+['R39.1'])
+    return result

@@ -1,7 +1,7 @@
 {
   "date": "2026-10-15",
-  "review_revision": "v0.9.44",
-  "basis_revision": "v0.9.44",
+  "review_revision": "v0.9.45",
+  "basis_revision": "v0.9.45",
   "scope": "Current main-board finishing register. Supported connections and completed measurements are recorded in the current model; resolved issues are archived. Remaining hidden paths, candidate identities, values and operating behavior are listed below.",
   "rails": [
     {
@@ -153,7 +153,7 @@
       ],
       "priority": 2,
       "state": "open",
-      "known": "J3/U7 ordering, U6 external pads and PIC21/TP16/Q2 output routing are established. U6 pin5 is tied to VIN; pin4 is unused. B58 measured 3.3 V at J3.1 with PIR connected; logic VDD was 4.5 V.",
+      "known": "J3/U7 ordering, U6 external pads and PIC21/TP16/Q2 output routing are established. U6 pin5 is tied to VIN; pin4 is unused. B58 measured 3.3 V at J3.1 with PIR connected; logic VDD was 4.5 V. R39.1 joins TP16/Q2.S/PIC21 by continuous copper in original IMG_2425; R39.2 remains VDD. Earlier base-side assignment is withdrawn.",
       "unknown": "Q2 terminal functions, PIR raw-signal behavior and PIC input response remain unverified. The loaded PIR supply is established at 3.3 V in the reported state; transients and other states are not characterized.",
       "next_action": "Local PIR connections and 3.3 V baseline are settled. Keep Q2 identity/pin-role qualification explicit. Defer raw-signal/TP16 response and supply-transient characterization to the later scope session, as requested.",
       "closed_when": "Q2 signal behavior and U6 output are supported by device or operating evidence.",
@@ -168,7 +168,8 @@
       "supporting_evidence": [
         "docs/history/v0.9.30-before-finalization/evidence/remaining_work.json",
         "evidence/r33_withdrawal_v0932.json",
-        "evidence/supply_baseline_results_20261014.json"
+        "evidence/supply_baseline_results_20261014.json",
+        "evidence/r39_endpoint_correction_v0945.json"
       ],
       "owner": "Agent evidence review; targeted owner test only as listed",
       "category": "connectivity/behavior"

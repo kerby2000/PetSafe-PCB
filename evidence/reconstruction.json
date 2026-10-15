@@ -1,6 +1,6 @@
 {
   "board": "100-1339 R03 A",
-  "revision": "v0.9.44",
+  "revision": "v0.9.45",
   "status": "PARTIALLY VERIFIED RECONSTRUCTION; USER MEASUREMENTS, PHOTO TRACES AND QUALIFIED HYPOTHESES",
   "components": [
     {
@@ -675,7 +675,7 @@
       "marking": "01C",
       "population": "populated",
       "sheet": "power",
-      "source": "IMG_2435.jpg",
+      "source": "IMG_2425.jpg;IMG_2435.jpg",
       "pins": [
         "1",
         "2"
@@ -690,10 +690,11 @@
       "v09_evidence": {
         "R39.2": "User V063 joins R37 and R39; photo identifies their lower ends. Withdraw conflicting VDD and GND guesses. Remote feed unknown."
       },
-      "hypothesis": "10k from marking. Model2 joins printed VDD through V063/V064; model1 remains on the inferred Q2 base/R38 node. PIR output TP16/Q2.S to PIC21 is confirmed; transistor pin functions and the R33 branch remain qualified.",
+      "hypothesis": "10k from marking. IMG_2425 shows R39.1 (end nearest TP16) directly joining TP16/Q2.S/PIC21, not Q2.R/R38.2. R39.2 remains on printed VDD through V063/V064. Output pull-up under the candidate NPN interpretation; Q2 terminal functions remain qualified.",
       "via_evidence": "v0.9.6: User confirms V064-V063. R37.1/R39.2 feed junction is regulated board VDD, not motor VDD.",
       "v096_summary": "v0.9.6: User confirms V064-V063. R37.1/R39.2 feed junction is regulated board VDD, not motor VDD.",
-      "current_summary": "10k from marking. Model2 joins printed VDD through V063/V064; model1 remains on the inferred Q2 base/R38 node. PIR output TP16/Q2.S to PIC21 is confirmed; transistor pin functions remain unverified. Unsupported R33 pull-up withdrawn."
+      "current_summary": "10k from marking. IMG_2425 shows R39.1 (end nearest TP16) directly joining TP16/Q2.S/PIC21, not Q2.R/R38.2. R39.2 remains on printed VDD through V063/V064. Output pull-up under the candidate NPN interpretation; Q2 terminal functions remain qualified.",
+      "correction_evidence": "evidence/r39_endpoint_correction_v0945.json"
     },
     {
       "ref": "R40",
@@ -4623,9 +4624,10 @@
       "endpoints": [
         "Q2.S",
         "TP16.1",
-        "U4.21"
+        "U4.21",
+        "R39.1"
       ],
-      "status": "USER_CONFIRMED PIC21-TP16 and local photo Q2.S trace; TP16-VREF measured 800 kohm, no rail tie.",
+      "status": "Owner PIC21/TP16/Q2.S report plus original IMG_2425 R39.1-to-TP16 copper.",
       "original_fragments": [
         "V_Q2_SINGLE"
       ],
@@ -4982,10 +4984,9 @@
       "net": "PIR_BASE",
       "endpoints": [
         "Q2.R",
-        "R38.2",
-        "R39.1"
+        "R38.2"
       ],
-      "status": "HYPOTHESIS / retains visual fragments where listed",
+      "status": "Photo-supported Q2.R to R38.2; R39 base pull-up inference withdrawn in v0.9.45.",
       "original_fragments": []
     },
     {
@@ -5991,17 +5992,6 @@
       ]
     },
     {
-      "net": "PIR_BASE",
-      "a": [
-        351.79,
-        345.44
-      ],
-      "b": [
-        351.79,
-        351.79
-      ]
-    },
-    {
       "net": "H_LED_CTL_B",
       "a": [
         191.77,
@@ -6791,17 +6781,6 @@
       "b": [
         252.73,
         236.22
-      ]
-    },
-    {
-      "net": "VDD",
-      "a": [
-        347.98,
-        359.41
-      ],
-      "b": [
-        351.79,
-        359.41
       ]
     },
     {
@@ -11214,6 +11193,39 @@
         213.36,
         153.67
       ]
+    },
+    {
+      "net": "H_PIR_SIG",
+      "a": [
+        368.3,
+        340.36
+      ],
+      "b": [
+        391.16,
+        340.36
+      ]
+    },
+    {
+      "net": "H_PIR_SIG",
+      "a": [
+        391.16,
+        340.36
+      ],
+      "b": [
+        391.16,
+        351.79
+      ]
+    },
+    {
+      "net": "VDD",
+      "a": [
+        387.35,
+        359.41
+      ],
+      "b": [
+        391.16,
+        359.41
+      ]
     }
   ],
   "pin_positions": {
@@ -12486,11 +12498,11 @@
       345.44
     ],
     "R39.1": [
-      351.79,
+      391.16,
       351.79
     ],
     "R39.2": [
-      351.79,
+      391.16,
       359.41
     ],
     "R32.1": [

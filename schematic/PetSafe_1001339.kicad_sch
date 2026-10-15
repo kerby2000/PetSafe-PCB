@@ -24754,7 +24754,7 @@
 	)
 	(symbol
 		(lib_id "Device:R")
-		(at 351.79 355.6 0)
+		(at 391.16 355.6 0)
 		(unit 1)
 		(body_style 1)
 		(exclude_from_sim no)
@@ -24764,7 +24764,7 @@
 		(dnp no)
 		(uuid "b130d4a0-54b6-46ed-8183-4b4988236525")
 		(property "Reference" "R39"
-			(at 354.33 354.711 0)
+			(at 393.7 354.711 0)
 			(show_name no)
 			(do_not_autoplace no)
 			(effects
@@ -24775,7 +24775,7 @@
 			)
 		)
 		(property "Value" "10k"
-			(at 354.33 356.743 0)
+			(at 393.7 356.743 0)
 			(show_name no)
 			(do_not_autoplace no)
 			(effects
@@ -24786,7 +24786,7 @@
 			)
 		)
 		(property "Footprint" "Resistor_SMD:R_0603_1608Metric"
-			(at 350.012 355.6 90)
+			(at 389.382 355.6 90)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -24797,7 +24797,7 @@
 			)
 		)
 		(property "Datasheet" ""
-			(at 351.79 355.6 0)
+			(at 391.16 355.6 0)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -24808,7 +24808,7 @@
 			)
 		)
 		(property "Description" "Resistor"
-			(at 351.79 355.6 0)
+			(at 391.16 355.6 0)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -24819,7 +24819,7 @@
 			)
 		)
 		(property "ViaEvidence" "v0.9.6: User confirms V064-V063. R37.1/R39.2 feed junction is regulated board VDD, not motor VDD."
-			(at 351.79 355.6 0)
+			(at 391.16 355.6 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -24827,8 +24827,8 @@
 				(hide yes)
 			)
 		)
-		(property "CurrentEvidence" "10k from marking. Model2 joins printed VDD through V063/V064; model1 remains on the inferred Q2 base/R38 node. PIR output TP16/Q2.S to PIC21 is confirmed; transistor pin functions remain unverified. Unsupported R33 pull-up withdrawn."
-			(at 351.79 355.6 0)
+		(property "CurrentEvidence" "10k from marking. IMG_2425 shows R39.1 (end nearest TP16) directly joining TP16/Q2.S/PIC21, not Q2.R/R38.2. R39.2 remains on printed VDD through V063/V064. Output pull-up under the candidate NPN interpretation; Q2 terminal functions remain qualified."
+			(at 391.16 355.6 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -24851,42 +24851,42 @@
 			)
 		)
 		(property "OriginalReference" "R39"
-			(at 351.79 355.6 0)
+			(at 391.16 355.6 0)
 			(effects
 				(font
 					(size 1 1)
 				) hide)
 		)
 		(property "Evidence" "10k from marking. Model2 joins printed VDD through V063/V064; model1 remains on the inferred Q2 base/R38 node. PIR output TP16/Q2.S to PIC21 is confirmed; transistor pin functions remain unverified. Unsupported R33 pull-up withdrawn."
-			(at 351.79 355.6 0)
+			(at 391.16 355.6 0)
 			(effects
 				(font
 					(size 1 1)
 				) hide)
 		)
 		(property "LibraryPolicy" "Unmodified KiCad 10 stock symbol"
-			(at 351.79 355.6 0)
+			(at 391.16 355.6 0)
 			(effects
 				(font
 					(size 1 1)
 				) hide)
 		)
 		(property "FootprintConfidence" "medium - revised family estimate"
-			(at 351.79 355.6 0)
+			(at 391.16 355.6 0)
 			(effects
 				(font
 					(size 1 1)
 				) hide)
 		)
 		(property "FootprintBasis" "User reports R8 approximately 1.6 x 0.77 mm, consistent with 0603 (1608 metric). Repeated fitted resistor family revised using R8 as a scale reference. This individual body has not been measured; earlier 0805 estimate superseded."
-			(at 351.79 355.6 0)
+			(at 391.16 355.6 0)
 			(effects
 				(font
 					(size 1 1)
 				) hide)
 		)
 		(property "PinMapping" "See evidence/pin_crosswalk.json; physical orientation may be provisional"
-			(at 351.79 355.6 0)
+			(at 391.16 355.6 0)
 			(effects
 				(font
 					(size 1 1)
@@ -33354,16 +33354,7 @@
 		)
 		(uuid "853ffa73-53b2-49f9-90fe-20448db33afc")
 	)
-	(wire
-		(pts
-			(xy 351.79 345.44) (xy 351.79 351.79)
-		)
-		(stroke
-			(width 0)
-			(type default)
-		)
-		(uuid "b2d94e0a-376f-4ba4-b489-c70e4b2adb5c")
-	)
+
 	(wire
 		(pts
 			(xy 351.79 345.44) (xy 360.68 345.44)
@@ -34914,16 +34905,7 @@
 		)
 		(uuid "9c9cc840-d0a1-4ec6-bf8d-0507cde04677")
 	)
-	(wire
-		(pts
-			(xy 347.98 359.41) (xy 351.79 359.41)
-		)
-		(stroke
-			(width 0)
-			(type default)
-		)
-		(uuid "570ca389-1480-43a8-99f3-9de3ad7a7099")
-	)
+
 	(wire
 		(pts
 			(xy 419.1 54.61) (xy 419.1 64.77)
@@ -35346,12 +35328,7 @@
 		(color 0 0 0 0)
 		(uuid "056075d1-ef0c-4559-8be4-62f737c0b22b")
 	)
-	(junction
-		(at 351.79 345.44)
-		(diameter 0)
-		(color 0 0 0 0)
-		(uuid "420b1295-67a1-400a-b319-b30c9acb4470")
-	)
+
 	(junction
 		(at 469.9 180.34)
 		(diameter 0)
@@ -36895,7 +36872,7 @@
 		(uuid "bd0fda3e-cb38-4d8a-b159-13875ef9a24b")
 	)
 	(label "VDD"
-		(at 347.98 359.41 0)
+		(at 387.35 359.41 0)
 		(effects
 			(font
 				(size 0.762 0.762)
@@ -36947,8 +36924,60 @@
 	(title_block
 		(title "PetSafe 100-1339 R03 A | single-sheet reconstruction")
 		(date "2026-10-15")
-		(rev "0.9.44")
+		(rev "0.9.45")
 		(company "KiCad 10 libraries + four datasheet symbols | MCP authoring")
 		(comment 1 "44 starred capacitor estimates; antenna reported 500uH; RF weights unverified.")
 	)
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+	(wire
+		(pts
+			(xy 368.3 340.36) (xy 391.16 340.36)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "c494f179-3121-4f21-99e6-7a2866055513")
+	)
+	(wire
+		(pts
+			(xy 391.16 340.36) (xy 391.16 351.79)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "2d523849-2365-4dbb-979b-2803fefdaab4")
+	)
+	(junction
+		(at 368.3 340.36)
+		(diameter 0)
+		(color 0 0 0 0)
+		(uuid "a828d78d-33fa-4415-b254-0055bffa119e")
+	)
+	(wire
+		(pts
+			(xy 391.16 359.41) (xy 387.35 359.41)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "845c84d9-5e12-4b1b-9ac6-f869d95a87c5")
+	)
+
 )

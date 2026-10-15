@@ -1,0 +1,41 @@
+{
+  "revision": "v0.9.45",
+  "baseline_commit": "06e7809163db8660d268cfa20962bd2dddf420a1",
+  "issue": "E07",
+  "photo": "photos/originals/IMG_2425.jpg",
+  "photo_sha256": "8dbfb5bc465138ddbc884c13677737045250d0249b7df5238c9db49ff090eb8b",
+  "finding": "Continuous original copper runs from the R39 end nearest TP16 to TP16 and onward to Q2 single pad. No later contradictory measurement found.",
+  "supersedes": "Inferred R39.1-to-Q2.R/R38.2 base pull-up in v0.9.44.",
+  "move": {
+    "endpoint": "R39.1",
+    "old_net": "PIR_BASE",
+    "new_net": "H_PIR_SIG"
+  },
+  "unchanged": [
+    "R39.2 on VDD",
+    "R39 10k",
+    "All other physical memberships",
+    "Q2 pin crosswalk",
+    "44 starred capacitor candidates",
+    "U6A DNP regulator and retained ERC conflict"
+  ],
+  "supported_pairs": [
+    [
+      "R39.1",
+      "TP16.1"
+    ],
+    [
+      "TP16.1",
+      "Q2.S"
+    ]
+  ],
+  "negative_pairs": [
+    [
+      "R39.1",
+      "Q2.R"
+    ]
+  ],
+  "baseline_build": "PASS: KiCad 10.0.5, 82 partitions, one retained pin_to_pin ERC finding",
+  "reviewed_head_delta": "None: local and remote PR head both equal reviewed baseline",
+  "measurement_requested": false
+}

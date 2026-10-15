@@ -19545,7 +19545,7 @@
 	)
 	(symbol
 		(lib_id "Device:R")
-		(at 351.79 355.6 0)
+		(at 391.16 355.6 0)
 		(unit 1)
 		(body_style 1)
 		(exclude_from_sim no)
@@ -19555,7 +19555,7 @@
 		(dnp no)
 		(uuid "b130d4a0-54b6-46ed-8183-4b4988236525")
 		(property "Reference" "R39"
-			(at 353.822 355.6 90)
+			(at 393.192 355.6 90)
 			(show_name no)
 			(do_not_autoplace no)
 			(effects
@@ -19565,7 +19565,7 @@
 			)
 		)
 		(property "Value" "10k"
-			(at 351.79 355.6 90)
+			(at 391.16 355.6 90)
 			(show_name no)
 			(do_not_autoplace no)
 			(effects
@@ -19575,7 +19575,7 @@
 			)
 		)
 		(property "Footprint" "Resistor_SMD:R_0603_1608Metric"
-			(at 350.012 355.6 90)
+			(at 389.382 355.6 90)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -19586,7 +19586,7 @@
 			)
 		)
 		(property "Datasheet" ""
-			(at 351.79 355.6 0)
+			(at 391.16 355.6 0)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -19597,7 +19597,7 @@
 			)
 		)
 		(property "Description" "Resistor"
-			(at 351.79 355.6 0)
+			(at 391.16 355.6 0)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -19608,7 +19608,7 @@
 			)
 		)
 		(property "ViaEvidence" "v0.9.6: User confirms V064-V063. R37.1/R39.2 feed junction is regulated board VDD, not motor VDD."
-			(at 351.79 355.6 0)
+			(at 391.16 355.6 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -19616,8 +19616,8 @@
 				(hide yes)
 			)
 		)
-		(property "CurrentEvidence" "10k from marking. Model2 joins printed VDD through V063/V064; model1 remains on the inferred Q2 base/R38 node. PIR output TP16/Q2.S to PIC21 is confirmed; transistor pin functions remain unverified. Unsupported R33 pull-up withdrawn."
-			(at 351.79 355.6 0)
+		(property "CurrentEvidence" "10k from marking. IMG_2425 shows R39.1 (end nearest TP16) directly joining TP16/Q2.S/PIC21, not Q2.R/R38.2. R39.2 remains on printed VDD through V063/V064. Output pull-up under the candidate NPN interpretation; Q2 terminal functions remain qualified."
+			(at 391.16 355.6 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -22966,4 +22966,5 @@
 			)
 		)
 	)
+
 )

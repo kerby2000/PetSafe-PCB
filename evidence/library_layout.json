@@ -8540,14 +8540,14 @@
       "legacy": {
         "ref": "R39",
         "actual": "R39",
-        "x": 277,
+        "x": 308,
         "y": 280,
         "unit": 1,
         "lid": "PetSafe_Working:RE_R39",
         "value": "10k",
-        "rx": 279,
+        "rx": 310,
         "ry": 279.3,
-        "vx": 279,
+        "vx": 310,
         "vy": 280.9,
         "just": "left",
         "pins": [
@@ -8577,14 +8577,14 @@
         "reference": "R39",
         "value": "10k",
         "position": {
-          "x": 351.79,
+          "x": 391.16,
           "y": 355.6
         },
         "rotation": 0,
         "includePins": true,
         "footprint": "Resistor_SMD:R_0603_1608Metric",
         "properties": {
-          "CurrentEvidence": "10k from marking. Model2 joins printed VDD through V063/V064; model1 remains on the inferred Q2 base/R38 node. PIR output TP16/Q2.S to PIC21 is confirmed; transistor pin functions and the R33 branch remain qualified."
+          "CurrentEvidence": "10k from marking. IMG_2425 shows R39.1 (end nearest TP16) directly joining TP16/Q2.S/PIC21, not Q2.R/R38.2. R39.2 remains on printed VDD through V063/V064. Output pull-up under the candidate NPN interpretation; Q2 terminal functions remain qualified."
         }
       }
     },
@@ -13617,28 +13617,6 @@
       ]
     },
     {
-      "net": "PIR_BASE",
-      "a": [
-        277,
-        277
-      ],
-      "b": [
-        277,
-        272
-      ]
-    },
-    {
-      "net": "VDD",
-      "a": [
-        277,
-        283
-      ],
-      "b": [
-        274,
-        283
-      ]
-    },
-    {
       "net": "GND",
       "a": [
         290,
@@ -13889,6 +13867,39 @@
       "b": [
         379,
         183
+      ]
+    },
+    {
+      "net": "H_PIR_SIG",
+      "a": [
+        290,
+        268
+      ],
+      "b": [
+        308,
+        268
+      ]
+    },
+    {
+      "net": "H_PIR_SIG",
+      "a": [
+        308,
+        268
+      ],
+      "b": [
+        308,
+        277
+      ]
+    },
+    {
+      "net": "VDD",
+      "a": [
+        308,
+        283
+      ],
+      "b": [
+        305,
+        283
       ]
     }
   ],
@@ -14321,9 +14332,9 @@
       ]
     },
     {
-      "net": "GND",
+      "net": "VDD",
       "p": [
-        274,
+        305,
         283
       ]
     },
@@ -15710,11 +15721,11 @@
       272
     ],
     "R39.1": [
-      277,
+      308,
       277
     ],
     "R39.2": [
-      277,
+      308,
       283
     ],
     "R32.1": [

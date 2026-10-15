@@ -2,13 +2,13 @@
 <export version="E">
   <design>
     <source>C:\Users\lukin\Documents\ChatGPT\PetSafe-PCB\schematic\PetSafe_1001339.kicad_sch</source>
-    <date>2026-10-15T11:16:14</date>
+    <date>2026-10-15T12:53:54</date>
     <tool>Eeschema 10.0.5</tool>
     <sheet number="1" name="/" tstamps="/">
       <title_block>
         <title>PetSafe 100-1339 R03 A | single-sheet reconstruction</title>
         <company>KiCad 10 libraries + four datasheet symbols | MCP authoring</company>
-        <rev>0.9.44</rev>
+        <rev>0.9.45</rev>
         <date>2026-10-15</date>
         <source>PetSafe_1001339.kicad_sch</source>
         <comment number="1" value="44 starred capacitor estimates; antenna reported 500uH; RF weights unverified."/>
@@ -5125,7 +5125,7 @@
       <description>Resistor</description>
       <fields>
         <field name="ViaEvidence">v0.9.6: User confirms V064-V063. R37.1/R39.2 feed junction is regulated board VDD, not motor VDD.</field>
-        <field name="CurrentEvidence">10k from marking. Model2 joins printed VDD through V063/V064; model1 remains on the inferred Q2 base/R38 node. PIR output TP16/Q2.S to PIC21 is confirmed; transistor pin functions remain unverified. Unsupported R33 pull-up withdrawn.</field>
+        <field name="CurrentEvidence">10k from marking. IMG_2425 shows R39.1 (end nearest TP16) directly joining TP16/Q2.S/PIC21, not Q2.R/R38.2. R39.2 remains on printed VDD through V063/V064. Output pull-up under the candidate NPN interpretation; Q2 terminal functions remain qualified.</field>
         <field name="OriginalReference">R39</field>
         <field name="Evidence">10k from marking. Model2 joins printed VDD through V063/V064; model1 remains on the inferred Q2 base/R38 node. PIR output TP16/Q2.S to PIC21 is confirmed; transistor pin functions remain unverified. Unsupported R33 pull-up withdrawn.</field>
         <field name="LibraryPolicy">Unmodified KiCad 10 stock symbol</field>
@@ -5138,7 +5138,7 @@
       </fields>
       <libsource lib="Device" part="R" description="Resistor"/>
       <property name="ViaEvidence" value="v0.9.6: User confirms V064-V063. R37.1/R39.2 feed junction is regulated board VDD, not motor VDD."/>
-      <property name="CurrentEvidence" value="10k from marking. Model2 joins printed VDD through V063/V064; model1 remains on the inferred Q2 base/R38 node. PIR output TP16/Q2.S to PIC21 is confirmed; transistor pin functions remain unverified. Unsupported R33 pull-up withdrawn."/>
+      <property name="CurrentEvidence" value="10k from marking. IMG_2425 shows R39.1 (end nearest TP16) directly joining TP16/Q2.S/PIC21, not Q2.R/R38.2. R39.2 remains on printed VDD through V063/V064. Output pull-up under the candidate NPN interpretation; Q2 terminal functions remain qualified."/>
       <property name="OriginalReference" value="R39"/>
       <property name="Evidence" value="10k from marking. Model2 joins printed VDD through V063/V064; model1 remains on the inferred Q2 base/R38 node. PIR output TP16/Q2.S to PIC21 is confirmed; transistor pin functions remain unverified. Unsupported R33 pull-up withdrawn."/>
       <property name="LibraryPolicy" value="Unmodified KiCad 10 stock symbol"/>
@@ -7481,6 +7481,7 @@
     </net>
     <net code="11" name="/H_PIR_SIG" class="Default">
       <node ref="Q2" pin="3" pinfunction="C_3" pintype="passive"/>
+      <node ref="R39" pin="1" pintype="passive"/>
       <node ref="TP16" pin="1" pinfunction="1_1" pintype="passive"/>
       <node ref="U4" pin="21" pinfunction="RB0_21" pintype="bidirectional"/>
     </net>
@@ -7757,7 +7758,6 @@
     <net code="59" name="Net-(Q2-B)" class="Default">
       <node ref="Q2" pin="1" pinfunction="B_1" pintype="input"/>
       <node ref="R38" pin="2" pintype="passive"/>
-      <node ref="R39" pin="1" pintype="passive"/>
     </net>
     <net code="60" name="Net-(Q3-B)" class="Default">
       <node ref="Q3" pin="1" pinfunction="B_1" pintype="input"/>

@@ -2358,7 +2358,7 @@
       "reference": "R39",
       "value": "10k",
       "position": {
-        "x": 351.79,
+        "x": 391.16,
         "y": 355.6
       },
       "rotation": 0,
@@ -2366,7 +2366,7 @@
       "footprint": "Resistor_SMD:R_0603_1608Metric",
       "properties": {
         "ViaEvidence": "v0.9.6: User confirms V064-V063. R37.1/R39.2 feed junction is regulated board VDD, not motor VDD.",
-        "CurrentEvidence": "10k from marking. Model2 joins printed VDD through V063/V064; model1 remains on the inferred Q2 base/R38 node. PIR output TP16/Q2.S to PIC21 is confirmed; transistor pin functions remain unverified. Unsupported R33 pull-up withdrawn."
+        "CurrentEvidence": "10k from marking. IMG_2425 shows R39.1 (end nearest TP16) directly joining TP16/Q2.S/PIC21, not Q2.R/R38.2. R39.2 remains on printed VDD through V063/V064. Output pull-up under the candidate NPN interpretation; Q2 terminal functions remain qualified."
       }
     },
     {

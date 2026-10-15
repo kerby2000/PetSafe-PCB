@@ -23,7 +23,7 @@ def mm(p):return tuple(rnd(round(v)*1.27) for v in p)
 STAGE.mkdir(parents=True,exist_ok=True)
 layout=json.loads((R/'evidence/library_layout.json').read_text())
 model=json.loads((R/'evidence/reconstruction.json').read_text())
-model.update(revision='v0.9.44',review_date='2026-10-15')
+model.update(revision='v0.9.45',review_date='2026-10-15')
 template=R/'tools/templates/mcp_standard_placements.kicad_sch'
 if not template.exists():
     template.parent.mkdir(parents=True,exist_ok=True)
@@ -429,7 +429,7 @@ for net,edges in adj.items():
 for l in L:
     x,y=l['p'];G.append(expr(f'(label {q(l["net"])} (at {x} {y} 0) (effects (font (size .762 .762)) (justify left bottom)) (uuid {q(uid())}))'))
 tree.extend(G)
-tree.append(expr('(title_block (title "PetSafe 100-1339 R03 A | single-sheet reconstruction") (date "2026-10-15") (rev "0.9.44") (company "KiCad 10 libraries + four datasheet symbols | MCP authoring") (comment 1 "44 starred capacitor estimates; antenna reported 500uH; RF weights unverified."))'))
+tree.append(expr('(title_block (title "PetSafe 100-1339 R03 A | single-sheet reconstruction") (date "2026-10-15") (rev "0.9.45") (company "KiCad 10 libraries + four datasheet symbols | MCP authoring") (comment 1 "44 starred capacitor estimates; antenna reported 500uH; RF weights unverified."))'))
 # Canonical pretty printer supplied by the installed MCP server.
 sys.path.insert(0,str(Path.home()/'Documents/VS.Code.Projects/KiCAD-MCP-Server/python'))
 from utils.sexpr_format import prettify
@@ -449,7 +449,7 @@ out.write_text(prettify(sx.dumps(tree)),encoding='utf-8',newline='\n')
 def wire_key(w):return w['net'],tuple(w['a']),tuple(w['b'])
 prior_order={wire_key(w):i for i,w in enumerate(model.get('geometric_wires',[]))}
 ordered_segments=sorted(segments,key=lambda s:(prior_order.get(s,len(prior_order)),s))
-model.update(revision='v0.9.44',coordinate_units='mm',native_pin_crosswalk=layout['crosswalk'],pin_positions={e:list(p) for e,p in P.items()},
+model.update(revision='v0.9.45',coordinate_units='mm',native_pin_crosswalk=layout['crosswalk'],pin_positions={e:list(p) for e,p in P.items()},
              geometric_wires=[dict(net=n,a=a,b=b) for n,a,b in ordered_segments],library_policy='KiCad 10 stock symbols plus four explicitly authorized MCP-authored datasheet symbols for U1/U5/U6/Q8')
 for c in model['components']:
     entry=next(x for x in layout['catalog'] if x['original_ref']==c['ref'])
