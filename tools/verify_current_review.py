@@ -2,7 +2,7 @@
 from pathlib import Path
 from html.parser import HTMLParser
 from urllib.parse import urlparse, unquote
-import hashlib, json, subprocess
+import hashlib, json, subprocess, math
 from pypdf import PdfReader
 from current_state import current_state, validate_issue_register, read, ROOT
 import xml.etree.ElementTree as ET
@@ -109,6 +109,34 @@ assert cap_review['source_schematic_sha256']==s['schematic_sha256']
 assert cap_review['source_model_sha256']==hashlib.sha256((ROOT/'evidence/reconstruction.json').read_bytes()).hexdigest()
 assert cap_review['electrical_change'] is False and cap_review['individual_values_closed']==[]
 assert all(not r['applied_to_native'] for r in cap_review['components'])
+assert all(r['selection_pf']>0 and r['voltage_rating_v']>0 and r['dielectric'] and r['confidence'] for r in cap_review['components'])
+assert {r['ref'] for r in cap_review['known_capacitors']}=={'C5'}
+assert {r['ref'] for r in cap_review['unpopulated_capacitors']}=={c['ref'] for c in m['components'] if c['kind']=='C' and c['population']=='DNP'}
+assert len(cap_review['components'])+len(cap_review['known_capacitors'])+len(cap_review['unpopulated_capacitors'])==51
+bank=cap_review['antenna_design_example']
+assert bank['status']=='DELIBERATE_DESIGN_SEED_NOT_RECOVERED_VALUES'
+assert bank['assumed_inductance_uh']==500 and bank['target_hz']==134200
+cap_by_ref={c['ref']:c for c in cap_review['components']}
+model_net={ep:n['net'] for n in m['nets'] for ep in n['endpoints']}
+for branch in bank['branches']:
+    # Qualify the ideal-switch equation against the actual traced three-cap network.
+    ca,cg,cs=(branch[k] for k in ['antenna_cap','ground_cap','switched_cap'])
+    midpoint='TUNE_'+str(branch['branch'])+'_MID'
+    assert {model_net[ca+'.1'],model_net[ca+'.2']}=={'H_ANT_B',midpoint}
+    assert {model_net[cg+'.1'],model_net[cg+'.2']}=={'GND',midpoint}
+    assert {model_net[cs+'.1'],model_net[cs+'.2']}=={'TUNE_'+str(branch['branch'])+'_SW',midpoint}
+    assert model_net[branch['switch']+'.S']=='TUNE_'+str(branch['branch'])+'_SW'
+    assert model_net[branch['switch']+'.L']=='GND'
+    for ref,key in [(ca,'antenna_pf'),(cg,'ground_pf'),(cs,'switched_pf')]: assert cap_by_ref[ref]['selection_pf']==branch[key]
+assert [s['mask'] for s in bank['states']]==list(range(32))
+for state in bank['states']:
+    ceq=0
+    for i,branch in enumerate(bank['branches']):
+        ca=branch['antenna_pf']; grounded=branch['ground_pf']+(branch['switched_pf'] if state['mask']&(1<<i) else 0)
+        ceq+=1/(1/ca+1/grounded)
+    assert math.isclose(ceq,state['equivalent_pf'],rel_tol=1e-12)
+    assert math.isclose(1/(2*math.pi*math.sqrt(500e-6*ceq*1e-12))/1000,state['frequency_khz'],rel_tol=1e-12)
+assert bank['nearest_state']==min(bank['states'],key=lambda s:abs(s['frequency_khz']-134.2))
 cap_results=read('evidence/receiver_capacitance_results_20261015.json')
 assert [t['capacitance_pf'] for t in cap_results['measurements']]==[680,340,240,680,320,240]
 assert all(t['capacitance_model'] is None and t['dissipation_factor'] is None for t in cap_results['measurements'])

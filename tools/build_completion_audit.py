@@ -7,6 +7,7 @@ from current_state import current_state, value_is_known, component_summary
 R=Path(__file__).resolve().parents[1]
 m=json.loads((R/'evidence/reconstruction.json').read_text(encoding='utf-8'))
 status=current_state()
+cap_candidates={c['ref']:c for c in json.loads((R/'evidence/capacitor_value_review_20261015.json').read_text(encoding='utf-8'))['components']}
 queue=json.loads((R/'evidence/finishing_measurements.json').read_text(encoding='utf-8'))
 openpins=Counter(p.rsplit('.',1)[0] for p in m['unresolved_pins'])
 rows=[]
@@ -20,8 +21,9 @@ for c in m['components']:
     elif kind in ['C','L'] and value_is_known(c):
         gap='Individual value recovered: '+c['value']+'; '+c['value_evidence']['source']
     elif kind=='C':
-        gap='Capacitance not recovered; displayed numerical values are estimates'
-        method=['Read sleeve and measure can/lead spacing' if ref=='C5' else 'LCR in-circuit screening provides qualified estimates; owner requests components remain fitted, so isolation is deferred']
+        candidate=cap_candidates[ref]
+        gap='Original capacitance not recovered. Separate design candidate: '+candidate['proposal']+', '+str(candidate['voltage_rating_v'])+' V '+candidate['dielectric']+'. '+candidate['confidence']+'.'
+        method=['See CAPACITOR_VALUE_REVIEW.html for the assumption and network validation. No new individual LCR measurement requested; keep fitted.']
     elif kind=='R':
         gap='Nominal resistance recovered from marking; tolerance and exact maker not established'
     elif kind=='L':

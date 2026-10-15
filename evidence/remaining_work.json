@@ -356,10 +356,10 @@
       ],
       "priority": 2,
       "state": "open",
-      "known": "C5 is 470uF/16V; L1/L2 reported 1.4/2.2uH. Marked resistor values are recorded. B86-B91: C21=680/340/240 pF; C22=680/320/240 pF at 1/10/100 kHz in C/Auto or unsure mode, with D absent. Function review covers all 44 unknown ceramics: 12 supply starting values, four conditional candidates and 28 network-constrained values.",
-      "unknown": "44 original fitted ceramic values remain unconfirmed. Twelve supply replacement values are proposed separately. Crystal loading, receiver response and switched antenna values are not uniquely fixed by footprint or carrier frequency. L1/L2 test conditions and ratings remain unspecified.",
-      "next_action": "Use docs/CAPACITOR_VALUE_REVIEW.html to work from function and primary reference circuits. No broad sweep or repeat Cp/D batch requested. Supply values are provisional replacement choices, not recovered originals. RF and receiver values require linked network constraints; scope and component isolation remain deferred.",
-      "closed_when": "Chosen reconstruction values have a stated basis and appropriate validation; any unverified original nominal, dielectric or rating remains explicitly separated from a provisional equivalent.",
+      "known": "C5 is 470uF/16V; L1/L2 reported 1.4/2.2uH. Marked resistors are recorded. All 44 unknown ceramics now have numerical design candidates: 12 supply, 17 signal/timing and 15 tuning-bank parts, with proposed ratings/dielectrics. PetSafe variant FAQ supports 134.2 kHz. C21/C22 raw auto-mode readings remain preserved.",
+      "unknown": "The 44 original fitted ceramic values remain unconfirmed. Numerical choices are explicit design proposals. The RF bank assumes 500 uH and ideal switches; actual antenna inductance, weights/order, voltage stress and firmware tuning are not established. Receiver/timing choices and L1/L2 ratings also need qualification.",
+      "next_action": "Review the complete numerical table in docs/CAPACITOR_VALUE_REVIEW.html. No new measurements now. Later qualify antenna resonance and voltage, gate timing and receiver response as networks; keep all parts fitted and scope work deferred as requested.",
+      "closed_when": "Candidate choices are validated for the intended reconstruction; original-value and original-rating claims remain separate unless independently established.",
       "open_pads": [],
       "nets": [],
       "supporting_evidence": [
@@ -427,7 +427,7 @@
       "issues": [
         "V01"
       ],
-      "summary": "All 44 unknown ceramics classified: 12 supply starting values, four conditional crystal/feedback candidates and 28 network-constrained values.",
+      "summary": "All 44 unknown ceramics have numerical design candidates, ratings and dielectrics: 12 supply, 17 signal/timing and 15 RF-bank seeds. Validation remains; no broad measurement batch is active.",
       "next_action": "Review the function-based candidate table. No new bench batch now; prioritize shared filter parameters and antenna behavior over 44 individual readings."
     },
     {
