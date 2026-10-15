@@ -1,7 +1,7 @@
 {
   "date": "2026-10-15",
-  "review_revision": "v0.9.43",
-  "basis_revision": "v0.9.43",
+  "review_revision": "v0.9.44",
+  "basis_revision": "v0.9.44",
   "scope": "Current main-board finishing register. Supported connections and completed measurements are recorded in the current model; resolved issues are archived. Remaining hidden paths, candidate identities, values and operating behavior are listed below.",
   "rails": [
     {
@@ -110,7 +110,7 @@
       ],
       "priority": 1,
       "state": "open",
-      "known": "PIC-to-control resistors and local tuning midpoints are mapped. B44/B45 midpoint-to-antenna DC readings are OL. B52 C11 outer end to ANT2 = 1.4 ohm; photo-shared outer pads of C14/C29/C44/C47 now join ANT2. Rear capacitor returns remain GND. ANT1-ANT2 is about 5 ohm with antenna fitted. The mistaken 414 kohm N-B report was corrected to B-G. Q3 L-S latest 0.48 V, L-R 2.3 V; all other diode directions OL.",
+      "known": "PIC-to-control resistors and local tuning midpoints are mapped. B44/B45 midpoint-to-antenna DC readings are OL. B52 C11 outer end to ANT2 = 1.4 ohm; photo-shared outer pads of C14/C29/C44/C47 now join ANT2. Rear capacitor returns remain GND. ANT1-ANT2 is about 5 ohm with antenna fitted. The mistaken 414 kohm N-B report was corrected to B-G. Q3 L-S latest 0.48 V, L-R 2.3 V; all other diode directions OL. Antenna inductance now reported as 500 uH; test conditions not specified.",
       "unknown": "The drawn PNP B=R/E=L/C=S candidate is still not confirmed by in-circuit junction readings. Capacitor values and actual switching/resonance behavior remain unknown. The front capacitor-bank antenna connection is now established.",
       "next_action": "No more antenna continuity sweep. Leave Q3 fitted as requested. Agent reviews candidate device roles against the corrected topology; isolate-device identification is deferred. RF operating checks follow only after values and suitable instrumentation are addressed.",
       "closed_when": "Tuning device pin roles and switched RF behavior are supported; outer ANT2 path is already resolved.",
@@ -356,8 +356,8 @@
       ],
       "priority": 2,
       "state": "open",
-      "known": "C5 is 470uF/16V; L1/L2 reported 1.4/2.2uH. Marked resistors are recorded. All 44 unknown ceramics now have numerical design candidates: 12 supply, 17 signal/timing and 15 tuning-bank parts, with proposed ratings/dielectrics. PetSafe variant FAQ supports 134.2 kHz. C21/C22 raw auto-mode readings remain preserved.",
-      "unknown": "The 44 original fitted ceramic values remain unconfirmed. Numerical choices are explicit design proposals. The RF bank assumes 500 uH and ideal switches; actual antenna inductance, weights/order, voltage stress and firmware tuning are not established. Receiver/timing choices and L1/L2 ratings also need qualification.",
+      "known": "C5 is 470uF/16V; L1/L2 reported 1.4/2.2uH. Marked resistors are recorded. All 44 unknown ceramics now have numerical design candidates: 12 supply, 17 signal/timing and 15 tuning-bank parts, with proposed ratings/dielectrics. PetSafe variant FAQ supports 134.2 kHz. C21/C22 raw auto-mode readings remain preserved. Native v0.9.44 now displays all 44 estimates with asterisks. The owner reports antenna inductance of 500 uH; test conditions are unspecified.",
+      "unknown": "The 44 original fitted ceramic values remain unconfirmed. Numerical choices are explicit design proposals. The RF bank uses the reported 500 uH and assumes ideal switches. Inductance test conditions, weights/order, voltage stress and firmware tuning remain unverified. Receiver/timing choices and L1/L2 ratings also need qualification.",
       "next_action": "Review the complete numerical table in docs/CAPACITOR_VALUE_REVIEW.html. No new measurements now. Later qualify antenna resonance and voltage, gate timing and receiver response as networks; keep all parts fitted and scope work deferred as requested.",
       "closed_when": "Candidate choices are validated for the intended reconstruction; original-value and original-rating claims remain separate unless independently established.",
       "open_pads": [],
@@ -366,7 +366,9 @@
         "docs/history/v0.9.30-before-finalization/evidence/remaining_work.json",
         "evidence/receiver_capacitance_test_plan_20261015.json",
         "evidence/receiver_capacitance_results_20261015.json",
-        "evidence/capacitor_value_review_20261015.json"
+        "evidence/capacitor_value_review_20261015.json",
+        "evidence/antenna_inductance_results_20261015.json",
+        "evidence/capacitor_application_v0944.json"
       ],
       "owner": "Agent evidence review; targeted owner test only as listed",
       "category": "values"

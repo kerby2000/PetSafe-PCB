@@ -37,6 +37,8 @@ try {
     if ($LASTEXITCODE) { throw 'Native ERC process failed.' }
     & $Python tools/validate_native.py
     if ($LASTEXITCODE) { throw 'Native connectivity validation failed.' }
+    & $Python tools/verify_capacitor_application.py
+    if ($LASTEXITCODE) { throw 'Capacitor value application validation failed.' }
     & $Python tools/verify_stock_symbols.py
     if ($LASTEXITCODE) { throw 'Library symbol verification failed.' }
     & $Python tools/audit_finalization.py

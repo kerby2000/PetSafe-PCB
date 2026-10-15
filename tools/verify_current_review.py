@@ -107,15 +107,16 @@ assert {r['ref'] for r in cap_review['components']}==set(s['unknown_ceramic_valu
 assert len(cap_review['components'])==44 and len({r['ref'] for r in cap_review['components']})==44
 assert cap_review['source_schematic_sha256']==s['schematic_sha256']
 assert cap_review['source_model_sha256']==hashlib.sha256((ROOT/'evidence/reconstruction.json').read_bytes()).hexdigest()
-assert cap_review['electrical_change'] is False and cap_review['individual_values_closed']==[]
-assert all(not r['applied_to_native'] for r in cap_review['components'])
+assert cap_review['electrical_change'] is True and cap_review['topology_change'] is False and cap_review['individual_values_closed']==[]
+assert all(r['applied_to_native'] and r['native_value']==r['proposal'].replace(' ','')+'*' for r in cap_review['components'])
 assert all(r['selection_pf']>0 and r['voltage_rating_v']>0 and r['dielectric'] and r['confidence'] for r in cap_review['components'])
 assert {r['ref'] for r in cap_review['known_capacitors']}=={'C5'}
 assert {r['ref'] for r in cap_review['unpopulated_capacitors']}=={c['ref'] for c in m['components'] if c['kind']=='C' and c['population']=='DNP'}
 assert len(cap_review['components'])+len(cap_review['known_capacitors'])+len(cap_review['unpopulated_capacitors'])==51
 bank=cap_review['antenna_design_example']
 assert bank['status']=='DELIBERATE_DESIGN_SEED_NOT_RECOVERED_VALUES'
-assert bank['assumed_inductance_uh']==500 and bank['target_hz']==134200
+assert bank['design_inductance_uh']==500 and bank['target_hz']==134200
+assert read(bank['measurement_source'])['inductance_uh']==500
 cap_by_ref={c['ref']:c for c in cap_review['components']}
 model_net={ep:n['net'] for n in m['nets'] for ep in n['endpoints']}
 for branch in bank['branches']:

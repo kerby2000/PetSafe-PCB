@@ -123,7 +123,7 @@
         "y": 52,
         "unit": 1,
         "lid": "PetSafe_Working:RE_C1",
-        "value": "1u?",
+        "value": "1uF*",
         "rx": 46,
         "ry": 51.3,
         "vx": 46,
@@ -154,14 +154,25 @@
       "placement": {
         "symbol": "Device:C",
         "reference": "C1",
-        "value": "1u?",
+        "value": "1uF*",
         "position": {
           "x": 55.88,
           "y": 66.04
         },
         "rotation": 0,
         "includePins": true,
-        "footprint": "Capacitor_SMD:C_1206_3216Metric"
+        "footprint": "Capacitor_SMD:C_1206_3216Metric",
+        "properties": {
+          "NominalEstimate": "1 uF",
+          "ValueStatus": "ESTIMATED - not factory verified",
+          "Voltage": "25 V (proposed)",
+          "Dielectric": "X7R (proposed)",
+          "Tolerance": "10% (proposed)",
+          "ValueBasis": "Provisional engineering selection above candidate minimum; earlier 1-uF guess is plausible, not identified.",
+          "ValueQualification": "Verify effective capacitance, voltage margin and dynamic rail response before qualifying a replacement.",
+          "ValueSource": "evidence/capacitor_value_review_20261015.json",
+          "DesignSeed": "Function-based candidate; circuit validation pending"
+        }
       }
     },
     {
@@ -312,7 +323,7 @@
         "y": 52,
         "unit": 1,
         "lid": "PetSafe_Working:RE_C2",
-        "value": "4.7u?",
+        "value": "4.7uF*",
         "rx": 92,
         "ry": 51.3,
         "vx": 92,
@@ -343,14 +354,25 @@
       "placement": {
         "symbol": "Device:C",
         "reference": "C2",
-        "value": "4.7u?",
+        "value": "4.7uF*",
         "position": {
           "x": 114.3,
           "y": 66.04
         },
         "rotation": 0,
         "includePins": true,
-        "footprint": "Capacitor_SMD:C_1206_3216Metric"
+        "footprint": "Capacitor_SMD:C_1206_3216Metric",
+        "properties": {
+          "NominalEstimate": "4.7 uF",
+          "ValueStatus": "ESTIMATED - not factory verified",
+          "Voltage": "16 V (proposed)",
+          "Dielectric": "X7R (proposed)",
+          "Tolerance": "10% (proposed)",
+          "ValueBasis": "Provisional engineering selection; candidate minimum does not identify the original.",
+          "ValueQualification": "Verify effective capacitance, voltage margin and dynamic rail response before qualifying a replacement.",
+          "ValueSource": "evidence/capacitor_value_review_20261015.json",
+          "DesignSeed": "Function-based candidate; circuit validation pending"
+        }
       }
     },
     {
@@ -1111,7 +1133,7 @@
         "y": 61.99999999999999,
         "unit": 1,
         "lid": "PetSafe_Working:RE_C25",
-        "value": "100n?",
+        "value": "2.2nF*",
         "rx": 255.99999999999997,
         "ry": 61.29999999999999,
         "vx": 255.99999999999997,
@@ -1142,7 +1164,7 @@
       "placement": {
         "symbol": "Device:C",
         "reference": "C25",
-        "value": "?",
+        "value": "2.2nF*",
         "position": {
           "x": 322.58,
           "y": 78.74
@@ -1153,7 +1175,16 @@
         "properties": {
           "ConnectionEvidence": "v0.9.17 user-annotated photo: C25 right pad/model1 -> PIC2/RA0; C26 right pad/model1 -> PIC3/RA1. Left pads/model2 are common, retaining earlier V029-GND evidence. No new numeric resistance or capacitance supplied. C26 joins the existing RA1/R28/R29/TP7 net, separate from RA0 and VREF.",
           "CurrentEvidence": "v0.9.38: B59 C25.1 to TP6.1 = 1.5 ohm unpowered supports PIC2/RA0 on RX_A_FILTER. This joins the existing R27.1/C18.2/TP6 branch; V031/V072 associations are retained. R27 to U3.1, C18 to VREF, and C25 to GND remain component-separated. Firmware role unverified.",
-          "RA0Evidence": "v0.9.38: B59 C25.1 to TP6.1 = 1.5 ohm unpowered supports PIC2/RA0 on RX_A_FILTER. This joins the existing R27.1/C18.2/TP6 branch; V031/V072 associations are retained. R27 to U3.1, C18 to VREF, and C25 to GND remain component-separated. Firmware role unverified."
+          "RA0Evidence": "v0.9.38: B59 C25.1 to TP6.1 = 1.5 ohm unpowered supports PIC2/RA0 on RX_A_FILTER. This joins the existing R27.1/C18.2/TP6 branch; V031/V072 associations are retained. R27 to U3.1, C18 to VREF, and C25 to GND remain component-separated. Firmware role unverified.",
+          "NominalEstimate": "2.2 nF",
+          "ValueStatus": "ESTIMATED - not factory verified",
+          "Voltage": "50 V (proposed)",
+          "Dielectric": "C0G/NP0 (proposed)",
+          "Tolerance": "5% (proposed)",
+          "ValueBasis": "2.2 nF plus C18=1 nF gives 3.2 nF effective shunt if VREF is AC-stiff; R27=10 kohm gives a 4.97-kHz pole.",
+          "ValueQualification": "The 1/2.2-nF split is a chosen design allocation; only total AC loading is constrained by that target. VREF impedance and full receiver response remain unvalidated.",
+          "ValueSource": "evidence/capacitor_value_review_20261015.json",
+          "DesignSeed": "Function-based candidate; circuit validation pending"
         }
       }
     },
@@ -1170,7 +1201,7 @@
         "y": 61.99999999999999,
         "unit": 1,
         "lid": "PetSafe_Working:RE_C26",
-        "value": "100n?",
+        "value": "100nF*",
         "rx": 248.0,
         "ry": 61.29999999999999,
         "vx": 248.0,
@@ -1201,7 +1232,7 @@
       "placement": {
         "symbol": "Device:C",
         "reference": "C26",
-        "value": "?",
+        "value": "100nF*",
         "position": {
           "x": 312.42,
           "y": 78.74
@@ -1210,7 +1241,16 @@
         "includePins": true,
         "footprint": "Capacitor_SMD:C_0805_2012Metric",
         "properties": {
-          "ConnectionEvidence": "v0.9.17 user-annotated photo: C25 right pad/model1 -> PIC2/RA0; C26 right pad/model1 -> PIC3/RA1. Left pads/model2 are common, retaining earlier V029-GND evidence. No new numeric resistance or capacitance supplied. C26 joins the existing RA1/R28/R29/TP7 net, separate from RA0 and VREF."
+          "ConnectionEvidence": "v0.9.17 user-annotated photo: C25 right pad/model1 -> PIC2/RA0; C26 right pad/model1 -> PIC3/RA1. Left pads/model2 are common, retaining earlier V029-GND evidence. No new numeric resistance or capacitance supplied. C26 joins the existing RA1/R28/R29/TP7 net, separate from RA0 and VREF.",
+          "NominalEstimate": "100 nF",
+          "ValueStatus": "ESTIMATED - not factory verified",
+          "Voltage": "16 V (proposed)",
+          "Dielectric": "X7R (proposed)",
+          "Tolerance": "10% (proposed)",
+          "ValueBasis": "100 nF is a bias/filter seed; (R29=15 kohm || R28=1 Mohm) gives about 108 Hz only if opposite nodes are AC-stiff and PIC RA1 is high impedance.",
+          "ValueQualification": "PIC RA1 operating mode and detector loading remain unknown. This conditional corner is not a measured circuit transfer function.",
+          "ValueSource": "evidence/capacitor_value_review_20261015.json",
+          "DesignSeed": "Function-based candidate; circuit validation pending"
         }
       }
     },
@@ -1227,7 +1267,7 @@
         "y": 61.99999999999999,
         "unit": 1,
         "lid": "PetSafe_Working:RE_C39",
-        "value": "100n?",
+        "value": "1uF*",
         "rx": 239.0,
         "ry": 61.29999999999999,
         "vx": 239.0,
@@ -1258,7 +1298,7 @@
       "placement": {
         "symbol": "Device:C",
         "reference": "C39",
-        "value": "?",
+        "value": "1uF*",
         "position": {
           "x": 300.99,
           "y": 78.74
@@ -1267,7 +1307,16 @@
         "includePins": true,
         "footprint": "Capacitor_SMD:C_0805_2012Metric",
         "properties": {
-          "ViaEvidence": "v0.9.9: User checked V035-VREF TP. Prior photo association V035-PIC4/RA2-C39.1 retained; joins the already confirmed RB0/V026/R21.2/V071 VREF node. No voltage or numerical resistance supplied. Other modeled bias branches retain earlier inferred status."
+          "ViaEvidence": "v0.9.9: User checked V035-VREF TP. Prior photo association V035-PIC4/RA2-C39.1 retained; joins the already confirmed RB0/V026/R21.2/V071 VREF node. No voltage or numerical resistance supplied. Other modeled bias branches retain earlier inferred status.",
+          "NominalEstimate": "1 uF",
+          "ValueStatus": "ESTIMATED - not factory verified",
+          "Voltage": "16 V (proposed)",
+          "Dielectric": "X7R (proposed)",
+          "Tolerance": "10% (proposed)",
+          "ValueBasis": "1 uF across the VREF divider gives about 5 ms using R21 || R22 = 5 kohm. Provides an AC reference well below the proposed receiver passband.",
+          "ValueQualification": "Receiver turn-on settling time/firmware timing unknown; 100 nF is an alternative if faster startup is needed.",
+          "ValueSource": "evidence/capacitor_value_review_20261015.json",
+          "DesignSeed": "Function-based candidate; circuit validation pending"
         }
       },
       "via_evidence": "v0.9.9: User checked V035-VREF TP. Prior photo association V035-PIC4/RA2-C39.1 retained; joins the already confirmed RB0/V026/R21.2/V071 VREF node. No voltage or numerical resistance supplied. Other modeled bias branches retain earlier inferred status."
@@ -1339,7 +1388,7 @@
         "y": 88,
         "unit": 1,
         "lid": "PetSafe_Working:RE_C30",
-        "value": "18p?",
+        "value": "18pF*",
         "rx": 166,
         "ry": 87.3,
         "vx": 166,
@@ -1370,14 +1419,25 @@
       "placement": {
         "symbol": "Device:C",
         "reference": "C30",
-        "value": "18p?",
+        "value": "18pF*",
         "position": {
           "x": 302.26,
           "y": 124.46
         },
         "rotation": 0,
         "includePins": true,
-        "footprint": "Capacitor_SMD:C_0805_2012Metric"
+        "footprint": "Capacitor_SMD:C_0805_2012Metric",
+        "properties": {
+          "NominalEstimate": "18 pF",
+          "ValueStatus": "ESTIMATED - not factory verified",
+          "Voltage": "50 V (proposed)",
+          "Dielectric": "C0G/NP0 (proposed)",
+          "Tolerance": "5% (proposed)",
+          "ValueBasis": "18 pF paired with C31=18 pF provides 9 pF of series load plus board/pin stray capacitance for the marked 20-MHz crystal.",
+          "ValueQualification": "Crystal specified CL is unknown. Tune to the actual CL/startup requirement; 15-33 pF remains the exploration range.",
+          "ValueSource": "evidence/capacitor_value_review_20261015.json",
+          "DesignSeed": "Function-based candidate; circuit validation pending"
+        }
       }
     },
     {
@@ -1393,7 +1453,7 @@
         "y": 88,
         "unit": 1,
         "lid": "PetSafe_Working:RE_C31",
-        "value": "18p?",
+        "value": "18pF*",
         "rx": 182,
         "ry": 87.3,
         "vx": 182,
@@ -1424,14 +1484,25 @@
       "placement": {
         "symbol": "Device:C",
         "reference": "C31",
-        "value": "18p?",
+        "value": "18pF*",
         "position": {
           "x": 322.58,
           "y": 124.46
         },
         "rotation": 180,
         "includePins": true,
-        "footprint": "Capacitor_SMD:C_0805_2012Metric"
+        "footprint": "Capacitor_SMD:C_0805_2012Metric",
+        "properties": {
+          "NominalEstimate": "18 pF",
+          "ValueStatus": "ESTIMATED - not factory verified",
+          "Voltage": "50 V (proposed)",
+          "Dielectric": "C0G/NP0 (proposed)",
+          "Tolerance": "5% (proposed)",
+          "ValueBasis": "18 pF paired with C30=18 pF provides 9 pF of series load plus stray capacitance.",
+          "ValueQualification": "Crystal specified CL is unknown; 18 pF is not an identified original value.",
+          "ValueSource": "evidence/capacitor_value_review_20261015.json",
+          "DesignSeed": "Function-based candidate; circuit validation pending"
+        }
       }
     },
     {
@@ -1607,7 +1678,7 @@
         "y": 83,
         "unit": 1,
         "lid": "PetSafe_Working:RE_C28",
-        "value": "100n?",
+        "value": "10nF*",
         "rx": 298,
         "ry": 82.3,
         "vx": 298,
@@ -1638,14 +1709,25 @@
       "placement": {
         "symbol": "Device:C",
         "reference": "C28",
-        "value": "100n?",
+        "value": "10nF*",
         "position": {
           "x": 375.92,
           "y": 105.41
         },
         "rotation": 0,
         "includePins": true,
-        "footprint": "Capacitor_SMD:C_0805_2012Metric"
+        "footprint": "Capacitor_SMD:C_0805_2012Metric",
+        "properties": {
+          "NominalEstimate": "10 nF",
+          "ValueStatus": "ESTIMATED - not factory verified",
+          "Voltage": "25 V (proposed)",
+          "Dielectric": "X7R (proposed)",
+          "Tolerance": "10% (proposed)",
+          "ValueBasis": "10 nF with two 330-kohm divider legs gives 1.65 ms / 96.5 Hz when the lower leg is held low. Small enough for an intermittently sampled battery divider.",
+          "ValueQualification": "R4 returns to a PIC pin, not permanently to GND. Firmware settling time and that pin mode require validation.",
+          "ValueSource": "evidence/capacitor_value_review_20261015.json",
+          "DesignSeed": "Function-based candidate; circuit validation pending"
+        }
       }
     },
     {
@@ -1823,7 +1905,7 @@
         "y": 39,
         "unit": 1,
         "lid": "PetSafe_Working:RE_C33",
-        "value": "1u?",
+        "value": "1uF*",
         "rx": 341,
         "ry": 38.3,
         "vx": 341,
@@ -1854,7 +1936,7 @@
       "placement": {
         "symbol": "Device:C",
         "reference": "C33",
-        "value": "1u?",
+        "value": "1uF*",
         "position": {
           "x": 430.53,
           "y": 49.53
@@ -1863,7 +1945,16 @@
         "includePins": true,
         "footprint": "Capacitor_SMD:C_0805_2012Metric",
         "properties": {
-          "ViaEvidence": "v0.9.9: User corrects raw battery+ versus post-Q1 rail. BATP -> Q1.S (single physical pad/native3, candidate drain); Q1.L/native2 (candidate source) -> U5.4/V011-V014. These are distinct copper nets, connected through Q1. TP14/R43.2/V015 is OUTA/H_MOTOR_A, supported by TP14-U5.8 = 1.5 ohm; the earlier battery-side photo interpretation is withdrawn. Q1.R/native1 is candidate gate at R44.2. Photo S means SINGLE, not MOSFET source."
+          "ViaEvidence": "v0.9.9: User corrects raw battery+ versus post-Q1 rail. BATP -> Q1.S (single physical pad/native3, candidate drain); Q1.L/native2 (candidate source) -> U5.4/V011-V014. These are distinct copper nets, connected through Q1. TP14/R43.2/V015 is OUTA/H_MOTOR_A, supported by TP14-U5.8 = 1.5 ohm; the earlier battery-side photo interpretation is withdrawn. Q1.R/native1 is candidate gate at R44.2. Photo S means SINGLE, not MOSFET source.",
+          "NominalEstimate": "1 uF",
+          "ValueStatus": "ESTIMATED - not factory verified",
+          "Voltage": "25 V (proposed)",
+          "Dielectric": "X7R (proposed)",
+          "Tolerance": "10% (proposed)",
+          "ValueBasis": "Engineering starting value alongside C27; motor transient/ripple validation still required.",
+          "ValueQualification": "Verify effective capacitance, voltage margin and dynamic rail response before qualifying a replacement.",
+          "ValueSource": "evidence/capacitor_value_review_20261015.json",
+          "DesignSeed": "Function-based candidate; circuit validation pending"
         }
       },
       "via_evidence": "v0.9.9: User corrects raw battery+ versus post-Q1 rail. BATP -> Q1.S (single physical pad/native3, candidate drain); Q1.L/native2 (candidate source) -> U5.4/V011-V014. These are distinct copper nets, connected through Q1. TP14/R43.2/V015 is OUTA/H_MOTOR_A, supported by TP14-U5.8 = 1.5 ohm; the earlier battery-side photo interpretation is withdrawn. Q1.R/native1 is candidate gate at R44.2. Photo S means SINGLE, not MOSFET source."
@@ -1881,7 +1972,7 @@
         "y": 54,
         "unit": 1,
         "lid": "PetSafe_Working:RE_C34",
-        "value": "100n?",
+        "value": "100nF*",
         "rx": 332,
         "ry": 53.3,
         "vx": 332,
@@ -1912,14 +2003,25 @@
       "placement": {
         "symbol": "Device:C",
         "reference": "C34",
-        "value": "100n?",
+        "value": "100nF*",
         "position": {
           "x": 419.1,
           "y": 68.58
         },
         "rotation": 0,
         "includePins": true,
-        "footprint": "Capacitor_SMD:C_0805_2012Metric"
+        "footprint": "Capacitor_SMD:C_0805_2012Metric",
+        "properties": {
+          "NominalEstimate": "100 nF",
+          "ValueStatus": "ESTIMATED - not factory verified",
+          "Voltage": "16 V (proposed)",
+          "Dielectric": "X7R (proposed)",
+          "Tolerance": "10% (proposed)",
+          "ValueBasis": "Conventional local bypass starting point; C2 supplies additional rail capacitance.",
+          "ValueQualification": "Verify effective capacitance, voltage margin and dynamic rail response before qualifying a replacement.",
+          "ValueSource": "evidence/capacitor_value_review_20261015.json",
+          "DesignSeed": "Function-based candidate; circuit validation pending"
+        }
       }
     },
     {
@@ -2167,7 +2269,7 @@
         "y": 59,
         "unit": 1,
         "lid": "PetSafe_Working:RE_C35",
-        "value": "100n?",
+        "value": "1nF*",
         "rx": 442,
         "ry": 58.3,
         "vx": 442,
@@ -2198,7 +2300,7 @@
       "placement": {
         "symbol": "Device:C",
         "reference": "C35",
-        "value": "100n?",
+        "value": "1nF*",
         "position": {
           "x": 558.8,
           "y": 74.93
@@ -2208,7 +2310,16 @@
         "footprint": "Capacitor_SMD:C_0805_2012Metric",
         "properties": {
           "ConnectionEvidence": "v0.9.21 user annotated S1 upper-right to C35 upper/model2 (GND via prior V018); lower-right to C35 lower/model1, R40 lower/model2 and R41 left/model2. User explicitly confirms R41 right/model1 reaches J1 VPP/MCLR. Correct physical-to-native switch mapping TL=1, TR=3, BL=2, BR=4. Top-row/bottom-row common pairs remain a tactile-switch hypothesis; released/pressed behavior has not been measured.",
-          "CurrentEvidence": "Unknown capacitance. Model2/upper end is GND/S1 upper-right; model1/lower joins H_BUTTON/R40.2/R41.2/S1 lower-right. Stock switch native pins are 1 for the upper row and 2 for the lower row. R41 opposite end is VPP."
+          "CurrentEvidence": "Unknown capacitance. Model2/upper end is GND/S1 upper-right; model1/lower joins H_BUTTON/R40.2/R41.2/S1 lower-right. Stock switch native pins are 1 for the upper row and 2 for the lower row. R41 opposite end is VPP.",
+          "NominalEstimate": "1 nF",
+          "ValueStatus": "ESTIMATED - not factory verified",
+          "Voltage": "50 V (proposed)",
+          "Dielectric": "C0G/NP0 (proposed)",
+          "Tolerance": "5% (proposed)",
+          "ValueBasis": "1 nF chosen as a small noise filter on the button/MCLR branch. R41=330 ohm gives a local 0.33-us RC, avoiding an assumed large debounce capacitor.",
+          "ValueQualification": "ICSP loading through this branch and R40, reset waveform and button behavior must be checked before replacement qualification. This RC alone does not prove programming compatibility.",
+          "ValueSource": "evidence/capacitor_value_review_20261015.json",
+          "DesignSeed": "Function-based candidate; circuit validation pending"
         }
       }
     },
@@ -2341,7 +2452,7 @@
         "y": 63,
         "unit": 1,
         "lid": "PetSafe_Working:RE_C27",
-        "value": "?",
+        "value": "4.7uF*",
         "rx": 405,
         "ry": 62.3,
         "vx": 405,
@@ -2372,7 +2483,7 @@
       "placement": {
         "symbol": "Device:C",
         "reference": "C27",
-        "value": "?",
+        "value": "4.7uF*",
         "position": {
           "x": 511.81,
           "y": 80.01
@@ -2382,7 +2493,16 @@
         "footprint": "Capacitor_SMD:C_1206_3216Metric",
         "properties": {
           "ViaEvidence": "v0.9.9: User corrects raw battery+ versus post-Q1 rail. BATP -> Q1.S (single physical pad/native3, candidate drain); Q1.L/native2 (candidate source) -> U5.4/V011-V014. These are distinct copper nets, connected through Q1. TP14/R43.2/V015 is OUTA/H_MOTOR_A, supported by TP14-U5.8 = 1.5 ohm; the earlier battery-side photo interpretation is withdrawn. Q1.R/native1 is candidate gate at R44.2. Photo S means SINGLE, not MOSFET source.",
-          "CurrentEvidence": "Motor supply bypass across VSYS (U5 pin4 supply) and GND from user via reports/photo pad selection. VSYS is distinct from the printed VDD logic rail. Capacitance is unknown."
+          "CurrentEvidence": "Motor supply bypass across VSYS (U5 pin4 supply) and GND from user via reports/photo pad selection. VSYS is distinct from the printed VDD logic rail. Capacitance is unknown.",
+          "NominalEstimate": "4.7 uF",
+          "ValueStatus": "ESTIMATED - not factory verified",
+          "Voltage": "25 V (proposed)",
+          "Dielectric": "X7R (proposed)",
+          "Tolerance": "10% (proposed)",
+          "ValueBasis": "Engineering starting value for the larger local reservoir; no motor current/pulse duration bound yet.",
+          "ValueQualification": "Verify effective capacitance, voltage margin and dynamic rail response before qualifying a replacement.",
+          "ValueSource": "evidence/capacitor_value_review_20261015.json",
+          "DesignSeed": "Function-based candidate; circuit validation pending"
         }
       },
       "via_evidence": "v0.9.9: User corrects raw battery+ versus post-Q1 rail. BATP -> Q1.S (single physical pad/native3, candidate drain); Q1.L/native2 (candidate source) -> U5.4/V011-V014. These are distinct copper nets, connected through Q1. TP14/R43.2/V015 is OUTA/H_MOTOR_A, supported by TP14-U5.8 = 1.5 ohm; the earlier battery-side photo interpretation is withdrawn. Q1.R/native1 is candidate gate at R44.2. Photo S means SINGLE, not MOSFET source."
@@ -2812,7 +2932,7 @@
         "y": 141,
         "unit": 1,
         "lid": "PetSafe_Working:RE_C7",
-        "value": "100n?",
+        "value": "100nF*",
         "rx": 152,
         "ry": 140.3,
         "vx": 152,
@@ -2843,7 +2963,7 @@
       "placement": {
         "symbol": "Device:C",
         "reference": "C7",
-        "value": "100n?",
+        "value": "100nF*",
         "position": {
           "x": 190.5,
           "y": 179.07
@@ -2852,7 +2972,16 @@
         "includePins": true,
         "footprint": "Capacitor_SMD:C_0805_2012Metric",
         "properties": {
-          "CurrentEvidence": "Upper/model1 shares U2 pin5 supply at 1.5 ohm (B78); R5 supplies that U2_VCC node from H_RF_VDD. Earlier direct printed VDD association withdrawn by B77. Lower/model2 GND photo/via-supported. Capacitance remains unknown."
+          "CurrentEvidence": "Upper/model1 shares U2 pin5 supply at 1.5 ohm (B78); R5 supplies that U2_VCC node from H_RF_VDD. Earlier direct printed VDD association withdrawn by B77. Lower/model2 GND photo/via-supported. Capacitance remains unknown.",
+          "NominalEstimate": "100 nF",
+          "ValueStatus": "ESTIMATED - not factory verified",
+          "Voltage": "25 V (proposed)",
+          "Dielectric": "X7R (proposed)",
+          "Tolerance": "10% (proposed)",
+          "ValueBasis": "Provisional local bypass; supply filtering also depends on R5 and U2 current. U2 voltage compatibility stays open.",
+          "ValueQualification": "Verify effective capacitance, voltage margin and dynamic rail response before qualifying a replacement.",
+          "ValueSource": "evidence/capacitor_value_review_20261015.json",
+          "DesignSeed": "Function-based candidate; circuit validation pending"
         }
       },
       "via_evidence": "v0.9.2: V118 associated with C7; earlier GND report retained for photo-selected return pad2."
@@ -2870,7 +2999,7 @@
         "y": 181,
         "unit": 1,
         "lid": "PetSafe_Working:RE_C8",
-        "value": "?",
+        "value": "100pF*",
         "rx": 55,
         "ry": 180.3,
         "vx": 55,
@@ -2901,14 +3030,25 @@
       "placement": {
         "symbol": "Device:C",
         "reference": "C8",
-        "value": "?",
+        "value": "100pF*",
         "position": {
           "x": 67.31,
           "y": 229.87
         },
         "rotation": 0,
         "includePins": true,
-        "footprint": "Capacitor_SMD:C_0805_2012Metric"
+        "footprint": "Capacitor_SMD:C_0805_2012Metric",
+        "properties": {
+          "NominalEstimate": "100 pF",
+          "ValueStatus": "ESTIMATED - not factory verified",
+          "Voltage": "50 V (proposed)",
+          "Dielectric": "C0G/NP0 (proposed)",
+          "Tolerance": "5% (proposed)",
+          "ValueBasis": "100 pF with R6=1.2 kohm gives RC=0.12 us, small against a 7.45-us carrier period. A conservative timing seed, not a derived inverter delay.",
+          "ValueQualification": "U2 identity/thresholds, diode path and Q8 non-overlap require later waveforms; no claim this choice prevents shoot-through.",
+          "ValueSource": "evidence/capacitor_value_review_20261015.json",
+          "DesignSeed": "Function-based candidate; circuit validation pending"
+        }
       },
       "via_evidence": "v0.9.2: V112 associated with C8; earlier GND report retained for photo-selected return pad2."
     },
@@ -2925,7 +3065,7 @@
         "y": 156,
         "unit": 1,
         "lid": "PetSafe_Working:RE_C9",
-        "value": "?",
+        "value": "100pF*",
         "rx": 55,
         "ry": 155.3,
         "vx": 55,
@@ -2956,14 +3096,25 @@
       "placement": {
         "symbol": "Device:C",
         "reference": "C9",
-        "value": "?",
+        "value": "100pF*",
         "position": {
           "x": 67.31,
           "y": 198.12
         },
         "rotation": 0,
         "includePins": true,
-        "footprint": "Capacitor_SMD:C_0805_2012Metric"
+        "footprint": "Capacitor_SMD:C_0805_2012Metric",
+        "properties": {
+          "NominalEstimate": "100 pF",
+          "ValueStatus": "ESTIMATED - not factory verified",
+          "Voltage": "50 V (proposed)",
+          "Dielectric": "C0G/NP0 (proposed)",
+          "Tolerance": "5% (proposed)",
+          "ValueBasis": "100 pF with R7=1.8 kohm gives RC=0.18 us. Matched nominal capacitors leave resistor/diode asymmetry to shape the two gate paths.",
+          "ValueQualification": "U2 identity/thresholds, diode path and Q8 non-overlap require later waveforms; no claim this choice prevents shoot-through.",
+          "ValueSource": "evidence/capacitor_value_review_20261015.json",
+          "DesignSeed": "Function-based candidate; circuit validation pending"
+        }
       },
       "via_evidence": "v0.9.2: V119 associated with C9; lower pad2/GND remains photo-model inference, not a new ground measurement."
     },
@@ -3486,7 +3637,7 @@
         "y": 143,
         "unit": 1,
         "lid": "PetSafe_Working:RE_C6",
-        "value": "?",
+        "value": "100nF*",
         "rx": 206,
         "ry": 142.3,
         "vx": 206,
@@ -3517,7 +3668,7 @@
       "placement": {
         "symbol": "Device:C",
         "reference": "C6",
-        "value": "?",
+        "value": "100nF*",
         "position": {
           "x": 259.08,
           "y": 181.61
@@ -3527,7 +3678,16 @@
         "footprint": "Capacitor_SMD:C_1206_3216Metric",
         "properties": {
           "ConnectionEvidence": "v0.9.18: C6 is reconstructed in parallel with C5 from the user proposal and photos IMG_2431/IMG_2432. C6 upper pad/model1 joins the C5-positive supply copper (H_RF_VDD, after L1); lower pad/model2 joins GND. Photo-supported, not a new meter-confirmed connection. C6 capacitance remains unknown. Earlier 400 kohm output exclusion and 10 ohm Q8-supply-path reading are retained; the latter does not independently prove Q8 source wiring.",
-          "CurrentEvidence": "C6 is photo-supported in parallel with C5 across H_RF_VDD/GND, after L1. B37 P-F = 1 ohm supports C6 upper pad/model1 joining Q8.T2/native2; no fresh probe baseline or stability statement supplied. This resolves the prior 10-ohm source-path ambiguity for the net reconstruction, not Q8 identity or operation. C6 capacitance remains unknown."
+          "CurrentEvidence": "C6 is photo-supported in parallel with C5 across H_RF_VDD/GND, after L1. B37 P-F = 1 ohm supports C6 upper pad/model1 joining Q8.T2/native2; no fresh probe baseline or stability statement supplied. This resolves the prior 10-ohm source-path ambiguity for the net reconstruction, not Q8 identity or operation. C6 capacitance remains unknown.",
+          "NominalEstimate": "100 nF",
+          "ValueStatus": "ESTIMATED - not factory verified",
+          "Voltage": "25 V (proposed)",
+          "Dielectric": "X7R (proposed)",
+          "Tolerance": "10% (proposed)",
+          "ValueBasis": "Provisional HF companion; 100 nF to 1 uF is a reasonable design range, not extracted from size.",
+          "ValueQualification": "Verify effective capacitance, voltage margin and dynamic rail response before qualifying a replacement.",
+          "ValueSource": "evidence/capacitor_value_review_20261015.json",
+          "DesignSeed": "Function-based candidate; circuit validation pending"
         }
       }
     },
@@ -4224,7 +4384,7 @@
         "y": 146,
         "unit": 1,
         "lid": "PetSafe_Working:RE_C24",
-        "value": "100n?",
+        "value": "100nF*",
         "rx": 451,
         "ry": 145.3,
         "vx": 451,
@@ -4255,14 +4415,25 @@
       "placement": {
         "symbol": "Device:C",
         "reference": "C24",
-        "value": "100n?",
+        "value": "100nF*",
         "position": {
           "x": 570.23,
           "y": 185.42
         },
         "rotation": 0,
         "includePins": true,
-        "footprint": "Capacitor_SMD:C_0805_2012Metric"
+        "footprint": "Capacitor_SMD:C_0805_2012Metric",
+        "properties": {
+          "NominalEstimate": "100 nF",
+          "ValueStatus": "ESTIMATED - not factory verified",
+          "Voltage": "16 V (proposed)",
+          "Dielectric": "X7R (proposed)",
+          "Tolerance": "10% (proposed)",
+          "ValueBasis": "Provisional HF member of C17/C24. Both are on H_RX_VDD/GND, so a fitted test sees their combined network.",
+          "ValueQualification": "Verify effective capacitance, voltage margin and dynamic rail response before qualifying a replacement.",
+          "ValueSource": "evidence/capacitor_value_review_20261015.json",
+          "DesignSeed": "Function-based candidate; circuit validation pending"
+        }
       }
     },
     {
@@ -4332,7 +4503,7 @@
         "y": 133,
         "unit": 1,
         "lid": "PetSafe_Working:RE_C22",
-        "value": "?",
+        "value": "220pF*",
         "rx": 300,
         "ry": 128.5,
         "vx": 300,
@@ -4363,14 +4534,25 @@
       "placement": {
         "symbol": "Device:C",
         "reference": "C22",
-        "value": "?",
+        "value": "220pF*",
         "position": {
           "x": 381.0,
           "y": 168.91
         },
         "rotation": 270,
         "includePins": true,
-        "footprint": "Capacitor_SMD:C_0805_2012Metric"
+        "footprint": "Capacitor_SMD:C_0805_2012Metric",
+        "properties": {
+          "NominalEstimate": "220 pF",
+          "ValueStatus": "ESTIMATED - not factory verified",
+          "Voltage": "50 V (proposed)",
+          "Dielectric": "C0G/NP0 (proposed)",
+          "Tolerance": "5% (proposed)",
+          "ValueBasis": "220 pF across R26=120 kohm gives an isolated feedback pole of 6.03 kHz, matching the chosen C21 stage scale.",
+          "ValueQualification": "Not a measured 220-pF nominal. Compare 270/330 pF if receiver bandwidth needs it; no Cp/Cs or D was supplied.",
+          "ValueSource": "evidence/capacitor_value_review_20261015.json",
+          "DesignSeed": "Function-based candidate; circuit validation pending"
+        }
       }
     },
     {
@@ -4604,7 +4786,7 @@
         "y": 133,
         "unit": 1,
         "lid": "PetSafe_Working:RE_C21",
-        "value": "?",
+        "value": "220pF*",
         "rx": 382,
         "ry": 128.5,
         "vx": 382,
@@ -4635,14 +4817,25 @@
       "placement": {
         "symbol": "Device:C",
         "reference": "C21",
-        "value": "?",
+        "value": "220pF*",
         "position": {
           "x": 485.14,
           "y": 168.91
         },
         "rotation": 270,
         "includePins": true,
-        "footprint": "Capacitor_SMD:C_0805_2012Metric"
+        "footprint": "Capacitor_SMD:C_0805_2012Metric",
+        "properties": {
+          "NominalEstimate": "220 pF",
+          "ValueStatus": "ESTIMATED - not factory verified",
+          "Voltage": "50 V (proposed)",
+          "Dielectric": "C0G/NP0 (proposed)",
+          "Tolerance": "5% (proposed)",
+          "ValueBasis": "220 pF across R24=120 kohm gives an isolated feedback pole of 6.03 kHz. Fitted auto-mode 240-pF reading at 100 kHz supports only the approximate scale.",
+          "ValueQualification": "Not a measured 220-pF nominal. Compare 270/330 pF if receiver bandwidth needs it; no Cp/Cs or D was supplied.",
+          "ValueSource": "evidence/capacitor_value_review_20261015.json",
+          "DesignSeed": "Function-based candidate; circuit validation pending"
+        }
       }
     },
     {
@@ -4717,7 +4910,7 @@
         "y": 156,
         "unit": 1,
         "lid": "PetSafe_Working:RE_C18",
-        "value": "?",
+        "value": "1nF*",
         "rx": 363,
         "ry": 151.5,
         "vx": 363,
@@ -4748,14 +4941,25 @@
       "placement": {
         "symbol": "Device:C",
         "reference": "C18",
-        "value": "?",
+        "value": "1nF*",
         "position": {
           "x": 461.01,
           "y": 198.12
         },
         "rotation": 270,
         "includePins": true,
-        "footprint": "Capacitor_SMD:C_0805_2012Metric"
+        "footprint": "Capacitor_SMD:C_0805_2012Metric",
+        "properties": {
+          "NominalEstimate": "1 nF",
+          "ValueStatus": "ESTIMATED - not factory verified",
+          "Voltage": "50 V (proposed)",
+          "Dielectric": "C0G/NP0 (proposed)",
+          "Tolerance": "5% (proposed)",
+          "ValueBasis": "1 nF plus C25=2.2 nF gives 3.2 nF effective shunt if VREF is AC-stiff. With R27=10 kohm, the isolated output-filter pole is 4.97 kHz.",
+          "ValueQualification": "The 1/2.2-nF split is a chosen design allocation; only total AC loading is constrained by that target. VREF impedance and full receiver response remain unvalidated.",
+          "ValueSource": "evidence/capacitor_value_review_20261015.json",
+          "DesignSeed": "Function-based candidate; circuit validation pending"
+        }
       }
     },
     {
@@ -4771,7 +4975,7 @@
         "y": 158,
         "unit": 1,
         "lid": "PetSafe_Working:RE_C23",
-        "value": "?",
+        "value": "47nF*",
         "rx": 403,
         "ry": 153.5,
         "vx": 403,
@@ -4802,14 +5006,25 @@
       "placement": {
         "symbol": "Device:C",
         "reference": "C23",
-        "value": "?",
+        "value": "47nF*",
         "position": {
           "x": 511.81,
           "y": 200.66
         },
         "rotation": 90,
         "includePins": true,
-        "footprint": "Capacitor_SMD:C_0805_2012Metric"
+        "footprint": "Capacitor_SMD:C_0805_2012Metric",
+        "properties": {
+          "NominalEstimate": "47 nF",
+          "ValueStatus": "ESTIMATED - not factory verified",
+          "Voltage": "25 V (proposed)",
+          "Dielectric": "X7R (proposed)",
+          "Tolerance": "10% (proposed)",
+          "ValueBasis": "47 nF with the approximate series resistance R25+R48=6.8 kohm gives a 498-Hz high-pass corner under an ideal virtual-ground assumption.",
+          "ValueQualification": "Selected receiver passband, not copied PetSafe BOM. The interconnected amplifier and clamp network require full-response validation.",
+          "ValueSource": "evidence/capacitor_value_review_20261015.json",
+          "DesignSeed": "Function-based candidate; circuit validation pending"
+        }
       }
     },
     {
@@ -4882,7 +5097,7 @@
         "y": 176,
         "unit": 1,
         "lid": "PetSafe_Working:RE_C40",
-        "value": "?",
+        "value": "1nF*",
         "rx": 377,
         "ry": 175.3,
         "vx": 377,
@@ -4913,7 +5128,7 @@
       "placement": {
         "symbol": "Device:C",
         "reference": "C40",
-        "value": "?",
+        "value": "1nF*",
         "position": {
           "x": 476.25,
           "y": 223.52
@@ -4923,7 +5138,16 @@
         "footprint": "Capacitor_SMD:C_0805_2012Metric",
         "properties": {
           "MeasurementEvidence": "v0.9.15: lower P/model1 joins R23 C/model2 and R42 Q/model1, user 1 ohm. Remove prior C23/R25 detector-output association. Upper/model2 remains GND via user V083 report plus photo pad selection. Capacitance unmeasured.",
-          "ViaEvidence": "v0.9.15: lower P/model1 joins R23 C/model2 and R42 Q/model1, user 1 ohm. Remove prior C23/R25 detector-output association. Upper/model2 remains GND via user V083 report plus photo pad selection. Capacitance unmeasured."
+          "ViaEvidence": "v0.9.15: lower P/model1 joins R23 C/model2 and R42 Q/model1, user 1 ohm. Remove prior C23/R25 detector-output association. Upper/model2 remains GND via user V083 report plus photo pad selection. Capacitance unmeasured.",
+          "NominalEstimate": "1 nF",
+          "ValueStatus": "ESTIMATED - not factory verified",
+          "Voltage": "50 V (proposed)",
+          "Dielectric": "C0G/NP0 (proposed)",
+          "Tolerance": "5% (proposed)",
+          "ValueBasis": "1 nF plus C41=1 nF gives 2 nF on PIC_TP4_C41. With ideal low-impedance drive through R42=1.2 kohm, a standalone pole is 66.3 kHz.",
+          "ValueQualification": "This is a shared clamp/PIC/receiver/Q1-control node, not a simple isolated low-pass. Equal split is an arbitrary starting allocation; full response and PIC role remain open.",
+          "ValueSource": "evidence/capacitor_value_review_20261015.json",
+          "DesignSeed": "Function-based candidate; circuit validation pending"
         }
       },
       "via_evidence": "v0.9.15: lower P/model1 joins R23 C/model2 and R42 Q/model1, user 1 ohm. Remove prior C23/R25 detector-output association. Upper/model2 remains GND via user V083 report plus photo pad selection. Capacitance unmeasured."
@@ -5247,7 +5471,7 @@
         "y": 197,
         "unit": 1,
         "lid": "PetSafe_Working:RE_C19",
-        "value": "?",
+        "value": "100pF*",
         "rx": 367,
         "ry": 192.5,
         "vx": 367,
@@ -5278,14 +5502,25 @@
       "placement": {
         "symbol": "Device:C",
         "reference": "C19",
-        "value": "?",
+        "value": "100pF*",
         "position": {
           "x": 466.09,
           "y": 250.19
         },
         "rotation": 90,
         "includePins": true,
-        "footprint": "Capacitor_SMD:C_0805_2012Metric"
+        "footprint": "Capacitor_SMD:C_0805_2012Metric",
+        "properties": {
+          "NominalEstimate": "100 pF",
+          "ValueStatus": "ESTIMATED - not factory verified",
+          "Voltage": "100 V (proposed)",
+          "Dielectric": "C0G/NP0 (proposed)",
+          "Tolerance": "5% (proposed)",
+          "ValueBasis": "100 pF plus C20=100 pF gives a deliberately small 200-pF detector load. A simple 1-Mohm discharge approximation gives 200 us, versus a 7.45-us RF period.",
+          "ValueQualification": "Very low confidence: diode conduction, input impedance and signal modulation determine the real envelope response. Equal division across two parallel capacitors is not identifiable from function. Rating is a conservative candidate for an antenna-coupled node.",
+          "ValueSource": "evidence/capacitor_value_review_20261015.json",
+          "DesignSeed": "Function-based candidate; circuit validation pending"
+        }
       },
       "via_evidence": "v0.9.2: V077 C19-R29 junction explicitly confirmed GND. Model C19.2 assigned to upper photo pad beside via; former clamp connection withdrawn; opposite-pad route remains inferred."
     },
@@ -5302,7 +5537,7 @@
         "y": 190,
         "unit": 1,
         "lid": "PetSafe_Working:RE_C20",
-        "value": "?",
+        "value": "100pF*",
         "rx": 353,
         "ry": 189.3,
         "vx": 353,
@@ -5333,14 +5568,25 @@
       "placement": {
         "symbol": "Device:C",
         "reference": "C20",
-        "value": "?",
+        "value": "100pF*",
         "position": {
           "x": 445.77,
           "y": 241.3
         },
         "rotation": 0,
         "includePins": true,
-        "footprint": "Capacitor_SMD:C_1206_3216Metric"
+        "footprint": "Capacitor_SMD:C_1206_3216Metric",
+        "properties": {
+          "NominalEstimate": "100 pF",
+          "ValueStatus": "ESTIMATED - not factory verified",
+          "Voltage": "100 V (proposed)",
+          "Dielectric": "C0G/NP0 (proposed)",
+          "Tolerance": "5% (proposed)",
+          "ValueBasis": "100 pF plus C19=100 pF gives 200 pF at RX_A_PLUS. The larger 1206 body can accommodate voltage/low-loss needs without implying a large capacitance.",
+          "ValueQualification": "Very low confidence: nonlinear diode path and a 1-Mohm bias path do not uniquely determine the needed envelope capacitance. Equal division is arbitrary; qualify antenna-coupled voltage.",
+          "ValueSource": "evidence/capacitor_value_review_20261015.json",
+          "DesignSeed": "Function-based candidate; circuit validation pending"
+        }
       }
     },
     {
@@ -5635,7 +5881,7 @@
         "y": 158,
         "unit": 1,
         "lid": "PetSafe_Working:RE_C17",
-        "value": "100n?",
+        "value": "10uF*",
         "rx": 270,
         "ry": 157.3,
         "vx": 270,
@@ -5666,14 +5912,25 @@
       "placement": {
         "symbol": "Device:C",
         "reference": "C17",
-        "value": "100n?",
+        "value": "10uF*",
         "position": {
           "x": 340.36,
           "y": 200.66
         },
         "rotation": 0,
         "includePins": true,
-        "footprint": "Capacitor_SMD:C_0805_2012Metric"
+        "footprint": "Capacitor_SMD:C_0805_2012Metric",
+        "properties": {
+          "NominalEstimate": "10 uF",
+          "ValueStatus": "ESTIMATED - not factory verified",
+          "Voltage": "16 V (proposed)",
+          "Dielectric": "X7R (proposed)",
+          "Tolerance": "10% (proposed)",
+          "ValueBasis": "Provisional bulk member of the C17/C24 pair, following the SGM example. Which original part provides bulk is not established.",
+          "ValueQualification": "Verify effective capacitance, voltage margin and dynamic rail response before qualifying a replacement.",
+          "ValueSource": "evidence/capacitor_value_review_20261015.json",
+          "DesignSeed": "Function-based candidate; circuit validation pending"
+        }
       },
       "via_evidence": "v0.9.2: V078 associated with C17; earlier GND report retained for photo-selected return pad2."
     },
@@ -6286,7 +6543,7 @@
         "y": 262,
         "unit": 1,
         "lid": "PetSafe_Working:RE_C10",
-        "value": "?",
+        "value": "100pF*",
         "rx": 44,
         "ry": 261.3,
         "vx": 44,
@@ -6317,14 +6574,25 @@
       "placement": {
         "symbol": "Device:C",
         "reference": "C10",
-        "value": "?",
+        "value": "100pF*",
         "position": {
           "x": 53.34,
           "y": 332.74
         },
         "rotation": 180,
         "includePins": true,
-        "footprint": "Capacitor_SMD:C_1206_3216Metric"
+        "footprint": "Capacitor_SMD:C_1206_3216Metric",
+        "properties": {
+          "NominalEstimate": "100 pF",
+          "ValueStatus": "ESTIMATED - not factory verified",
+          "Voltage": "250 V (proposed)",
+          "Dielectric": "C0G/NP0 (proposed)",
+          "Tolerance": "5% (proposed)",
+          "ValueBasis": "Deliberate 500-uH / 134.2-kHz design example using this PCB three-capacitor topology. Owner subsequently reported 500 uH; test conditions are unspecified. Numeric weights and branch order remain design choices, not recovered factory values.",
+          "ValueQualification": "Inductance test conditions, AC switch behavior, actual branch ordering, parasitic/loading capacitance, RF peak voltage and firmware tuning remain unknown. Validate before populating a replica.",
+          "ValueSource": "evidence/capacitor_value_review_20261015.json",
+          "DesignSeed": "500 uH user-reported antenna (test conditions unspecified); 134.2 kHz; ideal switches; physical branch weights/order arbitrary; RF validation pending"
+        }
       }
     },
     {
@@ -6340,7 +6608,7 @@
         "y": 247,
         "unit": 1,
         "lid": "PetSafe_Working:RE_C11",
-        "value": "?",
+        "value": "1nF*",
         "rx": 38,
         "ry": 246.3,
         "vx": 38,
@@ -6371,7 +6639,7 @@
       "placement": {
         "symbol": "Device:C",
         "reference": "C11",
-        "value": "?",
+        "value": "1nF*",
         "position": {
           "x": 45.72,
           "y": 313.69
@@ -6381,7 +6649,16 @@
         "footprint": "Capacitor_SMD:C_1206_3216Metric",
         "properties": {
           "CurrentEvidence": "v0.9.37: Measured C11.1-ANT2 = 1.4 ohm (B52). Pin1 is ANT2/H_ANT_B, not GND; pin2 retains its local tuning midpoint. Capacitance unknown. Old V087/V088 association withdrawn; rear-capacitor GND returns unchanged.",
-          "ViaEvidence": "v0.9.37: former front-band association to V087/V088 withdrawn. See antenna_outer_rail_correction_v0937.json."
+          "ViaEvidence": "v0.9.37: former front-band association to V087/V088 withdrawn. See antenna_outer_rail_correction_v0937.json.",
+          "NominalEstimate": "1 nF",
+          "ValueStatus": "ESTIMATED - not factory verified",
+          "Voltage": "250 V (proposed)",
+          "Dielectric": "C0G/NP0 (proposed)",
+          "Tolerance": "5% (proposed)",
+          "ValueBasis": "Deliberate 500-uH / 134.2-kHz design example using this PCB three-capacitor topology. Owner subsequently reported 500 uH; test conditions are unspecified. Numeric weights and branch order remain design choices, not recovered factory values.",
+          "ValueQualification": "Inductance test conditions, AC switch behavior, actual branch ordering, parasitic/loading capacitance, RF peak voltage and firmware tuning remain unknown. Validate before populating a replica.",
+          "ValueSource": "evidence/capacitor_value_review_20261015.json",
+          "DesignSeed": "500 uH user-reported antenna (test conditions unspecified); 134.2 kHz; ideal switches; physical branch weights/order arbitrary; RF validation pending"
         }
       }
     },
@@ -6398,7 +6675,7 @@
         "y": 247,
         "unit": 1,
         "lid": "PetSafe_Working:RE_C12",
-        "value": "? (rear)",
+        "value": "1nF*",
         "rx": 50,
         "ry": 246.3,
         "vx": 50,
@@ -6429,14 +6706,25 @@
       "placement": {
         "symbol": "Device:C",
         "reference": "C12",
-        "value": "? (rear)",
+        "value": "1nF*",
         "position": {
           "x": 60.96,
           "y": 313.69
         },
         "rotation": 0,
         "includePins": true,
-        "footprint": "Capacitor_SMD:C_1206_3216Metric"
+        "footprint": "Capacitor_SMD:C_1206_3216Metric",
+        "properties": {
+          "NominalEstimate": "1 nF",
+          "ValueStatus": "ESTIMATED - not factory verified",
+          "Voltage": "250 V (proposed)",
+          "Dielectric": "C0G/NP0 (proposed)",
+          "Tolerance": "5% (proposed)",
+          "ValueBasis": "Deliberate 500-uH / 134.2-kHz design example using this PCB three-capacitor topology. Owner subsequently reported 500 uH; test conditions are unspecified. Numeric weights and branch order remain design choices, not recovered factory values.",
+          "ValueQualification": "Inductance test conditions, AC switch behavior, actual branch ordering, parasitic/loading capacitance, RF peak voltage and firmware tuning remain unknown. Validate before populating a replica.",
+          "ValueSource": "evidence/capacitor_value_review_20261015.json",
+          "DesignSeed": "500 uH user-reported antenna (test conditions unspecified); 134.2 kHz; ideal switches; physical branch weights/order arbitrary; RF validation pending"
+        }
       }
     },
     {
@@ -6573,7 +6861,7 @@
         "y": 262,
         "unit": 1,
         "lid": "PetSafe_Working:RE_C13",
-        "value": "?",
+        "value": "220pF*",
         "rx": 86,
         "ry": 261.3,
         "vx": 86,
@@ -6604,14 +6892,25 @@
       "placement": {
         "symbol": "Device:C",
         "reference": "C13",
-        "value": "?",
+        "value": "220pF*",
         "position": {
           "x": 106.68,
           "y": 332.74
         },
         "rotation": 180,
         "includePins": true,
-        "footprint": "Capacitor_SMD:C_1206_3216Metric"
+        "footprint": "Capacitor_SMD:C_1206_3216Metric",
+        "properties": {
+          "NominalEstimate": "220 pF",
+          "ValueStatus": "ESTIMATED - not factory verified",
+          "Voltage": "250 V (proposed)",
+          "Dielectric": "C0G/NP0 (proposed)",
+          "Tolerance": "5% (proposed)",
+          "ValueBasis": "Deliberate 500-uH / 134.2-kHz design example using this PCB three-capacitor topology. Owner subsequently reported 500 uH; test conditions are unspecified. Numeric weights and branch order remain design choices, not recovered factory values.",
+          "ValueQualification": "Inductance test conditions, AC switch behavior, actual branch ordering, parasitic/loading capacitance, RF peak voltage and firmware tuning remain unknown. Validate before populating a replica.",
+          "ValueSource": "evidence/capacitor_value_review_20261015.json",
+          "DesignSeed": "500 uH user-reported antenna (test conditions unspecified); 134.2 kHz; ideal switches; physical branch weights/order arbitrary; RF validation pending"
+        }
       }
     },
     {
@@ -6627,7 +6926,7 @@
         "y": 247,
         "unit": 1,
         "lid": "PetSafe_Working:RE_C14",
-        "value": "?",
+        "value": "1nF*",
         "rx": 80,
         "ry": 246.3,
         "vx": 80,
@@ -6658,7 +6957,7 @@
       "placement": {
         "symbol": "Device:C",
         "reference": "C14",
-        "value": "?",
+        "value": "1nF*",
         "position": {
           "x": 99.06,
           "y": 313.69
@@ -6668,7 +6967,16 @@
         "footprint": "Capacitor_SMD:C_1206_3216Metric",
         "properties": {
           "CurrentEvidence": "v0.9.37: IMG_2433 shows its outer pad on the same continuous front band as C11; C11-ANT2 measured 1.4 ohm. Pin1 is ANT2/H_ANT_B, not GND; pin2 retains its local tuning midpoint. Capacitance unknown. Old V087/V088 association withdrawn; rear-capacitor GND returns unchanged.",
-          "ViaEvidence": "v0.9.37: former front-band association to V087/V088 withdrawn. See antenna_outer_rail_correction_v0937.json."
+          "ViaEvidence": "v0.9.37: former front-band association to V087/V088 withdrawn. See antenna_outer_rail_correction_v0937.json.",
+          "NominalEstimate": "1 nF",
+          "ValueStatus": "ESTIMATED - not factory verified",
+          "Voltage": "250 V (proposed)",
+          "Dielectric": "C0G/NP0 (proposed)",
+          "Tolerance": "5% (proposed)",
+          "ValueBasis": "Deliberate 500-uH / 134.2-kHz design example using this PCB three-capacitor topology. Owner subsequently reported 500 uH; test conditions are unspecified. Numeric weights and branch order remain design choices, not recovered factory values.",
+          "ValueQualification": "Inductance test conditions, AC switch behavior, actual branch ordering, parasitic/loading capacitance, RF peak voltage and firmware tuning remain unknown. Validate before populating a replica.",
+          "ValueSource": "evidence/capacitor_value_review_20261015.json",
+          "DesignSeed": "500 uH user-reported antenna (test conditions unspecified); 134.2 kHz; ideal switches; physical branch weights/order arbitrary; RF validation pending"
         }
       }
     },
@@ -6685,7 +6993,7 @@
         "y": 247,
         "unit": 1,
         "lid": "PetSafe_Working:RE_C15",
-        "value": "? (rear)",
+        "value": "1nF*",
         "rx": 92,
         "ry": 246.3,
         "vx": 92,
@@ -6716,14 +7024,25 @@
       "placement": {
         "symbol": "Device:C",
         "reference": "C15",
-        "value": "? (rear)",
+        "value": "1nF*",
         "position": {
           "x": 114.3,
           "y": 313.69
         },
         "rotation": 0,
         "includePins": true,
-        "footprint": "Capacitor_SMD:C_1206_3216Metric"
+        "footprint": "Capacitor_SMD:C_1206_3216Metric",
+        "properties": {
+          "NominalEstimate": "1 nF",
+          "ValueStatus": "ESTIMATED - not factory verified",
+          "Voltage": "250 V (proposed)",
+          "Dielectric": "C0G/NP0 (proposed)",
+          "Tolerance": "5% (proposed)",
+          "ValueBasis": "Deliberate 500-uH / 134.2-kHz design example using this PCB three-capacitor topology. Owner subsequently reported 500 uH; test conditions are unspecified. Numeric weights and branch order remain design choices, not recovered factory values.",
+          "ValueQualification": "Inductance test conditions, AC switch behavior, actual branch ordering, parasitic/loading capacitance, RF peak voltage and firmware tuning remain unknown. Validate before populating a replica.",
+          "ValueSource": "evidence/capacitor_value_review_20261015.json",
+          "DesignSeed": "500 uH user-reported antenna (test conditions unspecified); 134.2 kHz; ideal switches; physical branch weights/order arbitrary; RF validation pending"
+        }
       }
     },
     {
@@ -6860,7 +7179,7 @@
         "y": 262,
         "unit": 1,
         "lid": "PetSafe_Working:RE_C16",
-        "value": "?",
+        "value": "510pF*",
         "rx": 128,
         "ry": 261.3,
         "vx": 128,
@@ -6891,14 +7210,25 @@
       "placement": {
         "symbol": "Device:C",
         "reference": "C16",
-        "value": "?",
+        "value": "510pF*",
         "position": {
           "x": 160.02,
           "y": 332.74
         },
         "rotation": 180,
         "includePins": true,
-        "footprint": "Capacitor_SMD:C_1206_3216Metric"
+        "footprint": "Capacitor_SMD:C_1206_3216Metric",
+        "properties": {
+          "NominalEstimate": "510 pF",
+          "ValueStatus": "ESTIMATED - not factory verified",
+          "Voltage": "250 V (proposed)",
+          "Dielectric": "C0G/NP0 (proposed)",
+          "Tolerance": "5% (proposed)",
+          "ValueBasis": "Deliberate 500-uH / 134.2-kHz design example using this PCB three-capacitor topology. Owner subsequently reported 500 uH; test conditions are unspecified. Numeric weights and branch order remain design choices, not recovered factory values.",
+          "ValueQualification": "Inductance test conditions, AC switch behavior, actual branch ordering, parasitic/loading capacitance, RF peak voltage and firmware tuning remain unknown. Validate before populating a replica.",
+          "ValueSource": "evidence/capacitor_value_review_20261015.json",
+          "DesignSeed": "500 uH user-reported antenna (test conditions unspecified); 134.2 kHz; ideal switches; physical branch weights/order arbitrary; RF validation pending"
+        }
       }
     },
     {
@@ -6914,7 +7244,7 @@
         "y": 247,
         "unit": 1,
         "lid": "PetSafe_Working:RE_C29",
-        "value": "?",
+        "value": "1nF*",
         "rx": 122,
         "ry": 246.3,
         "vx": 122,
@@ -6945,7 +7275,7 @@
       "placement": {
         "symbol": "Device:C",
         "reference": "C29",
-        "value": "?",
+        "value": "1nF*",
         "position": {
           "x": 152.4,
           "y": 313.69
@@ -6955,7 +7285,16 @@
         "footprint": "Capacitor_SMD:C_1206_3216Metric",
         "properties": {
           "CurrentEvidence": "v0.9.37: IMG_2433 shows its outer pad on the same continuous front band as C11; C11-ANT2 measured 1.4 ohm. Pin1 is ANT2/H_ANT_B, not GND; pin2 retains its local tuning midpoint. Capacitance unknown. Old V087/V088 association withdrawn; rear-capacitor GND returns unchanged.",
-          "ViaEvidence": "v0.9.37: former front-band association to V087/V088 withdrawn. See antenna_outer_rail_correction_v0937.json."
+          "ViaEvidence": "v0.9.37: former front-band association to V087/V088 withdrawn. See antenna_outer_rail_correction_v0937.json.",
+          "NominalEstimate": "1 nF",
+          "ValueStatus": "ESTIMATED - not factory verified",
+          "Voltage": "250 V (proposed)",
+          "Dielectric": "C0G/NP0 (proposed)",
+          "Tolerance": "5% (proposed)",
+          "ValueBasis": "Deliberate 500-uH / 134.2-kHz design example using this PCB three-capacitor topology. Owner subsequently reported 500 uH; test conditions are unspecified. Numeric weights and branch order remain design choices, not recovered factory values.",
+          "ValueQualification": "Inductance test conditions, AC switch behavior, actual branch ordering, parasitic/loading capacitance, RF peak voltage and firmware tuning remain unknown. Validate before populating a replica.",
+          "ValueSource": "evidence/capacitor_value_review_20261015.json",
+          "DesignSeed": "500 uH user-reported antenna (test conditions unspecified); 134.2 kHz; ideal switches; physical branch weights/order arbitrary; RF validation pending"
         }
       }
     },
@@ -6972,7 +7311,7 @@
         "y": 247,
         "unit": 1,
         "lid": "PetSafe_Working:RE_C38",
-        "value": "? (rear)",
+        "value": "1nF*",
         "rx": 134,
         "ry": 246.3,
         "vx": 134,
@@ -7003,14 +7342,25 @@
       "placement": {
         "symbol": "Device:C",
         "reference": "C38",
-        "value": "? (rear)",
+        "value": "1nF*",
         "position": {
           "x": 167.64,
           "y": 313.69
         },
         "rotation": 0,
         "includePins": true,
-        "footprint": "Capacitor_SMD:C_1206_3216Metric"
+        "footprint": "Capacitor_SMD:C_1206_3216Metric",
+        "properties": {
+          "NominalEstimate": "1 nF",
+          "ValueStatus": "ESTIMATED - not factory verified",
+          "Voltage": "250 V (proposed)",
+          "Dielectric": "C0G/NP0 (proposed)",
+          "Tolerance": "5% (proposed)",
+          "ValueBasis": "Deliberate 500-uH / 134.2-kHz design example using this PCB three-capacitor topology. Owner subsequently reported 500 uH; test conditions are unspecified. Numeric weights and branch order remain design choices, not recovered factory values.",
+          "ValueQualification": "Inductance test conditions, AC switch behavior, actual branch ordering, parasitic/loading capacitance, RF peak voltage and firmware tuning remain unknown. Validate before populating a replica.",
+          "ValueSource": "evidence/capacitor_value_review_20261015.json",
+          "DesignSeed": "500 uH user-reported antenna (test conditions unspecified); 134.2 kHz; ideal switches; physical branch weights/order arbitrary; RF validation pending"
+        }
       }
     },
     {
@@ -7147,7 +7497,7 @@
         "y": 262,
         "unit": 1,
         "lid": "PetSafe_Working:RE_C43",
-        "value": "?",
+        "value": "1.3nF*",
         "rx": 170,
         "ry": 261.3,
         "vx": 170,
@@ -7178,14 +7528,25 @@
       "placement": {
         "symbol": "Device:C",
         "reference": "C43",
-        "value": "?",
+        "value": "1.3nF*",
         "position": {
           "x": 213.36,
           "y": 332.74
         },
         "rotation": 180,
         "includePins": true,
-        "footprint": "Capacitor_SMD:C_1206_3216Metric"
+        "footprint": "Capacitor_SMD:C_1206_3216Metric",
+        "properties": {
+          "NominalEstimate": "1.3 nF",
+          "ValueStatus": "ESTIMATED - not factory verified",
+          "Voltage": "250 V (proposed)",
+          "Dielectric": "C0G/NP0 (proposed)",
+          "Tolerance": "5% (proposed)",
+          "ValueBasis": "Deliberate 500-uH / 134.2-kHz design example using this PCB three-capacitor topology. Owner subsequently reported 500 uH; test conditions are unspecified. Numeric weights and branch order remain design choices, not recovered factory values.",
+          "ValueQualification": "Inductance test conditions, AC switch behavior, actual branch ordering, parasitic/loading capacitance, RF peak voltage and firmware tuning remain unknown. Validate before populating a replica.",
+          "ValueSource": "evidence/capacitor_value_review_20261015.json",
+          "DesignSeed": "500 uH user-reported antenna (test conditions unspecified); 134.2 kHz; ideal switches; physical branch weights/order arbitrary; RF validation pending"
+        }
       }
     },
     {
@@ -7201,7 +7562,7 @@
         "y": 247,
         "unit": 1,
         "lid": "PetSafe_Working:RE_C44",
-        "value": "?",
+        "value": "1nF*",
         "rx": 164,
         "ry": 246.3,
         "vx": 164,
@@ -7232,7 +7593,7 @@
       "placement": {
         "symbol": "Device:C",
         "reference": "C44",
-        "value": "?",
+        "value": "1nF*",
         "position": {
           "x": 205.74,
           "y": 313.69
@@ -7242,7 +7603,16 @@
         "footprint": "Capacitor_SMD:C_1206_3216Metric",
         "properties": {
           "CurrentEvidence": "v0.9.37: IMG_2433 shows its outer pad on the same continuous front band as C11; C11-ANT2 measured 1.4 ohm. Pin1 is ANT2/H_ANT_B, not GND; pin2 retains its local tuning midpoint. Capacitance unknown. Old V087/V088 association withdrawn; rear-capacitor GND returns unchanged.",
-          "ViaEvidence": "v0.9.37: former front-band association to V087/V088 withdrawn. See antenna_outer_rail_correction_v0937.json."
+          "ViaEvidence": "v0.9.37: former front-band association to V087/V088 withdrawn. See antenna_outer_rail_correction_v0937.json.",
+          "NominalEstimate": "1 nF",
+          "ValueStatus": "ESTIMATED - not factory verified",
+          "Voltage": "250 V (proposed)",
+          "Dielectric": "C0G/NP0 (proposed)",
+          "Tolerance": "5% (proposed)",
+          "ValueBasis": "Deliberate 500-uH / 134.2-kHz design example using this PCB three-capacitor topology. Owner subsequently reported 500 uH; test conditions are unspecified. Numeric weights and branch order remain design choices, not recovered factory values.",
+          "ValueQualification": "Inductance test conditions, AC switch behavior, actual branch ordering, parasitic/loading capacitance, RF peak voltage and firmware tuning remain unknown. Validate before populating a replica.",
+          "ValueSource": "evidence/capacitor_value_review_20261015.json",
+          "DesignSeed": "500 uH user-reported antenna (test conditions unspecified); 134.2 kHz; ideal switches; physical branch weights/order arbitrary; RF validation pending"
         }
       }
     },
@@ -7259,7 +7629,7 @@
         "y": 247,
         "unit": 1,
         "lid": "PetSafe_Working:RE_C45",
-        "value": "? (rear)",
+        "value": "1nF*",
         "rx": 176,
         "ry": 246.3,
         "vx": 176,
@@ -7290,14 +7660,25 @@
       "placement": {
         "symbol": "Device:C",
         "reference": "C45",
-        "value": "? (rear)",
+        "value": "1nF*",
         "position": {
           "x": 220.98,
           "y": 313.69
         },
         "rotation": 0,
         "includePins": true,
-        "footprint": "Capacitor_SMD:C_1206_3216Metric"
+        "footprint": "Capacitor_SMD:C_1206_3216Metric",
+        "properties": {
+          "NominalEstimate": "1 nF",
+          "ValueStatus": "ESTIMATED - not factory verified",
+          "Voltage": "250 V (proposed)",
+          "Dielectric": "C0G/NP0 (proposed)",
+          "Tolerance": "5% (proposed)",
+          "ValueBasis": "Deliberate 500-uH / 134.2-kHz design example using this PCB three-capacitor topology. Owner subsequently reported 500 uH; test conditions are unspecified. Numeric weights and branch order remain design choices, not recovered factory values.",
+          "ValueQualification": "Inductance test conditions, AC switch behavior, actual branch ordering, parasitic/loading capacitance, RF peak voltage and firmware tuning remain unknown. Validate before populating a replica.",
+          "ValueSource": "evidence/capacitor_value_review_20261015.json",
+          "DesignSeed": "500 uH user-reported antenna (test conditions unspecified); 134.2 kHz; ideal switches; physical branch weights/order arbitrary; RF validation pending"
+        }
       }
     },
     {
@@ -7434,7 +7815,7 @@
         "y": 262,
         "unit": 1,
         "lid": "PetSafe_Working:RE_C46",
-        "value": "?",
+        "value": "8.2nF*",
         "rx": 212,
         "ry": 261.3,
         "vx": 212,
@@ -7465,14 +7846,25 @@
       "placement": {
         "symbol": "Device:C",
         "reference": "C46",
-        "value": "?",
+        "value": "8.2nF*",
         "position": {
           "x": 266.7,
           "y": 332.74
         },
         "rotation": 180,
         "includePins": true,
-        "footprint": "Capacitor_SMD:C_1206_3216Metric"
+        "footprint": "Capacitor_SMD:C_1206_3216Metric",
+        "properties": {
+          "NominalEstimate": "8.2 nF",
+          "ValueStatus": "ESTIMATED - not factory verified",
+          "Voltage": "250 V (proposed)",
+          "Dielectric": "C0G/NP0 (proposed)",
+          "Tolerance": "5% (proposed)",
+          "ValueBasis": "Deliberate 500-uH / 134.2-kHz design example using this PCB three-capacitor topology. Owner subsequently reported 500 uH; test conditions are unspecified. Numeric weights and branch order remain design choices, not recovered factory values.",
+          "ValueQualification": "Inductance test conditions, AC switch behavior, actual branch ordering, parasitic/loading capacitance, RF peak voltage and firmware tuning remain unknown. Validate before populating a replica.",
+          "ValueSource": "evidence/capacitor_value_review_20261015.json",
+          "DesignSeed": "500 uH user-reported antenna (test conditions unspecified); 134.2 kHz; ideal switches; physical branch weights/order arbitrary; RF validation pending"
+        }
       }
     },
     {
@@ -7488,7 +7880,7 @@
         "y": 247,
         "unit": 1,
         "lid": "PetSafe_Working:RE_C47",
-        "value": "?",
+        "value": "1nF*",
         "rx": 206,
         "ry": 246.3,
         "vx": 206,
@@ -7519,7 +7911,7 @@
       "placement": {
         "symbol": "Device:C",
         "reference": "C47",
-        "value": "?",
+        "value": "1nF*",
         "position": {
           "x": 259.08,
           "y": 313.69
@@ -7529,7 +7921,16 @@
         "footprint": "Capacitor_SMD:C_1206_3216Metric",
         "properties": {
           "CurrentEvidence": "v0.9.37: IMG_2433 shows its outer pad on the same continuous front band as C11; C11-ANT2 measured 1.4 ohm. Pin1 is ANT2/H_ANT_B, not GND; pin2 retains its local tuning midpoint. Capacitance unknown. Old V087/V088 association withdrawn; rear-capacitor GND returns unchanged.",
-          "ViaEvidence": "v0.9.37: former front-band association to V087/V088 withdrawn. See antenna_outer_rail_correction_v0937.json."
+          "ViaEvidence": "v0.9.37: former front-band association to V087/V088 withdrawn. See antenna_outer_rail_correction_v0937.json.",
+          "NominalEstimate": "1 nF",
+          "ValueStatus": "ESTIMATED - not factory verified",
+          "Voltage": "250 V (proposed)",
+          "Dielectric": "C0G/NP0 (proposed)",
+          "Tolerance": "5% (proposed)",
+          "ValueBasis": "Deliberate 500-uH / 134.2-kHz design example using this PCB three-capacitor topology. Owner subsequently reported 500 uH; test conditions are unspecified. Numeric weights and branch order remain design choices, not recovered factory values.",
+          "ValueQualification": "Inductance test conditions, AC switch behavior, actual branch ordering, parasitic/loading capacitance, RF peak voltage and firmware tuning remain unknown. Validate before populating a replica.",
+          "ValueSource": "evidence/capacitor_value_review_20261015.json",
+          "DesignSeed": "500 uH user-reported antenna (test conditions unspecified); 134.2 kHz; ideal switches; physical branch weights/order arbitrary; RF validation pending"
         }
       }
     },
@@ -7546,7 +7947,7 @@
         "y": 247,
         "unit": 1,
         "lid": "PetSafe_Working:RE_C48",
-        "value": "? (rear)",
+        "value": "1nF*",
         "rx": 218,
         "ry": 246.3,
         "vx": 218,
@@ -7577,14 +7978,25 @@
       "placement": {
         "symbol": "Device:C",
         "reference": "C48",
-        "value": "? (rear)",
+        "value": "1nF*",
         "position": {
           "x": 274.32,
           "y": 313.69
         },
         "rotation": 0,
         "includePins": true,
-        "footprint": "Capacitor_SMD:C_1206_3216Metric"
+        "footprint": "Capacitor_SMD:C_1206_3216Metric",
+        "properties": {
+          "NominalEstimate": "1 nF",
+          "ValueStatus": "ESTIMATED - not factory verified",
+          "Voltage": "250 V (proposed)",
+          "Dielectric": "C0G/NP0 (proposed)",
+          "Tolerance": "5% (proposed)",
+          "ValueBasis": "Deliberate 500-uH / 134.2-kHz design example using this PCB three-capacitor topology. Owner subsequently reported 500 uH; test conditions are unspecified. Numeric weights and branch order remain design choices, not recovered factory values.",
+          "ValueQualification": "Inductance test conditions, AC switch behavior, actual branch ordering, parasitic/loading capacitance, RF peak voltage and firmware tuning remain unknown. Validate before populating a replica.",
+          "ValueSource": "evidence/capacitor_value_review_20261015.json",
+          "DesignSeed": "500 uH user-reported antenna (test conditions unspecified); 134.2 kHz; ideal switches; physical branch weights/order arbitrary; RF validation pending"
+        }
       }
     },
     {
@@ -7743,7 +8155,7 @@
         "y": 246,
         "unit": 1,
         "lid": "PetSafe_Working:RE_C36",
-        "value": "1u?",
+        "value": "1uF*",
         "rx": 239,
         "ry": 245.3,
         "vx": 239,
@@ -7774,14 +8186,25 @@
       "placement": {
         "symbol": "Device:C",
         "reference": "C36",
-        "value": "1u?",
+        "value": "1uF*",
         "position": {
           "x": 300.99,
           "y": 312.42
         },
         "rotation": 0,
         "includePins": true,
-        "footprint": "Capacitor_SMD:C_0805_2012Metric"
+        "footprint": "Capacitor_SMD:C_0805_2012Metric",
+        "properties": {
+          "NominalEstimate": "1 uF",
+          "ValueStatus": "ESTIMATED - not factory verified",
+          "Voltage": "16 V (proposed)",
+          "Dielectric": "X7R (proposed)",
+          "Tolerance": "10% (proposed)",
+          "ValueBasis": "Engineering starting value for the input filter; neither body size nor candidate IC uniquely fixes it.",
+          "ValueQualification": "Verify effective capacitance, voltage margin and dynamic rail response before qualifying a replacement.",
+          "ValueSource": "evidence/capacitor_value_review_20261015.json",
+          "DesignSeed": "Function-based candidate; circuit validation pending"
+        }
       }
     },
     {
@@ -7797,7 +8220,7 @@
         "y": 246,
         "unit": 1,
         "lid": "PetSafe_Working:RE_C37",
-        "value": "1u?",
+        "value": "1uF*",
         "rx": 282,
         "ry": 245.3,
         "vx": 282,
@@ -7828,14 +8251,25 @@
       "placement": {
         "symbol": "Device:C",
         "reference": "C37",
-        "value": "1u?",
+        "value": "1uF*",
         "position": {
           "x": 355.6,
           "y": 312.42
         },
         "rotation": 0,
         "includePins": true,
-        "footprint": "Capacitor_SMD:C_0805_2012Metric"
+        "footprint": "Capacitor_SMD:C_0805_2012Metric",
+        "properties": {
+          "NominalEstimate": "1 uF",
+          "ValueStatus": "ESTIMATED - not factory verified",
+          "Voltage": "16 V (proposed)",
+          "Dielectric": "X7R (proposed)",
+          "Tolerance": "10% (proposed)",
+          "ValueBasis": "Engineering starting value for transient response, not a mandatory minimum from the candidate datasheet.",
+          "ValueQualification": "Verify effective capacitance, voltage margin and dynamic rail response before qualifying a replacement.",
+          "ValueSource": "evidence/capacitor_value_review_20261015.json",
+          "DesignSeed": "Function-based candidate; circuit validation pending"
+        }
       }
     },
     {
@@ -7851,7 +8285,7 @@
         "y": 38.0,
         "unit": 1,
         "lid": "PetSafe_Working:RE_C32",
-        "value": "100n?",
+        "value": "100nF*",
         "rx": 168.0,
         "ry": 37.30000000000001,
         "vx": 168.0,
@@ -7882,7 +8316,7 @@
       "placement": {
         "symbol": "Device:C",
         "reference": "C32",
-        "value": "100n?",
+        "value": "100nF*",
         "position": {
           "x": 210.82,
           "y": 48.26
@@ -7891,7 +8325,16 @@
         "includePins": true,
         "footprint": "Capacitor_SMD:C_0805_2012Metric",
         "properties": {
-          "ViaEvidence": "v0.9.9: V042 user-confirmed to board VDD test point TP103/VDD. Prior C32.1/PIC20 local photo association retained."
+          "ViaEvidence": "v0.9.9: V042 user-confirmed to board VDD test point TP103/VDD. Prior C32.1/PIC20 local photo association retained.",
+          "NominalEstimate": "100 nF",
+          "ValueStatus": "ESTIMATED - not factory verified",
+          "Voltage": "16 V (proposed)",
+          "Dielectric": "X7R (proposed)",
+          "Tolerance": "10% (proposed)",
+          "ValueBasis": "Directly matches the MCU manufacturer design recommendation; still not an observed PetSafe value.",
+          "ValueQualification": "Verify effective capacitance, voltage margin and dynamic rail response before qualifying a replacement.",
+          "ValueSource": "evidence/capacitor_value_review_20261015.json",
+          "DesignSeed": "Function-based candidate; circuit validation pending"
         }
       },
       "via_evidence": "v0.9.9: V042 user-confirmed to board VDD test point TP103/VDD. Prior C32.1/PIC20 local photo association retained."
@@ -8375,7 +8818,7 @@
         "y": 60.0,
         "unit": 1,
         "lid": "PetSafe_Working:RE_C41",
-        "value": "?",
+        "value": "1nF*",
         "rx": 166.0,
         "ry": 55.5,
         "vx": 166.0,
@@ -8406,14 +8849,25 @@
       "placement": {
         "symbol": "Device:C",
         "reference": "C41",
-        "value": "?",
+        "value": "1nF*",
         "position": {
           "x": 210.82,
           "y": 76.2
         },
         "rotation": 90,
         "includePins": true,
-        "footprint": "Capacitor_SMD:C_0805_2012Metric"
+        "footprint": "Capacitor_SMD:C_0805_2012Metric",
+        "properties": {
+          "NominalEstimate": "1 nF",
+          "ValueStatus": "ESTIMATED - not factory verified",
+          "Voltage": "50 V (proposed)",
+          "Dielectric": "C0G/NP0 (proposed)",
+          "Tolerance": "5% (proposed)",
+          "ValueBasis": "1 nF complements C40=1 nF for 2 nF total at the same net. Proposed small RF/noise shunt, not a generic power bypass.",
+          "ValueQualification": "The two parallel values cannot be separated by function. Full receiver/control-node loading remains unvalidated.",
+          "ValueSource": "evidence/capacitor_value_review_20261015.json",
+          "DesignSeed": "Function-based candidate; circuit validation pending"
+        }
       }
     },
     {
@@ -9477,7 +9931,7 @@
       "size": 1
     },
     {
-      "text": "H01: likely S-1200B45 LDO. Nominal 4.5 V is a candidate, not a measured rail.",
+      "text": "U1: S-1200B45 candidate; VDD measured 4.5 V. Device identity remains qualified.",
       "x": 13,
       "y": 28,
       "size": 0.52
@@ -9579,7 +10033,7 @@
       "size": 0.52
     },
     {
-      "text": "C42 / R47 / R46: DNP options, exact pads unresolved.",
+      "text": "C42 / R47 / R46: DNP options; pad routes mapped. Keep unpopulated.",
       "x": 238,
       "y": 204,
       "size": 0.5
@@ -9591,7 +10045,7 @@
       "size": 1
     },
     {
-      "text": "H13: 2H devices are probably PNP BJTs (MMBTA55 family; PBSS5140T is an alternative). Capacitor values unknown.",
+      "text": "H13: 2H device identity/pinout disputed. Starred values are a 500-uH RF design seed.",
       "x": 13,
       "y": 223,
       "size": 0.52
@@ -9651,7 +10105,7 @@
       "size": 0.58
     },
     {
-      "text": "? on a part value or pin function means an estimate or candidate identity.",
+      "text": "* = proposed capacitor value, not measured. ? = candidate device identity or pin role.",
       "x": 341,
       "y": 237,
       "size": 0.58
@@ -9693,13 +10147,13 @@
       "size": 0.58
     },
     {
-      "text": "No capacitor value or rail voltage in this drawing was electrically measured.",
+      "text": "C5: 470uF/16V marked. DC rails measured; 44 starred ceramic values are estimates.",
       "x": 341,
       "y": 265,
       "size": 0.58
     },
     {
-      "text": "See docs/RECONSTRUCTION.md for evidence, alternatives, and calculations.",
+      "text": "See docs/CAPACITOR_VALUE_REVIEW.html for values, ratings and assumptions.",
       "x": 341,
       "y": 269,
       "size": 0.58
@@ -9715,6 +10169,18 @@
       "x": 405,
       "y": 301,
       "size": 0.65
+    },
+    {
+      "text": "Antenna: 500 uH reported; RF seed 134.2 kHz. Ideal switches; weights/order unverified.",
+      "x": 341,
+      "y": 273,
+      "size": 0.6
+    },
+    {
+      "text": "Proposed voltage, dielectric, tolerance and evidence are in capacitor properties.",
+      "x": 341,
+      "y": 277,
+      "size": 0.6
     }
   ],
   "wires": [
@@ -15378,7 +15844,7 @@
     "(polyline (pts (xy 368.3 274.32) (xy 25.4 274.32)) (stroke (width 0.254) (type default)) (fill (type none)) (uuid d1704a35-b25b-5142-9e21-80ba9a6b3535))",
     "(polyline (pts (xy 25.4 274.32) (xy 25.4 50.8)) (stroke (width 0.254) (type default)) (fill (type none)) (uuid aa2228e1-c9bd-5bcc-89dd-d5ac45920e2c))",
     "(text \"01  POWER / INPUT FILTER\" (at 33.02 60.96 0) (effects (font (size 2.54 2.54)) (justify left)) (uuid 0ef4f00d-b44b-5cc3-9d9a-54b2c33ba6bd))",
-    "(text \"H01: likely S-1200B45 LDO. Nominal 4.5 V is a candidate, not a measured rail.\" (at 33.02 71.12 0) (effects (font (size 1.3208 1.3208)) (justify left)) (uuid 868e7914-85ce-5be8-9496-3ee2a1240f8b))",
+    "(text \"U1: S-1200B45 candidate; VDD measured 4.5 V. Device identity remains qualified.\" (at 33.02 71.12 0) (effects (font (size 1.3208 1.3208)) (justify left)) (uuid 868e7914-85ce-5be8-9496-3ee2a1240f8b))",
     "(text \"Original pad IDs on U1. Candidate datasheet pin numbers in parentheses.\" (at 43.18 182.88 0) (effects (font (size 1.397 1.397)) (justify left)) (uuid edabb300-4fd5-589c-be7a-ba9127451c09))",
     "(text \"Optional R1/R2/C3/C4 network: empty footprints; free ends unresolved.\" (at 43.18 251.46 0) (effects (font (size 1.397 1.397)) (justify left)) (uuid 13962efc-ec7b-5f5b-b4c5-59c4a4c4720f))",
     "(polyline (pts (xy 383.54 50.8) (xy 789.94 50.8)) (stroke (width 0.254) (type default)) (fill (type none)) (uuid 81f7b5c3-e9a5-5c3d-a8e3-dc959631bd2c))",
@@ -15411,13 +15877,13 @@
     "(polyline (pts (xy 574.04 530.86) (xy 574.04 289.56)) (stroke (width 0.254) (type default)) (fill (type none)) (uuid d0b7f2ac-065b-5845-8c51-3e5065edbf91))",
     "(text \"05  RF RECEIVE / GAIN / ENVELOPE\" (at 581.66 299.72 0) (effects (font (size 2.54 2.54)) (justify left)) (uuid 2d8009f3-dea8-5dc2-a69b-86ba2984ecbd))",
     "(text \"H10-H12: working topology around photographed 120k feedback resistors. Filters, bias, and interstage routes inferred.\" (at 581.66 309.88 0) (effects (font (size 1.3208 1.3208)) (justify left)) (uuid c0c0784e-5117-52de-bfc7-03ff40a0b8e4))",
-    "(text \"C42 / R47 / R46: DNP options, exact pads unresolved.\" (at 604.52 518.16 0) (effects (font (size 1.27 1.27)) (justify left)) (uuid 0523b685-0971-5555-8210-382e59d1827d))",
+    "(text \"C42 / R47 / R46: DNP options; pad routes mapped. Keep unpopulated.\" (at 604.52 518.16 0) (effects (font (size 1.27 1.27)) (justify left)) (uuid 0523b685-0971-5555-8210-382e59d1827d))",
     "(polyline (pts (xy 25.4 546.1) (xy 571.5 546.1)) (stroke (width 0.254) (type default)) (fill (type none)) (uuid 2ebecefd-31f1-559d-aef0-10083b4d39ff))",
     "(polyline (pts (xy 571.5 546.1) (xy 571.5 795.02)) (stroke (width 0.254) (type default)) (fill (type none)) (uuid eb3705f2-0097-5d7f-b100-052771ca63f6))",
     "(polyline (pts (xy 571.5 795.02) (xy 25.4 795.02)) (stroke (width 0.254) (type default)) (fill (type none)) (uuid ddc14d3d-d88d-54c7-872d-3f96c7e2064f))",
     "(polyline (pts (xy 25.4 795.02) (xy 25.4 546.1)) (stroke (width 0.254) (type default)) (fill (type none)) (uuid 9cf5df12-c0b2-52e6-8d1b-c02a191112a4))",
     "(text \"06  SWITCHED ANTENNA CAPACITANCE\" (at 33.02 556.26 0) (effects (font (size 2.54 2.54)) (justify left)) (uuid 8b9be81a-443d-5878-a634-915b239ac98a))",
-    "(text \"H13: 2H devices are probably PNP BJTs (MMBTA55 family; PBSS5140T is an alternative). Capacitor values unknown.\" (at 33.02 566.42 0) (effects (font (size 1.3208 1.3208)) (justify left)) (uuid b2242d04-0ccc-55d8-b016-d5d16584975f))",
+    "(text \"H13: 2H device identity/pinout disputed. Starred values are a 500-uH RF design seed.\" (at 33.02 566.42 0) (effects (font (size 1.3208 1.3208)) (justify left)) (uuid b2242d04-0ccc-55d8-b016-d5d16584975f))",
     "(text \"Selected working hypothesis: Ctop in series with (Cfront || Crear). Rear-bank vias suggest paired lower capacitors.\" (at 43.18 756.92 0) (effects (font (size 1.4732 1.4732)) (justify left)) (uuid 42fe789c-c682-55ec-9f78-c743b174f243))",
     "(text \"Ceff = Ctop * (Cfront + Crear) / (Ctop + Cfront + Crear). Equal values give 2C/3 per enabled branch.\" (at 43.18 769.62 0) (effects (font (size 1.4732 1.4732)) (justify left)) (uuid 13a7db0f-5f39-56cf-aee7-7bb684668179))",
     "(text \"All-parallel and all-series banks remain alternatives. Emitter rail / collector orientation is provisional.\" (at 43.18 782.32 0) (effects (font (size 1.4732 1.4732)) (justify left)) (uuid 513687e6-4fea-5382-97cf-a5475fda2d7f))",
@@ -15437,15 +15903,15 @@
     "(text \"One sheet. Functional wiring is proposed; this is not a verified production circuit.\" (at 863.6 566.42 0) (effects (font (size 1.3208 1.3208)) (justify left)) (uuid 00f82374-c663-54e9-abbc-26c1381451c0))",
     "(text \"150 original main-board catalog entries, including DNP footprints and named pads.\" (at 866.14 581.66 0) (effects (font (size 1.4732 1.4732)) (justify left)) (uuid 2aa8f654-8151-59a1-88dd-7e542ea248c8))",
     "(text \"H_* = inferred inter-block net. Other net names do not imply measurement.\" (at 866.14 591.82 0) (effects (font (size 1.4732 1.4732)) (justify left)) (uuid c64033fd-298c-5b03-b637-3625bfcec63c))",
-    "(text \"? on a part value or pin function means an estimate or candidate identity.\" (at 866.14 601.98 0) (effects (font (size 1.4732 1.4732)) (justify left)) (uuid 7d9f10e9-e22c-5e88-8183-05cffc95f674))",
+    "(text \"* = proposed capacitor value, not measured. ? = candidate device identity or pin role.\" (at 866.14 601.98 0) (effects (font (size 1.4732 1.4732)) (justify left)) (uuid 7d9f10e9-e22c-5e88-8183-05cffc95f674))",
     "(text \"Original photographed pad names remain on ambiguous packages (L/R/S etc.).\" (at 866.14 612.14 0) (effects (font (size 1.4732 1.4732)) (justify left)) (uuid dfc30901-465f-5394-8f86-2f06cf926f15))",
     "(text \"U2 and U3 use multiple symbol units on this same sheet, including supply units.\" (at 866.14 622.3 0) (effects (font (size 1.4732 1.4732)) (justify left)) (uuid 0e165117-b517-50df-b628-022d238b3814))",
     "(text \"29 original local visual fragments are retained; added connections are hypotheses.\" (at 866.14 632.46 0) (effects (font (size 1.4732 1.4732)) (justify left)) (uuid a4705e0a-74aa-5be4-a27d-4e204666df2d))",
     "(text \"PIC GPIOs are intentionally unassigned where photographs cannot support a map.\" (at 866.14 642.62 0) (effects (font (size 1.4732 1.4732)) (justify left)) (uuid 46adb6bc-8ec0-520a-a2d7-18ebb1352aec))",
     "(text \"DNP = unpopulated. An open pin means unresolved, not a certified no-connect.\" (at 866.14 652.78 0) (effects (font (size 1.4732 1.4732)) (justify left)) (uuid 3c8ea664-7142-587a-aa02-94e3600a7462))",
     "(text \"PIR daughterboard internals are not yet traced; J3 represents its interface.\" (at 866.14 662.94 0) (effects (font (size 1.4732 1.4732)) (justify left)) (uuid 6de1b04a-fa3a-5db2-9a31-a5fb9f9ee1ad))",
-    "(text \"No capacitor value or rail voltage in this drawing was electrically measured.\" (at 866.14 673.1 0) (effects (font (size 1.4732 1.4732)) (justify left)) (uuid ab852cff-a213-5cd6-84fc-c74c03eaecb3))",
-    "(text \"See docs/RECONSTRUCTION.md for evidence, alternatives, and calculations.\" (at 866.14 683.26 0) (effects (font (size 1.4732 1.4732)) (justify left)) (uuid 3a8401b6-6795-5b3d-93de-8fdfead25dfc))",
+    "(text \"C5: 470uF/16V marked. DC rails measured; 44 starred ceramic values are estimates.\" (at 866.14 673.1 0) (effects (font (size 1.4732 1.4732)) (justify left)) (uuid ab852cff-a213-5cd6-84fc-c74c03eaecb3))",
+    "(text \"See docs/CAPACITOR_VALUE_REVIEW.html for values, ratings and assumptions.\" (at 866.14 683.26 0) (effects (font (size 1.4732 1.4732)) (justify left)) (uuid 3a8401b6-6795-5b3d-93de-8fdfead25dfc))",
     "(text \"Spare footprints / unassigned test pads\" (at 1028.7 721.36 0) (effects (font (size 1.27 1.27)) (justify left)) (uuid 09fa9493-deee-531d-9123-2a481d00bab8))",
     "(text \"v0.2  |  2026-10-07\" (at 1028.7 764.54 0) (effects (font (size 1.651 1.651)) (justify left)) (uuid c2492691-8d4b-55af-8e2d-a4d7c3819bda))"
   ]
