@@ -1,3 +1,4 @@
+from verify_capacitor_application import matches_text_digest
 """Check review coverage, stale generated state, local links and source integrity."""
 from pathlib import Path
 from html.parser import HTMLParser
@@ -106,8 +107,8 @@ measurements=read('evidence/finishing_measurements.json')
 cap_review=read('evidence/capacitor_value_review_20261015.json')
 assert {r['ref'] for r in cap_review['components']}==set(s['unknown_ceramic_values'])
 assert len(cap_review['components'])==44 and len({r['ref'] for r in cap_review['components']})==44
-assert cap_review['source_schematic_sha256']==s['schematic_sha256']
-assert cap_review['source_model_sha256']==hashlib.sha256((ROOT/'evidence/reconstruction.json').read_bytes()).hexdigest()
+assert matches_text_digest((ROOT/'schematic/PetSafe_1001339.kicad_sch').read_bytes(), cap_review['source_schematic_sha256'])
+assert matches_text_digest((ROOT/'evidence/reconstruction.json').read_bytes(), cap_review['source_model_sha256'])
 assert cap_review['electrical_change'] is True and cap_review['topology_change'] is False and cap_review['individual_values_closed']==[]
 assert all(r['applied_to_native'] and r['native_value']==r['proposal'].replace(' ','')+'*' for r in cap_review['components'])
 assert all(r['selection_pf']>0 and r['voltage_rating_v']>0 and r['dielectric'] and r['confidence'] for r in cap_review['components'])

@@ -2,8 +2,19 @@
 import copy, hashlib, unittest
 from current_state import ROOT, read, current_state, validate_issue_register
 from audit_physical_evidence import compare
+from verify_capacitor_application import canonical_text_sha256, matches_text_digest
 
 class ReviewProgress(unittest.TestCase):
+    def test_capacitor_text_hash_line_endings(self):
+        lf=b'{"value": "100nF*"}\n'
+        crlf=lf.replace(b'\n', b'\r\n')
+        self.assertEqual(canonical_text_sha256(lf), canonical_text_sha256(crlf))
+        for recorded in [hashlib.sha256(lf).hexdigest(), hashlib.sha256(crlf).hexdigest()]:
+            self.assertTrue(matches_text_digest(lf, recorded))
+            self.assertTrue(matches_text_digest(crlf, recorded))
+            self.assertFalse(matches_text_digest(lf.replace(b'100nF', b'220nF'), recorded))
+            self.assertFalse(matches_text_digest(lf+b' ', recorded))
+
     def test_evidence_detects_split_and_merge(self):
         edge=lambda a,b:dict(pair=[a,b],source='synthetic test fixture')
         result=compare({'A.1':'a','B.1':'b','C.1':'a'},[edge('A.1','B.1')],[edge('A.1','C.1')],[])
