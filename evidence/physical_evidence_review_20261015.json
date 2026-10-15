@@ -1,0 +1,1673 @@
+{
+  "date": "2026-10-15",
+  "basis_commit": "31050c2",
+  "scope": "Independent photo/measurement coverage; no electrical or value changes",
+  "imports": [
+    {
+      "source": "evidence/u3_j3_measurements_20261009.json",
+      "field": "confirmed_pairs",
+      "kind": "meter",
+      "relation": "same",
+      "basis": "Only the explicit endpoint pairs in this source field; measurement conditions and raw numbers remain in the source.",
+      "single_pair": false
+    },
+    {
+      "source": "evidence/u3_j3_batch2_20261009.json",
+      "field": "confirmed_pairs",
+      "kind": "meter",
+      "relation": "same",
+      "basis": "Only the explicit endpoint pairs in this source field; measurement conditions and raw numbers remain in the source.",
+      "single_pair": false
+    },
+    {
+      "source": "evidence/u3_r23_batch4_20261009.json",
+      "field": "confirmed_pairs",
+      "kind": "meter",
+      "relation": "same",
+      "basis": "Only the explicit endpoint pairs in this source field; measurement conditions and raw numbers remain in the source.",
+      "single_pair": false
+    },
+    {
+      "source": "evidence/pir_batch5_u7_20261009.json",
+      "field": "confirmed_pairs",
+      "kind": "meter",
+      "relation": "same",
+      "basis": "Only the explicit endpoint pairs in this source field; measurement conditions and raw numbers remain in the source.",
+      "single_pair": false
+    },
+    {
+      "source": "evidence/q7_r19_join_results_20261014.json",
+      "field": "confirmed_pairs",
+      "kind": "meter",
+      "relation": "same",
+      "basis": "Only the explicit endpoint pairs in this source field; measurement conditions and raw numbers remain in the source.",
+      "single_pair": false
+    },
+    {
+      "source": "evidence/u3_r23_batch3_20261009.json",
+      "field": "rejected_direct_pairs",
+      "kind": "meter",
+      "relation": "separate",
+      "basis": "Only the explicit endpoint pairs in this source field; measurement conditions and raw numbers remain in the source.",
+      "single_pair": false
+    },
+    {
+      "source": "evidence/pir_batch5_u7_20261009.json",
+      "field": "rejected_direct_pairs",
+      "kind": "meter",
+      "relation": "separate",
+      "basis": "Only the explicit endpoint pairs in this source field; measurement conditions and raw numbers remain in the source.",
+      "single_pair": false
+    },
+    {
+      "source": "evidence/pic21_tp16_followup_20261009.json",
+      "field": "resolution.confirmed_pairs",
+      "kind": "owner_report",
+      "relation": "same",
+      "basis": "Only the explicit endpoint pairs in this source field; measurement conditions and raw numbers remain in the source.",
+      "single_pair": false
+    },
+    {
+      "source": "evidence/pic21_tp16_followup_20261009.json",
+      "field": "resolution.rejected_direct_pairs",
+      "kind": "meter",
+      "relation": "separate",
+      "basis": "Only the explicit endpoint pairs in this source field; measurement conditions and raw numbers remain in the source.",
+      "single_pair": false
+    },
+    {
+      "source": "evidence/c25_c26_mapping_20261009.json",
+      "field": "confirmed_pairs",
+      "kind": "photo_and_owner_annotation",
+      "relation": "same",
+      "basis": "Physical endpoints only. No historical candidate function/native numbering is imported; present pin_crosswalk resolves aliases. Nonpolar capacitor numbering is a reconstruction convention.",
+      "single_pair": false
+    },
+    {
+      "source": "evidence/c5_c6_parallel_20261009.json",
+      "field": "supported_pairs",
+      "kind": "photo_and_owner_annotation",
+      "relation": "same",
+      "basis": "Physical endpoints only. No historical candidate function/native numbering is imported; present pin_crosswalk resolves aliases. Nonpolar capacitor numbering is a reconstruction convention.",
+      "single_pair": false
+    },
+    {
+      "source": "evidence/r47_c42_routing_20261009.json",
+      "field": "user_supported_pairs",
+      "kind": "photo_and_owner_annotation",
+      "relation": "same",
+      "basis": "Physical endpoints only. No historical candidate function/native numbering is imported; present pin_crosswalk resolves aliases. Nonpolar capacitor numbering is a reconstruction convention.",
+      "single_pair": false
+    },
+    {
+      "source": "evidence/r47_c42_routing_20261009.json",
+      "field": "agent_photo_supported_pairs",
+      "kind": "photo_and_owner_annotation",
+      "relation": "same",
+      "basis": "Physical endpoints only. No historical candidate function/native numbering is imported; present pin_crosswalk resolves aliases. Nonpolar capacitor numbering is a reconstruction convention.",
+      "single_pair": false
+    },
+    {
+      "source": "evidence/j6_q9_button_routing_20261009.json",
+      "field": "user_supported_pairs",
+      "kind": "photo_and_owner_annotation",
+      "relation": "same",
+      "basis": "Physical endpoints only. No historical candidate function/native numbering is imported; present pin_crosswalk resolves aliases. Nonpolar capacitor numbering is a reconstruction convention.",
+      "single_pair": false
+    },
+    {
+      "source": "evidence/u6a_three_pad_routing_20261009.json",
+      "field": "supported_pairs",
+      "kind": "photo_and_owner_annotation",
+      "relation": "same",
+      "basis": "Physical endpoints only. No historical candidate function/native numbering is imported; present pin_crosswalk resolves aliases. Nonpolar capacitor numbering is a reconstruction convention.",
+      "single_pair": false
+    },
+    {
+      "source": "evidence/d6_u6_open_pad_results_20261009.json",
+      "field": "user_annotated_pairs",
+      "kind": "photo_and_owner_annotation",
+      "relation": "same",
+      "basis": "Physical endpoints only. No historical candidate function/native numbering is imported; present pin_crosswalk resolves aliases. Nonpolar capacitor numbering is a reconstruction convention.",
+      "single_pair": false
+    },
+    {
+      "source": "evidence/c49_connections_20261009.json",
+      "field": "supported_pairs",
+      "kind": "photo_and_owner_annotation",
+      "relation": "same",
+      "basis": "Physical endpoints only. No historical candidate function/native numbering is imported; present pin_crosswalk resolves aliases. Nonpolar capacitor numbering is a reconstruction convention.",
+      "single_pair": false
+    },
+    {
+      "source": "evidence/d6_u6_open_pad_results_20261009.json",
+      "field": "confirmed_pairs",
+      "kind": "meter",
+      "relation": "same",
+      "basis": "Only the explicit endpoint pairs in this source field; measurement conditions and raw numbers remain in the source.",
+      "single_pair": false
+    },
+    {
+      "source": "evidence/ra0_tp6_connection_v0938.json",
+      "field": "measured_pair",
+      "kind": "meter",
+      "relation": "same",
+      "basis": "B59 1.5 ohm, unpowered; no fresh lead-resistance/stability report.",
+      "single_pair": true
+    },
+    {
+      "source": "evidence/u2_c7_feed_results_20261015.json",
+      "field": "confirmed_pair",
+      "kind": "meter",
+      "relation": "same",
+      "basis": "B78 UV-CP 1.5 ohm; unpowered. B79 27 ohm is not imported as copper.",
+      "single_pair": true
+    },
+    {
+      "source": "evidence/r5_supply_feed_results_20261015.json",
+      "field": "supported_pairs",
+      "kind": "photo_with_qualified_low_ohms",
+      "relation": "same",
+      "basis": "B80/B81 4 and 3.3 ohm; contact uncertainty retained. IMG_2428/IMG_2431 route R5 lower to Q8 source/C6 supply and upper toward U2/C7 corroborates feed, not an ideal zero-ohm claim. No edge across R5.",
+      "single_pair": false
+    }
+  ],
+  "observations": [
+    {
+      "source": "evidence/d2_diode_20261009.json",
+      "pairs": [
+        [
+          "D2.R",
+          "C20.2"
+        ],
+        [
+          "D2.L",
+          "ANT2.1"
+        ],
+        [
+          "D2.S",
+          "R46.2"
+        ],
+        [
+          "R46.1",
+          "D2.L"
+        ]
+      ],
+      "basis": "local_connection_measurements: R-C20 lower 1 ohm; other three explicit owner continuity/visible-copper reports. R is upper-left, L upper-right in user photo.",
+      "kind": "meter_and_owner_report",
+      "relation": "same"
+    },
+    {
+      "source": "evidence/d2_diode_20261009.json",
+      "pairs": [
+        [
+          "D2.R",
+          "GND.1"
+        ],
+        [
+          "D2.R",
+          "VDD.1"
+        ],
+        [
+          "D2.L",
+          "VDD.1"
+        ],
+        [
+          "D2.L",
+          "GND.1"
+        ],
+        [
+          "D2.S",
+          "GND.1"
+        ],
+        [
+          "D2.S",
+          "VREF.1"
+        ],
+        [
+          "D2.S",
+          "ANT2.1"
+        ]
+      ],
+      "basis": "Recorded R-GND780k, R-VDD990k, L-VDD740k, L-GND450k, S-GND700k, S-VREF1.32M and S-ANT2 OL. Values are not copper.",
+      "kind": "meter",
+      "relation": "separate"
+    },
+    {
+      "source": "evidence/d3_measurement_20261009.json",
+      "pairs": [
+        [
+          "D3.L",
+          "GND.1"
+        ],
+        [
+          "D3.R",
+          "VDD.1"
+        ],
+        [
+          "D3.S",
+          "R42.2"
+        ]
+      ],
+      "basis": "Owner rail reports and 1.2-ohm D3.S-to-R42 result; IMG_2434 selects lower/near-D3 R42.2.",
+      "kind": "meter_and_photo",
+      "relation": "same"
+    },
+    {
+      "source": "evidence/q8_supply_result_20261009.json",
+      "pairs": [
+        [
+          "Q8.T2",
+          "C6.1"
+        ]
+      ],
+      "basis": "B37 P-F1ohm replaces earlier10ohm; fresh probe baseline not supplied.",
+      "kind": "meter",
+      "relation": "same"
+    },
+    {
+      "source": "evidence/tp14_followup_results_20261014.json",
+      "pairs": [
+        [
+          "TP14.1",
+          "U5.8"
+        ]
+      ],
+      "basis": "Owner X03 TP14-U5pin8 1.5ohm.",
+      "kind": "meter",
+      "relation": "same"
+    },
+    {
+      "source": "evidence/tp14_followup_results_20261014.json",
+      "pairs": [
+        [
+          "BATP.1",
+          "TP14.1"
+        ]
+      ],
+      "basis": "B60 directly measured BP minus TP14=6.3V. B61 516ohm is not a copper edge and is superseded by B84/B85.",
+      "kind": "powered_difference",
+      "relation": "separate"
+    },
+    {
+      "source": "evidence/u2_vdd_separation_result_20261014.json",
+      "pairs": [
+        [
+          "U2.B2",
+          "VDD.1"
+        ]
+      ],
+      "basis": "B77 direct U2 supply minus printed VDD=+1.8V; avoids subtraction of nonsimultaneous readings.",
+      "kind": "powered_difference",
+      "relation": "separate"
+    },
+    {
+      "source": "evidence/u2_c7_feed_results_20261015.json",
+      "pairs": [
+        [
+          "C7.1",
+          "C6.1"
+        ]
+      ],
+      "basis": "B79 27ohm; compatible with R5 22ohm feed, never copper.",
+      "kind": "meter",
+      "relation": "separate"
+    },
+    {
+      "source": "evidence/antenna_outer_rail_results_20261014.json",
+      "pairs": [
+        [
+          "C11.1",
+          "ANT2.1"
+        ]
+      ],
+      "basis": "B52 actual N-B1.4ohm. Earlier414k labeled N-B was corrected to B-G.",
+      "kind": "meter",
+      "relation": "same"
+    },
+    {
+      "source": "evidence/antenna_outer_rail_results_20261014.json",
+      "pairs": [
+        [
+          "C11.1",
+          "GND.1"
+        ],
+        [
+          "ANT2.1",
+          "GND.1"
+        ]
+      ],
+      "basis": "B47 N-G414k, corrected B50 B-G414k.",
+      "kind": "meter",
+      "relation": "separate"
+    },
+    {
+      "source": "evidence/antenna_midpoint_results_20261014.json",
+      "pairs": [
+        [
+          "C10.2",
+          "ANT1.1"
+        ],
+        [
+          "C10.2",
+          "ANT2.1"
+        ],
+        [
+          "ANT1.1",
+          "ANT2.1"
+        ]
+      ],
+      "basis": "M-A/M-B OL; A-B about5ohm with external antenna fitted. Never union through the coil.",
+      "kind": "meter",
+      "relation": "separate"
+    },
+    {
+      "source": "evidence/q1_gate_recheck_results_20261015.json",
+      "pairs": [
+        [
+          "TP14.1",
+          "Q1.R"
+        ]
+      ],
+      "basis": "B84/B85 21.4/21.7kohm; supersedes old516ohm as active contradiction, not direct continuity.",
+      "kind": "meter",
+      "relation": "separate"
+    },
+    {
+      "source": "evidence/s1_contact_results_20261009.json",
+      "pairs": [
+        [
+          "S1.TL",
+          "S1.TR"
+        ],
+        [
+          "S1.BL",
+          "S1.BR"
+        ]
+      ],
+      "basis": "B38/B39 permanent common rows measured1ohm. Internal common contacts explicitly allowed, not PCB copper; B41 pressed closure excluded.",
+      "kind": "permanent_contact",
+      "relation": "same"
+    },
+    {
+      "source": "evidence/s1_contact_results_20261009.json",
+      "pairs": [
+        [
+          "S1.TR",
+          "S1.BR"
+        ]
+      ],
+      "basis": "B40 released OL (B41 pressed1ohm is a temporary switch path).",
+      "kind": "meter",
+      "relation": "separate"
+    },
+    {
+      "source": "evidence/e06_photo_review_20261014.json",
+      "pairs": [
+        [
+          "U4.14",
+          "TP11.1"
+        ],
+        [
+          "U4.18",
+          "TP17.1"
+        ]
+      ],
+      "basis": "branches[1:3] direct local front routes; hidden continuation not excluded.",
+      "kind": "photo_review",
+      "relation": "same"
+    },
+    {
+      "source": "evidence/j5_photo_review_20261009.json",
+      "pairs": [
+        [
+          "J5.A",
+          "U5.8"
+        ],
+        [
+          "J5.B",
+          "U5.5"
+        ],
+        [
+          "U5.5",
+          "TP15.1"
+        ]
+      ],
+      "basis": "Original front/rear contact-map review; no inferred external motor lead color.",
+      "kind": "photo_review",
+      "relation": "same"
+    },
+    {
+      "source": "evidence/r39_endpoint_correction_v0945.json",
+      "pairs": [
+        [
+          "R39.1",
+          "TP16.1"
+        ],
+        [
+          "TP16.1",
+          "Q2.S"
+        ]
+      ],
+      "basis": "IMG_2425 visible copper; old R39-to-base inference withdrawn.",
+      "kind": "photo_review",
+      "relation": "same"
+    },
+    {
+      "source": "evidence/v096_net_changes.json",
+      "pairs": [
+        [
+          "U4.5",
+          "R14.1"
+        ],
+        [
+          "U4.6",
+          "R15.1"
+        ],
+        [
+          "U4.7",
+          "R16.1"
+        ],
+        [
+          "U4.11",
+          "R11.1"
+        ],
+        [
+          "R37.1",
+          "R39.2"
+        ],
+        [
+          "R37.1",
+          "VDD.1"
+        ]
+      ],
+      "basis": "User working via pairs V036-108,V037-102,V039-097,V047-091,V064-063. Pad associations from reported via endpoints; no invented numeric readings.",
+      "kind": "owner_via_report",
+      "relation": "same"
+    },
+    {
+      "source": "evidence/v096_net_changes.json",
+      "pairs": [
+        [
+          "U4.12",
+          "R21.2"
+        ],
+        [
+          "C46.2",
+          "C43.2"
+        ],
+        [
+          "C46.2",
+          "C16.2"
+        ],
+        [
+          "C46.2",
+          "C13.2"
+        ],
+        [
+          "C46.2",
+          "C10.2"
+        ]
+      ],
+      "basis": "Rejected V053-071; V090 toV095/100/103/107 OL. No common tuning midpoint.",
+      "kind": "owner_via_report",
+      "relation": "separate"
+    },
+    {
+      "source": "evidence/via_user_review.json",
+      "pairs": [
+        [
+          "C43.2",
+          "C16.2"
+        ],
+        [
+          "C43.2",
+          "C13.2"
+        ],
+        [
+          "C43.2",
+          "C10.2"
+        ]
+      ],
+      "basis": "V095 toV100/103/107 allOL.",
+      "kind": "owner_via_report",
+      "relation": "separate"
+    },
+    {
+      "source": "evidence/pic_gpio_user_mapping.json",
+      "pairs": [
+        [
+          "U4.3",
+          "R28.1"
+        ],
+        [
+          "U4.3",
+          "R29.1"
+        ],
+        [
+          "U4.3",
+          "TP7.1"
+        ],
+        [
+          "U4.15",
+          "U5.2"
+        ],
+        [
+          "U4.16",
+          "U5.3"
+        ],
+        [
+          "U4.17",
+          "R13.1"
+        ],
+        [
+          "U4.22",
+          "TP2.1"
+        ],
+        [
+          "U4.23",
+          "TP1.1"
+        ],
+        [
+          "U4.25",
+          "TP4.1"
+        ],
+        [
+          "U4.26",
+          "TP10.1"
+        ]
+      ],
+      "basis": "Explicit owner GPIO destinations, both meter and trace reported. Resistor-end selections remain photo-derived; no numeric readings invented.",
+      "kind": "owner_report",
+      "relation": "same"
+    },
+    {
+      "source": "evidence/v098_net_changes.json",
+      "pairs": [
+        [
+          "U4.12",
+          "R18.1"
+        ],
+        [
+          "U4.13",
+          "TP3.1"
+        ],
+        [
+          "R42.1",
+          "TP4.1"
+        ],
+        [
+          "R21.2",
+          "VREF.1"
+        ],
+        [
+          "R43.2",
+          "TP14.1"
+        ],
+        [
+          "U6A.R1",
+          "J3.1"
+        ]
+      ],
+      "basis": "Selected explicit via/test-point owner reports only; withdrawn PIC21/VREF and inferred R23/R48 bias joins are excluded.",
+      "kind": "owner_via_report",
+      "relation": "same"
+    },
+    {
+      "source": "evidence/v099_net_changes.json",
+      "pairs": [
+        [
+          "U4.4",
+          "VREF.1"
+        ],
+        [
+          "U4.4",
+          "C39.1"
+        ],
+        [
+          "U4.20",
+          "VDD.1"
+        ],
+        [
+          "U4.20",
+          "C32.1"
+        ],
+        [
+          "Q1.L",
+          "U5.4"
+        ],
+        [
+          "L1.1",
+          "U5.4"
+        ],
+        [
+          "L2.1",
+          "U5.4"
+        ]
+      ],
+      "basis": "Owner rail reports plus stated local PIC-capacitor photo associations; no merging across L1/L2 or Q1.",
+      "kind": "owner_report_and_photo",
+      "relation": "same"
+    },
+    {
+      "source": "photos/originals/IMG_2431.jpg",
+      "pairs": [
+        [
+          "TP3.1",
+          "R10.1"
+        ],
+        [
+          "TP3.1",
+          "R6.2"
+        ],
+        [
+          "R6.2",
+          "D1.S"
+        ],
+        [
+          "D1.S",
+          "R7.1"
+        ],
+        [
+          "R6.1",
+          "D1.L"
+        ],
+        [
+          "D1.L",
+          "U2.T1"
+        ],
+        [
+          "R6.1",
+          "C8.1"
+        ],
+        [
+          "R7.2",
+          "D1.R"
+        ],
+        [
+          "D1.R",
+          "U2.T3"
+        ],
+        [
+          "R7.2",
+          "C9.1"
+        ],
+        [
+          "U2.B1",
+          "R8.1"
+        ],
+        [
+          "U2.B3",
+          "R9.1"
+        ],
+        [
+          "R8.2",
+          "Q8.T1"
+        ],
+        [
+          "R9.2",
+          "Q8.T3"
+        ],
+        [
+          "Q8.B1",
+          "Q8.B3"
+        ]
+      ],
+      "basis": "Visible front tracks: TP3 common above D1; separate paired diode/input branches; two series output resistors and their Q8 gates. Q8 lower outer contacts share perimeter copper; centre contact is a separate island. R5 crosses supply domains through a component and is not shorted.",
+      "kind": "photo",
+      "relation": "same"
+    },
+    {
+      "source": "photos/originals/IMG_2428.jpg",
+      "pairs": [
+        [
+          "Q8.B1",
+          "ANT1.1"
+        ],
+        [
+          "L1.2",
+          "C5.1"
+        ],
+        [
+          "C8.2",
+          "C9.2"
+        ],
+        [
+          "C9.2",
+          "C7.2"
+        ]
+      ],
+      "basis": "Wider original shows Q8 outer-output band continuing to ANT1 (lower antenna contact in this orientation), L1 output/C5-positive area, and grounded local capacitor band. Fitted black antenna wire is not used as a copper bridge.",
+      "kind": "photo",
+      "relation": "same"
+    },
+    {
+      "source": "photos/originals/IMG_2433.jpg",
+      "pairs": [
+        [
+          "Q3.R",
+          "R13.2"
+        ],
+        [
+          "Q3.S",
+          "C10.1"
+        ],
+        [
+          "C10.2",
+          "C11.2"
+        ],
+        [
+          "Q4.R",
+          "R14.2"
+        ],
+        [
+          "Q4.S",
+          "C13.1"
+        ],
+        [
+          "C13.2",
+          "C14.2"
+        ],
+        [
+          "Q5.R",
+          "R15.2"
+        ],
+        [
+          "Q5.S",
+          "C16.1"
+        ],
+        [
+          "C16.2",
+          "C29.2"
+        ],
+        [
+          "Q6.R",
+          "R16.2"
+        ],
+        [
+          "Q6.S",
+          "C43.1"
+        ],
+        [
+          "C43.2",
+          "C44.2"
+        ],
+        [
+          "Q11.R",
+          "R11.2"
+        ],
+        [
+          "Q11.S",
+          "C46.1"
+        ],
+        [
+          "C46.2",
+          "C47.2"
+        ],
+        [
+          "C11.1",
+          "C14.1"
+        ],
+        [
+          "C14.1",
+          "C29.1"
+        ],
+        [
+          "C29.1",
+          "C44.1"
+        ],
+        [
+          "C44.1",
+          "C47.1"
+        ]
+      ],
+      "basis": "Each resistor lower pad reaches paired-right transistor pad; single transistor pad reaches upper capacitor top; two capacitor inner ends share individual via island. Five outer lower ends share one band. Left transistor pads terminate at distinct vias; their ground attribution is not inferred from transistor type.",
+      "kind": "photo",
+      "relation": "same"
+    },
+    {
+      "source": "photos/originals/IMG_2442.jpg",
+      "pairs": [
+        [
+          "C12.1",
+          "C15.1"
+        ],
+        [
+          "C15.1",
+          "C38.1"
+        ],
+        [
+          "C38.1",
+          "C45.1"
+        ],
+        [
+          "C45.1",
+          "C48.1"
+        ]
+      ],
+      "basis": "Rear left terminals share wide copper; right terminals have isolated via islands. Matching front/rear midpoint identity remains a registration-based claim, not a directly visible through-layer track.",
+      "kind": "photo",
+      "relation": "same"
+    },
+    {
+      "source": "photos/originals/IMG_2434.jpg",
+      "pairs": [
+        [
+          "Q7.S",
+          "R20.1"
+        ],
+        [
+          "C24.1",
+          "U3.8"
+        ],
+        [
+          "R24.1",
+          "U3.7"
+        ],
+        [
+          "R24.2",
+          "U3.6"
+        ],
+        [
+          "C21.1",
+          "R24.1"
+        ],
+        [
+          "C21.2",
+          "R24.2"
+        ],
+        [
+          "R23.1",
+          "U3.6"
+        ],
+        [
+          "C18.1",
+          "U3.5"
+        ],
+        [
+          "R27.2",
+          "U3.1"
+        ],
+        [
+          "R26.2",
+          "U3.2"
+        ],
+        [
+          "R26.1",
+          "U3.1"
+        ],
+        [
+          "C22.1",
+          "R26.1"
+        ],
+        [
+          "C22.2",
+          "R26.2"
+        ],
+        [
+          "R27.1",
+          "TP6.1"
+        ],
+        [
+          "C23.1",
+          "U3.7"
+        ],
+        [
+          "R23.2",
+          "C40.1"
+        ],
+        [
+          "R42.1",
+          "C40.1"
+        ],
+        [
+          "D3.S",
+          "R42.2"
+        ]
+      ],
+      "basis": "Reinspected feedback tracks around U3 with IMG_2429. C21/R24 and C22/R26 external parallel paths visible; these edges do not bridge either capacitor/resistor. U3.3 onward route under/along the package and C19/C20 bias grouping remain unverified.",
+      "kind": "photo",
+      "relation": "same"
+    },
+    {
+      "source": "photos/originals/IMG_2429.jpg",
+      "pairs": [
+        [
+          "C18.2",
+          "TP6.1"
+        ],
+        [
+          "U3.4",
+          "C42.1"
+        ],
+        [
+          "R48.1",
+          "U3.2"
+        ]
+      ],
+      "basis": "C18 opposite terminal takes narrow bent track around left of U3 toward TP6; pin4 joins broad ground region beside C42 upper pad. Input pin3 is not connected to the neighboring pin4 by this observation.",
+      "kind": "photo",
+      "relation": "same"
+    },
+    {
+      "source": "photos/originals/IMG_2430.jpg",
+      "pairs": [
+        [
+          "C1.1",
+          "C1A.1"
+        ],
+        [
+          "C1.2",
+          "C1A.2"
+        ],
+        [
+          "C2.1",
+          "C2A.1"
+        ],
+        [
+          "C2.2",
+          "C2A.2"
+        ],
+        [
+          "U1.R1",
+          "VDD.1"
+        ],
+        [
+          "U1.R1",
+          "C2.1"
+        ],
+        [
+          "U1.R2",
+          "R1.2"
+        ],
+        [
+          "U1.R2",
+          "C3.2"
+        ],
+        [
+          "U1.R2",
+          "R2.2"
+        ],
+        [
+          "R2.2",
+          "C4.2"
+        ],
+        [
+          "R2.1",
+          "C4.1"
+        ]
+      ],
+      "basis": "Power close-up: paired capacitor option lands share each side; U1 upper-right output follows to VDD/C2; lower-right alternate pin has narrow route to empty R1/C3/R2/C4 island. U1 left pad destinations behind pads/package are not all established here.",
+      "kind": "photo",
+      "relation": "same"
+    },
+    {
+      "source": "photos/originals/IMG_2438.jpg",
+      "pairs": [
+        [
+          "Q1.R",
+          "R44.2"
+        ],
+        [
+          "Q1.S",
+          "BATP.1"
+        ],
+        [
+          "U5.1",
+          "C34.1"
+        ],
+        [
+          "U5.4",
+          "C33.1"
+        ],
+        [
+          "U5.8",
+          "J5.A"
+        ],
+        [
+          "U5.5",
+          "TP15.1"
+        ],
+        [
+          "TP15.1",
+          "J5.B"
+        ]
+      ],
+      "basis": "Motor power close-up: R44 lower to Q1 upper-right, battery-positive pad to Q1 single; U5 dot/orientation and local decoupling/output copper. Does not repeat old TP14-battery or Q1.L-R43.2 errors.",
+      "kind": "photo",
+      "relation": "same"
+    },
+    {
+      "source": "photos/originals/IMG_2425.jpg",
+      "pairs": [
+        [
+          "Q2.R",
+          "R38.2"
+        ],
+        [
+          "R39.1",
+          "TP16.1"
+        ],
+        [
+          "Q2.S",
+          "TP16.1"
+        ]
+      ],
+      "basis": "PIR original: R38-side Q2 paired pad is separate from TP16/single-pad collector group. R39 TP16-side end joins latter. No device identity inferred.",
+      "kind": "photo",
+      "relation": "same"
+    },
+    {
+      "source": "photos/originals/IMG_2435.jpg",
+      "pairs": [
+        [
+          "C36.1",
+          "U6.R2"
+        ],
+        [
+          "C37.1",
+          "U6.R1"
+        ],
+        [
+          "U6.R1",
+          "U7.3"
+        ],
+        [
+          "U6.R3",
+          "C36.2"
+        ],
+        [
+          "C36.2",
+          "C37.2"
+        ],
+        [
+          "Q2.L",
+          "GND.1"
+        ],
+        [
+          "C1.2",
+          "GND.1"
+        ],
+        [
+          "U1.L2",
+          "C1.2"
+        ],
+        [
+          "U1.L1",
+          "C1.1"
+        ],
+        [
+          "R1.1",
+          "VDD.1"
+        ],
+        [
+          "C3.1",
+          "VDD.1"
+        ]
+      ],
+      "basis": "PIR/power close-up: each right U6 contact has its own supply/ground track; upper output track reaches U7 outer hole. Input remains separate across R37. U1 upper-left reaches C1 upper; middle reaches ground band. Lower-left CE path remains unverified.",
+      "kind": "photo",
+      "relation": "same"
+    },
+    {
+      "source": "photos/originals/IMG_2437.jpg",
+      "pairs": [
+        [
+          "U4.27",
+          "D4.1"
+        ],
+        [
+          "D4.1",
+          "R32.2"
+        ],
+        [
+          "R32.2",
+          "J1.CLK"
+        ],
+        [
+          "U4.28",
+          "D5.1"
+        ],
+        [
+          "D5.1",
+          "J1.DAT"
+        ],
+        [
+          "D6.1",
+          "U4.1"
+        ],
+        [
+          "C41.1",
+          "TP4.1"
+        ],
+        [
+          "R40.1",
+          "U4.28"
+        ]
+      ],
+      "basis": "Direct surface tracks to PIC pins27/28 and J1 CLK/DAT, D6 lower to PIC1, C41 right to TP4. R40 reaches PIC28 through the trace around the mounting hole.",
+      "kind": "photo",
+      "relation": "same"
+    },
+    {
+      "source": "evidence/led1_colour_results_20261009.json",
+      "pairs": [
+        [
+          "R31.2",
+          "LED1.TR"
+        ],
+        [
+          "R30.2",
+          "LED1.TL"
+        ],
+        [
+          "LED1.BL",
+          "LED1.BR"
+        ]
+      ],
+      "basis": "Existing photo pad mapping for the measured colours; common cathodes share external copper, not a claim about internal die pairing.",
+      "kind": "photo_review",
+      "relation": "same"
+    },
+    {
+      "source": "evidence/via_user_review.json",
+      "pairs": [
+        [
+          "C33.2",
+          "GND.1"
+        ],
+        [
+          "C34.2",
+          "GND.1"
+        ],
+        [
+          "C25.2",
+          "GND.1"
+        ],
+        [
+          "C28.2",
+          "GND.1"
+        ],
+        [
+          "C35.2",
+          "GND.1"
+        ],
+        [
+          "C36.2",
+          "GND.1"
+        ],
+        [
+          "C37.2",
+          "GND.1"
+        ],
+        [
+          "C19.2",
+          "GND.1"
+        ],
+        [
+          "R29.2",
+          "GND.1"
+        ],
+        [
+          "C17.2",
+          "GND.1"
+        ],
+        [
+          "C40.2",
+          "GND.1"
+        ],
+        [
+          "C8.2",
+          "GND.1"
+        ],
+        [
+          "C7.2",
+          "GND.1"
+        ],
+        [
+          "C5.2",
+          "GND.1"
+        ],
+        [
+          "LED1.BL",
+          "GND.1"
+        ],
+        [
+          "Q8.B2",
+          "GND.1"
+        ],
+        [
+          "U2.T2",
+          "GND.1"
+        ]
+      ],
+      "basis": "Explicit ground reports plus component associations: V006/007,029,040,018,068,077,078,083,112,118,125/126/127 and corrected113/115/114. Pad selections are photo-derived, not separate per-pad ohm readings. C20 is intentionally excluded.",
+      "kind": "owner_via_report_and_photo",
+      "relation": "same"
+    },
+    {
+      "source": "evidence/via_user_review.json",
+      "pairs": [
+        [
+          "Q7.R",
+          "VDD.1"
+        ]
+      ],
+      "basis": "V064-V075 owner continuity; Q7.R selection from local photo and subsequent Q7.R-R19.2 measured pair. Not inference from powered voltages.",
+      "kind": "owner_via_report_and_photo",
+      "relation": "same"
+    }
+  ],
+  "observed_pads": [
+    {
+      "source": "photos/originals/IMG_2434.jpg",
+      "pads": [
+        "R18.1",
+        "R18.2",
+        "R19.1",
+        "R19.2",
+        "R20.1",
+        "R20.2",
+        "R21.1",
+        "R21.2",
+        "R22.1",
+        "R22.2",
+        "R23.1",
+        "R23.2",
+        "R24.1",
+        "R24.2",
+        "R25.1",
+        "R25.2",
+        "R26.1",
+        "R26.2",
+        "R27.1",
+        "R27.2",
+        "R28.1",
+        "R28.2",
+        "R29.1",
+        "R29.2",
+        "R42.1",
+        "R42.2",
+        "R47.1",
+        "R47.2",
+        "R48.1",
+        "R48.2",
+        "C17.1",
+        "C17.2",
+        "C18.1",
+        "C18.2",
+        "C19.1",
+        "C19.2",
+        "C20.1",
+        "C20.2",
+        "C21.1",
+        "C21.2",
+        "C22.1",
+        "C22.2",
+        "C23.1",
+        "C23.2",
+        "C24.1",
+        "C24.2",
+        "C40.1",
+        "C40.2",
+        "C42.1",
+        "C42.2",
+        "R46.1",
+        "R46.2",
+        "U3.1",
+        "U3.2",
+        "U3.3",
+        "U3.4",
+        "U3.5",
+        "U3.6",
+        "U3.7",
+        "U3.8",
+        "Q7.L",
+        "Q7.R",
+        "Q7.S",
+        "D2.L",
+        "D2.R",
+        "D2.S",
+        "D3.L",
+        "D3.R",
+        "D3.S"
+      ]
+    },
+    {
+      "source": "photos/originals/IMG_2431.jpg",
+      "pads": [
+        "R5.1",
+        "R5.2",
+        "R6.1",
+        "R6.2",
+        "R7.1",
+        "R7.2",
+        "R8.1",
+        "R8.2",
+        "R9.1",
+        "R9.2",
+        "R10.1",
+        "R10.2",
+        "C6.1",
+        "C6.2",
+        "C7.1",
+        "C7.2",
+        "C8.1",
+        "C8.2",
+        "C9.1",
+        "C9.2",
+        "U2.T1",
+        "U2.T2",
+        "U2.T3",
+        "U2.B1",
+        "U2.B2",
+        "U2.B3",
+        "Q8.T1",
+        "Q8.T2",
+        "Q8.T3",
+        "Q8.B1",
+        "Q8.B2",
+        "Q8.B3",
+        "D1.L",
+        "D1.R",
+        "D1.S"
+      ]
+    },
+    {
+      "source": "photos/originals/IMG_2442.jpg",
+      "pads": [
+        "C12.1",
+        "C12.2",
+        "C15.1",
+        "C15.2",
+        "C38.1",
+        "C38.2",
+        "C45.1",
+        "C45.2",
+        "C48.1",
+        "C48.2",
+        "C49.1",
+        "C49.2"
+      ]
+    }
+  ],
+  "source_sha256": {
+    "evidence/antenna_midpoint_results_20261014.json": "0ff98130324eabc6887ffc04dabf1035bdd4eb4d25ca062fe8f6de4a0bb2b3bb",
+    "evidence/antenna_outer_rail_results_20261014.json": "f19e3b65af4d17028dfd57cb69bc046fe1d37bb097f53387a47549b5af655cac",
+    "evidence/c25_c26_mapping_20261009.json": "0e239f8a6f0757490099f8844ea876a74674b05ff5b816d8447eafdd48c632ac",
+    "evidence/c49_connections_20261009.json": "cb0fc677bdca4fce89db626a6c1881113fb5ffffeea00ca6041c1207c23e93e9",
+    "evidence/c5_c6_parallel_20261009.json": "e9ae4c61e1b3ee3745762691ede19215994e5111327e0ebf8a37b602acee9e4f",
+    "evidence/d2_diode_20261009.json": "506fd0c2c196613429dbf73ea58adc3e9fbdf145d3f9c236926638a84cfada43",
+    "evidence/d3_measurement_20261009.json": "1c3b625ae3a40cdc8fb3ec559fdf6a61449516e3b81dc6b07fbdc351fadbebd8",
+    "evidence/d6_u6_open_pad_results_20261009.json": "53eb98a2bd11561697bcc2827dc9e733b6deb36c98d6bc92b2dbdde615e381fa",
+    "evidence/e06_disposition_v0941.json": "d8265b01f5880041807b600a35a003e05a4e27a1efb4d1b1f26c5f81e7090952",
+    "evidence/e06_photo_review_20261014.json": "88759b32c8aa88fc34e6529c937dd8878c1fb49def1dd507520ba1bbac8e0b33",
+    "evidence/j5_photo_review_20261009.json": "b5d1e472fd1e8b1fa8db7b39a1444c198e1bd6069f87a08870f3842e1d3938e6",
+    "evidence/j6_q9_button_routing_20261009.json": "64355cd48d108baef14c0ecb46f0dbf773fb22f2c3aa1bc9b33df83b61adc59e",
+    "evidence/led1_colour_results_20261009.json": "4702322acce8c15a13ce0dfc6f1d9483e15b3101980eed259b2d53a6cc42291b",
+    "evidence/pic21_tp16_followup_20261009.json": "61a9ea4071f272d7fafc240006fe31334ce107772015caecb9e2e2d68c91e646",
+    "evidence/pic_gpio_user_mapping.json": "449b94140a068987c210429adbffdb680443e5c5dbe35aeea71121a9406aa6ce",
+    "evidence/pir_batch5_u7_20261009.json": "606fd8238d417b3040234a12e233528c18940583b3eea7d1da0d8378f97d7611",
+    "evidence/q1_gate_recheck_results_20261015.json": "0edba68127dcaabef16850c1d1bba468fab6de0de0dc8162c672341a1b0e6489",
+    "evidence/q3_diode_results_20261009.json": "39a61bb82de66345ba235b245625d19f4c92966a389a9e7baf769f1c7cba181c",
+    "evidence/q7_diode_results_20261014.json": "1a21b5071f93a5825b08db43402ae965bcdf3896eb93f49a910604f82530277d",
+    "evidence/q7_direct_bias_result_20261014.json": "2975199004bc81c230839676fb20409259d4fea487ae7266f55cbc93bfa31561",
+    "evidence/q7_r19_join_results_20261014.json": "e6fc40fd55b184eeead489724a0e1319ccaad315a42e10ff5216ae10ae08bfbc",
+    "evidence/q8_gate_bias_results_20261014.json": "4420200b03aa3c3ff95f0eeef7e12c6b0ab0974bd30fd93f16aa615d6858a412",
+    "evidence/q8_supply_result_20261009.json": "089f096a69ea3dbfd915aaaabb2e17043c5608e20326fe2f39e9a91db8a9e4ee",
+    "evidence/r39_endpoint_correction_v0945.json": "14983037333750bd949fd7b312c95167f6555641ea68be244a6d7a1b7e4f2dfe",
+    "evidence/r44_resistance_result_20261015.json": "59a22c93dcbb283871d40f84eda1f1ac9a1900c16861087bacaed47827ff332d",
+    "evidence/r47_c42_routing_20261009.json": "561ca19abbf2538a66ca22d9c27401a6cddf94b15eebd694e936def878b2f40d",
+    "evidence/r5_supply_feed_results_20261015.json": "c74745a0700eed6a4eeab88766d680fb2a3b77dc3bcc181c1d17968cfc9ead47",
+    "evidence/ra0_tp6_connection_v0938.json": "079574b8e5e34834da56b1b53c82bc2f99f5ba057a12d8f8657674d29b323a61",
+    "evidence/receiver_supply_results_20261014.json": "903998c9efe0414fa35c8fa33059440855ccf8fff171eb7d0389327545f8a934",
+    "evidence/s1_contact_results_20261009.json": "5627734ecb20f3cd62da4929ee650114d4062e420946cf90a535ffa34014fe91",
+    "evidence/tp14_followup_results_20261014.json": "446a19ad1a90398faf50b39e092b3b84c5982c11a774a44a6349bbd640c4b893",
+    "evidence/u2_c7_feed_results_20261015.json": "1d1ceb9801c08d20cc5055ef50876c8bab70e9863a34bff21c6a896d340bb78e",
+    "evidence/u2_supply_voltage_result_20261014.json": "3e9bc6eba4166902700b1b20d6b6feb339618bbcf9b5dc4374803521e04fc282",
+    "evidence/u2_vdd_separation_result_20261014.json": "db565b1b160e69fbc43e8993b46882759ee720a47a4b5baa86aa0e5425d0b736",
+    "evidence/u3_j3_batch2_20261009.json": "0c9b27fda2444c98bfe3c8fd571f52d9b40efdacbea3547a37de9069854366ed",
+    "evidence/u3_j3_measurements_20261009.json": "877d9b7cb231efbcd346e9375d4fcb5f1eeb306f5ae75ebaf3ad2e6d87e9a797",
+    "evidence/u3_r23_batch3_20261009.json": "ea0cfc124750237a444c3afdc85a54bffb322d16830058c902b0129033c800d2",
+    "evidence/u3_r23_batch4_20261009.json": "478f361d1b5110e2a0354c431137c65bca4b67de4f431da4dcbcb07776dc64f5",
+    "evidence/u6a_three_pad_routing_20261009.json": "3011c2917530056f95e3c8188ed11a7772d1cd97ea55cbc03ebc485283c4627a",
+    "evidence/v096_net_changes.json": "beff36ae2d935f3a0c032c4f727cbae806e6ea5903258f43f46ac3bfd47cd545",
+    "evidence/v098_net_changes.json": "7e7c41b18ab4fff66061091539672c88e2ec54f2c93e69e1d9b5f273e315f137",
+    "evidence/v099_net_changes.json": "a309e2440fd0923b74b1d6900cb67463e92e00b6411d7cf768decceedba31c14",
+    "evidence/via_user_review.json": "cdde5ab302702c7ec47abad0fdbf39b1a09d50fa3ca23c382560024aec40aa1c",
+    "photos/originals/IMG_2425.jpg": "8dbfb5bc465138ddbc884c13677737045250d0249b7df5238c9db49ff090eb8b",
+    "photos/originals/IMG_2428.jpg": "ae1f4ac0fbcba82e5914689648dec4c8db05b43d2ccf7e74e3c7f14d6f25e137",
+    "photos/originals/IMG_2429.jpg": "361196f08e930c6646db12a5ff80ab6829fbb9d49dace975bdb3a2f02e830aff",
+    "photos/originals/IMG_2430.jpg": "649d510712fd27450662a96ce03c1d26dcc20c3dabdbd86ace20561b35382b15",
+    "photos/originals/IMG_2431.jpg": "d2b09a11ac056eb624fb9052e8e653d1885cc1a3a9c148c88d677c3307d73880",
+    "photos/originals/IMG_2433.jpg": "232db402ba8b9ccd6b92b7bf0f1a4c22931d4c1186b5e5c5a329f3f0bd1d0afb",
+    "photos/originals/IMG_2434.jpg": "2feac8570055753400b337f4cfe8a79256da8f3bcd706e0d972dfd9672b50d0a",
+    "photos/originals/IMG_2435.jpg": "04f1464e2fceeec695365b25183dc96505034434565d20713f55c5b13b18fac1",
+    "photos/originals/IMG_2437.jpg": "3c7c58fea79ea903a3099f204c1d97406c0884edb6d54fd5e7441363e71467a7",
+    "photos/originals/IMG_2438.jpg": "b3868ea3dd2f4b542d0713b57401d2a9c2a898f9b11898b32f17b84883702109",
+    "photos/originals/IMG_2442.jpg": "26ed14f30dd04a3920b16309f4b5735862b58b573001b0ba29409dec719ce8a7"
+  },
+  "photo_reviews": [
+    {
+      "region": "R39/Q2/PIR",
+      "photos": [
+        "photos/originals/IMG_2425.jpg",
+        "photos/originals/IMG_2435.jpg"
+      ],
+      "finding": "R39 correction independently supported. R38/base and R39/output remain distinct. Q2 function is still a candidate."
+    },
+    {
+      "region": "Receiver/D2/D3",
+      "photos": [
+        "photos/originals/IMG_2429.jpg",
+        "photos/originals/IMG_2434.jpg"
+      ],
+      "finding": "Feedback and DNP R47/C42 local copper corroborated. D2.R-C20.2 measured; C20.1 ground and the C19/R28/U3.3 grouping remain inherited, not proved by that one measurement."
+    },
+    {
+      "region": "RF supply/driver",
+      "photos": [
+        "photos/originals/IMG_2428.jpg",
+        "photos/originals/IMG_2431.jpg"
+      ],
+      "finding": "Separate input branches, output gate resistors, R5 feed and Q8 outer-drain band corroborated. R5 is a boundary; 24/27ohm are not copper. Device ratings do not justify rewiring."
+    },
+    {
+      "region": "Tuning front/rear",
+      "photos": [
+        "photos/originals/IMG_2433.jpg",
+        "photos/originals/IMG_2442.jpg"
+      ],
+      "finding": "Five front cells and shared ANT2 band visible; rear ground band and separate midpoint islands visible. Exact front-to-rear midpoint correspondence remains dependent on approximate registration."
+    },
+    {
+      "region": "Power and motor",
+      "photos": [
+        "photos/originals/IMG_2430.jpg",
+        "photos/originals/IMG_2438.jpg"
+      ],
+      "finding": "Local output/filter/option pads reviewed. No additional unambiguous correction found. U1 enable-to-input branch and some rail/pad associations still lack independently encoded direct support."
+    }
+  ],
+  "excluded_as_direct_edges": [
+    {
+      "pair": [
+        "R39.1",
+        "Q2.R"
+      ],
+      "reason": "Disproved base-side inference; A moved R39 only."
+    },
+    {
+      "pair": [
+        "U4.21",
+        "VREF.1"
+      ],
+      "reason": "Owner withdrew PIC21-VREF; TP16-VREF800k."
+    },
+    {
+      "pair": [
+        "U2.B2",
+        "VDD.1"
+      ],
+      "reason": "Direct powered difference1.8V."
+    },
+    {
+      "pair": [
+        "BATP.1",
+        "TP14.1"
+      ],
+      "reason": "Direct powered difference6.3V; TP14=OUTA."
+    },
+    {
+      "pair": [
+        "ANT1.1",
+        "ANT2.1"
+      ],
+      "reason": "External coil about5ohm."
+    },
+    {
+      "pair": [
+        "R5.1",
+        "R5.2"
+      ],
+      "reason": "22ohm component."
+    },
+    {
+      "pair": [
+        "D2.R",
+        "D2.S"
+      ],
+      "reason": "Semiconductor junction, not copper."
+    },
+    {
+      "pair": [
+        "R46.1",
+        "R46.2"
+      ],
+      "reason": "DNP footprint, not bridged."
+    },
+    {
+      "pair": [
+        "S1.TR",
+        "S1.BR"
+      ],
+      "reason": "Only connected when pressed."
+    },
+    {
+      "pair": [
+        "C11.1",
+        "GND.1"
+      ],
+      "reason": "Withdrawn front band ground inference."
+    },
+    {
+      "pair": [
+        "TP14.1",
+        "Q1.R"
+      ],
+      "reason": "21.4/21.7kohm; old516superseded."
+    }
+  ],
+  "supersessions": [
+    "R39.1-to-Q2.R inherited inference replaced only by R39.1-to-TP16/Q2.S in v0.9.45.",
+    "PIC21/V026-to-VREF withdrawn by owner; TP16-VREF 800 kohm and PIC21-TP16 remain current.",
+    "Front C11/C14/C29/C44/C47 outer band is ANT2, not ground. N-B 414 kohm was explicitly corrected to B-G; actual N-B 1.4 ohm applies.",
+    "TP14 is U5.8/OUTA, not BATTERY+. B61 516ohm to presumed Q1 gate is retained historically but latest B84/B85 are 21.4/21.7kohm.",
+    "U2 supply is RF rail through R5, not printed 4.5 V VDD. The old 4.5V-driver argument for Q8 is obsolete; measured resting P VGS=0V.",
+    "Q7 earlier 0/4.5 V R19 readings are not simultaneous; later direct QR-QL=0V is current state evidence, not a copper short.",
+    "U6A physical labels retained; obsolete annotation native numbers are not imported. Current U106 pins 3/2/1=input/output/ground.",
+    "C49 present on rear; TP9/R33 unsupported inventory withdrawn; rejected via artifacts do not become physical endpoints.",
+    "S1 inferred common rows replaced by measured B38/B39; pressed B41 remains a switch state, not permanent copper."
+  ],
+  "targeted_questions": [
+    {
+      "area": "E11 / receiver input",
+      "assessment": "D2.R and C20.2 form one supported group. Common membership with C19.1, R28.2 and U3.3 remains inherited; C20.1-to-GND is separately unverified. Neither the 1-ohm D2 result nor expected op-amp function establishes these joins.",
+      "action": "One future check, if owner continues: C20 lower metal end to U3 pin3, resistance, battery/programmer disconnected. Near probe resistance supports the hidden input link; kOhm/OL rejects a direct join. It does not settle the other three branches."
+    },
+    {
+      "area": "E11 / U1 supply and enable",
+      "assessment": "U1.L1/VIN and U1.L3/CE share H_LDO_IN in the model. IMG_2430 does not expose the complete path for each left contact, so a common supply assumption remains qualified.",
+      "action": "Retain known drawing and explicit exception; do not choose a pin role to manufacture a copper edge. No additional owner request now."
+    },
+    {
+      "area": "E04 / tuning return registration",
+      "assessment": "Each front midpoint is independently visible; exact connection to its corresponding rear capacitor remains a front/rear registration inference. Shared rear ground band is visible.",
+      "action": "Keep existing mapping qualified; no all-pairs campaign. A same-index front/rear continuity would settle an individual bridge if later necessary."
+    },
+    {
+      "area": "E11 / other graph gaps",
+      "assessment": "The generated table names all groups without a complete evidence path, including ordinary rail fan-out and PIC/local joins not encoded by this selected pass. They are not automatically hardware defects.",
+      "action": "Review existing local/photo/via records before requesting any further test. No claim of complete copper verification."
+    }
+  ],
+  "device_qualifications": [
+    {
+      "area": "E04: Q3/Q4/Q5/Q6/Q11",
+      "assessment": "The stock PNP model remains disputed. With the modeled emitter at ground and a nonnegative PIC base drive through the resistor, ordinary forward-active PNP switching would require a negative base-emitter voltage; the present DC interpretation does not supply it. RF excursions could matter, so this is not proof of another family. Q3 red L to S=0.48V, L to R=2.3V, reverse/other tests OL do not isolate the presumed base junctions at R. An NPN base-at-R candidate is not established either; a MOSFET body-diode interpretation also does not identify gate/source/drain. Preserve copper and the visibly qualified PNP label; no symbol swap.",
+      "sources": [
+        "evidence/q3_diode_results_20261009.json",
+        "https://www.onsemi.com/download/data-sheet/pdf/mmbta55lt1-d.pdf"
+      ]
+    },
+    {
+      "area": "E03: U2 rating and Q8 drive",
+      "assessment": "TI lists C14R for the SN74LVC2G14 DBV candidate (packaging addendum); its recommended VCC is 1.65\u20135.5V, absolute maximum 6.5V. B76 reports 6.3V, and B77 directly measures +1.8V relative to printed VDD. Thus the candidate is 0.8V above recommended maximum; R5=22ohm filters/limits current and does not regulate the rail. Keep the measured feed. Resting Q8 VGS(P)=0 and VGS(N)=+6.3V are consistent with P off/N on under the candidate, but establish no dynamic timing or non-overlap. The old 4.5V-driver complaint is not current.",
+      "sources": [
+        "evidence/u2_supply_voltage_result_20261014.json",
+        "evidence/u2_vdd_separation_result_20261014.json",
+        "evidence/q8_gate_bias_results_20261014.json",
+        "https://www.ti.com/lit/ds/symlink/sn74lvc2g14.pdf"
+      ]
+    },
+    {
+      "area": "I01: D2 external map versus equivalent junctions",
+      "assessment": "External R(upper-left/native2) reaches C20.2; L(upper-right/native1) reaches ANT2/R46.1; S(single/native3) reaches R46.2. R46 is empty. Directed tests are consistent with a two-series-junction equivalent R --|>|-- S --|>|-- L: 0.6 V each and 1.2 V end-to-end, reverse OL. This is an in-circuit equivalent, not a recovered part identity; the connector placeholder and physical numbering stay. Neither outer D2 pad is a confirmed supply/ground clamp endpoint.",
+      "sources": [
+        "evidence/d2_diode_20261009.json"
+      ]
+    },
+    {
+      "area": "E07: Q2 and corrected R39",
+      "assessment": "R38 feeds Q2.R; R39 now pulls Q2.S/TP16/PIC21 to VDD. For a conditional NPN model with VBE 0.7V, a 3.3V PIR signal through 10 kohm gives about 0.26mA base current, and a 4.5V/10kohm collector pull-up requires at most about 0.45mA. This is a plausible inverter topology, not identification or operating proof. U6A stays DNP, output-conflict symbol retained, and is excluded from any functional interpretation as a fitted regulator.",
+      "sources": [
+        "evidence/r39_endpoint_correction_v0945.json",
+        "evidence/pic21_tp16_followup_20261009.json"
+      ]
+    },
+    {
+      "area": "E08: Q7 and receiver",
+      "assessment": "B65/B66 directly support Q7.L-R19.1 and Q7.R-R19.2. Diode results favor a PNP-like base at L, but do not isolate E/C or maker. Later direct QR-QL=0V is consistent with no forward base-emitter bias at rest; TP5=0.066V and VREF=0V were recorded in the red-blinking state. Earlier R19-to-ground readings must not be subtracted as one simultaneous state. Equal 10 kohm R21/R22 imply half-rail VREF only with negligible loading. Visible feedback around both op-amps is supported; detector/input and enabled behavior remain separate questions.",
+      "sources": [
+        "evidence/q7_r19_join_results_20261014.json",
+        "evidence/q7_diode_results_20261014.json",
+        "evidence/q7_direct_bias_result_20261014.json",
+        "evidence/receiver_supply_results_20261014.json"
+      ]
+    },
+    {
+      "area": "E09: Q1",
+      "assessment": "Battery positive reaches Q1 single/native3; Q1.L/native2 reaches VSYS and U5.4. R44 reaches Q1.R/native1. The chosen PMOS G/S/D roles remain a candidate; two 6.3V nodes alone do not prove a direct join across Q1. R44=15kohm and rechecked TP14-to-Q1.R 21.4/21.7kohm no longer support the earlier 516 ohm bypass concern. Exact control path behavior remains open; no new wire is inferred.",
+      "sources": [
+        "evidence/q1_gate_recheck_results_20261015.json",
+        "evidence/r44_resistance_result_20261015.json",
+        "evidence/tp14_followup_results_20261014.json"
+      ]
+    },
+    {
+      "area": "E10: D6 and programming",
+      "assessment": "Routing and measured polarity are established: anode GND, cathode VPP; forward approximately 0.7V, reverse OL. These do not determine reverse breakdown or compatibility with high-voltage programming. Preserve the qualified symbol and do not apply a breakdown test through the PIC or infer a voltage solely from G3.",
+      "sources": [
+        "evidence/d6_u6_open_pad_results_20261009.json"
+      ]
+    },
+    {
+      "area": "Accepted E06 boundary; reproduction",
+      "assessment": "PIC14-to-TP11 and PIC18-to-TP17 are valid supported local endpoints. Photos cannot exclude buried branches or establish firmware purpose. No routed PCB, recovered firmware, fully qualified footprints or proven stackup is provided. Battery, motor, antenna and PIR daughterboard remain external assembly context, not added main-board BOM parts.",
+      "sources": [
+        "evidence/e06_disposition_v0941.json"
+      ]
+    }
+  ],
+  "source_hash_policy": "SHA-256 of exact source bytes; JSON CRLF is normalized to LF to match Git checkout portability. Original photograph bytes are never normalized."
+}

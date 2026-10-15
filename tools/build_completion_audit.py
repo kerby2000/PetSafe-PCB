@@ -66,7 +66,7 @@ for i in status['items']:
 work=json.loads((R/'evidence/remaining_work.json').read_text())
 md=['# Remaining open items', '', f'Current schematic **{status["revision"]}**. Generated from [the authoritative register](../evidence/remaining_work.json); edit that source, not this view.', '',
     '[Schematic and PCB photographs](../README.md) | [HTML checklist](FINISHING_CHECKLIST.html) | [History and closed findings](history/README.md)', '',
-    '**No owner measurement requested now.** Scope work and component lifting remain deferred. Supported copper, device interpretation and operating validation are distinct claims.', '',
+    work['owner_action_summary']+' [Independent connection audit](TOPOLOGY_AUDIT.md). Supported copper, device interpretation and operating validation are distinct claims.', '',
     '| ID | Area | Category |', '|---|---|---|']
 for i in status['items']:md.append(f'| [{i["id"]}](#{i["id"].lower()}) | {i["area"]} | {i["category"]} |')
 for i in status['items']:
@@ -93,7 +93,7 @@ page=f'''<!doctype html><html lang="en"><meta charset="utf-8"><meta name="viewpo
 <h1>What remains to finish</h1><p>{e(status['revision'])} | {len(status['items'])} active issues. Each card states what is established, the specific gap and its closure criterion.</p>
 <div class="metrics"><div><strong>{len(status['current_fitted_open_pads'])}</strong>unassigned fitted pads</div><div><strong>{audit.get('dangling_wire_ends','pending')}</strong>dangling wire ends</div><div><strong>{status['erc_total']}</strong>retained ERC conflict</div><div><strong>{len(status['unknown_ceramic_values'])}</strong>unknown ceramic values</div></div>
 <div class="card"><b>{e(queue["batch_title"])}</b> <a href="FINISHING_MEASUREMENTS.html">Open measurement screen</a>. {e(queue["instructions"])} Q3 stays fitted. Other listed tests are staged, not requested together.</div>
-<h2>Consistency checks: where a remaining error could hide</h2><p>These findings refer to existing issues; they are not additional issue groups or newly measured faults. <a href="../evidence/circuit_consistency_v0942.json">Evidence and checks</a>.</p><table><tr><th>Issue</th><th>Finding</th><th>Next useful action</th></tr>{consistency_rows}</table>
+<h2>Consistency checks: where a remaining error could hide</h2><p><a href="TOPOLOGY_AUDIT.md">Current independent photo/meter audit</a>: E11 names remaining unsupported copper joins separately from device behavior. {e(work['owner_action_summary'])}</p><p>The prior device checks below retain their qualifications. <a href="../evidence/circuit_consistency_v0942.json">Dated evidence and checks</a>.</p><table><tr><th>Issue</th><th>Finding</th><th>Next useful action</th></tr>{consistency_rows}</table>
 <h2>Finish in this order</h2><ol>{plan}</ol>
 <p><b>Audit boundary:</b> {status['modeled_nets']} modeled net partitions agree with KiCad. Zero open pads or wire tails does not establish hidden copper or circuit operation. The supported RC3/TP11 and RC7/TP17 routes are complete as drawn; E06 is retained below as a hidden-layer reconstruction limitation, not a pending measurement. RA0/C25-to-TP6 is resolved by B59 = 1.5 ohm. Q3 device identity remains under E04. <a href="../evidence/finalization_audit.json">Detailed audit</a>.</p>
 <h2>Documented reconstruction limitations</h2>{limitations}

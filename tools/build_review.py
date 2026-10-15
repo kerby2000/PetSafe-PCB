@@ -43,7 +43,7 @@ page=f'''<!doctype html><html lang="en"><meta charset="utf-8"><meta name="viewpo
 <h2 id="pcb">Actual physical PCB</h2><a href="photos/two_sides_overview.jpg"><img class="board" src="photos/two_sides_overview.jpg" alt="Front and rear original-photo mosaics of the actual PCB"></a>
 <p>Photographic mosaics use original pixels. The rear is mirrored and approximately registered for comparison; alignment does not establish buried copper or dimensions. <a href="photos/back_readable.jpg">Rear, readable orientation</a> | <a href="photo-atlas-v01.html">Original-photo atlas</a> | <a href="docs/VIA_REVIEW.html">Existing via/photo viewer</a></p>
 <h2 id="open">Remaining open items</h2><p><a href="docs/OPEN_ITEMS.md">GitHub-readable register</a> | <a href="docs/FINISHING_CHECKLIST.html">Detailed HTML view</a> | <a href="output/pdf/PetSafe_completion_status.pdf">Printable status</a>. Generated from <a href="evidence/remaining_work.json">one authoritative register</a>.</p>
-<p>No new owner measurement is requested. Scope work and component lifting remain deferred. TP11/TP17 possible hidden continuations are an accepted reconstruction boundary, not proved intentional non-use.</p>
+<p>{esc(work['owner_action_summary'])} TP11/TP17 possible hidden continuations are an accepted reconstruction boundary, not proved intentional non-use. <a href="docs/TOPOLOGY_AUDIT.md">Independent connection audit</a>.</p>
 <div class="scroll"><table><thead><tr><th>ID</th><th>Area</th><th>Category</th><th>Unresolved claim</th></tr></thead><tbody>{openrows}</tbody></table></div>
 <h2 id="evidence">Evidence and rebuild</h2><p><a href="docs/RECONSTRUCTION.md">Current circuit interpretation</a> | <a href="docs/MEASUREMENTS.md">Recorded measurements</a> | <a href="docs/CAPACITOR_VALUE_REVIEW.html">Preserved capacitor estimates</a> | <a href="evidence/validation.json">Native validation</a> | <a href="docs/history/README.md">Investigation history</a></p>
 <pre>$env:PYTHONUTF8 = '1'
@@ -83,11 +83,11 @@ The [full Markdown register](docs/OPEN_ITEMS.md), [HTML checklist](docs/FINISHIN
 |---|---|---|
 {summaryrows}
 
-TP11/TP17 hidden continuations remain a separately documented reconstruction boundary. No new owner measurement is requested now; component lifting and oscilloscope work are deferred. Package geometry, routing/stackup, external assemblies and firmware remain prerequisites for a working reproduction.
+TP11/TP17 hidden continuations remain a separately documented reconstruction boundary. {work['owner_action_summary']} Package geometry, routing/stackup, external assemblies and firmware remain prerequisites for a working reproduction.
 
 ## Evidence and rebuild
 
-[Current circuit interpretation](docs/RECONSTRUCTION.md) · [Measurements and negative results](docs/MEASUREMENTS.md) · [Capacitor proposals](docs/CAPACITOR_VALUE_REVIEW.html) · [Native validation](evidence/validation.json) · [Investigation history](docs/history/README.md)
+[Independent physical-evidence audit](docs/TOPOLOGY_AUDIT.md) · [Current circuit interpretation](docs/RECONSTRUCTION.md) · [Measurements and negative results](docs/MEASUREMENTS.md) · [Capacitor proposals](docs/CAPACITOR_VALUE_REVIEW.html) · [Native validation](evidence/validation.json) · [Investigation history](docs/history/README.md)
 
 Use installed KiCad 10 (checked with 10.0.5), PowerShell and [Python dependencies](tools/requirements.txt):
 

@@ -321,8 +321,14 @@ for issue in issues:
 assert m['revision'] in (ROOT/'README.md').read_text() and m['revision'] in markdown
 assert 'physical switch common pairs remain inferred' not in next(c for c in m['components'] if c['ref']=='R40')['current_summary']
 assert 'R33 branch remains' not in next(n for n in m['nets'] if n['net']=='H_PIR_RAW')['status']
-for file in ['README.md','docs/OPEN_ITEMS.md']:
+for file in ['README.md','docs/OPEN_ITEMS.md','docs/TOPOLOGY_AUDIT.md']:
     import re
     for target in re.findall(r'\]\(([^)]+)\)', (ROOT/file).read_text()):
         url=urlparse(target)
         if not url.scheme and url.path:assert (ROOT/file).parent.joinpath(url.path).exists(),(file,target)
+physical=read('evidence/topology_closure_audit.json')
+assert physical['revision']==m['revision'] and physical['result']=='PASS_WITH_EVIDENCE_GAPS'
+assert not physical['split_findings'] and not physical['incorrect_merge_findings']
+assert not physical['unmapped_observed_pads']
+assert any(i['id']=='E11' and 'C20' in i['owner_input'] for i in issues)
+assert work['owner_action_summary'] in (ROOT/'README.md').read_text(encoding='utf-8')

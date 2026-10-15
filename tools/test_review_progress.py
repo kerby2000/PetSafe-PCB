@@ -1,8 +1,29 @@
 """Synthetic, in-memory progress checks; never add fictitious hardware evidence."""
 import copy, hashlib, unittest
 from current_state import ROOT, read, current_state, validate_issue_register
+from audit_physical_evidence import compare
 
 class ReviewProgress(unittest.TestCase):
+    def test_evidence_detects_split_and_merge(self):
+        edge=lambda a,b:dict(pair=[a,b],source='synthetic test fixture')
+        result=compare({'A.1':'a','B.1':'b','C.1':'a'},[edge('A.1','B.1')],[edge('A.1','C.1')],[])
+        self.assertEqual(len(result['split_findings']),1)
+        self.assertEqual(len(result['incorrect_merge_findings']),1)
+
+    def test_modeled_membership_is_not_evidence(self):
+        result=compare({'A.1':'same','B.1':'same','C.1':'same'},
+                       [dict(pair=['A.1','B.1'],source='synthetic photo')],[],[])
+        self.assertEqual(result['unsupported_join_questions'][0]['groups'],[['A.1','B.1'],['C.1']])
+
+    def test_photo_inventory_gap_is_reported(self):
+        result=compare({'A.1':'a'},[],[],[dict(pads=['X.1'],source='synthetic photographed pad')])
+        self.assertEqual(result['unmapped_observed_pads'][0]['pad'],'X.1')
+
+    def test_component_path_is_not_inferred(self):
+        result=compare({'R5.1':'supply','R5.2':'filtered'},[],[],[])
+        self.assertFalse(result['split_findings'])
+        self.assertEqual(result['supported_net_groups'],2)
+
     def setUp(self):
         self.model=read('evidence/reconstruction.json')
         self.work=read('evidence/remaining_work.json')

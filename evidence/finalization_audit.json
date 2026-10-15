@@ -92,7 +92,7 @@
     "PIC_RC7_TP17": "evidence/e06_disposition_v0941.json"
   },
   "current_device_gap": "E04: Q3 in-circuit pattern disputes PNP pinout; isolated identification remains optional.",
-  "active_issue_count": 9,
+  "active_issue_count": 10,
   "uncertainty_coverage": [
     {
       "reference": "R3",
@@ -168,7 +168,8 @@
     {
       "reference": "R18",
       "issues": [
-        "E08"
+        "E08",
+        "E11"
       ],
       "population": "populated"
     },
@@ -182,14 +183,16 @@
     {
       "reference": "R20",
       "issues": [
-        "E08"
+        "E08",
+        "E11"
       ],
       "population": "populated"
     },
     {
       "reference": "R21",
       "issues": [
-        "E08"
+        "E08",
+        "E11"
       ],
       "population": "populated"
     },
@@ -233,7 +236,9 @@
     },
     {
       "reference": "R28",
-      "issues": [],
+      "issues": [
+        "E11"
+      ],
       "population": "populated"
     },
     {
@@ -496,6 +501,7 @@
     {
       "reference": "C19",
       "issues": [
+        "E11",
         "V01"
       ],
       "population": "populated"
@@ -503,6 +509,7 @@
     {
       "reference": "C20",
       "issues": [
+        "E11",
         "V01"
       ],
       "population": "populated"
@@ -751,6 +758,7 @@
       "reference": "L2",
       "issues": [
         "E09",
+        "E11",
         "V01"
       ],
       "population": "populated"
@@ -777,7 +785,8 @@
     {
       "reference": "U3",
       "issues": [
-        "E08"
+        "E08",
+        "E11"
       ],
       "population": "populated"
     },
@@ -785,6 +794,7 @@
       "reference": "U1",
       "issues": [
         "E09",
+        "E11",
         "I01"
       ],
       "population": "populated"
@@ -909,6 +919,7 @@
     {
       "reference": "D2",
       "issues": [
+        "E11",
         "I01"
       ],
       "population": "populated"
