@@ -271,6 +271,12 @@ for row in q1_recheck['measurements']:
  assert row in queue['completed_tests'] and row['stability'] is None
  completed_ids.add(row['id'])
 assert q1_recheck['electrical_change'] is False and q1_recheck['earlier_measurement']['resistance_ohms']==516
+cap_readings=read('evidence/receiver_capacitance_results_20261015.json')
+assert [(r['id'],r['capacitance_pf']) for r in cap_readings['measurements']]==list(zip(['B86','B87','B88','B89','B90','B91'],[680,340,240,680,320,240]))
+assert cap_readings['electrical_change'] is False and cap_readings['individual_values_closed']==[]
+for row in cap_readings['measurements']:
+ assert row in queue['completed_tests'] and row['capacitance_model'] is None and row['dissipation_factor'] is None
+ completed_ids.add(row['id'])
 assert net('U2.B2')==net('C7.1')==net('R5.2')=='U2_VCC'
 assert net('R5.1')==net('C6.1')==net('Q8.T2')=='H_RF_VDD'
 assert len({net('R5.1'),net('R5.2'),net('VDD.1')})==3

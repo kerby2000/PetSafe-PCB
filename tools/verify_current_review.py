@@ -87,7 +87,7 @@ class Links(HTMLParser):
         if tag=='script':self.inscript=False
     def handle_data(self,data):
         if self.inscript:self.scripts.append(data)
-for name in ['index.html','docs/FINISHING_CHECKLIST.html','docs/VIA_REVIEW.html','docs/FINISHING_MEASUREMENTS.html','docs/RF_TRACE_REVIEW.html']:
+for name in ['index.html','docs/FINISHING_CHECKLIST.html','docs/VIA_REVIEW.html','docs/FINISHING_MEASUREMENTS.html','docs/RF_TRACE_REVIEW.html','docs/CAPACITOR_VALUE_REVIEW.html']:
     path=ROOT/name; text=path.read_text(encoding='utf-8'); parser=Links();parser.feed(text)
     for link in parser.links:
         u=urlparse(link)
@@ -102,6 +102,19 @@ assert 'RB0/V026 to VREF.' not in via_intro and 'TP104, V026/PIC21' not in via_i
 checklist=(ROOT/'docs/FINISHING_CHECKLIST.html').read_text(encoding='utf-8')
 for i in ids:assert f'id="{i}"' in checklist
 measurements=read('evidence/finishing_measurements.json')
+cap_review=read('evidence/capacitor_value_review_20261015.json')
+assert {r['ref'] for r in cap_review['components']}==set(s['unknown_ceramic_values'])
+assert len(cap_review['components'])==44 and len({r['ref'] for r in cap_review['components']})==44
+assert cap_review['source_schematic_sha256']==s['schematic_sha256']
+assert cap_review['source_model_sha256']==hashlib.sha256((ROOT/'evidence/reconstruction.json').read_bytes()).hexdigest()
+assert cap_review['electrical_change'] is False and cap_review['individual_values_closed']==[]
+assert all(not r['applied_to_native'] for r in cap_review['components'])
+cap_results=read('evidence/receiver_capacitance_results_20261015.json')
+assert [t['capacitance_pf'] for t in cap_results['measurements']]==[680,340,240,680,320,240]
+assert all(t['capacitance_model'] is None and t['dissipation_factor'] is None for t in cap_results['measurements'])
+assert all(t in measurements['completed_tests'] for t in cap_results['measurements'])
+for src in cap_results['sources']:
+    assert hashlib.sha256((ROOT/src['file']).read_bytes()).hexdigest()==src['sha256']
 ra0=read('evidence/ra0_tp6_connection_v0938.json')
 b59=ra0['measurement']
 assert (b59['id'],b59['from'],b59['to'],b59['resistance_ohms'])==('B59','A0','T6',1.5)
@@ -222,7 +235,8 @@ assert members['J3.2']==members['R38.1']==members['U7.2']!=members['J3.1']
 measurement_page=(ROOT/'docs/FINISHING_MEASUREMENTS.html').read_text(encoding='utf-8')
 assert 'U6A is DNP' in measurement_page and 'U6A is 0' not in measurement_page, 'Population text replaced by numeric placeholder'
 if not measurements['tests']:
-    assert '<input ' not in measurement_page and '<textarea ' not in measurement_page, 'Completed queue still requests readings'
+    assert '<input ' not in measurement_page, 'Completed queue still requests readings'
+    assert '<textarea id="reply" aria-label="Results to share" readonly>' in measurement_page, 'Completed results export must remain read-only'
 assert measurements['u6_annotation']['pending_check'] is None, 'Completed U6 pin5-pin2 check re-entered queue'
 audit_rows={c['ref']:c for c in audit['components']}
 assert '6.33' in audit_rows['C5']['value_or_identity'] and '16 mm' in audit_rows['C5']['value_or_identity']

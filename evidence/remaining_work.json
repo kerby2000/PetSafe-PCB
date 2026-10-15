@@ -356,15 +356,17 @@
       ],
       "priority": 2,
       "state": "open",
-      "known": "C5 is 470uF/16V. L1/L2 readings are 1.4/2.2uH. Retained marked resistor nominal values are recorded.",
-      "unknown": "44 fitted ceramic values remain unknown. L1/L2 measurement conditions and component ratings are not established.",
-      "next_action": "B86-B91: C21 and C22 at 1/10/100 kHz, 0.1 V RMS, all parts fitted. Record Cp with units and D. Evaluate network loading before accepting individual estimates; no automatic value closure. Existing L1/L2 test conditions can be supplied without repeating their measurements.",
-      "closed_when": "Critical individual values are recovered; any bypass substitutions and unverified ratings are explicitly identified assumptions.",
+      "known": "C5 is 470uF/16V; L1/L2 reported 1.4/2.2uH. Marked resistor values are recorded. B86-B91: C21=680/340/240 pF; C22=680/320/240 pF at 1/10/100 kHz in C/Auto or unsure mode, with D absent. Function review covers all 44 unknown ceramics: 12 supply starting values, four conditional candidates and 28 network-constrained values.",
+      "unknown": "44 original fitted ceramic values remain unconfirmed. Twelve supply replacement values are proposed separately. Crystal loading, receiver response and switched antenna values are not uniquely fixed by footprint or carrier frequency. L1/L2 test conditions and ratings remain unspecified.",
+      "next_action": "Use docs/CAPACITOR_VALUE_REVIEW.html to work from function and primary reference circuits. No broad sweep or repeat Cp/D batch requested. Supply values are provisional replacement choices, not recovered originals. RF and receiver values require linked network constraints; scope and component isolation remain deferred.",
+      "closed_when": "Chosen reconstruction values have a stated basis and appropriate validation; any unverified original nominal, dielectric or rating remains explicitly separated from a provisional equivalent.",
       "open_pads": [],
       "nets": [],
       "supporting_evidence": [
         "docs/history/v0.9.30-before-finalization/evidence/remaining_work.json",
-        "evidence/receiver_capacitance_test_plan_20261015.json"
+        "evidence/receiver_capacitance_test_plan_20261015.json",
+        "evidence/receiver_capacitance_results_20261015.json",
+        "evidence/capacitor_value_review_20261015.json"
       ],
       "owner": "Agent evidence review; targeted owner test only as listed",
       "category": "values"
@@ -408,7 +410,7 @@
       "criterion": "Required values and geometry recovered; exact manufacturer/ratings separated from equivalent design choices. Routed PCB remains a separate deliverable."
     }
   ],
-  "measurement_followup": "No further RF continuity repeat requested. Oscilloscope available, but waveform checks explicitly deferred by the owner on 2026-10-15. Continue schematic values, identities and package geometry without scope measurements.",
+  "measurement_followup": "B86-B91 recorded. Owner requests function/reference-based inference before further capacitor measurements. No active bench batch; scope work and isolation remain deferred.",
   "photo_supported_summary": [
     "v0.9.18: C6 is reconstructed in parallel with C5 from the user proposal and photos IMG_2431/IMG_2432. C6 upper pad/model1 joins the C5-positive supply copper (H_RF_VDD, after L1); lower pad/model2 joins GND. Photo-supported, not a new meter-confirmed connection. C6 capacitance remains unknown. Earlier 400 kohm output exclusion and 10 ohm Q8-supply-path reading are retained; the latter does not independently prove Q8 source wiring.",
     "v0.9.19 user annotated local copper: R47 left -> U3.1/R27 right; R47 right + C42 lower + R25 lower + R48 right share RX_STAGE_LINK. C42 upper -> GND inferred from continuous copper beside U3.4 in IMG_2429/2434. R25-GND and R48-VREF old assumptions withdrawn. R47/C42 remain DNP. No meter reading supplied.",
@@ -425,8 +427,8 @@
       "issues": [
         "V01"
       ],
-      "summary": "44 ceramic values; prioritize tuning and receiver after topology.",
-      "next_action": "Start with the marked C21/C22 low-level LCR sweep (B86-B91). Review Cp and D across three frequencies before requesting further capacitors. Individual values remain qualified while fitted."
+      "summary": "All 44 unknown ceramics classified: 12 supply starting values, four conditional crystal/feedback candidates and 28 network-constrained values.",
+      "next_action": "Review the function-based candidate table. No new bench batch now; prioritize shared filter parameters and antenna behavior over 44 individual readings."
     },
     {
       "id": "F3",
@@ -495,7 +497,8 @@
     "date": "2026-10-15",
     "oscilloscope_available": true,
     "oscilloscope_measurements": "Deferred by explicit owner request; finalize schematic as far as possible without scope first.",
-    "component_isolation": "Owner requests all components remain fitted; no lifting or desoldering requests."
+    "component_isolation": "Owner requests all components remain fitted; no lifting or desoldering requests.",
+    "capacitor_strategy": "2026-10-15: infer provisional values from references and function; reserve measurements for sensitive network parameters, not every capacitor."
   },
   "reconstruction_limitations": [
     {
