@@ -1,8 +1,8 @@
 # PetSafe PCB reverse engineering
 
-**PetSafe PPA19-16811 · 100-1339 R03 A · schematic v0.9.45**
+**PetSafe PPA19-16811 · 100-1339 R03 A · schematic v0.9.46**
 
-One A2 main-board schematic, reconstructed from original photographs and owner measurements. 82 modeled net partitions agree with KiCad; device functions and physical-evidence coverage remain qualified. **There is no routed reproduction PCB.**
+One A2 main-board schematic, reconstructed from original photographs and owner measurements. 83 modeled net partitions agree with KiCad; device functions and physical-evidence coverage remain qualified. **There is no routed reproduction PCB.**
 
 ## Current schematic
 
@@ -35,7 +35,7 @@ The [full Markdown register](docs/OPEN_ITEMS.md), [HTML checklist](docs/FINISHIN
 | [M01](docs/OPEN_ITEMS.md#m01) | LED footprint and mechanical qualification | Reproduction/package |
 | [E11](docs/OPEN_ITEMS.md#e11) | Inherited copper joins without independent closure | Copper connection; evidence coverage |
 
-TP11/TP17 hidden continuations remain a separately documented reconstruction boundary. No active bench batch. One next continuity check is staged under E11: C20 lower metal end to U3 pin 3, unpowered. Scope work and component lifting remain deferred. Package geometry, routing/stackup, external assemblies and firmware remain prerequisites for a working reproduction.
+TP11/TP17 hidden continuations remain a separately documented reconstruction boundary. E11 receiver split corrected from three readings: C20 lower joins D2.R/R28.2, not U3.3 or TP7 directly. No further bench reading requested for this correction; scope and lifting remain deferred. Package geometry, routing/stackup, external assemblies and firmware remain prerequisites for a working reproduction.
 
 ## Evidence and rebuild
 
@@ -51,4 +51,4 @@ $env:PYTHONUTF8 = '1'
 
 The normal build exports/checks the current native file. `-Regenerate` explicitly replaces it from the synchronized MCP template/layout; do not use it against stale sources. [The physical crosswalk](evidence/pin_crosswalk.json) preserves original pad labels. Original photos and raw results are not rewritten when interpretations change.
 
-[PR #1](https://github.com/kerby2000/PetSafe-PCB/pull/1) remains the independent-review entry point.
+[Original architect review: PR #1](https://github.com/kerby2000/PetSafe-PCB/pull/1) is merged. Later corrections are reviewed in follow-up pull requests.

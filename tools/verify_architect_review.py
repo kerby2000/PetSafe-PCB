@@ -2,19 +2,19 @@
 from pathlib import Path
 import hashlib, json, subprocess
 import xml.etree.ElementTree as ET
-from inventory_contracts import with_r39_output_pullup, without_withdrawn_r33, retained_crosswalk, with_antenna_outer_rail, with_ra0_tp6, with_tp14_motor_output, with_u2_r5_topology
+from inventory_contracts import with_receiver_input_split, with_r39_output_pullup, without_withdrawn_r33, retained_crosswalk, with_antenna_outer_rail, with_ra0_tp6, with_tp14_motor_output, with_u2_r5_topology
 R=Path(__file__).resolve().parents[1]
 def read(p):return json.loads((R/p).read_text(encoding='utf-8'))
 record=read('evidence/architect_review_v0930.json');m=read('evidence/reconstruction.json')
 baseline=json.loads(subprocess.check_output(['git','show',record['baseline_commit']+':evidence/reconstruction.json'],cwd=R,text=True,encoding='utf-8'))
 actual={n['net']:sorted(n['endpoints']) for n in m['nets']}
 before={n['net']:sorted(n['endpoints']) for n in baseline['nets']}
-assert before==record['before'] and actual==with_r39_output_pullup(with_u2_r5_topology(with_tp14_motor_output(with_ra0_tp6(with_antenna_outer_rail(without_withdrawn_r33(record['after']))))))
+assert before==record['before'] and actual==with_receiver_input_split(with_r39_output_pullup(with_u2_r5_topology(with_tp14_motor_output(with_ra0_tp6(with_antenna_outer_rail(without_withdrawn_r33(record['after'])))))))
 expected=dict(before)
 expected['RF_MONITOR_PAD']=sorted(before['RF_MONITOR_PAD']+['R6.2','R7.1','D1.S'])
 expected['H_RF_IN_A']=sorted((set(before['H_RF_IN_A'])-{'D1.S'})|{'D1.R'})
 del expected['H_RF_CONTROL'];del expected['H_D1_FREE']
-assert actual==with_r39_output_pullup(with_u2_r5_topology(with_tp14_motor_output(with_ra0_tp6(with_antenna_outer_rail(without_withdrawn_r33(expected)))))), 'Unreviewed change outside documented RF, R33, front antenna-capacitor and B59 RA0-TP6 and TP14-OUTA corrections'
+assert actual==with_receiver_input_split(with_r39_output_pullup(with_u2_r5_topology(with_tp14_motor_output(with_ra0_tp6(with_antenna_outer_rail(without_withdrawn_r33(expected))))))), 'Unreviewed change outside documented RF, R33, front antenna-capacitor and B59 RA0-TP6 and TP14-OUTA corrections'
 assert m['native_pin_crosswalk']==retained_crosswalk(baseline['native_pin_crosswalk']), 'Retained native pin mapping changed'
 assert m['intentional_no_connects']==baseline['intentional_no_connects']
 assert m['unresolved_pins']==baseline['unresolved_pins']
@@ -35,6 +35,6 @@ for ref in ['Q3','Q4','Q5','Q6','Q11','D1','R6','R7','TP3','Q8','C6','S1','LED1'
 v=read('evidence/validation.json');assert v['erc_total']==1 and v['erc_by_type']=={'pin_to_pin':1}
 assert len(read('evidence/power_source_declarations.json')['declarations'])==6
 assert read('evidence/finalization_audit.json')['pad_membership_baseline']=='ecd683d'
-result=dict(result='PASS',revision=m['revision'],baseline_commit=record['baseline_commit'],bounded_rf_partition_change='PASS',other_pad_partitions_unchanged='PASS',bounded_antenna_outer_rail_change='PASS',bounded_ra0_tp6_merge='PASS',bounded_tp14_outa_move='PASS',bounded_u2_r5_topology='PASS',bounded_r39_output_pullup='PASS',unsupported_r33_withdrawal='PASS',native_rf_paths='PASS',u6a_symbol_and_mapping_retained='PASS',review_file_and_photo_hashes='PASS',erc_total=v['erc_total'],power_declarations='Six documented supply paths; see power_source_declarations.json',nc_added=False,measurement_contracts='See live_evidence_verification.json')
+result=dict(result='PASS',revision=m['revision'],baseline_commit=record['baseline_commit'],bounded_rf_partition_change='PASS',other_pad_partitions_unchanged='PASS',bounded_antenna_outer_rail_change='PASS',bounded_ra0_tp6_merge='PASS',bounded_tp14_outa_move='PASS',bounded_u2_r5_topology='PASS',bounded_r39_output_pullup='PASS',bounded_receiver_input_split='PASS',unsupported_r33_withdrawal='PASS',native_rf_paths='PASS',u6a_symbol_and_mapping_retained='PASS',review_file_and_photo_hashes='PASS',erc_total=v['erc_total'],power_declarations='Six documented supply paths; see power_source_declarations.json',nc_added=False,measurement_contracts='See live_evidence_verification.json')
 (R/'evidence/architect_review_verification.json').write_text(json.dumps(result,indent=2)+'\n',encoding='utf-8')
 print(json.dumps(result,indent=2))

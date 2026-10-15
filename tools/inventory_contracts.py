@@ -90,3 +90,17 @@ def with_r39_output_pullup(partitions):
     result['PIR_BASE'].remove('R39.1')
     result['H_PIR_SIG']=sorted(result['H_PIR_SIG']+['R39.1'])
     return result
+
+
+def with_receiver_input_split(partitions):
+    """Separate only the measured D2/C20/R28 group from the inherited input."""
+    record=json.loads((ROOT/'evidence/receiver_input_correction_v0946.json').read_text())
+    readings=json.loads((ROOT/record['measurement_source']).read_text())
+    assert [r['resistance_ohms'] for r in readings['measurements']]==[1023000,998000,1.5]
+    assert record['moved_endpoints']==['C20.2','D2.R','R28.2']
+    result={name:sorted(pads) for name,pads in partitions.items()}
+    assert result['RX_A_PLUS']==record['before']['RX_A_PLUS']
+    assert 'D2_C20' not in result
+    assert record['after']=={'RX_A_PLUS':['C19.1','U3.3'],'D2_C20':['C20.2','D2.R','R28.2']}
+    result.update(record['after'])
+    return result
