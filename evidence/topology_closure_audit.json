@@ -3161,7 +3161,7 @@
     {
       "area": "E11 / receiver input still hidden",
       "assessment": "RX-1 C19 lower/model1 to U3.3 = 1.023 Mohm (raw 1.023mohm, interpreted as megaohms); RX-2 C20 upper/model1 to printed GND = 271 kohm; shorted probes = 1 ohm. Settling/drift not reported. Both inherited direct joins withdrawn in v0.9.47; replacement destinations remain unknown. U3.3, C19.1 and C20.1 now have distinct singleton nodes; this is not a claimed intentional termination. Existing images still do not locate their replacements.",
-      "action": "Specific hardware uncertainty. Only RX-3: U3 native pin3 to TP7, unpowered resistance. This new pair tests a possible relation to the established PIC-RA1/R28 node. Near-probe resistance supports direct membership; high/OL rejects it under good contact; intermediate or drifting readings do not identify a component. Do not subtract previous fitted readings."
+      "action": "Specific hardware uncertainty. No pending readings. RX-3 (U3 native pin3 to TP7) is deferred by owner request on 2026-10-15; it has not been measured. RX-1/RX-2 and the earlier C20-lower checks are completed and must not be repeated. The U3.3 signal/bias feed and the onward destinations of C19.1 and C20.1 remain unresolved. Deferral supplies no new connection evidence and does not close E11."
     },
     {
       "area": "E11 / U1 enable",

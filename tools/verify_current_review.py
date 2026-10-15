@@ -333,7 +333,10 @@ physical=read('evidence/topology_closure_audit.json')
 assert physical['revision']==m['revision'] and physical['result']=='PASS_WITH_EVIDENCE_GAPS'
 assert not physical['split_findings'] and not physical['incorrect_merge_findings']
 assert not physical['unmapped_observed_pads']
-assert any(i['id']=='E11' and 'RX-3' in i['owner_input'] and 'TP7' in i['owner_input'] for i in issues)
-assert {t['id'] for t in measurements['tests']}=={'RX-3'}
+assert any(i['id']=='E11' and 'RX-3' in i['owner_input'] and 'deferred' in i['owner_input'] for i in issues)
+assert measurements['tests']==[], 'Owner deferred RX-3; no reading may remain active'
+assert any(t['id']=='RX-3' and t['status']=='DEFERRED_BY_OWNER' and 'result' not in t for t in measurements['cancelled_tests'])
+assert 'RX-3' not in {t['id'] for t in measurements['completed_tests']}, 'Deferral is not a completed measurement'
+assert 'No pending readings' in measurements['instructions'] and 'No pending readings' in work['owner_action_summary']
 assert {'RX-1','RX-2'} <= {t['id'] for t in measurements['completed_tests']}
 assert work['owner_action_summary'] in (ROOT/'README.md').read_text(encoding='utf-8')

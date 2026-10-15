@@ -35,7 +35,7 @@ The [full Markdown register](docs/OPEN_ITEMS.md), [HTML checklist](docs/FINISHIN
 | [M01](docs/OPEN_ITEMS.md#m01) | LED footprint and mechanical qualification | Reproduction/package |
 | [E11](docs/OPEN_ITEMS.md#e11) | Inherited copper joins without independent closure | Copper connection; evidence coverage |
 
-TP11/TP17 hidden continuations remain a separately documented reconstruction boundary. Next: Only RX-3: U3 native pin3 to TP7, unpowered resistance. This new pair tests a possible relation to the established PIC-RA1/R28 node. Near-probe resistance supports direct membership; high/OL rejects it under good contact; intermediate or drifting readings do not identify a component. Do not subtract previous fitted readings. RX-1/RX-2 and the C20-lower tests are completed and must not be repeated. Package geometry, routing/stackup, external assemblies and firmware remain prerequisites for a working reproduction.
+TP11/TP17 hidden continuations remain a separately documented reconstruction boundary. No pending readings. RX-3 (U3 native pin3 to TP7) is deferred by owner request on 2026-10-15; it has not been measured. RX-1/RX-2 and the earlier C20-lower checks are completed and must not be repeated. Package geometry, routing/stackup, external assemblies and firmware remain prerequisites for a working reproduction.
 
 ## Evidence and rebuild
 

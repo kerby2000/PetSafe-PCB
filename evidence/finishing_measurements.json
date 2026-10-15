@@ -1,9 +1,9 @@
 {
   "date": "2026-10-15",
   "basis_revision": "v0.9.47",
-  "status": "STAGED_RECEIVER_INPUT_TP7",
-  "scope": "One new U3.3-to-TP7 pair after RX-1/RX-2 reject the two inherited capacitor associations.",
-  "setup": "Battery, programmer and all external supplies disconnected. Check the board is discharged before selecting resistance mode. Leave every component fitted.",
+  "status": "NO_PENDING_READINGS_RX3_DEFERRED",
+  "scope": "Completed receiver checks preserved; RX-3 deferred without a reading or electrical change.",
+  "setup": "No bench setup is needed. There are no pending readings.",
   "photos": [
     {
       "id": "receiver",
@@ -2222,19 +2222,8 @@
       ]
     }
   ],
-  "tests": [
-    {
-      "id": "RX-3",
-      "group": "receiver-input-tp7",
-      "from": "P3",
-      "to": "T7",
-      "unit": "ohms or OL; steady/drifting",
-      "state": "Unpowered; resistance; all components fitted",
-      "issue": "E11",
-      "purpose": "Test a possible direct signal/bias relation to TP7 without presuming it exists"
-    }
-  ],
-  "interpretation": "Near the established 1-ohm probe baseline supports a direct U3.3-TP7 relation. High resistance/OL rejects direct membership with good contact, not every component-mediated path. Intermediate/drifting readings remain ambiguous. No 25-kohm resistor or C19-C20 join is inferred from earlier results.",
+  "tests": [],
+  "interpretation": "RX-1 C19 lower/model1 to U3.3 = 1.023 Mohm (raw 1.023mohm, interpreted as megaohms); RX-2 C20 upper/model1 to printed GND = 271 kohm; shorted probes = 1 ohm. Settling/drift not reported. Both inherited direct joins withdrawn in v0.9.47; replacement destinations remain unknown. The U3.3 signal/bias feed and the onward destinations of C19.1 and C20.1 remain unresolved. Deferral supplies no new connection evidence and does not close E11.",
   "next_stages": [],
   "do_not_repeat": [
     "D2 directed diode tests or its local/rail checks",
@@ -3687,8 +3676,8 @@
       "resistance_ohms": 271000
     }
   ],
-  "batch_title": "Receiver input: does U3 pin3 reach TP7?",
-  "instructions": "Only RX-3: U3 native pin3 to TP7, unpowered resistance. This new pair tests a possible relation to the established PIC-RA1/R28 node. Near-probe resistance supports direct membership; high/OL rejects it under good contact; intermediate or drifting readings do not identify a component. Do not subtract previous fitted readings.",
+  "batch_title": "Receiver connectivity: no pending readings",
+  "instructions": "No pending readings. RX-3 (U3 native pin3 to TP7) is deferred by owner request on 2026-10-15; it has not been measured. RX-1/RX-2 and the earlier C20-lower checks are completed and must not be repeated.",
   "result_summary": "RX-1 C19 lower/model1 to U3.3 = 1.023 Mohm (raw 1.023mohm, interpreted as megaohms); RX-2 C20 upper/model1 to printed GND = 271 kohm; shorted probes = 1 ohm. Settling/drift not reported. Both inherited direct joins withdrawn in v0.9.47; replacement destinations remain unknown.",
   "cancelled_tests": [
     {
@@ -3699,6 +3688,19 @@
       "purpose": "Test whether the PIR output reaches the PIC2/RA0 input at C25 right pad through hidden routing. TP11 and TP17 have already been rejected.",
       "status": "CANCELLED_BEFORE_RESULT",
       "reason": "User identifies PIC21/RB0 destination; reconcile the older VREF assignment instead."
+    },
+    {
+      "id": "RX-3",
+      "group": "receiver-input-tp7",
+      "from": "P3",
+      "to": "T7",
+      "unit": "ohms or OL; steady/drifting",
+      "state": "Unpowered; resistance; all components fitted",
+      "issue": "E11",
+      "purpose": "Test a possible direct signal/bias relation to TP7 without presuming it exists",
+      "status": "DEFERRED_BY_OWNER",
+      "date": "2026-10-15",
+      "reason": "Owner decision: Defer RX-3; no pending readings."
     }
   ],
   "revision": "v0.9.47",
@@ -3775,7 +3777,7 @@
     "pending_check": null,
     "model_status": "Applied v0.9.20: pin5-VIN measured 1 ohm; R37 and U6A single-pad local joins from the annotation; pin4 explicitly unused."
   },
-  "next_prompt": "Report RX-3 in ohms or OL and whether it settles. The reported 1-ohm probe baseline is retained; no repeat of RX-1/RX-2.",
+  "next_prompt": "No measurement requested. RX-3 remains deferred until the owner chooses to resume it.",
   "review_revision": "v0.9.47",
   "request_probe_baseline": false,
   "q3_decision": "Defer isolated Q3 identification; retain candidate qualification and existing copper. No desoldering or repeat Q3 batch requested.",
@@ -3796,17 +3798,14 @@
     },
     {
       "id": "receiver-input-tp7-20261015",
-      "status": "ONE_NEW_PAIR_ONLY",
+      "status": "DEFERRED_BY_OWNER",
       "tests": [
         "RX-3"
-      ]
+      ],
+      "reason": "Owner decision: Defer RX-3; no pending readings."
     }
   ],
-  "setup_steps": [
-    "Disconnect battery, programmer and all external power; check for residual voltage before resistance mode. Leave components fitted.",
-    "Place red on P3 (U3 pin3) and black on T7 (TP7). Pin1 marker is orientation only.",
-    "Report ohms or OL and whether the reading settles or drifts. The reported 1-ohm shorted-probe baseline is preserved."
-  ],
+  "setup_steps": [],
   "measurement_sources": [],
   "contact_labels": [
     "red probe",
