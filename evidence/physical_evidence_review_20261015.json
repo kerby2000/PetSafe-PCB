@@ -170,6 +170,20 @@
       "relation": "same",
       "basis": "B80/B81 4 and 3.3 ohm; contact uncertainty retained. IMG_2428/IMG_2431 route R5 lower to Q8 source/C6 supply and upper toward U2/C7 corroborates feed, not an ideal zero-ohm claim. No edge across R5.",
       "single_pair": false
+    },
+    {
+      "source": "evidence/receiver_input_results_20261015.json",
+      "field": "confirmed_pairs",
+      "relation": "same",
+      "kind": "meter",
+      "basis": "E11 owner follow-up: corrected 1.023 Mohm to U3.3, 998 kohm to TP7, 1.5 ohm to R28 right; all parts fitted, power-off requested; lead resistance/stability not supplied."
+    },
+    {
+      "source": "evidence/receiver_input_results_20261015.json",
+      "field": "rejected_direct_pairs",
+      "relation": "separate",
+      "kind": "meter",
+      "basis": "E11 owner follow-up: corrected 1.023 Mohm to U3.3, 998 kohm to TP7, 1.5 ohm to R28 right; all parts fitted, power-off requested; lead resistance/stability not supplied."
     }
   ],
   "observations": [
@@ -1445,7 +1459,8 @@
     "photos/originals/IMG_2435.jpg": "04f1464e2fceeec695365b25183dc96505034434565d20713f55c5b13b18fac1",
     "photos/originals/IMG_2437.jpg": "3c7c58fea79ea903a3099f204c1d97406c0884edb6d54fd5e7441363e71467a7",
     "photos/originals/IMG_2438.jpg": "b3868ea3dd2f4b542d0713b57401d2a9c2a898f9b11898b32f17b84883702109",
-    "photos/originals/IMG_2442.jpg": "26ed14f30dd04a3920b16309f4b5735862b58b573001b0ba29409dec719ce8a7"
+    "photos/originals/IMG_2442.jpg": "26ed14f30dd04a3920b16309f4b5735862b58b573001b0ba29409dec719ce8a7",
+    "evidence/receiver_input_results_20261015.json": "c9e0f6e831326012bbcbfc00ed8c938574e440436dae16342dfb5932550e9c0c"
   },
   "photo_reviews": [
     {
@@ -1462,7 +1477,7 @@
         "photos/originals/IMG_2429.jpg",
         "photos/originals/IMG_2434.jpg"
       ],
-      "finding": "Feedback and DNP R47/C42 local copper corroborated. D2.R-C20.2 measured; C20.1 ground and the C19/R28/U3.3 grouping remain inherited, not proved by that one measurement."
+      "finding": "Feedback/DNP local copper remains corroborated. Owner E11 follow-up now separates D2.R/C20.2/R28.2 from U3.3. C19.1-U3.3 and C20.1-GND remain inherited, unverified joins."
     },
     {
       "region": "RF supply/driver",
@@ -1577,13 +1592,14 @@
     "Q7 earlier 0/4.5 V R19 readings are not simultaneous; later direct QR-QL=0V is current state evidence, not a copper short.",
     "U6A physical labels retained; obsolete annotation native numbers are not imported. Current U106 pins 3/2/1=input/output/ground.",
     "C49 present on rear; TP9/R33 unsupported inventory withdrawn; rejected via artifacts do not become physical endpoints.",
-    "S1 inferred common rows replaced by measured B38/B39; pressed B41 remains a switch state, not permanent copper."
+    "S1 inferred common rows replaced by measured B38/B39; pressed B41 remains a switch state, not permanent copper.",
+    "v0.9.46: the initial 1 Mohm C20-U3.3 report is refined to 1.023 Mohm. The inherited D2.R/C20.2/R28.2-to-U3.3 copper join is withdrawn. C19/C20 parallel-200pF rationale is no longer applicable; individual starred estimates remain unchanged."
   ],
   "targeted_questions": [
     {
       "area": "E11 / receiver input",
-      "assessment": "D2.R and C20.2 form one supported group. Common membership with C19.1, R28.2 and U3.3 remains inherited; C20.1-to-GND is separately unverified. Neither the 1-ohm D2 result nor expected op-amp function establishes these joins.",
-      "action": "One future check, if owner continues: C20 lower metal end to U3 pin3, resistance, battery/programmer disconnected. Near probe resistance supports the hidden input link; kOhm/OL rejects a direct join. It does not settle the other three branches."
+      "assessment": "C20 lower-D2.R=1 ohm (earlier); C20 lower-R28 right=1.5 ohm; C20 lower-TP7=998 kohm; C20 lower-U3.3=1.023 Mohm (corrected from initial 1 Mohm report). D2.R/C20.2/R28.2 are now a separate net. R28 still links that group to TP7/PIC RA1 through 1 Mohm. R39 correction retained. C19.1-U3.3 and C20.1-GND remain inherited, unverified assignments. The complete path behind 1.023 Mohm to U3.3 is not identified. U1.L3/CE-to-VIN and other independent-evidence gaps remain as listed in TOPOLOGY_AUDIT.md.",
+      "action": "None now for this correction. C20 lower-to-U3.3, TP7 and R28 right are completed; do not repeat them. Any later check must target the still-unverified C20 upper or U3.3 continuation."
     },
     {
       "area": "E11 / U1 supply and enable",
@@ -1637,12 +1653,13 @@
     },
     {
       "area": "E08: Q7 and receiver",
-      "assessment": "B65/B66 directly support Q7.L-R19.1 and Q7.R-R19.2. Diode results favor a PNP-like base at L, but do not isolate E/C or maker. Later direct QR-QL=0V is consistent with no forward base-emitter bias at rest; TP5=0.066V and VREF=0V were recorded in the red-blinking state. Earlier R19-to-ground readings must not be subtracted as one simultaneous state. Equal 10 kohm R21/R22 imply half-rail VREF only with negligible loading. Visible feedback around both op-amps is supported; detector/input and enabled behavior remain separate questions.",
+      "assessment": "B65/B66 directly support Q7.L-R19.1 and Q7.R-R19.2. Diode results favor a PNP-like base at L, but do not isolate E/C or maker. Later direct QR-QL=0V is consistent with no forward base-emitter bias at rest; TP5=0.066V and VREF=0V were recorded in the red-blinking state. Earlier R19-to-ground readings must not be subtracted as one simultaneous state. Equal 10 kohm R21/R22 imply half-rail VREF only with negligible loading. Visible feedback around both op-amps is supported; detector/input and enabled behavior remain separate questions. E11 follow-up rejects the former detector/R28-to-U3.3 copper join; C20 and C19 are no longer modeled in parallel. No new transfer-function claim is supported.",
       "sources": [
         "evidence/q7_r19_join_results_20261014.json",
         "evidence/q7_diode_results_20261014.json",
         "evidence/q7_direct_bias_result_20261014.json",
-        "evidence/receiver_supply_results_20261014.json"
+        "evidence/receiver_supply_results_20261014.json",
+        "evidence/receiver_input_results_20261015.json"
       ]
     },
     {

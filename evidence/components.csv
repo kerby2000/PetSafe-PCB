@@ -22,7 +22,7 @@ R24,R24,120k,120k,124,populated,IMG_2429.jpg;IMG_2434.jpg,"Value decoded from vi
 R25,R25,1.2k,1.2k,122,populated,IMG_2429.jpg;IMG_2434.jpg,"Value decoded from visible marking, not measured.",0,Device:R,Resistor_SMD:R_0603_1608Metric
 R26,R26,120k,120k,124,populated,IMG_2429.jpg;IMG_2434.jpg,"Value decoded from visible marking, not measured.",0,Device:R,Resistor_SMD:R_0603_1608Metric
 R27,R27,10k,10k,01C,populated,IMG_2429.jpg;IMG_2434.jpg,"Value decoded from visible marking, not measured.",0,Device:R,Resistor_SMD:R_0603_1608Metric
-R28,R28,1M,1M,1004,populated,IMG_2429.jpg;IMG_2434.jpg,"v0.8: U4.3/RA1, TP7 and R29 share R28 model1 node per user continuity and local photo trace; earlier common RX-bias assignment withdrawn.",0,Device:R,Resistor_SMD:R_0603_1608Metric
+R28,R28,1M,1M,1004,populated,IMG_2429.jpg;IMG_2434.jpg,Marked 1004 / 1 Mohm. Model1 joins TP7/PIC RA1; model2/right pad nearest C19 measures 1.5 ohm to C20 lower and shares D2.R. C20-to-TP7=998 kohm supports this resistor path; old direct U3.3 membership withdrawn.,0,Device:R,Resistor_SMD:R_0603_1608Metric
 R29,R29,15k,15k,18C,populated,IMG_2429.jpg;IMG_2434.jpg,"v0.8: nominal 15k from 18C. Model1 joins R28.1, TP7 and RA1 per user continuity/photo trace. Prior RX-bias tie withdrawn.",0,Device:R,Resistor_SMD:R_0603_1608Metric
 R30,R30,220,220,221,populated,IMG_2431.jpg;IMG_2432.jpg,"Value decoded from visible marking, not measured.",0,Device:R,Resistor_SMD:R_0603_1608Metric
 R31,R31,220,220,221,populated,IMG_2431.jpg;IMG_2432.jpg,"Value decoded from visible marking, not measured.",0,Device:R,Resistor_SMD:R_0603_1608Metric
@@ -60,8 +60,8 @@ C15,C15,UNKNOWN,1nF*,,populated,IMG_2433.jpg;IMG_2442.jpg,Unmarked ceramic: capa
 C16,C16,UNKNOWN,510pF*,,populated,IMG_2433.jpg;IMG_2442.jpg,Unmarked ceramic: capacitance unknown; no default 100nF assigned.,0,Device:C,Capacitor_SMD:C_1206_3216Metric
 C17,C17,UNKNOWN,10uF*,,populated,IMG_2434.jpg,Unmarked ceramic: capacitance unknown; no default 100nF assigned.,0,Device:C,Capacitor_SMD:C_0805_2012Metric
 C18,C18,UNKNOWN,1nF*,,populated,IMG_2434.jpg,Unmarked ceramic: capacitance unknown; no default 100nF assigned.,0,Device:C,Capacitor_SMD:C_0805_2012Metric
-C19,C19,UNKNOWN,100pF*,,populated,IMG_2434.jpg,Unmarked ceramic: capacitance unknown; no default 100nF assigned.,0,Device:C,Capacitor_SMD:C_0805_2012Metric
-C20,C20,UNKNOWN,100pF*,,populated,IMG_2434.jpg,Unmarked ceramic: capacitance unknown; no default 100nF assigned.,0,Device:C,Capacitor_SMD:C_1206_3216Metric
+C19,C19,UNKNOWN,100pF*,,populated,IMG_2434.jpg,Model1-to-U3.3 remains an inherited input connection; model2 ground has V077 owner support. C20 now belongs to a separate measured node; no verified parallel 200-pF load. 100pF* retained.,0,Device:C,Capacitor_SMD:C_0805_2012Metric
+C20,C20,UNKNOWN,100pF*,,populated,IMG_2434.jpg,Lower/model2 joins D2.R and R28.2 by 1/1.5-ohm readings; 1.023 Mohm to U3.3 rejects the old parallel/input-node join. Upper/model1 ground remains inherited and unverified. 100pF* retained; old combined-200pF rationale is superseded.,0,Device:C,Capacitor_SMD:C_1206_3216Metric
 C21,C21,UNKNOWN,220pF*,,populated,IMG_2434.jpg,Unmarked ceramic: capacitance unknown; no default 100nF assigned.,0,Device:C,Capacitor_SMD:C_0805_2012Metric
 C22,C22,UNKNOWN,220pF*,,populated,IMG_2434.jpg,Unmarked ceramic: capacitance unknown; no default 100nF assigned.,0,Device:C,Capacitor_SMD:C_0805_2012Metric
 C23,C23,UNKNOWN,47nF*,,populated,IMG_2434.jpg,Unmarked ceramic: capacitance unknown; no default 100nF assigned.,0,Device:C,Capacitor_SMD:C_0805_2012Metric

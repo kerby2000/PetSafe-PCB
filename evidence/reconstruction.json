@@ -1,6 +1,6 @@
 {
   "board": "100-1339 R03 A",
-  "revision": "v0.9.45",
+  "revision": "v0.9.46",
   "status": "PARTIALLY VERIFIED RECONSTRUCTION; USER MEASUREMENTS, PHOTO TRACES AND QUALIFIED HYPOTHESES",
   "components": [
     {
@@ -527,7 +527,8 @@
       "footprint": "Resistor_SMD:R_0603_1608Metric",
       "footprint_confidence": "medium - revised family estimate",
       "footprint_basis": "User reports R8 approximately 1.6 x 0.77 mm, consistent with 0603 (1608 metric). Repeated fitted resistor family revised using R8 as a scale reference. This individual body has not been measured; earlier 0805 estimate superseded.",
-      "hypothesis": "v0.8: U4.3/RA1, TP7 and R29 share R28 model1 node per user continuity and local photo trace; earlier common RX-bias assignment withdrawn."
+      "hypothesis": "v0.8: U4.3/RA1, TP7 and R29 share R28 model1 node per user continuity and local photo trace; earlier common RX-bias assignment withdrawn.",
+      "current_summary": "Marked 1004 / 1 Mohm. Model1 joins TP7/PIC RA1; model2/right pad nearest C19 measures 1.5 ohm to C20 lower and shares D2.R. C20-to-TP7=998 kohm supports this resistor path; old direct U3.3 membership withdrawn."
     },
     {
       "ref": "R29",
@@ -1710,7 +1711,8 @@
         "tolerance_percent": 5,
         "category": "SIGNAL_CANDIDATE",
         "status": "ESTIMATED_NOT_FACTORY_VERIFIED"
-      }
+      },
+      "current_summary": "Model1-to-U3.3 remains an inherited input connection; model2 ground has V077 owner support. C20 now belongs to a separate measured node; no verified parallel 200-pF load. 100pF* retained."
     },
     {
       "ref": "C20",
@@ -1738,7 +1740,7 @@
         "qualification": "Very low confidence: nonlinear diode path and a 1-Mohm bias path do not uniquely determine the needed envelope capacitance. Equal division is arbitrary; qualify antenna-coupled voltage.",
         "individual_measurement": false
       },
-      "pad_evidence": "IMG_2434/user photo lower metal end nearest printed C20 is assigned model pin2; user D2.R-to-that-end = 1 ohm. Other capacitor end remains model pin1; existing GND and receiver-input branches are not independently confirmed by this result.",
+      "pad_evidence": "Lower/model2 joins D2.R and R28.2 by 1/1.5-ohm readings; 1.023 Mohm to U3.3 rejects the old parallel/input-node join. Upper/model1 ground remains inherited and unverified. 100pF* retained; old combined-200pF rationale is superseded.",
       "proposed_value": "100pF*",
       "value_proposal": {
         "nominal_pf": 100,
@@ -1748,7 +1750,8 @@
         "tolerance_percent": 5,
         "category": "SIGNAL_CANDIDATE",
         "status": "ESTIMATED_NOT_FACTORY_VERIFIED"
-      }
+      },
+      "current_summary": "Lower/model2 joins D2.R and R28.2 by 1/1.5-ohm readings; 1.023 Mohm to U3.3 rejects the old parallel/input-node join. Upper/model1 ground remains inherited and unverified. 100pF* retained; old combined-200pF rationale is superseded."
     },
     {
       "ref": "C21",
@@ -5097,14 +5100,11 @@
       "net": "RX_A_PLUS",
       "endpoints": [
         "C19.1",
-        "C20.2",
-        "D2.R",
-        "R28.2",
         "U3.3"
       ],
-      "status": "HYPOTHESIS / retains visual fragments where listed",
+      "status": "QUALIFIED INHERITED JOIN: C19.1 to U3.3 remains unverified; D2/C20/R28 branch separated by owner resistance.",
       "original_fragments": [],
-      "d2_measurement": "User D2.R (upper-left) to C20 lower metal end = 1 ohm. Lower end assigned model C20.2. Existing C19/R28/U3.3 branches remain photo/circuit hypotheses, not newly measured."
+      "d2_measurement": "Superseded by evidence/receiver_input_results_20261015.json: C20.2-U3.3=1.023 Mohm; no direct join."
     },
     {
       "net": "RX_B_FB",
@@ -5381,6 +5381,16 @@
       ],
       "status": "MEASUREMENT-SUPPORTED: B78 local join; B79-B81 support 22-ohm R5 feed from H_RF_VDD. B77 rejects printed VDD tie.",
       "original_fragments": []
+    },
+    {
+      "net": "D2_C20",
+      "endpoints": [
+        "C20.2",
+        "D2.R",
+        "R28.2"
+      ],
+      "status": "OWNER CONTINUITY: D2.R-C20.2=1 ohm previously; C20.2-R28.2=1.5 ohm. Separate from U3.3 and TP7 by measured high resistance.",
+      "source": "evidence/receiver_input_results_20261015.json"
     }
   ],
   "original_visual_fragments": [
@@ -5473,7 +5483,7 @@
           "R43.2"
         ],
         "reason": "User confirms V011-V014 to Q1.L, excludes R43.2 and explicitly requests removal of this old photo-derived connection.",
-        "user_authorization": "Remove Q1.L–R43.2 connection",
+        "user_authorization": "Remove Q1.L\u2013R43.2 connection",
         "revision": "v0.9.4"
       }
     },
@@ -6253,17 +6263,6 @@
       "b": [
         205.74,
         347.98
-      ]
-    },
-    {
-      "net": "RX_A_PLUS",
-      "a": [
-        353.06,
-        198.12
-      ],
-      "b": [
-        353.06,
-        229.87
       ]
     },
     {
@@ -7457,17 +7456,6 @@
     {
       "net": "RX_A_PLUS",
       "a": [
-        353.06,
-        198.12
-      ],
-      "b": [
-        360.68,
-        198.12
-      ]
-    },
-    {
-      "net": "RX_A_PLUS",
-      "a": [
         445.77,
         250.19
       ],
@@ -7499,7 +7487,7 @@
       ]
     },
     {
-      "net": "RX_A_PLUS",
+      "net": "D2_C20",
       "a": [
         346.71,
         224.79
@@ -7903,17 +7891,6 @@
       "b": [
         320.04,
         304.8
-      ]
-    },
-    {
-      "net": "RX_A_PLUS",
-      "a": [
-        445.77,
-        245.11
-      ],
-      "b": [
-        445.77,
-        250.19
       ]
     },
     {
@@ -9534,7 +9511,7 @@
       ]
     },
     {
-      "net": "RX_A_PLUS",
+      "net": "D2_C20",
       "a": [
         346.71,
         229.87
@@ -9886,7 +9863,7 @@
       ]
     },
     {
-      "net": "RX_A_PLUS",
+      "net": "D2_C20",
       "a": [
         445.77,
         245.11
@@ -9897,7 +9874,7 @@
       ]
     },
     {
-      "net": "RX_A_PLUS",
+      "net": "D2_C20",
       "a": [
         548.64,
         245.11
@@ -9908,7 +9885,7 @@
       ]
     },
     {
-      "net": "RX_A_PLUS",
+      "net": "D2_C20",
       "a": [
         548.64,
         251.46
@@ -12993,7 +12970,7 @@
         "R43.2"
       ],
       "reason": "User confirms V011-V014 to Q1.L, excludes R43.2 and explicitly requests removal of this old photo-derived connection.",
-      "user_authorization": "Remove Q1.L–R43.2 connection",
+      "user_authorization": "Remove Q1.L\u2013R43.2 connection",
       "revision": "v0.9.4"
     }
   ],

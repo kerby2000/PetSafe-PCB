@@ -1,0 +1,91 @@
+{
+  "date": "2026-10-15",
+  "revision": "v0.9.46",
+  "baseline_commit": "ed9824035b7c29f20bf0e995c0d1413727df3b93",
+  "measurement_source": "evidence/receiver_input_results_20261015.json",
+  "before": {
+    "RX_A_PLUS": [
+      "C19.1",
+      "C20.2",
+      "D2.R",
+      "R28.2",
+      "U3.3"
+    ]
+  },
+  "after": {
+    "RX_A_PLUS": [
+      "C19.1",
+      "U3.3"
+    ],
+    "D2_C20": [
+      "C20.2",
+      "D2.R",
+      "R28.2"
+    ]
+  },
+  "moved_endpoints": [
+    "C20.2",
+    "D2.R",
+    "R28.2"
+  ],
+  "reason": "Owner 1.023 Mohm rejects C20.2-U3.3; C20.2-R28.2=1.5 ohm and prior C20.2-D2.R=1 ohm support the separated local group. TP7=998 kohm is consistent with the existing R28 1 Mohm path. No new resistor or onward destination inferred.",
+  "remaining": "C19.1-U3.3 remains inherited/qualified; C20.1-GND remains inherited/qualified. No physical completeness claim.",
+  "native_removed_wire_segments": [
+    [
+      [
+        445.77,
+        245.11
+      ],
+      [
+        445.77,
+        250.19
+      ]
+    ],
+    [
+      [
+        353.06,
+        198.12
+      ],
+      [
+        353.06,
+        229.87
+      ]
+    ],
+    [
+      [
+        353.06,
+        198.12
+      ],
+      [
+        360.68,
+        198.12
+      ]
+    ]
+  ],
+  "native_removed_junctions": [
+    [
+      445.77,
+      250.19
+    ],
+    [
+      360.68,
+      198.12
+    ]
+  ],
+  "new_labels": [
+    {
+      "net": "D2_C20",
+      "position": [
+        488.95,
+        245.11
+      ]
+    },
+    {
+      "net": "D2_C20",
+      "position": [
+        353.06,
+        229.87
+      ]
+    }
+  ]
+}

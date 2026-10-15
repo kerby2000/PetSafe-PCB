@@ -1,0 +1,79 @@
+{
+  "date": "2026-10-15",
+  "basis_revision": "v0.9.45",
+  "source": "Owner replies to the E11 receiver-input continuity check in this conversation",
+  "requested_conditions": "Battery and programmer disconnected; resistance mode; all components fitted.",
+  "conditions_reconfirmed_in_reply": false,
+  "shorted_probe_ohms": null,
+  "stability": null,
+  "measurements": [
+    {
+      "id": "E11-R1",
+      "pair": [
+        "C20.2",
+        "U3.3"
+      ],
+      "physical_endpoints": [
+        "C20 lower metal end nearest the printed C20 reference",
+        "U3 pin 3"
+      ],
+      "original_report": "measures exactly 1 MOhm",
+      "corrected_report": "Small correction. It was 1.023 Mohm",
+      "resistance_ohms": 1023000,
+      "interpretation": "Reject direct copper membership. Does not identify the intervening component path."
+    },
+    {
+      "id": "E11-R2",
+      "pair": [
+        "C20.2",
+        "TP7.1"
+      ],
+      "physical_endpoints": [
+        "Same C20 lower metal end",
+        "TP7 hole above R28/R29"
+      ],
+      "raw_report": "the measurements to TP7 is 998 kohm",
+      "resistance_ohms": 998000,
+      "interpretation": "Reject direct copper membership. Similarity to R28's marked 1 Mohm is a path hypothesis, not evidence of a new resistor or a confirmed route."
+    },
+    {
+      "id": "E11-R3",
+      "pair": [
+        "C20.2",
+        "R28.2"
+      ],
+      "physical_endpoints": [
+        "Same C20 lower metal end",
+        "R28 right metal end nearest C19"
+      ],
+      "raw_report": "This gives almost a short 1.5 ohm.",
+      "resistance_ohms": 1.5,
+      "interpretation": "Supports direct local membership with contact/lead resistance unquantified."
+    }
+  ],
+  "rejected_direct_pairs": [
+    [
+      "C20.2",
+      "U3.3"
+    ],
+    [
+      "C20.2",
+      "TP7.1"
+    ]
+  ],
+  "confirmed_pairs": [
+    [
+      "C20.2",
+      "R28.2"
+    ]
+  ],
+  "preserved_prior_join": {
+    "pair": [
+      "C20.2",
+      "D2.R"
+    ],
+    "resistance_ohms": 1,
+    "source": "evidence/d2_diode_20261009.json"
+  },
+  "qualification": "R28 is the supported resistor path from D2.R/C20.2 to TP7/PIC RA1: its right end measures 1.5 ohm to C20 and its left end already reaches TP7. No new component is inserted. The 1.023 Mohm to U3.3 rejects their direct join but does not identify the complete remaining path. C20 opposite-end ground association remains unverified."
+}

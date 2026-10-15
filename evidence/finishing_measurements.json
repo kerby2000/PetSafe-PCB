@@ -1,9 +1,9 @@
 {
   "date": "2026-10-15",
-  "basis_revision": "v0.9.43",
-  "status": "RECORDED_FUNCTION_BASED_REVIEW_NO_ACTIVE_BENCH_BATCH",
-  "scope": "C21/C22 results recorded; function-based review replaces broad capacitor measurement requests.",
-  "setup": "No new bench readings requested. All components remain fitted; scope work remains deferred.",
+  "basis_revision": "v0.9.46",
+  "status": "COMPLETED_RECEIVER_INPUT_SPLIT",
+  "scope": "Three E11 resistance readings recorded; bounded D2/C20/R28 split corrected.",
+  "setup": "No new readings requested. The completed tests requested battery/programmer disconnected and all components fitted.",
   "photos": [
     {
       "id": "receiver",
@@ -2008,6 +2008,67 @@
           "role": "reference"
         }
       }
+    },
+    {
+      "id": "receiver-input-followup",
+      "source": "photos/originals/IMG_2434.jpg",
+      "view_box": [
+        300,
+        850,
+        1050,
+        973
+      ],
+      "coordinate_space": [
+        1368,
+        1823
+      ],
+      "title": "Completed receiver-input checks: C20, U3 pin 3, TP7 and R28",
+      "points": {
+        "D": {
+          "xy": [
+            880,
+            1650
+          ],
+          "label": [
+            975,
+            1740
+          ],
+          "description": "C20 lower metal end nearest printed C20; model C20.2"
+        },
+        "P3": {
+          "xy": [
+            790,
+            978
+          ],
+          "label": [
+            1110,
+            1050
+          ],
+          "description": "U3 pin 3, third lower lead from the pin-1 dot end"
+        },
+        "T7": {
+          "xy": [
+            452,
+            1375
+          ],
+          "label": [
+            570,
+            1300
+          ],
+          "description": "TP7 hole above R28/R29; already connected to PIC RA1 and R28 model1"
+        },
+        "R": {
+          "xy": [
+            547,
+            1680
+          ],
+          "label": [
+            580,
+            1780
+          ],
+          "description": "R28 right metal end nearest C19; model R28.2"
+        }
+      }
     }
   ],
   "tests": [],
@@ -2052,7 +2113,8 @@
     "B38-B41 S1: common pairs and normally-open action confirmed. Extra A-C OL preserved. No more S1 electrical checks requested.",
     "B42/B43 LED colours: A/R31/PIC22 green; B/R30/PIC23 red. No repeated colour check requested.",
     "B44-B52 antenna continuity completed: C11 outer end ANT2, distinct ANT1 and GND. Corrected pair labels retained in the raw result evidence.",
-    "B86-B91 raw capacitance sweep recorded. Cp/Cs and D were not established; no repeat requested while function-based review proceeds."
+    "B86-B91 raw capacitance sweep recorded. Cp/Cs and D were not established; no repeat requested while function-based review proceeds.",
+    "E11-R1/R2/R3: C20 lower to U3.3, TP7 and R28 right completed; no repeats requested."
   ],
   "deferred": "Q3 stays fitted. RF waveforms, U2 identity/ratings and receiver enabled-state behavior remain open.",
   "sources": [
@@ -3404,11 +3466,50 @@
       "source": "photos/user_updates/C22_LCR_worksheet_20261015.png",
       "source_type": "USER_WORKSHEET_SCREENSHOT",
       "settings_basis": "Frequency and 0.1 V RMS are the worksheet conditions; no instrument-screen settings verification supplied."
+    },
+    {
+      "id": "E11-R1",
+      "group": "receiver-input-followup",
+      "to": "P3",
+      "unit": "ohms",
+      "state": "Unpowered resistance requested; components fitted; lead baseline/stability not supplied",
+      "issue": "E11",
+      "date": "2026-10-15",
+      "result": "1.023 Mohm",
+      "resistance_ohms": 1023000,
+      "source": "evidence/receiver_input_results_20261015.json",
+      "from": "D"
+    },
+    {
+      "id": "E11-R2",
+      "group": "receiver-input-followup",
+      "to": "T7",
+      "unit": "ohms",
+      "state": "Unpowered resistance requested; components fitted; lead baseline/stability not supplied",
+      "issue": "E11",
+      "date": "2026-10-15",
+      "result": "998 kohm",
+      "resistance_ohms": 998000,
+      "source": "evidence/receiver_input_results_20261015.json",
+      "from": "D"
+    },
+    {
+      "id": "E11-R3",
+      "group": "receiver-input-followup",
+      "to": "R",
+      "unit": "ohms",
+      "state": "Unpowered resistance requested; components fitted; lead baseline/stability not supplied",
+      "issue": "E11",
+      "date": "2026-10-15",
+      "result": "1.5 ohm",
+      "resistance_ohms": 1.5,
+      "source": "evidence/receiver_input_results_20261015.json",
+      "from": "D"
     }
   ],
-  "batch_title": "C21 and C22 results: function-based review next",
-  "instructions": "C21: 680 / 340 / 240 pF; C22: 680 / 320 / 240 pF at 1 / 10 / 100 kHz. Meter mode was C/Auto or unsure; D was not reported. Review provisional values by circuit function before selecting any further measurements.",
-  "result_summary": "Six fitted-network readings recorded with unspecified Cp/Cs; individual values remain unconfirmed.",
+  "batch_title": "PetSafe receiver-input split: completed measurements",
+  "instructions": "Completed E11 results: C20 lower to U3 pin 3 = 1.023 Mohm, to TP7 = 998 kohm, and to R28 right = 1.5 ohm. The confirmed D2/C20/R28 group is now separate from U3.3. No new readings requested for this correction.",
+  "result_summary": "C20 lower: U3.3 = 1.023 Mohm (corrected from 1 Mohm), TP7 = 998 kohm, R28 right = 1.5 ohm. D2/C20/R28 group is separate from U3.3; R28 connects it to TP7 through its existing 1 Mohm.",
   "cancelled_tests": [
     {
       "id": "B20",
@@ -3420,7 +3521,7 @@
       "reason": "User identifies PIC21/RB0 destination; reconcile the older VREF assignment instead."
     }
   ],
-  "revision": "v0.9.43",
+  "revision": "v0.9.46",
   "photo_updates": [
     {
       "evidence": "evidence/c25_c26_mapping_20261009.json",
@@ -3443,7 +3544,7 @@
       "result": "v0.9.22 user annotated U6A option: single left pad/model L/native U106.1 joins U6 pin5 and the existing input node after R37; upper-right/model R1/native2 joins J3.1 (red PIR wire); lower-right/model R2/native3 joins GND. All three external pads mapped, option remains DNP. User called the input VDD; retain VDD -> R37 (22 ohm) -> H_AUX_IN because the annotation ends at U6 pin5 and prior B28 confirms pin5-pin2, not a bypass across R37. No fitted IC identity or voltage measurement implied."
     }
   ],
-  "batch_id": "receiver-capacitance-20261015",
+  "batch_id": "receiver-input-split-20261015",
   "location_review": {
     "reference": "TP9",
     "status": "REMOVED_UNSUPPORTED_ENTRY",
@@ -3493,19 +3594,16 @@
     "pending_check": null,
     "model_status": "Applied v0.9.20: pin5-VIN measured 1 ohm; R37 and U6A single-pad local joins from the annotation; pin4 explicitly unused."
   },
-  "next_prompt": "No new measurements now. All 44 unknown ceramics have numerical function-based candidates in the capacitor review. RF values form a conditional design example, not recovered originals; later validation will address whole networks.",
-  "review_revision": "v0.9.43",
+  "next_prompt": "No further reading needed for this correction. C20 upper and the remaining U3 input route are still qualified.",
+  "review_revision": "v0.9.46",
   "request_probe_baseline": false,
   "q3_decision": "Defer isolated Q3 identification; retain candidate qualification and existing copper. No desoldering or repeat Q3 batch requested.",
   "last_completed_test_ids": [
-    "B86",
-    "B87",
-    "B88",
-    "B89",
-    "B90",
-    "B91"
+    "E11-R1",
+    "E11-R2",
+    "E11-R3"
   ],
-  "last_result_evidence": "evidence/receiver_capacitance_results_20261015.json",
+  "last_result_evidence": "evidence/receiver_input_results_20261015.json",
   "staged_batches": [
     {
       "id": "function-based-capacitor-review",
@@ -3513,7 +3611,11 @@
       "reason": "Owner requests inference from function and reference circuits; isolate the remaining design-critical constraints before another test."
     }
   ],
-  "setup_steps": [],
+  "setup_steps": [
+    "Completed results shown below; no active bench request.",
+    "R28 remains the original 1 Mohm part; high-resistance paths are not treated as copper.",
+    "Scope work and component lifting remain deferred."
+  ],
   "measurement_sources": [],
   "contact_labels": [
     "tip 1",

@@ -5455,7 +5455,10 @@
         },
         "rotation": 0,
         "includePins": true,
-        "footprint": "Resistor_SMD:R_0603_1608Metric"
+        "footprint": "Resistor_SMD:R_0603_1608Metric",
+        "properties": {
+          "CurrentEvidence": "Marked 1004 / 1 Mohm. Model1 joins TP7/PIC RA1; model2/right pad nearest C19 measures 1.5 ohm to C20 lower and shares D2.R. C20-to-TP7=998 kohm supports this resistor path; old direct U3.3 membership withdrawn."
+        }
       }
     },
     {
@@ -5519,7 +5522,8 @@
           "ValueBasis": "100 pF plus C20=100 pF gives a deliberately small 200-pF detector load. A simple 1-Mohm discharge approximation gives 200 us, versus a 7.45-us RF period.",
           "ValueQualification": "Very low confidence: diode conduction, input impedance and signal modulation determine the real envelope response. Equal division across two parallel capacitors is not identifiable from function. Rating is a conservative candidate for an antenna-coupled node.",
           "ValueSource": "evidence/capacitor_value_review_20261015.json",
-          "DesignSeed": "Function-based candidate; circuit validation pending"
+          "DesignSeed": "Function-based candidate; circuit validation pending",
+          "CurrentEvidence": "Model1-to-U3.3 remains an inherited input connection; model2 ground has V077 owner support. C20 now belongs to a separate measured node; no verified parallel 200-pF load. 100pF* retained."
         }
       },
       "via_evidence": "v0.9.2: V077 C19-R29 junction explicitly confirmed GND. Model C19.2 assigned to upper photo pad beside via; former clamp connection withdrawn; opposite-pad route remains inferred."
@@ -5585,7 +5589,8 @@
           "ValueBasis": "100 pF plus C19=100 pF gives 200 pF at RX_A_PLUS. The larger 1206 body can accommodate voltage/low-loss needs without implying a large capacitance.",
           "ValueQualification": "Very low confidence: nonlinear diode path and a 1-Mohm bias path do not uniquely determine the needed envelope capacitance. Equal division is arbitrary; qualify antenna-coupled voltage.",
           "ValueSource": "evidence/capacitor_value_review_20261015.json",
-          "DesignSeed": "Function-based candidate; circuit validation pending"
+          "DesignSeed": "Function-based candidate; circuit validation pending",
+          "CurrentEvidence": "Lower/model2 joins D2.R and R28.2 by 1/1.5-ohm readings; 1.023 Mohm to U3.3 rejects the old parallel/input-node join. Upper/model1 ground remains inherited and unverified. 100pF* retained; old combined-200pF rationale is superseded."
         }
       }
     },
@@ -12479,17 +12484,6 @@
         197
       ],
       "b": [
-        351,
-        193
-      ]
-    },
-    {
-      "net": "RX_A_PLUS",
-      "a": [
-        351,
-        197
-      ],
-      "b": [
         346,
         197
       ]
@@ -12561,7 +12555,7 @@
       ]
     },
     {
-      "net": "RX_A_PLUS",
+      "net": "D2_C20",
       "a": [
         273,
         177
@@ -12572,7 +12566,7 @@
       ]
     },
     {
-      "net": "RX_A_PLUS",
+      "net": "D2_C20",
       "a": [
         273,
         181
@@ -12580,28 +12574,6 @@
       "b": [
         278,
         181
-      ]
-    },
-    {
-      "net": "RX_A_PLUS",
-      "a": [
-        278,
-        181
-      ],
-      "b": [
-        278,
-        156
-      ]
-    },
-    {
-      "net": "RX_A_PLUS",
-      "a": [
-        278,
-        156
-      ],
-      "b": [
-        284,
-        156
       ]
     },
     {
@@ -14448,6 +14420,13 @@
       "p": [
         344,
         158
+      ]
+    },
+    {
+      "net": "D2_C20",
+      "p": [
+        278,
+        181
       ]
     }
   ],

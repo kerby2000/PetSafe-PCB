@@ -1,28 +1,28 @@
 # Physical-evidence closure audit
 
-Generated for **v0.9.45** by `verify_evidence_contracts.py`. Source: [selected independent evidence](../evidence/physical_evidence_review_20261015.json); [machine-readable comparison](../evidence/topology_closure_audit.json).
+Generated for **v0.9.46** by `verify_evidence_contracts.py`. Source: [selected independent evidence](../evidence/physical_evidence_review_20261015.json); [machine-readable comparison](../evidence/topology_closure_audit.json).
 
 **0 supported joins split; 0 measured separations merged; 0 photographed pads missing mappings in the reviewed regions.**
 
-227 sourced join observations and 32 separation observations were checked. 19 modeled nets still contain separate evidence groups in this corpus. This is an evidence-coverage result, not a count of proven wrong wires. Existing native checks separately establish file consistency.
+228 sourced join observations and 34 separation observations were checked. 19 modeled nets still contain separate evidence groups in this corpus. This is an evidence-coverage result, not a count of proven wrong wires. Existing native checks separately establish file consistency.
 
 ## Decisions and specific remaining joins
 
 | Area | Assessment / missing evidence | Action |
 |---|---|---|
-| E11 / receiver input | D2.R and C20.2 form one supported group. Common membership with C19.1, R28.2 and U3.3 remains inherited; C20.1-to-GND is separately unverified. Neither the 1-ohm D2 result nor expected op-amp function establishes these joins. | One future check, if owner continues: C20 lower metal end to U3 pin3, resistance, battery/programmer disconnected. Near probe resistance supports the hidden input link; kOhm/OL rejects a direct join. It does not settle the other three branches. |
+| E11 / receiver input | C20 lower-D2.R=1 ohm (earlier); C20 lower-R28 right=1.5 ohm; C20 lower-TP7=998 kohm; C20 lower-U3.3=1.023 Mohm (corrected from initial 1 Mohm report). D2.R/C20.2/R28.2 are now a separate net. R28 still links that group to TP7/PIC RA1 through 1 Mohm. R39 correction retained. C19.1-U3.3 and C20.1-GND remain inherited, unverified assignments. The complete path behind 1.023 Mohm to U3.3 is not identified. U1.L3/CE-to-VIN and other independent-evidence gaps remain as listed in TOPOLOGY_AUDIT.md. | None now for this correction. C20 lower-to-U3.3, TP7 and R28 right are completed; do not repeat them. Any later check must target the still-unverified C20 upper or U3.3 continuation. |
 | E11 / U1 supply and enable | U1.L1/VIN and U1.L3/CE share H_LDO_IN in the model. IMG_2430 does not expose the complete path for each left contact, so a common supply assumption remains qualified. | Retain known drawing and explicit exception; do not choose a pin role to manufacture a copper edge. No additional owner request now. |
 | E04 / tuning return registration | Each front midpoint is independently visible; exact connection to its corresponding rear capacitor remains a front/rear registration inference. Shared rear ground band is visible. | Keep existing mapping qualified; no all-pairs campaign. A same-index front/rear continuity would settle an individual bridge if later necessary. |
 | E11 / other graph gaps | The generated table names all groups without a complete evidence path, including ordinary rail fan-out and PIC/local joins not encoded by this selected pass. They are not automatically hardware defects. | Review existing local/photo/via records before requesting any further test. No claim of complete copper verification. |
 
-The issue register owns owner actions and closure criteria: [OPEN_ITEMS.md](OPEN_ITEMS.md#e11). One staged input-link check is located on the [original-photo probe guide](measurement-images/receiver_input_bridge.svg). Generic graph gaps below are not an all-to-all bench queue.
+The issue register owns owner actions and closure criteria: [OPEN_ITEMS.md](OPEN_ITEMS.md#e11). The [completed original-photo probe guide](measurement-images/receiver_input_bridge.svg) is retained for orientation; C20-to-U3.3, TP7 and R28 results are recorded and must not be repeated. Generic graph gaps below are not an all-to-all bench queue.
 
 ## Original-photo review
 
 | Region | Source | Finding |
 |---|---|---|
 | R39/Q2/PIR | [IMG_2425.jpg](../photos/originals/IMG_2425.jpg); [IMG_2435.jpg](../photos/originals/IMG_2435.jpg) | R39 correction independently supported. R38/base and R39/output remain distinct. Q2 function is still a candidate. |
-| Receiver/D2/D3 | [IMG_2429.jpg](../photos/originals/IMG_2429.jpg); [IMG_2434.jpg](../photos/originals/IMG_2434.jpg) | Feedback and DNP R47/C42 local copper corroborated. D2.R-C20.2 measured; C20.1 ground and the C19/R28/U3.3 grouping remain inherited, not proved by that one measurement. |
+| Receiver/D2/D3 | [IMG_2429.jpg](../photos/originals/IMG_2429.jpg); [IMG_2434.jpg](../photos/originals/IMG_2434.jpg) | Feedback/DNP local copper remains corroborated. Owner E11 follow-up now separates D2.R/C20.2/R28.2 from U3.3. C19.1-U3.3 and C20.1-GND remain inherited, unverified joins. |
 | RF supply/driver | [IMG_2428.jpg](../photos/originals/IMG_2428.jpg); [IMG_2431.jpg](../photos/originals/IMG_2431.jpg) | Separate input branches, output gate resistors, R5 feed and Q8 outer-drain band corroborated. R5 is a boundary; 24/27ohm are not copper. Device ratings do not justify rewiring. |
 | Tuning front/rear | [IMG_2433.jpg](../photos/originals/IMG_2433.jpg); [IMG_2442.jpg](../photos/originals/IMG_2442.jpg) | Five front cells and shared ANT2 band visible; rear ground band and separate midpoint islands visible. Exact front-to-rear midpoint correspondence remains dependent on approximate registration. |
 | Power and motor | [IMG_2430.jpg](../photos/originals/IMG_2430.jpg); [IMG_2438.jpg](../photos/originals/IMG_2438.jpg) | Local output/filter/option pads reviewed. No additional unambiguous correction found. U1 enable-to-input branch and some rail/pad associations still lack independently encoded direct support. |
@@ -55,9 +55,9 @@ Sources: [r39_endpoint_correction_v0945.json](../evidence/r39_endpoint_correctio
 
 ### E08: Q7 and receiver
 
-B65/B66 directly support Q7.L-R19.1 and Q7.R-R19.2. Diode results favor a PNP-like base at L, but do not isolate E/C or maker. Later direct QR-QL=0V is consistent with no forward base-emitter bias at rest; TP5=0.066V and VREF=0V were recorded in the red-blinking state. Earlier R19-to-ground readings must not be subtracted as one simultaneous state. Equal 10 kohm R21/R22 imply half-rail VREF only with negligible loading. Visible feedback around both op-amps is supported; detector/input and enabled behavior remain separate questions.
+B65/B66 directly support Q7.L-R19.1 and Q7.R-R19.2. Diode results favor a PNP-like base at L, but do not isolate E/C or maker. Later direct QR-QL=0V is consistent with no forward base-emitter bias at rest; TP5=0.066V and VREF=0V were recorded in the red-blinking state. Earlier R19-to-ground readings must not be subtracted as one simultaneous state. Equal 10 kohm R21/R22 imply half-rail VREF only with negligible loading. Visible feedback around both op-amps is supported; detector/input and enabled behavior remain separate questions. E11 follow-up rejects the former detector/R28-to-U3.3 copper join; C20 and C19 are no longer modeled in parallel. No new transfer-function claim is supported.
 
-Sources: [q7_r19_join_results_20261014.json](../evidence/q7_r19_join_results_20261014.json), [q7_diode_results_20261014.json](../evidence/q7_diode_results_20261014.json), [q7_direct_bias_result_20261014.json](../evidence/q7_direct_bias_result_20261014.json), [receiver_supply_results_20261014.json](../evidence/receiver_supply_results_20261014.json).
+Sources: [q7_r19_join_results_20261014.json](../evidence/q7_r19_join_results_20261014.json), [q7_diode_results_20261014.json](../evidence/q7_diode_results_20261014.json), [q7_direct_bias_result_20261014.json](../evidence/q7_direct_bias_result_20261014.json), [receiver_supply_results_20261014.json](../evidence/receiver_supply_results_20261014.json), [receiver_input_results_20261015.json](../evidence/receiver_input_results_20261015.json).
 
 ### E09: Q1
 
@@ -103,7 +103,7 @@ Each brace is a group connected by independent evidence. Separate braces on one 
 | OSC2 | {C31.2}; {U4.10}; {Y1.2} |
 | PIC_RB3_RETURN | {R4.2}; {U4.24} |
 | PIC_TP4_C41 | {C40.1, C41.1, R23.2, R42.1, TP4.1, U4.25}; {R44.1} |
-| RX_A_PLUS | {C19.1}; {C20.2, D2.R}; {R28.2}; {U3.3} |
+| RX_A_PLUS | {C19.1}; {U3.3} |
 | TUNE_1_MID | {C10.2, C11.2}; {C12.2} |
 | TUNE_2_MID | {C13.2, C14.2}; {C15.2} |
 | TUNE_3_MID | {C16.2, C29.2}; {C38.2} |
@@ -123,3 +123,4 @@ Each brace is a group connected by independent evidence. Separate braces on one 
 - U6A physical labels retained; obsolete annotation native numbers are not imported. Current U106 pins 3/2/1=input/output/ground.
 - C49 present on rear; TP9/R33 unsupported inventory withdrawn; rejected via artifacts do not become physical endpoints.
 - S1 inferred common rows replaced by measured B38/B39; pressed B41 remains a switch state, not permanent copper.
+- v0.9.46: the initial 1 Mohm C20-U3.3 report is refined to 1.023 Mohm. The inherited D2.R/C20.2/R28.2-to-U3.3 copper join is withdrawn. C19/C20 parallel-200pF rationale is no longer applicable; individual starred estimates remain unchanged.

@@ -1,6 +1,6 @@
 # Current circuit interpretation
 
-Schematic v0.9.45, 2026-10-15. This is the current interpretation, not a chronological log. The [previous narrative](history/cleanup_v0928/docs/RECONSTRUCTION.md) is archived; older requests there are superseded. Use [the checklist](FINISHING_CHECKLIST.html) for remaining questions. Oscilloscope work is deferred at the owner's request; prioritize schematic values, identities and package geometry.
+Schematic v0.9.46, 2026-10-15. This is the current interpretation, not a chronological log. The [previous narrative](history/cleanup_v0928/docs/RECONSTRUCTION.md) is archived; older requests there are superseded. Use [the checklist](FINISHING_CHECKLIST.html) for remaining questions. Oscilloscope work is deferred at the owner's request; prioritize schematic values, identities and package geometry.
 
 ## Power and references
 
@@ -57,3 +57,5 @@ C21/C22 fitted readings are recorded in `evidence/receiver_capacitance_results_2
 The 44 capacitor candidates are applied to native schematic v0.9.44 as starred values (for example `100nF*`). Hidden component properties carry the proposed voltage rating, dielectric, tolerance and basis. `*` means an engineering estimate, not a recovered original value; the RF bank retains the reported 500-uH input and ideal-switch assumption. C5 and all DNP options are unchanged. See `evidence/capacitor_application_v0944.json` for the bounded application audit.
 
 Antenna inductance was subsequently reported as **500 uH** on 2026-10-15. Measurement frequency, isolation state, instrument and losses were not specified. This supports the tuning-bank design input without verifying its individual capacitances or branch weights.
+
+Receiver input correction (v0.9.46): C20 lower to U3 pin 3 is 1.023 Mohm, to TP7 is 998 kohm, and to R28 right is 1.5 ohm. D2.R/C20.2/R28.2 now share D2_C20, separate from RX_A_PLUS. R28 links this node to TP7/PIC RA1 through its existing 1 Mohm. C19.1-U3.3 and C20.1-GND remain qualified inherited joins. The old C19+C20 parallel 200-pF calculation is superseded; individual 100pF* estimates remain unchanged. See [raw results](../evidence/receiver_input_results_20261015.json).

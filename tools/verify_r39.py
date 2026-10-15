@@ -1,14 +1,18 @@
 """Bound the v0.9.45 R39 correction by physical memberships, not net counts."""
 from pathlib import Path
 import json, hashlib, subprocess, xml.etree.ElementTree as ET
+from inventory_contracts import with_receiver_input_split
 R=Path(__file__).resolve().parents[1]
 def read(path):return json.loads((R/path).read_text(encoding='utf-8'))
 record=read('evidence/r39_endpoint_correction_v0945.json')
 def baseline(path):return subprocess.check_output(['git','show',record['baseline_commit']+':'+path],cwd=R)
 m=read('evidence/reconstruction.json');old=json.loads(baseline('evidence/reconstruction.json'))
+corrected=json.loads(subprocess.check_output(['git','show','891d69c:evidence/reconstruction.json'],cwd=R))
 def partitions(model,omit=()):
     return sorted(sorted(set(n['endpoints'])-set(omit)) for n in model['nets'] if set(n['endpoints'])-set(omit))
-assert partitions(m,['R39.1'])==partitions(old,['R39.1']), 'Unexpected physical membership change outside R39.1'
+assert partitions(corrected,['R39.1'])==partitions(old,['R39.1']), 'Historical R39 commit changed other partitions'
+expected=with_receiver_input_split({n['net']:sorted(n['endpoints']) for n in corrected['nets']})
+assert {n['net']:sorted(n['endpoints']) for n in m['nets']}==expected, 'Unregistered change after R39 correction'
 assert m['native_pin_crosswalk']==old['native_pin_crosswalk']==read('evidence/pin_crosswalk.json')
 def inventory(model):
     return {c['ref']:{k:c.get(k) for k in ['value','proposed_value','value_evidence','value_proposal','population','pins','library_symbol','footprint']} for c in model['components']}
@@ -24,10 +28,10 @@ native_physical={}
 for ep,target in m['native_pin_crosswalk'].items():
     if ep=='R39.1' or ep in m['unresolved_pins'] or ep in {x['endpoint'] for x in m['intentional_no_connects']}:continue
     if target in members:native_physical.setdefault(members[target],[]).append(ep)
-assert sorted(sorted(pads) for pads in native_physical.values())==partitions(old,['R39.1']), 'Exported physical partitions changed'
+assert sorted(sorted(pads) for pads in native_physical.values())==partitions(m,['R39.1']), 'Exported physical partitions differ from bounded live model'
 assert hashlib.sha256((R/record['photo']).read_bytes()).hexdigest()==record['photo_sha256']
 def erc_types(data):return sorted(v['type'] for s in data['sheets'] for v in s['violations'])
 assert erc_types(read('output/erc.json'))==erc_types(json.loads(baseline('output/erc.json')))
-result=dict(result='PASS',revision=m['revision'],baseline_commit=record['baseline_commit'],moved_endpoint='R39.1',before='PIR_BASE',after='H_PIR_SIG',all_other_normalized_physical_partitions='IDENTICAL',native_endpoint_checks='PASS',values_population_symbols_crosswalk='UNCHANGED',photo_sha256='MATCH',erc_types='UNCHANGED',net_count_before=len(old['nets']),net_count_after=len(m['nets']))
+result=dict(result='PASS',revision=m['revision'],baseline_commit=record['baseline_commit'],historical_correction_commit='891d69c',moved_endpoint='R39.1',before='PIR_BASE',after='H_PIR_SIG',all_other_normalized_physical_partitions_at_correction='IDENTICAL',subsequent_bounded_correction='evidence/receiver_input_correction_v0946.json',native_endpoint_checks='PASS',values_population_symbols_crosswalk='UNCHANGED',photo_sha256='MATCH',erc_types='UNCHANGED',net_count_before=len(old['nets']),net_count_at_r39_correction=len(corrected['nets']),live_net_count=len(m['nets']))
 (R/'evidence/r39_correction_validation.json').write_text(json.dumps(result,indent=2)+'\n',encoding='utf-8')
-print('PASS: only R39.1 moves; native physical memberships, values, crosswalk, photo and retained ERC checked.')
+print('PASS: historical R39-only correction and live endpoints; subsequent receiver split explicitly checked; values/crosswalk/photo/ERC retained.')
