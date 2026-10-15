@@ -151,7 +151,7 @@
       "id": "V01",
       "area": "Capacitor values and passive ratings",
       "gap": "44 fitted ceramic values remain unknown. L1/L2 measurement conditions and component ratings are not established.",
-      "method": "Keep all components fitted, as requested on 2026-10-15. Any later in-circuit LCR readings must include frequency, mode and loss indication, and remain network estimates unless the surrounding circuit permits individual extraction. Do not turn estimates into measured individual values. Isolated value recovery is deferred; existing L1/L2 conditions can be supplied without repeating measurements."
+      "method": "B86-B91: C21 and C22 at 1/10/100 kHz, 0.1 V RMS, all parts fitted. Record Cp with units and D. Evaluate network loading before accepting individual estimates; no automatic value closure. Existing L1/L2 test conditions can be supplied without repeating their measurements."
     },
     {
       "id": "M01",
@@ -482,12 +482,13 @@
       "state": "open",
       "known": "C5 is 470uF/16V. L1/L2 readings are 1.4/2.2uH. Retained marked resistor nominal values are recorded.",
       "unknown": "44 fitted ceramic values remain unknown. L1/L2 measurement conditions and component ratings are not established.",
-      "next_action": "Keep all components fitted, as requested on 2026-10-15. Any later in-circuit LCR readings must include frequency, mode and loss indication, and remain network estimates unless the surrounding circuit permits individual extraction. Do not turn estimates into measured individual values. Isolated value recovery is deferred; existing L1/L2 conditions can be supplied without repeating measurements.",
+      "next_action": "B86-B91: C21 and C22 at 1/10/100 kHz, 0.1 V RMS, all parts fitted. Record Cp with units and D. Evaluate network loading before accepting individual estimates; no automatic value closure. Existing L1/L2 test conditions can be supplied without repeating their measurements.",
       "closed_when": "Critical individual values are recovered; any bypass substitutions and unverified ratings are explicitly identified assumptions.",
       "open_pads": [],
       "nets": [],
       "supporting_evidence": [
-        "docs/history/v0.9.30-before-finalization/evidence/remaining_work.json"
+        "docs/history/v0.9.30-before-finalization/evidence/remaining_work.json",
+        "evidence/receiver_capacitance_test_plan_20261015.json"
       ],
       "owner": "Agent evidence review; targeted owner test only as listed",
       "category": "values"
@@ -523,6 +524,26 @@
   ],
   "finish_plan": [
     {
+      "id": "F2",
+      "title": "Recover critical component values",
+      "scope": "Main-board values",
+      "issues": [
+        "V01"
+      ],
+      "summary": "44 ceramic values; prioritize tuning and receiver after topology.",
+      "next_action": "Start with the marked C21/C22 low-level LCR sweep (B86-B91). Review Cp and D across three frequencies before requesting further capacitors. Individual values remain qualified while fitted."
+    },
+    {
+      "id": "F3",
+      "title": "Finish interface and package mapping",
+      "scope": "Main-board interfaces",
+      "issues": [
+        "M01"
+      ],
+      "summary": "LED colour branches and J5 board-contact/output mapping are established. LED footprint, connector fit and external motor harness orientation remain reproduction qualifications.",
+      "next_action": "Obtain a matching LED vendor drawing or pad geometry; qualify J5 and the other packages before laying out a replacement PCB."
+    },
+    {
       "id": "F1",
       "title": "Resolve hidden paths and device behavior",
       "scope": "Main-board electrical model",
@@ -537,26 +558,6 @@
       ],
       "summary": "RF feed/output wiring, switch contacts and front-bank ANT2 routing are supported. Candidate device roles remain unresolved. TP11/TP17 routes are complete as drawn, with hidden-layer uncertainty retained as a reconstruction limitation. Scope work and component isolation are deferred by owner.",
       "next_action": "The Q1 low-resistance contradiction is cleared by B84/B85; no further resistance repeat. Continue values and package geometry while candidate device roles remain qualified. Components stay fitted and waveform work is deferred."
-    },
-    {
-      "id": "F2",
-      "title": "Recover critical component values",
-      "scope": "Main-board values",
-      "issues": [
-        "V01"
-      ],
-      "summary": "44 ceramic values; prioritize tuning and receiver after topology.",
-      "next_action": "Keep components fitted. In-circuit LCR can provide qualified estimates; reliable individual values may remain open. No lifting/desoldering batch is active."
-    },
-    {
-      "id": "F3",
-      "title": "Finish interface and package mapping",
-      "scope": "Main-board interfaces",
-      "issues": [
-        "M01"
-      ],
-      "summary": "LED colour branches and J5 board-contact/output mapping are established. LED footprint, connector fit and external motor harness orientation remain reproduction qualifications.",
-      "next_action": "Obtain a matching LED vendor drawing or pad geometry; qualify J5 and the other packages before laying out a replacement PCB."
     }
   ],
   "reconstruction_limitations": [

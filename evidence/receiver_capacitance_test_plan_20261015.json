@@ -1,0 +1,170 @@
+{
+  "date": "2026-10-15",
+  "schematic_revision": "v0.9.43",
+  "batch_id": "receiver-capacitance-20261015",
+  "status": "PREPARED_NO_RESULTS",
+  "constraints": [
+    "All components fitted",
+    "Scope measurements deferred"
+  ],
+  "sources": [
+    {
+      "title": "FNIRSI LCR-ST2 specifications",
+      "url": "https://www.fnirsi.com/products/lcr-st2"
+    },
+    {
+      "title": "FNIRSI LCR-ST2 manual: sweep and Cp/D (printed pages 44-45)",
+      "url": "https://storage.eleshop.eu/files/FnirsiLCR-ST2usermanual.pdf"
+    },
+    {
+      "title": "Keysight: impedance measurements across frequency",
+      "url": "https://www.keysight.com/us/en/use-cases/measure-passive-component-impedance.html"
+    }
+  ],
+  "targets": [
+    {
+      "ref": "C21",
+      "parallel_resistor": "R24",
+      "resistance_ohms": 120000,
+      "endpoints": [
+        "RX_B_OUT",
+        "RX_B_FB"
+      ]
+    },
+    {
+      "ref": "C22",
+      "parallel_resistor": "R26",
+      "resistance_ohms": 120000,
+      "endpoints": [
+        "RX_A_OUT",
+        "RX_A_FB"
+      ]
+    }
+  ],
+  "tests": [
+    {
+      "id": "B86",
+      "group": "receiver-c21-lcr",
+      "from": "21A",
+      "to": "21B",
+      "mode": "LCR capacitance; parallel Cp and dissipation D",
+      "unit": "Cp = ... pF/nF/uF; D = ...",
+      "state": "Unpowered; 1 kHz; 0.1 V RMS; fitted",
+      "issue": "V01",
+      "component": "C21",
+      "frequency_hz": 1000,
+      "excitation_vrms": 0.1,
+      "result_kind": "in_circuit_parallel_equivalent",
+      "purpose": "Estimate the effective capacitance across C21 at this frequency; compare the three points and loss before assigning any individual value."
+    },
+    {
+      "id": "B87",
+      "group": "receiver-c21-lcr",
+      "from": "21A",
+      "to": "21B",
+      "mode": "LCR capacitance; parallel Cp and dissipation D",
+      "unit": "Cp = ... pF/nF/uF; D = ...",
+      "state": "Unpowered; 10 kHz; 0.1 V RMS; fitted",
+      "issue": "V01",
+      "component": "C21",
+      "frequency_hz": 10000,
+      "excitation_vrms": 0.1,
+      "result_kind": "in_circuit_parallel_equivalent",
+      "purpose": "Estimate the effective capacitance across C21 at this frequency; compare the three points and loss before assigning any individual value."
+    },
+    {
+      "id": "B88",
+      "group": "receiver-c21-lcr",
+      "from": "21A",
+      "to": "21B",
+      "mode": "LCR capacitance; parallel Cp and dissipation D",
+      "unit": "Cp = ... pF/nF/uF; D = ...",
+      "state": "Unpowered; 100 kHz; 0.1 V RMS; fitted",
+      "issue": "V01",
+      "component": "C21",
+      "frequency_hz": 100000,
+      "excitation_vrms": 0.1,
+      "result_kind": "in_circuit_parallel_equivalent",
+      "purpose": "Estimate the effective capacitance across C21 at this frequency; compare the three points and loss before assigning any individual value."
+    },
+    {
+      "id": "B89",
+      "group": "receiver-c22-lcr",
+      "from": "22A",
+      "to": "22B",
+      "mode": "LCR capacitance; parallel Cp and dissipation D",
+      "unit": "Cp = ... pF/nF/uF; D = ...",
+      "state": "Unpowered; 1 kHz; 0.1 V RMS; fitted",
+      "issue": "V01",
+      "component": "C22",
+      "frequency_hz": 1000,
+      "excitation_vrms": 0.1,
+      "result_kind": "in_circuit_parallel_equivalent",
+      "purpose": "Estimate the effective capacitance across C22 at this frequency; compare the three points and loss before assigning any individual value."
+    },
+    {
+      "id": "B90",
+      "group": "receiver-c22-lcr",
+      "from": "22A",
+      "to": "22B",
+      "mode": "LCR capacitance; parallel Cp and dissipation D",
+      "unit": "Cp = ... pF/nF/uF; D = ...",
+      "state": "Unpowered; 10 kHz; 0.1 V RMS; fitted",
+      "issue": "V01",
+      "component": "C22",
+      "frequency_hz": 10000,
+      "excitation_vrms": 0.1,
+      "result_kind": "in_circuit_parallel_equivalent",
+      "purpose": "Estimate the effective capacitance across C22 at this frequency; compare the three points and loss before assigning any individual value."
+    },
+    {
+      "id": "B91",
+      "group": "receiver-c22-lcr",
+      "from": "22A",
+      "to": "22B",
+      "mode": "LCR capacitance; parallel Cp and dissipation D",
+      "unit": "Cp = ... pF/nF/uF; D = ...",
+      "state": "Unpowered; 100 kHz; 0.1 V RMS; fitted",
+      "issue": "V01",
+      "component": "C22",
+      "frequency_hz": 100000,
+      "excitation_vrms": 0.1,
+      "result_kind": "in_circuit_parallel_equivalent",
+      "purpose": "Estimate the effective capacitance across C22 at this frequency; compare the three points and loss before assigning any individual value."
+    }
+  ],
+  "rationale": "The two feedback capacitors control receiver frequency response and each has a known modeled 120-kohm shunt, rather than sharing a supply-decoupling bank. They are accessible in one original photo. Three frequencies distinguish obvious network-dominated readings from a useful capacitance estimate without removing parts.",
+  "interpretation": "These are fitted-board network readings, not automatically individual capacitor values. C21 is modeled across R24 (120 kohm); C22 across R26 (120 kohm). Cp helps separate a parallel resistive contribution. The 0.1-V level reduces semiconductor excitation but does not isolate the IC. Frequency dependence and loss will guide whether a useful estimate is supported. A stable reading alone cannot exclude other parallel capacitance, prove a nominal tolerance or certify receiver operation.",
+  "analysis_rules": [
+    "Retain raw capacitance model, units, D, frequency, voltage and instability reports.",
+    "If Cs rather than Cp is reported with D, derive Cp = Cs / (1 + D**2), retaining the original Cs.",
+    "For a simple parallel equivalent with positive Cp and D, G = 2*pi*f*Cp*D and Rp = 1/G. Compare with the modeled 120-kohm shunt, allowing other board paths; a large D is not automatically a bad capacitor.",
+    "Frequency consistency is a screening test only. Do not mark the individual value measured or lower the unknown-value count unless alternate network contributions are independently bounded.",
+    "No results or component values are prefilled."
+  ],
+  "next_batches": [
+    {
+      "area": "Receiver coupling/filter values",
+      "action": "Select C18/C23/C25 only after this first batch shows whether the method is useful; no all-capacitor sweep yet."
+    },
+    {
+      "area": "Mechanical fit",
+      "action": "C5 lead pitch and LED pad geometry can be measured without repeating the known body sizes; select exact dimensions only if accessible while fitted."
+    },
+    {
+      "area": "Device behavior",
+      "action": "RF, PIR, receiver enable and motor/control timing remain queued for the user-deferred scope session; no repeated DC or diode sweep."
+    }
+  ],
+  "excluded_now": [
+    "C5/C6 share supply nodes, so a fitted measurement would not recover each independently.",
+    "Tuning capacitors interact with antenna and switching devices; no direct individual-value claim from a two-terminal sweep.",
+    "D6 breakdown testing through PIC is not requested.",
+    "Previously completed Q1, Q7, diode and antenna checks are not repeated."
+  ],
+  "electrical_change": false,
+  "source_sha256": {
+    "photos/originals/IMG_2434.jpg": "2feac8570055753400b337f4cfe8a79256da8f3bcd706e0d972dfd9672b50d0a"
+  },
+  "baseline_schematic_sha256": "ea7b8569e0831bb36f60083e448e4409cdbb563aafd4a612ce70ae4f71d83c78"
+}

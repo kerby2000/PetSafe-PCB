@@ -9,6 +9,10 @@ active={t[k] for t in p['tests'] for k in ['from','to']}
 latest=[t for t in p['completed_tests'] if t['id'] in p.get('last_completed_test_ids', ['B31','B32','B33','B34','B35','B36'])]
 displayed=p['tests'] or latest
 shown_contacts={t[k] for t in displayed for k in ['from','to']}
+contact_labels=p.get('contact_labels',['red probe','black probe'])
+steps='<ol>'+''.join('<li>'+esc(step)+'</li>' for step in p.get('setup_steps',[]))+'</ol>' if p.get('setup_steps') else ''
+source_links=' | '.join('<a href="'+esc(src['url'],quote=True)+'">'+esc(src['title'])+'</a>' for src in p.get('measurement_sources',[]))
+sources='<p><small>Settings and method: '+source_links+'</small></p>' if source_links else ''
 def photo_svg(photo, prefix='../'):
     vb=' '.join(map(str,photo['view_box']));w,h=photo['coordinate_space'];out=[]
     shown=shown_contacts|set(photo.get('context_points',[]))
@@ -33,7 +37,7 @@ for photo in p['photos']:
         return esc(t['result'])+(' (latest; earlier '+esc(t['earlier_reading'])+')' if t.get('earlier_reading') else '')
     rows=''.join(f'<tr><td>{t["id"]}</td><td>{t["from"]}</td><td>{t["to"]}</td><td>{esc(t.get("state", "As described"))}</td><td>{reading(t)}</td></tr>' for t in tests)
     legend=''.join(f'<li><b>{k}</b>: {esc(v["description"])}</li>' for k,v in photo['points'].items() if k in shown_contacts)
-    result_table=f'<table><tr><th>ID</th><th>Red probe</th><th>Black probe</th><th>Condition</th><th>Reading</th></tr>{rows}</table>' if tests else '<p>Other probe location for the same reading above; no additional test.</p>'
+    result_table=f'<div class="table-scroll"><table><tr><th>ID</th><th>{esc(contact_labels[0].capitalize())}</th><th>{esc(contact_labels[1].capitalize())}</th><th>Condition</th><th>Reading</th></tr>{rows}</table></div>' if tests else '<p>Other probe location for the same reading above; no additional test.</p>'
     panels.append(f'<article><h2>{esc(photo["title"])}</h2><img src="measurement_screens/{photo["id"]}.svg" alt="{esc(photo["title"])}"><ul>{legend}</ul>{result_table}</article>')
 roadmap=''.join('<li><b>'+esc(g['title'])+'</b> - '+esc(g['summary'])+'</li>' for g in s['finish_plan'])
 result_path=esc(p.get('last_result_evidence','evidence/q3_diode_results_20261009.json'))
@@ -41,10 +45,10 @@ reply='<h2>Copy results</h2><p>Worksheet only; nothing is sent automatically. Co
 baseline='<p><label>Shorted-probe baseline (ohms): <input id="baseline" aria-label="Shorted-probe baseline" placeholder="ohms"></label></p>' if p.get('request_probe_baseline') and p['tests'] else ''
 batch_status=f'{len(p["tests"])} requested readings' if p['tests'] else 'In-circuit batch completed; no active measurement form'
 page=f'''<!doctype html><html lang="en"><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>PetSafe next measurement</title>
-<style>body{{font:16px/1.5 system-ui;background:#edf3ef;color:#183d36;max-width:1000px;margin:24px auto;padding:0 20px}}a{{color:#006c61}}article,.note{{background:white;border:1px solid #bccfc4;border-radius:10px;padding:20px;margin:20px 0}}.note{{border-left:5px solid #cb7c20}}img{{display:block;width:100%;max-height:680px;object-fit:contain}}table{{width:100%;border-collapse:collapse}}td,th{{padding:10px;border-bottom:1px solid #ccdcd2;text-align:left}}input,textarea,button{{font:inherit;padding:10px}}input{{width:130px}}textarea{{width:95%;height:190px}}button{{background:#006c61;color:white;border:0}}</style>
+<style>body{{font:16px/1.5 system-ui;background:#edf3ef;color:#183d36;max-width:1000px;margin:24px auto;padding:0 20px}}a{{color:#006c61}}article,.note{{background:white;border:1px solid #bccfc4;border-radius:10px;padding:20px;margin:20px 0}}.note{{border-left:5px solid #cb7c20}}img{{display:block;width:100%;max-height:680px;object-fit:contain}}table{{width:100%;border-collapse:collapse}}td,th{{padding:10px;border-bottom:1px solid #ccdcd2;text-align:left}}input,textarea,button{{font:inherit;padding:10px}}input{{width:230px;box-sizing:border-box}}.table-scroll{{overflow-x:auto}}li{{margin:8px 0}}textarea{{width:95%;height:190px}}button{{background:#006c61;color:white;border:0}}</style>
 <a href="FINISHING_CHECKLIST.html">All remaining issues</a> | <a href="../index.html">Schematic</a> | <a href="history/README.md">Completed investigation</a>
-<h1>{esc(p['batch_title'])}</h1><p>{s['revision']} · {batch_status}</p><p class="note">{esc(p['setup'])}</p><p>{esc(p['instructions'])}</p>{baseline}{''.join(panels)}<p>{esc(p['interpretation'])}</p>{reply}
+<h1>{esc(p['batch_title'])}</h1><p>{s['revision']} | {batch_status}</p><p class="note">{esc(p['setup'])}</p><p>{esc(p['instructions'])}</p>{steps}{sources}{baseline}{''.join(panels)}<p>{esc(p['interpretation'])}</p>{reply}
 <h2>What follows</h2><ul>{roadmap}</ul><p>ERC: {s['erc_total']} retained U6/U6A output conflict. U6A is DNP; its regulator symbol remains by your request. Other source and library findings are resolved.</p>
-<script>const data={json.dumps(p['tests'])};const title={json.dumps(p['batch_title'])};function update(){{const base=document.querySelector('#baseline');document.querySelector('#reply').value='PetSafe '+title+' / {s['revision']}'+String.fromCharCode(10)+(base?'Shorted probes: '+base.value+' ohms'+String.fromCharCode(10):'')+data.map(t=>t.id+' red '+t.from+' / black '+t.to+(t.state?' ('+t.state+')':'')+': '+document.querySelector('[data-id="'+t.id+'"]').value).join(String.fromCharCode(10))}}if(data.length){{document.querySelectorAll('input').forEach(e=>e.oninput=update);document.querySelector('#copy').onclick=()=>document.querySelector('#reply').select();update();}}</script></html>'''
+<script>const data={json.dumps(p['tests'])};const title={json.dumps(p['batch_title'])};const contacts={json.dumps(contact_labels)};function update(){{const base=document.querySelector('#baseline');document.querySelector('#reply').value='PetSafe '+title+' / {s['revision']}'+String.fromCharCode(10)+(base?'Shorted probes: '+base.value+' ohms'+String.fromCharCode(10):'')+data.map(t=>t.id+' '+contacts[0]+' '+t.from+' / '+contacts[1]+' '+t.to+(t.state?' ('+t.state+')':'')+': '+document.querySelector('[data-id="'+t.id+'"]').value).join(String.fromCharCode(10))}}if(data.length){{document.querySelectorAll('input').forEach(e=>e.oninput=update);document.querySelector('#copy').onclick=()=>document.querySelector('#reply').select();update();}}</script></html>'''
 (R/'docs/FINISHING_MEASUREMENTS.html').write_text(page,encoding='utf-8')
 print('Active measurement page: '+str(len(p['tests']))+' tests; history omitted.')
