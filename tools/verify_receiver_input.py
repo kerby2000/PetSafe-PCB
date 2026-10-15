@@ -1,6 +1,6 @@
 """Bound the E11 receiver split against the independently reviewed PR head."""
 from pathlib import Path
-import json,subprocess,xml.etree.ElementTree as ET
+import hashlib,json,subprocess,xml.etree.ElementTree as ET
 import sexpdata as sx
 from inventory_contracts import with_receiver_input_split, with_receiver_input_split_v0946, with_receiver_capacitor_separations
 R=Path(__file__).resolve().parents[1]
@@ -23,7 +23,9 @@ before=sx.loads(old(path))
 caprec=read('evidence/receiver_input_correction_v0947.json')
 frozen=lambda p:subprocess.check_output(['git','show',caprec['baseline_commit']+':'+p],cwd=R).decode('utf-8')
 after=sx.loads(frozen(path))
-live=sx.loads((R/path).read_text(encoding='utf-8'))
+dest=read('evidence/receiver_connections_v0948.json')
+# Freeze the RX-1/RX-2 geometry proof at the merged PR5 baseline.
+live=sx.loads(subprocess.check_output(['git','show',dest['baseline_commit']+':'+path],cwd=R).decode('utf-8'))
 assert parts(json.loads(frozen('evidence/reconstruction.json')))==with_receiver_input_split_v0946(parts(b))
 removed={frozenset(tuple(p) for p in w) for w in rec['native_removed_wire_segments']}
 assert {wire(x) for x in after if tag(x)=='wire'}=={wire(x) for x in before if tag(x)=='wire'}-removed
@@ -48,6 +50,20 @@ label_positions=lambda tree:{(x[1],tuple(one(x,'at')[1:3])) for x in tree if tag
 added={(x['net'],tuple(x['position'])) for x in caprec['native_added_labels']}
 removed_labels={(x['net'],tuple(x['position'])) for x in caprec['native_removed_labels']}
 assert label_positions(live)==(label_positions(after)-removed_labels)|added
+checkpoint=live
+live=sx.loads((R/path).read_text(encoding='utf-8'))
+extra_wires={frozenset(tuple(p) for p in w) for w in dest['native_added_wire_segments']}
+assert extra_wires=={frozenset({(445.77,245.11),(445.77,250.19)})}
+assert {wire(x) for x in live if tag(x)=='wire'}=={wire(x) for x in checkpoint if tag(x)=='wire'}|extra_wires
+for t in ['lib_symbols','symbol','no_connect','polyline']:assert invariant(checkpoint)==invariant(live),t
+assert points(live)==points(checkpoint)
+added={(x['net'],tuple(x['position'])) for x in dest['native_added_labels']}
+removed_labels={(x['net'],tuple(x['position'])) for x in dest['native_removed_labels']}
+assert label_positions(live)==(label_positions(checkpoint)-removed_labels)|added
+assert hashlib.sha256((R/dest['source_photo']).read_bytes()).hexdigest()==dest['photo_sha256']
+for source,digest in dest['preserved_source_sha256'].items():
+    assert hashlib.sha256((R/source).read_bytes().replace(b'\r\n',b'\n')).hexdigest()==digest,source
+assert dest['new_measurements']==dest['pending_measurements']==[]
 xml=ET.parse(R/'output/PetSafe_netlist.xml')
 members={n.attrib['ref']+'.'+n.attrib['pin']:net.attrib['name'] for net in xml.findall('./nets/net') for n in net.findall('node')}
 native=lambda e:members[m['native_pin_crosswalk'].get(e,e)]
@@ -56,8 +72,11 @@ assert native('C20.2')!=native('U3.3') and native('C20.2')!=native('TP7.1')
 assert native('R28.1')==native('TP7.1')==native('U4.3')
 assert native('C19.1')!=native('U3.3')
 assert native('C20.1')!=native('GND.1')
-for endpoint in ['C19.1','C20.1','U3.3']:
-    assert [p for p,n in members.items() if n==native(endpoint)]==[m['native_pin_crosswalk'].get(endpoint,endpoint)]
-result=dict(result='PASS',revision=m['revision'],baseline_commit=rec['baseline_commit'],allowed_split=rec['after'],all_other_partitions='UNCHANGED',native_geometry='Frozen v0.9.46 split preserved; live RX-1/RX-2 change removes four segments and relabels three isolated endpoints',live_allowed_split=caprec['after'],values_pin_maps_population='UNCHANGED',new_resistors=0,remaining='U3.3, C19.1 and C20.1 onward destinations unresolved; no intentional NC declaration')
+assert native('U3.3')==native('U3.5')==native('VREF.1')
+assert native('C19.1')==native('C20.2')==native('R28.2')==native('D2.R')
+assert native('C19.2')==native('R29.2')==native('GND.1')
+assert native('C20.1')==native('R42.2')==native('D3.S')
+assert len({native(e) for e in ['U3.3','C19.1','C19.2','C20.1','TP7.1']})==5
+result=dict(result='PASS',revision=m['revision'],baseline_commit=rec['baseline_commit'],allowed_split=rec['after'],all_other_partitions='UNCHANGED',native_geometry='Frozen v0.9.46/v0.9.47 separations preserved; three obsolete labels replaced by VREF/H_D3_SIGNAL and a visible C19-to-C20 common-node wire; unrelated geometry unchanged',live_connection_record='evidence/receiver_connections_v0948.json',live_allowed_destinations=dest['after'],values_pin_maps_population='UNCHANGED',original_results='HASHES_MATCH',new_resistors=0,remaining='Receiver terminal destinations now reported; other named copper gaps, device identity and behavior remain qualified')
 (R/'evidence/receiver_input_validation.json').write_text(json.dumps(result,indent=2)+'\n',encoding='utf-8')
-print('PASS: frozen D2/C20/R28 split and live RX-1/RX-2 separations; native singleton endpoints and TP7 resistor path; other partitions/values/mappings unchanged.')
+print('PASS: measured exclusions preserved; only three owner-reported receiver joins; native labels, original result hashes, values and mappings checked.')

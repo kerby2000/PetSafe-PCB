@@ -1,8 +1,8 @@
 {
-  "revision": "v0.9.47",
+  "revision": "v0.9.48",
   "result": "PASS",
-  "schematic_sha256": "52e393490645a837379de03a0b6d2d443036b65afa6e206d2ada907406617e41",
-  "physical_net_partitions": 85,
+  "schematic_sha256": "f881b37a5e36e7716e5950199ee7f3944f85017f7badc160e3ac6883494d4328",
+  "physical_net_partitions": 82,
   "pad_membership_baseline": "ecd683d",
   "documented_pad_moves": "evidence/antenna_outer_rail_correction_v0937.json",
   "documented_net_merge": "evidence/ra0_tp6_connection_v0938.json",
@@ -11,6 +11,7 @@
   "documented_r39_move": "evidence/r39_endpoint_correction_v0945.json",
   "documented_receiver_input_split": "evidence/receiver_input_correction_v0946.json",
   "documented_receiver_capacitor_separations": "evidence/receiver_input_correction_v0947.json",
+  "documented_receiver_destinations": "evidence/receiver_connections_v0948.json",
   "withdrawn_catalog_entries": [
     "R33"
   ],
@@ -20,17 +21,11 @@
   ],
   "dangling_wire_ends": 0,
   "wire_islands_without_pins": 0,
-  "native_wire_segments": 495,
+  "native_wire_segments": 496,
   "unassigned_model_pads": 0,
-  "isolated_modeled_nets": [
-    "RX_A_PLUS",
-    "C19_LOWER",
-    "C20_UPPER"
-  ],
+  "isolated_modeled_nets": [],
   "erc": {
-    "pin_to_pin": 1,
-    "pin_not_driven": 1,
-    "isolated_pin_label": 3
+    "pin_to_pin": 1
   },
   "erc_exclusions": [],
   "unchanged_default_ignored_checks": [

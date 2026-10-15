@@ -124,20 +124,31 @@ def with_receiver_capacitor_separations(partitions):
 
 
 def with_receiver_input_split(partitions):
-    """Current allowed receiver corrections; frozen v0.9.46 proof remains separate."""
-    return with_receiver_capacitor_separations(with_receiver_input_split_v0946(partitions))
+    """Preserve measured exclusions, then apply only three owner-reported joins."""
+    return with_receiver_destinations(with_receiver_capacitor_separations(with_receiver_input_split_v0946(partitions)))
+
+
+def with_receiver_destinations(partitions):
+    record=json.loads((ROOT/'evidence/receiver_connections_v0948.json').read_text())
+    assert record['baseline_commit']=='034b6cea0cf5a019cbd589007edfcaf4beab44e6'
+    changes=[('U3.3','RX_A_PLUS','VREF'),('C20.1','C20_UPPER','H_D3_SIGNAL'),('C19.1','C19_LOWER','D2_C20')]
+    assert [(c['endpoint'],c['old_net'],c['new_net']) for c in record['changes']]==changes
+    result={name:sorted(pads) for name,pads in partitions.items()}
+    assert record['before']=={n:result[n] for n in record['before']}
+    for endpoint,old,new in changes:
+        assert result.pop(old)==[endpoint] and endpoint not in result[new]
+        result[new]=sorted(result[new]+[endpoint])
+    assert record['after']=={n:result[n] for n in record['after']}
+    assert len(result)==len(partitions)-3
+    return result
 
 
 def verify_receiver_open_erc(erc):
-    """Keep the four specific new reconstruction findings visible, never waived."""
+    """The three supported joins resolve receiver findings; retain U6A's conflict."""
     expected={
-        ('pin_not_driven', ('Symbol U3 Pin 3 [+, Input, Line]',)),
-        ('isolated_pin_label', ("Label 'RX_A_PLUS'",)),
-        ('isolated_pin_label', ("Label 'C19_LOWER'",)),
-        ('isolated_pin_label', ("Label 'C20_UPPER'",)),
         ('pin_to_pin', tuple(sorted(['Symbol U6 Pin 3 [VOUT, Power output, Line]', 'Symbol U106 Pin 2 [VO, Power output, Line]']))),
     }
     findings=[v for sheet in erc['sheets'] for v in sheet['violations']]
     actual={(v['type'],tuple(sorted(i['description'] for i in v['items']))) for v in findings}
-    assert len(findings)==len(expected) and actual==expected, 'Unexpected ERC finding or hidden receiver-open finding'
-    return {'pin_to_pin':1,'pin_not_driven':1,'isolated_pin_label':3}
+    assert len(findings)==len(expected) and actual==expected, 'Unexpected ERC finding or hidden U6A conflict'
+    return {'pin_to_pin':1}

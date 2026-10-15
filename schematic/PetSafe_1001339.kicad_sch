@@ -15458,7 +15458,7 @@
 					(size 1 1)
 				) hide)
 		)
-		(property "Evidence" "SGM8542 marking; pin5/VREF and visible feedback retained. C20.2-U3.3 and C19.1-U3.3 both report 1.023 Mohm; neither is direct copper. Pin3 external signal/DC-bias feed remains unresolved." (at 381.0 200.66 0) (effects (font (size 1 1)) hide))
+		(property "Evidence" "Owner explicitly reports pin3 connected to printed VREF; pin5/VREF and feedback retained. C19.1/C20.2 remain separate from pin3, consistent with their 1.023-Mohm readings. No new numeric measurement supplied." (at 381.0 200.66 0) (effects (font (size 1 1)) hide))
 		(property "LibraryPolicy" "Unmodified KiCad 10 stock symbol"
 			(at 381.0 200.66 0)
 			(effects
@@ -15488,7 +15488,7 @@
 				) hide)
 		)
 
-    (property "CurrentEvidence" "SGM8542 marking; pin5/VREF and visible feedback retained. C20.2-U3.3 and C19.1-U3.3 both report 1.023 Mohm; neither is direct copper. Pin3 external signal/DC-bias feed remains unresolved." (at 381 200.66 0) (effects (font (size 1 1)) hide))
+    (property "CurrentEvidence" "Owner explicitly reports pin3 connected to printed VREF; pin5/VREF and feedback retained. C19.1/C20.2 remain separate from pin3, consistent with their 1.023-Mohm readings. No new numeric measurement supplied." (at 381 200.66 0) (effects (font (size 1 1)) hide))
   )
 	(symbol
 		(lib_id "Device:C")
@@ -17826,7 +17826,7 @@
 					(size 1 1)
 				) hide)
 		)
-		(property "Evidence" "RX-1 lower/model1 to U3.3 = 1.023 Mohm, baseline 1 ohm: inherited direct input join withdrawn. Lower terminal onward route unresolved; upper/model2 ground association retained. 100pF* estimate unchanged." (at 466.09 250.19 0) (effects (font (size 1 1)) hide))
+		(property "Evidence" "Owner confirms lower/model1 joins C20 lower/model2, R28 right/model2 and D2.R. Upper/model2 joins R29 right/model2 on GND. RX-1 rejection of C19-to-U3.3 retained; 100pF* estimate unchanged." (at 466.09 250.19 0) (effects (font (size 1 1)) hide))
 		(property "LibraryPolicy" "Unmodified KiCad 10 stock symbol"
 			(at 466.09 250.19 0)
 			(effects
@@ -17882,7 +17882,7 @@
 		(property "DesignSeed" "Function-based candidate; circuit validation pending" (at 466.09 250.19 0)
       (effects (font (size 1.27 1.27)) (hide yes))
     )
-		(property "CurrentEvidence" "RX-1 lower/model1 to U3.3 = 1.023 Mohm, baseline 1 ohm: inherited direct input join withdrawn. Lower terminal onward route unresolved; upper/model2 ground association retained. 100pF* estimate unchanged." (at 466.09 250.19 0) (effects (font (size 1 1)) hide))
+		(property "CurrentEvidence" "Owner confirms lower/model1 joins C20 lower/model2, R28 right/model2 and D2.R. Upper/model2 joins R29 right/model2 on GND. RX-1 rejection of C19-to-U3.3 retained; 100pF* estimate unchanged." (at 466.09 250.19 0) (effects (font (size 1 1)) hide))
 	)
 	(symbol
 		(lib_id "Device:C")
@@ -17971,7 +17971,7 @@
 					(size 1 1)
 				) hide)
 		)
-		(property "Evidence" "Lower/model2 remains D2.R/R28.2. RX-2 upper/model1 to printed GND = 271 kohm, baseline 1 ohm: ground assumption withdrawn; upper route unresolved. 100pF* estimate unchanged." (at 445.77 241.3 0) (effects (font (size 1 1)) hide))
+		(property "Evidence" "Owner annotation joins upper/model1 to R42 lower/model2 and D3.S. Lower/model2 joins C19 lower/model1, R28 right/model2 and D2.R. RX-2 rejection of upper-to-GND retained; 100pF* estimate unchanged." (at 445.77 241.3 0) (effects (font (size 1 1)) hide))
 		(property "LibraryPolicy" "Unmodified KiCad 10 stock symbol"
 			(at 445.77 241.3 0)
 			(effects
@@ -18027,7 +18027,7 @@
 		(property "DesignSeed" "Function-based candidate; circuit validation pending" (at 445.77 241.3 0)
       (effects (font (size 1.27 1.27)) (hide yes))
     )
-		(property "CurrentEvidence" "Lower/model2 remains D2.R/R28.2. RX-2 upper/model1 to printed GND = 271 kohm, baseline 1 ohm: ground assumption withdrawn; upper route unresolved. 100pF* estimate unchanged." (at 445.77 241.3 0) (effects (font (size 1 1)) hide))
+		(property "CurrentEvidence" "Owner annotation joins upper/model1 to R42 lower/model2 and D3.S. Lower/model2 joins C19 lower/model1, R28 right/model2 and D2.R. RX-2 rejection of upper-to-GND retained; 100pF* estimate unchanged." (at 445.77 241.3 0) (effects (font (size 1 1)) hide))
 	)
 	(symbol
 		(lib_id "Connector:TestPoint")
@@ -26587,7 +26587,7 @@
 					(size 1 1)
 				) hide)
 		)
-		(property "Evidence" "SGM8542 marking; pin5/VREF and visible feedback retained. C20.2-U3.3 and C19.1-U3.3 both report 1.023 Mohm; neither is direct copper. Pin3 external signal/DC-bias feed remains unresolved." (at 485.14 200.66 0) (effects (font (size 1 1)) hide))
+		(property "Evidence" "Owner explicitly reports pin3 connected to printed VREF; pin5/VREF and feedback retained. C19.1/C20.2 remain separate from pin3, consistent with their 1.023-Mohm readings. No new numeric measurement supplied." (at 485.14 200.66 0) (effects (font (size 1 1)) hide))
 		(property "LibraryPolicy" "Unmodified KiCad 10 stock symbol"
 			(at 485.14 200.66 0)
 			(effects
@@ -26617,7 +26617,7 @@
 				) hide)
 		)
 
-    (property "CurrentEvidence" "SGM8542 marking; pin5/VREF and visible feedback retained. C20.2-U3.3 and C19.1-U3.3 both report 1.023 Mohm; neither is direct copper. Pin3 external signal/DC-bias feed remains unresolved." (at 485.14 200.66 0) (effects (font (size 1 1)) hide))
+    (property "CurrentEvidence" "Owner explicitly reports pin3 connected to printed VREF; pin5/VREF and feedback retained. C19.1/C20.2 remain separate from pin3, consistent with their 1.023-Mohm readings. No new numeric measurement supplied." (at 485.14 200.66 0) (effects (font (size 1 1)) hide))
   )
 	(symbol
 		(lib_id "Amplifier_Operational:Opamp_Dual")
@@ -26706,7 +26706,7 @@
 					(size 1 1)
 				) hide)
 		)
-		(property "Evidence" "SGM8542 marking; pin5/VREF and visible feedback retained. C20.2-U3.3 and C19.1-U3.3 both report 1.023 Mohm; neither is direct copper. Pin3 external signal/DC-bias feed remains unresolved." (at 557.53 185.42 0) (effects (font (size 1 1)) hide))
+		(property "Evidence" "Owner explicitly reports pin3 connected to printed VREF; pin5/VREF and feedback retained. C19.1/C20.2 remain separate from pin3, consistent with their 1.023-Mohm readings. No new numeric measurement supplied." (at 557.53 185.42 0) (effects (font (size 1 1)) hide))
 		(property "LibraryPolicy" "Unmodified KiCad 10 stock symbol"
 			(at 557.53 185.42 0)
 			(effects
@@ -26736,7 +26736,7 @@
 				) hide)
 		)
 
-    (property "CurrentEvidence" "SGM8542 marking; pin5/VREF and visible feedback retained. C20.2-U3.3 and C19.1-U3.3 both report 1.023 Mohm; neither is direct copper. Pin3 external signal/DC-bias feed remains unresolved." (at 557.53 185.42 0) (effects (font (size 1 1)) hide))
+    (property "CurrentEvidence" "Owner explicitly reports pin3 connected to printed VREF; pin5/VREF and feedback retained. C19.1/C20.2 remain separate from pin3, consistent with their 1.023-Mohm readings. No new numeric measurement supplied." (at 557.53 185.42 0) (effects (font (size 1 1)) hide))
   )
 	(symbol
 		(lib_id "Connector_Generic:Conn_01x03")
@@ -30015,7 +30015,7 @@
 		(uuid "c11a372d-46ba-4e54-89be-ba1e3a42b8f8")
 	)
 
-	(text "User: U3 pin5 / V079 / V080 = VREF (1 ohm); TP6 remains separate across C18."
+	(text "U3 pin3 and pin5 share VREF; TP6 remains separate across C18. Functions unverified."
 		(at 365.76 267.97 0)
 		(effects
 			(font
@@ -36821,7 +36821,7 @@
 		(uuid "081eacf9-c5db-44fe-9bd6-6087fe520fc8")
 	)
 
-	(text "v0.9.47 | KiCad 10.0.5 | 2026-10-15"
+	(text "v0.9.48 | KiCad 10.0.5 | 2026-10-15"
 		(at 514.35 370.84000000000003 0)
 		(effects
 			(font
@@ -36854,7 +36854,7 @@
 		(uuid "c60c8415-cf23-4b6e-abeb-314e7c8e8639")
 	)
 
-	(text "RX-1/RX-2: C19 lower != U3.3; C20 upper != GND. Both onward routes unresolved."
+	(text "Owner: C19 lower = C20 lower / R28 right / D2.R; C20 upper = R42 lower / D3.S."
 		(at 444.5 256.54 0)
 		(effects
 			(font
@@ -36865,7 +36865,7 @@
 		(uuid "382476d3-c286-43ff-9665-06c1dc32280c")
 	)
 
-	(text "U3 pin3 external signal/DC-bias feed unresolved; isolated labels are NOT intentional NCs."
+	(text "Owner: U3 pin3 = VREF. Earlier high-resistance separations remain; values estimated."
 		(at 444.5 260.35 0)
 		(effects
 			(font
@@ -36887,7 +36887,7 @@
 		(uuid "b8585618-5884-4d3d-9406-4b42c03772c7")
 	)
 
-	(label "C20_UPPER"
+	(label "H_D3_SIGNAL"
 		(at 440.69 237.49 0)
 		(effects
 			(font
@@ -36898,7 +36898,7 @@
 		(uuid "26eb2203-b3c9-4805-a894-e146859c1e27")
 	)
 
-	(label "RX_A_PLUS"
+	(label "VREF"
 		(at 360.68 198.12 0)
 		(effects
 			(font
@@ -36909,22 +36909,15 @@
 		(uuid "40b595b2-8a42-44dd-bfde-10a244bc2859")
 	)
 
-	(label "C19_LOWER"
-		(at 445.77 250.19 0)
-		(effects
-			(font
-				(size 0.762 0.762)
-			)
-			(justify left bottom)
-		)
-		(uuid "bebdde6e-ca25-40c6-a269-f3dfafa7ca2b")
-	)
+
 
 	(title_block
 		(title "PetSafe 100-1339 R03 A | single-sheet reconstruction")
 		(date "2026-10-15")
-		(rev "0.9.47")
+		(rev "0.9.48")
 		(company "KiCad 10 libraries + four datasheet symbols | MCP authoring")
 		(comment 1 "44 starred capacitor estimates; antenna reported 500uH; RF weights unverified.")
 	)
+	(label "H_D3_SIGNAL" (at 515.62 237.49 0) (effects (font (size .762 .762)) (justify left bottom)) (uuid "f08cc25d-a61d-42d1-89d9-0cdce6bb6dc7"))
+	(wire (pts (xy 445.77 245.11) (xy 445.77 250.19)) (stroke (width 0) (type default)) (uuid "2fc5f7c9-87e3-4345-a40b-0925c0146a61"))
 )

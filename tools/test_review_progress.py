@@ -11,11 +11,11 @@ class ReviewProgress(unittest.TestCase):
         verify_receiver_open_erc(erc)
         missing=copy.deepcopy(erc)
         target=next(s['violations'] for s in missing['sheets'] if s['violations'])
-        target.remove(next(v for v in target if v['type']=='pin_not_driven'))
+        target.remove(next(v for v in target if v['type']=='pin_to_pin'))
         with self.assertRaises(AssertionError):verify_receiver_open_erc(missing)
         wrong=copy.deepcopy(erc)
         target=next(s['violations'] for s in wrong['sheets'] if s['violations'])
-        next(v for v in target if v['type']=='pin_not_driven')['items'][0]['description']='Symbol U3 Pin 5 [+, Input, Line]'
+        next(v for v in target if v['type']=='pin_to_pin')['items'][0]['description']='Symbol U3 Pin 5 [+, Input, Line]'
         with self.assertRaises(AssertionError):verify_receiver_open_erc(wrong)
 
     def test_capacitor_text_hash_line_endings(self):

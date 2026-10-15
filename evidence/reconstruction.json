@@ -1,6 +1,6 @@
 {
   "board": "100-1339 R03 A",
-  "revision": "v0.9.47",
+  "revision": "v0.9.48",
   "status": "PARTIALLY VERIFIED RECONSTRUCTION; USER MEASUREMENTS, PHOTO TRACES AND QUALIFIED HYPOTHESES",
   "components": [
     {
@@ -1712,7 +1712,7 @@
         "category": "SIGNAL_CANDIDATE",
         "status": "ESTIMATED_NOT_FACTORY_VERIFIED"
       },
-      "current_summary": "RX-1 lower/model1 to U3.3 = 1.023 Mohm, baseline 1 ohm: inherited direct input join withdrawn. Lower terminal onward route unresolved; upper/model2 ground association retained. 100pF* estimate unchanged."
+      "current_summary": "Owner confirms lower/model1 joins C20 lower/model2, R28 right/model2 and D2.R. Upper/model2 joins R29 right/model2 on GND. RX-1 rejection of C19-to-U3.3 retained; 100pF* estimate unchanged."
     },
     {
       "ref": "C20",
@@ -1751,7 +1751,7 @@
         "category": "SIGNAL_CANDIDATE",
         "status": "ESTIMATED_NOT_FACTORY_VERIFIED"
       },
-      "current_summary": "Lower/model2 remains D2.R/R28.2. RX-2 upper/model1 to printed GND = 271 kohm, baseline 1 ohm: ground assumption withdrawn; upper route unresolved. 100pF* estimate unchanged."
+      "current_summary": "Owner annotation joins upper/model1 to R42 lower/model2 and D3.S. Lower/model2 joins C19 lower/model1, R28 right/model2 and D2.R. RX-2 rejection of upper-to-GND retained; 100pF* estimate unchanged."
     },
     {
       "ref": "C21",
@@ -3120,7 +3120,7 @@
       "v093_summary": "v0.9.14 user: pin5-VREF/R22 D 1 ohm (batch1); pin6-R23 B/left/model1 1 ohm and C/right/model2 5.6 kohm. Pin6-R22 E/GND 400 kohm. Pin5 and pin6 remain distinct; C18 branch is retained photo evidence, not meter-confirmed.",
       "measurement_evidence": "v0.9.14 user: pin5-VREF/R22 D 1 ohm (batch1); pin6-R23 B/left/model1 1 ohm and C/right/model2 5.6 kohm. Pin6-R22 E/GND 400 kohm. Pin5 and pin6 remain distinct; C18 branch is retained photo evidence, not meter-confirmed.",
       "photo_pad_mapping": {},
-      "current_summary": "SGM8542 marking; pin5/VREF and visible feedback retained. C20.2-U3.3 and C19.1-U3.3 both report 1.023 Mohm; neither is direct copper. Pin3 external signal/DC-bias feed remains unresolved."
+      "current_summary": "Owner explicitly reports pin3 connected to printed VREF; pin5/VREF and feedback retained. C19.1/C20.2 remain separate from pin3, consistent with their 1.023-Mohm readings. No new numeric measurement supplied."
     },
     {
       "ref": "U1",
@@ -4719,12 +4719,14 @@
     {
       "net": "H_D3_SIGNAL",
       "endpoints": [
+        "C20.1",
         "D3.S",
         "R42.2"
       ],
-      "status": "User component-level low-ohm report + photo-selected resistor end",
+      "status": "OWNER ANNOTATED PHOTO: C20 upper/model1 joins R42 lower/model2 and the existing D3.S junction. Function remains qualified.",
       "original_fragments": [],
-      "d3_measurement": "2026-10-09 user meter report: D3.L=GND; D3.R=VDD TP via V082. D3.S to R42=1.2 ohm; resistor end not explicitly named. Photo selects R42.2 nearest D3; other end already mapped to TP4/PIC25. Fitted BAV99 identity and signal function remain candidates."
+      "d3_measurement": "2026-10-09 user meter report: D3.L=GND; D3.R=VDD TP via V082. D3.S to R42=1.2 ohm; resistor end not explicitly named. Photo selects R42.2 nearest D3; other end already mapped to TP4/PIC25. Fitted BAV99 identity and signal function remain candidates.",
+      "v0948_evidence": "evidence/receiver_connections_v0948.json"
     },
     {
       "net": "H_RX_VDD",
@@ -4935,6 +4937,7 @@
         "C39.1",
         "R21.2",
         "R22.2",
+        "U3.3",
         "U3.5",
         "U4.4",
         "VREF.1"
@@ -4943,7 +4946,8 @@
       "original_fragments": [],
       "v098_evidence": "v0.9.8: User confirms V071-VREF. Earlier V071-R21.2 and V026-VREF-PIC21/RB0 associations retained. R21.2 joins VREF. Existing R22.2/R23.2/R48.2 receiver-bias branches remain prior photo/circuit hypotheses, not new measured connections. VREF remains separate from VDD and RC1/V053. No voltage or numeric resistance supplied.",
       "v0916_correction": "v0.9.16 CORRECTION: user confirms PIC21/RB0 -> TP16 -> Q2 single pad; TP16-VREF = 0.8 Mohm. User explicitly withdraws PIC21-VREF. PIC21/V026 belongs to H_PIR_SIG, separate from VREF. RA2/V035 and R21/V071 remain VREF. This supersedes every earlier RB0/V026-to-VREF statement.",
-      "v0919_evidence": "Withdraw unmeasured R48.2-to-VREF assignment; annotated copper groups it with R25/R47/C42 at RX_STAGE_LINK."
+      "v0919_evidence": "Withdraw unmeasured R48.2-to-VREF assignment; annotated copper groups it with R25/R47/C42 at RX_STAGE_LINK.",
+      "v0948_evidence": "evidence/receiver_connections_v0948.json"
     },
     {
       "net": "PIC_RC3",
@@ -5096,15 +5100,6 @@
       "original_fragments": [
         "V_U3_OUTA_LOCAL"
       ]
-    },
-    {
-      "net": "RX_A_PLUS",
-      "endpoints": [
-        "U3.3"
-      ],
-      "status": "UNRESOLVED ONWARD DESTINATION: RX-1 rejects the inherited C19.1 join; signal/DC-bias feed unknown.",
-      "original_fragments": [],
-      "d2_measurement": "Superseded by evidence/receiver_input_results_20261015.json: C20.2-U3.3=1.023 Mohm; no direct join."
     },
     {
       "net": "RX_B_FB",
@@ -5385,28 +5380,14 @@
     {
       "net": "D2_C20",
       "endpoints": [
+        "C19.1",
         "C20.2",
         "D2.R",
         "R28.2"
       ],
-      "status": "OWNER CONTINUITY: D2.R-C20.2=1 ohm previously; C20.2-R28.2=1.5 ohm. Separate from U3.3 and TP7 by measured high resistance.",
-      "source": "evidence/receiver_input_results_20261015.json"
-    },
-    {
-      "net": "C19_LOWER",
-      "endpoints": [
-        "C19.1"
-      ],
-      "status": "UNRESOLVED ONWARD DESTINATION: isolated modeled endpoint after measured rejection; not an intentional no-connect.",
-      "original_fragments": []
-    },
-    {
-      "net": "C20_UPPER",
-      "endpoints": [
-        "C20.1"
-      ],
-      "status": "UNRESOLVED ONWARD DESTINATION: isolated modeled endpoint after measured rejection; not an intentional no-connect.",
-      "original_fragments": []
+      "status": "OWNER CONTINUITY + latest explicit owner reports: C19.1/C20.2/D2.R/R28.2 share copper. Earlier high-resistance separations from U3.3 and TP7 remain.",
+      "source": "evidence/receiver_input_results_20261015.json",
+      "v0948_evidence": "evidence/receiver_connections_v0948.json"
     }
   ],
   "original_visual_fragments": [
@@ -5499,7 +5480,7 @@
           "R43.2"
         ],
         "reason": "User confirms V011-V014 to Q1.L, excludes R43.2 and explicitly requests removal of this old photo-derived connection.",
-        "user_authorization": "Remove Q1.L\u2013R43.2 connection",
+        "user_authorization": "Remove Q1.L–R43.2 connection",
         "revision": "v0.9.4"
       }
     },
@@ -7448,7 +7429,7 @@
       ]
     },
     {
-      "net": "C19_LOWER",
+      "net": "D2_C20",
       "a": [
         445.77,
         250.19
@@ -8691,7 +8672,7 @@
       ]
     },
     {
-      "net": "C20_UPPER",
+      "net": "H_D3_SIGNAL",
       "a": [
         440.69,
         237.49
@@ -8812,7 +8793,7 @@
       ]
     },
     {
-      "net": "RX_A_PLUS",
+      "net": "VREF",
       "a": [
         360.68,
         198.12
@@ -11175,6 +11156,17 @@
         391.16,
         359.41
       ]
+    },
+    {
+      "net": "D2_C20",
+      "a": [
+        445.77,
+        245.11
+      ],
+      "b": [
+        445.77,
+        250.19
+      ]
     }
   ],
   "pin_positions": {
@@ -12942,7 +12934,7 @@
         "R43.2"
       ],
       "reason": "User confirms V011-V014 to Q1.L, excludes R43.2 and explicitly requests removal of this old photo-derived connection.",
-      "user_authorization": "Remove Q1.L\u2013R43.2 connection",
+      "user_authorization": "Remove Q1.L–R43.2 connection",
       "revision": "v0.9.4"
     }
   ],

@@ -1102,7 +1102,7 @@
       "properties": {
         "ViaEvidence": "v0.9.14 user: pin5-VREF/R22 D 1 ohm (batch1); pin6-R23 B/left/model1 1 ohm and C/right/model2 5.6 kohm. Pin6-R22 E/GND 400 kohm. Pin5 and pin6 remain distinct; C18 branch is retained photo evidence, not meter-confirmed.",
         "MeasurementEvidence": "v0.9.14 user: pin5-VREF/R22 D 1 ohm (batch1); pin6-R23 B/left/model1 1 ohm and C/right/model2 5.6 kohm. Pin6-R22 E/GND 400 kohm. Pin5 and pin6 remain distinct; C18 branch is retained photo evidence, not meter-confirmed.",
-        "CurrentEvidence": "SGM8542 marking; pin5/VREF and visible feedback retained. C20.2-U3.3 and C19.1-U3.3 both report 1.023 Mohm; neither is direct copper. Pin3 external signal/DC-bias feed remains unresolved."
+        "CurrentEvidence": "Owner explicitly reports pin3 connected to printed VREF; pin5/VREF and feedback retained. C19.1/C20.2 remain separate from pin3, consistent with their 1.023-Mohm readings. No new numeric measurement supplied."
       }
     },
     {
@@ -1451,7 +1451,7 @@
         "ValueQualification": "Very low confidence: diode conduction, input impedance and signal modulation determine the real envelope response. Equal division across two parallel capacitors is not identifiable from function. Rating is a conservative candidate for an antenna-coupled node.",
         "ValueSource": "evidence/capacitor_value_review_20261015.json",
         "DesignSeed": "Function-based candidate; circuit validation pending",
-        "CurrentEvidence": "RX-1 lower/model1 to U3.3 = 1.023 Mohm, baseline 1 ohm: inherited direct input join withdrawn. Lower terminal onward route unresolved; upper/model2 ground association retained. 100pF* estimate unchanged."
+        "CurrentEvidence": "Owner confirms lower/model1 joins C20 lower/model2, R28 right/model2 and D2.R. Upper/model2 joins R29 right/model2 on GND. RX-1 rejection of C19-to-U3.3 retained; 100pF* estimate unchanged."
       }
     },
     {
@@ -1475,7 +1475,7 @@
         "ValueQualification": "Very low confidence: nonlinear diode path and a 1-Mohm bias path do not uniquely determine the needed envelope capacitance. Equal division is arbitrary; qualify antenna-coupled voltage.",
         "ValueSource": "evidence/capacitor_value_review_20261015.json",
         "DesignSeed": "Function-based candidate; circuit validation pending",
-        "CurrentEvidence": "Lower/model2 remains D2.R/R28.2. RX-2 upper/model1 to printed GND = 271 kohm, baseline 1 ohm: ground assumption withdrawn; upper route unresolved. 100pF* estimate unchanged."
+        "CurrentEvidence": "Owner annotation joins upper/model1 to R42 lower/model2 and D3.S. Lower/model2 joins C19 lower/model1, R28 right/model2 and D2.R. RX-2 rejection of upper-to-GND retained; 100pF* estimate unchanged."
       }
     },
     {

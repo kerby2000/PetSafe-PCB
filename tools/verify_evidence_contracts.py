@@ -331,7 +331,9 @@ d3=read('evidence/d3_measurement_20261009.json')
 assert net('D3.R')==net('VDD.1') and net('D3.L')==net('GND.1')
 assert net('D3.R')!=net('U3.8'), 'D3 measurement does not establish a whole receiver-rail merge'
 assert net('D3.S')==net('R42.2') # KiCad may auto-name a continuous local wire without a label.
-assert next(n for n in m['nets'] if n['net']=='H_D3_SIGNAL')['endpoints']==['D3.S','R42.2']
+assert next(n for n in m['nets'] if n['net']=='H_D3_SIGNAL')['endpoints']==['C20.1','D3.S','R42.2']
+assert net('C19.1')==net('C20.2')==net('R28.2')
+assert net('U3.3')==net('VREF.1') and net('C19.1')!=net('U3.3')
 assert d3['measurements'][2]['resistance_ohms']==1.2
 assert sha(d3['photo'])==d3['photo_sha256']
 d2=read('evidence/d2_diode_20261009.json')
