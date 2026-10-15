@@ -1,7 +1,7 @@
 {
   "date": "2026-10-15",
-  "revision": "v0.9.46",
-  "review_revision": "v0.9.46",
+  "revision": "v0.9.47",
+  "review_revision": "v0.9.47",
   "interpretation": "Every catalog entry is drawn. Hardware connectivity, values and identities are only partially verified. No routed PCB exists.",
   "catalog_entries": 148,
   "physical_pins": 349,
@@ -65,12 +65,14 @@
     ],
     "qualification": "Assigned is not the same as measured. R8, C11 and S1 have user body dimensions; lead geometry and exact housing variants remain qualified."
   },
-  "erc_total": 1,
+  "erc_total": 5,
   "erc_by_type": {
-    "pin_to_pin": 1
+    "pin_to_pin": 1,
+    "pin_not_driven": 1,
+    "isolated_pin_label": 3
   },
-  "modeled_nets": 83,
-  "schematic_sha256": "69165286f5c859c8e60d4d292c1805c4d30240df4ceda69de8a5fdda77b3c3f3",
+  "modeled_nets": 85,
+  "schematic_sha256": "52e393490645a837379de03a0b6d2d443036b65afa6e206d2ada907406617e41",
   "known_identified_ICs_needing_new_symbols": [],
   "complete_symbols_for_selected_candidates": true,
   "available_instruments": [
@@ -126,7 +128,7 @@
     {
       "id": "E08",
       "area": "Receiver and Q7 operating behavior",
-      "gap": "Why the receiver is inactive and its enabled-state behavior remain unverified. Earlier separate 0/4.5 V readings conflict with the later direct 0 V; do not diagnose failure or assume simultaneous identical states. Exact Q7 identity and E/C selection remain qualified. Receiver gain/filter response and MCU interface roles are unverified; DC readings do not exclude pulses. U3.3 external signal/DC-return is a distinct unresolved reconstruction question in E11; the modeled capacitor-only connection does not establish bias.",
+      "gap": "Why the receiver is inactive and its enabled-state behavior remain unverified. Earlier separate 0/4.5 V readings conflict with the later direct 0 V; do not diagnose failure or assume simultaneous identical states. Exact Q7 identity and E/C selection remain qualified. Receiver gain/filter response and MCU interface roles are unverified; DC readings do not exclude pulses. U3.3 external signal/DC-return is a distinct unresolved reconstruction question in E11; RX-1 now also rejects the modeled C19 connection; no external DC return is established.",
       "method": "Retain established feedback and U3.5/VREF. Prioritize the U3.3 physical input path under E11; the measured D2/C20/R28 separation must remain. Operating behavior remains deferred, separate from copper. None now. Scope and component-isolation work are deferred by owner."
     },
     {
@@ -162,8 +164,8 @@
     {
       "id": "E11",
       "area": "Inherited copper joins without independent closure",
-      "gap": "U3.3 has no represented external signal/DC-bias feed after the supported detector split; C19 lower/model1-U3.3 and C20 upper/model1-GND remain unproved. Also unresolved: U1 native3-VIN; R18.2-Q7.L; R20.2/TP5-C24.1; R3.2/R4.1/C28.1 junction; U5.1 and J1.VDD-to-printed VDD. Fifteen separate candidate ground groups are enumerated in TOPOLOGY_AUDIT.md, including the now-shared C30/C31 land. Missing selected evidence is not a demonstrated fault.",
-      "method": "Bounded photo/record pass complete. Keep the qualified routes and established separations. Review RX-1/RX-2 results before choosing any next target. Confirming C19 alone does not establish U3.3 signal or DC return; do not invent a resistor from the old resistance difference. Only RX-1: C19 lower/model1 to U3 pin3, and RX-2: C20 upper/model1 to printed GND, unpowered resistance with shorted-probe baseline and settling behavior. The existing FINISHING_MEASUREMENTS.html contains one two-pair photo guide. No completed C20-lower tests, lifting or scope work repeated."
+      "gap": "U3.3 external signal/DC-bias feed, C19 lower/model1 onward destination, and C20 upper/model1 onward destination remain unknown. The three are isolated modeled nodes, not intentional NCs. Other hidden relationships remain: U1 native3-VIN; R18.2-Q7.L; R20.2/TP5-C24.1; R3.2/R4.1/C28.1; U5.1 and J1.VDD-to-printed VDD, and fourteen remaining candidate ground groups listed in TOPOLOGY_AUDIT.md. Evidence-gap counts do not establish a defective board.",
+      "method": "Apply only the two measured separations; retain all earlier positive/negative evidence and estimates. U3.3-TP7 is now the single staged candidate; do not equate C19 and C20 from their similar high readings. Only RX-3: U3 native pin3 to TP7, unpowered resistance. This new pair tests a possible relation to the established PIC-RA1/R28 node. Near-probe resistance supports direct membership; high/OL rejects it under good contact; intermediate or drifting readings do not identify a component. Do not subtract previous fitted readings."
     }
   ],
   "items": [
@@ -344,7 +346,7 @@
       "priority": 2,
       "state": "open",
       "known": "U3.5/VREF and R23/R42/C40, C23/R25/R48 and DNP R47/C42 paths are reconciled. VREF supplies U3 pin5; C25.1-TP6.1 measured 1.5 ohm joins the receiver filter to PIC2/RA0. Powered: VREF 0 V, TP5 0.066 V, R19 left/right 0/4.5 V. Both R19-to-Q7 joins measured 1.5 ohm. Q7 diode results: R->L 0.74 V, L->R 1.74 V, S->L 0.74 V, L->S OL. These support PNP polarity with L as base; reverse finite reading can include parallel-board paths. B71 direct QR-QL measured 0 V, consistent with no forward base-emitter bias in the latest state and the low receiver supply; stability not reported.",
-      "unknown": "Why the receiver is inactive and its enabled-state behavior remain unverified. Earlier separate 0/4.5 V readings conflict with the later direct 0 V; do not diagnose failure or assume simultaneous identical states. Exact Q7 identity and E/C selection remain qualified. Receiver gain/filter response and MCU interface roles are unverified; DC readings do not exclude pulses. U3.3 external signal/DC-return is a distinct unresolved reconstruction question in E11; the modeled capacitor-only connection does not establish bias.",
+      "unknown": "Why the receiver is inactive and its enabled-state behavior remain unverified. Earlier separate 0/4.5 V readings conflict with the later direct 0 V; do not diagnose failure or assume simultaneous identical states. Exact Q7 identity and E/C selection remain qualified. Receiver gain/filter response and MCU interface roles are unverified; DC readings do not exclude pulses. U3.3 external signal/DC-return is a distinct unresolved reconstruction question in E11; RX-1 now also rejects the modeled C19 connection; no external DC return is established.",
       "next_action": "Retain established feedback and U3.5/VREF. Prioritize the U3.3 physical input path under E11; the measured D2/C20/R28 separation must remain. Operating behavior remains deferred, separate from copper. None now. Scope and component-isolation work are deferred by owner.",
       "closed_when": "Receiver supply, bias and the existing RA0/RA1/RB4 interfaces have supported operating roles; no presumed extra output wire is required.",
       "open_pads": [],
@@ -582,11 +584,11 @@
       "priority": 1,
       "state": "open",
       "category": "Copper connection; evidence coverage",
-      "known": "C20/D2/R28 split is supported by the completed 1.023 Mohm, 998 kohm and 1.5 ohm results. Existing originals and via reports now close LED-control, crystal, PIC24/R4, L2-to-C1, R44/TP4, VSYS/C27/R3, C2-ground and five rear-midpoint coverage gaps. C17/R21/C24/U3.8 receiver supply subgroup is visible. No values or other wiring changed. Selected C27, PIC VSS/C32, Q9/R32/C41 and four tuning-pad ground branches also reconciled with existing owner via reports. Round2 original-photo review closes C24.2-R22.1 and the C30.2-C31.1 local common land; no electrical partition changes.",
-      "unknown": "U3.3 has no represented external signal/DC-bias feed after the supported detector split; C19 lower/model1-U3.3 and C20 upper/model1-GND remain unproved. Also unresolved: U1 native3-VIN; R18.2-Q7.L; R20.2/TP5-C24.1; R3.2/R4.1/C28.1 junction; U5.1 and J1.VDD-to-printed VDD. Fifteen separate candidate ground groups are enumerated in TOPOLOGY_AUDIT.md, including the now-shared C30/C31 land. Missing selected evidence is not a demonstrated fault.",
-      "codex_action": "Bounded photo/record pass complete. Keep the qualified routes and established separations. Review RX-1/RX-2 results before choosing any next target. Confirming C19 alone does not establish U3.3 signal or DC return; do not invent a resistor from the old resistance difference.",
-      "owner_input": "Only RX-1: C19 lower/model1 to U3 pin3, and RX-2: C20 upper/model1 to printed GND, unpowered resistance with shorted-probe baseline and settling behavior. The existing FINISHING_MEASUREMENTS.html contains one two-pair photo guide. No completed C20-lower tests, lifting or scope work repeated.",
-      "closed_when": "The actual external signal/DC-bias path into U3.3 is supported or precisely bounded, and remaining named copper links have direct evidence or a supported correction. RX-1/RX-2 alone may not establish the input feed. Documentation or deferred work does not close E11.",
+      "known": "C20/D2/R28 split is supported by the completed 1.023 Mohm, 998 kohm and 1.5 ohm results. Existing originals and via reports now close LED-control, crystal, PIC24/R4, L2-to-C1, R44/TP4, VSYS/C27/R3, C2-ground and five rear-midpoint coverage gaps. C17/R21/C24/U3.8 receiver supply subgroup is visible. No values or other wiring changed. Selected C27, PIC VSS/C32, Q9/R32/C41 and four tuning-pad ground branches also reconciled with existing owner via reports. Round2 original-photo review closes C24.2-R22.1 and the C30.2-C31.1 local common land; no electrical partition changes. Subsequent owner results: RX-1 C19 lower/model1 to U3.3 = 1.023 Mohm (raw 1.023mohm, interpreted as megaohms); RX-2 C20 upper/model1 to printed GND = 271 kohm; shorted probes = 1 ohm. Settling/drift not reported. Both inherited direct joins withdrawn in v0.9.47; replacement destinations remain unknown.",
+      "unknown": "U3.3 external signal/DC-bias feed, C19 lower/model1 onward destination, and C20 upper/model1 onward destination remain unknown. The three are isolated modeled nodes, not intentional NCs. Other hidden relationships remain: U1 native3-VIN; R18.2-Q7.L; R20.2/TP5-C24.1; R3.2/R4.1/C28.1; U5.1 and J1.VDD-to-printed VDD, and fourteen remaining candidate ground groups listed in TOPOLOGY_AUDIT.md. Evidence-gap counts do not establish a defective board.",
+      "codex_action": "Apply only the two measured separations; retain all earlier positive/negative evidence and estimates. U3.3-TP7 is now the single staged candidate; do not equate C19 and C20 from their similar high readings.",
+      "owner_input": "Only RX-3: U3 native pin3 to TP7, unpowered resistance. This new pair tests a possible relation to the established PIC-RA1/R28 node. Near-probe resistance supports direct membership; high/OL rejects it under good contact; intermediate or drifting readings do not identify a component. Do not subtract previous fitted readings.",
+      "closed_when": "The actual U3.3 signal/DC-bias feed and the newly isolated capacitor-terminal destinations have independent evidence, and remaining named copper gaps are supported or specifically qualified. A rejected old join is not a completed circuit.",
       "open_pads": [],
       "nets": [
         "GND",
@@ -595,9 +597,11 @@
         "H_RX_ENABLE",
         "H_RX_VDD",
         "RX_A_PLUS",
-        "VDD"
+        "VDD",
+        "C19_LOWER",
+        "C20_UPPER"
       ],
-      "owner": "Owner: two staged new receiver pairs; Codex: interpret results and select at most one next pair",
+      "owner": "Owner: one new RX-3 check; Codex: interpret the result without inventing a path",
       "supporting_evidence": [
         "evidence/physical_evidence_review_20261015.json",
         "evidence/topology_closure_audit.json",
@@ -605,9 +609,10 @@
         "docs/measurement-images/receiver_input_bridge.svg",
         "evidence/receiver_input_results_20261015.json",
         "evidence/receiver_input_correction_v0946.json",
-        "evidence/finishing_measurements.json"
+        "evidence/finishing_measurements.json",
+        "evidence/receiver_input_correction_v0947.json"
       ],
-      "next_action": "Bounded photo/record pass complete. Keep the qualified routes and established separations. Review RX-1/RX-2 results before choosing any next target. Confirming C19 alone does not establish U3.3 signal or DC return; do not invent a resistor from the old resistance difference. Only RX-1: C19 lower/model1 to U3 pin3, and RX-2: C20 upper/model1 to printed GND, unpowered resistance with shorted-probe baseline and settling behavior. The existing FINISHING_MEASUREMENTS.html contains one two-pair photo guide. No completed C20-lower tests, lifting or scope work repeated."
+      "next_action": "Apply only the two measured separations; retain all earlier positive/negative evidence and estimates. U3.3-TP7 is now the single staged candidate; do not equate C19 and C20 from their similar high readings. Only RX-3: U3 native pin3 to TP7, unpowered resistance. This new pair tests a possible relation to the established PIC-RA1/R28 node. Near-probe resistance supports direct membership; high/OL rejects it under good contact; intermediate or drifting readings do not identify a component. Do not subtract previous fitted readings."
     }
   ],
   "finish_plan": [
@@ -625,8 +630,8 @@
         "E10",
         "I01"
       ],
-      "summary": "Receiver split and R39 remain preserved. Two local ground joins were reconciled. U3.3 external feed is unresolved; seven modeled nets still have selected-evidence gaps.",
-      "next_action": "Only the two staged receiver pairs RX-1/RX-2. Reassess after results; no automatic third measurement or broad campaign."
+      "summary": "R39 and the D2/C20/R28 separation remain preserved. RX-1/RX-2 withdraw C19.1-U3.3 and C20.1-GND. Three isolated receiver destinations remain unknown, alongside six nets with selected-evidence gaps.",
+      "next_action": "Only RX-3: U3 pin3 to TP7, unpowered resistance with settling behavior. No repeat of the completed capacitor-side checks."
     },
     {
       "id": "F2",

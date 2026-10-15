@@ -39,7 +39,7 @@ page=f'''<!doctype html><html lang="en"><meta charset="utf-8"><meta name="viewpo
 <nav><a href="#schematic">Schematic</a><a href="#pcb">Physical PCB</a><a href="#open">Open items</a><a href="#evidence">Evidence and rebuild</a></nav>
 <h2 id="schematic">Current schematic</h2><p><a href="output/pdf/PetSafe_single_sheet.pdf">PDF</a> | <a href="schematic/PetSafe_1001339.kicad_pro">KiCad project</a> | <a href="schematic/PetSafe_1001339.kicad_sch">Editable schematic</a></p>
 <div class="toolbar"><button id="fit">Fit sheet</button><label>Zoom <input id="zoom" type="range" min="100" max="500" value="100" step="25"></label><output id="zvalue">100%</output><a href="output/svg/PetSafe_1001339.svg">Full native preview</a></div><div class="viewer"><img id="drawing" src="output/svg/PetSafe_1001339.svg" alt="Current one-sheet native KiCad schematic"></div>
-<p class="note">{status['modeled_nets']} model/native net partitions agree; {status['erc_total']} deliberately retained U6/U6A output conflict. These are file checks, not proof of every hidden connection. All 44 starred capacitor values are estimates; original values remain unconfirmed.</p>
+<p class="note">{status['modeled_nets']} model/native net partitions agree; {status['erc_total']} ERC findings: one deliberately retained U6/U6A conflict and four receiver-open findings (U3.3 undriven and three isolated labels). These are file checks, not proof of every hidden connection. All 44 starred capacitor values are estimates; original values remain unconfirmed.</p>
 <h2 id="pcb">Actual physical PCB</h2><a href="photos/two_sides_overview.jpg"><img class="board" src="photos/two_sides_overview.jpg" alt="Front and rear original-photo mosaics of the actual PCB"></a>
 <p>Photographic mosaics use original pixels. The rear is mirrored and approximately registered for comparison; alignment does not establish buried copper or dimensions. <a href="photos/back_readable.jpg">Rear, readable orientation</a> | <a href="photo-atlas-v01.html">Original-photo atlas</a> | <a href="docs/VIA_REVIEW.html">Existing via/photo viewer</a></p>
 <h2 id="open">Remaining open items</h2><p><a href="docs/OPEN_ITEMS.md">GitHub-readable register</a> | <a href="docs/FINISHING_CHECKLIST.html">Detailed HTML view</a> | <a href="output/pdf/PetSafe_completion_status.pdf">Printable status</a>. Generated from <a href="evidence/remaining_work.json">one authoritative register</a>.</p>
@@ -67,7 +67,7 @@ One A2 main-board schematic, reconstructed from original photographs and owner m
 
 [![Current native schematic preview](output/svg/PetSafe_1001339.svg)](output/pdf/PetSafe_single_sheet.pdf)
 
-All **44 starred capacitor values are estimates**, preserved with their basis and proposed ratings. C5 and the recorded inductor measurements remain unchanged. The single **U6/U6A regulator-output ERC conflict is deliberately retained**. File consistency is not proof of complete hardware connectivity.
+All **44 starred capacitor values are estimates**, preserved with their basis and proposed ratings. C5 and the recorded inductor measurements remain unchanged. The **U6/U6A regulator-output ERC conflict is deliberately retained**; four additional receiver findings expose U3.3 undriven and three isolated endpoints after the measured separations. File consistency is not proof of complete hardware connectivity.
 
 ## Actual physical PCB
 

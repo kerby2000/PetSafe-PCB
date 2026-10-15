@@ -92,7 +92,7 @@ def with_r39_output_pullup(partitions):
     return result
 
 
-def with_receiver_input_split(partitions):
+def with_receiver_input_split_v0946(partitions):
     """Separate only the measured D2/C20/R28 group from the inherited input."""
     record=json.loads((ROOT/'evidence/receiver_input_correction_v0946.json').read_text())
     readings=json.loads((ROOT/record['measurement_source']).read_text())
@@ -104,3 +104,40 @@ def with_receiver_input_split(partitions):
     assert record['after']=={'RX_A_PLUS':['C19.1','U3.3'],'D2_C20':['C20.2','D2.R','R28.2']}
     result.update(record['after'])
     return result
+
+
+def with_receiver_capacitor_separations(partitions):
+    """RX-1/RX-2 withdraw exactly two inherited joins; no replacement feed inferred."""
+    record=json.loads((ROOT/'evidence/receiver_input_correction_v0947.json').read_text())
+    measured=json.loads((ROOT/'evidence/receiver_input_results_20261015.json').read_text())['round2']
+    assert measured['shorted_probe_ohms']==1
+    assert [(r['pair'],r['resistance_ohms']) for r in measured['measurements']]==[(['C19.1','U3.3'],1023000),(['C20.1','GND.1'],271000)]
+    result={name:sorted(pads) for name,pads in partitions.items()}
+    assert result['RX_A_PLUS']==['C19.1','U3.3'] and 'C20.1' in result['GND']
+    assert record['moved_endpoints']==['C19.1','C20.1']
+    assert record['before']=={k:result[k] for k in ['RX_A_PLUS','GND']}
+    assert 'C19_LOWER' not in result and 'C20_UPPER' not in result
+    result['RX_A_PLUS']=['U3.3'];result['GND'].remove('C20.1')
+    result['C19_LOWER']=['C19.1'];result['C20_UPPER']=['C20.1']
+    assert record['after']=={k:result[k] for k in ['RX_A_PLUS','GND','C19_LOWER','C20_UPPER']}
+    return result
+
+
+def with_receiver_input_split(partitions):
+    """Current allowed receiver corrections; frozen v0.9.46 proof remains separate."""
+    return with_receiver_capacitor_separations(with_receiver_input_split_v0946(partitions))
+
+
+def verify_receiver_open_erc(erc):
+    """Keep the four specific new reconstruction findings visible, never waived."""
+    expected={
+        ('pin_not_driven', ('Symbol U3 Pin 3 [+, Input, Line]',)),
+        ('isolated_pin_label', ("Label 'RX_A_PLUS'",)),
+        ('isolated_pin_label', ("Label 'C19_LOWER'",)),
+        ('isolated_pin_label', ("Label 'C20_UPPER'",)),
+        ('pin_to_pin', tuple(sorted(['Symbol U6 Pin 3 [VOUT, Power output, Line]', 'Symbol U106 Pin 2 [VO, Power output, Line]']))),
+    }
+    findings=[v for sheet in erc['sheets'] for v in sheet['violations']]
+    actual={(v['type'],tuple(sorted(i['description'] for i in v['items']))) for v in findings}
+    assert len(findings)==len(expected) and actual==expected, 'Unexpected ERC finding or hidden receiver-open finding'
+    return {'pin_to_pin':1,'pin_not_driven':1,'isolated_pin_label':3}

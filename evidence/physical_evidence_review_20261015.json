@@ -184,6 +184,13 @@
       "relation": "separate",
       "kind": "meter",
       "basis": "E11 owner follow-up: corrected 1.023 Mohm to U3.3, 998 kohm to TP7, 1.5 ohm to R28 right; all parts fitted, power-off requested; lead resistance/stability not supplied."
+    },
+    {
+      "source": "evidence/receiver_input_results_20261015.json",
+      "field": "round2.rejected_direct_pairs",
+      "relation": "different",
+      "kind": "owner_resistance",
+      "basis": "RX-1 C19 lower/model1 to U3.3 = 1.023 Mohm (raw 1.023mohm, interpreted as megaohms); RX-2 C20 upper/model1 to printed GND = 271 kohm; shorted probes = 1 ohm. Settling/drift not reported. Both inherited direct joins withdrawn in v0.9.47; replacement destinations remain unknown."
     }
   ],
   "observations": [
@@ -1789,7 +1796,7 @@
         "photos/originals/IMG_2429.jpg",
         "photos/originals/IMG_2434.jpg"
       ],
-      "finding": "Feedback/DNP local copper remains corroborated. Owner E11 follow-up now separates D2.R/C20.2/R28.2 from U3.3. C19.1-U3.3 and C20.1-GND remain inherited, unverified joins."
+      "finding": "Feedback/DNP local copper remains corroborated. Owner E11 follow-up now separates D2.R/C20.2/R28.2 from U3.3. At that review C19.1-U3.3 and C20.1-GND remained unverified; subsequent RX-1/RX-2 reject both and supersede those inherited joins."
     },
     {
       "region": "RF supply/driver",
@@ -1948,6 +1955,20 @@
         "Q1.R"
       ],
       "reason": "21.4/21.7kohm; old516superseded."
+    },
+    {
+      "pair": [
+        "C19.1",
+        "U3.3"
+      ],
+      "reason": "RX-1 C19 lower/model1 to U3.3 = 1.023 Mohm (raw 1.023mohm, interpreted as megaohms); RX-2 C20 upper/model1 to printed GND = 271 kohm; shorted probes = 1 ohm. Settling/drift not reported. Both inherited direct joins withdrawn in v0.9.47; replacement destinations remain unknown."
+    },
+    {
+      "pair": [
+        "C20.1",
+        "GND.1"
+      ],
+      "reason": "RX-1 C19 lower/model1 to U3.3 = 1.023 Mohm (raw 1.023mohm, interpreted as megaohms); RX-2 C20 upper/model1 to printed GND = 271 kohm; shorted probes = 1 ohm. Settling/drift not reported. Both inherited direct joins withdrawn in v0.9.47; replacement destinations remain unknown."
     }
   ],
   "supersessions": [
@@ -1962,7 +1983,8 @@
     "S1 inferred common rows replaced by measured B38/B39; pressed B41 remains a switch state, not permanent copper.",
     "v0.9.46: the initial 1 Mohm C20-U3.3 report is refined to 1.023 Mohm. The inherited D2.R/C20.2/R28.2-to-U3.3 copper join is withdrawn. C19/C20 parallel-200pF rationale is no longer applicable; individual starred estimates remain unchanged.",
     "Topology closure round1: the five rear-midpoint evidence gaps are resolved by individually reconciling the existing V090/095/100/103/107 owner reports with IMG_2442. This upgrades evidence coverage only, not values, device types, or modeled copper. The former approximate front-marker interpretation is not used as proof.",
-    "Topology round2 leaves the v0.9.46 electrical partitions unchanged. C24.2 joins grounded R22.1 by visible local copper; C30.2/C31.1 form one local group, whose ground bridge is still unproved. E11 now explicitly includes the missing external signal/DC-bias feed into U3.3; confirming C19 alone cannot close it. RX-1/RX-2 are the only staged new checks."
+    "Topology round2 leaves the v0.9.46 electrical partitions unchanged. C24.2 joins grounded R22.1 by visible local copper; C30.2/C31.1 form one local group, whose ground bridge is still unproved. E11 now explicitly includes the missing external signal/DC-bias feed into U3.3; confirming C19 alone cannot close it. RX-1/RX-2 are the only staged new checks.",
+    "RX-1 C19 lower/model1 to U3.3 = 1.023 Mohm (raw 1.023mohm, interpreted as megaohms); RX-2 C20 upper/model1 to printed GND = 271 kohm; shorted probes = 1 ohm. Settling/drift not reported. Both inherited direct joins withdrawn in v0.9.47; replacement destinations remain unknown."
   ],
   "targeted_questions": [
     {
@@ -1972,8 +1994,8 @@
     },
     {
       "area": "E11 / receiver input still hidden",
-      "assessment": "U3.3 currently has only the qualified C19 lower/model1-to-input route and C19 ground return: no external signal or DC-bias feed is represented. IMG_2429/2434, annotated D2 photo, IMG_2441 and the existing via/results records do not identify the hidden continuation. C20 upper/model1-to-GND is independent and unproved. U3.5/VREF is already settled.",
-      "action": "Specific hardware uncertainty. Only RX-1 (C19 lower to U3 pin3) and RX-2 (C20 upper to printed GND) are staged in FINISHING_MEASUREMENTS.html. Even two low readings would not establish the missing U3.3 feed. After results, consider one conditional U3.3-TP7 check if no better physical target emerges; it is NOT an active third test. Never subtract old fitted resistances to invent a component."
+      "assessment": "RX-1 C19 lower/model1 to U3.3 = 1.023 Mohm (raw 1.023mohm, interpreted as megaohms); RX-2 C20 upper/model1 to printed GND = 271 kohm; shorted probes = 1 ohm. Settling/drift not reported. Both inherited direct joins withdrawn in v0.9.47; replacement destinations remain unknown. U3.3, C19.1 and C20.1 now have distinct singleton nodes; this is not a claimed intentional termination. Existing images still do not locate their replacements.",
+      "action": "Specific hardware uncertainty. Only RX-3: U3 native pin3 to TP7, unpowered resistance. This new pair tests a possible relation to the established PIC-RA1/R28 node. Near-probe resistance supports direct membership; high/OL rejects it under good contact; intermediate or drifting readings do not identify a component. Do not subtract previous fitted readings."
     },
     {
       "area": "E11 / U1 enable",
@@ -2002,8 +2024,8 @@
     },
     {
       "area": "E11 / ground fan-out",
-      "assessment": "C24 lower/model2 now joins measured-ground R22 right/model1 by continuous local copper (IMG_2434/2429). C30 right/model2 and C31 left/model1 now form one local group (IMG_2436); the group-to-GND bridge remains unproved. Remaining separate candidate ground groups: BATN.1; C20.1; C30.2/C31.1; C39.2; C4.1/R2.1; C42.1/U3.4; D4.2; D5.2; D6.2/J1.GND; GND_RF.1; Q3.L; R10.2; R43.1; U5.6; U5.7. Sources remain IMG_2430/2431/2432/2433/2434/2436/2437/2438 and rear IMG_2440/2441/2442/2443. No plane-wide promotion from a nearby via.",
-      "action": "Specific hardware uncertainties, not demonstrated faults. RX-2 is the only staged ground check. For the remaining local groups, one missing bridge from each listed group to the established ground group remains; the empty C4/R2 option is lower priority. No blanket bench campaign."
+      "assessment": "C24 lower/model2 now joins measured-ground R22 right/model1 by continuous local copper (IMG_2434/2429). C30 right/model2 and C31 left/model1 now form one local group (IMG_2436); the group-to-GND bridge remains unproved. Remaining separate candidate ground groups: BATN.1; C30.2/C31.1; C39.2; C4.1/R2.1; C42.1/U3.4; D4.2; D5.2; D6.2/J1.GND; GND_RF.1; Q3.L; R10.2; R43.1; U5.6; U5.7. Sources remain IMG_2430/2431/2432/2433/2434/2436/2437/2438 and rear IMG_2440/2441/2442/2443. No plane-wide promotion from a nearby via. RX-2 rejects the former C20.1-to-GND assignment; this endpoint is now separate, not an outstanding candidate ground bridge.",
+      "action": "Fourteen candidate ground groups retain one missing bridge each to the established ground group. C20 ground check completed and withdrawn. No blanket campaign; the empty C4/R2 option stays lower priority."
     },
     {
       "area": "E06 / accepted reconstruction boundary",
@@ -2047,7 +2069,7 @@
     },
     {
       "area": "E08: Q7 and receiver",
-      "assessment": "B65/B66 directly support Q7.L-R19.1 and Q7.R-R19.2. Diode results favor a PNP-like base at L, but do not isolate E/C or maker. Later direct QR-QL=0V is consistent with no forward base-emitter bias at rest; TP5=0.066V and VREF=0V were recorded in the red-blinking state. Earlier R19-to-ground readings must not be subtracted as one simultaneous state. Equal 10 kohm R21/R22 imply half-rail VREF only with negligible loading. Visible feedback around both op-amps is supported; detector/input and enabled behavior remain separate questions. E11 follow-up rejects the former detector/R28-to-U3.3 copper join; C20 and C19 are no longer modeled in parallel. No new transfer-function claim is supported. After the split, U3.3 has only the qualified C19-to-ground branch in the model. Its actual external signal/DC-return path is unresolved under E11; a capacitor does not establish a DC return. U3.5/VREF remains settled. This is a reconstruction gap, not evidence of a defective board.",
+      "assessment": "B65/B66 directly support Q7.L-R19.1 and Q7.R-R19.2. Diode results favor a PNP-like base at L, but do not isolate E/C or maker. Later direct QR-QL=0V is consistent with no forward base-emitter bias at rest; TP5=0.066V and VREF=0V were recorded in the red-blinking state. Earlier R19-to-ground readings must not be subtracted as one simultaneous state. Equal 10 kohm R21/R22 imply half-rail VREF only with negligible loading. Visible feedback around both op-amps is supported; detector/input and enabled behavior remain separate questions. E11 follow-up rejects the former detector/R28-to-U3.3 copper join; C20 and C19 are no longer modeled in parallel. No new transfer-function claim is supported. The subsequent RX-1/RX-2 results reject C19.1-U3.3 and C20.1-GND; those inherited joins are now withdrawn. Its actual external signal/DC-return path is unresolved under E11; a capacitor does not establish a DC return. U3.5/VREF remains settled. This is a reconstruction gap, not evidence of a defective board.",
       "sources": [
         "evidence/q7_r19_join_results_20261014.json",
         "evidence/q7_diode_results_20261014.json",
@@ -2111,8 +2133,7 @@
     "receiver_candidates": "Hidden continuation at U3.3 and/or a wrong inherited C19/C20 upper-side association. TP7 is a conditional next candidate, not a confirmed feed. No inferred 25-kohm element.",
     "outcomes": "Two additional direct local joins encoded. Remaining hidden relationships stay specific hardware uncertainties. E06 stays an accepted scope boundary. Device roles remain separate.",
     "owner_queue": [
-      "RX-1",
-      "RX-2"
+      "RX-3"
     ],
     "autonomous_review_complete": true,
     "working_tree_validation": {
@@ -2121,7 +2142,20 @@
       "native": "83 partitions unchanged; zero dangling tails or pinless wire islands; exactly one intentional U6/U106 ERC conflict",
       "preservation": "R39, receiver split, capacitor values, mappings, populations and original photo checksums passed existing checks",
       "guide": "Two generated SVG photo panels rendered offline and visually checked; U3 pin1 dot/pin3 orientation confirmed. Existing HTML data/links/JavaScript verified statically. file:// browser opening rejected by URL policy; no browser interaction claimed.",
-      "pdf": "Refreshed completion PDF inspected at pages 1 and 4; other pages unchanged in structure. No electrical drawing edit."
-    }
+      "pdf": "Refreshed completion PDF inspected at pages 1 and 4; other pages unchanged in structure. No electrical drawing edit.",
+      "basis_commit": "c538088 (before subsequent RX-1/RX-2 results)"
+    },
+    "owner_results_followup": {
+      "revision": "v0.9.47",
+      "result": "RX-1 C19 lower/model1 to U3.3 = 1.023 Mohm (raw 1.023mohm, interpreted as megaohms); RX-2 C20 upper/model1 to printed GND = 271 kohm; shorted probes = 1 ohm. Settling/drift not reported. Both inherited direct joins withdrawn in v0.9.47; replacement destinations remain unknown.",
+      "owner_queue": [
+        "RX-3"
+      ],
+      "electrical_correction": "evidence/receiver_input_correction_v0947.json"
+    },
+    "previous_owner_queue": [
+      "RX-1",
+      "RX-2"
+    ]
   }
 }

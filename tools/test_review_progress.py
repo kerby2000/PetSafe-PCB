@@ -3,8 +3,21 @@ import copy, hashlib, unittest
 from current_state import ROOT, read, current_state, validate_issue_register
 from audit_physical_evidence import compare
 from verify_capacitor_application import canonical_text_sha256, matches_text_digest
+from inventory_contracts import verify_receiver_open_erc
 
 class ReviewProgress(unittest.TestCase):
+    def test_receiver_erc_cannot_be_hidden_or_expand_unrelated(self):
+        erc=read('output/erc.json')
+        verify_receiver_open_erc(erc)
+        missing=copy.deepcopy(erc)
+        target=next(s['violations'] for s in missing['sheets'] if s['violations'])
+        target.remove(next(v for v in target if v['type']=='pin_not_driven'))
+        with self.assertRaises(AssertionError):verify_receiver_open_erc(missing)
+        wrong=copy.deepcopy(erc)
+        target=next(s['violations'] for s in wrong['sheets'] if s['violations'])
+        next(v for v in target if v['type']=='pin_not_driven')['items'][0]['description']='Symbol U3 Pin 5 [+, Input, Line]'
+        with self.assertRaises(AssertionError):verify_receiver_open_erc(wrong)
+
     def test_capacitor_text_hash_line_endings(self):
         lf=b'{"value": "100nF*"}\n'
         crlf=lf.replace(b'\n', b'\r\n')

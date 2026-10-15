@@ -23,7 +23,7 @@ def mm(p):return tuple(rnd(round(v)*1.27) for v in p)
 STAGE.mkdir(parents=True,exist_ok=True)
 layout=json.loads((R/'evidence/library_layout.json').read_text())
 model=json.loads((R/'evidence/reconstruction.json').read_text())
-model.update(revision='v0.9.46',review_date='2026-10-15')
+model.update(revision='v0.9.47',review_date='2026-10-15')
 template=R/'tools/templates/mcp_standard_placements.kicad_sch'
 if not template.exists():
     template.parent.mkdir(parents=True,exist_ok=True)
@@ -360,7 +360,8 @@ text('BATTERY+ -> Q1 -> VSYS / U5 pin4. Board VDD / TP103 = VDD -> U5 pin1.',320
 text('TP14 / R43.2 = OUTA / U5 pin8: measured 1.5 ohm. Separate from BATTERY+.',320,81,.762)
 text('VDD / TP103: logic supply measured 4.5 V (B56, red-blinking state). V082 confirmed here.',13,76,.762)
 text('User: D3.R -> V082 / VDD; D3.L -> GND; D3.S -> R42 1.2 ohm (photo selects pad2).',330,126,.762)
-text('D2/C20 lower/R28.2 separate from U3.3: 1.023 Mohm measured. C20 upper route unverified.',350,202,.762)
+text('RX-1/RX-2: C19 lower != U3.3; C20 upper != GND. Both onward routes unresolved.',350,202,.762)
+text('U3 pin3 external signal/DC-bias feed unresolved; isolated labels are NOT intentional NCs.',350,205,.762)
 text('User: U3 pin5 / V079 / V080 = VREF (1 ohm); TP6 remains separate across C18.',288,211,.762)
 text('U3 alternative: MCP6002-I/SN; same pin roles, electrical suitability to verify.',288,208,.762)
 text('U6: pin5 joins VIN (1 ohm); pin4 unused. PIR supply measured 3.3 V with sensor attached.',234,305,.762)
@@ -432,7 +433,7 @@ for l in L:
     just='right' if l['net']=='D2_C20' and l['p']==mm((278,181)) else 'left'
     G.append(expr(f'(label {q(l["net"])} (at {x} {y} 0) (effects (font (size .762 .762)) (justify {just} bottom)) (uuid {q(uid())}))'))
 tree.extend(G)
-tree.append(expr('(title_block (title "PetSafe 100-1339 R03 A | single-sheet reconstruction") (date "2026-10-15") (rev "0.9.46") (company "KiCad 10 libraries + four datasheet symbols | MCP authoring") (comment 1 "44 starred capacitor estimates; antenna reported 500uH; RF weights unverified."))'))
+tree.append(expr('(title_block (title "PetSafe 100-1339 R03 A | single-sheet reconstruction") (date "2026-10-15") (rev "0.9.47") (company "KiCad 10 libraries + four datasheet symbols | MCP authoring") (comment 1 "44 starred capacitor estimates; antenna reported 500uH; RF weights unverified."))'))
 # Canonical pretty printer supplied by the installed MCP server.
 sys.path.insert(0,str(Path.home()/'Documents/VS.Code.Projects/KiCAD-MCP-Server/python'))
 from utils.sexpr_format import prettify
@@ -452,7 +453,7 @@ out.write_text(prettify(sx.dumps(tree)),encoding='utf-8',newline='\n')
 def wire_key(w):return w['net'],tuple(w['a']),tuple(w['b'])
 prior_order={wire_key(w):i for i,w in enumerate(model.get('geometric_wires',[]))}
 ordered_segments=sorted(segments,key=lambda s:(prior_order.get(s,len(prior_order)),s))
-model.update(revision='v0.9.46',coordinate_units='mm',native_pin_crosswalk=layout['crosswalk'],pin_positions={e:list(p) for e,p in P.items()},
+model.update(revision='v0.9.47',coordinate_units='mm',native_pin_crosswalk=layout['crosswalk'],pin_positions={e:list(p) for e,p in P.items()},
              geometric_wires=[dict(net=n,a=a,b=b) for n,a,b in ordered_segments],library_policy='KiCad 10 stock symbols plus four explicitly authorized MCP-authored datasheet symbols for U1/U5/U6/Q8')
 for c in model['components']:
     entry=next(x for x in layout['catalog'] if x['original_ref']==c['ref'])

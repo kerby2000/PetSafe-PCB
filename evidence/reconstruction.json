@@ -1,6 +1,6 @@
 {
   "board": "100-1339 R03 A",
-  "revision": "v0.9.46",
+  "revision": "v0.9.47",
   "status": "PARTIALLY VERIFIED RECONSTRUCTION; USER MEASUREMENTS, PHOTO TRACES AND QUALIFIED HYPOTHESES",
   "components": [
     {
@@ -1712,7 +1712,7 @@
         "category": "SIGNAL_CANDIDATE",
         "status": "ESTIMATED_NOT_FACTORY_VERIFIED"
       },
-      "current_summary": "Model1-to-U3.3 remains an inherited input connection; model2 ground has V077 owner support. C20 now belongs to a separate measured node; no verified parallel 200-pF load. 100pF* retained."
+      "current_summary": "RX-1 lower/model1 to U3.3 = 1.023 Mohm, baseline 1 ohm: inherited direct input join withdrawn. Lower terminal onward route unresolved; upper/model2 ground association retained. 100pF* estimate unchanged."
     },
     {
       "ref": "C20",
@@ -1751,7 +1751,7 @@
         "category": "SIGNAL_CANDIDATE",
         "status": "ESTIMATED_NOT_FACTORY_VERIFIED"
       },
-      "current_summary": "Lower/model2 joins D2.R and R28.2 by 1/1.5-ohm readings; 1.023 Mohm to U3.3 rejects the old parallel/input-node join. Upper/model1 ground remains inherited and unverified. 100pF* retained; old combined-200pF rationale is superseded."
+      "current_summary": "Lower/model2 remains D2.R/R28.2. RX-2 upper/model1 to printed GND = 271 kohm, baseline 1 ohm: ground assumption withdrawn; upper route unresolved. 100pF* estimate unchanged."
     },
     {
       "ref": "C21",
@@ -3119,7 +3119,8 @@
       "footprint_basis": "Existing assignment; see component identity evidence.",
       "v093_summary": "v0.9.14 user: pin5-VREF/R22 D 1 ohm (batch1); pin6-R23 B/left/model1 1 ohm and C/right/model2 5.6 kohm. Pin6-R22 E/GND 400 kohm. Pin5 and pin6 remain distinct; C18 branch is retained photo evidence, not meter-confirmed.",
       "measurement_evidence": "v0.9.14 user: pin5-VREF/R22 D 1 ohm (batch1); pin6-R23 B/left/model1 1 ohm and C/right/model2 5.6 kohm. Pin6-R22 E/GND 400 kohm. Pin5 and pin6 remain distinct; C18 branch is retained photo evidence, not meter-confirmed.",
-      "photo_pad_mapping": {}
+      "photo_pad_mapping": {},
+      "current_summary": "SGM8542 marking; pin5/VREF and visible feedback retained. C20.2-U3.3 and C19.1-U3.3 both report 1.023 Mohm; neither is direct copper. Pin3 external signal/DC-bias feed remains unresolved."
     },
     {
       "ref": "U1",
@@ -4424,7 +4425,6 @@
         "C19.2",
         "C1A.2",
         "C2.2",
-        "C20.1",
         "C24.2",
         "C25.2",
         "C26.2",
@@ -4512,7 +4512,8 @@
       "d6_measurement": "v0.9.20 B22-B27: upper photo contact V -> GND, lower W -> VPP, each 1 ohm. B29 red V/black W about 0.7V; B30 reverse OL. Supports A=V/GND (pin2), K=W/VPP (pin1). G3 identity and Zener breakdown remain unverified; no 3.9V measurement.",
       "v0921_evidence": "C35 upper/model2 retains user V018 ground; new annotation joins S1 upper-right. Upper-left common-row switch connection remains inferred.",
       "v0922_evidence": "User explicitly identifies the lower-right U6A pad as GND in the annotated photo. Other GND branches keep prior evidence.",
-      "c49_evidence": "evidence/c49_connections_20261009.json"
+      "c49_evidence": "evidence/c49_connections_20261009.json",
+      "v0947_evidence": "RX-2 C20.1-to-printed GND = 271 kohm versus 1-ohm probe baseline; C20.1 removed. Other endpoints unchanged."
     },
     {
       "net": "H_LDO_IN",
@@ -5099,10 +5100,9 @@
     {
       "net": "RX_A_PLUS",
       "endpoints": [
-        "C19.1",
         "U3.3"
       ],
-      "status": "QUALIFIED INHERITED JOIN: C19.1 to U3.3 remains unverified; D2/C20/R28 branch separated by owner resistance.",
+      "status": "UNRESOLVED ONWARD DESTINATION: RX-1 rejects the inherited C19.1 join; signal/DC-bias feed unknown.",
       "original_fragments": [],
       "d2_measurement": "Superseded by evidence/receiver_input_results_20261015.json: C20.2-U3.3=1.023 Mohm; no direct join."
     },
@@ -5391,6 +5391,22 @@
       ],
       "status": "OWNER CONTINUITY: D2.R-C20.2=1 ohm previously; C20.2-R28.2=1.5 ohm. Separate from U3.3 and TP7 by measured high resistance.",
       "source": "evidence/receiver_input_results_20261015.json"
+    },
+    {
+      "net": "C19_LOWER",
+      "endpoints": [
+        "C19.1"
+      ],
+      "status": "UNRESOLVED ONWARD DESTINATION: isolated modeled endpoint after measured rejection; not an intentional no-connect.",
+      "original_fragments": []
+    },
+    {
+      "net": "C20_UPPER",
+      "endpoints": [
+        "C20.1"
+      ],
+      "status": "UNRESOLVED ONWARD DESTINATION: isolated modeled endpoint after measured rejection; not an intentional no-connect.",
+      "original_fragments": []
     }
   ],
   "original_visual_fragments": [
@@ -5903,17 +5919,6 @@
       ]
     },
     {
-      "net": "RX_A_PLUS",
-      "a": [
-        439.42,
-        236.22
-      ],
-      "b": [
-        439.42,
-        250.19
-      ]
-    },
-    {
       "net": "RX_B_FB",
       "a": [
         469.9,
@@ -6362,17 +6367,6 @@
       "b": [
         101.6,
         102.87
-      ]
-    },
-    {
-      "net": "RX_A_PLUS",
-      "a": [
-        360.68,
-        198.12
-      ],
-      "b": [
-        360.68,
-        236.22
       ]
     },
     {
@@ -7454,7 +7448,7 @@
       ]
     },
     {
-      "net": "RX_A_PLUS",
+      "net": "C19_LOWER",
       "a": [
         445.77,
         250.19
@@ -7748,17 +7742,6 @@
       "b": [
         445.77,
         60.96
-      ]
-    },
-    {
-      "net": "RX_A_PLUS",
-      "a": [
-        360.68,
-        236.22
-      ],
-      "b": [
-        439.42,
-        236.22
       ]
     },
     {
@@ -8708,7 +8691,7 @@
       ]
     },
     {
-      "net": "GND",
+      "net": "C20_UPPER",
       "a": [
         440.69,
         237.49
@@ -9607,17 +9590,6 @@
       "b": [
         445.77,
         66.04
-      ]
-    },
-    {
-      "net": "RX_A_PLUS",
-      "a": [
-        439.42,
-        250.19
-      ],
-      "b": [
-        445.77,
-        250.19
       ]
     },
     {

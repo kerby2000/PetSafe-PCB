@@ -13002,7 +13002,9 @@
 				)
 			)
 		)
-	)
+
+    (property "CurrentEvidence" "SGM8542 marking; pin5/VREF and visible feedback retained. C20.2-U3.3 and C19.1-U3.3 both report 1.023 Mohm; neither is direct copper. Pin3 external signal/DC-bias feed remains unresolved." (at 381 200.66 0) (effects (font (size 1 1)) hide))
+  )
 	(symbol
 		(lib_id "Device:C")
 		(at 570.23 185.42 0)
@@ -14687,13 +14689,7 @@
 				)
 			)
 		)
-		(property "CurrentEvidence" "Model1-to-U3.3 remains an inherited input connection; model2 ground has V077 owner support. C20 now belongs to a separate measured node; no verified parallel 200-pF load. 100pF* retained."
-			(at 466.09 250.19 0)
-			(effects
-				(font
-					(size 1 1)
-				) hide)
-		)
+		(property "CurrentEvidence" "RX-1 lower/model1 to U3.3 = 1.023 Mohm, baseline 1 ohm: inherited direct input join withdrawn. Lower terminal onward route unresolved; upper/model2 ground association retained. 100pF* estimate unchanged." (at 466.09 250.19 0) (effects (font (size 1 1)) hide))
 	)
 	(symbol
 		(lib_id "Device:C")
@@ -14802,13 +14798,7 @@
 				)
 			)
 		)
-		(property "CurrentEvidence" "Lower/model2 joins D2.R and R28.2 by 1/1.5-ohm readings; 1.023 Mohm to U3.3 rejects the old parallel/input-node join. Upper/model1 ground remains inherited and unverified. 100pF* retained; old combined-200pF rationale is superseded."
-			(at 445.77 241.3 0)
-			(effects
-				(font
-					(size 1 1)
-				) hide)
-		)
+		(property "CurrentEvidence" "Lower/model2 remains D2.R/R28.2. RX-2 upper/model1 to printed GND = 271 kohm, baseline 1 ohm: ground assumption withdrawn; upper route unresolved. 100pF* estimate unchanged." (at 445.77 241.3 0) (effects (font (size 1 1)) hide))
 	)
 	(symbol
 		(lib_id "Connector:TestPoint")
@@ -20853,7 +20843,9 @@
 				)
 			)
 		)
-	)
+
+    (property "CurrentEvidence" "SGM8542 marking; pin5/VREF and visible feedback retained. C20.2-U3.3 and C19.1-U3.3 both report 1.023 Mohm; neither is direct copper. Pin3 external signal/DC-bias feed remains unresolved." (at 485.14 200.66 0) (effects (font (size 1 1)) hide))
+  )
 	(symbol
 		(lib_id "Amplifier_Operational:Opamp_Dual")
 		(at 557.53 185.42 0)
@@ -20934,7 +20926,9 @@
 				)
 			)
 		)
-	)
+
+    (property "CurrentEvidence" "SGM8542 marking; pin5/VREF and visible feedback retained. C20.2-U3.3 and C19.1-U3.3 both report 1.023 Mohm; neither is direct copper. Pin3 external signal/DC-bias feed remains unresolved." (at 557.53 185.42 0) (effects (font (size 1 1)) hide))
+  )
 	(symbol
 		(lib_id "Connector_Generic:Conn_01x03")
 		(at 556.26 251.46 0)

@@ -333,5 +333,7 @@ physical=read('evidence/topology_closure_audit.json')
 assert physical['revision']==m['revision'] and physical['result']=='PASS_WITH_EVIDENCE_GAPS'
 assert not physical['split_findings'] and not physical['incorrect_merge_findings']
 assert not physical['unmapped_observed_pads']
-assert any(i['id']=='E11' and 'C20' in i['owner_input'] for i in issues)
+assert any(i['id']=='E11' and 'RX-3' in i['owner_input'] and 'TP7' in i['owner_input'] for i in issues)
+assert {t['id'] for t in measurements['tests']}=={'RX-3'}
+assert {'RX-1','RX-2'} <= {t['id'] for t in measurements['completed_tests']}
 assert work['owner_action_summary'] in (ROOT/'README.md').read_text(encoding='utf-8')

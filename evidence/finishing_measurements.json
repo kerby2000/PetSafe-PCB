@@ -1,8 +1,8 @@
 {
   "date": "2026-10-15",
-  "basis_revision": "v0.9.46",
-  "status": "STAGED_RECEIVER_INPUT_ROUND2",
-  "scope": "Two distinct unresolved capacitor-side joins; external U3.3 input feed remains open.",
+  "basis_revision": "v0.9.47",
+  "status": "STAGED_RECEIVER_INPUT_TP7",
+  "scope": "One new U3.3-to-TP7 pair after RX-1/RX-2 reject the two inherited capacitor associations.",
   "setup": "Battery, programmer and all external supplies disconnected. Check the board is discharged before selecting resistance mode. Leave every component fitted.",
   "photos": [
     {
@@ -2166,41 +2166,76 @@
           "role": "reference"
         }
       }
+    },
+    {
+      "id": "receiver-input-tp7",
+      "source": "photos/originals/IMG_2434.jpg",
+      "view_box": [
+        300,
+        800,
+        850,
+        700
+      ],
+      "coordinate_space": [
+        1368,
+        1823
+      ],
+      "title": "RX-3: U3 pin3 to TP7; test a possible input/bias relationship",
+      "points": {
+        "P3": {
+          "xy": [
+            790,
+            978
+          ],
+          "label": [
+            1110,
+            1050
+          ],
+          "description": "U3 pin3: third lower metal lead from the pin1-dot end. RX-3 red probe."
+        },
+        "T7": {
+          "xy": [
+            452,
+            1375
+          ],
+          "label": [
+            570,
+            1300
+          ],
+          "description": "TP7 test hole above R28/R29. RX-3 black probe. Its existing connection to PIC RA1/R28 does not prove a U3 join."
+        },
+        "1": {
+          "xy": [
+            635,
+            978
+          ],
+          "label": [
+            575,
+            895
+          ],
+          "description": "Orientation only: U3 pin1 is the first lower lead beside the visible pin1 dot. No reading requested here.",
+          "role": "reference"
+        }
+      },
+      "context_points": [
+        "1"
+      ]
     }
   ],
   "tests": [
     {
-      "id": "RX-1",
-      "group": "receiver-input-round2",
-      "from": "IL",
-      "to": "IN",
+      "id": "RX-3",
+      "group": "receiver-input-tp7",
+      "from": "P3",
+      "to": "T7",
       "unit": "ohms or OL; steady/drifting",
       "state": "Unpowered; resistance; all components fitted",
       "issue": "E11",
-      "purpose": "Confirm or reject C19.1-U3.3; does not identify external input feed"
-    },
-    {
-      "id": "RX-2",
-      "group": "receiver-input-round2",
-      "from": "CU",
-      "to": "RG",
-      "unit": "ohms or OL; steady/drifting",
-      "state": "Unpowered; resistance; all components fitted",
-      "issue": "E11",
-      "purpose": "Confirm or reject C20.1-GND independently of the measured lower terminal"
+      "purpose": "Test a possible direct signal/bias relation to TP7 without presuming it exists"
     }
   ],
-  "interpretation": "A stable resistance comparable with shorted probes supports a local join, subject to fitted-board paths. Stable high resistance or OL with good contact rejects it; drifting, intermediate or polarity-dependent readings remain ambiguous. A rejected join does not identify its replacement. Even two confirmed joins do not identify U3 pin3 signal/DC-bias feed.",
-  "next_stages": [
-    {
-      "status": "CONDITIONAL_NOT_REQUESTED",
-      "pair": [
-        "U3.3",
-        "TP7.1"
-      ],
-      "reason": "Only after RX-1/RX-2 and evidence review, if input feed remains unresolved and no better photo target exists. A low reading would support a relation to the PIC-RA1/TP7 node; high/OL rejects direct membership; intermediate/drifting is ambiguous. No 25-kohm resistor is inferred."
-    }
-  ],
+  "interpretation": "Near the established 1-ohm probe baseline supports a direct U3.3-TP7 relation. High resistance/OL rejects direct membership with good contact, not every component-mediated path. Intermediate/drifting readings remain ambiguous. No 25-kohm resistor or C19-C20 join is inferred from earlier results.",
+  "next_stages": [],
   "do_not_repeat": [
     "D2 directed diode tests or its local/rail checks",
     "D3/V082 rail checks",
@@ -2228,7 +2263,8 @@
     "B42/B43 LED colours: A/R31/PIC22 green; B/R30/PIC23 red. No repeated colour check requested.",
     "B44-B52 antenna continuity completed: C11 outer end ANT2, distinct ANT1 and GND. Corrected pair labels retained in the raw result evidence.",
     "B86-B91 raw capacitance sweep recorded. Cp/Cs and D were not established; no repeat requested while function-based review proceeds.",
-    "E11-R1/R2/R3: C20 lower to U3.3, TP7 and R28 right completed; no repeats requested."
+    "E11-R1/R2/R3: C20 lower to U3.3, TP7 and R28 right completed; no repeats requested.",
+    "RX-1/RX-2 completed: C19 lower-U3.3 1.023 Mohm; C20 upper-GND 271 kohm; baseline 1 ohm. No repeats requested."
   ],
   "deferred": "Q3 stays fitted. RF waveforms, U2 identity/ratings and receiver enabled-state behavior remain open.",
   "sources": [
@@ -3619,11 +3655,41 @@
       "resistance_ohms": 1.5,
       "source": "evidence/receiver_input_results_20261015.json",
       "from": "D"
+    },
+    {
+      "id": "RX-1",
+      "group": "receiver-input-round2",
+      "from": "IL",
+      "to": "IN",
+      "unit": "ohms or OL; steady/drifting",
+      "state": "Unpowered; resistance; all components fitted",
+      "issue": "E11",
+      "purpose": "Confirm or reject C19.1-U3.3; does not identify external input feed",
+      "result": "1.023 Mohm",
+      "shorted_probe_ohms": 1,
+      "settling": null,
+      "evidence": "evidence/receiver_input_results_20261015.json#round2",
+      "resistance_ohms": 1023000
+    },
+    {
+      "id": "RX-2",
+      "group": "receiver-input-round2",
+      "from": "CU",
+      "to": "RG",
+      "unit": "ohms or OL; steady/drifting",
+      "state": "Unpowered; resistance; all components fitted",
+      "issue": "E11",
+      "purpose": "Confirm or reject C20.1-GND independently of the measured lower terminal",
+      "result": "271 kohm",
+      "shorted_probe_ohms": 1,
+      "settling": null,
+      "evidence": "evidence/receiver_input_results_20261015.json#round2",
+      "resistance_ohms": 271000
     }
   ],
-  "batch_title": "Receiver input: two unresolved capacitor connections",
-  "instructions": "RX-1 checks C19 lower to U3 pin3. RX-2 separately checks C20 upper to the printed GND hole. These are new endpoint pairs; do not repeat C20 lower-to-U3/TP7/R28. Markers identify probe contacts, not inferred tracks.",
-  "result_summary": "C20 lower: U3.3 = 1.023 Mohm (corrected from 1 Mohm), TP7 = 998 kohm, R28 right = 1.5 ohm. D2/C20/R28 group is separate from U3.3; R28 connects it to TP7 through its existing 1 Mohm.",
+  "batch_title": "Receiver input: does U3 pin3 reach TP7?",
+  "instructions": "Only RX-3: U3 native pin3 to TP7, unpowered resistance. This new pair tests a possible relation to the established PIC-RA1/R28 node. Near-probe resistance supports direct membership; high/OL rejects it under good contact; intermediate or drifting readings do not identify a component. Do not subtract previous fitted readings.",
+  "result_summary": "RX-1 C19 lower/model1 to U3.3 = 1.023 Mohm (raw 1.023mohm, interpreted as megaohms); RX-2 C20 upper/model1 to printed GND = 271 kohm; shorted probes = 1 ohm. Settling/drift not reported. Both inherited direct joins withdrawn in v0.9.47; replacement destinations remain unknown.",
   "cancelled_tests": [
     {
       "id": "B20",
@@ -3635,7 +3701,7 @@
       "reason": "User identifies PIC21/RB0 destination; reconcile the older VREF assignment instead."
     }
   ],
-  "revision": "v0.9.46",
+  "revision": "v0.9.47",
   "photo_updates": [
     {
       "evidence": "evidence/c25_c26_mapping_20261009.json",
@@ -3658,7 +3724,7 @@
       "result": "v0.9.22 user annotated U6A option: single left pad/model L/native U106.1 joins U6 pin5 and the existing input node after R37; upper-right/model R1/native2 joins J3.1 (red PIR wire); lower-right/model R2/native3 joins GND. All three external pads mapped, option remains DNP. User called the input VDD; retain VDD -> R37 (22 ohm) -> H_AUX_IN because the annotation ends at U6 pin5 and prior B28 confirms pin5-pin2, not a bypass across R37. No fitted IC identity or voltage measurement implied."
     }
   ],
-  "batch_id": "receiver-input-round2-20261015",
+  "batch_id": "receiver-input-tp7-20261015",
   "location_review": {
     "reference": "TP9",
     "status": "REMOVED_UNSUPPORTED_ENTRY",
@@ -3709,32 +3775,37 @@
     "pending_check": null,
     "model_status": "Applied v0.9.20: pin5-VIN measured 1 ohm; R37 and U6A single-pad local joins from the annotation; pin4 explicitly unused."
   },
-  "next_prompt": "Report shorted probes and RX-1/RX-2 in ohms or OL, including settled/drifting behavior.",
-  "review_revision": "v0.9.46",
-  "request_probe_baseline": true,
+  "next_prompt": "Report RX-3 in ohms or OL and whether it settles. The reported 1-ohm probe baseline is retained; no repeat of RX-1/RX-2.",
+  "review_revision": "v0.9.47",
+  "request_probe_baseline": false,
   "q3_decision": "Defer isolated Q3 identification; retain candidate qualification and existing copper. No desoldering or repeat Q3 batch requested.",
   "last_completed_test_ids": [
-    "E11-R1",
-    "E11-R2",
-    "E11-R3"
+    "RX-1",
+    "RX-2"
   ],
-  "last_result_evidence": "evidence/receiver_input_results_20261015.json",
+  "last_result_evidence": "evidence/receiver_input_results_20261015.json#round2",
   "staged_batches": [
     {
       "id": "receiver-input-round2-20261015",
-      "status": "TWO_PAIRS_ONLY",
+      "status": "COMPLETED",
       "tests": [
         "RX-1",
         "RX-2"
+      ],
+      "results": "RX-1 C19 lower/model1 to U3.3 = 1.023 Mohm (raw 1.023mohm, interpreted as megaohms); RX-2 C20 upper/model1 to printed GND = 271 kohm; shorted probes = 1 ohm. Settling/drift not reported. Both inherited direct joins withdrawn in v0.9.47; replacement destinations remain unknown."
+    },
+    {
+      "id": "receiver-input-tp7-20261015",
+      "status": "ONE_NEW_PAIR_ONLY",
+      "tests": [
+        "RX-3"
       ]
     }
   ],
   "setup_steps": [
-    "Disconnect all power and check for residual DC voltage; allow capacitors to discharge without shorting them with a tool.",
-    "Select resistance mode. Touch probe tips together and record the baseline.",
-    "RX-1: IL is C19 lower metal end; IN is U3 pin3, third lower lead from the pin1-dot end. The marker 1 is orientation only.",
-    "RX-2: CU is C20 upper metal end; RG is the separate printed GND test hole in the second panel.",
-    "Hold each reading long enough to report settling or drift; give numeric ohms or OL rather than buzzer status."
+    "Disconnect battery, programmer and all external power; check for residual voltage before resistance mode. Leave components fitted.",
+    "Place red on P3 (U3 pin3) and black on T7 (TP7). Pin1 marker is orientation only.",
+    "Report ohms or OL and whether the reading settles or drifts. The reported 1-ohm shorted-probe baseline is preserved."
   ],
   "measurement_sources": [],
   "contact_labels": [
