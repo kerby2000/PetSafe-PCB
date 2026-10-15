@@ -1,6 +1,6 @@
 # PetSafe PCB reverse engineering
 
-**PetSafe PPA19-16811 · 100-1339 R03 A · schematic v0.9.48**
+**PetSafe PPA19-16811 · 100-1339 R03 A · schematic v0.9.49**
 
 One A2 main-board schematic, reconstructed from original photographs and owner measurements. 82 modeled net partitions agree with KiCad; device functions and physical-evidence coverage remain qualified. **There is no routed reproduction PCB.**
 
@@ -49,6 +49,6 @@ $env:PYTHONUTF8 = '1'
 ./tools/refresh_review.ps1 -Python python
 ```
 
-The normal build exports/checks the current native file. `-Regenerate` explicitly replaces it from the synchronized MCP template/layout; do not use it against stale sources. [The physical crosswalk](evidence/pin_crosswalk.json) preserves original pad labels. Original photos and raw results are not rewritten when interpretations change.
+The normal build exports/checks the current native file. The owner's redrawn layout is now the checked baseline; `-Regenerate` restores that complete layout from the synchronized native template, including its wires and comments. It no longer runs the old placement router. [The baseline review](evidence/owner_redraw_baseline_v0949.json) records the electrical fixes and disposition of every sheet comment; the incoming file is archived there. [The physical crosswalk](evidence/pin_crosswalk.json) preserves original pad labels. Original photos and raw results are not rewritten when interpretations change.
 
 [Original architect review: PR #1](https://github.com/kerby2000/PetSafe-PCB/pull/1) is merged. Later corrections are reviewed in follow-up pull requests.

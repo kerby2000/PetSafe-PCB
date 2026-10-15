@@ -10,7 +10,9 @@ def old(p):return subprocess.check_output(['git','show',rec['baseline_commit']+'
 m=read('evidence/reconstruction.json');b=json.loads(old('evidence/reconstruction.json'))
 parts=lambda x:{n['net']:sorted(n['endpoints']) for n in x['nets']}
 assert parts(m)==with_receiver_input_split(parts(b))
-for k in ['native_pin_crosswalk','pin_positions','intentional_no_connects','unresolved_pins']:assert m[k]==b[k],k
+for k in ['native_pin_crosswalk','intentional_no_connects','unresolved_pins']:assert m[k]==b[k],k
+# Physical pad identities stay fixed; the reviewed owner redraw relocates them.
+# Current pin coordinates are checked against native symbols by validate_native.
 keys=['value','proposed_value','value_evidence','value_proposal','population','pins','library_symbol','footprint']
 inventory=lambda x:{c['ref']:{k:c.get(k) for k in keys} for c in x['components']}
 assert inventory(m)==inventory(b),'Value, population, symbol or footprint changed'
@@ -51,7 +53,8 @@ added={(x['net'],tuple(x['position'])) for x in caprec['native_added_labels']}
 removed_labels={(x['net'],tuple(x['position'])) for x in caprec['native_removed_labels']}
 assert label_positions(live)==(label_positions(after)-removed_labels)|added
 checkpoint=live
-live=sx.loads((R/path).read_text(encoding='utf-8'))
+redraw=read('evidence/owner_redraw_baseline_v0949.json')
+live=sx.loads(subprocess.check_output(['git','show',redraw['checked_electrical_baseline']+':'+path],cwd=R).decode('utf-8'))
 extra_wires={frozenset(tuple(p) for p in w) for w in dest['native_added_wire_segments']}
 assert extra_wires=={frozenset({(445.77,245.11),(445.77,250.19)})}
 assert {wire(x) for x in live if tag(x)=='wire'}=={wire(x) for x in checkpoint if tag(x)=='wire'}|extra_wires
@@ -77,6 +80,6 @@ assert native('C19.1')==native('C20.2')==native('R28.2')==native('D2.R')
 assert native('C19.2')==native('R29.2')==native('GND.1')
 assert native('C20.1')==native('R42.2')==native('D3.S')
 assert len({native(e) for e in ['U3.3','C19.1','C19.2','C20.1','TP7.1']})==5
-result=dict(result='PASS',revision=m['revision'],baseline_commit=rec['baseline_commit'],allowed_split=rec['after'],all_other_partitions='UNCHANGED',native_geometry='Frozen v0.9.46/v0.9.47 separations preserved; three obsolete labels replaced by VREF/H_D3_SIGNAL and a visible C19-to-C20 common-node wire; unrelated geometry unchanged',live_connection_record='evidence/receiver_connections_v0948.json',live_allowed_destinations=dest['after'],values_pin_maps_population='UNCHANGED',original_results='HASHES_MATCH',new_resistors=0,remaining='Receiver terminal destinations now reported; other named copper gaps, device identity and behavior remain qualified')
+result=dict(result='PASS',revision=m['revision'],baseline_commit=rec['baseline_commit'],allowed_split=rec['after'],all_other_partitions='UNCHANGED',native_geometry='v0.9.46/v0.9.47/v0.9.48 geometry proofs frozen at their checked commits; current owner layout independently verified in native/finalization audits',layout_record='evidence/owner_redraw_baseline_v0949.json',live_connection_record='evidence/receiver_connections_v0948.json',live_allowed_destinations=dest['after'],values_pin_maps_population='UNCHANGED',original_results='HASHES_MATCH',new_resistors=0,remaining='Receiver terminal destinations now reported; other named copper gaps, device identity and behavior remain qualified')
 (R/'evidence/receiver_input_validation.json').write_text(json.dumps(result,indent=2)+'\n',encoding='utf-8')
 print('PASS: measured exclusions preserved; only three owner-reported receiver joins; native labels, original result hashes, values and mappings checked.')

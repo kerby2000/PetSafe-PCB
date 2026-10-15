@@ -4,8 +4,23 @@ from current_state import ROOT, read, current_state, validate_issue_register
 from audit_physical_evidence import compare
 from verify_capacitor_application import canonical_text_sha256, matches_text_digest
 from inventory_contracts import verify_receiver_open_erc
+from validate_native import wire_graph
 
 class ReviewProgress(unittest.TestCase):
+    def test_native_t_junction_with_unsplit_trunk(self):
+        graph=wire_graph([((0,0),(10,0)),((5,0),(5,5))])
+        self.assertEqual(graph[(5,0)],{(0,0),(10,0),(5,5)})
+
+    def test_native_crossing_needs_a_junction(self):
+        wires=[((0,0),(10,0)),((5,-5),(5,5))]
+        self.assertNotIn((5,0),wire_graph(wires))
+        self.assertEqual(len(wire_graph(wires,{(5,0)})[(5,0)]),4)
+
+    def test_native_open_tail_is_not_hidden(self):
+        graph=wire_graph([((0,0),(10,0)),((5,0),(5,5))])
+        pins={(0,0),(10,0)}
+        self.assertEqual({p for p,n in graph.items() if len(n)==1 and p not in pins},{(5,5)})
+
     def test_receiver_erc_cannot_be_hidden_or_expand_unrelated(self):
         erc=read('output/erc.json')
         verify_receiver_open_erc(erc)

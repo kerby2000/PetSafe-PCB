@@ -48,7 +48,7 @@ page=f'''<!doctype html><html lang="en"><meta charset="utf-8"><meta name="viewpo
 <h2 id="evidence">Evidence and rebuild</h2><p><a href="docs/RECONSTRUCTION.md">Current circuit interpretation</a> | <a href="docs/MEASUREMENTS.md">Recorded measurements</a> | <a href="docs/CAPACITOR_VALUE_REVIEW.html">Preserved capacitor estimates</a> | <a href="evidence/validation.json">Native validation</a> | <a href="docs/history/README.md">Investigation history</a></p>
 <pre>$env:PYTHONUTF8 = '1'
 ./tools/build.ps1 -Python python
-./tools/refresh_review.ps1 -Python python</pre><p>Use installed KiCad 10 and <code>tools/requirements.txt</code>. The normal build exports the existing native drawing. <code>-Regenerate</code> explicitly replaces it from synchronized template/layout sources.</p>
+./tools/refresh_review.ps1 -Python python</pre><p>Use installed KiCad 10 and <code>tools/requirements.txt</code>. The normal build exports the existing native drawing. <code>-Regenerate</code> restores the complete reviewed owner layout, including its wires and comments, from the synchronized native template.</p>
 <details><summary>Rail map</summary><table><thead><tr><th>Net</th><th>PCB label</th><th>Supported path</th></tr></thead><tbody>{railrows}</tbody></table></details>
 <details><summary>Searchable component inventory and source photos</summary><input id="search" type="search" aria-label="Filter components" placeholder="Find U6, R39, DNP or a photo"><div class="scroll"><table id="inventory"><thead><tr><th>Original</th><th>KiCad</th><th>Observed value</th><th>Candidate</th><th>Marking</th><th>Population</th><th>Photos</th><th>Evidence / qualification</th></tr></thead><tbody>{''.join(rows)}</tbody></table></div></details>
 <footer>Original photos, numeric measurements and negative results preserved. <a href="evidence/proposed_nets.csv">Modeled nets</a> | <a href="https://github.com/kerby2000/PetSafe-PCB/pull/1">Merged architect review PR #1</a></footer></main>
@@ -97,7 +97,7 @@ $env:PYTHONUTF8 = '1'
 ./tools/refresh_review.ps1 -Python python
 ```
 
-The normal build exports/checks the current native file. `-Regenerate` explicitly replaces it from the synchronized MCP template/layout; do not use it against stale sources. [The physical crosswalk](evidence/pin_crosswalk.json) preserves original pad labels. Original photos and raw results are not rewritten when interpretations change.
+The normal build exports/checks the current native file. The owner's redrawn layout is now the checked baseline; `-Regenerate` restores that complete layout from the synchronized native template, including its wires and comments. It no longer runs the old placement router. [The baseline review](evidence/owner_redraw_baseline_v0949.json) records the electrical fixes and disposition of every sheet comment; the incoming file is archived there. [The physical crosswalk](evidence/pin_crosswalk.json) preserves original pad labels. Original photos and raw results are not rewritten when interpretations change.
 
 [Original architect review: PR #1](https://github.com/kerby2000/PetSafe-PCB/pull/1) is merged. Later corrections are reviewed in follow-up pull requests.
 '''

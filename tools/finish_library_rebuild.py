@@ -5,7 +5,7 @@ pin definitions and numbering are never generated or changed by this script.
 """
 from pathlib import Path
 from collections import defaultdict
-import json, math, uuid, sys
+import json, math, uuid, sys, hashlib
 import sexpdata as sx
 
 R=Path(__file__).resolve().parents[1]; STAGE=R/'.cache/v03'
@@ -22,6 +22,16 @@ def mm(p):return tuple(rnd(round(v)*1.27) for v in p)
 
 STAGE.mkdir(parents=True,exist_ok=True)
 layout=json.loads((R/'evidence/library_layout.json').read_text())
+if layout.get('authoring_mode')=='reviewed_native_layout':
+    # The owner redrew the sheet. Its complete checked template supersedes the
+    # legacy placement router below; never reconstruct the old layout over it.
+    record=json.loads((R/layout['baseline_record']).read_text())
+    source=R/'tools/templates/mcp_standard_placements.kicad_sch'
+    data=source.read_bytes().replace(b'\r\n',b'\n')
+    assert hashlib.sha256(data).hexdigest()==record['reviewed_schematic_sha256'], 'Reviewed template changed; audit and adopt the new layout before regeneration'
+    (R/'schematic/PetSafe_1001339.kicad_sch').write_bytes(data)
+    print('Restored complete reviewed owner layout from the synchronized native template.')
+    sys.exit(0)
 model=json.loads((R/'evidence/reconstruction.json').read_text())
 model.update(revision='v0.9.48',review_date='2026-10-15')
 template=R/'tools/templates/mcp_standard_placements.kicad_sch'

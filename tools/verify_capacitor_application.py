@@ -40,7 +40,11 @@ def main():
  files=['schematic/PetSafe_1001339.kicad_sch','tools/templates/mcp_standard_placements.kicad_sch']
  for f in files:
   actual,symbols=inspect(R/f,changed)
-  assert actual['unchanged_values_sha256']==a['baseline_invariants'][f]['unchanged_values_sha256'],(f,'Unrelated value or footprint changed')
+  # The complete owner-layout template now stores the final native U1/Q8
+  # values/footprints, formerly applied by the legacy router after placement.
+  # Both files must match the frozen native inventory, not obsolete seed text.
+  baseline='schematic/PetSafe_1001339.kicad_sch' if read('evidence/library_layout.json').get('authoring_mode')=='reviewed_native_layout' else f
+  assert actual['unchanged_values_sha256']==a['baseline_invariants'][baseline]['unchanged_values_sha256'],(f,'Unrelated value or footprint changed')
   for c in p['components']:
    ref=c['ref'];expected=c['proposal'].replace(' ','')+'*'
    assert c['applied_to_native'] and c['native_value']==expected

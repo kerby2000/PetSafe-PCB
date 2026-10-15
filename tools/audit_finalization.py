@@ -1,9 +1,10 @@
 """Audit native wire ends and complete uncertainty coverage without inventing hardware evidence."""
 from pathlib import Path
 from collections import defaultdict
-import json, hashlib, subprocess
+import json, hashlib, subprocess, gzip
 import sexpdata as sx
 from current_state import current_state, validate_issue_register
+from validate_native import wire_graph
 from inventory_contracts import verify_receiver_open_erc, with_receiver_input_split, with_r39_output_pullup, without_withdrawn_r33, retained_crosswalk, with_antenna_outer_rail, with_ra0_tp6, with_tp14_motor_output, with_u2_r5_topology
 R=Path(__file__).resolve().parents[1]
 def read(p):return json.loads((R/p).read_text(encoding='utf-8'))
@@ -14,10 +15,23 @@ def xy(e):return tuple(round(float(x),5) for x in e)
 m=read('evidence/reconstruction.json');w=read('evidence/remaining_work.json');s=current_state()
 validate_issue_register(m,w)
 tree=sx.loads((R/'schematic/PetSafe_1001339.kicad_sch').read_text())
-edges=defaultdict(set)
-for wire in children(tree,'wire'):
-    a,b=[xy(p[1:]) for p in children(one(wire,'pts'),'xy')]
-    edges[a].add(b);edges[b].add(a)
+layout=read('evidence/library_layout.json')
+assert layout['authoring_mode']=='reviewed_native_layout'
+redraw=read(layout['baseline_record'])
+incoming=gzip.decompress((R/redraw['source_archive']).read_bytes())
+assert hashlib.sha256(incoming).hexdigest()==redraw['source_sha256']
+for path in ['schematic/PetSafe_1001339.kicad_sch','tools/templates/mcp_standard_placements.kicad_sch']:
+    assert hashlib.sha256((R/path).read_bytes().replace(b'\r\n',b'\n')).hexdigest()==redraw['reviewed_schematic_sha256'], (path,'Reviewed layout drift')
+assert hashlib.sha256(json.dumps([m['pin_positions'],m['geometric_wires']],sort_keys=True).encode()).hexdigest()==redraw['model_geometry_sha256']
+def poses(t):
+    return {(next(p[2] for p in children(x,'property') if p[1]=='Reference'),one(x,'unit')[1]):(xy(one(x,'at')[1:3]),float(one(x,'at')[3])) for x in children(t,'symbol')}
+before=poses(sx.loads(incoming.decode('utf-8')));after=poses(tree)
+assert before.keys()==after.keys()
+for k,(p,angle) in before.items():
+    expected=(angle+180)%360 if k[0] in redraw['nonpolar_pin_mapping_restored'] else angle
+    assert after[k]==(p,expected),(k,'Owner position/rotation was not preserved')
+assert layout['pins']==m['pin_positions'] and layout['wires']==m['geometric_wires']
+segments=[tuple(xy(p[1:]) for p in children(one(w,'pts'),'xy')) for w in children(tree,'wire')]
 labels={xy(one(l,'at')[1:3]) for kind in ['label','global_label','hierarchical_label'] for l in children(tree,kind)}
 pins={xy(p) for p in m['pin_positions'].values()}
 flags=[i for i in children(tree,'symbol') if one(i,'lib_id')[1]=='power:PWR_FLAG']
@@ -25,6 +39,10 @@ flag_points={xy(one(i,'at')[1:3]) for i in flags}
 decl=read('evidence/power_source_declarations.json')['declarations']
 assert flag_points=={xy(d['position_mm']) for d in decl} and len(flags)==6
 pins|=flag_points
+junctions={xy(one(j,'at')[1:3]) for j in children(tree,'junction')}
+# KiCad can save a T junction in the middle of an unsplit wire. The old
+# generated layout split every segment first; manual layouts need this step.
+edges=wire_graph(segments,junctions|pins|labels)
 tails=sorted(p for p,n in edges.items() if len(n)==1 and p not in pins|labels)
 assert not tails,('Unattached native wire tails',tails)
 islands=[];seen=set()

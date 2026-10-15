@@ -19,7 +19,7 @@ try {
     $version = & $KiCadCli --version
     if ($LASTEXITCODE -or $version -notmatch '^10\.') { throw "KiCad 10 required; found $version. No fallback to the old portable KiCad 9." }
     if ($Regenerate) {
-        # Opt-in: replaces manual native edits from the saved MCP placement template.
+        # Opt-in: restores the complete reviewed owner layout from its saved template.
         & $Python tools/finish_library_rebuild.py
         if ($LASTEXITCODE) { throw 'Stock-symbol routing failed. Python requires sexpdata.' }
     }

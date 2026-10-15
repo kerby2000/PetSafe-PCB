@@ -1,0 +1,396 @@
+{
+  "revision": "v0.9.49",
+  "checked_electrical_baseline": "c0ed57f57c1172c5b56e9c2523d6e104e9e4dfba",
+  "source_file": "PetSafe-PCB/schematic/PetSafe_1001339.kicad_sch",
+  "source_sha256": "0fe72578587aff95aedeb066d4bc14bb331e28c05902ddd260fc5d583f1f1578",
+  "source_archive": "evidence/owner_redraw_20261015.kicad_sch.gz",
+  "source_revision": "0.9.46",
+  "corrections": [
+    "Restore RB5_OPT label joining TP10/R35.1 to U4.26",
+    "Restore PIC_TP4_C41 label joining TP4/C41.1/U4.25 to receiver junction",
+    "Carry forward v0.9.48: U3.3 to VREF; C19.1 to D2_C20; C20.1 to H_D3_SIGNAL"
+  ],
+  "nonpolar_pin_mapping_restored": [
+    "C12",
+    "C15",
+    "C38",
+    "C45",
+    "C48",
+    "R1",
+    "R2",
+    "C3",
+    "R4",
+    "R36"
+  ],
+  "comment_review": [
+    {
+      "uuid": "0173c495-4d52-4f85-8456-f577dad33c4a",
+      "before": "IMG_2431: TP3/PIC13 drives R6/R7/D1 midpoint. Diode identity and timing unverified.",
+      "after": "D1 identity and timing function remain unverified.",
+      "disposition": "update to current concise qualification"
+    },
+    {
+      "uuid": "05f46d43-4896-4aea-9003-5a22c1708ada",
+      "before": "Q8 output -> ANT1 photo-supported (B82: 4.5 ohm). Rest VGS: P=0 V, N=6.3 V; scope deferred.",
+      "after": null,
+      "disposition": "remove redundant/history note; evidence files retained"
+    },
+    {
+      "uuid": "06b794ce-84a0-4668-bce5-e9099b469760",
+      "before": "H_* = inferred inter-block net. Other net names do not imply measurement.",
+      "after": "Net labels identify connections; names alone do not establish circuit function.",
+      "disposition": "update to current concise qualification"
+    },
+    {
+      "uuid": "089daf8f-8e8e-475b-966d-6ef74014876d",
+      "before": "READING THIS WORKING RECONSTRUCTION",
+      "after": "RECONSTRUCTION NOTES",
+      "disposition": "update to current concise qualification"
+    },
+    {
+      "uuid": "0950e963-9303-4c0e-a831-d7f34a89f59e",
+      "before": "U2 and U3 use multiple symbol units on this same sheet, including supply units.",
+      "after": null,
+      "disposition": "remove redundant/history note; evidence files retained"
+    },
+    {
+      "uuid": "0a79e93b-d4bd-453d-9ce0-6dc20aa50a06",
+      "before": "05  RF RECEIVE / GAIN / ENVELOPE",
+      "after": "05  RF RECEIVE / GAIN / ENVELOPE",
+      "disposition": "retain heading"
+    },
+    {
+      "uuid": "11522561-e4dc-436a-85d4-145196818a98",
+      "before": "U6: pin5 joins VIN (1 ohm); pin4 unused. PIR supply measured 3.3 V with sensor attached.",
+      "after": null,
+      "disposition": "remove redundant/history note; evidence files retained"
+    },
+    {
+      "uuid": "1196bae9-1773-47cf-b616-a74a54e649d2",
+      "before": "U6: C2NM / S-812C33 candidate; PIR supply measured 3.3 V. Input follows R37.",
+      "after": "U6: S-812C33 candidate; PIR supply measured 3.3 V.",
+      "disposition": "update to current concise qualification"
+    },
+    {
+      "uuid": "31a7a1a7-af45-458a-8a46-2f30eb35ef3b",
+      "before": "Q1: R1A -> FMOS3401A PMOS candidate. Battery+ at D3; post-Q1 supply at S2; G1 via R44.",
+      "after": "Q1 identity and powered control behavior remain unverified.",
+      "disposition": "update to current concise qualification"
+    },
+    {
+      "uuid": "40704afd-b026-498f-a9e9-539d82eb35b5",
+      "before": "One sheet. Functional wiring is proposed; this is not a verified production circuit.",
+      "after": "Reviewed drawing baseline; not a fabrication-qualified design.",
+      "disposition": "update to current concise qualification"
+    },
+    {
+      "uuid": "4586fe13-dc48-4754-957f-42a925d515e2",
+      "before": "U1 datasheet symbol: S-1200B45 SOT-23-5. Pin 4 is internally open; option pads retained.",
+      "after": "Candidate U1 pin 4 is internally open; external option pads remain connected.",
+      "disposition": "update to current concise qualification"
+    },
+    {
+      "uuid": "4b598f74-8eec-433d-96fd-f8e3bef19375",
+      "before": "LED1 RED: R30 / PIC23 / pin1; GREEN: R31 / PIC22 / pin2.",
+      "after": "LED1: pin 1 red (R30); pin 2 green (R31).",
+      "disposition": "update to current concise qualification"
+    },
+    {
+      "uuid": "52d7c223-3db0-435e-a88b-649c3ce2cfbe",
+      "before": "PIR daughterboard internals are not yet traced; J3 represents its interface.",
+      "after": "Main board only. PIR internals, antenna assembly, motor and firmware are outside this drawing.",
+      "disposition": "update to current concise qualification"
+    },
+    {
+      "uuid": "55cf780a-b462-4e4d-b335-5cb42e17808a",
+      "before": "07  PIR / AUXILIARY RAIL",
+      "after": "07  PIR / AUXILIARY RAIL",
+      "disposition": "retain heading"
+    },
+    {
+      "uuid": "55d3ddc1-9a2a-47d4-ace3-0ad04caebd10",
+      "before": "* = proposed capacitor value, not measured. ? = candidate device identity or pin role.",
+      "after": "* = estimated capacitor value; ? = unverified device identity or pin role.",
+      "disposition": "update to current concise qualification"
+    },
+    {
+      "uuid": "55df8f38-af64-4e55-b7e8-74102fccbb6c",
+      "before": "Library pin numbers are mapped to photo pads in evidence/pin_crosswalk.json.",
+      "after": "Physical pad mapping: evidence/pin_crosswalk.json. Open items: docs/OPEN_ITEMS.md.",
+      "disposition": "update to current concise qualification"
+    },
+    {
+      "uuid": "5fe2f43a-5e02-4494-994c-fb02462f80c7",
+      "before": "U6A: DNP alternative regulator; stock symbol does not identify the original part.",
+      "after": "U6A / U106: DNP regulator option. Symbol and ERC conflict retained intentionally.",
+      "disposition": "update to current concise qualification"
+    },
+    {
+      "uuid": "6196234b-55b2-4090-b113-7c11b411a1ae",
+      "before": "Front outer-capacitor band = ANT2: C11 measured 1.4 ohm; other four share visible copper.",
+      "after": null,
+      "disposition": "remove redundant/history note; evidence files retained"
+    },
+    {
+      "uuid": "65342b17-02e3-4896-99be-4cb5567878d0",
+      "before": "H10-H12: working topology around photographed 120k feedback resistors. Filters, bias, and interstage routes inferred.",
+      "after": "Receiver gain, bias behavior and Q7 switching remain unverified.",
+      "disposition": "update to current concise qualification"
+    },
+    {
+      "uuid": "72170deb-1c9a-4731-84df-32524cd970ab",
+      "before": "See docs/CAPACITOR_VALUE_REVIEW.html for values, ratings and assumptions.",
+      "after": "Capacitor estimates and ratings: docs/CAPACITOR_VALUE_REVIEW.html.",
+      "disposition": "update to current concise qualification"
+    },
+    {
+      "uuid": "72cc7e38-59b6-44be-a673-e83786c49152",
+      "before": "D2/C20 lower/R28.2 separate from U3.3: 1.023 Mohm measured. C20 upper route unverified.",
+      "after": null,
+      "disposition": "remove redundant/history note; evidence files retained"
+    },
+    {
+      "uuid": "7860f9e2-3862-441f-8577-accfbc22eda7",
+      "before": "H07: RF supply -> R5 (22 ohm) -> U2/C7. U2 measured 6.3 V; candidate rating unresolved.",
+      "after": "U2 supply measured 6.3 V; candidate device voltage rating remains unresolved.",
+      "disposition": "update to current concise qualification"
+    },
+    {
+      "uuid": "83cbe8e3-8083-4399-b170-dc344a9e0be3",
+      "before": "V113/V115: Q8 centre pin5 GND. V114 is U2 pin2 GND, not Q8 pin2.",
+      "after": null,
+      "disposition": "remove redundant/history note; evidence files retained"
+    },
+    {
+      "uuid": "861f2917-50d3-4a4d-89bb-20c5943c462a",
+      "before": "Rear capacitor returns remain GND. Front and rear capacitors are not drawn in parallel.",
+      "after": null,
+      "disposition": "remove redundant/history note; evidence files retained"
+    },
+    {
+      "uuid": "8b0efa6d-2a65-4051-8460-4ad439207b2f",
+      "before": "03  MOTOR / BUTTON / BATTERY INTERFACE",
+      "after": "03  MOTOR / BUTTON / BATTERY INTERFACE",
+      "disposition": "retain heading"
+    },
+    {
+      "uuid": "8ff0446f-2db7-49fd-8f3d-4a50e8054f07",
+      "before": "RA0 reaches TP6. TP11/TP17 local routes retained; hidden branches unproved.",
+      "after": "TP11 and TP17 are valid endpoints; possible hidden branches remain unproved.",
+      "disposition": "update to current concise qualification"
+    },
+    {
+      "uuid": "8fff00a4-5df8-40b1-b969-bb08e21da09a",
+      "before": "01  POWER / INPUT FILTER",
+      "after": "01  POWER / INPUT FILTER",
+      "disposition": "retain heading"
+    },
+    {
+      "uuid": "96dee019-f9d4-4b58-bce1-70cbad3d8f41",
+      "before": "H06: S1 common pairs and normally-open action measured. RC timing unmeasured.",
+      "after": null,
+      "disposition": "remove redundant/history note; evidence files retained"
+    },
+    {
+      "uuid": "9d7b943c-49dd-4346-b974-5c2bc0334a40",
+      "before": "Proposed voltage, dielectric, tolerance and evidence are in capacitor properties.",
+      "after": null,
+      "disposition": "remove redundant/history note; evidence files retained"
+    },
+    {
+      "uuid": "a159024d-24dc-449a-bfae-ddcccdef7507",
+      "before": "Q7: 11.2 kohm V064-V070 fits R18+R19. Supply-switch topology inferred; RC1 drives R18 via V053-V070.",
+      "after": null,
+      "disposition": "remove redundant/history note; evidence files retained"
+    },
+    {
+      "uuid": "a71a8b29-dcd1-4003-a493-98564fffb4cd",
+      "before": "v0.9.46 | KiCad 10.0.5 | 2026-10-15",
+      "after": "v0.9.49 | KiCad 10.0.5 | 2026-10-15",
+      "disposition": "update to current concise qualification"
+    },
+    {
+      "uuid": "aa9d5d12-3a66-436c-aa86-75d0ccfd43d1",
+      "before": "User: RA3/R14, RA4/R15, RA5/R16, RC0/R11, RC6/R13. RC2 -> TP3; RB0 -> TP16 / Q2; VREF tie withdrawn. RC1 -> R18 via V053-V070.",
+      "after": null,
+      "disposition": "remove redundant/history note; evidence files retained"
+    },
+    {
+      "uuid": "adbd9d17-748e-490e-a047-5ffb425a2ea3",
+      "before": "C42 / R47 / R46: DNP options; pad routes mapped. Keep unpopulated.",
+      "after": "C42 / R47 / R46 are unpopulated options.",
+      "disposition": "update to current concise qualification"
+    },
+    {
+      "uuid": "b29e9214-adb4-4a75-bc82-c8d1de63ffaa",
+      "before": "04  ANTENNA EXCITATION / LOGIC / INDICATOR",
+      "after": "04  ANTENNA EXCITATION / LOGIC / INDICATOR",
+      "disposition": "retain heading"
+    },
+    {
+      "uuid": "b5aa2047-db2a-4f91-b101-61c43dbfcc67",
+      "before": "Q3 diode pattern disputes PNP pinout; 2H family and RF switching role remain unverified.",
+      "after": "Q3 diode readings dispute the PNP pinout. Q3/Q4/Q5/Q6/Q11 identities remain unverified.",
+      "disposition": "update to current concise qualification"
+    },
+    {
+      "uuid": "b638aa7f-4396-4a98-b848-153ebc7df44e",
+      "before": "02  PIC CONTROLLER / CLOCK / ICSP",
+      "after": "02  PIC CONTROLLER / CLOCK / ICSP",
+      "disposition": "retain heading"
+    },
+    {
+      "uuid": "b687992f-993a-4389-a252-bd53e27d0000",
+      "before": "H13: 2H device identity/pinout disputed. Starred values are a 500-uH RF design seed.",
+      "after": "Tuning values assume 500 uH and 134.2 kHz; switching weights/order remain unverified.",
+      "disposition": "update to current concise qualification"
+    },
+    {
+      "uuid": "b907339f-2f6b-4b00-a1bb-00ad3ead4a91",
+      "before": "DNP = unpopulated. An open pin means unresolved, not a certified no-connect.",
+      "after": "DNP = not fitted. An unresolved route is not an intentional no-connect.",
+      "disposition": "update to current concise qualification"
+    },
+    {
+      "uuid": "bf6e19fd-79fe-4866-88d5-c688967aa46b",
+      "before": "VDD / TP103: logic supply measured 4.5 V (B56, red-blinking state). V082 confirmed here.",
+      "after": null,
+      "disposition": "remove redundant/history note; evidence files retained"
+    },
+    {
+      "uuid": "c0fbedca-3a26-4daf-a7d6-57b293e02081",
+      "before": "Antenna: 500 uH reported; RF seed 134.2 kHz. Ideal switches; weights/order unverified.",
+      "after": null,
+      "disposition": "remove redundant/history note; evidence files retained"
+    },
+    {
+      "uuid": "c11a372d-46ba-4e54-89be-ba1e3a42b8f8",
+      "before": "User: D3.R -> V082 / VDD; D3.L -> GND; D3.S -> R42 1.2 ohm (photo selects pad2).",
+      "after": null,
+      "disposition": "remove redundant/history note; evidence files retained"
+    },
+    {
+      "uuid": "c2c2dc90-f85f-4e80-a986-8f61bb8c0706",
+      "before": "R3/R4 sensing candidate; R4 returns to RB3. C28 value estimated.",
+      "after": "R3/R4/C28 sensing function remains unverified.",
+      "disposition": "update to current concise qualification"
+    },
+    {
+      "uuid": "cd040d68-e1c1-4543-bbd7-c7164cd2144a",
+      "before": "User: PIC15/RC4 -> INA pin2; PIC16/RC5 -> INB pin3. Motor output polarity remains inferred.",
+      "after": "Motor output polarity remains inferred.",
+      "disposition": "update to current concise qualification"
+    },
+    {
+      "uuid": "d205feb1-76e7-4c71-92f8-2ded9c62f316",
+      "before": "C27: motor-supply bypass; value unmeasured.",
+      "after": null,
+      "disposition": "remove redundant/history note; evidence files retained"
+    },
+    {
+      "uuid": "d3786fda-4bdb-4188-8780-8e155dabd0e0",
+      "before": "Empty options: R1/C3 free ends join regulated VDD; R2/C4 free ends join GND.",
+      "after": null,
+      "disposition": "remove redundant/history note; evidence files retained"
+    },
+    {
+      "uuid": "dbb9ad7f-7b7a-440e-9015-fbfab0579587",
+      "before": "Compatible with R44 in path. Q1 identity and powered behavior remain qualified.",
+      "after": null,
+      "disposition": "remove redundant/history note; evidence files retained"
+    },
+    {
+      "uuid": "e049ae9d-349d-45c5-9647-200fcbb0479c",
+      "before": "C5: 470uF/16V marked. DC rails measured; 44 starred ceramic values are estimates.",
+      "after": null,
+      "disposition": "remove redundant/history note; evidence files retained"
+    },
+    {
+      "uuid": "e2dd763c-ff90-451c-9b76-b61e9d79a2ed",
+      "before": "TP14 / R43.2 = OUTA / U5 pin8: measured 1.5 ohm. Separate from BATTERY+.",
+      "after": null,
+      "disposition": "remove redundant/history note; evidence files retained"
+    },
+    {
+      "uuid": "e40965ea-9bcd-46e8-a3fa-8ba6789bf51a",
+      "before": "U1: S-1200B45 candidate; VDD measured 4.5 V. Device identity remains qualified.",
+      "after": "U1: S-1200B45 candidate; VDD measured 4.5 V.",
+      "disposition": "update to current concise qualification"
+    },
+    {
+      "uuid": "ea8b9bf8-04b3-4370-ba6e-56454ee320c5",
+      "before": "06  SWITCHED ANTENNA CAPACITANCE",
+      "after": "06  SWITCHED ANTENNA CAPACITANCE",
+      "disposition": "retain heading"
+    },
+    {
+      "uuid": "eb677a0d-3314-438d-a4eb-3a767b18d378",
+      "before": "28 original local photo fragments retained; Q1.L-R43.2 withdrawn by user.",
+      "after": null,
+      "disposition": "remove redundant/history note; evidence files retained"
+    },
+    {
+      "uuid": "ed0e636a-4326-4d6c-9481-0b0e4a6a8170",
+      "before": "148 retained catalog entries; unsupported TP9 and R33 entries withdrawn.",
+      "after": null,
+      "disposition": "remove redundant/history note; evidence files retained"
+    },
+    {
+      "uuid": "f1fcd8d5-3099-4bb4-b20c-f3171db2fcfd",
+      "before": "U3 alternative: MCP6002-I/SN; same pin roles, electrical suitability to verify.",
+      "after": null,
+      "disposition": "remove redundant/history note; evidence files retained"
+    },
+    {
+      "uuid": "f50c3987-7ca1-473c-b76d-c3cd15580ce9",
+      "before": "H09: 3724A matches SIL3724A N/P MOSFET pair. Both units share one package.",
+      "after": null,
+      "disposition": "remove redundant/history note; evidence files retained"
+    },
+    {
+      "uuid": "f80d8cdc-5c0f-40c4-acd1-d9339dd42a18",
+      "before": "R44 = 15k (B83); OUTA to presumed Q1 gate = 21.4 / 21.7k (B84/B85).",
+      "after": null,
+      "disposition": "remove redundant/history note; evidence files retained"
+    },
+    {
+      "uuid": "fac6ca2c-ccfc-46d2-a665-2c132404b9a8",
+      "before": "BATTERY+ -> Q1 -> VSYS / U5 pin4. Board VDD / TP103 = VDD -> U5 pin1.",
+      "after": null,
+      "disposition": "remove redundant/history note; evidence files retained"
+    },
+    {
+      "uuid": "fddce599-c134-4796-853b-26fa31d0de5b",
+      "before": "User: U3 pin5 / V079 / V080 = VREF (1 ohm); TP6 remains separate across C18.",
+      "after": null,
+      "disposition": "remove redundant/history note; evidence files retained"
+    }
+  ],
+  "new_hardware_claims": [],
+  "owner_action": "None; reload the reviewed native file before further editing.",
+  "reviewed_schematic_sha256": "3cdb0e3121e3586d3e929da235cf468eb0482a51efcf20b89811814acad789d6",
+  "model_geometry_sha256": "585b0cab13a16dad934f72be5343f4e469547ff50b7bdbe060fa8a2ce3f66ef6",
+  "retained_symbol_units": 153,
+  "physical_net_partitions": 82,
+  "values_and_pad_crosswalk": "unchanged from c0ed57f",
+  "readability_adjustments": [
+    "Shorten U3.3 VREF stub to avoid an unnecessary crossing of the feedback wire",
+    "Place R4 reference and value horizontally above the resistor",
+    "Remove 26 obsolete or redundant sheet notes; rewrite 24 qualifications and retain seven headings"
+  ],
+  "template_inventory_alignment": "Complete template now retains checked native U1 value and Q8 value/SOT-23-6 footprint directly; old seed overrides are no longer needed.",
+  "validation": {
+    "native_kicad": "10.0.5",
+    "net_partitions": 82,
+    "native_export_and_model": "PASS",
+    "pin_coordinates_and_original_symbol_positions": "PASS",
+    "regression_tests": 13,
+    "erc": "One intentional U6/U106 power-output conflict; no exclusions added",
+    "dangling_wire_ends": 0,
+    "pinless_wire_islands": 0,
+    "native_template_replay": "PASS - hash identical",
+    "original_photos": 26,
+    "physical_evidence": "269 joins / 36 separations; no conflicts; six nets retain evidence gaps"
+  },
+  "source_project_sha256": "fa964a1d49f7d064cd0d65ff4d2fb83e1b3903f687e83f4b054cea31536ac5cc"
+}

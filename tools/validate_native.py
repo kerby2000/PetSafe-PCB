@@ -1,9 +1,44 @@
 """Compare the authored electrical model with a native KiCad XML netlist."""
 from pathlib import Path
 from collections import Counter
-import json, hashlib, re, xml.etree.ElementTree as ET
+import json, hashlib, re, math, xml.etree.ElementTree as ET
+import sexpdata as sx
 ROOT=Path(__file__).resolve().parents[1]
 def sha(p):return hashlib.sha256(p.read_bytes()).hexdigest()
+
+def wire_graph(wires, connection_points=()):
+    """Join wire ends/T-junctions; do not join a plain interior X crossing."""
+    from collections import defaultdict
+    points=set(connection_points)|{p for pair in wires for p in pair}
+    graph=defaultdict(set)
+    for a,b in wires:
+        def on(p):
+            cross=(p[0]-a[0])*(b[1]-a[1])-(p[1]-a[1])*(b[0]-a[0])
+            return abs(cross)<1e-7 and all(min(a[i],b[i])-1e-7<=p[i]<=max(a[i],b[i])+1e-7 for i in [0,1])
+        ordered=sorted(p for p in points if on(p))
+        for p,q in zip(ordered,ordered[1:]):graph[p].add(q);graph[q].add(p)
+    return graph
+
+def native_pin_positions(tree):
+    """Resolve embedded pin coordinates independently of the evidence model."""
+    def tag(x):return str(x[0]) if isinstance(x,list) and x else ''
+    def children(x,t):return [a for a in x if tag(a)==t]
+    def one(x,t):return next((a for a in x if tag(a)==t),None)
+    libs={x[1]:x for x in children(one(tree,'lib_symbols'),'symbol')};result={}
+    for inst in children(tree,'symbol'):
+        ref=next(p[2] for p in children(inst,'property') if p[1]=='Reference')
+        x,y,rot=map(float,one(inst,'at')[1:]);r=math.radians(rot)
+        unit=int(one(inst,'unit')[1]);mirror=one(inst,'mirror')
+        for sub in children(libs[one(inst,'lib_id')[1]],'symbol'):
+            u,style=map(int,sub[1].rsplit('_',2)[1:])
+            if u not in (0,unit) or style not in (0,1):continue
+            for pin in children(sub,'pin'):
+                px,py,_=map(float,one(pin,'at')[1:])
+                if mirror:
+                    if str(mirror[1])=='x':py=-py
+                    if str(mirror[1])=='y':px=-px
+                result[ref+'.'+str(one(pin,'number')[1])]=[round(x+px*math.cos(r)-py*math.sin(r),5),round(y-px*math.sin(r)-py*math.cos(r),5)]
+    return result
 def main():
     m=json.loads((ROOT/'evidence/reconstruction.json').read_text())
     native=ET.parse(ROOT/'output/PetSafe_netlist.xml')
@@ -49,6 +84,8 @@ def main():
     unexpected=set(counts)-{'pin_not_connected','isolated_pin_label','power_pin_not_driven','pin_not_driven','pin_to_pin'}
     assert not unexpected,counts
     sch=ROOT/'schematic/PetSafe_1001339.kicad_sch'
+    positions=native_pin_positions(sx.loads(sch.read_text(encoding='utf-8')))
+    assert m['pin_positions']=={ep:positions[target] for ep,target in m['native_pin_crosswalk'].items()}, 'Model/native pad coordinate mismatch'
     # Permit only evidence-backed intentional NCs; never blanket-suppress opens.
     nc=m.get('intentional_no_connects',[])
     marked={tuple(round(float(v),5) for v in xy) for xy in re.findall(r'\(no_connect\s+\(at\s+([-\d.]+)\s+([-\d.]+)\)',sch.read_text())}
