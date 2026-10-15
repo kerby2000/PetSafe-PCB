@@ -1,0 +1,79 @@
+{
+  "date": "2026-10-14",
+  "schematic_revision": "v0.9.39",
+  "baseline_commit": "6be71cb",
+  "schematic_sha256": "87faf8d1bd6df103352c95404d0ef3eaf904c7dbc5ba1bd3149667cc80818ec3",
+  "electrical_change": false,
+  "status": "Q7_R19_JOINS_CONFIRMED_DEVICE_BEHAVIOR_OPEN",
+  "measurements": [
+    {
+      "id": "B63",
+      "group": "q7-drive",
+      "from": "B",
+      "to": "G",
+      "mode": "DC voltage",
+      "unit": "V; steady or varying",
+      "state": "Powered, same red-blinking state; PIR connected",
+      "issue": "E08",
+      "purpose": "Measure the candidate Q7 base/control node at R19.1.",
+      "date": "2026-10-14",
+      "result": "0 V",
+      "voltage_v": 0,
+      "stability": null,
+      "native_endpoint": "R19.1",
+      "source_worksheet_revision": "v0.9.39",
+      "raw_user_statement": "PetSafe Q7: local supply or off-state control? / v0.9.39\nB63 red B / black G (Powered, same red-blinking state; PIR connected): 0\nB64 red E / black G (Powered, same red-blinking state; PIR connected): 4.5"
+    },
+    {
+      "id": "B64",
+      "group": "q7-drive",
+      "from": "E",
+      "to": "G",
+      "mode": "DC voltage",
+      "unit": "V; steady or varying",
+      "state": "Powered, same red-blinking state; PIR connected",
+      "issue": "E08",
+      "purpose": "Verify local Q7 input supply at R19.2 and compare with its candidate base.",
+      "date": "2026-10-14",
+      "result": "4.5 V",
+      "voltage_v": 4.5,
+      "stability": null,
+      "native_endpoint": "R19.2",
+      "source_worksheet_revision": "v0.9.39",
+      "raw_user_statement": "PetSafe Q7: local supply or off-state control? / v0.9.39\nB63 red B / black G (Powered, same red-blinking state; PIR connected): 0\nB64 red E / black G (Powered, same red-blinking state; PIR connected): 4.5"
+    }
+  ],
+  "established": "R19 left=0 V; R19 right=4.5 V; earlier TP5=0.066 V, all reported in the same powered red-blinking state with PIR attached. No stability statement supplied. These are resistor-end readings, not direct Q7 pad measurements.",
+  "assessment": "B65/B66 subsequently confirmed both R19-to-Q7 joins at 1.5 ohm. The candidate PNP interpretation still implies about -4.5 V base-to-emitter from B63/B64, inconsistent with ordinary healthy forward-junction behavior. Identity/pin roles, measurement conditions and device behavior remain open; no fault is established.",
+  "contested_pairs": [],
+  "photo_review": {
+    "photos": [
+      "photos/originals/IMG_2434.jpg",
+      "photos/originals/IMG_2429.jpg",
+      "photos/originals/IMG_2430.jpg"
+    ],
+    "finding": "IMG_2434 shows the paired Q7 contacts above R19, with short copper partly obscured by solder/package/silkscreen. IMG_2429 clips part of Q7/R19; IMG_2430 clips the region on its right edge. These views do not independently settle both exact joins against the new voltage conflict."
+  },
+  "candidate_source": {
+    "url": "https://assets.nexperia.com/documents/data-sheet/BC856_BC857_BC858.pdf",
+    "accessed": "2026-10-14",
+    "reference": "Rev.9 Table3 gives base1, emitter2, collector3; Table8 gives typical VBE=-650 mV at IC=-2 mA/VCE=-5 V. This is a candidate-device comparison under specified test conditions, not an exact required board voltage."
+  },
+  "next_action": "No repeat Q7 diode/continuity/DC check now. Move to E03 Q8 gate-source voltages. Receiver enabled-state behavior remains an explicit later issue.",
+  "photos": {
+    "photos/originals/IMG_2434.jpg": "2feac8570055753400b337f4cfe8a79256da8f3bcd706e0d972dfd9672b50d0a",
+    "photos/originals/IMG_2429.jpg": "361196f08e930c6646db12a5ff80ab6829fbb9d49dace975bdb3a2f02e830aff",
+    "photos/originals/IMG_2430.jpg": "649d510712fd27450662a96ce03c1d26dcc20c3dabdbd86ace20561b35382b15"
+  },
+  "followup": "evidence/q7_direct_bias_result_20261014.json",
+  "confirmed_pairs": [
+    [
+      "Q7.L",
+      "R19.1"
+    ],
+    [
+      "Q7.R",
+      "R19.2"
+    ]
+  ]
+}

@@ -19,14 +19,24 @@ fitted=sorted(e for e in m['unresolved_pins'] if cs[e.rsplit('.',1)[0]]['populat
 dnp=sorted(e for e in m['unresolved_pins'] if cs[e.rsplit('.',1)[0]]['population']=='DNP')
 gpios=[int(e.split('.')[1]) for e in fitted if e.startswith('U4.')];gpios.sort()
 func={p['pin']:p['function'] for p in read('evidence/pic_trace_audit.json')['pins']}
-local={1:'J1 VPP; mapping inferred; D6 route missing',2:'C25 signal pad / V031; onward destination unknown',3:'R28 + R29 + TP7; user meter / visible trace',4:'VREF TP via V035; user confirms via-to-TP; C39.1 local photo route',
+local={1:'J1.1/VPP plus D6 cathode; D6 W-VPP 1 ohm, forward 0.7V from GND',2:'C25 / V031 to TP6 / R27.1 / C18.2: B59 = 1.5 ohm; RX_A_FILTER',3:'C26 signal pad (user annotation); R28 + R29 + TP7 (earlier meter/trace)',4:'VREF TP via V035; user confirms via-to-TP; C39.1 local photo route',
 5:'V036-V108 to R14; user continuity report',6:'V037-V102 to R15; user continuity report',7:'V039-V097 to R16; user continuity report',8:'GND / V041 photo anchor',9:'Y1 oscillator; photo-derived',10:'Y1 oscillator; photo-derived',
-11:'V047-V091 to R11; user continuity report',12:'R18.1 via V053-V070; user-confirmed; VREF link explicitly rejected',13:'TP3 via V049; user-confirmed; existing R10 branch photo-derived',14:'TP11; visible route; onward destination unknown',
-15:'V022-V016 to U5 pin2 / INA; user-confirmed',16:'V023-V019 to U5 pin3 / INB; user-confirmed',17:'R13; user meter / visible trace',18:'TP17; visible route; old R13 guess withdrawn',19:'GND / C32 / V045 photo anchor',20:'V042 to board VDD TP user-confirmed; C32.1 local photo route',
-21:'VREF (TP104), V026 and V071/R21.2; user-confirmed',22:'TP2 / R31; user meter / visible trace',23:'TP1 / R30; user meter / visible trace',24:'R4; photo-derived; sensing role remains inferred',25:'TP4 / V017 / R42.1 / R44.1; user continuity; C41 photo-derived',26:'TP10 / R35; user meter / visible trace',27:'ICSP CLK / D4 / R32; photo-derived',28:'ICSP DAT / D5 / R40; photo-derived'}
+11:'V047-V091 to R11; user continuity report',12:'R18.1 via V053-V070; user-confirmed; VREF link explicitly rejected',13:'TP3 via V049 (user); R10/R6/R7/D1 midpoint from IMG_2431; excitation waveform unmeasured',14:'TP11; supported local route; hidden continuation/firmware purpose unproved (E06 limitation)',
+15:'V022-V016 to U5 pin2 / INA; user-confirmed',16:'V023-V019 to U5 pin3 / INB; user-confirmed',17:'R13; user meter / visible trace',18:'TP17; supported local route; hidden continuation/firmware purpose unproved; R13 belongs to RC6',19:'GND / C32 / V045 photo anchor',20:'V042 to board VDD TP user-confirmed; C32.1 local photo route',
+21:'TP16/Q2.S; user correction. Old VREF join rejected; TP16-VREF 800 kohm',22:'TP2 / R31 / green LED branch; user meter, visible trace and B42 colour',23:'TP1 / R30 / red LED branch; user meter, visible trace and B43 colour',24:'R4; photo-derived; sensing role remains inferred',25:'TP4 / V017 / R42.1 / R44.1; user continuity; C41 photo-derived',26:'TP10 / R35; user meter / visible trace',27:'ICSP CLK / D4 / R32; photo-derived',28:'ICSP DAT / D5 / R40; photo-derived'}
 pins=[dict(pin=n,gpio=func[n],net=member.get(f'U4.{n}'),open_pad=n in gpios,evidence=local[n]) for n in range(1,29)]
 status=current_state()
+queue=read('evidence/finishing_measurements.json')
 save('evidence/completion_status.json',status)
+# Refresh the formerly stale v0.7 audit from the maintained per-pin register.
+# Function names retain their manufacturer pinout source; recorded evidence is not upgraded.
+pin_audit=read('evidence/pic_trace_audit.json')
+save('evidence/pic_trace_audit.json',dict(revision=m['revision'],
+    pin_number_source=pin_audit['pin_number_source'],source_url=pin_audit['source_url'],
+    interpretation='Current modeled routes and evidence qualifications. No claim of exhaustive hidden-layer connectivity.',
+    historical_source='docs/history/e06-v0941/pic_trace_audit.json',
+    open_gpio_pins=gpios,
+    pins=[dict(pin=p['pin'],function=p['gpio'],net=p['net'],status='LOCAL_ROUTE_MODELED',evidence=p['evidence']) for p in pins]))
 save('evidence/pic_gpio_status.json',dict(revision=m['revision'],pins=pins,open_gpio_pins=gpios,qualification='A modeled local net does not certify its remote role or all attached inferred branches.'))
 with (R/'evidence/pic_gpio_status.csv').open('w',newline='',encoding='utf-8') as f:
     w=csv.DictWriter(f,fieldnames=list(pins[0]));w.writeheader();w.writerows(pins)
@@ -46,26 +56,36 @@ def table(rows,widths):
 out=R/'output/pdf/PetSafe_completion_status.pdf'
 doc=SimpleDocTemplate(str(out),pagesize=A4,rightMargin=32,leftMargin=32,topMargin=30,bottomMargin=32,title=f'PetSafe {m["revision"]} - complete schematic status',author='PetSafe PCB reverse-engineering project')
 W=A4[0]-64
-story=[P('Schematic completion status','TitlePS'),P(f'PetSafe 100-1339 R03 A | {m["revision"]} | {status["date"]}'),
-P('<b>All catalog entries are drawn on one sheet.</b> The remaining questions are listed explicitly below. This is a partially verified reconstruction, not a completed hardware validation or a routed PCB.'),
-table([['Coverage','Open connections','Values / packages'],[f'{status["catalog_entries"]} entries; 1 A2 sheet; 20 stock + 4 custom symbol definitions.',f'{len(fitted)} populated-entry pads + {len(dnp)} DNP pads. {len(gpios)} open PIC pads in the model.',f'{len(status["unknown_ceramic_values"])} ceramic values and L1/L2 unknown; {status["footprints"]["assigned"]}/{status["catalog_entries"]} footprints assigned.']],[W/3]*3),
-P('Power rails - current names','HeadPS'),table([['Name','Known path']]+[[r['name'],r['path']] for r in status['rails']],[80,W-80]),
-P('L1/L2 share the VSYS supply side. Their opposite ends are not shorted together. H_RF_VDD, H_LDO_IN, H_RX_VDD and H_PIR_VDD describe local branches; these are not additional confirmed independent supplies. Rail voltages have not been measured.'),
-P('Recommended next checks','HeadPS'),P('1. Identify which D3 pad joins V082/VDD (E02).<br/>2. Resolve D2, C6/Q8, and the isolated button/antenna paths.<br/>3. Cross-check receiver/PIR branches and candidate pin functions.<br/>4. Recover RF/tuning values, then other passives and missing package geometry.'),
-P('Validation and limits','HeadPS'),P(f'{v["proposed_net_partitions"]} modeled net partitions match KiCad 10.0.5. ERC retains {v["erc_total"]} findings: 28 open pins, 3 isolated labels and 5 undriven power checks. No artificial NC/power flags hide gaps. All 26 original photo hashes are unchanged. This proves file consistency, not all physical connections.'),
-P('The three isolated labels are H_ANT_B (ANT2), H_D1_FREE (D1.R) and H_BUTTON_MCU (R41.1). A PIC pin can have a local net and still lack an onward destination. Question-mark count is not a completion metric.'),PageBreak()]
-for title,ids in [('Priority circuit gaps',['E01','E02','E03','E04','E05','E06']),('Other routing and identity gaps',['E07','E08','E09','E10','I01','I02']),('Values, mechanics and scope',['V01','M01','D01','F01'])]:
-    story.append(P(title,'TitlePS'))
+audit=read('evidence/finalization_audit.json')
+story=[P('Remaining schematic work','TitlePS'),P(f'PetSafe 100-1339 | {m["revision"]} | {status["date"]}'),
+P(f'<b>{len(status["items"])} active issues.</b> {escape(queue["instructions"])} Q3 stays fitted. Completed steps are not new bench requests.'),
+table([['Drawing / connectivity','Remaining data','ERC'],[f'{len(fitted)} fitted open pads; {len(gpios)} open PIC pads; {audit["dangling_wire_ends"]} dangling wire ends. {len(m["nets"])} native/model net partitions match.',f'{len(status["unknown_ceramic_values"])} ceramic values; LED1 footprint blank. TP11/TP17 hidden-layer limit retained; unsupported R33 withdrawn.',f'{status["erc_total"]} retained U6/U6A output conflict. Six documented power-source flags; R5 supplies U2/C7 from RF rail.']],[W/3]*3),
+P('Audit boundary','HeadPS'),P('Native wire geometry, library definitions, all catalog pad assignments and existing evidence were checked. Zero open pads does not establish hidden copper or functional behavior. U6A is DNP; its regulator symbol and visible conflict remain by user choice. B59 supports the RA0-TP6 net merge. No new NC markers or ERC exclusions.'),
+P('Order of work','HeadPS')]
+for group in status['finish_plan']:
+    story.append(P('<b>'+escape(group['title'])+':</b> '+escape(group['summary'])+' '+escape(group['next_action'])))
+story.append(PageBreak())
+for group in status['finish_plan']:
+    story.append(P(escape(group['title']),'TitlePS'))
     for i in status['items']:
-        if i['id'] not in ids:continue
-        story.append(KeepTogether([P(escape(i['id']+' - '+i['area']),'HeadPS'),P('<b>Known:</b> '+escape(i['known'])),P('<b>Uncertain:</b> '+escape(i['unknown'])),P('<b>Next:</b> '+escape(i['next_action']))]))
-    if 'V01' in ids:
-        story.extend([P('Every unrecovered ceramic value','HeadPS'),P(escape(', '.join(status['unknown_ceramic_values']))),P('C5 is already 470 uF / 16 V. In-circuit LCR readings may include parallel components and semiconductor paths; record frequency, mode and whether a lead was isolated. Geometry cannot establish capacitance, dielectric or voltage rating.')])
+        if i['id'] not in group['issues']:continue
+        story.append(KeepTogether([P(escape(i['id']+' - '+i['area']),'HeadPS'),P('<b>Established:</b> '+escape(i['known'])),P('<b>Remaining:</b> '+escape(i['unknown'])),P('<b>Next:</b> '+escape(i['next_action'])),P('<b>Close when:</b> '+escape(i['closed_when']))]))
+    if 'V01' in group['issues']:
+        story.extend([P('All unrecovered ceramic values','HeadPS'),P(escape(', '.join(status['unknown_ceramic_values'])))])
     story.append(PageBreak())
-story.extend([P('PIC connections','TitlePS'),P('Physical package pins. All have modeled local nets; the evidence column distinguishes confirmed endpoints from photo-derived or incomplete branches. Use the separate numbered photo guide for physical locations.'),
-table([['Pin','Function','Local destination / evidence']]+[[p['pin'],{27:'RB6/CLK',28:'RB7/DAT'}.get(p['pin'],p['gpio']),p['evidence']] for p in pins],[30,64,W-94]),
-P('Every remaining open pad','HeadPS'),P('<b>Populated entries:</b> '+escape(', '.join(fitted))+'.<br/><b>Empty options:</b> '+escape(', '.join(dnp))+'.','SmallPS'),
-P('U6.L1/L2 are candidate internal NC pins 4/5; external ties remain unknown. Photo pad S means single pad, not necessarily source. Current completion checklist includes closure criteria and the full per-component audit. Sources: reconstruction.json, remaining_work.json, via_audit.json, v099_net_changes.json, native validation and the preserved earlier measurement records.','SmallPS')])
+story.append(P('Documented reconstruction limitations','TitlePS'))
+for item in status['reconstruction_limitations']:
+    story.extend([P(escape(item['id']+' - '+item['area']),'HeadPS'),
+        P('<b>Disposition:</b> '+escape(item['disposition'])),P(escape(item['known'])),
+        P('<b>Unproved:</b> '+escape(item['unknown'])),P('<b>Next:</b> '+escape(item['next_action'])),
+        P('<b>Reopen if:</b> '+escape(item['reopen_when'])),P(escape(item['evidence']))])
+story.append(PageBreak())
+story.append(P('PCB reproduction requirements','TitlePS'))
+for row in read('evidence/remaining_work.json')['reproduction_requirements']:
+    story.append(KeepTogether([P(escape(row['item']),'HeadPS'),P(escape(row['remaining'])),P('<b>Agent:</b> '+escape(row['agent_work'])),P('<b>Owner input:</b> '+escape(row['owner_input']))]))
+story.append(PageBreak())
+story.extend([P('Scope and sources','TitlePS'),P(escape(read('evidence/remaining_work.json')['scope_note'])),P(escape(read('evidence/remaining_work.json')['accepted_option_limitations'])),P('All previous issue dispositions: evidence/finalization_review_v0931.json. Native geometry and uncertainty coverage: evidence/finalization_audit.json. Current register: evidence/remaining_work.json. Archived observations and old checklists: docs/history/README.md.'),P('Power-source flags describe supply paths through existing passive components; they do not prove voltage or transistor operation. Installed KiCad 10 libraries and project symbols match the embedded pin/graphic definitions. GUI library reload has not been verified.'),P('Reference rails','HeadPS'),table([['Rail','Existing modeled path']]+[[r['name'],r['path']] for r in status['rails']],[75,W-75])])
+
 def footer(c,d):
     c.setFillColor(ink);c.setFont('Helvetica',8);c.drawString(32,17,'PetSafe | Evidence-qualified reconstruction | '+m['revision']);c.drawRightString(A4[0]-32,17,str(d.page))
 doc.build(story,onFirstPage=footer,onLaterPages=footer)

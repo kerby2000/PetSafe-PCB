@@ -1,6 +1,6 @@
 {
   "date": "2026-10-08",
-  "revision": "v0.9.9",
+  "revision": "v0.9.45",
   "source_front": "photos/front_registered.jpg",
   "source_rear": "photos/back_mirrored_registered.jpg",
   "images_are_original_photographic_mosaics": true,
@@ -495,9 +495,10 @@
       "front_match": "PROJECTED: inspect original front photo; may be under a component",
       "endpoints": [
         "R43.2",
-        "TP14.1"
+        "TP14.1",
+        "U5.8"
       ],
-      "net": "BATTERY+",
+      "net": "H_MOTOR_A",
       "confidence": "rear visible; global front projection approximate",
       "note": "Visible clearance separates this site from the surrounding rear copper; this alone does not identify an internal net.",
       "id": "V015",
@@ -511,12 +512,16 @@
       ],
       "review_status": "ASSIGNED",
       "modeled_nets": [
-        "BATTERY+"
+        "H_MOTOR_A"
       ],
-      "component_crosscheck": "User confirms V015-TP14 and R43.2. IMG_2438 places TP14 on battery-positive copper to Q1 single pad3. Raw battery stays separate from post-Q1 motor VDD; the former battery-detect net name is withdrawn.",
+      "component_crosscheck": "User TP14-U5.8 = 1.5 ohm supports OUTA. Prior V015-TP14/R43.2 association retained. Battery photo assignment rejected by 6.3 V differential; 516 ohm to Q1.R does not support a direct join.",
       "excluded_endpoints": [
-        "Q1.L"
-      ]
+        "Q1.L",
+        "BATP.1",
+        "Q1.S",
+        "Q1.R"
+      ],
+      "measurement_source": "evidence/tp14_motor_output_correction_v0939.json"
     },
     {
       "rear_xy": [
@@ -875,10 +880,11 @@
       "front_match": "MANUALLY MATCHED",
       "endpoints": [
         "U4.21",
-        "VREF.1"
+        "TP16.1",
+        "Q2.S"
       ],
-      "net": "VREF",
-      "confidence": "photo-derived, not continuity measured",
+      "net": "H_PIR_SIG",
+      "confidence": "User PIC21-TP16 report and explicit correction; prior V026-PIC21 association retained",
       "note": "Via beside/under the PIC body near D6. Rear annular clearance is visible; external endpoints require more tracing.",
       "id": "V026",
       "active": true,
@@ -886,20 +892,19 @@
         {
           "id": "V026",
           "kind": "signal",
-          "claim": "V026 reaches the VREF test point (native TP104). Earlier PIC21/RB0 association retained."
+          "claim": "PIC21/RB0-to-VREF explicitly withdrawn by user. PIC21 now reaches TP16/Q2.S; retaining prior V026-PIC21 association puts V026 on H_PIR_SIG. TP16-VREF measured 0.8 Mohm."
         }
       ],
       "review_status": "ASSIGNED",
-      "component_crosscheck": "User V026-VREF report with prior V026-PIC21/RB0 mapping. VREF is native TP104; voltage/function not established.",
+      "component_crosscheck": "v0.9.16 user corrects PIC21 to TP16/Q2.S and withdraws PIC21-VREF; TP16-VREF 800 kohm. Prior V026-PIC21 local association retained.",
       "modeled_nets": [
-        "VREF"
+        "H_PIR_SIG"
       ],
       "excluded_vias": [
-        "V053"
-      ],
-      "joined_vias": [
-        "V026",
         "V071"
+      ],
+      "excluded_endpoints": [
+        "VREF.1"
       ]
     },
     {
@@ -985,7 +990,7 @@
       "modeled_nets": [
         "GND"
       ],
-      "component_crosscheck": "User adds both capacitors to earlier GND report; return pads selected from photos/model. C26.1 remains unresolved."
+      "component_crosscheck": "User adds both capacitors to earlier GND report. v0.9.17 annotated photo corroborates their common model2 pads; C26.1 now reaches PIC3/RA1, C25.1 PIC2/RA0."
     },
     {
       "rear_xy": [
@@ -1025,10 +1030,11 @@
       "front_match": "PROJECTED: inspect original front photo; may be under a component",
       "endpoints": [
         "U4.2",
-        "C25.1"
+        "C25.1",
+        "TP6.1"
       ],
-      "net": "PIC_RA0_FILTER",
-      "confidence": "rear visible; global front projection approximate",
+      "net": "RX_A_FILTER",
+      "confidence": "Measured C25-TP6 1.5 ohm plus earlier local via associations; individual vias not reprobed in B59",
       "note": "Visible clearance separates this site from the surrounding rear copper; this alone does not identify an internal net.",
       "id": "V031",
       "active": true,
@@ -1040,10 +1046,15 @@
         }
       ],
       "review_status": "ASSIGNED",
-      "component_crosscheck": "User RA0/C25 association corroborates existing local signal node.",
+      "component_crosscheck": "B59 C25-TP6 = 1.5 ohm resolves the hidden RA0 continuation. Existing V031 association retained.",
       "modeled_nets": [
-        "PIC_RA0_FILTER"
-      ]
+        "RX_A_FILTER"
+      ],
+      "joined_vias": [
+        "V031",
+        "V072"
+      ],
+      "measurement_source": "evidence/ra0_tp6_connection_v0938.json"
     },
     {
       "rear_xy": [
@@ -1157,11 +1168,11 @@
         {
           "id": "V035",
           "kind": "signal",
-          "claim": "v0.9.9: User checked V035-VREF TP. Prior photo association V035-PIC4/RA2-C39.1 retained; joins the already confirmed RB0/V026/R21.2/V071 VREF node. No voltage or numerical resistance supplied. Other modeled bias branches retain earlier inferred status."
+          "claim": "V035-VREF and prior PIC4/RA2-C39.1 association retained. Old claim that RB0/V026 shares this node is withdrawn."
         }
       ],
       "review_status": "ASSIGNED",
-      "component_crosscheck": "User confirms V035-VREF TP; earlier local PIC4/RA2-C39.1 photo route retained. Same VREF node as V026/RB0 and V071/R21.2.",
+      "component_crosscheck": "User confirms V035-VREF TP; earlier local PIC4/RA2-C39.1 photo route retained. Same VREF node as V071/R21.2; RB0/V026 association withdrawn.",
       "modeled_nets": [
         "VREF"
       ]
@@ -1757,8 +1768,7 @@
         "H_RX_ENABLE_CTL"
       ],
       "excluded_vias": [
-        "V071",
-        "V026"
+        "V071"
       ],
       "joined_vias": [
         "V053",
@@ -2369,8 +2379,7 @@
       "front_match": "PROJECTED: inspect original front photo; may be under a component",
       "endpoints": [
         "R21.2",
-        "VREF.1",
-        "U4.21"
+        "VREF.1"
       ],
       "net": "VREF",
       "confidence": "rear visible; global front projection approximate",
@@ -2381,16 +2390,17 @@
         {
           "id": "V071",
           "kind": "signal",
-          "claim": "v0.9.8: User confirms V071-VREF. Earlier V071-R21.2 and V026-VREF-PIC21/RB0 associations retained. R21.2 joins PIC_RB0_VREF. Existing R22.2/R23.2/R48.2 receiver-bias branches remain prior photo/circuit hypotheses, not new measured connections. VREF remains separate from H_VDD and RC1/V053. No voltage or numeric resistance supplied."
+          "claim": "R21.2-VREF user report retained. Earlier inferred same-net relation to V026/PIC21 is withdrawn in v0.9.16."
         }
       ],
       "review_status": "ASSIGNED",
-      "component_crosscheck": "User confirms V071-VREF, previously mapped to PIC21/RB0 via V026. Other receiver-bias branches remain photo/circuit hypotheses.",
+      "component_crosscheck": "User V071-VREF retained. Earlier inferred PIC21/V026 association explicitly withdrawn in v0.9.16. Other receiver-bias branches retain their evidence.",
       "modeled_nets": [
         "VREF"
       ],
       "excluded_vias": [
         "V053",
+        "V026",
         "V049"
       ],
       "resistive_measurements": [
@@ -2403,10 +2413,6 @@
           "resistance_ohms": 20000,
           "reverse_reading": null
         }
-      ],
-      "joined_vias": [
-        "V026",
-        "V071"
       ]
     },
     {
@@ -2424,7 +2430,7 @@
         "TP6.1"
       ],
       "net": "RX_A_FILTER",
-      "confidence": "User identifies TP6 and explicitly excludes R22.2",
+      "confidence": "Measured C25-TP6 1.5 ohm plus earlier local via associations; individual vias not reprobed in B59",
       "note": "Visible clearance separates this site from the surrounding rear copper; this alone does not identify an internal net.",
       "id": "V072",
       "active": true,
@@ -2436,13 +2442,18 @@
         }
       ],
       "review_status": "ASSIGNED",
-      "component_crosscheck": "User identifies TP6. Existing C18.2/R27.1 branches on RX_A_FILTER remain hypotheses; the via report does not certify the whole modeled net. TP6 remains separate from U3.5 across C18.",
+      "component_crosscheck": "B59 C25-TP6 = 1.5 ohm joins PIC RA0. Existing C18.2/R27.1 local traces retained; not remeasured in B59. TP6 remains separate from U3.5/VREF across C18.",
       "modeled_nets": [
         "RX_A_FILTER"
       ],
       "excluded_endpoints": [
         "R22.2"
-      ]
+      ],
+      "joined_vias": [
+        "V031",
+        "V072"
+      ],
+      "measurement_source": "evidence/ra0_tp6_connection_v0938.json"
     },
     {
       "rear_xy": [
@@ -2656,9 +2667,10 @@
       "rear_appearance": "REAR_CLEARANCE",
       "front_match": "PROJECTED: inspect original front photo; may be under a component",
       "endpoints": [
-        "U3.5"
+        "U3.5",
+        "VREF.1"
       ],
-      "net": "RX_B_PLUS",
+      "net": "VREF",
       "confidence": "User explicit U3 pin5 association; no new per-site ohms supplied",
       "note": "Visible clearance separates this site from the surrounding rear copper; this alone does not identify an internal net.",
       "id": "V079",
@@ -2672,9 +2684,9 @@
       ],
       "review_status": "ASSIGNED",
       "modeled_nets": [
-        "RX_B_PLUS"
+        "VREF"
       ],
-      "component_crosscheck": "User identifies SGM8542 pin5 for both vias. Existing original C18.1 local fragment retained on RX_B_PLUS; TP6 lies on the opposite side of C18 and is not merged."
+      "component_crosscheck": "User identifies SGM8542 pin5 for both vias, then measures pin5-VREF 1 ohm. Original C18.1 local fragment retained; TP6 stays separate across C18. See u3_j3_measurements_20261009.json."
     },
     {
       "rear_xy": [
@@ -2688,9 +2700,10 @@
       "rear_appearance": "REAR_CLEARANCE",
       "front_match": "PROJECTED: inspect original front photo; may be under a component",
       "endpoints": [
-        "U3.5"
+        "U3.5",
+        "VREF.1"
       ],
-      "net": "RX_B_PLUS",
+      "net": "VREF",
       "confidence": "User explicit U3 pin5 association; no new per-site ohms supplied",
       "note": "Visible clearance separates this site from the surrounding rear copper; this alone does not identify an internal net.",
       "id": "V080",
@@ -2704,9 +2717,9 @@
       ],
       "review_status": "ASSIGNED",
       "modeled_nets": [
-        "RX_B_PLUS"
+        "VREF"
       ],
-      "component_crosscheck": "User identifies SGM8542 pin5 for both vias. Existing original C18.1 local fragment retained on RX_B_PLUS; TP6 lies on the opposite side of C18 and is not merged."
+      "component_crosscheck": "User identifies SGM8542 pin5 for both vias, then measures pin5-VREF 1 ohm. Original C18.1 local fragment retained; TP6 stays separate across C18. See u3_j3_measurements_20261009.json."
     },
     {
       "rear_xy": [
@@ -2747,10 +2760,11 @@
       "rear_appearance": "REAR_CLEARANCE",
       "front_match": "PROJECTED: inspect original front photo; may be under a component",
       "endpoints": [
-        "VDD.1"
+        "VDD.1",
+        "D3.R"
       ],
       "net": "VDD",
-      "confidence": "User continuity report to TP103; D3 terminal unresolved",
+      "confidence": "User confirms exact D3 terminal and VDD TP; no numerical resistance supplied for these rail connections",
       "note": "Visible clearance separates this site from the surrounding rear copper; this alone does not identify an internal net.",
       "id": "V082",
       "active": true,
@@ -2758,11 +2772,11 @@
         {
           "id": "V082",
           "kind": "signal",
-          "claim": "v0.9.8 follow-up: User confirms V082 reaches the board VDD test point, native TP103 / H_VDD regulated logic rail. This is distinct from MX512H pin4 VDD / H_VBAT motor supply; MX512H pin1 VCC is modeled on H_VDD. V082 was associated with D3 but its exact package terminal remains unconfirmed. Do not merge H_RX_VDD or choose a D3 pin from this report alone."
+          "claim": "2026-10-09 user meter report: D3.L=GND; D3.R=VDD TP via V082. D3.S to R42=1.2 ohm; resistor end not explicitly named. Photo selects R42.2 nearest D3; other end already mapped to TP4/PIC25. Fitted BAV99 identity and signal function remain candidates."
         }
       ],
       "review_status": "ASSIGNED",
-      "component_crosscheck": "User confirms V082-board VDD test point (native TP103), regulated logic VDD. D3 exact terminal unconfirmed; no H_RX_VDD merge implied.",
+      "component_crosscheck": "2026-10-09 user meter report identifies D3.R on V082 / board VDD TP (native TP103). D3.L is GND. Only D3.R moves from H_RX_VDD; the remaining receiver supply stays separate. See d3_measurement_20261009.json.",
       "modeled_nets": [
         "VDD"
       ],
@@ -2894,15 +2908,9 @@
       ],
       "rear_appearance": "MAIN_REAR_COPPER",
       "front_match": "PROJECTED: inspect original front photo; may be under a component",
-      "endpoints": [
-        "C47.1",
-        "C44.1",
-        "C29.1",
-        "C14.1",
-        "C11.1"
-      ],
+      "endpoints": [],
       "net": "GND",
-      "confidence": "User GND report; no per-site ohms supplied",
+      "confidence": "User GND report; earlier capacitor-band photo inference explicitly rejected in v0.9.37",
       "note": "No isolating rear clearance apparent. Main copper is associated with PIC VSS through the reviewed anchors. Individual front endpoint not yet assigned.",
       "id": "V087",
       "active": true,
@@ -2914,9 +2922,14 @@
         }
       ],
       "review_status": "ASSIGNED",
-      "component_crosscheck": "Shared lower front-capacitor band; old antenna rail assumption withdrawn.",
-      "modeled_nets": [
-        "GND"
+      "component_crosscheck": "User GND reports retained. Former photo association to the front capacitor band withdrawn by C11-ANT2 = 1.4 ohm; do not expand these via reports onto the band.",
+      "modeled_nets": [],
+      "excluded_endpoints": [
+        "C47.1",
+        "C44.1",
+        "C29.1",
+        "C14.1",
+        "C11.1"
       ]
     },
     {
@@ -2930,15 +2943,9 @@
       ],
       "rear_appearance": "MAIN_REAR_COPPER",
       "front_match": "PROJECTED: inspect original front photo; may be under a component",
-      "endpoints": [
-        "C47.1",
-        "C44.1",
-        "C29.1",
-        "C14.1",
-        "C11.1"
-      ],
+      "endpoints": [],
       "net": "GND",
-      "confidence": "User GND report; no per-site ohms supplied",
+      "confidence": "User GND report; earlier capacitor-band photo inference explicitly rejected in v0.9.37",
       "note": "No isolating rear clearance apparent. Main copper is associated with PIC VSS through the reviewed anchors. Individual front endpoint not yet assigned.",
       "id": "V088",
       "active": true,
@@ -2950,9 +2957,14 @@
         }
       ],
       "review_status": "ASSIGNED",
-      "component_crosscheck": "Shared lower front-capacitor band; old antenna rail assumption withdrawn.",
-      "modeled_nets": [
-        "GND"
+      "component_crosscheck": "User GND reports retained. Former photo association to the front capacitor band withdrawn by C11-ANT2 = 1.4 ohm; do not expand these via reports onto the band.",
+      "modeled_nets": [],
+      "excluded_endpoints": [
+        "C47.1",
+        "C44.1",
+        "C29.1",
+        "C14.1",
+        "C11.1"
       ]
     },
     {
@@ -3016,7 +3028,7 @@
         }
       ],
       "review_status": "ASSIGNED",
-      "component_crosscheck": "User front-pair junction plus rear-land photo pairing; onward hidden connection to antenna remains unknown.",
+      "component_crosscheck": "User front-pair junction plus rear-land photo pairing; front capacitor opposite pad joins ANT2 by v0.9.37 shared-band evidence. No direct midpoint-to-antenna copper join inferred.",
       "modeled_nets": [
         "TUNE_5_MID"
       ],
@@ -3184,7 +3196,7 @@
         }
       ],
       "review_status": "ASSIGNED",
-      "component_crosscheck": "User front-pair junction plus rear-land photo pairing; onward hidden connection to antenna remains unknown.",
+      "component_crosscheck": "User front-pair junction plus rear-land photo pairing; front capacitor opposite pad joins ANT2 by v0.9.37 shared-band evidence. No direct midpoint-to-antenna copper join inferred.",
       "modeled_nets": [
         "TUNE_4_MID"
       ],
@@ -3352,7 +3364,7 @@
         }
       ],
       "review_status": "ASSIGNED",
-      "component_crosscheck": "User front-pair junction plus rear-land photo pairing; onward hidden connection to antenna remains unknown.",
+      "component_crosscheck": "User front-pair junction plus rear-land photo pairing; front capacitor opposite pad joins ANT2 by v0.9.37 shared-band evidence. No direct midpoint-to-antenna copper join inferred.",
       "modeled_nets": [
         "TUNE_3_MID"
       ],
@@ -3459,7 +3471,7 @@
         }
       ],
       "review_status": "ASSIGNED",
-      "component_crosscheck": "User front-pair junction plus rear-land photo pairing; onward hidden connection to antenna remains unknown.",
+      "component_crosscheck": "User front-pair junction plus rear-land photo pairing; front capacitor opposite pad joins ANT2 by v0.9.37 shared-band evidence. No direct midpoint-to-antenna copper join inferred.",
       "modeled_nets": [
         "TUNE_2_MID"
       ],
@@ -3588,7 +3600,7 @@
         }
       ],
       "review_status": "ASSIGNED",
-      "component_crosscheck": "User front-pair junction plus rear-land photo pairing; onward hidden connection to antenna remains unknown.",
+      "component_crosscheck": "User front-pair junction plus rear-land photo pairing; front capacitor opposite pad joins ANT2 by v0.9.37 shared-band evidence. No direct midpoint-to-antenna copper join inferred.",
       "modeled_nets": [
         "TUNE_1_MID"
       ],
@@ -4941,5 +4953,5 @@
       "REJECTED_NOT_VIA": 7
     }
   },
-  "review_update_id": "battery-q1-post-q1-supply-separated"
+  "review_update_id": "ra0-tp6-v0938"
 }

@@ -1,0 +1,47 @@
+{
+  "date": "2026-10-09",
+  "revision": "v0.9.26",
+  "ref": "C5",
+  "user_report": "C5 - is an electrolytic capacitor 16mm high, 6.33 mm in diameter",
+  "body_dimensions_mm": {
+    "diameter": 6.33,
+    "height": 16
+  },
+  "retained_value": "470uF / 16V",
+  "symbol": "Device:C_Polarized",
+  "footprint": "Capacitor_THT:CP_Radial_D6.3mm_P2.50mm",
+  "stock_footprint_sha256": "985ff707ffcb2e5687d2e09b671bfa3ea0cdc41eeb20f6a75f6cb19f3f316e44",
+  "footprint_pad_centres_mm": {
+    "1": [
+      0,
+      0
+    ],
+    "2": [
+      2.5,
+      0
+    ]
+  },
+  "footprint_drill_mm": 0.8,
+  "pitch_status": "inferred stock family, not measured",
+  "stock_description_height_mm": 7,
+  "measured_height_mm": 16,
+  "mechanical_model_status": "Stock housing is not an exact height match; use measured 16 mm for clearance.",
+  "measurement_evidence": "User confirms radial electrolytic C5, 6.33 mm diameter and 16 mm high; earlier sleeve reading 470 uF / 16 V retained. Standard nominal 6.3 mm footprint assigned; 2.5 mm pitch and 0.8 mm drills remain candidate geometry. Stock footprint describes a 7 mm body, so its housing model is not an exact match. Use measured 16 mm for clearance. Polarity and physical nets unchanged.",
+  "physical_to_native_pins": {
+    "C5.1": "C5.1",
+    "C5.2": "C5.2"
+  },
+  "polarity": {
+    "1": "positive / H_RF_VDD",
+    "2": "negative / GND"
+  },
+  "physical_net_membership_changed": false,
+  "photos": {
+    "photos/originals/IMG_2431.jpg": "d2b09a11ac056eb624fb9052e8e653d1885cc1a3a9c148c88d677c3307d73880",
+    "photos/originals/IMG_2432.jpg": "c982b50e7bd480e779464d26d9436c84c693d81f365ff8ac86c4aabc56e9761d"
+  },
+  "remaining": [
+    "actual lead/pad spacing and drill fit",
+    "exact manufacturer, tolerance, ESR and ripple-current rating"
+  ]
+}

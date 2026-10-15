@@ -1,0 +1,80 @@
+{
+  "revision": "v0.9.31",
+  "dispositions": [
+    {
+      "id": "E01",
+      "result": "Local D2 routing complete; remaining identity merged into I01. No new identity claim."
+    },
+    {
+      "id": "E02",
+      "result": "Already resolved; moved out of active register to history."
+    },
+    {
+      "id": "E03",
+      "result": "Retained with only current evidence, uncertainty and closure action."
+    },
+    {
+      "id": "E04",
+      "result": "Retained with only current evidence, uncertainty and closure action."
+    },
+    {
+      "id": "E05",
+      "result": "Retained with only current evidence, uncertainty and closure action."
+    },
+    {
+      "id": "E06",
+      "result": "Retained with only current evidence, uncertainty and closure action."
+    },
+    {
+      "id": "E07",
+      "result": "Sharpened newly found inventory risk: no R33 reference/pad established in cited IMG_2435. Retained for identification; no silent deletion."
+    },
+    {
+      "id": "E08",
+      "result": "Retained with only current evidence, uncertainty and closure action."
+    },
+    {
+      "id": "E09",
+      "result": "Retained with only current evidence, uncertainty and closure action."
+    },
+    {
+      "id": "E10",
+      "result": "Retained with only current evidence, uncertainty and closure action."
+    },
+    {
+      "id": "I01",
+      "result": "Retained with only current evidence, uncertainty and closure action."
+    },
+    {
+      "id": "I02",
+      "result": "Retained with only current evidence, uncertainty and closure action."
+    },
+    {
+      "id": "V01",
+      "result": "Retained with only current evidence, uncertainty and closure action."
+    },
+    {
+      "id": "M01",
+      "result": "Retained with only current evidence, uncertainty and closure action."
+    },
+    {
+      "id": "D01",
+      "result": "All DNP local pads modeled; candidate option roles retained as scope limitations. No intended optional values invented."
+    },
+    {
+      "id": "F01",
+      "result": "Deferred explicitly: PCB/layer stack, daughterboard and firmware are separate from main-board schematic finalization; not marked complete."
+    }
+  ],
+  "physical_net_change": false,
+  "active_issues": 12,
+  "source_photos_reviewed": [
+    "IMG_2431.jpg",
+    "IMG_2433.jpg",
+    "IMG_2434.jpg",
+    "IMG_2435.jpg",
+    "IMG_2440.jpg"
+  ],
+  "limitations": "Main-board schematic finalization. Routed PCB/layer stack, PIR daughterboard internals and firmware reconstruction remain later work, not completed. Empty-option population design is not needed to reproduce the observed DNP board.",
+  "accepted_options": "DNP options retain all modeled local routes and candidate roles. J6.2/R36.1 terminates at an unpopulated external interface; no additional onboard rail is assumed. U6A stays a regulator symbol with its visible output conflict by explicit user choice."
+}

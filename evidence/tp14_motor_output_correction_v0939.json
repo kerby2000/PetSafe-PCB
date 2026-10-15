@@ -1,0 +1,378 @@
+{
+  "date": "2026-10-14",
+  "revision": "v0.9.39",
+  "baseline_commit": "9c71f92",
+  "intermediate_schematic_sha256": "a02e8d0ce393b0662c3230b6ebd6e3aed1c754ab1336d14397b17082afbc5977",
+  "before": {
+    "BATTERY+": [
+      "BATP.1",
+      "Q1.S",
+      "R43.2",
+      "TP14.1"
+    ],
+    "H_MOTOR_A": [
+      "J5.A",
+      "U5.8"
+    ]
+  },
+  "after": {
+    "BATTERY+": [
+      "BATP.1",
+      "Q1.S"
+    ],
+    "H_MOTOR_A": [
+      "J5.A",
+      "R43.2",
+      "TP14.1",
+      "U5.8"
+    ]
+  },
+  "measured_pair": [
+    "TP14.1",
+    "U5.8"
+  ],
+  "measured_ohms": 1.5,
+  "measurement": {
+    "id": "X03",
+    "group": "tp14-motor-discovery",
+    "from": "TP14",
+    "to": "U5.8",
+    "date": "2026-10-14",
+    "result": "1.5 ohm",
+    "resistance_ohms": 1.5,
+    "mode": "Resistance",
+    "state": "Not separately restated; follows unpowered B61",
+    "issue": "E09",
+    "native_endpoints": [
+      "TP14.1",
+      "U5.8"
+    ],
+    "raw_user_statement": "TP14 and pin 8 of the MX512H are connected - 1.5ohm",
+    "shorted_probe_ohms": null,
+    "stability": null
+  },
+  "followup_record": "evidence/tp14_followup_results_20261014.json",
+  "retained_local_pair": [
+    "TP14.1",
+    "R43.2"
+  ],
+  "unchanged": [
+    "BATP.1-Q1.S",
+    "Q1.L-U5.4 / VSYS",
+    "Q1.R-R44.2 / Q1_GATE",
+    "R43.1-GND"
+  ],
+  "assessment": "B60 6.3 V rejects BATTERY+ membership. B61 516 ohm does not support a direct gate-node join. The user then measured TP14 to MX512H pin8 at 1.5 ohm, supporting OUTA/H_MOTOR_A. Prior TP14-R43.2 continuity is retained.",
+  "limit": "The measured net membership is supported; motor direction, bridge state, R43 function and the path producing 516 ohm to Q1.R are not established.",
+  "superseded_current_metadata": [
+    {
+      "file": "evidence/reconstruction.json",
+      "path": [
+        "components",
+        0,
+        "via_evidence"
+      ],
+      "former_text": "v0.9.9: User corrects raw battery+ versus post-Q1 rail. BATP -> Q1.S (single physical pad/native3, candidate drain); Q1.L/native2 (candidate source) -> U5.4/V011-V014. These are distinct copper nets, connected through Q1. IMG_2438 also supports TP14 on battery+; V015/R43.2-TP14 user confirmation retained. Q1.R/native1 is candidate gate at R44.2. Photo S means SINGLE, not MOSFET source."
+    },
+    {
+      "file": "evidence/reconstruction.json",
+      "path": [
+        "components",
+        34,
+        "via_evidence"
+      ],
+      "former_text": "v0.9.9: User corrects raw battery+ versus post-Q1 rail. BATP -> Q1.S (single physical pad/native3, candidate drain); Q1.L/native2 (candidate source) -> U5.4/V011-V014. These are distinct copper nets, connected through Q1. IMG_2438 also supports TP14 on battery+; V015/R43.2-TP14 user confirmation retained. Q1.R/native1 is candidate gate at R44.2. Photo S means SINGLE, not MOSFET source."
+    },
+    {
+      "file": "evidence/reconstruction.json",
+      "path": [
+        "components",
+        35,
+        "via_evidence"
+      ],
+      "former_text": "v0.9.9: User corrects raw battery+ versus post-Q1 rail. BATP -> Q1.S (single physical pad/native3, candidate drain); Q1.L/native2 (candidate source) -> U5.4/V011-V014. These are distinct copper nets, connected through Q1. IMG_2438 also supports TP14 on battery+; V015/R43.2-TP14 user confirmation retained. Q1.R/native1 is candidate gate at R44.2. Photo S means SINGLE, not MOSFET source."
+    },
+    {
+      "file": "evidence/reconstruction.json",
+      "path": [
+        "components",
+        69,
+        "via_evidence"
+      ],
+      "former_text": "v0.9.9: User corrects raw battery+ versus post-Q1 rail. BATP -> Q1.S (single physical pad/native3, candidate drain); Q1.L/native2 (candidate source) -> U5.4/V011-V014. These are distinct copper nets, connected through Q1. IMG_2438 also supports TP14 on battery+; V015/R43.2-TP14 user confirmation retained. Q1.R/native1 is candidate gate at R44.2. Photo S means SINGLE, not MOSFET source."
+    },
+    {
+      "file": "evidence/reconstruction.json",
+      "path": [
+        "components",
+        75,
+        "via_evidence"
+      ],
+      "former_text": "v0.9.9: User corrects raw battery+ versus post-Q1 rail. BATP -> Q1.S (single physical pad/native3, candidate drain); Q1.L/native2 (candidate source) -> U5.4/V011-V014. These are distinct copper nets, connected through Q1. IMG_2438 also supports TP14 on battery+; V015/R43.2-TP14 user confirmation retained. Q1.R/native1 is candidate gate at R44.2. Photo S means SINGLE, not MOSFET source."
+    },
+    {
+      "file": "evidence/reconstruction.json",
+      "path": [
+        "components",
+        98,
+        "via_evidence"
+      ],
+      "former_text": "v0.9.9: User corrects raw battery+ versus post-Q1 rail. BATP -> Q1.S (single physical pad/native3, candidate drain); Q1.L/native2 (candidate source) -> U5.4/V011-V014. These are distinct copper nets, connected through Q1. IMG_2438 also supports TP14 on battery+; V015/R43.2-TP14 user confirmation retained. Q1.R/native1 is candidate gate at R44.2. Photo S means SINGLE, not MOSFET source."
+    },
+    {
+      "file": "evidence/reconstruction.json",
+      "path": [
+        "components",
+        105,
+        "via_evidence"
+      ],
+      "former_text": "v0.9.9: User corrects raw battery+ versus post-Q1 rail. BATP -> Q1.S (single physical pad/native3, candidate drain); Q1.L/native2 (candidate source) -> U5.4/V011-V014. These are distinct copper nets, connected through Q1. IMG_2438 also supports TP14 on battery+; V015/R43.2-TP14 user confirmation retained. Q1.R/native1 is candidate gate at R44.2. Photo S means SINGLE, not MOSFET source."
+    },
+    {
+      "file": "evidence/reconstruction.json",
+      "path": [
+        "components",
+        136,
+        "via_evidence"
+      ],
+      "former_text": "v0.9.9: User corrects raw battery+ versus post-Q1 rail. BATP -> Q1.S (single physical pad/native3, candidate drain); Q1.L/native2 (candidate source) -> U5.4/V011-V014. These are distinct copper nets, connected through Q1. IMG_2438 also supports TP14 on battery+; V015/R43.2-TP14 user confirmation retained. Q1.R/native1 is candidate gate at R44.2. Photo S means SINGLE, not MOSFET source."
+    },
+    {
+      "file": "evidence/reconstruction.json",
+      "path": [
+        "components",
+        146,
+        "via_evidence"
+      ],
+      "former_text": "v0.9.9: User corrects raw battery+ versus post-Q1 rail. BATP -> Q1.S (single physical pad/native3, candidate drain); Q1.L/native2 (candidate source) -> U5.4/V011-V014. These are distinct copper nets, connected through Q1. IMG_2438 also supports TP14 on battery+; V015/R43.2-TP14 user confirmation retained. Q1.R/native1 is candidate gate at R44.2. Photo S means SINGLE, not MOSFET source."
+    },
+    {
+      "file": "evidence/library_placements.json",
+      "path": [
+        "components",
+        0,
+        "properties",
+        "ViaEvidence"
+      ],
+      "former_text": "v0.9.9: User corrects raw battery+ versus post-Q1 rail. BATP -> Q1.S (single physical pad/native3, candidate drain); Q1.L/native2 (candidate source) -> U5.4/V011-V014. These are distinct copper nets, connected through Q1. IMG_2438 also supports TP14 on battery+; V015/R43.2-TP14 user confirmation retained. Q1.R/native1 is candidate gate at R44.2. Photo S means SINGLE, not MOSFET source."
+    },
+    {
+      "file": "evidence/library_placements.json",
+      "path": [
+        "components",
+        22,
+        "properties",
+        "ViaEvidence"
+      ],
+      "former_text": "v0.9.9: User corrects raw battery+ versus post-Q1 rail. BATP -> Q1.S (single physical pad/native3, candidate drain); Q1.L/native2 (candidate source) -> U5.4/V011-V014. These are distinct copper nets, connected through Q1. IMG_2438 also supports TP14 on battery+; V015/R43.2-TP14 user confirmation retained. Q1.R/native1 is candidate gate at R44.2. Photo S means SINGLE, not MOSFET source."
+    },
+    {
+      "file": "evidence/library_placements.json",
+      "path": [
+        "components",
+        26,
+        "properties",
+        "ViaEvidence"
+      ],
+      "former_text": "v0.9.9: User corrects raw battery+ versus post-Q1 rail. BATP -> Q1.S (single physical pad/native3, candidate drain); Q1.L/native2 (candidate source) -> U5.4/V011-V014. These are distinct copper nets, connected through Q1. IMG_2438 also supports TP14 on battery+; V015/R43.2-TP14 user confirmation retained. Q1.R/native1 is candidate gate at R44.2. Photo S means SINGLE, not MOSFET source."
+    },
+    {
+      "file": "evidence/library_placements.json",
+      "path": [
+        "components",
+        27,
+        "properties",
+        "ViaEvidence"
+      ],
+      "former_text": "v0.9.9: User corrects raw battery+ versus post-Q1 rail. BATP -> Q1.S (single physical pad/native3, candidate drain); Q1.L/native2 (candidate source) -> U5.4/V011-V014. These are distinct copper nets, connected through Q1. IMG_2438 also supports TP14 on battery+; V015/R43.2-TP14 user confirmation retained. Q1.R/native1 is candidate gate at R44.2. Photo S means SINGLE, not MOSFET source."
+    },
+    {
+      "file": "evidence/library_placements.json",
+      "path": [
+        "components",
+        36,
+        "properties",
+        "ViaEvidence"
+      ],
+      "former_text": "v0.9.9: User corrects raw battery+ versus post-Q1 rail. BATP -> Q1.S (single physical pad/native3, candidate drain); Q1.L/native2 (candidate source) -> U5.4/V011-V014. These are distinct copper nets, connected through Q1. IMG_2438 also supports TP14 on battery+; V015/R43.2-TP14 user confirmation retained. Q1.R/native1 is candidate gate at R44.2. Photo S means SINGLE, not MOSFET source."
+    },
+    {
+      "file": "evidence/library_placements.json",
+      "path": [
+        "components",
+        37,
+        "properties",
+        "ViaEvidence"
+      ],
+      "former_text": "v0.9.9: User corrects raw battery+ versus post-Q1 rail. BATP -> Q1.S (single physical pad/native3, candidate drain); Q1.L/native2 (candidate source) -> U5.4/V011-V014. These are distinct copper nets, connected through Q1. IMG_2438 also supports TP14 on battery+; V015/R43.2-TP14 user confirmation retained. Q1.R/native1 is candidate gate at R44.2. Photo S means SINGLE, not MOSFET source."
+    },
+    {
+      "file": "evidence/library_placements.json",
+      "path": [
+        "components",
+        38,
+        "properties",
+        "ViaEvidence"
+      ],
+      "former_text": "v0.9.9: User corrects raw battery+ versus post-Q1 rail. BATP -> Q1.S (single physical pad/native3, candidate drain); Q1.L/native2 (candidate source) -> U5.4/V011-V014. These are distinct copper nets, connected through Q1. IMG_2438 also supports TP14 on battery+; V015/R43.2-TP14 user confirmation retained. Q1.R/native1 is candidate gate at R44.2. Photo S means SINGLE, not MOSFET source."
+    },
+    {
+      "file": "evidence/library_layout.json",
+      "path": [
+        "catalog",
+        0,
+        "placement",
+        "properties",
+        "ViaEvidence"
+      ],
+      "former_text": "v0.9.9: User corrects raw battery+ versus post-Q1 rail. BATP -> Q1.S (single physical pad/native3, candidate drain); Q1.L/native2 (candidate source) -> U5.4/V011-V014. These are distinct copper nets, connected through Q1. IMG_2438 also supports TP14 on battery+; V015/R43.2-TP14 user confirmation retained. Q1.R/native1 is candidate gate at R44.2. Photo S means SINGLE, not MOSFET source."
+    },
+    {
+      "file": "evidence/library_layout.json",
+      "path": [
+        "catalog",
+        0,
+        "via_evidence"
+      ],
+      "former_text": "v0.9.9: User corrects raw battery+ versus post-Q1 rail. BATP -> Q1.S (single physical pad/native3, candidate drain); Q1.L/native2 (candidate source) -> U5.4/V011-V014. These are distinct copper nets, connected through Q1. IMG_2438 also supports TP14 on battery+; V015/R43.2-TP14 user confirmation retained. Q1.R/native1 is candidate gate at R44.2. Photo S means SINGLE, not MOSFET source."
+    },
+    {
+      "file": "evidence/library_layout.json",
+      "path": [
+        "catalog",
+        22,
+        "placement",
+        "properties",
+        "ViaEvidence"
+      ],
+      "former_text": "v0.9.9: User corrects raw battery+ versus post-Q1 rail. BATP -> Q1.S (single physical pad/native3, candidate drain); Q1.L/native2 (candidate source) -> U5.4/V011-V014. These are distinct copper nets, connected through Q1. IMG_2438 also supports TP14 on battery+; V015/R43.2-TP14 user confirmation retained. Q1.R/native1 is candidate gate at R44.2. Photo S means SINGLE, not MOSFET source."
+    },
+    {
+      "file": "evidence/library_layout.json",
+      "path": [
+        "catalog",
+        22,
+        "via_evidence"
+      ],
+      "former_text": "v0.9.9: User corrects raw battery+ versus post-Q1 rail. BATP -> Q1.S (single physical pad/native3, candidate drain); Q1.L/native2 (candidate source) -> U5.4/V011-V014. These are distinct copper nets, connected through Q1. IMG_2438 also supports TP14 on battery+; V015/R43.2-TP14 user confirmation retained. Q1.R/native1 is candidate gate at R44.2. Photo S means SINGLE, not MOSFET source."
+    },
+    {
+      "file": "evidence/library_layout.json",
+      "path": [
+        "catalog",
+        26,
+        "placement",
+        "properties",
+        "ViaEvidence"
+      ],
+      "former_text": "v0.9.9: User corrects raw battery+ versus post-Q1 rail. BATP -> Q1.S (single physical pad/native3, candidate drain); Q1.L/native2 (candidate source) -> U5.4/V011-V014. These are distinct copper nets, connected through Q1. IMG_2438 also supports TP14 on battery+; V015/R43.2-TP14 user confirmation retained. Q1.R/native1 is candidate gate at R44.2. Photo S means SINGLE, not MOSFET source."
+    },
+    {
+      "file": "evidence/library_layout.json",
+      "path": [
+        "catalog",
+        26,
+        "via_evidence"
+      ],
+      "former_text": "v0.9.9: User corrects raw battery+ versus post-Q1 rail. BATP -> Q1.S (single physical pad/native3, candidate drain); Q1.L/native2 (candidate source) -> U5.4/V011-V014. These are distinct copper nets, connected through Q1. IMG_2438 also supports TP14 on battery+; V015/R43.2-TP14 user confirmation retained. Q1.R/native1 is candidate gate at R44.2. Photo S means SINGLE, not MOSFET source."
+    },
+    {
+      "file": "evidence/library_layout.json",
+      "path": [
+        "catalog",
+        27,
+        "placement",
+        "properties",
+        "ViaEvidence"
+      ],
+      "former_text": "v0.9.9: User corrects raw battery+ versus post-Q1 rail. BATP -> Q1.S (single physical pad/native3, candidate drain); Q1.L/native2 (candidate source) -> U5.4/V011-V014. These are distinct copper nets, connected through Q1. IMG_2438 also supports TP14 on battery+; V015/R43.2-TP14 user confirmation retained. Q1.R/native1 is candidate gate at R44.2. Photo S means SINGLE, not MOSFET source."
+    },
+    {
+      "file": "evidence/library_layout.json",
+      "path": [
+        "catalog",
+        27,
+        "via_evidence"
+      ],
+      "former_text": "v0.9.9: User corrects raw battery+ versus post-Q1 rail. BATP -> Q1.S (single physical pad/native3, candidate drain); Q1.L/native2 (candidate source) -> U5.4/V011-V014. These are distinct copper nets, connected through Q1. IMG_2438 also supports TP14 on battery+; V015/R43.2-TP14 user confirmation retained. Q1.R/native1 is candidate gate at R44.2. Photo S means SINGLE, not MOSFET source."
+    },
+    {
+      "file": "evidence/library_layout.json",
+      "path": [
+        "catalog",
+        36,
+        "placement",
+        "properties",
+        "ViaEvidence"
+      ],
+      "former_text": "v0.9.9: User corrects raw battery+ versus post-Q1 rail. BATP -> Q1.S (single physical pad/native3, candidate drain); Q1.L/native2 (candidate source) -> U5.4/V011-V014. These are distinct copper nets, connected through Q1. IMG_2438 also supports TP14 on battery+; V015/R43.2-TP14 user confirmation retained. Q1.R/native1 is candidate gate at R44.2. Photo S means SINGLE, not MOSFET source."
+    },
+    {
+      "file": "evidence/library_layout.json",
+      "path": [
+        "catalog",
+        36,
+        "via_evidence"
+      ],
+      "former_text": "v0.9.9: User corrects raw battery+ versus post-Q1 rail. BATP -> Q1.S (single physical pad/native3, candidate drain); Q1.L/native2 (candidate source) -> U5.4/V011-V014. These are distinct copper nets, connected through Q1. IMG_2438 also supports TP14 on battery+; V015/R43.2-TP14 user confirmation retained. Q1.R/native1 is candidate gate at R44.2. Photo S means SINGLE, not MOSFET source."
+    },
+    {
+      "file": "evidence/library_layout.json",
+      "path": [
+        "catalog",
+        37,
+        "placement",
+        "properties",
+        "ViaEvidence"
+      ],
+      "former_text": "v0.9.9: User corrects raw battery+ versus post-Q1 rail. BATP -> Q1.S (single physical pad/native3, candidate drain); Q1.L/native2 (candidate source) -> U5.4/V011-V014. These are distinct copper nets, connected through Q1. IMG_2438 also supports TP14 on battery+; V015/R43.2-TP14 user confirmation retained. Q1.R/native1 is candidate gate at R44.2. Photo S means SINGLE, not MOSFET source."
+    },
+    {
+      "file": "evidence/library_layout.json",
+      "path": [
+        "catalog",
+        37,
+        "via_evidence"
+      ],
+      "former_text": "v0.9.9: User corrects raw battery+ versus post-Q1 rail. BATP -> Q1.S (single physical pad/native3, candidate drain); Q1.L/native2 (candidate source) -> U5.4/V011-V014. These are distinct copper nets, connected through Q1. IMG_2438 also supports TP14 on battery+; V015/R43.2-TP14 user confirmation retained. Q1.R/native1 is candidate gate at R44.2. Photo S means SINGLE, not MOSFET source."
+    },
+    {
+      "file": "evidence/library_layout.json",
+      "path": [
+        "catalog",
+        38,
+        "placement",
+        "properties",
+        "ViaEvidence"
+      ],
+      "former_text": "v0.9.9: User corrects raw battery+ versus post-Q1 rail. BATP -> Q1.S (single physical pad/native3, candidate drain); Q1.L/native2 (candidate source) -> U5.4/V011-V014. These are distinct copper nets, connected through Q1. IMG_2438 also supports TP14 on battery+; V015/R43.2-TP14 user confirmation retained. Q1.R/native1 is candidate gate at R44.2. Photo S means SINGLE, not MOSFET source."
+    },
+    {
+      "file": "evidence/library_layout.json",
+      "path": [
+        "catalog",
+        38,
+        "via_evidence"
+      ],
+      "former_text": "v0.9.9: User corrects raw battery+ versus post-Q1 rail. BATP -> Q1.S (single physical pad/native3, candidate drain); Q1.L/native2 (candidate source) -> U5.4/V011-V014. These are distinct copper nets, connected through Q1. IMG_2438 also supports TP14 on battery+; V015/R43.2-TP14 user confirmation retained. Q1.R/native1 is candidate gate at R44.2. Photo S means SINGLE, not MOSFET source."
+    },
+    {
+      "file": "evidence/library_layout.json",
+      "path": [
+        "catalog",
+        39,
+        "via_evidence"
+      ],
+      "former_text": "v0.9.9: User corrects raw battery+ versus post-Q1 rail. BATP -> Q1.S (single physical pad/native3, candidate drain); Q1.L/native2 (candidate source) -> U5.4/V011-V014. These are distinct copper nets, connected through Q1. IMG_2438 also supports TP14 on battery+; V015/R43.2-TP14 user confirmation retained. Q1.R/native1 is candidate gate at R44.2. Photo S means SINGLE, not MOSFET source."
+    },
+    {
+      "file": "evidence/library_layout.json",
+      "path": [
+        "catalog",
+        40,
+        "via_evidence"
+      ],
+      "former_text": "v0.9.9: User corrects raw battery+ versus post-Q1 rail. BATP -> Q1.S (single physical pad/native3, candidate drain); Q1.L/native2 (candidate source) -> U5.4/V011-V014. These are distinct copper nets, connected through Q1. IMG_2438 also supports TP14 on battery+; V015/R43.2-TP14 user confirmation retained. Q1.R/native1 is candidate gate at R44.2. Photo S means SINGLE, not MOSFET source."
+    }
+  ]
+}

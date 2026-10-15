@@ -1,0 +1,47 @@
+{
+  "date": "2026-10-09",
+  "revision": "v0.9.11",
+  "source": "User reports and annotated photo during architect review follow-up",
+  "photo": "photos/user_updates/D3_V082_VDD_20261009.png",
+  "photo_sha256": "99cb694a3b8365aeb2f325f89d863cc17d6a573b545b949a2ce28824b9e2aee8",
+  "measurements": [
+    {
+      "endpoints": [
+        "D3.L",
+        "GND.1"
+      ],
+      "result": "User reports connected; numerical resistance not supplied"
+    },
+    {
+      "endpoints": [
+        "D3.R",
+        "VDD.1"
+      ],
+      "via": "V082",
+      "result": "User reports connected; numerical resistance not supplied"
+    },
+    {
+      "endpoints": [
+        "D3.S",
+        "R42 (end unspecified)"
+      ],
+      "resistance_ohms": 1.2,
+      "result": "Low-ohm connection reported; photo selects the R42 end nearest D3 / model pad2"
+    }
+  ],
+  "changes": [
+    {
+      "endpoint": "D3.R",
+      "old_net": "H_RX_VDD",
+      "new_net": "VDD",
+      "reason": "Exact terminal now identified by user; no whole receiver-rail merge"
+    },
+    {
+      "old_net": "H_RX_RF_SENSE",
+      "new_net": "H_D3_SIGNAL",
+      "reason": "Neutral name: signal operating function not measured"
+    }
+  ],
+  "interpretation": "Candidate BAV99 rail clamp around H_D3_SIGNAL. R42.1 already reaches TP4/PIC25; R42.2 photo selection supported by new component-level continuity. No voltage, waveform or diode identity measurement supplied.",
+  "datasheet": "https://assets.nexperia.com/documents/data-sheet/BAV99.pdf"
+}

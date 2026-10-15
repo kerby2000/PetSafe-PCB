@@ -1,0 +1,66 @@
+{
+  "date": "2026-10-09",
+  "revision": "v0.9.36",
+  "baseline_commit": "3c1d82e",
+  "type": "AGENT_PHOTO_TRACE_REVIEW_NO_NEW_METER_RESULT",
+  "assessment": "Photo-supported J5 map (IMG_2438 front, IMG_2439 rear): contact nearer C34 = A/native1 -> U5.8 OUTA; contact nearer BATTERY+ edge = B/native2 -> U5.5 OUTB/TP15. Connector body is on the rear. Harness colours, stock-footprint numbering and exact pitch remain unverified; no new bench result.",
+  "contact_map": [
+    {
+      "physical": "Front IMG_2438 upper J5 solder contact beside C34, farther from BATTERY+ edge",
+      "model": "J5.A",
+      "native": "J5.1",
+      "net": "H_MOTOR_A",
+      "destination": "U5.8 / OUTA"
+    },
+    {
+      "physical": "Front IMG_2438 lower J5 solder contact nearest BATTERY+ board edge",
+      "model": "J5.B",
+      "native": "J5.2",
+      "net": "H_MOTOR_B",
+      "destination": "U5.5 / OUTB and TP15"
+    }
+  ],
+  "basis": [
+    "U5 pin1 dot is upper-right in IMG_2438. Candidate MX512H top-view numbering gives lower-right pin8 OUTA and lower-left pin5 OUTB.",
+    "Visible front tracks connect pin8 to the contact beside C34, and pin5/TP15 through the lower edge track to the contact nearest BATTERY+.",
+    "IMG_2439 shows the J5 shrouded body on the rear. The front/rear views must be mirrored when relating contacts."
+  ],
+  "limits": [
+    "A/B and native1/2 are reconstruction identifiers; stock JST footprint pad numbering/orientation still requires a physical fit check.",
+    "No motor lead colours or rotation direction are established by these photos.",
+    "No inferred new net merge or semiconductor identity change."
+  ],
+  "closed_issue": {
+    "id": "I02",
+    "area": "Motor connector physical lead order",
+    "refs": [
+      "J5"
+    ],
+    "priority": 2,
+    "state": "closed",
+    "known": "U5 motor outputs are modeled to the two J5 contacts. LED colour mapping is recorded separately in the completed B42/B43 ledger.",
+    "unknown": "Physical motor lead A/B correspondence to the existing native J5 pin1/pin2 map remains provisional.",
+    "next_action": "Review front/rear photos and connector orientation first. If the hidden route cannot establish the physical map, prepare a labelled continuity check to the H-bridge outputs. Motor operating direction is a separate behavior question.",
+    "closed_when": "Physical J5 contacts and motor leads are tied to the modeled U5 outputs by photo or continuity evidence.",
+    "open_pads": [],
+    "nets": [],
+    "supporting_evidence": [
+      "docs/history/v0.9.30-before-finalization/evidence/remaining_work.json",
+      "evidence/led1_colour_results_20261009.json"
+    ],
+    "owner": "Agent evidence review; targeted owner test only as listed",
+    "category": "connectivity/behavior",
+    "resolution": {
+      "date": "2026-10-09",
+      "result": "Visible front copper and rear connector location establish the board-contact map to OUTA/OUTB. External harness colours and stock footprint fit are reproduction qualifications under M01, not missing main-board wires.",
+      "evidence": [
+        "evidence/j5_photo_review_20261009.json"
+      ]
+    }
+  },
+  "photos": {
+    "photos/originals/IMG_2438.jpg": "b3868ea3dd2f4b542d0713b57401d2a9c2a898f9b11898b32f17b84883702109",
+    "photos/originals/IMG_2439.jpg": "25e0c2dd55a3a1145175b61fec427c5c429e92a614bf944bd6f721fd490d42cc"
+  },
+  "electrical_change": false
+}

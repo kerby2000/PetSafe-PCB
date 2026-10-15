@@ -1,357 +1,206 @@
 {
-  "revision": "v0.7",
+  "revision": "v0.9.45",
   "pin_number_source": "Microchip DS40001802H p4; top-view pin1 dot",
   "source_url": "https://ww1.microchip.com/downloads/aemDocuments/documents/MCU08/ProductDocuments/DataSheets/PIC16(L)F18855-75-Data-Sheet-40001802H.pdf",
-  "open_gpio_pins_before": 19,
-  "open_gpio_pins_after": 14,
-  "interpretation": "Local visible connections and qualified top-edge inference; remote endpoints and existing inferred nets remain partly unverified.",
+  "interpretation": "Current modeled routes and evidence qualifications. No claim of exhaustive hidden-layer connectivity.",
+  "historical_source": "docs/history/e06-v0941/pic_trace_audit.json",
+  "open_gpio_pins": [],
   "pins": [
     {
       "pin": 1,
       "function": "RE3/MCLR",
       "net": "MCLR_VPP",
-      "status": "MODELED: see evidence strength",
-      "evidence": "ICSP VPP inferred; nearby D6 routing unresolved",
-      "photos": [
-        "IMG_2436.jpg",
-        "IMG_2437.jpg",
-        "IMG_2438.jpg"
-      ]
+      "status": "LOCAL_ROUTE_MODELED",
+      "evidence": "J1.1/VPP plus D6 cathode; D6 W-VPP 1 ohm, forward 0.7V from GND"
     },
     {
       "pin": 2,
       "function": "RA0",
-      "net": "PIC_RA0_FILTER",
-      "status": "MODELED: see evidence strength",
-      "evidence": "Visible to C25 right pad; external continuation hidden",
-      "photos": [
-        "IMG_2436.jpg",
-        "IMG_2437.jpg",
-        "IMG_2438.jpg"
-      ]
+      "net": "RX_A_FILTER",
+      "status": "LOCAL_ROUTE_MODELED",
+      "evidence": "C25 / V031 to TP6 / R27.1 / C18.2: B59 = 1.5 ohm; RX_A_FILTER"
     },
     {
       "pin": 3,
       "function": "RA1",
-      "net": null,
-      "status": "OPEN",
-      "evidence": "Runs down beside C25/C26; destination unresolved",
-      "photos": [
-        "IMG_2436.jpg",
-        "IMG_2437.jpg",
-        "IMG_2438.jpg"
-      ]
+      "net": "PIC_RA1_RX_REF",
+      "status": "LOCAL_ROUTE_MODELED",
+      "evidence": "C26 signal pad (user annotation); R28 + R29 + TP7 (earlier meter/trace)"
     },
     {
       "pin": 4,
       "function": "RA2",
-      "net": "PIC_RA2_FILTER",
-      "status": "MODELED: see evidence strength",
-      "evidence": "Visible to C39 left pad; external continuation hidden",
-      "photos": [
-        "IMG_2436.jpg",
-        "IMG_2437.jpg",
-        "IMG_2438.jpg"
-      ]
+      "net": "VREF",
+      "status": "LOCAL_ROUTE_MODELED",
+      "evidence": "VREF TP via V035; user confirms via-to-TP; C39.1 local photo route"
     },
     {
       "pin": 5,
       "function": "RA3",
-      "net": null,
-      "status": "OPEN",
-      "evidence": "Trace exit obscured by body/pad",
-      "photos": [
-        "IMG_2436.jpg",
-        "IMG_2437.jpg",
-        "IMG_2438.jpg"
-      ]
+      "net": "H_TUNE_2",
+      "status": "LOCAL_ROUTE_MODELED",
+      "evidence": "V036-V108 to R14; user continuity report"
     },
     {
       "pin": 6,
       "function": "RA4",
-      "net": null,
-      "status": "OPEN",
-      "evidence": "Trace exit obscured by body/pad",
-      "photos": [
-        "IMG_2436.jpg",
-        "IMG_2437.jpg",
-        "IMG_2438.jpg"
-      ]
+      "net": "H_TUNE_3",
+      "status": "LOCAL_ROUTE_MODELED",
+      "evidence": "V037-V102 to R15; user continuity report"
     },
     {
       "pin": 7,
       "function": "RA5",
-      "net": null,
-      "status": "OPEN",
-      "evidence": "Trace exit obscured by body/pad",
-      "photos": [
-        "IMG_2436.jpg",
-        "IMG_2437.jpg",
-        "IMG_2438.jpg"
-      ]
+      "net": "H_TUNE_4",
+      "status": "LOCAL_ROUTE_MODELED",
+      "evidence": "V039-V097 to R16; user continuity report"
     },
     {
       "pin": 8,
       "function": "VSS",
-      "net": "H_GND",
-      "status": "MODELED: see evidence strength",
-      "evidence": "VSS datasheet; local ground-via candidate",
-      "photos": [
-        "IMG_2436.jpg",
-        "IMG_2437.jpg",
-        "IMG_2438.jpg"
-      ]
+      "net": "GND",
+      "status": "LOCAL_ROUTE_MODELED",
+      "evidence": "GND / V041 photo anchor"
     },
     {
       "pin": 9,
       "function": "RA7/OSC1",
       "net": "OSC1",
-      "status": "MODELED: see evidence strength",
-      "evidence": "Visible crystal and C30 fragment retained",
-      "photos": [
-        "IMG_2436.jpg",
-        "IMG_2437.jpg",
-        "IMG_2438.jpg"
-      ]
+      "status": "LOCAL_ROUTE_MODELED",
+      "evidence": "Y1 oscillator; photo-derived"
     },
     {
       "pin": 10,
       "function": "RA6/OSC2",
       "net": "OSC2",
-      "status": "MODELED: see evidence strength",
-      "evidence": "Visible crystal and C31 fragment retained",
-      "photos": [
-        "IMG_2436.jpg",
-        "IMG_2437.jpg",
-        "IMG_2438.jpg"
-      ]
+      "status": "LOCAL_ROUTE_MODELED",
+      "evidence": "Y1 oscillator; photo-derived"
     },
     {
       "pin": 11,
       "function": "RC0",
-      "net": null,
-      "status": "OPEN",
-      "evidence": "Pad exit/continuation unresolved",
-      "photos": [
-        "IMG_2436.jpg",
-        "IMG_2437.jpg",
-        "IMG_2438.jpg"
-      ]
+      "net": "H_TUNE_5",
+      "status": "LOCAL_ROUTE_MODELED",
+      "evidence": "V047-V091 to R11; user continuity report"
     },
     {
       "pin": 12,
       "function": "RC1",
-      "net": null,
-      "status": "OPEN",
-      "evidence": "Visible rightward trace ends at via; final destination unresolved",
-      "photos": [
-        "IMG_2436.jpg",
-        "IMG_2437.jpg",
-        "IMG_2438.jpg"
-      ]
+      "net": "H_RX_ENABLE_CTL",
+      "status": "LOCAL_ROUTE_MODELED",
+      "evidence": "R18.1 via V053-V070; user-confirmed; VREF link explicitly rejected"
     },
     {
       "pin": 13,
       "function": "RC2",
-      "net": null,
-      "status": "OPEN",
-      "evidence": "Pad exit/continuation unresolved",
-      "photos": [
-        "IMG_2436.jpg",
-        "IMG_2437.jpg",
-        "IMG_2438.jpg"
-      ]
+      "net": "RF_MONITOR_PAD",
+      "status": "LOCAL_ROUTE_MODELED",
+      "evidence": "TP3 via V049 (user); R10/R6/R7/D1 midpoint from IMG_2431; excitation waveform unmeasured"
     },
     {
       "pin": 14,
       "function": "RC3",
       "net": "PIC_RC3",
-      "status": "MODELED: see evidence strength",
-      "evidence": "Visible TP11 fragment retained",
-      "photos": [
-        "IMG_2436.jpg",
-        "IMG_2437.jpg",
-        "IMG_2438.jpg"
-      ]
+      "status": "LOCAL_ROUTE_MODELED",
+      "evidence": "TP11; supported local route; hidden continuation/firmware purpose unproved (E06 limitation)"
     },
     {
       "pin": 15,
       "function": "RC4",
-      "net": null,
-      "status": "OPEN",
-      "evidence": "Pad exit/continuation unresolved",
-      "photos": [
-        "IMG_2436.jpg",
-        "IMG_2437.jpg",
-        "IMG_2438.jpg"
-      ]
+      "net": "MOTOR_INA",
+      "status": "LOCAL_ROUTE_MODELED",
+      "evidence": "V022-V016 to U5 pin2 / INA; user-confirmed"
     },
     {
       "pin": 16,
       "function": "RC5",
-      "net": null,
-      "status": "OPEN",
-      "evidence": "Pad exit/continuation unresolved",
-      "photos": [
-        "IMG_2436.jpg",
-        "IMG_2437.jpg",
-        "IMG_2438.jpg"
-      ]
+      "net": "MOTOR_INB",
+      "status": "LOCAL_ROUTE_MODELED",
+      "evidence": "V023-V019 to U5 pin3 / INB; user-confirmed"
     },
     {
       "pin": 17,
       "function": "RC6",
-      "net": null,
-      "status": "OPEN",
-      "evidence": "Trace runs right into a copper area; final destination unassigned",
-      "photos": [
-        "IMG_2436.jpg",
-        "IMG_2437.jpg",
-        "IMG_2438.jpg"
-      ]
+      "net": "H_TUNE_1",
+      "status": "LOCAL_ROUTE_MODELED",
+      "evidence": "R13; user meter / visible trace"
     },
     {
       "pin": 18,
       "function": "RC7",
-      "net": "H_TUNE_1",
-      "status": "MODELED: see evidence strength",
-      "evidence": "Direct to TP17; probable top-edge continuation to R13 upper pad",
-      "photos": [
-        "IMG_2436.jpg",
-        "IMG_2437.jpg",
-        "IMG_2438.jpg"
-      ]
+      "net": "PIC_RC7_TP17",
+      "status": "LOCAL_ROUTE_MODELED",
+      "evidence": "TP17; supported local route; hidden continuation/firmware purpose unproved; R13 belongs to RC6"
     },
     {
       "pin": 19,
       "function": "VSS",
-      "net": "H_GND",
-      "status": "MODELED: see evidence strength",
-      "evidence": "Visible C32 right pad; VSS from datasheet",
-      "photos": [
-        "IMG_2436.jpg",
-        "IMG_2437.jpg",
-        "IMG_2438.jpg"
-      ]
+      "net": "GND",
+      "status": "LOCAL_ROUTE_MODELED",
+      "evidence": "GND / C32 / V045 photo anchor"
     },
     {
       "pin": 20,
       "function": "VDD",
-      "net": "H_VDD",
-      "status": "MODELED: see evidence strength",
-      "evidence": "Visible C32 left pad; VDD from datasheet",
-      "photos": [
-        "IMG_2436.jpg",
-        "IMG_2437.jpg",
-        "IMG_2438.jpg"
-      ]
+      "net": "VDD",
+      "status": "LOCAL_ROUTE_MODELED",
+      "evidence": "V042 to board VDD TP user-confirmed; C32.1 local photo route"
     },
     {
       "pin": 21,
       "function": "RB0",
-      "net": null,
-      "status": "OPEN",
-      "evidence": "Pad exit/continuation unresolved",
-      "photos": [
-        "IMG_2436.jpg",
-        "IMG_2437.jpg",
-        "IMG_2438.jpg"
-      ]
+      "net": "H_PIR_SIG",
+      "status": "LOCAL_ROUTE_MODELED",
+      "evidence": "TP16/Q2.S; user correction. Old VREF join rejected; TP16-VREF 800 kohm"
     },
     {
       "pin": 22,
       "function": "RB1",
-      "net": null,
-      "status": "OPEN",
-      "evidence": "Visible diagonal to top-edge track; remote endpoint not established",
-      "photos": [
-        "IMG_2436.jpg",
-        "IMG_2437.jpg",
-        "IMG_2438.jpg"
-      ]
+      "net": "H_LED_CTL_B",
+      "status": "LOCAL_ROUTE_MODELED",
+      "evidence": "TP2 / R31 / green LED branch; user meter, visible trace and B42 colour"
     },
     {
       "pin": 23,
       "function": "RB2",
-      "net": null,
-      "status": "OPEN",
-      "evidence": "Visible diagonal to top-edge track; remote endpoint not established",
-      "photos": [
-        "IMG_2436.jpg",
-        "IMG_2437.jpg",
-        "IMG_2438.jpg"
-      ]
+      "net": "H_LED_CTL_A",
+      "status": "LOCAL_ROUTE_MODELED",
+      "evidence": "TP1 / R30 / red LED branch; user meter, visible trace and B43 colour"
     },
     {
       "pin": 24,
       "function": "RB3",
       "net": "PIC_RB3_RETURN",
-      "status": "MODELED: see evidence strength",
-      "evidence": "Direct visible trace to R4 lower pad",
-      "photos": [
-        "IMG_2436.jpg",
-        "IMG_2437.jpg",
-        "IMG_2438.jpg"
-      ]
+      "status": "LOCAL_ROUTE_MODELED",
+      "evidence": "R4; photo-derived; sensing role remains inferred"
     },
     {
       "pin": 25,
       "function": "RB4",
-      "net": null,
-      "status": "OPEN",
-      "evidence": "Pad exit under R3/R4 area unclear",
-      "photos": [
-        "IMG_2436.jpg",
-        "IMG_2437.jpg",
-        "IMG_2438.jpg"
-      ]
+      "net": "PIC_TP4_C41",
+      "status": "LOCAL_ROUTE_MODELED",
+      "evidence": "TP4 / V017 / R42.1 / R44.1; user continuity; C41 photo-derived"
     },
     {
       "pin": 26,
       "function": "RB5",
       "net": "RB5_OPT",
-      "status": "MODELED: see evidence strength",
-      "evidence": "Visible long loop to TP10 and R35 upper pad; Q9 is separated by empty R35",
-      "photos": [
-        "IMG_2436.jpg",
-        "IMG_2437.jpg",
-        "IMG_2438.jpg"
-      ]
+      "status": "LOCAL_ROUTE_MODELED",
+      "evidence": "TP10 / R35; user meter / visible trace"
     },
     {
       "pin": 27,
       "function": "RB6/ICSPCLK",
       "net": "ICSP_CLK",
-      "status": "MODELED: see evidence strength",
-      "evidence": "Visible D4 lower cathode candidate/R32 lower node; programming connector destination inferred",
-      "photos": [
-        "IMG_2436.jpg",
-        "IMG_2437.jpg",
-        "IMG_2438.jpg"
-      ]
+      "status": "LOCAL_ROUTE_MODELED",
+      "evidence": "ICSP CLK / D4 / R32; photo-derived"
     },
     {
       "pin": 28,
       "function": "RB7/ICSPDAT",
       "net": "ICSP_DAT",
-      "status": "MODELED: see evidence strength",
-      "evidence": "Visible D5 lower cathode candidate/R40 upper node; programming connector destination inferred",
-      "photos": [
-        "IMG_2436.jpg",
-        "IMG_2437.jpg",
-        "IMG_2438.jpg"
-      ]
+      "status": "LOCAL_ROUTE_MODELED",
+      "evidence": "ICSP DAT / D5 / R40; photo-derived"
     }
-  ],
-  "v093_user_correction": {
-    "revision": "v0.9.3",
-    "supersedes": "Historical no-visible-exit observations for pins 5/6/7/11/13 do not mean NC; user now identifies their vias.",
-    "associations": {
-      "5": "V036",
-      "6": "V037",
-      "7": "V039",
-      "11": "V047",
-      "13": "V049"
-    }
-  }
+  ]
 }

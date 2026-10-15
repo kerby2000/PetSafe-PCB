@@ -1,11 +1,9 @@
 {
-  "revision": "v0.9.9",
+  "revision": "v0.9.45",
   "result": "PASS: file existence, native/model agreement, symbol-pin coverage",
   "physical_fit": "NOT VERIFIED: photo-based candidates",
   "assigned": 147,
   "unassigned": [
-    "C5",
-    "S1",
     "LED1"
   ],
   "components": [
@@ -402,20 +400,6 @@
       "sha256": "03fc7902b2661df01b4d828fdb6eab9eddf974e7130ed2b98892607387a50c4b"
     },
     {
-      "ref": "R33",
-      "native_ref": "R33",
-      "footprint": "Resistor_SMD:R_0603_1608Metric",
-      "symbol_pins": [
-        "1",
-        "2"
-      ],
-      "footprint_pads": [
-        "1",
-        "2"
-      ],
-      "sha256": "03fc7902b2661df01b4d828fdb6eab9eddf974e7130ed2b98892607387a50c4b"
-    },
-    {
       "ref": "R37",
       "native_ref": "R37",
       "footprint": "Resistor_SMD:R_0603_1608Metric",
@@ -680,6 +664,20 @@
         "2"
       ],
       "sha256": "d45eebd5cb9faace255d4ec95a0f9484efde898359507b02e2ba9bbb3ef6d857"
+    },
+    {
+      "ref": "C5",
+      "native_ref": "C5",
+      "footprint": "Capacitor_THT:CP_Radial_D6.3mm_P2.50mm",
+      "symbol_pins": [
+        "1",
+        "2"
+      ],
+      "footprint_pads": [
+        "1",
+        "2"
+      ],
+      "sha256": "985ff707ffcb2e5687d2e09b671bfa3ea0cdc41eeb20f6a75f6cb19f3f316e44"
     },
     {
       "ref": "C6",
@@ -1836,6 +1834,20 @@
       "sha256": "77ac02f4955d3dc824de14f5874874e0e5b095afdda5aab7c6558c1f6b83297e"
     },
     {
+      "ref": "S1",
+      "native_ref": "S1",
+      "footprint": "Button_Switch_SMD:SW_SPST_PTS645Sx43SMTR92",
+      "symbol_pins": [
+        "1",
+        "2"
+      ],
+      "footprint_pads": [
+        "1",
+        "2"
+      ],
+      "sha256": "657bf2d66e347e176095f1b8d26b03d57a4200924d0283a5cbd1c162a84a24c8"
+    },
+    {
       "ref": "J1",
       "native_ref": "J1",
       "footprint": "Connector_PinHeader_2.54mm:PinHeader_1x05_P2.54mm_Horizontal",
@@ -1974,18 +1986,6 @@
     {
       "ref": "TP7",
       "native_ref": "TP7",
-      "footprint": "TestPoint:TestPoint_THTPad_D2.0mm_Drill1.0mm",
-      "symbol_pins": [
-        "1"
-      ],
-      "footprint_pads": [
-        "1"
-      ],
-      "sha256": "f8383676add1f861160ed7eda486d1a583ecce463dd082c911c03bd1f0ff6aba"
-    },
-    {
-      "ref": "TP9",
-      "native_ref": "TP9",
       "footprint": "TestPoint:TestPoint_THTPad_D2.0mm_Drill1.0mm",
       "symbol_pins": [
         "1"

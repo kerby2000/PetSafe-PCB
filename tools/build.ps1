@@ -30,10 +30,23 @@ try {
     if ($LASTEXITCODE) { throw 'Native PDF export failed.' }
     & $KiCadCli sch export svg -o output/svg schematic/PetSafe_1001339.kicad_sch
     if ($LASTEXITCODE) { throw 'Native SVG export failed.' }
+    # KiCad appends trailing blanks to SVG primitives; normalize whitespace only.
+    & $Python -c "from pathlib import Path; p=Path('output/svg/PetSafe_1001339.svg'); p.write_text('\n'.join(line.rstrip() for line in p.read_text(encoding='utf-8').splitlines())+'\n',encoding='utf-8')"
+    if ($LASTEXITCODE) { throw 'SVG whitespace normalization failed.' }
     & $KiCadCli sch erc --format json -o output/erc.json schematic/PetSafe_1001339.kicad_sch
     if ($LASTEXITCODE) { throw 'Native ERC process failed.' }
     & $Python tools/validate_native.py
     if ($LASTEXITCODE) { throw 'Native connectivity validation failed.' }
+    & $Python tools/verify_r39.py
+    if ($LASTEXITCODE) { throw 'Bounded R39 correction failed.' }
+    & $Python tools/verify_pr1_cleanup.py
+    if ($LASTEXITCODE) { throw 'Documentation-only preservation check failed.' }
+    & $Python tools/verify_capacitor_application.py
+    if ($LASTEXITCODE) { throw 'Capacitor value application validation failed.' }
+    & $Python tools/verify_stock_symbols.py
+    if ($LASTEXITCODE) { throw 'Library symbol verification failed.' }
+    & $Python tools/audit_finalization.py
+    if ($LASTEXITCODE) { throw 'Finalization audit failed.' }
     & $Python tools/verify_footprints.py
     if ($LASTEXITCODE) { throw 'Stock footprint validation failed.' }
     & $Python tools/build_review.py

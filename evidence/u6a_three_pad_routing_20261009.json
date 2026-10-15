@@ -1,0 +1,44 @@
+{
+  "date": "2026-10-09",
+  "revision": "v0.9.22",
+  "method": "User annotated routing; no new resistance or voltage supplied.",
+  "photos": {
+    "photos/user_updates/U6A_three_pad_routing_20261009.png": "595a1aab4ae46ea5b1bded3ed07cfa94dbfbff384dcfb1285f41cb36c9b2c693"
+  },
+  "photo_pad_mapping": {
+    "U6A.L": "single left pad / native U106.1",
+    "U6A.R1": "upper-right pad / native U106.2",
+    "U6A.R2": "lower-right pad / native U106.3"
+  },
+  "supported_pairs": [
+    [
+      "U6A.L",
+      "U6.L2"
+    ],
+    [
+      "U6A.R1",
+      "J3.1"
+    ],
+    [
+      "U6A.R2",
+      "GND.1"
+    ]
+  ],
+  "confirmed_new_pair": [
+    "U6A.R2",
+    "GND.1"
+  ],
+  "retained_input_path": [
+    "VDD",
+    "R37.1",
+    "R37 22 ohm",
+    "R37.2",
+    "H_AUX_IN",
+    "U6.2",
+    "U6.5",
+    "U106.1"
+  ],
+  "interpretation": "v0.9.22 user annotated U6A option: single left pad/model L/native U106.1 joins U6 pin5 and the existing input node after R37; upper-right/model R1/native2 joins J3.1 (red PIR wire); lower-right/model R2/native3 joins GND. All three external pads mapped, option remains DNP. User called the input VDD; retain VDD -> R37 (22 ohm) -> H_AUX_IN because the annotation ends at U6 pin5 and prior B28 confirms pin5-pin2, not a bypass across R37. No fitted IC identity or voltage measurement implied.",
+  "population": "DNP",
+  "numerical_reading": null
+}

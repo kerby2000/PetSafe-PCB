@@ -44,7 +44,7 @@ def apply(out):
     annotate([7],['C34.2'],'User adds C34 to earlier GND report; pad2 selected from photo/model.','GND')
     for i in [11,12,13,14]:
         sites[f'V{i:03d}'].update(net='VSYS',endpoints=['Q1.L'],excluded_endpoints=['R43.2'],reported_supply='MX512H pin4 VDD / motor supply VSYS',confidence='User confirms post-Q1 motor rail; candidate PMOS function from R1A datasheet and photo',component_crosscheck='User explicitly confirms same rail as MX512H pin4. Q1.L reaches motor VSYS, distinct from regulated VDD/TP103. R43.2 remains excluded.')
-    sites['V015'].update(endpoints=['R43.2','TP14.1'],net='BATTERY+',excluded_endpoints=['Q1.L'],component_crosscheck='User confirms V015-TP14 and R43.2. IMG_2438 places TP14 on battery-positive copper to Q1 single pad3. Raw battery stays separate from post-Q1 motor VDD; the former battery-detect net name is withdrawn.')
+    sites['V015'].update(endpoints=['R43.2','TP14.1','U5.8'],net='H_MOTOR_A',excluded_endpoints=['Q1.L','BATP.1','Q1.S','Q1.R'],measurement_source='evidence/tp14_motor_output_correction_v0939.json',component_crosscheck='User TP14-U5.8 = 1.5 ohm supports OUTA. Prior V015-TP14/R43.2 association retained. Battery photo assignment rejected by 6.3 V differential; 516 ohm to Q1.R does not support a direct join.')
     annotate([16,22],['U5.2','U4.15'],'User confirms V016-V022 joins U5 INA pin2 to PIC15 RC4.','MOTOR_INA')
     annotate([19,23],['U5.3','U4.16'],'User confirms V019-V023 joins U5 INB pin3 to PIC16 RC5.','MOTOR_INB')
     for i in [16,22]:sites[f'V{i:03d}']['joined_vias']=['V016','V022']
@@ -54,10 +54,12 @@ def apply(out):
     annotate([20],['R40.1'],'User identifies R40; photo selects upper/free pad1 on the existing ICSP DAT node.','ICSP_DAT')
     annotate([21],['Q9.R'],'Q9 DNP lower-right pad; stock pin2.','GND')
     annotate([24],['R32.1'],'R32 upper photo pad. Old PIR assignment withdrawn.','GND')
-    annotate([26],['U4.21','VREF.1'],'User V026-VREF report with prior V026-PIC21/RB0 mapping. VREF is native TP104; voltage/function not established.','VREF')
-    annotate([29],['C25.2','C26.2'],'User adds both capacitors to earlier GND report; return pads selected from photos/model. C26.1 remains unresolved.','GND')
-    annotate([31],['U4.2','C25.1'],'User RA0/C25 association corroborates existing local signal node.','PIC_RA0_FILTER')
-    annotate([35],['U4.4','C39.1','VREF.1'],'User confirms V035-VREF TP; earlier local PIC4/RA2-C39.1 photo route retained. Same VREF node as V026/RB0 and V071/R21.2.','VREF')
+    annotate([26],['U4.21','TP16.1','Q2.S'],'v0.9.16 user corrects PIC21 to TP16/Q2.S and withdraws PIC21-VREF; TP16-VREF 800 kohm. Prior V026-PIC21 local association retained.','H_PIR_SIG')
+    sites['V026']['confidence']='User PIC21-TP16 report and explicit correction; prior V026-PIC21 association retained'
+    sites['V026'].pop('joined_vias',None)
+    annotate([29],['C25.2','C26.2'],'User adds both capacitors to earlier GND report. v0.9.17 annotated photo corroborates their common model2 pads; C26.1 now reaches PIC3/RA1, C25.1 PIC2/RA0.','GND')
+    annotate([31],['U4.2','C25.1','TP6.1'],'B59 C25-TP6 = 1.5 ohm resolves the hidden RA0 continuation. Existing V031 association retained.','RX_A_FILTER')
+    annotate([35],['U4.4','C39.1','VREF.1'],'User confirms V035-VREF TP; earlier local PIC4/RA2-C39.1 photo route retained. Same VREF node as V071/R21.2; RB0/V026 association withdrawn.','VREF')
     sites['V035']['confidence']='User V035-VREF continuity; PIC4/C39 pad association from earlier photo trace'
     annotate([42],['U4.20','C32.1','VDD.1'],'User confirms V042-board VDD TP, matching prior PIC20/C32.1 photo mapping. Regulated VDD, not motor VDD or raw battery.','VDD')
     sites['V042']['confidence']='User continuity to board VDD; PIC20/C32.1 local association from photo'
@@ -80,29 +82,33 @@ def apply(out):
     annotate([70],['R18.1'],'User V064-V070 = 11.2 kohm excludes direct VDD. Nominal R18 1.2k + R19 10k fits the measured path; base-input topology supported by photo/circuit inference. Onward control source unknown.','H_RX_ENABLE_CTL')
     annotate([53,70],['U4.12','R18.1'],'User confirms V053-V070 and excludes V053-VREF. PIC12/RC1 reaches R18 input; Q7 local operating role remains inferred. No numeric ohms supplied.','H_RX_ENABLE_CTL')
     for i in [53,70]:sites[f'V{i:03d}'].update(joined_vias=['V053','V070'],confidence='User continuity report; no numerical resistance supplied')
-    annotate([71],['R21.2','VREF.1','U4.21'],'User confirms V071-VREF, previously mapped to PIC21/RB0 via V026. Other receiver-bias branches remain photo/circuit hypotheses.','VREF')
-    for i in [26,71]:sites[f'V{i:03d}']['joined_vias']=['V026','V071']
-    sites['V072'].update(net='RX_A_FILTER',endpoints=['TP6.1'],excluded_endpoints=['R22.2'],confidence='User identifies TP6 and explicitly excludes R22.2',component_crosscheck='User identifies TP6. Existing C18.2/R27.1 branches on RX_A_FILTER remain hypotheses; the via report does not certify the whole modeled net. TP6 remains separate from U3.5 across C18.')
+    annotate([71],['R21.2','VREF.1'],'User V071-VREF retained. Earlier inferred PIC21/V026 association explicitly withdrawn in v0.9.16. Other receiver-bias branches retain their evidence.','VREF')
+    sites['V071'].pop('joined_vias',None)
+    sites['V072'].update(net='RX_A_FILTER',endpoints=['TP6.1'],excluded_endpoints=['R22.2'],confidence='User identifies TP6 and explicitly excludes R22.2',component_crosscheck='B59 C25-TP6 = 1.5 ohm joins PIC RA0. Existing C18.2/R27.1 local traces retained; not remeasured in B59. TP6 remains separate from U3.5/VREF across C18.')
+    for i in [31,72]:
+        sites[f'V{i:03d}'].update(joined_vias=['V031','V072'],measurement_source='evidence/ra0_tp6_connection_v0938.json',confidence='Measured C25-TP6 1.5 ohm plus earlier local via associations; individual vias not reprobed in B59')
     sites['V073'].update(net='GND',endpoints=[],component_crosscheck='User correction: GND only. R19 association removed; no R19 ground merge. V075 is now user-associated with Q7; its exact terminal is unresolved.')
     sites['V075'].update(net='VDD',endpoints=['Q7.R','R19.2'],component_refs=['Q7','R19'],candidate_endpoints=[],confidence='Rail measured via V064; local terminals selected from IMG_2434 and 11.2 kohm R18+R19 path, not separate pad measurements.',component_crosscheck='V064-V075 confirms regulated VDD. IMG_2434 shows the R19/Q7 paired-pad continuation; V064-V070 11.2 kohm supports R18+R19 base-input/pull-up arrangement. Q7.R/native2 and R19.2 now modeled on VDD as a supported reconstruction, not user-probed exact terminal proof.')
     annotate([76],['R22.1'],'R22 opposite/right photo pad; user GND corroborates return.','GND')
     annotate([77],['C19.2','R29.2'],'User explicitly confirms the C19-R29 junction is GND. R29 opposite the PIC3/TP7 end is pad2; C19 pad2 is assigned to the upper photo pad beside the via. Earlier C19-to-clamp and R29-to-U3.5 guesses withdrawn.','GND')
     annotate([78],['C17.2'],'User adds C17 to earlier GND report; return pad selected from existing photo/model.','GND')
-    annotate([79,80],['U3.5'],'User identifies SGM8542 pin5 for both vias. Existing original C18.1 local fragment retained on RX_B_PLUS; TP6 lies on the opposite side of C18 and is not merged.','RX_B_PLUS')
+    annotate([79,80],['U3.5','VREF.1'],'User identifies SGM8542 pin5 for both vias, then measures pin5-VREF 1 ohm. Original C18.1 local fragment retained; TP6 stays separate across C18. See u3_j3_measurements_20261009.json.','VREF')
     for i in [79,80]:sites[f'V{i:03d}']['confidence']='User explicit U3 pin5 association; no new per-site ohms supplied'
-    annotate([82],['VDD.1'],'User confirms V082-board VDD test point (native TP103), regulated logic VDD. D3 exact terminal unconfirmed; no H_RX_VDD merge implied.','VDD')
-    sites['V082']['confidence']='User continuity report to TP103; D3 terminal unresolved'
+    annotate([82],['VDD.1','D3.R'],'2026-10-09 user meter report identifies D3.R on V082 / board VDD TP (native TP103). D3.L is GND. Only D3.R moves from H_RX_VDD; the remaining receiver supply stays separate. See d3_measurement_20261009.json.','VDD')
+    sites['V082']['confidence']='User confirms exact D3 terminal and VDD TP; no numerical resistance supplied for these rail connections'
     sites['V082']['component_refs']=['D3']
     annotate([83],['C40.2'],'User adds C40 to earlier GND report; return pad selected from existing photo/model.','GND')
     for i,r,n in [(91,'R11',5),(97,'R16',4),(102,'R15',3),(108,'R14',2)]:
         annotate([i],[r+'.1'],'User identifies resistor; free upper photo pad1 selected. Tuning control role remains a hypothesis and onward GPIO is not identified.',f'H_TUNE_{n}')
     for i,q in [(89,'Q11'),(94,'Q6'),(99,'Q5'),(104,'Q4')]:
         annotate([i],[q+'.L'],'Photo left transistor pad to user GND via; assumed emitter role not confirmed.','GND')
-    annotate([87,88],[c+'.1' for c in ['C47','C44','C29','C14','C11']],'Shared lower front-capacitor band; old antenna rail assumption withdrawn.','GND')
+    annotate([87,88],[],'User GND reports retained. Former photo association to the front capacitor band withdrawn by C11-ANT2 = 1.4 ohm; do not expand these via reports onto the band.','GND')
+    for i in [87,88]:
+        sites[f'V{i:03d}'].update(excluded_endpoints=[c+'.1' for c in ['C47','C44','C29','C14','C11']],confidence='User GND report; earlier capacitor-band photo inference explicitly rejected in v0.9.37')
     for i,c in [(93,'C48'),(96,'C45'),(101,'C38'),(105,'C15')]:
         annotate([i],[c+'.1'],'Rear capacitor ground-side land; other pad joins local tuning midpoint.','GND')
     for i,n,cs in [(90,5,['C46','C47','C48']),(95,4,['C43','C44','C45']),(100,3,['C16','C29','C38']),(103,2,['C13','C14','C15']),(107,1,['C10','C11','C12'])]:
-        annotate([i],[c+'.2' for c in cs],'User front-pair junction plus rear-land photo pairing; onward hidden connection to antenna remains unknown.',f'TUNE_{n}_MID')
+        annotate([i],[c+'.2' for c in cs],'User front-pair junction plus rear-land photo pairing; front capacitor opposite pad joins ANT2 by v0.9.37 shared-band evidence. No direct midpoint-to-antenna copper join inferred.',f'TUNE_{n}_MID')
     annotate([112],['C8.2'],'User adds C8 to earlier GND report; lower photo return pad selected.','GND')
     annotate([113,115],['Q8.B2'],'User corrects island destination to the centre pad: B2/package pin5, already modeled as GND. Previous B1/B3 annotation was wrong. Independent earlier D-E low-resistance evidence for the outer-pad join is retained.','GND')
     for i in [113,115]:
@@ -120,7 +126,7 @@ def apply(out):
         annotate([va,vb],[f'U4.{pin}',res+'.1'],f'User working via pair V{va:03d}-V{vb:03d}; PIC control to resistor confirmed. No numerical ohms supplied.',f'H_TUNE_{n}')
         for i in [va,vb]:sites[f'V{i:03d}'].update(joined_vias=[f'V{va:03d}',f'V{vb:03d}'],confidence='User continuity report; exact resistance not supplied')
     for i in [63,64,75]:sites[f'V{i:03d}']['joined_vias']=['V063','V064','V075']
-    sites['V053']['excluded_vias']=['V071','V026'];sites['V071']['excluded_vias']=['V053'];sites['V026']['excluded_vias']=['V053']
+    sites['V053']['excluded_vias']=['V071'];sites['V071']['excluded_vias']=['V053','V026'];sites['V026']['excluded_vias']=['V071'];sites['V026']['excluded_endpoints']=['VREF.1']
     sites['V053']['excluded_endpoints']=['VREF.1']
     sites['V090']['excluded_vias']=['V095','V100','V103','V107']
     for i in [95,100,103,107]:sites[f'V{i:03d}']['excluded_vias']=['V090']
@@ -141,7 +147,7 @@ def apply(out):
             s.update(review_status='REJECTED_NOT_VIA',net=None,endpoints=[],modeled_nets=[],component_crosscheck='User rejects this detection as not a via. Stable ID retained; excluded from active markers.')
         elif s['user_reports'] and s['net'] and s['review_status']!='CONFLICT':s['review_status']='ASSIGNED'
         elif not s['user_reports'] and s['net']:s['review_status']='PHOTO_LOCAL'
-    out.update(revision='v0.9.9',review_update_id='battery-q1-post-q1-supply-separated',user_review_source='evidence/via_user_review.json',
+    out.update(revision=model['revision'],review_update_id='ra0-tp6-v0938',user_review_source='evidence/via_user_review.json',
         user_review_method=review['method'],supply_naming=review['supply_naming'],
         review_summary=dict(catalogued_ids=len(sites),active_sites=sum(s['active'] for s in sites.values()),user_reported_ids=len(current_ids),original_user_reported_ids=len(original_ids),
             omitted_from_user_list=sorted(set(sites)-current_ids),rejected=rejected,conflicts=list(conflicts),

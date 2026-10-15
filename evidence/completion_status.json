@@ -1,65 +1,16 @@
 {
-  "date": "2026-10-08",
-  "revision": "v0.9.9",
-  "review_revision": "cleanup-1",
+  "date": "2026-10-15",
+  "revision": "v0.9.45",
+  "review_revision": "v0.9.45",
   "interpretation": "Every catalog entry is drawn. Hardware connectivity, values and identities are only partially verified. No routed PCB exists.",
-  "catalog_entries": 150,
-  "physical_pins": 352,
-  "unresolved_physical_pins": 28,
-  "unresolved_pins_by_population": {
-    "populated": 10,
-    "DNP": 18
-  },
-  "unresolved_pins_by_reference": {
-    "C26": 1,
-    "C42": 2,
-    "C49": 2,
-    "C6": 1,
-    "D2": 3,
-    "D6": 2,
-    "J6": 2,
-    "Q9": 1,
-    "R36": 2,
-    "R46": 2,
-    "R47": 2,
-    "TP9": 1,
-    "U6": 2,
-    "U6A": 2,
-    "U7": 3
-  },
+  "catalog_entries": 148,
+  "physical_pins": 349,
+  "unresolved_physical_pins": 0,
+  "unresolved_pins_by_population": {},
+  "unresolved_pins_by_reference": {},
   "current_gpio_pins": [],
-  "current_fitted_open_pads": [
-    "C26.1",
-    "C6.1",
-    "D2.L",
-    "D2.R",
-    "D2.S",
-    "D6.1",
-    "D6.2",
-    "TP9.1",
-    "U6.L1",
-    "U6.L2"
-  ],
-  "current_dnp_open_pads": [
-    "C42.1",
-    "C42.2",
-    "C49.1",
-    "C49.2",
-    "J6.1",
-    "J6.2",
-    "Q9.S",
-    "R36.1",
-    "R36.2",
-    "R46.1",
-    "R46.2",
-    "R47.1",
-    "R47.2",
-    "U6A.L",
-    "U6A.R2",
-    "U7.1",
-    "U7.2",
-    "U7.3"
-  ],
+  "current_fitted_open_pads": [],
+  "current_dnp_open_pads": [],
   "unknown_ceramic_values": [
     "C1",
     "C2",
@@ -106,27 +57,20 @@
     "C47",
     "C48"
   ],
-  "unknown_magnetic_values": [
-    "L1",
-    "L2"
-  ],
+  "unknown_magnetic_values": [],
   "footprints": {
     "assigned": 147,
     "unassigned": [
-      "C5",
-      "LED1",
-      "S1"
+      "LED1"
     ],
-    "qualification": "Assigned is not the same as measured. R8 and C11 anchor photo-based package families."
+    "qualification": "Assigned is not the same as measured. R8, C11 and S1 have user body dimensions; lead geometry and exact housing variants remain qualified."
   },
-  "erc_total": 36,
+  "erc_total": 1,
   "erc_by_type": {
-    "power_pin_not_driven": 5,
-    "pin_not_connected": 28,
-    "isolated_pin_label": 3
+    "pin_to_pin": 1
   },
-  "modeled_nets": 83,
-  "schematic_sha256": "82e726dcbfc1dcad72cfe59cf4f342af0eba7867529473be2bcb66c36851ad5b",
+  "modeled_nets": 82,
+  "schematic_sha256": "87b952bb0439b3c6cea2a97e6c6efd8f321ca9470de866b3a5d5ea8568b04abc",
   "known_identified_ICs_needing_new_symbols": [],
   "complete_symbols_for_selected_candidates": true,
   "available_instruments": [
@@ -162,166 +106,118 @@
   },
   "current_gaps": [
     {
-      "id": "E01",
-      "area": "D2 / marking 4P",
-      "gap": "Identity, internal pin functions and all three external connections. The earlier BAV99 clamp assumption is withdrawn.",
-      "method": "With power disconnected, take the six directed diode-mode readings between D2 pads shown in the existing D2 guide. Then trace only the terminal indicated by the result."
-    },
-    {
-      "id": "E02",
-      "area": "D3 / V082 supply association",
-      "gap": "Which physical D3 terminal reaches V082. Current D3.L=GND, D3.R=H_RX_VDD and D3.S=H_RX_RF_SENSE are provisional; none is presently assigned to VDD.",
-      "method": "Measure V082 to each of D3's three pads. Record low-ohm continuity separately from diode/resistive readings."
-    },
-    {
       "id": "E03",
-      "area": "RF supply / Q8 / C6",
-      "gap": "C6.1 route and Q8 source-supply path. F-P=10 ohm supports a supply-related path but does not establish a direct copper join. Exact Q8 maker remains a candidate.",
-      "method": "Start with C6's non-ground pad and the L1 output/Q8 supply node; record resistance both ways. Use the existing labelled Q8 photo, not the withdrawn C6-to-output wire."
+      "area": "RF supply and Q8 drive",
+      "gap": "Exact U2 identity and compatibility with measured 6.3 V remain unresolved; candidate SN74LVC2G14 recommended supply maximum is 5.5 V. Q8 switching margin, timing and RF waveform validation are deferred by owner. B82 alone is not a zero-ohm proof; output route is photo-supported.",
+      "method": "Photo and device-consistency review completed in TOPOLOGY_AUDIT.md. Keep the measured 6.3 V U2 feed and explicit 5.5 V recommended-limit conflict; no justified device replacement or further copper correction. None now. Scope and component-isolation work are deferred by owner."
     },
     {
       "id": "E04",
-      "area": "Antenna / five tuning cells",
-      "gap": "Remote paths of the five capacitor midpoints and ANT2; the modeled tuning network is not yet a verified closed antenna circuit. Transistor orientation is provisional.",
-      "method": "Follow one cell at a time from ANT1/ANT2 toward a visible capacitor pad or via. Choose the next specific pair from the photographs; do not repeat a broad midpoint sweep."
-    },
-    {
-      "id": "E05",
-      "area": "Button circuit",
-      "gap": "R41.1/H_BUTTON_MCU has no destination. S1 common lead pairs are currently assumed from a normal tactile switch.",
-      "method": "With power disconnected, determine S1 common pairs released/pressed; then trace R41.1 toward the MCU side."
-    },
-    {
-      "id": "E06",
-      "area": "Local-only PIC / discrete nodes",
-      "gap": "Onward roles of those three nodes, D1.R/H_D1_FREE, C26.1 and TP9.1. Local connectivity is not proof that these are intentionally unused.",
-      "method": "Inspect the matching opposite-side vias first, then request only a specific continuity pair for each unresolved branch."
+      "area": "Antenna and tuning-cell topology",
+      "gap": "The drawn PNP B=R/E=L/C=S candidate is still not confirmed by in-circuit junction readings. Capacitor values and actual switching/resonance behavior remain unknown. The front capacitor-bank antenna connection is now established.",
+      "method": "Photo and device-consistency review completed in TOPOLOGY_AUDIT.md. Visible cell wiring is supported; PNP function and front/rear midpoint correspondence remain qualified. No NPN/MOSFET substitution is proved. None now. Scope and component-isolation work are deferred by owner."
     },
     {
       "id": "E07",
-      "area": "PIR interface / U6 / J3",
-      "gap": "U6 VIN/VOUT external branches, NC-pad external ties, actual PIR voltage, J3.2/.3 roles and Q2 signal path. The model uses J3.2=GND and J3.3=raw signal; blue/black colour alone is not confirmation or grounds to swap them.",
-      "method": "First verify J3.2 and J3.3 against GND and the modeled signal endpoint; then check U6 supply/output continuity. Powered voltage checks come after this routing audit."
+      "area": "PIR: Q2 behavior and operating supply",
+      "gap": "Q2 terminal functions, PIR raw-signal behavior and PIC input response remain unverified. The loaded PIR supply is established at 3.3 V in the reported state; transients and other states are not characterized.",
+      "method": "Photo and device-consistency review completed in TOPOLOGY_AUDIT.md. R39 endpoint correction and native regression completed; Q2 identity and enabled behavior remain qualified. None now. Scope and component-isolation work are deferred by owner."
     },
     {
       "id": "E08",
-      "area": "Receiver / bias / Q7",
-      "gap": "Q7 terminal selection and power-switch role, receiver feedback/coupling branches, and R22.2/R23.2/R48.2 VREF ties remain inferred. TP6/V072 and U3.5/V079/V080 lack fully verified onward roles.",
-      "method": "Resolve E02 first because it may change receiver power. Then confirm the three provisional VREF bias branches and selected U3 feedback endpoints; retain C18 as a component boundary."
+      "area": "Receiver and Q7 operating behavior",
+      "gap": "Why the receiver is inactive and its enabled-state behavior remain unverified. Earlier separate 0/4.5 V readings conflict with the later direct 0 V; do not diagnose failure or assume simultaneous identical states. Exact Q7 identity and E/C selection remain qualified. Receiver gain/filter response and MCU interface roles are unverified; DC readings do not exclude pulses.",
+      "method": "Photo and device-consistency review completed in TOPOLOGY_AUDIT.md. Feedback paths corroborated; inherited detector-to-U3.3 and some supply associations are now separately tracked in E11. Do not combine nonsimultaneous powered readings. None now. Scope and component-isolation work are deferred by owner."
     },
     {
       "id": "E09",
-      "area": "Power input / Q1 / rail voltages",
-      "gap": "Exact Q1 maker and gate operation, unmeasured rail voltages, and U1 enable/option branches. Reverse-polarity protection is an interpretation, not a powered test.",
-      "method": "Retain the confirmed rail split. Cross-check the Q1 gate/R44 path and U1 enable wiring before a targeted voltage test."
+      "area": "Supply voltages and Q1 control",
+      "gap": "Q1 fitted identity, terminal roles and powered control behavior remain unverified. The resistance recheck is compatible with R44 in the path but does not prove an intact MOSFET or the exact remaining path. Q1/motor dynamics and R3/R4/C28 sensing role remain qualified.",
+      "method": "Photo and device-consistency review completed in TOPOLOGY_AUDIT.md. R44 local route corroborated; 516-ohm contradiction stays closed by B84/B85. Q1 roles/control remain qualified. None now. Scope and component-isolation work are deferred by owner."
     },
     {
       "id": "E10",
-      "area": "ICSP protection / D6 / J1",
-      "gap": "Both D6 pad routes, D6 exact voltage/polarity, and J1 physical pin-number orientation including square-pad/VPP correspondence.",
-      "method": "Measure D6 pads to the adjacent PIC/ICSP nodes. Confirm J1 pad order against the board labels before relying on connector numbering."
+      "area": "D6 breakdown and ICSP compatibility",
+      "gap": "G3 is nonunique: MMSZ5228BS is 3.9 V; PZU2.4B is 2.4 V. Neither rating has been measured on this board. A directly connected clamp of either rating would load the required high-voltage ICSP level. The current PIC LVP configuration and actual D6 breakdown are unknown.",
+      "method": "Photo and device-consistency review completed in TOPOLOGY_AUDIT.md. Measured polarity is distinct from unmeasured breakdown; no safe in-circuit identification step is justified here. None now. Scope and component-isolation work are deferred by owner."
     },
     {
       "id": "I01",
-      "area": "Candidate identities / transistor pin maps",
-      "gap": "Short markings do not uniquely prove manufacturers. Candidate choices and some B/E/C or MOSFET source/drain assignments remain qualified. Western alternatives are redesign options, not identities of fitted parts.",
-      "method": "Use electrical pad behavior and package/marking evidence for specific candidates. Do not request sharper photos where the existing marking is already legible."
-    },
-    {
-      "id": "I02",
-      "area": "LED / motor connector",
-      "gap": "LED internal polarity/colour mapping and J5 physical A/B lead polarity remain provisional.",
-      "method": "Check LED pad pairs in diode mode and record emitted colour. Match J5 wire positions to U5 outputs by continuity."
+      "area": "Candidate device identities and pin roles",
+      "gap": "Exact fitted identity/ratings remain candidates for D1-D6, Q1-Q8/Q11, U1/U2/U6. The 4P marking alone does not identify three-pin D2; a manufacturer 4P code for a two-pin diode is incompatible.",
+      "method": "Photo and device-consistency review completed in TOPOLOGY_AUDIT.md. D2 series-junction equivalent documented separately from its unchanged physical placeholder. Primary U2/Q3 sources checked; remaining identities stay candidates. None now. Scope and component-isolation work are deferred by owner."
     },
     {
       "id": "V01",
-      "area": "Unmarked passive values",
-      "gap": "44 fitted ceramic capacitances and L1/L2 type/value remain unrecovered. Capacitor voltage rating/dielectric and resistor tolerance/power rating are also not established by geometry.",
-      "method": "Use the LCR meter first on C6 and one tuning cell, recording frequency/mode and in-circuit status. Isolate one terminal only if an individual value is needed and the network reading cannot resolve it."
+      "area": "Capacitor values and passive ratings",
+      "gap": "The 44 original fitted ceramic values remain unconfirmed. Numerical choices are explicit design proposals. The RF bank uses the reported 500 uH and assumes ideal switches. Inductance test conditions, weights/order, voltage stress and firmware tuning remain unverified. Receiver/timing choices and L1/L2 ratings also need qualification.",
+      "method": "Preserve all 44 starred estimates and their qualifications. Capacitor selection is outside this topology task. None for this task; value/package qualification remains later work."
     },
     {
       "id": "M01",
-      "area": "Package geometry / PCB reproduction",
-      "gap": "C5, S1 and LED1 footprints are blank. Other families, connector pitch, test-pad drills, switch lead span and exact board geometry are partly photo-based.",
-      "method": "Measure C5 can diameter/lead spacing, S1 body/lead span and LED1 body/pad pitch. Refine other footprints only where a photo scale or ruler contradicts the selected family."
+      "area": "LED footprint and mechanical qualification",
+      "gap": "LED1 land pattern/manufacturer numbering and internal pairing of its externally grounded cathode pads remain unverified. C5 pitch and S1 pad fit/3D heights are reproduction qualifications, not unknown schematic wires. J5 stock-footprint pad order/pitch and external motor harness colours remain unverified.",
+      "method": "Preserve measured body dimensions and candidate footprints. LED1 pad geometry and exact fit remain reproduction prerequisites, outside this task. None for this task; value/package qualification remains later work."
     },
     {
-      "id": "D01",
-      "area": "Empty options",
-      "gap": "Optional-pad routing is incomplete; values and intended uses may remain unknowable without another board variant.",
-      "method": "Record option copper where visible; defer measurement unless it affects a populated net."
-    },
-    {
-      "id": "F01",
-      "area": "Function / internal layers / daughterboard",
-      "gap": "No powered functional validation, actual layer stack or routed KiCad PCB has been created. The PIR daughterboard internal circuit is not reconstructed. MCU firmware behavior and operating timing are not established.",
-      "method": "Finish priority electrical gaps first. Then test defined functions/voltages and decide whether physical PCB reproduction and daughterboard reverse engineering are needed."
+      "id": "E11",
+      "area": "Inherited copper joins without independent closure",
+      "gap": "RX_A_PLUS still combines {D2.R,C20.2}, {C19.1}, {R28.2} and {U3.3} without a complete independent evidence path. C20.1-to-GND and U1.L3/CE-to-VIN remain unverified inherited joins. Other disconnected evidence groups, including rail fan-out, are listed by physical endpoint in TOPOLOGY_AUDIT.md; missing encoded support is not itself a hardware fault.",
+      "method": "Original close-ups IMG_2429/2434 do not expose the whole detector-to-input route. Preserve present assignments as qualified, not certified. Use the named graph gaps to revisit existing evidence before proposing any further bench test. No all-pairs testing. One staged check only: with battery and programmer disconnected, resistance from C20 lower metal end (nearest printed C20; D in the linked photo) to U3 pin 3 (third lower lead from the pin-1 dot end; P3). Report resistance and shorted-probe baseline. Near probe resistance supports this hidden join; a stable kOhm/OL result rejects it. No component removal."
     }
   ],
   "items": [
     {
-      "id": "E01",
-      "area": "D2 / marking 4P",
-      "refs": [
-        "D2"
-      ],
-      "priority": 1,
-      "state": "open",
-      "known": "The user clearly reads 4P; its three physical pads are retained by a numbered stock placeholder.",
-      "unknown": "Identity, internal pin functions and all three external connections. The earlier BAV99 clamp assumption is withdrawn.",
-      "next_action": "With power disconnected, take the six directed diode-mode readings between D2 pads shown in the existing D2 guide. Then trace only the terminal indicated by the result.",
-      "closed_when": "A compatible device pin map and all three external endpoints are supported by evidence.",
-      "open_pads": [
-        "D2.L",
-        "D2.R",
-        "D2.S"
-      ],
-      "nets": []
-    },
-    {
-      "id": "E02",
-      "area": "D3 / V082 supply association",
-      "refs": [
-        "D3"
-      ],
-      "priority": 1,
-      "state": "open",
-      "known": "A7 supports a BAV99 candidate. User continuity joins V082 to the board VDD test point.",
-      "unknown": "Which physical D3 terminal reaches V082. Current D3.L=GND, D3.R=H_RX_VDD and D3.S=H_RX_RF_SENSE are provisional; none is presently assigned to VDD.",
-      "next_action": "Measure V082 to each of D3's three pads. Record low-ohm continuity separately from diode/resistive readings.",
-      "closed_when": "The actual pad is identified and conflicting modeled branches are corrected, without blindly merging VDD and the receiver supply.",
-      "open_pads": [],
-      "nets": [
-        "H_RX_VDD",
-        "H_RX_RF_SENSE"
-      ]
-    },
-    {
       "id": "E03",
-      "area": "RF supply / Q8 / C6",
+      "area": "RF supply and Q8 drive",
       "refs": [
         "Q8",
         "C6",
         "U2",
-        "L1"
+        "L1",
+        "R5"
       ],
       "priority": 1,
       "state": "open",
-      "known": "Q8 centre B2/native5 is GND via V113/V115. V114 is U2.T2/native2 GND. Outer Q8 pads are joined by the earlier low-resistance result.",
-      "unknown": "C6.1 route and Q8 source-supply path. F-P=10 ohm supports a supply-related path but does not establish a direct copper join. Exact Q8 maker remains a candidate.",
-      "next_action": "Start with C6's non-ground pad and the L1 output/Q8 supply node; record resistance both ways. Use the existing labelled Q8 photo, not the withdrawn C6-to-output wire.",
-      "closed_when": "C6 and Q8 supply routes are resolved, including any intervening component.",
-      "open_pads": [
-        "C6.1"
-      ],
+      "known": "C5/C6 and Q8 source/ground/outer-drain joins supported. U2/C7 supply now fed from H_RF_VDD through R5 (22 ohm): local and endpoint readings B78-B81 support this route. U2 supply = 6.3 V; direct difference to printed VDD = +1.8 V rejects old VDD tie. Q8 output-to-ANT1 accepted from visible copper and compatible B82 4.5-ohm reading with antenna fitted. Rest gate-source voltages: P=0 V, N=+6.3 V. TI lists C14R among the DBV candidate markings; absolute maximum VCC is 6.5 V, distinct from the 5.5-V recommended maximum.",
+      "unknown": "Exact U2 identity and compatibility with measured 6.3 V remain unresolved; candidate SN74LVC2G14 recommended supply maximum is 5.5 V. Q8 switching margin, timing and RF waveform validation are deferred by owner. B82 alone is not a zero-ohm proof; output route is photo-supported.",
+      "next_action": "Photo and device-consistency review completed in TOPOLOGY_AUDIT.md. Keep the measured 6.3 V U2 feed and explicit 5.5 V recommended-limit conflict; no justified device replacement or further copper correction. None now. Scope and component-isolation work are deferred by owner.",
+      "closed_when": "U2 identity and voltage compatibility resolved; RF operating waveform validation recorded separately when the owner resumes scope work. Local RF supply/output drawing is corrected; unknown C6/C7 values remain V01.",
+      "open_pads": [],
       "nets": [
         "H_RF_VDD",
-        "H_RF_OUT_CAND"
-      ]
+        "U2_VCC",
+        "H_ANT_A"
+      ],
+      "source_documents": [
+        "docs/datasheets/SIL3724A.pdf, P-channel table p3",
+        "docs/datasheets/SN74LVC2G14.pdf, supply/output specifications"
+      ],
+      "supporting_evidence": [
+        "docs/history/v0.9.30-before-finalization/evidence/remaining_work.json",
+        "evidence/q3_deferred_q8_followup_20261009.json",
+        "evidence/q8_supply_result_20261009.json",
+        "evidence/supply_baseline_results_20261014.json",
+        "evidence/q8_gate_bias_results_20261014.json",
+        "evidence/u2_supply_join_results_20261014.json",
+        "evidence/u2_supply_voltage_result_20261014.json",
+        "evidence/u2_vdd_separation_result_20261014.json",
+        "evidence/u2_c7_feed_results_20261015.json",
+        "evidence/r5_supply_feed_results_20261015.json",
+        "evidence/q8_output_antenna_result_20261015.json",
+        "evidence/u2_r5_topology_correction_v0940.json",
+        "evidence/circuit_consistency_v0942.json",
+        "evidence/physical_evidence_review_20261015.json",
+        "evidence/topology_closure_audit.json"
+      ],
+      "owner": "Codex evidence audit; no active bench request",
+      "category": "Device function/rating; operating behaviour",
+      "codex_action": "Photo and device-consistency review completed in TOPOLOGY_AUDIT.md. Keep the measured 6.3 V U2 feed and explicit 5.5 V recommended-limit conflict; no justified device replacement or further copper correction.",
+      "owner_input": "None now. Scope and component-isolation work are deferred by owner."
     },
     {
       "id": "E04",
-      "area": "Antenna / five tuning cells",
+      "area": "Antenna and tuning-cell topology",
       "refs": [
         "ANT1",
         "ANT2",
@@ -348,10 +244,10 @@
       ],
       "priority": 1,
       "state": "open",
-      "known": "All five PIC control inputs are mapped. Seven capacitor-midpoint comparisons gave OL.",
-      "unknown": "Remote paths of the five capacitor midpoints and ANT2; the modeled tuning network is not yet a verified closed antenna circuit. Transistor orientation is provisional.",
-      "next_action": "Follow one cell at a time from ANT1/ANT2 toward a visible capacitor pad or via. Choose the next specific pair from the photographs; do not repeat a broad midpoint sweep.",
-      "closed_when": "Each fitted tuning cell has an evidence-supported switched path to the antenna and the OL exclusions remain respected.",
+      "known": "PIC-to-control resistors and local tuning midpoints are mapped. B44/B45 midpoint-to-antenna DC readings are OL. B52 C11 outer end to ANT2 = 1.4 ohm; photo-shared outer pads of C14/C29/C44/C47 now join ANT2. Rear capacitor returns remain GND. ANT1-ANT2 is about 5 ohm with antenna fitted. The mistaken 414 kohm N-B report was corrected to B-G. Q3 L-S latest 0.48 V, L-R 2.3 V; all other diode directions OL. Antenna inductance now reported as 500 uH; test conditions not specified.",
+      "unknown": "The drawn PNP B=R/E=L/C=S candidate is still not confirmed by in-circuit junction readings. Capacitor values and actual switching/resonance behavior remain unknown. The front capacitor-bank antenna connection is now established.",
+      "next_action": "Photo and device-consistency review completed in TOPOLOGY_AUDIT.md. Visible cell wiring is supported; PNP function and front/rear midpoint correspondence remain qualified. No NPN/MOSFET substitution is proved. None now. Scope and component-isolation work are deferred by owner.",
+      "closed_when": "Tuning device pin roles and switched RF behavior are supported; outer ANT2 path is already resolved.",
       "open_pads": [],
       "nets": [
         "H_ANT_A",
@@ -361,61 +257,27 @@
         "TUNE_3_MID",
         "TUNE_4_MID",
         "TUNE_5_MID"
-      ]
-    },
-    {
-      "id": "E05",
-      "area": "Button circuit",
-      "refs": [
-        "S1",
-        "R41",
-        "R40",
-        "C35"
       ],
-      "priority": 1,
-      "state": "open",
-      "known": "R41=331 gives nominal 330 ohm. One modeled button side is GND.",
-      "unknown": "R41.1/H_BUTTON_MCU has no destination. S1 common lead pairs are currently assumed from a normal tactile switch.",
-      "next_action": "With power disconnected, determine S1 common pairs released/pressed; then trace R41.1 toward the MCU side.",
-      "closed_when": "Switch pairings and the button signal destination are verified.",
-      "open_pads": [],
-      "nets": [
-        "H_BUTTON",
-        "H_BUTTON_MCU"
-      ]
-    },
-    {
-      "id": "E06",
-      "area": "Local-only PIC / discrete nodes",
-      "refs": [
-        "U4",
-        "C25",
-        "C26",
-        "D1",
-        "TP9",
-        "TP11",
-        "TP17"
+      "supporting_evidence": [
+        "evidence/architect_review_v0930.json",
+        "docs/history/v0.9.30-before-finalization/evidence/remaining_work.json",
+        "evidence/q3_diode_results_20261009.json",
+        "evidence/q3_deferred_q8_followup_20261009.json",
+        "evidence/finishing_measurements.json",
+        "evidence/antenna_midpoint_results_20261014.json",
+        "evidence/antenna_outer_rail_results_20261014.json",
+        "evidence/antenna_outer_rail_correction_v0937.json",
+        "evidence/physical_evidence_review_20261015.json",
+        "evidence/topology_closure_audit.json"
       ],
-      "priority": 2,
-      "state": "open",
-      "known": "Every PIC pad has a modeled local net. PIC2 reaches C25/V031; PIC14 reaches TP11; PIC18 reaches TP17.",
-      "unknown": "Onward roles of those three nodes, D1.R/H_D1_FREE, C26.1 and TP9.1. Local connectivity is not proof that these are intentionally unused.",
-      "next_action": "Inspect the matching opposite-side vias first, then request only a specific continuity pair for each unresolved branch.",
-      "closed_when": "Each branch has an endpoint or supported evidence that it terminates intentionally.",
-      "open_pads": [
-        "C26.1",
-        "TP9.1"
-      ],
-      "nets": [
-        "PIC_RA0_FILTER",
-        "PIC_RC3",
-        "PIC_RC7_TP17",
-        "H_D1_FREE"
-      ]
+      "owner": "Codex evidence audit; no active bench request",
+      "category": "Physical pin mapping; device function/rating",
+      "codex_action": "Photo and device-consistency review completed in TOPOLOGY_AUDIT.md. Visible cell wiring is supported; PNP function and front/rear midpoint correspondence remain qualified. No NPN/MOSFET substitution is proved.",
+      "owner_input": "None now. Scope and component-isolation work are deferred by owner."
     },
     {
       "id": "E07",
-      "area": "PIR interface / U6 / J3",
+      "area": "PIR: Q2 behavior and operating supply",
       "refs": [
         "U6",
         "Q2",
@@ -424,29 +286,39 @@
         "R38",
         "R39",
         "C36",
-        "C37"
+        "C37",
+        "U7"
       ],
       "priority": 2,
       "state": "open",
-      "known": "C2NM supports an S-812C33AMC candidate. V067 reaches J3.1/red and the U6A option pad; V063 reaches regulated VDD. U6 ground is supported by the user readings.",
-      "unknown": "U6 VIN/VOUT external branches, NC-pad external ties, actual PIR voltage, J3.2/.3 roles and Q2 signal path. The model uses J3.2=GND and J3.3=raw signal; blue/black colour alone is not confirmation or grounds to swap them.",
-      "next_action": "First verify J3.2 and J3.3 against GND and the modeled signal endpoint; then check U6 supply/output continuity. Powered voltage checks come after this routing audit.",
-      "closed_when": "Physical connector ordering, U6 supply/output and signal path are verified; NC pads are documented whether tied externally or left unused.",
-      "open_pads": [
-        "U6.L1",
-        "U6.L2"
-      ],
+      "known": "J3/U7 ordering, U6 external pads and PIC21/TP16/Q2 output routing are established. U6 pin5 is tied to VIN; pin4 is unused. B58 measured 3.3 V at J3.1 with PIR connected; logic VDD was 4.5 V. R39.1 joins TP16/Q2.S/PIC21 by continuous copper in original IMG_2425; R39.2 remains VDD. Earlier base-side assignment is withdrawn.",
+      "unknown": "Q2 terminal functions, PIR raw-signal behavior and PIC input response remain unverified. The loaded PIR supply is established at 3.3 V in the reported state; transients and other states are not characterized.",
+      "next_action": "Photo and device-consistency review completed in TOPOLOGY_AUDIT.md. R39 endpoint correction and native regression completed; Q2 identity and enabled behavior remain qualified. None now. Scope and component-isolation work are deferred by owner.",
+      "closed_when": "Q2 signal behavior and U6 output are supported by device or operating evidence.",
+      "open_pads": [],
       "nets": [
         "H_PIR_RAW",
         "H_PIR_SIG",
         "H_PIR_VDD",
         "H_AUX_IN",
         "PIR_BASE"
-      ]
+      ],
+      "supporting_evidence": [
+        "docs/history/v0.9.30-before-finalization/evidence/remaining_work.json",
+        "evidence/r33_withdrawal_v0932.json",
+        "evidence/supply_baseline_results_20261014.json",
+        "evidence/r39_endpoint_correction_v0945.json",
+        "evidence/physical_evidence_review_20261015.json",
+        "evidence/topology_closure_audit.json"
+      ],
+      "owner": "Codex evidence audit; no active bench request",
+      "category": "Device function/rating; operating behaviour",
+      "codex_action": "Photo and device-consistency review completed in TOPOLOGY_AUDIT.md. R39 endpoint correction and native regression completed; Q2 identity and enabled behavior remain qualified.",
+      "owner_input": "None now. Scope and component-isolation work are deferred by owner."
     },
     {
       "id": "E08",
-      "area": "Receiver / bias / Q7",
+      "area": "Receiver and Q7 operating behavior",
       "refs": [
         "U3",
         "Q7",
@@ -458,14 +330,23 @@
         "R23",
         "R48",
         "C18",
-        "TP6"
+        "TP6",
+        "R25",
+        "R47",
+        "C42",
+        "C23",
+        "D3",
+        "R42",
+        "C25",
+        "R27",
+        "TP5"
       ],
       "priority": 2,
       "state": "open",
-      "known": "PIC12/RC1 reaches R18 via V053-V070. V064-V075 is continuity; V064-V070=11.2 kohm supports the R18+R19 path. VREF reaches R21.2, PIC21 and PIC4. TP6/C18.2 is separate from U3.5/C18.1.",
-      "unknown": "Q7 terminal selection and power-switch role, receiver feedback/coupling branches, and R22.2/R23.2/R48.2 VREF ties remain inferred. TP6/V072 and U3.5/V079/V080 lack fully verified onward roles.",
-      "next_action": "Resolve E02 first because it may change receiver power. Then confirm the three provisional VREF bias branches and selected U3 feedback endpoints; retain C18 as a component boundary.",
-      "closed_when": "Receiver supply, bias, gain/filter paths and interface endpoints are reconciled against evidence.",
+      "known": "U3 input returns and R23/R42/C40, C23/R25/R48 and DNP R47/C42 paths are reconciled. VREF supplies U3 pin5; C25.1-TP6.1 measured 1.5 ohm joins the receiver filter to PIC2/RA0. Powered: VREF 0 V, TP5 0.066 V, R19 left/right 0/4.5 V. Both R19-to-Q7 joins measured 1.5 ohm. Q7 diode results: R->L 0.74 V, L->R 1.74 V, S->L 0.74 V, L->S OL. These support PNP polarity with L as base; reverse finite reading can include parallel-board paths. B71 direct QR-QL measured 0 V, consistent with no forward base-emitter bias in the latest state and the low receiver supply; stability not reported.",
+      "unknown": "Why the receiver is inactive and its enabled-state behavior remain unverified. Earlier separate 0/4.5 V readings conflict with the later direct 0 V; do not diagnose failure or assume simultaneous identical states. Exact Q7 identity and E/C selection remain qualified. Receiver gain/filter response and MCU interface roles are unverified; DC readings do not exclude pulses.",
+      "next_action": "Photo and device-consistency review completed in TOPOLOGY_AUDIT.md. Feedback paths corroborated; inherited detector-to-U3.3 and some supply associations are now separately tracked in E11. Do not combine nonsimultaneous powered readings. None now. Scope and component-isolation work are deferred by owner.",
+      "closed_when": "Receiver supply, bias and the existing RA0/RA1/RB4 interfaces have supported operating roles; no presumed extra output wire is required.",
       "open_pads": [],
       "nets": [
         "H_RX_ENABLE",
@@ -477,14 +358,32 @@
         "RX_A_PLUS",
         "RX_B_FB",
         "RX_B_OUT",
-        "RX_B_PLUS",
         "H_RX_DETECT",
-        "VREF"
-      ]
+        "VREF",
+        "RX_STAGE_LINK",
+        "H_D3_SIGNAL",
+        "H_RX_VDD"
+      ],
+      "supporting_evidence": [
+        "docs/history/v0.9.30-before-finalization/evidence/remaining_work.json",
+        "evidence/ra0_tp6_connection_v0938.json",
+        "evidence/supply_baseline_results_20261014.json",
+        "evidence/receiver_supply_results_20261014.json",
+        "evidence/q7_r19_voltage_results_20261014.json",
+        "evidence/q7_r19_join_results_20261014.json",
+        "evidence/q7_diode_results_20261014.json",
+        "evidence/q7_direct_bias_result_20261014.json",
+        "evidence/physical_evidence_review_20261015.json",
+        "evidence/topology_closure_audit.json"
+      ],
+      "owner": "Codex evidence audit; no active bench request",
+      "category": "Device function/rating; operating behaviour",
+      "codex_action": "Photo and device-consistency review completed in TOPOLOGY_AUDIT.md. Feedback paths corroborated; inherited detector-to-U3.3 and some supply associations are now separately tracked in E11. Do not combine nonsimultaneous powered readings.",
+      "owner_input": "None now. Scope and component-isolation work are deferred by owner."
     },
     {
       "id": "E09",
-      "area": "Power input / Q1 / rail voltages",
+      "area": "Supply voltages and Q1 control",
       "refs": [
         "Q1",
         "U1",
@@ -492,14 +391,18 @@
         "L2",
         "R43",
         "R44",
-        "U5"
+        "U5",
+        "R3",
+        "R4",
+        "C28",
+        "TP14"
       ],
       "priority": 2,
       "state": "open",
-      "known": "BATTERY+ and VSYS are separate. User confirms Q1.L to U5.4 and both L1/L2 supply sides on VSYS. VDD TP is the separate logic rail. R1A matches FMOS3401A marking.",
-      "unknown": "Exact Q1 maker and gate operation, unmeasured rail voltages, and U1 enable/option branches. Reverse-polarity protection is an interpretation, not a powered test.",
-      "next_action": "Retain the confirmed rail split. Cross-check the Q1 gate/R44 path and U1 enable wiring before a targeted voltage test.",
-      "closed_when": "Gate/control behavior and actual supply levels are established without shorting across Q1, L1 or L2.",
+      "known": "VSYS/RF 6.3 V, printed VDD 4.5 V, PIR supply 3.3 V with PIR attached; VREF 0 V and red LED approximately 1 Hz. TP14 is on U5.8/OUTA at 1.5 ohm, with R43.2/V015; BATTERY+ stays separate. Receiver TP5 = 0.066 V (B62). R44 = 15 kohm (B83); TP14-to-Q1 presumed gate recheck = 21.4/21.7 kohm (B84/B85). The earlier 516-ohm conflict is not reproduced and no wiring change is warranted.",
+      "unknown": "Q1 fitted identity, terminal roles and powered control behavior remain unverified. The resistance recheck is compatible with R44 in the path but does not prove an intact MOSFET or the exact remaining path. Q1/motor dynamics and R3/R4/C28 sensing role remain qualified.",
+      "next_action": "Photo and device-consistency review completed in TOPOLOGY_AUDIT.md. R44 local route corroborated; 516-ohm contradiction stays closed by B84/B85. Q1 roles/control remain qualified. None now. Scope and component-isolation work are deferred by owner.",
+      "closed_when": "Actual supply levels and control behavior are recorded without merging battery, VSYS or filtered branches.",
       "open_pads": [],
       "nets": [
         "BATTERY+",
@@ -507,12 +410,30 @@
         "VDD",
         "Q1_GATE",
         "H_LDO_IN",
-        "U1_ALT_PAD"
-      ]
+        "U1_ALT_PAD",
+        "H_BAT_SENSE",
+        "PIC_RB3_RETURN"
+      ],
+      "supporting_evidence": [
+        "docs/history/v0.9.30-before-finalization/evidence/remaining_work.json",
+        "evidence/supply_baseline_results_20261014.json",
+        "evidence/product_manual_led_review_20261014.json",
+        "evidence/tp14_motor_output_correction_v0939.json",
+        "evidence/receiver_supply_results_20261014.json",
+        "evidence/circuit_consistency_v0942.json",
+        "evidence/r44_resistance_result_20261015.json",
+        "evidence/q1_gate_recheck_results_20261015.json",
+        "evidence/physical_evidence_review_20261015.json",
+        "evidence/topology_closure_audit.json"
+      ],
+      "owner": "Codex evidence audit; no active bench request",
+      "category": "Device function/rating; operating behaviour",
+      "codex_action": "Photo and device-consistency review completed in TOPOLOGY_AUDIT.md. R44 local route corroborated; 516-ohm contradiction stays closed by B84/B85. Q1 roles/control remain qualified.",
+      "owner_input": "None now. Scope and component-isolation work are deferred by owner."
     },
     {
       "id": "E10",
-      "area": "ICSP protection / D6 / J1",
+      "area": "D6 breakdown and ICSP compatibility",
       "refs": [
         "D4",
         "D5",
@@ -522,71 +443,71 @@
       ],
       "priority": 2,
       "state": "open",
-      "known": "D4/D5=5U supports SD05 TVS candidates. D6=G3 has at least two documented Zener candidates. ICSP signal routes are photo-derived.",
-      "unknown": "Both D6 pad routes, D6 exact voltage/polarity, and J1 physical pin-number orientation including square-pad/VPP correspondence.",
-      "next_action": "Measure D6 pads to the adjacent PIC/ICSP nodes. Confirm J1 pad order against the board labels before relying on connector numbering.",
-      "closed_when": "D6 connections and candidate class are supported; ICSP connector physical numbering is reconciled. Zener voltage needs a suitable controlled test or exact part evidence, not ordinary diode mode.",
-      "open_pads": [
-        "D6.1",
-        "D6.2"
-      ],
+      "known": "D6 anode is GND and cathode is VPP; forward drop is about 0.7V and reverse diode mode is OL. J1 pin order is resolved. Primary programming specification DS40001753B requires 8.0-9.0 V for high-voltage entry; low-voltage entry exists only when LVP is enabled.",
+      "unknown": "G3 is nonunique: MMSZ5228BS is 3.9 V; PZU2.4B is 2.4 V. Neither rating has been measured on this board. A directly connected clamp of either rating would load the required high-voltage ICSP level. The current PIC LVP configuration and actual D6 breakdown are unknown.",
+      "next_action": "Photo and device-consistency review completed in TOPOLOGY_AUDIT.md. Measured polarity is distinct from unmeasured breakdown; no safe in-circuit identification step is justified here. None now. Scope and component-isolation work are deferred by owner.",
+      "closed_when": "Clamp class/rating is established or explicitly bounded for reconstruction, and programming compatibility is checked.",
+      "open_pads": [],
       "nets": [
         "ICSP_CLK",
         "ICSP_DAT",
         "MCLR_VPP"
-      ]
+      ],
+      "supporting_evidence": [
+        "docs/history/v0.9.30-before-finalization/evidence/remaining_work.json",
+        "evidence/d6_programming_review_20261009.json",
+        "evidence/physical_evidence_review_20261015.json",
+        "evidence/topology_closure_audit.json"
+      ],
+      "owner": "Codex evidence audit; no active bench request",
+      "category": "Device function/rating",
+      "codex_action": "Photo and device-consistency review completed in TOPOLOGY_AUDIT.md. Measured polarity is distinct from unmeasured breakdown; no safe in-circuit identification step is justified here.",
+      "owner_input": "None now. Scope and component-isolation work are deferred by owner."
     },
     {
       "id": "I01",
-      "area": "Candidate identities / transistor pin maps",
+      "area": "Candidate device identities and pin roles",
       "refs": [
-        "U1",
-        "U2",
-        "U6",
-        "Q1",
-        "Q2",
-        "Q7",
-        "Q8",
-        "Q3",
-        "Q4",
-        "Q5",
-        "Q6",
-        "Q11",
         "D1",
         "D2",
         "D3",
         "D4",
         "D5",
-        "D6"
+        "D6",
+        "Q1",
+        "Q11",
+        "Q2",
+        "Q3",
+        "Q4",
+        "Q5",
+        "Q6",
+        "Q7",
+        "Q8",
+        "U1",
+        "U2",
+        "U6"
       ],
       "priority": 2,
       "state": "open",
-      "known": "Primary datasheets and marking evidence are recorded; custom symbols use the selected candidate pin tables.",
-      "unknown": "Short markings do not uniquely prove manufacturers. Candidate choices and some B/E/C or MOSFET source/drain assignments remain qualified. Western alternatives are redesign options, not identities of fitted parts.",
-      "next_action": "Use electrical pad behavior and package/marking evidence for specific candidates. Do not request sharper photos where the existing marking is already legible.",
-      "closed_when": "Identity is either supported sufficiently for the reconstruction or explicitly retained as a functionally verified candidate with its limits documented.",
+      "known": "Manufacturer candidate datasheets and pin tables exist. D2 local wiring is complete; measured R -> S -> L diode behavior supports a series pair.",
+      "unknown": "Exact fitted identity/ratings remain candidates for D1-D6, Q1-Q8/Q11, U1/U2/U6. The 4P marking alone does not identify three-pin D2; a manufacturer 4P code for a two-pin diode is incompatible.",
+      "next_action": "Photo and device-consistency review completed in TOPOLOGY_AUDIT.md. D2 series-junction equivalent documented separately from its unchanged physical placeholder. Primary U2/Q3 sources checked; remaining identities stay candidates. None now. Scope and component-isolation work are deferred by owner.",
+      "closed_when": "Each part has a supported pin/function model and adequate ratings or an explicit accepted-equivalent limitation; exact branding is not falsely claimed.",
       "open_pads": [],
-      "nets": []
-    },
-    {
-      "id": "I02",
-      "area": "LED / motor connector",
-      "refs": [
-        "LED1",
-        "J5"
+      "nets": [],
+      "supporting_evidence": [
+        "docs/history/v0.9.30-before-finalization/evidence/remaining_work.json",
+        "evidence/physical_evidence_review_20261015.json",
+        "evidence/topology_closure_audit.json"
       ],
-      "priority": 2,
-      "state": "open",
-      "known": "V127 reaches the photo-selected LED common pair; the two PIC LED drives are mapped. MX512H OUTA/OUTB map to the modeled motor connector.",
-      "unknown": "LED internal polarity/colour mapping and J5 physical A/B lead polarity remain provisional.",
-      "next_action": "Check LED pad pairs in diode mode and record emitted colour. Match J5 wire positions to U5 outputs by continuity.",
-      "closed_when": "LED internal mapping and connector orientation are established.",
-      "open_pads": [],
-      "nets": []
+      "owner": "Codex evidence audit; no active bench request",
+      "category": "Physical pin mapping; device function/rating",
+      "codex_action": "Photo and device-consistency review completed in TOPOLOGY_AUDIT.md. D2 series-junction equivalent documented separately from its unchanged physical placeholder. Primary U2/Q3 sources checked; remaining identities stay candidates.",
+      "owner_input": "None now. Scope and component-isolation work are deferred by owner."
     },
     {
       "id": "V01",
-      "area": "Unmarked passive values",
+      "area": "Capacitor values and passive ratings",
       "refs": [
         "capacitors",
         "L1",
@@ -594,16 +515,28 @@
       ],
       "priority": 2,
       "state": "open",
-      "known": "C5 is 470 uF / 16 V; 38 fitted resistors have nominal marked values. R8 full-body dimensions support 0603 and C11 dimensions support 1206.",
-      "unknown": "44 fitted ceramic capacitances and L1/L2 type/value remain unrecovered. Capacitor voltage rating/dielectric and resistor tolerance/power rating are also not established by geometry.",
-      "next_action": "Use the LCR meter first on C6 and one tuning cell, recording frequency/mode and in-circuit status. Isolate one terminal only if an individual value is needed and the network reading cannot resolve it.",
-      "closed_when": "Values needed for faithful circuit behavior are recovered; any remaining bypass substitutions or ratings are explicitly documented assumptions.",
+      "known": "C5 is 470uF/16V; L1/L2 reported 1.4/2.2uH. Marked resistors are recorded. All 44 unknown ceramics now have numerical design candidates: 12 supply, 17 signal/timing and 15 tuning-bank parts, with proposed ratings/dielectrics. PetSafe variant FAQ supports 134.2 kHz. C21/C22 raw auto-mode readings remain preserved. Native v0.9.44 now displays all 44 estimates with asterisks. The owner reports antenna inductance of 500 uH; test conditions are unspecified.",
+      "unknown": "The 44 original fitted ceramic values remain unconfirmed. Numerical choices are explicit design proposals. The RF bank uses the reported 500 uH and assumes ideal switches. Inductance test conditions, weights/order, voltage stress and firmware tuning remain unverified. Receiver/timing choices and L1/L2 ratings also need qualification.",
+      "next_action": "Preserve all 44 starred estimates and their qualifications. Capacitor selection is outside this topology task. None for this task; value/package qualification remains later work.",
+      "closed_when": "Candidate choices are validated for the intended reconstruction; original-value and original-rating claims remain separate unless independently established.",
       "open_pads": [],
-      "nets": []
+      "nets": [],
+      "supporting_evidence": [
+        "docs/history/v0.9.30-before-finalization/evidence/remaining_work.json",
+        "evidence/receiver_capacitance_test_plan_20261015.json",
+        "evidence/receiver_capacitance_results_20261015.json",
+        "evidence/capacitor_value_review_20261015.json",
+        "evidence/antenna_inductance_results_20261015.json",
+        "evidence/capacitor_application_v0944.json"
+      ],
+      "owner": "Codex evidence audit; no active bench request",
+      "category": "Reproduction/package (values and passive ratings)",
+      "codex_action": "Preserve all 44 starred estimates and their qualifications. Capacitor selection is outside this topology task.",
+      "owner_input": "None for this task; value/package qualification remains later work."
     },
     {
       "id": "M01",
-      "area": "Package geometry / PCB reproduction",
+      "area": "LED footprint and mechanical qualification",
       "refs": [
         "C5",
         "S1",
@@ -615,59 +548,122 @@
       ],
       "priority": 2,
       "state": "open",
-      "known": "147 of 150 catalog entries have candidate stock footprints. R8 and C11 have user dimensions.",
-      "unknown": "C5, S1 and LED1 footprints are blank. Other families, connector pitch, test-pad drills, switch lead span and exact board geometry are partly photo-based.",
-      "next_action": "Measure C5 can diameter/lead spacing, S1 body/lead span and LED1 body/pad pitch. Refine other footprints only where a photo scale or ruler contradicts the selected family.",
-      "closed_when": "Blank footprints are filled with supported stock matches or approved vendor parts; exact PCB-reproduction dimensions are distinguished from schematic-only candidates.",
+      "known": "LED1 is the only unassigned footprint; R30/PIC23 lights red and R31/PIC22 lights green. C5 diameter/height, S1 body/actuator size, R8 and C11 sizes are already measured. J5 rear placement and both board contacts are mapped to U5 outputs from front/rear photos.",
+      "unknown": "LED1 land pattern/manufacturer numbering and internal pairing of its externally grounded cathode pads remain unverified. C5 pitch and S1 pad fit/3D heights are reproduction qualifications, not unknown schematic wires. J5 stock-footprint pad order/pitch and external motor harness colours remain unverified.",
+      "next_action": "Preserve measured body dimensions and candidate footprints. LED1 pad geometry and exact fit remain reproduction prerequisites, outside this task. None for this task; value/package qualification remains later work.",
+      "closed_when": "LED footprint has a supported pad map; remaining package-fit assumptions are documented separately from schematic connectivity.",
       "open_pads": [],
-      "nets": []
+      "nets": [],
+      "supporting_evidence": [
+        "docs/history/v0.9.30-before-finalization/evidence/remaining_work.json",
+        "evidence/led1_colour_results_20261009.json",
+        "evidence/j5_photo_review_20261009.json"
+      ],
+      "owner": "Codex evidence audit; no active bench request",
+      "category": "Reproduction/package",
+      "codex_action": "Preserve measured body dimensions and candidate footprints. LED1 pad geometry and exact fit remain reproduction prerequisites, outside this task.",
+      "owner_input": "None for this task; value/package qualification remains later work."
     },
     {
-      "id": "D01",
-      "area": "Empty options",
+      "id": "E11",
+      "area": "Inherited copper joins without independent closure",
       "refs": [
-        "C42",
-        "C49",
-        "J6",
-        "Q9",
-        "R36",
-        "R46",
-        "R47",
-        "U6A",
-        "U7"
+        "D2",
+        "C19",
+        "C20",
+        "R28",
+        "U3",
+        "U1",
+        "L2",
+        "R18",
+        "R20",
+        "R21"
       ],
-      "priority": 2,
+      "priority": 1,
       "state": "open",
-      "known": "18 open pads belong to unpopulated options, not missing fitted chips.",
-      "unknown": "Optional-pad routing is incomplete; values and intended uses may remain unknowable without another board variant.",
-      "next_action": "Record option copper where visible; defer measurement unless it affects a populated net.",
-      "closed_when": "Optional routes are documented to the desired reproduction scope; do not invent fitted values or no-connect flags.",
+      "category": "Copper connection; evidence coverage",
+      "known": "Independent sourced photo/meter pairs agree with the current model. D2.R-to-C20.2 is measured at 1 ohm; U3 feedback tracks are visible. R39 is corrected. No additional unequivocal wiring correction was established.",
+      "unknown": "RX_A_PLUS still combines {D2.R,C20.2}, {C19.1}, {R28.2} and {U3.3} without a complete independent evidence path. C20.1-to-GND and U1.L3/CE-to-VIN remain unverified inherited joins. Other disconnected evidence groups, including rail fan-out, are listed by physical endpoint in TOPOLOGY_AUDIT.md; missing encoded support is not itself a hardware fault.",
+      "codex_action": "Original close-ups IMG_2429/2434 do not expose the whole detector-to-input route. Preserve present assignments as qualified, not certified. Use the named graph gaps to revisit existing evidence before proposing any further bench test. No all-pairs testing.",
+      "owner_input": "One staged check only: with battery and programmer disconnected, resistance from C20 lower metal end (nearest printed C20; D in the linked photo) to U3 pin 3 (third lower lead from the pin-1 dot end; P3). Report resistance and shorted-probe baseline. Near probe resistance supports this hidden join; a stable kOhm/OL result rejects it. No component removal.",
+      "closed_when": "Each named inherited join has a continuous photo route or applicable direct continuity evidence, or is corrected with a bounded source-supported change. The one proposed input check closes only D2/C20-to-U3.3, not the other branches or every graph gap.",
       "open_pads": [],
-      "nets": []
-    },
-    {
-      "id": "F01",
-      "area": "Function / internal layers / daughterboard",
-      "refs": [
-        "mainboard",
-        "PIR"
+      "nets": [
+        "RX_A_PLUS",
+        "H_LDO_IN",
+        "H_RX_ENABLE",
+        "H_RX_VDD",
+        "GND"
       ],
-      "priority": 2,
-      "state": "open",
-      "known": "A one-sheet schematic and photo/via evidence exist; 83 modeled net partitions match the native schematic.",
-      "unknown": "No powered functional validation, actual layer stack or routed KiCad PCB has been created. The PIR daughterboard internal circuit is not reconstructed. MCU firmware behavior and operating timing are not established.",
-      "next_action": "Finish priority electrical gaps first. Then test defined functions/voltages and decide whether physical PCB reproduction and daughterboard reverse engineering are needed.",
-      "closed_when": "Schematic assumptions are tested to an agreed scope; PCB and daughterboard work, if requested, receive their own explicit completion criteria.",
-      "open_pads": [],
-      "nets": []
+      "owner": "Codex evidence review; one staged owner check",
+      "supporting_evidence": [
+        "evidence/physical_evidence_review_20261015.json",
+        "evidence/topology_closure_audit.json",
+        "evidence/d2_diode_20261009.json",
+        "docs/measurement-images/receiver_input_bridge.svg"
+      ],
+      "next_action": "Original close-ups IMG_2429/2434 do not expose the whole detector-to-input route. Preserve present assignments as qualified, not certified. Use the named graph gaps to revisit existing evidence before proposing any further bench test. No all-pairs testing. One staged check only: with battery and programmer disconnected, resistance from C20 lower metal end (nearest printed C20; D in the linked photo) to U3 pin 3 (third lower lead from the pin-1 dot end; P3). Report resistance and shorted-probe baseline. Near probe resistance supports this hidden join; a stable kOhm/OL result rejects it. No component removal."
     }
   ],
+  "finish_plan": [
+    {
+      "id": "F1",
+      "title": "Audit connection evidence and device qualifications",
+      "scope": "Main-board electrical model",
+      "issues": [
+        "E11",
+        "E03",
+        "E04",
+        "E07",
+        "E08",
+        "E09",
+        "E10",
+        "I01"
+      ],
+      "summary": "R39 is corrected; independent photo/meter audit distinguishes remaining copper-evidence gaps from device-role and operating limitations. One receiver input check is staged; no broad bench batch.",
+      "next_action": "Review TOPOLOGY_AUDIT.md and E11 before further hardware work; retain deferred scope/isolation choices."
+    },
+    {
+      "id": "F2",
+      "title": "Recover critical component values",
+      "scope": "Main-board values",
+      "issues": [
+        "V01"
+      ],
+      "summary": "All 44 unknown ceramics have numerical design candidates, ratings and dielectrics: 12 supply, 17 signal/timing and 15 RF-bank seeds. Validation remains; no broad measurement batch is active.",
+      "next_action": "Review the function-based candidate table. No new bench batch now; prioritize shared filter parameters and antenna behavior over 44 individual readings."
+    },
+    {
+      "id": "F3",
+      "title": "Finish interface and package mapping",
+      "scope": "Main-board interfaces",
+      "issues": [
+        "M01"
+      ],
+      "summary": "LED colour branches and J5 board-contact/output mapping are established. LED footprint, connector fit and external motor harness orientation remain reproduction qualifications.",
+      "next_action": "Obtain a matching LED vendor drawing or pad geometry; qualify J5 and the other packages before laying out a replacement PCB."
+    }
+  ],
+  "reconstruction_limitations": [
+    {
+      "id": "E06",
+      "area": "PIC14/TP11 and PIC18/TP17: hidden continuation not excluded",
+      "disposition": "Drawing resolved; physical completeness unproved",
+      "known": "PIC14/RC3 reaches TP11; PIC18/RC7 reaches TP17. Front/rear photos show no onward surface route. Both local routes are represented and are valid endpoints.",
+      "unknown": "Additional inner-layer branches and firmware purpose remain unverified; test-only use is not asserted.",
+      "next_action": "None justified for E06. Do not repeat the rejected TP16-TP11 or TP16-TP17 checks.",
+      "reopen_when": "A specific unassigned destination, contradictory continuity result, inner-layer image or firmware evidence identifies an onward connection that the current drawing omits.",
+      "evidence": "evidence/e06_disposition_v0941.json"
+    }
+  ],
+  "settled_summary": [],
+  "closed_items": [],
   "rails": [
     {
       "name": "BATTERY+",
       "board_label": "BATTERY (+)",
-      "path": "Battery positive -> Q1 single pad/native3 (candidate drain); TP14/R43.2 on the raw side.",
-      "basis": "User battery-path report; TP14 raw-side placement from photo plus V015-TP14/R43.2 confirmation."
+      "path": "Actual positive battery terminal -> Q1 single pad/native3 (candidate drain). TP14 is OUTA, separate from this rail.",
+      "basis": "User battery-path report. TP14-U5.8 measured 1.5 ohm; BP-TP14 measured 6.3 V, rejecting the former battery-side photo assignment."
     },
     {
       "name": "VSYS",
@@ -678,14 +674,14 @@
     {
       "name": "VDD",
       "board_label": "VDD test point",
-      "path": "TP103, PIC20/C32, U5 pin1/VCC, V064/V063/V075/V082.",
+      "path": "TP103, PIC20/C32, U5 pin1/VCC, V064/V063/V075/V082. D3.R via V082 is user-confirmed.",
       "basis": "User via/test-point continuity. Distinct from VSYS and BATTERY+."
     },
     {
       "name": "VREF",
       "board_label": "VREF test point",
-      "path": "TP104, PIC21/RB0/V026, PIC4/RA2/V035/C39, R21.2/V071.",
-      "basis": "User-confirmed core. R22/R23/R48 branches remain inferred."
+      "path": "TP104, PIC4/RA2/V035/C39, R21.2/V071. U3.5 and R22 D/left/model2 at 1 ohm.",
+      "basis": "User-confirmed core plus U3.5/R22 D/left. R48.2 removed: user annotation groups it with R25/R47/C42; R23 branch rejected. PIC21/RB0/V026 explicitly withdrawn; TP16-VREF measured 800 kohm."
     },
     {
       "name": "GND",
@@ -694,13 +690,17 @@
       "basis": "User ground reports and matched rear copper; association of every candidate branch is not thereby proved."
     }
   ],
-  "population_note": "Open pads include empty options, test pads and internally NC pins. Zero open PIC pads does not prove every onward route.",
-  "completed": [
-    "150 catalog entries on one A2 sheet, with 20 stock and 4 authorized custom symbol definitions in use.",
-    "All PIC pads have modeled local nets; user-confirmed tuning controls and H-bridge INA/INB routes are retained.",
-    "BATTERY+, VSYS, VDD, VREF and GND are distinguished; L1/L2 supply sides both connect to VSYS.",
-    "Reported continuity, resistance and negative results are preserved separately from inferred connections.",
-    "Original ZIP and 26 original photo hashes are preserved; native/model net partitions match."
+  "milestones": [
+    {
+      "name": "Topology complete",
+      "criterion": "Populated components and functional block interfaces have supported connections; candidate functions/polarities are compatible and remaining exceptions individually documented."
+    },
+    {
+      "name": "Value/package complete",
+      "criterion": "Required values and geometry recovered; exact manufacturer/ratings separated from equivalent design choices. Routed PCB remains a separate deliverable."
+    }
   ],
+  "population_note": "Open pads include empty options, test pads and internally NC pins. Zero open PIC pads does not prove every onward route.",
+  "completed": [],
   "history": "docs/history/README.md"
 }

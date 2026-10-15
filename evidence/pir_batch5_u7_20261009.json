@@ -1,0 +1,67 @@
+{
+  "date": "2026-10-09",
+  "revision": "v0.9.16",
+  "source": "User B18/B19 resistance readings and annotated measured J3-to-U7 connections.",
+  "shorted_probe_baseline": null,
+  "readings": [
+    {
+      "id": "B18",
+      "pair": [
+        "TP16.1",
+        "TP11.1"
+      ],
+      "resistance_ohms": 400000
+    },
+    {
+      "id": "B19",
+      "pair": [
+        "TP16.1",
+        "TP17.1"
+      ],
+      "resistance_ohms": 400000
+    }
+  ],
+  "rejected_direct_pairs": [
+    [
+      "TP16.1",
+      "TP11.1"
+    ],
+    [
+      "TP16.1",
+      "TP17.1"
+    ]
+  ],
+  "confirmed_pairs": [
+    [
+      "U7.1",
+      "J3.3"
+    ],
+    [
+      "U7.2",
+      "J3.2"
+    ],
+    [
+      "U7.3",
+      "J3.1"
+    ]
+  ],
+  "numerical_continuity_readings_for_connector": null,
+  "physical_pad_mapping": {
+    "U7.1": "Square empty pad: left in the user front photo; top in IMG_2441. Connects to J3.3 / black wire / GND.",
+    "U7.2": "Middle empty pad to middle J3.2 / blue wire / H_PIR_RAW.",
+    "U7.3": "Round outer empty pad: right in user front photo; bottom in IMG_2441. Connects to J3.1 / red wire / H_PIR_VDD."
+  },
+  "qualifications": [
+    "Connector continuity is reported by the user; no numerical ohms were supplied for those three pairs.",
+    "The square pad is local pin1 on each footprint, but lies at opposite ends: U7.1 is not J3.1.",
+    "U7 remains an empty three-hole option, not a newly identified or fitted IC.",
+    "400 kohm establishes no direct copper join and is not an added resistor value. TP16 onward routing remains unresolved.",
+    "Existing branches on the three J3 nets retain their individual evidence qualifications."
+  ],
+  "photos": {
+    "photos/user_updates/U7_J3_mapping_20261009.png": "368635cea00d59762d515383921311d762cd049c99f9e105d355c36ed88287d1",
+    "photos/originals/IMG_2435.jpg": "04f1464e2fceeec695365b25183dc96505034434565d20713f55c5b13b18fac1",
+    "photos/originals/IMG_2436.jpg": "8870fa15bfcc55dcaca5535ca33af2a242edadc07ad4c95db49fb32245e0cdaf",
+    "photos/originals/IMG_2441.jpg": "a4c6e7997e76fecac50219bf8faeae7766e7e8b3f9cb89ab19cfc7020e2c3407"
+  }
+}

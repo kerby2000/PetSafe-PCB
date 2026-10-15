@@ -1,0 +1,67 @@
+{
+  "date": "2026-10-14",
+  "status": "TP14_OUTA_CONNECTION_SUPPORTED",
+  "measurements": [
+    {
+      "id": "B60",
+      "group": "battery-tp14",
+      "from": "BP",
+      "to": "T14",
+      "mode": "DC voltage",
+      "unit": "signed V; steady or varying",
+      "state": "Powered, same red-blinking state",
+      "issue": "E09",
+      "purpose": "Test the disputed TP14/BATTERY+ same-net prediction directly.",
+      "date": "2026-10-14",
+      "result": "6.3 V",
+      "voltage_v": 6.3,
+      "stability": null,
+      "raw_user_statement": "PetSafe Resolve TP14 versus the actual battery terminal / v0.9.38\nB60 red BP / black T14 (Powered, same red-blinking state): 6.3"
+    },
+    {
+      "id": "B61",
+      "group": "tp14-gate",
+      "from": "T14",
+      "to": "G1",
+      "mode": "Resistance",
+      "unit": "ohms / kohms / OL",
+      "state": "Unpowered",
+      "issue": "E09",
+      "purpose": "Locate TP14/R43.2 on Q1 gate-control node after rejecting its battery-positive assignment.",
+      "date": "2026-10-14",
+      "result": "516 ohm",
+      "resistance_ohms": 516,
+      "raw_user_statement": "PetSafe TP14: locate the Q1 control connection / v0.9.38\nB61 red T14 / black G1 (Unpowered): 516ohm"
+    },
+    {
+      "id": "X03",
+      "group": "tp14-motor-discovery",
+      "from": "TP14",
+      "to": "U5.8",
+      "date": "2026-10-14",
+      "result": "1.5 ohm",
+      "resistance_ohms": 1.5,
+      "mode": "Resistance",
+      "state": "Not separately restated; follows unpowered B61",
+      "issue": "E09",
+      "native_endpoints": [
+        "TP14.1",
+        "U5.8"
+      ],
+      "raw_user_statement": "TP14 and pin 8 of the MX512H are connected - 1.5ohm",
+      "shorted_probe_ohms": null,
+      "stability": null
+    }
+  ],
+  "rejected_direct_pair": [
+    "BATP.1",
+    "TP14.1"
+  ],
+  "established_local_pair": [
+    "TP14.1",
+    "R43.2"
+  ],
+  "assessment": "B60 6.3 V rejects BATTERY+ membership. B61 516 ohm does not support a direct gate-node join. The user then measured TP14 to MX512H pin8 at 1.5 ohm, supporting OUTA/H_MOTOR_A. Prior TP14-R43.2 continuity is retained.",
+  "next_candidate": null,
+  "basis": "User resistance measurement to U5 pin8; no new Q1 terminal-role inference."
+}

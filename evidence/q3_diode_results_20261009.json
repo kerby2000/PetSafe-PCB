@@ -1,0 +1,81 @@
+{
+  "revision": "v0.9.32",
+  "date": "2026-10-09",
+  "measurements": [
+    {
+      "id": "B31",
+      "group": "q3-junctions",
+      "from": "QL",
+      "to": "QR",
+      "mode": "diode",
+      "purpose": "Measure forward voltage or OL to identify the common junction/base direction.",
+      "result": "2.3 V",
+      "conditions": "In circuit, battery and programmer disconnected as requested."
+    },
+    {
+      "id": "B32",
+      "group": "q3-junctions",
+      "from": "QR",
+      "to": "QL",
+      "mode": "diode",
+      "purpose": "Measure forward voltage or OL to identify the common junction/base direction.",
+      "result": "OL",
+      "conditions": "In circuit, battery and programmer disconnected as requested."
+    },
+    {
+      "id": "B33",
+      "group": "q3-junctions",
+      "from": "QL",
+      "to": "QS",
+      "mode": "diode",
+      "purpose": "Measure forward voltage or OL to identify the common junction/base direction.",
+      "result": "0.48 V",
+      "conditions": "In circuit, battery and programmer disconnected as requested.",
+      "earlier_reading": "0.35 V",
+      "latest_user_statement": "I re-measured again. QL (R) QS(B) - 0.48V"
+    },
+    {
+      "id": "B34",
+      "group": "q3-junctions",
+      "from": "QS",
+      "to": "QL",
+      "mode": "diode",
+      "purpose": "Measure forward voltage or OL to identify the common junction/base direction.",
+      "result": "OL",
+      "conditions": "In circuit, battery and programmer disconnected as requested."
+    },
+    {
+      "id": "B35",
+      "group": "q3-junctions",
+      "from": "QR",
+      "to": "QS",
+      "mode": "diode",
+      "purpose": "Measure forward voltage or OL to identify the common junction/base direction.",
+      "result": "OL",
+      "conditions": "In circuit, battery and programmer disconnected as requested."
+    },
+    {
+      "id": "B36",
+      "group": "q3-junctions",
+      "from": "QS",
+      "to": "QR",
+      "mode": "diode",
+      "purpose": "Measure forward voltage or OL to identify the common junction/base direction.",
+      "result": "OL",
+      "conditions": "In circuit, battery and programmer disconnected as requested."
+    }
+  ],
+  "latest_result": {
+    "B31": "2.3 V",
+    "B32": "OL",
+    "B33": "0.48 V",
+    "B34": "OL",
+    "B35": "OL",
+    "B36": "OL"
+  },
+  "interpretation": "The latest QL(red)-QS(black) 0.48 V is consistent with a forward junction but does not establish a BJT or MOSFET. QL-QR 2.3 V and QR-QS OL both ways do not confirm the PNP B=QR assignment. Preserve the existing copper and mark the candidate disputed.",
+  "source": "User reports, including later correction 0.35 V -> 0.48 V; not a new copper connectivity measurement.",
+  "datasheet": "https://www.onsemi.com/pdf/datasheet/mmbta55lt1-d.pdf",
+  "datasheet_evidence": "Manufacturer identifies 2H as MMBTA55L; PNP pins 1 base, 2 emitter, 3 collector. Marking supports a candidate, not unique fitted identity.",
+  "schematic_action": "Retain disputed PNP symbol and physical mapping, update CurrentEvidence; no transistor family substitution."
+}

@@ -1,0 +1,605 @@
+{
+  "date": "2026-10-15",
+  "revision": "v0.9.42",
+  "basis_commit": "c7609f8",
+  "electrical_change": false,
+  "new_measurements": [
+    "B83"
+  ],
+  "findings": [
+    {
+      "id": "C01",
+      "issue": "E09",
+      "priority": 1,
+      "title": "Q1 gate path: 516 ohm versus the drawn 15-kohm route",
+      "status": "RESOLVED_BY_RECHECK",
+      "basis": "B61 TP14/OUTA to Q1.R = 516 ohm, with stability unreported. Q1_GATE contains only Q1.R and R44.2; R44 is marked 18C and modeled as 15 kohm. B83 subsequently measured 15 kohm directly across R44 in circuit; stability unreported.",
+      "reasoning": "With a settled, intact insulated MOSFET gate and no omitted conductive path, the external resistance route must include R44. 516 ohm is not explained by that model. In-circuit gate capacitance and the candidate identity prevent treating this as proof of a fault.",
+      "next_action": "None for this resistance conflict. E09 retains Q1 device roles and powered operation as separate open qualifications.",
+      "resolution": "B84/B85 report 21.4/21.7 kohm in opposite directions after a request to allow settling. No time trace or explicit stability statement was supplied. Both exceed the measured 15-kohm R44 and are compatible with a path containing it. The older B61 516-ohm report is not reproduced; retain it as historical evidence without using it to infer a short or missing bypass. Close only the low-resistance contradiction. These readings do not establish Q1 identity, gate leakage, pin roles, the exact remaining current path or powered behavior.",
+      "resolution_evidence": "evidence/q1_gate_recheck_results_20261015.json"
+    },
+    {
+      "id": "C02",
+      "issue": "E03",
+      "priority": 1,
+      "title": "U2 operates above the candidate recommended supply range",
+      "status": "OPEN_RATING_CONFLICT",
+      "basis": "B76 U2 supply 6.3 V and B77 U2-minus-VDD +1.8 V. TI lists C14R for SN74LVC2G14DBV; recommended VCC max 5.5 V and absolute maximum 6.5 V.",
+      "reasoning": "The marking supports the candidate but does not uniquely prove fitted identity. The 0.8 V excess over the recommended maximum is unresolved; being below an absolute maximum does not establish normal operation or reliability. R5 limits current; its 22-ohm value does not regulate voltage.",
+      "next_action": "Keep the original rail mapping and candidate qualification. Dynamic supply/drop checks belong to the deferred scope session; do not substitute a part or reconnect VDD on this evidence."
+    },
+    {
+      "id": "C03",
+      "issue": "E04",
+      "priority": 2,
+      "title": "Q3 family and pin roles remain disputed",
+      "status": "OPEN_DEVICE_MODEL",
+      "basis": "2H supports a PNP MMBTA55 candidate, but Q3 diode readings do not establish its presumed base junctions.",
+      "reasoning": "A fitted network can influence diode mode. Neither a PNP-to-NPN/MOSFET swap nor a copper change is justified.",
+      "next_action": "Leave Q3 fitted. Preserve the disputed model and qualify tuning calculations until device behavior and critical capacitances are known."
+    },
+    {
+      "id": "C04",
+      "issue": "E10",
+      "priority": 2,
+      "title": "D6 has measured polarity but unknown reverse breakdown",
+      "status": "OPEN_PROGRAMMING_COMPATIBILITY",
+      "basis": "A=GND, K=VPP; forward about 0.7 V, reverse OL. G3 has multiple candidate identities. PIC high-voltage entry specification is 8-9 V.",
+      "reasoning": "An unmeasured 3.9-V or 2.4-V candidate is not a recovered rating. The native label now says Vbr TBD; source candidates remain in the evidence.",
+      "next_action": "No repeat diode-mode check and no breakdown test through the PIC. Keep identity/ICSP compatibility open with the component fitted."
+    },
+    {
+      "id": "C05",
+      "issue": "E08",
+      "priority": 2,
+      "title": "Receiver DC readings do not establish one simultaneous operating state",
+      "status": "OPEN_BEHAVIOR",
+      "basis": "TP5 = 0.066 V; VREF = 0 V. Earlier R19 end readings were 0 and 4.5 V, but later direct Q7 QR-QL was 0 V.",
+      "reasoning": "Do not subtract separate readings taken at different times to diagnose a failed junction. The two 10-kohm VREF divider resistors imply half the receiver rail only under negligible loading and steady conditions.",
+      "next_action": "Retain the latest direct-bias reading; enabled-state and timing checks are deferred, with no repeated DC batch now."
+    }
+  ],
+  "sources": [
+    {
+      "url": "https://www.ti.com/lit/ds/symlink/sn74lvc2g14.pdf",
+      "finding": "Pinout p3; recommended/absolute supply limits p4; C14R in DBV marking table. Read 2026-10-15."
+    },
+    {
+      "url": "https://www.onsemi.com/download/data-sheet/pdf/mmbta55lt1-d.pdf",
+      "finding": "2H MMBTA55 PNP candidate; not fitted-identity proof."
+    },
+    {
+      "url": "https://ww1.microchip.com/downloads/aemDocuments/documents/OTH/ProductDocuments/ProgrammingSpecifications/40001753B.pdf",
+      "finding": "PIC16(L)F188XX programming specification; existing D6 review retained."
+    }
+  ],
+  "unchanged_net_partitions": {
+    "H_ANT_A": [
+      "ANT1.1",
+      "Q8.B1",
+      "Q8.B3"
+    ],
+    "H_ANT_B": [
+      "ANT2.1",
+      "C11.1",
+      "C14.1",
+      "C29.1",
+      "C44.1",
+      "C47.1",
+      "C49.1",
+      "D2.L",
+      "R46.1"
+    ],
+    "H_AUX_IN": [
+      "C36.1",
+      "R37.2",
+      "U6.L2",
+      "U6.R2",
+      "U6A.L"
+    ],
+    "BATTERY+": [
+      "BATP.1",
+      "Q1.S"
+    ],
+    "H_BAT_SENSE": [
+      "C28.1",
+      "R3.2",
+      "R4.1"
+    ],
+    "H_BUTTON": [
+      "C35.1",
+      "R40.2",
+      "R41.2",
+      "S1.BL",
+      "S1.BR"
+    ],
+    "GND": [
+      "BATN.1",
+      "C1.2",
+      "C12.1",
+      "C15.1",
+      "C17.2",
+      "C19.2",
+      "C1A.2",
+      "C2.2",
+      "C20.1",
+      "C24.2",
+      "C25.2",
+      "C26.2",
+      "C27.2",
+      "C28.2",
+      "C2A.2",
+      "C30.2",
+      "C31.1",
+      "C32.2",
+      "C33.2",
+      "C34.2",
+      "C35.2",
+      "C36.2",
+      "C37.2",
+      "C38.1",
+      "C39.2",
+      "C4.1",
+      "C40.2",
+      "C41.2",
+      "C42.1",
+      "C45.1",
+      "C48.1",
+      "C49.2",
+      "C5.2",
+      "C6.2",
+      "C7.2",
+      "C8.2",
+      "C9.2",
+      "D3.L",
+      "D4.2",
+      "D5.2",
+      "D6.2",
+      "GND.1",
+      "GND_RF.1",
+      "J1.GND",
+      "J3.3",
+      "LED1.BL",
+      "LED1.BR",
+      "Q11.L",
+      "Q2.L",
+      "Q3.L",
+      "Q4.L",
+      "Q5.L",
+      "Q6.L",
+      "Q8.B2",
+      "Q9.R",
+      "R10.2",
+      "R2.1",
+      "R22.1",
+      "R29.2",
+      "R32.1",
+      "R43.1",
+      "S1.TL",
+      "S1.TR",
+      "U1.L2",
+      "U2.T2",
+      "U3.4",
+      "U4.19",
+      "U4.8",
+      "U5.6",
+      "U5.7",
+      "U6.R3",
+      "U6A.R2",
+      "U7.1"
+    ],
+    "H_LDO_IN": [
+      "C1.1",
+      "C1A.1",
+      "L2.2",
+      "U1.L1",
+      "U1.L3"
+    ],
+    "H_LED_A": [
+      "LED1.TL",
+      "R30.2"
+    ],
+    "H_LED_B": [
+      "LED1.TR",
+      "R31.2"
+    ],
+    "H_LED_CTL_A": [
+      "R30.1",
+      "TP1.1",
+      "U4.23"
+    ],
+    "H_LED_CTL_B": [
+      "R31.1",
+      "TP2.1",
+      "U4.22"
+    ],
+    "H_MOTOR_A": [
+      "J5.A",
+      "R43.2",
+      "TP14.1",
+      "U5.8"
+    ],
+    "H_MOTOR_B": [
+      "J5.B",
+      "TP15.1",
+      "U5.5"
+    ],
+    "MOTOR_INA": [
+      "U4.15",
+      "U5.2"
+    ],
+    "MOTOR_INB": [
+      "U4.16",
+      "U5.3"
+    ],
+    "H_PIR_RAW": [
+      "J3.2",
+      "R38.1",
+      "U7.2"
+    ],
+    "H_PIR_SIG": [
+      "Q2.S",
+      "TP16.1",
+      "U4.21"
+    ],
+    "H_PIR_VDD": [
+      "C37.1",
+      "J3.1",
+      "U6.R1",
+      "U6A.R1",
+      "U7.3"
+    ],
+    "H_RF_IN_A": [
+      "C9.1",
+      "D1.R",
+      "R7.2",
+      "U2.T3"
+    ],
+    "H_RF_IN_B": [
+      "C8.1",
+      "D1.L",
+      "R6.1",
+      "U2.T1"
+    ],
+    "H_RF_VDD": [
+      "C5.1",
+      "C6.1",
+      "L1.2",
+      "Q8.T2",
+      "R5.1"
+    ],
+    "H_RX_DETECT": [
+      "C23.2",
+      "R25.1"
+    ],
+    "H_RX_ENABLE": [
+      "Q7.L",
+      "R18.2",
+      "R19.1"
+    ],
+    "H_RX_ENABLE_CTL": [
+      "R18.1",
+      "U4.12"
+    ],
+    "H_D3_SIGNAL": [
+      "D3.S",
+      "R42.2"
+    ],
+    "H_RX_VDD": [
+      "C17.1",
+      "C24.1",
+      "R20.2",
+      "R21.1",
+      "TP5.1",
+      "U3.8"
+    ],
+    "H_TUNE_1": [
+      "R13.1",
+      "U4.17"
+    ],
+    "H_TUNE_2": [
+      "R14.1",
+      "U4.5"
+    ],
+    "H_TUNE_3": [
+      "R15.1",
+      "U4.6"
+    ],
+    "H_TUNE_4": [
+      "R16.1",
+      "U4.7"
+    ],
+    "H_TUNE_5": [
+      "R11.1",
+      "U4.11"
+    ],
+    "VSYS": [
+      "C27.1",
+      "C33.1",
+      "L1.1",
+      "L2.1",
+      "Q1.L",
+      "R3.1",
+      "U5.4"
+    ],
+    "VDD": [
+      "C2.1",
+      "C2A.1",
+      "C3.1",
+      "C32.1",
+      "C34.1",
+      "D3.R",
+      "J1.VDD",
+      "Q7.R",
+      "R1.1",
+      "R19.2",
+      "R37.1",
+      "R39.2",
+      "U1.R1",
+      "U4.20",
+      "U5.1",
+      "VDD.1"
+    ],
+    "ICSP_CLK": [
+      "D4.1",
+      "J1.CLK",
+      "R32.2",
+      "U4.27"
+    ],
+    "ICSP_DAT": [
+      "D5.1",
+      "J1.DAT",
+      "R40.1",
+      "U4.28"
+    ],
+    "MCLR_VPP": [
+      "D6.1",
+      "J1.VPP",
+      "R41.1",
+      "U4.1"
+    ],
+    "OSC1": [
+      "C30.1",
+      "U4.9",
+      "Y1.1"
+    ],
+    "OSC2": [
+      "C31.2",
+      "U4.10",
+      "Y1.2"
+    ],
+    "PIC_RA1_RX_REF": [
+      "C26.1",
+      "R28.1",
+      "R29.1",
+      "TP7.1",
+      "U4.3"
+    ],
+    "PIC_RB3_RETURN": [
+      "R4.2",
+      "U4.24"
+    ],
+    "VREF": [
+      "C18.1",
+      "C39.1",
+      "R21.2",
+      "R22.2",
+      "U3.5",
+      "U4.4",
+      "VREF.1"
+    ],
+    "PIC_RC3": [
+      "TP11.1",
+      "U4.14"
+    ],
+    "PIC_RC7_TP17": [
+      "TP17.1",
+      "U4.18"
+    ],
+    "PIC_TP4_C41": [
+      "C40.1",
+      "C41.1",
+      "R23.2",
+      "R42.1",
+      "R44.1",
+      "TP4.1",
+      "U4.25"
+    ],
+    "PIR_BASE": [
+      "Q2.R",
+      "R38.2",
+      "R39.1"
+    ],
+    "Q1_GATE": [
+      "Q1.R",
+      "R44.2"
+    ],
+    "Q8_DRIVE_A": [
+      "Q8.T3",
+      "R9.2"
+    ],
+    "Q8_DRIVE_B": [
+      "Q8.T1",
+      "R8.2"
+    ],
+    "R35_Q9": [
+      "Q9.L",
+      "R35.2"
+    ],
+    "RB5_OPT": [
+      "R35.1",
+      "TP10.1",
+      "U4.26"
+    ],
+    "RF_MONITOR_PAD": [
+      "D1.S",
+      "R10.1",
+      "R6.2",
+      "R7.1",
+      "TP3.1",
+      "U4.13"
+    ],
+    "RX_A_FB": [
+      "C22.2",
+      "R26.2",
+      "R48.1",
+      "U3.2"
+    ],
+    "RX_A_FILTER": [
+      "C18.2",
+      "C25.1",
+      "R27.1",
+      "TP6.1",
+      "U4.2"
+    ],
+    "RX_A_OUT": [
+      "C22.1",
+      "R26.1",
+      "R27.2",
+      "R47.1",
+      "U3.1"
+    ],
+    "RX_A_PLUS": [
+      "C19.1",
+      "C20.2",
+      "D2.R",
+      "R28.2",
+      "U3.3"
+    ],
+    "RX_B_FB": [
+      "C21.2",
+      "R23.1",
+      "R24.2",
+      "U3.6"
+    ],
+    "RX_B_OUT": [
+      "C21.1",
+      "C23.1",
+      "R24.1",
+      "U3.7"
+    ],
+    "RX_SUPPLY_SERIES": [
+      "Q7.S",
+      "R20.1"
+    ],
+    "TUNE_1_BASE": [
+      "Q3.R",
+      "R13.2"
+    ],
+    "TUNE_1_MID": [
+      "C10.2",
+      "C11.2",
+      "C12.2"
+    ],
+    "TUNE_1_SW": [
+      "C10.1",
+      "Q3.S"
+    ],
+    "TUNE_2_BASE": [
+      "Q4.R",
+      "R14.2"
+    ],
+    "TUNE_2_MID": [
+      "C13.2",
+      "C14.2",
+      "C15.2"
+    ],
+    "TUNE_2_SW": [
+      "C13.1",
+      "Q4.S"
+    ],
+    "TUNE_3_BASE": [
+      "Q5.R",
+      "R15.2"
+    ],
+    "TUNE_3_MID": [
+      "C16.2",
+      "C29.2",
+      "C38.2"
+    ],
+    "TUNE_3_SW": [
+      "C16.1",
+      "Q5.S"
+    ],
+    "TUNE_4_BASE": [
+      "Q6.R",
+      "R16.2"
+    ],
+    "TUNE_4_MID": [
+      "C43.2",
+      "C44.2",
+      "C45.2"
+    ],
+    "TUNE_4_SW": [
+      "C43.1",
+      "Q6.S"
+    ],
+    "TUNE_5_BASE": [
+      "Q11.R",
+      "R11.2"
+    ],
+    "TUNE_5_MID": [
+      "C46.2",
+      "C47.2",
+      "C48.2"
+    ],
+    "TUNE_5_SW": [
+      "C46.1",
+      "Q11.S"
+    ],
+    "U1_ALT_PAD": [
+      "C3.2",
+      "C4.2",
+      "R1.2",
+      "R2.2",
+      "U1.R2"
+    ],
+    "U2_DRIVE_A": [
+      "R9.1",
+      "U2.B3"
+    ],
+    "U2_DRIVE_B": [
+      "R8.1",
+      "U2.B1"
+    ],
+    "D2_MID": [
+      "D2.S",
+      "R46.2"
+    ],
+    "RX_STAGE_LINK": [
+      "C42.2",
+      "R25.2",
+      "R47.2",
+      "R48.2"
+    ],
+    "Q9_J6_1": [
+      "J6.1",
+      "Q9.S",
+      "R36.2"
+    ],
+    "J6_OPTION_2": [
+      "J6.2",
+      "R36.1"
+    ],
+    "U2_VCC": [
+      "C7.1",
+      "R5.2",
+      "U2.B2"
+    ]
+  },
+  "checks": {
+    "rail_separation": "PASS: resistors/transistors/inductors remain component boundaries, not net merges",
+    "opamp_feedback": "PASS_MODEL_ONLY: U3.1-R26-U3.2 and U3.7-R24-U3.6; hardware behavior not certified",
+    "vref_divider": "PASS_MODEL_ONLY: RX supply-R21-VREF-R22-GND; no assertion about loaded transient voltage",
+    "dnp_options": "PASS: empty R46/R47/R35/R36 remain unbridged component gaps",
+    "measurement_status": "B83 = 15 kohm; follow-up B84/B85 = 21.4/21.7 kohm. No active measurement request."
+  },
+  "limitations": "Connectivity agreement and these consistency checks cannot prove the unknown ceramic values, semiconductor identities, inner layers, firmware or powered operation.",
+  "result_evidence": "evidence/r44_resistance_result_20261015.json",
+  "current_revision": "v0.9.43",
+  "followup_measurements": [
+    "B84",
+    "B85"
+  ]
+}

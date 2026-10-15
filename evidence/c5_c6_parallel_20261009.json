@@ -1,0 +1,33 @@
+{
+  "date": "2026-10-09",
+  "revision": "v0.9.18",
+  "source": "User proposes C6 parallel with C5 and supplies board photo plus schematic annotation.",
+  "method": "Photo-supported reconstruction; user phrased the proposal as a guess, no new numerical measurement supplied.",
+  "photo_observation": "IMG_2431/IMG_2432 and supplied crop show C6 upper-pad copper continuing toward the positive-marked C5/L1-output supply area; lower-pad copper continues into the ground area. C5 body partly obscures its lands; existing C5 polarity/ground evidence retained.",
+  "supported_pairs": [
+    [
+      "C6.1",
+      "C5.1"
+    ],
+    [
+      "C6.2",
+      "C5.2"
+    ]
+  ],
+  "numerical_resistance_ohms": null,
+  "photos": {
+    "photos/user_updates/C5_C6_board_20261009.png": "55568bddff6345933b29e0b61ee233f456d9220806b9a1cab424eff1d2156484",
+    "photos/user_updates/C5_C6_parallel_proposal_20261009.png": "a41d730538d7b42c6bb909bb4c9e242a33ef1d49d4804a8dbfedb460fe7dc92b"
+  },
+  "original_photos": [
+    "photos/originals/IMG_2431.jpg",
+    "photos/originals/IMG_2432.jpg"
+  ],
+  "model_action": "Add C6.1 to existing H_RF_VDD and draw the parallel branch. Retain C6.2 GND. No supply rails merged and no component values inferred.",
+  "remaining": "C6 value and rating; Q8 exact identity, independent source-path confidence and drive voltage/headroom remain open.",
+  "retained_prior_readings": {
+    "E-F_ohms": 400000,
+    "F-P_ohms": 10,
+    "F-G_ohms": 300000
+  }
+}

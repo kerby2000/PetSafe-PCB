@@ -1,0 +1,40 @@
+{
+  "date": "2026-10-09",
+  "revision": "v0.9.33",
+  "baseline_commit": "38a80fb",
+  "measurements": [
+    {
+      "id": "B37",
+      "group": "q8-supply",
+      "from": "P",
+      "to": "F",
+      "mode": "resistance",
+      "unit": "ohms / OL",
+      "purpose": "Resolve the earlier 10-ohm Q8 source-supply result against stable probe contact; path is obscured beneath Q8.",
+      "result": "1 ohm",
+      "resistance_ohms": 1,
+      "raw_user_statement": "P-F 1Ohm",
+      "shorted_probe_ohms": null,
+      "stability": null,
+      "conditions": "Unpowered resistance test requested. No fresh baseline or stability statement supplied.",
+      "earlier_reading": "10 ohm",
+      "interpretation": "Supports the existing Q8.T2/native2 to C6.1 H_RF_VDD connection. Exact copper resistance, device identity and operation are not established."
+    }
+  ],
+  "endpoints": {
+    "P": "Q8.T2 / native Q8.2",
+    "F": "C6.1 / upper metal end / H_RF_VDD"
+  },
+  "assessment": "3724A supports the SIL3724A complementary MOSFET candidate; fitted maker unconfirmed. B37 P-F = 1 ohm supports Q8.T2/native2 joining C6.1 on H_RF_VDD. The earlier 10-ohm reading is superseded for the current connection assessment; no fresh probe baseline or stability statement was supplied. V113/V115 centre B2/native5 GND and the outer-drain join retain earlier evidence; V114 belongs to U2.T2. Candidate pin functions, gate drive and operating levels remain unverified.",
+  "electrical_change": false,
+  "limits": [
+    "No new shorted-probe baseline or stability report. Do not subtract the historical baseline or call trace resistance exactly 1 ohm.",
+    "Earlier 10-ohm observation is preserved; new low-ohm reading supersedes its active connection ambiguity.",
+    "Q8 identity, candidate pin roles, gate drive and rail voltage remain separate open questions."
+  ],
+  "photos": {
+    "photos/originals/IMG_2431.jpg": "d2b09a11ac056eb624fb9052e8e653d1885cc1a3a9c148c88d677c3307d73880",
+    "photos/originals/IMG_2432.jpg": "c982b50e7bd480e779464d26d9436c84c693d81f365ff8ac86c4aabc56e9761d",
+    "photos/originals/IMG_2438.jpg": "b3868ea3dd2f4b542d0713b57401d2a9c2a898f9b11898b32f17b84883702109"
+  }
+}

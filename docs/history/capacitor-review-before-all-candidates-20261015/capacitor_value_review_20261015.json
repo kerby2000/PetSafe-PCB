@@ -1,0 +1,925 @@
+{
+  "date": "2026-10-15",
+  "schematic_revision": "v0.9.43",
+  "status": "FUNCTION_BASED_PROPOSALS_NOT_ORIGINAL_BOM",
+  "owner_direction": "Infer values using circuit function, resistances, reference designs and RF requirements; avoid measuring all 40-plus capacitors.",
+  "electrical_change": false,
+  "individual_values_closed": [],
+  "source_model_sha256": "082a70e8bbee79a56bb373f53ef3e99b4ece41f94ccfc61bf3583892ffac80de",
+  "source_schematic_sha256": "ea7b8569e0831bb36f60083e448e4409cdbb563aafd4a612ce70ae4f71d83c78",
+  "counts": {
+    "unknown_individual_values": 44,
+    "reference_starting_values": 12,
+    "conditional_candidates": 4,
+    "network_constraints": 28
+  },
+  "sources": [
+    {
+      "id": "S1200",
+      "title": "ABLIC S-1200, Rev.6 p10: input/output capacitance and ESR",
+      "url": "https://www.ablic.com/en/doc/datasheet/voltage_regulator/S1200_E.pdf",
+      "local": "docs/datasheets/S1200.pdf",
+      "finding": "Candidate U1 permits input and output capacitance >=0.1 uF; output ESR <=1 ohm. This is a design constraint, not the PetSafe BOM."
+    },
+    {
+      "id": "S812C",
+      "title": "ABLIC S-812C, Rev.7 p18: output capacitor purpose",
+      "url": "https://www.ablic.com/en/doc/datasheet/voltage_regulator/S812C_E.pdf",
+      "local": "docs/datasheets/S812C.pdf",
+      "finding": "Candidate U6 can be stable without an output capacitor; the capacitor improves transient response. It does not force C37 to a particular value."
+    },
+    {
+      "id": "SGM",
+      "title": "SGMICRO SGM8542, pp9-10: bypassing and low-pass feedback",
+      "url": "https://www.sg-micro.com/rect/assets/537cce2c-8022-4ea6-97f4-6524851a35e8/SGM8541_SGM8542_SGM8544.pdf",
+      "local": "docs/datasheets/SGM8542.pdf",
+      "finding": "The example supply network uses 10 uF plus 0.1 uF (or 0.01 uF). The inverting feedback example gives gain -Rf/Rin and a pole 1/(2*pi*Rf*C). No exact PetSafe receiver reference schematic is established."
+    },
+    {
+      "id": "PIC",
+      "title": "Microchip 8-bit PIC design recommendations",
+      "url": "https://developerhelp.microchip.com/xwiki/bin/view/products/mcu-mpu/8bit-pic/design-recommendations/",
+      "finding": "Recommends 100 nF local VDD/VSS bypassing. Warns that MCLR capacitance can affect programming; do not blindly assign C35 as a generic debounce capacitor."
+    },
+    {
+      "id": "TI",
+      "title": "TI SN74LVC2G14 candidate datasheet",
+      "url": "https://www.ti.com/lit/ds/symlink/sn74lvc2g14.pdf",
+      "local": "docs/datasheets/SN74LVC2G14.pdf",
+      "finding": "Reference for candidate U2 input thresholds and supply limits; candidate identity remains unresolved at the measured 6.3-V supply. No assumed threshold used to finalize C8/C9."
+    },
+    {
+      "id": "RF",
+      "title": "Microchip AN710: Antenna Circuit Design",
+      "url": "https://www.microchip.com/en-us/application-notes/an710",
+      "finding": "Resonant antenna design depends on inductance and the equivalent capacitance/loading, not frequency alone."
+    },
+    {
+      "id": "PETSAFE",
+      "title": "PetSafe Microchip Cat Flap family: FDX-B information",
+      "url": "https://www.petsafe.com/en-ca/p/microchip-cat-flaps/PPA19-16145/",
+      "finding": "FDX-B family information supports 134.2 kHz as a working hypothesis; this is not a measured carrier or exact PPA19-16811 electronics specification."
+    },
+    {
+      "id": "MURATA",
+      "title": "Murata capacitor selection guide",
+      "url": "https://www.murata.com/en-us/products/capacitor/selectionguide",
+      "finding": "Capacitance, dielectric, voltage and size are separate selection parameters. Package dimensions alone do not recover the capacitance."
+    },
+    {
+      "id": "BIAS",
+      "title": "Murata: capacitance under DC bias",
+      "url": "https://article.murata.com/en-eu/article/voltage-characteristics-of-electrostatic-capacitance",
+      "finding": "High-permittivity ceramics can lose effective capacitance under DC bias; qualify effective capacitance at the operating rail when selecting replacements."
+    }
+  ],
+  "components": [
+    {
+      "ref": "C1",
+      "category": "REFERENCE_STARTING_VALUE",
+      "function": "U1 input reservoir",
+      "proposal": "1 uF",
+      "basis": "Provisional engineering selection above candidate minimum; earlier 1-uF guess is plausible, not identified.",
+      "remaining": "Verify effective capacitance, voltage margin and dynamic rail response before qualifying a replacement.",
+      "sources": [
+        "S1200"
+      ],
+      "nets": [
+        "GND",
+        "H_LDO_IN"
+      ],
+      "footprint": "Capacitor_SMD:C_1206_3216Metric",
+      "original_value_status": "UNKNOWN",
+      "applied_to_native": false
+    },
+    {
+      "ref": "C2",
+      "category": "REFERENCE_STARTING_VALUE",
+      "function": "U1 output reservoir",
+      "proposal": "4.7 uF",
+      "basis": "Provisional engineering selection; candidate minimum does not identify the original.",
+      "remaining": "Verify effective capacitance, voltage margin and dynamic rail response before qualifying a replacement.",
+      "sources": [
+        "S1200"
+      ],
+      "nets": [
+        "GND",
+        "VDD"
+      ],
+      "footprint": "Capacitor_SMD:C_1206_3216Metric",
+      "original_value_status": "UNKNOWN",
+      "applied_to_native": false
+    },
+    {
+      "ref": "C6",
+      "category": "REFERENCE_STARTING_VALUE",
+      "function": "RF rail high-frequency bypass beside 470-uF C5",
+      "proposal": "100 nF",
+      "basis": "Provisional HF companion; 100 nF to 1 uF is a reasonable design range, not extracted from size.",
+      "remaining": "Verify effective capacitance, voltage margin and dynamic rail response before qualifying a replacement.",
+      "sources": [
+        "PIC"
+      ],
+      "nets": [
+        "GND",
+        "H_RF_VDD"
+      ],
+      "footprint": "Capacitor_SMD:C_1206_3216Metric",
+      "original_value_status": "UNKNOWN",
+      "applied_to_native": false
+    },
+    {
+      "ref": "C7",
+      "category": "REFERENCE_STARTING_VALUE",
+      "function": "U2 local supply bypass after 22-ohm R5",
+      "proposal": "100 nF",
+      "basis": "Provisional local bypass; supply filtering also depends on R5 and U2 current. U2 voltage compatibility stays open.",
+      "remaining": "Verify effective capacitance, voltage margin and dynamic rail response before qualifying a replacement.",
+      "sources": [
+        "TI",
+        "PIC"
+      ],
+      "nets": [
+        "GND",
+        "U2_VCC"
+      ],
+      "footprint": "Capacitor_SMD:C_0805_2012Metric",
+      "original_value_status": "UNKNOWN",
+      "applied_to_native": false
+    },
+    {
+      "ref": "C8",
+      "category": "NETWORK_CONSTRAINT",
+      "function": "U2 Schmitt input RC / possible drive-edge shaping",
+      "proposal": "No single value selected",
+      "basis": "Associated resistor is 1200 ohm. RC time constants for 100 pF / 1 nF are 0.12 / 1.20 us. These are not the switching delays; diode paths and Schmitt thresholds matter.",
+      "remaining": "U2 identity/thresholds and required non-overlap/drive waveforms; no generic 100-nF assignment.",
+      "sources": [
+        "TI"
+      ],
+      "nets": [
+        "GND",
+        "H_RF_IN_B"
+      ],
+      "footprint": "Capacitor_SMD:C_0805_2012Metric",
+      "original_value_status": "UNKNOWN",
+      "applied_to_native": false
+    },
+    {
+      "ref": "C9",
+      "category": "NETWORK_CONSTRAINT",
+      "function": "U2 Schmitt input RC / possible drive-edge shaping",
+      "proposal": "No single value selected",
+      "basis": "Associated resistor is 1800 ohm. RC time constants for 100 pF / 1 nF are 0.18 / 1.80 us. These are not the switching delays; diode paths and Schmitt thresholds matter.",
+      "remaining": "U2 identity/thresholds and required non-overlap/drive waveforms; no generic 100-nF assignment.",
+      "sources": [
+        "TI"
+      ],
+      "nets": [
+        "GND",
+        "H_RF_IN_A"
+      ],
+      "footprint": "Capacitor_SMD:C_0805_2012Metric",
+      "original_value_status": "UNKNOWN",
+      "applied_to_native": false
+    },
+    {
+      "ref": "C10",
+      "category": "NETWORK_CONSTRAINT",
+      "function": "Antenna tuning branch 1",
+      "proposal": "No unique individual value",
+      "basis": "One of three capacitors around a switched midpoint, ANT2 and ground. Do not assume parallel addition or binary-weighted values before switch behavior is established.",
+      "remaining": "Antenna inductance, carrier frequency, switch-state impedances and resonance/voltage requirements. L1/L2 are supply filters, not the antenna coil.",
+      "sources": [
+        "RF",
+        "PETSAFE"
+      ],
+      "nets": [
+        "TUNE_1_MID",
+        "TUNE_1_SW"
+      ],
+      "footprint": "Capacitor_SMD:C_1206_3216Metric",
+      "original_value_status": "UNKNOWN",
+      "applied_to_native": false
+    },
+    {
+      "ref": "C11",
+      "category": "NETWORK_CONSTRAINT",
+      "function": "Antenna tuning branch 1",
+      "proposal": "No unique individual value",
+      "basis": "One of three capacitors around a switched midpoint, ANT2 and ground. Do not assume parallel addition or binary-weighted values before switch behavior is established.",
+      "remaining": "Antenna inductance, carrier frequency, switch-state impedances and resonance/voltage requirements. L1/L2 are supply filters, not the antenna coil.",
+      "sources": [
+        "RF",
+        "PETSAFE"
+      ],
+      "nets": [
+        "H_ANT_B",
+        "TUNE_1_MID"
+      ],
+      "footprint": "Capacitor_SMD:C_1206_3216Metric",
+      "original_value_status": "UNKNOWN",
+      "applied_to_native": false
+    },
+    {
+      "ref": "C12",
+      "category": "NETWORK_CONSTRAINT",
+      "function": "Antenna tuning branch 1",
+      "proposal": "No unique individual value",
+      "basis": "One of three capacitors around a switched midpoint, ANT2 and ground. Do not assume parallel addition or binary-weighted values before switch behavior is established.",
+      "remaining": "Antenna inductance, carrier frequency, switch-state impedances and resonance/voltage requirements. L1/L2 are supply filters, not the antenna coil.",
+      "sources": [
+        "RF",
+        "PETSAFE"
+      ],
+      "nets": [
+        "GND",
+        "TUNE_1_MID"
+      ],
+      "footprint": "Capacitor_SMD:C_1206_3216Metric",
+      "original_value_status": "UNKNOWN",
+      "applied_to_native": false
+    },
+    {
+      "ref": "C13",
+      "category": "NETWORK_CONSTRAINT",
+      "function": "Antenna tuning branch 2",
+      "proposal": "No unique individual value",
+      "basis": "One of three capacitors around a switched midpoint, ANT2 and ground. Do not assume parallel addition or binary-weighted values before switch behavior is established.",
+      "remaining": "Antenna inductance, carrier frequency, switch-state impedances and resonance/voltage requirements. L1/L2 are supply filters, not the antenna coil.",
+      "sources": [
+        "RF",
+        "PETSAFE"
+      ],
+      "nets": [
+        "TUNE_2_MID",
+        "TUNE_2_SW"
+      ],
+      "footprint": "Capacitor_SMD:C_1206_3216Metric",
+      "original_value_status": "UNKNOWN",
+      "applied_to_native": false
+    },
+    {
+      "ref": "C14",
+      "category": "NETWORK_CONSTRAINT",
+      "function": "Antenna tuning branch 2",
+      "proposal": "No unique individual value",
+      "basis": "One of three capacitors around a switched midpoint, ANT2 and ground. Do not assume parallel addition or binary-weighted values before switch behavior is established.",
+      "remaining": "Antenna inductance, carrier frequency, switch-state impedances and resonance/voltage requirements. L1/L2 are supply filters, not the antenna coil.",
+      "sources": [
+        "RF",
+        "PETSAFE"
+      ],
+      "nets": [
+        "H_ANT_B",
+        "TUNE_2_MID"
+      ],
+      "footprint": "Capacitor_SMD:C_1206_3216Metric",
+      "original_value_status": "UNKNOWN",
+      "applied_to_native": false
+    },
+    {
+      "ref": "C15",
+      "category": "NETWORK_CONSTRAINT",
+      "function": "Antenna tuning branch 2",
+      "proposal": "No unique individual value",
+      "basis": "One of three capacitors around a switched midpoint, ANT2 and ground. Do not assume parallel addition or binary-weighted values before switch behavior is established.",
+      "remaining": "Antenna inductance, carrier frequency, switch-state impedances and resonance/voltage requirements. L1/L2 are supply filters, not the antenna coil.",
+      "sources": [
+        "RF",
+        "PETSAFE"
+      ],
+      "nets": [
+        "GND",
+        "TUNE_2_MID"
+      ],
+      "footprint": "Capacitor_SMD:C_1206_3216Metric",
+      "original_value_status": "UNKNOWN",
+      "applied_to_native": false
+    },
+    {
+      "ref": "C16",
+      "category": "NETWORK_CONSTRAINT",
+      "function": "Antenna tuning branch 3",
+      "proposal": "No unique individual value",
+      "basis": "One of three capacitors around a switched midpoint, ANT2 and ground. Do not assume parallel addition or binary-weighted values before switch behavior is established.",
+      "remaining": "Antenna inductance, carrier frequency, switch-state impedances and resonance/voltage requirements. L1/L2 are supply filters, not the antenna coil.",
+      "sources": [
+        "RF",
+        "PETSAFE"
+      ],
+      "nets": [
+        "TUNE_3_MID",
+        "TUNE_3_SW"
+      ],
+      "footprint": "Capacitor_SMD:C_1206_3216Metric",
+      "original_value_status": "UNKNOWN",
+      "applied_to_native": false
+    },
+    {
+      "ref": "C17",
+      "category": "REFERENCE_STARTING_VALUE",
+      "function": "Receiver reservoir after 22-ohm R20",
+      "proposal": "10 uF",
+      "basis": "Provisional bulk member of the C17/C24 pair, following the SGM example. Which original part provides bulk is not established.",
+      "remaining": "Verify effective capacitance, voltage margin and dynamic rail response before qualifying a replacement.",
+      "sources": [
+        "SGM"
+      ],
+      "nets": [
+        "GND",
+        "H_RX_VDD"
+      ],
+      "footprint": "Capacitor_SMD:C_0805_2012Metric",
+      "original_value_status": "UNKNOWN",
+      "applied_to_native": false
+    },
+    {
+      "ref": "C18",
+      "category": "NETWORK_CONSTRAINT",
+      "function": "Receiver output filter to VREF",
+      "proposal": "Constrain C18 + C25 first",
+      "basis": "If VREF is an AC ground, R27=10 kohm sees C18+C25. A selected 5-kHz pole would require a total of 3.18 nF; this is an example target, not a measured one.",
+      "remaining": "Receiver response and VREF impedance; total does not establish the split.",
+      "sources": [
+        "SGM"
+      ],
+      "nets": [
+        "VREF",
+        "RX_A_FILTER"
+      ],
+      "footprint": "Capacitor_SMD:C_0805_2012Metric",
+      "original_value_status": "UNKNOWN",
+      "applied_to_native": false
+    },
+    {
+      "ref": "C19",
+      "category": "NETWORK_CONSTRAINT",
+      "function": "Detector node shunt",
+      "proposal": "Constrain C19 + C20 first",
+      "basis": "C19 and C20 have identical modeled endpoints. Their total loads the D2 detector and U3 input; nonlinear diode loading prevents deriving the pole from R28 alone.",
+      "remaining": "Detector envelope bandwidth, loading and RF amplitude; individual split not determined.",
+      "sources": [
+        "SGM"
+      ],
+      "nets": [
+        "GND",
+        "RX_A_PLUS"
+      ],
+      "footprint": "Capacitor_SMD:C_0805_2012Metric",
+      "original_value_status": "UNKNOWN",
+      "applied_to_native": false
+    },
+    {
+      "ref": "C20",
+      "category": "NETWORK_CONSTRAINT",
+      "function": "Detector node shunt",
+      "proposal": "Constrain C19 + C20 first",
+      "basis": "Same net pair as C19 despite a different body size. A larger body does not prove a larger capacitance.",
+      "remaining": "Effective detector capacitance and individual split.",
+      "sources": [
+        "SGM"
+      ],
+      "nets": [
+        "GND",
+        "RX_A_PLUS"
+      ],
+      "footprint": "Capacitor_SMD:C_1206_3216Metric",
+      "original_value_status": "UNKNOWN",
+      "applied_to_native": false
+    },
+    {
+      "ref": "C21",
+      "category": "CONDITIONAL_CANDIDATE",
+      "function": "120-kohm feedback compensation / receiver bandwidth",
+      "proposal": "220 pF trial; compare 270 pF and 330 pF",
+      "basis": "Both measured 240 pF at 100 kHz in an unspecified fitted-board model. 220 pF plus loading/parasitics is a plausible trial, not a recovered nominal. With 120 kohm, the isolated feedback pole is 6.03 / 4.91 / 4.02 kHz for 220 / 270 / 330 pF.",
+      "remaining": "Need a defensible receiver response target or de-embedded capacitance; do not round 240 pF into a confirmed value.",
+      "sources": [
+        "SGM"
+      ],
+      "nets": [
+        "RX_B_FB",
+        "RX_B_OUT"
+      ],
+      "footprint": "Capacitor_SMD:C_0805_2012Metric",
+      "original_value_status": "UNKNOWN",
+      "applied_to_native": false
+    },
+    {
+      "ref": "C22",
+      "category": "CONDITIONAL_CANDIDATE",
+      "function": "120-kohm feedback compensation / receiver bandwidth",
+      "proposal": "220 pF trial; compare 270 pF and 330 pF",
+      "basis": "Both measured 240 pF at 100 kHz in an unspecified fitted-board model. 220 pF plus loading/parasitics is a plausible trial, not a recovered nominal. With 120 kohm, the isolated feedback pole is 6.03 / 4.91 / 4.02 kHz for 220 / 270 / 330 pF.",
+      "remaining": "Need a defensible receiver response target or de-embedded capacitance; do not round 240 pF into a confirmed value.",
+      "sources": [
+        "SGM"
+      ],
+      "nets": [
+        "RX_A_FB",
+        "RX_A_OUT"
+      ],
+      "footprint": "Capacitor_SMD:C_0805_2012Metric",
+      "original_value_status": "UNKNOWN",
+      "applied_to_native": false
+    },
+    {
+      "ref": "C23",
+      "category": "NETWORK_CONSTRAINT",
+      "function": "Interstage AC coupling",
+      "proposal": "47 nF trial only if a ~500-Hz high-pass is desired",
+      "basis": "With low source impedance, virtual-ground input and R25+R48=6.8 kohm, 10 / 47 / 100 nF gives about 2340 / 498 / 234 Hz. Other populated paths must be included in the full model.",
+      "remaining": "Actual desired passband and bias/startup behavior; no nominal inferred yet.",
+      "sources": [
+        "SGM"
+      ],
+      "nets": [
+        "H_RX_DETECT",
+        "RX_B_OUT"
+      ],
+      "footprint": "Capacitor_SMD:C_0805_2012Metric",
+      "original_value_status": "UNKNOWN",
+      "applied_to_native": false
+    },
+    {
+      "ref": "C24",
+      "category": "REFERENCE_STARTING_VALUE",
+      "function": "Receiver local high-frequency bypass",
+      "proposal": "100 nF",
+      "basis": "Provisional HF member of C17/C24. Both are on H_RX_VDD/GND, so a fitted test sees their combined network.",
+      "remaining": "Verify effective capacitance, voltage margin and dynamic rail response before qualifying a replacement.",
+      "sources": [
+        "SGM"
+      ],
+      "nets": [
+        "GND",
+        "H_RX_VDD"
+      ],
+      "footprint": "Capacitor_SMD:C_0805_2012Metric",
+      "original_value_status": "UNKNOWN",
+      "applied_to_native": false
+    },
+    {
+      "ref": "C25",
+      "category": "NETWORK_CONSTRAINT",
+      "function": "RA0 output filter to ground",
+      "proposal": "Constrain C18 + C25 first",
+      "basis": "Same filter group as C18; two values cannot be separated from a single quiet-reference response.",
+      "remaining": "Filter corner and split between ground/reference returns.",
+      "sources": [
+        "SGM"
+      ],
+      "nets": [
+        "GND",
+        "RX_A_FILTER"
+      ],
+      "footprint": "Capacitor_SMD:C_0805_2012Metric",
+      "original_value_status": "UNKNOWN",
+      "applied_to_native": false
+    },
+    {
+      "ref": "C26",
+      "category": "NETWORK_CONSTRAINT",
+      "function": "RA1-related filter/bias node",
+      "proposal": "No single value selected",
+      "basis": "For a high-impedance MCU pin and stiff far-end bias, 15 kohm || 1 Mohm is 14.78 kohm; 100 nF would yield about 108 Hz. The MCU operating mode is unverified.",
+      "remaining": "RA1 source/measurement role and required settling time.",
+      "sources": [
+        "SGM"
+      ],
+      "nets": [
+        "GND",
+        "PIC_RA1_RX_REF"
+      ],
+      "footprint": "Capacitor_SMD:C_0805_2012Metric",
+      "original_value_status": "UNKNOWN",
+      "applied_to_native": false
+    },
+    {
+      "ref": "C27",
+      "category": "REFERENCE_STARTING_VALUE",
+      "function": "VSYS reservoir / motor supply",
+      "proposal": "4.7 uF",
+      "basis": "Engineering starting value for the larger local reservoir; no motor current/pulse duration bound yet.",
+      "remaining": "Verify effective capacitance, voltage margin and dynamic rail response before qualifying a replacement.",
+      "sources": [
+        "PIC"
+      ],
+      "nets": [
+        "GND",
+        "VSYS"
+      ],
+      "footprint": "Capacitor_SMD:C_1206_3216Metric",
+      "original_value_status": "UNKNOWN",
+      "applied_to_native": false
+    },
+    {
+      "ref": "C28",
+      "category": "NETWORK_CONSTRAINT",
+      "function": "Battery-sense RC",
+      "proposal": "10-100 nF exploration",
+      "basis": "If the lower divider end is actively held low and supply is stiff, 330 kohm || 330 kohm gives 165 kohm: 10 / 100 nF corresponds to 1.65 / 16.5 ms.",
+      "remaining": "Firmware sampling time and RB3-return mode; larger is not automatically better.",
+      "sources": [
+        "SGM"
+      ],
+      "nets": [
+        "H_BAT_SENSE",
+        "GND"
+      ],
+      "footprint": "Capacitor_SMD:C_0805_2012Metric",
+      "original_value_status": "UNKNOWN",
+      "applied_to_native": false
+    },
+    {
+      "ref": "C29",
+      "category": "NETWORK_CONSTRAINT",
+      "function": "Antenna tuning branch 3",
+      "proposal": "No unique individual value",
+      "basis": "One of three capacitors around a switched midpoint, ANT2 and ground. Do not assume parallel addition or binary-weighted values before switch behavior is established.",
+      "remaining": "Antenna inductance, carrier frequency, switch-state impedances and resonance/voltage requirements. L1/L2 are supply filters, not the antenna coil.",
+      "sources": [
+        "RF",
+        "PETSAFE"
+      ],
+      "nets": [
+        "H_ANT_B",
+        "TUNE_3_MID"
+      ],
+      "footprint": "Capacitor_SMD:C_1206_3216Metric",
+      "original_value_status": "UNKNOWN",
+      "applied_to_native": false
+    },
+    {
+      "ref": "C30",
+      "category": "CONDITIONAL_CANDIDATE",
+      "function": "20-MHz crystal load",
+      "proposal": "18 pF trial; 15-33 pF exploration",
+      "basis": "The existing 18-pF proposal is a starting point. Equal 18-pF loads contribute 9 pF before pin/PCB stray capacitance. Frequency marking does not identify crystal load specification.",
+      "remaining": "Crystal specified load capacitance and board stray loading; startup and frequency validation later.",
+      "sources": [
+        "PIC"
+      ],
+      "nets": [
+        "GND",
+        "OSC1"
+      ],
+      "footprint": "Capacitor_SMD:C_0805_2012Metric",
+      "original_value_status": "UNKNOWN",
+      "applied_to_native": false
+    },
+    {
+      "ref": "C31",
+      "category": "CONDITIONAL_CANDIDATE",
+      "function": "20-MHz crystal load",
+      "proposal": "18 pF trial; 15-33 pF exploration",
+      "basis": "The existing 18-pF proposal is a starting point. Equal 18-pF loads contribute 9 pF before pin/PCB stray capacitance. Frequency marking does not identify crystal load specification.",
+      "remaining": "Crystal specified load capacitance and board stray loading; startup and frequency validation later.",
+      "sources": [
+        "PIC"
+      ],
+      "nets": [
+        "GND",
+        "OSC2"
+      ],
+      "footprint": "Capacitor_SMD:C_0805_2012Metric",
+      "original_value_status": "UNKNOWN",
+      "applied_to_native": false
+    },
+    {
+      "ref": "C32",
+      "category": "REFERENCE_STARTING_VALUE",
+      "function": "PIC local VDD/VSS bypass",
+      "proposal": "100 nF",
+      "basis": "Directly matches the MCU manufacturer design recommendation; still not an observed PetSafe value.",
+      "remaining": "Verify effective capacitance, voltage margin and dynamic rail response before qualifying a replacement.",
+      "sources": [
+        "PIC"
+      ],
+      "nets": [
+        "GND",
+        "VDD"
+      ],
+      "footprint": "Capacitor_SMD:C_0805_2012Metric",
+      "original_value_status": "UNKNOWN",
+      "applied_to_native": false
+    },
+    {
+      "ref": "C33",
+      "category": "REFERENCE_STARTING_VALUE",
+      "function": "VSYS local H-bridge bypass",
+      "proposal": "1 uF",
+      "basis": "Engineering starting value alongside C27; motor transient/ripple validation still required.",
+      "remaining": "Verify effective capacitance, voltage margin and dynamic rail response before qualifying a replacement.",
+      "sources": [
+        "PIC"
+      ],
+      "nets": [
+        "GND",
+        "VSYS"
+      ],
+      "footprint": "Capacitor_SMD:C_0805_2012Metric",
+      "original_value_status": "UNKNOWN",
+      "applied_to_native": false
+    },
+    {
+      "ref": "C34",
+      "category": "REFERENCE_STARTING_VALUE",
+      "function": "H-bridge logic VDD bypass",
+      "proposal": "100 nF",
+      "basis": "Conventional local bypass starting point; C2 supplies additional rail capacitance.",
+      "remaining": "Verify effective capacitance, voltage margin and dynamic rail response before qualifying a replacement.",
+      "sources": [
+        "PIC"
+      ],
+      "nets": [
+        "GND",
+        "VDD"
+      ],
+      "footprint": "Capacitor_SMD:C_0805_2012Metric",
+      "original_value_status": "UNKNOWN",
+      "applied_to_native": false
+    },
+    {
+      "ref": "C35",
+      "category": "NETWORK_CONSTRAINT",
+      "function": "Button/MCLR-related filtering",
+      "proposal": "No generic debounce value",
+      "basis": "Shares the button node with R41 toward VPP and R40 toward ICSP_DAT. A blanket 100-nF choice can affect programming and reset timing.",
+      "remaining": "MCLR/programming compatibility and intended button circuit timing.",
+      "sources": [
+        "PIC"
+      ],
+      "nets": [
+        "H_BUTTON",
+        "GND"
+      ],
+      "footprint": "Capacitor_SMD:C_0805_2012Metric",
+      "original_value_status": "UNKNOWN",
+      "applied_to_native": false
+    },
+    {
+      "ref": "C36",
+      "category": "REFERENCE_STARTING_VALUE",
+      "function": "PIR regulator input after 22-ohm R37",
+      "proposal": "1 uF",
+      "basis": "Engineering starting value for the input filter; neither body size nor candidate IC uniquely fixes it.",
+      "remaining": "Verify effective capacitance, voltage margin and dynamic rail response before qualifying a replacement.",
+      "sources": [
+        "S812C"
+      ],
+      "nets": [
+        "H_AUX_IN",
+        "GND"
+      ],
+      "footprint": "Capacitor_SMD:C_0805_2012Metric",
+      "original_value_status": "UNKNOWN",
+      "applied_to_native": false
+    },
+    {
+      "ref": "C37",
+      "category": "REFERENCE_STARTING_VALUE",
+      "function": "PIR regulator output / J3.1",
+      "proposal": "1 uF",
+      "basis": "Engineering starting value for transient response, not a mandatory minimum from the candidate datasheet.",
+      "remaining": "Verify effective capacitance, voltage margin and dynamic rail response before qualifying a replacement.",
+      "sources": [
+        "S812C"
+      ],
+      "nets": [
+        "GND",
+        "H_PIR_VDD"
+      ],
+      "footprint": "Capacitor_SMD:C_0805_2012Metric",
+      "original_value_status": "UNKNOWN",
+      "applied_to_native": false
+    },
+    {
+      "ref": "C38",
+      "category": "NETWORK_CONSTRAINT",
+      "function": "Antenna tuning branch 3",
+      "proposal": "No unique individual value",
+      "basis": "One of three capacitors around a switched midpoint, ANT2 and ground. Do not assume parallel addition or binary-weighted values before switch behavior is established.",
+      "remaining": "Antenna inductance, carrier frequency, switch-state impedances and resonance/voltage requirements. L1/L2 are supply filters, not the antenna coil.",
+      "sources": [
+        "RF",
+        "PETSAFE"
+      ],
+      "nets": [
+        "GND",
+        "TUNE_3_MID"
+      ],
+      "footprint": "Capacitor_SMD:C_1206_3216Metric",
+      "original_value_status": "UNKNOWN",
+      "applied_to_native": false
+    },
+    {
+      "ref": "C39",
+      "category": "NETWORK_CONSTRAINT",
+      "function": "VREF reservoir",
+      "proposal": "100 nF-1 uF exploration",
+      "basis": "Divider R21=R22=10 kohm gives 5-kohm Thevenin resistance before other loads: 100 nF / 1 uF gives 0.5 / 5 ms.",
+      "remaining": "Receiver power-up settling window and reference loading.",
+      "sources": [
+        "SGM"
+      ],
+      "nets": [
+        "GND",
+        "VREF"
+      ],
+      "footprint": "Capacitor_SMD:C_0805_2012Metric",
+      "original_value_status": "UNKNOWN",
+      "applied_to_native": false
+    },
+    {
+      "ref": "C40",
+      "category": "NETWORK_CONSTRAINT",
+      "function": "RB4/TP4 filter and control-node capacitance",
+      "proposal": "Constrain C40 + C41 first",
+      "basis": "Same modeled endpoints as C41, shared with receiver input and Q1-control path. Neither is an ordinary supply bypass.",
+      "remaining": "Signal role, source impedance and response; independent values cannot be inferred from one equivalent total.",
+      "sources": [
+        "SGM"
+      ],
+      "nets": [
+        "GND",
+        "PIC_TP4_C41"
+      ],
+      "footprint": "Capacitor_SMD:C_0805_2012Metric",
+      "original_value_status": "UNKNOWN",
+      "applied_to_native": false
+    },
+    {
+      "ref": "C41",
+      "category": "NETWORK_CONSTRAINT",
+      "function": "RB4/TP4 filter and control-node capacitance",
+      "proposal": "Constrain C40 + C41 first",
+      "basis": "Same modeled node pair as C40, despite their separated physical placement.",
+      "remaining": "Required combined response and placement-related distribution.",
+      "sources": [
+        "SGM"
+      ],
+      "nets": [
+        "GND",
+        "PIC_TP4_C41"
+      ],
+      "footprint": "Capacitor_SMD:C_0805_2012Metric",
+      "original_value_status": "UNKNOWN",
+      "applied_to_native": false
+    },
+    {
+      "ref": "C43",
+      "category": "NETWORK_CONSTRAINT",
+      "function": "Antenna tuning branch 4",
+      "proposal": "No unique individual value",
+      "basis": "One of three capacitors around a switched midpoint, ANT2 and ground. Do not assume parallel addition or binary-weighted values before switch behavior is established.",
+      "remaining": "Antenna inductance, carrier frequency, switch-state impedances and resonance/voltage requirements. L1/L2 are supply filters, not the antenna coil.",
+      "sources": [
+        "RF",
+        "PETSAFE"
+      ],
+      "nets": [
+        "TUNE_4_MID",
+        "TUNE_4_SW"
+      ],
+      "footprint": "Capacitor_SMD:C_1206_3216Metric",
+      "original_value_status": "UNKNOWN",
+      "applied_to_native": false
+    },
+    {
+      "ref": "C44",
+      "category": "NETWORK_CONSTRAINT",
+      "function": "Antenna tuning branch 4",
+      "proposal": "No unique individual value",
+      "basis": "One of three capacitors around a switched midpoint, ANT2 and ground. Do not assume parallel addition or binary-weighted values before switch behavior is established.",
+      "remaining": "Antenna inductance, carrier frequency, switch-state impedances and resonance/voltage requirements. L1/L2 are supply filters, not the antenna coil.",
+      "sources": [
+        "RF",
+        "PETSAFE"
+      ],
+      "nets": [
+        "H_ANT_B",
+        "TUNE_4_MID"
+      ],
+      "footprint": "Capacitor_SMD:C_1206_3216Metric",
+      "original_value_status": "UNKNOWN",
+      "applied_to_native": false
+    },
+    {
+      "ref": "C45",
+      "category": "NETWORK_CONSTRAINT",
+      "function": "Antenna tuning branch 4",
+      "proposal": "No unique individual value",
+      "basis": "One of three capacitors around a switched midpoint, ANT2 and ground. Do not assume parallel addition or binary-weighted values before switch behavior is established.",
+      "remaining": "Antenna inductance, carrier frequency, switch-state impedances and resonance/voltage requirements. L1/L2 are supply filters, not the antenna coil.",
+      "sources": [
+        "RF",
+        "PETSAFE"
+      ],
+      "nets": [
+        "GND",
+        "TUNE_4_MID"
+      ],
+      "footprint": "Capacitor_SMD:C_1206_3216Metric",
+      "original_value_status": "UNKNOWN",
+      "applied_to_native": false
+    },
+    {
+      "ref": "C46",
+      "category": "NETWORK_CONSTRAINT",
+      "function": "Antenna tuning branch 5",
+      "proposal": "No unique individual value",
+      "basis": "One of three capacitors around a switched midpoint, ANT2 and ground. Do not assume parallel addition or binary-weighted values before switch behavior is established.",
+      "remaining": "Antenna inductance, carrier frequency, switch-state impedances and resonance/voltage requirements. L1/L2 are supply filters, not the antenna coil.",
+      "sources": [
+        "RF",
+        "PETSAFE"
+      ],
+      "nets": [
+        "TUNE_5_MID",
+        "TUNE_5_SW"
+      ],
+      "footprint": "Capacitor_SMD:C_1206_3216Metric",
+      "original_value_status": "UNKNOWN",
+      "applied_to_native": false
+    },
+    {
+      "ref": "C47",
+      "category": "NETWORK_CONSTRAINT",
+      "function": "Antenna tuning branch 5",
+      "proposal": "No unique individual value",
+      "basis": "One of three capacitors around a switched midpoint, ANT2 and ground. Do not assume parallel addition or binary-weighted values before switch behavior is established.",
+      "remaining": "Antenna inductance, carrier frequency, switch-state impedances and resonance/voltage requirements. L1/L2 are supply filters, not the antenna coil.",
+      "sources": [
+        "RF",
+        "PETSAFE"
+      ],
+      "nets": [
+        "H_ANT_B",
+        "TUNE_5_MID"
+      ],
+      "footprint": "Capacitor_SMD:C_1206_3216Metric",
+      "original_value_status": "UNKNOWN",
+      "applied_to_native": false
+    },
+    {
+      "ref": "C48",
+      "category": "NETWORK_CONSTRAINT",
+      "function": "Antenna tuning branch 5",
+      "proposal": "No unique individual value",
+      "basis": "One of three capacitors around a switched midpoint, ANT2 and ground. Do not assume parallel addition or binary-weighted values before switch behavior is established.",
+      "remaining": "Antenna inductance, carrier frequency, switch-state impedances and resonance/voltage requirements. L1/L2 are supply filters, not the antenna coil.",
+      "sources": [
+        "RF",
+        "PETSAFE"
+      ],
+      "nets": [
+        "GND",
+        "TUNE_5_MID"
+      ],
+      "footprint": "Capacitor_SMD:C_1206_3216Metric",
+      "original_value_status": "UNKNOWN",
+      "applied_to_native": false
+    }
+  ],
+  "principles": [
+    "These are design proposals and constraints, not proof of the original factory BOM. No reference schematic matching the entire board has been established.",
+    "Use X7R/X5R candidates for general reservoir/bypass work with effective capacitance checked under bias. C0G/NP0 is a useful low-loss starting dielectric for small timing/filter candidates; actual dielectric is unconfirmed.",
+    "The 6.3-V observed supply is not a rating ceiling: supply replacements can start with 16-V candidates, but motor transients and antenna resonant voltages require separate qualification. No universal 16-V antenna rating is asserted.",
+    "Package size alone cannot distinguish pF, nF or uF. Existing 0805 C30/C31 are crystal loads; the large 1206 tuning bank may prioritize dielectric loss and AC voltage rather than capacitance.",
+    "Unknown-value count stays 44. No automatic native replacement, no new scope batch and no desoldering request."
+  ],
+  "calculations": {
+    "feedback_gain_magnitude": 21.428571428571427,
+    "feedback_poles_hz": {
+      "220": 6028.59632923846,
+      "270": 4912.189601601708,
+      "330": 4019.0642194923066
+    },
+    "resonance_example_frequency_hz": 134200,
+    "resonance_frequency_status": "134.2-kHz working hypothesis from product-family FDX-B information, not measured on this PCB",
+    "antenna_examples": [
+      {
+        "inductance_uh": 100,
+        "equivalent_capacitance_nf": 14.064854106236686
+      },
+      {
+        "inductance_uh": 500,
+        "equivalent_capacitance_nf": 2.8129708212473377
+      },
+      {
+        "inductance_uh": 1000,
+        "equivalent_capacitance_nf": 1.4064854106236688
+      }
+    ],
+    "caveat": "Simple LC examples bound an equivalent total, not the fifteen physical capacitor values. Winding resistance near 5 ohm cannot determine inductance."
+  },
+  "next_actions": [
+    "Review the 12 supply starting values as provisional reconstruction choices; no measurement of each bypass is needed now.",
+    "Use C21/C22 trial range in receiver analysis, preserving raw auto-mode readings.",
+    "When scope work resumes, a carrier/resonance check and receiver response constrain several capacitor values at once.",
+    "An antenna inductance measurement is useful only if the winding can be electrically separated from the board without violating the fitted-components constraint; no fitted across-ANT1/ANT2 reading is treated as coil inductance.",
+    "Do not assign individual antenna weights or copy unrelated RFID reference values without matching inductance and switch topology."
+  ]
+}

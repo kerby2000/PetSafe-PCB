@@ -1,12 +1,10 @@
 {
-  "revision": "v0.7",
+  "revision": "v0.9.27",
   "method": "Photo-based family selection using known IC lead spacing and repeated package proportions; no calibrated dimensional measurement claimed.",
   "blank_before": 129,
-  "blank_after": 3,
-  "new_assignments": 126,
+  "blank_after": 1,
+  "new_assignments": 127,
   "remaining": [
-    "C5",
-    "S1",
     "LED1"
   ],
   "components": [
@@ -545,9 +543,9 @@
     {
       "ref": "C5",
       "before": "",
-      "footprint": "",
-      "confidence": "unresolved",
-      "basis": "Capacitance and voltage are user-confirmed. Can diameter and lead pitch remain unmeasured.",
+      "footprint": "Capacitor_THT:CP_Radial_D6.3mm_P2.50mm",
+      "confidence": "medium - measured diameter; inferred pitch",
+      "basis": "User-measured diameter 6.33 mm supports stock nominal 6.3 mm radial can. Standard 2.5 mm lead pitch is inferred, not measured; actual pad spacing/drill fit remain unverified. Stock footprint description is 7 mm tall, while actual can height is 16 mm. This is a 2D land-pattern candidate, not an exact housing model.",
       "photos": [
         "IMG_2431.jpg",
         "IMG_2432.jpg"
@@ -1064,7 +1062,7 @@
       "before": "",
       "footprint": "Inductor_SMD:L_0805_2012Metric",
       "confidence": "medium",
-      "basis": "Two-terminal dark chip with approximately 0805 body proportions. Could be a ferrite bead; material and impedance/inductance remain unresolved.",
+      "basis": "Two-terminal dark chip with approximately 0805 body proportions. User LCR inductance recorded separately; exact package/land fit, magnetic construction and impedance versus frequency remain unverified.",
       "photos": [
         "IMG_2432.jpg"
       ]
@@ -1074,7 +1072,7 @@
       "before": "",
       "footprint": "Inductor_SMD:L_0805_2012Metric",
       "confidence": "medium",
-      "basis": "Two-terminal dark chip with approximately 0805 body proportions. Could be a ferrite bead; material and impedance/inductance remain unresolved.",
+      "basis": "Two-terminal dark chip with approximately 0805 body proportions. User LCR inductance recorded separately; exact package/land fit, magnetic construction and impedance versus frequency remain unverified.",
       "photos": [
         "IMG_2430.jpg"
       ]
@@ -1333,9 +1331,9 @@
     {
       "ref": "S1",
       "before": "",
-      "footprint": "",
-      "confidence": "unresolved",
-      "basis": "Four-pad tactile switch; body/lead span and common-pair mapping needed. Common stock footprints use two repeated pad numbers, while current symbol retains four physical IDs.",
+      "footprint": "Button_Switch_SMD:SW_SPST_PTS645Sx43SMTR92",
+      "confidence": "medium - measured body, photo-estimated lead span",
+      "basis": "User measured a 6 x 6 x 4 mm body plus 2 mm actuator (about 6 mm overall). Photo shows four SMD gullwing leads; approximate pad-centre span from photo/body ratio is about 8 mm, consistent with the stock PTS645 land pattern (7.96 x 4.50 mm centres). Dimensions select a candidate family, not an exact manufacturer. Library x43 footprint/3D model denotes 4.3 mm overall and must not be used as the measured 6 mm housing.",
       "photos": [
         "IMG_2438.jpg"
       ]
@@ -1345,7 +1343,7 @@
       "before": "",
       "footprint": "Connector_PinHeader_2.54mm:PinHeader_1x05_P2.54mm_Horizontal",
       "confidence": "medium",
-      "basis": "Five right-angle programming pins; compare spacing with adjacent PIC 1.27-mm pitch. Existing logical numbering retained; square-pad/VPP orientation must be reconciled before PCB recreation.",
+      "basis": "IMG_2437 and IMG_2439 show the VPP square-pad end: 1VPP,2VDD,3GND,4DAT,5CLK. Exact pitch/lead geometry remains photo-based.",
       "photos": [
         "IMG_2437.jpg"
       ]
@@ -1386,7 +1384,7 @@
       "before": "",
       "footprint": "",
       "confidence": "unresolved",
-      "basis": "Four-terminal LED; body size, pad arrangement and internal polarity need confirmation before choosing an exact stock footprint.",
+      "basis": "User-measured square body 1.5 x 1.5 mm, red/green dual LED; four contacts visible in IMG_2432. Installed KiCad10/MCP search found no validated matching dual-LED footprint. LED_SK6812_EC15_1.5x1.5mm has four 0.5 x 0.5 mm pads on 0.9 mm centres for a different addressable package; body-size equality does not verify its land pattern or numbering. LED1 footprint remains unassigned pending a matching vendor drawing/part.",
       "photos": [
         "IMG_2432.jpg"
       ]
@@ -1464,18 +1462,6 @@
       "basis": "Stock plated-hole approximation from photographs. Exact drill and annular ring remain unmeasured; these are board pads, not fitted components.",
       "photos": [
         "IMG_2434.jpg"
-      ]
-    },
-    {
-      "ref": "TP9",
-      "before": "",
-      "footprint": "TestPoint:TestPoint_THTPad_D2.0mm_Drill1.0mm",
-      "confidence": "low",
-      "basis": "Stock plated-hole approximation from photographs. Exact drill and annular ring remain unmeasured; these are board pads, not fitted components.",
-      "photos": [
-        "IMG_2436.jpg",
-        "IMG_2437.jpg",
-        "IMG_2438.jpg"
       ]
     },
     {
@@ -1650,5 +1636,15 @@
       ]
     }
   ],
-  "v07_basis": "User R8 1.6x0.77 mm revises fitted resistor family to 0603; C11 3.2x1.5 confirms 1206. Other bodies not individually measured."
+  "v07_basis": "User R8 1.6x0.77 mm revises fitted resistor family to 0603; C11 3.2x1.5 confirms 1206. Other bodies not individually measured.",
+  "j1_numbering_review": {
+    "date": "2026-10-09",
+    "record": "evidence/j1_physical_mapping.json",
+    "result": "Square pad1=VPP; sequential stock footprint reconciled; dimensions remain candidates."
+  },
+  "s1_mechanical_review": "evidence/s1_dimensions_20261009.json",
+  "removed_catalog_entries": [
+    "TP9"
+  ],
+  "assignment_history_note": "blank_before/new_assignments retain the earlier assignment campaign counts. Current totals derive from reconstruction.json; TP9 withdrawn in v0.9.24."
 }

@@ -1,0 +1,57 @@
+{
+  "date": "2026-10-14",
+  "schematic_revision": "v0.9.39",
+  "electrical_change": false,
+  "status": "Q8_REST_BIAS_RECORDED_U2_SUPPLY_ASSIGNMENT_DISPUTED",
+  "measurements": [
+    {
+      "id": "B72",
+      "group": "q8-gate-bias",
+      "from": "PG",
+      "to": "PS",
+      "mode": "DC voltage",
+      "unit": "signed V; steady / varying",
+      "state": "Powered; at rest; original battery and PIR connected",
+      "issue": "E03",
+      "purpose": "Measure candidate P-channel gate-source bias, using confirmed C6.1 source node.",
+      "date": "2026-10-14",
+      "result": "0 V",
+      "voltage_v": 0,
+      "stability": null,
+      "source_worksheet_revision": "v0.9.39",
+      "raw_user_statement": "PetSafe Q8: measure the two gate-to-source voltages / v0.9.39\nB72 red PG / black PS (Powered; at rest; original battery and PIR connected): 0\nB73 red NG / black NS (Powered; at rest; original battery and PIR connected): 6.3"
+    },
+    {
+      "id": "B73",
+      "group": "q8-gate-bias",
+      "from": "NG",
+      "to": "NS",
+      "mode": "DC voltage",
+      "unit": "signed V; steady / varying",
+      "state": "Powered; at rest; original battery and PIR connected",
+      "issue": "E03",
+      "purpose": "Measure candidate N-channel gate-source bias.",
+      "date": "2026-10-14",
+      "result": "6.3 V",
+      "voltage_v": 6.3,
+      "stability": null,
+      "source_worksheet_revision": "v0.9.39",
+      "raw_user_statement": "PetSafe Q8: measure the two gate-to-source voltages / v0.9.39\nB72 red PG / black PS (Powered; at rest; original battery and PIR connected): 0\nB73 red NG / black NS (Powered; at rest; original battery and PIR connected): 6.3"
+    }
+  ],
+  "interpretation": "Within the SIL3724A candidate map, 0 V P-channel gate-source supports off bias and +6.3 V N-channel gate-source supports on bias at rest. No drain current, RF waveform or switching timing is measured; steadiness was not supplied. The 6.3 V N-gate reading questions the model that U2 drives it from 4.5 V VDD, but does not prove U2 supply membership or a fault.",
+  "disputed_assignment": "U2.B2/native5 and its local C7 supply branch are modeled on VDD. Do not move them to H_RF_VDD or merge rails from voltages alone.",
+  "next_action": "B80 CP (C7 upper end) to RT (R5 upper end); B81 PS (C6 upper end) to RB (R5 lower end). Battery/programmer disconnected, resistance mode. These test whether marked 22-ohm R5 is the missing supply resistor; its current output-branch placement is inferred.",
+  "sources": [
+    {
+      "url": "https://static.chipdip.ru/lib/761/DOC050761871.pdf",
+      "description": "MCC SIL3724A manufacturer datasheet, revision4-1, 2024-01-25: complementary pair pin map and gate-source characteristics."
+    },
+    {
+      "url": "https://www.ti.com/lit/ds/symlink/sn74lvc2g14.pdf",
+      "description": "TI candidate: supply pin5; recommended VCC up to5.5V. A confirmed6.3V supply would require renewed identity/operating-limit qualification, not assumption of approved operation."
+    }
+  ],
+  "photo_sha256": "d2b09a11ac056eb624fb9052e8e653d1885cc1a3a9c148c88d677c3307d73880",
+  "followup_evidence": "evidence/u2_c7_feed_results_20261015.json"
+}

@@ -1,7 +1,7 @@
 pin,gpio,net,open_pad,evidence
-1,RE3/MCLR,MCLR_VPP,False,J1 VPP; mapping inferred; D6 route missing
-2,RA0,PIC_RA0_FILTER,False,C25 signal pad / V031; onward destination unknown
-3,RA1,PIC_RA1_RX_REF,False,R28 + R29 + TP7; user meter / visible trace
+1,RE3/MCLR,MCLR_VPP,False,"J1.1/VPP plus D6 cathode; D6 W-VPP 1 ohm, forward 0.7V from GND"
+2,RA0,RX_A_FILTER,False,C25 / V031 to TP6 / R27.1 / C18.2: B59 = 1.5 ohm; RX_A_FILTER
+3,RA1,PIC_RA1_RX_REF,False,C26 signal pad (user annotation); R28 + R29 + TP7 (earlier meter/trace)
 4,RA2,VREF,False,VREF TP via V035; user confirms via-to-TP; C39.1 local photo route
 5,RA3,H_TUNE_2,False,V036-V108 to R14; user continuity report
 6,RA4,H_TUNE_3,False,V037-V102 to R15; user continuity report
@@ -11,17 +11,17 @@ pin,gpio,net,open_pad,evidence
 10,RA6/OSC2,OSC2,False,Y1 oscillator; photo-derived
 11,RC0,H_TUNE_5,False,V047-V091 to R11; user continuity report
 12,RC1,H_RX_ENABLE_CTL,False,R18.1 via V053-V070; user-confirmed; VREF link explicitly rejected
-13,RC2,RF_MONITOR_PAD,False,TP3 via V049; user-confirmed; existing R10 branch photo-derived
-14,RC3,PIC_RC3,False,TP11; visible route; onward destination unknown
+13,RC2,RF_MONITOR_PAD,False,TP3 via V049 (user); R10/R6/R7/D1 midpoint from IMG_2431; excitation waveform unmeasured
+14,RC3,PIC_RC3,False,TP11; supported local route; hidden continuation/firmware purpose unproved (E06 limitation)
 15,RC4,MOTOR_INA,False,V022-V016 to U5 pin2 / INA; user-confirmed
 16,RC5,MOTOR_INB,False,V023-V019 to U5 pin3 / INB; user-confirmed
 17,RC6,H_TUNE_1,False,R13; user meter / visible trace
-18,RC7,PIC_RC7_TP17,False,TP17; visible route; old R13 guess withdrawn
+18,RC7,PIC_RC7_TP17,False,TP17; supported local route; hidden continuation/firmware purpose unproved; R13 belongs to RC6
 19,VSS,GND,False,GND / C32 / V045 photo anchor
 20,VDD,VDD,False,V042 to board VDD TP user-confirmed; C32.1 local photo route
-21,RB0,VREF,False,"VREF (TP104), V026 and V071/R21.2; user-confirmed"
-22,RB1,H_LED_CTL_B,False,TP2 / R31; user meter / visible trace
-23,RB2,H_LED_CTL_A,False,TP1 / R30; user meter / visible trace
+21,RB0,H_PIR_SIG,False,TP16/Q2.S; user correction. Old VREF join rejected; TP16-VREF 800 kohm
+22,RB1,H_LED_CTL_B,False,"TP2 / R31 / green LED branch; user meter, visible trace and B42 colour"
+23,RB2,H_LED_CTL_A,False,"TP1 / R30 / red LED branch; user meter, visible trace and B43 colour"
 24,RB3,PIC_RB3_RETURN,False,R4; photo-derived; sensing role remains inferred
 25,RB4,PIC_TP4_C41,False,TP4 / V017 / R42.1 / R44.1; user continuity; C41 photo-derived
 26,RB5,RB5_OPT,False,TP10 / R35; user meter / visible trace

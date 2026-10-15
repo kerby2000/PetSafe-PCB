@@ -1,0 +1,64 @@
+{
+  "date": "2026-10-14",
+  "revision": "v0.9.38",
+  "baseline_commit": "9c71f92",
+  "baseline_schematic_sha256": "eb20c2a81dee401e608590234b55c94a843435d94421836c99ebcee7ac1d44ea",
+  "measured_pair": [
+    "C25.1",
+    "TP6.1"
+  ],
+  "measured_ohms": 1.5,
+  "measurement": {
+    "id": "B59",
+    "group": "e06-ra0",
+    "from": "A0",
+    "to": "T6",
+    "mode": "Resistance",
+    "unit": "ohms / kohms / OL",
+    "state": "Unpowered",
+    "issue": "E06",
+    "purpose": "Distinguish a direct RA0/V031-to-receiver-TP6/V072 continuation from two separate nets.",
+    "date": "2026-10-14",
+    "result": "1.5 ohm",
+    "resistance_ohms": 1.5,
+    "raw_user_statement": "PetSafe E06: one hidden receiver-to-PIC connection / v0.9.37\nB59 red A0 / black T6 (Unpowered): 1.5 ohm",
+    "shorted_probe_ohms": null,
+    "stability": null,
+    "reverse_reading": null,
+    "conditions": "Unpowered reported. Battery/programmer disconnection requested. No fresh probe baseline or stability report supplied."
+  },
+  "before": {
+    "PIC_RA0_FILTER": [
+      "C25.1",
+      "U4.2"
+    ],
+    "RX_A_FILTER": [
+      "C18.2",
+      "R27.1",
+      "TP6.1"
+    ]
+  },
+  "after": {
+    "RX_A_FILTER": [
+      "C18.2",
+      "C25.1",
+      "R27.1",
+      "TP6.1",
+      "U4.2"
+    ]
+  },
+  "retired_net_alias": "PIC_RA0_FILTER",
+  "status": "RA0_TP6_CONNECTION_SUPPORTED",
+  "source_sha256": {
+    "photos/originals/IMG_2437.jpg": "3c7c58fea79ea903a3099f204c1d97406c0884edb6d54fd5e7441363e71467a7",
+    "photos/originals/IMG_2434.jpg": "2feac8570055753400b337f4cfe8a79256da8f3bcd706e0d972dfd9672b50d0a"
+  },
+  "assessment": "B59 1.5 ohm supports direct continuity from PIC RA0/C25 to TP6. Prior local traces place R27.1 and C18.2 on TP6; prior via associations place V031 and V072 on the combined node. Those local branches and individual vias were not remeasured in B59.",
+  "boundaries": [
+    "R27 separates this node from U3.1 / RX_A_OUT.",
+    "C18 separates it from VREF.",
+    "C25 separates it from GND.",
+    "RA1/C26 and TP11/TP17 remain separate."
+  ],
+  "limit": "A low in-circuit reading supports net membership, not exact copper resistance, ADC/firmware configuration or complete receiver behavior. TP11/TP17 onward paths remain qualified."
+}

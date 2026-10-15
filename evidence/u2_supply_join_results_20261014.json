@@ -1,0 +1,76 @@
+{
+  "date": "2026-10-14",
+  "schematic_revision": "v0.9.39",
+  "electrical_change": false,
+  "status": "U2_SUPPLY_JOIN_UNRESOLVED_AFTER_RESISTANCE_TESTS",
+  "measurements": [
+    {
+      "id": "B74",
+      "group": "u2-supply-joins",
+      "from": "UV",
+      "to": "PS",
+      "mode": "Resistance",
+      "unit": "ohms / kohms / OL",
+      "state": "Unpowered",
+      "issue": "E03",
+      "purpose": "Test U2 candidate supply pin5 to confirmed RF supply node C6.1.",
+      "date": "2026-10-14",
+      "result": "24 ohm",
+      "resistance_ohms": 24,
+      "stability": null,
+      "shorted_probe_ohms": null,
+      "source_worksheet_revision": "v0.9.39",
+      "raw_user_statement": "PetSafe U2: RF supply or regulated VDD? / v0.9.39\nB74 red UV / black PS (Unpowered): 24ohm\nB75 red UV / black VD (Unpowered): 48ohm"
+    },
+    {
+      "id": "B75",
+      "group": "u2-supply-joins",
+      "from": "UV",
+      "to": "VD",
+      "mode": "Resistance",
+      "unit": "ohms / kohms / OL",
+      "state": "Unpowered",
+      "issue": "E03",
+      "purpose": "Test the competing currently modeled U2-to-regulated-VDD association.",
+      "date": "2026-10-14",
+      "result": "48 ohm",
+      "resistance_ohms": 48,
+      "stability": null,
+      "shorted_probe_ohms": null,
+      "source_worksheet_revision": "v0.9.39",
+      "raw_user_statement": "PetSafe U2: RF supply or regulated VDD? / v0.9.39\nB74 red UV / black PS (Unpowered): 24ohm\nB75 red UV / black VD (Unpowered): 48ohm"
+    }
+  ],
+  "interpretation": "U2 supply contact to C6.1 measured 24 ohm; to printed VDD measured 48 ohm. Neither is near the roughly 1-1.5 ohm direct-join readings reported elsewhere. These results do not establish a direct join to either rail. No new shorted-probe baseline or stability report was supplied. Contact resistance and in-circuit paths remain possible explanations; do not convert these readings into added resistors or merge rails.",
+  "disputed_assignment": "The current native U2.5/C7 supply-to-VDD assignment remains provisional and disputed. No topology change follows from B74/B75.",
+  "photo_review": "The U2 lower-centre pad enters local copper partly obscured by the package. The available front photograph does not establish its entire onward supply path.",
+  "next_action": "B80 CP (C7 upper end) to RT (R5 upper end); B81 PS (C6 upper end) to RB (R5 lower end). Battery/programmer disconnected, resistance mode. These test whether marked 22-ohm R5 is the missing supply resistor; its current output-branch placement is inferred.",
+  "photo_sha256": "d2b09a11ac056eb624fb9052e8e653d1885cc1a3a9c148c88d677c3307d73880",
+  "continuity_followup": {
+    "raw_user_statement": "If I use the beeper on the Fluke, it beeps this connection. So it's apparently on the edge, what we call a direct copper connection. It beeps in both cases. Do we have any resistors in this chain which can support this? Or how can be such low ohm between those two points? Resistance.",
+    "reported_pairs": [
+      "UV-PS",
+      "UV-VD"
+    ],
+    "beeps_for_both": true,
+    "meter_model": null,
+    "range": null,
+    "beep_duration": null,
+    "interpretation": "Beeper response supports a low-resistance path under that test condition; it does not distinguish copper from component paths or override the numerical 24/48-ohm observations. User owns Fluke 179 and 87 III; the model used for this follow-up was not specified."
+  },
+  "modeled_path_review": {
+    "U2_to_VDD": "Current drawing directly joins U2.5, C7.1, U1.5 and TP103.1/VDD, with no series resistor. This assignment is disputed by B74/B75 and remains provisional.",
+    "RF_to_VDD": "Current model: C6.1/H_RF_VDD -> L1 -> VSYS -> L2 -> U1 VIN; U1 VOUT -> printed VDD. U1 is an active regulator, not a resistor or a copper link. This is a possible in-circuit path, not a calculated explanation of 24 or 48 ohm.",
+    "R5": "22 ohm, between Q8 joined drains and ANT1. Not in the modeled U2 supply feed.",
+    "R8_R9": "220 ohm each, between U2 outputs and Q8 gates. Not series supply resistors.",
+    "R37": "22 ohm, printed VDD to U6/PIR regulator input. Not in the modeled U2 supply feed.",
+    "conclusion": "No established series resistor explains either measured resistance. The available data do not isolate contact resistance, an indirect component path, or an incorrect rail assignment."
+  },
+  "sources": [
+    {
+      "url": "https://assets.fluke.com/manuals/175_____umeng0200.pdf",
+      "description": "Fluke 175/177/179 manual continuity specification: beeper on below25 ohm; off above250 ohm. Does not identify the model used for this report."
+    }
+  ],
+  "followup_evidence": "evidence/u2_c7_feed_results_20261015.json"
+}

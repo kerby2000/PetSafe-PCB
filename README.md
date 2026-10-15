@@ -1,58 +1,54 @@
 # PetSafe PCB reverse engineering
 
-Working reconstruction of the PetSafe PPA19-16811 main board, **100-1339 R03 A**. All 150 catalog entries are drawn on **one A2 KiCad 10 sheet**, with wires within functional blocks and named nets between them. Entries include test pads and unpopulated options.
+**PetSafe PPA19-16811 · 100-1339 R03 A · schematic v0.9.45**
 
-Start with [the offline overview](index.html), [the current completion checklist](docs/FINISHING_CHECKLIST.html), or [the printable status](output/pdf/PetSafe_completion_status.pdf). Open [the native schematic](schematic/PetSafe_1001339.kicad_sch) in KiCad 10. The [single-sheet PDF](output/pdf/PetSafe_single_sheet.pdf) and SVG are native KiCad exports.
+One A2 main-board schematic, reconstructed from original photographs and owner measurements. 82 modeled net partitions agree with KiCad; device functions and physical-evidence coverage remain qualified. **There is no routed reproduction PCB.**
 
-## Current status
+## Current schematic
 
-Schematic revision **v0.9.9**; investigation cleanup **2026-10-08**. The model and native file agree on 83 net partitions. All PIC pads have modeled local connections, but some remote destinations and circuit roles remain uncertain. There is **no routed KiCad PCB**, confirmed layer stack, or powered functional validation.
+[PDF](output/pdf/PetSafe_single_sheet.pdf) · [Editable KiCad project](schematic/PetSafe_1001339.kicad_pro) · [Schematic](schematic/PetSafe_1001339.kicad_sch) · [Local zoomable overview](index.html)
 
-| Remaining work | Current state |
-|---|---|
-| Open physical pads | 28: 10 on populated entries, 18 on empty options |
-| Other incomplete connections | 3 isolated labels, plus inferred receiver/RF/PIR branches |
-| Values | 44 fitted ceramic values; L1/L2 type and value |
-| Footprints | 147/150 assigned; C5, S1 and LED1 geometry missing |
-| ERC | 36 findings: 28 open pins, 3 isolated labels, 5 undriven power inputs |
-| Libraries | 20 stock definitions and 4 authorized custom candidate definitions in use |
+[![Current native schematic preview](output/svg/PetSafe_1001339.svg)](output/pdf/PetSafe_single_sheet.pdf)
 
-The checklist gives every known issue a stable ID, supporting evidence, next useful check and closure criterion. **A question mark, an assigned footprint, or zero open PIC pads does not measure overall completeness.** The first priority is D3: V082 reaches board VDD, but the corresponding D3 terminal has not been identified. Do not merge the receiver supply into VDD on that basis alone.
+All **44 starred capacitor values are estimates**, preserved with their basis and proposed ratings. C5 and the recorded inductor measurements remain unchanged. The single **U6/U6A regulator-output ERC conflict is deliberately retained**. File consistency is not proof of complete hardware connectivity.
 
-## Power names
+## Actual physical PCB
 
-| Name | Meaning |
-|---|---|
-| BATTERY+ | Printed BATTERY (+), before Q1 |
-| VSYS | User-approved name after Q1; U5/MX512H pin 4 and the supply sides of L1/L2 |
-| VDD | Printed VDD test point, regulated logic supply; U5 pin 1 / VCC |
-| VREF | Printed VREF test point and confirmed PIC/bias connections |
-| GND | Printed GND and BATTERY (-) |
+[![Actual front and rear PCB photographs](photos/two_sides_overview.jpg)](photos/two_sides_overview.jpg)
 
-L1/L2 share VSYS on their supply sides; their opposite ends are separate filter branches. H_RF_VDD, H_LDO_IN, H_RX_VDD and H_PIR_VDD are descriptive local branch names, not additional confirmed independent power sources. Actual rail voltages are not yet measured.
+These mosaics contain original photographic pixels. The rear is **mirrored and approximately registered** to the front; it is a comparison aid, not a hidden-layer reconstruction. [Readable rear orientation](photos/back_readable.jpg) · [Original-photo atlas](photo-atlas-v01.html) · [Originals](photos/originals) · [Via/photo viewer](docs/VIA_REVIEW.html).
 
-## Evidence and navigation
+## Open items
 
-- [Current circuit interpretation](docs/RECONSTRUCTION.md), [measurements](docs/MEASUREMENTS.md), [sources](docs/SOURCES.md), and [library choices / alternatives](docs/LIBRARIES_AND_ALTERNATIVES.md).
-- [Front/rear via viewer](docs/VIA_REVIEW.html), [via-pair results](docs/VIA_PAIR_TESTS.html), [current via summary](docs/VIA_REVIEW_RESULTS.md), and [numbered PIC photo](output/pdf/PetSafe_PIC_GPIO_pin_map.pdf).
-- [Per-component audit](evidence/completion_audit.csv), [all modeled nets](evidence/proposed_nets.csv), [PIC evidence table](evidence/pic_gpio_status.csv), and [maintained question register](evidence/remaining_work.json).
-- [Investigation history](docs/history/README.md). Historical claims and counts are not current instructions or outstanding measurements.
+The [full Markdown register](docs/OPEN_ITEMS.md), [HTML checklist](docs/FINISHING_CHECKLIST.html) and [printable status](output/pdf/PetSafe_completion_status.pdf) are generated from [remaining_work.json](evidence/remaining_work.json).
 
-The original ZIP is in `input/`. Original photographs and their checksums are preserved. User reports, photo-derived copper and typical-application hypotheses remain distinct. A source datasheet validates a candidate symbol's pin map, not the fitted part's identity or board wiring. Western alternatives are redesign options, not silent substitutions.
+| ID | Area | Category |
+|---|---|---|
+| [E03](docs/OPEN_ITEMS.md#e03) | RF supply and Q8 drive | Device function/rating; operating behaviour |
+| [E04](docs/OPEN_ITEMS.md#e04) | Antenna and tuning-cell topology | Physical pin mapping; device function/rating |
+| [E07](docs/OPEN_ITEMS.md#e07) | PIR: Q2 behavior and operating supply | Device function/rating; operating behaviour |
+| [E08](docs/OPEN_ITEMS.md#e08) | Receiver and Q7 operating behavior | Device function/rating; operating behaviour |
+| [E09](docs/OPEN_ITEMS.md#e09) | Supply voltages and Q1 control | Device function/rating; operating behaviour |
+| [E10](docs/OPEN_ITEMS.md#e10) | D6 breakdown and ICSP compatibility | Device function/rating |
+| [I01](docs/OPEN_ITEMS.md#i01) | Candidate device identities and pin roles | Physical pin mapping; device function/rating |
+| [V01](docs/OPEN_ITEMS.md#v01) | Capacitor values and passive ratings | Reproduction/package (values and passive ratings) |
+| [M01](docs/OPEN_ITEMS.md#m01) | LED footprint and mechanical qualification | Reproduction/package |
+| [E11](docs/OPEN_ITEMS.md#e11) | Inherited copper joins without independent closure | Copper connection; evidence coverage |
 
-## Reproduce and maintain
+TP11/TP17 hidden continuations remain a separately documented reconstruction boundary. No active bench batch. One next continuity check is staged under E11: C20 lower metal end to U3 pin 3, unpowered. Scope work and component lifting remain deferred. Package geometry, routing/stackup, external assemblies and firmware remain prerequisites for a working reproduction.
 
-Use KiCad **10.x** (validated with 10.0.5), PowerShell and Python 3. Install `tools/requirements.txt` in a Python environment. Author schematic changes with the connected [KiCad MCP server](https://github.com/mixelpixx/KiCAD-MCP-Server); preserve stock library graphics and normal pin numbering. Four project-local symbols are registered using `${KIPRJMOD}`.
+## Evidence and rebuild
+
+[Independent physical-evidence audit](docs/TOPOLOGY_AUDIT.md) · [Current circuit interpretation](docs/RECONSTRUCTION.md) · [Measurements and negative results](docs/MEASUREMENTS.md) · [Capacitor proposals](docs/CAPACITOR_VALUE_REVIEW.html) · [Native validation](evidence/validation.json) · [Investigation history](docs/history/README.md)
+
+Use installed KiCad 10 (checked with 10.0.5), PowerShell and [Python dependencies](tools/requirements.txt):
 
 ```powershell
 $env:PYTHONUTF8 = '1'
-python -m pip install -r tools/requirements.txt
 ./tools/build.ps1 -Python python
 ./tools/refresh_review.ps1 -Python python
 ```
 
-`build.ps1` exports the existing native file, runs ERC and checks model/netlist partitions and footprints. It does not overwrite native edits. `-Regenerate` explicitly rebuilds from the saved MCP placement template and routing adapter; use it only when those sources are synchronized. `refresh_review.ps1` regenerates current documentation/status and checks electrical regressions and question coverage. Both commands fail on execution or validation errors; the documented outstanding ERC findings are retained.
+The normal build exports/checks the current native file. `-Regenerate` explicitly replaces it from the synchronized MCP template/layout; do not use it against stale sources. [The physical crosswalk](evidence/pin_crosswalk.json) preserves original pad labels. Original photos and raw results are not rewritten when interpretations change.
 
-For electrical edits, keep `evidence/reconstruction.json`, `evidence/library_layout.json`, `evidence/library_placements.json`, the MCP template, native schematic and routing adapter consistent. For documentation updates, maintain `evidence/remaining_work.json`; shared metrics are derived by `tools/current_state.py`. The current electrical regression suite is `tools/verify_v099_review.py`; earlier versioned suites are historical snapshots. Generated outputs should be rebuilt, not edited alone.
-
-Local KiCad history, lock files, caches, QA renders and export ZIPs are ignored. No generated artifact is a fabrication release. Repository: [kerby2000/PetSafe-PCB](https://github.com/kerby2000/PetSafe-PCB).
+[PR #1](https://github.com/kerby2000/PetSafe-PCB/pull/1) remains the independent-review entry point.

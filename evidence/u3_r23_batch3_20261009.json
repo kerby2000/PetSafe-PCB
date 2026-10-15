@@ -1,0 +1,62 @@
+{
+  "date": "2026-10-09",
+  "basis_revision": "v0.9.14",
+  "source": "User finishing batch B13-B15: C-M 300 kohm, C-N 400 kohm, C-O 600 kohm.",
+  "setup": "Resistance readings supplied in response to the battery/programmer-disconnected guide.",
+  "readings": [
+    {
+      "id": "B13",
+      "pair": [
+        "R23 right / C",
+        "C18 left / M"
+      ],
+      "resistance_ohms": 300000
+    },
+    {
+      "id": "B14",
+      "pair": [
+        "R23 right / C",
+        "C18 right / N"
+      ],
+      "resistance_ohms": 400000
+    },
+    {
+      "id": "B15",
+      "pair": [
+        "R23 right / C",
+        "TP6 / O"
+      ],
+      "resistance_ohms": 600000
+    }
+  ],
+  "physical_pad_mapping": {
+    "R23.2": "C / right end in IMG_2434",
+    "M": "C18 left end in IMG_2434",
+    "N": "C18 right end in IMG_2434",
+    "TP6.1": "O / plated TP6 hole"
+  },
+  "rejected_direct_pairs": [
+    [
+      "R23.2",
+      "C18.1"
+    ],
+    [
+      "R23.2",
+      "C18.2"
+    ],
+    [
+      "R23.2",
+      "TP6.1"
+    ]
+  ],
+  "topology_change": "None. These readings exclude the three proposed direct copper joins; R23.2 remains unresolved.",
+  "qualifications": [
+    "Finite high in-circuit resistances are preserved as reported, not rewritten as OL, direct connections or discrete resistor values.",
+    "Both physical C18 ends were tested; exclusion of both does not depend on assigning their model pin numbers.",
+    "These measurements do not identify R23 C/right onward destination or independently confirm the existing C18-TP6 model fragment.",
+    "Next candidates are the facing C40 lower and R42 upper pads. IMG_2434 shows a short trace from R23 toward their gap. This motivates two local checks; it does not establish either join or validate all branches on their modeled nets."
+  ],
+  "photos": {
+    "photos/originals/IMG_2434.jpg": "2feac8570055753400b337f4cfe8a79256da8f3bcd706e0d972dfd9672b50d0a"
+  }
+}

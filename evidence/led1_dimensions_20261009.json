@@ -1,0 +1,37 @@
+{
+  "date": "2026-10-09",
+  "revision": "v0.9.25",
+  "ref": "LED1",
+  "user_report": "LED is a square LED with 2 leds inside RED and GREEN - size 1.5x1.5mm",
+  "body_dimensions_mm": {
+    "length": 1.5,
+    "width": 1.5
+  },
+  "colours": [
+    "red",
+    "green"
+  ],
+  "symbol": "Device:LED_Dual_AAKK",
+  "visible_value": "Red / Green",
+  "footprint": "",
+  "footprint_basis": "User-measured square body 1.5 x 1.5 mm, red/green dual LED; four contacts visible in IMG_2432. Installed KiCad10/MCP search found no validated matching dual-LED footprint. LED_SK6812_EC15_1.5x1.5mm has four 0.5 x 0.5 mm pads on 0.9 mm centres for a different addressable package; body-size equality does not verify its land pattern or numbering. LED1 footprint remains unassigned pending a matching vendor drawing/part.",
+  "measurement_evidence": "User confirms square 1.5 x 1.5 mm package containing red and green emitters. Four pads and existing board connections retained. Which resistor/PIC channel lights each colour, internal die pairing and exact manufacturer pad numbering remain unconfirmed. No stock land pattern assigned from body size alone.",
+  "photo": "photos/originals/IMG_2432.jpg",
+  "photo_sha256": "c982b50e7bd480e779464d26d9436c84c693d81f365ff8ac86c4aabc56e9761d",
+  "physical_net_membership_changed": false,
+  "library_search": {
+    "mcp_queries": [
+      "0606",
+      "C195"
+    ],
+    "matching_validated_dual_led_footprints": [],
+    "size_only_stock_candidate": "LED_SMD:LED_SK6812_EC15_1.5x1.5mm",
+    "candidate_assigned": false
+  },
+  "remaining": [
+    "colour-to-R30/R31 mapping",
+    "internal die pairing/polarity and manufacturer pin numbering",
+    "matching land pattern",
+    "ratings and exact manufacturer identity"
+  ]
+}

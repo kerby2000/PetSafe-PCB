@@ -1,0 +1,1760 @@
+{
+  "date": "2026-10-15",
+  "schematic_revision": "v0.9.45",
+  "status": "APPLIED_ESTIMATED_VALUES_NOT_ORIGINAL_BOM",
+  "owner_direction": "Provide a best engineering guess for every capacitor, using function, primary references, size and RF frequency. Keep all components fitted and defer scope work. Explicitly distinguish choices for a new design from recovered factory values. Owner subsequently measured the antenna as 500 uH and explicitly requests applying all estimates to the schematic and opening an architect-review PR.",
+  "electrical_change": true,
+  "individual_values_closed": [],
+  "source_model_sha256": "020169c927bf1b84f83f64459fd5d3f20f8653ebfbab15740f4004df1259463d",
+  "source_schematic_sha256": "87b952bb0439b3c6cea2a97e6c6efd8f321ca9470de866b3a5d5ea8568b04abc",
+  "counts": {
+    "unknown_individual_values": 44,
+    "numeric_candidates": 44,
+    "reference_starting_values": 12,
+    "signal_candidates": 17,
+    "rf_design_seeds": 15,
+    "known_fitted_capacitors": 1,
+    "dnp_capacitor_options": 6
+  },
+  "sources": [
+    {
+      "id": "S1200",
+      "title": "ABLIC S-1200, Rev.6 p10: input/output capacitance and ESR",
+      "url": "https://www.ablic.com/en/doc/datasheet/voltage_regulator/S1200_E.pdf",
+      "local": "docs/datasheets/S1200.pdf",
+      "finding": "Candidate U1 permits input and output capacitance >=0.1 uF; output ESR <=1 ohm. This is a design constraint, not the PetSafe BOM."
+    },
+    {
+      "id": "S812C",
+      "title": "ABLIC S-812C, Rev.7 p18: output capacitor purpose",
+      "url": "https://www.ablic.com/en/doc/datasheet/voltage_regulator/S812C_E.pdf",
+      "local": "docs/datasheets/S812C.pdf",
+      "finding": "Candidate U6 can be stable without an output capacitor; the capacitor improves transient response. It does not force C37 to a particular value."
+    },
+    {
+      "id": "SGM",
+      "title": "SGMICRO SGM8542, pp9-10: bypassing and low-pass feedback",
+      "url": "https://www.sg-micro.com/rect/assets/537cce2c-8022-4ea6-97f4-6524851a35e8/SGM8541_SGM8542_SGM8544.pdf",
+      "local": "docs/datasheets/SGM8542.pdf",
+      "finding": "The example supply network uses 10 uF plus 0.1 uF (or 0.01 uF). The inverting feedback example gives gain -Rf/Rin and a pole 1/(2*pi*Rf*C). No exact PetSafe receiver reference schematic is established."
+    },
+    {
+      "id": "PIC",
+      "title": "Microchip 8-bit PIC design recommendations",
+      "url": "https://developerhelp.microchip.com/xwiki/bin/view/products/mcu-mpu/8bit-pic/design-recommendations/",
+      "finding": "Recommends 100 nF local VDD/VSS bypassing. Warns that MCLR capacitance can affect programming; do not blindly assign C35 as a generic debounce capacitor."
+    },
+    {
+      "id": "TI",
+      "title": "TI SN74LVC2G14 candidate datasheet",
+      "url": "https://www.ti.com/lit/ds/symlink/sn74lvc2g14.pdf",
+      "local": "docs/datasheets/SN74LVC2G14.pdf",
+      "finding": "Reference for candidate U2 input thresholds and supply limits; candidate identity remains unresolved at the measured 6.3-V supply. No assumed threshold used to finalize C8/C9."
+    },
+    {
+      "id": "RF",
+      "title": "Microchip AN710: Antenna Circuit Design",
+      "url": "https://www.microchip.com/en-us/application-notes/an710",
+      "finding": "Resonant antenna design depends on inductance and the equivalent capacitance/loading, not frequency alone."
+    },
+    {
+      "id": "PETSAFE",
+      "title": "PetSafe Microchip Cat Flap, PPA19-16811 SKU, FDX-B FAQ",
+      "url": "https://www.petsafe.com/ie/p/microchip-cat-flaps/PPA19-16145/?sku=PPA19-16811",
+      "finding": "Manufacturer page selected for the PPA19-16811 variant lists FDX-B compatibility and states 134.2 kHz. Supports that design target; actual PCB carrier has not been scoped."
+    },
+    {
+      "id": "MURATA",
+      "title": "Murata capacitor selection guide",
+      "url": "https://www.murata.com/en-us/products/capacitor/selectionguide",
+      "finding": "Capacitance, dielectric, voltage and size are separate selection parameters. Package dimensions alone do not recover the capacitance."
+    },
+    {
+      "id": "BIAS",
+      "title": "Murata: capacitance under DC bias",
+      "url": "https://article.murata.com/en-eu/article/voltage-characteristics-of-electrostatic-capacitance",
+      "finding": "High-permittivity ceramics can lose effective capacitance under DC bias; qualify effective capacitance at the operating rail when selecting replacements."
+    },
+    {
+      "id": "RF_Q",
+      "title": "Microchip AN710 in microID design guide, printed pp113-116",
+      "url": "https://ww1.microchip.com/downloads/en/devicedoc/21299e.pdf",
+      "finding": "Series-resonant coil voltage can be Q times the sinusoidal drive voltage. Used for general LC theory only, not its 13.56-MHz component values or a PetSafe voltage prediction."
+    },
+    {
+      "id": "TI_LF",
+      "title": "TI SWRA284, Low-Frequency RFID in a Nutshell, pp7-10",
+      "url": "https://www.ti.com/lit/an/swra284/swra284.pdf",
+      "finding": "LF example uses low-loss C0G/NP0 resonance capacitors and a switched trimming array to bring resonance to 134.2 kHz. Transponder example, not this reader schematic; no component values are transferred."
+    }
+  ],
+  "components": [
+    {
+      "ref": "C1",
+      "category": "REFERENCE_STARTING_VALUE",
+      "function": "U1 input reservoir",
+      "proposal": "1 uF",
+      "basis": "Provisional engineering selection above candidate minimum; earlier 1-uF guess is plausible, not identified.",
+      "remaining": "Verify effective capacitance, voltage margin and dynamic rail response before qualifying a replacement.",
+      "sources": [
+        "S1200"
+      ],
+      "nets": [
+        "GND",
+        "H_LDO_IN"
+      ],
+      "footprint": "Capacitor_SMD:C_1206_3216Metric",
+      "original_value_status": "UNKNOWN",
+      "applied_to_native": true,
+      "selection_pf": 1000000.0,
+      "voltage_rating_v": 25,
+      "dielectric": "X7R",
+      "tolerance_percent": 10,
+      "confidence": "Moderate as a replacement choice",
+      "rating_status": "Proposed part rating; original rating unknown; qualify peak voltage and effective capacitance before use.",
+      "native_value": "1uF*",
+      "application_revision": "v0.9.44"
+    },
+    {
+      "ref": "C2",
+      "category": "REFERENCE_STARTING_VALUE",
+      "function": "U1 output reservoir",
+      "proposal": "4.7 uF",
+      "basis": "Provisional engineering selection; candidate minimum does not identify the original.",
+      "remaining": "Verify effective capacitance, voltage margin and dynamic rail response before qualifying a replacement.",
+      "sources": [
+        "S1200"
+      ],
+      "nets": [
+        "GND",
+        "VDD"
+      ],
+      "footprint": "Capacitor_SMD:C_1206_3216Metric",
+      "original_value_status": "UNKNOWN",
+      "applied_to_native": true,
+      "selection_pf": 4700000.0,
+      "voltage_rating_v": 16,
+      "dielectric": "X7R",
+      "tolerance_percent": 10,
+      "confidence": "Moderate as a replacement choice",
+      "rating_status": "Proposed part rating; original rating unknown; qualify peak voltage and effective capacitance before use.",
+      "native_value": "4.7uF*",
+      "application_revision": "v0.9.44"
+    },
+    {
+      "ref": "C6",
+      "category": "REFERENCE_STARTING_VALUE",
+      "function": "RF rail high-frequency bypass beside 470-uF C5",
+      "proposal": "100 nF",
+      "basis": "Provisional HF companion; 100 nF to 1 uF is a reasonable design range, not extracted from size.",
+      "remaining": "Verify effective capacitance, voltage margin and dynamic rail response before qualifying a replacement.",
+      "sources": [
+        "PIC"
+      ],
+      "nets": [
+        "GND",
+        "H_RF_VDD"
+      ],
+      "footprint": "Capacitor_SMD:C_1206_3216Metric",
+      "original_value_status": "UNKNOWN",
+      "applied_to_native": true,
+      "selection_pf": 100000.0,
+      "voltage_rating_v": 25,
+      "dielectric": "X7R",
+      "tolerance_percent": 10,
+      "confidence": "Moderate as a replacement choice",
+      "rating_status": "Proposed part rating; original rating unknown; qualify peak voltage and effective capacitance before use.",
+      "native_value": "100nF*",
+      "application_revision": "v0.9.44"
+    },
+    {
+      "ref": "C7",
+      "category": "REFERENCE_STARTING_VALUE",
+      "function": "U2 local supply bypass after 22-ohm R5",
+      "proposal": "100 nF",
+      "basis": "Provisional local bypass; supply filtering also depends on R5 and U2 current. U2 voltage compatibility stays open.",
+      "remaining": "Verify effective capacitance, voltage margin and dynamic rail response before qualifying a replacement.",
+      "sources": [
+        "TI",
+        "PIC"
+      ],
+      "nets": [
+        "GND",
+        "U2_VCC"
+      ],
+      "footprint": "Capacitor_SMD:C_0805_2012Metric",
+      "original_value_status": "UNKNOWN",
+      "applied_to_native": true,
+      "selection_pf": 100000.0,
+      "voltage_rating_v": 25,
+      "dielectric": "X7R",
+      "tolerance_percent": 10,
+      "confidence": "Moderate as a replacement choice",
+      "rating_status": "Proposed part rating; original rating unknown; qualify peak voltage and effective capacitance before use.",
+      "native_value": "100nF*",
+      "application_revision": "v0.9.44"
+    },
+    {
+      "ref": "C8",
+      "category": "SIGNAL_CANDIDATE",
+      "function": "U2 Schmitt input RC / possible drive-edge shaping",
+      "proposal": "100 pF",
+      "basis": "100 pF with R6=1.2 kohm gives RC=0.12 us, small against a 7.45-us carrier period. A conservative timing seed, not a derived inverter delay.",
+      "remaining": "U2 identity/thresholds, diode path and Q8 non-overlap require later waveforms; no claim this choice prevents shoot-through.",
+      "sources": [
+        "TI"
+      ],
+      "nets": [
+        "GND",
+        "H_RF_IN_B"
+      ],
+      "footprint": "Capacitor_SMD:C_0805_2012Metric",
+      "original_value_status": "UNKNOWN",
+      "applied_to_native": true,
+      "selection_pf": 100,
+      "voltage_rating_v": 50,
+      "dielectric": "C0G/NP0",
+      "tolerance_percent": 5,
+      "confidence": "Low; function-based trial",
+      "rating_status": "Proposed part rating; original rating unknown; qualify peak voltage and effective capacitance before use.",
+      "native_value": "100pF*",
+      "application_revision": "v0.9.44"
+    },
+    {
+      "ref": "C9",
+      "category": "SIGNAL_CANDIDATE",
+      "function": "U2 Schmitt input RC / possible drive-edge shaping",
+      "proposal": "100 pF",
+      "basis": "100 pF with R7=1.8 kohm gives RC=0.18 us. Matched nominal capacitors leave resistor/diode asymmetry to shape the two gate paths.",
+      "remaining": "U2 identity/thresholds, diode path and Q8 non-overlap require later waveforms; no claim this choice prevents shoot-through.",
+      "sources": [
+        "TI"
+      ],
+      "nets": [
+        "GND",
+        "H_RF_IN_A"
+      ],
+      "footprint": "Capacitor_SMD:C_0805_2012Metric",
+      "original_value_status": "UNKNOWN",
+      "applied_to_native": true,
+      "selection_pf": 100,
+      "voltage_rating_v": 50,
+      "dielectric": "C0G/NP0",
+      "tolerance_percent": 5,
+      "confidence": "Low; function-based trial",
+      "rating_status": "Proposed part rating; original rating unknown; qualify peak voltage and effective capacitance before use.",
+      "native_value": "100pF*",
+      "application_revision": "v0.9.44"
+    },
+    {
+      "ref": "C10",
+      "category": "RF_DESIGN_SEED",
+      "function": "Antenna tuning branch 1",
+      "proposal": "100 pF",
+      "basis": "Deliberate 500-uH / 134.2-kHz design example using this PCB three-capacitor topology. Owner subsequently reported 500 uH; test conditions are unspecified. Numeric weights and branch order remain design choices, not recovered factory values.",
+      "remaining": "Inductance test conditions, AC switch behavior, actual branch ordering, parasitic/loading capacitance, RF peak voltage and firmware tuning remain unknown. Validate before populating a replica.",
+      "sources": [
+        "PETSAFE",
+        "RF_Q",
+        "TI_LF"
+      ],
+      "nets": [
+        "TUNE_1_MID",
+        "TUNE_1_SW"
+      ],
+      "footprint": "Capacitor_SMD:C_1206_3216Metric",
+      "original_value_status": "UNKNOWN",
+      "applied_to_native": true,
+      "selection_pf": 100,
+      "voltage_rating_v": 250,
+      "dielectric": "C0G/NP0",
+      "tolerance_percent": 5,
+      "confidence": "Very low as an original-value estimate",
+      "rating_status": "Proposed part rating; original rating unknown; qualify peak voltage and effective capacitance before use.",
+      "native_value": "100pF*",
+      "application_revision": "v0.9.44"
+    },
+    {
+      "ref": "C11",
+      "category": "RF_DESIGN_SEED",
+      "function": "Antenna tuning branch 1",
+      "proposal": "1 nF",
+      "basis": "Deliberate 500-uH / 134.2-kHz design example using this PCB three-capacitor topology. Owner subsequently reported 500 uH; test conditions are unspecified. Numeric weights and branch order remain design choices, not recovered factory values.",
+      "remaining": "Inductance test conditions, AC switch behavior, actual branch ordering, parasitic/loading capacitance, RF peak voltage and firmware tuning remain unknown. Validate before populating a replica.",
+      "sources": [
+        "PETSAFE",
+        "RF_Q",
+        "TI_LF"
+      ],
+      "nets": [
+        "H_ANT_B",
+        "TUNE_1_MID"
+      ],
+      "footprint": "Capacitor_SMD:C_1206_3216Metric",
+      "original_value_status": "UNKNOWN",
+      "applied_to_native": true,
+      "selection_pf": 1000,
+      "voltage_rating_v": 250,
+      "dielectric": "C0G/NP0",
+      "tolerance_percent": 5,
+      "confidence": "Very low as an original-value estimate",
+      "rating_status": "Proposed part rating; original rating unknown; qualify peak voltage and effective capacitance before use.",
+      "native_value": "1nF*",
+      "application_revision": "v0.9.44"
+    },
+    {
+      "ref": "C12",
+      "category": "RF_DESIGN_SEED",
+      "function": "Antenna tuning branch 1",
+      "proposal": "1 nF",
+      "basis": "Deliberate 500-uH / 134.2-kHz design example using this PCB three-capacitor topology. Owner subsequently reported 500 uH; test conditions are unspecified. Numeric weights and branch order remain design choices, not recovered factory values.",
+      "remaining": "Inductance test conditions, AC switch behavior, actual branch ordering, parasitic/loading capacitance, RF peak voltage and firmware tuning remain unknown. Validate before populating a replica.",
+      "sources": [
+        "PETSAFE",
+        "RF_Q",
+        "TI_LF"
+      ],
+      "nets": [
+        "GND",
+        "TUNE_1_MID"
+      ],
+      "footprint": "Capacitor_SMD:C_1206_3216Metric",
+      "original_value_status": "UNKNOWN",
+      "applied_to_native": true,
+      "selection_pf": 1000,
+      "voltage_rating_v": 250,
+      "dielectric": "C0G/NP0",
+      "tolerance_percent": 5,
+      "confidence": "Very low as an original-value estimate",
+      "rating_status": "Proposed part rating; original rating unknown; qualify peak voltage and effective capacitance before use.",
+      "native_value": "1nF*",
+      "application_revision": "v0.9.44"
+    },
+    {
+      "ref": "C13",
+      "category": "RF_DESIGN_SEED",
+      "function": "Antenna tuning branch 2",
+      "proposal": "220 pF",
+      "basis": "Deliberate 500-uH / 134.2-kHz design example using this PCB three-capacitor topology. Owner subsequently reported 500 uH; test conditions are unspecified. Numeric weights and branch order remain design choices, not recovered factory values.",
+      "remaining": "Inductance test conditions, AC switch behavior, actual branch ordering, parasitic/loading capacitance, RF peak voltage and firmware tuning remain unknown. Validate before populating a replica.",
+      "sources": [
+        "PETSAFE",
+        "RF_Q",
+        "TI_LF"
+      ],
+      "nets": [
+        "TUNE_2_MID",
+        "TUNE_2_SW"
+      ],
+      "footprint": "Capacitor_SMD:C_1206_3216Metric",
+      "original_value_status": "UNKNOWN",
+      "applied_to_native": true,
+      "selection_pf": 220,
+      "voltage_rating_v": 250,
+      "dielectric": "C0G/NP0",
+      "tolerance_percent": 5,
+      "confidence": "Very low as an original-value estimate",
+      "rating_status": "Proposed part rating; original rating unknown; qualify peak voltage and effective capacitance before use.",
+      "native_value": "220pF*",
+      "application_revision": "v0.9.44"
+    },
+    {
+      "ref": "C14",
+      "category": "RF_DESIGN_SEED",
+      "function": "Antenna tuning branch 2",
+      "proposal": "1 nF",
+      "basis": "Deliberate 500-uH / 134.2-kHz design example using this PCB three-capacitor topology. Owner subsequently reported 500 uH; test conditions are unspecified. Numeric weights and branch order remain design choices, not recovered factory values.",
+      "remaining": "Inductance test conditions, AC switch behavior, actual branch ordering, parasitic/loading capacitance, RF peak voltage and firmware tuning remain unknown. Validate before populating a replica.",
+      "sources": [
+        "PETSAFE",
+        "RF_Q",
+        "TI_LF"
+      ],
+      "nets": [
+        "H_ANT_B",
+        "TUNE_2_MID"
+      ],
+      "footprint": "Capacitor_SMD:C_1206_3216Metric",
+      "original_value_status": "UNKNOWN",
+      "applied_to_native": true,
+      "selection_pf": 1000,
+      "voltage_rating_v": 250,
+      "dielectric": "C0G/NP0",
+      "tolerance_percent": 5,
+      "confidence": "Very low as an original-value estimate",
+      "rating_status": "Proposed part rating; original rating unknown; qualify peak voltage and effective capacitance before use.",
+      "native_value": "1nF*",
+      "application_revision": "v0.9.44"
+    },
+    {
+      "ref": "C15",
+      "category": "RF_DESIGN_SEED",
+      "function": "Antenna tuning branch 2",
+      "proposal": "1 nF",
+      "basis": "Deliberate 500-uH / 134.2-kHz design example using this PCB three-capacitor topology. Owner subsequently reported 500 uH; test conditions are unspecified. Numeric weights and branch order remain design choices, not recovered factory values.",
+      "remaining": "Inductance test conditions, AC switch behavior, actual branch ordering, parasitic/loading capacitance, RF peak voltage and firmware tuning remain unknown. Validate before populating a replica.",
+      "sources": [
+        "PETSAFE",
+        "RF_Q",
+        "TI_LF"
+      ],
+      "nets": [
+        "GND",
+        "TUNE_2_MID"
+      ],
+      "footprint": "Capacitor_SMD:C_1206_3216Metric",
+      "original_value_status": "UNKNOWN",
+      "applied_to_native": true,
+      "selection_pf": 1000,
+      "voltage_rating_v": 250,
+      "dielectric": "C0G/NP0",
+      "tolerance_percent": 5,
+      "confidence": "Very low as an original-value estimate",
+      "rating_status": "Proposed part rating; original rating unknown; qualify peak voltage and effective capacitance before use.",
+      "native_value": "1nF*",
+      "application_revision": "v0.9.44"
+    },
+    {
+      "ref": "C16",
+      "category": "RF_DESIGN_SEED",
+      "function": "Antenna tuning branch 3",
+      "proposal": "510 pF",
+      "basis": "Deliberate 500-uH / 134.2-kHz design example using this PCB three-capacitor topology. Owner subsequently reported 500 uH; test conditions are unspecified. Numeric weights and branch order remain design choices, not recovered factory values.",
+      "remaining": "Inductance test conditions, AC switch behavior, actual branch ordering, parasitic/loading capacitance, RF peak voltage and firmware tuning remain unknown. Validate before populating a replica.",
+      "sources": [
+        "PETSAFE",
+        "RF_Q",
+        "TI_LF"
+      ],
+      "nets": [
+        "TUNE_3_MID",
+        "TUNE_3_SW"
+      ],
+      "footprint": "Capacitor_SMD:C_1206_3216Metric",
+      "original_value_status": "UNKNOWN",
+      "applied_to_native": true,
+      "selection_pf": 510,
+      "voltage_rating_v": 250,
+      "dielectric": "C0G/NP0",
+      "tolerance_percent": 5,
+      "confidence": "Very low as an original-value estimate",
+      "rating_status": "Proposed part rating; original rating unknown; qualify peak voltage and effective capacitance before use.",
+      "native_value": "510pF*",
+      "application_revision": "v0.9.44"
+    },
+    {
+      "ref": "C17",
+      "category": "REFERENCE_STARTING_VALUE",
+      "function": "Receiver reservoir after 22-ohm R20",
+      "proposal": "10 uF",
+      "basis": "Provisional bulk member of the C17/C24 pair, following the SGM example. Which original part provides bulk is not established.",
+      "remaining": "Verify effective capacitance, voltage margin and dynamic rail response before qualifying a replacement.",
+      "sources": [
+        "SGM"
+      ],
+      "nets": [
+        "GND",
+        "H_RX_VDD"
+      ],
+      "footprint": "Capacitor_SMD:C_0805_2012Metric",
+      "original_value_status": "UNKNOWN",
+      "applied_to_native": true,
+      "selection_pf": 10000000.0,
+      "voltage_rating_v": 16,
+      "dielectric": "X7R",
+      "tolerance_percent": 10,
+      "confidence": "Moderate as a replacement choice",
+      "rating_status": "Proposed part rating; original rating unknown; qualify peak voltage and effective capacitance before use.",
+      "native_value": "10uF*",
+      "application_revision": "v0.9.44"
+    },
+    {
+      "ref": "C18",
+      "category": "SIGNAL_CANDIDATE",
+      "function": "Receiver output filter to VREF",
+      "proposal": "1 nF",
+      "basis": "1 nF plus C25=2.2 nF gives 3.2 nF effective shunt if VREF is AC-stiff. With R27=10 kohm, the isolated output-filter pole is 4.97 kHz.",
+      "remaining": "The 1/2.2-nF split is a chosen design allocation; only total AC loading is constrained by that target. VREF impedance and full receiver response remain unvalidated.",
+      "sources": [
+        "SGM"
+      ],
+      "nets": [
+        "VREF",
+        "RX_A_FILTER"
+      ],
+      "footprint": "Capacitor_SMD:C_0805_2012Metric",
+      "original_value_status": "UNKNOWN",
+      "applied_to_native": true,
+      "selection_pf": 1000,
+      "voltage_rating_v": 50,
+      "dielectric": "C0G/NP0",
+      "tolerance_percent": 5,
+      "confidence": "Low; function-based trial",
+      "rating_status": "Proposed part rating; original rating unknown; qualify peak voltage and effective capacitance before use.",
+      "native_value": "1nF*",
+      "application_revision": "v0.9.44"
+    },
+    {
+      "ref": "C19",
+      "category": "SIGNAL_CANDIDATE",
+      "function": "Detector node shunt",
+      "proposal": "100 pF",
+      "basis": "100 pF plus C20=100 pF gives a deliberately small 200-pF detector load. A simple 1-Mohm discharge approximation gives 200 us, versus a 7.45-us RF period.",
+      "remaining": "Very low confidence: diode conduction, input impedance and signal modulation determine the real envelope response. Equal division across two parallel capacitors is not identifiable from function. Rating is a conservative candidate for an antenna-coupled node.",
+      "sources": [
+        "SGM"
+      ],
+      "nets": [
+        "GND",
+        "RX_A_PLUS"
+      ],
+      "footprint": "Capacitor_SMD:C_0805_2012Metric",
+      "original_value_status": "UNKNOWN",
+      "applied_to_native": true,
+      "selection_pf": 100,
+      "voltage_rating_v": 100,
+      "dielectric": "C0G/NP0",
+      "tolerance_percent": 5,
+      "confidence": "Very low; detector response and split unknown",
+      "rating_status": "Proposed part rating; original rating unknown; qualify peak voltage and effective capacitance before use.",
+      "native_value": "100pF*",
+      "application_revision": "v0.9.44"
+    },
+    {
+      "ref": "C20",
+      "category": "SIGNAL_CANDIDATE",
+      "function": "Detector node shunt",
+      "proposal": "100 pF",
+      "basis": "100 pF plus C19=100 pF gives 200 pF at RX_A_PLUS. The larger 1206 body can accommodate voltage/low-loss needs without implying a large capacitance.",
+      "remaining": "Very low confidence: nonlinear diode path and a 1-Mohm bias path do not uniquely determine the needed envelope capacitance. Equal division is arbitrary; qualify antenna-coupled voltage.",
+      "sources": [
+        "SGM"
+      ],
+      "nets": [
+        "GND",
+        "RX_A_PLUS"
+      ],
+      "footprint": "Capacitor_SMD:C_1206_3216Metric",
+      "original_value_status": "UNKNOWN",
+      "applied_to_native": true,
+      "selection_pf": 100,
+      "voltage_rating_v": 100,
+      "dielectric": "C0G/NP0",
+      "tolerance_percent": 5,
+      "confidence": "Very low; detector response and split unknown",
+      "rating_status": "Proposed part rating; original rating unknown; qualify peak voltage and effective capacitance before use.",
+      "native_value": "100pF*",
+      "application_revision": "v0.9.44"
+    },
+    {
+      "ref": "C21",
+      "category": "SIGNAL_CANDIDATE",
+      "function": "120-kohm feedback compensation / receiver bandwidth",
+      "proposal": "220 pF",
+      "basis": "220 pF across R24=120 kohm gives an isolated feedback pole of 6.03 kHz. Fitted auto-mode 240-pF reading at 100 kHz supports only the approximate scale.",
+      "remaining": "Not a measured 220-pF nominal. Compare 270/330 pF if receiver bandwidth needs it; no Cp/Cs or D was supplied.",
+      "sources": [
+        "SGM"
+      ],
+      "nets": [
+        "RX_B_FB",
+        "RX_B_OUT"
+      ],
+      "footprint": "Capacitor_SMD:C_0805_2012Metric",
+      "original_value_status": "UNKNOWN",
+      "applied_to_native": true,
+      "selection_pf": 220,
+      "voltage_rating_v": 50,
+      "dielectric": "C0G/NP0",
+      "tolerance_percent": 5,
+      "confidence": "Low; function-based trial",
+      "rating_status": "Proposed part rating; original rating unknown; qualify peak voltage and effective capacitance before use.",
+      "native_value": "220pF*",
+      "application_revision": "v0.9.44"
+    },
+    {
+      "ref": "C22",
+      "category": "SIGNAL_CANDIDATE",
+      "function": "120-kohm feedback compensation / receiver bandwidth",
+      "proposal": "220 pF",
+      "basis": "220 pF across R26=120 kohm gives an isolated feedback pole of 6.03 kHz, matching the chosen C21 stage scale.",
+      "remaining": "Not a measured 220-pF nominal. Compare 270/330 pF if receiver bandwidth needs it; no Cp/Cs or D was supplied.",
+      "sources": [
+        "SGM"
+      ],
+      "nets": [
+        "RX_A_FB",
+        "RX_A_OUT"
+      ],
+      "footprint": "Capacitor_SMD:C_0805_2012Metric",
+      "original_value_status": "UNKNOWN",
+      "applied_to_native": true,
+      "selection_pf": 220,
+      "voltage_rating_v": 50,
+      "dielectric": "C0G/NP0",
+      "tolerance_percent": 5,
+      "confidence": "Low; function-based trial",
+      "rating_status": "Proposed part rating; original rating unknown; qualify peak voltage and effective capacitance before use.",
+      "native_value": "220pF*",
+      "application_revision": "v0.9.44"
+    },
+    {
+      "ref": "C23",
+      "category": "SIGNAL_CANDIDATE",
+      "function": "Interstage AC coupling",
+      "proposal": "47 nF",
+      "basis": "47 nF with the approximate series resistance R25+R48=6.8 kohm gives a 498-Hz high-pass corner under an ideal virtual-ground assumption.",
+      "remaining": "Selected receiver passband, not copied PetSafe BOM. The interconnected amplifier and clamp network require full-response validation.",
+      "sources": [
+        "SGM"
+      ],
+      "nets": [
+        "H_RX_DETECT",
+        "RX_B_OUT"
+      ],
+      "footprint": "Capacitor_SMD:C_0805_2012Metric",
+      "original_value_status": "UNKNOWN",
+      "applied_to_native": true,
+      "selection_pf": 47000,
+      "voltage_rating_v": 25,
+      "dielectric": "X7R",
+      "tolerance_percent": 10,
+      "confidence": "Low; function-based trial",
+      "rating_status": "Proposed part rating; original rating unknown; qualify peak voltage and effective capacitance before use.",
+      "native_value": "47nF*",
+      "application_revision": "v0.9.44"
+    },
+    {
+      "ref": "C24",
+      "category": "REFERENCE_STARTING_VALUE",
+      "function": "Receiver local high-frequency bypass",
+      "proposal": "100 nF",
+      "basis": "Provisional HF member of C17/C24. Both are on H_RX_VDD/GND, so a fitted test sees their combined network.",
+      "remaining": "Verify effective capacitance, voltage margin and dynamic rail response before qualifying a replacement.",
+      "sources": [
+        "SGM"
+      ],
+      "nets": [
+        "GND",
+        "H_RX_VDD"
+      ],
+      "footprint": "Capacitor_SMD:C_0805_2012Metric",
+      "original_value_status": "UNKNOWN",
+      "applied_to_native": true,
+      "selection_pf": 100000.0,
+      "voltage_rating_v": 16,
+      "dielectric": "X7R",
+      "tolerance_percent": 10,
+      "confidence": "Moderate as a replacement choice",
+      "rating_status": "Proposed part rating; original rating unknown; qualify peak voltage and effective capacitance before use.",
+      "native_value": "100nF*",
+      "application_revision": "v0.9.44"
+    },
+    {
+      "ref": "C25",
+      "category": "SIGNAL_CANDIDATE",
+      "function": "RA0 output filter to ground",
+      "proposal": "2.2 nF",
+      "basis": "2.2 nF plus C18=1 nF gives 3.2 nF effective shunt if VREF is AC-stiff; R27=10 kohm gives a 4.97-kHz pole.",
+      "remaining": "The 1/2.2-nF split is a chosen design allocation; only total AC loading is constrained by that target. VREF impedance and full receiver response remain unvalidated.",
+      "sources": [
+        "SGM"
+      ],
+      "nets": [
+        "GND",
+        "RX_A_FILTER"
+      ],
+      "footprint": "Capacitor_SMD:C_0805_2012Metric",
+      "original_value_status": "UNKNOWN",
+      "applied_to_native": true,
+      "selection_pf": 2200,
+      "voltage_rating_v": 50,
+      "dielectric": "C0G/NP0",
+      "tolerance_percent": 5,
+      "confidence": "Low; function-based trial",
+      "rating_status": "Proposed part rating; original rating unknown; qualify peak voltage and effective capacitance before use.",
+      "native_value": "2.2nF*",
+      "application_revision": "v0.9.44"
+    },
+    {
+      "ref": "C26",
+      "category": "SIGNAL_CANDIDATE",
+      "function": "RA1-related filter/bias node",
+      "proposal": "100 nF",
+      "basis": "100 nF is a bias/filter seed; (R29=15 kohm || R28=1 Mohm) gives about 108 Hz only if opposite nodes are AC-stiff and PIC RA1 is high impedance.",
+      "remaining": "PIC RA1 operating mode and detector loading remain unknown. This conditional corner is not a measured circuit transfer function.",
+      "sources": [
+        "SGM"
+      ],
+      "nets": [
+        "GND",
+        "PIC_RA1_RX_REF"
+      ],
+      "footprint": "Capacitor_SMD:C_0805_2012Metric",
+      "original_value_status": "UNKNOWN",
+      "applied_to_native": true,
+      "selection_pf": 100000.0,
+      "voltage_rating_v": 16,
+      "dielectric": "X7R",
+      "tolerance_percent": 10,
+      "confidence": "Low; function-based trial",
+      "rating_status": "Proposed part rating; original rating unknown; qualify peak voltage and effective capacitance before use.",
+      "native_value": "100nF*",
+      "application_revision": "v0.9.44"
+    },
+    {
+      "ref": "C27",
+      "category": "REFERENCE_STARTING_VALUE",
+      "function": "VSYS reservoir / motor supply",
+      "proposal": "4.7 uF",
+      "basis": "Engineering starting value for the larger local reservoir; no motor current/pulse duration bound yet.",
+      "remaining": "Verify effective capacitance, voltage margin and dynamic rail response before qualifying a replacement.",
+      "sources": [
+        "PIC"
+      ],
+      "nets": [
+        "GND",
+        "VSYS"
+      ],
+      "footprint": "Capacitor_SMD:C_1206_3216Metric",
+      "original_value_status": "UNKNOWN",
+      "applied_to_native": true,
+      "selection_pf": 4700000.0,
+      "voltage_rating_v": 25,
+      "dielectric": "X7R",
+      "tolerance_percent": 10,
+      "confidence": "Moderate as a replacement choice",
+      "rating_status": "Proposed part rating; original rating unknown; qualify peak voltage and effective capacitance before use.",
+      "native_value": "4.7uF*",
+      "application_revision": "v0.9.44"
+    },
+    {
+      "ref": "C28",
+      "category": "SIGNAL_CANDIDATE",
+      "function": "Battery-sense RC",
+      "proposal": "10 nF",
+      "basis": "10 nF with two 330-kohm divider legs gives 1.65 ms / 96.5 Hz when the lower leg is held low. Small enough for an intermittently sampled battery divider.",
+      "remaining": "R4 returns to a PIC pin, not permanently to GND. Firmware settling time and that pin mode require validation.",
+      "sources": [
+        "SGM"
+      ],
+      "nets": [
+        "H_BAT_SENSE",
+        "GND"
+      ],
+      "footprint": "Capacitor_SMD:C_0805_2012Metric",
+      "original_value_status": "UNKNOWN",
+      "applied_to_native": true,
+      "selection_pf": 10000,
+      "voltage_rating_v": 25,
+      "dielectric": "X7R",
+      "tolerance_percent": 10,
+      "confidence": "Low; function-based trial",
+      "rating_status": "Proposed part rating; original rating unknown; qualify peak voltage and effective capacitance before use.",
+      "native_value": "10nF*",
+      "application_revision": "v0.9.44"
+    },
+    {
+      "ref": "C29",
+      "category": "RF_DESIGN_SEED",
+      "function": "Antenna tuning branch 3",
+      "proposal": "1 nF",
+      "basis": "Deliberate 500-uH / 134.2-kHz design example using this PCB three-capacitor topology. Owner subsequently reported 500 uH; test conditions are unspecified. Numeric weights and branch order remain design choices, not recovered factory values.",
+      "remaining": "Inductance test conditions, AC switch behavior, actual branch ordering, parasitic/loading capacitance, RF peak voltage and firmware tuning remain unknown. Validate before populating a replica.",
+      "sources": [
+        "PETSAFE",
+        "RF_Q",
+        "TI_LF"
+      ],
+      "nets": [
+        "H_ANT_B",
+        "TUNE_3_MID"
+      ],
+      "footprint": "Capacitor_SMD:C_1206_3216Metric",
+      "original_value_status": "UNKNOWN",
+      "applied_to_native": true,
+      "selection_pf": 1000,
+      "voltage_rating_v": 250,
+      "dielectric": "C0G/NP0",
+      "tolerance_percent": 5,
+      "confidence": "Very low as an original-value estimate",
+      "rating_status": "Proposed part rating; original rating unknown; qualify peak voltage and effective capacitance before use.",
+      "native_value": "1nF*",
+      "application_revision": "v0.9.44"
+    },
+    {
+      "ref": "C30",
+      "category": "SIGNAL_CANDIDATE",
+      "function": "20-MHz crystal load",
+      "proposal": "18 pF",
+      "basis": "18 pF paired with C31=18 pF provides 9 pF of series load plus board/pin stray capacitance for the marked 20-MHz crystal.",
+      "remaining": "Crystal specified CL is unknown. Tune to the actual CL/startup requirement; 15-33 pF remains the exploration range.",
+      "sources": [
+        "PIC"
+      ],
+      "nets": [
+        "GND",
+        "OSC1"
+      ],
+      "footprint": "Capacitor_SMD:C_0805_2012Metric",
+      "original_value_status": "UNKNOWN",
+      "applied_to_native": true,
+      "selection_pf": 18,
+      "voltage_rating_v": 50,
+      "dielectric": "C0G/NP0",
+      "tolerance_percent": 5,
+      "confidence": "Low; function-based trial",
+      "rating_status": "Proposed part rating; original rating unknown; qualify peak voltage and effective capacitance before use.",
+      "native_value": "18pF*",
+      "application_revision": "v0.9.44"
+    },
+    {
+      "ref": "C31",
+      "category": "SIGNAL_CANDIDATE",
+      "function": "20-MHz crystal load",
+      "proposal": "18 pF",
+      "basis": "18 pF paired with C30=18 pF provides 9 pF of series load plus stray capacitance.",
+      "remaining": "Crystal specified CL is unknown; 18 pF is not an identified original value.",
+      "sources": [
+        "PIC"
+      ],
+      "nets": [
+        "GND",
+        "OSC2"
+      ],
+      "footprint": "Capacitor_SMD:C_0805_2012Metric",
+      "original_value_status": "UNKNOWN",
+      "applied_to_native": true,
+      "selection_pf": 18,
+      "voltage_rating_v": 50,
+      "dielectric": "C0G/NP0",
+      "tolerance_percent": 5,
+      "confidence": "Low; function-based trial",
+      "rating_status": "Proposed part rating; original rating unknown; qualify peak voltage and effective capacitance before use.",
+      "native_value": "18pF*",
+      "application_revision": "v0.9.44"
+    },
+    {
+      "ref": "C32",
+      "category": "REFERENCE_STARTING_VALUE",
+      "function": "PIC local VDD/VSS bypass",
+      "proposal": "100 nF",
+      "basis": "Directly matches the MCU manufacturer design recommendation; still not an observed PetSafe value.",
+      "remaining": "Verify effective capacitance, voltage margin and dynamic rail response before qualifying a replacement.",
+      "sources": [
+        "PIC"
+      ],
+      "nets": [
+        "GND",
+        "VDD"
+      ],
+      "footprint": "Capacitor_SMD:C_0805_2012Metric",
+      "original_value_status": "UNKNOWN",
+      "applied_to_native": true,
+      "selection_pf": 100000.0,
+      "voltage_rating_v": 16,
+      "dielectric": "X7R",
+      "tolerance_percent": 10,
+      "confidence": "Moderate as a replacement choice",
+      "rating_status": "Proposed part rating; original rating unknown; qualify peak voltage and effective capacitance before use.",
+      "native_value": "100nF*",
+      "application_revision": "v0.9.44"
+    },
+    {
+      "ref": "C33",
+      "category": "REFERENCE_STARTING_VALUE",
+      "function": "VSYS local H-bridge bypass",
+      "proposal": "1 uF",
+      "basis": "Engineering starting value alongside C27; motor transient/ripple validation still required.",
+      "remaining": "Verify effective capacitance, voltage margin and dynamic rail response before qualifying a replacement.",
+      "sources": [
+        "PIC"
+      ],
+      "nets": [
+        "GND",
+        "VSYS"
+      ],
+      "footprint": "Capacitor_SMD:C_0805_2012Metric",
+      "original_value_status": "UNKNOWN",
+      "applied_to_native": true,
+      "selection_pf": 1000000.0,
+      "voltage_rating_v": 25,
+      "dielectric": "X7R",
+      "tolerance_percent": 10,
+      "confidence": "Moderate as a replacement choice",
+      "rating_status": "Proposed part rating; original rating unknown; qualify peak voltage and effective capacitance before use.",
+      "native_value": "1uF*",
+      "application_revision": "v0.9.44"
+    },
+    {
+      "ref": "C34",
+      "category": "REFERENCE_STARTING_VALUE",
+      "function": "H-bridge logic VDD bypass",
+      "proposal": "100 nF",
+      "basis": "Conventional local bypass starting point; C2 supplies additional rail capacitance.",
+      "remaining": "Verify effective capacitance, voltage margin and dynamic rail response before qualifying a replacement.",
+      "sources": [
+        "PIC"
+      ],
+      "nets": [
+        "GND",
+        "VDD"
+      ],
+      "footprint": "Capacitor_SMD:C_0805_2012Metric",
+      "original_value_status": "UNKNOWN",
+      "applied_to_native": true,
+      "selection_pf": 100000.0,
+      "voltage_rating_v": 16,
+      "dielectric": "X7R",
+      "tolerance_percent": 10,
+      "confidence": "Moderate as a replacement choice",
+      "rating_status": "Proposed part rating; original rating unknown; qualify peak voltage and effective capacitance before use.",
+      "native_value": "100nF*",
+      "application_revision": "v0.9.44"
+    },
+    {
+      "ref": "C35",
+      "category": "SIGNAL_CANDIDATE",
+      "function": "Button/MCLR-related filtering",
+      "proposal": "1 nF",
+      "basis": "1 nF chosen as a small noise filter on the button/MCLR branch. R41=330 ohm gives a local 0.33-us RC, avoiding an assumed large debounce capacitor.",
+      "remaining": "ICSP loading through this branch and R40, reset waveform and button behavior must be checked before replacement qualification. This RC alone does not prove programming compatibility.",
+      "sources": [
+        "PIC"
+      ],
+      "nets": [
+        "H_BUTTON",
+        "GND"
+      ],
+      "footprint": "Capacitor_SMD:C_0805_2012Metric",
+      "original_value_status": "UNKNOWN",
+      "applied_to_native": true,
+      "selection_pf": 1000,
+      "voltage_rating_v": 50,
+      "dielectric": "C0G/NP0",
+      "tolerance_percent": 5,
+      "confidence": "Low; function-based trial",
+      "rating_status": "Proposed part rating; original rating unknown; qualify peak voltage and effective capacitance before use.",
+      "native_value": "1nF*",
+      "application_revision": "v0.9.44"
+    },
+    {
+      "ref": "C36",
+      "category": "REFERENCE_STARTING_VALUE",
+      "function": "PIR regulator input after 22-ohm R37",
+      "proposal": "1 uF",
+      "basis": "Engineering starting value for the input filter; neither body size nor candidate IC uniquely fixes it.",
+      "remaining": "Verify effective capacitance, voltage margin and dynamic rail response before qualifying a replacement.",
+      "sources": [
+        "S812C"
+      ],
+      "nets": [
+        "H_AUX_IN",
+        "GND"
+      ],
+      "footprint": "Capacitor_SMD:C_0805_2012Metric",
+      "original_value_status": "UNKNOWN",
+      "applied_to_native": true,
+      "selection_pf": 1000000.0,
+      "voltage_rating_v": 16,
+      "dielectric": "X7R",
+      "tolerance_percent": 10,
+      "confidence": "Moderate as a replacement choice",
+      "rating_status": "Proposed part rating; original rating unknown; qualify peak voltage and effective capacitance before use.",
+      "native_value": "1uF*",
+      "application_revision": "v0.9.44"
+    },
+    {
+      "ref": "C37",
+      "category": "REFERENCE_STARTING_VALUE",
+      "function": "PIR regulator output / J3.1",
+      "proposal": "1 uF",
+      "basis": "Engineering starting value for transient response, not a mandatory minimum from the candidate datasheet.",
+      "remaining": "Verify effective capacitance, voltage margin and dynamic rail response before qualifying a replacement.",
+      "sources": [
+        "S812C"
+      ],
+      "nets": [
+        "GND",
+        "H_PIR_VDD"
+      ],
+      "footprint": "Capacitor_SMD:C_0805_2012Metric",
+      "original_value_status": "UNKNOWN",
+      "applied_to_native": true,
+      "selection_pf": 1000000.0,
+      "voltage_rating_v": 16,
+      "dielectric": "X7R",
+      "tolerance_percent": 10,
+      "confidence": "Moderate as a replacement choice",
+      "rating_status": "Proposed part rating; original rating unknown; qualify peak voltage and effective capacitance before use.",
+      "native_value": "1uF*",
+      "application_revision": "v0.9.44"
+    },
+    {
+      "ref": "C38",
+      "category": "RF_DESIGN_SEED",
+      "function": "Antenna tuning branch 3",
+      "proposal": "1 nF",
+      "basis": "Deliberate 500-uH / 134.2-kHz design example using this PCB three-capacitor topology. Owner subsequently reported 500 uH; test conditions are unspecified. Numeric weights and branch order remain design choices, not recovered factory values.",
+      "remaining": "Inductance test conditions, AC switch behavior, actual branch ordering, parasitic/loading capacitance, RF peak voltage and firmware tuning remain unknown. Validate before populating a replica.",
+      "sources": [
+        "PETSAFE",
+        "RF_Q",
+        "TI_LF"
+      ],
+      "nets": [
+        "GND",
+        "TUNE_3_MID"
+      ],
+      "footprint": "Capacitor_SMD:C_1206_3216Metric",
+      "original_value_status": "UNKNOWN",
+      "applied_to_native": true,
+      "selection_pf": 1000,
+      "voltage_rating_v": 250,
+      "dielectric": "C0G/NP0",
+      "tolerance_percent": 5,
+      "confidence": "Very low as an original-value estimate",
+      "rating_status": "Proposed part rating; original rating unknown; qualify peak voltage and effective capacitance before use.",
+      "native_value": "1nF*",
+      "application_revision": "v0.9.44"
+    },
+    {
+      "ref": "C39",
+      "category": "SIGNAL_CANDIDATE",
+      "function": "VREF reservoir",
+      "proposal": "1 uF",
+      "basis": "1 uF across the VREF divider gives about 5 ms using R21 || R22 = 5 kohm. Provides an AC reference well below the proposed receiver passband.",
+      "remaining": "Receiver turn-on settling time/firmware timing unknown; 100 nF is an alternative if faster startup is needed.",
+      "sources": [
+        "SGM"
+      ],
+      "nets": [
+        "GND",
+        "VREF"
+      ],
+      "footprint": "Capacitor_SMD:C_0805_2012Metric",
+      "original_value_status": "UNKNOWN",
+      "applied_to_native": true,
+      "selection_pf": 1000000.0,
+      "voltage_rating_v": 16,
+      "dielectric": "X7R",
+      "tolerance_percent": 10,
+      "confidence": "Low; function-based trial",
+      "rating_status": "Proposed part rating; original rating unknown; qualify peak voltage and effective capacitance before use.",
+      "native_value": "1uF*",
+      "application_revision": "v0.9.44"
+    },
+    {
+      "ref": "C40",
+      "category": "SIGNAL_CANDIDATE",
+      "function": "RB4/TP4 filter and control-node capacitance",
+      "proposal": "1 nF",
+      "basis": "1 nF plus C41=1 nF gives 2 nF on PIC_TP4_C41. With ideal low-impedance drive through R42=1.2 kohm, a standalone pole is 66.3 kHz.",
+      "remaining": "This is a shared clamp/PIC/receiver/Q1-control node, not a simple isolated low-pass. Equal split is an arbitrary starting allocation; full response and PIC role remain open.",
+      "sources": [
+        "SGM"
+      ],
+      "nets": [
+        "GND",
+        "PIC_TP4_C41"
+      ],
+      "footprint": "Capacitor_SMD:C_0805_2012Metric",
+      "original_value_status": "UNKNOWN",
+      "applied_to_native": true,
+      "selection_pf": 1000,
+      "voltage_rating_v": 50,
+      "dielectric": "C0G/NP0",
+      "tolerance_percent": 5,
+      "confidence": "Low; function-based trial",
+      "rating_status": "Proposed part rating; original rating unknown; qualify peak voltage and effective capacitance before use.",
+      "native_value": "1nF*",
+      "application_revision": "v0.9.44"
+    },
+    {
+      "ref": "C41",
+      "category": "SIGNAL_CANDIDATE",
+      "function": "RB4/TP4 filter and control-node capacitance",
+      "proposal": "1 nF",
+      "basis": "1 nF complements C40=1 nF for 2 nF total at the same net. Proposed small RF/noise shunt, not a generic power bypass.",
+      "remaining": "The two parallel values cannot be separated by function. Full receiver/control-node loading remains unvalidated.",
+      "sources": [
+        "SGM"
+      ],
+      "nets": [
+        "GND",
+        "PIC_TP4_C41"
+      ],
+      "footprint": "Capacitor_SMD:C_0805_2012Metric",
+      "original_value_status": "UNKNOWN",
+      "applied_to_native": true,
+      "selection_pf": 1000,
+      "voltage_rating_v": 50,
+      "dielectric": "C0G/NP0",
+      "tolerance_percent": 5,
+      "confidence": "Low; function-based trial",
+      "rating_status": "Proposed part rating; original rating unknown; qualify peak voltage and effective capacitance before use.",
+      "native_value": "1nF*",
+      "application_revision": "v0.9.44"
+    },
+    {
+      "ref": "C43",
+      "category": "RF_DESIGN_SEED",
+      "function": "Antenna tuning branch 4",
+      "proposal": "1.3 nF",
+      "basis": "Deliberate 500-uH / 134.2-kHz design example using this PCB three-capacitor topology. Owner subsequently reported 500 uH; test conditions are unspecified. Numeric weights and branch order remain design choices, not recovered factory values.",
+      "remaining": "Inductance test conditions, AC switch behavior, actual branch ordering, parasitic/loading capacitance, RF peak voltage and firmware tuning remain unknown. Validate before populating a replica.",
+      "sources": [
+        "PETSAFE",
+        "RF_Q",
+        "TI_LF"
+      ],
+      "nets": [
+        "TUNE_4_MID",
+        "TUNE_4_SW"
+      ],
+      "footprint": "Capacitor_SMD:C_1206_3216Metric",
+      "original_value_status": "UNKNOWN",
+      "applied_to_native": true,
+      "selection_pf": 1300,
+      "voltage_rating_v": 250,
+      "dielectric": "C0G/NP0",
+      "tolerance_percent": 5,
+      "confidence": "Very low as an original-value estimate",
+      "rating_status": "Proposed part rating; original rating unknown; qualify peak voltage and effective capacitance before use.",
+      "native_value": "1.3nF*",
+      "application_revision": "v0.9.44"
+    },
+    {
+      "ref": "C44",
+      "category": "RF_DESIGN_SEED",
+      "function": "Antenna tuning branch 4",
+      "proposal": "1 nF",
+      "basis": "Deliberate 500-uH / 134.2-kHz design example using this PCB three-capacitor topology. Owner subsequently reported 500 uH; test conditions are unspecified. Numeric weights and branch order remain design choices, not recovered factory values.",
+      "remaining": "Inductance test conditions, AC switch behavior, actual branch ordering, parasitic/loading capacitance, RF peak voltage and firmware tuning remain unknown. Validate before populating a replica.",
+      "sources": [
+        "PETSAFE",
+        "RF_Q",
+        "TI_LF"
+      ],
+      "nets": [
+        "H_ANT_B",
+        "TUNE_4_MID"
+      ],
+      "footprint": "Capacitor_SMD:C_1206_3216Metric",
+      "original_value_status": "UNKNOWN",
+      "applied_to_native": true,
+      "selection_pf": 1000,
+      "voltage_rating_v": 250,
+      "dielectric": "C0G/NP0",
+      "tolerance_percent": 5,
+      "confidence": "Very low as an original-value estimate",
+      "rating_status": "Proposed part rating; original rating unknown; qualify peak voltage and effective capacitance before use.",
+      "native_value": "1nF*",
+      "application_revision": "v0.9.44"
+    },
+    {
+      "ref": "C45",
+      "category": "RF_DESIGN_SEED",
+      "function": "Antenna tuning branch 4",
+      "proposal": "1 nF",
+      "basis": "Deliberate 500-uH / 134.2-kHz design example using this PCB three-capacitor topology. Owner subsequently reported 500 uH; test conditions are unspecified. Numeric weights and branch order remain design choices, not recovered factory values.",
+      "remaining": "Inductance test conditions, AC switch behavior, actual branch ordering, parasitic/loading capacitance, RF peak voltage and firmware tuning remain unknown. Validate before populating a replica.",
+      "sources": [
+        "PETSAFE",
+        "RF_Q",
+        "TI_LF"
+      ],
+      "nets": [
+        "GND",
+        "TUNE_4_MID"
+      ],
+      "footprint": "Capacitor_SMD:C_1206_3216Metric",
+      "original_value_status": "UNKNOWN",
+      "applied_to_native": true,
+      "selection_pf": 1000,
+      "voltage_rating_v": 250,
+      "dielectric": "C0G/NP0",
+      "tolerance_percent": 5,
+      "confidence": "Very low as an original-value estimate",
+      "rating_status": "Proposed part rating; original rating unknown; qualify peak voltage and effective capacitance before use.",
+      "native_value": "1nF*",
+      "application_revision": "v0.9.44"
+    },
+    {
+      "ref": "C46",
+      "category": "RF_DESIGN_SEED",
+      "function": "Antenna tuning branch 5",
+      "proposal": "8.2 nF",
+      "basis": "Deliberate 500-uH / 134.2-kHz design example using this PCB three-capacitor topology. Owner subsequently reported 500 uH; test conditions are unspecified. Numeric weights and branch order remain design choices, not recovered factory values.",
+      "remaining": "Inductance test conditions, AC switch behavior, actual branch ordering, parasitic/loading capacitance, RF peak voltage and firmware tuning remain unknown. Validate before populating a replica.",
+      "sources": [
+        "PETSAFE",
+        "RF_Q",
+        "TI_LF"
+      ],
+      "nets": [
+        "TUNE_5_MID",
+        "TUNE_5_SW"
+      ],
+      "footprint": "Capacitor_SMD:C_1206_3216Metric",
+      "original_value_status": "UNKNOWN",
+      "applied_to_native": true,
+      "selection_pf": 8200,
+      "voltage_rating_v": 250,
+      "dielectric": "C0G/NP0",
+      "tolerance_percent": 5,
+      "confidence": "Very low as an original-value estimate",
+      "rating_status": "Proposed part rating; original rating unknown; qualify peak voltage and effective capacitance before use.",
+      "native_value": "8.2nF*",
+      "application_revision": "v0.9.44"
+    },
+    {
+      "ref": "C47",
+      "category": "RF_DESIGN_SEED",
+      "function": "Antenna tuning branch 5",
+      "proposal": "1 nF",
+      "basis": "Deliberate 500-uH / 134.2-kHz design example using this PCB three-capacitor topology. Owner subsequently reported 500 uH; test conditions are unspecified. Numeric weights and branch order remain design choices, not recovered factory values.",
+      "remaining": "Inductance test conditions, AC switch behavior, actual branch ordering, parasitic/loading capacitance, RF peak voltage and firmware tuning remain unknown. Validate before populating a replica.",
+      "sources": [
+        "PETSAFE",
+        "RF_Q",
+        "TI_LF"
+      ],
+      "nets": [
+        "H_ANT_B",
+        "TUNE_5_MID"
+      ],
+      "footprint": "Capacitor_SMD:C_1206_3216Metric",
+      "original_value_status": "UNKNOWN",
+      "applied_to_native": true,
+      "selection_pf": 1000,
+      "voltage_rating_v": 250,
+      "dielectric": "C0G/NP0",
+      "tolerance_percent": 5,
+      "confidence": "Very low as an original-value estimate",
+      "rating_status": "Proposed part rating; original rating unknown; qualify peak voltage and effective capacitance before use.",
+      "native_value": "1nF*",
+      "application_revision": "v0.9.44"
+    },
+    {
+      "ref": "C48",
+      "category": "RF_DESIGN_SEED",
+      "function": "Antenna tuning branch 5",
+      "proposal": "1 nF",
+      "basis": "Deliberate 500-uH / 134.2-kHz design example using this PCB three-capacitor topology. Owner subsequently reported 500 uH; test conditions are unspecified. Numeric weights and branch order remain design choices, not recovered factory values.",
+      "remaining": "Inductance test conditions, AC switch behavior, actual branch ordering, parasitic/loading capacitance, RF peak voltage and firmware tuning remain unknown. Validate before populating a replica.",
+      "sources": [
+        "PETSAFE",
+        "RF_Q",
+        "TI_LF"
+      ],
+      "nets": [
+        "GND",
+        "TUNE_5_MID"
+      ],
+      "footprint": "Capacitor_SMD:C_1206_3216Metric",
+      "original_value_status": "UNKNOWN",
+      "applied_to_native": true,
+      "selection_pf": 1000,
+      "voltage_rating_v": 250,
+      "dielectric": "C0G/NP0",
+      "tolerance_percent": 5,
+      "confidence": "Very low as an original-value estimate",
+      "rating_status": "Proposed part rating; original rating unknown; qualify peak voltage and effective capacitance before use.",
+      "native_value": "1nF*",
+      "application_revision": "v0.9.44"
+    }
+  ],
+  "principles": [
+    "All 44 unknown fitted ceramics now have numerical choices, proposed dielectric/rating and a stated basis. This is a complete candidate table, not a factory BOM.",
+    "All 44 candidates are displayed in native v0.9.44 with an asterisk. Copper connections, measured values and population status are unchanged. Original-value uncertainty remains explicit.",
+    "The 12 supply choices are conventional replacement candidates; 17 signal/timing choices require circuit validation; 15 antenna entries form one deliberate design example.",
+    "Reference circuits constrain functions and sensible ranges; no evidence establishes that PetSafe copied an exact reference design.",
+    "Antenna inductance is now user-reported as 500 uH with test conditions unspecified. RF voltage, individual capacitor values and branch weights/order remain unverified.",
+    "All components remain fitted. Scope work remains deferred. No new broad multimeter or LCR campaign is requested."
+  ],
+  "calculations": {
+    "feedback_gain_magnitude": 21.428571428571427,
+    "feedback_poles_hz": {
+      "220": 6028.59632923846,
+      "270": 4912.189601601708,
+      "330": 4019.0642194923066
+    },
+    "resonance_example_frequency_hz": 134200,
+    "resonance_frequency_status": "134.2-kHz design target supported by manufacturer product-variant FAQ; actual PCB waveform not measured.",
+    "antenna_examples": [
+      {
+        "inductance_uh": 100,
+        "equivalent_capacitance_nf": 14.064854106236686
+      },
+      {
+        "inductance_uh": 500,
+        "equivalent_capacitance_nf": 2.8129708212473377
+      },
+      {
+        "inductance_uh": 1000,
+        "equivalent_capacitance_nf": 1.4064854106236688
+      }
+    ],
+    "caveat": "Simple LC examples bound an equivalent total, not the fifteen physical capacitor values. Winding resistance near 5 ohm cannot determine inductance."
+  },
+  "next_actions": [
+    "Use the complete candidate table for analysis and comparison. Preserve C5 and all six DNP options exactly as established.",
+    "For the next RF validation phase, qualify the reported antenna inductance/equivalent resonance and observe carrier, capacitor peak voltage and actual switch action. That qualifies the bank as a whole instead of guessing 15 independent values.",
+    "Then check receiver bandwidth/settling and Q8 gate overlap with the chosen timing candidates; candidate IC identities and firmware assumptions still matter.",
+    "Ordinary bypass values can be qualified in groups by effective capacitance, stability and transient response; no need to request 44 isolated-value measurements now."
+  ],
+  "review_edition": "Applied schematic estimates / 2026-10-15",
+  "antenna_design_example": {
+    "status": "DELIBERATE_DESIGN_SEED_NOT_RECOVERED_VALUES",
+    "target_hz": 134200,
+    "inductance_status": "Owner now reports measured 500 uH. Frequency, instrument, isolation and Q were not specified; earlier seed used this as an assumption.",
+    "assumptions": [
+      "Each transistor is approximated only as an ideal open/closed link from its switched capacitor to ground. The disputed PNP candidate does not establish this AC behavior.",
+      "All five series/parallel branches act in parallel from ANT2 to ground. The coil runs from driven ANT1 to ANT2.",
+      "Ignore switch capacitance, coil self-capacitance, detector loading, losses and harmonic/nonlinear operation.",
+      "Ascending branch weights assigned to Q3/Q4/Q5/Q6/Q11 are arbitrary; existing PIC firmware may expect a different order or algorithm."
+    ],
+    "formula_off": "Ca*Cg/(Ca+Cg)",
+    "formula_on": "Ca*(Cg+Cs)/(Ca+Cg+Cs)",
+    "branches": [
+      {
+        "branch": 1,
+        "switch": "Q3",
+        "switched_cap": "C10",
+        "antenna_cap": "C11",
+        "ground_cap": "C12",
+        "switched_pf": 100,
+        "antenna_pf": 1000,
+        "ground_pf": 1000,
+        "off_equivalent_pf": 500.0,
+        "on_equivalent_pf": 523.8095238095239,
+        "increment_pf": 23.809523809523853
+      },
+      {
+        "branch": 2,
+        "switch": "Q4",
+        "switched_cap": "C13",
+        "antenna_cap": "C14",
+        "ground_cap": "C15",
+        "switched_pf": 220,
+        "antenna_pf": 1000,
+        "ground_pf": 1000,
+        "off_equivalent_pf": 500.0,
+        "on_equivalent_pf": 549.5495495495495,
+        "increment_pf": 49.54954954954951
+      },
+      {
+        "branch": 3,
+        "switch": "Q5",
+        "switched_cap": "C16",
+        "antenna_cap": "C29",
+        "ground_cap": "C38",
+        "switched_pf": 510,
+        "antenna_pf": 1000,
+        "ground_pf": 1000,
+        "off_equivalent_pf": 500.0,
+        "on_equivalent_pf": 601.593625498008,
+        "increment_pf": 101.59362549800801
+      },
+      {
+        "branch": 4,
+        "switch": "Q6",
+        "switched_cap": "C43",
+        "antenna_cap": "C44",
+        "ground_cap": "C45",
+        "switched_pf": 1300,
+        "antenna_pf": 1000,
+        "ground_pf": 1000,
+        "off_equivalent_pf": 500.0,
+        "on_equivalent_pf": 696.969696969697,
+        "increment_pf": 196.969696969697
+      },
+      {
+        "branch": 5,
+        "switch": "Q11",
+        "switched_cap": "C46",
+        "antenna_cap": "C47",
+        "ground_cap": "C48",
+        "switched_pf": 8200,
+        "antenna_pf": 1000,
+        "ground_pf": 1000,
+        "off_equivalent_pf": 500.0,
+        "on_equivalent_pf": 901.9607843137255,
+        "increment_pf": 401.9607843137255
+      }
+    ],
+    "states": [
+      {
+        "mask": 0,
+        "switches_closed": [],
+        "equivalent_pf": 2500.0,
+        "frequency_khz": 142.35250868343542
+      },
+      {
+        "mask": 1,
+        "switches_closed": [
+          "Q3"
+        ],
+        "equivalent_pf": 2523.809523809524,
+        "frequency_khz": 141.67944340608972
+      },
+      {
+        "mask": 2,
+        "switches_closed": [
+          "Q4"
+        ],
+        "equivalent_pf": 2549.5495495495497,
+        "frequency_khz": 140.96243757179732
+      },
+      {
+        "mask": 3,
+        "switches_closed": [
+          "Q3",
+          "Q4"
+        ],
+        "equivalent_pf": 2573.3590733590736,
+        "frequency_khz": 140.30880785936012
+      },
+      {
+        "mask": 4,
+        "switches_closed": [
+          "Q5"
+        ],
+        "equivalent_pf": 2601.593625498008,
+        "frequency_khz": 139.54535973237617
+      },
+      {
+        "mask": 5,
+        "switches_closed": [
+          "Q3",
+          "Q5"
+        ],
+        "equivalent_pf": 2625.4031493075317,
+        "frequency_khz": 138.9111569825319
+      },
+      {
+        "mask": 6,
+        "switches_closed": [
+          "Q4",
+          "Q5"
+        ],
+        "equivalent_pf": 2651.1431750475576,
+        "frequency_khz": 138.23516595655553
+      },
+      {
+        "mask": 7,
+        "switches_closed": [
+          "Q3",
+          "Q4",
+          "Q5"
+        ],
+        "equivalent_pf": 2674.9526988570815,
+        "frequency_khz": 137.6185811888412
+      },
+      {
+        "mask": 8,
+        "switches_closed": [
+          "Q6"
+        ],
+        "equivalent_pf": 2696.969696969697,
+        "frequency_khz": 137.05569810529602
+      },
+      {
+        "mask": 9,
+        "switches_closed": [
+          "Q3",
+          "Q6"
+        ],
+        "equivalent_pf": 2720.779220779221,
+        "frequency_khz": 136.45469354375228
+      },
+      {
+        "mask": 10,
+        "switches_closed": [
+          "Q4",
+          "Q6"
+        ],
+        "equivalent_pf": 2746.5192465192467,
+        "frequency_khz": 135.8137704125778
+      },
+      {
+        "mask": 11,
+        "switches_closed": [
+          "Q3",
+          "Q4",
+          "Q6"
+        ],
+        "equivalent_pf": 2770.3287703287706,
+        "frequency_khz": 135.22888692167916
+      },
+      {
+        "mask": 12,
+        "switches_closed": [
+          "Q5",
+          "Q6"
+        ],
+        "equivalent_pf": 2798.563322467705,
+        "frequency_khz": 134.54499920430322
+      },
+      {
+        "mask": 13,
+        "switches_closed": [
+          "Q3",
+          "Q5",
+          "Q6"
+        ],
+        "equivalent_pf": 2822.3728462772287,
+        "frequency_khz": 133.97628676581417
+      },
+      {
+        "mask": 14,
+        "switches_closed": [
+          "Q4",
+          "Q5",
+          "Q6"
+        ],
+        "equivalent_pf": 2848.1128720172546,
+        "frequency_khz": 133.3695025070874
+      },
+      {
+        "mask": 15,
+        "switches_closed": [
+          "Q3",
+          "Q4",
+          "Q5",
+          "Q6"
+        ],
+        "equivalent_pf": 2871.9223958267785,
+        "frequency_khz": 132.8155054214267
+      },
+      {
+        "mask": 16,
+        "switches_closed": [
+          "Q11"
+        ],
+        "equivalent_pf": 2901.9607843137255,
+        "frequency_khz": 132.12632629623033
+      },
+      {
+        "mask": 17,
+        "switches_closed": [
+          "Q3",
+          "Q11"
+        ],
+        "equivalent_pf": 2925.7703081232494,
+        "frequency_khz": 131.58761496368427
+      },
+      {
+        "mask": 18,
+        "switches_closed": [
+          "Q4",
+          "Q11"
+        ],
+        "equivalent_pf": 2951.5103338632753,
+        "frequency_khz": 131.01257282962288
+      },
+      {
+        "mask": 19,
+        "switches_closed": [
+          "Q3",
+          "Q4",
+          "Q11"
+        ],
+        "equivalent_pf": 2975.319857672799,
+        "frequency_khz": 130.48731626291917
+      },
+      {
+        "mask": 20,
+        "switches_closed": [
+          "Q5",
+          "Q11"
+        ],
+        "equivalent_pf": 3003.5544098117334,
+        "frequency_khz": 129.8725529347688
+      },
+      {
+        "mask": 21,
+        "switches_closed": [
+          "Q3",
+          "Q5",
+          "Q11"
+        ],
+        "equivalent_pf": 3027.3639336212573,
+        "frequency_khz": 129.3608358759496
+      },
+      {
+        "mask": 22,
+        "switches_closed": [
+          "Q4",
+          "Q5",
+          "Q11"
+        ],
+        "equivalent_pf": 3053.103959361283,
+        "frequency_khz": 128.814375761188
+      },
+      {
+        "mask": 23,
+        "switches_closed": [
+          "Q3",
+          "Q4",
+          "Q5",
+          "Q11"
+        ],
+        "equivalent_pf": 3076.913483170807,
+        "frequency_khz": 128.3150173535752
+      },
+      {
+        "mask": 24,
+        "switches_closed": [
+          "Q6",
+          "Q11"
+        ],
+        "equivalent_pf": 3098.9304812834225,
+        "frequency_khz": 127.85838444177087
+      },
+      {
+        "mask": 25,
+        "switches_closed": [
+          "Q3",
+          "Q6",
+          "Q11"
+        ],
+        "equivalent_pf": 3122.7400050929464,
+        "frequency_khz": 127.37001969892957
+      },
+      {
+        "mask": 26,
+        "switches_closed": [
+          "Q4",
+          "Q6",
+          "Q11"
+        ],
+        "equivalent_pf": 3148.4800308329723,
+        "frequency_khz": 126.84830194187722
+      },
+      {
+        "mask": 27,
+        "switches_closed": [
+          "Q3",
+          "Q4",
+          "Q6",
+          "Q11"
+        ],
+        "equivalent_pf": 3172.289554642496,
+        "frequency_khz": 126.37137731364285
+      },
+      {
+        "mask": 28,
+        "switches_closed": [
+          "Q5",
+          "Q6",
+          "Q11"
+        ],
+        "equivalent_pf": 3200.5241067814304,
+        "frequency_khz": 125.81272766683615
+      },
+      {
+        "mask": 29,
+        "switches_closed": [
+          "Q3",
+          "Q5",
+          "Q6",
+          "Q11"
+        ],
+        "equivalent_pf": 3224.3336305909543,
+        "frequency_khz": 125.34734597829879
+      },
+      {
+        "mask": 30,
+        "switches_closed": [
+          "Q4",
+          "Q5",
+          "Q6",
+          "Q11"
+        ],
+        "equivalent_pf": 3250.07365633098,
+        "frequency_khz": 124.84999454921613
+      },
+      {
+        "mask": 31,
+        "switches_closed": [
+          "Q3",
+          "Q4",
+          "Q5",
+          "Q6",
+          "Q11"
+        ],
+        "equivalent_pf": 3273.883180140504,
+        "frequency_khz": 124.39517635066898
+      }
+    ],
+    "nearest_state": {
+      "mask": 13,
+      "switches_closed": [
+        "Q3",
+        "Q5",
+        "Q6"
+      ],
+      "equivalent_pf": 2822.3728462772287,
+      "frequency_khz": 133.97628676581417
+    },
+    "scaling": "With the reported 500 uH the 134.2-kHz target requires about 2.813 nF. If a later qualified antenna measurement differs, scale the candidate bank by 500 uH / actual inductance, then account for parasitics and losses.",
+    "why_five": "Five independent controls permit up to 32 switch states. Near-binary effective increments make fine tuning plausible. Actual distinct resonances, binary weights and automatic tuning are not established.",
+    "alternate_explanations": "A thermometer-coded or mixed coarse/fine bank is also possible. A fixed carrier does not require five different chip frequencies.",
+    "design_inductance_uh": 500,
+    "measurement_source": "evidence/antenna_inductance_results_20261015.json"
+  },
+  "voltage_review": {
+    "supply": "6.3 V is measured operating voltage, not a capacitor voltage rating. For ordinary rail capacitors choose 16 V on 3.3/4.5-V rails and 25 V on 6.3-V rails as starting ratings; existing C5 is known 16 V.",
+    "resonance": "A simple series LC at resonance has |Vc| approximately Q times the sinusoidal drive component. A 0-to-6.3-V 50%-duty square wave has a 4.01-V-peak fundamental. Illustrative loaded Q=10 or 20 gives about 40 or 80 V peak across the equivalent resonant reactance. These are examples, not this PCB measurements; individual capacitors share voltage according to their branch.",
+    "bank_selection": "Select 250-V C0G/NP0, 5% as a conservative design seed for all 15 tank parts. This is not an inferred original rating or a certified safe maximum; later peak/RMS voltage, AC loss, switch stress and package-fit checks may justify another choice.",
+    "detector_selection": "C19/C20 get a provisional 100-V rating because their node is coupled to ANT2 through D2; actual clamping behavior and peak stress remain unverified.",
+    "size": "Within a known dielectric and voltage family, larger size often permits greater capacitance. Across different circuit roles, a larger low-loss/high-voltage RF part can have less capacitance than a small supply bypass. Size is supporting evidence, not a value code."
+  },
+  "known_capacitors": [
+    {
+      "ref": "C5",
+      "value": "470 uF",
+      "voltage_rating_v": 16,
+      "dielectric": "Aluminium electrolytic",
+      "status": "Established marking; retain",
+      "note": "6.33-mm measured diameter, 16-mm can height; footprint lead pitch still qualified separately."
+    }
+  ],
+  "unpopulated_capacitors": [
+    {
+      "ref": "C3",
+      "value": "DNP",
+      "action": "Keep unpopulated; no fitted value to infer."
+    },
+    {
+      "ref": "C4",
+      "value": "DNP",
+      "action": "Keep unpopulated; no fitted value to infer."
+    },
+    {
+      "ref": "C42",
+      "value": "DNP",
+      "action": "Keep unpopulated; no fitted value to infer."
+    },
+    {
+      "ref": "C49",
+      "value": "DNP",
+      "action": "Keep unpopulated; no fitted value to infer."
+    },
+    {
+      "ref": "C1A",
+      "value": "DNP",
+      "action": "Keep unpopulated; no fitted value to infer."
+    },
+    {
+      "ref": "C2A",
+      "value": "DNP",
+      "action": "Keep unpopulated; no fitted value to infer."
+    }
+  ],
+  "basis_source_model_sha256": "082a70e8bbee79a56bb373f53ef3e99b4ece41f94ccfc61bf3583892ffac80de",
+  "basis_source_schematic_sha256": "ea7b8569e0831bb36f60083e448e4409cdbb563aafd4a612ce70ae4f71d83c78",
+  "topology_change": false
+}

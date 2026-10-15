@@ -1,0 +1,121 @@
+{
+  "date": "2026-10-14",
+  "schematic_revision": "v0.9.36",
+  "baseline_commit": "2bd82bc",
+  "status": "C11_ANT2_CONNECTION_SUPPORTED",
+  "electrical_change": true,
+  "raw_initial_unlabelled_report": "414kOhm",
+  "raw_clarification": "B47 red N / black G (Unpowered): 414kohm\nB48 red N / black A (Unpowered): 5ohm\nB49 red A / black G (Unpowered): 414kohm",
+  "measurements": [
+    {
+      "id": "B47",
+      "group": "antenna-outer-rail",
+      "from": "N",
+      "to": "G",
+      "mode": "resistance",
+      "unit": "ohms / OL",
+      "state": "Unpowered",
+      "purpose": "Test the disputed C11 outer-rail ground assignment.",
+      "date": "2026-10-14",
+      "result": "414 kohm",
+      "resistance_ohms": 414000,
+      "raw_user_statement": "B47 red N / black G (Unpowered): 414kohm\nB48 red N / black A (Unpowered): 5ohm\nB49 red A / black G (Unpowered): 414kohm",
+      "conditions": "User explicitly labels these readings Unpowered. Antenna fitted and resistance mode were requested; not separately restated."
+    },
+    {
+      "id": "B48",
+      "group": "antenna-outer-rail",
+      "from": "N",
+      "to": "A",
+      "mode": "resistance",
+      "unit": "ohms / OL",
+      "state": "Unpowered",
+      "purpose": "Test an antenna connection at the opposite C11 end; its midpoint already read OL.",
+      "date": "2026-10-14",
+      "result": "5 ohm",
+      "resistance_ohms": 5,
+      "raw_user_statement": "B47 red N / black G (Unpowered): 414kohm\nB48 red N / black A (Unpowered): 5ohm\nB49 red A / black G (Unpowered): 414kohm",
+      "conditions": "User explicitly labels these readings Unpowered. Antenna fitted and resistance mode were requested; not separately restated."
+    },
+    {
+      "id": "B49",
+      "group": "antenna-outer-rail",
+      "from": "A",
+      "to": "G",
+      "mode": "resistance",
+      "unit": "ohms / OL",
+      "state": "Unpowered",
+      "purpose": "Establish the antenna-to-ground path to interpret low N-A or N-G readings without merging distinct rails.",
+      "date": "2026-10-14",
+      "result": "414 kohm",
+      "resistance_ohms": 414000,
+      "raw_user_statement": "B47 red N / black G (Unpowered): 414kohm\nB48 red N / black A (Unpowered): 5ohm\nB49 red A / black G (Unpowered): 414kohm",
+      "conditions": "User explicitly labels these readings Unpowered. Antenna fitted and resistance mode were requested; not separately restated."
+    },
+    {
+      "id": "B50",
+      "group": "antenna-contact-check",
+      "from": "B",
+      "to": "G",
+      "mode": "resistance",
+      "unit": "ohms / OL",
+      "state": "Unpowered requested",
+      "purpose": "Distinguish a direct ANT2 connection from the previously reported 5-ohm path to ANT1.",
+      "date": "2026-10-14",
+      "result": "414 kohm",
+      "resistance_ohms": 414000,
+      "raw_user_statement": "same 414kohm What did you expect? Quite understand. Why do you need that?",
+      "conditions": "User corrects the pair to ANT2-GND. Original N-B request was not performed in this reading.",
+      "from_original_request": "N",
+      "to_original_request": "B",
+      "original_interpretation": "N-B = 414 kohm; superseded by user identification of actual pair B-G",
+      "correction_statement": "My mistake I measured B-G first\nN-A gives 5 Ohm which is logical as N- B should be <1 ohm"
+    },
+    {
+      "id": "B51",
+      "group": "antenna-contact-check",
+      "from": "N",
+      "to": "A",
+      "mode": "resistance",
+      "unit": "ohms / OL",
+      "state": "Unpowered",
+      "purpose": "Repeat only the conflicting N-ANT1 low reading, using one consolidated contact picture. B48 remains preserved; do not replace its historical value.",
+      "date": "2026-10-14",
+      "result": "5 ohm",
+      "resistance_ohms": 5,
+      "raw_user_statement": "My mistake I measured B-G first\nN-A gives 5 Ohm which is logical as N- B should be <1 ohm",
+      "stability": null
+    },
+    {
+      "id": "B52",
+      "group": "antenna-contact-check",
+      "from": "N",
+      "to": "B",
+      "mode": "resistance",
+      "unit": "ohms / OL",
+      "state": "Unpowered requested",
+      "date": "2026-10-14",
+      "result": "1.4 ohm",
+      "resistance_ohms": 1.4,
+      "raw_user_statement": "I measure 1.4 ohm, does it make a difference?",
+      "conditions": "Battery/programmer disconnected and antenna fitted were requested; fresh shorted-probe baseline and stability not separately supplied."
+    }
+  ],
+  "endpoint_mapping": {
+    "N": "C11.1 / H_ANT_B; earlier GND assignment withdrawn",
+    "A": "ANT1.1 / H_ANT_A",
+    "B": "ANT2.1 / H_ANT_B",
+    "G": "Printed GND test point beside C5"
+  },
+  "assessment": "C11 outer end N to ANT2 = 1.4 ohm supports a direct connection. N-ANT1 = 5 ohm agrees with the approximately 5-ohm fitted antenna path. N-GND, ANT1-GND and corrected ANT2-GND reports are 414 kohm. The apparent contradiction was a misidentified probe pair, now explicitly corrected by the user. The five front capacitor outer pads share continuous visible copper in IMG_2433; only C11-to-ANT2 was measured. Rear capacitor returns and transistor pads are not reassigned by this evidence.",
+  "related_evidence": [
+    "evidence/antenna_midpoint_results_20261014.json"
+  ],
+  "photos": {
+    "photos/user/2026-10-08/board_upper.png": "66b7c33e78b3b37d1acf8d42b28e781b7c9904c1ff469b35b19df1abeda7af28",
+    "photos/originals/IMG_2433.jpg": "232db402ba8b9ccd6b92b7bf0f1a4c22931d4c1186b5e5c5a329f3f0bd1d0afb"
+  },
+  "applied_revision": "v0.9.37",
+  "raw_pair_correction": "My mistake I measured B-G first\nN-A gives 5 Ohm which is logical as N- B should be <1 ohm",
+  "earlier_expectation": "N-B should be <1 ohm was initially an expectation; actual subsequent measurement is 1.4 ohm."
+}

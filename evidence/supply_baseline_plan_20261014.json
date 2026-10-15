@@ -1,0 +1,351 @@
+{
+  "date": "2026-10-14",
+  "basis_revision": "v0.9.37",
+  "status": "MEASURED_WITH_TP14_CONFLICT",
+  "electrical_change": false,
+  "setup": "Use DC VOLTS (V DC), black lead in COM and red lead in V/ohms. Programmer disconnected. With battery disconnected, secure the black probe at G (printed GND beside J3). Then power the board from its original battery in its normal operating configuration. Keep it on a nonconductive surface and avoid bridging adjacent pads. Do not use resistance or diode mode while powered.",
+  "instructions": "Let startup finish and measure the six marked red-probe points P1-P6 at rest, without pressing the button. Keep black on the same GND point G for every reading, including the other two photographs. Report volts; if a reading varies, report its range. Also mention the LED/operating state and whether the PIR is connected. If the board cannot power normally, report that before continuing.",
+  "tests": [
+    {
+      "id": "B53",
+      "group": "supply-battery",
+      "from": "P1",
+      "to": "G",
+      "mode": "DC voltage",
+      "unit": "V / varying range",
+      "state": "Powered, at rest after startup",
+      "issue": "E09",
+      "net": "BATTERY+",
+      "purpose": "Record actual BATTERY+ voltage relative to GND; no previously measured voltage exists."
+    },
+    {
+      "id": "B54",
+      "group": "supply-rf",
+      "from": "P2",
+      "to": "G",
+      "mode": "DC voltage",
+      "unit": "V / varying range",
+      "state": "Powered, at rest after startup",
+      "issue": "E09",
+      "net": "VSYS",
+      "purpose": "Record actual VSYS voltage relative to GND; no previously measured voltage exists."
+    },
+    {
+      "id": "B55",
+      "group": "supply-rf",
+      "from": "P3",
+      "to": "G",
+      "mode": "DC voltage",
+      "unit": "V / varying range",
+      "state": "Powered, at rest after startup",
+      "issue": "E03",
+      "net": "H_RF_VDD",
+      "purpose": "Record actual H_RF_VDD voltage relative to GND; no previously measured voltage exists."
+    },
+    {
+      "id": "B56",
+      "group": "supply-logic-pir",
+      "from": "P4",
+      "to": "G",
+      "mode": "DC voltage",
+      "unit": "V / varying range",
+      "state": "Powered, at rest after startup",
+      "issue": "E09",
+      "net": "VDD",
+      "purpose": "Record actual VDD voltage relative to GND; no previously measured voltage exists."
+    },
+    {
+      "id": "B57",
+      "group": "supply-logic-pir",
+      "from": "P5",
+      "to": "G",
+      "mode": "DC voltage",
+      "unit": "V / varying range",
+      "state": "Powered, at rest after startup",
+      "issue": "E09",
+      "net": "VREF",
+      "purpose": "Record actual VREF voltage relative to GND; no previously measured voltage exists."
+    },
+    {
+      "id": "B58",
+      "group": "supply-logic-pir",
+      "from": "P6",
+      "to": "G",
+      "mode": "DC voltage",
+      "unit": "V / varying range",
+      "state": "Powered, at rest after startup",
+      "issue": "E07",
+      "net": "H_PIR_VDD",
+      "purpose": "Record actual H_PIR_VDD voltage relative to GND; no previously measured voltage exists."
+    }
+  ],
+  "photos": [
+    {
+      "id": "supply-logic-pir",
+      "source": "photos/originals/IMG_2435.jpg",
+      "view_box": [
+        120,
+        210,
+        1130,
+        1580
+      ],
+      "coordinate_space": [
+        1368,
+        1823
+      ],
+      "title": "1. Fix black at G; measure VDD, VREF and PIR supply",
+      "points": {
+        "G": {
+          "xy": [
+            372,
+            1602
+          ],
+          "label": [
+            210,
+            1525
+          ],
+          "description": "Printed GND test hole beside J3. Keep the black probe here for all six readings.",
+          "role": "reference"
+        },
+        "P4": {
+          "xy": [
+            604,
+            396
+          ],
+          "label": [
+            422,
+            290
+          ],
+          "description": "Printed VDD test hole beside C2, above U1. Logic supply.",
+          "native_endpoint": "TP103.1",
+          "net": "VDD"
+        },
+        "P5": {
+          "xy": [
+            230,
+            1058
+          ],
+          "label": [
+            345,
+            965
+          ],
+          "description": "Printed VREF test hole, left of Q2. Reference rail.",
+          "native_endpoint": "TP104.1",
+          "net": "VREF"
+        },
+        "P6": {
+          "xy": [
+            1120,
+            1612
+          ],
+          "label": [
+            1140,
+            1490
+          ],
+          "description": "J3 pin 1: rightmost square solder terminal, red PIR supply wire. Not the middle signal terminal.",
+          "native_endpoint": "J3.1",
+          "net": "H_PIR_VDD"
+        }
+      }
+    },
+    {
+      "id": "supply-battery",
+      "source": "photos/originals/IMG_2438.jpg",
+      "view_box": [
+        560,
+        1050,
+        735,
+        720
+      ],
+      "coordinate_space": [
+        1368,
+        1823
+      ],
+      "title": "2. Battery positive at TP14; black stays at G",
+      "points": {
+        "P1": {
+          "xy": [
+            856,
+            1438
+          ],
+          "label": [
+            753,
+            1330
+          ],
+          "description": "TP14 test hole beside Q1, on the raw BATTERY+ side. Black probe remains at GND from the first photo.",
+          "native_endpoint": "TP14.1",
+          "net": "BATTERY+"
+        }
+      }
+    },
+    {
+      "id": "supply-rf",
+      "source": "photos/originals/IMG_2432.jpg",
+      "view_box": [
+        210,
+        320,
+        950,
+        830
+      ],
+      "coordinate_space": [
+        1368,
+        1823
+      ],
+      "title": "3. Both sides of L1; black stays at G",
+      "points": {
+        "P2": {
+          "xy": [
+            401,
+            482
+          ],
+          "label": [
+            280,
+            403
+          ],
+          "description": "Exposed plated hole immediately above L1 in this photo: VSYS, the post-Q1 supply side. Not TP1.",
+          "native_endpoint": "L1.1",
+          "net": "VSYS"
+        },
+        "P3": {
+          "xy": [
+            403,
+            900
+          ],
+          "label": [
+            270,
+            1035
+          ],
+          "description": "Exposed plated hole immediately below L1, towards C5 positive: RF supply after L1. Not TP2.",
+          "native_endpoint": "L1.2",
+          "net": "H_RF_VDD"
+        }
+      }
+    }
+  ],
+  "source_sha256": {
+    "photos/originals/IMG_2435.jpg": "04f1464e2fceeec695365b25183dc96505034434565d20713f55c5b13b18fac1",
+    "photos/originals/IMG_2438.jpg": "b3868ea3dd2f4b542d0713b57401d2a9c2a898f9b11898b32f17b84883702109",
+    "photos/originals/IMG_2432.jpg": "c982b50e7bd480e779464d26d9436c84c693d81f365ff8ac86c4aabc56e9761d"
+  },
+  "expected_use": "Compare measured rails, then select receiver, Q1/Q2/Q8 behavior checks. No nominal voltage, successful power-up, or fitted-device identity assumed.",
+  "meter_results": [
+    {
+      "id": "B53",
+      "group": "supply-battery",
+      "from": "P1",
+      "to": "G",
+      "mode": "DC voltage",
+      "unit": "V / varying range",
+      "state": "Powered, at rest after startup",
+      "issue": "E09",
+      "net": "BATTERY+",
+      "purpose": "Record actual BATTERY+ voltage relative to GND; no previously measured voltage exists.",
+      "date": "2026-10-14",
+      "result": "0 V",
+      "voltage_v": 0,
+      "source_worksheet_revision": "v0.9.37",
+      "native_endpoint": "TP14.1",
+      "operating_state": "Red LED blinking approximately once per second after startup; PIR connected",
+      "conditions": "Battery inserted. Original powered-at-rest worksheet used. Programmer disconnected requested; exact meter/range, elapsed startup time, transient minimum and scope waveform not reported.",
+      "net_assignment_status": "DISPUTED: P1 is physical TP14; 0 V conflicts with the current BATTERY+ association. This is not a direct battery-terminal voltage measurement."
+    },
+    {
+      "id": "B54",
+      "group": "supply-rf",
+      "from": "P2",
+      "to": "G",
+      "mode": "DC voltage",
+      "unit": "V / varying range",
+      "state": "Powered, at rest after startup",
+      "issue": "E09",
+      "net": "VSYS",
+      "purpose": "Record actual VSYS voltage relative to GND; no previously measured voltage exists.",
+      "date": "2026-10-14",
+      "result": "6.3 V",
+      "voltage_v": 6.3,
+      "source_worksheet_revision": "v0.9.37",
+      "native_endpoint": "L1.1",
+      "operating_state": "Red LED blinking approximately once per second after startup; PIR connected",
+      "conditions": "Battery inserted. Original powered-at-rest worksheet used. Programmer disconnected requested; exact meter/range, elapsed startup time, transient minimum and scope waveform not reported."
+    },
+    {
+      "id": "B55",
+      "group": "supply-rf",
+      "from": "P3",
+      "to": "G",
+      "mode": "DC voltage",
+      "unit": "V / varying range",
+      "state": "Powered, at rest after startup",
+      "issue": "E03",
+      "net": "H_RF_VDD",
+      "purpose": "Record actual H_RF_VDD voltage relative to GND; no previously measured voltage exists.",
+      "date": "2026-10-14",
+      "result": "6.3 V",
+      "voltage_v": 6.3,
+      "source_worksheet_revision": "v0.9.37",
+      "native_endpoint": "L1.2",
+      "operating_state": "Red LED blinking approximately once per second after startup; PIR connected",
+      "conditions": "Battery inserted. Original powered-at-rest worksheet used. Programmer disconnected requested; exact meter/range, elapsed startup time, transient minimum and scope waveform not reported."
+    },
+    {
+      "id": "B56",
+      "group": "supply-logic-pir",
+      "from": "P4",
+      "to": "G",
+      "mode": "DC voltage",
+      "unit": "V / varying range",
+      "state": "Powered, at rest after startup",
+      "issue": "E09",
+      "net": "VDD",
+      "purpose": "Record actual VDD voltage relative to GND; no previously measured voltage exists.",
+      "date": "2026-10-14",
+      "result": "4.5 V",
+      "voltage_v": 4.5,
+      "source_worksheet_revision": "v0.9.37",
+      "native_endpoint": "TP103.1",
+      "operating_state": "Red LED blinking approximately once per second after startup; PIR connected",
+      "conditions": "Battery inserted. Original powered-at-rest worksheet used. Programmer disconnected requested; exact meter/range, elapsed startup time, transient minimum and scope waveform not reported."
+    },
+    {
+      "id": "B57",
+      "group": "supply-logic-pir",
+      "from": "P5",
+      "to": "G",
+      "mode": "DC voltage",
+      "unit": "V / varying range",
+      "state": "Powered, at rest after startup",
+      "issue": "E09",
+      "net": "VREF",
+      "purpose": "Record actual VREF voltage relative to GND; no previously measured voltage exists.",
+      "date": "2026-10-14",
+      "result": "0 V",
+      "voltage_v": 0,
+      "source_worksheet_revision": "v0.9.37",
+      "native_endpoint": "TP104.1",
+      "operating_state": "Red LED blinking approximately once per second after startup; PIR connected",
+      "conditions": "Battery inserted. Original powered-at-rest worksheet used. Programmer disconnected requested; exact meter/range, elapsed startup time, transient minimum and scope waveform not reported."
+    },
+    {
+      "id": "B58",
+      "group": "supply-logic-pir",
+      "from": "P6",
+      "to": "G",
+      "mode": "DC voltage",
+      "unit": "V / varying range",
+      "state": "Powered, at rest after startup",
+      "issue": "E07",
+      "net": "H_PIR_VDD",
+      "purpose": "Record actual H_PIR_VDD voltage relative to GND; no previously measured voltage exists.",
+      "date": "2026-10-14",
+      "result": "3.3 V",
+      "voltage_v": 3.3,
+      "source_worksheet_revision": "v0.9.37",
+      "native_endpoint": "J3.1",
+      "operating_state": "Red LED blinking approximately once per second after startup; PIR connected",
+      "conditions": "Battery inserted. Original powered-at-rest worksheet used. Programmer disconnected requested; exact meter/range, elapsed startup time, transient minimum and scope waveform not reported."
+    }
+  ],
+  "scope_limit": "These six DC readings cannot close the 44 unknown capacitor values, exact semiconductor identities, firmware, or PCB layout.",
+  "resumed_after": "B59 C25-TP6 = 1.5 ohm; applied in v0.9.38",
+  "result_record": "evidence/supply_baseline_results_20261014.json"
+}
