@@ -2,7 +2,7 @@
 <export version="E">
   <design>
     <source>C:\Users\lukin\Documents\ChatGPT\PetSafe-PCB\schematic\PetSafe_1001339.kicad_sch</source>
-    <date>2026-10-15T12:53:54</date>
+    <date>2026-10-15T13:07:33</date>
     <tool>Eeschema 10.0.5</tool>
     <sheet number="1" name="/" tstamps="/">
       <title_block>
@@ -5166,9 +5166,9 @@
       <description>Resistor</description>
       <fields>
         <field name="ConnectionEvidence">v0.9.21 user annotated S1 upper-right to C35 upper/model2 (GND via prior V018); lower-right to C35 lower/model1, R40 lower/model2 and R41 left/model2. User explicitly confirms R41 right/model1 reaches J1 VPP/MCLR. Correct physical-to-native switch mapping TL=1, TR=3, BL=2, BR=4. Top-row/bottom-row common pairs remain a tactile-switch hypothesis; released/pressed behavior has not been measured.</field>
-        <field name="CurrentEvidence">10k from marking, between ICSP_DAT/PIC28 and H_BUTTON. H_BUTTON also joins C35.1, R41.2 and S1 bottom row (native switch pin2). The physical switch common pairs remain inferred.</field>
+        <field name="CurrentEvidence">10k from marking, between ICSP_DAT/PIC28 and H_BUTTON. H_BUTTON also joins C35.1, R41.2 and S1 bottom row (native switch pin2). S1 common pairs and normally-open action are measured in B38-B41; no contact check pending.</field>
         <field name="OriginalReference">R40</field>
-        <field name="Evidence">10k from marking, between ICSP_DAT/PIC28 and H_BUTTON. H_BUTTON also joins C35.1, R41.2 and S1 bottom row (native switch pin2). The physical switch common pairs remain inferred.</field>
+        <field name="Evidence">10k from marking, between ICSP_DAT/PIC28 and H_BUTTON. H_BUTTON also joins C35.1, R41.2 and S1 bottom row (native switch pin2). S1 common pairs and normally-open action are measured in B38-B41; no contact check pending.</field>
         <field name="LibraryPolicy">Unmodified KiCad 10 stock symbol</field>
         <field name="FootprintConfidence">medium - revised family estimate</field>
         <field name="FootprintBasis">User reports R8 approximately 1.6 x 0.77 mm, consistent with 0603 (1608 metric). Repeated fitted resistor family revised using R8 as a scale reference. This individual body has not been measured; earlier 0805 estimate superseded.</field>
@@ -5179,9 +5179,9 @@
       </fields>
       <libsource lib="Device" part="R" description="Resistor"/>
       <property name="ConnectionEvidence" value="v0.9.21 user annotated S1 upper-right to C35 upper/model2 (GND via prior V018); lower-right to C35 lower/model1, R40 lower/model2 and R41 left/model2. User explicitly confirms R41 right/model1 reaches J1 VPP/MCLR. Correct physical-to-native switch mapping TL=1, TR=3, BL=2, BR=4. Top-row/bottom-row common pairs remain a tactile-switch hypothesis; released/pressed behavior has not been measured."/>
-      <property name="CurrentEvidence" value="10k from marking, between ICSP_DAT/PIC28 and H_BUTTON. H_BUTTON also joins C35.1, R41.2 and S1 bottom row (native switch pin2). The physical switch common pairs remain inferred."/>
+      <property name="CurrentEvidence" value="10k from marking, between ICSP_DAT/PIC28 and H_BUTTON. H_BUTTON also joins C35.1, R41.2 and S1 bottom row (native switch pin2). S1 common pairs and normally-open action are measured in B38-B41; no contact check pending."/>
       <property name="OriginalReference" value="R40"/>
-      <property name="Evidence" value="10k from marking, between ICSP_DAT/PIC28 and H_BUTTON. H_BUTTON also joins C35.1, R41.2 and S1 bottom row (native switch pin2). The physical switch common pairs remain inferred."/>
+      <property name="Evidence" value="10k from marking, between ICSP_DAT/PIC28 and H_BUTTON. H_BUTTON also joins C35.1, R41.2 and S1 bottom row (native switch pin2). S1 common pairs and normally-open action are measured in B38-B41; no contact check pending."/>
       <property name="LibraryPolicy" value="Unmodified KiCad 10 stock symbol"/>
       <property name="FootprintConfidence" value="medium - revised family estimate"/>
       <property name="FootprintBasis" value="User reports R8 approximately 1.6 x 0.77 mm, consistent with 0603 (1608 metric). Repeated fitted resistor family revised using R8 as a scale reference. This individual body has not been measured; earlier 0805 estimate superseded."/>

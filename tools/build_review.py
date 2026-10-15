@@ -30,22 +30,78 @@ esc=html.escape
 railrows=''.join('<tr><td><b>'+esc(r['name'])+'</b></td><td>'+esc(r['board_label'])+'</td><td>'+esc(r['path'])+'</td></tr>' for r in status['rails'])
 planrows=''.join('<tr><td><b>'+esc(g['title'])+'</b><br>'+esc(g['scope'])+'</td><td>'+esc(g['summary'])+'</td><td>'+esc(g['next_action'])+'<br>'+ ' '.join('<a href="docs/FINISHING_CHECKLIST.html#'+esc(i)+'">'+esc(i)+'</a>' for i in g['issues'])+'</td></tr>' for g in status['finish_plan'])
 settled=''.join('<li>'+esc(t)+'</li>' for t in status['settled_summary'])
+work=json.loads((R/'evidence/remaining_work.json').read_text())
+openrows=''.join('<tr><td><a href="docs/OPEN_ITEMS.md#'+esc(i['id'].lower())+'">'+esc(i['id'])+'</a></td><td>'+esc(i['area'])+'</td><td>'+esc(i['category'])+'</td><td>'+esc(i['unknown'])+'</td></tr>' for i in status['items'])
 page=f'''<!doctype html><html lang="en"><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>PetSafe PCB - current reconstruction</title>
-<style>*{{box-sizing:border-box}}body{{margin:0;background:#f4f5f3;color:#1c2e2c;font:15px/1.55 system-ui}}main{{max-width:1500px;margin:auto;padding:32px}}h1{{font-size:36px}}h2{{margin-top:30px}}a{{color:#006d64}}nav{{display:flex;flex-wrap:wrap;gap:10px;margin:24px 0}}nav a,button{{border:1px solid #bdd0ca;background:white;padding:9px 14px;border-radius:7px;text-decoration:none;color:#164d44}}.metrics{{display:flex;gap:12px;flex-wrap:wrap}}.metrics div{{padding:17px 20px;background:white;border:1px solid #dce5e0;border-radius:9px}}.metrics strong{{display:block;font-size:28px}}.toolbar{{display:flex;gap:15px;align-items:center;padding:12px;background:#e5ece7;margin-top:25px}}.viewer{{width:100%;max-height:85vh;overflow:auto;background:white;border:1px solid #d3dfd8}}.viewer img{{display:block;width:100%;max-width:none}}details{{background:#edf2ef;padding:14px;margin:18px 0}}summary{{cursor:pointer}}.note{{background:#fff1cc;padding:18px}}table{{border-collapse:collapse;background:white;width:100%;font-size:13px}}th,td{{padding:10px;border-bottom:1px solid #d5e0da;text-align:left;vertical-align:top}}th{{position:sticky;top:0;background:#e6ede8}}.scroll{{overflow:auto;max-height:650px}}input[type=search]{{padding:12px;width:100%;max-width:600px;margin:15px 0}}footer{{margin-top:30px;color:#586d66}}</style>
-<main><p>PetSafe PPA19-16811 / 100-1339 R03 A | {esc(m['revision'])}</p><h1>Current schematic and remaining work</h1><p>One A2 sheet, grouped into functional blocks. Confirmed measurements, visible copper and application-based hypotheses are kept distinct. The investigation history is preserved separately.</p>
-<nav><a href="docs/CAPACITOR_VALUE_REVIEW.html">Capacitor values by function</a><a href="docs/FINISHING_MEASUREMENTS.html">Measurement queue and results</a><a href="docs/FINISHING_CHECKLIST.html">Current completion checklist</a><a href="output/pdf/PetSafe_completion_status.pdf">Printable status and PIC map</a><a href="output/pdf/PetSafe_single_sheet.pdf">Schematic PDF</a><a href="schematic/PetSafe_1001339.kicad_sch">Native KiCad schematic</a><a href="docs/VIA_REVIEW.html">Via viewer</a><a href="docs/VIA_PAIR_TESTS.html">Via-pair results</a><a href="docs/MEASUREMENTS.md">Measurements</a><a href="docs/SOURCES.md">Sources</a><a href="docs/history/README.md">History</a></nav>
-<div class="metrics"><div><strong>{status['catalog_entries']}</strong>catalog entries drawn</div><div><strong>{len(status['current_gpio_pins'])}</strong>PIC pads without a local net</div><div><strong>{len(status['current_fitted_open_pads'])}</strong>open populated-entry pads</div><div><strong>{len(status['unknown_ceramic_values'])}</strong>ceramic values unknown</div><div><strong>{status['footprints']['assigned']} / {status['catalog_entries']}</strong>candidate footprints assigned</div></div>
-<p class="note"><b>Still a working reconstruction:</b> {status['modeled_nets']} modeled nets match the native file. ERC has {status['erc_total']} findings: {status['erc_by_type'].get('pin_not_connected',0)} open pads, {status['erc_by_type'].get('isolated_pin_label',0)} isolated labels, {status['erc_by_type'].get('power_pin_not_driven',0)} undriven power inputs and {status['erc_by_type'].get('pin_to_pin',0)} DNP regulator-output conflict. {len(status['current_dnp_open_pads'])} open pads are on empty options. These counts do not capture all inferred wires. No routed PCB or powered functional validation exists.</p>
-<h2>Power rails, using the board labels</h2><table><thead><tr><th>Net</th><th>PCB label</th><th>Connection</th></tr></thead><tbody>{railrows}</tbody></table><p>L1 and L2 share VSYS on their supply sides. Their opposite ends remain separate filter outputs. H_RF_VDD, H_LDO_IN, H_RX_VDD and H_PIR_VDD are descriptive local branch names, not additional confirmed independent supply sources. Recorded resting-state readings are VSYS/RF 6.3 V, printed VDD 4.5 V and PIR supply 3.3 V; receiver supply 0.066 V and VREF 0 V in the reported state. Dynamic behavior remains unverified.</p>
-<h2>What remains to finish</h2><p><b>{esc(queue["batch_title"])}</b> <a href="docs/FINISHING_MEASUREMENTS.html">Open the labelled measurement screen</a>. {esc(queue["next_prompt"])} Q3 stays fitted. Other work is staged below; completed investigation is in history.</p><table><thead><tr><th>Work area</th><th>Remaining gap</th><th>Next action</th></tr></thead><tbody>{planrows}</tbody></table>
-<p><b>PCB reproduction is a separate milestone:</b> no routed board, confirmed stackup or PIC firmware backup exists. Continuity identifies nets, not hidden trace geometry. <a href="docs/FINISHING_CHECKLIST.html#reproduction">Replacement-board requirements</a>.</p>
-<p><a href="docs/history/README.md">Resolved investigation and previous reviews</a></p>
-<p><a href="docs/reviews/2026-10-09_finalization_cleanup_v0.9.31.md">Current audit and item dispositions</a></p>
-<div class="toolbar"><button id="fit">Fit sheet</button><label>Zoom <input id="zoom" type="range" min="100" max="500" value="100" step="25"></label><output id="zvalue">100%</output><a href="output/svg/PetSafe_1001339.svg">Open SVG</a></div><div class="viewer"><img id="drawing" src="output/svg/PetSafe_1001339.svg" alt="Single-sheet KiCad reconstruction"></div>
-<h2>Searchable component inventory</h2><p>Recorded values, candidate identities and displayed estimates are separate. Unknown values have not been filled in to make the drawing look finished. Candidate pin maps use {v["stock_library_symbols"]} stock and {v["custom_symbols"]} authorized custom symbol definitions. <a href="docs/LIBRARIES_AND_ALTERNATIVES.md">Libraries and alternatives</a> | <a href="docs/RECONSTRUCTION.md">Circuit interpretation</a> | <a href="photo-atlas-v01.html">Original photo atlas</a></p>
-<input id="search" type="search" aria-label="Filter components" placeholder="Find U6, Q8, DNP, a photograph..."><div class="scroll"><table><thead><tr><th>Original ref</th><th>KiCad ref</th><th>Recorded value / identity</th><th>Displayed candidate</th><th>Marking</th><th>Population</th><th>Photos</th><th>Current evidence / qualification</th></tr></thead><tbody>{''.join(rows)}</tbody></table></div>
-<footer>Original ZIP and photographs preserved. <a href="evidence/validation.json">Native validation</a> | <a href="evidence/proposed_nets.csv">All modeled nets</a> | <a href="evidence/remaining_work.json">Question register</a> | <a href="https://github.com/kerby2000/PetSafe-PCB">GitHub repository</a></footer></main>
-<script>const zoom=document.getElementById('zoom'),drawing=document.getElementById('drawing'),zvalue=document.getElementById('zvalue');function change(){{drawing.style.width=zoom.value+'%';zvalue.textContent=zoom.value+'%'}}zoom.addEventListener('input',change);document.getElementById('fit').onclick=()=>{{zoom.value=100;change()}};document.getElementById('search').oninput=e=>{{const q=e.target.value.toLowerCase();document.querySelectorAll('.scroll tbody tr').forEach(r=>r.hidden=!r.textContent.toLowerCase().includes(q))}};</script></html>'''
+<style>*{{box-sizing:border-box}}body{{margin:0;background:#f4f5f3;color:#1c2e2c;font:16px/1.55 system-ui}}main{{max-width:1500px;margin:auto;padding:28px}}h1{{font-size:34px}}a{{color:#006d64}}nav,.toolbar{{display:flex;flex-wrap:wrap;gap:14px;margin:20px 0}}button{{padding:7px 14px}}.viewer{{overflow:auto;background:white;border:1px solid #bccdc7}}.viewer img{{display:block;width:100%;max-width:none}}.board{{width:100%;height:auto}}table{{border-collapse:collapse;background:white;width:100%;font-size:14px}}th,td{{padding:12px;border-bottom:1px solid #d5e0da;text-align:left;vertical-align:top}}th{{background:#e6ede8}}.scroll{{overflow:auto}}details{{padding:16px;background:#eaf0ec;margin:20px 0}}summary{{cursor:pointer}}input[type=search]{{padding:10px;width:100%;max-width:600px;margin:14px 0}}.note{{border-left:4px solid #b87516;padding:12px 18px;background:#fff6dd}}footer{{margin-top:30px}}</style>
+<main><p>PetSafe PPA19-16811 | Main board 100-1339 R03 A | {esc(m['revision'])}</p><h1>PCB photographs and reconstructed schematic</h1>
+<p>One A2 sheet with {status['catalog_entries']} catalog entries. Connections and device qualifications remain under review. <b>No routed reproduction PCB exists.</b></p>
+<nav><a href="#schematic">Schematic</a><a href="#pcb">Physical PCB</a><a href="#open">Open items</a><a href="#evidence">Evidence and rebuild</a></nav>
+<h2 id="schematic">Current schematic</h2><p><a href="output/pdf/PetSafe_single_sheet.pdf">PDF</a> | <a href="schematic/PetSafe_1001339.kicad_pro">KiCad project</a> | <a href="schematic/PetSafe_1001339.kicad_sch">Editable schematic</a></p>
+<div class="toolbar"><button id="fit">Fit sheet</button><label>Zoom <input id="zoom" type="range" min="100" max="500" value="100" step="25"></label><output id="zvalue">100%</output><a href="output/svg/PetSafe_1001339.svg">Full native preview</a></div><div class="viewer"><img id="drawing" src="output/svg/PetSafe_1001339.svg" alt="Current one-sheet native KiCad schematic"></div>
+<p class="note">{status['modeled_nets']} model/native net partitions agree; {status['erc_total']} deliberately retained U6/U6A output conflict. These are file checks, not proof of every hidden connection. All 44 starred capacitor values are estimates; original values remain unconfirmed.</p>
+<h2 id="pcb">Actual physical PCB</h2><a href="photos/two_sides_overview.jpg"><img class="board" src="photos/two_sides_overview.jpg" alt="Front and rear original-photo mosaics of the actual PCB"></a>
+<p>Photographic mosaics use original pixels. The rear is mirrored and approximately registered for comparison; alignment does not establish buried copper or dimensions. <a href="photos/back_readable.jpg">Rear, readable orientation</a> | <a href="photo-atlas-v01.html">Original-photo atlas</a> | <a href="docs/VIA_REVIEW.html">Existing via/photo viewer</a></p>
+<h2 id="open">Remaining open items</h2><p><a href="docs/OPEN_ITEMS.md">GitHub-readable register</a> | <a href="docs/FINISHING_CHECKLIST.html">Detailed HTML view</a> | <a href="output/pdf/PetSafe_completion_status.pdf">Printable status</a>. Generated from <a href="evidence/remaining_work.json">one authoritative register</a>.</p>
+<p>No new owner measurement is requested. Scope work and component lifting remain deferred. TP11/TP17 possible hidden continuations are an accepted reconstruction boundary, not proved intentional non-use.</p>
+<div class="scroll"><table><thead><tr><th>ID</th><th>Area</th><th>Category</th><th>Unresolved claim</th></tr></thead><tbody>{openrows}</tbody></table></div>
+<h2 id="evidence">Evidence and rebuild</h2><p><a href="docs/RECONSTRUCTION.md">Current circuit interpretation</a> | <a href="docs/MEASUREMENTS.md">Recorded measurements</a> | <a href="docs/CAPACITOR_VALUE_REVIEW.html">Preserved capacitor estimates</a> | <a href="evidence/validation.json">Native validation</a> | <a href="docs/history/README.md">Investigation history</a></p>
+<pre>$env:PYTHONUTF8 = '1'
+./tools/build.ps1 -Python python
+./tools/refresh_review.ps1 -Python python</pre><p>Use installed KiCad 10 and <code>tools/requirements.txt</code>. The normal build exports the existing native drawing. <code>-Regenerate</code> explicitly replaces it from synchronized template/layout sources.</p>
+<details><summary>Rail map</summary><table><thead><tr><th>Net</th><th>PCB label</th><th>Supported path</th></tr></thead><tbody>{railrows}</tbody></table></details>
+<details><summary>Searchable component inventory and source photos</summary><input id="search" type="search" aria-label="Filter components" placeholder="Find U6, R39, DNP or a photo"><div class="scroll"><table id="inventory"><thead><tr><th>Original</th><th>KiCad</th><th>Observed value</th><th>Candidate</th><th>Marking</th><th>Population</th><th>Photos</th><th>Evidence / qualification</th></tr></thead><tbody>{''.join(rows)}</tbody></table></div></details>
+<footer>Original photos, numeric measurements and negative results preserved. <a href="evidence/proposed_nets.csv">Modeled nets</a> | <a href="https://github.com/kerby2000/PetSafe-PCB/pull/1">Open architect review PR #1</a></footer></main>
+<script>const zoom=document.getElementById('zoom'),drawing=document.getElementById('drawing'),zvalue=document.getElementById('zvalue');function change(){{drawing.style.width=zoom.value+'%';zvalue.textContent=zoom.value+'%'}}zoom.addEventListener('input',change);document.getElementById('fit').onclick=()=>{{zoom.value=100;change()}};document.getElementById('search').oninput=e=>{{const q=e.target.value.toLowerCase();document.querySelectorAll('#inventory tbody tr').forEach(r=>r.hidden=!r.textContent.toLowerCase().includes(q))}};</script></html>'''
+def md(text):return text.replace('|','/').replace('\n',' ')
+summaryrows='\n'.join('| ['+i['id']+'](docs/OPEN_ITEMS.md#'+i['id'].lower()+') | '+md(i['area'])+' | '+md(i['category'])+' |' for i in status['items'])
+readme=f'''# PetSafe PCB reverse engineering
+
+**PetSafe PPA19-16811 · 100-1339 R03 A · schematic {m['revision']}**
+
+One A2 main-board schematic, reconstructed from original photographs and owner measurements. {status['modeled_nets']} modeled net partitions agree with KiCad; device functions and physical-evidence coverage remain qualified. **There is no routed reproduction PCB.**
+
+## Current schematic
+
+[PDF](output/pdf/PetSafe_single_sheet.pdf) · [Editable KiCad project](schematic/PetSafe_1001339.kicad_pro) · [Schematic](schematic/PetSafe_1001339.kicad_sch) · [Local zoomable overview](index.html)
+
+[![Current native schematic preview](output/svg/PetSafe_1001339.svg)](output/pdf/PetSafe_single_sheet.pdf)
+
+All **44 starred capacitor values are estimates**, preserved with their basis and proposed ratings. C5 and the recorded inductor measurements remain unchanged. The single **U6/U6A regulator-output ERC conflict is deliberately retained**. File consistency is not proof of complete hardware connectivity.
+
+## Actual physical PCB
+
+[![Actual front and rear PCB photographs](photos/two_sides_overview.jpg)](photos/two_sides_overview.jpg)
+
+These mosaics contain original photographic pixels. The rear is **mirrored and approximately registered** to the front; it is a comparison aid, not a hidden-layer reconstruction. [Readable rear orientation](photos/back_readable.jpg) · [Original-photo atlas](photo-atlas-v01.html) · [Originals](photos/originals) · [Via/photo viewer](docs/VIA_REVIEW.html).
+
+## Open items
+
+The [full Markdown register](docs/OPEN_ITEMS.md), [HTML checklist](docs/FINISHING_CHECKLIST.html) and [printable status](output/pdf/PetSafe_completion_status.pdf) are generated from [remaining_work.json](evidence/remaining_work.json).
+
+| ID | Area | Category |
+|---|---|---|
+{summaryrows}
+
+TP11/TP17 hidden continuations remain a separately documented reconstruction boundary. No new owner measurement is requested now; component lifting and oscilloscope work are deferred. Package geometry, routing/stackup, external assemblies and firmware remain prerequisites for a working reproduction.
+
+## Evidence and rebuild
+
+[Current circuit interpretation](docs/RECONSTRUCTION.md) · [Measurements and negative results](docs/MEASUREMENTS.md) · [Capacitor proposals](docs/CAPACITOR_VALUE_REVIEW.html) · [Native validation](evidence/validation.json) · [Investigation history](docs/history/README.md)
+
+Use installed KiCad 10 (checked with 10.0.5), PowerShell and [Python dependencies](tools/requirements.txt):
+
+```powershell
+$env:PYTHONUTF8 = '1'
+./tools/build.ps1 -Python python
+./tools/refresh_review.ps1 -Python python
+```
+
+The normal build exports/checks the current native file. `-Regenerate` explicitly replaces it from the synchronized MCP template/layout; do not use it against stale sources. [The physical crosswalk](evidence/pin_crosswalk.json) preserves original pad labels. Original photos and raw results are not rewritten when interpretations change.
+
+[PR #1](https://github.com/kerby2000/PetSafe-PCB/pull/1) remains the independent-review entry point.
+'''
+(R/'README.md').write_text(readme,encoding='utf-8',newline='\n')
 (R/'index.html').write_text(page,encoding='utf-8',newline='\n')
 sources=[]
 for p in sorted((R/'docs/datasheets').glob('*.pdf')):sources.append(dict(file=p.relative_to(R).as_posix(),bytes=p.stat().st_size,sha256=hashlib.sha256(p.read_bytes()).hexdigest()))

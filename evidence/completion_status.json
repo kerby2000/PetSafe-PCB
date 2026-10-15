@@ -70,7 +70,7 @@
     "pin_to_pin": 1
   },
   "modeled_nets": 82,
-  "schematic_sha256": "a62e94a1441c4014819bc9d4ffa398d41a5ff9cfd3f2193c19a7c5bace61d9af",
+  "schematic_sha256": "87b952bb0439b3c6cea2a97e6c6efd8f321ca9470de866b3a5d5ea8568b04abc",
   "known_identified_ICs_needing_new_symbols": [],
   "complete_symbols_for_selected_candidates": true,
   "available_instruments": [
@@ -109,55 +109,55 @@
       "id": "E03",
       "area": "RF supply and Q8 drive",
       "gap": "Exact U2 identity and compatibility with measured 6.3 V remain unresolved; candidate SN74LVC2G14 recommended supply maximum is 5.5 V. Q8 switching margin, timing and RF waveform validation are deferred by owner. B82 alone is not a zero-ohm proof; output route is photo-supported.",
-      "method": "Finish non-scope schematic items first. Review U2 fitted identification and candidate ratings from marking/datasheet evidence. Owner has an oscilloscope but explicitly defers waveform measurements until later."
+      "method": "Compare the C14R candidate marking and primary supply limits with B76/B77; retain R5 feed and measured rail. No rewiring to satisfy a part hypothesis. None now. Scope and component-isolation work are deferred by owner."
     },
     {
       "id": "E04",
       "area": "Antenna and tuning-cell topology",
       "gap": "The drawn PNP B=R/E=L/C=S candidate is still not confirmed by in-circuit junction readings. Capacitor values and actual switching/resonance behavior remain unknown. The front capacitor-bank antenna connection is now established.",
-      "method": "No more antenna continuity sweep. Leave Q3 fitted as requested. Agent reviews candidate device roles against the corrected topology; isolate-device identification is deferred. RF operating checks follow only after values and suitable instrumentation are addressed."
+      "method": "Compare candidate PNP/NPN/MOSFET pin-role hypotheses against original pad routes and recorded directed junction tests; retain a visible disputed-device qualification. None now. Scope and component-isolation work are deferred by owner."
     },
     {
       "id": "E07",
       "area": "PIR: Q2 behavior and operating supply",
       "gap": "Q2 terminal functions, PIR raw-signal behavior and PIC input response remain unverified. The loaded PIR supply is established at 3.3 V in the reported state; transients and other states are not characterized.",
-      "method": "Local PIR connections and 3.3 V baseline are settled. Keep Q2 identity/pin-role qualification explicit. Defer raw-signal/TP16 response and supply-transient characterization to the later scope session, as requested."
+      "method": "R39 correction complete from IMG_2425. Audit remaining local copper independently; separate BC847 pin-role assumptions from the established pad joins. None now. Scope and component-isolation work are deferred by owner."
     },
     {
       "id": "E08",
       "area": "Receiver and Q7 operating behavior",
       "gap": "Why the receiver is inactive and its enabled-state behavior remain unverified. Earlier separate 0/4.5 V readings conflict with the later direct 0 V; do not diagnose failure or assume simultaneous identical states. Exact Q7 identity and E/C selection remain qualified. Receiver gain/filter response and MCU interface roles are unverified; DC readings do not exclude pulses.",
-      "method": "No repeat Q7 diode, continuity or baseline DC readings. Preserve latest 0 V direct bias and 0.066 V receiver-supply result. Enabled-state receiver timing and filter response are deferred to the later scope session; exact Q7 identity/E-C mapping stays qualified."
+      "method": "Check feedback, bias and detector copper in original close-ups and existing explicit pairs. Keep non-simultaneous powered readings qualified. None now. Scope and component-isolation work are deferred by owner."
     },
     {
       "id": "E09",
       "area": "Supply voltages and Q1 control",
       "gap": "Q1 fitted identity, terminal roles and powered control behavior remain unverified. The resistance recheck is compatible with R44 in the path but does not prove an intact MOSFET or the exact remaining path. Q1/motor dynamics and R3/R4/C28 sensing role remain qualified.",
-      "method": "No further Q1 resistance batch. Retain the existing wiring and candidate pin roles; powered gate/control timing belongs to the deferred scope session. Do not replace or rewire Q1 on the basis of the superseded low-resistance concern."
+      "method": "Review supply/filter boundaries from original photos and the corrected TP14/OUTA evidence. The 516-ohm concern is superseded by B84/B85. None now. Scope and component-isolation work are deferred by owner."
     },
     {
       "id": "E10",
       "area": "D6 breakdown and ICSP compatibility",
       "gap": "G3 is nonunique: MMSZ5228BS is 3.9 V; PZU2.4B is 2.4 V. Neither rating has been measured on this board. A directly connected clamp of either rating would load the required high-voltage ICSP level. The current PIC LVP configuration and actual D6 breakdown are unknown.",
-      "method": "No repeated continuity or diode-mode check. Keep D6 fitted as requested. Isolated breakdown testing is deferred. Retain the unknown breakdown/ICSP compatibility qualification; do not infer it from the G3 marking or perform a breakdown test through the PIC."
+      "method": "Retain measured D6 polarity and routing separately from unknown reverse breakdown and PIC programming compatibility. None now. Scope and component-isolation work are deferred by owner."
     },
     {
       "id": "I01",
       "area": "Candidate device identities and pin roles",
       "gap": "Exact fitted identity/ratings remain candidates for D1-D6, Q1-Q8/Q11, U1/U2/U6. The 4P marking alone does not identify three-pin D2; a manufacturer 4P code for a two-pin diode is incompatible.",
-      "method": "Resolve electrical risks through E03/E04/E07/E08/E09/E10. For remaining ambiguity retain the supported equivalent circuit and disclose ratings not established; no sharper-marking request or repeat D2 rail sweep. Exact manufacturer recovery is not always possible with a meter."
+      "method": "Present supported external pad maps and directed junction behavior separately from candidate manufacturer identity; cross-reference the specific device issues. None now. Scope and component-isolation work are deferred by owner."
     },
     {
       "id": "V01",
       "area": "Capacitor values and passive ratings",
       "gap": "The 44 original fitted ceramic values remain unconfirmed. Numerical choices are explicit design proposals. The RF bank uses the reported 500 uH and assumes ideal switches. Inductance test conditions, weights/order, voltage stress and firmware tuning remain unverified. Receiver/timing choices and L1/L2 ratings also need qualification.",
-      "method": "Review the complete numerical table in docs/CAPACITOR_VALUE_REVIEW.html. No new measurements now. Later qualify antenna resonance and voltage, gate timing and receiver response as networks; keep all parts fitted and scope work deferred as requested."
+      "method": "Preserve all 44 starred estimates and their qualifications. Capacitor selection is outside this topology task. None for this task; value/package qualification remains later work."
     },
     {
       "id": "M01",
       "area": "LED footprint and mechanical qualification",
       "gap": "LED1 land pattern/manufacturer numbering and internal pairing of its externally grounded cathode pads remain unverified. C5 pitch and S1 pad fit/3D heights are reproduction qualifications, not unknown schematic wires. J5 stock-footprint pad order/pitch and external motor harness colours remain unverified.",
-      "method": "Obtain LED underside/pad geometry or a matching vendor drawing before selecting a footprint. For later PCB reproduction check C5 lead pitch and S1 pad fit; use actual 16mm capacitor and 6mm switch heights. Do not repeat body dimensions. Match J5 physical A/B contacts to the chosen connector drawing before PCB layout; record harness colours when available, without repeating visible board continuity."
+      "method": "Preserve measured body dimensions and candidate footprints. LED1 pad geometry and exact fit remain reproduction prerequisites, outside this task. None for this task; value/package qualification remains later work."
     }
   ],
   "items": [
@@ -175,7 +175,7 @@
       "state": "open",
       "known": "C5/C6 and Q8 source/ground/outer-drain joins supported. U2/C7 supply now fed from H_RF_VDD through R5 (22 ohm): local and endpoint readings B78-B81 support this route. U2 supply = 6.3 V; direct difference to printed VDD = +1.8 V rejects old VDD tie. Q8 output-to-ANT1 accepted from visible copper and compatible B82 4.5-ohm reading with antenna fitted. Rest gate-source voltages: P=0 V, N=+6.3 V. TI lists C14R among the DBV candidate markings; absolute maximum VCC is 6.5 V, distinct from the 5.5-V recommended maximum.",
       "unknown": "Exact U2 identity and compatibility with measured 6.3 V remain unresolved; candidate SN74LVC2G14 recommended supply maximum is 5.5 V. Q8 switching margin, timing and RF waveform validation are deferred by owner. B82 alone is not a zero-ohm proof; output route is photo-supported.",
-      "next_action": "Finish non-scope schematic items first. Review U2 fitted identification and candidate ratings from marking/datasheet evidence. Owner has an oscilloscope but explicitly defers waveform measurements until later.",
+      "next_action": "Compare the C14R candidate marking and primary supply limits with B76/B77; retain R5 feed and measured rail. No rewiring to satisfy a part hypothesis. None now. Scope and component-isolation work are deferred by owner.",
       "closed_when": "U2 identity and voltage compatibility resolved; RF operating waveform validation recorded separately when the owner resumes scope work. Local RF supply/output drawing is corrected; unknown C6/C7 values remain V01.",
       "open_pads": [],
       "nets": [
@@ -202,8 +202,10 @@
         "evidence/u2_r5_topology_correction_v0940.json",
         "evidence/circuit_consistency_v0942.json"
       ],
-      "owner": "Agent evidence review; targeted owner test only as listed",
-      "category": "connectivity/behavior"
+      "owner": "Codex evidence audit; no active bench request",
+      "category": "Device function/rating; operating behaviour",
+      "codex_action": "Compare the C14R candidate marking and primary supply limits with B76/B77; retain R5 feed and measured rail. No rewiring to satisfy a part hypothesis.",
+      "owner_input": "None now. Scope and component-isolation work are deferred by owner."
     },
     {
       "id": "E04",
@@ -236,7 +238,7 @@
       "state": "open",
       "known": "PIC-to-control resistors and local tuning midpoints are mapped. B44/B45 midpoint-to-antenna DC readings are OL. B52 C11 outer end to ANT2 = 1.4 ohm; photo-shared outer pads of C14/C29/C44/C47 now join ANT2. Rear capacitor returns remain GND. ANT1-ANT2 is about 5 ohm with antenna fitted. The mistaken 414 kohm N-B report was corrected to B-G. Q3 L-S latest 0.48 V, L-R 2.3 V; all other diode directions OL. Antenna inductance now reported as 500 uH; test conditions not specified.",
       "unknown": "The drawn PNP B=R/E=L/C=S candidate is still not confirmed by in-circuit junction readings. Capacitor values and actual switching/resonance behavior remain unknown. The front capacitor-bank antenna connection is now established.",
-      "next_action": "No more antenna continuity sweep. Leave Q3 fitted as requested. Agent reviews candidate device roles against the corrected topology; isolate-device identification is deferred. RF operating checks follow only after values and suitable instrumentation are addressed.",
+      "next_action": "Compare candidate PNP/NPN/MOSFET pin-role hypotheses against original pad routes and recorded directed junction tests; retain a visible disputed-device qualification. None now. Scope and component-isolation work are deferred by owner.",
       "closed_when": "Tuning device pin roles and switched RF behavior are supported; outer ANT2 path is already resolved.",
       "open_pads": [],
       "nets": [
@@ -258,8 +260,10 @@
         "evidence/antenna_outer_rail_results_20261014.json",
         "evidence/antenna_outer_rail_correction_v0937.json"
       ],
-      "owner": "Agent evidence review; targeted owner test only as listed",
-      "category": "connectivity/behavior"
+      "owner": "Codex evidence audit; no active bench request",
+      "category": "Physical pin mapping; device function/rating",
+      "codex_action": "Compare candidate PNP/NPN/MOSFET pin-role hypotheses against original pad routes and recorded directed junction tests; retain a visible disputed-device qualification.",
+      "owner_input": "None now. Scope and component-isolation work are deferred by owner."
     },
     {
       "id": "E07",
@@ -279,7 +283,7 @@
       "state": "open",
       "known": "J3/U7 ordering, U6 external pads and PIC21/TP16/Q2 output routing are established. U6 pin5 is tied to VIN; pin4 is unused. B58 measured 3.3 V at J3.1 with PIR connected; logic VDD was 4.5 V. R39.1 joins TP16/Q2.S/PIC21 by continuous copper in original IMG_2425; R39.2 remains VDD. Earlier base-side assignment is withdrawn.",
       "unknown": "Q2 terminal functions, PIR raw-signal behavior and PIC input response remain unverified. The loaded PIR supply is established at 3.3 V in the reported state; transients and other states are not characterized.",
-      "next_action": "Local PIR connections and 3.3 V baseline are settled. Keep Q2 identity/pin-role qualification explicit. Defer raw-signal/TP16 response and supply-transient characterization to the later scope session, as requested.",
+      "next_action": "R39 correction complete from IMG_2425. Audit remaining local copper independently; separate BC847 pin-role assumptions from the established pad joins. None now. Scope and component-isolation work are deferred by owner.",
       "closed_when": "Q2 signal behavior and U6 output are supported by device or operating evidence.",
       "open_pads": [],
       "nets": [
@@ -295,8 +299,10 @@
         "evidence/supply_baseline_results_20261014.json",
         "evidence/r39_endpoint_correction_v0945.json"
       ],
-      "owner": "Agent evidence review; targeted owner test only as listed",
-      "category": "connectivity/behavior"
+      "owner": "Codex evidence audit; no active bench request",
+      "category": "Device function/rating; operating behaviour",
+      "codex_action": "R39 correction complete from IMG_2425. Audit remaining local copper independently; separate BC847 pin-role assumptions from the established pad joins.",
+      "owner_input": "None now. Scope and component-isolation work are deferred by owner."
     },
     {
       "id": "E08",
@@ -327,7 +333,7 @@
       "state": "open",
       "known": "U3 input returns and R23/R42/C40, C23/R25/R48 and DNP R47/C42 paths are reconciled. VREF supplies U3 pin5; C25.1-TP6.1 measured 1.5 ohm joins the receiver filter to PIC2/RA0. Powered: VREF 0 V, TP5 0.066 V, R19 left/right 0/4.5 V. Both R19-to-Q7 joins measured 1.5 ohm. Q7 diode results: R->L 0.74 V, L->R 1.74 V, S->L 0.74 V, L->S OL. These support PNP polarity with L as base; reverse finite reading can include parallel-board paths. B71 direct QR-QL measured 0 V, consistent with no forward base-emitter bias in the latest state and the low receiver supply; stability not reported.",
       "unknown": "Why the receiver is inactive and its enabled-state behavior remain unverified. Earlier separate 0/4.5 V readings conflict with the later direct 0 V; do not diagnose failure or assume simultaneous identical states. Exact Q7 identity and E/C selection remain qualified. Receiver gain/filter response and MCU interface roles are unverified; DC readings do not exclude pulses.",
-      "next_action": "No repeat Q7 diode, continuity or baseline DC readings. Preserve latest 0 V direct bias and 0.066 V receiver-supply result. Enabled-state receiver timing and filter response are deferred to the later scope session; exact Q7 identity/E-C mapping stays qualified.",
+      "next_action": "Check feedback, bias and detector copper in original close-ups and existing explicit pairs. Keep non-simultaneous powered readings qualified. None now. Scope and component-isolation work are deferred by owner.",
       "closed_when": "Receiver supply, bias and the existing RA0/RA1/RB4 interfaces have supported operating roles; no presumed extra output wire is required.",
       "open_pads": [],
       "nets": [
@@ -356,8 +362,10 @@
         "evidence/q7_diode_results_20261014.json",
         "evidence/q7_direct_bias_result_20261014.json"
       ],
-      "owner": "Agent evidence review; targeted owner test only as listed",
-      "category": "connectivity/behavior"
+      "owner": "Codex evidence audit; no active bench request",
+      "category": "Device function/rating; operating behaviour",
+      "codex_action": "Check feedback, bias and detector copper in original close-ups and existing explicit pairs. Keep non-simultaneous powered readings qualified.",
+      "owner_input": "None now. Scope and component-isolation work are deferred by owner."
     },
     {
       "id": "E09",
@@ -379,7 +387,7 @@
       "state": "open",
       "known": "VSYS/RF 6.3 V, printed VDD 4.5 V, PIR supply 3.3 V with PIR attached; VREF 0 V and red LED approximately 1 Hz. TP14 is on U5.8/OUTA at 1.5 ohm, with R43.2/V015; BATTERY+ stays separate. Receiver TP5 = 0.066 V (B62). R44 = 15 kohm (B83); TP14-to-Q1 presumed gate recheck = 21.4/21.7 kohm (B84/B85). The earlier 516-ohm conflict is not reproduced and no wiring change is warranted.",
       "unknown": "Q1 fitted identity, terminal roles and powered control behavior remain unverified. The resistance recheck is compatible with R44 in the path but does not prove an intact MOSFET or the exact remaining path. Q1/motor dynamics and R3/R4/C28 sensing role remain qualified.",
-      "next_action": "No further Q1 resistance batch. Retain the existing wiring and candidate pin roles; powered gate/control timing belongs to the deferred scope session. Do not replace or rewire Q1 on the basis of the superseded low-resistance concern.",
+      "next_action": "Review supply/filter boundaries from original photos and the corrected TP14/OUTA evidence. The 516-ohm concern is superseded by B84/B85. None now. Scope and component-isolation work are deferred by owner.",
       "closed_when": "Actual supply levels and control behavior are recorded without merging battery, VSYS or filtered branches.",
       "open_pads": [],
       "nets": [
@@ -402,8 +410,10 @@
         "evidence/r44_resistance_result_20261015.json",
         "evidence/q1_gate_recheck_results_20261015.json"
       ],
-      "owner": "Agent evidence review; targeted owner test only as listed",
-      "category": "connectivity/behavior"
+      "owner": "Codex evidence audit; no active bench request",
+      "category": "Device function/rating; operating behaviour",
+      "codex_action": "Review supply/filter boundaries from original photos and the corrected TP14/OUTA evidence. The 516-ohm concern is superseded by B84/B85.",
+      "owner_input": "None now. Scope and component-isolation work are deferred by owner."
     },
     {
       "id": "E10",
@@ -419,7 +429,7 @@
       "state": "open",
       "known": "D6 anode is GND and cathode is VPP; forward drop is about 0.7V and reverse diode mode is OL. J1 pin order is resolved. Primary programming specification DS40001753B requires 8.0-9.0 V for high-voltage entry; low-voltage entry exists only when LVP is enabled.",
       "unknown": "G3 is nonunique: MMSZ5228BS is 3.9 V; PZU2.4B is 2.4 V. Neither rating has been measured on this board. A directly connected clamp of either rating would load the required high-voltage ICSP level. The current PIC LVP configuration and actual D6 breakdown are unknown.",
-      "next_action": "No repeated continuity or diode-mode check. Keep D6 fitted as requested. Isolated breakdown testing is deferred. Retain the unknown breakdown/ICSP compatibility qualification; do not infer it from the G3 marking or perform a breakdown test through the PIC.",
+      "next_action": "Retain measured D6 polarity and routing separately from unknown reverse breakdown and PIC programming compatibility. None now. Scope and component-isolation work are deferred by owner.",
       "closed_when": "Clamp class/rating is established or explicitly bounded for reconstruction, and programming compatibility is checked.",
       "open_pads": [],
       "nets": [
@@ -431,8 +441,10 @@
         "docs/history/v0.9.30-before-finalization/evidence/remaining_work.json",
         "evidence/d6_programming_review_20261009.json"
       ],
-      "owner": "Agent evidence review; targeted owner test only as listed",
-      "category": "connectivity/behavior"
+      "owner": "Codex evidence audit; no active bench request",
+      "category": "Device function/rating",
+      "codex_action": "Retain measured D6 polarity and routing separately from unknown reverse breakdown and PIC programming compatibility.",
+      "owner_input": "None now. Scope and component-isolation work are deferred by owner."
     },
     {
       "id": "I01",
@@ -461,15 +473,17 @@
       "state": "open",
       "known": "Manufacturer candidate datasheets and pin tables exist. D2 local wiring is complete; measured R -> S -> L diode behavior supports a series pair.",
       "unknown": "Exact fitted identity/ratings remain candidates for D1-D6, Q1-Q8/Q11, U1/U2/U6. The 4P marking alone does not identify three-pin D2; a manufacturer 4P code for a two-pin diode is incompatible.",
-      "next_action": "Resolve electrical risks through E03/E04/E07/E08/E09/E10. For remaining ambiguity retain the supported equivalent circuit and disclose ratings not established; no sharper-marking request or repeat D2 rail sweep. Exact manufacturer recovery is not always possible with a meter.",
+      "next_action": "Present supported external pad maps and directed junction behavior separately from candidate manufacturer identity; cross-reference the specific device issues. None now. Scope and component-isolation work are deferred by owner.",
       "closed_when": "Each part has a supported pin/function model and adequate ratings or an explicit accepted-equivalent limitation; exact branding is not falsely claimed.",
       "open_pads": [],
       "nets": [],
       "supporting_evidence": [
         "docs/history/v0.9.30-before-finalization/evidence/remaining_work.json"
       ],
-      "owner": "Agent evidence review; targeted owner test only as listed",
-      "category": "identity"
+      "owner": "Codex evidence audit; no active bench request",
+      "category": "Physical pin mapping; device function/rating",
+      "codex_action": "Present supported external pad maps and directed junction behavior separately from candidate manufacturer identity; cross-reference the specific device issues.",
+      "owner_input": "None now. Scope and component-isolation work are deferred by owner."
     },
     {
       "id": "V01",
@@ -483,7 +497,7 @@
       "state": "open",
       "known": "C5 is 470uF/16V; L1/L2 reported 1.4/2.2uH. Marked resistors are recorded. All 44 unknown ceramics now have numerical design candidates: 12 supply, 17 signal/timing and 15 tuning-bank parts, with proposed ratings/dielectrics. PetSafe variant FAQ supports 134.2 kHz. C21/C22 raw auto-mode readings remain preserved. Native v0.9.44 now displays all 44 estimates with asterisks. The owner reports antenna inductance of 500 uH; test conditions are unspecified.",
       "unknown": "The 44 original fitted ceramic values remain unconfirmed. Numerical choices are explicit design proposals. The RF bank uses the reported 500 uH and assumes ideal switches. Inductance test conditions, weights/order, voltage stress and firmware tuning remain unverified. Receiver/timing choices and L1/L2 ratings also need qualification.",
-      "next_action": "Review the complete numerical table in docs/CAPACITOR_VALUE_REVIEW.html. No new measurements now. Later qualify antenna resonance and voltage, gate timing and receiver response as networks; keep all parts fitted and scope work deferred as requested.",
+      "next_action": "Preserve all 44 starred estimates and their qualifications. Capacitor selection is outside this topology task. None for this task; value/package qualification remains later work.",
       "closed_when": "Candidate choices are validated for the intended reconstruction; original-value and original-rating claims remain separate unless independently established.",
       "open_pads": [],
       "nets": [],
@@ -495,8 +509,10 @@
         "evidence/antenna_inductance_results_20261015.json",
         "evidence/capacitor_application_v0944.json"
       ],
-      "owner": "Agent evidence review; targeted owner test only as listed",
-      "category": "values"
+      "owner": "Codex evidence audit; no active bench request",
+      "category": "Reproduction/package (values and passive ratings)",
+      "codex_action": "Preserve all 44 starred estimates and their qualifications. Capacitor selection is outside this topology task.",
+      "owner_input": "None for this task; value/package qualification remains later work."
     },
     {
       "id": "M01",
@@ -514,7 +530,7 @@
       "state": "open",
       "known": "LED1 is the only unassigned footprint; R30/PIC23 lights red and R31/PIC22 lights green. C5 diameter/height, S1 body/actuator size, R8 and C11 sizes are already measured. J5 rear placement and both board contacts are mapped to U5 outputs from front/rear photos.",
       "unknown": "LED1 land pattern/manufacturer numbering and internal pairing of its externally grounded cathode pads remain unverified. C5 pitch and S1 pad fit/3D heights are reproduction qualifications, not unknown schematic wires. J5 stock-footprint pad order/pitch and external motor harness colours remain unverified.",
-      "next_action": "Obtain LED underside/pad geometry or a matching vendor drawing before selecting a footprint. For later PCB reproduction check C5 lead pitch and S1 pad fit; use actual 16mm capacitor and 6mm switch heights. Do not repeat body dimensions. Match J5 physical A/B contacts to the chosen connector drawing before PCB layout; record harness colours when available, without repeating visible board continuity.",
+      "next_action": "Preserve measured body dimensions and candidate footprints. LED1 pad geometry and exact fit remain reproduction prerequisites, outside this task. None for this task; value/package qualification remains later work.",
       "closed_when": "LED footprint has a supported pad map; remaining package-fit assumptions are documented separately from schematic connectivity.",
       "open_pads": [],
       "nets": [],
@@ -523,11 +539,29 @@
         "evidence/led1_colour_results_20261009.json",
         "evidence/j5_photo_review_20261009.json"
       ],
-      "owner": "Agent evidence review; targeted owner test only as listed",
-      "category": "package"
+      "owner": "Codex evidence audit; no active bench request",
+      "category": "Reproduction/package",
+      "codex_action": "Preserve measured body dimensions and candidate footprints. LED1 pad geometry and exact fit remain reproduction prerequisites, outside this task.",
+      "owner_input": "None for this task; value/package qualification remains later work."
     }
   ],
   "finish_plan": [
+    {
+      "id": "F1",
+      "title": "Audit connection evidence and device qualifications",
+      "scope": "Main-board electrical model",
+      "issues": [
+        "E03",
+        "E04",
+        "E07",
+        "E08",
+        "E09",
+        "E10",
+        "I01"
+      ],
+      "summary": "RF feed/output wiring, switch contacts and front-bank ANT2 routing are supported. Candidate device roles remain unresolved. TP11/TP17 routes are complete as drawn, with hidden-layer uncertainty retained as a reconstruction limitation. Scope work and component isolation are deferred by owner.",
+      "next_action": "Use original close-ups and explicit measurement records; do not infer copper from a preferred device model. No active bench request."
+    },
     {
       "id": "F2",
       "title": "Recover critical component values",
@@ -547,22 +581,6 @@
       ],
       "summary": "LED colour branches and J5 board-contact/output mapping are established. LED footprint, connector fit and external motor harness orientation remain reproduction qualifications.",
       "next_action": "Obtain a matching LED vendor drawing or pad geometry; qualify J5 and the other packages before laying out a replacement PCB."
-    },
-    {
-      "id": "F1",
-      "title": "Resolve hidden paths and device behavior",
-      "scope": "Main-board electrical model",
-      "issues": [
-        "E03",
-        "E04",
-        "E07",
-        "E08",
-        "E09",
-        "E10",
-        "I01"
-      ],
-      "summary": "RF feed/output wiring, switch contacts and front-bank ANT2 routing are supported. Candidate device roles remain unresolved. TP11/TP17 routes are complete as drawn, with hidden-layer uncertainty retained as a reconstruction limitation. Scope work and component isolation are deferred by owner.",
-      "next_action": "The Q1 low-resistance contradiction is cleared by B84/B85; no further resistance repeat. Continue values and package geometry while candidate device roles remain qualified. Components stay fitted and waveform work is deferred."
     }
   ],
   "reconstruction_limitations": [

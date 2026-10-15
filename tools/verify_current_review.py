@@ -274,10 +274,14 @@ assert 'pin5' in audit_rows['U6']['value_or_identity'].lower() and '1 ohm' in au
 assert '1.4' in audit_rows['L1']['value_or_identity'] and '2.2' in audit_rows['L2']['value_or_identity']
 assert 'TP9' not in audit_rows and 'R33' not in audit_rows, 'Removed unsupported entry has returned'
 assert members['R41.1']==members['J1.1'] and members['U4.21']==members['TP16.1']!=members['TP104.1']
-for name in ['index.html','docs/FINISHING_CHECKLIST.html','docs/FINISHING_MEASUREMENTS.html']:
+for name in ['docs/FINISHING_CHECKLIST.html','docs/FINISHING_MEASUREMENTS.html']:
     body=(ROOT/name).read_text(encoding='utf-8')
     for group in work['finish_plan']:
         assert group['title'] in body, (name,group['id'],'Missing shared finishing stage')
+landing=(ROOT/'index.html').read_text(encoding='utf-8')
+assert 'docs/FINISHING_CHECKLIST.html' in landing and 'docs/OPEN_ITEMS.md' in landing
+for issue in issues:
+    assert 'docs/OPEN_ITEMS.md#'+issue['id'].lower() in landing, (issue['id'],'Missing compact current issue link')
 # Preserve source evidence while replacing obsolete current summaries.
 cleanup=read('evidence/cleanup_v0929.json')
 for name,expected in cleanup['archived_sha256'].items():
@@ -306,3 +310,19 @@ report=dict(result='PASS',date=s['date'],schematic_revision=s['revision'],review
     original_photo_hashes='PASS',electrical_contracts='See live_evidence_verification.json',j1_physical_numbering='PASS')
 (ROOT/'evidence/current_review_verification.json').write_text(json.dumps(report,indent=2)+'\n',encoding='utf-8')
 print(json.dumps(report,indent=2))
+
+# Generated Markdown and HTML must expose the same authoritative open-item fields.
+markdown=(ROOT/'docs/OPEN_ITEMS.md').read_text(encoding='utf-8')
+for issue in issues:
+    assert f'## {issue["id"]} - {issue["area"]}' in markdown
+    for key in ['category','known','unknown','codex_action','owner_input','closed_when']:
+        assert issue[key].replace('|','/').replace('\n',' ') in markdown
+        assert __import__('html').escape(issue[key]) in checklist
+assert m['revision'] in (ROOT/'README.md').read_text() and m['revision'] in markdown
+assert 'physical switch common pairs remain inferred' not in next(c for c in m['components'] if c['ref']=='R40')['current_summary']
+assert 'R33 branch remains' not in next(n for n in m['nets'] if n['net']=='H_PIR_RAW')['status']
+for file in ['README.md','docs/OPEN_ITEMS.md']:
+    import re
+    for target in re.findall(r'\]\(([^)]+)\)', (ROOT/file).read_text()):
+        url=urlparse(target)
+        if not url.scheme and url.path:assert (ROOT/file).parent.joinpath(url.path).exists(),(file,target)

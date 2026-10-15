@@ -2377,7 +2377,7 @@
         "footprint": "Resistor_SMD:R_0603_1608Metric",
         "properties": {
           "ConnectionEvidence": "v0.9.21 user annotated S1 upper-right to C35 upper/model2 (GND via prior V018); lower-right to C35 lower/model1, R40 lower/model2 and R41 left/model2. User explicitly confirms R41 right/model1 reaches J1 VPP/MCLR. Correct physical-to-native switch mapping TL=1, TR=3, BL=2, BR=4. Top-row/bottom-row common pairs remain a tactile-switch hypothesis; released/pressed behavior has not been measured.",
-          "CurrentEvidence": "10k from marking, between ICSP_DAT/PIC28 and H_BUTTON. H_BUTTON also joins C35.1, R41.2 and S1 bottom row (native switch pin2). The physical switch common pairs remain inferred."
+          "CurrentEvidence": "10k from marking, between ICSP_DAT/PIC28 and H_BUTTON. H_BUTTON also joins C35.1, R41.2 and S1 bottom row/native2. S1 common pairs and normally-open action are measured in B38-B41; no contact check pending."
         }
       }
     },

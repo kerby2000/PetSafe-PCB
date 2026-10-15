@@ -1,6 +1,6 @@
 # Current circuit interpretation
 
-Schematic v0.9.43, 2026-10-15. This is the current interpretation, not a chronological log. The [previous narrative](history/cleanup_v0928/docs/RECONSTRUCTION.md) is archived; older requests there are superseded. Use [the checklist](FINISHING_CHECKLIST.html) for remaining questions. Oscilloscope work is deferred at the owner's request; prioritize schematic values, identities and package geometry.
+Schematic v0.9.45, 2026-10-15. This is the current interpretation, not a chronological log. The [previous narrative](history/cleanup_v0928/docs/RECONSTRUCTION.md) is archived; older requests there are superseded. Use [the checklist](FINISHING_CHECKLIST.html) for remaining questions. Oscilloscope work is deferred at the owner's request; prioritize schematic values, identities and package geometry.
 
 ## Power and references
 
@@ -22,7 +22,7 @@ J1 square/VPP end is pin1, then VDD2, GND3, DAT4 and CLK5. D6 routing and polari
 
 J5 sits on the rear. In front photo IMG_2438, the upper contact beside C34 is A/native1 and reaches U5.8/OUTA; the lower contact nearer BATTERY+ is B/native2 and reaches U5.5/OUTB and TP15. Visible copper establishes the board mapping; no further board-continuity test is requested. Motor wire colours, direction and chosen connector footprint numbering remain separate reproduction qualifications. See [the photo review](../evidence/j5_photo_review_20261009.json).
 
-J3 is pin1 PIR supply, pin2 raw signal to R38, pin3 GND. Empty U7.1/2/3 map to J3.3/2/1. The PIR-to-PIC route is resolved; Q2 candidate pin functions and operating behavior remain qualified. Unsupported R33 and its assumed raw-signal pull-up have been withdrawn after photo review and user inspection. The separate PIR board's internal circuit is outside this main-board drawing.
+J3 is pin1 PIR supply, pin2 raw signal to R38, pin3 GND. Empty U7.1/2/3 map to J3.3/2/1. R39.1 joins TP16/Q2.S/PIC21 by continuous copper in IMG_2425; R39.2 is VDD. It is an output pull-up under the current NPN candidate, not a base pull-up. The PIR-to-PIC route is represented; Q2 candidate pin functions and operating behavior remain qualified. Unsupported R33 and its assumed raw-signal pull-up have been withdrawn after photo review and user inspection. The separate PIR board's internal circuit is outside this main-board drawing.
 
 Q9/J6/R35/R36/TP10 are DNP options in the PIC block. Q9's NPN symbol expresses a possible driver role; no fitted identity is claimed. J6.2/R36.1's onward role remains unknown.
 

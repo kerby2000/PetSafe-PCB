@@ -39,6 +39,8 @@ try {
     if ($LASTEXITCODE) { throw 'Native connectivity validation failed.' }
     & $Python tools/verify_r39.py
     if ($LASTEXITCODE) { throw 'Bounded R39 correction failed.' }
+    & $Python tools/verify_pr1_cleanup.py
+    if ($LASTEXITCODE) { throw 'Documentation-only preservation check failed.' }
     & $Python tools/verify_capacitor_application.py
     if ($LASTEXITCODE) { throw 'Capacitor value application validation failed.' }
     & $Python tools/verify_stock_symbols.py

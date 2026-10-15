@@ -49,3 +49,7 @@ B37 P-F = 1 ohm supports the existing Q8.T2/native2 to C6.1 supply join. The old
 ## v0.9.41 PIC test-branch disposition
 
 [E06 drawing disposition and archived v0.7 inference](e06-v0941/README.md): known local routes retained; hidden-layer completeness and firmware purpose remain explicitly unproved. No new measurement or electrical change.
+
+## PR #1 cleanup, 2026-10-15
+
+[Previous landing-page prose](pr1-cleanup-20261015/README-before.md) and [dated photo summaries](pr1-cleanup-20261015/photo_supported_summary.json) retain the old U6A numbering and S1 hypotheses. Current numbering and measured contacts are in the live crosswalk and register. [Architect assignment and review](../reviews/pr1-20261015/task.md) led to the separately recorded R39 correction.

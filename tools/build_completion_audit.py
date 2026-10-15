@@ -62,8 +62,24 @@ for r in rows:
     body.append('<tr>'+''.join('<td>'+e(str(r[k]))+'</td>' for k in ['ref','population','observed','displayed','value_or_identity','footprint','footprint_confidence','open_pads','next_method'])+'<td>'+photos+'</td></tr>')
 issue_cards=[]
 for i in status['items']:
-    issue_cards.append(f'<article id="{e(i["id"])}"><h3>{e(i["id"])} - {e(i["area"])}</h3><p><b>Known:</b> {e(i["known"])}</p><p><b>Still uncertain:</b> {e(i["unknown"])}</p><p><b>Next useful check:</b> {e(i["next_action"])}</p><p><b>Finished when:</b> {e(i["closed_when"])}</p></article>')
+    issue_cards.append(f'<article id="{e(i["id"])}"><h3>{e(i["id"])} - {e(i["area"])}</h3><p><b>Category:</b> {e(i["category"])}</p><p><b>Known:</b> {e(i["known"])}</p><p><b>Unresolved claim:</b> {e(i["unknown"])}</p><p><b>Next Codex action:</b> {e(i["codex_action"])}</p><p><b>Owner input:</b> {e(i["owner_input"])}</p><p><b>Closure evidence:</b> {e(i["closed_when"])}</p></article>')
 work=json.loads((R/'evidence/remaining_work.json').read_text())
+md=['# Remaining open items', '', f'Current schematic **{status["revision"]}**. Generated from [the authoritative register](../evidence/remaining_work.json); edit that source, not this view.', '',
+    '[Schematic and PCB photographs](../README.md) | [HTML checklist](FINISHING_CHECKLIST.html) | [History and closed findings](history/README.md)', '',
+    '**No owner measurement requested now.** Scope work and component lifting remain deferred. Supported copper, device interpretation and operating validation are distinct claims.', '',
+    '| ID | Area | Category |', '|---|---|---|']
+for i in status['items']:md.append(f'| [{i["id"]}](#{i["id"].lower()}) | {i["area"]} | {i["category"]} |')
+for i in status['items']:
+    md.extend(['',f'<a id="{i["id"].lower()}"></a>',f'## {i["id"]} - {i["area"]}', '', '| Field | Current position |','|---|---|'])
+    for label,key in [('Category','category'),('Known','known'),('Unresolved claim','unknown'),('Next Codex action','codex_action'),('Owner input','owner_input'),('Closure evidence','closed_when')]:
+        md.append('| '+label+' | '+i[key].replace('|','/').replace('\n',' ')+' |')
+    md.extend(['','Evidence: '+', '.join('['+Path(p).name+'](../'+p+')' for p in i.get('supporting_evidence',[]))+'.'])
+md.extend(['','## Accepted reconstruction boundaries','', 'These are acknowledged limits, not closed physical findings.'])
+for i in status['reconstruction_limitations']:
+    md.extend(['',f'### {i["id"]} - {i["area"]}', '', '**Disposition:** '+i['disposition'], '',i['known'],'','**Not established:** '+i['unknown'],'','**Reopen when:** '+i['reopen_when']])
+md.extend(['',work['accepted_option_limitations'],'','## Reproduction requirements','','No routed reproduction PCB exists.'])
+for i in work['reproduction_requirements']:md.extend(['','- **'+i['item']+':** '+i['remaining']])
+(R/'docs/OPEN_ITEMS.md').write_text('\n'.join(md)+'\n',encoding='utf-8')
 limitations=''.join('<article id="'+e(i['id'])+'"><h3>'+e(i['id']+' - '+i['area'])+'</h3><p><b>'+e(i['disposition'])+'</b></p><p>'+e(i['known'])+'</p><p><b>Unproved:</b> '+e(i['unknown'])+'</p><p><b>Next:</b> '+e(i['next_action'])+'</p><p><b>Reopen if:</b> '+e(i['reopen_when'])+'</p><a href="../'+e(i['evidence'])+'">Evidence and disposition</a></article>' for i in status['reconstruction_limitations'])
 consistency=work.get('consistency_review',{})
 consistency_rows=''.join('<tr><td><a href="#'+e(i['issue'])+'">'+e(i['issue'])+'</a></td><td><b>'+e(i['title'])+'</b><br>'+e(i['reasoning'])+'</td><td>'+e(i['next_action'])+'</td></tr>' for i in consistency.get('findings',[]))

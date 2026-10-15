@@ -715,13 +715,13 @@
       "footprint": "Resistor_SMD:R_0603_1608Metric",
       "footprint_confidence": "medium - revised family estimate",
       "footprint_basis": "User reports R8 approximately 1.6 x 0.77 mm, consistent with 0603 (1608 metric). Repeated fitted resistor family revised using R8 as a scale reference. This individual body has not been measured; earlier 0805 estimate superseded.",
-      "hypothesis": "10k from marking, between ICSP_DAT/PIC28 and H_BUTTON. H_BUTTON also joins C35.1, R41.2 and S1 bottom row (native switch pin2). The physical switch common pairs remain inferred.",
+      "hypothesis": "10k from marking, between ICSP_DAT/PIC28 and H_BUTTON. H_BUTTON also joins C35.1, R41.2 and S1 bottom row/native2. S1 common pairs and normally-open action are measured in B38-B41; no contact check pending.",
       "connection_evidence": "v0.9.21 user annotated S1 upper-right to C35 upper/model2 (GND via prior V018); lower-right to C35 lower/model1, R40 lower/model2 and R41 left/model2. User explicitly confirms R41 right/model1 reaches J1 VPP/MCLR. Correct physical-to-native switch mapping TL=1, TR=3, BL=2, BR=4. Top-row/bottom-row common pairs remain a tactile-switch hypothesis; released/pressed behavior has not been measured.",
       "photo_pad_mapping": {
         "1": "upper",
         "2": "lower"
       },
-      "current_summary": "10k from marking, between ICSP_DAT/PIC28 and H_BUTTON. H_BUTTON also joins C35.1, R41.2 and S1 bottom row (native switch pin2). The physical switch common pairs remain inferred."
+      "current_summary": "10k from marking, between ICSP_DAT/PIC28 and H_BUTTON. H_BUTTON also joins C35.1, R41.2 and S1 bottom row/native2. S1 common pairs and normally-open action are measured in B38-B41; no contact check pending."
     },
     {
       "ref": "R41",
@@ -4615,7 +4615,7 @@
         "R38.1",
         "U7.2"
       ],
-      "status": "User J3.2-to-R38 K/right/model1 = 1 ohm. Opposite R38 J/left/model2 = 10 kohm. R33 branch remains photo/circuit hypothesis.",
+      "status": "User J3.2-to-R38 K/right/model1 = 1 ohm. Opposite R38 J/left/model2 = 10 kohm. U7.2-to-J3.2 continuity reported.",
       "original_fragments": [],
       "v0916_evidence": "User measured matching physical columns of U7 and J3. U7 local square-pad pin1 maps to J3 pin3; middle to pin2; outer round pin3 to J3 pin1. No numeric resistance supplied; other branches retain earlier qualifications."
     },
