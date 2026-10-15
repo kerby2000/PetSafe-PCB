@@ -1,0 +1,60 @@
+{
+  "date": "2026-10-15",
+  "revision": "v0.9.43",
+  "measurements": [
+    {
+      "id": "B84",
+      "group": "q1-gate-conflict-recheck",
+      "from": "T14",
+      "to": "G1",
+      "mode": "resistance",
+      "unit": "ohms / kohms / OL; steady or changing after 10 seconds",
+      "state": "Unpowered; all components fitted",
+      "issue": "E09",
+      "purpose": "Recheck B61 in this probe direction after R44 itself measured 15 kohm. Wait about 10 seconds; report settled value or how it changes.",
+      "rechecks": "B61",
+      "repeat_reason": "B83 supports R44 = 15 kohm, leaving the earlier 516-ohm gate-path result inconsistent with the simple candidate model; B61 stability was not reported.",
+      "date": "2026-10-15",
+      "result": "21.4 kohm",
+      "resistance_ohms": 21400,
+      "stability": null,
+      "shorted_probe_ohms": null,
+      "source_worksheet_revision": "v0.9.42",
+      "raw_user_statement": "PetSafe Q1 gate path: resolve the 516-ohm contradiction / v0.9.42\nB84 red T14 / black G1 (Unpowered; all components fitted): 21.4kOhm\nB85 red G1 / black T14 (Unpowered; all components fitted): 21.7kOhm"
+    },
+    {
+      "id": "B85",
+      "group": "q1-gate-conflict-recheck",
+      "from": "G1",
+      "to": "T14",
+      "mode": "resistance",
+      "unit": "ohms / kohms / OL; steady or changing after 10 seconds",
+      "state": "Unpowered; all components fitted",
+      "issue": "E09",
+      "purpose": "Recheck B61 in this probe direction after R44 itself measured 15 kohm. Wait about 10 seconds; report settled value or how it changes.",
+      "rechecks": "B61",
+      "repeat_reason": "B83 supports R44 = 15 kohm, leaving the earlier 516-ohm gate-path result inconsistent with the simple candidate model; B61 stability was not reported.",
+      "date": "2026-10-15",
+      "result": "21.7 kohm",
+      "resistance_ohms": 21700,
+      "stability": null,
+      "shorted_probe_ohms": null,
+      "source_worksheet_revision": "v0.9.42",
+      "raw_user_statement": "PetSafe Q1 gate path: resolve the 516-ohm contradiction / v0.9.42\nB84 red T14 / black G1 (Unpowered; all components fitted): 21.4kOhm\nB85 red G1 / black T14 (Unpowered; all components fitted): 21.7kOhm"
+    }
+  ],
+  "assessment": "B84/B85 report 21.4/21.7 kohm in opposite directions after a request to allow settling. No time trace or explicit stability statement was supplied. Both exceed the measured 15-kohm R44 and are compatible with a path containing it. The older B61 516-ohm report is not reproduced; retain it as historical evidence without using it to infer a short or missing bypass. Close only the low-resistance contradiction. These readings do not establish Q1 identity, gate leakage, pin roles, the exact remaining current path or powered behavior.",
+  "status": "LOW_RESISTANCE_CONFLICT_NOT_REPRODUCED",
+  "electrical_change": false,
+  "earlier_measurement": {
+    "id": "B61",
+    "resistance_ohms": 516,
+    "disposition": "Preserved; not reproduced by B84/B85; cause unestablished"
+  },
+  "related_measurement": {
+    "id": "B83",
+    "resistance_ohms": 15000
+  },
+  "issue": "E09",
+  "issue_disposition": "Remain open for candidate Q1 roles and powered control behavior; no further gate-resistance batch requested."
+}

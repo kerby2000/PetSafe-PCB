@@ -1,5 +1,5 @@
 {
-  "revision": "v0.9.42",
+  "revision": "v0.9.43",
   "instruments": [
     "LCR meter",
     "multimeter"
@@ -1641,7 +1641,7 @@
       "observed": "UNKNOWN",
       "displayed": "FMOS3401A?",
       "marking": "R1A",
-      "value_or_identity": "TP14/U5.8 is OUTA (1.5 ohm), distinct from BATTERY+. Q1.R is a candidate MOSFET gate joined only to R44.2. B61 OUTA-to-Q1.R = 516 ohm remains unexplained after B83 measured R44 = 15 kohm in circuit; stability was not reported for either. B84/B85 recheck B61 in both directions after settling. No direct join or failed MOSFET is inferred.",
+      "value_or_identity": "TP14/U5.8 is OUTA, distinct from BATTERY+. Q1.R is the candidate MOSFET gate joined only to R44.2. R44 = 15 kohm (B83); OUTA-to-Q1.R rechecks = 21.4/21.7 kohm (B84/B85). These do not reproduce B61 = 516 ohm and are compatible with R44 in the path. Candidate identity, pin roles and powered behavior remain unverified. No wiring change inferred.",
       "footprint": "Package_TO_SOT_SMD:SOT-23",
       "footprint_confidence": "datasheet/package candidate",
       "footprint_basis": "SOT-23 photo and FMOS3401A datasheet package agree. Manufacturer identity remains a candidate.",

@@ -10234,7 +10234,7 @@
 				(hide yes)
 			)
 		)
-    (property "CurrentEvidence" "15 kohm from 18C EIA-96 marking; B83 measured 15 kohm in circuit (stability/probe baseline unreported). Model1 joins TP4/PIC25; model2 joins only Q1.R, presumed MOSFET gate. B61 OUTA-to-gate = 516 ohm remains unexplained. B84/B85 test settling and polarity of that conflicting report; no bypass inferred." (at 431.8 111.76 0)
+    (property "CurrentEvidence" "15 kohm from 18C marking and B83 in-circuit reading; isolated tolerance unverified. Model1 joins TP4/PIC25; model2 joins Q1.R, presumed gate. OUTA-to-gate rechecks = 21.4/21.7 kohm (B84/B85), compatible with R44 in the path; prior low-resistance conflict not reproduced. No bypass inferred." (at 431.8 111.76 0)
       (effects (font (size 1.27 1.27)) (hide yes))
     )
 		(pin "1"
@@ -19946,7 +19946,7 @@
 				(hide yes)
 			)
 		)
-		(property "CurrentEvidence" "TP14/U5.8 is OUTA (1.5 ohm), distinct from BATTERY+. Q1.R is a candidate MOSFET gate joined only to R44.2. B61 OUTA-to-Q1.R = 516 ohm remains unexplained after B83 measured R44 = 15 kohm in circuit; stability was not reported for either. B84/B85 recheck B61 in both directions after settling. No direct join or failed MOSFET is inferred."
+		(property "CurrentEvidence" "TP14/U5.8 is OUTA, distinct from BATTERY+. Q1.R is the candidate MOSFET gate joined only to R44.2. R44 = 15 kohm (B83); OUTA-to-Q1.R rechecks = 21.4/21.7 kohm (B84/B85). These do not reproduce B61 = 516 ohm and are compatible with R44 in the path. Candidate identity, pin roles and powered behavior remain unverified. No wiring change inferred."
 			(at 453.39 111.76 0)
 			(effects
 				(font

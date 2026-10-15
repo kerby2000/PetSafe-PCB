@@ -24,6 +24,10 @@ assert 'PIC21' not in next(r for r in work['rails'] if r['name']=='VREF')['path'
 # E06 is a documented limitation, never a claim that absent hidden copper was proved.
 consistency=read('evidence/circuit_consistency_v0942.json')
 assert consistency['electrical_change'] is False and consistency['new_measurements']==['B83']
+assert consistency['followup_measurements']==['B84','B85']
+assert next(f for f in consistency['findings'] if f['id']=='C01')['status']=='RESOLVED_BY_RECHECK'
+assert all(f['id']!='C01' for f in work['consistency_review']['findings'])
+assert 'E09' in ids, 'Resolving one reading conflict must not falsely close Q1 behavior'
 assert {n['net']:sorted(n['endpoints']) for n in m['nets']}==consistency['unchanged_net_partitions']
 assert set(next(n['endpoints'] for n in m['nets'] if n['net']=='Q1_GATE'))=={'Q1.R','R44.2'}
 for ref,value in [('R44','15k'),('R26','120k'),('R24','120k'),('R21','10k'),('R22','10k')]:

@@ -3,7 +3,7 @@
   "basis_revision": "v0.9.37",
   "status": "RF_TOPOLOGY_UPDATED_SCOPE_DEFERRED",
   "scope": "U2 supply feed and Q8 output routing corrected from measurements and photos.",
-  "setup": "Disconnect battery and programmer. Select RESISTANCE (ohms), not diode or continuity mode. Leave all components fitted.",
+  "setup": "Recorded with battery and programmer disconnected; all components fitted. No new readings requested.",
   "photos": [
     {
       "id": "receiver",
@@ -1922,35 +1922,8 @@
       }
     }
   ],
-  "tests": [
-    {
-      "id": "B84",
-      "group": "q1-gate-conflict-recheck",
-      "from": "T14",
-      "to": "G1",
-      "mode": "resistance",
-      "unit": "ohms / kohms / OL; steady or changing after 10 seconds",
-      "state": "Unpowered; all components fitted",
-      "issue": "E09",
-      "purpose": "Recheck B61 in this probe direction after R44 itself measured 15 kohm. Wait about 10 seconds; report settled value or how it changes.",
-      "rechecks": "B61",
-      "repeat_reason": "B83 supports R44 = 15 kohm, leaving the earlier 516-ohm gate-path result inconsistent with the simple candidate model; B61 stability was not reported."
-    },
-    {
-      "id": "B85",
-      "group": "q1-gate-conflict-recheck",
-      "from": "G1",
-      "to": "T14",
-      "mode": "resistance",
-      "unit": "ohms / kohms / OL; steady or changing after 10 seconds",
-      "state": "Unpowered; all components fitted",
-      "issue": "E09",
-      "purpose": "Recheck B61 in this probe direction after R44 itself measured 15 kohm. Wait about 10 seconds; report settled value or how it changes.",
-      "rechecks": "B61",
-      "repeat_reason": "B83 supports R44 = 15 kohm, leaving the earlier 516-ohm gate-path result inconsistent with the simple candidate model; B61 stability was not reported."
-    }
-  ],
-  "interpretation": "The in-circuit 15-kohm reading supports the 18C/15-kohm interpretation for R44. Stability and probe baseline were not reported. This does not prove isolated value, tolerance or Q1 pin roles. It leaves B61 TP14-to-Q1.R = 516 ohm unexplained by the settled insulated-gate model. Preserve both reports; do not merge nets or declare a failed device.",
+  "tests": [],
+  "interpretation": "B84/B85 report 21.4/21.7 kohm in opposite directions after a request to allow settling. No time trace or explicit stability statement was supplied. Both exceed the measured 15-kohm R44 and are compatible with a path containing it. The older B61 516-ohm report is not reproduced; retain it as historical evidence without using it to infer a short or missing bypass. Close only the low-resistance contradiction. These readings do not establish Q1 identity, gate leakage, pin roles, the exact remaining current path or powered behavior.",
   "next_stages": [
     {
       "stage": "Resolve the remaining functional paths",
@@ -3160,11 +3133,51 @@
       "shorted_probe_ohms": null,
       "source_worksheet_revision": "v0.9.42",
       "raw_user_statement": "PetSafe R44: test the unexplained Q1 gate-path resistance / v0.9.42\nB83 red A4 / black B4 (Unpowered; all components fitted): 15kOhm"
+    },
+    {
+      "id": "B84",
+      "group": "q1-gate-conflict-recheck",
+      "from": "T14",
+      "to": "G1",
+      "mode": "resistance",
+      "unit": "ohms / kohms / OL; steady or changing after 10 seconds",
+      "state": "Unpowered; all components fitted",
+      "issue": "E09",
+      "purpose": "Recheck B61 in this probe direction after R44 itself measured 15 kohm. Wait about 10 seconds; report settled value or how it changes.",
+      "rechecks": "B61",
+      "repeat_reason": "B83 supports R44 = 15 kohm, leaving the earlier 516-ohm gate-path result inconsistent with the simple candidate model; B61 stability was not reported.",
+      "date": "2026-10-15",
+      "result": "21.4 kohm",
+      "resistance_ohms": 21400,
+      "stability": null,
+      "shorted_probe_ohms": null,
+      "source_worksheet_revision": "v0.9.42",
+      "raw_user_statement": "PetSafe Q1 gate path: resolve the 516-ohm contradiction / v0.9.42\nB84 red T14 / black G1 (Unpowered; all components fitted): 21.4kOhm\nB85 red G1 / black T14 (Unpowered; all components fitted): 21.7kOhm"
+    },
+    {
+      "id": "B85",
+      "group": "q1-gate-conflict-recheck",
+      "from": "G1",
+      "to": "T14",
+      "mode": "resistance",
+      "unit": "ohms / kohms / OL; steady or changing after 10 seconds",
+      "state": "Unpowered; all components fitted",
+      "issue": "E09",
+      "purpose": "Recheck B61 in this probe direction after R44 itself measured 15 kohm. Wait about 10 seconds; report settled value or how it changes.",
+      "rechecks": "B61",
+      "repeat_reason": "B83 supports R44 = 15 kohm, leaving the earlier 516-ohm gate-path result inconsistent with the simple candidate model; B61 stability was not reported.",
+      "date": "2026-10-15",
+      "result": "21.7 kohm",
+      "resistance_ohms": 21700,
+      "stability": null,
+      "shorted_probe_ohms": null,
+      "source_worksheet_revision": "v0.9.42",
+      "raw_user_statement": "PetSafe Q1 gate path: resolve the 516-ohm contradiction / v0.9.42\nB84 red T14 / black G1 (Unpowered; all components fitted): 21.4kOhm\nB85 red G1 / black T14 (Unpowered; all components fitted): 21.7kOhm"
     }
   ],
-  "batch_title": "Q1 gate path: resolve the 516-ohm contradiction",
-  "instructions": "B84 red T14 / black G1; B85 red G1 / black T14. Hold each pair for about 10 seconds and report the settled value, or initial and final values if changing. T14 is TP14; G1 is Q1 upper-right metal contact directly below R44.",
-  "result_summary": "B83 across R44 = 15 kohm in circuit. The earlier B61 TP14-to-Q1 gate = 516 ohm remains unexplained; no wiring or device identity is changed.",
+  "batch_title": "Q1 gate-path recheck completed",
+  "instructions": "B84 = 21.4 kohm; B85 = 21.7 kohm. Together with R44 = 15 kohm, these no longer reproduce the earlier low-resistance conflict. The completed results below are for reference.",
+  "result_summary": "R44 = 15 kohm; TP14-to-Q1 presumed gate = 21.4/21.7 kohm in opposite directions. Low-resistance conflict not reproduced; Q1 identity and powered behavior remain qualified.",
   "cancelled_tests": [
     {
       "id": "B20",
@@ -3176,7 +3189,7 @@
       "reason": "User identifies PIC21/RB0 destination; reconcile the older VREF assignment instead."
     }
   ],
-  "revision": "v0.9.42",
+  "revision": "v0.9.43",
   "photo_updates": [
     {
       "evidence": "evidence/c25_c26_mapping_20261009.json",
@@ -3249,13 +3262,14 @@
     "pending_check": null,
     "model_status": "Applied v0.9.20: pin5-VIN measured 1 ohm; R37 and U6A single-pad local joins from the annotation; pin4 explicitly unused."
   },
-  "next_prompt": "B84/B85: recheck TP14 to Q1 upper-right contact in both probe directions, waiting about 10 seconds per reading. Report settled resistance or changing. R44 itself is now measured 15 kohm; this targeted repeat resolves the older unexplained 516-ohm report. All components stay fitted; scope work remains deferred.",
-  "review_revision": "v0.9.42",
+  "next_prompt": "No further Q1 resistance measurement requested. Remaining work is component values, device qualification and package geometry; keep parts fitted and scope checks deferred.",
+  "review_revision": "v0.9.43",
   "request_probe_baseline": false,
   "q3_decision": "Defer isolated Q3 identification; retain candidate qualification and existing copper. No desoldering or repeat Q3 batch requested.",
   "last_completed_test_ids": [
-    "B83"
+    "B84",
+    "B85"
   ],
-  "last_result_evidence": "evidence/r44_resistance_result_20261015.json",
+  "last_result_evidence": "evidence/q1_gate_recheck_results_20261015.json",
   "staged_batches": []
 }

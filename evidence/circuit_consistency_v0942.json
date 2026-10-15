@@ -12,10 +12,12 @@
       "issue": "E09",
       "priority": 1,
       "title": "Q1 gate path: 516 ohm versus the drawn 15-kohm route",
-      "status": "OPEN_CONTRADICTION",
+      "status": "RESOLVED_BY_RECHECK",
       "basis": "B61 TP14/OUTA to Q1.R = 516 ohm, with stability unreported. Q1_GATE contains only Q1.R and R44.2; R44 is marked 18C and modeled as 15 kohm. B83 subsequently measured 15 kohm directly across R44 in circuit; stability unreported.",
       "reasoning": "With a settled, intact insulated MOSFET gate and no omitted conductive path, the external resistance route must include R44. 516 ohm is not explained by that model. In-circuit gate capacitance and the candidate identity prevent treating this as proof of a fault.",
-      "next_action": "B84/B85: recheck TP14 to Q1 upper-right contact in both probe directions, waiting about 10 seconds per reading. Report settled resistance or changing. R44 itself is now measured 15 kohm; this targeted repeat resolves the older unexplained 516-ohm report. All components stay fitted; scope work remains deferred."
+      "next_action": "None for this resistance conflict. E09 retains Q1 device roles and powered operation as separate open qualifications.",
+      "resolution": "B84/B85 report 21.4/21.7 kohm in opposite directions after a request to allow settling. No time trace or explicit stability statement was supplied. Both exceed the measured 15-kohm R44 and are compatible with a path containing it. The older B61 516-ohm report is not reproduced; retain it as historical evidence without using it to infer a short or missing bypass. Close only the low-resistance contradiction. These readings do not establish Q1 identity, gate leakage, pin roles, the exact remaining current path or powered behavior.",
+      "resolution_evidence": "evidence/q1_gate_recheck_results_20261015.json"
     },
     {
       "id": "C02",
@@ -591,8 +593,13 @@
     "opamp_feedback": "PASS_MODEL_ONLY: U3.1-R26-U3.2 and U3.7-R24-U3.6; hardware behavior not certified",
     "vref_divider": "PASS_MODEL_ONLY: RX supply-R21-VREF-R22-GND; no assertion about loaded transient voltage",
     "dnp_options": "PASS: empty R46/R47/R35/R36 remain unbridged component gaps",
-    "measurement_status": "B83 = 15 kohm recorded; B84/B85 are pending requests, not evidence."
+    "measurement_status": "B83 = 15 kohm; follow-up B84/B85 = 21.4/21.7 kohm. No active measurement request."
   },
   "limitations": "Connectivity agreement and these consistency checks cannot prove the unknown ceramic values, semiconductor identities, inner layers, firmware or powered operation.",
-  "result_evidence": "evidence/r44_resistance_result_20261015.json"
+  "result_evidence": "evidence/r44_resistance_result_20261015.json",
+  "current_revision": "v0.9.43",
+  "followup_measurements": [
+    "B84",
+    "B85"
+  ]
 }

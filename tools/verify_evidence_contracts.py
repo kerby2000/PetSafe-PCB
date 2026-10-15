@@ -265,6 +265,12 @@ assert (r44['measurement']['id'],r44['measurement']['resistance_ohms'])==('B83',
 assert r44['measurement'] in queue['completed_tests'] and r44['measurement']['stability'] is None
 assert r44['electrical_change'] is False
 completed_ids.add('B83')
+q1_recheck=read('evidence/q1_gate_recheck_results_20261015.json')
+assert [(r['id'],r['resistance_ohms']) for r in q1_recheck['measurements']]==[('B84',21400),('B85',21700)]
+for row in q1_recheck['measurements']:
+ assert row in queue['completed_tests'] and row['stability'] is None
+ completed_ids.add(row['id'])
+assert q1_recheck['electrical_change'] is False and q1_recheck['earlier_measurement']['resistance_ohms']==516
 assert net('U2.B2')==net('C7.1')==net('R5.2')=='U2_VCC'
 assert net('R5.1')==net('C6.1')==net('Q8.T2')=='H_RF_VDD'
 assert len({net('R5.1'),net('R5.2'),net('VDD.1')})==3

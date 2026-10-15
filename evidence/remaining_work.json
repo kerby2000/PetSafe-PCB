@@ -1,7 +1,7 @@
 {
   "date": "2026-10-15",
-  "review_revision": "v0.9.42",
-  "basis_revision": "v0.9.42",
+  "review_revision": "v0.9.43",
+  "basis_revision": "v0.9.43",
   "scope": "Current main-board finishing register. Supported connections and completed measurements are recorded in the current model; resolved issues are archived. Remaining hidden paths, candidate identities, values and operating behavior are listed below.",
   "rails": [
     {
@@ -252,9 +252,9 @@
       ],
       "priority": 2,
       "state": "open",
-      "known": "VSYS/RF 6.3 V, printed VDD 4.5 V, PIR supply 3.3 V with PIR attached; VREF 0 V and red LED approximately 1 Hz. TP14 is now established on U5.8/OUTA at 1.5 ohm; R43.2/V015 follows its existing TP14 association. BATTERY+ stays separate. TP14-Q1 gate measured 516 ohm. B62: receiver TP5 supply is 0.066 V; this may explain absent VREF bias without implying a ground short. B83 measured R44 directly as 15 kohm in circuit, supporting its marked value.",
-      "unknown": "The 516-ohm OUTA-to-presumed-gate result is not explained by the drawn isolated MOSFET gate whose only external DC path is R44 (15 kohm). Reading stability, fitted Q1 pin roles, and possible parallel paths remain unverified; R44 in-circuit resistance supports 15 kohm but does not establish its isolated tolerance. Q1/motor dynamics and R3/R4/C28 sensing role remain qualified.",
-      "next_action": "B84/B85: recheck TP14 to Q1 upper-right contact in both probe directions, waiting about 10 seconds per reading. Report settled resistance or changing. R44 itself is now measured 15 kohm; this targeted repeat resolves the older unexplained 516-ohm report. All components stay fitted; scope work remains deferred.",
+      "known": "VSYS/RF 6.3 V, printed VDD 4.5 V, PIR supply 3.3 V with PIR attached; VREF 0 V and red LED approximately 1 Hz. TP14 is on U5.8/OUTA at 1.5 ohm, with R43.2/V015; BATTERY+ stays separate. Receiver TP5 = 0.066 V (B62). R44 = 15 kohm (B83); TP14-to-Q1 presumed gate recheck = 21.4/21.7 kohm (B84/B85). The earlier 516-ohm conflict is not reproduced and no wiring change is warranted.",
+      "unknown": "Q1 fitted identity, terminal roles and powered control behavior remain unverified. The resistance recheck is compatible with R44 in the path but does not prove an intact MOSFET or the exact remaining path. Q1/motor dynamics and R3/R4/C28 sensing role remain qualified.",
+      "next_action": "No further Q1 resistance batch. Retain the existing wiring and candidate pin roles; powered gate/control timing belongs to the deferred scope session. Do not replace or rewire Q1 on the basis of the superseded low-resistance concern.",
       "closed_when": "Actual supply levels and control behavior are recorded without merging battery, VSYS or filtered branches.",
       "open_pads": [],
       "nets": [
@@ -274,7 +274,8 @@
         "evidence/tp14_motor_output_correction_v0939.json",
         "evidence/receiver_supply_results_20261014.json",
         "evidence/circuit_consistency_v0942.json",
-        "evidence/r44_resistance_result_20261015.json"
+        "evidence/r44_resistance_result_20261015.json",
+        "evidence/q1_gate_recheck_results_20261015.json"
       ],
       "owner": "Agent evidence review; targeted owner test only as listed",
       "category": "connectivity/behavior"
@@ -430,7 +431,7 @@
         "I01"
       ],
       "summary": "RF feed/output wiring, switch contacts and front-bank ANT2 routing are supported. Candidate device roles remain unresolved. TP11/TP17 routes are complete as drawn, with hidden-layer uncertainty retained as a reconstruction limitation. Scope work and component isolation are deferred by owner.",
-      "next_action": "B84/B85: recheck TP14 to Q1 upper-right contact in both probe directions, waiting about 10 seconds per reading. Report settled resistance or changing. R44 itself is now measured 15 kohm; this targeted repeat resolves the older unexplained 516-ohm report. All components stay fitted; scope work remains deferred."
+      "next_action": "The Q1 low-resistance contradiction is cleared by B84/B85; no further resistance repeat. Continue values and package geometry while candidate device roles remain qualified. Components stay fitted and waveform work is deferred."
     },
     {
       "id": "F2",
@@ -511,16 +512,6 @@
     "evidence": "evidence/circuit_consistency_v0942.json",
     "findings": [
       {
-        "id": "C01",
-        "issue": "E09",
-        "priority": 1,
-        "title": "Q1 gate path: 516 ohm versus the drawn 15-kohm route",
-        "status": "OPEN_CONTRADICTION",
-        "basis": "B61 TP14/OUTA to Q1.R = 516 ohm, with stability unreported. Q1_GATE contains only Q1.R and R44.2; R44 is marked 18C and modeled as 15 kohm. B83 subsequently measured 15 kohm directly across R44 in circuit; stability unreported.",
-        "reasoning": "With a settled, intact insulated MOSFET gate and no omitted conductive path, the external resistance route must include R44. 516 ohm is not explained by that model. In-circuit gate capacitance and the candidate identity prevent treating this as proof of a fault.",
-        "next_action": "B84/B85: recheck TP14 to Q1 upper-right contact in both probe directions, waiting about 10 seconds per reading. Report settled resistance or changing. R44 itself is now measured 15 kohm; this targeted repeat resolves the older unexplained 516-ohm report. All components stay fitted; scope work remains deferred."
-      },
-      {
         "id": "C02",
         "issue": "E03",
         "priority": 1,
@@ -559,6 +550,13 @@
         "basis": "TP5 = 0.066 V; VREF = 0 V. Earlier R19 end readings were 0 and 4.5 V, but later direct Q7 QR-QL was 0 V.",
         "reasoning": "Do not subtract separate readings taken at different times to diagnose a failed junction. The two 10-kohm VREF divider resistors imply half the receiver rail only under negligible loading and steady conditions.",
         "next_action": "Retain the latest direct-bias reading; enabled-state and timing checks are deferred, with no repeated DC batch now."
+      }
+    ],
+    "resolved_findings": [
+      {
+        "id": "C01",
+        "evidence": "evidence/q1_gate_recheck_results_20261015.json",
+        "disposition": "B84/B85 do not reproduce the low-resistance conflict; E09 remains open for other qualifications."
       }
     ]
   }

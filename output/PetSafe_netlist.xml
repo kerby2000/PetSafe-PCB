@@ -2,16 +2,16 @@
 <export version="E">
   <design>
     <source>C:\Users\lukin\Documents\ChatGPT\PetSafe-PCB\schematic\PetSafe_1001339.kicad_sch</source>
-    <date>2026-10-15T09:24:48</date>
+    <date>2026-10-15T09:33:18</date>
     <tool>Eeschema 10.0.5</tool>
     <sheet number="1" name="/" tstamps="/">
       <title_block>
         <title>PetSafe 100-1339 R03 A | single-sheet reconstruction</title>
         <company>KiCad 10 libraries + four datasheet symbols | MCP authoring</company>
-        <rev>0.9.42</rev>
+        <rev>0.9.43</rev>
         <date>2026-10-15</date>
         <source>PetSafe_1001339.kicad_sch</source>
-        <comment number="1" value="Consistency review: Q1/R44 resistance and U2 supply rating remain open."/>
+        <comment number="1" value="Q1 resistance recheck reconciled; device roles and U2 supply rating qualified."/>
         <comment number="2" value=""/>
         <comment number="3" value=""/>
         <comment number="4" value=""/>
@@ -2588,10 +2588,10 @@
       <fields>
         <field name="ViaEvidence">v0.9.9: User corrects raw battery+ versus post-Q1 rail. BATP -&gt; Q1.S (single physical pad/native3, candidate drain); Q1.L/native2 (candidate source) -&gt; U5.4/V011-V014. These are distinct copper nets, connected through Q1. TP14/R43.2/V015 is OUTA/H_MOTOR_A, supported by TP14-U5.8 = 1.5 ohm; the earlier battery-side photo interpretation is withdrawn. Q1.R/native1 is candidate gate at R44.2. Photo S means SINGLE, not MOSFET source.</field>
         <field name="IdentityEvidence">R1A marking matches Formosa FMOS3401A datasheet p5; SOT-23 PMOS with G=1 (photo R), S=2 (photo L), D=3 (photo single S). Candidate identification, not manufacturer proof. Drain at battery+ and source at load support reverse-polarity protection; gate-control behavior not verified. Earlier MMBT3904 NPN hypothesis withdrawn.</field>
-        <field name="CurrentEvidence">TP14/U5.8 is OUTA (1.5 ohm), distinct from BATTERY+. Q1.R is a candidate MOSFET gate joined only to R44.2. B61 OUTA-to-Q1.R = 516 ohm remains unexplained after B83 measured R44 = 15 kohm in circuit; stability was not reported for either. B84/B85 recheck B61 in both directions after settling. No direct join or failed MOSFET is inferred.</field>
+        <field name="CurrentEvidence">TP14/U5.8 is OUTA, distinct from BATTERY+. Q1.R is the candidate MOSFET gate joined only to R44.2. R44 = 15 kohm (B83); OUTA-to-Q1.R rechecks = 21.4/21.7 kohm (B84/B85). These do not reproduce B61 = 516 ohm and are compatible with R44 in the path. Candidate identity, pin roles and powered behavior remain unverified. No wiring change inferred.</field>
         <field name="TP14Evidence">v0.9.39: TP14 to MX512H/U5 pin8 = 1.5 ohm supports OUTA/H_MOTOR_A. Established R43.2/V015-TP14 joins retained. TP14/R43.2 removed from BATTERY+ after BP-TP14 = 6.3 V. TP14-Q1.R = 516 ohm does not establish a direct join. Q1 gate and motor behavior remain qualified.</field>
         <field name="OriginalReference">Q1</field>
-        <field name="Evidence">TP14/U5.8 is OUTA (1.5 ohm), distinct from BATTERY+. Q1.R is a candidate MOSFET gate joined only to R44.2. B61 OUTA-to-Q1.R = 516 ohm remains unexplained after B83 measured R44 = 15 kohm in circuit; stability was not reported for either. B84/B85 recheck B61 in both directions after settling. No direct join or failed MOSFET is inferred.</field>
+        <field name="Evidence">TP14/U5.8 is OUTA, distinct from BATTERY+. Q1.R is the candidate MOSFET gate joined only to R44.2. R44 = 15 kohm (B83); OUTA-to-Q1.R rechecks = 21.4/21.7 kohm (B84/B85). These do not reproduce B61 = 516 ohm and are compatible with R44 in the path. Candidate identity, pin roles and powered behavior remain unverified. No wiring change inferred.</field>
         <field name="LibraryPolicy">Unmodified KiCad 10 stock symbol</field>
         <field name="FootprintConfidence">datasheet/package candidate</field>
         <field name="FootprintBasis">SOT-23 photo and FMOS3401A datasheet package agree. Manufacturer identity remains a candidate.</field>
@@ -2603,10 +2603,10 @@
       <libsource lib="Transistor_FET" part="Q_PMOS_GSD" description="P-MOSFET transistor, gate/source/drain"/>
       <property name="ViaEvidence" value="v0.9.9: User corrects raw battery+ versus post-Q1 rail. BATP -&gt; Q1.S (single physical pad/native3, candidate drain); Q1.L/native2 (candidate source) -&gt; U5.4/V011-V014. These are distinct copper nets, connected through Q1. TP14/R43.2/V015 is OUTA/H_MOTOR_A, supported by TP14-U5.8 = 1.5 ohm; the earlier battery-side photo interpretation is withdrawn. Q1.R/native1 is candidate gate at R44.2. Photo S means SINGLE, not MOSFET source."/>
       <property name="IdentityEvidence" value="R1A marking matches Formosa FMOS3401A datasheet p5; SOT-23 PMOS with G=1 (photo R), S=2 (photo L), D=3 (photo single S). Candidate identification, not manufacturer proof. Drain at battery+ and source at load support reverse-polarity protection; gate-control behavior not verified. Earlier MMBT3904 NPN hypothesis withdrawn."/>
-      <property name="CurrentEvidence" value="TP14/U5.8 is OUTA (1.5 ohm), distinct from BATTERY+. Q1.R is a candidate MOSFET gate joined only to R44.2. B61 OUTA-to-Q1.R = 516 ohm remains unexplained after B83 measured R44 = 15 kohm in circuit; stability was not reported for either. B84/B85 recheck B61 in both directions after settling. No direct join or failed MOSFET is inferred."/>
+      <property name="CurrentEvidence" value="TP14/U5.8 is OUTA, distinct from BATTERY+. Q1.R is the candidate MOSFET gate joined only to R44.2. R44 = 15 kohm (B83); OUTA-to-Q1.R rechecks = 21.4/21.7 kohm (B84/B85). These do not reproduce B61 = 516 ohm and are compatible with R44 in the path. Candidate identity, pin roles and powered behavior remain unverified. No wiring change inferred."/>
       <property name="TP14Evidence" value="v0.9.39: TP14 to MX512H/U5 pin8 = 1.5 ohm supports OUTA/H_MOTOR_A. Established R43.2/V015-TP14 joins retained. TP14/R43.2 removed from BATTERY+ after BP-TP14 = 6.3 V. TP14-Q1.R = 516 ohm does not establish a direct join. Q1 gate and motor behavior remain qualified."/>
       <property name="OriginalReference" value="Q1"/>
-      <property name="Evidence" value="TP14/U5.8 is OUTA (1.5 ohm), distinct from BATTERY+. Q1.R is a candidate MOSFET gate joined only to R44.2. B61 OUTA-to-Q1.R = 516 ohm remains unexplained after B83 measured R44 = 15 kohm in circuit; stability was not reported for either. B84/B85 recheck B61 in both directions after settling. No direct join or failed MOSFET is inferred."/>
+      <property name="Evidence" value="TP14/U5.8 is OUTA, distinct from BATTERY+. Q1.R is the candidate MOSFET gate joined only to R44.2. R44 = 15 kohm (B83); OUTA-to-Q1.R rechecks = 21.4/21.7 kohm (B84/B85). These do not reproduce B61 = 516 ohm and are compatible with R44 in the path. Candidate identity, pin roles and powered behavior remain unverified. No wiring change inferred."/>
       <property name="LibraryPolicy" value="Unmodified KiCad 10 stock symbol"/>
       <property name="FootprintConfidence" value="datasheet/package candidate"/>
       <property name="FootprintBasis" value="SOT-23 photo and FMOS3401A datasheet package agree. Manufacturer identity remains a candidate."/>
@@ -4540,9 +4540,9 @@
       <description>Resistor</description>
       <fields>
         <field name="ViaEvidence">v0.9.9: User corrects raw battery+ versus post-Q1 rail. BATP -&gt; Q1.S (single physical pad/native3, candidate drain); Q1.L/native2 (candidate source) -&gt; U5.4/V011-V014. These are distinct copper nets, connected through Q1. TP14/R43.2/V015 is OUTA/H_MOTOR_A, supported by TP14-U5.8 = 1.5 ohm; the earlier battery-side photo interpretation is withdrawn. Q1.R/native1 is candidate gate at R44.2. Photo S means SINGLE, not MOSFET source.</field>
-        <field name="CurrentEvidence">15 kohm from 18C EIA-96 marking; B83 measured 15 kohm in circuit (stability/probe baseline unreported). Model1 joins TP4/PIC25; model2 joins only Q1.R, presumed MOSFET gate. B61 OUTA-to-gate = 516 ohm remains unexplained. B84/B85 test settling and polarity of that conflicting report; no bypass inferred.</field>
+        <field name="CurrentEvidence">15 kohm from 18C marking and B83 in-circuit reading; isolated tolerance unverified. Model1 joins TP4/PIC25; model2 joins Q1.R, presumed gate. OUTA-to-gate rechecks = 21.4/21.7 kohm (B84/B85), compatible with R44 in the path; prior low-resistance conflict not reproduced. No bypass inferred.</field>
         <field name="OriginalReference">R44</field>
-        <field name="Evidence">15 kohm from 18C EIA-96 marking; B83 measured 15 kohm in circuit (stability/probe baseline unreported). Model1 joins TP4/PIC25; model2 joins only Q1.R, presumed MOSFET gate. B61 OUTA-to-gate = 516 ohm remains unexplained. B84/B85 test settling and polarity of that conflicting report; no bypass inferred.</field>
+        <field name="Evidence">15 kohm from 18C marking and B83 in-circuit reading; isolated tolerance unverified. Model1 joins TP4/PIC25; model2 joins Q1.R, presumed gate. OUTA-to-gate rechecks = 21.4/21.7 kohm (B84/B85), compatible with R44 in the path; prior low-resistance conflict not reproduced. No bypass inferred.</field>
         <field name="LibraryPolicy">Unmodified KiCad 10 stock symbol</field>
         <field name="FootprintConfidence">medium - revised family estimate</field>
         <field name="FootprintBasis">User reports R8 approximately 1.6 x 0.77 mm, consistent with 0603 (1608 metric). Repeated fitted resistor family revised using R8 as a scale reference. This individual body has not been measured; earlier 0805 estimate superseded.</field>
@@ -4553,9 +4553,9 @@
       </fields>
       <libsource lib="Device" part="R" description="Resistor"/>
       <property name="ViaEvidence" value="v0.9.9: User corrects raw battery+ versus post-Q1 rail. BATP -&gt; Q1.S (single physical pad/native3, candidate drain); Q1.L/native2 (candidate source) -&gt; U5.4/V011-V014. These are distinct copper nets, connected through Q1. TP14/R43.2/V015 is OUTA/H_MOTOR_A, supported by TP14-U5.8 = 1.5 ohm; the earlier battery-side photo interpretation is withdrawn. Q1.R/native1 is candidate gate at R44.2. Photo S means SINGLE, not MOSFET source."/>
-      <property name="CurrentEvidence" value="15 kohm from 18C EIA-96 marking; B83 measured 15 kohm in circuit (stability/probe baseline unreported). Model1 joins TP4/PIC25; model2 joins only Q1.R, presumed MOSFET gate. B61 OUTA-to-gate = 516 ohm remains unexplained. B84/B85 test settling and polarity of that conflicting report; no bypass inferred."/>
+      <property name="CurrentEvidence" value="15 kohm from 18C marking and B83 in-circuit reading; isolated tolerance unverified. Model1 joins TP4/PIC25; model2 joins Q1.R, presumed gate. OUTA-to-gate rechecks = 21.4/21.7 kohm (B84/B85), compatible with R44 in the path; prior low-resistance conflict not reproduced. No bypass inferred."/>
       <property name="OriginalReference" value="R44"/>
-      <property name="Evidence" value="15 kohm from 18C EIA-96 marking; B83 measured 15 kohm in circuit (stability/probe baseline unreported). Model1 joins TP4/PIC25; model2 joins only Q1.R, presumed MOSFET gate. B61 OUTA-to-gate = 516 ohm remains unexplained. B84/B85 test settling and polarity of that conflicting report; no bypass inferred."/>
+      <property name="Evidence" value="15 kohm from 18C marking and B83 in-circuit reading; isolated tolerance unverified. Model1 joins TP4/PIC25; model2 joins Q1.R, presumed gate. OUTA-to-gate rechecks = 21.4/21.7 kohm (B84/B85), compatible with R44 in the path; prior low-resistance conflict not reproduced. No bypass inferred."/>
       <property name="LibraryPolicy" value="Unmodified KiCad 10 stock symbol"/>
       <property name="FootprintConfidence" value="medium - revised family estimate"/>
       <property name="FootprintBasis" value="User reports R8 approximately 1.6 x 0.77 mm, consistent with 0603 (1608 metric). Repeated fitted resistor family revised using R8 as a scale reference. This individual body has not been measured; earlier 0805 estimate superseded."/>
