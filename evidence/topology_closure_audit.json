@@ -30,6 +30,7 @@
           "C36.2",
           "C37.2",
           "C38.1",
+          "C4.1",
           "C40.2",
           "C41.2",
           "C45.1",
@@ -52,6 +53,8 @@
           "Q6.L",
           "Q8.B2",
           "Q9.R",
+          "R10.2",
+          "R2.1",
           "R22.1",
           "R29.2",
           "R32.1",
@@ -73,10 +76,6 @@
           "C39.2"
         ],
         [
-          "C4.1",
-          "R2.1"
-        ],
-        [
           "C42.1",
           "U3.4"
         ],
@@ -95,9 +94,6 @@
         ],
         [
           "Q3.L"
-        ],
-        [
-          "R10.2"
         ],
         [
           "R43.1"
@@ -124,10 +120,6 @@
         ],
         [
           "BATN.1",
-          "C4.1"
-        ],
-        [
-          "BATN.1",
           "C42.1"
         ],
         [
@@ -149,10 +141,6 @@
         [
           "BATN.1",
           "Q3.L"
-        ],
-        [
-          "BATN.1",
-          "R10.2"
         ],
         [
           "BATN.1",
@@ -306,7 +294,7 @@
   "revision": "v0.9.47",
   "result": "PASS_WITH_EVIDENCE_GAPS",
   "source_record": "evidence/physical_evidence_review_20261015.json",
-  "direct_observations": 261,
+  "direct_observations": 263,
   "separation_observations": 36,
   "modeled_nets": 85,
   "joins": [
@@ -2658,6 +2646,24 @@
       "source": "photos/originals/IMG_2436.jpg",
       "basis": "Round2: crystal load-capacitor inward terminals (C30 RIGHT/model2 and C31 LEFT/model1) are joined by the visible T-shaped neck immediately below the crystal, original crop x490..960/y1560..1810. This closes only their local common connection. The common land-to-established-GND bridge is still unproved; neither crystal terminal is bridged.",
       "kind": "photo"
+    },
+    {
+      "pair": [
+        "R10.2",
+        "GND.1"
+      ],
+      "source": "evidence/via_user_review.json",
+      "basis": "Autonomous finalization: original IMG_2431 shows R10 RIGHT/model2 with a continuous short neck to its unique adjacent via, about (800,177) in the 1469x1958 original. The separate TP3-to-left terminal track is visible. This is numbered V116, independently reported GND by the owner. Identification checked against TP3/D1 geometry and rear IMG_2443 site about (459,1183); registration only locates the site, not the net. No resistor or unproved plane is crossed; no new numerical reading is claimed.",
+      "kind": "owner_via_report_and_original_photo"
+    },
+    {
+      "pair": [
+        "R2.1",
+        "U1.L2"
+      ],
+      "source": "photos/originals/IMG_2430.jpg",
+      "basis": "Autonomous finalization: original crop x530..1090/y650..1330, 2048x1536 source. R2 LEFT/model1 joins the exposed vertical copper strip left of the two empty footprints; this strip goes around the clearance of U1 lower-left/native3 to U1 middle-left/native2. The two visible vias in that strip are approximately (635,886) and (635,1006), separately owner-ground V058/V057. C4 LEFT/model1 already has a supported local join to R2.1. The lower-left enable pad remains separated by its dark clearance; this observation does not join U1.3 to anything new or bridge either empty component.",
+      "kind": "photo"
     }
   ],
   "separations": [
@@ -3081,6 +3087,15 @@
         "photos/user_updates/D2_user_pad_labels_20261009.png"
       ],
       "finding": "U3 pin1 dot confirms lower pins 1/2/3/4 from left. Pin3 has no exposed trace identifying an external feed; its continuation is obscured under/along the package. C19 lower and C20 upper destinations cannot be followed continuously from the front; the rear original supplies no uniquely traceable alternate route. TP7/R28/R29 visible local routes and the completed C20 measurements do not resolve U3.3. C24 lower-to-R22 ground end is continuous; C30/C31 inner ends share a visible local neck, but its ground bridge remains unproved. No new electrical correction is justified."
+    },
+    {
+      "region": "R10 and U1 empty-option ground bridges",
+      "photos": [
+        "photos/originals/IMG_2431.jpg",
+        "photos/originals/IMG_2443.jpg",
+        "photos/originals/IMG_2430.jpg"
+      ],
+      "finding": "Supported: R10.2 reaches the unique adjacent V116 ground via. R2.1/C4.1 share continuous exposed copper with U1 native2, distinct from native3 enable. Both close evidence gaps on existing GND membership; no topology, device role, value or population changes."
     }
   ],
   "device_qualifications": [
@@ -3190,8 +3205,8 @@
     },
     {
       "area": "E11 / ground fan-out",
-      "assessment": "C24 lower/model2 now joins measured-ground R22 right/model1 by continuous local copper (IMG_2434/2429). C30 right/model2 and C31 left/model1 now form one local group (IMG_2436); the group-to-GND bridge remains unproved. Remaining separate candidate ground groups: BATN.1; C30.2/C31.1; C39.2; C4.1/R2.1; C42.1/U3.4; D4.2; D5.2; D6.2/J1.GND; GND_RF.1; Q3.L; R10.2; R43.1; U5.6; U5.7. Sources remain IMG_2430/2431/2432/2433/2434/2436/2437/2438 and rear IMG_2440/2441/2442/2443. No plane-wide promotion from a nearby via. RX-2 rejects the former C20.1-to-GND assignment; this endpoint is now separate, not an outstanding candidate ground bridge.",
-      "action": "Fourteen candidate ground groups retain one missing bridge each to the established ground group. C20 ground check completed and withdrawn. No blanket campaign; the empty C4/R2 option stays lower priority."
+      "assessment": "Supported in this round: R10.2-to-GND through owner-ground V116 and its original-photo neck; R2.1/C4.1-to-U1.2 through continuous exposed copper in IMG_2430. Remaining separate candidate ground groups: BATN.1; C30.2/C31.1; C39.2; C42.1/U3.4; D4.2; D5.2; D6.2/J1.GND; GND_RF.1; Q3.L; R43.1; U5.6; U5.7. C20.1 is excluded from GND by RX-2, not another candidate ground bridge.",
+      "action": "Twelve candidate ground groups retain missing evidence to the established ground group. Existing schematic membership is preserved. No pending readings."
     },
     {
       "area": "E06 / accepted reconstruction boundary",
