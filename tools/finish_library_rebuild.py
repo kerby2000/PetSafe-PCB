@@ -23,7 +23,7 @@ def mm(p):return tuple(rnd(round(v)*1.27) for v in p)
 STAGE.mkdir(parents=True,exist_ok=True)
 layout=json.loads((R/'evidence/library_layout.json').read_text())
 model=json.loads((R/'evidence/reconstruction.json').read_text())
-model.update(revision='v0.9.41',review_date='2026-10-15')
+model.update(revision='v0.9.42',review_date='2026-10-15')
 template=R/'tools/templates/mcp_standard_placements.kicad_sch'
 if not template.exists():
     template.parent.mkdir(parents=True,exist_ok=True)
@@ -353,6 +353,8 @@ for n in layout['notes']:
     if t.startswith('H03:'):t='R3/R4 sensing candidate; R4 returns to RB3. C28 value estimated.';n['y']=106
     text(t,n['x'],n['y'],1.27 if n['size']>=1 else max(.762,n['size']*1.27))
 text('LED1 RED: R30 / PIC23 / pin1; GREEN: R31 / PIC22 / pin2.',153,205,.762)
+text('B61: OUTA to presumed Q1 gate = 516 ohm; drawn path includes R44 = 15k.',402,99,.762)
+text('B83: R44 measured 15k. Recheck B61 settling/polarity (B84/B85); no wire change.',402,103,.762)
 text('BATTERY+ -> Q1 -> VSYS / U5 pin4. Board VDD / TP103 = VDD -> U5 pin1.',320,77,.762)
 text('TP14 / R43.2 = OUTA / U5 pin8: measured 1.5 ohm. Separate from BATTERY+.',320,81,.762)
 text('VDD / TP103: logic supply measured 4.5 V (B56, red-blinking state). V082 confirmed here.',13,76,.762)
@@ -427,7 +429,7 @@ for net,edges in adj.items():
 for l in L:
     x,y=l['p'];G.append(expr(f'(label {q(l["net"])} (at {x} {y} 0) (effects (font (size .762 .762)) (justify left bottom)) (uuid {q(uid())}))'))
 tree.extend(G)
-tree.append(expr('(title_block (title "PetSafe 100-1339 R03 A | single-sheet reconstruction") (date "2026-10-15") (rev "0.9.41") (company "KiCad 10 libraries + four datasheet symbols | MCP authoring") (comment 1 "TP11/TP17 retained; hidden branches and device roles remain qualified."))'))
+tree.append(expr('(title_block (title "PetSafe 100-1339 R03 A | single-sheet reconstruction") (date "2026-10-15") (rev "0.9.42") (company "KiCad 10 libraries + four datasheet symbols | MCP authoring") (comment 1 "Consistency review: Q1/R44 resistance and U2 supply rating remain open."))'))
 # Canonical pretty printer supplied by the installed MCP server.
 sys.path.insert(0,str(Path.home()/'Documents/VS.Code.Projects/KiCAD-MCP-Server/python'))
 from utils.sexpr_format import prettify
@@ -447,7 +449,7 @@ out.write_text(prettify(sx.dumps(tree)),encoding='utf-8',newline='\n')
 def wire_key(w):return w['net'],tuple(w['a']),tuple(w['b'])
 prior_order={wire_key(w):i for i,w in enumerate(model.get('geometric_wires',[]))}
 ordered_segments=sorted(segments,key=lambda s:(prior_order.get(s,len(prior_order)),s))
-model.update(revision='v0.9.41',coordinate_units='mm',native_pin_crosswalk=layout['crosswalk'],pin_positions={e:list(p) for e,p in P.items()},
+model.update(revision='v0.9.42',coordinate_units='mm',native_pin_crosswalk=layout['crosswalk'],pin_positions={e:list(p) for e,p in P.items()},
              geometric_wires=[dict(net=n,a=a,b=b) for n,a,b in ordered_segments],library_policy='KiCad 10 stock symbols plus four explicitly authorized MCP-authored datasheet symbols for U1/U5/U6/Q8')
 for c in model['components']:
     entry=next(x for x in layout['catalog'] if x['original_ref']==c['ref'])

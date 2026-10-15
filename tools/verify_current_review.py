@@ -22,6 +22,17 @@ assert s['current_gpio_pins']==read('evidence/pic_gpio_status.json')['open_gpio_
 assert s['modeled_nets']==len(m['nets'])
 assert 'PIC21' not in next(r for r in work['rails'] if r['name']=='VREF')['path'], 'Removed RB0/VREF assignment remains in the rail summary'
 # E06 is a documented limitation, never a claim that absent hidden copper was proved.
+consistency=read('evidence/circuit_consistency_v0942.json')
+assert consistency['electrical_change'] is False and consistency['new_measurements']==['B83']
+assert {n['net']:sorted(n['endpoints']) for n in m['nets']}==consistency['unchanged_net_partitions']
+assert set(next(n['endpoints'] for n in m['nets'] if n['net']=='Q1_GATE'))=={'Q1.R','R44.2'}
+for ref,value in [('R44','15k'),('R26','120k'),('R24','120k'),('R21','10k'),('R22','10k')]:
+    assert next(c for c in m['components'] if c['ref']==ref)['value']==value
+epnet={e:n['net'] for n in m['nets'] for e in n['endpoints']}
+for group in [['U3.1','R26.1'],['U3.2','R26.2'],['U3.7','R24.1'],['U3.6','R24.2'],['TP5.1','R21.1'],['R21.2','R22.2','VREF.1'],['R22.1','U3.4']]:
+    assert len({epnet[e] for e in group})==1
+assert epnet['U3.1']!=epnet['U3.2'] and epnet['U3.7']!=epnet['U3.6']
+assert next(c for c in m['components'] if c['ref']=='D6')['proposed_value']=='G3 / Vbr TBD'
 e06=read('evidence/e06_disposition_v0941.json')
 assert e06['electrical_change'] is False and e06['new_measurements']==[]
 assert {n['net']:sorted(n['endpoints']) for n in m['nets']}==e06['unchanged_net_partitions']

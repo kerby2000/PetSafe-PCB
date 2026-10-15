@@ -3,7 +3,7 @@
   "basis_revision": "v0.9.37",
   "status": "RF_TOPOLOGY_UPDATED_SCOPE_DEFERRED",
   "scope": "U2 supply feed and Q8 output routing corrected from measurements and photos.",
-  "setup": "Battery and programmer DISCONNECTED; antenna wires still fitted. Select RESISTANCE (ohms).",
+  "setup": "Disconnect battery and programmer. Select RESISTANCE (ohms), not diode or continuity mode. Leave all components fitted.",
   "photos": [
     {
       "id": "receiver",
@@ -1832,10 +1832,125 @@
       "reference_for": [
         "q8-output-antenna"
       ]
+    },
+    {
+      "id": "r44-resistance",
+      "source": "photos/originals/IMG_2438.jpg",
+      "coordinate_space": [
+        1368,
+        1823
+      ],
+      "view_box": [
+        900,
+        1020,
+        440,
+        520
+      ],
+      "title": "R44: check the 15-kohm gate-path assumption",
+      "points": {
+        "A4": {
+          "xy": [
+            1084,
+            1134
+          ],
+          "label": [
+            1225,
+            1080
+          ],
+          "description": "R44 upper metal end, nearest the R44 lettering and R41; model R44.1.",
+          "native_endpoint": "R44.1",
+          "net": "PIC_TP4_C41"
+        },
+        "B4": {
+          "xy": [
+            1084,
+            1214
+          ],
+          "label": [
+            1225,
+            1280
+          ],
+          "description": "R44 lower metal end, nearest Q1; model R44.2, on the presumed gate node.",
+          "native_endpoint": "R44.2",
+          "net": "Q1_GATE",
+          "role": "reference"
+        }
+      }
+    },
+    {
+      "id": "q1-gate-conflict-recheck",
+      "source": "photos/originals/IMG_2438.jpg",
+      "coordinate_space": [
+        1368,
+        1823
+      ],
+      "view_box": [
+        700,
+        1160,
+        550,
+        415
+      ],
+      "title": "Q1 gate-path conflict: let both resistance readings settle",
+      "points": {
+        "T14": {
+          "xy": [
+            856,
+            1438
+          ],
+          "label": [
+            740,
+            1375
+          ],
+          "description": "TP14 plated test hole, established on U5 pin 8 / OUTA. Not the battery terminal.",
+          "native_endpoint": "TP14.1",
+          "net": "H_MOTOR_A"
+        },
+        "G1": {
+          "xy": [
+            1080,
+            1340
+          ],
+          "label": [
+            1170,
+            1230
+          ],
+          "description": "Q1 upper-right metal contact directly below R44; native Q1 pin 1 / model Q1.R, presumed gate. Do not probe R44 instead.",
+          "native_endpoint": "Q1.1",
+          "net": "Q1_GATE",
+          "role": "reference"
+        }
+      }
     }
   ],
-  "tests": [],
-  "interpretation": "B82 OD-ANT1 = 4.5 ohm. Alone this cannot distinguish contact resistance from a path through the fitted approximately 5-ohm antenna. IMG_2431 shows the joined outer Q8 pads; board_upper.png shows that output copper continuing around Q8 toward ANT1. The direct output-to-ANT1 route is accepted as photo-supported with a compatible low-resistance reading, not proved by resistance magnitude alone. R5 is not in this output path.",
+  "tests": [
+    {
+      "id": "B84",
+      "group": "q1-gate-conflict-recheck",
+      "from": "T14",
+      "to": "G1",
+      "mode": "resistance",
+      "unit": "ohms / kohms / OL; steady or changing after 10 seconds",
+      "state": "Unpowered; all components fitted",
+      "issue": "E09",
+      "purpose": "Recheck B61 in this probe direction after R44 itself measured 15 kohm. Wait about 10 seconds; report settled value or how it changes.",
+      "rechecks": "B61",
+      "repeat_reason": "B83 supports R44 = 15 kohm, leaving the earlier 516-ohm gate-path result inconsistent with the simple candidate model; B61 stability was not reported."
+    },
+    {
+      "id": "B85",
+      "group": "q1-gate-conflict-recheck",
+      "from": "G1",
+      "to": "T14",
+      "mode": "resistance",
+      "unit": "ohms / kohms / OL; steady or changing after 10 seconds",
+      "state": "Unpowered; all components fitted",
+      "issue": "E09",
+      "purpose": "Recheck B61 in this probe direction after R44 itself measured 15 kohm. Wait about 10 seconds; report settled value or how it changes.",
+      "rechecks": "B61",
+      "repeat_reason": "B83 supports R44 = 15 kohm, leaving the earlier 516-ohm gate-path result inconsistent with the simple candidate model; B61 stability was not reported."
+    }
+  ],
+  "interpretation": "The in-circuit 15-kohm reading supports the 18C/15-kohm interpretation for R44. Stability and probe baseline were not reported. This does not prove isolated value, tolerance or Q1 pin roles. It leaves B61 TP14-to-Q1.R = 516 ohm unexplained by the settled insulated-gate model. Preserve both reports; do not merge nets or declare a failed device.",
   "next_stages": [
     {
       "stage": "Resolve the remaining functional paths",
@@ -3027,11 +3142,29 @@
       "shorted_probe_ohms": null,
       "source_worksheet_revision": "v0.9.39",
       "raw_user_statement": "PetSafe Q8 output: check the onward ANT1 connection / v0.9.39\nB82 red OD / black A (Unpowered; antenna wires fitted): 4.5"
+    },
+    {
+      "id": "B83",
+      "group": "r44-resistance",
+      "to": "B4",
+      "mode": "resistance",
+      "unit": "ohms / kohms / OL; steady or changing",
+      "state": "Unpowered; all components fitted",
+      "purpose": "Check the effective resistance across R44 before interpreting the unexplained 516-ohm OUTA-to-presumed-gate report.",
+      "from": "A4",
+      "date": "2026-10-15",
+      "issue": "E09",
+      "result": "15 kohm",
+      "resistance_ohms": 15000,
+      "stability": null,
+      "shorted_probe_ohms": null,
+      "source_worksheet_revision": "v0.9.42",
+      "raw_user_statement": "PetSafe R44: test the unexplained Q1 gate-path resistance / v0.9.42\nB83 red A4 / black B4 (Unpowered; all components fitted): 15kOhm"
     }
   ],
-  "batch_title": "RF wiring correction recorded; scope checks deferred",
-  "instructions": "B82 recorded. No repeat requested; all components stay fitted and scope work is deferred.",
-  "result_summary": "U2/C7 fed through R5 (22 ohm) from RF supply. Q8 joined output photo-supported to ANT1. Scope checks deferred.",
+  "batch_title": "Q1 gate path: resolve the 516-ohm contradiction",
+  "instructions": "B84 red T14 / black G1; B85 red G1 / black T14. Hold each pair for about 10 seconds and report the settled value, or initial and final values if changing. T14 is TP14; G1 is Q1 upper-right metal contact directly below R44.",
+  "result_summary": "B83 across R44 = 15 kohm in circuit. The earlier B61 TP14-to-Q1 gate = 516 ohm remains unexplained; no wiring or device identity is changed.",
   "cancelled_tests": [
     {
       "id": "B20",
@@ -3043,7 +3176,7 @@
       "reason": "User identifies PIC21/RB0 destination; reconcile the older VREF assignment instead."
     }
   ],
-  "revision": "v0.9.39",
+  "revision": "v0.9.42",
   "photo_updates": [
     {
       "evidence": "evidence/c25_c26_mapping_20261009.json",
@@ -3066,7 +3199,7 @@
       "result": "v0.9.22 user annotated U6A option: single left pad/model L/native U106.1 joins U6 pin5 and the existing input node after R37; upper-right/model R1/native2 joins J3.1 (red PIR wire); lower-right/model R2/native3 joins GND. All three external pads mapped, option remains DNP. User called the input VDD; retain VDD -> R37 (22 ohm) -> H_AUX_IN because the annotation ends at U6 pin5 and prior B28 confirms pin5-pin2, not a bypass across R37. No fitted IC identity or voltage measurement implied."
     }
   ],
-  "batch_id": "q8-output-antenna-20261015",
+  "batch_id": "q1-gate-conflict-20261015",
   "location_review": {
     "reference": "TP9",
     "status": "REMOVED_UNSUPPORTED_ENTRY",
@@ -3085,13 +3218,7 @@
     "review_evidence": "evidence/options_reorganization_20261009.json"
   },
   "batch_source_sha256": {
-    "photos/originals/IMG_2437.jpg": "3c7c58fea79ea903a3099f204c1d97406c0884edb6d54fd5e7441363e71467a7",
-    "photos/originals/IMG_2435.jpg": "04f1464e2fceeec695365b25183dc96505034434565d20713f55c5b13b18fac1",
-    "photos/user_updates/U6_external_routing_20261009.png": "65159aec548c6c5ca68f86e1153a6f7142d5379f75eb733d48f02450a36f5273",
-    "photos/user/2026-10-08/board_upper.png": "66b7c33e78b3b37d1acf8d42b28e781b7c9904c1ff469b35b19df1abeda7af28",
-    "photos/originals/IMG_2438.jpg": "b3868ea3dd2f4b542d0713b57401d2a9c2a898f9b11898b32f17b84883702109",
-    "photos/originals/IMG_2432.jpg": "c982b50e7bd480e779464d26d9436c84c693d81f365ff8ac86c4aabc56e9761d",
-    "photos/originals/IMG_2434.jpg": "2feac8570055753400b337f4cfe8a79256da8f3bcd706e0d972dfd9672b50d0a"
+    "photos/originals/IMG_2438.jpg": "b3868ea3dd2f4b542d0713b57401d2a9c2a898f9b11898b32f17b84883702109"
   },
   "candidate_datasheet_note": "S-812C datasheet Rev.7.0_01, page 11, Table 5: pin4 NC; pin5 NC for A/E variants. Electrically open internally; external connection to VIN or VSS is allowed. Pin numbering checked against Figure 5 and the existing physical crosswalk.",
   "u6_annotation": {
@@ -3122,13 +3249,13 @@
     "pending_check": null,
     "model_status": "Applied v0.9.20: pin5-VIN measured 1 ohm; R37 and U6A single-pad local joins from the annotation; pin4 explicitly unused."
   },
-  "next_prompt": "No active measurement request. Keep all components fitted; scope work deferred. Current schematic corrections are applied. Individual capacitor values, candidate identities and package qualifications remain explicit.",
-  "review_revision": "v0.9.39",
+  "next_prompt": "B84/B85: recheck TP14 to Q1 upper-right contact in both probe directions, waiting about 10 seconds per reading. Report settled resistance or changing. R44 itself is now measured 15 kohm; this targeted repeat resolves the older unexplained 516-ohm report. All components stay fitted; scope work remains deferred.",
+  "review_revision": "v0.9.42",
   "request_probe_baseline": false,
   "q3_decision": "Defer isolated Q3 identification; retain candidate qualification and existing copper. No desoldering or repeat Q3 batch requested.",
   "last_completed_test_ids": [
-    "B82"
+    "B83"
   ],
-  "last_result_evidence": "evidence/q8_output_antenna_result_20261015.json",
+  "last_result_evidence": "evidence/r44_resistance_result_20261015.json",
   "staged_batches": []
 }

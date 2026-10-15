@@ -10234,6 +10234,9 @@
 				(hide yes)
 			)
 		)
+    (property "CurrentEvidence" "15 kohm from 18C EIA-96 marking; B83 measured 15 kohm in circuit (stability/probe baseline unreported). Model1 joins TP4/PIC25; model2 joins only Q1.R, presumed MOSFET gate. B61 OUTA-to-gate = 516 ohm remains unexplained. B84/B85 test settling and polarity of that conflicting report; no bypass inferred." (at 431.8 111.76 0)
+      (effects (font (size 1.27 1.27)) (hide yes))
+    )
 		(pin "1"
 			(uuid "4996a743-5bd3-4f57-8b9c-ef96145ed57d")
 		)
@@ -10531,7 +10534,7 @@
 				(hide yes)
 			)
 		)
-		(property "CurrentEvidence" "C14R / SN74LVC2G14 remains a candidate. B76 supply-to-ground = 6.3 V; B77 supply-to-printed VDD = +1.8 V rejects direct VDD tie. B78 supply-C7 upper = 1.5 ohm; B79-B81 support feed from H_RF_VDD through R5 (22 ohm), named U2_VCC. Measured 6.3 V exceeds candidate recommended 5.5 V; identity/compatibility unresolved, no failure inferred. Scope checks deferred by owner."
+		(property "CurrentEvidence" "C14R is listed by TI for the SN74LVC2G14DBV candidate. B76 supply = 6.3 V; B77 supply-minus-printed-VDD = +1.8 V; B78-B81 support H_RF_VDD -> R5 (22 ohm) -> U2/C7. Recommended VCC max 5.5 V; absolute max 6.5 V is a stress limit, not an operating guarantee. Fitted identity and voltage compatibility remain unresolved. Scope deferred."
 			(at 87.63 185.42 0)
 			(effects
 				(font
@@ -17810,7 +17813,7 @@
 				(hide yes)
 			)
 		)
-		(property "CurrentEvidence" "22 ohm from marking. Input/model1 joins printed VDD through V063/V064; output/model2 joins U6 VIN/pin2 and its externally tied pin5, C36 and the U6A input option. The old unknown remote-feed statement is superseded. Actual rail voltage is unmeasured."
+		(property "CurrentEvidence" "22 ohm from marking. Model1 joins printed VDD, measured 4.5 V at B56; model2 feeds U6 pin2 and externally tied pin5, C36 and U6A input option. J3.1 output measured 3.3 V at B58; the voltage directly after R37 and dynamic drop are not measured."
 			(at 309.88 295.91 0)
 			(effects
 				(font
@@ -19943,7 +19946,7 @@
 				(hide yes)
 			)
 		)
-		(property "CurrentEvidence" "v0.9.39: TP14 to MX512H/U5 pin8 = 1.5 ohm supports OUTA/H_MOTOR_A. Established R43.2/V015-TP14 joins retained. TP14/R43.2 removed from BATTERY+ after BP-TP14 = 6.3 V. TP14-Q1.R = 516 ohm does not establish a direct join. Q1 gate and motor behavior remain qualified."
+		(property "CurrentEvidence" "TP14/U5.8 is OUTA (1.5 ohm), distinct from BATTERY+. Q1.R is a candidate MOSFET gate joined only to R44.2. B61 OUTA-to-Q1.R = 516 ohm remains unexplained after B83 measured R44 = 15 kohm in circuit; stability was not reported for either. B84/B85 recheck B61 in both directions after settling. No direct join or failed MOSFET is inferred."
 			(at 453.39 111.76 0)
 			(effects
 				(font
@@ -21107,7 +21110,7 @@
 				(hide yes)
 			)
 		)
-		(property "CurrentEvidence" "C2NM supports candidate S-812C33AMC: pin1 VSS, pin2 VIN, pin3 VOUT, pins4/5 internally NC. Pin5 is externally tied to pin2 at 1 ohm (B28); pin4 is intentionally unused by user/photo evidence. R37 input branch and J3.1 output remain modeled; actual output voltage and fitted identity are not proved by the candidate datasheet."
+		(property "CurrentEvidence" "C2NM supports S-812C33AMC candidate: pin1 VSS, pin2 VIN, pin3 VOUT, pin4/5 internally NC. B28 establishes external pin5-pin2 at 1 ohm; pin4 supported unused. B58 measured output at J3.1 as 3.3 V with PIR fitted. Transients and exact fitted identity remain unverified."
 			(at 330.2 309.88 0)
 			(effects
 				(font
@@ -21663,7 +21666,7 @@
 				)
 			)
 		)
-		(property "Value" "MMSZ5228BS? / 3.9V"
+		(property "Value" "G3 / Vbr TBD"
 			(at 311.15 40.639999999999986 0)
 			(show_name no)
 			(do_not_autoplace no)
@@ -21751,7 +21754,7 @@
 				(hide yes)
 			)
 		)
-		(property "CurrentEvidence" "G3 marking; user measurements establish anode at GND, cathode at VPP, about 0.7 V forward and OL reverse. Exact diode class/manufacturer and reverse breakdown remain unresolved; 3.9 V is a marking candidate, not a measured value."
+		(property "CurrentEvidence" "G3-marked diode: measured anode GND, cathode VPP; forward about 0.7 V, reverse OL. Reverse breakdown and exact class/manufacturer are unknown. 3.9-V and 2.4-V parts are source candidates only, not recovered ratings; native value shows Vbr TBD. ICSP compatibility remains E10."
 			(at 311.15 43.18 0)
 			(effects
 				(font

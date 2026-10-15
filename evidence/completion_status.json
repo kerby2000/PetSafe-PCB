@@ -1,7 +1,7 @@
 {
   "date": "2026-10-15",
-  "revision": "v0.9.41",
-  "review_revision": "v0.9.41",
+  "revision": "v0.9.42",
+  "review_revision": "v0.9.42",
   "interpretation": "Every catalog entry is drawn. Hardware connectivity, values and identities are only partially verified. No routed PCB exists.",
   "catalog_entries": 148,
   "physical_pins": 349,
@@ -70,7 +70,7 @@
     "pin_to_pin": 1
   },
   "modeled_nets": 82,
-  "schematic_sha256": "cae37cf01eb46f01a0839979282deeffa1243ac58bfb98bbf2226d53f9498e3a",
+  "schematic_sha256": "90e1c1b3de5605b68fdc6cd4dbdd5674de391eb16e8b0857bf63b116e288cb43",
   "known_identified_ICs_needing_new_symbols": [],
   "complete_symbols_for_selected_candidates": true,
   "available_instruments": [
@@ -132,8 +132,8 @@
     {
       "id": "E09",
       "area": "Supply voltages and Q1 control",
-      "gap": "Q1 control behavior, motor-output states, the path giving 516 ohm from OUTA to Q1 gate, zero VREF and the red-flashing state remain unresolved. R3/R4/C28-to-RB3 functional role is inferred.",
-      "method": "Retain established battery, VSYS, VDD, TP14/OUTA and receiver supply measurements. No repeat Q8 resting gate checks. Dynamic Q1/motor behavior and blinking-cause diagnosis are separate later functional checks; 516-ohm OUTA-to-gate path remains documented, not a copper tie."
+      "gap": "The 516-ohm OUTA-to-presumed-gate result is not explained by the drawn isolated MOSFET gate whose only external DC path is R44 (15 kohm). Reading stability, fitted Q1 pin roles, and possible parallel paths remain unverified; R44 in-circuit resistance supports 15 kohm but does not establish its isolated tolerance. Q1/motor dynamics and R3/R4/C28 sensing role remain qualified.",
+      "method": "B84/B85: recheck TP14 to Q1 upper-right contact in both probe directions, waiting about 10 seconds per reading. Report settled resistance or changing. R44 itself is now measured 15 kohm; this targeted repeat resolves the older unexplained 516-ohm report. All components stay fitted; scope work remains deferred."
     },
     {
       "id": "E10",
@@ -173,7 +173,7 @@
       ],
       "priority": 1,
       "state": "open",
-      "known": "C5/C6 and Q8 source/ground/outer-drain joins supported. U2/C7 supply now fed from H_RF_VDD through R5 (22 ohm): local and endpoint readings B78-B81 support this route. U2 supply = 6.3 V; direct difference to printed VDD = +1.8 V rejects old VDD tie. Q8 output-to-ANT1 accepted from visible copper and compatible B82 4.5-ohm reading with antenna fitted. Rest gate-source voltages: P=0 V, N=+6.3 V.",
+      "known": "C5/C6 and Q8 source/ground/outer-drain joins supported. U2/C7 supply now fed from H_RF_VDD through R5 (22 ohm): local and endpoint readings B78-B81 support this route. U2 supply = 6.3 V; direct difference to printed VDD = +1.8 V rejects old VDD tie. Q8 output-to-ANT1 accepted from visible copper and compatible B82 4.5-ohm reading with antenna fitted. Rest gate-source voltages: P=0 V, N=+6.3 V. TI lists C14R among the DBV candidate markings; absolute maximum VCC is 6.5 V, distinct from the 5.5-V recommended maximum.",
       "unknown": "Exact U2 identity and compatibility with measured 6.3 V remain unresolved; candidate SN74LVC2G14 recommended supply maximum is 5.5 V. Q8 switching margin, timing and RF waveform validation are deferred by owner. B82 alone is not a zero-ohm proof; output route is photo-supported.",
       "next_action": "Finish non-scope schematic items first. Review U2 fitted identification and candidate ratings from marking/datasheet evidence. Owner has an oscilloscope but explicitly defers waveform measurements until later.",
       "closed_when": "U2 identity and voltage compatibility resolved; RF operating waveform validation recorded separately when the owner resumes scope work. Local RF supply/output drawing is corrected; unknown C6/C7 values remain V01.",
@@ -199,7 +199,8 @@
         "evidence/u2_c7_feed_results_20261015.json",
         "evidence/r5_supply_feed_results_20261015.json",
         "evidence/q8_output_antenna_result_20261015.json",
-        "evidence/u2_r5_topology_correction_v0940.json"
+        "evidence/u2_r5_topology_correction_v0940.json",
+        "evidence/circuit_consistency_v0942.json"
       ],
       "owner": "Agent evidence review; targeted owner test only as listed",
       "category": "connectivity/behavior"
@@ -375,9 +376,9 @@
       ],
       "priority": 2,
       "state": "open",
-      "known": "VSYS/RF 6.3 V, printed VDD 4.5 V, PIR supply 3.3 V with PIR attached; VREF 0 V and red LED approximately 1 Hz. TP14 is now established on U5.8/OUTA at 1.5 ohm; R43.2/V015 follows its existing TP14 association. BATTERY+ stays separate. TP14-Q1 gate measured 516 ohm. B62: receiver TP5 supply is 0.066 V; this may explain absent VREF bias without implying a ground short.",
-      "unknown": "Q1 control behavior, motor-output states, the path giving 516 ohm from OUTA to Q1 gate, zero VREF and the red-flashing state remain unresolved. R3/R4/C28-to-RB3 functional role is inferred.",
-      "next_action": "Retain established battery, VSYS, VDD, TP14/OUTA and receiver supply measurements. No repeat Q8 resting gate checks. Dynamic Q1/motor behavior and blinking-cause diagnosis are separate later functional checks; 516-ohm OUTA-to-gate path remains documented, not a copper tie.",
+      "known": "VSYS/RF 6.3 V, printed VDD 4.5 V, PIR supply 3.3 V with PIR attached; VREF 0 V and red LED approximately 1 Hz. TP14 is now established on U5.8/OUTA at 1.5 ohm; R43.2/V015 follows its existing TP14 association. BATTERY+ stays separate. TP14-Q1 gate measured 516 ohm. B62: receiver TP5 supply is 0.066 V; this may explain absent VREF bias without implying a ground short. B83 measured R44 directly as 15 kohm in circuit, supporting its marked value.",
+      "unknown": "The 516-ohm OUTA-to-presumed-gate result is not explained by the drawn isolated MOSFET gate whose only external DC path is R44 (15 kohm). Reading stability, fitted Q1 pin roles, and possible parallel paths remain unverified; R44 in-circuit resistance supports 15 kohm but does not establish its isolated tolerance. Q1/motor dynamics and R3/R4/C28 sensing role remain qualified.",
+      "next_action": "B84/B85: recheck TP14 to Q1 upper-right contact in both probe directions, waiting about 10 seconds per reading. Report settled resistance or changing. R44 itself is now measured 15 kohm; this targeted repeat resolves the older unexplained 516-ohm report. All components stay fitted; scope work remains deferred.",
       "closed_when": "Actual supply levels and control behavior are recorded without merging battery, VSYS or filtered branches.",
       "open_pads": [],
       "nets": [
@@ -395,7 +396,9 @@
         "evidence/supply_baseline_results_20261014.json",
         "evidence/product_manual_led_review_20261014.json",
         "evidence/tp14_motor_output_correction_v0939.json",
-        "evidence/receiver_supply_results_20261014.json"
+        "evidence/receiver_supply_results_20261014.json",
+        "evidence/circuit_consistency_v0942.json",
+        "evidence/r44_resistance_result_20261015.json"
       ],
       "owner": "Agent evidence review; targeted owner test only as listed",
       "category": "connectivity/behavior"
@@ -532,7 +535,7 @@
         "I01"
       ],
       "summary": "RF feed/output wiring, switch contacts and front-bank ANT2 routing are supported. Candidate device roles remain unresolved. TP11/TP17 routes are complete as drawn, with hidden-layer uncertainty retained as a reconstruction limitation. Scope work and component isolation are deferred by owner.",
-      "next_action": "No further RF continuity repeat requested. Oscilloscope available, but waveform checks explicitly deferred by the owner on 2026-10-15. Continue schematic values, identities and package geometry without scope measurements."
+      "next_action": "B84/B85: recheck TP14 to Q1 upper-right contact in both probe directions, waiting about 10 seconds per reading. Report settled resistance or changing. R44 itself is now measured 15 kohm; this targeted repeat resolves the older unexplained 516-ohm report. All components stay fitted; scope work remains deferred."
     },
     {
       "id": "F2",

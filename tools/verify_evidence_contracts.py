@@ -260,6 +260,11 @@ assert (q8_output['measurement']['id'],q8_output['measurement']['resistance_ohms
 assert q8_output['measurement'] in queue['completed_tests']
 for path,digest in q8_output['photos'].items():assert sha(path)==digest
 completed_ids.add('B82')
+r44=read('evidence/r44_resistance_result_20261015.json')
+assert (r44['measurement']['id'],r44['measurement']['resistance_ohms'])==('B83',15000)
+assert r44['measurement'] in queue['completed_tests'] and r44['measurement']['stability'] is None
+assert r44['electrical_change'] is False
+completed_ids.add('B83')
 assert net('U2.B2')==net('C7.1')==net('R5.2')=='U2_VCC'
 assert net('R5.1')==net('C6.1')==net('Q8.T2')=='H_RF_VDD'
 assert len({net('R5.1'),net('R5.2'),net('VDD.1')})==3

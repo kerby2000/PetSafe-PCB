@@ -63,6 +63,8 @@ for i in status['items']:
     issue_cards.append(f'<article id="{e(i["id"])}"><h3>{e(i["id"])} - {e(i["area"])}</h3><p><b>Known:</b> {e(i["known"])}</p><p><b>Still uncertain:</b> {e(i["unknown"])}</p><p><b>Next useful check:</b> {e(i["next_action"])}</p><p><b>Finished when:</b> {e(i["closed_when"])}</p></article>')
 work=json.loads((R/'evidence/remaining_work.json').read_text())
 limitations=''.join('<article id="'+e(i['id'])+'"><h3>'+e(i['id']+' - '+i['area'])+'</h3><p><b>'+e(i['disposition'])+'</b></p><p>'+e(i['known'])+'</p><p><b>Unproved:</b> '+e(i['unknown'])+'</p><p><b>Next:</b> '+e(i['next_action'])+'</p><p><b>Reopen if:</b> '+e(i['reopen_when'])+'</p><a href="../'+e(i['evidence'])+'">Evidence and disposition</a></article>' for i in status['reconstruction_limitations'])
+consistency=work.get('consistency_review',{})
+consistency_rows=''.join('<tr><td><a href="#'+e(i['issue'])+'">'+e(i['issue'])+'</a></td><td><b>'+e(i['title'])+'</b><br>'+e(i['reasoning'])+'</td><td>'+e(i['next_action'])+'</td></tr>' for i in consistency.get('findings',[]))
 reproduction=''.join('<tr><td><b>'+e(r['item'])+'</b></td><td>'+e(r['remaining'])+'</td><td>'+e(r['agent_work'])+'</td><td>'+e(r['owner_input'])+'</td></tr>' for r in work['reproduction_requirements'])
 plan=''.join('<li><b>'+e(g['title'])+'</b> - '+e(g['summary'])+'</li>' for g in status['finish_plan'])
 auditpath=R/'evidence/finalization_audit.json'
@@ -73,6 +75,7 @@ page=f'''<!doctype html><html lang="en"><meta charset="utf-8"><meta name="viewpo
 <h1>What remains to finish</h1><p>{e(status['revision'])} | {len(status['items'])} active issues. Each card states what is established, the specific gap and its closure criterion.</p>
 <div class="metrics"><div><strong>{len(status['current_fitted_open_pads'])}</strong>unassigned fitted pads</div><div><strong>{audit.get('dangling_wire_ends','pending')}</strong>dangling wire ends</div><div><strong>{status['erc_total']}</strong>retained ERC conflict</div><div><strong>{len(status['unknown_ceramic_values'])}</strong>unknown ceramic values</div></div>
 <div class="card"><b>{e(queue["batch_title"])}</b> <a href="FINISHING_MEASUREMENTS.html">Open measurement screen</a>. {e(queue["instructions"])} Q3 stays fitted. Other listed tests are staged, not requested together.</div>
+<h2>Consistency checks: where a remaining error could hide</h2><p>These findings refer to existing issues; they are not additional issue groups or newly measured faults. <a href="../evidence/circuit_consistency_v0942.json">Evidence and checks</a>.</p><table><tr><th>Issue</th><th>Finding</th><th>Next useful action</th></tr>{consistency_rows}</table>
 <h2>Finish in this order</h2><ol>{plan}</ol>
 <p><b>Audit boundary:</b> {status['modeled_nets']} modeled net partitions agree with KiCad. Zero open pads or wire tails does not establish hidden copper or circuit operation. The supported RC3/TP11 and RC7/TP17 routes are complete as drawn; E06 is retained below as a hidden-layer reconstruction limitation, not a pending measurement. RA0/C25-to-TP6 is resolved by B59 = 1.5 ohm. Q3 device identity remains under E04. <a href="../evidence/finalization_audit.json">Detailed audit</a>.</p>
 <h2>Documented reconstruction limitations</h2>{limitations}

@@ -2,16 +2,16 @@
 <export version="E">
   <design>
     <source>C:\Users\lukin\Documents\ChatGPT\PetSafe-PCB\schematic\PetSafe_1001339.kicad_sch</source>
-    <date>2026-10-15T00:37:49</date>
+    <date>2026-10-15T09:24:48</date>
     <tool>Eeschema 10.0.5</tool>
     <sheet number="1" name="/" tstamps="/">
       <title_block>
         <title>PetSafe 100-1339 R03 A | single-sheet reconstruction</title>
         <company>KiCad 10 libraries + four datasheet symbols | MCP authoring</company>
-        <rev>0.9.41</rev>
+        <rev>0.9.42</rev>
         <date>2026-10-15</date>
         <source>PetSafe_1001339.kicad_sch</source>
-        <comment number="1" value="TP11/TP17 retained; hidden branches and device roles remain qualified."/>
+        <comment number="1" value="Consistency review: Q1/R44 resistance and U2 supply rating remain open."/>
         <comment number="2" value=""/>
         <comment number="3" value=""/>
         <comment number="4" value=""/>
@@ -2232,15 +2232,15 @@
       </units>
     </comp>
     <comp ref="D6">
-      <value>MMSZ5228BS? / 3.9V</value>
+      <value>G3 / Vbr TBD</value>
       <footprint>Diode_SMD:D_SOD-323</footprint>
       <datasheet>https://www.diodes.com/datasheet/download/MMSZ5228BS.pdf</datasheet>
       <description>G3: MMSZ5228BS 3.9V Zener candidate. PZU2.4B 2.4V alternative; exact fitted part unconfirmed.</description>
       <fields>
         <field name="ConnectionEvidence">v0.9.20 B22-B27: upper photo contact V -&gt; GND, lower W -&gt; VPP, each 1 ohm. B29 red V/black W about 0.7V; B30 reverse OL. Supports A=V/GND (pin2), K=W/VPP (pin1). G3 identity and Zener breakdown remain unverified; no 3.9V measurement.</field>
-        <field name="CurrentEvidence">G3 marking; user measurements establish anode at GND, cathode at VPP, about 0.7 V forward and OL reverse. Exact diode class/manufacturer and reverse breakdown remain unresolved; 3.9 V is a marking candidate, not a measured value.</field>
+        <field name="CurrentEvidence">G3-marked diode: measured anode GND, cathode VPP; forward about 0.7 V, reverse OL. Reverse breakdown and exact class/manufacturer are unknown. 3.9-V and 2.4-V parts are source candidates only, not recovered ratings; native value shows Vbr TBD. ICSP compatibility remains E10.</field>
         <field name="OriginalReference">D6</field>
-        <field name="Evidence">G3 marking; user measurements establish anode at GND, cathode at VPP, about 0.7 V forward and OL reverse. Exact diode class/manufacturer and reverse breakdown remain unresolved; 3.9 V is a marking candidate, not a measured value.</field>
+        <field name="Evidence">G3-marked diode: measured anode GND, cathode VPP; forward about 0.7 V, reverse OL. Reverse breakdown and exact class/manufacturer are unknown. 3.9-V and 2.4-V parts are source candidates only, not recovered ratings; native value shows Vbr TBD. ICSP compatibility remains E10.</field>
         <field name="LibraryPolicy">Unmodified KiCad 10 stock symbol</field>
         <field name="FootprintConfidence">datasheet/package candidate</field>
         <field name="FootprintBasis">Existing assignment; see component identity evidence.</field>
@@ -2251,9 +2251,9 @@
       </fields>
       <libsource lib="Device" part="D_Zener" description="Zener diode"/>
       <property name="ConnectionEvidence" value="v0.9.20 B22-B27: upper photo contact V -&gt; GND, lower W -&gt; VPP, each 1 ohm. B29 red V/black W about 0.7V; B30 reverse OL. Supports A=V/GND (pin2), K=W/VPP (pin1). G3 identity and Zener breakdown remain unverified; no 3.9V measurement."/>
-      <property name="CurrentEvidence" value="G3 marking; user measurements establish anode at GND, cathode at VPP, about 0.7 V forward and OL reverse. Exact diode class/manufacturer and reverse breakdown remain unresolved; 3.9 V is a marking candidate, not a measured value."/>
+      <property name="CurrentEvidence" value="G3-marked diode: measured anode GND, cathode VPP; forward about 0.7 V, reverse OL. Reverse breakdown and exact class/manufacturer are unknown. 3.9-V and 2.4-V parts are source candidates only, not recovered ratings; native value shows Vbr TBD. ICSP compatibility remains E10."/>
       <property name="OriginalReference" value="D6"/>
-      <property name="Evidence" value="G3 marking; user measurements establish anode at GND, cathode at VPP, about 0.7 V forward and OL reverse. Exact diode class/manufacturer and reverse breakdown remain unresolved; 3.9 V is a marking candidate, not a measured value."/>
+      <property name="Evidence" value="G3-marked diode: measured anode GND, cathode VPP; forward about 0.7 V, reverse OL. Reverse breakdown and exact class/manufacturer are unknown. 3.9-V and 2.4-V parts are source candidates only, not recovered ratings; native value shows Vbr TBD. ICSP compatibility remains E10."/>
       <property name="LibraryPolicy" value="Unmodified KiCad 10 stock symbol"/>
       <property name="FootprintConfidence" value="datasheet/package candidate"/>
       <property name="FootprintBasis" value="Existing assignment; see component identity evidence."/>
@@ -2588,10 +2588,10 @@
       <fields>
         <field name="ViaEvidence">v0.9.9: User corrects raw battery+ versus post-Q1 rail. BATP -&gt; Q1.S (single physical pad/native3, candidate drain); Q1.L/native2 (candidate source) -&gt; U5.4/V011-V014. These are distinct copper nets, connected through Q1. TP14/R43.2/V015 is OUTA/H_MOTOR_A, supported by TP14-U5.8 = 1.5 ohm; the earlier battery-side photo interpretation is withdrawn. Q1.R/native1 is candidate gate at R44.2. Photo S means SINGLE, not MOSFET source.</field>
         <field name="IdentityEvidence">R1A marking matches Formosa FMOS3401A datasheet p5; SOT-23 PMOS with G=1 (photo R), S=2 (photo L), D=3 (photo single S). Candidate identification, not manufacturer proof. Drain at battery+ and source at load support reverse-polarity protection; gate-control behavior not verified. Earlier MMBT3904 NPN hypothesis withdrawn.</field>
-        <field name="CurrentEvidence">v0.9.39: TP14 to MX512H/U5 pin8 = 1.5 ohm supports OUTA/H_MOTOR_A. Established R43.2/V015-TP14 joins retained. TP14/R43.2 removed from BATTERY+ after BP-TP14 = 6.3 V. TP14-Q1.R = 516 ohm does not establish a direct join. Q1 gate and motor behavior remain qualified.</field>
+        <field name="CurrentEvidence">TP14/U5.8 is OUTA (1.5 ohm), distinct from BATTERY+. Q1.R is a candidate MOSFET gate joined only to R44.2. B61 OUTA-to-Q1.R = 516 ohm remains unexplained after B83 measured R44 = 15 kohm in circuit; stability was not reported for either. B84/B85 recheck B61 in both directions after settling. No direct join or failed MOSFET is inferred.</field>
         <field name="TP14Evidence">v0.9.39: TP14 to MX512H/U5 pin8 = 1.5 ohm supports OUTA/H_MOTOR_A. Established R43.2/V015-TP14 joins retained. TP14/R43.2 removed from BATTERY+ after BP-TP14 = 6.3 V. TP14-Q1.R = 516 ohm does not establish a direct join. Q1 gate and motor behavior remain qualified.</field>
         <field name="OriginalReference">Q1</field>
-        <field name="Evidence">v0.9.39: TP14 to MX512H/U5 pin8 = 1.5 ohm supports OUTA/H_MOTOR_A. Established R43.2/V015-TP14 joins retained. TP14/R43.2 removed from BATTERY+ after BP-TP14 = 6.3 V. TP14-Q1.R = 516 ohm does not establish a direct join. Q1 gate and motor behavior remain qualified.</field>
+        <field name="Evidence">TP14/U5.8 is OUTA (1.5 ohm), distinct from BATTERY+. Q1.R is a candidate MOSFET gate joined only to R44.2. B61 OUTA-to-Q1.R = 516 ohm remains unexplained after B83 measured R44 = 15 kohm in circuit; stability was not reported for either. B84/B85 recheck B61 in both directions after settling. No direct join or failed MOSFET is inferred.</field>
         <field name="LibraryPolicy">Unmodified KiCad 10 stock symbol</field>
         <field name="FootprintConfidence">datasheet/package candidate</field>
         <field name="FootprintBasis">SOT-23 photo and FMOS3401A datasheet package agree. Manufacturer identity remains a candidate.</field>
@@ -2603,10 +2603,10 @@
       <libsource lib="Transistor_FET" part="Q_PMOS_GSD" description="P-MOSFET transistor, gate/source/drain"/>
       <property name="ViaEvidence" value="v0.9.9: User corrects raw battery+ versus post-Q1 rail. BATP -&gt; Q1.S (single physical pad/native3, candidate drain); Q1.L/native2 (candidate source) -&gt; U5.4/V011-V014. These are distinct copper nets, connected through Q1. TP14/R43.2/V015 is OUTA/H_MOTOR_A, supported by TP14-U5.8 = 1.5 ohm; the earlier battery-side photo interpretation is withdrawn. Q1.R/native1 is candidate gate at R44.2. Photo S means SINGLE, not MOSFET source."/>
       <property name="IdentityEvidence" value="R1A marking matches Formosa FMOS3401A datasheet p5; SOT-23 PMOS with G=1 (photo R), S=2 (photo L), D=3 (photo single S). Candidate identification, not manufacturer proof. Drain at battery+ and source at load support reverse-polarity protection; gate-control behavior not verified. Earlier MMBT3904 NPN hypothesis withdrawn."/>
-      <property name="CurrentEvidence" value="v0.9.39: TP14 to MX512H/U5 pin8 = 1.5 ohm supports OUTA/H_MOTOR_A. Established R43.2/V015-TP14 joins retained. TP14/R43.2 removed from BATTERY+ after BP-TP14 = 6.3 V. TP14-Q1.R = 516 ohm does not establish a direct join. Q1 gate and motor behavior remain qualified."/>
+      <property name="CurrentEvidence" value="TP14/U5.8 is OUTA (1.5 ohm), distinct from BATTERY+. Q1.R is a candidate MOSFET gate joined only to R44.2. B61 OUTA-to-Q1.R = 516 ohm remains unexplained after B83 measured R44 = 15 kohm in circuit; stability was not reported for either. B84/B85 recheck B61 in both directions after settling. No direct join or failed MOSFET is inferred."/>
       <property name="TP14Evidence" value="v0.9.39: TP14 to MX512H/U5 pin8 = 1.5 ohm supports OUTA/H_MOTOR_A. Established R43.2/V015-TP14 joins retained. TP14/R43.2 removed from BATTERY+ after BP-TP14 = 6.3 V. TP14-Q1.R = 516 ohm does not establish a direct join. Q1 gate and motor behavior remain qualified."/>
       <property name="OriginalReference" value="Q1"/>
-      <property name="Evidence" value="v0.9.39: TP14 to MX512H/U5 pin8 = 1.5 ohm supports OUTA/H_MOTOR_A. Established R43.2/V015-TP14 joins retained. TP14/R43.2 removed from BATTERY+ after BP-TP14 = 6.3 V. TP14-Q1.R = 516 ohm does not establish a direct join. Q1 gate and motor behavior remain qualified."/>
+      <property name="Evidence" value="TP14/U5.8 is OUTA (1.5 ohm), distinct from BATTERY+. Q1.R is a candidate MOSFET gate joined only to R44.2. B61 OUTA-to-Q1.R = 516 ohm remains unexplained after B83 measured R44 = 15 kohm in circuit; stability was not reported for either. B84/B85 recheck B61 in both directions after settling. No direct join or failed MOSFET is inferred."/>
       <property name="LibraryPolicy" value="Unmodified KiCad 10 stock symbol"/>
       <property name="FootprintConfidence" value="datasheet/package candidate"/>
       <property name="FootprintBasis" value="SOT-23 photo and FMOS3401A datasheet package agree. Manufacturer identity remains a candidate."/>
@@ -4253,9 +4253,9 @@
       <description>Resistor</description>
       <fields>
         <field name="ViaEvidence">v0.9.6: User confirms V064-V063. R37.1/R39.2 feed junction is regulated board VDD, not motor VDD.</field>
-        <field name="CurrentEvidence">22 ohm from marking. Input/model1 joins printed VDD through V063/V064; output/model2 joins U6 VIN/pin2 and its externally tied pin5, C36 and the U6A input option. The old unknown remote-feed statement is superseded. Actual rail voltage is unmeasured.</field>
+        <field name="CurrentEvidence">22 ohm from marking. Model1 joins printed VDD, measured 4.5 V at B56; model2 feeds U6 pin2 and externally tied pin5, C36 and U6A input option. J3.1 output measured 3.3 V at B58; the voltage directly after R37 and dynamic drop are not measured.</field>
         <field name="OriginalReference">R37</field>
-        <field name="Evidence">22 ohm from marking. Input/model1 joins printed VDD through V063/V064; output/model2 joins U6 VIN/pin2 and its externally tied pin5, C36 and the U6A input option. The old unknown remote-feed statement is superseded. Actual rail voltage is unmeasured.</field>
+        <field name="Evidence">22 ohm from marking. Model1 joins printed VDD, measured 4.5 V at B56; model2 feeds U6 pin2 and externally tied pin5, C36 and U6A input option. J3.1 output measured 3.3 V at B58; the voltage directly after R37 and dynamic drop are not measured.</field>
         <field name="LibraryPolicy">Unmodified KiCad 10 stock symbol</field>
         <field name="FootprintConfidence">medium - revised family estimate</field>
         <field name="FootprintBasis">User reports R8 approximately 1.6 x 0.77 mm, consistent with 0603 (1608 metric). Repeated fitted resistor family revised using R8 as a scale reference. This individual body has not been measured; earlier 0805 estimate superseded.</field>
@@ -4266,9 +4266,9 @@
       </fields>
       <libsource lib="Device" part="R" description="Resistor"/>
       <property name="ViaEvidence" value="v0.9.6: User confirms V064-V063. R37.1/R39.2 feed junction is regulated board VDD, not motor VDD."/>
-      <property name="CurrentEvidence" value="22 ohm from marking. Input/model1 joins printed VDD through V063/V064; output/model2 joins U6 VIN/pin2 and its externally tied pin5, C36 and the U6A input option. The old unknown remote-feed statement is superseded. Actual rail voltage is unmeasured."/>
+      <property name="CurrentEvidence" value="22 ohm from marking. Model1 joins printed VDD, measured 4.5 V at B56; model2 feeds U6 pin2 and externally tied pin5, C36 and U6A input option. J3.1 output measured 3.3 V at B58; the voltage directly after R37 and dynamic drop are not measured."/>
       <property name="OriginalReference" value="R37"/>
-      <property name="Evidence" value="22 ohm from marking. Input/model1 joins printed VDD through V063/V064; output/model2 joins U6 VIN/pin2 and its externally tied pin5, C36 and the U6A input option. The old unknown remote-feed statement is superseded. Actual rail voltage is unmeasured."/>
+      <property name="Evidence" value="22 ohm from marking. Model1 joins printed VDD, measured 4.5 V at B56; model2 feeds U6 pin2 and externally tied pin5, C36 and U6A input option. J3.1 output measured 3.3 V at B58; the voltage directly after R37 and dynamic drop are not measured."/>
       <property name="LibraryPolicy" value="Unmodified KiCad 10 stock symbol"/>
       <property name="FootprintConfidence" value="medium - revised family estimate"/>
       <property name="FootprintBasis" value="User reports R8 approximately 1.6 x 0.77 mm, consistent with 0603 (1608 metric). Repeated fitted resistor family revised using R8 as a scale reference. This individual body has not been measured; earlier 0805 estimate superseded."/>
@@ -4540,8 +4540,9 @@
       <description>Resistor</description>
       <fields>
         <field name="ViaEvidence">v0.9.9: User corrects raw battery+ versus post-Q1 rail. BATP -&gt; Q1.S (single physical pad/native3, candidate drain); Q1.L/native2 (candidate source) -&gt; U5.4/V011-V014. These are distinct copper nets, connected through Q1. TP14/R43.2/V015 is OUTA/H_MOTOR_A, supported by TP14-U5.8 = 1.5 ohm; the earlier battery-side photo interpretation is withdrawn. Q1.R/native1 is candidate gate at R44.2. Photo S means SINGLE, not MOSFET source.</field>
+        <field name="CurrentEvidence">15 kohm from 18C EIA-96 marking; B83 measured 15 kohm in circuit (stability/probe baseline unreported). Model1 joins TP4/PIC25; model2 joins only Q1.R, presumed MOSFET gate. B61 OUTA-to-gate = 516 ohm remains unexplained. B84/B85 test settling and polarity of that conflicting report; no bypass inferred.</field>
         <field name="OriginalReference">R44</field>
-        <field name="Evidence">Photo reconstruction; individual net evidence in reconstruction.json</field>
+        <field name="Evidence">15 kohm from 18C EIA-96 marking; B83 measured 15 kohm in circuit (stability/probe baseline unreported). Model1 joins TP4/PIC25; model2 joins only Q1.R, presumed MOSFET gate. B61 OUTA-to-gate = 516 ohm remains unexplained. B84/B85 test settling and polarity of that conflicting report; no bypass inferred.</field>
         <field name="LibraryPolicy">Unmodified KiCad 10 stock symbol</field>
         <field name="FootprintConfidence">medium - revised family estimate</field>
         <field name="FootprintBasis">User reports R8 approximately 1.6 x 0.77 mm, consistent with 0603 (1608 metric). Repeated fitted resistor family revised using R8 as a scale reference. This individual body has not been measured; earlier 0805 estimate superseded.</field>
@@ -4552,8 +4553,9 @@
       </fields>
       <libsource lib="Device" part="R" description="Resistor"/>
       <property name="ViaEvidence" value="v0.9.9: User corrects raw battery+ versus post-Q1 rail. BATP -&gt; Q1.S (single physical pad/native3, candidate drain); Q1.L/native2 (candidate source) -&gt; U5.4/V011-V014. These are distinct copper nets, connected through Q1. TP14/R43.2/V015 is OUTA/H_MOTOR_A, supported by TP14-U5.8 = 1.5 ohm; the earlier battery-side photo interpretation is withdrawn. Q1.R/native1 is candidate gate at R44.2. Photo S means SINGLE, not MOSFET source."/>
+      <property name="CurrentEvidence" value="15 kohm from 18C EIA-96 marking; B83 measured 15 kohm in circuit (stability/probe baseline unreported). Model1 joins TP4/PIC25; model2 joins only Q1.R, presumed MOSFET gate. B61 OUTA-to-gate = 516 ohm remains unexplained. B84/B85 test settling and polarity of that conflicting report; no bypass inferred."/>
       <property name="OriginalReference" value="R44"/>
-      <property name="Evidence" value="Photo reconstruction; individual net evidence in reconstruction.json"/>
+      <property name="Evidence" value="15 kohm from 18C EIA-96 marking; B83 measured 15 kohm in circuit (stability/probe baseline unreported). Model1 joins TP4/PIC25; model2 joins only Q1.R, presumed MOSFET gate. B61 OUTA-to-gate = 516 ohm remains unexplained. B84/B85 test settling and polarity of that conflicting report; no bypass inferred."/>
       <property name="LibraryPolicy" value="Unmodified KiCad 10 stock symbol"/>
       <property name="FootprintConfidence" value="medium - revised family estimate"/>
       <property name="FootprintBasis" value="User reports R8 approximately 1.6 x 0.77 mm, consistent with 0603 (1608 metric). Repeated fitted resistor family revised using R8 as a scale reference. This individual body has not been measured; earlier 0805 estimate superseded."/>
@@ -5594,20 +5596,20 @@
       <description>Dual NOT Gate, Schmitt Triggered, Low-Voltage CMOS</description>
       <fields>
         <field name="OriginalReference">U2</field>
-        <field name="Evidence">C14R / SN74LVC2G14 remains a candidate. B76 supply-to-ground = 6.3 V; B77 supply-to-printed VDD = +1.8 V rejects direct VDD tie. B78 supply-C7 upper = 1.5 ohm; B79-B81 support feed from H_RF_VDD through R5 (22 ohm), named U2_VCC. Measured 6.3 V exceeds candidate recommended 5.5 V; identity/compatibility unresolved, no failure inferred. Scope checks deferred by owner.</field>
+        <field name="Evidence">C14R is listed by TI for the SN74LVC2G14DBV candidate. B76 supply = 6.3 V; B77 supply-minus-printed-VDD = +1.8 V; B78-B81 support H_RF_VDD -&gt; R5 (22 ohm) -&gt; U2/C7. Recommended VCC max 5.5 V; absolute max 6.5 V is a stress limit, not an operating guarantee. Fitted identity and voltage compatibility remain unresolved. Scope deferred.</field>
         <field name="LibraryPolicy">Unmodified KiCad 10 stock symbol</field>
         <field name="FootprintConfidence">datasheet/package candidate</field>
         <field name="FootprintBasis">Existing assignment; see component identity evidence.</field>
         <field name="PinMapping">See evidence/pin_crosswalk.json; physical orientation may be provisional</field>
         <field name="ViaEvidence">v0.9.5: V114 reaches U2.T2, not Q8.T2. Earlier user GND assignment retained; native U2 pin2 already GND. This resolves the via annotation conflict.</field>
-        <field name="CurrentEvidence">C14R / SN74LVC2G14 remains a candidate. B76 supply-to-ground = 6.3 V; B77 supply-to-printed VDD = +1.8 V rejects direct VDD tie. B78 supply-C7 upper = 1.5 ohm; B79-B81 support feed from H_RF_VDD through R5 (22 ohm), named U2_VCC. Measured 6.3 V exceeds candidate recommended 5.5 V; identity/compatibility unresolved, no failure inferred. Scope checks deferred by owner.</field>
+        <field name="CurrentEvidence">C14R is listed by TI for the SN74LVC2G14DBV candidate. B76 supply = 6.3 V; B77 supply-minus-printed-VDD = +1.8 V; B78-B81 support H_RF_VDD -&gt; R5 (22 ohm) -&gt; U2/C7. Recommended VCC max 5.5 V; absolute max 6.5 V is a stress limit, not an operating guarantee. Fitted identity and voltage compatibility remain unresolved. Scope deferred.</field>
         <field name="Footprint">Package_TO_SOT_SMD:SOT-23-6</field>
         <field name="Datasheet">https://www.ti.com/lit/ds/symlink/sn74lvc2g14.pdf</field>
         <field name="Description">Dual NOT Gate, Schmitt Triggered, Low-Voltage CMOS</field>
       </fields>
       <libsource lib="74xGxx" part="74LVC2G14" description="Dual NOT Gate, Schmitt Triggered, Low-Voltage CMOS"/>
       <property name="OriginalReference" value="U2"/>
-      <property name="Evidence" value="C14R / SN74LVC2G14 remains a candidate. B76 supply-to-ground = 6.3 V; B77 supply-to-printed VDD = +1.8 V rejects direct VDD tie. B78 supply-C7 upper = 1.5 ohm; B79-B81 support feed from H_RF_VDD through R5 (22 ohm), named U2_VCC. Measured 6.3 V exceeds candidate recommended 5.5 V; identity/compatibility unresolved, no failure inferred. Scope checks deferred by owner."/>
+      <property name="Evidence" value="C14R is listed by TI for the SN74LVC2G14DBV candidate. B76 supply = 6.3 V; B77 supply-minus-printed-VDD = +1.8 V; B78-B81 support H_RF_VDD -&gt; R5 (22 ohm) -&gt; U2/C7. Recommended VCC max 5.5 V; absolute max 6.5 V is a stress limit, not an operating guarantee. Fitted identity and voltage compatibility remain unresolved. Scope deferred."/>
       <property name="LibraryPolicy" value="Unmodified KiCad 10 stock symbol"/>
       <property name="FootprintConfidence" value="datasheet/package candidate"/>
       <property name="FootprintBasis" value="Existing assignment; see component identity evidence."/>
@@ -5824,9 +5826,9 @@
       <description>ABLIC S-812C33AMC-C2NT2x 3.3V regulator; C2N product-code candidate for U6. NC pins internally open, may connect to VIN or VSS per Table 5.</description>
       <fields>
         <field name="ConnectionEvidence">v0.9.20: U6.5-U6.2 measured 1 ohm (B28). User annotation also joins physical L2/native5 to R37 upper/model2 and empty U6A single/native1. U6.4/L1 marked NC by user and appears as an isolated surface stub in original photos. Candidate pin5 is internally NC but externally tied to VIN; pin4 remains unused.</field>
-        <field name="CurrentEvidence">C2NM supports candidate S-812C33AMC: pin1 VSS, pin2 VIN, pin3 VOUT, pins4/5 internally NC. Pin5 is externally tied to pin2 at 1 ohm (B28); pin4 is intentionally unused by user/photo evidence. R37 input branch and J3.1 output remain modeled; actual output voltage and fitted identity are not proved by the candidate datasheet.</field>
+        <field name="CurrentEvidence">C2NM supports S-812C33AMC candidate: pin1 VSS, pin2 VIN, pin3 VOUT, pin4/5 internally NC. B28 establishes external pin5-pin2 at 1 ohm; pin4 supported unused. B58 measured output at J3.1 as 3.3 V with PIR fitted. Transients and exact fitted identity remain unverified.</field>
         <field name="OriginalReference">U6</field>
-        <field name="Evidence">C2NM supports candidate S-812C33AMC: pin1 VSS, pin2 VIN, pin3 VOUT, pins4/5 internally NC. Pin5 is externally tied to pin2 at 1 ohm (B28); pin4 is intentionally unused by user/photo evidence. R37 input branch and J3.1 output remain modeled; actual output voltage and fitted identity are not proved by the candidate datasheet.</field>
+        <field name="Evidence">C2NM supports S-812C33AMC candidate: pin1 VSS, pin2 VIN, pin3 VOUT, pin4/5 internally NC. B28 establishes external pin5-pin2 at 1 ohm; pin4 supported unused. B58 measured output at J3.1 as 3.3 V with PIR fitted. Transients and exact fitted identity remain unverified.</field>
         <field name="LibraryPolicy">User-authorized datasheet symbol created through KiCad MCP</field>
         <field name="FootprintConfidence">datasheet/package candidate</field>
         <field name="FootprintBasis">Existing assignment; see component identity evidence.</field>
@@ -5837,9 +5839,9 @@
       </fields>
       <libsource lib="PetSafe_Datasheet" part="S-812C33AMC" description="ABLIC S-812C33AMC-C2NT2x 3.3V regulator; C2N product-code candidate for U6. NC pins internally open, may connect to VIN or VSS per Table 5."/>
       <property name="ConnectionEvidence" value="v0.9.20: U6.5-U6.2 measured 1 ohm (B28). User annotation also joins physical L2/native5 to R37 upper/model2 and empty U6A single/native1. U6.4/L1 marked NC by user and appears as an isolated surface stub in original photos. Candidate pin5 is internally NC but externally tied to VIN; pin4 remains unused."/>
-      <property name="CurrentEvidence" value="C2NM supports candidate S-812C33AMC: pin1 VSS, pin2 VIN, pin3 VOUT, pins4/5 internally NC. Pin5 is externally tied to pin2 at 1 ohm (B28); pin4 is intentionally unused by user/photo evidence. R37 input branch and J3.1 output remain modeled; actual output voltage and fitted identity are not proved by the candidate datasheet."/>
+      <property name="CurrentEvidence" value="C2NM supports S-812C33AMC candidate: pin1 VSS, pin2 VIN, pin3 VOUT, pin4/5 internally NC. B28 establishes external pin5-pin2 at 1 ohm; pin4 supported unused. B58 measured output at J3.1 as 3.3 V with PIR fitted. Transients and exact fitted identity remain unverified."/>
       <property name="OriginalReference" value="U6"/>
-      <property name="Evidence" value="C2NM supports candidate S-812C33AMC: pin1 VSS, pin2 VIN, pin3 VOUT, pins4/5 internally NC. Pin5 is externally tied to pin2 at 1 ohm (B28); pin4 is intentionally unused by user/photo evidence. R37 input branch and J3.1 output remain modeled; actual output voltage and fitted identity are not proved by the candidate datasheet."/>
+      <property name="Evidence" value="C2NM supports S-812C33AMC candidate: pin1 VSS, pin2 VIN, pin3 VOUT, pin4/5 internally NC. B28 establishes external pin5-pin2 at 1 ohm; pin4 supported unused. B58 measured output at J3.1 as 3.3 V with PIR fitted. Transients and exact fitted identity remain unverified."/>
       <property name="LibraryPolicy" value="User-authorized datasheet symbol created through KiCad MCP"/>
       <property name="FootprintConfidence" value="datasheet/package candidate"/>
       <property name="FootprintBasis" value="Existing assignment; see component identity evidence."/>

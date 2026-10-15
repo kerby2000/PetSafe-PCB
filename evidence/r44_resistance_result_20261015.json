@@ -1,0 +1,24 @@
+{
+  "date": "2026-10-15",
+  "measurement": {
+    "id": "B83",
+    "group": "r44-resistance",
+    "to": "B4",
+    "mode": "resistance",
+    "unit": "ohms / kohms / OL; steady or changing",
+    "state": "Unpowered; all components fitted",
+    "purpose": "Check the effective resistance across R44 before interpreting the unexplained 516-ohm OUTA-to-presumed-gate report.",
+    "from": "A4",
+    "date": "2026-10-15",
+    "issue": "E09",
+    "result": "15 kohm",
+    "resistance_ohms": 15000,
+    "stability": null,
+    "shorted_probe_ohms": null,
+    "source_worksheet_revision": "v0.9.42",
+    "raw_user_statement": "PetSafe R44: test the unexplained Q1 gate-path resistance / v0.9.42\nB83 red A4 / black B4 (Unpowered; all components fitted): 15kOhm"
+  },
+  "assessment": "The in-circuit 15-kohm reading supports the 18C/15-kohm interpretation for R44. Stability and probe baseline were not reported. This does not prove isolated value, tolerance or Q1 pin roles. It leaves B61 TP14-to-Q1.R = 516 ohm unexplained by the settled insulated-gate model. Preserve both reports; do not merge nets or declare a failed device.",
+  "status": "R44_VALUE_SUPPORTED_GATE_PATH_CONFLICT_OPEN",
+  "electrical_change": false
+}

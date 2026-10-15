@@ -1,7 +1,7 @@
 {
   "date": "2026-10-15",
-  "review_revision": "v0.9.41",
-  "basis_revision": "v0.9.41",
+  "review_revision": "v0.9.42",
+  "basis_revision": "v0.9.42",
   "scope": "Current main-board finishing register. Supported connections and completed measurements are recorded in the current model; resolved issues are archived. Remaining hidden paths, candidate identities, values and operating behavior are listed below.",
   "rails": [
     {
@@ -49,7 +49,7 @@
       ],
       "priority": 1,
       "state": "open",
-      "known": "C5/C6 and Q8 source/ground/outer-drain joins supported. U2/C7 supply now fed from H_RF_VDD through R5 (22 ohm): local and endpoint readings B78-B81 support this route. U2 supply = 6.3 V; direct difference to printed VDD = +1.8 V rejects old VDD tie. Q8 output-to-ANT1 accepted from visible copper and compatible B82 4.5-ohm reading with antenna fitted. Rest gate-source voltages: P=0 V, N=+6.3 V.",
+      "known": "C5/C6 and Q8 source/ground/outer-drain joins supported. U2/C7 supply now fed from H_RF_VDD through R5 (22 ohm): local and endpoint readings B78-B81 support this route. U2 supply = 6.3 V; direct difference to printed VDD = +1.8 V rejects old VDD tie. Q8 output-to-ANT1 accepted from visible copper and compatible B82 4.5-ohm reading with antenna fitted. Rest gate-source voltages: P=0 V, N=+6.3 V. TI lists C14R among the DBV candidate markings; absolute maximum VCC is 6.5 V, distinct from the 5.5-V recommended maximum.",
       "unknown": "Exact U2 identity and compatibility with measured 6.3 V remain unresolved; candidate SN74LVC2G14 recommended supply maximum is 5.5 V. Q8 switching margin, timing and RF waveform validation are deferred by owner. B82 alone is not a zero-ohm proof; output route is photo-supported.",
       "next_action": "Finish non-scope schematic items first. Review U2 fitted identification and candidate ratings from marking/datasheet evidence. Owner has an oscilloscope but explicitly defers waveform measurements until later.",
       "closed_when": "U2 identity and voltage compatibility resolved; RF operating waveform validation recorded separately when the owner resumes scope work. Local RF supply/output drawing is corrected; unknown C6/C7 values remain V01.",
@@ -75,7 +75,8 @@
         "evidence/u2_c7_feed_results_20261015.json",
         "evidence/r5_supply_feed_results_20261015.json",
         "evidence/q8_output_antenna_result_20261015.json",
-        "evidence/u2_r5_topology_correction_v0940.json"
+        "evidence/u2_r5_topology_correction_v0940.json",
+        "evidence/circuit_consistency_v0942.json"
       ],
       "owner": "Agent evidence review; targeted owner test only as listed",
       "category": "connectivity/behavior"
@@ -251,9 +252,9 @@
       ],
       "priority": 2,
       "state": "open",
-      "known": "VSYS/RF 6.3 V, printed VDD 4.5 V, PIR supply 3.3 V with PIR attached; VREF 0 V and red LED approximately 1 Hz. TP14 is now established on U5.8/OUTA at 1.5 ohm; R43.2/V015 follows its existing TP14 association. BATTERY+ stays separate. TP14-Q1 gate measured 516 ohm. B62: receiver TP5 supply is 0.066 V; this may explain absent VREF bias without implying a ground short.",
-      "unknown": "Q1 control behavior, motor-output states, the path giving 516 ohm from OUTA to Q1 gate, zero VREF and the red-flashing state remain unresolved. R3/R4/C28-to-RB3 functional role is inferred.",
-      "next_action": "Retain established battery, VSYS, VDD, TP14/OUTA and receiver supply measurements. No repeat Q8 resting gate checks. Dynamic Q1/motor behavior and blinking-cause diagnosis are separate later functional checks; 516-ohm OUTA-to-gate path remains documented, not a copper tie.",
+      "known": "VSYS/RF 6.3 V, printed VDD 4.5 V, PIR supply 3.3 V with PIR attached; VREF 0 V and red LED approximately 1 Hz. TP14 is now established on U5.8/OUTA at 1.5 ohm; R43.2/V015 follows its existing TP14 association. BATTERY+ stays separate. TP14-Q1 gate measured 516 ohm. B62: receiver TP5 supply is 0.066 V; this may explain absent VREF bias without implying a ground short. B83 measured R44 directly as 15 kohm in circuit, supporting its marked value.",
+      "unknown": "The 516-ohm OUTA-to-presumed-gate result is not explained by the drawn isolated MOSFET gate whose only external DC path is R44 (15 kohm). Reading stability, fitted Q1 pin roles, and possible parallel paths remain unverified; R44 in-circuit resistance supports 15 kohm but does not establish its isolated tolerance. Q1/motor dynamics and R3/R4/C28 sensing role remain qualified.",
+      "next_action": "B84/B85: recheck TP14 to Q1 upper-right contact in both probe directions, waiting about 10 seconds per reading. Report settled resistance or changing. R44 itself is now measured 15 kohm; this targeted repeat resolves the older unexplained 516-ohm report. All components stay fitted; scope work remains deferred.",
       "closed_when": "Actual supply levels and control behavior are recorded without merging battery, VSYS or filtered branches.",
       "open_pads": [],
       "nets": [
@@ -271,7 +272,9 @@
         "evidence/supply_baseline_results_20261014.json",
         "evidence/product_manual_led_review_20261014.json",
         "evidence/tp14_motor_output_correction_v0939.json",
-        "evidence/receiver_supply_results_20261014.json"
+        "evidence/receiver_supply_results_20261014.json",
+        "evidence/circuit_consistency_v0942.json",
+        "evidence/r44_resistance_result_20261015.json"
       ],
       "owner": "Agent evidence review; targeted owner test only as listed",
       "category": "connectivity/behavior"
@@ -427,7 +430,7 @@
         "I01"
       ],
       "summary": "RF feed/output wiring, switch contacts and front-bank ANT2 routing are supported. Candidate device roles remain unresolved. TP11/TP17 routes are complete as drawn, with hidden-layer uncertainty retained as a reconstruction limitation. Scope work and component isolation are deferred by owner.",
-      "next_action": "No further RF continuity repeat requested. Oscilloscope available, but waveform checks explicitly deferred by the owner on 2026-10-15. Continue schematic values, identities and package geometry without scope measurements."
+      "next_action": "B84/B85: recheck TP14 to Q1 upper-right contact in both probe directions, waiting about 10 seconds per reading. Report settled resistance or changing. R44 itself is now measured 15 kohm; this targeted repeat resolves the older unexplained 516-ohm report. All components stay fitted; scope work remains deferred."
     },
     {
       "id": "F2",
@@ -503,5 +506,60 @@
       "reopen_when": "A specific unassigned destination, contradictory continuity result, inner-layer image or firmware evidence identifies an onward connection that the current drawing omits.",
       "evidence": "evidence/e06_disposition_v0941.json"
     }
-  ]
+  ],
+  "consistency_review": {
+    "evidence": "evidence/circuit_consistency_v0942.json",
+    "findings": [
+      {
+        "id": "C01",
+        "issue": "E09",
+        "priority": 1,
+        "title": "Q1 gate path: 516 ohm versus the drawn 15-kohm route",
+        "status": "OPEN_CONTRADICTION",
+        "basis": "B61 TP14/OUTA to Q1.R = 516 ohm, with stability unreported. Q1_GATE contains only Q1.R and R44.2; R44 is marked 18C and modeled as 15 kohm. B83 subsequently measured 15 kohm directly across R44 in circuit; stability unreported.",
+        "reasoning": "With a settled, intact insulated MOSFET gate and no omitted conductive path, the external resistance route must include R44. 516 ohm is not explained by that model. In-circuit gate capacitance and the candidate identity prevent treating this as proof of a fault.",
+        "next_action": "B84/B85: recheck TP14 to Q1 upper-right contact in both probe directions, waiting about 10 seconds per reading. Report settled resistance or changing. R44 itself is now measured 15 kohm; this targeted repeat resolves the older unexplained 516-ohm report. All components stay fitted; scope work remains deferred."
+      },
+      {
+        "id": "C02",
+        "issue": "E03",
+        "priority": 1,
+        "title": "U2 operates above the candidate recommended supply range",
+        "status": "OPEN_RATING_CONFLICT",
+        "basis": "B76 U2 supply 6.3 V and B77 U2-minus-VDD +1.8 V. TI lists C14R for SN74LVC2G14DBV; recommended VCC max 5.5 V and absolute maximum 6.5 V.",
+        "reasoning": "The marking supports the candidate but does not uniquely prove fitted identity. The 0.8 V excess over the recommended maximum is unresolved; being below an absolute maximum does not establish normal operation or reliability. R5 limits current; its 22-ohm value does not regulate voltage.",
+        "next_action": "Keep the original rail mapping and candidate qualification. Dynamic supply/drop checks belong to the deferred scope session; do not substitute a part or reconnect VDD on this evidence."
+      },
+      {
+        "id": "C03",
+        "issue": "E04",
+        "priority": 2,
+        "title": "Q3 family and pin roles remain disputed",
+        "status": "OPEN_DEVICE_MODEL",
+        "basis": "2H supports a PNP MMBTA55 candidate, but Q3 diode readings do not establish its presumed base junctions.",
+        "reasoning": "A fitted network can influence diode mode. Neither a PNP-to-NPN/MOSFET swap nor a copper change is justified.",
+        "next_action": "Leave Q3 fitted. Preserve the disputed model and qualify tuning calculations until device behavior and critical capacitances are known."
+      },
+      {
+        "id": "C04",
+        "issue": "E10",
+        "priority": 2,
+        "title": "D6 has measured polarity but unknown reverse breakdown",
+        "status": "OPEN_PROGRAMMING_COMPATIBILITY",
+        "basis": "A=GND, K=VPP; forward about 0.7 V, reverse OL. G3 has multiple candidate identities. PIC high-voltage entry specification is 8-9 V.",
+        "reasoning": "An unmeasured 3.9-V or 2.4-V candidate is not a recovered rating. The native label now says Vbr TBD; source candidates remain in the evidence.",
+        "next_action": "No repeat diode-mode check and no breakdown test through the PIC. Keep identity/ICSP compatibility open with the component fitted."
+      },
+      {
+        "id": "C05",
+        "issue": "E08",
+        "priority": 2,
+        "title": "Receiver DC readings do not establish one simultaneous operating state",
+        "status": "OPEN_BEHAVIOR",
+        "basis": "TP5 = 0.066 V; VREF = 0 V. Earlier R19 end readings were 0 and 4.5 V, but later direct Q7 QR-QL was 0 V.",
+        "reasoning": "Do not subtract separate readings taken at different times to diagnose a failed junction. The two 10-kohm VREF divider resistors imply half the receiver rail only under negligible loading and steady conditions.",
+        "next_action": "Retain the latest direct-bias reading; enabled-state and timing checks are deferred, with no repeated DC batch now."
+      }
+    ]
+  }
 }
