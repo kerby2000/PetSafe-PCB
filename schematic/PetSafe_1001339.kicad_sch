@@ -15458,13 +15458,7 @@
 					(size 1 1)
 				) hide)
 		)
-		(property "Evidence" "Photo reconstruction; individual net evidence in reconstruction.json"
-			(at 381.0 200.66 0)
-			(effects
-				(font
-					(size 1 1)
-				) hide)
-		)
+		(property "Evidence" "SGM8542 marking; pin5/VREF and visible feedback retained. C20.2-U3.3 and C19.1-U3.3 both report 1.023 Mohm; neither is direct copper. Pin3 external signal/DC-bias feed remains unresolved." (at 381.0 200.66 0) (effects (font (size 1 1)) hide))
 		(property "LibraryPolicy" "Unmodified KiCad 10 stock symbol"
 			(at 381.0 200.66 0)
 			(effects
@@ -15493,7 +15487,9 @@
 					(size 1 1)
 				) hide)
 		)
-	)
+
+    (property "CurrentEvidence" "SGM8542 marking; pin5/VREF and visible feedback retained. C20.2-U3.3 and C19.1-U3.3 both report 1.023 Mohm; neither is direct copper. Pin3 external signal/DC-bias feed remains unresolved." (at 381 200.66 0) (effects (font (size 1 1)) hide))
+  )
 	(symbol
 		(lib_id "Device:C")
 		(at 570.23 185.42 0)
@@ -17830,13 +17826,7 @@
 					(size 1 1)
 				) hide)
 		)
-		(property "Evidence" "Model1-to-U3.3 remains an inherited input connection; model2 ground has V077 owner support. C20 now belongs to a separate measured node; no verified parallel 200-pF load. 100pF* retained."
-			(at 466.09 250.19 0)
-			(effects
-				(font
-					(size 1 1)
-				) hide)
-		)
+		(property "Evidence" "RX-1 lower/model1 to U3.3 = 1.023 Mohm, baseline 1 ohm: inherited direct input join withdrawn. Lower terminal onward route unresolved; upper/model2 ground association retained. 100pF* estimate unchanged." (at 466.09 250.19 0) (effects (font (size 1 1)) hide))
 		(property "LibraryPolicy" "Unmodified KiCad 10 stock symbol"
 			(at 466.09 250.19 0)
 			(effects
@@ -17892,13 +17882,7 @@
 		(property "DesignSeed" "Function-based candidate; circuit validation pending" (at 466.09 250.19 0)
       (effects (font (size 1.27 1.27)) (hide yes))
     )
-		(property "CurrentEvidence" "Model1-to-U3.3 remains an inherited input connection; model2 ground has V077 owner support. C20 now belongs to a separate measured node; no verified parallel 200-pF load. 100pF* retained."
-			(at 466.09 250.19 0)
-			(effects
-				(font
-					(size 1 1)
-				) hide)
-		)
+		(property "CurrentEvidence" "RX-1 lower/model1 to U3.3 = 1.023 Mohm, baseline 1 ohm: inherited direct input join withdrawn. Lower terminal onward route unresolved; upper/model2 ground association retained. 100pF* estimate unchanged." (at 466.09 250.19 0) (effects (font (size 1 1)) hide))
 	)
 	(symbol
 		(lib_id "Device:C")
@@ -17987,13 +17971,7 @@
 					(size 1 1)
 				) hide)
 		)
-		(property "Evidence" "Lower/model2 joins D2.R and R28.2 by 1/1.5-ohm readings; 1.023 Mohm to U3.3 rejects the old parallel/input-node join. Upper/model1 ground remains inherited and unverified. 100pF* retained; old combined-200pF rationale is superseded."
-			(at 445.77 241.3 0)
-			(effects
-				(font
-					(size 1 1)
-				) hide)
-		)
+		(property "Evidence" "Lower/model2 remains D2.R/R28.2. RX-2 upper/model1 to printed GND = 271 kohm, baseline 1 ohm: ground assumption withdrawn; upper route unresolved. 100pF* estimate unchanged." (at 445.77 241.3 0) (effects (font (size 1 1)) hide))
 		(property "LibraryPolicy" "Unmodified KiCad 10 stock symbol"
 			(at 445.77 241.3 0)
 			(effects
@@ -18049,13 +18027,7 @@
 		(property "DesignSeed" "Function-based candidate; circuit validation pending" (at 445.77 241.3 0)
       (effects (font (size 1.27 1.27)) (hide yes))
     )
-		(property "CurrentEvidence" "Lower/model2 joins D2.R and R28.2 by 1/1.5-ohm readings; 1.023 Mohm to U3.3 rejects the old parallel/input-node join. Upper/model1 ground remains inherited and unverified. 100pF* retained; old combined-200pF rationale is superseded."
-			(at 445.77 241.3 0)
-			(effects
-				(font
-					(size 1 1)
-				) hide)
-		)
+		(property "CurrentEvidence" "Lower/model2 remains D2.R/R28.2. RX-2 upper/model1 to printed GND = 271 kohm, baseline 1 ohm: ground assumption withdrawn; upper route unresolved. 100pF* estimate unchanged." (at 445.77 241.3 0) (effects (font (size 1 1)) hide))
 	)
 	(symbol
 		(lib_id "Connector:TestPoint")
@@ -24878,13 +24850,7 @@
 					(size 1 1)
 				) hide)
 		)
-		(property "Evidence" "10k from marking. Model2 joins printed VDD through V063/V064; model1 remains on the inferred Q2 base/R38 node. PIR output TP16/Q2.S to PIC21 is confirmed; transistor pin functions remain unverified. Unsupported R33 pull-up withdrawn."
-			(at 391.16 355.6 0)
-			(effects
-				(font
-					(size 1 1)
-				) hide)
-		)
+		(property "Evidence" "10k from marking. IMG_2425 shows R39.1 (end nearest TP16) directly joining TP16/Q2.S/PIC21, not Q2.R/R38.2. R39.2 remains on printed VDD through V063/V064. Output pull-up under the candidate NPN interpretation; Q2 terminal functions remain qualified." (at 391.16 355.6 0) (effects (font (size 1 1)) hide))
 		(property "LibraryPolicy" "Unmodified KiCad 10 stock symbol"
 			(at 391.16 355.6 0)
 			(effects
@@ -26621,13 +26587,7 @@
 					(size 1 1)
 				) hide)
 		)
-		(property "Evidence" "Photo reconstruction; individual net evidence in reconstruction.json"
-			(at 485.14 200.66 0)
-			(effects
-				(font
-					(size 1 1)
-				) hide)
-		)
+		(property "Evidence" "SGM8542 marking; pin5/VREF and visible feedback retained. C20.2-U3.3 and C19.1-U3.3 both report 1.023 Mohm; neither is direct copper. Pin3 external signal/DC-bias feed remains unresolved." (at 485.14 200.66 0) (effects (font (size 1 1)) hide))
 		(property "LibraryPolicy" "Unmodified KiCad 10 stock symbol"
 			(at 485.14 200.66 0)
 			(effects
@@ -26656,7 +26616,9 @@
 					(size 1 1)
 				) hide)
 		)
-	)
+
+    (property "CurrentEvidence" "SGM8542 marking; pin5/VREF and visible feedback retained. C20.2-U3.3 and C19.1-U3.3 both report 1.023 Mohm; neither is direct copper. Pin3 external signal/DC-bias feed remains unresolved." (at 485.14 200.66 0) (effects (font (size 1 1)) hide))
+  )
 	(symbol
 		(lib_id "Amplifier_Operational:Opamp_Dual")
 		(at 557.53 185.42 0)
@@ -26744,13 +26706,7 @@
 					(size 1 1)
 				) hide)
 		)
-		(property "Evidence" "Photo reconstruction; individual net evidence in reconstruction.json"
-			(at 557.53 185.42 0)
-			(effects
-				(font
-					(size 1 1)
-				) hide)
-		)
+		(property "Evidence" "SGM8542 marking; pin5/VREF and visible feedback retained. C20.2-U3.3 and C19.1-U3.3 both report 1.023 Mohm; neither is direct copper. Pin3 external signal/DC-bias feed remains unresolved." (at 557.53 185.42 0) (effects (font (size 1 1)) hide))
 		(property "LibraryPolicy" "Unmodified KiCad 10 stock symbol"
 			(at 557.53 185.42 0)
 			(effects
@@ -26779,7 +26735,9 @@
 					(size 1 1)
 				) hide)
 		)
-	)
+
+    (property "CurrentEvidence" "SGM8542 marking; pin5/VREF and visible feedback retained. C20.2-U3.3 and C19.1-U3.3 both report 1.023 Mohm; neither is direct copper. Pin3 external signal/DC-bias feed remains unresolved." (at 557.53 185.42 0) (effects (font (size 1 1)) hide))
+  )
 	(symbol
 		(lib_id "Connector_Generic:Conn_01x03")
 		(at 556.26 251.46 0)
@@ -28173,28 +28131,8 @@
 				) hide)
 		)
 	)
-	(text "Antenna: 500 uH reported; RF seed 134.2 kHz. Ideal switches; weights/order unverified."
-		(exclude_from_sim no)
-		(at 433.07 346.71 0)
-		(effects
-			(font
-				(size 0.762 0.762)
-			)
-			(justify left bottom)
-		)
-		(uuid "c0fbedca-3a26-4daf-a7d6-57b293e02081")
-	)
-	(text "Proposed voltage, dielectric, tolerance and evidence are in capacitor properties."
-		(exclude_from_sim no)
-		(at 433.07 351.79 0)
-		(effects
-			(font
-				(size 0.762 0.762)
-			)
-			(justify left bottom)
-		)
-		(uuid "9d7b943c-49dd-4346-b974-5c2bc0334a40")
-	)
+
+
 	(sheet_instances
 		(path "/"
 			(page "1")
@@ -30005,16 +29943,7 @@
 		)
 		(uuid "72170deb-1c9a-4731-84df-32524cd970ab")
 	)
-	(text "v0.9.46 | KiCad 10.0.5 | 2026-10-15"
-		(at 514.35 370.84000000000003 0)
-		(effects
-			(font
-				(size 0.8255 0.8255)
-			)
-			(justify left)
-		)
-		(uuid "a71a8b29-dcd1-4003-a493-98564fffb4cd")
-	)
+
 	(text "LED1 RED: R30 / PIC23 / pin1; GREEN: R31 / PIC22 / pin2."
 		(at 194.31 260.35 0)
 		(effects
@@ -30085,16 +30014,7 @@
 		)
 		(uuid "c11a372d-46ba-4e54-89be-ba1e3a42b8f8")
 	)
-	(text "D2/C20 lower/R28.2 separate from U3.3: 1.023 Mohm measured. C20 upper route unverified."
-		(at 444.5 256.54 0)
-		(effects
-			(font
-				(size 0.762 0.762)
-			)
-			(justify left)
-		)
-		(uuid "72cc7e38-59b6-44be-a673-e83786c49152")
-	)
+
 	(text "User: U3 pin5 / V079 / V080 = VREF (1 ohm); TP6 remains separate across C18."
 		(at 365.76 267.97 0)
 		(effects
@@ -33855,16 +33775,7 @@
 		)
 		(uuid "2ec4cd8f-281a-4b53-807d-b8396f173516")
 	)
-	(wire
-		(pts
-			(xy 360.68 198.12) (xy 360.68 236.22)
-		)
-		(stroke
-			(width 0)
-			(type default)
-		)
-		(uuid "6c03eefa-5fdb-484a-bf82-9b3e6c009933")
-	)
+
 	(wire
 		(pts
 			(xy 360.68 198.12) (xy 373.38 198.12)
@@ -33875,36 +33786,9 @@
 		)
 		(uuid "9b67416a-ee2e-4b86-9832-e7a3bda25a69")
 	)
-	(wire
-		(pts
-			(xy 360.68 236.22) (xy 439.42 236.22)
-		)
-		(stroke
-			(width 0)
-			(type default)
-		)
-		(uuid "3562c04e-86f1-4693-8217-90f2d9be2161")
-	)
-	(wire
-		(pts
-			(xy 439.42 236.22) (xy 439.42 250.19)
-		)
-		(stroke
-			(width 0)
-			(type default)
-		)
-		(uuid "202674fd-c797-4b5d-b994-c640b2f0b396")
-	)
-	(wire
-		(pts
-			(xy 439.42 250.19) (xy 445.77 250.19)
-		)
-		(stroke
-			(width 0)
-			(type default)
-		)
-		(uuid "43e7590e-5141-40a8-8efa-85d07d1434e7")
-	)
+
+
+
 	(wire
 		(pts
 			(xy 445.77 245.11) (xy 548.64 245.11)
@@ -35647,16 +35531,7 @@
 		)
 		(uuid "2d5267d0-2f76-4290-a901-d03ed3cd6185")
 	)
-	(label "GND"
-		(at 440.69 237.49 0)
-		(effects
-			(font
-				(size 0.762 0.762)
-			)
-			(justify left bottom)
-		)
-		(uuid "71876669-bf8d-4c7b-b1fb-2bb59d712b5c")
-	)
+
 	(label "PIC_RA1_RX_REF"
 		(at 346.71 212.09 0)
 		(effects
@@ -36897,13 +36772,7 @@
 		)
 		(uuid "51aa9962-c90e-4f08-9f31-0ccafe163e5b")
 	)
-	(title_block
-		(title "PetSafe 100-1339 R03 A | single-sheet reconstruction")
-		(date "2026-10-15")
-		(rev "0.9.46")
-		(company "KiCad 10 libraries + four datasheet symbols | MCP authoring")
-		(comment 1 "44 starred capacitor estimates; antenna reported 500uH; RF weights unverified.")
-	)
+
 	(wire
 		(pts
 			(xy 368.3 340.36) (xy 391.16 340.36)
@@ -36930,16 +36799,7 @@
 		(color 0 0 0 0)
 		(uuid "a828d78d-33fa-4415-b254-0055bffa119e")
 	)
-	(wire
-		(pts
-			(xy 391.16 359.41) (xy 387.35 359.41)
-		)
-		(stroke
-			(width 0)
-			(type default)
-		)
-		(uuid "845c84d9-5e12-4b1b-9ac6-f869d95a87c5")
-	)
+
 	(label "D2_C20"
 		(at 488.95 245.11 0)
 		(effects
@@ -36959,5 +36819,112 @@
 			(justify right bottom)
 		)
 		(uuid "081eacf9-c5db-44fe-9bd6-6087fe520fc8")
+	)
+
+	(text "v0.9.47 | KiCad 10.0.5 | 2026-10-15"
+		(at 514.35 370.84000000000003 0)
+		(effects
+			(font
+				(size 0.8255 0.8255)
+			)
+			(justify left)
+		)
+		(uuid "e75048f8-476c-4a49-845c-f33d29b86c2b")
+	)
+
+	(text "Antenna: 500 uH reported; RF seed 134.2 kHz. Ideal switches; weights/order unverified."
+		(at 433.07 346.71 0)
+		(effects
+			(font
+				(size 0.762 0.762)
+			)
+			(justify left)
+		)
+		(uuid "d129e45a-02e1-4fd8-b533-8c96101b5d7d")
+	)
+
+	(text "Proposed voltage, dielectric, tolerance and evidence are in capacitor properties."
+		(at 433.07 351.79 0)
+		(effects
+			(font
+				(size 0.762 0.762)
+			)
+			(justify left)
+		)
+		(uuid "c60c8415-cf23-4b6e-abeb-314e7c8e8639")
+	)
+
+	(text "RX-1/RX-2: C19 lower != U3.3; C20 upper != GND. Both onward routes unresolved."
+		(at 444.5 256.54 0)
+		(effects
+			(font
+				(size 0.762 0.762)
+			)
+			(justify left)
+		)
+		(uuid "382476d3-c286-43ff-9665-06c1dc32280c")
+	)
+
+	(text "U3 pin3 external signal/DC-bias feed unresolved; isolated labels are NOT intentional NCs."
+		(at 444.5 260.35 0)
+		(effects
+			(font
+				(size 0.762 0.762)
+			)
+			(justify left)
+		)
+		(uuid "91a89da1-05b2-4a98-88d6-174544be8846")
+	)
+
+	(wire
+		(pts
+			(xy 387.35 359.41) (xy 391.16 359.41)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "b8585618-5884-4d3d-9406-4b42c03772c7")
+	)
+
+	(label "C20_UPPER"
+		(at 440.69 237.49 0)
+		(effects
+			(font
+				(size 0.762 0.762)
+			)
+			(justify left bottom)
+		)
+		(uuid "26eb2203-b3c9-4805-a894-e146859c1e27")
+	)
+
+	(label "RX_A_PLUS"
+		(at 360.68 198.12 0)
+		(effects
+			(font
+				(size 0.762 0.762)
+			)
+			(justify left bottom)
+		)
+		(uuid "40b595b2-8a42-44dd-bfde-10a244bc2859")
+	)
+
+	(label "C19_LOWER"
+		(at 445.77 250.19 0)
+		(effects
+			(font
+				(size 0.762 0.762)
+			)
+			(justify left bottom)
+		)
+		(uuid "bebdde6e-ca25-40c6-a269-f3dfafa7ca2b")
+	)
+
+	(title_block
+		(title "PetSafe 100-1339 R03 A | single-sheet reconstruction")
+		(date "2026-10-15")
+		(rev "0.9.47")
+		(company "KiCad 10 libraries + four datasheet symbols | MCP authoring")
+		(comment 1 "44 starred capacitor estimates; antenna reported 500uH; RF weights unverified.")
 	)
 )

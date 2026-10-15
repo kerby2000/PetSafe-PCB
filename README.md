@@ -1,8 +1,8 @@
 # PetSafe PCB reverse engineering
 
-**PetSafe PPA19-16811 · 100-1339 R03 A · schematic v0.9.46**
+**PetSafe PPA19-16811 · 100-1339 R03 A · schematic v0.9.47**
 
-One A2 main-board schematic, reconstructed from original photographs and owner measurements. 83 modeled net partitions agree with KiCad; device functions and physical-evidence coverage remain qualified. **There is no routed reproduction PCB.**
+One A2 main-board schematic, reconstructed from original photographs and owner measurements. 85 modeled net partitions agree with KiCad; device functions and physical-evidence coverage remain qualified. **There is no routed reproduction PCB.**
 
 ## Current schematic
 
@@ -10,7 +10,7 @@ One A2 main-board schematic, reconstructed from original photographs and owner m
 
 [![Current native schematic preview](output/svg/PetSafe_1001339.svg)](output/pdf/PetSafe_single_sheet.pdf)
 
-All **44 starred capacitor values are estimates**, preserved with their basis and proposed ratings. C5 and the recorded inductor measurements remain unchanged. The single **U6/U6A regulator-output ERC conflict is deliberately retained**. File consistency is not proof of complete hardware connectivity.
+All **44 starred capacitor values are estimates**, preserved with their basis and proposed ratings. C5 and the recorded inductor measurements remain unchanged. The **U6/U6A regulator-output ERC conflict is deliberately retained**; four additional receiver findings expose U3.3 undriven and three isolated endpoints after the measured separations. File consistency is not proof of complete hardware connectivity.
 
 ## Actual physical PCB
 
@@ -35,7 +35,7 @@ The [full Markdown register](docs/OPEN_ITEMS.md), [HTML checklist](docs/FINISHIN
 | [M01](docs/OPEN_ITEMS.md#m01) | LED footprint and mechanical qualification | Reproduction/package |
 | [E11](docs/OPEN_ITEMS.md#e11) | Inherited copper joins without independent closure | Copper connection; evidence coverage |
 
-TP11/TP17 hidden continuations remain a separately documented reconstruction boundary. E11 receiver split corrected from three readings: C20 lower joins D2.R/R28.2, not U3.3 or TP7 directly. No further bench reading requested for this correction; scope and lifting remain deferred. Package geometry, routing/stackup, external assemblies and firmware remain prerequisites for a working reproduction.
+TP11/TP17 hidden continuations remain a separately documented reconstruction boundary. No pending readings. RX-3 (U3 native pin3 to TP7) is deferred by owner request on 2026-10-15; it has not been measured. RX-1/RX-2 and the earlier C20-lower checks are completed and must not be repeated. Package geometry, routing/stackup, external assemblies and firmware remain prerequisites for a working reproduction.
 
 ## Evidence and rebuild
 

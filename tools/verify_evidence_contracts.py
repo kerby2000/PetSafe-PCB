@@ -291,6 +291,15 @@ for row in receiver_input['measurements']:
     completed_ids.add(row['id'])
 assert net('C20.2')==net('D2.R')==net('R28.2')!=net('U3.3')
 assert net('C20.2')!=net('TP7.1')==net('R28.1')
+round2=receiver_input['round2']
+assert round2['shorted_probe_ohms']==1 and round2['settling_or_drift'] is None
+assert [(r['id'],r['resistance_ohms']) for r in round2['measurements']]==[('RX-1',1023000),('RX-2',271000)]
+for row in round2['measurements']:
+    saved=next(r for r in queue['completed_tests'] if r['id']==row['id'])
+    assert saved['resistance_ohms']==row['resistance_ohms'] and saved['shorted_probe_ohms']==1
+    assert saved['settling'] is None
+    assert net(row['pair'][0])!=net(row['pair'][1])
+    completed_ids.add(row['id'])
 assert {r['id'] for r in queue['completed_tests']}==completed_ids
 assert not completed_ids&{r['id'] for r in queue['tests']}, 'Do not repeat completed finishing readings'
 for ref in ['U4','R11','R14','R15','R16','R37','R39','Q1','U2','Q8','C5','LED1','R18','R19','Q7','TP3','TP104','U106','J3','R43','TP14','R42','R44','TP4','TP103','R21','R22','R23','R48']:
@@ -298,7 +307,7 @@ for ref in ['U4','R11','R14','R15','R16','R37','R39','Q1','U2','Q8','C5','LED1',
  assert xml.findtext(f'./components/comp[@ref="{ref}"]/fields/field[@name="ViaEvidence"]')==expected,ref
 status_pdf=PdfReader(R/'output/pdf/PetSafe_completion_status.pdf')
 # Status is a living report: validate content, not the historical two-page layout.
-status_text='\n'.join(p.extract_text() for p in status_pdf.pages)
+status_text=' '.join('\n'.join(p.extract_text() for p in status_pdf.pages).split())
 assert 'Remaining schematic work' in status_text
 assert 'Documented reconstruction limitations' in status_text and 'E06 -' in status_text
 assert 'physical completeness unproved' in status_text

@@ -2,7 +2,7 @@
 from pathlib import Path
 import json,subprocess,xml.etree.ElementTree as ET
 import sexpdata as sx
-from inventory_contracts import with_receiver_input_split
+from inventory_contracts import with_receiver_input_split, with_receiver_input_split_v0946, with_receiver_capacitor_separations
 R=Path(__file__).resolve().parents[1]
 def read(p):return json.loads((R/p).read_text(encoding='utf-8'))
 rec=read('evidence/receiver_input_correction_v0946.json')
@@ -19,7 +19,12 @@ def one(x,t):return next((a for a in x if tag(a)==t),None)
 def wire(x):return frozenset(tuple(float(v) for v in a[1:]) for a in one(x,'pts') if tag(a)=='xy')
 def key(x):return sx.dumps([a for a in x if tag(a)!='uuid'])
 path='schematic/PetSafe_1001339.kicad_sch'
-before=sx.loads(old(path));after=sx.loads((R/path).read_text(encoding='utf-8'))
+before=sx.loads(old(path))
+caprec=read('evidence/receiver_input_correction_v0947.json')
+frozen=lambda p:subprocess.check_output(['git','show',caprec['baseline_commit']+':'+p],cwd=R).decode('utf-8')
+after=sx.loads(frozen(path))
+live=sx.loads((R/path).read_text(encoding='utf-8'))
+assert parts(json.loads(frozen('evidence/reconstruction.json')))==with_receiver_input_split_v0946(parts(b))
 removed={frozenset(tuple(p) for p in w) for w in rec['native_removed_wire_segments']}
 assert {wire(x) for x in after if tag(x)=='wire'}=={wire(x) for x in before if tag(x)=='wire'}-removed
 for t in ['lib_symbols','symbol','no_connect','polyline']:
@@ -34,12 +39,25 @@ for tree in [before,after]:
     assert all(x[1]!='D2_C20' for x in tree if tag(x)=='global_label')
 points=lambda tree:{tuple(one(x,'at')[1:3]) for x in tree if tag(x)=='junction'}
 assert points(after)==points(before)-{tuple(p) for p in rec['native_removed_junctions']}
+# Live geometry proof is bounded independently of the frozen v0.9.46 split.
+cap_removed={frozenset(tuple(p) for p in w) for w in caprec['native_removed_wire_segments']}
+assert {wire(x) for x in live if tag(x)=='wire'}=={wire(x) for x in after if tag(x)=='wire'}-cap_removed
+for t in ['lib_symbols','symbol','no_connect','polyline']:assert invariant(after)==invariant(live),t
+assert points(live)==points(after)
+label_positions=lambda tree:{(x[1],tuple(one(x,'at')[1:3])) for x in tree if tag(x)=='label'}
+added={(x['net'],tuple(x['position'])) for x in caprec['native_added_labels']}
+removed_labels={(x['net'],tuple(x['position'])) for x in caprec['native_removed_labels']}
+assert label_positions(live)==(label_positions(after)-removed_labels)|added
 xml=ET.parse(R/'output/PetSafe_netlist.xml')
 members={n.attrib['ref']+'.'+n.attrib['pin']:net.attrib['name'] for net in xml.findall('./nets/net') for n in net.findall('node')}
 native=lambda e:members[m['native_pin_crosswalk'].get(e,e)]
 assert native('C20.2')==native('D2.R')==native('R28.2')
 assert native('C20.2')!=native('U3.3') and native('C20.2')!=native('TP7.1')
 assert native('R28.1')==native('TP7.1')==native('U4.3')
-result=dict(result='PASS',revision=m['revision'],baseline_commit=rec['baseline_commit'],allowed_split=rec['after'],all_other_partitions='UNCHANGED',native_geometry='Only three removed wire segments, two removed junctions and two new labels',values_pin_maps_population='UNCHANGED',new_resistors=0,remaining='C19.1-U3.3 and C20.1-GND qualified; full onward path not established')
+assert native('C19.1')!=native('U3.3')
+assert native('C20.1')!=native('GND.1')
+for endpoint in ['C19.1','C20.1','U3.3']:
+    assert [p for p,n in members.items() if n==native(endpoint)]==[m['native_pin_crosswalk'].get(endpoint,endpoint)]
+result=dict(result='PASS',revision=m['revision'],baseline_commit=rec['baseline_commit'],allowed_split=rec['after'],all_other_partitions='UNCHANGED',native_geometry='Frozen v0.9.46 split preserved; live RX-1/RX-2 change removes four segments and relabels three isolated endpoints',live_allowed_split=caprec['after'],values_pin_maps_population='UNCHANGED',new_resistors=0,remaining='U3.3, C19.1 and C20.1 onward destinations unresolved; no intentional NC declaration')
 (R/'evidence/receiver_input_validation.json').write_text(json.dumps(result,indent=2)+'\n',encoding='utf-8')
-print('PASS: bounded D2/C20/R28 split; native exclusions and TP7 resistor endpoint; other partitions/values/mappings unchanged.')
+print('PASS: frozen D2/C20/R28 split and live RX-1/RX-2 separations; native singleton endpoints and TP7 resistor path; other partitions/values/mappings unchanged.')
