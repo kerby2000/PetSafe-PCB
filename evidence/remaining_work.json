@@ -493,7 +493,7 @@
       "criterion": "Required values and geometry recovered; exact manufacturer/ratings separated from equivalent design choices. Routed PCB remains a separate deliverable."
     }
   ],
-  "measurement_followup": "Only RX-3: U3 native pin3 to TP7, unpowered resistance. This new pair tests a possible relation to the established PIC-RA1/R28 node. Near-probe resistance supports direct membership; high/OL rejects it under good contact; intermediate or drifting readings do not identify a component. Do not subtract previous fitted readings.",
+  "measurement_followup": "RX-1 (C19 lower/model1 to U3 native pin3) and RX-2 (C20 upper/model1 to printed GND) were the only readings requested for the reviewed receiver-input-round2-20261015 batch. Both are completed: 1.023 Mohm and 271 kohm, respectively, with a 1-ohm probe baseline; do not repeat them. No new capacitor-value measurements are requested. The subsequent existing guide at docs/FINISHING_MEASUREMENTS.html now requests only RX-3: U3 native pin3 to TP7, unpowered resistance. This tests a possible relation to the established PIC-RA1/R28 node. Near-probe resistance supports direct membership; high/OL rejects it under good contact; intermediate or drifting readings do not identify a component. Do not subtract previous fitted readings.",
   "photo_supported_summary": [
     "U6A is DNP: physical L -> U106.3 input after R37; R1 -> U106.2 PIR output; R2 -> U106.1 GND. The retained regulator symbol is a role template, with its intentional ERC conflict.",
     "S1 physical TL/TR -> native1/GND and BL/BR -> native2/H_BUTTON. B38/B39 measured 1 ohm per common pair; B40 OL released and B41 1 ohm pressed. No contact measurement pending.",
