@@ -1,6 +1,6 @@
 # Remaining open items
 
-Current schematic **v0.9.50**. Generated from [the authoritative register](../evidence/remaining_work.json); edit that source, not this view.
+Current schematic **v0.9.51**. Generated from [the authoritative register](../evidence/remaining_work.json); edit that source, not this view.
 
 [Schematic and PCB photographs](../README.md) | [HTML checklist](FINISHING_CHECKLIST.html) | [History and closed findings](history/README.md)
 
@@ -27,8 +27,8 @@ Owner action: none. No pending readings. RX-3 is deferred and unmeasured; comple
 | Category | Device function/rating; operating behaviour |
 | Known | C5/C6 and Q8 source/ground/outer-drain joins supported. U2/C7 supply now fed from H_RF_VDD through R5 (22 ohm): local and endpoint readings B78-B81 support this route. U2 supply = 6.3 V; direct difference to printed VDD = +1.8 V rejects old VDD tie. Q8 output-to-ANT1 accepted from visible copper and compatible B82 4.5-ohm reading with antenna fitted. Rest gate-source voltages: P=0 V, N=+6.3 V. TI lists C14R among the DBV candidate markings; absolute maximum VCC is 6.5 V, distinct from the 5.5-V recommended maximum. |
 | Unresolved claim | Exact U2 identity and compatibility with measured 6.3 V remain unresolved; candidate SN74LVC2G14 recommended supply maximum is 5.5 V. Q8 switching margin, timing and RF waveform validation are deferred by owner. B82 alone is not a zero-ohm proof; output route is photo-supported. |
-| Next Codex action | Photo and device-consistency review completed in TOPOLOGY_AUDIT.md. Keep the measured 6.3 V U2 feed and explicit 5.5 V recommended-limit conflict; no justified device replacement or further copper correction. |
-| Owner input | None now. Scope and component-isolation work are deferred by owner. |
+| Next Codex action | 2026-10-16 manufacturer search compared TI SN74LVC2G14, Nexperia 74HC2G14GV/74HCT2G14GV and onsemi NL27WZ14. No verified combination of C14R marking, six-pin layout and recommended operation at 6.3 V was found. Keep the measured feed and the candidate explicitly qualified; see RECONSTRUCTION.md. |
+| Owner input | None pending. If identification is pursued, the smallest useful input is a clearer complete U2 top marking/manufacturer logo; another continuity reading cannot identify its voltage grade. Scope and component isolation remain deferred. |
 | Closure evidence | U2 identity and voltage compatibility resolved; RF operating waveform validation recorded separately when the owner resumes scope work. Local RF supply/output drawing is corrected; unknown C6/C7 values remain V01. |
 
 Evidence: [remaining_work.json](../docs/history/v0.9.30-before-finalization/evidence/remaining_work.json), [q3_deferred_q8_followup_20261009.json](../evidence/q3_deferred_q8_followup_20261009.json), [q8_supply_result_20261009.json](../evidence/q8_supply_result_20261009.json), [supply_baseline_results_20261014.json](../evidence/supply_baseline_results_20261014.json), [q8_gate_bias_results_20261014.json](../evidence/q8_gate_bias_results_20261014.json), [u2_supply_join_results_20261014.json](../evidence/u2_supply_join_results_20261014.json), [u2_supply_voltage_result_20261014.json](../evidence/u2_supply_voltage_result_20261014.json), [u2_vdd_separation_result_20261014.json](../evidence/u2_vdd_separation_result_20261014.json), [u2_c7_feed_results_20261015.json](../evidence/u2_c7_feed_results_20261015.json), [r5_supply_feed_results_20261015.json](../evidence/r5_supply_feed_results_20261015.json), [q8_output_antenna_result_20261015.json](../evidence/q8_output_antenna_result_20261015.json), [u2_r5_topology_correction_v0940.json](../evidence/u2_r5_topology_correction_v0940.json), [circuit_consistency_v0942.json](../evidence/circuit_consistency_v0942.json), [physical_evidence_review_20261015.json](../evidence/physical_evidence_review_20261015.json), [topology_closure_audit.json](../evidence/topology_closure_audit.json).
@@ -109,7 +109,7 @@ Evidence: [remaining_work.json](../docs/history/v0.9.30-before-finalization/evid
 | Field | Current position |
 |---|---|
 | Category | Physical pin mapping; device function/rating |
-| Known | Manufacturer candidate datasheets and pin tables exist. D2 local wiring is complete; measured R -> S -> L diode behavior supports a series pair. |
+| Known | Manufacturer candidate datasheets and pin tables exist. D2 local wiring is complete; measured R -> S -> L diode behavior supports a series pair. Native D2 now uses a generic two-series-diode equivalent with the original L=1/R=2/S=3 crosswalk; exact 4P identity is still open. |
 | Unresolved claim | Exact fitted identity/ratings remain candidates for D1-D6, Q1-Q8/Q11, U1/U2/U6. The 4P marking alone does not identify three-pin D2; a manufacturer 4P code for a two-pin diode is incompatible. |
 | Next Codex action | Photo and device-consistency review completed in TOPOLOGY_AUDIT.md. D2 series-junction equivalent documented separately from its unchanged physical placeholder. Primary U2/Q3 sources checked; remaining identities stay candidates. |
 | Owner input | None now. Scope and component-isolation work are deferred by owner. |
@@ -151,7 +151,7 @@ Evidence: [remaining_work.json](../docs/history/v0.9.30-before-finalization/evid
 | Field | Current position |
 |---|---|
 | Category | Copper connection; evidence coverage |
-| Known | Owner now identifies U3.3 as VREF; C20 upper/model1 as R42 lower/model2/D3.S; C19 lower/model1 as C20 lower/model2/R28 right/model2/D2.R. C19 upper/model2 remains R29 right/model2/GND. Completed C20-to-U3.3=1.023 Mohm, C20-to-TP7=998 kohm, C20-to-R28 right=1.5 ohm, RX-1=1.023 Mohm and RX-2=271 kohm retain their original meaning. These joins resolve all three isolated receiver endpoints and their four ERC findings without suppressions. Earlier R39, R10/V116 and R2/C4 ground recoveries remain. |
+| Known | Owner now identifies U3.3 as VREF; C20 upper/model1 as R42 lower/model2/D3.S; C19 lower/model1 as C20 lower/model2/R28 right/model2/D2.R. C19 upper/model2 remains R29 right/model2/GND. Completed C20-to-U3.3=1.023 Mohm, C20-to-TP7=998 kohm, C20-to-R28 right=1.5 ohm, RX-1=1.023 Mohm and RX-2=271 kohm retain their original meaning. These joins resolve all three isolated receiver endpoints and their four ERC findings without suppressions. Earlier R39, R10/V116 and R2/C4 ground recoveries remain. Native D2 now uses a generic two-series-diode equivalent with the original L=1/R=2/S=3 crosswalk; exact 4P identity is still open. |
 | Unresolved claim | Remaining undetermined bridges: U1 native3-VIN; R18.2-Q7.L; R20.2 and TP5.1 to C24.1/U3.8; R3.2-R4.1-C28.1; U5.1/C34.1 and J1.VDD to printed VDD; twelve candidate ground groups individually listed in TOPOLOGY_AUDIT.md. Six modeled nets retain incomplete independent evidence groups. Receiver terminal destinations are now reported; circuit operating roles and device identities remain separately qualified. |
 | Next Codex action | Keep the three supported receiver joins and earlier measured separations. Preserve the specifically qualified remaining copper groups and intentional U6A ERC conflict; no new measurement campaign. |
 | Owner input | Owner action: none. No pending readings. RX-3 is deferred and unmeasured; completed RX-1/RX-2 and earlier C20 checks are not repeated. |

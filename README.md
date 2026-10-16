@@ -1,8 +1,8 @@
 # PetSafe PCB reverse engineering
 
-**PetSafe PPA19-16811 · 100-1339 R03 A · schematic v0.9.50**
+**PetSafe PPA19-16811 · 100-1339 R03 A · schematic v0.9.51**
 
-One A3 portrait main-board schematic, reconstructed from original photographs and owner measurements. 82 modeled net partitions agree with KiCad; device functions and physical-evidence coverage remain qualified. **There is no routed reproduction PCB.**
+One A3 landscape main-board schematic, reconstructed from original photographs and owner measurements. 82 modeled net partitions agree with KiCad; device functions and physical-evidence coverage remain qualified. **There is no routed reproduction PCB.**
 
 ## Current schematic
 
@@ -20,7 +20,7 @@ These mosaics contain original photographic pixels. The rear is **mirrored and a
 
 ## Open items
 
-The [full Markdown register](docs/OPEN_ITEMS.md) and [HTML checklist](docs/FINISHING_CHECKLIST.html) reflect [remaining_work.json](evidence/remaining_work.json). The [printable PDF](output/pdf/PetSafe_completion_status.pdf) is an offline snapshot and may predate the live register.
+The [full Markdown register](docs/OPEN_ITEMS.md) and [HTML checklist](docs/FINISHING_CHECKLIST.html) reflect [remaining_work.json](evidence/remaining_work.json). The duplicate completion PDF is retired; use the HTML checklist for current status.
 
 | ID | Area | Category |
 |---|---|---|
@@ -49,6 +49,6 @@ $env:PYTHONUTF8 = '1'
 ./tools/refresh_review.ps1 -Python python
 ```
 
-The normal build exports/checks the current native file. The owner's redrawn layout is now the checked baseline; `-Regenerate` restores that complete layout from the synchronized native template, including its wires and comments. It no longer runs the old placement router. [The baseline review](evidence/owner_redraw_baseline_v0950.json) records the electrical fixes, requested layout moves and comment review; the incoming file is archived there. [The physical crosswalk](evidence/pin_crosswalk.json) preserves original pad labels. Original photos and raw results are not rewritten when interpretations change.
+The normal build exports/checks the current native file. The owner's redrawn layout is now the checked baseline; `-Regenerate` restores that complete layout from the synchronized native template, including its wires and comments. It no longer runs the old placement router. [The baseline review](evidence/owner_redraw_baseline_v0951.json) records the electrical fixes, requested layout moves and comment review; the incoming file is archived there. [The physical crosswalk](evidence/pin_crosswalk.json) preserves original pad labels. Original photos and raw results are not rewritten when interpretations change.
 
 [Original architect review: PR #1](https://github.com/kerby2000/PetSafe-PCB/pull/1) is merged. Later corrections are reviewed in follow-up pull requests.

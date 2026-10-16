@@ -1,5 +1,5 @@
 {
-  "revision": "v0.9.50",
+  "revision": "v0.9.51",
   "instruments": [
     "LCR meter",
     "multimeter"
@@ -1806,7 +1806,7 @@
       "observed": "UNKNOWN",
       "displayed": "4P / unidentified",
       "marking": "4P",
-      "value_or_identity": "Manufacturer candidate datasheets and pin tables exist. D2 local wiring is complete; measured R -> S -> L diode behavior supports a series pair. Remaining: Exact fitted identity/ratings remain candidates for D1-D6, Q1-Q8/Q11, U1/U2/U6. The 4P marking alone does not identify three-pin D2; a manufacturer 4P code for a two-pin diode is incompatible.",
+      "value_or_identity": "Manufacturer candidate datasheets and pin tables exist. D2 local wiring is complete; measured R -> S -> L diode behavior supports a series pair. Native D2 now uses a generic two-series-diode equivalent with the original L=1/R=2/S=3 crosswalk; exact 4P identity is still open. Remaining: Exact fitted identity/ratings remain candidates for D1-D6, Q1-Q8/Q11, U1/U2/U6. The 4P marking alone does not identify three-pin D2; a manufacturer 4P code for a two-pin diode is incompatible.",
       "footprint": "Package_TO_SOT_SMD:SOT-23",
       "footprint_confidence": "datasheet/package candidate",
       "footprint_basis": "Existing assignment; see component identity evidence.",

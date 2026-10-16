@@ -1,6 +1,6 @@
 # Physical-evidence closure audit
 
-Generated for **v0.9.50** by `verify_evidence_contracts.py`. Source: [selected independent evidence](../evidence/physical_evidence_review_20261015.json); [machine-readable comparison](../evidence/topology_closure_audit.json).
+Generated for **v0.9.51** by `verify_evidence_contracts.py`. Source: [selected independent evidence](../evidence/physical_evidence_review_20261015.json); [machine-readable comparison](../evidence/topology_closure_audit.json).
 
 **0 supported joins split; 0 measured separations merged; 0 photographed pads missing mappings in the reviewed regions.**
 
@@ -64,9 +64,9 @@ Sources: [q3_diode_results_20261009.json](../evidence/q3_diode_results_20261009.
 
 ### E03: U2 rating and Q8 drive
 
-TI lists C14R for the SN74LVC2G14 DBV candidate (packaging addendum); its recommended VCC is 1.65–5.5V, absolute maximum 6.5V. B76 reports 6.3V, and B77 directly measures +1.8V relative to printed VDD. Thus the candidate is 0.8V above recommended maximum; R5=22ohm filters/limits current and does not regulate the rail. Keep the measured feed. Resting Q8 VGS(P)=0 and VGS(N)=+6.3V are consistent with P off/N on under the candidate, but establish no dynamic timing or non-overlap. The old 4.5V-driver complaint is not current.
+TI lists C14R for the SN74LVC2G14 DBV candidate (packaging addendum); its recommended VCC is 1.65–5.5V, absolute maximum 6.5V. B76 reports 6.3V, and B77 directly measures +1.8V relative to printed VDD. Thus the candidate is 0.8V above recommended maximum; R5=22ohm filters/limits current and does not regulate the rail. Keep the measured feed. Resting Q8 VGS(P)=0 and VGS(N)=+6.3V are consistent with P off/N on under the candidate, but establish no dynamic timing or non-overlap. The old 4.5V-driver complaint is not current. Manufacturer search on 2026-10-16: TI SN74LVC2G14DBV lists C14R and matches the modeled six-pin functions but is recommended only to 5.5 V. Nexperia 74HC2G14GV has the same pin functions, H14 marking and 6.0-V recommended maximum; 74HCT2G14GV/T14 and onsemi NL27WZ14 also stop at 5.5 V. None establishes rated operation at the reported 6.3 V. No replacement is selected. Exact U2 identity/rating remains E03; a clearer complete top marking/logo would be identification evidence, not a repeated continuity campaign. Current comparison is in docs/RECONSTRUCTION.md.
 
-Sources: [u2_supply_voltage_result_20261014.json](../evidence/u2_supply_voltage_result_20261014.json), [u2_vdd_separation_result_20261014.json](../evidence/u2_vdd_separation_result_20261014.json), [q8_gate_bias_results_20261014.json](../evidence/q8_gate_bias_results_20261014.json), [sn74lvc2g14.pdf](https://www.ti.com/lit/ds/symlink/sn74lvc2g14.pdf).
+Sources: [u2_supply_voltage_result_20261014.json](../evidence/u2_supply_voltage_result_20261014.json), [u2_vdd_separation_result_20261014.json](../evidence/u2_vdd_separation_result_20261014.json), [q8_gate_bias_results_20261014.json](../evidence/q8_gate_bias_results_20261014.json), [sn74lvc2g14.pdf](https://www.ti.com/lit/ds/symlink/sn74lvc2g14.pdf), [74HC_HCT2G14.pdf](https://assets.nexperia.com/documents/data-sheet/74HC_HCT2G14.pdf), [nl27wz14-d.pdf](https://www.onsemi.com/pdf/datasheet/nl27wz14-d.pdf).
 
 ### I01: D2 external map versus equivalent junctions
 

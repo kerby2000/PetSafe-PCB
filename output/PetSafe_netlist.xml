@@ -2,13 +2,13 @@
 <export version="E">
   <design>
     <source>C:\Users\lukin\Documents\ChatGPT\PetSafe-PCB\schematic\PetSafe_1001339.kicad_sch</source>
-    <date>2026-10-16T20:35:12</date>
+    <date>2026-10-16T21:18:38</date>
     <tool>Eeschema 10.0.5</tool>
     <sheet number="1" name="/" tstamps="/">
       <title_block>
         <title>PetSafe 100-1339 R03 A | single-sheet reconstruction</title>
         <company>Owner layout | reviewed reconstruction baseline</company>
-        <rev>0.9.50</rev>
+        <rev>0.9.51</rev>
         <date>2026-10-16</date>
         <source>PetSafe_1001339.kicad_sch</source>
         <comment number="1" value="44 starred capacitor estimates; device functions remain qualified."/>
@@ -2861,7 +2861,7 @@
     <comp ref="D2">
       <value>4P / unidentified</value>
       <footprint>Package_TO_SOT_SMD:SOT-23</footprint>
-      <description>Unidentified 4P part; probable series junctions R-S-L. R reaches C20 lower end; L reaches ANT2 and empty R46 upper; S reaches empty R46 lower. Numbered stock placeholder.</description>
+      <description>Series-diode equivalent of in-circuit measurements; 4P identity and manufacturer pinout unresolved.</description>
       <fields>
         <field name="MeasurementEvidence">User: R (upper-left)-C20 lower = 1 ohm; L (upper-right)-ANT2 and R46 upper directly connected; S (single lower)-R46 lower directly connected. R46 DNP, not a jumper. S-ANT2 OL; S-GND 700 kohm; S-VREF 1.32 Mohm. D2 L=1/R=2/S=3 are placeholder IDs; R46 upper=1/lower=2.</field>
         <field name="CurrentEvidence">4P exact identity unresolved. In-circuit diode readings support R -&gt; S -&gt; L series junctions, weakening the marking-only PNP lead. User confirms R-C20 lower end 1 ohm, L-ANT2/R46 upper, S-R46 lower. R46 is DNP. D2 L=1/R=2/S=3 are placeholder identifiers, not a verified device pinout.</field>
@@ -2871,11 +2871,12 @@
         <field name="FootprintConfidence">datasheet/package candidate</field>
         <field name="FootprintBasis">Existing assignment; see component identity evidence.</field>
         <field name="PinMapping">See evidence/pin_crosswalk.json; physical orientation may be provisional</field>
+        <field name="Representation">Measured equivalent only: anode R=2 -&gt; midpoint S=3 -&gt; cathode L=1. Not a verified BAV99 or manufacturing pinout.</field>
         <field name="Footprint">Package_TO_SOT_SMD:SOT-23</field>
         <field name="Datasheet"/>
-        <field name="Description">Unidentified 4P part; probable series junctions R-S-L. R reaches C20 lower end; L reaches ANT2 and empty R46 upper; S reaches empty R46 lower. Numbered stock placeholder.</field>
+        <field name="Description">Series-diode equivalent of in-circuit measurements; 4P identity and manufacturer pinout unresolved.</field>
       </fields>
-      <libsource lib="Connector_Generic" part="Conn_01x03" description="Generic connector, single row, 01x03, script generated (kicad-library-utils/schlib/autogen/connector/)"/>
+      <libsource lib="Device" part="D_Dual_Series_KAC" description="Dual diode, cathode/anode/center"/>
       <property name="MeasurementEvidence" value="User: R (upper-left)-C20 lower = 1 ohm; L (upper-right)-ANT2 and R46 upper directly connected; S (single lower)-R46 lower directly connected. R46 DNP, not a jumper. S-ANT2 OL; S-GND 700 kohm; S-VREF 1.32 Mohm. D2 L=1/R=2/S=3 are placeholder IDs; R46 upper=1/lower=2."/>
       <property name="CurrentEvidence" value="4P exact identity unresolved. In-circuit diode readings support R -&gt; S -&gt; L series junctions, weakening the marking-only PNP lead. User confirms R-C20 lower end 1 ohm, L-ANT2/R46 upper, S-R46 lower. R46 is DNP. D2 L=1/R=2/S=3 are placeholder identifiers, not a verified device pinout."/>
       <property name="OriginalReference" value="D2"/>
@@ -2884,18 +2885,18 @@
       <property name="FootprintConfidence" value="datasheet/package candidate"/>
       <property name="FootprintBasis" value="Existing assignment; see component identity evidence."/>
       <property name="PinMapping" value="See evidence/pin_crosswalk.json; physical orientation may be provisional"/>
+      <property name="Representation" value="Measured equivalent only: anode R=2 -&gt; midpoint S=3 -&gt; cathode L=1. Not a verified BAV99 or manufacturing pinout."/>
       <property name="Sheetname" value="PetSafe_1001339"/>
       <property name="Sheetfile" value="PetSafe_1001339.kicad_sch"/>
-      <property name="ki_keywords" value="connector"/>
-      <property name="ki_fp_filters" value="Connector*:*_1x??_*"/>
+      <property name="ki_keywords" value="diode"/>
       <sheetpath names="/" tstamps="/"/>
       <tstamps>b76f8824-5ade-4dca-8065-5118daac24dc</tstamps>
       <units>
         <unit name="A">
           <pins>
-            <pin num="1"/>
             <pin num="2"/>
             <pin num="3"/>
+            <pin num="1"/>
           </pins>
         </unit>
       </units>
@@ -3324,6 +3325,36 @@
         </unit>
       </units>
     </comp>
+    <comp ref="L101">
+      <value>500uH</value>
+      <description>Inductor</description>
+      <fields>
+        <field name="Assembly">External antenna winding; not a main-board BOM or PCB component.</field>
+        <field name="Evidence">Owner reports 500 uH; frequency and isolation state unspecified. evidence/antenna_inductance_results_20261015.json</field>
+        <field name="Footprint"/>
+        <field name="Datasheet"/>
+        <field name="Description">Inductor</field>
+      </fields>
+      <libsource lib="Device" part="L" description="Inductor"/>
+      <property name="Assembly" value="External antenna winding; not a main-board BOM or PCB component."/>
+      <property name="Evidence" value="Owner reports 500 uH; frequency and isolation state unspecified. evidence/antenna_inductance_results_20261015.json"/>
+      <property name="Sheetname" value="PetSafe_1001339"/>
+      <property name="Sheetfile" value="PetSafe_1001339.kicad_sch"/>
+      <property name="exclude_from_bom"/>
+      <property name="exclude_from_board"/>
+      <property name="ki_keywords" value="inductor choke coil reactor magnetic"/>
+      <property name="ki_fp_filters" value="Choke_* *Coil* Inductor_* L_*"/>
+      <sheetpath names="/" tstamps="/"/>
+      <tstamps>d2f24fd1-7d98-4a99-8945-96fe6008c131</tstamps>
+      <units>
+        <unit name="A">
+          <pins>
+            <pin num="1"/>
+            <pin num="2"/>
+          </pins>
+        </unit>
+      </units>
+    </comp>
     <comp ref="LED1">
       <value>Red / Green</value>
       <description>Dual LED, cathodes on pins 3 and 4</description>
@@ -3676,7 +3707,6 @@
       <datasheet>https://static.chipdip.ru/lib/761/DOC050761871.pdf</datasheet>
       <description>MCC SIL3724A dual N/P MOSFET, marking 3724A; candidate for Q8, fitted manufacturer unconfirmed. Pin map verified from manufacturer page 1. KiCad generic MOSFET artwork imported through MCP.</description>
       <fields>
-        <field name="ViaEvidence">v0.9.5: V113/V115 reach centre B2/pin5 GND. V114 belongs to U2.T2 and supplies no evidence about Q8.T2. Existing Q8.T2 supply hypothesis and outer-drain join remain independently qualified.</field>
         <field name="CurrentEvidence">3724A supports SIL3724A complementary MOSFET candidate; fitted maker unconfirmed. B37 source-C6 = 1 ohm; centre native5 GND; outer native4/6 drains joined. B82 output-ANT1 = 4.5 ohm with antenna fitted; direct route accepted from photos plus compatible reading, not resistance alone. R5 is a supply-feed resistor, not an output resistor. Rest VGS P=0 V / N=6.3 V; RF waveforms deferred by owner.</field>
         <field name="OriginalReference">Q8</field>
         <field name="Evidence">3724A supports SIL3724A complementary MOSFET candidate; fitted maker unconfirmed. B37 source-C6 = 1 ohm; centre native5 GND; outer native4/6 drains joined. B82 output-ANT1 = 4.5 ohm with antenna fitted; direct route accepted from photos plus compatible reading, not resistance alone. R5 is a supply-feed resistor, not an output resistor. Rest VGS P=0 V / N=6.3 V; RF waveforms deferred by owner.</field>
@@ -3684,6 +3714,7 @@
         <field name="FootprintConfidence">datasheet/package candidate</field>
         <field name="FootprintBasis">Existing assignment; see component identity evidence.</field>
         <field name="PinMapping">See evidence/pin_crosswalk.json; physical orientation may be provisional</field>
+        <field name="ViaEvidence">v0.9.5: V113/V115 reach centre B2/pin5 GND. V114 belongs to U2.T2 and supplies no evidence about Q8.T2. Existing Q8.T2 supply hypothesis and outer-drain join remain independently qualified.</field>
         <field name="Footprint">Package_TO_SOT_SMD:SOT-23-6</field>
         <field name="Datasheet">https://static.chipdip.ru/lib/761/DOC050761871.pdf</field>
         <field name="Description">MCC SIL3724A dual N/P MOSFET, marking 3724A; candidate for Q8, fitted manufacturer unconfirmed. Pin map verified from manufacturer page 1. KiCad generic MOSFET artwork imported through MCP.</field>
@@ -6393,14 +6424,14 @@
       <datasheet>https://www.ti.com/lit/ds/symlink/sn74lvc2g14.pdf</datasheet>
       <description>Dual NOT Gate, Schmitt Triggered, Low-Voltage CMOS</description>
       <fields>
-        <field name="ViaEvidence">v0.9.5: V114 reaches U2.T2, not Q8.T2. Earlier user GND assignment retained; native U2 pin2 already GND. This resolves the via annotation conflict.</field>
-        <field name="CurrentEvidence">C14R is listed by TI for the SN74LVC2G14DBV candidate. B76 supply = 6.3 V; B77 supply-minus-printed-VDD = +1.8 V; B78-B81 support H_RF_VDD -&gt; R5 (22 ohm) -&gt; U2/C7. Recommended VCC max 5.5 V; absolute max 6.5 V is a stress limit, not an operating guarantee. Fitted identity and voltage compatibility remain unresolved. Scope deferred.</field>
         <field name="OriginalReference">U2</field>
         <field name="Evidence">C14R is listed by TI for the SN74LVC2G14DBV candidate. B76 supply = 6.3 V; B77 supply-minus-printed-VDD = +1.8 V; B78-B81 support H_RF_VDD -&gt; R5 (22 ohm) -&gt; U2/C7. Recommended VCC max 5.5 V; absolute max 6.5 V is a stress limit, not an operating guarantee. Fitted identity and voltage compatibility remain unresolved. Scope deferred.</field>
         <field name="LibraryPolicy">Unmodified KiCad 10 stock symbol</field>
         <field name="FootprintConfidence">datasheet/package candidate</field>
         <field name="FootprintBasis">Existing assignment; see component identity evidence.</field>
         <field name="PinMapping">See evidence/pin_crosswalk.json; physical orientation may be provisional</field>
+        <field name="ViaEvidence">v0.9.5: V114 reaches U2.T2, not Q8.T2. Earlier user GND assignment retained; native U2 pin2 already GND. This resolves the via annotation conflict.</field>
+        <field name="CurrentEvidence">C14R is listed by TI for the SN74LVC2G14DBV candidate. B76 supply = 6.3 V; B77 supply-minus-printed-VDD = +1.8 V; B78-B81 support H_RF_VDD -&gt; R5 (22 ohm) -&gt; U2/C7. Recommended VCC max 5.5 V; absolute max 6.5 V is a stress limit, not an operating guarantee. Fitted identity and voltage compatibility remain unresolved. Scope deferred.</field>
         <field name="Footprint">Package_TO_SOT_SMD:SOT-23-6</field>
         <field name="Datasheet">https://www.ti.com/lit/ds/symlink/sn74lvc2g14.pdf</field>
         <field name="Description">Dual NOT Gate, Schmitt Triggered, Low-Voltage CMOS</field>
@@ -6417,7 +6448,7 @@
       <property name="ki_keywords" value="Dual Gate NOT Schmitt LVC CMOS"/>
       <property name="ki_fp_filters" value="SG-* SOT*"/>
       <sheetpath names="/" tstamps="/"/>
-      <tstamps>d0ce7cd7-6c1d-460b-bc83-44a9736c68fd c2038b9c-b36c-4670-ab94-21c1a9753278 3fee6f3a-8cd1-4f78-bc72-965c744b6fd1</tstamps>
+      <tstamps>c2038b9c-b36c-4670-ab94-21c1a9753278 d0ce7cd7-6c1d-460b-bc83-44a9736c68fd 3fee6f3a-8cd1-4f78-bc72-965c744b6fd1</tstamps>
       <units>
         <unit name="A">
           <pins>
@@ -6975,6 +7006,21 @@
         <pin num="2" name="2" type="passive"/>
       </pins>
     </libpart>
+    <libpart lib="Device" part="D_Dual_Series_KAC">
+      <description>Dual diode, cathode/anode/center</description>
+      <fields>
+        <field name="Reference">D</field>
+        <field name="Value">D_Dual_Series_KAC</field>
+        <field name="Footprint"/>
+        <field name="Datasheet"/>
+        <field name="Description">Dual diode, cathode/anode/center</field>
+      </fields>
+      <pins>
+        <pin num="1" name="K" type="passive"/>
+        <pin num="2" name="A" type="passive"/>
+        <pin num="3" name="common" type="passive"/>
+      </pins>
+    </libpart>
     <libpart lib="Device" part="D_Zener">
       <description>Zener diode</description>
       <footprints>
@@ -7366,10 +7412,244 @@
     <net code="2" name="/D2_C20" class="Default">
       <node ref="C19" pin="1" pintype="passive"/>
       <node ref="C20" pin="2" pintype="passive"/>
-      <node ref="D2" pin="2" pinfunction="Pin_2_2" pintype="passive"/>
+      <node ref="D2" pin="2" pinfunction="A_2" pintype="passive"/>
       <node ref="R28" pin="2" pintype="passive"/>
     </net>
-    <net code="3" name="/GND" class="Default">
+    <net code="3" name="/H_ANT_A" class="Default">
+      <node ref="L101" pin="1" pinfunction="1_1" pintype="passive"/>
+      <node ref="Q8" pin="4" pinfunction="D_4" pintype="passive"/>
+      <node ref="Q8" pin="6" pinfunction="D_6" pintype="passive"/>
+      <node ref="TP105" pin="1" pinfunction="1_1" pintype="passive"/>
+    </net>
+    <net code="4" name="/H_ANT_B" class="Default">
+      <node ref="C11" pin="1" pintype="passive"/>
+      <node ref="C14" pin="1" pintype="passive"/>
+      <node ref="C29" pin="1" pintype="passive"/>
+      <node ref="C44" pin="1" pintype="passive"/>
+      <node ref="C47" pin="1" pintype="passive"/>
+      <node ref="C49" pin="1" pintype="passive"/>
+      <node ref="D2" pin="1" pinfunction="K_1" pintype="passive"/>
+      <node ref="L101" pin="2" pinfunction="2_2" pintype="passive"/>
+      <node ref="R46" pin="1" pintype="passive"/>
+      <node ref="TP106" pin="1" pinfunction="1_1" pintype="passive"/>
+    </net>
+    <net code="5" name="/H_AUX_IN" class="Default">
+      <node ref="C36" pin="1" pintype="passive"/>
+      <node ref="R37" pin="2" pintype="passive"/>
+      <node ref="U106" pin="3" pinfunction="VI_3" pintype="power_in"/>
+      <node ref="U6" pin="2" pinfunction="VIN_2" pintype="power_in"/>
+      <node ref="U6" pin="5" pinfunction="NC_5" pintype="passive"/>
+    </net>
+    <net code="6" name="/H_BUTTON" class="Default">
+      <node ref="C35" pin="1" pintype="passive"/>
+      <node ref="R40" pin="2" pintype="passive"/>
+      <node ref="R41" pin="2" pintype="passive"/>
+      <node ref="S1" pin="2" pinfunction="2_2" pintype="passive"/>
+    </net>
+    <net code="7" name="/H_D3_SIGNAL" class="Default">
+      <node ref="C20" pin="1" pintype="passive"/>
+      <node ref="D3" pin="3" pinfunction="K_3" pintype="passive"/>
+      <node ref="R42" pin="2" pintype="passive"/>
+    </net>
+    <net code="8" name="/H_LED_CTL_A" class="Default">
+      <node ref="R30" pin="1" pintype="passive"/>
+      <node ref="TP1" pin="1" pinfunction="1_1" pintype="passive"/>
+      <node ref="U4" pin="23" pinfunction="RB2_23" pintype="bidirectional"/>
+    </net>
+    <net code="9" name="/H_LED_CTL_B" class="Default">
+      <node ref="R31" pin="1" pintype="passive"/>
+      <node ref="TP2" pin="1" pinfunction="1_1" pintype="passive"/>
+      <node ref="U4" pin="22" pinfunction="RB1_22" pintype="bidirectional"/>
+    </net>
+    <net code="10" name="/H_MOTOR_A" class="Default">
+      <node ref="J5" pin="1" pinfunction="Pin_1_1" pintype="passive"/>
+      <node ref="R43" pin="2" pintype="passive"/>
+      <node ref="TP14" pin="1" pinfunction="1_1" pintype="passive"/>
+      <node ref="U5" pin="8" pinfunction="OUTA_8" pintype="tri_state"/>
+    </net>
+    <net code="11" name="/H_PIR_RAW" class="Default">
+      <node ref="J3" pin="2" pinfunction="Pin_2_2" pintype="passive"/>
+      <node ref="R38" pin="1" pintype="passive"/>
+      <node ref="U7" pin="2" pinfunction="Pin_2_2" pintype="passive"/>
+    </net>
+    <net code="12" name="/H_PIR_SIG" class="Default">
+      <node ref="Q2" pin="3" pinfunction="C_3" pintype="passive"/>
+      <node ref="R39" pin="1" pintype="passive"/>
+      <node ref="TP16" pin="1" pinfunction="1_1" pintype="passive"/>
+      <node ref="U4" pin="21" pinfunction="RB0_21" pintype="bidirectional"/>
+    </net>
+    <net code="13" name="/H_PIR_VDD" class="Default">
+      <node ref="C37" pin="1" pintype="passive"/>
+      <node ref="J3" pin="1" pinfunction="Pin_1_1" pintype="passive"/>
+      <node ref="U106" pin="2" pinfunction="VO_2" pintype="power_out"/>
+      <node ref="U6" pin="3" pinfunction="VOUT_3" pintype="power_out"/>
+      <node ref="U7" pin="3" pinfunction="Pin_3_3" pintype="passive"/>
+    </net>
+    <net code="14" name="/H_RF_VDD" class="Default">
+      <node ref="C5" pin="1" pintype="passive"/>
+      <node ref="C6" pin="1" pintype="passive"/>
+      <node ref="L1" pin="2" pinfunction="2_2" pintype="passive"/>
+      <node ref="Q8" pin="2" pinfunction="S_2" pintype="passive"/>
+      <node ref="R5" pin="1" pintype="passive"/>
+    </net>
+    <net code="15" name="/H_RX_DETECT" class="Default">
+      <node ref="C23" pin="2" pintype="passive"/>
+      <node ref="R25" pin="1" pintype="passive"/>
+    </net>
+    <net code="16" name="/H_RX_ENABLE_CTL" class="Default">
+      <node ref="R18" pin="1" pintype="passive"/>
+      <node ref="U4" pin="12" pinfunction="RC1_12" pintype="bidirectional"/>
+    </net>
+    <net code="17" name="/H_RX_VDD" class="Default">
+      <node ref="C17" pin="1" pintype="passive"/>
+      <node ref="C24" pin="1" pintype="passive"/>
+      <node ref="R20" pin="2" pintype="passive"/>
+      <node ref="R21" pin="1" pintype="passive"/>
+      <node ref="TP5" pin="1" pinfunction="1_1" pintype="passive"/>
+      <node ref="U3" pin="8" pinfunction="V+_8" pintype="power_in"/>
+    </net>
+    <net code="18" name="/H_TUNE_1" class="Default">
+      <node ref="R13" pin="1" pintype="passive"/>
+      <node ref="U4" pin="17" pinfunction="RC6_17" pintype="bidirectional"/>
+    </net>
+    <net code="19" name="/H_TUNE_2" class="Default">
+      <node ref="R14" pin="1" pintype="passive"/>
+      <node ref="U4" pin="5" pinfunction="RA3_5" pintype="bidirectional"/>
+    </net>
+    <net code="20" name="/H_TUNE_3" class="Default">
+      <node ref="R15" pin="1" pintype="passive"/>
+      <node ref="U4" pin="6" pinfunction="RA4_6" pintype="bidirectional"/>
+    </net>
+    <net code="21" name="/H_TUNE_4" class="Default">
+      <node ref="R16" pin="1" pintype="passive"/>
+      <node ref="U4" pin="7" pinfunction="RA5_7" pintype="bidirectional"/>
+    </net>
+    <net code="22" name="/H_TUNE_5" class="Default">
+      <node ref="R11" pin="1" pintype="passive"/>
+      <node ref="U4" pin="11" pinfunction="RC0_11" pintype="bidirectional"/>
+    </net>
+    <net code="23" name="/ICSP_CLK" class="Default">
+      <node ref="D4" pin="1" pinfunction="K_1" pintype="passive"/>
+      <node ref="J1" pin="5" pinfunction="Pin_5_5" pintype="passive"/>
+      <node ref="R32" pin="2" pintype="passive"/>
+      <node ref="U4" pin="27" pinfunction="RB6/ICSPCLK_27" pintype="bidirectional"/>
+    </net>
+    <net code="24" name="/ICSP_DAT" class="Default">
+      <node ref="D5" pin="1" pinfunction="K_1" pintype="passive"/>
+      <node ref="J1" pin="4" pinfunction="Pin_4_4" pintype="passive"/>
+      <node ref="R40" pin="1" pintype="passive"/>
+      <node ref="U4" pin="28" pinfunction="RB7/ICSPDAT_28" pintype="bidirectional"/>
+    </net>
+    <net code="25" name="/MCLR_VPP" class="Default">
+      <node ref="D6" pin="1" pinfunction="K_1" pintype="passive"/>
+      <node ref="J1" pin="1" pinfunction="Pin_1_1" pintype="passive"/>
+      <node ref="R41" pin="1" pintype="passive"/>
+      <node ref="U4" pin="1" pinfunction="RE3/~{MCLR}/VPP_1" pintype="input"/>
+    </net>
+    <net code="26" name="/MOTOR_INA" class="Default">
+      <node ref="U4" pin="15" pinfunction="RC4_15" pintype="bidirectional"/>
+      <node ref="U5" pin="2" pinfunction="INA_2" pintype="input"/>
+    </net>
+    <net code="27" name="/MOTOR_INB" class="Default">
+      <node ref="U4" pin="16" pinfunction="RC5_16" pintype="bidirectional"/>
+      <node ref="U5" pin="3" pinfunction="INB_3" pintype="input"/>
+    </net>
+    <net code="28" name="/PIC_RA1_RX_REF" class="Default">
+      <node ref="C26" pin="1" pintype="passive"/>
+      <node ref="R28" pin="1" pintype="passive"/>
+      <node ref="R29" pin="1" pintype="passive"/>
+      <node ref="TP7" pin="1" pinfunction="1_1" pintype="passive"/>
+      <node ref="U4" pin="3" pinfunction="RA1_3" pintype="bidirectional"/>
+    </net>
+    <net code="29" name="/PIC_RB3_RETURN" class="Default">
+      <node ref="R4" pin="2" pintype="passive"/>
+      <node ref="U4" pin="24" pinfunction="RB3_24" pintype="bidirectional"/>
+    </net>
+    <net code="30" name="/PIC_TP4_C41" class="Default">
+      <node ref="C40" pin="1" pintype="passive"/>
+      <node ref="C41" pin="1" pintype="passive"/>
+      <node ref="R23" pin="2" pintype="passive"/>
+      <node ref="R42" pin="1" pintype="passive"/>
+      <node ref="R44" pin="1" pintype="passive"/>
+      <node ref="TP4" pin="1" pinfunction="1_1" pintype="passive"/>
+      <node ref="U4" pin="25" pinfunction="RB4_25" pintype="bidirectional"/>
+    </net>
+    <net code="31" name="/RB5_OPT" class="Default">
+      <node ref="R35" pin="1" pintype="passive"/>
+      <node ref="TP10" pin="1" pinfunction="1_1" pintype="passive"/>
+      <node ref="U4" pin="26" pinfunction="RB5_26" pintype="bidirectional"/>
+    </net>
+    <net code="32" name="/RF_MONITOR_PAD" class="Default">
+      <node ref="D1" pin="3" pinfunction="K_3" pintype="passive"/>
+      <node ref="R10" pin="1" pintype="passive"/>
+      <node ref="R6" pin="2" pintype="passive"/>
+      <node ref="R7" pin="1" pintype="passive"/>
+      <node ref="TP3" pin="1" pinfunction="1_1" pintype="passive"/>
+      <node ref="U4" pin="13" pinfunction="RC2_13" pintype="bidirectional"/>
+    </net>
+    <net code="33" name="/RX_A_FILTER" class="Default">
+      <node ref="C18" pin="2" pintype="passive"/>
+      <node ref="C25" pin="1" pintype="passive"/>
+      <node ref="R27" pin="1" pintype="passive"/>
+      <node ref="TP6" pin="1" pinfunction="1_1" pintype="passive"/>
+      <node ref="U4" pin="2" pinfunction="RA0_2" pintype="bidirectional"/>
+    </net>
+    <net code="34" name="/RX_STAGE_LINK" class="Default">
+      <node ref="C42" pin="2" pintype="passive"/>
+      <node ref="R25" pin="2" pintype="passive"/>
+      <node ref="R47" pin="2" pintype="passive"/>
+      <node ref="R48" pin="2" pintype="passive"/>
+    </net>
+    <net code="35" name="/U1_ALT_PAD" class="Default">
+      <node ref="C3" pin="2" pintype="passive"/>
+      <node ref="C4" pin="2" pintype="passive"/>
+      <node ref="R1" pin="2" pintype="passive"/>
+      <node ref="R2" pin="2" pintype="passive"/>
+      <node ref="U1" pin="4" pinfunction="NC_4" pintype="passive"/>
+    </net>
+    <net code="36" name="/U2_VCC" class="Default">
+      <node ref="C7" pin="1" pintype="passive"/>
+      <node ref="R5" pin="2" pintype="passive"/>
+      <node ref="U2" pin="5" pinfunction="VCC_5" pintype="power_in"/>
+    </net>
+    <net code="37" name="/VDD" class="Default">
+      <node ref="C102" pin="1" pintype="passive"/>
+      <node ref="C2" pin="1" pintype="passive"/>
+      <node ref="C3" pin="1" pintype="passive"/>
+      <node ref="C32" pin="1" pintype="passive"/>
+      <node ref="C34" pin="1" pintype="passive"/>
+      <node ref="D3" pin="2" pinfunction="A_2" pintype="passive"/>
+      <node ref="J1" pin="2" pinfunction="Pin_2_2" pintype="passive"/>
+      <node ref="Q7" pin="2" pinfunction="E_2" pintype="passive"/>
+      <node ref="R1" pin="1" pintype="passive"/>
+      <node ref="R19" pin="2" pintype="passive"/>
+      <node ref="R37" pin="1" pintype="passive"/>
+      <node ref="R39" pin="2" pintype="passive"/>
+      <node ref="TP103" pin="1" pinfunction="1_1" pintype="passive"/>
+      <node ref="U1" pin="5" pinfunction="VOUT_5" pintype="power_out"/>
+      <node ref="U4" pin="20" pinfunction="VDD_20" pintype="power_in"/>
+      <node ref="U5" pin="1" pinfunction="VCC_1" pintype="power_in"/>
+    </net>
+    <net code="38" name="/VREF" class="Default">
+      <node ref="C18" pin="1" pintype="passive"/>
+      <node ref="C39" pin="1" pintype="passive"/>
+      <node ref="R21" pin="2" pintype="passive"/>
+      <node ref="R22" pin="2" pintype="passive"/>
+      <node ref="TP104" pin="1" pinfunction="1_1" pintype="passive"/>
+      <node ref="U3" pin="3" pinfunction="+_3" pintype="input"/>
+      <node ref="U3" pin="5" pinfunction="+_5" pintype="input"/>
+      <node ref="U4" pin="4" pinfunction="RA2_4" pintype="bidirectional"/>
+    </net>
+    <net code="39" name="/VSYS" class="Default">
+      <node ref="C27" pin="1" pintype="passive"/>
+      <node ref="C33" pin="1" pintype="passive"/>
+      <node ref="L1" pin="1" pinfunction="1_1" pintype="passive"/>
+      <node ref="L2" pin="1" pinfunction="1_1" pintype="passive"/>
+      <node ref="Q1" pin="2" pinfunction="S_2" pintype="passive"/>
+      <node ref="R3" pin="1" pintype="passive"/>
+      <node ref="U5" pin="4" pinfunction="VDD_4" pintype="power_in"/>
+    </net>
+    <net code="40" name="GND" class="Default">
       <node ref="C1" pin="2" pintype="passive"/>
       <node ref="C101" pin="2" pintype="passive"/>
       <node ref="C102" pin="2" pintype="passive"/>
@@ -7442,238 +7722,6 @@
       <node ref="U6" pin="1" pinfunction="VSS_1" pintype="power_in"/>
       <node ref="U7" pin="1" pinfunction="Pin_1_1" pintype="passive"/>
     </net>
-    <net code="4" name="/H_ANT_A" class="Default">
-      <node ref="Q8" pin="4" pinfunction="D_4" pintype="passive"/>
-      <node ref="Q8" pin="6" pinfunction="D_6" pintype="passive"/>
-      <node ref="TP105" pin="1" pinfunction="1_1" pintype="passive"/>
-    </net>
-    <net code="5" name="/H_ANT_B" class="Default">
-      <node ref="C11" pin="1" pintype="passive"/>
-      <node ref="C14" pin="1" pintype="passive"/>
-      <node ref="C29" pin="1" pintype="passive"/>
-      <node ref="C44" pin="1" pintype="passive"/>
-      <node ref="C47" pin="1" pintype="passive"/>
-      <node ref="C49" pin="1" pintype="passive"/>
-      <node ref="D2" pin="1" pinfunction="Pin_1_1" pintype="passive"/>
-      <node ref="R46" pin="1" pintype="passive"/>
-      <node ref="TP106" pin="1" pinfunction="1_1" pintype="passive"/>
-    </net>
-    <net code="6" name="/H_AUX_IN" class="Default">
-      <node ref="C36" pin="1" pintype="passive"/>
-      <node ref="R37" pin="2" pintype="passive"/>
-      <node ref="U106" pin="3" pinfunction="VI_3" pintype="power_in"/>
-      <node ref="U6" pin="2" pinfunction="VIN_2" pintype="power_in"/>
-      <node ref="U6" pin="5" pinfunction="NC_5" pintype="passive"/>
-    </net>
-    <net code="7" name="/H_BUTTON" class="Default">
-      <node ref="C35" pin="1" pintype="passive"/>
-      <node ref="R40" pin="2" pintype="passive"/>
-      <node ref="R41" pin="2" pintype="passive"/>
-      <node ref="S1" pin="2" pinfunction="2_2" pintype="passive"/>
-    </net>
-    <net code="8" name="/H_D3_SIGNAL" class="Default">
-      <node ref="C20" pin="1" pintype="passive"/>
-      <node ref="D3" pin="3" pinfunction="K_3" pintype="passive"/>
-      <node ref="R42" pin="2" pintype="passive"/>
-    </net>
-    <net code="9" name="/H_LED_CTL_A" class="Default">
-      <node ref="R30" pin="1" pintype="passive"/>
-      <node ref="TP1" pin="1" pinfunction="1_1" pintype="passive"/>
-      <node ref="U4" pin="23" pinfunction="RB2_23" pintype="bidirectional"/>
-    </net>
-    <net code="10" name="/H_LED_CTL_B" class="Default">
-      <node ref="R31" pin="1" pintype="passive"/>
-      <node ref="TP2" pin="1" pinfunction="1_1" pintype="passive"/>
-      <node ref="U4" pin="22" pinfunction="RB1_22" pintype="bidirectional"/>
-    </net>
-    <net code="11" name="/H_MOTOR_A" class="Default">
-      <node ref="J5" pin="1" pinfunction="Pin_1_1" pintype="passive"/>
-      <node ref="R43" pin="2" pintype="passive"/>
-      <node ref="TP14" pin="1" pinfunction="1_1" pintype="passive"/>
-      <node ref="U5" pin="8" pinfunction="OUTA_8" pintype="tri_state"/>
-    </net>
-    <net code="12" name="/H_PIR_RAW" class="Default">
-      <node ref="J3" pin="2" pinfunction="Pin_2_2" pintype="passive"/>
-      <node ref="R38" pin="1" pintype="passive"/>
-      <node ref="U7" pin="2" pinfunction="Pin_2_2" pintype="passive"/>
-    </net>
-    <net code="13" name="/H_PIR_SIG" class="Default">
-      <node ref="Q2" pin="3" pinfunction="C_3" pintype="passive"/>
-      <node ref="R39" pin="1" pintype="passive"/>
-      <node ref="TP16" pin="1" pinfunction="1_1" pintype="passive"/>
-      <node ref="U4" pin="21" pinfunction="RB0_21" pintype="bidirectional"/>
-    </net>
-    <net code="14" name="/H_PIR_VDD" class="Default">
-      <node ref="C37" pin="1" pintype="passive"/>
-      <node ref="J3" pin="1" pinfunction="Pin_1_1" pintype="passive"/>
-      <node ref="U106" pin="2" pinfunction="VO_2" pintype="power_out"/>
-      <node ref="U6" pin="3" pinfunction="VOUT_3" pintype="power_out"/>
-      <node ref="U7" pin="3" pinfunction="Pin_3_3" pintype="passive"/>
-    </net>
-    <net code="15" name="/H_RF_VDD" class="Default">
-      <node ref="C5" pin="1" pintype="passive"/>
-      <node ref="C6" pin="1" pintype="passive"/>
-      <node ref="L1" pin="2" pinfunction="2_2" pintype="passive"/>
-      <node ref="Q8" pin="2" pinfunction="S_2" pintype="passive"/>
-      <node ref="R5" pin="1" pintype="passive"/>
-    </net>
-    <net code="16" name="/H_RX_DETECT" class="Default">
-      <node ref="C23" pin="2" pintype="passive"/>
-      <node ref="R25" pin="1" pintype="passive"/>
-    </net>
-    <net code="17" name="/H_RX_ENABLE_CTL" class="Default">
-      <node ref="R18" pin="1" pintype="passive"/>
-      <node ref="U4" pin="12" pinfunction="RC1_12" pintype="bidirectional"/>
-    </net>
-    <net code="18" name="/H_RX_VDD" class="Default">
-      <node ref="C17" pin="1" pintype="passive"/>
-      <node ref="C24" pin="1" pintype="passive"/>
-      <node ref="R20" pin="2" pintype="passive"/>
-      <node ref="R21" pin="1" pintype="passive"/>
-      <node ref="TP5" pin="1" pinfunction="1_1" pintype="passive"/>
-      <node ref="U3" pin="8" pinfunction="V+_8" pintype="power_in"/>
-    </net>
-    <net code="19" name="/H_TUNE_1" class="Default">
-      <node ref="R13" pin="1" pintype="passive"/>
-      <node ref="U4" pin="17" pinfunction="RC6_17" pintype="bidirectional"/>
-    </net>
-    <net code="20" name="/H_TUNE_2" class="Default">
-      <node ref="R14" pin="1" pintype="passive"/>
-      <node ref="U4" pin="5" pinfunction="RA3_5" pintype="bidirectional"/>
-    </net>
-    <net code="21" name="/H_TUNE_3" class="Default">
-      <node ref="R15" pin="1" pintype="passive"/>
-      <node ref="U4" pin="6" pinfunction="RA4_6" pintype="bidirectional"/>
-    </net>
-    <net code="22" name="/H_TUNE_4" class="Default">
-      <node ref="R16" pin="1" pintype="passive"/>
-      <node ref="U4" pin="7" pinfunction="RA5_7" pintype="bidirectional"/>
-    </net>
-    <net code="23" name="/H_TUNE_5" class="Default">
-      <node ref="R11" pin="1" pintype="passive"/>
-      <node ref="U4" pin="11" pinfunction="RC0_11" pintype="bidirectional"/>
-    </net>
-    <net code="24" name="/ICSP_CLK" class="Default">
-      <node ref="D4" pin="1" pinfunction="K_1" pintype="passive"/>
-      <node ref="J1" pin="5" pinfunction="Pin_5_5" pintype="passive"/>
-      <node ref="R32" pin="2" pintype="passive"/>
-      <node ref="U4" pin="27" pinfunction="RB6/ICSPCLK_27" pintype="bidirectional"/>
-    </net>
-    <net code="25" name="/ICSP_DAT" class="Default">
-      <node ref="D5" pin="1" pinfunction="K_1" pintype="passive"/>
-      <node ref="J1" pin="4" pinfunction="Pin_4_4" pintype="passive"/>
-      <node ref="R40" pin="1" pintype="passive"/>
-      <node ref="U4" pin="28" pinfunction="RB7/ICSPDAT_28" pintype="bidirectional"/>
-    </net>
-    <net code="26" name="/MCLR_VPP" class="Default">
-      <node ref="D6" pin="1" pinfunction="K_1" pintype="passive"/>
-      <node ref="J1" pin="1" pinfunction="Pin_1_1" pintype="passive"/>
-      <node ref="R41" pin="1" pintype="passive"/>
-      <node ref="U4" pin="1" pinfunction="RE3/~{MCLR}/VPP_1" pintype="input"/>
-    </net>
-    <net code="27" name="/MOTOR_INA" class="Default">
-      <node ref="U4" pin="15" pinfunction="RC4_15" pintype="bidirectional"/>
-      <node ref="U5" pin="2" pinfunction="INA_2" pintype="input"/>
-    </net>
-    <net code="28" name="/MOTOR_INB" class="Default">
-      <node ref="U4" pin="16" pinfunction="RC5_16" pintype="bidirectional"/>
-      <node ref="U5" pin="3" pinfunction="INB_3" pintype="input"/>
-    </net>
-    <net code="29" name="/PIC_RA1_RX_REF" class="Default">
-      <node ref="C26" pin="1" pintype="passive"/>
-      <node ref="R28" pin="1" pintype="passive"/>
-      <node ref="R29" pin="1" pintype="passive"/>
-      <node ref="TP7" pin="1" pinfunction="1_1" pintype="passive"/>
-      <node ref="U4" pin="3" pinfunction="RA1_3" pintype="bidirectional"/>
-    </net>
-    <net code="30" name="/PIC_RB3_RETURN" class="Default">
-      <node ref="R4" pin="2" pintype="passive"/>
-      <node ref="U4" pin="24" pinfunction="RB3_24" pintype="bidirectional"/>
-    </net>
-    <net code="31" name="/PIC_TP4_C41" class="Default">
-      <node ref="C40" pin="1" pintype="passive"/>
-      <node ref="C41" pin="1" pintype="passive"/>
-      <node ref="R23" pin="2" pintype="passive"/>
-      <node ref="R42" pin="1" pintype="passive"/>
-      <node ref="R44" pin="1" pintype="passive"/>
-      <node ref="TP4" pin="1" pinfunction="1_1" pintype="passive"/>
-      <node ref="U4" pin="25" pinfunction="RB4_25" pintype="bidirectional"/>
-    </net>
-    <net code="32" name="/RB5_OPT" class="Default">
-      <node ref="R35" pin="1" pintype="passive"/>
-      <node ref="TP10" pin="1" pinfunction="1_1" pintype="passive"/>
-      <node ref="U4" pin="26" pinfunction="RB5_26" pintype="bidirectional"/>
-    </net>
-    <net code="33" name="/RF_MONITOR_PAD" class="Default">
-      <node ref="D1" pin="3" pinfunction="K_3" pintype="passive"/>
-      <node ref="R10" pin="1" pintype="passive"/>
-      <node ref="R6" pin="2" pintype="passive"/>
-      <node ref="R7" pin="1" pintype="passive"/>
-      <node ref="TP3" pin="1" pinfunction="1_1" pintype="passive"/>
-      <node ref="U4" pin="13" pinfunction="RC2_13" pintype="bidirectional"/>
-    </net>
-    <net code="34" name="/RX_A_FILTER" class="Default">
-      <node ref="C18" pin="2" pintype="passive"/>
-      <node ref="C25" pin="1" pintype="passive"/>
-      <node ref="R27" pin="1" pintype="passive"/>
-      <node ref="TP6" pin="1" pinfunction="1_1" pintype="passive"/>
-      <node ref="U4" pin="2" pinfunction="RA0_2" pintype="bidirectional"/>
-    </net>
-    <net code="35" name="/RX_STAGE_LINK" class="Default">
-      <node ref="C42" pin="2" pintype="passive"/>
-      <node ref="R25" pin="2" pintype="passive"/>
-      <node ref="R47" pin="2" pintype="passive"/>
-      <node ref="R48" pin="2" pintype="passive"/>
-    </net>
-    <net code="36" name="/U1_ALT_PAD" class="Default">
-      <node ref="C3" pin="2" pintype="passive"/>
-      <node ref="C4" pin="2" pintype="passive"/>
-      <node ref="R1" pin="2" pintype="passive"/>
-      <node ref="R2" pin="2" pintype="passive"/>
-      <node ref="U1" pin="4" pinfunction="NC_4" pintype="passive"/>
-    </net>
-    <net code="37" name="/U2_VCC" class="Default">
-      <node ref="C7" pin="1" pintype="passive"/>
-      <node ref="R5" pin="2" pintype="passive"/>
-      <node ref="U2" pin="5" pinfunction="VCC_5" pintype="power_in"/>
-    </net>
-    <net code="38" name="/VDD" class="Default">
-      <node ref="C102" pin="1" pintype="passive"/>
-      <node ref="C2" pin="1" pintype="passive"/>
-      <node ref="C3" pin="1" pintype="passive"/>
-      <node ref="C32" pin="1" pintype="passive"/>
-      <node ref="C34" pin="1" pintype="passive"/>
-      <node ref="D3" pin="2" pinfunction="A_2" pintype="passive"/>
-      <node ref="J1" pin="2" pinfunction="Pin_2_2" pintype="passive"/>
-      <node ref="Q7" pin="2" pinfunction="E_2" pintype="passive"/>
-      <node ref="R1" pin="1" pintype="passive"/>
-      <node ref="R19" pin="2" pintype="passive"/>
-      <node ref="R37" pin="1" pintype="passive"/>
-      <node ref="R39" pin="2" pintype="passive"/>
-      <node ref="TP103" pin="1" pinfunction="1_1" pintype="passive"/>
-      <node ref="U1" pin="5" pinfunction="VOUT_5" pintype="power_out"/>
-      <node ref="U4" pin="20" pinfunction="VDD_20" pintype="power_in"/>
-      <node ref="U5" pin="1" pinfunction="VCC_1" pintype="power_in"/>
-    </net>
-    <net code="39" name="/VREF" class="Default">
-      <node ref="C18" pin="1" pintype="passive"/>
-      <node ref="C39" pin="1" pintype="passive"/>
-      <node ref="R21" pin="2" pintype="passive"/>
-      <node ref="R22" pin="2" pintype="passive"/>
-      <node ref="TP104" pin="1" pinfunction="1_1" pintype="passive"/>
-      <node ref="U3" pin="3" pinfunction="+_3" pintype="input"/>
-      <node ref="U3" pin="5" pinfunction="+_5" pintype="input"/>
-      <node ref="U4" pin="4" pinfunction="RA2_4" pintype="bidirectional"/>
-    </net>
-    <net code="40" name="/VSYS" class="Default">
-      <node ref="C27" pin="1" pintype="passive"/>
-      <node ref="C33" pin="1" pintype="passive"/>
-      <node ref="L1" pin="1" pinfunction="1_1" pintype="passive"/>
-      <node ref="L2" pin="1" pinfunction="1_1" pintype="passive"/>
-      <node ref="Q1" pin="2" pinfunction="S_2" pintype="passive"/>
-      <node ref="R3" pin="1" pintype="passive"/>
-      <node ref="U5" pin="4" pinfunction="VDD_4" pintype="power_in"/>
-    </net>
     <net code="41" name="Net-(C8-Pad1)" class="Default">
       <node ref="C8" pin="1" pintype="passive"/>
       <node ref="D1" pin="1" pinfunction="K_1" pintype="passive"/>
@@ -7729,8 +7777,8 @@
       <node ref="R7" pin="2" pintype="passive"/>
       <node ref="U2" pin="1" pintype="input"/>
     </net>
-    <net code="51" name="Net-(D2-Pin_3)" class="Default">
-      <node ref="D2" pin="3" pinfunction="Pin_3_3" pintype="passive"/>
+    <net code="51" name="Net-(D2-common)" class="Default">
+      <node ref="D2" pin="3" pinfunction="common_3" pintype="passive"/>
       <node ref="R46" pin="2" pintype="passive"/>
     </net>
     <net code="52" name="Net-(J5-Pin_2)" class="Default">
