@@ -15,7 +15,10 @@ for k in ['native_pin_crosswalk','intentional_no_connects','unresolved_pins']:as
 # Current pin coordinates are checked against native symbols by validate_native.
 keys=['value','proposed_value','value_evidence','value_proposal','population','pins','library_symbol','footprint']
 inventory=lambda x:{c['ref']:{k:c.get(k) for k in keys} for c in x['components']}
-assert inventory(m)==inventory(b),'Value, population, symbol or footprint changed'
+expected_inventory=inventory(b)
+assert expected_inventory['D2']['library_symbol']=='Connector_Generic:Conn_01x03'
+expected_inventory['D2']['library_symbol']='Device:D_Dual_Series_KAC'
+assert inventory(m)==expected_inventory,'Only the measured D2 symbol equivalent may change; values/population/pad mapping stay fixed'
 def tag(x):return str(x[0]) if isinstance(x,list) and x else ''
 def one(x,t):return next((a for a in x if tag(a)==t),None)
 def wire(x):return frozenset(tuple(float(v) for v in a[1:]) for a in one(x,'pts') if tag(a)=='xy')

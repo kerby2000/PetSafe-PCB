@@ -4,9 +4,26 @@ from current_state import ROOT, read, current_state, validate_issue_register
 from audit_physical_evidence import compare
 from verify_capacitor_application import canonical_text_sha256, matches_text_digest
 from inventory_contracts import verify_receiver_open_erc
-from validate_native import wire_graph
+from validate_native import wire_graph, board_net_partitions
+import xml.etree.ElementTree as ET
 
 class ReviewProgress(unittest.TestCase):
+    def test_external_antenna_cannot_hide_wrong_endpoint(self):
+        xml=ET.parse(ROOT/'output/PetSafe_netlist.xml')
+        board_net_partitions(xml,self.model)
+        wrong=copy.deepcopy(xml)
+        a=next(net for net in wrong.findall('./nets/net') if net.find('node[@ref="L101"][@pin="1"]') is not None)
+        b=next(net for net in wrong.findall('./nets/net') if net.find('node[@ref="L101"][@pin="2"]') is not None)
+        node=b.find('node[@ref="L101"][@pin="2"]');b.remove(node);a.append(node)
+        with self.assertRaises(AssertionError):board_net_partitions(wrong,self.model)
+
+    def test_external_antenna_must_stay_off_main_board(self):
+        xml=ET.parse(ROOT/'output/PetSafe_netlist.xml')
+        for flag in ['exclude_from_bom','exclude_from_board']:
+            wrong=copy.deepcopy(xml);comp=wrong.find('./components/comp[@ref="L101"]')
+            comp.remove(comp.find('property[@name="'+flag+'"]'))
+            with self.assertRaises(AssertionError):board_net_partitions(wrong,self.model)
+
     def test_native_t_junction_with_unsplit_trunk(self):
         graph=wire_graph([((0,0),(10,0)),((5,0),(5,5))])
         self.assertEqual(graph[(5,0)],{(0,0),(10,0),(5,5)})

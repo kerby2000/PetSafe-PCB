@@ -4,7 +4,7 @@ from collections import defaultdict
 import json, hashlib, subprocess, gzip
 import sexpdata as sx
 from current_state import current_state, validate_issue_register
-from validate_native import wire_graph
+from validate_native import wire_graph, native_pin_positions
 from inventory_contracts import verify_receiver_open_erc, with_receiver_input_split, with_r39_output_pullup, without_withdrawn_r33, retained_crosswalk, with_antenna_outer_rail, with_ra0_tp6, with_tp14_motor_output, with_u2_r5_topology
 R=Path(__file__).resolve().parents[1]
 def read(p):return json.loads((R/p).read_text(encoding='utf-8'))
@@ -27,7 +27,17 @@ assert hashlib.sha256(json.dumps([m['pin_positions'],m['geometric_wires']],sort_
 def poses(t):
     return {(next(p[2] for p in children(x,'property') if p[1]=='Reference'),one(x,'unit')[1]):(xy(one(x,'at')[1:3]),float(one(x,'at')[3])) for x in children(t,'symbol')}
 before=poses(sx.loads(incoming.decode('utf-8')));after=poses(tree)
-assert before.keys()==after.keys()
+added={(ref,1) for ref in redraw.get('added_symbols',[])}
+assert after.keys()-before.keys()==added and not before.keys()-after.keys()
+grounds={next(p[2] for p in children(x,'property') if p[1]=='Reference'):x for x in children(tree,'symbol') if one(x,'lib_id')[1]=='power:GND'}
+assert set(grounds)=={g['reference'] for g in redraw.get('ground_symbols',[])}
+assert not any(x[1]=='GND' for kind in ['label','global_label'] for x in children(tree,kind))
+for g in redraw.get('ground_symbols',[]):
+    x=grounds[g['reference']]
+    assert list(one(x,'at')[1:])==g['position']+[0]
+    assert next(p[2] for p in children(x,'property') if p[1]=='Value')=='GND'
+    old_label=next(l for l in children(sx.loads(incoming.decode('utf-8')),'label') if one(l,'uuid')[1]==g['replaced_label_uuid'])
+    assert old_label[1]=='GND' and list(one(old_label,'at')[1:3])==g.get('source_position',g['position'])
 moves={(x['reference'],x['unit']):x for x in redraw.get('layout_moves',[])}
 assert len(moves)==len(redraw.get('layout_moves',[])), 'Duplicate authorized layout move'
 for k,(p,angle) in before.items():
@@ -48,6 +58,9 @@ flag_points={xy(one(i,'at')[1:3]) for i in flags}
 decl=read('evidence/power_source_declarations.json')['declarations']
 assert flag_points=={xy(d['position_mm']) for d in decl} and len(flags)==6
 pins|=flag_points
+positions=native_pin_positions(tree)
+pins|={xy(positions[ref+'.1']) for ref in grounds}
+pins|={xy(positions['L101.'+pin]) for pin in ['1','2']} if ('L101',1) in added else set()
 junctions={xy(one(j,'at')[1:3]) for j in children(tree,'junction')}
 # KiCad can save a T junction in the middle of an unsplit wire. The old
 # generated layout split every segment first; manual layouts need this step.

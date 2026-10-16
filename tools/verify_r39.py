@@ -16,7 +16,10 @@ assert {n['net']:sorted(n['endpoints']) for n in m['nets']}==expected, 'Unregist
 assert m['native_pin_crosswalk']==old['native_pin_crosswalk']==read('evidence/pin_crosswalk.json')
 def inventory(model):
     return {c['ref']:{k:c.get(k) for k in ['value','proposed_value','value_evidence','value_proposal','population','pins','library_symbol','footprint']} for c in model['components']}
-assert inventory(m)==inventory(old),'Value, population, device symbol or physical inventory changed'
+expected_inventory=inventory(old)
+assert expected_inventory['D2']['library_symbol']=='Connector_Generic:Conn_01x03'
+expected_inventory['D2']['library_symbol']='Device:D_Dual_Series_KAC'
+assert inventory(m)==expected_inventory,'Only D2 measured-equivalent representation may change; values/population/pad mapping stay fixed'
 assert m['intentional_no_connects']==old['intentional_no_connects']
 xml=ET.parse(R/'output/PetSafe_netlist.xml')
 members={n.attrib['ref']+'.'+n.attrib['pin']:net.attrib['name'] for net in xml.findall('./nets/net') for n in net.findall('node')}

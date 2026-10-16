@@ -16,7 +16,10 @@ def inspect(path,changed):
    props={a[1]:a[2] for a in item if tag(a)=='property'}
    ref=props['Reference'];symbols.setdefault(ref,[]).append(props)
    invariants.append(sx.dumps([a for a in item if tag(a)!='property']))
-   if ref not in changed:unchanged.append((ref,one(item,'unit')[1],props['Value'],props['Footprint']))
+   # New ground signs and the explicitly external winding are not changes to
+   # the frozen board-value inventory; their exact types/endpoints are audited.
+   representation_addition=(ref.startswith('#PWR') and one(item,'lib_id')[1]=='power:GND') or (ref=='L101' and one(item,'lib_id')[1]=='Device:L' and props['Value']=='500uH' and str(one(item,'in_bom')[1])=='no' and str(one(item,'on_board')[1])=='no')
+   if ref not in changed and not representation_addition:unchanged.append((ref,one(item,'unit')[1],props['Value'],props['Footprint']))
   elif t in {'lib_symbols','wire','junction','label','no_connect','polyline','bus','bus_entry','global_label','hierarchical_label','sheet'}:
    invariants.append(sx.dumps(item))
  return dict(geometry_and_library_sha256=sha('\n'.join(sorted(invariants)).encode()),unchanged_values_sha256=sha(json.dumps(sorted(unchanged)).encode())),symbols
