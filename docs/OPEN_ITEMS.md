@@ -1,6 +1,6 @@
 # Remaining open items
 
-Current schematic **v0.9.49**. Generated from [the authoritative register](../evidence/remaining_work.json); edit that source, not this view.
+Current schematic **v0.9.50**. Generated from [the authoritative register](../evidence/remaining_work.json); edit that source, not this view.
 
 [Schematic and PCB photographs](../README.md) | [HTML checklist](FINISHING_CHECKLIST.html) | [History and closed findings](history/README.md)
 
@@ -81,13 +81,13 @@ Evidence: [remaining_work.json](../docs/history/v0.9.30-before-finalization/evid
 | Field | Current position |
 |---|---|
 | Category | Device function/rating; operating behaviour |
-| Known | VSYS/RF 6.3 V, printed VDD 4.5 V, PIR supply 3.3 V with PIR attached; VREF 0 V and red LED approximately 1 Hz. TP14 is on U5.8/OUTA at 1.5 ohm, with R43.2/V015; BATTERY+ stays separate. Receiver TP5 = 0.066 V (B62). R44 = 15 kohm (B83); TP14-to-Q1 presumed gate recheck = 21.4/21.7 kohm (B84/B85). The earlier 516-ohm conflict is not reproduced and no wiring change is warranted. |
-| Unresolved claim | Q1 fitted identity, terminal roles and powered control behavior remain unverified. The resistance recheck is compatible with R44 in the path but does not prove an intact MOSFET or the exact remaining path. Q1/motor dynamics and R3/R4/C28 sensing role remain qualified. |
+| Known | VSYS/RF 6.3 V, printed VDD 4.5 V, PIR supply 3.3 V with PIR attached; VREF 0 V and red LED approximately 1 Hz. TP14 is on U5.8/OUTA at 1.5 ohm, with R43.2/V015; BATTERY+ stays separate. Receiver TP5 = 0.066 V (B62). R44 = 15 kohm (B83); TP14-to-Q1 presumed gate recheck = 21.4/21.7 kohm (B84/B85). The earlier 516-ohm conflict is not reproduced and no wiring change is warranted. R3/R4 are 330 kohm (334 marking); R4 reaches PIC24/RB3. The retained C28 estimate is 10nF. RB3 supports GPIO, ADC and comparator input functions. |
+| Unresolved claim | Q1 fitted identity, terminal roles and powered control behavior remain unverified. The resistance recheck is compatible with R44 in the path but does not prove an intact MOSFET or the exact remaining path. Q1/motor dynamics and R3/R4/C28 sensing role remain qualified. R4 returns to RB3, not permanent ground: half-VSYS at the modeled middle junction requires RB3 driven low, while the PIC pin itself is low. A firmware-dependent RC/supply-sensing method is only a candidate; its exact method and voltage handling are unresolved. The common R3/R4/C28 copper junction remains an E11 gap. |
 | Next Codex action | Photo and device-consistency review completed in TOPOLOGY_AUDIT.md. R44 local route corroborated; 516-ohm contradiction stays closed by B84/B85. Q1 roles/control remain qualified. |
 | Owner input | None now. Scope and component-isolation work are deferred by owner. |
 | Closure evidence | Actual supply levels and control behavior are recorded without merging battery, VSYS or filtered branches. |
 
-Evidence: [remaining_work.json](../docs/history/v0.9.30-before-finalization/evidence/remaining_work.json), [supply_baseline_results_20261014.json](../evidence/supply_baseline_results_20261014.json), [product_manual_led_review_20261014.json](../evidence/product_manual_led_review_20261014.json), [tp14_motor_output_correction_v0939.json](../evidence/tp14_motor_output_correction_v0939.json), [receiver_supply_results_20261014.json](../evidence/receiver_supply_results_20261014.json), [circuit_consistency_v0942.json](../evidence/circuit_consistency_v0942.json), [r44_resistance_result_20261015.json](../evidence/r44_resistance_result_20261015.json), [q1_gate_recheck_results_20261015.json](../evidence/q1_gate_recheck_results_20261015.json), [physical_evidence_review_20261015.json](../evidence/physical_evidence_review_20261015.json), [topology_closure_audit.json](../evidence/topology_closure_audit.json).
+Evidence: [remaining_work.json](../docs/history/v0.9.30-before-finalization/evidence/remaining_work.json), [supply_baseline_results_20261014.json](../evidence/supply_baseline_results_20261014.json), [product_manual_led_review_20261014.json](../evidence/product_manual_led_review_20261014.json), [tp14_motor_output_correction_v0939.json](../evidence/tp14_motor_output_correction_v0939.json), [receiver_supply_results_20261014.json](../evidence/receiver_supply_results_20261014.json), [circuit_consistency_v0942.json](../evidence/circuit_consistency_v0942.json), [r44_resistance_result_20261015.json](../evidence/r44_resistance_result_20261015.json), [q1_gate_recheck_results_20261015.json](../evidence/q1_gate_recheck_results_20261015.json), [physical_evidence_review_20261015.json](../evidence/physical_evidence_review_20261015.json), [topology_closure_audit.json](../evidence/topology_closure_audit.json), [IMG_2436.jpg](../photos/originals/IMG_2436.jpg), [IMG_2437.jpg](../photos/originals/IMG_2437.jpg), [RECONSTRUCTION.md](../docs/RECONSTRUCTION.md).
 
 <a id="e10"></a>
 ## E10 - D6 breakdown and ICSP compatibility

@@ -1,7 +1,7 @@
 {
-  "date": "2026-10-15",
-  "revision": "v0.9.49",
-  "review_revision": "v0.9.49",
+  "date": "2026-10-16",
+  "revision": "v0.9.50",
+  "review_revision": "v0.9.50",
   "interpretation": "Every catalog entry is drawn. Hardware connectivity, values and identities are only partially verified. No routed PCB exists.",
   "catalog_entries": 148,
   "physical_pins": 349,
@@ -70,7 +70,7 @@
     "pin_to_pin": 1
   },
   "modeled_nets": 82,
-  "schematic_sha256": "3cdb0e3121e3586d3e929da235cf468eb0482a51efcf20b89811814acad789d6",
+  "schematic_sha256": "d12b34cf0b904e880fbf2877f4ebf7ab313b2bf6b919863c16e1a90546f21310",
   "known_identified_ICs_needing_new_symbols": [],
   "complete_symbols_for_selected_candidates": true,
   "available_instruments": [
@@ -132,7 +132,7 @@
     {
       "id": "E09",
       "area": "Supply voltages and Q1 control",
-      "gap": "Q1 fitted identity, terminal roles and powered control behavior remain unverified. The resistance recheck is compatible with R44 in the path but does not prove an intact MOSFET or the exact remaining path. Q1/motor dynamics and R3/R4/C28 sensing role remain qualified.",
+      "gap": "Q1 fitted identity, terminal roles and powered control behavior remain unverified. The resistance recheck is compatible with R44 in the path but does not prove an intact MOSFET or the exact remaining path. Q1/motor dynamics and R3/R4/C28 sensing role remain qualified. R4 returns to RB3, not permanent ground: half-VSYS at the modeled middle junction requires RB3 driven low, while the PIC pin itself is low. A firmware-dependent RC/supply-sensing method is only a candidate; its exact method and voltage handling are unresolved. The common R3/R4/C28 copper junction remains an E11 gap.",
       "method": "Photo and device-consistency review completed in TOPOLOGY_AUDIT.md. R44 local route corroborated; 516-ohm contradiction stays closed by B84/B85. Q1 roles/control remain qualified. None now. Scope and component-isolation work are deferred by owner."
     },
     {
@@ -398,8 +398,8 @@
       ],
       "priority": 2,
       "state": "open",
-      "known": "VSYS/RF 6.3 V, printed VDD 4.5 V, PIR supply 3.3 V with PIR attached; VREF 0 V and red LED approximately 1 Hz. TP14 is on U5.8/OUTA at 1.5 ohm, with R43.2/V015; BATTERY+ stays separate. Receiver TP5 = 0.066 V (B62). R44 = 15 kohm (B83); TP14-to-Q1 presumed gate recheck = 21.4/21.7 kohm (B84/B85). The earlier 516-ohm conflict is not reproduced and no wiring change is warranted.",
-      "unknown": "Q1 fitted identity, terminal roles and powered control behavior remain unverified. The resistance recheck is compatible with R44 in the path but does not prove an intact MOSFET or the exact remaining path. Q1/motor dynamics and R3/R4/C28 sensing role remain qualified.",
+      "known": "VSYS/RF 6.3 V, printed VDD 4.5 V, PIR supply 3.3 V with PIR attached; VREF 0 V and red LED approximately 1 Hz. TP14 is on U5.8/OUTA at 1.5 ohm, with R43.2/V015; BATTERY+ stays separate. Receiver TP5 = 0.066 V (B62). R44 = 15 kohm (B83); TP14-to-Q1 presumed gate recheck = 21.4/21.7 kohm (B84/B85). The earlier 516-ohm conflict is not reproduced and no wiring change is warranted. R3/R4 are 330 kohm (334 marking); R4 reaches PIC24/RB3. The retained C28 estimate is 10nF. RB3 supports GPIO, ADC and comparator input functions.",
+      "unknown": "Q1 fitted identity, terminal roles and powered control behavior remain unverified. The resistance recheck is compatible with R44 in the path but does not prove an intact MOSFET or the exact remaining path. Q1/motor dynamics and R3/R4/C28 sensing role remain qualified. R4 returns to RB3, not permanent ground: half-VSYS at the modeled middle junction requires RB3 driven low, while the PIC pin itself is low. A firmware-dependent RC/supply-sensing method is only a candidate; its exact method and voltage handling are unresolved. The common R3/R4/C28 copper junction remains an E11 gap.",
       "next_action": "Photo and device-consistency review completed in TOPOLOGY_AUDIT.md. R44 local route corroborated; 516-ohm contradiction stays closed by B84/B85. Q1 roles/control remain qualified. None now. Scope and component-isolation work are deferred by owner.",
       "closed_when": "Actual supply levels and control behavior are recorded without merging battery, VSYS or filtered branches.",
       "open_pads": [],
@@ -423,7 +423,10 @@
         "evidence/r44_resistance_result_20261015.json",
         "evidence/q1_gate_recheck_results_20261015.json",
         "evidence/physical_evidence_review_20261015.json",
-        "evidence/topology_closure_audit.json"
+        "evidence/topology_closure_audit.json",
+        "photos/originals/IMG_2436.jpg",
+        "photos/originals/IMG_2437.jpg",
+        "docs/RECONSTRUCTION.md"
       ],
       "owner": "Codex evidence audit; no active bench request",
       "category": "Device function/rating; operating behaviour",

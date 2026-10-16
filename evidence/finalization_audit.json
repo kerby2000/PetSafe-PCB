@@ -1,7 +1,7 @@
 {
-  "revision": "v0.9.49",
+  "revision": "v0.9.50",
   "result": "PASS",
-  "schematic_sha256": "3cdb0e3121e3586d3e929da235cf468eb0482a51efcf20b89811814acad789d6",
+  "schematic_sha256": "d12b34cf0b904e880fbf2877f4ebf7ab313b2bf6b919863c16e1a90546f21310",
   "physical_net_partitions": 82,
   "pad_membership_baseline": "ecd683d",
   "documented_pad_moves": "evidence/antenna_outer_rail_correction_v0937.json",
@@ -21,7 +21,7 @@
   ],
   "dangling_wire_ends": 0,
   "wire_islands_without_pins": 0,
-  "native_wire_segments": 462,
+  "native_wire_segments": 429,
   "unassigned_model_pads": 0,
   "isolated_modeled_nets": [],
   "erc": {
@@ -39,8 +39,8 @@
       "reference": "#FLG01",
       "net": "GND",
       "position_mm": [
-        91.44,
-        81.28
+        74.93,
+        69.85
       ],
       "basis": "BATTERY(-) provides the return. This power flag declares an external source, not a new copper link."
     },
@@ -48,8 +48,8 @@
       "reference": "#FLG02",
       "net": "H_LDO_IN",
       "position_mm": [
-        53.34,
-        53.34
+        36.83,
+        41.91
       ],
       "basis": "VSYS reaches U1 VIN through L2. A passive inductor does not propagate KiCad power-output pin type."
     },
@@ -57,8 +57,8 @@
       "reference": "#FLG03",
       "net": "VSYS",
       "position_mm": [
-        481.33,
-        52.07
+        73.66,
+        109.22
       ],
       "basis": "User confirmed Q1.L -> U5 pin4 and L1/L2 supply sides. Q1 passive terminals do not declare a power source to ERC."
     },
@@ -66,8 +66,8 @@
       "reference": "#FLG04",
       "net": "H_AUX_IN",
       "position_mm": [
-        307.34,
-        302.26
+        27.94,
+        196.85
       ],
       "basis": "VDD from U1 reaches U6 VIN through R37. Passive resistor output requires a power declaration."
     },
@@ -75,8 +75,8 @@
       "reference": "#FLG05",
       "net": "H_RX_VDD",
       "position_mm": [
-        563.88,
-        172.72
+        251.46,
+        278.13
       ],
       "basis": "Modeled switched supply VDD -> Q7 -> R20 -> U3 pin8. Flag declares intended power distribution only; Q7 identity/switching and rail voltage remain E08/E09 open."
     },
@@ -84,8 +84,8 @@
       "reference": "#FLG06",
       "net": "U2_VCC",
       "position_mm": [
-        190.5,
-        166.37
+        265.43,
+        137.16
       ],
       "basis": "B78-B81 support H_RF_VDD -> passive R5 (22 ohm) -> U2/C7. B76 measured 6.3 V here. Passive resistor does not propagate power-output pin type. This flag does not approve candidate U2 voltage compatibility."
     }
