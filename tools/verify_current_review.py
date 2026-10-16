@@ -4,7 +4,6 @@ from pathlib import Path
 from html.parser import HTMLParser
 from urllib.parse import urlparse, unquote
 import hashlib, json, subprocess, math
-from pypdf import PdfReader
 from current_state import current_state, validate_issue_register, read, ROOT
 import xml.etree.ElementTree as ET
 from inventory_contracts import with_r39_output_pullup, with_receiver_input_split
@@ -292,23 +291,22 @@ for name,expected in cleanup['archived_sha256'].items():
 previous=read(cleanup['archived_root']+'/evidence/finishing_measurements.json')
 for key in ['completed_tests','cancelled_tests','photo_updates','photos']:
     assert all(entry in measurements[key] for entry in previous[key]), (key,'Cleanup altered recorded observations')
-reader=PdfReader(ROOT/'output/pdf/PetSafe_completion_status.pdf')
-pdftext='\n'.join(p.extract_text() for p in reader.pages)
-for i in ids:assert i+' -' in pdftext,i
+assert not (ROOT/'output/pdf/PetSafe_completion_status.pdf').exists(), 'Duplicate status PDF must stay retired'
+for i in ids:assert f'id="{i}"' in checklist,i
 assert not s['closed_items'], 'Resolved groups belong in history, not the active register'
 assert 'history/README.md' in checklist
 archive=read('evidence/cleanup_v0931.json')
 for name,digest in archive['archived_sha256'].items():
     assert hashlib.sha256((ROOT/archive['archived_root']/name).read_bytes()).hexdigest()==digest
 assert 'Already resolved' not in checklist and 'Closed issues retained' not in checklist
-for p in s['current_fitted_open_pads']:assert p in pdftext,p
-for ref in s['unknown_ceramic_values']:assert ref in pdftext,ref
-assert f'{len(s["current_gpio_pins"])} open PIC pads' in ' '.join(pdftext.split())
+for p in s['current_fitted_open_pads']:assert p in checklist,p
+for ref in s['unknown_ceramic_values']:assert ref in checklist,ref
+assert read('evidence/pic_gpio_status.json')['open_gpio_pins']==s['current_gpio_pins']
 assert 'No electrical measurements were supplied' not in (ROOT/'docs/MEASUREMENTS.md').read_text(encoding='utf-8')
 report=dict(result='PASS',date=s['date'],schematic_revision=s['revision'],review_revision=s['review_revision'],
     schematic_sha256=s['schematic_sha256'],issue_groups=len(issues),closed_issue_groups=len(s['closed_items']),fitted_open_pads_covered=len(covered),
     isolated_labels_covered=len(isolated),ceramic_values_listed=len(s['unknown_ceramic_values']),
-    pdf_pages=len(reader.pages),current_html_links='PASS',current_html_javascript_syntax='PASS',
+    completion_report='HTML (duplicate PDF retired)',current_html_links='PASS',current_html_javascript_syntax='PASS',
     browser_interaction='NOT_TESTED: file:// blocked by browser policy; HTML links, data and JavaScript checked statically',
     original_photo_hashes='PASS',electrical_contracts='See live_evidence_verification.json',j1_physical_numbering='PASS')
 (ROOT/'evidence/current_review_verification.json').write_text(json.dumps(report,indent=2)+'\n',encoding='utf-8')

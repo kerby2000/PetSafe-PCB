@@ -45,7 +45,7 @@ page=f'''<!doctype html><html lang="en"><meta charset="utf-8"><meta name="viewpo
 <p class="note">{status['modeled_nets']} model/native net partitions agree; {status['erc_total']} ERC findings: the deliberately retained U6/U6A conflict. The three reported receiver joins resolve the four previous receiver findings without exclusions. These are file checks, not proof of every hidden connection. All 44 starred capacitor values are estimates; original values remain unconfirmed.</p>
 <h2 id="pcb">Actual physical PCB</h2><a href="photos/two_sides_overview.jpg"><img class="board" src="photos/two_sides_overview.jpg" alt="Front and rear original-photo mosaics of the actual PCB"></a>
 <p>Photographic mosaics use original pixels. The rear is mirrored and approximately registered for comparison; alignment does not establish buried copper or dimensions. <a href="photos/back_readable.jpg">Rear, readable orientation</a> | <a href="photo-atlas-v01.html">Original-photo atlas</a> | <a href="docs/VIA_REVIEW.html">Existing via/photo viewer</a></p>
-<h2 id="open">Remaining open items</h2><p><a href="docs/OPEN_ITEMS.md">GitHub-readable register</a> | <a href="docs/FINISHING_CHECKLIST.html">Detailed HTML view</a> | <a href="output/pdf/PetSafe_completion_status.pdf">Offline status snapshot</a> (may predate this live register). Generated from <a href="evidence/remaining_work.json">one authoritative register</a>.</p>
+<h2 id="open">Remaining open items</h2><p><a href="docs/OPEN_ITEMS.md">GitHub-readable register</a> | <a href="docs/FINISHING_CHECKLIST.html">Detailed HTML view</a>. Generated from <a href="evidence/remaining_work.json">one authoritative register</a>.</p>
 <p>{esc(work['owner_action_summary'])} TP11/TP17 possible hidden continuations are an accepted reconstruction boundary, not proved intentional non-use. <a href="docs/TOPOLOGY_AUDIT.md">Independent connection audit</a>.</p>
 <div class="scroll"><table><thead><tr><th>ID</th><th>Area</th><th>Category</th><th>Unresolved claim</th></tr></thead><tbody>{openrows}</tbody></table></div>
 <h2 id="evidence">Evidence and rebuild</h2><p><a href="docs/RECONSTRUCTION.md">Current circuit interpretation</a> | <a href="docs/MEASUREMENTS.md">Recorded measurements</a> | <a href="docs/CAPACITOR_VALUE_REVIEW.html">Preserved capacitor estimates</a> | <a href="evidence/validation.json">Native validation</a> | <a href="docs/history/README.md">Investigation history</a></p>
@@ -80,7 +80,7 @@ These mosaics contain original photographic pixels. The rear is **mirrored and a
 
 ## Open items
 
-The [full Markdown register](docs/OPEN_ITEMS.md) and [HTML checklist](docs/FINISHING_CHECKLIST.html) reflect [remaining_work.json](evidence/remaining_work.json). The [printable PDF](output/pdf/PetSafe_completion_status.pdf) is an offline snapshot and may predate the live register.
+The [full Markdown register](docs/OPEN_ITEMS.md) and [HTML checklist](docs/FINISHING_CHECKLIST.html) reflect [remaining_work.json](evidence/remaining_work.json). The duplicate completion PDF is retired; use the HTML checklist for current status.
 
 | ID | Area | Category |
 |---|---|---|

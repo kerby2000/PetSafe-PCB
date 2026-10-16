@@ -2,7 +2,11 @@
 const fs=require('fs'),vm=require('vm'),assert=require('assert/strict');
 const script=fs.readFileSync('tools/measurement_form.js','utf8');
 const queue=JSON.parse(fs.readFileSync('evidence/finishing_measurements.json','utf8'));
-const tests=queue.completed_tests.filter(t=>queue.last_completed_test_ids.includes(t.id));
+// Exercise the archived capacitor form independently of today's empty queue.
+// Never reactivate those completed readings to make this test pass.
+const fixtureIds=['B86','B87','B88','B89','B90','B91'];
+const tests=queue.completed_tests.filter(t=>fixtureIds.includes(t.id));
+assert.equal(tests.length,6);
 const saved=new Map();
 function harness({active=true,blockedStorage=false,blockedClipboard=false,batch='fixture'}={}) {
   const fields=active?Object.fromEntries(tests.map(t=>[t.id,{value:'',dataset:{id:t.id}}])):{};
@@ -31,6 +35,8 @@ function harness({active=true,blockedStorage=false,blockedClipboard=false,batch=
   for(const t of tests)assert(h.copied.includes(t.result));
   assert.equal(h.copied.split('\n').length,7);
   const html=fs.readFileSync('docs/FINISHING_MEASUREMENTS.html','utf8');
-  assert(html.replaceAll('\r\n','\n').includes(script.replaceAll('\r\n','\n')));assert(html.includes('Copy results'));assert(html.includes('CAPACITOR_VALUE_REVIEW.html'));
+  assert(html.replaceAll('\r\n','\n').includes(script.replaceAll('\r\n','\n')));
+  assert(html.includes('FINISHING_CHECKLIST.html'));
+  if(queue.tests.length===0)assert(!html.includes('<input data-id='));
   console.log('PASS: draft restore/isolation, input/change and copy collection, blocked storage/clipboard fallback, download, six archived results, generated script. Browser UI not tested.');
 })();
