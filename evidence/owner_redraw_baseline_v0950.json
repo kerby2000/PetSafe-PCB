@@ -1,0 +1,206 @@
+{
+  "revision": "v0.9.50",
+  "checked_electrical_baseline": "91ad5b42fb3bd80afc838d1e946ca22cd822f496",
+  "source_file": "schematic/PetSafe_1001339.kicad_sch",
+  "source_sha256": "23919a9bb4f81c2371fc7e5079c74c6da7efa15093e7728181a0c8f14582fe81",
+  "source_project_sha256": "cabe991b5914c6837fc7936fe86b292ffef24f6656b9c5fd65a9d66a1adf101d",
+  "source_archive": "evidence/owner_redraw_20261016.kicad_sch.gz",
+  "source_revision": "0.9.49",
+  "paper": "A3 portrait",
+  "corrections": [
+    "Restore GND on the C30.2/C31.1 crystal-capacitor return",
+    "Remove the accidental H_PIR_RAW-to-H_PIR_SIG short; R39 remains a collector pull-up"
+  ],
+  "nonpolar_pin_mapping_restored": [
+    "R6"
+  ],
+  "layout_moves": [
+    {
+      "reference": "R21",
+      "unit": 1,
+      "before": [
+        22.86,
+        322.58,
+        0
+      ],
+      "after": [
+        22.86,
+        313.69,
+        0
+      ],
+      "reason": "Owner-requested receiver integration; net membership unchanged"
+    },
+    {
+      "reference": "R22",
+      "unit": 1,
+      "before": [
+        41.91,
+        322.58,
+        0
+      ],
+      "after": [
+        22.86,
+        330.2,
+        180
+      ],
+      "reason": "Owner-requested receiver integration; net membership unchanged"
+    },
+    {
+      "reference": "TP104",
+      "unit": 1,
+      "before": [
+        127,
+        237.49,
+        270
+      ],
+      "after": [
+        50.8,
+        322.58,
+        0
+      ],
+      "reason": "Owner-requested receiver integration; net membership unchanged"
+    },
+    {
+      "reference": "C19",
+      "unit": 1,
+      "before": [
+        95.25,
+        331.47,
+        90
+      ],
+      "after": [
+        93.98,
+        293.37,
+        0
+      ],
+      "reason": "Owner-requested receiver integration; net membership unchanged"
+    },
+    {
+      "reference": "R28",
+      "unit": 1,
+      "before": [
+        69.85,
+        322.58,
+        0
+      ],
+      "after": [
+        95.25,
+        307.34,
+        90
+      ],
+      "reason": "Owner-requested receiver integration; net membership unchanged"
+    },
+    {
+      "reference": "TP7",
+      "unit": 1,
+      "before": [
+        91.44,
+        313.69,
+        270
+      ],
+      "after": [
+        73.66,
+        307.34,
+        0
+      ],
+      "reason": "Owner-requested receiver integration; net membership unchanged"
+    },
+    {
+      "reference": "R29",
+      "unit": 1,
+      "before": [
+        55.88,
+        322.58,
+        0
+      ],
+      "after": [
+        73.66,
+        316.23,
+        0
+      ],
+      "reason": "Owner-requested receiver integration; net membership unchanged"
+    }
+  ],
+  "comment_review": [
+    {
+      "uuid": "31a7a1a7-af45-458a-8a46-2f30eb35ef3b",
+      "before": "Q1 identity and powered control behavior remain unverified.",
+      "after": "Q1 identity and powered control\nbehavior remain unverified."
+    },
+    {
+      "uuid": "4586fe13-dc48-4754-957f-42a925d515e2",
+      "before": "Candidate U1 pin 4 is internally open; external option pads remain connected.",
+      "after": "Candidate U1 pin 4 is internally open;\nexternal option pads remain connected."
+    },
+    {
+      "uuid": "52d7c223-3db0-435e-a88b-649c3ce2cfbe",
+      "before": "Main board only. PIR internals, antenna assembly, motor and firmware are outside this drawing.",
+      "after": "Main board only. PIR internals, antenna assembly,\nmotor and firmware are outside this drawing."
+    },
+    {
+      "uuid": "55df8f38-af64-4e55-b7e8-74102fccbb6c",
+      "before": "Physical pad mapping: evidence/pin_crosswalk.json. Open items: docs/OPEN_ITEMS.md.",
+      "after": "Pad mapping: evidence/pin_crosswalk.json.\nOpen items: docs/OPEN_ITEMS.md."
+    },
+    {
+      "uuid": "5fe2f43a-5e02-4494-994c-fb02462f80c7",
+      "before": "U6A / U106: DNP regulator option. Symbol and ERC conflict retained intentionally.",
+      "after": "U6A / U106: DNP regulator option.\nSymbol and ERC conflict retained intentionally."
+    },
+    {
+      "uuid": "a71a8b29-dcd1-4003-a493-98564fffb4cd",
+      "before": "v0.9.49 | KiCad 10.0.5 | 2026-10-15",
+      "after": "v0.9.50 | KiCad 10.0.5 | 2026-10-16"
+    },
+    {
+      "uuid": "b5aa2047-db2a-4f91-b101-61c43dbfcc67",
+      "before": "Q3 diode readings dispute the PNP pinout. Q3/Q4/Q5/Q6/Q11 identities remain unverified.",
+      "after": "Q3 diode readings dispute the PNP pinout.\nQ3/Q4/Q5/Q6/Q11 identities remain unverified."
+    },
+    {
+      "uuid": "b687992f-993a-4389-a252-bd53e27d0000",
+      "before": "Tuning values assume 500 uH and 134.2 kHz; switching weights/order remain unverified.",
+      "after": "Tuning assumes 500 uH and 134.2 kHz;\nswitching weights/order remain unverified."
+    },
+    {
+      "uuid": "c2c2dc90-f85f-4e80-a986-8f61bb8c0706",
+      "before": "R3/R4/C28 sensing function remains unverified.",
+      "after": "R3/R4/C28: RC sense candidate.\nCopper junction / role unverified."
+    },
+    {
+      "area": "Current review summaries",
+      "change": "VREF now states RA2/U3 bias, superseding the withdrawn RB0 association; GND_RF distinguishes modeled ground from its evidence gap; receiver device interpretation incorporates the existing v0.9.48 destinations. Original dated evidence retained."
+    }
+  ],
+  "display_restorations": [
+    "C5 retains its marked 16 V rating",
+    "TP102 retains its recorded GND_RF / GND pad alias"
+  ],
+  "new_hardware_claims": [],
+  "owner_action": "None; reload the reviewed native file before further editing.",
+  "reviewed_schematic_sha256": "d12b34cf0b904e880fbf2877f4ebf7ab313b2bf6b919863c16e1a90546f21310",
+  "model_geometry_sha256": "1f5a177a8c49a6c33eb6bf14bcfb2958e5f74fd972947ce288d2f709938bb0b4",
+  "retained_symbol_units": 153,
+  "physical_net_partitions": 82,
+  "values_and_pad_crosswalk": "unchanged from 91ad5b4",
+  "readability_adjustments": [
+    "Wire the seven requested receiver parts into their existing nets; one unjoined crossing at U3 feedback",
+    "Place R3/R4/C28 fields horizontally and qualify the GPIO-controlled RC hypothesis",
+    "Wrap current comments inside the A3 portrait blocks; separate C5 rating and C6 estimate"
+  ],
+  "validation": {
+    "native_kicad": "10.0.5",
+    "net_partitions": 82,
+    "native_export_and_model": "PASS",
+    "pin_coordinates_and_authorized_positions": "PASS",
+    "regression_tests": 13,
+    "erc": "One intentional U6/U106 power-output conflict; no exclusions added",
+    "dangling_wire_ends": 0,
+    "pinless_wire_islands": 0,
+    "native_template_replay": "PASS - byte identical",
+    "original_photos": 26,
+    "physical_evidence": "269 joins / 36 separations; no conflicts; six nets retain evidence gaps",
+    "pdf": "One 297 x 420 mm A3 portrait sheet; full-sheet and region visual review passed",
+    "owner_measurements_pending": 0
+  }
+}

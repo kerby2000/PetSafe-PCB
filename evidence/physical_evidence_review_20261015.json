@@ -2199,13 +2199,14 @@
     },
     {
       "area": "E08: Q7 and receiver",
-      "assessment": "B65/B66 directly support Q7.L-R19.1 and Q7.R-R19.2. Diode results favor a PNP-like base at L, but do not isolate E/C or maker. Later direct QR-QL=0V is consistent with no forward base-emitter bias at rest; TP5=0.066V and VREF=0V were recorded in the red-blinking state. Earlier R19-to-ground readings must not be subtracted as one simultaneous state. Equal 10 kohm R21/R22 imply half-rail VREF only with negligible loading. Visible feedback around both op-amps is supported; detector/input and enabled behavior remain separate questions. E11 follow-up rejects the former detector/R28-to-U3.3 copper join; C20 and C19 are no longer modeled in parallel. No new transfer-function claim is supported. The subsequent RX-1/RX-2 results reject C19.1-U3.3 and C20.1-GND; those inherited joins are now withdrawn. Its actual external signal/DC-return path is unresolved under E11; a capacitor does not establish a DC return. U3.5/VREF remains settled. This is a reconstruction gap, not evidence of a defective board.",
+      "assessment": "B65/B66 directly support Q7.L-R19.1 and Q7.R-R19.2. Diode results favor a PNP-like base at L, but do not isolate E/C or maker. Later direct QR-QL=0V is consistent with no forward base-emitter bias at rest; TP5=0.066V and VREF=0V were recorded in the red-blinking state. Earlier R19-to-ground readings must not be subtracted as one simultaneous state. Equal 10 kohm R21/R22 imply half-rail VREF only with negligible loading. Visible feedback around both op-amps is supported; detector/input and enabled behavior remain separate questions. E11 follow-up rejects the former detector/R28-to-U3.3 copper join; C20 and C19 are no longer modeled in parallel. No new transfer-function claim is supported. The subsequent RX-1/RX-2 results reject C19.1-U3.3 and C20.1-GND; those inherited joins are now withdrawn. The later owner reports establish U3.3-VREF, C19 lower-D2_C20 and C20 upper-R42/D3.S, superseding the formerly unknown receiver endpoints. U3.5/VREF remains settled. Enabled behavior and device roles remain unverified; no board defect is inferred.",
       "sources": [
         "evidence/q7_r19_join_results_20261014.json",
         "evidence/q7_diode_results_20261014.json",
         "evidence/q7_direct_bias_result_20261014.json",
         "evidence/receiver_supply_results_20261014.json",
-        "evidence/receiver_input_results_20261015.json"
+        "evidence/receiver_input_results_20261015.json",
+        "evidence/receiver_connections_v0948.json"
       ]
     },
     {
@@ -2241,6 +2242,15 @@
         "photos/originals/IMG_2429.jpg",
         "photos/originals/IMG_2434.jpg",
         "evidence/receiver_connections_v0948.json"
+      ]
+    },
+    {
+      "area": "E09 / E11: R3/R4/C28, reviewed 2026-10-16",
+      "assessment": "Both resistor markings are 334 (330 kohm); the surface trace from R4 to PIC24/RB3 is visible in IMG_2436. The shared R3.2/R4.1/C28.1 junction remains unproved. Under the existing model, pulling RB3 low gives half VSYS at the middle node, not at RB3 itself; letting RB3 float tends toward VSYS, neglecting pin loading and clamps. The 10nF estimate gives a 1.65ms middle-node time constant with RB3 held low. GPIO/comparator timing or supply sensing is plausible, not a recovered function. Microchip Table 1-2 permits GPIO/ANB3/comparator use; ADC input range VSS..VDD and recommended source impedance at most 10 kohm prevent treating this as an automatically validated ADC divider. Preserve wiring and estimate; no new bench action.",
+      "sources": [
+        "photos/originals/IMG_2436.jpg",
+        "photos/originals/IMG_2437.jpg",
+        "https://ww1.microchip.com/downloads/en/DeviceDoc/40001802G.pdf"
       ]
     }
   ],

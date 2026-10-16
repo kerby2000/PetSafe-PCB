@@ -1,6 +1,6 @@
 # Current circuit interpretation
 
-Schematic v0.9.46, 2026-10-15. This is the current interpretation, not a chronological log. The [previous narrative](history/cleanup_v0928/docs/RECONSTRUCTION.md) is archived; older requests there are superseded. Use [the checklist](FINISHING_CHECKLIST.html) for remaining questions. Oscilloscope work is deferred at the owner's request; prioritize schematic values, identities and package geometry.
+Schematic v0.9.50, 2026-10-16, on the reviewed owner A3 portrait layout. Use [the checklist](FINISHING_CHECKLIST.html) for remaining questions and the [baseline record](../evidence/owner_redraw_baseline_v0950.json) for drawing corrections. Oscilloscope work remains deferred; no measurements are pending.
 
 ## Power and references
 
@@ -25,6 +25,14 @@ J5 sits on the rear. In front photo IMG_2438, the upper contact beside C34 is A/
 J3 is pin1 PIR supply, pin2 raw signal to R38, pin3 GND. Empty U7.1/2/3 map to J3.3/2/1. R39.1 joins TP16/Q2.S/PIC21 by continuous copper in IMG_2425; R39.2 is VDD. It is an output pull-up under the current NPN candidate, not a base pull-up. The PIR-to-PIC route is represented; Q2 candidate pin functions and operating behavior remain qualified. Unsupported R33 and its assumed raw-signal pull-up have been withdrawn after photo review and user inspection. The separate PIR board's internal circuit is outside this main-board drawing.
 
 Q9/J6/R35/R36/TP10 are DNP options in the PIC block. Q9's NPN symbol expresses a possible driver role; no fitted identity is claimed. J6.2/R36.1's onward role remains unknown.
+
+### R3 / R4 / C28: conditional sensing interpretation
+
+Original IMG_2436/IMG_2437 show both resistors marked **334 = 330 kohm**; R4's lower end visibly reaches PIC24/RB3. The model retains VSYS -> R3 -> H_BAT_SENSE -> R4 -> RB3, with C28 from H_BAT_SENSE to GND. The common R3.2/R4.1/C28.1 copper junction still lacks independent support (E11). The 10nF* C28 value remains an estimate.
+
+This is not a permanently grounded voltage divider. If firmware drives RB3 low, the modeled middle junction is approximately VSYS/2, while the PIC pin itself is held low. With the existing estimate, the junction time constant is (330k || 330k) x 10nF = 1.65 ms. If RB3 is high impedance, the modeled node instead tends toward VSYS through R3, ignoring input loading and clamps. The divider ratio alone therefore does not establish a safe half-supply ADC input. A GPIO-controlled RC or supply-sensing function is plausible; the actual method, thresholds and voltage handling are unverified (E09).
+
+Microchip's [PIC16F18855/18875 datasheet](https://ww1.microchip.com/downloads/en/DeviceDoc/40001802G.pdf), Table 1-2, gives RB3 GPIO, ANB3 ADC and comparator-input functions. Its ADC acquisition guidance recommends at most 10 kohm source impedance, and the analog input must stay within VSS/VDD. These capabilities and limits constrain the hypothesis; they do not identify this board's firmware. No resistor, capacitor estimate or connection was changed to make the circuit conventional.
 
 ## RF excitation and tuning
 

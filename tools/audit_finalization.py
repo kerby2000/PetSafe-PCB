@@ -20,6 +20,7 @@ assert layout['authoring_mode']=='reviewed_native_layout'
 redraw=read(layout['baseline_record'])
 incoming=gzip.decompress((R/redraw['source_archive']).read_bytes())
 assert hashlib.sha256(incoming).hexdigest()==redraw['source_sha256']
+assert one(tree,'paper')==one(sx.loads(incoming.decode('utf-8')),'paper'), 'Owner page size/orientation changed'
 for path in ['schematic/PetSafe_1001339.kicad_sch','tools/templates/mcp_standard_placements.kicad_sch']:
     assert hashlib.sha256((R/path).read_bytes().replace(b'\r\n',b'\n')).hexdigest()==redraw['reviewed_schematic_sha256'], (path,'Reviewed layout drift')
 assert hashlib.sha256(json.dumps([m['pin_positions'],m['geometric_wires']],sort_keys=True).encode()).hexdigest()==redraw['model_geometry_sha256']
@@ -27,9 +28,17 @@ def poses(t):
     return {(next(p[2] for p in children(x,'property') if p[1]=='Reference'),one(x,'unit')[1]):(xy(one(x,'at')[1:3]),float(one(x,'at')[3])) for x in children(t,'symbol')}
 before=poses(sx.loads(incoming.decode('utf-8')));after=poses(tree)
 assert before.keys()==after.keys()
+moves={(x['reference'],x['unit']):x for x in redraw.get('layout_moves',[])}
+assert len(moves)==len(redraw.get('layout_moves',[])), 'Duplicate authorized layout move'
 for k,(p,angle) in before.items():
+    if k in moves:
+        move=moves[k]
+        assert list(p)+[angle]==move['before'],(k,'Recorded incoming pose mismatch')
+        assert list(after[k][0])+[after[k][1]]==move['after'],(k,'Authorized receiver move drift')
+        continue
     expected=(angle+180)%360 if k[0] in redraw['nonpolar_pin_mapping_restored'] else angle
     assert after[k]==(p,expected),(k,'Owner position/rotation was not preserved')
+assert moves.keys()<=before.keys(), 'Authorized move refers to an absent symbol'
 assert layout['pins']==m['pin_positions'] and layout['wires']==m['geometric_wires']
 segments=[tuple(xy(p[1:]) for p in children(one(w,'pts'),'xy')) for w in children(tree,'wire')]
 labels={xy(one(l,'at')[1:3]) for kind in ['label','global_label','hierarchical_label'] for l in children(tree,kind)}

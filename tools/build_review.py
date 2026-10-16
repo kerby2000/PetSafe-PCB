@@ -5,6 +5,9 @@ from collections import Counter
 from current_state import current_state, component_summary
 R=Path(__file__).resolve().parents[1]
 m=json.loads((R/'evidence/reconstruction.json').read_text())
+layout=json.loads((R/'evidence/library_layout.json').read_text())
+baseline_record=layout['baseline_record']
+paper=json.loads((R/baseline_record).read_text()).get('paper','A2')
 v=json.loads((R/'evidence/validation.json').read_text())
 # Keep the tabular net and gap views synchronized with the exported model.
 with (R/'evidence/proposed_nets.csv').open('w',newline='',encoding='utf-8') as f:
@@ -35,7 +38,7 @@ openrows=''.join('<tr><td><a href="docs/OPEN_ITEMS.md#'+esc(i['id'].lower())+'">
 page=f'''<!doctype html><html lang="en"><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>PetSafe PCB - current reconstruction</title>
 <style>*{{box-sizing:border-box}}body{{margin:0;background:#f4f5f3;color:#1c2e2c;font:16px/1.55 system-ui}}main{{max-width:1500px;margin:auto;padding:28px}}h1{{font-size:34px}}a{{color:#006d64}}nav,.toolbar{{display:flex;flex-wrap:wrap;gap:14px;margin:20px 0}}button{{padding:7px 14px}}.viewer{{overflow:auto;background:white;border:1px solid #bccdc7}}.viewer img{{display:block;width:100%;max-width:none}}.board{{width:100%;height:auto}}table{{border-collapse:collapse;background:white;width:100%;font-size:14px}}th,td{{padding:12px;border-bottom:1px solid #d5e0da;text-align:left;vertical-align:top}}th{{background:#e6ede8}}.scroll{{overflow:auto}}details{{padding:16px;background:#eaf0ec;margin:20px 0}}summary{{cursor:pointer}}input[type=search]{{padding:10px;width:100%;max-width:600px;margin:14px 0}}.note{{border-left:4px solid #b87516;padding:12px 18px;background:#fff6dd}}footer{{margin-top:30px}}</style>
 <main><p>PetSafe PPA19-16811 | Main board 100-1339 R03 A | {esc(m['revision'])}</p><h1>PCB photographs and reconstructed schematic</h1>
-<p>One A2 sheet with {status['catalog_entries']} catalog entries. Connections and device qualifications remain under review. <b>No routed reproduction PCB exists.</b></p>
+<p>One {esc(paper)} sheet with {status['catalog_entries']} catalog entries. Connections and device qualifications remain under review. <b>No routed reproduction PCB exists.</b></p>
 <nav><a href="#schematic">Schematic</a><a href="#pcb">Physical PCB</a><a href="#open">Open items</a><a href="#evidence">Evidence and rebuild</a></nav>
 <h2 id="schematic">Current schematic</h2><p><a href="output/pdf/PetSafe_single_sheet.pdf">PDF</a> | <a href="schematic/PetSafe_1001339.kicad_pro">KiCad project</a> | <a href="schematic/PetSafe_1001339.kicad_sch">Editable schematic</a></p>
 <div class="toolbar"><button id="fit">Fit sheet</button><label>Zoom <input id="zoom" type="range" min="100" max="500" value="100" step="25"></label><output id="zvalue">100%</output><a href="output/svg/PetSafe_1001339.svg">Full native preview</a></div><div class="viewer"><img id="drawing" src="output/svg/PetSafe_1001339.svg" alt="Current one-sheet native KiCad schematic"></div>
@@ -59,7 +62,7 @@ readme=f'''# PetSafe PCB reverse engineering
 
 **PetSafe PPA19-16811 · 100-1339 R03 A · schematic {m['revision']}**
 
-One A2 main-board schematic, reconstructed from original photographs and owner measurements. {status['modeled_nets']} modeled net partitions agree with KiCad; device functions and physical-evidence coverage remain qualified. **There is no routed reproduction PCB.**
+One {paper} main-board schematic, reconstructed from original photographs and owner measurements. {status['modeled_nets']} modeled net partitions agree with KiCad; device functions and physical-evidence coverage remain qualified. **There is no routed reproduction PCB.**
 
 ## Current schematic
 
@@ -97,7 +100,7 @@ $env:PYTHONUTF8 = '1'
 ./tools/refresh_review.ps1 -Python python
 ```
 
-The normal build exports/checks the current native file. The owner's redrawn layout is now the checked baseline; `-Regenerate` restores that complete layout from the synchronized native template, including its wires and comments. It no longer runs the old placement router. [The baseline review](evidence/owner_redraw_baseline_v0949.json) records the electrical fixes and disposition of every sheet comment; the incoming file is archived there. [The physical crosswalk](evidence/pin_crosswalk.json) preserves original pad labels. Original photos and raw results are not rewritten when interpretations change.
+The normal build exports/checks the current native file. The owner's redrawn layout is now the checked baseline; `-Regenerate` restores that complete layout from the synchronized native template, including its wires and comments. It no longer runs the old placement router. [The baseline review]({baseline_record}) records the electrical fixes, requested layout moves and comment review; the incoming file is archived there. [The physical crosswalk](evidence/pin_crosswalk.json) preserves original pad labels. Original photos and raw results are not rewritten when interpretations change.
 
 [Original architect review: PR #1](https://github.com/kerby2000/PetSafe-PCB/pull/1) is merged. Later corrections are reviewed in follow-up pull requests.
 '''
