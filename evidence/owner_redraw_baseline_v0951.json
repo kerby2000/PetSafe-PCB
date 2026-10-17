@@ -351,6 +351,18 @@
       "before": "Connector_Generic:Conn_01x03",
       "after": "Device:D_Dual_Series_KAC",
       "basis": "Existing in-circuit diode readings; equivalent only"
+    },
+    {
+      "reference": "D1",
+      "before": "Diode:BAV99",
+      "after": "Device:D_Dual_Series_AKC",
+      "basis": "Nexperia BAV99 Table 3 plus inspected stock graphics; numbered direction 1 -> 3 -> 2 preserved; identity remains a candidate"
+    },
+    {
+      "reference": "D3",
+      "before": "Diode:BAV99",
+      "after": "Device:D_Dual_Series_AKC",
+      "basis": "Nexperia BAV99 Table 3 plus inspected stock graphics; numbered direction 1 -> 3 -> 2 preserved; identity remains a candidate"
     }
   ],
   "external_component": {
@@ -366,7 +378,7 @@
   },
   "new_hardware_claims": [],
   "owner_action": "None; no new measurements scheduled.",
-  "reviewed_schematic_sha256": "0f5c0660cca4c163b0d606d3d194a3d77b559f0b6ebee78911b08f9d9bfe63f4",
+  "reviewed_schematic_sha256": "6546e0204b124c6cf1643077f52775ef793c655efb5386e8a62aef244c0af086",
   "model_geometry_sha256": "bcd6b744740f2dd10f524f894f9a727d470287213d637bb5ac87b47d2c658f3c",
   "retained_symbol_units": 153,
   "physical_net_partitions": 82,
@@ -395,7 +407,8 @@
     "reviewed_head": "b399a7e5cf3f5eec34b40ddf321f166cc78ccbce",
     "starting_schematic_sha256": "74b1a56ba6d366ad2c4270a0ff7991ac0141e20bd25341a863127f035dbeba74",
     "fixes": [
-      "C19/C20 active rationale follows supported terminals; both 100pF* values retained; original v0.9.44 rationale preserved explicitly."
+      "C19/C20 active rationale follows supported terminals; both 100pF* values retained; original v0.9.44 rationale preserved explicitly.",
+      "D1/D3 stock AKC symbols correct inherited BAV99 pin names; original pins, direction, positions, wires and footprints unchanged; D2 retains opposite KAC equivalent."
     ],
     "electrical_changes": [],
     "owner_action": "None; no pending readings."

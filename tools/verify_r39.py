@@ -1,7 +1,7 @@
 """Bound the v0.9.45 R39 correction by physical memberships, not net counts."""
 from pathlib import Path
 import json, hashlib, subprocess, xml.etree.ElementTree as ET
-from inventory_contracts import with_receiver_input_split, verify_receiver_open_erc, with_current_capacitor_rationale
+from inventory_contracts import with_receiver_input_split, verify_receiver_open_erc, with_current_capacitor_rationale, with_reviewed_diode_symbols
 R=Path(__file__).resolve().parents[1]
 def read(path):return json.loads((R/path).read_text(encoding='utf-8'))
 record=read('evidence/r39_endpoint_correction_v0945.json')
@@ -16,9 +16,7 @@ assert {n['net']:sorted(n['endpoints']) for n in m['nets']}==expected, 'Unregist
 assert m['native_pin_crosswalk']==old['native_pin_crosswalk']==read('evidence/pin_crosswalk.json')
 def inventory(model):
     return {c['ref']:{k:c.get(k) for k in ['value','proposed_value','value_evidence','value_proposal','population','pins','library_symbol','footprint']} for c in model['components']}
-expected_inventory=with_current_capacitor_rationale(inventory(old))
-assert expected_inventory['D2']['library_symbol']=='Connector_Generic:Conn_01x03'
-expected_inventory['D2']['library_symbol']='Device:D_Dual_Series_KAC'
+expected_inventory=with_reviewed_diode_symbols(with_current_capacitor_rationale(inventory(old)))
 assert inventory(m)==expected_inventory,'Only reviewed representation/rationale metadata may change; values/population/pad mapping stay fixed'
 assert m['intentional_no_connects']==old['intentional_no_connects']
 xml=ET.parse(R/'output/PetSafe_netlist.xml')

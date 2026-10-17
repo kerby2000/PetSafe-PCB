@@ -4,10 +4,23 @@ from current_state import ROOT, read, current_state, validate_issue_register
 from audit_physical_evidence import compare
 from verify_capacitor_application import canonical_text_sha256, matches_text_digest, verify_receiver_capacitor_metadata
 from inventory_contracts import verify_receiver_open_erc
-from validate_native import wire_graph, board_net_partitions
+from validate_native import wire_graph, board_net_partitions, verify_diode_functions
 import xml.etree.ElementTree as ET
 
 class ReviewProgress(unittest.TestCase):
+    def test_diode_direction_cannot_copy_d2_to_d1_or_d3(self):
+        native=ET.parse(ROOT/'output/PetSafe_netlist.xml')
+        verify_diode_functions(native,self.model)
+        for ref in ['D1','D2','D3']:
+            wrong=copy.deepcopy(self.model)
+            c=next(c for c in wrong['components'] if c['ref']==ref)
+            c['diode_functions']['series_path_native'].reverse()
+            with self.assertRaises(AssertionError):verify_diode_functions(native,wrong)
+        for ref in ['D1','D3']:
+            wrong=copy.deepcopy(native)
+            wrong.find('./components/comp[@ref="'+ref+'"]/libsource').set('part','D_Dual_Series_KAC')
+            with self.assertRaises(AssertionError):verify_diode_functions(wrong,self.model)
+
     def test_receiver_capacitor_metadata_rejects_obsolete_topology(self):
         proposal=read('evidence/capacitor_value_review_20261015.json')
         verify_receiver_capacitor_metadata(proposal,self.model)

@@ -36,6 +36,28 @@ def wire_graph(wires, connection_points=()):
         for p,q in zip(ordered,ordered[1:]):graph[p].add(q);graph[q].add(p)
     return graph
 
+def verify_diode_functions(native, model):
+    """Numbered direction is independently reviewed, not inferred from pin names."""
+    components={c['ref']:c for c in model['components']}
+    for ref in ['D1','D2','D3']:
+        d2=ref=='D2'
+        part='D_Dual_Series_KAC' if d2 else 'D_Dual_Series_AKC'
+        direction=['2','3','1'] if d2 else ['1','3','2']
+        names={'1':'K','2':'A','3':'common'} if d2 else {'1':'A','2':'K','3':'common'}
+        functions={'1':'cathode','2':'anode','3':'cathode1/anode2'} if d2 else {'1':'anode','2':'cathode','3':'cathode1/anode2'}
+        comp=native.find('./components/comp[@ref="'+ref+'"]')
+        assert comp.find('libsource').attrib['lib']=='Device'
+        assert comp.find('libsource').attrib['part']==part,ref
+        lib=native.find('./libparts/libpart[@lib="Device"][@part="'+part+'"]')
+        assert {p.attrib['num']:p.attrib['name'] for p in lib.findall('./pins/pin')}==names,ref
+        assert components[ref]['diode_functions']['series_path_native']==direction,ref
+        assert components[ref]['diode_functions']['native_pin_functions']==functions,ref
+        assert components[ref]['diode_functions']['status']==('MEASURED_EQUIVALENT_ONLY' if d2 else 'BAV99_CANDIDATE_ONLY'),ref
+        assert components[ref]['library_symbol']=='Device:'+part,ref
+        assert {p:model['native_pin_crosswalk'][ref+'.'+p] for p in ['L','R','S']}=={p:ref+'.'+n for p,n in [('L','1'),('R','2'),('S','3')]},ref
+        if not d2:
+            assert comp.findtext('./fields/field[@name="DiodeDirection"]')=='Candidate 1 -> 3 -> 2; physical L -> S -> R; fitted identity unverified',ref
+
 def native_pin_positions(tree):
     """Resolve embedded pin coordinates independently of the evidence model."""
     def tag(x):return str(x[0]) if isinstance(x,list) and x else ''
@@ -123,6 +145,7 @@ def main():
     assert {p.attrib['num']:p.attrib['name'] for p in d2lib.findall('./pins/pin')}=={'1':'K','2':'A','3':'common'}
     assert {p:m['native_pin_crosswalk']['D2.'+p] for p in ['L','R','S']}=={'L':'D2.1','R':'D2.2','S':'D2.3'}
     assert 'equivalent' in d2.findtext('./fields/field[@name="Representation"]')
+    verify_diode_functions(native,m)
     # Independent manufacturer pin-table contracts, checked in native KiCad output.
     contracts={
         'U1':('S-1200B45-M5T1','Package_TO_SOT_SMD:SOT-23-5',

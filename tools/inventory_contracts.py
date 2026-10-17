@@ -16,6 +16,17 @@ def with_current_capacitor_rationale(inventory):
         evidence.update(basis=c['basis'],qualification=c['remaining'])
     return result
 
+def with_reviewed_diode_symbols(inventory):
+    """D1/D3 retain the BAV99 numbered direction; D2 remains the opposite equivalent."""
+    import copy
+    result=copy.deepcopy(inventory)
+    assert result['D2']['library_symbol']=='Connector_Generic:Conn_01x03'
+    result['D2']['library_symbol']='Device:D_Dual_Series_KAC'
+    for ref in ['D1','D3']:
+        assert result[ref]['library_symbol']=='Diode:BAV99'
+        result[ref]['library_symbol']='Device:D_Dual_Series_AKC'
+    return result
+
 def without_withdrawn_r33(partitions):
     record=json.loads((ROOT/'evidence/r33_withdrawal_v0932.json').read_text())
     assert record['baseline_commit']=='9ad2715'
