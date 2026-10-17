@@ -1,6 +1,6 @@
 {
-  "date": "2026-10-16",
-  "review_revision": "v0.9.51",
+  "date": "2026-10-17",
+  "review_revision": "v0.9.52",
   "basis_revision": "v0.9.48",
   "scope": "Current main-board finishing register. Supported connections and completed measurements are recorded in the current model; resolved issues are archived. Remaining hidden paths, candidate identities, values and operating behavior are listed below.",
   "rails": [
@@ -484,6 +484,36 @@
         "evidence/receiver_connections_v0948.json"
       ],
       "next_action": "Keep the three supported receiver joins and earlier measured separations. Preserve the specifically qualified remaining copper groups and intentional U6A ERC conflict; no new measurement campaign. Owner action: none. No pending readings. RX-3 is deferred and unmeasured; completed RX-1/RX-2 and earlier C20 checks are not repeated."
+    },
+    {
+      "id": "A01",
+      "area": "External ESP32 button bridge: assembly qualification",
+      "refs": [
+        "U201",
+        "Q201",
+        "R201",
+        "R202"
+      ],
+      "priority": 2,
+      "state": "open",
+      "category": "Proposed modification; separate from reconstruction",
+      "known": "2N3904 circuit proposed in parallel with measured S1 contacts: C to H_BUTTON, E to GND, GPIO3/header6 through 4.7k to base, 100k base-emitter on transistor side. ESP32 USB and PetSafe battery positives remain separate. GPIO3 reset input/no-pull configuration checked in Espressif data; library symbol/header footprint imported at a pinned commit. Owner STEP hole rows/pitch are geometrically consistent. Owner subsequently requested internal battery power and prefers Wi-Fi. Existing PIR supply path is U1 4.5 V -> R37 22 ohm -> candidate U6 3.3 V; it cannot be treated as an ESP32-capable spare rail. Native circuit still represents the validated USB version; a separate battery-fed converter and hand-wiring plan are documented as a proposal. Owner now chooses the pictured perfboard prototype with an LM2596/HW-411 battery-fed converter proposed at 3.3 V; TPL5111 and PIR wake are deferred. Provisional output requirement is at least 500 mA, not a confirmed owned-module rating. Firmware v0.1.0 supplies local web/HTTP control on GPIO3, fixed 200 ms pulses, five-second cooldown and duplicate/stale-command protection. It keeps Wi-Fi and the converter powered; no physical flashing or commissioning is claimed.",
+      "unknown": "Owned 2N3904 maker/physical lead order and SuperMini header/fit; physical GPIO release through boot/reset/flashing, accepted pulse timing and actual Wi-Fi reliability. The bridge has no latch-state feedback or guaranteed relock. LM2596 regulation under load and near depleted batteries, and the actual SuperMini external-input/USB backfeed arrangement, remain unqualified; battery life is unmeasured.",
+      "codex_action": "Firmware and setup/client guide added under firmware/button_bridge. Preserve the checked native schematic and original evidence. No TPL5111, PIR wake input or power-switch output is used. Qualify the internal supply before changing the native supply connection.",
+      "owner_input": "Owner is preparing the perfboard and will report readiness. Local web page plus HTTP API selected. No reconstruction readings are pending. Wi-Fi credentials are entered locally with configure.py, never in the repository or chat.",
+      "closed_when": "Owned-package pin order and board mapping/fit confirmed; final firmware leaves the button released through idle, boot, reset and flashing and demonstrates a brief mode-toggle pulse. Internal power conversion and board input/isolation are qualified; power budget matches the intended battery-life and command-latency requirements.",
+      "open_pads": [],
+      "nets": [
+        "H_BUTTON",
+        "GND"
+      ],
+      "owner": "Owner assembly; add-on firmware commissioning when ready",
+      "supporting_evidence": [
+        "docs/BUTTON_BRIDGE.md",
+        "evidence/reconstruction.json",
+        "firmware/button_bridge/README.md"
+      ],
+      "next_action": "When the perfboard is ready, confirm transistor lead order and the SuperMini supply/input arrangement, configure and flash locally, then commission one explicit button press. See firmware/button_bridge/README.md. No new reconstruction measurement batch; TPL5111/PIR wake deferred."
     }
   ],
   "milestones": [
@@ -539,6 +569,16 @@
       ],
       "summary": "LED colour branches and J5 board-contact/output mapping are established. LED footprint, connector fit and external motor harness orientation remain reproduction qualifications.",
       "next_action": "Obtain a matching LED vendor drawing or pad geometry; qualify J5 and the other packages before laying out a replacement PCB."
+    },
+    {
+      "id": "F4",
+      "title": "Qualify the proposed external button bridge",
+      "scope": "External add-on only",
+      "issues": [
+        "A01"
+      ],
+      "summary": "Circuit and local web/HTTP add-on firmware implemented; factory endpoint relationships preserved. Hardware commissioning remains pending. No carrier PCB; TPL5111/PIR wake deferred.",
+      "next_action": "When the perfboard is ready, confirm transistor lead order and the SuperMini supply/input arrangement, configure and flash locally, then commission one explicit button press. See firmware/button_bridge/README.md. No new reconstruction measurement batch; TPL5111/PIR wake deferred."
     }
   ],
   "settled_summary": [],
@@ -649,6 +689,6 @@
     ]
   },
   "historical_photo_summary": "docs/history/pr1-cleanup-20261015/photo_supported_summary.json",
-  "owner_action_summary": "Owner action: none. No pending readings. RX-3 is deferred and unmeasured; completed RX-1/RX-2 and earlier C20 checks are not repeated.",
+  "owner_action_summary": "No pending readings. RX-3 remains deferred. Owner is preparing the perfboard button bridge; local web/HTTP firmware is provided for later commissioning. LM2596 internal-power qualification, SuperMini input/isolation and owned-part lead order remain open. TPL5111/PIR wake is deferred.",
   "topology_audit": "evidence/topology_closure_audit.json"
 }

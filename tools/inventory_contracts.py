@@ -1,7 +1,14 @@
 """Apply only explicitly documented inventory and connectivity corrections."""
 import json
+import hashlib
 from pathlib import Path
 ROOT=Path(__file__).resolve().parents[1]
+
+def verify_bridge_asset_bytes(data, record, key):
+    """Imported live assets use exact LF bytes; original-source digests stay separate."""
+    assert record['hash_policy']=='exact-lf-bytes-v1', 'Unknown bridge asset hash policy'
+    assert b'\r' not in data, 'Imported bridge asset must use committed LF bytes'
+    assert hashlib.sha256(data).hexdigest()==record[key], (key, 'Imported asset content changed')
 
 def with_current_capacitor_rationale(inventory):
     """Only C19/C20's superseded text changes; estimated values and ratings do not."""

@@ -3702,5 +3702,83 @@
       }
     }
   ],
-  "replay_note": "Reviewed owner layout v0.9.51 is stored completely in tools/templates/mcp_standard_placements.kicad_sch; regeneration copies that baseline, preserving wires, fields and mirror poses."
+  "replay_note": "Reviewed owner layout v0.9.51 is stored completely in tools/templates/mcp_standard_placements.kicad_sch; regeneration copies that baseline, preserving wires, fields and mirror poses.",
+  "external_components": [
+    {
+      "reference": "U201",
+      "symbol": "TrailCurrentSymbolLibrary:ESP32-C6-SuperMini",
+      "value": "ESP32-C6 SuperMini",
+      "footprint": "TrailCurrentFootprints:ESP32-C6-SuperMini_TH",
+      "position": {
+        "x": 299.72,
+        "y": 113.03
+      },
+      "rotation": 0,
+      "properties": {
+        "Datasheet": "https://www.espboards.dev/esp32/esp32-c6-super-mini/",
+        "Description": "ESP32-C6 Super Mini Development Board, WiFi 6, BLE 5, Zigbee, Thread",
+        "Assembly": "External USB-powered ESP32-C6 SuperMini; separate from factory board. No 5V/3V3 connection to PetSafe.",
+        "GPIOSelection": "GPIO_BTN = GPIO3, library header pin6. Non-strapping ordinary GPIO, input-enabled/no pull-up at reset per Espressif Table 2-2. Owned-board header and boot/flash behavior remain unverified.",
+        "BoardIdentity": "Owner reports ESP32-C6 SuperMini; selected TrailCurrent library is a candidate physical match, not verified manufacturing identity.",
+        "Model3DStatus": "Owner STEP imported; see docs/BUTTON_BRIDGE.md for fit qualification."
+      },
+      "in_main_board_bom": false,
+      "on_main_board": false
+    },
+    {
+      "reference": "Q201",
+      "symbol": "Transistor_BJT:2N3904",
+      "value": "2N3904",
+      "footprint": "Package_TO_SOT_THT:TO-92_Inline",
+      "position": {
+        "x": 383.54,
+        "y": 125.73
+      },
+      "rotation": 0,
+      "properties": {
+        "Datasheet": "https://www.onsemi.com/pub/Collateral/2N3903-D.PDF",
+        "Description": "0.2A Ic, 40V Vce, Small Signal NPN Transistor, TO-92",
+        "Assembly": "External button shunt, parallel to S1; original button and circuitry retained.",
+        "LeadOrderStatus": "PENDING: confirm owned 2N3904 manufacturer/package lead order before assembly. Stock symbol/TO-92 footprint use 1=E, 2=B, 3=C."
+      },
+      "in_main_board_bom": false,
+      "on_main_board": false
+    },
+    {
+      "reference": "R201",
+      "symbol": "Device:R",
+      "value": "4.7k",
+      "footprint": "Resistor_THT:R_Axial_DIN0207_L6.3mm_D2.5mm_P7.62mm_Horizontal",
+      "position": {
+        "x": 350.52,
+        "y": 125.73
+      },
+      "rotation": 90,
+      "properties": {
+        "Datasheet": "",
+        "Description": "Resistor",
+        "Assembly": "External base series resistor. GPIO3 -> 4.7k -> Q201 base."
+      },
+      "in_main_board_bom": false,
+      "on_main_board": false
+    },
+    {
+      "reference": "R202",
+      "symbol": "Device:R",
+      "value": "100k",
+      "footprint": "Resistor_THT:R_Axial_DIN0207_L6.3mm_D2.5mm_P7.62mm_Horizontal",
+      "position": {
+        "x": 365.76,
+        "y": 135.89
+      },
+      "rotation": 0,
+      "properties": {
+        "Datasheet": "",
+        "Description": "Resistor",
+        "Assembly": "External 100k base-emitter pull-down; transistor side of R201."
+      },
+      "in_main_board_bom": false,
+      "on_main_board": false
+    }
+  ]
 }

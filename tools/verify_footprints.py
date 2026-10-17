@@ -2,6 +2,7 @@
 from pathlib import Path
 import json, hashlib, xml.etree.ElementTree as ET
 import sexpdata as sx
+from inventory_contracts import verify_bridge_asset_bytes
 R=Path(__file__).resolve().parents[1]
 F=Path.home()/'AppData/Local/Programs/KiCad/10.0/share/kicad/footprints'
 m=json.loads((R/'evidence/reconstruction.json').read_text())
@@ -30,5 +31,24 @@ for c in m['components']:
 assert len(report)==sum(bool(c['footprint']) for c in m['components'])
 for ref in ['R29','R44']:assert net.find(f'./components/comp[@ref="{ref}"]').findtext('value')=='15k'
 out=dict(revision=m['revision'],result='PASS: file existence, native/model agreement, symbol-pin coverage',physical_fit='NOT VERIFIED: photo-based candidates',assigned=len(report),unassigned=[c['ref'] for c in m['components'] if not c['footprint']],components=report)
+external=[]
+for c in m.get('external_button_bridge',{}).get('components',[]):
+    lib,name=c['footprint'].split(':')
+    source=(R/'schematic' if lib=='TrailCurrentFootprints' else F)/(lib+'.pretty')/(name+'.kicad_mod')
+    t=sx.loads(source.read_text(encoding='utf-8'))
+    pads={str(e[1]) for e in t if isinstance(e,list) and str(e[0])=='pad' and str(e[1])}
+    comp=net.find('./components/comp[@ref="'+c['reference']+'"]');part=comp.find('libsource')
+    symbol=net.find('./libparts/libpart[@lib="'+part.attrib['lib']+'"][@part="'+part.attrib['part']+'"]')
+    assert {p.attrib['num'] for p in symbol.findall('./pins/pin')}<=pads
+    if c['reference']=='Q201':assert pads=={'1','2','3'}  # Stock E/B/C mapping verified in native check.
+    if c['reference']=='U201':
+        assert pads=={str(p) for p in range(1,21)}
+        verify_bridge_asset_bytes(source.read_bytes(),m['external_button_bridge']['library_files'],'footprint_sha256')
+        models=[e for e in t if isinstance(e,list) and str(e[0])=='model']
+        assert len(models)==1 and models[0][1]=='${KIPRJMOD}/ButtonBridge.3dshapes/ESP32-C6-SuperMini-owner.step'
+        model_path=R/'schematic/ButtonBridge.3dshapes/ESP32-C6-SuperMini-owner.step'
+        verify_bridge_asset_bytes(model_path.read_bytes(),m['external_button_bridge']['library_files'],'owner_step_sha256')
+    external.append(dict(reference=c['reference'],footprint=c['footprint'],pins_covered=True,physical_fit='PENDING: owned-part lead order / module geometry'))
+out['external_button_bridge']=external
 (R/'evidence/footprint_validation.json').write_text(json.dumps(out,indent=2),encoding='utf-8')
 print(out['result'],out['assigned'])
