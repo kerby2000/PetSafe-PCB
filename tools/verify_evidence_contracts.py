@@ -307,7 +307,7 @@ for ref in ['U4','R11','R14','R15','R16','R37','R39','Q1','U2','Q8','C5','LED1',
  assert xml.findtext(f'./components/comp[@ref="{ref}"]/fields/field[@name="ViaEvidence"]')==expected,ref
 checklist=(R/'docs/FINISHING_CHECKLIST.html').read_text(encoding='utf-8')
 assert 'Documented reconstruction limitations' in checklist and 'E06 -' in checklist
-assert 'dangling wire ends' in checklist and 'No readings are pending' in checklist
+assert 'dangling wire ends' in checklist and __import__('html').escape(queue['instructions']) in checklist
 assert not (R/'output/pdf/PetSafe_completion_status.pdf').exists()
 pdfs={'output/pdf/PetSafe_single_sheet.pdf':1,'output/pdf/PetSafe_PIC_GPIO_pin_map.pdf':1,'output/pdf/PetSafe_via_pair_next_check.pdf':1}
 for path,pages in pdfs.items():assert len(PdfReader(R/path).pages)==pages

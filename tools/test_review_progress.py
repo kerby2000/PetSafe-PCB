@@ -1,5 +1,6 @@
 """Synthetic, in-memory progress checks; never add fictitious hardware evidence."""
-import copy, hashlib, unittest
+import copy, hashlib, unittest, contextlib, html, io, json, re, runpy, shutil, tempfile
+from pathlib import Path
 from current_state import ROOT, read, current_state, validate_issue_register
 from audit_physical_evidence import compare
 from verify_capacitor_application import canonical_text_sha256, matches_text_digest, verify_receiver_capacitor_metadata
@@ -8,6 +9,32 @@ from validate_native import wire_graph, board_net_partitions, verify_diode_funct
 import xml.etree.ElementTree as ET
 
 class ReviewProgress(unittest.TestCase):
+    def test_checklist_status_uses_empty_or_active_queue(self):
+        # Execute the existing generator against disposable inputs. Synthetic
+        # readings never enter the real queue, evidence or generated reports.
+        with tempfile.TemporaryDirectory() as folder:
+            root=Path(folder)
+            for directory in ['tools','evidence','docs']:(root/directory).mkdir()
+            shutil.copyfile(ROOT/'tools/build_completion_audit.py',root/'tools/build_completion_audit.py')
+            for file in ['reconstruction.json','remaining_work.json','capacitor_value_review_20261015.json','finalization_audit.json']:
+                shutil.copyfile(ROOT/'evidence'/file,root/'evidence'/file)
+            original=read('evidence/finishing_measurements.json')
+            for active in [False,True]:
+                queue=copy.deepcopy(original)
+                if active:
+                    queue.update(batch_title='Synthetic active check',instructions='One authorized fixture check is pending; see the measurement guide.',tests=[{'id':'SYNTHETIC_ONLY'}])
+                (root/'evidence/finishing_measurements.json').write_text(json.dumps(queue),encoding='utf-8')
+                with contextlib.redirect_stdout(io.StringIO()):runpy.run_path(str(root/'tools/build_completion_audit.py'),run_name='__main__')
+                page=(root/'docs/FINISHING_CHECKLIST.html').read_text(encoding='utf-8')
+                card=re.search(r'<div class="card"><b>.*?</div>',page).group()
+                self.assertIn(html.escape(queue['batch_title']),card)
+                self.assertIn(html.escape(queue['instructions']),card)
+                if active:
+                    self.assertNotIn('No readings are pending',card)
+                    self.assertNotIn('No pending readings',card)
+                    self.assertNotIn('RX-3 remains deferred',card)
+                else:self.assertIn('No pending readings',card)
+
     def test_diode_direction_cannot_copy_d2_to_d1_or_d3(self):
         native=ET.parse(ROOT/'output/PetSafe_netlist.xml')
         verify_diode_functions(native,self.model)
@@ -150,7 +177,7 @@ class ReviewProgress(unittest.TestCase):
         with self.assertRaises(AssertionError):validate_issue_register(self.model,self.work)
 
 if __name__=='__main__':
-    paths=[ROOT/'evidence/reconstruction.json',ROOT/'evidence/remaining_work.json',ROOT/'evidence/cleanup_verification.json']
+    paths=[ROOT/'evidence/reconstruction.json',ROOT/'evidence/remaining_work.json',ROOT/'evidence/cleanup_verification.json',ROOT/'evidence/finishing_measurements.json',ROOT/'docs/FINISHING_CHECKLIST.html']
     before={p:hashlib.sha256(p.read_bytes()).hexdigest() for p in paths}
     suite=unittest.defaultTestLoader.loadTestsFromTestCase(ReviewProgress)
     result=unittest.TextTestRunner(verbosity=2).run(suite)
