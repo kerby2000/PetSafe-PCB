@@ -6,6 +6,7 @@ from urllib.parse import urlparse, unquote
 import hashlib, json, subprocess, math
 from current_state import current_state, validate_issue_register, read, ROOT
 import xml.etree.ElementTree as ET
+from validate_native import verify_button_bridge
 from inventory_contracts import with_r39_output_pullup, with_receiver_input_split
 
 s=current_state(); saved=read('evidence/completion_status.json')
@@ -54,6 +55,7 @@ assert s['erc_total']==len(findings)
 # Verify physical J1 numbers separately from logical signal destinations.
 mapping=read('evidence/j1_physical_mapping.json')['signal_to_native_pin']
 xml=ET.parse(ROOT/'output/PetSafe_netlist.xml')
+external_refs=verify_button_bridge(xml,m)  # Validate add-on before checking factory PIC fan-out.
 members={n.attrib['ref']+'.'+n.attrib['pin']:net.attrib['name'] for net in xml.findall('./nets/net') for n in net.findall('node')}
 for branch in e06['retained_branches']:
     endpoint_set=set(branch['endpoints'])
@@ -64,7 +66,7 @@ for pin in pin_audit['pins']:
     model_net=next(n for n in m['nets'] if n['net']==pin['net'])
     expected={m['native_pin_crosswalk'].get(e,e) for e in model_net['endpoints']}
     native_net=members['U4.'+str(pin['pin'])]
-    actual={e for e,n in members.items() if n==native_net and not e.startswith('#FLG')}
+    actual={e for e,n in members.items() if n==native_net and not e.startswith('#FLG') and e.split('.')[0] not in external_refs}
     assert actual==expected, (pin['pin'], actual, expected)
 for ref in ['TP11','TP17']:
     summary=next(c for c in m['components'] if c['ref']==ref)['current_summary']

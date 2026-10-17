@@ -1,6 +1,6 @@
 {
   "board": "100-1339 R03 A",
-  "revision": "v0.9.51",
+  "revision": "v0.9.52",
   "status": "PARTIALLY VERIFIED RECONSTRUCTION; USER MEASUREMENTS, PHOTO TRACES AND QUALIFIED HYPOTHESES",
   "components": [
     {
@@ -12322,7 +12322,7 @@
       "revision": "v0.9.4"
     }
   ],
-  "review_date": "2026-10-16",
+  "review_date": "2026-10-17",
   "pending_connection_reports": [
     {
       "endpoints": [
@@ -12368,5 +12368,396 @@
     "symbol": "Device:L",
     "in_bom": false,
     "on_board": false
+  },
+  "external_button_bridge": {
+    "status": "PROPOSED - not assembled or startup-tested",
+    "components": [
+      {
+        "reference": "U201",
+        "symbol": "TrailCurrentSymbolLibrary:ESP32-C6-SuperMini",
+        "value": "ESP32-C6 SuperMini",
+        "footprint": "TrailCurrentFootprints:ESP32-C6-SuperMini_TH",
+        "position": {
+          "x": 299.72,
+          "y": 113.03
+        },
+        "rotation": 0,
+        "properties": {
+          "Datasheet": "https://www.espboards.dev/esp32/esp32-c6-super-mini/",
+          "Description": "ESP32-C6 Super Mini Development Board, WiFi 6, BLE 5, Zigbee, Thread",
+          "Assembly": "External USB-powered ESP32-C6 SuperMini; separate from factory board. No 5V/3V3 connection to PetSafe.",
+          "GPIOSelection": "GPIO_BTN = GPIO3, library header pin6. Non-strapping ordinary GPIO, input-enabled/no pull-up at reset per Espressif Table 2-2. Owned-board header and boot/flash behavior remain unverified.",
+          "BoardIdentity": "Owner reports ESP32-C6 SuperMini; selected TrailCurrent library is a candidate physical match, not verified manufacturing identity.",
+          "Model3DStatus": "Owner STEP imported; see docs/BUTTON_BRIDGE.md for fit qualification."
+        },
+        "in_main_board_bom": false,
+        "on_main_board": false
+      },
+      {
+        "reference": "Q201",
+        "symbol": "Transistor_BJT:2N3904",
+        "value": "2N3904",
+        "footprint": "Package_TO_SOT_THT:TO-92_Inline",
+        "position": {
+          "x": 383.54,
+          "y": 125.73
+        },
+        "rotation": 0,
+        "properties": {
+          "Datasheet": "https://www.onsemi.com/pub/Collateral/2N3903-D.PDF",
+          "Description": "0.2A Ic, 40V Vce, Small Signal NPN Transistor, TO-92",
+          "Assembly": "External button shunt, parallel to S1; original button and circuitry retained.",
+          "LeadOrderStatus": "PENDING: confirm owned 2N3904 manufacturer/package lead order before assembly. Stock symbol/TO-92 footprint use 1=E, 2=B, 3=C."
+        },
+        "in_main_board_bom": false,
+        "on_main_board": false
+      },
+      {
+        "reference": "R201",
+        "symbol": "Device:R",
+        "value": "4.7k",
+        "footprint": "Resistor_THT:R_Axial_DIN0207_L6.3mm_D2.5mm_P7.62mm_Horizontal",
+        "position": {
+          "x": 350.52,
+          "y": 125.73
+        },
+        "rotation": 90,
+        "properties": {
+          "Datasheet": "",
+          "Description": "Resistor",
+          "Assembly": "External base series resistor. GPIO3 -> 4.7k -> Q201 base."
+        },
+        "in_main_board_bom": false,
+        "on_main_board": false
+      },
+      {
+        "reference": "R202",
+        "symbol": "Device:R",
+        "value": "100k",
+        "footprint": "Resistor_THT:R_Axial_DIN0207_L6.3mm_D2.5mm_P7.62mm_Horizontal",
+        "position": {
+          "x": 365.76,
+          "y": 135.89
+        },
+        "rotation": 0,
+        "properties": {
+          "Datasheet": "",
+          "Description": "Resistor",
+          "Assembly": "External 100k base-emitter pull-down; transistor side of R201."
+        },
+        "in_main_board_bom": false,
+        "on_main_board": false
+      }
+    ],
+    "factory_interfaces": {
+      "collector": "S1.2 / H_BUTTON",
+      "emitter": "S1.1 / GND"
+    },
+    "gpio": "GPIO3",
+    "gpio_header_pin": "6",
+    "ground_header_pin": "12",
+    "unused_header_pins": [
+      "1",
+      "2",
+      "3",
+      "4",
+      "5",
+      "7",
+      "8",
+      "9",
+      "10",
+      "11",
+      "13",
+      "14",
+      "15",
+      "16",
+      "17",
+      "18",
+      "19",
+      "20"
+    ],
+    "ground_symbol": "#PWR201",
+    "wires": [
+      {
+        "net": "GPIO_BTN",
+        "a": [
+          299.72,
+          125.73
+        ],
+        "b": [
+          292.1,
+          125.73
+        ]
+      },
+      {
+        "net": "GPIO_BTN",
+        "a": [
+          337.82,
+          125.73
+        ],
+        "b": [
+          354.33,
+          125.73
+        ]
+      },
+      {
+        "net": "EXT_BTN_BASE",
+        "a": [
+          346.71,
+          125.73
+        ],
+        "b": [
+          365.76,
+          125.73
+        ]
+      },
+      {
+        "net": "EXT_BTN_BASE",
+        "a": [
+          365.76,
+          125.73
+        ],
+        "b": [
+          378.46,
+          125.73
+        ]
+      },
+      {
+        "net": "EXT_BTN_BASE",
+        "a": [
+          365.76,
+          125.73
+        ],
+        "b": [
+          365.76,
+          132.08
+        ]
+      },
+      {
+        "net": "H_BUTTON",
+        "a": [
+          386.08,
+          120.65
+        ],
+        "b": [
+          386.08,
+          113.03
+        ]
+      },
+      {
+        "net": "GND",
+        "a": [
+          386.08,
+          130.81
+        ],
+        "b": [
+          386.08,
+          143.51
+        ]
+      },
+      {
+        "net": "GND",
+        "a": [
+          386.08,
+          143.51
+        ],
+        "b": [
+          365.76,
+          143.51
+        ]
+      },
+      {
+        "net": "GND",
+        "a": [
+          365.76,
+          143.51
+        ],
+        "b": [
+          332.74,
+          143.51
+        ]
+      },
+      {
+        "net": "GND",
+        "a": [
+          332.74,
+          143.51
+        ],
+        "b": [
+          332.74,
+          115.57
+        ]
+      },
+      {
+        "net": "GND",
+        "a": [
+          332.74,
+          115.57
+        ],
+        "b": [
+          325.12,
+          115.57
+        ]
+      },
+      {
+        "net": "GND",
+        "a": [
+          365.76,
+          139.7
+        ],
+        "b": [
+          365.76,
+          143.51
+        ]
+      }
+    ],
+    "pin_positions": {
+      "U201.1": [
+        299.72,
+        113.03
+      ],
+      "U201.2": [
+        299.72,
+        115.57
+      ],
+      "U201.3": [
+        299.72,
+        118.11
+      ],
+      "U201.4": [
+        299.72,
+        120.65
+      ],
+      "U201.5": [
+        299.72,
+        123.19
+      ],
+      "U201.6": [
+        299.72,
+        125.73
+      ],
+      "U201.7": [
+        299.72,
+        128.27
+      ],
+      "U201.8": [
+        299.72,
+        130.81
+      ],
+      "U201.9": [
+        299.72,
+        133.35
+      ],
+      "U201.10": [
+        299.72,
+        135.89
+      ],
+      "U201.11": [
+        325.12,
+        113.03
+      ],
+      "U201.12": [
+        325.12,
+        115.57
+      ],
+      "U201.13": [
+        325.12,
+        118.11
+      ],
+      "U201.14": [
+        325.12,
+        120.65
+      ],
+      "U201.15": [
+        325.12,
+        123.19
+      ],
+      "U201.16": [
+        325.12,
+        125.73
+      ],
+      "U201.17": [
+        325.12,
+        128.27
+      ],
+      "U201.18": [
+        325.12,
+        130.81
+      ],
+      "U201.19": [
+        325.12,
+        133.35
+      ],
+      "U201.20": [
+        325.12,
+        135.89
+      ],
+      "Q201.1": [
+        386.08,
+        130.81
+      ],
+      "Q201.2": [
+        378.46,
+        125.73
+      ],
+      "Q201.3": [
+        386.08,
+        120.65
+      ],
+      "R201.1": [
+        346.71,
+        125.73
+      ],
+      "R201.2": [
+        354.33,
+        125.73
+      ],
+      "R202.1": [
+        365.76,
+        132.08
+      ],
+      "R202.2": [
+        365.76,
+        139.7
+      ],
+      "#PWR201.1": [
+        386.08,
+        143.51
+      ]
+    },
+    "power": "ESP32 USB and original PetSafe battery. Common GND only; positive supplies separate.",
+    "behavior": "HIGH = momentary press, LOW = release. Approximately 200 ms is an initial commissioning proposal, not a verified timing specification. Mode-toggle only; no latch feedback or guaranteed relock after ESP32 failure.",
+    "assembly_pending": [
+      "Owned 2N3904 manufacturer and E/B/C lead order",
+      "Owned SuperMini matches imported GPIO3/header6 and GND/header12 layout",
+      "Idle/boot/reset/flashing release behavior with final firmware"
+    ],
+    "source_commit": "fb8b1725b9de036cbeba4093080f277374322d15",
+    "source_url": "https://github.com/trailcurrentoss/TrailCurrentKiCADLibraries",
+    "factory_baseline": "091a101",
+    "owner_override": "2N3904 NPN, 4.7k series base resistor, 100k base-emitter pull-down replaces provisional AO3400A.",
+    "library_files": {
+      "symbol_sha256": "d2b0e05daf85b6ca8146962648fc6614631a292c8b86998e9f320b50715e9b95",
+      "footprint_sha256": "f2b3faeb87cf8571e53a5ae70ed3c9f04d70fc9be702c15ed76c6077ef8f2deb",
+      "owner_step_sha256": "dadd8045556e22faf99ba9582bc6f55f4abc163d3201ffc94eabc42daa628ddd",
+      "upstream_symbol_sha256": "18c1bd87eca24c1b0788e4c4d7911809e777a11a70f1a61a75dbfdf3ab9cac98",
+      "upstream_footprint_sha256": "e8a79f15defa41bda4cc7393f8683e84982caaf8ef6cd8d57520e7994a6d9a6a",
+      "owner_zip_sha256": "ffa352e2458e39929dbce1646ca1ffdd5286b590c9c7a71dd777136b5f38dd6a",
+      "owner_step_license": "CC BY-NC 4.0; original notice retained alongside STEP",
+      "footprint_change": "Only 3D-model path/offset/rotation changed; pad numbers and geometry unmodified.",
+      "model_transform": {
+        "offset_mm": [
+          9,
+          12.9865,
+          0
+        ],
+        "rotation_deg": [
+          0,
+          0,
+          180
+        ]
+      },
+      "model_geometry": "Owner STEP: rows 15.24 mm, pitch approximately 2.54 mm; 18 x 26 mm body versus library outline 18.2 x 26.2 mm. Geometric reference only, not electrical pin identification or owned-board fit."
+    }
   }
 }

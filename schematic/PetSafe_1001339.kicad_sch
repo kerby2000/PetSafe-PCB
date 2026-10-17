@@ -4,13 +4,7 @@
 	(generator_version "10.0")
 	(uuid "33a03d59-1679-4e9c-af69-68d086b519af")
 	(paper "A3")
-	(title_block
-		(title "PetSafe 100-1339 R03 A | single-sheet reconstruction")
-		(date "2026-10-16")
-		(rev "0.9.51")
-		(company "Owner layout | reviewed reconstruction baseline")
-		(comment 1 "44 starred capacitor estimates; device functions remain qualified.")
-	)
+	(title_block (title "PetSafe 100-1339 R03 A | single-sheet reconstruction") (date "2026-10-17") (rev "0.9.52") (company "Owner layout | reviewed reconstruction baseline") (comment 1 "44 starred capacitor estimates; device functions remain qualified."))
 	(lib_symbols
 		(symbol "74xGxx:74LVC2G14"
 			(exclude_from_sim no)
@@ -7175,7 +7169,10 @@
 			)
 			(embedded_fonts no)
 		)
-	)
+
+(symbol "TrailCurrentSymbolLibrary:ESP32-C6-SuperMini" (exclude_from_sim no) (in_bom yes) (on_board yes) (property "Reference" "U" (at 12.7 2.54 0) (effects (font (size 1.27 1.27)))) (property "Value" "ESP32-C6-SuperMini" (at 12.7 0 0) (effects (font (size 1.27 1.27)))) (property "Footprint" "TrailCurrentFootprints:ESP32-C6-SuperMini_TH" (at 0 0 0) (effects (font (size 1.27 1.27)) (hide yes))) (property "Datasheet" "https://www.espboards.dev/esp32/esp32-c6-super-mini/" (at 0 0 0) (effects (font (size 1.27 1.27)) (hide yes))) (property "Description" "ESP32-C6 Super Mini Development Board, WiFi 6, BLE 5, Zigbee, Thread" (at 0 0 0) (effects (font (size 1.27 1.27)) (hide yes))) (property "Manufacturer_Name" "Teyleten Robot" (at 0 0 0) (effects (font (size 1.27 1.27)) (hide yes))) (property "LCSC Part" "C5364646" (at 0 0 0) (effects (font (size 1.27 1.27)) (hide yes))) (property "DigiKey Part Number" "1904-ESP32-C6FH4CT-ND" (at 0 0 0) (effects (font (size 1.27 1.27)) (hide yes))) (property "Mouser Part Number" "356-ESP32-C6FH4" (at 0 0 0) (effects (font (size 1.27 1.27)) (hide yes))) (symbol "ESP32-C6-SuperMini_0_1" (rectangle (start 5.08 1.27) (end 20.32 -24.13) (stroke (width 0.254) (type default)) (fill (type background))) (pin bidirectional line (at 0 0 0) (length 5.08) (name "TX" (effects (font (size 1.27 1.27)))) (number "1" (effects (font (size 1.27 1.27))))) (pin bidirectional line (at 0 -2.54 0) (length 5.08) (name "RX" (effects (font (size 1.27 1.27)))) (number "2" (effects (font (size 1.27 1.27))))) (pin bidirectional line (at 0 -5.08 0) (length 5.08) (name "GPIO0" (effects (font (size 1.27 1.27)))) (number "3" (effects (font (size 1.27 1.27))))) (pin bidirectional line (at 0 -7.62 0) (length 5.08) (name "GPIO1" (effects (font (size 1.27 1.27)))) (number "4" (effects (font (size 1.27 1.27))))) (pin bidirectional line (at 0 -10.16 0) (length 5.08) (name "GPIO2" (effects (font (size 1.27 1.27)))) (number "5" (effects (font (size 1.27 1.27))))) (pin bidirectional line (at 0 -12.7 0) (length 5.08) (name "GPIO3" (effects (font (size 1.27 1.27)))) (number "6" (effects (font (size 1.27 1.27))))) (pin bidirectional line (at 0 -15.24 0) (length 5.08) (name "GPIO4" (effects (font (size 1.27 1.27)))) (number "7" (effects (font (size 1.27 1.27))))) (pin bidirectional line (at 0 -17.78 0) (length 5.08) (name "GPIO5" (effects (font (size 1.27 1.27)))) (number "8" (effects (font (size 1.27 1.27))))) (pin bidirectional line (at 0 -20.32 0) (length 5.08) (name "GPIO6" (effects (font (size 1.27 1.27)))) (number "9" (effects (font (size 1.27 1.27))))) (pin bidirectional line (at 0 -22.86 0) (length 5.08) (name "GPIO7" (effects (font (size 1.27 1.27)))) (number "10" (effects (font (size 1.27 1.27))))) (pin power_in line (at 25.4 0 180) (length 5.08) (name "5V" (effects (font (size 1.27 1.27)))) (number "11" (effects (font (size 1.27 1.27))))) (pin power_in line (at 25.4 -2.54 180) (length 5.08) (name "GND" (effects (font (size 1.27 1.27)))) (number "12" (effects (font (size 1.27 1.27))))) (pin power_out line (at 25.4 -5.08 180) (length 5.08) (name "3V3" (effects (font (size 1.27 1.27)))) (number "13" (effects (font (size 1.27 1.27))))) (pin bidirectional line (at 25.4 -7.62 180) (length 5.08) (name "GPIO20" (effects (font (size 1.27 1.27)))) (number "14" (effects (font (size 1.27 1.27))))) (pin bidirectional line (at 25.4 -10.16 180) (length 5.08) (name "GPIO19" (effects (font (size 1.27 1.27)))) (number "15" (effects (font (size 1.27 1.27))))) (pin bidirectional line (at 25.4 -12.7 180) (length 5.08) (name "GPIO18" (effects (font (size 1.27 1.27)))) (number "16" (effects (font (size 1.27 1.27))))) (pin bidirectional line (at 25.4 -15.24 180) (length 5.08) (name "GPIO15" (effects (font (size 1.27 1.27)))) (number "17" (effects (font (size 1.27 1.27))))) (pin bidirectional line (at 25.4 -17.78 180) (length 5.08) (name "GPIO14" (effects (font (size 1.27 1.27)))) (number "18" (effects (font (size 1.27 1.27))))) (pin bidirectional line (at 25.4 -20.32 180) (length 5.08) (name "GPIO9" (effects (font (size 1.27 1.27)))) (number "19" (effects (font (size 1.27 1.27))))) (pin bidirectional line (at 25.4 -22.86 180) (length 5.08) (name "GPIO8" (effects (font (size 1.27 1.27)))) (number "20" (effects (font (size 1.27 1.27)))))) (embedded_fonts no))
+(symbol "Transistor_BJT:2N3904" (pin_names (offset 0) (hide yes)) (exclude_from_sim no) (in_bom yes) (on_board yes) (in_pos_files yes) (duplicate_pin_numbers_are_jumpers no) (property "Reference" "Q" (at 5.08 1.905 0) (show_name no) (do_not_autoplace no) (effects (font (size 1.27 1.27)) (justify left))) (property "Value" "2N3904" (at 5.08 0 0) (show_name no) (do_not_autoplace no) (effects (font (size 1.27 1.27)) (justify left))) (property "Footprint" "Package_TO_SOT_THT:TO-92_Inline" (at 5.08 -1.905 0) (show_name no) (do_not_autoplace no) (hide yes) (effects (font (size 1.27 1.27) (italic yes)) (justify left))) (property "Datasheet" "https://www.onsemi.com/pub/Collateral/2N3903-D.PDF" (at 0 0 0) (show_name no) (do_not_autoplace no) (hide yes) (effects (font (size 1.27 1.27)) (justify left))) (property "Description" "0.2A Ic, 40V Vce, Small Signal NPN Transistor, TO-92" (at 0 0 0) (show_name no) (do_not_autoplace no) (hide yes) (effects (font (size 1.27 1.27)))) (property "Sim.Device" "NPN" (at 0 0 0) (show_name no) (do_not_autoplace no) (hide yes) (effects (font (size 1.27 1.27)))) (property "Sim.Pins" "1=E 2=B 3=C" (at 0 0 0) (show_name no) (do_not_autoplace no) (hide yes) (effects (font (size 1.27 1.27)))) (property "ki_keywords" "NPN Transistor" (at 0 0 0) (show_name no) (do_not_autoplace no) (hide yes) (effects (font (size 1.27 1.27)))) (symbol "2N3904_0_1" (polyline (pts (xy -2.54 0) (xy 0.635 0)) (stroke (width 0) (type default)) (fill (type none))) (polyline (pts (xy 0.635 1.905) (xy 0.635 -1.905)) (stroke (width 0.508) (type default)) (fill (type none))) (circle (center 1.27 0) (radius 2.8194) (stroke (width 0.254) (type default)) (fill (type none)))) (symbol "2N3904_1_1" (polyline (pts (xy 0.635 0.635) (xy 2.54 2.54)) (stroke (width 0) (type default)) (fill (type none))) (polyline (pts (xy 0.635 -0.635) (xy 2.54 -2.54)) (stroke (width 0) (type default)) (fill (type none))) (polyline (pts (xy 1.27 -1.778) (xy 1.778 -1.27) (xy 2.286 -2.286) (xy 1.27 -1.778)) (stroke (width 0) (type default)) (fill (type outline))) (pin passive line (at 2.54 -5.08 90) (length 2.54) (name "E" (effects (font (size 1.27 1.27)))) (number "1" (effects (font (size 1.27 1.27))))) (pin input line (at -5.08 0 0) (length 2.54) (name "B" (effects (font (size 1.27 1.27)))) (number "2" (effects (font (size 1.27 1.27))))) (pin passive line (at 2.54 5.08 270) (length 2.54) (name "C" (effects (font (size 1.27 1.27)))) (number "3" (effects (font (size 1.27 1.27)))))) (embedded_fonts no) (property "ki_fp_filters" "TO?92*" (at 0 0 0) (show_name no) (do_not_autoplace no) (hide yes) (effects (font (size 1.27 1.27)))))
+)
 	(text "D1 identity and timing function remain unverified."
 		(exclude_from_sim no)
 		(at 151.13 118.745 0)
@@ -7187,8 +7184,8 @@
 		)
 		(uuid "0173c495-4d52-4f85-8456-f577dad33c4a")
 	)
-	
-	
+
+
 	(text "05  RF RECEIVE / GAIN / ENVELOPE"
 		(exclude_from_sim no)
 		(at 154.94 180.34 0)
@@ -7222,7 +7219,7 @@
 		)
 		(uuid "31a7a1a7-af45-458a-8a46-2f30eb35ef3b")
 	)
-	
+
 	(text "Candidate U1 pin 4 is internally open;\nexternal option pads remain connected."
 		(exclude_from_sim no)
 		(at 75.692 35.052 0)
@@ -7245,7 +7242,7 @@
 		)
 		(uuid "4b598f74-8eec-433d-96fd-f8e3bef19375")
 	)
-	
+
 	(text "07  PIR / AUXILIARY RAIL"
 		(exclude_from_sim no)
 		(at 17.78 172.72 0)
@@ -7257,8 +7254,8 @@
 		)
 		(uuid "55cf780a-b462-4e4d-b335-5cb42e17808a")
 	)
-	
-	
+
+
 	(text "U6A / U106: DNP regulator option.\nSymbol and ERC conflict retained intentionally."
 		(exclude_from_sim no)
 		(at 78.74 176.53 0)
@@ -7281,7 +7278,7 @@
 		)
 		(uuid "65342b17-02e3-4896-99be-4cb5567878d0")
 	)
-	
+
 	(text "U2: 6.3 V measured; C14R candidate rated only to 5.5 V.\nIdentity / supply-rating conflict OPEN (E03)."
 		(exclude_from_sim no)
 		(at 150.876 114.808 0)
@@ -7304,7 +7301,7 @@
 		)
 		(uuid "8b0efa6d-2a65-4051-8460-4ad439207b2f")
 	)
-	
+
 	(text "01  POWER / INPUT FILTER"
 		(exclude_from_sim no)
 		(at 17.78 19.05 0)
@@ -7327,7 +7324,7 @@
 		)
 		(uuid "9c4bbedd-cd52-47ec-8805-0f383b4ce7b8")
 	)
-	
+
 	(text "C42 / R47 / R46 are unpopulated options."
 		(exclude_from_sim no)
 		(at 195.834 182.372 0)
@@ -7383,7 +7380,7 @@
 		)
 		(uuid "b687992f-993a-4389-a252-bd53e27d0000")
 	)
-	
+
 	(text "R3/R4/C28: RC sense candidate.\nCopper junction / role unverified."
 		(exclude_from_sim no)
 		(at 243.84 99.06 0)
@@ -9577,7 +9574,7 @@
 		)
 		(uuid "557a74a1-e44c-44ce-bfc5-fd4e42529ea9")
 	)
-	
+
 	(wire
 		(pts
 			(xy 236.22 92.71) (xy 243.84 92.71)
@@ -9758,7 +9755,7 @@
 		)
 		(uuid "5dd110fe-602a-419a-b236-c748e68d0f27")
 	)
-	
+
 	(wire
 		(pts
 			(xy 372.11 220.98) (xy 382.27 220.98)
@@ -10609,7 +10606,7 @@
 		)
 		(uuid "84fb4bad-60f0-4ca4-be03-5b6bd1ded8d5")
 	)
-	
+
 	(wire
 		(pts
 			(xy 270.51 92.71) (xy 275.59 92.71)
@@ -11670,7 +11667,7 @@
 		)
 		(uuid "c2a2d936-7581-4d67-be50-c12edbc64191")
 	)
-	
+
 	(wire
 		(pts
 			(xy 21.59 210.82) (xy 21.59 220.98)
@@ -12061,7 +12058,7 @@
 		)
 		(uuid "d48f35eb-e28a-4e23-846a-26434d4526ed")
 	)
-	
+
 	(polyline
 		(pts
 			(xy 13.97 82.55) (xy 144.78 82.55)
@@ -12082,7 +12079,7 @@
 		)
 		(uuid "d81a461c-ff99-4056-b418-25ce65c3c500")
 	)
-	
+
 	(wire
 		(pts
 			(xy 326.39 236.22) (xy 349.25 236.22)
@@ -45978,4 +45975,53 @@
 (text "Pad mapping: evidence/pin_crosswalk.json\nOpen items: docs/OPEN_ITEMS.md\nTP11 / TP17 are valid endpoints;\npossible hidden branches remain unproved." (at 88 268 0) (effects (font (size 1.05 1.05)) (justify left top)) (uuid "e3070789-58b5-49cf-b17e-dd963ab3615d"))
 (text "Main board, external antenna and proposed bridge.\nPIR internals, motor and firmware are outside scope.\nCapacitor basis / ratings:\ndocs/CAPACITOR_VALUE_REVIEW.html" (at 158 268 0) (effects (font (size 1.05 1.05)) (justify left top)) (uuid "5f6a2c33-075a-4f20-a858-95e0b24109cc"))
 (polyline (pts (xy 13.97 257.81) (xy 230 257.81) (xy 230 287) (xy 13.97 287) (xy 13.97 257.81)) (stroke (width 0.254) (type default)) (uuid "8b89b53a-fa6a-4c4b-85c8-f1620792b9d9"))
+
+(symbol (lib_id "TrailCurrentSymbolLibrary:ESP32-C6-SuperMini") (at 299.72 113.03 0) (unit 1) (body_style 1) (exclude_from_sim no) (in_bom no) (on_board no) (in_pos_files yes) (dnp no) (uuid "c3349bd9-8fc4-46f9-9218-05246479f43b") (property "Reference" "U201" (at 312.42 108 0) (show_name no) (do_not_autoplace no) (effects (font (size 1 1)))) (property "Value" "ESP32-C6 SuperMini" (at 312.42 110 0) (show_name no) (do_not_autoplace no) (effects (font (size 1 1)))) (property "Footprint" "TrailCurrentFootprints:ESP32-C6-SuperMini_TH" (at 299.72 113.03 0) (hide yes) (show_name no) (do_not_autoplace no) (effects (font (size 1.27 1.27)))) (property "Datasheet" "https://www.espboards.dev/esp32/esp32-c6-super-mini/" (at 299.72 113.03 0) (hide yes) (show_name no) (do_not_autoplace no) (effects (font (size 1.27 1.27)))) (property "Description" "ESP32-C6 Super Mini Development Board, WiFi 6, BLE 5, Zigbee, Thread" (at 299.72 113.03 0) (hide yes) (show_name no) (do_not_autoplace no) (effects (font (size 1.27 1.27)))) (pin "1" (uuid "c4d9759f-a63d-44ff-bd9a-a0ea4af41d4e")) (pin "10" (uuid "ef44181d-198f-424b-9b87-7d60a3d2b286")) (pin "11" (uuid "e3c329b8-7e36-4117-9221-1dfe0af3c8f4")) (pin "12" (uuid "0cc80169-32e6-45d8-a838-cc068caf82c2")) (pin "13" (uuid "b5045e92-75b8-4c50-b099-ce1e849026f3")) (pin "14" (uuid "ca3e5c28-2e72-491d-a34f-5ed47c18af42")) (pin "15" (uuid "09bf1af4-1d45-4f35-8793-fdb68184596b")) (pin "16" (uuid "f32f5789-3e85-4715-a0f5-b01cee1d39d9")) (pin "17" (uuid "aeb0021a-4b86-4eb2-847b-6dcf011e14ea")) (pin "18" (uuid "e9044ebb-23f6-49f6-9917-52a8043ec16a")) (pin "19" (uuid "0cc2788f-a3e0-41da-8d2c-e73a17e025b7")) (pin "2" (uuid "ef7605f8-d01f-4aa0-888e-250e88b3515d")) (pin "20" (uuid "979e0266-9543-44b1-882b-55f8d84a3456")) (pin "3" (uuid "662b89b1-49d9-41c1-bf86-bc7e385336dd")) (pin "4" (uuid "9c2367f7-8aee-4495-9a3f-1c18a7abb67f")) (pin "5" (uuid "e375db1d-6a41-4e18-9d0c-b6a7789989df")) (pin "6" (uuid "19689b0a-60b2-4ce8-9a6f-a6d0907fdf08")) (pin "7" (uuid "64d6e7c9-e0cb-454d-bf28-af5613851a2f")) (pin "8" (uuid "4e7ac3f9-dbcb-4136-997a-954c6f674b68")) (pin "9" (uuid "054288bd-d7b4-4936-9a09-dbf00599ab89")) (instances (project "PetSafe_1001339" (path "/33a03d59-1679-4e9c-af69-68d086b519af" (reference "U201") (unit 1)))) (property "Assembly" "External USB-powered ESP32-C6 SuperMini; separate from factory board. No 5V/3V3 connection to PetSafe." (at 0 0 0) (hide yes) (effects (font (size 1 1)))) (property "GPIOSelection" "GPIO_BTN = GPIO3, library header pin6. Non-strapping ordinary GPIO, input-enabled/no pull-up at reset per Espressif Table 2-2. Owned-board header and boot/flash behavior remain unverified." (at 0 0 0) (hide yes) (effects (font (size 1 1)))) (property "BoardIdentity" "Owner reports ESP32-C6 SuperMini; selected TrailCurrent library is a candidate physical match, not verified manufacturing identity." (at 0 0 0) (hide yes) (effects (font (size 1 1)))) (property "Model3DStatus" "Owner STEP imported; see docs/BUTTON_BRIDGE.md for fit qualification." (at 0 0 0) (hide yes) (effects (font (size 1 1)))))
+(symbol (lib_id "Transistor_BJT:2N3904") (at 383.54 125.73 0) (unit 1) (body_style 1) (exclude_from_sim no) (in_bom no) (on_board no) (in_pos_files yes) (dnp no) (uuid "cbc04738-73c8-4a73-aaf2-e41487cf1193") (property "Reference" "Q201" (at 392 124 0) (show_name no) (do_not_autoplace no) (effects (font (size 1.27 1.27)) (justify left))) (property "Value" "2N3904" (at 392 127 0) (show_name no) (do_not_autoplace no) (effects (font (size 1.27 1.27)) (justify left))) (property "Footprint" "Package_TO_SOT_THT:TO-92_Inline" (at 388.62 123.825 0) (hide yes) (show_name no) (do_not_autoplace no) (effects (font (size 1.27 1.27) (italic yes)) (justify left))) (property "Datasheet" "https://www.onsemi.com/pub/Collateral/2N3903-D.PDF" (at 383.54 125.73 0) (hide yes) (show_name no) (do_not_autoplace no) (effects (font (size 1.27 1.27)) (justify left))) (property "Description" "0.2A Ic, 40V Vce, Small Signal NPN Transistor, TO-92" (at 383.54 125.73 0) (hide yes) (show_name no) (do_not_autoplace no) (effects (font (size 1.27 1.27)))) (pin "1" (uuid "06302ab6-52ac-469d-813f-b292e6423187")) (pin "2" (uuid "d8d6826d-e678-494b-abd9-2c54fe9932dc")) (pin "3" (uuid "e6dc7791-3d63-418c-a907-ee2dd7ed15e3")) (instances (project "PetSafe_1001339" (path "/33a03d59-1679-4e9c-af69-68d086b519af" (reference "Q201") (unit 1)))) (property "Assembly" "External button shunt, parallel to S1; original button and circuitry retained." (at 0 0 0) (hide yes) (effects (font (size 1 1)))) (property "LeadOrderStatus" "PENDING: confirm owned 2N3904 manufacturer/package lead order before assembly. Stock symbol/TO-92 footprint use 1=E, 2=B, 3=C." (at 0 0 0) (hide yes) (effects (font (size 1 1)))))
+(symbol (lib_id "Device:R") (at 350.52 125.73 90) (unit 1) (body_style 1) (exclude_from_sim no) (in_bom no) (on_board no) (in_pos_files yes) (dnp no) (uuid "ae9bc049-f987-4730-b57c-720efe54c8d0") (property "Reference" "R201" (at 350.52 121.92 90) (show_name no) (do_not_autoplace no) (effects (font (size 1.27 1.27)))) (property "Value" "4.7k" (at 350.52 129.54 90) (show_name no) (do_not_autoplace no) (effects (font (size 1.27 1.27)))) (property "Footprint" "Resistor_THT:R_Axial_DIN0207_L6.3mm_D2.5mm_P7.62mm_Horizontal" (at 350.52 127.508 90) (hide yes) (show_name no) (do_not_autoplace no) (effects (font (size 1.27 1.27)))) (property "Datasheet" "" (at 350.52 125.73 0) (hide yes) (show_name no) (do_not_autoplace no) (effects (font (size 1.27 1.27)))) (property "Description" "Resistor" (at 350.52 125.73 0) (hide yes) (show_name no) (do_not_autoplace no) (effects (font (size 1.27 1.27)))) (pin "1" (uuid "23acaa7a-5f56-46e0-bf52-58e951f26790")) (pin "2" (uuid "88a65bd6-a385-4f65-b241-cbe833f1a8be")) (instances (project "PetSafe_1001339" (path "/33a03d59-1679-4e9c-af69-68d086b519af" (reference "R201") (unit 1)))) (property "Assembly" "External base series resistor. GPIO3 -> 4.7k -> Q201 base." (at 0 0 0) (hide yes) (effects (font (size 1 1)))))
+(symbol (lib_id "Device:R") (at 365.76 135.89 0) (unit 1) (body_style 1) (exclude_from_sim no) (in_bom no) (on_board no) (in_pos_files yes) (dnp no) (uuid "3887cdd8-1a54-4924-9d0c-0048e2f62d22") (property "Reference" "R202" (at 370.84 134.62 0) (show_name no) (do_not_autoplace no) (effects (font (size 1.27 1.27)))) (property "Value" "100k" (at 370.84 137.16 0) (show_name no) (do_not_autoplace no) (effects (font (size 1.27 1.27)))) (property "Footprint" "Resistor_THT:R_Axial_DIN0207_L6.3mm_D2.5mm_P7.62mm_Horizontal" (at 363.982 135.89 90) (hide yes) (show_name no) (do_not_autoplace no) (effects (font (size 1.27 1.27)))) (property "Datasheet" "" (at 365.76 135.89 0) (hide yes) (show_name no) (do_not_autoplace no) (effects (font (size 1.27 1.27)))) (property "Description" "Resistor" (at 365.76 135.89 0) (hide yes) (show_name no) (do_not_autoplace no) (effects (font (size 1.27 1.27)))) (pin "1" (uuid "720b2fdf-209b-4fd8-9b95-dbe14e51f827")) (pin "2" (uuid "55ebbf54-5ac5-4056-9ba9-d63f9eea8db3")) (instances (project "PetSafe_1001339" (path "/33a03d59-1679-4e9c-af69-68d086b519af" (reference "R202") (unit 1)))) (property "Assembly" "External 100k base-emitter pull-down; transistor side of R201." (at 0 0 0) (hide yes) (effects (font (size 1 1)))))
+(symbol (lib_id "power:GND") (at 386.08 143.51 0) (unit 1) (body_style 1) (exclude_from_sim no) (in_bom no) (on_board no) (in_pos_files yes) (dnp no) (uuid "28997cf4-fc8d-4c87-8e47-5085cc390ff2") (property "Reference" "#PWR201" (at 386.08 140.97 0) (show_name no) (do_not_autoplace no) (effects (font (size 1.27 1.27))) (hide yes)) (property "Value" "GND" (at 386.08 146.05 0) (show_name no) (do_not_autoplace no) (effects (font (size 1.27 1.27))) (hide yes)) (property "Footprint" "" (at 386.08 143.51 0) (hide yes) (show_name no) (do_not_autoplace no) (effects (font (size 1.27 1.27)))) (property "Datasheet" "" (at 386.08 143.51 0) (hide yes) (show_name no) (do_not_autoplace no) (effects (font (size 1.27 1.27)))) (property "Description" "Ground" (at 386.08 143.51 0) (hide yes) (show_name no) (do_not_autoplace no) (effects (font (size 1.27 1.27)))) (pin "1" (uuid "2e5bb1fb-ef1e-4918-9750-66f01f7e6cd3")) (instances (project "PetSafe_1001339" (path "/33a03d59-1679-4e9c-af69-68d086b519af" (reference "#PWR201") (unit 1)))))
+(wire (pts (xy 299.72 125.73) (xy 292.1 125.73)) (stroke (width 0) (type default)) (uuid "d7ef99b0-1f61-4c4c-8141-6caad3059f4e"))
+(label "GPIO_BTN" (at 292.1 125.73 90) (effects (font (size 1 1)) (justify left bottom)) (uuid "67153c74-d72f-4445-9893-04e7980bf97f"))
+(wire (pts (xy 337.82 125.73) (xy 354.33 125.73)) (stroke (width 0) (type default)) (uuid "69cb6e9e-8cab-4699-924a-6db6e132c179"))
+(label "GPIO_BTN" (at 337.82 125.73 0) (effects (font (size 1 1)) (justify left bottom)) (uuid "aa2dee66-4f99-46d4-b753-9b656b77bbdf"))
+(wire (pts (xy 346.71 125.73) (xy 365.76 125.73)) (stroke (width 0) (type default)) (uuid "633df699-bcd5-48e3-8ebe-c57471f7d4ec"))
+(wire (pts (xy 365.76 125.73) (xy 378.46 125.73)) (stroke (width 0) (type default)) (uuid "8e6eeb13-616e-49d2-9107-fde137b019a1"))
+(wire (pts (xy 365.76 125.73) (xy 365.76 132.08)) (stroke (width 0) (type default)) (uuid "e9a37f40-260e-4fba-ab06-5d087cf86dc7"))
+(label "EXT_BTN_BASE" (at 365.76 125.73 90) (effects (font (size 1 1)) (justify left bottom)) (uuid "5d088892-41ef-415b-a72e-bd8120b36ce5"))
+(wire (pts (xy 386.08 120.65) (xy 386.08 113.03)) (stroke (width 0) (type default)) (uuid "3d809ec7-bbde-45c0-b006-23c886d98b79"))
+(label "H_BUTTON" (at 386.08 113.03 0) (effects (font (size 1 1)) (justify left bottom)) (uuid "9c9d77f8-45a5-4fea-980e-26d9edf2f0f9"))
+(wire (pts (xy 386.08 130.81) (xy 386.08 143.51)) (stroke (width 0) (type default)) (uuid "c3ce820e-bfa3-45ec-ad40-83ac486fbcc2"))
+(wire (pts (xy 386.08 143.51) (xy 365.76 143.51)) (stroke (width 0) (type default)) (uuid "cd2d953e-c29e-4f15-a90f-d90e96f6b82f"))
+(wire (pts (xy 365.76 143.51) (xy 332.74 143.51)) (stroke (width 0) (type default)) (uuid "1bb71b96-2edd-43fc-9194-a6513804e4f3"))
+(wire (pts (xy 332.74 143.51) (xy 332.74 115.57)) (stroke (width 0) (type default)) (uuid "5fed469b-d231-49d4-abac-a2b9e91ac560"))
+(wire (pts (xy 332.74 115.57) (xy 325.12 115.57)) (stroke (width 0) (type default)) (uuid "719c67a6-4969-4ffd-9e16-956d9858eb2b"))
+(wire (pts (xy 365.76 139.7) (xy 365.76 143.51)) (stroke (width 0) (type default)) (uuid "2dda9f3c-2e36-4421-a599-dfffa60ae1e2"))
+(junction (at 365.76 125.73) (diameter 0) (color 0 0 0 0) (uuid "8fed78fb-470f-499c-9999-bace9fa4acac"))
+(junction (at 365.76 143.51) (diameter 0) (color 0 0 0 0) (uuid "34d5aae3-39b5-46f0-ae37-0e3d4632a911"))
+(no_connect (at 299.72 113.03) (uuid "88d3d50b-684a-44f9-9793-623d967e85c1"))
+(no_connect (at 299.72 115.57) (uuid "2bee9c65-aaea-4ec3-992d-f26721fc3268"))
+(no_connect (at 299.72 118.11) (uuid "a2de5f50-f453-46d3-9c69-8811c4a646ce"))
+(no_connect (at 299.72 120.65) (uuid "4b72512a-4236-4993-969d-62662bc6463e"))
+(no_connect (at 299.72 123.19) (uuid "5dd52331-9dbd-4028-88f1-7b435ae8402f"))
+(no_connect (at 299.72 128.27) (uuid "0a63fcb3-5141-4909-a03a-bf5598361253"))
+(no_connect (at 299.72 130.81) (uuid "aff64018-36f5-4d8f-b56d-bf20b4e773a1"))
+(no_connect (at 299.72 133.35) (uuid "5d1f675f-f059-42ee-9eb6-891ec7b38625"))
+(no_connect (at 299.72 135.89) (uuid "153ac47b-72d6-4a44-864b-4dd46a81040f"))
+(no_connect (at 325.12 113.03) (uuid "bfafec72-afcc-4109-aa09-fc12822fe387"))
+(no_connect (at 325.12 118.11) (uuid "5945bda6-018d-4cc7-9d0b-398be56b4b78"))
+(no_connect (at 325.12 120.65) (uuid "4874e814-bcb7-4e7c-aa3c-d30b9a7e209a"))
+(no_connect (at 325.12 123.19) (uuid "a3c1e327-befe-4fe8-b902-13c80086abba"))
+(no_connect (at 325.12 125.73) (uuid "306abd35-753c-48c3-9a79-f534fb8b2416"))
+(no_connect (at 325.12 128.27) (uuid "844016d5-67c7-4284-8c99-a67d2db3c4e0"))
+(no_connect (at 325.12 130.81) (uuid "f5644de9-40a1-4415-a00b-246dac29b573"))
+(no_connect (at 325.12 133.35) (uuid "af682021-7bbd-4240-a1df-4904b8233396"))
+(no_connect (at 325.12 135.89) (uuid "31940688-1df5-4f0e-8d23-47a90a9441e8"))
+(text "EXTERNAL ESP32 BUTTON BRIDGE - PROPOSED MODIFICATION" (at 288.29 98 0) (effects (font (size 1.35 1.35)) (justify left top)) (uuid "b3610823-dbf6-462c-b2fe-1b259811f30a"))
+(text "USB power only; share GND, keep positive supplies separate." (at 288.29 102 0) (effects (font (size 1.1 1.1)) (justify left top)) (uuid "24e068cb-8390-471b-97ef-74d23a33e113"))
+(text "GPIO3 / header 6" (at 288.29 140.5 0) (effects (font (size 1.0 1.0)) (justify left top)) (uuid "ab69a760-4c21-4070-9d72-4508f6d50914"))
+(text "to S1.2" (at 386.08 109.5 0) (effects (font (size 1.0 1.0)) (justify left top)) (uuid "bdb49b41-9ab8-49f0-8b91-8a56b97bb996"))
+(text "to S1.1 / PetSafe GND" (at 348 146 0) (effects (font (size 1.0 1.0)) (justify left top)) (uuid "23b3d0a1-da57-43b2-9ade-ba1a01c12317"))
+(text "HIGH = brief press; LOW = release. Initial pulse ~200 ms (unverified timing).\nBoot / reset must release. Never hold HIGH to keep unlocked.\nMode toggle only: no OPEN/CLOSE command or latch feedback.\nConfirm owned TO-92 lead order and board startup before assembly.\nUSB powers U201 internally; 5V/3V3 header pins are deliberately unused." (at 288.29 151 0) (effects (font (size 1.05 1.05)) (justify left top)) (uuid "6c1707a3-1a88-44a2-962b-709865102e97"))
+(polyline (pts (xy 285.75 96.52) (xy 409.575 96.52) (xy 409.575 172.72) (xy 285.75 172.72) (xy 285.75 96.52)) (stroke (width 0.508) (type dash)) (uuid "873d98d4-1051-48fc-b247-2e4e98123eaa"))
 )

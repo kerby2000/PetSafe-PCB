@@ -1,6 +1,6 @@
 {
-  "date": "2026-10-16",
-  "review_revision": "v0.9.51",
+  "date": "2026-10-17",
+  "review_revision": "v0.9.52",
   "basis_revision": "v0.9.48",
   "scope": "Current main-board finishing register. Supported connections and completed measurements are recorded in the current model; resolved issues are archived. Remaining hidden paths, candidate identities, values and operating behavior are listed below.",
   "rails": [
@@ -484,6 +484,35 @@
         "evidence/receiver_connections_v0948.json"
       ],
       "next_action": "Keep the three supported receiver joins and earlier measured separations. Preserve the specifically qualified remaining copper groups and intentional U6A ERC conflict; no new measurement campaign. Owner action: none. No pending readings. RX-3 is deferred and unmeasured; completed RX-1/RX-2 and earlier C20 checks are not repeated."
+    },
+    {
+      "id": "A01",
+      "area": "External ESP32 button bridge: assembly qualification",
+      "refs": [
+        "U201",
+        "Q201",
+        "R201",
+        "R202"
+      ],
+      "priority": 2,
+      "state": "open",
+      "category": "Proposed modification; separate from reconstruction",
+      "known": "2N3904 circuit proposed in parallel with measured S1 contacts: C to H_BUTTON, E to GND, GPIO3/header6 through 4.7k to base, 100k base-emitter on transistor side. ESP32 USB and PetSafe battery positives remain separate. GPIO3 reset input/no-pull configuration checked in Espressif data; library symbol/header footprint imported at a pinned commit. Owner STEP hole rows/pitch are geometrically consistent.",
+      "unknown": "Owned 2N3904 maker/physical lead order; owned SuperMini pin-labelled header and actual fit; release behavior during boot/reset/flashing with eventual firmware. The bridge does not report latch position or guarantee relock after failure.",
+      "codex_action": "Keep these qualifications explicit in the schematic and BUTTON_BRIDGE.md. Firmware and physical assembly are later tasks.",
+      "owner_input": "No new reconstruction readings. Before assembly, identify the owned 2N3904 E/B/C leads and confirm SuperMini GPIO3/GND labels; startup release commissioning belongs to later firmware work.",
+      "closed_when": "Owned-package pin order and board mapping/fit confirmed; final firmware leaves the button released through idle, boot, reset and flashing and demonstrates a brief mode-toggle pulse.",
+      "open_pads": [],
+      "nets": [
+        "H_BUTTON",
+        "GND"
+      ],
+      "owner": "Owner assembly confirmation; later firmware commissioning",
+      "supporting_evidence": [
+        "docs/BUTTON_BRIDGE.md",
+        "evidence/reconstruction.json"
+      ],
+      "next_action": "Review the external circuit now. Confirm owned 2N3904 lead order and SuperMini mapping before assembly; validate release behavior with later firmware. No new reconstruction measurement batch."
     }
   ],
   "milestones": [
@@ -539,6 +568,16 @@
       ],
       "summary": "LED colour branches and J5 board-contact/output mapping are established. LED footprint, connector fit and external motor harness orientation remain reproduction qualifications.",
       "next_action": "Obtain a matching LED vendor drawing or pad geometry; qualify J5 and the other packages before laying out a replacement PCB."
+    },
+    {
+      "id": "F4",
+      "title": "Qualify the proposed external button bridge",
+      "scope": "External add-on only",
+      "issues": [
+        "A01"
+      ],
+      "summary": "Circuit implemented; factory endpoint relationships preserved. No firmware or carrier PCB in this task.",
+      "next_action": "Review the external circuit now. Confirm owned 2N3904 lead order and SuperMini mapping before assembly; validate release behavior with later firmware. No new reconstruction measurement batch."
     }
   ],
   "settled_summary": [],
@@ -649,6 +688,6 @@
     ]
   },
   "historical_photo_summary": "docs/history/pr1-cleanup-20261015/photo_supported_summary.json",
-  "owner_action_summary": "Owner action: none. No pending readings. RX-3 is deferred and unmeasured; completed RX-1/RX-2 and earlier C20 checks are not repeated.",
+  "owner_action_summary": "No pending readings. RX-3 remains deferred. Review the proposed external bridge; confirm owned-part lead order and SuperMini mapping before assembly. Startup release validation belongs to later firmware commissioning.",
   "topology_audit": "evidence/topology_closure_audit.json"
 }

@@ -5,6 +5,48 @@ import json, hashlib, re, math, xml.etree.ElementTree as ET
 import sexpdata as sx
 ROOT=Path(__file__).resolve().parents[1]
 
+BUTTON_BRIDGE_COMPONENTS={
+    'U201':('TrailCurrentSymbolLibrary:ESP32-C6-SuperMini','ESP32-C6 SuperMini','TrailCurrentFootprints:ESP32-C6-SuperMini_TH'),
+    'Q201':('Transistor_BJT:2N3904','2N3904','Package_TO_SOT_THT:TO-92_Inline'),
+    'R201':('Device:R','4.7k','Resistor_THT:R_Axial_DIN0207_L6.3mm_D2.5mm_P7.62mm_Horizontal'),
+    'R202':('Device:R','100k','Resistor_THT:R_Axial_DIN0207_L6.3mm_D2.5mm_P7.62mm_Horizontal')}
+
+def verify_button_bridge(native, model):
+    """Check every external terminal before removing add-on nodes from board comparisons."""
+    bridge=model.get('external_button_bridge')
+    if not bridge:return set()
+    refs=set(BUTTON_BRIDGE_COMPONENTS)
+    assert {c['reference'] for c in bridge['components']}==refs
+    assert not refs&{model['reference_map'].get(c['ref'],c['ref']) for c in model['components']}
+    groups=[frozenset(n.attrib['ref']+'.'+n.attrib['pin'] for n in net.findall('node')) for net in native.findall('./nets/net')]
+    bypin={pin:group for group in groups for pin in group}
+    assert bypin['Q201.3']==bypin['S1.2']==frozenset({'Q201.3','S1.2','C35.1','R40.2','R41.2'}), 'Collector must shunt only S1 H_BUTTON'
+    assert bypin['Q201.1']==bypin['U201.12']==bypin['R202.2']==bypin['S1.1']
+    ground={model['native_pin_crosswalk'][p] for n in model['nets'] if n['net']=='GND' for p in n['endpoints']}
+    assert bypin['S1.1']==ground|{'Q201.1','U201.12','R202.2'}, 'Common ground must not join positive supplies'
+    assert bypin['U201.6']==frozenset({'U201.6','R201.2'}), 'GPIO must reach base through 4.7k'
+    assert bypin['Q201.2']==frozenset({'Q201.2','R201.1','R202.1'}), '100k belongs on transistor side of 4.7k'
+    unused={str(p) for p in range(1,21)}-{'6','12'}
+    assert set(bridge['unused_header_pins'])==unused
+    for pin in unused:assert bypin['U201.'+pin]=={'U201.'+pin}, 'Unused header/positive supply connected'
+    for ref,(symbol,value,footprint) in BUTTON_BRIDGE_COMPONENTS.items():
+        comp=native.find('./components/comp[@ref="'+ref+'"]')
+        assert comp is not None and comp.findtext('value')==value and comp.findtext('footprint')==footprint,ref
+        source=comp.find('libsource').attrib
+        assert source['lib']+':'+source['part']==symbol,ref
+        for flag in ['exclude_from_bom','exclude_from_board']:assert comp.find('property[@name="'+flag+'"]') is not None,ref
+        record=next(c for c in bridge['components'] if c['reference']==ref)
+        assert (record['symbol'],record['value'],record['footprint'])==(symbol,value,footprint)
+        assert not record['on_main_board'] and not record['in_main_board_bom']
+    qlib=native.find('./libparts/libpart[@lib="Transistor_BJT"][@part="2N3904"]')
+    assert {p.attrib['num']:p.attrib['name'] for p in qlib.findall('./pins/pin')}=={'1':'E','2':'B','3':'C'}
+    ulib=native.find('./libparts/libpart[@lib="TrailCurrentSymbolLibrary"][@part="ESP32-C6-SuperMini"]')
+    upins={p.attrib['num']:p.attrib['name'] for p in ulib.findall('./pins/pin')}
+    assert upins['6']=='GPIO3' and upins['12']=='GND' and upins['11']=='5V' and upins['13']=='3V3'
+    assert bridge['gpio']=='GPIO3' and bridge['gpio_header_pin']=='6' and bridge['ground_header_pin']=='12'
+    assert 'PENDING' in native.findtext('./components/comp[@ref="Q201"]/fields/field[@name="LeadOrderStatus"]')
+    return refs
+
 def board_net_partitions(native, model):
     """Validate the explicit off-board winding, then compare main-board copper only."""
     ext=model.get('external_antenna',{}).get('native_reference')
@@ -19,7 +61,11 @@ def board_net_partitions(native, model):
         assert not comp.findtext('footprint')
         assert nodes['L101.1']==nodes['TP105.1']!=nodes['TP106.1']==nodes['L101.2']
         assert {p.attrib['num'] for p in comp.findall('./units/unit/pins/pin')}=={'1','2'}
-    actual={frozenset(n.attrib['ref']+'.'+n.attrib['pin'] for n in net.findall('node') if n.attrib['ref']!=ext):net.attrib['name'] for net in native.findall('./nets/net')}
+    external=verify_button_bridge(native,model)|{ext}
+    actual={}
+    for net in native.findall('./nets/net'):
+        pins=frozenset(n.attrib['ref']+'.'+n.attrib['pin'] for n in net.findall('node') if n.attrib['ref'] not in external)
+        if pins:actual[pins]=net.attrib['name']
     return actual
 def sha(p):return hashlib.sha256(p.read_bytes()).hexdigest()
 
@@ -90,7 +136,7 @@ def main():
     differences=[dict(net=n,pins=sorted(p)) for p,n in expected.items() if p not in actual]
     extras=[dict(net=n,pins=sorted(p)) for p,n in actual.items() if len(p)>1 and p not in expected]
     assert not differences and not extras,(differences,extras)
-    assert len(native.findall('./components/comp'))==len(m['components'])+bool(m.get('external_antenna',{}).get('native_reference'))
+    assert len(native.findall('./components/comp'))==len(m['components'])+bool(m.get('external_antenna',{}).get('native_reference'))+len(m.get('external_button_bridge',{}).get('components',[]))
     assert len(native.findall('./design/sheet'))==1
     old=json.loads((ROOT/'reference/v01/evidence/reconstruction.json').read_text())
     withdrawn={f['net']:f for f in m.get('withdrawn_original_fragments',[])}
@@ -128,7 +174,8 @@ def main():
     # Permit only evidence-backed intentional NCs; never blanket-suppress opens.
     nc=m.get('intentional_no_connects',[])
     marked={tuple(round(float(v),5) for v in xy) for xy in re.findall(r'\(no_connect\s+\(at\s+([-\d.]+)\s+([-\d.]+)\)',sch.read_text())}
-    assert marked=={tuple(m['pin_positions'][c['endpoint']]) for c in nc}
+    bridge_nc={tuple(positions['U201.'+pin]) for pin in m.get('external_button_bridge',{}).get('unused_header_pins',[])}
+    assert marked=={tuple(m['pin_positions'][c['endpoint']]) for c in nc}|bridge_nc
     for c in nc:
         assert c['basis'] and (ROOT/c['evidence']).exists()
         assert c['endpoint'] not in m['unresolved_pins']
@@ -137,6 +184,7 @@ def main():
     definitions={(p.attrib['lib'],p.attrib['part']) for p in native.findall('./libparts/libpart')}
     custom=sum(lib=='PetSafe_Datasheet' for lib,part in definitions)
     expected_definitions={tuple(c['symbol'].split(':',1)) for c in json.loads((ROOT/'evidence/library_layout.json').read_text())['catalog']}
+    expected_definitions|={tuple(c['symbol'].split(':',1)) for c in m.get('external_button_bridge',{}).get('components',[])}
     assert custom==4 and definitions==expected_definitions,(definitions,expected_definitions)
     # D2 is a measured equivalent, not an inferred manufacturer replacement.
     d2=native.find('./components/comp[@ref="D2"]')
@@ -167,6 +215,10 @@ def main():
     report=dict(date=m.get('review_date','2026-10-08'),native_tool=native.findtext('./design/tool'),native_load_and_export='PASS',single_sheet='PASS',catalog_components=len(m['components']),symbol_units=len(json.loads((ROOT/'evidence/library_layout.json').read_text())['catalog']),physical_pins=sum(len(c['pins']) for c in m['components']),stock_library_symbols=len(definitions)-custom,custom_symbols=custom,proposed_net_partitions=len(expected),netlist_partition_comparison='PASS',unintended_multi_pin_nets=0,retained_original_visual_fragments=len(old['nets'])-len(withdrawn),withdrawn_original_visual_fragments=sorted(withdrawn),original_photo_checksums=f'PASS ({len(manifest)} files)',unresolved_physical_pins=len(m['unresolved_pins']),erc_total=len(violations),erc_by_type=dict(counts),erc_status='OPEN FINDINGS - candidate IC pin types checked; unknown board routing remains',gui_open='NOT_TESTED (native CLI validated)',hardware_verification='PARTIAL: recorded U6/Q8 resistance and selected PIC meter/visual routes; user via reports plus photo cross-checks; six powered DC levels and TP14 follow-ups recorded; circuit behavior and transient operation remain unverified',physical_pcb_layout='NOT_CREATED',schematic_sha256=sha(sch),input_zip_sha256=sha(ROOT/'input/PetSafe_KiCad_RE_v01.zip'))
     report['datasheet_symbol_pin_contracts']='PASS (U1: 5 pins; U5: 8 pins; U6: 5 pins; Q8: 6 pins; types, footprints and source properties)'
     report['external_antenna']='L101: 500uH, ANT1 to ANT2, excluded from main-board BOM and PCB; endpoints verified separately'
+    if m.get('external_button_bridge'):
+        report['stock_library_symbols']-=1  # Owner-selected SuperMini is a vendor symbol.
+        report['owner_selected_vendor_symbols']=1
+        report['external_button_bridge']='PASS: four off-board components; every terminal checked before filtering. Q201 C=S1.2, E=S1.1; GPIO3/4.7k/base/100k topology and separate positive supplies verified. Assembly/boot behavior not verified.'
     (ROOT/'evidence/validation.json').write_text(json.dumps(report,indent=2),encoding='utf-8',newline='\n')
     (ROOT/'evidence/validation_log.txt').write_text('Native KiCad model/netlist cross-check: PASS\n'+json.dumps(report,indent=2)+'\n',encoding='utf-8',newline='\n')
     print(json.dumps(report,indent=2))

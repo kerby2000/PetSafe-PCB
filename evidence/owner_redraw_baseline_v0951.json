@@ -343,7 +343,12 @@
     "#PWR029",
     "#PWR030",
     "#PWR031",
-    "L101"
+    "L101",
+    "#PWR201",
+    "Q201",
+    "R201",
+    "R202",
+    "U201"
   ],
   "symbol_changes": [
     {
@@ -378,7 +383,7 @@
   },
   "new_hardware_claims": [],
   "owner_action": "None; no new measurements scheduled.",
-  "reviewed_schematic_sha256": "08722028b4bd03d068af812ec6cd4e3559ce64dcb3dcaa8ab82044575e50055f",
+  "reviewed_schematic_sha256": "87632bc8f43618e8c773cc2d4801b0e0666ecf2cadd3b34b31cf28b688bef99e",
   "model_geometry_sha256": "bcd6b744740f2dd10f524f894f9a727d470287213d637bb5ac87b47d2c658f3c",
   "retained_symbol_units": 153,
   "physical_net_partitions": 82,
@@ -435,5 +440,17 @@
     "checked_against": "091a101",
     "factory_endpoint_partitions": "82 unchanged; U6.4 intentional NC remains separate",
     "change": "Owner moved notes to bottom; reflowed into three columns inside A3 frame. Factory symbol poses, values, wire segments and labels unchanged."
+  },
+  "button_bridge_20261017": {
+    "base_commit": "091a101",
+    "added_symbols": [
+      "#PWR201",
+      "Q201",
+      "R201",
+      "R202",
+      "U201"
+    ],
+    "original_factory_symbol_poses": "unchanged",
+    "notes": "Owner notes retained at bottom; reflowed within A3; new bridge in cleared area."
   }
 }
