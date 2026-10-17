@@ -4,11 +4,25 @@ from pathlib import Path
 from current_state import ROOT, read, current_state, validate_issue_register
 from audit_physical_evidence import compare
 from verify_capacitor_application import canonical_text_sha256, matches_text_digest, verify_receiver_capacitor_metadata
-from inventory_contracts import verify_receiver_open_erc
+from inventory_contracts import verify_receiver_open_erc, verify_bridge_asset_bytes
 from validate_native import wire_graph, board_net_partitions, verify_diode_functions, verify_button_bridge
 import xml.etree.ElementTree as ET
 
 class ReviewProgress(unittest.TestCase):
+    def test_bridge_asset_bytes_and_original_digests(self):
+        record=self.model['external_button_bridge']['library_files']
+        paths={'symbol_sha256':'schematic/TrailCurrentSymbolLibrary.kicad_sym',
+               'footprint_sha256':'schematic/TrailCurrentFootprints.pretty/ESP32-C6-SuperMini_TH.kicad_mod',
+               'owner_step_sha256':'schematic/ButtonBridge.3dshapes/ESP32-C6-SuperMini-owner.step'}
+        for key,path in paths.items():
+            with self.subTest(asset=key):
+                data=(ROOT/path).read_bytes()
+                verify_bridge_asset_bytes(data,record,key)
+                original=data.replace(b'\n',b'\r\n')
+                self.assertEqual(hashlib.sha256(original).hexdigest(),record['original_import_sha256'][key])
+                for wrong in [original,data+b' ',data.replace(b'(',b'[',1)]:
+                    with self.assertRaises(AssertionError):verify_bridge_asset_bytes(wrong,record,key)
+
     def test_bridge_rejects_wrong_terminal_or_supply_join(self):
         xml=ET.parse(ROOT/'output/PetSafe_netlist.xml')
         self.assertEqual(verify_button_bridge(xml,self.model),{'U201','Q201','R201','R202'})

@@ -4,6 +4,10 @@
 *.json text eol=lf
 *.kicad_sch text eol=lf
 *.kicad_sym text eol=lf
+# These imported text assets are hashed byte-for-byte in reconstruction.json.
+# Force checkout bytes to match Git blobs, including with core.autocrlf=true.
+schematic/TrailCurrentFootprints.pretty/ESP32-C6-SuperMini_TH.kicad_mod text eol=lf
+schematic/ButtonBridge.3dshapes/ESP32-C6-SuperMini-owner.step text eol=lf
 *.zip binary
 *.jpg binary
 *.png binary

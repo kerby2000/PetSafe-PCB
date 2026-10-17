@@ -12737,9 +12737,9 @@
     "factory_baseline": "091a101",
     "owner_override": "2N3904 NPN, 4.7k series base resistor, 100k base-emitter pull-down replaces provisional AO3400A.",
     "library_files": {
-      "symbol_sha256": "d2b0e05daf85b6ca8146962648fc6614631a292c8b86998e9f320b50715e9b95",
-      "footprint_sha256": "f2b3faeb87cf8571e53a5ae70ed3c9f04d70fc9be702c15ed76c6077ef8f2deb",
-      "owner_step_sha256": "dadd8045556e22faf99ba9582bc6f55f4abc163d3201ffc94eabc42daa628ddd",
+      "symbol_sha256": "fbbdbbe46c7d4e50e2e542e19b5a3b6141cc60b49dba7fd1f810551d49bc6de9",
+      "footprint_sha256": "e30f35dbf6975bfe241074f38604243a9119dfdd5cdbf1235e2d46ba5d7b3e02",
+      "owner_step_sha256": "f32fe7c6b3174634bdf13cf2defefb36f0ce4c13986878cc244ebfa6eccd5f62",
       "upstream_symbol_sha256": "18c1bd87eca24c1b0788e4c4d7911809e777a11a70f1a61a75dbfdf3ab9cac98",
       "upstream_footprint_sha256": "e8a79f15defa41bda4cc7393f8683e84982caaf8ef6cd8d57520e7994a6d9a6a",
       "owner_zip_sha256": "ffa352e2458e39929dbce1646ca1ffdd5286b590c9c7a71dd777136b5f38dd6a",
@@ -12757,7 +12757,14 @@
           180
         ]
       },
-      "model_geometry": "Owner STEP: rows 15.24 mm, pitch approximately 2.54 mm; 18 x 26 mm body versus library outline 18.2 x 26.2 mm. Geometric reference only, not electrical pin identification or owned-board fit."
+      "model_geometry": "Owner STEP: rows 15.24 mm, pitch approximately 2.54 mm; 18 x 26 mm body versus library outline 18.2 x 26.2 mm. Geometric reference only, not electrical pin identification or owned-board fit.",
+      "hash_policy": "exact-lf-bytes-v1",
+      "original_import_sha256": {
+        "symbol_sha256": "d2b0e05daf85b6ca8146962648fc6614631a292c8b86998e9f320b50715e9b95",
+        "footprint_sha256": "f2b3faeb87cf8571e53a5ae70ed3c9f04d70fc9be702c15ed76c6077ef8f2deb",
+        "owner_step_sha256": "dadd8045556e22faf99ba9582bc6f55f4abc163d3201ffc94eabc42daa628ddd"
+      },
+      "hash_policy_note": "Live symbol/footprint/STEP hashes describe exact LF Git-blob and checkout bytes enforced by .gitattributes. original_import_sha256 retains the pre-Git CRLF import bytes, including the original owner STEP. Upstream library and owner ZIP evidence digests remain unchanged."
     }
   }
 }

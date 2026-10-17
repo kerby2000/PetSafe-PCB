@@ -60,6 +60,8 @@ The model's hole rows are approximately 15.24 mm apart with 2.54 mm pitch, consi
 
 ## Before assembly
 
+Imported asset integrity uses exact LF bytes for the project symbol, footprint and STEP, enforced by `.gitattributes` even on Windows checkouts. The live hashes in `evidence/reconstruction.json` match Git's committed blobs. The separate `original_import_sha256` record retains the pre-Git CRLF digests; upstream library and owner ZIP digests are unchanged. Line-ending normalization does not change pad geometry, symbol pins, the STEP transform or source/licensing evidence.
+
 No new reconstruction measurements are requested. Assembly readiness remains conditional on confirming the owned 2N3904 lead order, the SuperMini's labelled GPIO3/GND pads and physical fit, and release behavior with the supplied firmware during boot, reset and flashing. Those qualifications are tracked as **A01** in the [existing open-item register](OPEN_ITEMS.md#a01).
 
 ## Internal power and soldering

@@ -2,6 +2,7 @@
 from pathlib import Path
 import sys, json, hashlib
 import sexpdata as sx
+from inventory_contracts import verify_bridge_asset_bytes
 R=Path(__file__).resolve().parents[1]
 sys.path.insert(0,str(Path.home()/'Documents/VS.Code.Projects/KiCAD-MCP-Server/python'))
 from commands.dynamic_symbol_loader import DynamicSymbolLoader
@@ -20,7 +21,7 @@ for embedded in children(one(tree,'lib_symbols'),'symbol'):
     elif vendor:
         assert name=='ESP32-C6-SuperMini' and source.resolve()==(R/'schematic/TrailCurrentSymbolLibrary.kicad_sym').resolve()
         bridge=json.loads((R/'evidence/reconstruction.json').read_text())['external_button_bridge']
-        assert hashlib.sha256(source.read_bytes()).hexdigest()==bridge['library_files']['symbol_sha256']
+        verify_bridge_asset_bytes(source.read_bytes(),bridge['library_files'],'symbol_sha256')
     else:assert '/10.0/' in source.as_posix(),source
     stock=sx.loads(loader.extract_symbol_from_library(lib,name))
     # Root library-name prefix may differ, but every subunit and its pins must match.

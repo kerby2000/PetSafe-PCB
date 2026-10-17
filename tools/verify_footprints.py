@@ -2,6 +2,7 @@
 from pathlib import Path
 import json, hashlib, xml.etree.ElementTree as ET
 import sexpdata as sx
+from inventory_contracts import verify_bridge_asset_bytes
 R=Path(__file__).resolve().parents[1]
 F=Path.home()/'AppData/Local/Programs/KiCad/10.0/share/kicad/footprints'
 m=json.loads((R/'evidence/reconstruction.json').read_text())
@@ -42,11 +43,11 @@ for c in m.get('external_button_bridge',{}).get('components',[]):
     if c['reference']=='Q201':assert pads=={'1','2','3'}  # Stock E/B/C mapping verified in native check.
     if c['reference']=='U201':
         assert pads=={str(p) for p in range(1,21)}
-        assert hashlib.sha256(source.read_bytes()).hexdigest()==m['external_button_bridge']['library_files']['footprint_sha256']
+        verify_bridge_asset_bytes(source.read_bytes(),m['external_button_bridge']['library_files'],'footprint_sha256')
         models=[e for e in t if isinstance(e,list) and str(e[0])=='model']
         assert len(models)==1 and models[0][1]=='${KIPRJMOD}/ButtonBridge.3dshapes/ESP32-C6-SuperMini-owner.step'
         model_path=R/'schematic/ButtonBridge.3dshapes/ESP32-C6-SuperMini-owner.step'
-        assert hashlib.sha256(model_path.read_bytes()).hexdigest()==m['external_button_bridge']['library_files']['owner_step_sha256']
+        verify_bridge_asset_bytes(model_path.read_bytes(),m['external_button_bridge']['library_files'],'owner_step_sha256')
     external.append(dict(reference=c['reference'],footprint=c['footprint'],pins_covered=True,physical_fit='PENDING: owned-part lead order / module geometry'))
 out['external_button_bridge']=external
 (R/'evidence/footprint_validation.json').write_text(json.dumps(out,indent=2),encoding='utf-8')
