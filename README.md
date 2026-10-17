@@ -14,7 +14,7 @@ All **44 starred capacitor values are estimates**, preserved with their basis an
 
 ## Proposed external button bridge
 
-The dashed block adds a USB-powered ESP32-C6 SuperMini, the owner's 2N3904 and 4.7 kΩ / 100 kΩ resistors in parallel with S1. Grounds join; positive supplies stay separate. [Add-on BOM, physical wiring and assembly qualifications](docs/BUTTON_BRIDGE.md). These four external parts are excluded from the factory-board BOM/PCB. No firmware or carrier PCB is included.
+The native drawing retains the USB-powered ESP32-C6 SuperMini, the owner's 2N3904 and 4.7 kΩ / 100 kΩ resistors in parallel with S1. The owner is preparing the perfboard prototype with a separate LM2596 battery converter; external-power qualification remains open. [Add-on BOM and wiring](docs/BUTTON_BRIDGE.md) · [Firmware: local web control, HTTP API and flashing](firmware/button_bridge/README.md). These four external parts are excluded from the factory-board BOM/PCB. TPL5111/PIR wake is deferred; no carrier PCB is included.
 
 ## Actual physical PCB
 
@@ -40,7 +40,7 @@ The [full Markdown register](docs/OPEN_ITEMS.md) and [HTML checklist](docs/FINIS
 | [E11](docs/OPEN_ITEMS.md#e11) | Inherited copper joins without independent closure | Copper connection; evidence coverage |
 | [A01](docs/OPEN_ITEMS.md#a01) | External ESP32 button bridge: assembly qualification | Proposed modification; separate from reconstruction |
 
-TP11/TP17 hidden continuations remain a separately documented reconstruction boundary. No pending readings. RX-3 remains deferred. Internal power for the Wi-Fi button bridge needs a separate converter and a qualified SuperMini input/isolation arrangement. Owned-part lead order remains pending before assembly; startup release validation belongs to later firmware commissioning. Package geometry, routing/stackup, external assemblies and firmware remain prerequisites for a working reproduction.
+TP11/TP17 hidden continuations remain a separately documented reconstruction boundary. No pending readings. RX-3 remains deferred. Owner is preparing the perfboard button bridge; local web/HTTP firmware is provided for later commissioning. LM2596 internal-power qualification, SuperMini input/isolation and owned-part lead order remain open. TPL5111/PIR wake is deferred. Package geometry, routing/stackup, external assemblies and firmware remain prerequisites for a working reproduction.
 
 ## Evidence and rebuild
 
