@@ -11110,18 +11110,6 @@
       "size": 0.762
     },
     {
-      "text": "Net labels identify connections; names alone do not establish circuit function.",
-      "x": 304.8,
-      "y": 138.43,
-      "size": 0.762
-    },
-    {
-      "text": "RECONSTRUCTION NOTES",
-      "x": 304.8,
-      "y": 128.27,
-      "size": 1.27
-    },
-    {
       "text": "05  RF RECEIVE / GAIN / ENVELOPE",
       "x": 154.94,
       "y": 180.34,
@@ -11140,12 +11128,6 @@
       "size": 0.762
     },
     {
-      "text": "Reviewed drawing baseline; not a fabrication-qualified design.",
-      "x": 304.8,
-      "y": 133.35,
-      "size": 0.762
-    },
-    {
       "text": "Candidate U1 pin 4 is internally open;\nexternal option pads remain connected.",
       "x": 75.692,
       "y": 35.052,
@@ -11158,28 +11140,10 @@
       "size": 0.762
     },
     {
-      "text": "Main board plus external antenna winding. PIR internals,\nmotor and firmware are outside this drawing.",
-      "x": 304.8,
-      "y": 161.036,
-      "size": 0.762
-    },
-    {
       "text": "07  PIR / AUXILIARY RAIL",
       "x": 17.78,
       "y": 172.72,
       "size": 1.27
-    },
-    {
-      "text": "* = estimated capacitor value; ? = unverified device identity or pin role.",
-      "x": 304.8,
-      "y": 143.51,
-      "size": 0.762
-    },
-    {
-      "text": "Pad mapping: evidence/pin_crosswalk.json.\nOpen items: docs/OPEN_ITEMS.md.",
-      "x": 304.8,
-      "y": 148.59,
-      "size": 0.762
     },
     {
       "text": "U6A / U106: DNP regulator option.\nSymbol and ERC conflict retained intentionally.",
@@ -11191,12 +11155,6 @@
       "text": "Receiver gain, bias behavior and Q7 switching remain unverified.",
       "x": 195.326,
       "y": 179.324,
-      "size": 0.762
-    },
-    {
-      "text": "Capacitor estimates and ratings: docs/CAPACITOR_VALUE_REVIEW.html.",
-      "x": 305.054,
-      "y": 165.608,
       "size": 0.762
     },
     {
@@ -11212,22 +11170,16 @@
       "size": 1.27
     },
     {
-      "text": "TP11 and TP17 are valid endpoints; possible hidden branches remain unproved.",
-      "x": 304.8,
-      "y": 152.908,
-      "size": 0.762
-    },
-    {
       "text": "01  POWER / INPUT FILTER",
       "x": 17.78,
       "y": 19.05,
       "size": 1.27
     },
     {
-      "text": "v0.9.51 | KiCad 10.0.5 | 2026-10-16",
-      "x": 304.8,
-      "y": 168.402,
-      "size": 0.8255
+      "text": "D2: measured series equivalent; identity unverified.",
+      "x": 221,
+      "y": 184.5,
+      "size": 0.762
     },
     {
       "text": "C42 / R47 / R46 are unpopulated options.",
@@ -11260,15 +11212,15 @@
       "size": 0.762
     },
     {
-      "text": "DNP = not fitted. An unresolved route is not an intentional no-connect.",
-      "x": 305.054,
-      "y": 157.226,
-      "size": 0.762
-    },
-    {
       "text": "R3/R4/C28: RC sense candidate.\nCopper junction / role unverified.",
       "x": 243.84,
       "y": 99.06,
+      "size": 0.762
+    },
+    {
+      "text": "ANT1 / ANT2: solder pads; L101 is the external coil.",
+      "x": 335.28,
+      "y": 32.385,
       "size": 0.762
     },
     {
@@ -11290,16 +11242,64 @@
       "size": 1.27
     },
     {
-      "text": "D2: measured series equivalent; identity unverified.",
-      "x": 221,
-      "y": 184.5,
-      "size": 0.762
+      "text": "RECONSTRUCTION NOTES",
+      "x": 18,
+      "y": 262,
+      "size": 1.5
     },
     {
-      "text": "ANT1 / ANT2: solder pads; L101 is the external coil.",
-      "x": 335.28,
-      "y": 32.385,
-      "size": 0.762
+      "text": "Reviewed baseline; not fabrication-qualified.\n* = capacitor estimate; ? = unverified identity / role.\nNet names alone do not establish function.\nDNP = not fitted; unknown routes are not NCs.",
+      "x": 18,
+      "y": 268,
+      "size": 1.05
+    },
+    {
+      "text": "Pad mapping: evidence/pin_crosswalk.json\nOpen items: docs/OPEN_ITEMS.md\nTP11 / TP17 are valid endpoints;\npossible hidden branches remain unproved.",
+      "x": 88,
+      "y": 268,
+      "size": 1.05
+    },
+    {
+      "text": "Main board, external antenna and proposed bridge.\nPIR internals, motor and firmware are outside scope.\nCapacitor basis / ratings:\ndocs/CAPACITOR_VALUE_REVIEW.html",
+      "x": 158,
+      "y": 268,
+      "size": 1.05
+    },
+    {
+      "text": "EXTERNAL ESP32 BUTTON BRIDGE - PROPOSED MODIFICATION",
+      "x": 288.29,
+      "y": 98,
+      "size": 1.35
+    },
+    {
+      "text": "USB power only; share GND, keep positive supplies separate.",
+      "x": 288.29,
+      "y": 102,
+      "size": 1.1
+    },
+    {
+      "text": "GPIO3 / header 6",
+      "x": 288.29,
+      "y": 140.5,
+      "size": 1.0
+    },
+    {
+      "text": "to S1.2",
+      "x": 386.08,
+      "y": 109.5,
+      "size": 1.0
+    },
+    {
+      "text": "to S1.1 / PetSafe GND",
+      "x": 348,
+      "y": 146,
+      "size": 1.0
+    },
+    {
+      "text": "HIGH = brief press; LOW = release. Initial pulse ~200 ms (unverified timing).\nBoot / reset must release. Never hold HIGH to keep unlocked.\nMode toggle only: no OPEN/CLOSE command or latch feedback.\nConfirm owned TO-92 lead order and board startup before assembly.\nUSB powers U201 internally; 5V/3V3 header pins are deliberately unused.",
+      "x": 288.29,
+      "y": 151,
+      "size": 1.05
     }
   ],
   "wires": [
@@ -18203,16 +18203,13 @@
     "(polyline (pts (xy 283.21 173.99) (xy 148.59 173.99)) (stroke (width 0.254) (type default)) (uuid \"144f94ae-7a44-5e10-914b-fc25044d1dfb\"))",
     "(polyline (pts (xy 13.97 163.83) (xy 13.97 82.55)) (stroke (width 0.254) (type default)) (uuid \"24040ec9-e6ee-55a4-8969-042f08d6ac24\"))",
     "(polyline (pts (xy 284.48 13.97) (xy 409.575 13.97)) (stroke (width 0.254) (type default)) (uuid \"2ebecefd-31f1-559d-aef0-10083b4d39ff\"))",
-    "(polyline (pts (xy 300.99 120.65) (xy 400.05 120.65)) (stroke (width 0.254) (type default)) (uuid \"557ca825-91ee-5f74-b49b-4a6ce11fcd31\"))",
     "(polyline (pts (xy 144.78 163.83) (xy 13.97 163.83)) (stroke (width 0.254) (type default)) (uuid \"59692b8b-033e-5152-b035-f1647ac19fbd\"))",
     "(polyline (pts (xy 148.59 173.99) (xy 148.59 105.41)) (stroke (width 0.254) (type default)) (uuid \"5b9ff96c-8fb0-5bfc-8a26-26793811fa8b\"))",
-    "(polyline (pts (xy 400.05 170.18) (xy 300.99 170.18)) (stroke (width 0.254) (type default)) (uuid \"5e27a09a-c316-5adf-ab45-d5075a240d5e\"))",
     "(polyline (pts (xy 283.21 102.87) (xy 148.59 102.87)) (stroke (width 0.254) (type default)) (uuid \"61671804-19f3-5334-82f6-478e1dce0572\"))",
     "(polyline (pts (xy 144.78 256.54) (xy 13.97 256.54)) (stroke (width 0.254) (type default)) (uuid \"71a45f03-fb29-58ab-ad7e-393bd1126352\"))",
     "(polyline (pts (xy 409.575 175.26) (xy 409.575 254)) (stroke (width 0.254) (type default)) (uuid \"7c13c793-bec7-5e77-b640-6c536cc34c89\"))",
     "(polyline (pts (xy 13.97 13.97) (xy 144.78 13.97)) (stroke (width 0.254) (type default)) (uuid \"7edcff84-6857-5031-81c7-512cea10d642\"))",
     "(polyline (pts (xy 148.59 13.97) (xy 283.21 13.97)) (stroke (width 0.254) (type default)) (uuid \"81f7b5c3-e9a5-5c3d-a8e3-dc959631bd2c\"))",
-    "(polyline (pts (xy 300.99 170.18) (xy 300.99 120.65)) (stroke (width 0.254) (type default)) (uuid \"85f5e4e0-ee72-5d5f-9b17-b3bf14dbcb09\"))",
     "(polyline (pts (xy 13.97 256.54) (xy 13.97 167.64)) (stroke (width 0.254) (type default)) (uuid \"8f622a48-6066-5013-b5b8-4f7311009f23\"))",
     "(polyline (pts (xy 13.97 167.64) (xy 144.78 167.64)) (stroke (width 0.254) (type default)) (uuid \"944e1bab-de4a-5f08-8f31-453348857b30\"))",
     "(polyline (pts (xy 148.59 102.87) (xy 148.59 13.97)) (stroke (width 0.254) (type default)) (uuid \"9b595554-1356-5e7a-9f22-03b7ca08ef45\"))",
@@ -18221,18 +18218,95 @@
     "(polyline (pts (xy 144.78 82.55) (xy 144.78 163.83)) (stroke (width 0.254) (type default)) (uuid \"af34d0c9-a08f-5158-a09d-93acad680c9d\"))",
     "(polyline (pts (xy 148.59 175.26) (xy 409.575 175.26)) (stroke (width 0.254) (type default)) (uuid \"b01f96f7-3f6d-52e3-ba64-652b3401ba5d\"))",
     "(polyline (pts (xy 283.21 105.41) (xy 283.21 173.99)) (stroke (width 0.254) (type default)) (uuid \"b56b4aa8-e1f1-51ea-a57e-e73a9635d849\"))",
-    "(polyline (pts (xy 400.05 120.65) (xy 400.05 170.18)) (stroke (width 0.254) (type default)) (uuid \"c2d9de28-a6cb-5a9f-9408-7217178af442\"))",
     "(polyline (pts (xy 148.59 254) (xy 148.59 175.26)) (stroke (width 0.254) (type default)) (uuid \"d0b7f2ac-065b-5845-8c51-3e5065edbf91\"))",
     "(polyline (pts (xy 144.78 80.01) (xy 13.97 80.01)) (stroke (width 0.254) (type default)) (uuid \"d1704a35-b25b-5142-9e21-80ba9a6b3535\"))",
-    "(polyline (pts (xy 300.99 120.65) (xy 308.61 120.65)) (stroke (width 0.254) (type default)) (uuid \"d6eee7ab-6fa2-4e2f-9304-ac178bd54d42\"))",
     "(polyline (pts (xy 13.97 82.55) (xy 144.78 82.55)) (stroke (width 0.254) (type default)) (uuid \"d7c7d1c0-a0be-5b6e-999b-3b9ffd5d07c6\"))",
-    "(polyline (pts (xy 400.05 170.18) (xy 400.05 170.18)) (stroke (width 0.254) (type default)) (uuid \"d95b713c-1434-4960-a705-2c009b26b6f2\"))",
     "(polyline (pts (xy 409.575 93.98) (xy 284.48 93.98)) (stroke (width 0.254) (type default)) (uuid \"ddc14d3d-d88d-54c7-872d-3f96c7e2064f\"))",
     "(polyline (pts (xy 409.575 13.97) (xy 409.575 93.98)) (stroke (width 0.254) (type default)) (uuid \"eb3705f2-0097-5d7f-b100-052771ca63f6\"))",
     "(polyline (pts (xy 409.575 254) (xy 148.59 254)) (stroke (width 0.254) (type default)) (uuid \"f3d9ee6e-1050-5877-ae59-ee22a7464466\"))",
-    "(polyline (pts (xy 144.78 13.97) (xy 144.78 80.01)) (stroke (width 0.254) (type default)) (uuid \"fe8737cd-3773-5b20-913d-6dc6a1ac6c3f\"))"
+    "(polyline (pts (xy 144.78 13.97) (xy 144.78 80.01)) (stroke (width 0.254) (type default)) (uuid \"fe8737cd-3773-5b20-913d-6dc6a1ac6c3f\"))",
+    "(polyline (pts (xy 13.97 257.81) (xy 230 257.81) (xy 230 287) (xy 13.97 287) (xy 13.97 257.81)) (stroke (width 0.254) (type default)) (uuid \"8b89b53a-fa6a-4c4b-85c8-f1620792b9d9\"))",
+    "(polyline (pts (xy 285.75 96.52) (xy 409.575 96.52) (xy 409.575 172.72) (xy 285.75 172.72) (xy 285.75 96.52)) (stroke (width 0.508) (type dash)) (uuid \"873d98d4-1051-48fc-b247-2e4e98123eaa\"))"
   ],
   "authoring_mode": "reviewed_native_layout",
   "coordinate_units": "mm",
-  "baseline_record": "evidence/owner_redraw_baseline_v0951.json"
+  "baseline_record": "evidence/owner_redraw_baseline_v0951.json",
+  "external_components": [
+    {
+      "reference": "U201",
+      "symbol": "TrailCurrentSymbolLibrary:ESP32-C6-SuperMini",
+      "value": "ESP32-C6 SuperMini",
+      "footprint": "TrailCurrentFootprints:ESP32-C6-SuperMini_TH",
+      "position": {
+        "x": 299.72,
+        "y": 113.03
+      },
+      "rotation": 0,
+      "properties": {
+        "Datasheet": "https://www.espboards.dev/esp32/esp32-c6-super-mini/",
+        "Description": "ESP32-C6 Super Mini Development Board, WiFi 6, BLE 5, Zigbee, Thread",
+        "Assembly": "External USB-powered ESP32-C6 SuperMini; separate from factory board. No 5V/3V3 connection to PetSafe.",
+        "GPIOSelection": "GPIO_BTN = GPIO3, library header pin6. Non-strapping ordinary GPIO, input-enabled/no pull-up at reset per Espressif Table 2-2. Owned-board header and boot/flash behavior remain unverified.",
+        "BoardIdentity": "Owner reports ESP32-C6 SuperMini; selected TrailCurrent library is a candidate physical match, not verified manufacturing identity.",
+        "Model3DStatus": "Owner STEP imported; see docs/BUTTON_BRIDGE.md for fit qualification."
+      },
+      "in_main_board_bom": false,
+      "on_main_board": false
+    },
+    {
+      "reference": "Q201",
+      "symbol": "Transistor_BJT:2N3904",
+      "value": "2N3904",
+      "footprint": "Package_TO_SOT_THT:TO-92_Inline",
+      "position": {
+        "x": 383.54,
+        "y": 125.73
+      },
+      "rotation": 0,
+      "properties": {
+        "Datasheet": "https://www.onsemi.com/pub/Collateral/2N3903-D.PDF",
+        "Description": "0.2A Ic, 40V Vce, Small Signal NPN Transistor, TO-92",
+        "Assembly": "External button shunt, parallel to S1; original button and circuitry retained.",
+        "LeadOrderStatus": "PENDING: confirm owned 2N3904 manufacturer/package lead order before assembly. Stock symbol/TO-92 footprint use 1=E, 2=B, 3=C."
+      },
+      "in_main_board_bom": false,
+      "on_main_board": false
+    },
+    {
+      "reference": "R201",
+      "symbol": "Device:R",
+      "value": "4.7k",
+      "footprint": "Resistor_THT:R_Axial_DIN0207_L6.3mm_D2.5mm_P7.62mm_Horizontal",
+      "position": {
+        "x": 350.52,
+        "y": 125.73
+      },
+      "rotation": 90,
+      "properties": {
+        "Datasheet": "",
+        "Description": "Resistor",
+        "Assembly": "External base series resistor. GPIO3 -> 4.7k -> Q201 base."
+      },
+      "in_main_board_bom": false,
+      "on_main_board": false
+    },
+    {
+      "reference": "R202",
+      "symbol": "Device:R",
+      "value": "100k",
+      "footprint": "Resistor_THT:R_Axial_DIN0207_L6.3mm_D2.5mm_P7.62mm_Horizontal",
+      "position": {
+        "x": 365.76,
+        "y": 135.89
+      },
+      "rotation": 0,
+      "properties": {
+        "Datasheet": "",
+        "Description": "Resistor",
+        "Assembly": "External 100k base-emitter pull-down; transistor side of R201."
+      },
+      "in_main_board_bom": false,
+      "on_main_board": false
+    }
+  ]
 }

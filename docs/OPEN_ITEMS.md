@@ -1,10 +1,10 @@
 # Remaining open items
 
-Current schematic **v0.9.51**. Generated from [the authoritative register](../evidence/remaining_work.json); edit that source, not this view.
+Current schematic **v0.9.52**. Generated from [the authoritative register](../evidence/remaining_work.json); edit that source, not this view.
 
 [Schematic and PCB photographs](../README.md) | [HTML checklist](FINISHING_CHECKLIST.html) | [History and closed findings](history/README.md)
 
-Owner action: none. No pending readings. RX-3 is deferred and unmeasured; completed RX-1/RX-2 and earlier C20 checks are not repeated. [Independent connection audit](TOPOLOGY_AUDIT.md). Supported copper, device interpretation and operating validation are distinct claims.
+No pending readings. RX-3 remains deferred. Internal power for the Wi-Fi button bridge needs a separate converter and a qualified SuperMini input/isolation arrangement. Owned-part lead order remains pending before assembly; startup release validation belongs to later firmware commissioning. [Independent connection audit](TOPOLOGY_AUDIT.md). Supported copper, device interpretation and operating validation are distinct claims.
 
 | ID | Area | Category |
 |---|---|---|
@@ -18,6 +18,7 @@ Owner action: none. No pending readings. RX-3 is deferred and unmeasured; comple
 | [V01](#v01) | Capacitor values and passive ratings | Reproduction/package (values and passive ratings) |
 | [M01](#m01) | LED footprint and mechanical qualification | Reproduction/package |
 | [E11](#e11) | Inherited copper joins without independent closure | Copper connection; evidence coverage |
+| [A01](#a01) | External ESP32 button bridge: assembly qualification | Proposed modification; separate from reconstruction |
 
 <a id="e03"></a>
 ## E03 - RF supply and Q8 drive
@@ -158,6 +159,20 @@ Evidence: [remaining_work.json](../docs/history/v0.9.30-before-finalization/evid
 | Closure evidence | Remaining named copper gaps acquire independent support or a documented disposition; reported receiver terminal routes are now incorporated without claiming verified dynamic function. |
 
 Evidence: [physical_evidence_review_20261015.json](../evidence/physical_evidence_review_20261015.json), [topology_closure_audit.json](../evidence/topology_closure_audit.json), [d2_diode_20261009.json](../evidence/d2_diode_20261009.json), [receiver_input_bridge.svg](../docs/measurement-images/receiver_input_bridge.svg), [receiver_input_results_20261015.json](../evidence/receiver_input_results_20261015.json), [receiver_input_correction_v0946.json](../evidence/receiver_input_correction_v0946.json), [finishing_measurements.json](../evidence/finishing_measurements.json), [receiver_input_correction_v0947.json](../evidence/receiver_input_correction_v0947.json), [receiver_connections_v0948.json](../evidence/receiver_connections_v0948.json).
+
+<a id="a01"></a>
+## A01 - External ESP32 button bridge: assembly qualification
+
+| Field | Current position |
+|---|---|
+| Category | Proposed modification; separate from reconstruction |
+| Known | 2N3904 circuit proposed in parallel with measured S1 contacts: C to H_BUTTON, E to GND, GPIO3/header6 through 4.7k to base, 100k base-emitter on transistor side. ESP32 USB and PetSafe battery positives remain separate. GPIO3 reset input/no-pull configuration checked in Espressif data; library symbol/header footprint imported at a pinned commit. Owner STEP hole rows/pitch are geometrically consistent. Owner subsequently requested internal battery power and prefers Wi-Fi. Existing PIR supply path is U1 4.5 V -> R37 22 ohm -> candidate U6 3.3 V; it cannot be treated as an ESP32-capable spare rail. Native circuit still represents the validated USB version; a separate battery-fed converter and hand-wiring plan are documented as a proposal. Owner agrees to a separate converter and has several nominal 5 V-to-3.3 V modules; exact model will be supplied later. Provisional output requirement is at least 500 mA, not a confirmed owned-module rating. |
+| Unresolved claim | Owned 2N3904 maker/physical lead order; owned SuperMini pin-labelled header and actual fit; release behavior during boot/reset/flashing with eventual firmware. The bridge does not report latch position or guarantee relock after failure. Internal converter selection, regulation across battery range, and the actual SuperMini external-supply/USB backfeed arrangement; Wi-Fi battery life and response-latency tradeoff. |
+| Next Codex action | Retain the checked button circuit. Use BUTTON_BRIDGE.md for the internal-power assessment and perfboard guide. Settle converter and SuperMini power-input arrangement before changing native power wiring; never connect the ESP load to the PIR rail merely because its voltage is 3.3 V. |
+| Owner input | No reconstruction readings requested. Owner will identify the available converter model later; its input range must cover fresh batteries (6.3 V already measured), not merely a nominal 5 V source. Wi-Fi is preferred. Owned 2N3904 lead order and SuperMini input/isolation remain assembly qualifications. |
+| Closure evidence | Owned-package pin order and board mapping/fit confirmed; final firmware leaves the button released through idle, boot, reset and flashing and demonstrates a brief mode-toggle pulse. Internal power conversion and board input/isolation are qualified; power budget matches the intended battery-life and command-latency requirements. |
+
+Evidence: [BUTTON_BRIDGE.md](../docs/BUTTON_BRIDGE.md), [reconstruction.json](../evidence/reconstruction.json).
 
 ## Accepted reconstruction boundaries
 

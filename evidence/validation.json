@@ -1,12 +1,12 @@
 {
-  "date": "2026-10-16",
+  "date": "2026-10-17",
   "native_tool": "Eeschema 10.0.5",
   "native_load_and_export": "PASS",
   "single_sheet": "PASS",
   "catalog_components": 148,
   "symbol_units": 153,
   "physical_pins": 349,
-  "stock_library_symbols": 23,
+  "stock_library_symbols": 24,
   "custom_symbols": 4,
   "proposed_net_partitions": 82,
   "netlist_partition_comparison": "PASS",
@@ -25,8 +25,10 @@
   "gui_open": "NOT_TESTED (native CLI validated)",
   "hardware_verification": "PARTIAL: recorded U6/Q8 resistance and selected PIC meter/visual routes; user via reports plus photo cross-checks; six powered DC levels and TP14 follow-ups recorded; circuit behavior and transient operation remain unverified",
   "physical_pcb_layout": "NOT_CREATED",
-  "schematic_sha256": "00a4ccd656a728448f0cc6ead8e3618fee060c0c8587666846d881db7f4bbd77",
+  "schematic_sha256": "87632bc8f43618e8c773cc2d4801b0e0666ecf2cadd3b34b31cf28b688bef99e",
   "input_zip_sha256": "151a5d246b051c6ee7edf50bac941261d3d87defedf9590f2ce442158552b52d",
   "datasheet_symbol_pin_contracts": "PASS (U1: 5 pins; U5: 8 pins; U6: 5 pins; Q8: 6 pins; types, footprints and source properties)",
-  "external_antenna": "L101: 500uH, ANT1 to ANT2, excluded from main-board BOM and PCB; endpoints verified separately"
+  "external_antenna": "L101: 500uH, ANT1 to ANT2, excluded from main-board BOM and PCB; endpoints verified separately",
+  "owner_selected_vendor_symbols": 1,
+  "external_button_bridge": "PASS: four off-board components; every terminal checked before filtering. Q201 C=S1.2, E=S1.1; GPIO3/4.7k/base/100k topology and separate positive supplies verified. Assembly/boot behavior not verified."
 }

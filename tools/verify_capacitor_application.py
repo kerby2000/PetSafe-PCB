@@ -2,6 +2,7 @@
 from pathlib import Path
 import argparse, hashlib, json
 import sexpdata as sx
+from validate_native import BUTTON_BRIDGE_COMPONENTS
 R=Path(__file__).resolve().parents[1]
 def read(f):return json.loads((R/f).read_text(encoding='utf-8'))
 def save(f,x):(R/f).write_text(json.dumps(x,indent=2,ensure_ascii=False)+'\n',encoding='utf-8')
@@ -19,6 +20,10 @@ def inspect(path,changed):
    # New ground signs and the explicitly external winding are not changes to
    # the frozen board-value inventory; their exact types/endpoints are audited.
    representation_addition=(ref.startswith('#PWR') and one(item,'lib_id')[1]=='power:GND') or (ref=='L101' and one(item,'lib_id')[1]=='Device:L' and props['Value']=='500uH' and str(one(item,'in_bom')[1])=='no' and str(one(item,'on_board')[1])=='no')
+   if ref in BUTTON_BRIDGE_COMPONENTS:
+    assert (one(item,'lib_id')[1],props['Value'],props['Footprint'])==BUTTON_BRIDGE_COMPONENTS[ref]
+    assert str(one(item,'in_bom')[1])==str(one(item,'on_board')[1])=='no'
+    representation_addition=True  # Exact electrical endpoints checked in validate_native.
    if ref not in changed and not representation_addition:unchanged.append((ref,one(item,'unit')[1],props['Value'],props['Footprint']))
   elif t in {'lib_symbols','wire','junction','label','no_connect','polyline','bus','bus_entry','global_label','hierarchical_label','sheet'}:
    invariants.append(sx.dumps(item))

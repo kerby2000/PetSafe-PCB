@@ -30,7 +30,8 @@ before=poses(sx.loads(incoming.decode('utf-8')));after=poses(tree)
 added={(ref,1) for ref in redraw.get('added_symbols',[])}
 assert after.keys()-before.keys()==added and not before.keys()-after.keys()
 grounds={next(p[2] for p in children(x,'property') if p[1]=='Reference'):x for x in children(tree,'symbol') if one(x,'lib_id')[1]=='power:GND'}
-assert set(grounds)=={g['reference'] for g in redraw.get('ground_symbols',[])}
+bridge=m.get('external_button_bridge',{})
+assert set(grounds)=={g['reference'] for g in redraw.get('ground_symbols',[])}|({bridge['ground_symbol']} if bridge else set())
 assert not any(x[1]=='GND' for kind in ['label','global_label'] for x in children(tree,kind))
 for g in redraw.get('ground_symbols',[]):
     x=grounds[g['reference']]
@@ -61,6 +62,10 @@ pins|=flag_points
 positions=native_pin_positions(tree)
 pins|={xy(positions[ref+'.1']) for ref in grounds}
 pins|={xy(positions['L101.'+pin]) for pin in ['1','2']} if ('L101',1) in added else set()
+if bridge:
+    assert bridge['pin_positions']=={k:v for k,v in positions.items() if k.split('.')[0] in {c['reference'] for c in bridge['components']}|{bridge['ground_symbol']}}
+    pins|={xy(p) for p in bridge['pin_positions'].values()}
+    assert layout['external_components']==bridge['components']==read('evidence/library_placements.json')['external_components']
 junctions={xy(one(j,'at')[1:3]) for j in children(tree,'junction')}
 # KiCad can save a T junction in the middle of an unsplit wire. The old
 # generated layout split every segment first; manual layouts need this step.
