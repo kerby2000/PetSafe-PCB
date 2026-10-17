@@ -378,7 +378,7 @@
   },
   "new_hardware_claims": [],
   "owner_action": "None; no new measurements scheduled.",
-  "reviewed_schematic_sha256": "6546e0204b124c6cf1643077f52775ef793c655efb5386e8a62aef244c0af086",
+  "reviewed_schematic_sha256": "00a4ccd656a728448f0cc6ead8e3618fee060c0c8587666846d881db7f4bbd77",
   "model_geometry_sha256": "bcd6b744740f2dd10f524f894f9a727d470287213d637bb5ac87b47d2c658f3c",
   "retained_symbol_units": 153,
   "physical_net_partitions": 82,
@@ -408,9 +408,25 @@
     "starting_schematic_sha256": "74b1a56ba6d366ad2c4270a0ff7991ac0141e20bd25341a863127f035dbeba74",
     "fixes": [
       "C19/C20 active rationale follows supported terminals; both 100pF* values retained; original v0.9.44 rationale preserved explicitly.",
-      "D1/D3 stock AKC symbols correct inherited BAV99 pin names; original pins, direction, positions, wires and footprints unchanged; D2 retains opposite KAC equivalent."
+      "D1/D3 stock AKC symbols correct inherited BAV99 pin names; original pins, direction, positions, wires and footprints unchanged; D2 retains opposite KAC equivalent.",
+      "Checklist status comes only from queue instructions; synthetic active/empty-queue regression, no real tests staged."
     ],
     "electrical_changes": [],
-    "owner_action": "None; no pending readings."
+    "owner_action": "None; no pending readings.",
+    "validation": {
+      "starting_native_build": "PASS (KiCad 10.0.5; 15 original regressions; configured Python dependencies)",
+      "final_native_build_and_complete_template_replay": "PASS; native/template byte identical",
+      "board_endpoint_partitions": "82 copper groups plus explicit U6.4 NC; exact native memberships identical to reviewed b399a7e",
+      "owner_layout": "All poses, UUIDs, pin coordinates, wires, labels, text and A3 page unchanged",
+      "component_values": "All 44 starred capacitor estimates, other values, ratings, populations and footprints unchanged",
+      "physical_mappings_and_original_measurements": "Unchanged; existing evidence/regression checks pass",
+      "native_erc": "One intentional U6/U106 power-output conflict; no exclusions added",
+      "regression_tests": 18,
+      "measurement_form_test": "PASS (Node synthetic harness; browser UI not retested)",
+      "visual_review": "A3 PDF full sheet and D1/D3 cropped regions inspected; unchanged owner layout and correct numbered diode graphics",
+      "evidence_audit": "269 joins / 36 separations; no conflicts; six pre-existing nets retain evidence gaps",
+      "measurement_queue": "No pending readings; RX-3 remains deferred; no real queue edits",
+      "completion_pdf": "Absent; not regenerated"
+    }
   }
 }
