@@ -168,8 +168,8 @@
     {
       "id": "A01",
       "area": "External ESP32 button bridge: assembly qualification",
-      "gap": "Owned 2N3904 maker/physical lead order; owned SuperMini pin-labelled header and actual fit; release behavior during boot/reset/flashing with eventual firmware. The bridge does not report latch position or guarantee relock after failure.",
-      "method": "Review the external circuit now. Confirm owned 2N3904 lead order and SuperMini mapping before assembly; validate release behavior with later firmware. No new reconstruction measurement batch."
+      "gap": "Owned 2N3904 maker/physical lead order; owned SuperMini pin-labelled header and actual fit; release behavior during boot/reset/flashing with eventual firmware. The bridge does not report latch position or guarantee relock after failure. Internal converter selection, regulation across battery range, and the actual SuperMini external-supply/USB backfeed arrangement; Wi-Fi battery life and response-latency tradeoff.",
+      "method": "Select the internal converter and verify the SuperMini power-input arrangement, then update the native supply. Use the prepared hand-wiring guide for the unchanged transistor/resistor network. No new reconstruction measurement batch."
     }
   ],
   "items": [
@@ -633,11 +633,11 @@
       "priority": 2,
       "state": "open",
       "category": "Proposed modification; separate from reconstruction",
-      "known": "2N3904 circuit proposed in parallel with measured S1 contacts: C to H_BUTTON, E to GND, GPIO3/header6 through 4.7k to base, 100k base-emitter on transistor side. ESP32 USB and PetSafe battery positives remain separate. GPIO3 reset input/no-pull configuration checked in Espressif data; library symbol/header footprint imported at a pinned commit. Owner STEP hole rows/pitch are geometrically consistent.",
-      "unknown": "Owned 2N3904 maker/physical lead order; owned SuperMini pin-labelled header and actual fit; release behavior during boot/reset/flashing with eventual firmware. The bridge does not report latch position or guarantee relock after failure.",
-      "codex_action": "Keep these qualifications explicit in the schematic and BUTTON_BRIDGE.md. Firmware and physical assembly are later tasks.",
-      "owner_input": "No new reconstruction readings. Before assembly, identify the owned 2N3904 E/B/C leads and confirm SuperMini GPIO3/GND labels; startup release commissioning belongs to later firmware work.",
-      "closed_when": "Owned-package pin order and board mapping/fit confirmed; final firmware leaves the button released through idle, boot, reset and flashing and demonstrates a brief mode-toggle pulse.",
+      "known": "2N3904 circuit proposed in parallel with measured S1 contacts: C to H_BUTTON, E to GND, GPIO3/header6 through 4.7k to base, 100k base-emitter on transistor side. ESP32 USB and PetSafe battery positives remain separate. GPIO3 reset input/no-pull configuration checked in Espressif data; library symbol/header footprint imported at a pinned commit. Owner STEP hole rows/pitch are geometrically consistent. Owner subsequently requested internal battery power and prefers Wi-Fi. Existing PIR supply path is U1 4.5 V -> R37 22 ohm -> candidate U6 3.3 V; it cannot be treated as an ESP32-capable spare rail. Native circuit still represents the validated USB version; a separate battery-fed converter and hand-wiring plan are documented as a proposal. Owner agrees to a separate converter and has several nominal 5 V-to-3.3 V modules; exact model will be supplied later. Provisional output requirement is at least 500 mA, not a confirmed owned-module rating.",
+      "unknown": "Owned 2N3904 maker/physical lead order; owned SuperMini pin-labelled header and actual fit; release behavior during boot/reset/flashing with eventual firmware. The bridge does not report latch position or guarantee relock after failure. Internal converter selection, regulation across battery range, and the actual SuperMini external-supply/USB backfeed arrangement; Wi-Fi battery life and response-latency tradeoff.",
+      "codex_action": "Retain the checked button circuit. Use BUTTON_BRIDGE.md for the internal-power assessment and perfboard guide. Settle converter and SuperMini power-input arrangement before changing native power wiring; never connect the ESP load to the PIR rail merely because its voltage is 3.3 V.",
+      "owner_input": "No reconstruction readings requested. Owner will identify the available converter model later; its input range must cover fresh batteries (6.3 V already measured), not merely a nominal 5 V source. Wi-Fi is preferred. Owned 2N3904 lead order and SuperMini input/isolation remain assembly qualifications.",
+      "closed_when": "Owned-package pin order and board mapping/fit confirmed; final firmware leaves the button released through idle, boot, reset and flashing and demonstrates a brief mode-toggle pulse. Internal power conversion and board input/isolation are qualified; power budget matches the intended battery-life and command-latency requirements.",
       "open_pads": [],
       "nets": [
         "H_BUTTON",
@@ -648,7 +648,7 @@
         "docs/BUTTON_BRIDGE.md",
         "evidence/reconstruction.json"
       ],
-      "next_action": "Review the external circuit now. Confirm owned 2N3904 lead order and SuperMini mapping before assembly; validate release behavior with later firmware. No new reconstruction measurement batch."
+      "next_action": "Select the internal converter and verify the SuperMini power-input arrangement, then update the native supply. Use the prepared hand-wiring guide for the unchanged transistor/resistor network. No new reconstruction measurement batch."
     }
   ],
   "finish_plan": [
@@ -697,7 +697,7 @@
         "A01"
       ],
       "summary": "Circuit implemented; factory endpoint relationships preserved. No firmware or carrier PCB in this task.",
-      "next_action": "Review the external circuit now. Confirm owned 2N3904 lead order and SuperMini mapping before assembly; validate release behavior with later firmware. No new reconstruction measurement batch."
+      "next_action": "Select the internal converter and verify the SuperMini power-input arrangement, then update the native supply. Use the prepared hand-wiring guide for the unchanged transistor/resistor network. No new reconstruction measurement batch."
     }
   ],
   "reconstruction_limitations": [

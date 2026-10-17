@@ -40,7 +40,7 @@ The [full Markdown register](docs/OPEN_ITEMS.md) and [HTML checklist](docs/FINIS
 | [E11](docs/OPEN_ITEMS.md#e11) | Inherited copper joins without independent closure | Copper connection; evidence coverage |
 | [A01](docs/OPEN_ITEMS.md#a01) | External ESP32 button bridge: assembly qualification | Proposed modification; separate from reconstruction |
 
-TP11/TP17 hidden continuations remain a separately documented reconstruction boundary. No pending readings. RX-3 remains deferred. Review the proposed external bridge; confirm owned-part lead order and SuperMini mapping before assembly. Startup release validation belongs to later firmware commissioning. Package geometry, routing/stackup, external assemblies and firmware remain prerequisites for a working reproduction.
+TP11/TP17 hidden continuations remain a separately documented reconstruction boundary. No pending readings. RX-3 remains deferred. Internal power for the Wi-Fi button bridge needs a separate converter and a qualified SuperMini input/isolation arrangement. Owned-part lead order remains pending before assembly; startup release validation belongs to later firmware commissioning. Package geometry, routing/stackup, external assemblies and firmware remain prerequisites for a working reproduction.
 
 ## Evidence and rebuild
 

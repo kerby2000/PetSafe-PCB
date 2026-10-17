@@ -1,5 +1,7 @@
 # External ESP32 button bridge — proposed modification
 
+**Power update requested, 2026-10-17:** the owner wants the ESP32 inside the enclosure without an external USB power lead. The native drawing still represents the checked USB-powered version. The [internal-power assessment and hand-wiring proposal below](#internal-power-and-soldering) explain why the PIR supply is unsuitable and stage a battery-fed converter alternative. Converter selection and the SuperMini's external-supply/backfeed arrangement must be settled before changing the native power connection. Wi-Fi is the owner's initial preference. The owner agrees to a separate converter and has several nominal 5 V-to-3.3 V modules; exact model pending. Use at least 500 mA output capability as the provisional requirement, not as a verified rating of an owned module.
+
 The USB-powered **ESP32-C6 SuperMini** briefly pulls **H_BUTTON** to **PetSafe GND** through the owner's **2N3904 NPN**. This is electrically in parallel with S1. S1, R40/R41/C35, the factory PIC firmware and the motor wiring are unchanged. No trace cuts are required.
 
 The dashed block on the [A3 schematic](../output/pdf/PetSafe_single_sheet.pdf) contains only the external addition. Its four parts are excluded from the factory-board BOM and PCB. The original external L101 antenna winding remains separate too. This task provides a schematic and wiring proposal, **no firmware or PCB layout**.
@@ -59,3 +61,31 @@ The model's hole rows are approximately 15.24 mm apart with 2.54 mm pitch, consi
 ## Before assembly
 
 No new reconstruction measurements are requested. The proposal is ready for review; assembly readiness remains conditional on confirming the owned 2N3904 lead order, the SuperMini's labelled GPIO3/GND pads and physical fit, and release behavior with the eventual firmware during boot, reset and flashing. Those qualifications are tracked as **A01** in the [existing open-item register](OPEN_ITEMS.md#a01).
+
+## Internal power and soldering
+
+The existing model supplies the PIR as follows:
+
+`BATTERY+ → Q1/VSYS → L2 → U1 (4.5 V) → R37 (22 Ω) → U6 (3.3 V) → J3.1/PIR`
+
+The reported 6.3 V battery/VSYS, 4.5 V VDD and 3.3 V PIR readings are existing evidence. U6 remains the S-812C33AMC candidate, not a newly confirmed identification. Its [manufacturer data](https://www.ablic.com/en/doc/datasheet/voltage_regulator/S812C_E.pdf) specifies the 3.3 V variant's output-current capability in the tens of milliamps, under stated input conditions. That is not spare current available on this board.
+
+Even without relying on the candidate identity, **R37 makes this branch unsuitable**: 50 mA through 22 Ω drops 1.1 V, leaving only about 3.4 V at U6 from the reported 4.5 V input, before U6's own dropout. The PIR already shares this path. Espressif [recommends a 3.3 V supply capable of at least 500 mA](https://docs.espressif.com/projects/esp-hardware-design-guidelines/en/latest/esp32c6/schematic-checklist.html#power-supply); its [datasheet, Table 5-7](https://www.espressif.com/sites/default/files/documentation/esp32-c6_datasheet_en.pdf), lists hundreds of milliamps in Wi-Fi transmit states. 500 mA is a supply-design requirement, not a claim of continuous consumption. A buffer capacitor alone does not establish a sufficient sustained supply.
+
+The internal-power alternative is **a separate 3.3 V converter fed from the actual battery terminals**, sharing battery negative/GND. It leaves the factory 3.3 V and 4.5 V rails unloaded by the ESP32. Select a module for the fresh-to-depleted four-AA voltage range, at least 500 mA output capability with margin, and low idle current. A fixed 3.3 V buck such as [Pololu D24V10F3](https://www.pololu.com/product/2830) illustrates the required class; its 1 A rating is conditional on input voltage/thermal limits, and regulation near battery depletion depends on dropout. It is only a specification example, not an added or purchased part; prefer a suitable owned module once identified. Its lack of reverse-input protection must be accommodated if selected.
+
+A nominal “5 V to 3.3 V” module is not automatically rated for the measured 6.3 V pack or fresh batteries: verify its full input range, output capability and dropout before connecting it. Do not apply the reported 6.3 V battery directly to either SuperMini 3V3 or its 5V header. The supplied SuperMini library/STEP do not establish its onboard regulator circuit. Before choosing direct 3V3 injection, confirm that board variant permits it and how its regulator behaves under reverse bias. The alternative is a suitable battery-to-5V converter feeding the board's normal input. No simultaneous USB/external-power operation is assumed: a removable power link and a verified isolation arrangement belong in the final choice. **The diagram's dashed power path is a proposal, not an instruction to energize an unqualified board.**
+
+![Hand-wiring concept: unchanged button bridge and proposed internal converter](button-bridge-hand-wiring.png)
+
+Use a small **2.54 mm isolated-pad perfboard** to support the transistor and resistors. A roughly 30 × 40 mm piece is a starting size, subject to enclosure clearance; mount the SuperMini beside it or in sockets with its antenna end overhanging the support. This drawing is a connection guide, not a drilled-board layout or a physical E/B/C lead-order drawing.
+
+1. Remove batteries and USB before soldering. Identify the owned transistor's E/B/C leads from its actual manufacturer's pinout; keep each lead on a separate pad.
+2. Solder **4.7 kΩ from GPIO3 to base**. Solder **100 kΩ directly from that base junction to emitter**. The 100 kΩ must be on the transistor side of the 4.7 kΩ.
+3. Run an insulated wire from **collector to H_BUTTON/S1 pin 2**, using the established S1 lower contact group in the original photo orientation. Run **emitter and SuperMini GND to PetSafe GND**, preferably the battery-negative/GND solder point for the shared power return. The manual button remains fitted.
+4. Reserve separate red/black battery leads for the eventual converter. Use short stranded wires, approximately 24–26 AWG for power and 26–28 AWG for the button signal, with a labelled removable connector. Keep the converter and its wiring away from the RFID receive/tuning area and the ESP antenna.
+5. Insulate the perfboard underside and exposed component leads; add strain relief so cable movement does not pull on S1's pads. Maintain clearance from the motor and moving latch. Check solder joints for accidental shorts as part of assembly, not as a repeated reconstruction measurement campaign.
+
+For the final battery-powered version this needs **three connections to PetSafe: BATTERY+, GND and H_BUTTON**. The power module is still to be chosen; the existing transistor wiring can be assembled independently with power disconnected.
+
+Wi-Fi uses the existing router and is the owner's preferred starting point. Keeping it reachable requires periodic radio activity; deep sleep cannot receive a spontaneous Wi-Fi command, while connected modem/light-sleep modes trade latency against consumption ([Espressif sleep modes](https://docs.espressif.com/projects/esp-idf/en/latest/esp32c6/api-reference/system/sleep_modes.html)). Zigbee sleepy end devices can poll a powered parent for queued messages; this offers a different power/latency tradeoff but requires a coordinator and appropriate firmware ([Espressif Zigbee sleepy-device example](https://github.com/espressif/esp-zigbee-sdk/tree/main/examples/sleepy_devices/light_sleep_end_device)). Neither protocol removes the need for a supply able to handle radio current peaks. Battery life has not been measured for this SuperMini or proposed firmware.
