@@ -29,6 +29,14 @@ void bridge_policy_commit(bridge_policy_t *s, uint32_t sequence, uint64_t now)
     s->available_at_ms = now + BRIDGE_COOLDOWN_MS;
 }
 
+bridge_decision_t bridge_policy_reserve(bridge_policy_t *s,
+    const char *boot_id, uint32_t sequence, uint64_t deadline, uint64_t now)
+{
+    bridge_decision_t decision = bridge_policy_check(s, boot_id, sequence, deadline, now);
+    if (decision == BRIDGE_ACCEPT) bridge_policy_commit(s, sequence, now);
+    return decision;
+}
+
 bool bridge_parse_uint(const char *text, uint64_t limit, uint64_t *result)
 {
     if (!text || !*text) return false;

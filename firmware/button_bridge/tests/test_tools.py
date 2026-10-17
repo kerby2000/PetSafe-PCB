@@ -63,5 +63,12 @@ class ToolsTest(unittest.TestCase):
                 self.assertEqual(api.call_count, 1)
 
 
+    def test_output_fault_does_not_send_command(self):
+        with patch.object(client, 'api', return_value={'output_fault': True}) as api:
+            with self.assertRaisesRegex(RuntimeError, 'Output fault'):
+                client.press('http://board', 'token')
+            self.assertEqual(api.call_count, 1)
+
+
 if __name__ == '__main__':
     unittest.main()

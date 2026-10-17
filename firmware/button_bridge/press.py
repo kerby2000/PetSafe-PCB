@@ -17,6 +17,8 @@ def api(base, token, path, headers=None):
 
 def press(base, token):
     state = api(base, token, '/api/status')
+    if state.get('output_fault'):
+        raise RuntimeError('Output fault; no command sent. Inspect before restarting.')
     if state['button_active'] or state['cooldown_remaining_ms'] > 0:
         raise RuntimeError('Cooldown active; no command sent.')
     return api(base, token, '/api/press', {

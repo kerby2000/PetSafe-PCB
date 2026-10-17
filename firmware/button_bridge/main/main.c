@@ -84,10 +84,11 @@ static esp_err_t status_handler(httpd_req_t *req)
         "{\"firmware\":\"0.1.0\",\"boot_id\":\"%s\",\"uptime_ms\":%" PRIu64
         ",\"next_sequence\":%" PRIu64 ",\"last_sequence\":%" PRIu32
         ",\"command_deadline_ms\":%" PRIu64 ",\"pulse_ms\":%u,"
-        "\"cooldown_remaining_ms\":%" PRIu64 ",\"button_active\":%s,"
+        "\"cooldown_remaining_ms\":%" PRIu64 ",\"button_active\":%s,\"output_fault\":%s,"
         "\"door_state\":\"unknown\",\"power_mode\":\"always_on\"}",
         policy.boot_id, now, (uint64_t)policy.last_sequence + 1, policy.last_sequence,
-        now + 5000, BRIDGE_PULSE_MS, wait, button_output_active() ? "true" : "false");
+        now + 5000, BRIDGE_PULSE_MS, wait, button_output_active() ? "true" : "false",
+        button_output_faulted() ? "true" : "false");
     return json_reply(req, "200 OK", json);
 }
 
@@ -115,7 +116,10 @@ static esp_err_t press_handler(httpd_req_t *req)
         return ESP_FAIL;
     }
     uint64_t now = now_ms();
-    bridge_decision_t decision = bridge_policy_check(&policy, boot, sequence, deadline, now);
+    /* Consume before the driver can possibly assert. A failed/uncertain attempt
+     * must not be replayed as another physical press with the same sequence. */
+    button_output_result_t output = {0};
+    bridge_decision_t decision = button_output_attempt(&policy, boot, sequence, deadline, now, &output);
     if (decision == BRIDGE_DUPLICATE)
         return json_reply(req, "200 OK", "{\"result\":\"duplicate_no_new_press\"}");
     if (decision == BRIDGE_COOLDOWN) {
@@ -128,9 +132,10 @@ static esp_err_t press_handler(httpd_req_t *req)
             "{\"error\":\"sequence_conflict_no_press\"}";
         return json_reply(req, "409 Conflict", error);
     }
-    if (button_output_press() != ESP_OK)
-        return json_reply(req, "503 Service Unavailable", "{\"error\":\"pulse_not_started\"}");
-    bridge_policy_commit(&policy, sequence, now);
+    if (output.error != ESP_OK)
+        return json_reply(req, "503 Service Unavailable", output.may_have_asserted
+            ? "{\"error\":\"pulse_outcome_uncertain\",\"sequence_consumed\":true}"
+            : "{\"error\":\"pulse_not_started\",\"sequence_consumed\":true}");
     ESP_LOGI(TAG, "Button pulse accepted, sequence=%" PRIu32, (uint32_t)sequence);
     return json_reply(req, "202 Accepted", "{\"result\":\"pulse_started\",\"pulse_ms\":200,\"door_state\":\"unknown\"}");
 }

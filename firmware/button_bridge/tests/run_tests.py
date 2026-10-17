@@ -18,8 +18,13 @@ out.mkdir(exist_ok=True)
 for name, source, extra in [('policy', 'bridge_policy.c', []),
                             ('output', 'button_output.c', ['-Itests/stubs'])]:
     exe = out / (f'test_{name}' + ('.exe' if os.name == 'nt' else ''))
-    subprocess.run([*compiler, '-std=c11', '-Wall', '-Wextra', '-Werror', *extra, '-Imain',
+    linked = ['main/bridge_policy.c'] if name == 'output' else []
+    subprocess.run([*compiler, '-std=c11', '-Wall', '-Wextra', '-Werror', *extra, *linked, '-Imain',
                     f'main/{source}', f'tests/test_{name}.c', '-o', str(exe)], cwd=ROOT, check=True)
-    subprocess.run([str(exe)], check=True)
+    scenarios = ['normal', 'count_fail', 'arm_fail', 'start_fail', 'start_failed_after_arm',
+                 'assert_fail', 'assert_and_release_fail', 'alarm_at_start', 'alarm_at_assert', 'release_low_fail',
+                 'stop_fail', 'shutdown', 'shutdown_during_arm'] if name == 'output' else [None]
+    for scenario in scenarios:
+        subprocess.run([str(exe), *([scenario] if scenario else [])], check=True)
 subprocess.run([sys.executable, 'tests/test_tools.py'], cwd=ROOT, check=True)
 subprocess.run(['node', 'tests/test_web.cjs'], cwd=ROOT, check=True)

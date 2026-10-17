@@ -19,8 +19,8 @@ async function request(path, options = {}) {
 
 function showStatus(s) {
   ui.connection.textContent = 'Connected';
-  ui.output.textContent = s.button_active ? 'Pressed' : 'Released';
-  ui.press.disabled = busy || s.button_active || s.cooldown_remaining_ms > 0;
+  ui.output.textContent = s.output_fault ? 'Fault — inspect before restart' : s.button_active ? 'Pressed' : 'Released';
+  ui.press.disabled = busy || s.output_fault || s.button_active || s.cooldown_remaining_ms > 0;
   ui.press.textContent = s.cooldown_remaining_ms > 0
     ? `Wait ${Math.ceil(s.cooldown_remaining_ms / 1000)} s` : 'Press PetSafe button';
 }
@@ -60,8 +60,8 @@ ui.press.addEventListener('click', async () => {
   try {
     // A fresh server deadline and boot identifier are fetched for each explicit click.
     const s = await request('/api/status');
-    if (s.button_active || s.cooldown_remaining_ms > 0) {
-      ui.message.textContent = 'Please wait for the previous press to finish.';
+    if (s.output_fault || s.button_active || s.cooldown_remaining_ms > 0) {
+      ui.message.textContent = s.output_fault ? 'Output fault. Inspect the board before restarting.' : 'Please wait for the previous press to finish.';
       return;
     }
     const result = await request('/api/press', {

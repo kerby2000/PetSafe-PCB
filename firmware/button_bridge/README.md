@@ -8,9 +8,10 @@ The owner selected **a local web page plus HTTP API**, with Wi-Fi continuously a
 
 - GPIO3 is set LOW before enabling its output driver, before networking or configuration checks. No press on startup, page load, Wi-Fi reconnect or reset recovery.
 - An authenticated, explicit command produces one **200 ms HIGH pulse**. This remains an initial commissioning duration, not a verified PetSafe timing specification.
-- A hardware GPTimer interrupt releases the output independently of HTTP handling. Its callback, GPIO operation and timer controls are placed in IRAM. This reduces dependence on software scheduling; it is not an external hardware interlock against every CPU failure.
+- The timer starts before the HIGH write. A short critical section serializes timer start and assertion with the release ISR, so a release cannot be followed by a late HIGH. A failed start never asserts GPIO3. The GPTimer release callback, GPIO operation and timer controls are placed in IRAM. This is not an external hardware interlock against every CPU failure.
 - Five-second cooldown, no overlapping presses and no command queue. Rejected commands do not execute later.
-- Each command carries the current random boot identifier, the next sequence number, and a deadline based on the ESP's uptime. Retrying the same accepted sequence does not pulse again; older sequences and commands from previous boots are rejected. Missing/invalid/expired commands never actuate.
+- Each command carries the current random boot identifier, the next sequence number, and a deadline based on the ESP's uptime. A valid attempt consumes its sequence **before any output operation**, even if arming, assertion or release fails. Retrying that sequence does not pulse again; older sequences and commands from previous boots are rejected. Missing/invalid/expired commands never actuate.
+- Driver failures latch `output_fault` and inhibit further output attempts until restart. A failed HIGH write is reported as an uncertain outcome, since the pin may have changed before the error. A failed LOW write is not reported as released. Inspect the board before restarting; no automatic reset or retry clears the fault.
 - Wi-Fi reconnects with 1–30 second backoff. Modem power saving is enabled, but **the ESP and LM2596 stay powered**. Battery life is unmeasured.
 - No credentials: GPIO3 stays LOW and Wi-Fi stays off. No open setup hotspot or default access token.
 
@@ -73,6 +74,7 @@ Use on a trusted local network: **HTTP is not encrypted**. Do not expose port 80
   "pulse_ms": 200,
   "cooldown_remaining_ms": 0,
   "button_active": false,
+  "output_fault": false,
   "door_state": "unknown",
   "power_mode": "always_on"
 }
@@ -91,14 +93,15 @@ The supplied deadline is five seconds ahead of the status timestamp. The server 
 | Response | Meaning |
 |---|---|
 | 202 `pulse_started` | A 200 ms pulse started; mechanical state remains unknown. |
-| 200 `duplicate_no_new_press` | That sequence was already accepted; no additional pulse. |
+| 200 `duplicate_no_new_press` | That sequence was already consumed, possibly by a failed attempt; no additional pulse or claim of earlier mechanical success. |
 | 400 | Invalid headers or nonempty body; no command accepted. |
 | 401 | Missing/wrong token. |
 | 409 | Wrong boot, sequence conflict or expired request; no new press. |
 | 429 | Cooldown; request is discarded, not queued. |
-| 503 | Output/timer could not start normally; inspect before retrying. |
+| 503 `pulse_not_started` | This attempt never reached a HIGH write; `sequence_consumed: true`. Inspect the fault before restarting. |
+| 503 `pulse_outcome_uncertain` | A HIGH write was attempted; the pulse may have occurred. `sequence_consumed: true`; do not retry as a fresh toggle. |
 
-**If the response is lost, do not fetch a new sequence and resend automatically.** The pulse may already have happened. A retry of the identical boot/sequence is idempotent while it remains the latest accepted command. Across reboot there is no authoritative outcome or latch state; observe the flap before deciding on another toggle.
+**If the response is lost, do not fetch a new sequence and resend automatically.** The pulse may already have happened. A retry of the identical boot/sequence is idempotent while it remains the latest consumed command, including after an error. `last_sequence` tracks attempts, not successful pulses. The status page and client inhibit presses on `output_fault`. Across reboot there is no authoritative outcome or latch state; observe the flap before deciding on another toggle.
 
 The included client uses only Python's standard library:
 

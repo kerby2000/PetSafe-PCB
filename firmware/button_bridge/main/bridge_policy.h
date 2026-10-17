@@ -25,7 +25,10 @@ typedef enum {
 void bridge_policy_init(bridge_policy_t *state, const char *boot_id);
 bridge_decision_t bridge_policy_check(const bridge_policy_t *state,
     const char *boot_id, uint32_t sequence, uint64_t deadline_ms, uint64_t now_ms);
-/* Commit only after the physical pulse timer starts successfully. HTTP task owns state. */
+/* Reserve before any output operation, including an attempt that may fail.
+ * HTTP task owns state. A consumed sequence must never become reusable. */
+bridge_decision_t bridge_policy_reserve(bridge_policy_t *state,
+    const char *boot_id, uint32_t sequence, uint64_t deadline_ms, uint64_t now_ms);
 void bridge_policy_commit(bridge_policy_t *state, uint32_t sequence, uint64_t now_ms);
 bool bridge_parse_uint(const char *text, uint64_t limit, uint64_t *result);
 bool bridge_authorized(const char *header, const char *token);

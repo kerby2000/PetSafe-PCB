@@ -58,5 +58,13 @@ const status = {button_active:false, cooldown_remaining_ms:0, boot_id:'boot-one'
   assert.equal(g.requests.filter(r => r.options.method === 'POST').length, 1);
   assert.match(g.nodes.message.textContent, /Command not confirmed/);
   assert.equal(g.nodes.press.disabled, true);
+  const h = fixture();
+  h.nodes.token.value = 'x'.repeat(43);
+  h.pending.push({...status, output_fault:true});
+  await h.nodes.connect.handlers.click();
+  assert.equal(h.nodes.press.disabled, true);
+  assert.match(h.nodes.output.textContent, /Fault/);
+  await h.nodes.press.handlers.click();
+  assert.equal(h.requests.filter(r => r.options.method === 'POST').length, 0);
   console.log('Web PASS: no startup press, authentication flow, double-click suppression, cooldown, no retry after timeout');
 })().catch(error => {console.error(error); process.exit(1);});

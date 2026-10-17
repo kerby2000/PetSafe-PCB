@@ -9,6 +9,8 @@ int main(void)
     const char *boot = "0123456789abcdef0123456789abcdef";
     bridge_policy_init(&s, boot);
     assert(s.last_sequence == 0);
+    assert(bridge_policy_reserve(&s, boot, 1, 0, 0) == BRIDGE_EXPIRED);
+    assert(s.last_sequence == 0); /* Invalid requests cannot consume sequences. */
     assert(bridge_policy_check(&s, boot, 1, 5000, 0) == BRIDGE_ACCEPT);
     /* Checking/rejecting a request cannot change state or reserve an output pulse. */
     assert(s.last_sequence == 0);
@@ -18,7 +20,9 @@ int main(void)
     assert(bridge_policy_check(&s, boot, 1, 100, 100) == BRIDGE_EXPIRED);
     assert(bridge_policy_check(&s, boot, 1, 10101, 100) == BRIDGE_EXPIRED);
     assert(bridge_policy_check(&s, boot, 1, 10099, 100) == BRIDGE_ACCEPT);
-    bridge_policy_commit(&s, 1, 100);
+    assert(bridge_policy_reserve(&s, boot, 1, 5000, 100) == BRIDGE_ACCEPT);
+    assert(s.last_sequence == 1 && s.available_at_ms == 5100);
+    assert(bridge_policy_reserve(&s, boot, 1, 5000, 100) == BRIDGE_DUPLICATE);
     assert(bridge_policy_check(&s, boot, 1, 5000, 200) == BRIDGE_DUPLICATE);
     assert(bridge_policy_check(&s, boot, 1, 5000, 9000) == BRIDGE_DUPLICATE);
     assert(bridge_policy_check(&s, "oldboot", 1, 5000, 200) == BRIDGE_WRONG_BOOT);
