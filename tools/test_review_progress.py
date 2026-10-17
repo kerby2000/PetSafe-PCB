@@ -2,12 +2,24 @@
 import copy, hashlib, unittest
 from current_state import ROOT, read, current_state, validate_issue_register
 from audit_physical_evidence import compare
-from verify_capacitor_application import canonical_text_sha256, matches_text_digest
+from verify_capacitor_application import canonical_text_sha256, matches_text_digest, verify_receiver_capacitor_metadata
 from inventory_contracts import verify_receiver_open_erc
 from validate_native import wire_graph, board_net_partitions
 import xml.etree.ElementTree as ET
 
 class ReviewProgress(unittest.TestCase):
+    def test_receiver_capacitor_metadata_rejects_obsolete_topology(self):
+        proposal=read('evidence/capacitor_value_review_20261015.json')
+        verify_receiver_capacitor_metadata(proposal,self.model)
+        for ref in ['C19','C20']:
+            wrong=copy.deepcopy(proposal)
+            c=next(c for c in wrong['components'] if c['ref']==ref)
+            c['nets']=['GND','RX_A_PLUS']
+            with self.assertRaises(AssertionError):verify_receiver_capacitor_metadata(wrong,self.model)
+            c['nets']=next(c['nets'] for c in proposal['components'] if c['ref']==ref)
+            c['basis']=c['historical_rationale']['basis']
+            with self.assertRaises(AssertionError):verify_receiver_capacitor_metadata(wrong,self.model)
+
     def test_external_antenna_cannot_hide_wrong_endpoint(self):
         xml=ET.parse(ROOT/'output/PetSafe_netlist.xml')
         board_net_partitions(xml,self.model)

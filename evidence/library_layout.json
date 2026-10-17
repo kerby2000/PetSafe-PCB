@@ -6187,8 +6187,8 @@
           "Voltage": "100 V (proposed)",
           "Dielectric": "C0G/NP0 (proposed)",
           "Tolerance": "5% (proposed)",
-          "ValueBasis": "100 pF plus C20=100 pF gives a deliberately small 200-pF detector load. A simple 1-Mohm discharge approximation gives 200 us, versus a 7.45-us RF period.",
-          "ValueQualification": "Very low confidence: diode conduction, input impedance and signal modulation determine the real envelope response. Equal division across two parallel capacitors is not identifiable from function. Rating is a conservative candidate for an antenna-coupled node.",
+          "ValueBasis": "Retained 100-pF engineering starting estimate for the D2_C20-to-GND shunt. The supported wiring does not establish its factory value or a verified detector time constant.",
+          "ValueQualification": "Very low confidence: original capacitance, diode loading, node impedance and signal function remain unverified. The proposed 100-V rating is retained pending qualification of antenna-coupled peak stress.",
           "ValueSource": "evidence/capacitor_value_review_20261015.json",
           "DesignSeed": "Function-based candidate; circuit validation pending",
           "CurrentEvidence": "Owner confirms lower/model1 joins C20 lower/model2, R28 right/model2 and D2.R. Upper/model2 joins R29 right/model2 on GND. RX-1 rejection of C19-to-U3.3 retained; 100pF* estimate unchanged."
@@ -6261,8 +6261,8 @@
           "Voltage": "100 V (proposed)",
           "Dielectric": "C0G/NP0 (proposed)",
           "Tolerance": "5% (proposed)",
-          "ValueBasis": "100 pF plus C19=100 pF gives 200 pF at RX_A_PLUS. The larger 1206 body can accommodate voltage/low-loss needs without implying a large capacitance.",
-          "ValueQualification": "Very low confidence: nonlinear diode path and a 1-Mohm bias path do not uniquely determine the needed envelope capacitance. Equal division is arbitrary; qualify antenna-coupled voltage.",
+          "ValueBasis": "Retained 100-pF engineering starting estimate for coupling D2_C20 to H_D3_SIGNAL. The supported wiring does not establish its factory value, transfer function or operating role.",
+          "ValueQualification": "Very low confidence: original capacitance, impedance on both sides, diode conduction and PIC interaction remain unverified. The proposed 100-V rating is retained pending qualification of peak differential stress.",
           "ValueSource": "evidence/capacitor_value_review_20261015.json",
           "DesignSeed": "Function-based candidate; circuit validation pending",
           "CurrentEvidence": "Owner annotation joins upper/model1 to R42 lower/model2 and D3.S. Lower/model2 joins C19 lower/model1, R28 right/model2 and D2.R. RX-2 rejection of upper-to-GND retained; 100pF* estimate unchanged."

@@ -12199,7 +12199,7 @@
 				)
 			)
 		)
-		(property "ValueBasis" "100 pF plus C20=100 pF gives a deliberately small 200-pF detector load. A simple 1-Mohm discharge approximation gives 200 us, versus a 7.45-us RF period."
+		(property "ValueBasis" "Retained 100-pF engineering starting estimate for the D2_C20-to-GND shunt. The supported wiring does not establish its factory value or a verified detector time constant."
 			(at 228.6 209.55 0)
 			(hide yes)
 			(show_name no)
@@ -12210,7 +12210,7 @@
 				)
 			)
 		)
-		(property "ValueQualification" "Very low confidence: diode conduction, input impedance and signal modulation determine the real envelope response. Equal division across two parallel capacitors is not identifiable from function. Rating is a conservative candidate for an antenna-coupled node."
+		(property "ValueQualification" "Very low confidence: original capacitance, diode loading, node impedance and signal function remain unverified. The proposed 100-V rating is retained pending qualification of antenna-coupled peak stress."
 			(at 228.6 209.55 0)
 			(hide yes)
 			(show_name no)
@@ -15037,7 +15037,7 @@
 				)
 			)
 		)
-		(property "ValueBasis" "100 pF plus C19=100 pF gives 200 pF at RX_A_PLUS. The larger 1206 body can accommodate voltage/low-loss needs without implying a large capacitance."
+		(property "ValueBasis" "Retained 100-pF engineering starting estimate for coupling D2_C20 to H_D3_SIGNAL. The supported wiring does not establish its factory value, transfer function or operating role."
 			(at 238.76 209.55 0)
 			(hide yes)
 			(show_name no)
@@ -15048,7 +15048,7 @@
 				)
 			)
 		)
-		(property "ValueQualification" "Very low confidence: nonlinear diode path and a 1-Mohm bias path do not uniquely determine the needed envelope capacitance. Equal division is arbitrary; qualify antenna-coupled voltage."
+		(property "ValueQualification" "Very low confidence: original capacitance, impedance on both sides, diode conduction and PIC interaction remain unverified. The proposed 100-V rating is retained pending qualification of peak differential stress."
 			(at 238.76 209.55 0)
 			(hide yes)
 			(show_name no)

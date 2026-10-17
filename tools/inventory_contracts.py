@@ -3,6 +3,19 @@ import json
 from pathlib import Path
 ROOT=Path(__file__).resolve().parents[1]
 
+def with_current_capacitor_rationale(inventory):
+    """Only C19/C20's superseded text changes; estimated values and ratings do not."""
+    import copy
+    result=copy.deepcopy(inventory)
+    proposal=json.loads((ROOT/'evidence/capacitor_value_review_20261015.json').read_text())
+    for c in proposal['components']:
+        if c['ref'] not in {'C19','C20'}:continue
+        evidence=result[c['ref']]['value_evidence']
+        assert evidence['basis']==c['historical_rationale']['basis']
+        assert evidence['qualification']==c['historical_rationale']['remaining']
+        evidence.update(basis=c['basis'],qualification=c['remaining'])
+    return result
+
 def without_withdrawn_r33(partitions):
     record=json.loads((ROOT/'evidence/r33_withdrawal_v0932.json').read_text())
     assert record['baseline_commit']=='9ad2715'
