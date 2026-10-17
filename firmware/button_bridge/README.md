@@ -1,0 +1,124 @@
+# PetSafe ESP32-C6 button firmware
+
+Version **0.1.0** implements the owner's perfboard circuit: **GPIO3 → 4.7 kΩ → 2N3904 base**, 100 kΩ base-to-emitter, collector to H_BUTTON/S1.2, emitter to shared GND/S1.1. The physical button remains available. [Wiring and power qualifications](../../docs/BUTTON_BRIDGE.md).
+
+The owner selected **a local web page plus HTTP API**, with Wi-Fi continuously available. TPL5111, PIR wake, deep sleep, converter enable control, camera analysis and absolute OPEN/CLOSE commands are **not implemented**. The firmware cannot determine the latch position or detect a manual button press. A power cycle does not restore a guessed door state.
+
+## Behavior
+
+- GPIO3 is set LOW before enabling its output driver, before networking or configuration checks. No press on startup, page load, Wi-Fi reconnect or reset recovery.
+- An authenticated, explicit command produces one **200 ms HIGH pulse**. This remains an initial commissioning duration, not a verified PetSafe timing specification.
+- A hardware GPTimer interrupt releases the output independently of HTTP handling. Its callback, GPIO operation and timer controls are placed in IRAM. This reduces dependence on software scheduling; it is not an external hardware interlock against every CPU failure.
+- Five-second cooldown, no overlapping presses and no command queue. Rejected commands do not execute later.
+- Each command carries the current random boot identifier, the next sequence number, and a deadline based on the ESP's uptime. Retrying the same accepted sequence does not pulse again; older sequences and commands from previous boots are rejected. Missing/invalid/expired commands never actuate.
+- Wi-Fi reconnects with 1–30 second backoff. Modem power saving is enabled, but **the ESP and LM2596 stay powered**. Battery life is unmeasured.
+- No credentials: GPIO3 stays LOW and Wi-Fi stays off. No open setup hotspot or default access token.
+
+## Build and configure
+
+Tested toolchain: **ESP-IDF v6.0.2**, target **esp32c6**. No Arduino or third-party firmware libraries are required. Defaults use DIO, 40 MHz flash, **4 MB flash** and native USB Serial/JTAG console. Confirm the actual board has at least 4 MB flash before flashing; the imported KiCad footprint is not evidence of flash size.
+
+On this Windows installation, open PowerShell:
+
+```powershell
+. 'C:/Espressif/tools/Microsoft.v6.0.2.PowerShell_profile.ps1'
+Set-Location 'C:/Users/lukin/Documents/ChatGPT/PetSafe-PCB/firmware/button_bridge'
+python configure.py
+idf.py build
+```
+
+`configure.py` prompts for your 2.4 GHz WPA2/WPA3-personal SSID and password, generates a random access token, and writes `credentials.local.json` plus `main/credentials.local.h`. Both are ignored by Git. It does not print the password or token. Open the JSON locally to copy the token into the web page. To change credentials, edit that local JSON, rerun `configure.py`, and rebuild. The binary contains these credentials: do not publish your configured binary or build directory.
+
+Building without that local header produces an unconfigured image with its output released and networking disabled. A build verifies compilation, not electrical behavior on the owned board.
+
+## Flash when the perfboard is ready
+
+First flash the **ESP board by itself**, with its external converter supply disconnected. Use the actual serial port in place of `COMx`:
+
+```powershell
+idf.py -p COMx flash monitor
+```
+
+If automatic bootloader entry fails, hold BOOT while connecting USB or resetting, then release BOOT and retry. The native USB serial port can change during reset. Exit the monitor with Ctrl+]. There is no OTA updater in this version.
+
+The console prints `Open http://<assigned-IP>/`. Open that address, enter the access token, and select **Connect**. Connecting only reads status. Consider a router DHCP reservation for the camera controller. `petsafe-bridge` is the DHCP hostname; this firmware does not advertise mDNS, so `.local` resolution is not promised.
+
+For battery operation, disconnect USB and use the qualified regulated supply. Set the LM2596 output to **3.30 V before connecting the ESP**; its ability to hold that voltage at low battery and the SuperMini's external-input/backfeed arrangement remain hardware qualifications. Do not power the ESP load from the PIR rail or factory 4.5 V rail.
+
+## First commissioning
+
+These are checks of the new add-on, not repeats of reconstruction measurements:
+
+1. With the collector disconnected from H_BUTTON, check that GPIO3/base remain released through startup, reset and Wi-Fi loss. A configured board should only pulse after an explicit command.
+2. Power down, connect the verified transistor terminals and common ground, then power the assembly. Check that boot alone does not operate the motor.
+3. Send one press. Observe the original five-second LED/motor behavior and confirm that 200 ms is accepted. The firmware reports a pulse, not success of the mechanical action.
+4. After the cooldown, send another explicit press and confirm the opposite mode. Confirm that the original S1 still works.
+
+No physical firmware tests or flashing have yet been performed. The owned transistor lead order, board header labels and supply arrangement must be checked before connecting it. The original motor/antenna/PIR remain connected for the PetSafe operating check.
+
+## HTTP API
+
+Use on a trusted local network: **HTTP is not encrypted**. Do not expose port 80 to the internet. All API requests require `Authorization: Bearer <token>`. The HTML/JavaScript contain no token; the page holds the entered token only in memory. There is no CORS support and no action on GET requests.
+
+`GET /api/status` returns:
+
+```json
+{
+  "firmware": "0.1.0",
+  "boot_id": "32-hex-characters",
+  "uptime_ms": 10000,
+  "next_sequence": 1,
+  "last_sequence": 0,
+  "command_deadline_ms": 15000,
+  "pulse_ms": 200,
+  "cooldown_remaining_ms": 0,
+  "button_active": false,
+  "door_state": "unknown",
+  "power_mode": "always_on"
+}
+```
+
+`POST /api/press` has **an empty body** and these additional headers, copied from fresh status:
+
+| Header | Value |
+|---|---|
+| `X-Bridge-Boot` | `boot_id` |
+| `X-Bridge-Sequence` | `next_sequence` |
+| `X-Bridge-Deadline` | `command_deadline_ms` |
+
+The supplied deadline is five seconds ahead of the status timestamp. The server rejects expired deadlines or deadlines more than ten seconds ahead. Deadlines use ESP uptime, not Unix time; no clock synchronization is required. Use a single coordinating camera service for actuation. Concurrent controllers using the same sequence produce at most one pulse, not two independent commands.
+
+| Response | Meaning |
+|---|---|
+| 202 `pulse_started` | A 200 ms pulse started; mechanical state remains unknown. |
+| 200 `duplicate_no_new_press` | That sequence was already accepted; no additional pulse. |
+| 400 | Invalid headers or nonempty body; no command accepted. |
+| 401 | Missing/wrong token. |
+| 409 | Wrong boot, sequence conflict or expired request; no new press. |
+| 429 | Cooldown; request is discarded, not queued. |
+| 503 | Output/timer could not start normally; inspect before retrying. |
+
+**If the response is lost, do not fetch a new sequence and resend automatically.** The pulse may already have happened. A retry of the identical boot/sequence is idempotent while it remains the latest accepted command. Across reboot there is no authoritative outcome or latch state; observe the flap before deciding on another toggle.
+
+The included client uses only Python's standard library:
+
+```powershell
+python press.py http://192.168.1.50 --status
+python press.py http://192.168.1.50
+```
+
+It prompts privately for the token, or reads `PETSAFE_BRIDGE_TOKEN` from the process environment. The second command performs one explicit toggle attempt, never an automatic retry. A camera service can import `press()` from `press.py`; deciding **whether** to toggle and determining the flap's actual mode remain the service's responsibility.
+
+## Verification
+
+Host tests compile and execute the same C policy and output-driver files, with mocked GPIO/GPTimer calls for the latter. Python tests cover configuration and the client; Node tests exercise the shipped web script. These tests cannot establish voltage levels, actual pulse duration or RF/battery performance.
+
+```powershell
+python tests/run_tests.py --cc '../../.cache/firmware-test-tools/ziglang/zig.exe'
+```
+
+The command above uses the local Zig 0.13.0 host compiler installed under the ignored repository cache. Any suitable host C compiler can be supplied with `--cc`; on Linux, `python tests/run_tests.py --cc cc` uses the system compiler. Python 3 and Node.js are also required.
+
+Validation on 2026-10-17: both unconfigured and configured ESP32-C6 builds passed with ESP-IDF v6.0.2. The configured build used temporary dummy credentials and was not flashed. The two C test programs, five Python tests and web-script tests passed. The configured ELF places the release callback, GPIO write and timer-stop functions in IRAM, and its active flag in DRAM. Browser security policy blocked the local-file visual preview; browser rendering and operation on the owned board remain unchecked.
+
+Implementation references: [ESP-IDF HTTP server](https://docs.espressif.com/projects/esp-idf/en/v6.0.2/esp32c6/api-reference/protocols/esp_http_server.html), [GPTimer](https://docs.espressif.com/projects/esp-idf/en/v6.0.2/esp32c6/api-reference/peripherals/gptimer.html), [Wi-Fi](https://docs.espressif.com/projects/esp-idf/en/v6.0.2/esp32c6/api-reference/network/esp_wifi.html).

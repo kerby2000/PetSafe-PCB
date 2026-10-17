@@ -1,0 +1,35 @@
+<!doctype html>
+<html lang="en">
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>PetSafe button bridge</title>
+<style>
+*{box-sizing:border-box}body{margin:0;background:#f3f6f4;color:#16352e;font:17px/1.5 system-ui,sans-serif}
+main{max-width:620px;margin:7vh auto;padding:24px}h1{font-size:2rem;line-height:1.15}
+section{background:white;padding:24px;border:1px solid #ccd9d2;border-radius:14px;margin:20px 0}
+label{display:block}input,button{font:inherit;border-radius:7px;padding:12px;width:100%;margin-top:10px}
+input{border:1px solid #7d978b}button{border:0;background:#12604b;color:white;cursor:pointer}
+button:disabled{background:#d7e1dc;color:#53665c;cursor:default}#press{font-weight:700;padding:20px}
+.muted{color:#53665c;font-size:.92rem}#message{min-height:3em}dl{display:grid;grid-template-columns:1fr 1fr;gap:8px}
+dt,dd{margin:0}dd{text-align:right}code{font-size:.9em}a{color:#12604b}
+</style>
+<main>
+<p class="muted">ESP32-C6 · local control</p>
+<h1>PetSafe button bridge</h1>
+<p>Press the existing button remotely. Each press toggles the flap’s operating mode.</p>
+<section id="login">
+<label for="token">Access token</label>
+<input id="token" type="password" autocomplete="off" spellcheck="false" maxlength="128">
+<button id="connect" type="button">Connect</button>
+<p class="muted">Use the token saved during firmware setup. It stays in this page’s memory.</p>
+</section>
+<section>
+<dl><dt>Connection</dt><dd id="connection">Not connected</dd><dt>Button output</dt><dd id="output">Unknown</dd><dt>Flap position</dt><dd>Not measured</dd></dl>
+<button id="press" type="button" disabled>Press PetSafe button</button>
+<p class="muted">One 200 ms press. Allow at least five seconds between presses. This does not select “open” or “closed.”</p>
+<p id="message" role="status" aria-live="polite">Connect to begin. No command is sent automatically.</p>
+</section>
+<p class="muted">The physical button still works. This version keeps Wi-Fi available; PIR wake and converter shutdown are deferred.</p>
+</main>
+<script src="/app.js" defer></script>
+</html>
