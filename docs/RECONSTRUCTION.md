@@ -1,6 +1,6 @@
 # Current circuit interpretation
 
-Schematic v0.9.46, 2026-10-15. This is the current interpretation, not a chronological log. The [previous narrative](history/cleanup_v0928/docs/RECONSTRUCTION.md) is archived; older requests there are superseded. Use [the checklist](FINISHING_CHECKLIST.html) for remaining questions. Oscilloscope work is deferred at the owner's request; prioritize schematic values, identities and package geometry.
+Schematic v0.9.50, 2026-10-16, on the reviewed owner A3 portrait layout. Use [the checklist](FINISHING_CHECKLIST.html) for remaining questions and the [baseline record](../evidence/owner_redraw_baseline_v0950.json) for drawing corrections. Oscilloscope work remains deferred; no measurements are pending.
 
 ## Power and references
 
@@ -26,11 +26,32 @@ J3 is pin1 PIR supply, pin2 raw signal to R38, pin3 GND. Empty U7.1/2/3 map to J
 
 Q9/J6/R35/R36/TP10 are DNP options in the PIC block. Q9's NPN symbol expresses a possible driver role; no fitted identity is claimed. J6.2/R36.1's onward role remains unknown.
 
+### R3 / R4 / C28: conditional sensing interpretation
+
+Original IMG_2436/IMG_2437 show both resistors marked **334 = 330 kohm**; R4's lower end visibly reaches PIC24/RB3. The model retains VSYS -> R3 -> H_BAT_SENSE -> R4 -> RB3, with C28 from H_BAT_SENSE to GND. The common R3.2/R4.1/C28.1 copper junction still lacks independent support (E11). The 10nF* C28 value remains an estimate.
+
+This is not a permanently grounded voltage divider. If firmware drives RB3 low, the modeled middle junction is approximately VSYS/2, while the PIC pin itself is held low. With the existing estimate, the junction time constant is (330k || 330k) x 10nF = 1.65 ms. If RB3 is high impedance, the modeled node instead tends toward VSYS through R3, ignoring input loading and clamps. The divider ratio alone therefore does not establish a safe half-supply ADC input. A GPIO-controlled RC or supply-sensing function is plausible; the actual method, thresholds and voltage handling are unverified (E09).
+
+Microchip's [PIC16F18855/18875 datasheet](https://ww1.microchip.com/downloads/en/DeviceDoc/40001802G.pdf), Table 1-2, gives RB3 GPIO, ANB3 ADC and comparator-input functions. Its ADC acquisition guidance recommends at most 10 kohm source impedance, and the analog input must stay within VSS/VDD. These capabilities and limits constrain the hypothesis; they do not identify this board's firmware. No resistor, capacitor estimate or connection was changed to make the circuit conventional.
+
 ## RF excitation and tuning
 
 Q8/3724A uses a SIL3724A N/P MOSFET candidate. Its centre B2/native5 ground and outer-drain join have evidence. B37 P-F = 1 ohm supports Q8.T2/native2 joining C6.1 on H_RF_VDD. B72/B73 rest gate-source readings are 0 V for the P channel and +6.3 V for the N channel; dynamic timing remains unmeasured. C6 is parallel with C5 across H_RF_VDD/GND. C5 is 470 uF / 16 V; C6 is unmeasured.
 
 **R5 is the 22-ohm supply feed from H_RF_VDD to U2/C7, now named U2_VCC.** B78 U2-C7 = 1.5 ohm, B80 C7-R5 upper = 4 ohm, B81 C6-R5 lower = 3.3 ohm, and B79 C7-C6 = 27 ohm support this placement. Contact contributions are unquantified; no extra resistor is invented. B76 U2 supply = 6.3 V and B77 U2-to-printed-VDD = +1.8 V reject the former direct VDD tie. The SN74LVC2G14 candidate has a recommended maximum supply of 5.5 V; TI lists C14R for this candidate. The 6.5-V absolute maximum is a stress limit, so 6.3 V being below it does not resolve the 5.5-V operating-range conflict. Fitted identity and suitability remain unresolved, without diagnosing a failure.
+
+Manufacturer candidate review, 2026-10-16: the original IMG_2431 marking remains consistent with C14R, but its photograph does not establish a maker logo. E03 is **open**, not a validated 6.3-V design. The search found no verified replacement that satisfies marking, package, pin arrangement and recommended voltage simultaneously.
+
+| Candidate | Supply and physical match | Assessment |
+| --- | --- | --- |
+| [TI SN74LVC2G14DBV](https://www.ti.com/lit/ds/symlink/sn74lvc2g14.pdf) | 1.65-5.5 V recommended; 6.5 V absolute maximum. DBV SOT-23-6, inputs 1/3, outputs 6/4, GND 2, supply 5. TI lists C14R. | Strongest marking/pin/package candidate; **6.3 V is outside recommended operation**. Absolute maximum does not establish suitability. |
+| [Nexperia 74HC2G14GV](https://assets.nexperia.com/documents/data-sheet/74HC_HCT2G14.pdf) | 2-6 V recommended; same six-pin functions, TSOP6/SOT457. Marking H14. | Closest higher-voltage logic alternative, but still below 6.3 V and its marking differs. Lower output-drive specification also requires circuit review. |
+| [Nexperia 74HCT2G14GV](https://assets.nexperia.com/documents/data-sheet/74HC_HCT2G14.pdf) | 4.5-5.5 V; same pin functions, marking T14. | Does not resolve either marking or voltage conflict; TTL thresholds differ. |
+| [onsemi NL27WZ14](https://www.onsemi.com/pdf/datasheet/nl27wz14-d.pdf) | 1.65-5.5 V recommended; six-pin dual Schmitt inverter, same supply/input/output pin functions. SC-88/TSOP-6 package options. | Functional/pin candidate only; does not resolve the supply-rating conflict or establish a C14R marking match. |
+
+No device substitution or new measurement is scheduled. A sharper complete U2 top marking and manufacturer logo would be the smallest useful additional identification evidence. Existing voltage readings remain observations; a multimeter cannot identify the exact logic family or voltage grade. Scope work stays deferred.
+
+The native drawing now shows **L101, the external 500-uH antenna winding**, between the existing ANT1/ANT2 solder pads (native TP105/TP106). L101 is excluded from the main-board BOM and PCB; it adds no short between the two copper nets. The owner-reported inductance is retained with unspecified test frequency/isolation. Pad footprints remain approximations, not certified drills or annular rings.
 
 Q8's joined output reaches ANT1 by photo-supported copper. B82 measured 4.5 ohm with the antenna fitted. This is compatible with the route but cannot independently distinguish contact resistance from the approximately 5-ohm antenna winding. R5's old output-to-ANT1 placement is withdrawn. ANT1 and ANT2 remain separate board nets. See the [bounded correction and evidence](../evidence/u2_r5_topology_correction_v0940.json).
 
@@ -44,11 +65,13 @@ U3.5/R22.2 is VREF; R22.1 is GND. U3.6 reaches R23.1; R23.2 joins C40.1 and R42.
 
 D3.L is GND, D3.R is VDD via V082 and D3.S reaches R42 at 1.2 ohm (model2/photo-selected end). Its rail association is resolved; its signal function and exact maker remain qualified. D2.R (photo upper-left) reaches C20 lower; D2.L reaches ANT2/R46 upper; D2.S reaches empty R46 lower. Diode readings support R -> S -> L junctions in circuit, without uniquely identifying the 4P device.
 
+D2 is drawn with the stock `Device:D_Dual_Series_KAC` **equivalent**, not a connector: anode R/native2 -> midpoint S/native3 -> cathode L/native1. This matches the reported 0.6-V R-to-S and S-to-L drops, 1.2-V R-to-L drop and reverse OL readings. It does not certify a BAV99, junction technology or manufacturer package numbering. The 4P marking alone is ambiguous; the previously considered marking-only PNP lead conflicts with this simple series-junction pattern, and the [4P-marked BAV3004W](https://www.diodes.com/datasheet/download/BAV3004W.pdf) is a two-terminal SOD123 device, not this three-pad package. Keep exact identity open without repeating the completed tests.
+
 C23.2 and R25.1 form a series junction still named H_RX_DETECT. It **continues through R25** to RX_STAGE_LINK/R48; it is not an unconnected detector output. R47.2 and C42.2 also join that stage-link node, with R47.1 at U3.1/R27 and C42.1 photo-supported GND. R47/C42 are DNP. Receiver transfer function, bias and candidate-device behavior remain to be checked; net names alone do not justify additional wires.
 
 ## Completion criteria
 
-The model and native drawing agree on 85 net partitions after the measured RX-1/RX-2 separations in v0.9.47. Native geometry has zero dangling wire ends or pinless wire fragments. Zero unassigned pads and the retained U6 pin4 NC do not certify all onward routes. Six stock power-source declarations resolve undriven-input checks, including the evidenced supply through R5. The retained U6/U6A output conflict and four receiver-open findings remain: U3.3 undriven plus RX_A_PLUS/C19_LOWER/C20_UPPER isolated labels. No ERC exclusion or new NC was introduced. R33 and its two assumed endpoints remain withdrawn. Five front capacitor outer pads (C11/C14/C29/C44/C47) join ANT2 using measured C11 continuity and visible shared copper. Physical-to-native pin mappings are unchanged; rear capacitor returns remain GND.
+The model and native drawing agree on 82 net partitions after the three owner-supported receiver joins in v0.9.48. Native geometry has zero dangling wire ends or pinless wire fragments. Zero unassigned pads and the retained U6 pin4 NC do not certify all onward routes. Six stock power-source declarations resolve undriven-input checks, including the evidenced supply through R5. The retained U6/U6A output conflict remains. The four receiver-open findings are resolved by reported physical joins: U3.3-VREF, C19.1-D2_C20 and C20.1-H_D3_SIGNAL. No ERC exclusion or new NC was introduced. R33 and its two assumed endpoints remain withdrawn. Five front capacitor outer pads (C11/C14/C29/C44/C47) join ANT2 using measured C11 continuity and visible shared copper. Physical-to-native pin mappings are unchanged; rear capacitor returns remain GND.
 
 Topology, device behavior, 44 ceramic values, LED footprint/pad geometry and remaining geometry are tracked separately. A routed PCB, actual layer stack, firmware and powered validation are separate milestones. [Recorded measurements](MEASUREMENTS.md) are user evidence; [library choices](LIBRARIES_AND_ALTERNATIVES.md) retain candidate qualifications.
 
@@ -62,6 +85,8 @@ Receiver input correction (v0.9.46): C20 lower to U3 pin 3 is 1.023 Mohm, to TP7
 
 Round2 receiver-path review identified the missing external signal/DC return. Completed RX-1/RX-2 now also withdraw C19-to-U3.3 and C20-upper-to-GND. The [existing photo guide](FINISHING_MEASUREMENTS.html) retains the completed results. U3.3-to-TP7 (RX-3) is unmeasured and deferred; no reading is pending. No resistor is inferred by subtracting fitted readings. U3.5/VREF remains settled.
 
-RX-1/RX-2 follow-up (v0.9.47): C19 lower-to-U3.3 = 1.023 Mohm; C20 upper-to-GND = 271 kohm; probes = 1 ohm. Both inherited joins are withdrawn. C19_LOWER, C20_UPPER and RX_A_PLUS (U3.3 only) are explicit unresolved onward endpoints, not intentional NCs. RX-3 remains deferred; no replacement topology is inferred and no owner action is requested.
+RX-1/RX-2 follow-up (v0.9.47): C19 lower-to-U3.3 = 1.023 Mohm; C20 upper-to-GND = 271 kohm; probes = 1 ohm. Both inherited joins are withdrawn. At that revision, C19_LOWER, C20_UPPER and RX_A_PLUS (U3.3 only) were unresolved onward endpoints, not intentional NCs. The v0.9.48 owner reports below resolve them; RX-3 remains deferred and unmeasured.
 
-Autonomous finalization from merged `ef850a4`: the original-photo pass recovers independent ground support for R10.2 via V116 and R2.1/C4.1 through U1 middle-left/native2. No electrical memberships change. Each receiver terminal and each remaining ground group now has an explicit physical stopping point in the [existing evidence audit](TOPOLOGY_AUDIT.md). At DC, C23 opens the R48/R25 branch; feedback through R26 does not establish U3.3's missing external bias. The existing R28 (1 MΩ)/R29 (15 kΩ) path is a conditional return for D2_C20, not a recovered wire to U3.3. All 44 capacitor estimates and five ERC findings remain. **Owner action: none.**
+Historical autonomous finalization from merged `ef850a4`, before the v0.9.48 owner reports: the original-photo pass recovers independent ground support for R10.2 via V116 and R2.1/C4.1 through U1 middle-left/native2. No electrical memberships change. Each receiver terminal and each remaining ground group now has an explicit physical stopping point in the [existing evidence audit](TOPOLOGY_AUDIT.md). At DC, C23 opens the R48/R25 branch; feedback through R26 does not establish U3.3's missing external bias. The existing R28 (1 MΩ)/R29 (15 kΩ) path is a conditional return for D2_C20, not a recovered wire to U3.3. All 44 capacitor estimates and five ERC findings remain. **Owner action: none.**
+
+Receiver destinations (v0.9.48): the owner identifies U3 pin3 as VREF, draws C20 upper to R42 lower/D3.S, and explicitly confirms C19 lower joins C20 lower/R28 right/D2.R. C19 upper remains R29 right/GND. These are [owner reports and an annotated photograph](../evidence/receiver_connections_v0948.json), not new numeric meter results. All earlier high-resistance exclusions remain valid. C19 shunts the shared lower junction to GND; C20 couples it to R42/D3, so the two are not parallel. All 44 estimates remain unchanged. The four receiver ERC findings disappear through these joins; the intentional U6A conflict remains. Other named E11 copper gaps and device behavior remain qualified. No readings are pending.

@@ -1,8 +1,8 @@
 {
-  "revision": "v0.9.47",
+  "revision": "v0.9.51",
   "result": "PASS",
-  "schematic_sha256": "52e393490645a837379de03a0b6d2d443036b65afa6e206d2ada907406617e41",
-  "physical_net_partitions": 85,
+  "schematic_sha256": "00a4ccd656a728448f0cc6ead8e3618fee060c0c8587666846d881db7f4bbd77",
+  "physical_net_partitions": 82,
   "pad_membership_baseline": "ecd683d",
   "documented_pad_moves": "evidence/antenna_outer_rail_correction_v0937.json",
   "documented_net_merge": "evidence/ra0_tp6_connection_v0938.json",
@@ -11,6 +11,7 @@
   "documented_r39_move": "evidence/r39_endpoint_correction_v0945.json",
   "documented_receiver_input_split": "evidence/receiver_input_correction_v0946.json",
   "documented_receiver_capacitor_separations": "evidence/receiver_input_correction_v0947.json",
+  "documented_receiver_destinations": "evidence/receiver_connections_v0948.json",
   "withdrawn_catalog_entries": [
     "R33"
   ],
@@ -20,17 +21,11 @@
   ],
   "dangling_wire_ends": 0,
   "wire_islands_without_pins": 0,
-  "native_wire_segments": 495,
+  "native_wire_segments": 436,
   "unassigned_model_pads": 0,
-  "isolated_modeled_nets": [
-    "RX_A_PLUS",
-    "C19_LOWER",
-    "C20_UPPER"
-  ],
+  "isolated_modeled_nets": [],
   "erc": {
-    "pin_to_pin": 1,
-    "pin_not_driven": 1,
-    "isolated_pin_label": 3
+    "pin_to_pin": 1
   },
   "erc_exclusions": [],
   "unchanged_default_ignored_checks": [
@@ -44,8 +39,8 @@
       "reference": "#FLG01",
       "net": "GND",
       "position_mm": [
-        91.44,
-        81.28
+        74.93,
+        69.85
       ],
       "basis": "BATTERY(-) provides the return. This power flag declares an external source, not a new copper link."
     },
@@ -53,8 +48,8 @@
       "reference": "#FLG02",
       "net": "H_LDO_IN",
       "position_mm": [
-        53.34,
-        53.34
+        36.83,
+        41.91
       ],
       "basis": "VSYS reaches U1 VIN through L2. A passive inductor does not propagate KiCad power-output pin type."
     },
@@ -62,8 +57,8 @@
       "reference": "#FLG03",
       "net": "VSYS",
       "position_mm": [
-        444.5,
-        41.91
+        73.66,
+        109.22
       ],
       "basis": "User confirmed Q1.L -> U5 pin4 and L1/L2 supply sides. Q1 passive terminals do not declare a power source to ERC."
     },
@@ -71,8 +66,8 @@
       "reference": "#FLG04",
       "net": "H_AUX_IN",
       "position_mm": [
-        307.34,
-        302.26
+        27.94,
+        196.85
       ],
       "basis": "VDD from U1 reaches U6 VIN through R37. Passive resistor output requires a power declaration."
     },
@@ -80,8 +75,8 @@
       "reference": "#FLG05",
       "net": "H_RX_VDD",
       "position_mm": [
-        563.88,
-        172.72
+        386.08,
+        194.31
       ],
       "basis": "Modeled switched supply VDD -> Q7 -> R20 -> U3 pin8. Flag declares intended power distribution only; Q7 identity/switching and rail voltage remain E08/E09 open."
     },
@@ -89,8 +84,8 @@
       "reference": "#FLG06",
       "net": "U2_VCC",
       "position_mm": [
-        190.5,
-        166.37
+        265.43,
+        137.16
       ],
       "basis": "B78-B81 support H_RF_VDD -> passive R5 (22 ohm) -> U2/C7. B76 measured 6.3 V here. Passive resistor does not propagate power-output pin type. This flag does not approve candidate U2 voltage compatibility."
     }

@@ -1,12 +1,12 @@
 {
   "date": "2026-10-15",
-  "schematic_revision": "v0.9.47",
+  "schematic_revision": "v0.9.51",
   "status": "APPLIED_ESTIMATED_VALUES_NOT_ORIGINAL_BOM",
   "owner_direction": "Provide a best engineering guess for every capacitor, using function, primary references, size and RF frequency. Keep all components fitted and defer scope work. Explicitly distinguish choices for a new design from recovered factory values. Owner subsequently measured the antenna as 500 uH and explicitly requests applying all estimates to the schematic and opening an architect-review PR.",
   "electrical_change": true,
   "individual_values_closed": [],
-  "source_model_sha256": "581cd818a3e5f44c4e5dd84d4940d774cd5c9e5bf1c30170814e4081fd054370",
-  "source_schematic_sha256": "52e393490645a837379de03a0b6d2d443036b65afa6e206d2ada907406617e41",
+  "source_model_sha256": "b9e871facc15fdfcfaaeeefa54be8ad46200aac4acaab73b4f098a947281ea5d",
+  "source_schematic_sha256": "00a4ccd656a728448f0cc6ead8e3618fee060c0c8587666846d881db7f4bbd77",
   "counts": {
     "unknown_individual_values": 44,
     "numeric_candidates": 44,
@@ -497,16 +497,16 @@
     {
       "ref": "C19",
       "category": "SIGNAL_CANDIDATE",
-      "function": "Detector node shunt",
+      "function": "Shunt from the D2/C20/R28 junction to GND; exact signal role unverified",
       "proposal": "100 pF",
-      "basis": "100 pF plus C20=100 pF gives a deliberately small 200-pF detector load. A simple 1-Mohm discharge approximation gives 200 us, versus a 7.45-us RF period.",
-      "remaining": "Very low confidence: diode conduction, input impedance and signal modulation determine the real envelope response. Equal division across two parallel capacitors is not identifiable from function. Rating is a conservative candidate for an antenna-coupled node.",
+      "basis": "Retained 100-pF engineering starting estimate for the D2_C20-to-GND shunt. The supported wiring does not establish its factory value or a verified detector time constant.",
+      "remaining": "Very low confidence: original capacitance, diode loading, node impedance and signal function remain unverified. The proposed 100-V rating is retained pending qualification of antenna-coupled peak stress.",
       "sources": [
         "SGM"
       ],
       "nets": [
-        "GND",
-        "RX_A_PLUS"
+        "D2_C20",
+        "GND"
       ],
       "footprint": "Capacitor_SMD:C_0805_2012Metric",
       "original_value_status": "UNKNOWN",
@@ -515,24 +515,37 @@
       "voltage_rating_v": 100,
       "dielectric": "C0G/NP0",
       "tolerance_percent": 5,
-      "confidence": "Very low; detector response and split unknown",
+      "confidence": "Very low; original value and signal role unverified",
       "rating_status": "Proposed part rating; original rating unknown; qualify peak voltage and effective capacitance before use.",
       "native_value": "100pF*",
-      "application_revision": "v0.9.44"
+      "application_revision": "v0.9.44",
+      "historical_rationale": {
+        "status": "SUPERSEDED - not current electrical justification",
+        "proposal_revision": "v0.9.44",
+        "preserved_from_commit": "b399a7e5cf3f5eec34b40ddf321f166cc78ccbce",
+        "function": "Detector node shunt",
+        "nets": [
+          "GND",
+          "RX_A_PLUS"
+        ],
+        "basis": "100 pF plus C20=100 pF gives a deliberately small 200-pF detector load. A simple 1-Mohm discharge approximation gives 200 us, versus a 7.45-us RF period.",
+        "remaining": "Very low confidence: diode conduction, input impedance and signal modulation determine the real envelope response. Equal division across two parallel capacitors is not identifiable from function. Rating is a conservative candidate for an antenna-coupled node.",
+        "confidence": "Very low; detector response and split unknown"
+      }
     },
     {
       "ref": "C20",
       "category": "SIGNAL_CANDIDATE",
-      "function": "Detector node shunt",
+      "function": "Coupling between D2_C20 and the R42/D3 junction (H_D3_SIGNAL)",
       "proposal": "100 pF",
-      "basis": "100 pF plus C19=100 pF gives 200 pF at RX_A_PLUS. The larger 1206 body can accommodate voltage/low-loss needs without implying a large capacitance.",
-      "remaining": "Very low confidence: nonlinear diode path and a 1-Mohm bias path do not uniquely determine the needed envelope capacitance. Equal division is arbitrary; qualify antenna-coupled voltage.",
+      "basis": "Retained 100-pF engineering starting estimate for coupling D2_C20 to H_D3_SIGNAL. The supported wiring does not establish its factory value, transfer function or operating role.",
+      "remaining": "Very low confidence: original capacitance, impedance on both sides, diode conduction and PIC interaction remain unverified. The proposed 100-V rating is retained pending qualification of peak differential stress.",
       "sources": [
         "SGM"
       ],
       "nets": [
-        "GND",
-        "RX_A_PLUS"
+        "H_D3_SIGNAL",
+        "D2_C20"
       ],
       "footprint": "Capacitor_SMD:C_1206_3216Metric",
       "original_value_status": "UNKNOWN",
@@ -541,10 +554,24 @@
       "voltage_rating_v": 100,
       "dielectric": "C0G/NP0",
       "tolerance_percent": 5,
-      "confidence": "Very low; detector response and split unknown",
+      "confidence": "Very low; original value and coupling behavior unverified",
       "rating_status": "Proposed part rating; original rating unknown; qualify peak voltage and effective capacitance before use.",
       "native_value": "100pF*",
-      "application_revision": "v0.9.44"
+      "application_revision": "v0.9.44",
+      "historical_rationale": {
+        "status": "SUPERSEDED - not current electrical justification",
+        "proposal_revision": "v0.9.44",
+        "preserved_from_commit": "b399a7e5cf3f5eec34b40ddf321f166cc78ccbce",
+        "function": "Detector node shunt",
+        "nets": [
+          "GND",
+          "RX_A_PLUS"
+        ],
+        "basis": "100 pF plus C19=100 pF gives 200 pF at RX_A_PLUS. The larger 1206 body can accommodate voltage/low-loss needs without implying a large capacitance.",
+        "remaining": "Very low confidence: nonlinear diode path and a 1-Mohm bias path do not uniquely determine the needed envelope capacitance. Equal division is arbitrary; qualify antenna-coupled voltage.",
+        "confidence": "Very low; detector response and split unknown",
+        "prior_pad_interpretation": "Lower/model2 joins D2.R and R28.2 by 1/1.5-ohm readings; 1.023 Mohm to U3.3 rejects the old parallel/input-node join. Upper/model1 ground remains inherited and unverified. 100pF* retained; old combined-200pF rationale is superseded."
+      }
     },
     {
       "ref": "C21",

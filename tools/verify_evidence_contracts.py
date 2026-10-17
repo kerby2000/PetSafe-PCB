@@ -305,14 +305,11 @@ assert not completed_ids&{r['id'] for r in queue['tests']}, 'Do not repeat compl
 for ref in ['U4','R11','R14','R15','R16','R37','R39','Q1','U2','Q8','C5','LED1','R18','R19','Q7','TP3','TP104','U106','J3','R43','TP14','R42','R44','TP4','TP103','R21','R22','R23','R48']:
  expected=next(c for c in placements['components'] if c['reference']==ref)['properties']['ViaEvidence']
  assert xml.findtext(f'./components/comp[@ref="{ref}"]/fields/field[@name="ViaEvidence"]')==expected,ref
-status_pdf=PdfReader(R/'output/pdf/PetSafe_completion_status.pdf')
-# Status is a living report: validate content, not the historical two-page layout.
-status_text=' '.join('\n'.join(p.extract_text() for p in status_pdf.pages).split())
-assert 'Remaining schematic work' in status_text
-assert 'Documented reconstruction limitations' in status_text and 'E06 -' in status_text
-assert 'physical completeness unproved' in status_text
-assert 'unsupported R33 withdrawn' in status_text and 'dangling wire ends' in status_text
-pdfs={'output/pdf/PetSafe_single_sheet.pdf':1,'output/pdf/PetSafe_completion_status.pdf':len(status_pdf.pages),'output/pdf/PetSafe_PIC_GPIO_pin_map.pdf':1,'output/pdf/PetSafe_via_pair_next_check.pdf':1}
+checklist=(R/'docs/FINISHING_CHECKLIST.html').read_text(encoding='utf-8')
+assert 'Documented reconstruction limitations' in checklist and 'E06 -' in checklist
+assert 'dangling wire ends' in checklist and __import__('html').escape(queue['instructions']) in checklist
+assert not (R/'output/pdf/PetSafe_completion_status.pdf').exists()
+pdfs={'output/pdf/PetSafe_single_sheet.pdf':1,'output/pdf/PetSafe_PIC_GPIO_pin_map.pdf':1,'output/pdf/PetSafe_via_pair_next_check.pdf':1}
 for path,pages in pdfs.items():assert len(PdfReader(R/path).pages)==pages
 assert net('Q7.R')==net('R19.2')==net('VDD.1')
 assert net('R18.2')==net('R19.1')==net('Q7.L')
@@ -331,7 +328,9 @@ d3=read('evidence/d3_measurement_20261009.json')
 assert net('D3.R')==net('VDD.1') and net('D3.L')==net('GND.1')
 assert net('D3.R')!=net('U3.8'), 'D3 measurement does not establish a whole receiver-rail merge'
 assert net('D3.S')==net('R42.2') # KiCad may auto-name a continuous local wire without a label.
-assert next(n for n in m['nets'] if n['net']=='H_D3_SIGNAL')['endpoints']==['D3.S','R42.2']
+assert next(n for n in m['nets'] if n['net']=='H_D3_SIGNAL')['endpoints']==['C20.1','D3.S','R42.2']
+assert net('C19.1')==net('C20.2')==net('R28.2')
+assert net('U3.3')==net('VREF.1') and net('C19.1')!=net('U3.3')
 assert d3['measurements'][2]['resistance_ohms']==1.2
 assert sha(d3['photo'])==d3['photo_sha256']
 d2=read('evidence/d2_diode_20261009.json')

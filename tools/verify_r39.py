@@ -1,7 +1,7 @@
 """Bound the v0.9.45 R39 correction by physical memberships, not net counts."""
 from pathlib import Path
 import json, hashlib, subprocess, xml.etree.ElementTree as ET
-from inventory_contracts import with_receiver_input_split, verify_receiver_open_erc
+from inventory_contracts import with_receiver_input_split, verify_receiver_open_erc, with_current_capacitor_rationale, with_reviewed_diode_symbols
 R=Path(__file__).resolve().parents[1]
 def read(path):return json.loads((R/path).read_text(encoding='utf-8'))
 record=read('evidence/r39_endpoint_correction_v0945.json')
@@ -16,7 +16,8 @@ assert {n['net']:sorted(n['endpoints']) for n in m['nets']}==expected, 'Unregist
 assert m['native_pin_crosswalk']==old['native_pin_crosswalk']==read('evidence/pin_crosswalk.json')
 def inventory(model):
     return {c['ref']:{k:c.get(k) for k in ['value','proposed_value','value_evidence','value_proposal','population','pins','library_symbol','footprint']} for c in model['components']}
-assert inventory(m)==inventory(old),'Value, population, device symbol or physical inventory changed'
+expected_inventory=with_reviewed_diode_symbols(with_current_capacitor_rationale(inventory(old)))
+assert inventory(m)==expected_inventory,'Only reviewed representation/rationale metadata may change; values/population/pad mapping stay fixed'
 assert m['intentional_no_connects']==old['intentional_no_connects']
 xml=ET.parse(R/'output/PetSafe_netlist.xml')
 members={n.attrib['ref']+'.'+n.attrib['pin']:net.attrib['name'] for net in xml.findall('./nets/net') for n in net.findall('node')}
@@ -33,6 +34,6 @@ assert hashlib.sha256((R/record['photo']).read_bytes()).hexdigest()==record['pho
 def erc_types(data):return sorted(v['type'] for s in data['sheets'] for v in s['violations'])
 assert erc_types(json.loads(baseline('output/erc.json')))==['pin_to_pin']
 verify_receiver_open_erc(read('output/erc.json'))
-result=dict(result='PASS',revision=m['revision'],baseline_commit=record['baseline_commit'],historical_correction_commit='891d69c',moved_endpoint='R39.1',before='PIR_BASE',after='H_PIR_SIG',all_other_normalized_physical_partitions_at_correction='IDENTICAL',subsequent_bounded_correction='evidence/receiver_input_correction_v0946.json',native_endpoint_checks='PASS',values_population_symbols_crosswalk='UNCHANGED',photo_sha256='MATCH',erc_types='Original U6/U106 conflict retained; four specific receiver-open findings checked',net_count_before=len(old['nets']),net_count_at_r39_correction=len(corrected['nets']),live_net_count=len(m['nets']))
+result=dict(result='PASS',revision=m['revision'],baseline_commit=record['baseline_commit'],historical_correction_commit='891d69c',moved_endpoint='R39.1',before='PIR_BASE',after='H_PIR_SIG',all_other_normalized_physical_partitions_at_correction='IDENTICAL',subsequent_bounded_correction='evidence/receiver_input_correction_v0946.json',native_endpoint_checks='PASS',values_population_symbols_crosswalk='Values/population/crosswalk unchanged; D2 measured equivalent and D1/D3 candidate symbol metadata explicitly reviewed',photo_sha256='MATCH',erc_types='Original U6/U106 conflict retained; receiver destinations checked by bounded v0.9.48 correction',net_count_before=len(old['nets']),net_count_at_r39_correction=len(corrected['nets']),live_net_count=len(m['nets']))
 (R/'evidence/r39_correction_validation.json').write_text(json.dumps(result,indent=2)+'\n',encoding='utf-8')
 print('PASS: historical R39-only correction and live endpoints; subsequent receiver split explicitly checked; values/crosswalk/photo/ERC retained.')

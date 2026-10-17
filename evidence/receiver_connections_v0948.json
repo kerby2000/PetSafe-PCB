@@ -1,0 +1,178 @@
+{
+  "date": "2026-10-15",
+  "revision": "v0.9.48",
+  "baseline_commit": "034b6cea0cf5a019cbd589007edfcaf4beab44e6",
+  "source_photo": "evidence/owner_receiver_connections_20261015.png",
+  "photo_sha256": "a8a92a62a8bf08ecbc7aa2d36b6925e7b73ad3f662085e57092de57cfda0ff6b",
+  "evidence_kind": "Owner connection reports and annotated photograph; no new resistance reading",
+  "owner_reports": [
+    "U3. 3 is connected to Vref.",
+    "Lower C19 connects to R28 right pin, upper C19 connects to the R29 right pin",
+    "C19 lower and C20 lower are connected as well"
+  ],
+  "photo_interpretation": "Red line from C20 upper metal end follows the R42 lower/model2 side to the D3.S junction; R42 is the cropped vertical 122 resistor at the upper-right, distinct from R25 below C23. Pin3 is the third lower U3 contact from the pin1 dot. C19 upper/model2-to-R29 right/model2 and TP7-to-R28 left/model1 corroborate existing routes.",
+  "confirmed_pairs": [
+    [
+      "U3.3",
+      "VREF.1"
+    ],
+    [
+      "C20.1",
+      "R42.2"
+    ],
+    [
+      "C19.1",
+      "R28.2"
+    ],
+    [
+      "C19.1",
+      "C20.2"
+    ],
+    [
+      "C19.2",
+      "R29.2"
+    ],
+    [
+      "TP7.1",
+      "R28.1"
+    ]
+  ],
+  "changes": [
+    {
+      "endpoint": "U3.3",
+      "old_net": "RX_A_PLUS",
+      "new_net": "VREF"
+    },
+    {
+      "endpoint": "C20.1",
+      "old_net": "C20_UPPER",
+      "new_net": "H_D3_SIGNAL"
+    },
+    {
+      "endpoint": "C19.1",
+      "old_net": "C19_LOWER",
+      "new_net": "D2_C20"
+    }
+  ],
+  "before": {
+    "C19_LOWER": [
+      "C19.1"
+    ],
+    "C20_UPPER": [
+      "C20.1"
+    ],
+    "D2_C20": [
+      "C20.2",
+      "D2.R",
+      "R28.2"
+    ],
+    "H_D3_SIGNAL": [
+      "D3.S",
+      "R42.2"
+    ],
+    "RX_A_PLUS": [
+      "U3.3"
+    ],
+    "VREF": [
+      "C18.1",
+      "C39.1",
+      "R21.2",
+      "R22.2",
+      "U3.5",
+      "U4.4",
+      "VREF.1"
+    ]
+  },
+  "after": {
+    "D2_C20": [
+      "C19.1",
+      "C20.2",
+      "D2.R",
+      "R28.2"
+    ],
+    "H_D3_SIGNAL": [
+      "C20.1",
+      "D3.S",
+      "R42.2"
+    ],
+    "VREF": [
+      "C18.1",
+      "C39.1",
+      "R21.2",
+      "R22.2",
+      "U3.3",
+      "U3.5",
+      "U4.4",
+      "VREF.1"
+    ]
+  },
+  "native_removed_labels": [
+    {
+      "net": "RX_A_PLUS",
+      "position": [
+        360.68,
+        198.12
+      ]
+    },
+    {
+      "net": "C20_UPPER",
+      "position": [
+        440.69,
+        237.49
+      ]
+    },
+    {
+      "net": "C19_LOWER",
+      "position": [
+        445.77,
+        250.19
+      ]
+    }
+  ],
+  "native_added_labels": [
+    {
+      "net": "VREF",
+      "position": [
+        360.68,
+        198.12
+      ]
+    },
+    {
+      "net": "H_D3_SIGNAL",
+      "position": [
+        440.69,
+        237.49
+      ]
+    },
+    {
+      "net": "H_D3_SIGNAL",
+      "position": [
+        515.62,
+        237.49
+      ]
+    }
+  ],
+  "preserved_source_sha256": {
+    "evidence/receiver_input_results_20261015.json": "c56eea0475af3f5dc8217cfbc65f997590c9471b61edc735f424f6b6689331f9",
+    "evidence/receiver_input_correction_v0946.json": "720bca291c757144acfd8e657a8f18cb6d67b00aa2df21a4392bb4b4e8811e98",
+    "evidence/receiver_input_correction_v0947.json": "0dadbcee36b57b736a5d86ef9e1b90a2cfda618d10a6cac1cf5a7782f0626986",
+    "evidence/receiver_capacitance_results_20261015.json": "7780efc8c82c1e81a2ce076e440f0dd96b2b53f0a9cd8c231c588f812a70fd3f",
+    "evidence/capacitor_application_v0944.json": "b5adde10620e78445734b50203338e569ecf5214a31b231ddc30dc4eb4ae7211"
+  },
+  "new_measurements": [],
+  "pending_measurements": [],
+  "rx3_status": "Still deferred and unmeasured; no new request",
+  "remaining": "Device identities/behavior, values and the other specifically listed E11 copper gaps remain qualified. These three receiver terminals now have reported destinations.",
+  "native_added_wire_segments": [
+    [
+      [
+        445.77,
+        245.11
+      ],
+      [
+        445.77,
+        250.19
+      ]
+    ]
+  ]
+}

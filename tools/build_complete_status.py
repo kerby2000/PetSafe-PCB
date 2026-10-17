@@ -1,13 +1,8 @@
-"""Current board-wide completion picture; native connectivity is not proof of hardware."""
+"""Refresh status/GPIO data for the HTML report; no duplicate completion PDF."""
 from pathlib import Path
 from collections import Counter
 import json,csv
 from current_state import current_state
-from xml.sax.saxutils import escape
-from reportlab.platypus import SimpleDocTemplate,Paragraph,Spacer,Table,TableStyle,PageBreak,KeepTogether
-from reportlab.lib.styles import getSampleStyleSheet,ParagraphStyle
-from reportlab.lib.colors import HexColor,white
-from reportlab.lib.pagesizes import A4
 
 R=Path(__file__).resolve().parents[1]
 def read(p):return json.loads((R/p).read_text())
@@ -41,52 +36,4 @@ save('evidence/pic_gpio_status.json',dict(revision=m['revision'],pins=pins,open_
 with (R/'evidence/pic_gpio_status.csv').open('w',newline='',encoding='utf-8') as f:
     w=csv.DictWriter(f,fieldnames=list(pins[0]));w.writeheader();w.writerows(pins)
 
-styles=getSampleStyleSheet();ink=HexColor('#183F3B');teal=HexColor('#007D70');amber=HexColor('#AD512E')
-styles.add(ParagraphStyle(name='TitlePS',fontName='Helvetica-Bold',fontSize=24,leading=28,textColor=ink,spaceAfter=9))
-styles.add(ParagraphStyle(name='BodyPS',fontName='Helvetica',fontSize=9,leading=12,textColor=ink,spaceAfter=6))
-styles.add(ParagraphStyle(name='SmallPS',fontName='Helvetica',fontSize=8,leading=10.5,textColor=ink))
-styles.add(ParagraphStyle(name='HeadPS',fontName='Helvetica-Bold',fontSize=12,leading=15,textColor=teal,spaceBefore=8,spaceAfter=6))
-styles.add(ParagraphStyle(name='TableHeadPS',fontName='Helvetica-Bold',fontSize=8,leading=10,textColor=white))
-def P(s,style='BodyPS'):return Paragraph(s,styles[style])
-def table(rows,widths):
-    data=[[P(escape(str(x)),'TableHeadPS' if i==0 else 'SmallPS') for x in row] for i,row in enumerate(rows)]
-    t=Table(data,colWidths=widths,repeatRows=1,hAlign='LEFT')
-    t.setStyle(TableStyle([('BACKGROUND',(0,0),(-1,0),ink),('ROWBACKGROUNDS',(0,1),(-1,-1),[white,HexColor('#EDF3EF')]),('VALIGN',(0,0),(-1,-1),'TOP'),('LEFTPADDING',(0,0),(-1,-1),7),('RIGHTPADDING',(0,0),(-1,-1),7),('TOPPADDING',(0,0),(-1,-1),4),('BOTTOMPADDING',(0,0),(-1,-1),4),('LINEBELOW',(0,0),(-1,-1),.35,HexColor('#CEDCD5'))]))
-    return t
-out=R/'output/pdf/PetSafe_completion_status.pdf'
-doc=SimpleDocTemplate(str(out),pagesize=A4,rightMargin=32,leftMargin=32,topMargin=30,bottomMargin=32,title=f'PetSafe {m["revision"]} - complete schematic status',author='PetSafe PCB reverse-engineering project')
-W=A4[0]-64
-audit=read('evidence/finalization_audit.json')
-story=[P('Remaining schematic work','TitlePS'),P(f'PetSafe 100-1339 | {m["revision"]} | {status["date"]}'),
-P(f'<b>{len(status["items"])} active issues.</b> {escape(queue["instructions"])} Q3 stays fitted. Completed steps are not new bench requests.'),
-table([['Drawing / connectivity','Remaining data','ERC'],[f'{len(fitted)} unassigned fitted pads; {len(audit["isolated_modeled_nets"])} isolated receiver nodes; {len(gpios)} open PIC pads; {audit["dangling_wire_ends"]} dangling wire ends. {len(m["nets"])} native/model net partitions match.',f'{len(status["unknown_ceramic_values"])} ceramic values; LED1 footprint blank. TP11/TP17 hidden-layer limit retained; unsupported R33 withdrawn.',f'{status["erc_total"]} findings: 1 retained U6/U6A conflict; U3.3 undriven and 3 isolated receiver labels. No receiver NC flags.']],[W/3]*3),
-P('Audit boundary','HeadPS'),P('Native wire geometry, library definitions, all catalog pad assignments and existing evidence were checked. Zero open pads does not establish hidden copper or functional behavior. U6A is DNP; its regulator symbol and visible conflict remain by user choice. B59 supports the RA0-TP6 net merge. No new NC markers or ERC exclusions.'),
-P('Order of work','HeadPS')]
-for group in status['finish_plan']:
-    story.append(P('<b>'+escape(group['title'])+':</b> '+escape(group['summary'])+' '+escape(group['next_action'])))
-story.append(PageBreak())
-for group in status['finish_plan']:
-    story.append(P(escape(group['title']),'TitlePS'))
-    for i in status['items']:
-        if i['id'] not in group['issues']:continue
-        story.append(KeepTogether([P(escape(i['id']+' - '+i['area']),'HeadPS'),P('<b>Established:</b> '+escape(i['known'])),P('<b>Remaining:</b> '+escape(i['unknown'])),P('<b>Next:</b> '+escape(i['next_action'])),P('<b>Close when:</b> '+escape(i['closed_when']))]))
-    if 'V01' in group['issues']:
-        story.extend([P('All unrecovered ceramic values','HeadPS'),P(escape(', '.join(status['unknown_ceramic_values'])))])
-    story.append(PageBreak())
-story.append(P('Documented reconstruction limitations','TitlePS'))
-for item in status['reconstruction_limitations']:
-    story.extend([P(escape(item['id']+' - '+item['area']),'HeadPS'),
-        P('<b>Disposition:</b> '+escape(item['disposition'])),P(escape(item['known'])),
-        P('<b>Unproved:</b> '+escape(item['unknown'])),P('<b>Next:</b> '+escape(item['next_action'])),
-        P('<b>Reopen if:</b> '+escape(item['reopen_when'])),P(escape(item['evidence']))])
-story.append(PageBreak())
-story.append(P('PCB reproduction requirements','TitlePS'))
-for row in read('evidence/remaining_work.json')['reproduction_requirements']:
-    story.append(KeepTogether([P(escape(row['item']),'HeadPS'),P(escape(row['remaining'])),P('<b>Agent:</b> '+escape(row['agent_work'])),P('<b>Owner input:</b> '+escape(row['owner_input']))]))
-story.append(PageBreak())
-story.extend([P('Scope and sources','TitlePS'),P(escape(read('evidence/remaining_work.json')['scope_note'])),P(escape(read('evidence/remaining_work.json')['accepted_option_limitations'])),P('All previous issue dispositions: evidence/finalization_review_v0931.json. Native geometry and uncertainty coverage: evidence/finalization_audit.json. Current register: evidence/remaining_work.json. Archived observations and old checklists: docs/history/README.md.'),P('Power-source flags describe supply paths through existing passive components; they do not prove voltage or transistor operation. Installed KiCad 10 libraries and project symbols match the embedded pin/graphic definitions. GUI library reload has not been verified.'),P('Reference rails','HeadPS'),table([['Rail','Existing modeled path']]+[[r['name'],r['path']] for r in status['rails']],[75,W-75])])
-
-def footer(c,d):
-    c.setFillColor(ink);c.setFont('Helvetica',8);c.drawString(32,17,'PetSafe | Evidence-qualified reconstruction | '+m['revision']);c.drawRightString(A4[0]-32,17,str(d.page))
-doc.build(story,onFirstPage=footer,onLaterPages=footer)
-print(out)
+print("Status and GPIO data refreshed; HTML checklist is the current report.")

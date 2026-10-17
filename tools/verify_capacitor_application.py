@@ -16,7 +16,10 @@ def inspect(path,changed):
    props={a[1]:a[2] for a in item if tag(a)=='property'}
    ref=props['Reference'];symbols.setdefault(ref,[]).append(props)
    invariants.append(sx.dumps([a for a in item if tag(a)!='property']))
-   if ref not in changed:unchanged.append((ref,one(item,'unit')[1],props['Value'],props['Footprint']))
+   # New ground signs and the explicitly external winding are not changes to
+   # the frozen board-value inventory; their exact types/endpoints are audited.
+   representation_addition=(ref.startswith('#PWR') and one(item,'lib_id')[1]=='power:GND') or (ref=='L101' and one(item,'lib_id')[1]=='Device:L' and props['Value']=='500uH' and str(one(item,'in_bom')[1])=='no' and str(one(item,'on_board')[1])=='no')
+   if ref not in changed and not representation_addition:unchanged.append((ref,one(item,'unit')[1],props['Value'],props['Footprint']))
   elif t in {'lib_symbols','wire','junction','label','no_connect','polyline','bus','bus_entry','global_label','hierarchical_label','sheet'}:
    invariants.append(sx.dumps(item))
  return dict(geometry_and_library_sha256=sha('\n'.join(sorted(invariants)).encode()),unchanged_values_sha256=sha(json.dumps(sorted(unchanged)).encode())),symbols
@@ -30,17 +33,41 @@ def matches_text_digest(data, expected):
  lf=data.replace(b'\r\n', b'\n')
  return expected in {sha(lf), sha(lf.replace(b'\n', b'\r\n'))}
 
+def verify_receiver_capacitor_metadata(proposal, model):
+ """Current rationale must describe the supported terminals, not the old input net."""
+ caps={c['ref']:c for c in proposal['components']}
+ parts={c['ref']:c for c in model['components']}
+ nets={ep:n['net'] for n in model['nets'] for ep in n['endpoints']}
+ expected={'C19':['D2_C20','GND'],'C20':['H_D3_SIGNAL','D2_C20']}
+ for ref,terminals in expected.items():
+  c=caps[ref]
+  assert c['nets']==[nets[ref+'.'+str(pin)] for pin in (1,2)]==terminals,ref
+  assert c['proposal']=='100 pF' and c['native_value']=='100pF*'
+  active=' '.join(c[k] for k in ['function','basis','remaining','confidence']).lower()
+  assert not any(old in active for old in ['rx_a_plus','200 pf','200-pf','parallel','equal division']),ref
+  assert parts[ref]['value_evidence']['basis']==c['basis']
+  assert parts[ref]['value_evidence']['qualification']==c['remaining']
+  assert c['historical_rationale']['status']=='SUPERSEDED - not current electrical justification'
+ assert 'shunt' in caps['C19']['function'].lower()
+ assert 'coupling' in caps['C20']['function'].lower() and 'shunt' not in caps['C20']['function'].lower()
+ assert set(caps['C19']['nets']) & set(caps['C20']['nets'])=={'D2_C20'}
+
 def main():
  parser=argparse.ArgumentParser();parser.add_argument('--record',action='store_true');args=parser.parse_args()
  p=read('evidence/capacitor_value_review_20261015.json');a=read('evidence/capacitor_application_v0944.json')
  changed=set(a['updated_references']);assert len(changed)==44
  m=read('evidence/reconstruction.json');model={c['ref']:c for c in m['components']}
+ verify_receiver_capacitor_metadata(p,m)
  layout={x['original_ref']:x for x in read('evidence/library_layout.json')['catalog']}
  placements={x['reference']:x for x in read('evidence/library_placements.json')['components']}
  files=['schematic/PetSafe_1001339.kicad_sch','tools/templates/mcp_standard_placements.kicad_sch']
  for f in files:
   actual,symbols=inspect(R/f,changed)
-  assert actual['unchanged_values_sha256']==a['baseline_invariants'][f]['unchanged_values_sha256'],(f,'Unrelated value or footprint changed')
+  # The complete owner-layout template now stores the final native U1/Q8
+  # values/footprints, formerly applied by the legacy router after placement.
+  # Both files must match the frozen native inventory, not obsolete seed text.
+  baseline='schematic/PetSafe_1001339.kicad_sch' if read('evidence/library_layout.json').get('authoring_mode')=='reviewed_native_layout' else f
+  assert actual['unchanged_values_sha256']==a['baseline_invariants'][baseline]['unchanged_values_sha256'],(f,'Unrelated value or footprint changed')
   for c in p['components']:
    ref=c['ref'];expected=c['proposal'].replace(' ','')+'*'
    assert c['applied_to_native'] and c['native_value']==expected

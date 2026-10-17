@@ -1,5 +1,5 @@
 {
-  "revision": "v0.9.40",
+  "revision": "v0.9.51",
   "symbol": "power:PWR_FLAG",
   "source": "KiCad 10 stock library",
   "declarations": [
@@ -7,8 +7,8 @@
       "reference": "#FLG01",
       "net": "GND",
       "position_mm": [
-        91.44,
-        81.28
+        74.93,
+        69.85
       ],
       "basis": "BATTERY(-) provides the return. This power flag declares an external source, not a new copper link."
     },
@@ -16,8 +16,8 @@
       "reference": "#FLG02",
       "net": "H_LDO_IN",
       "position_mm": [
-        53.34,
-        53.34
+        36.83,
+        41.91
       ],
       "basis": "VSYS reaches U1 VIN through L2. A passive inductor does not propagate KiCad power-output pin type."
     },
@@ -25,8 +25,8 @@
       "reference": "#FLG03",
       "net": "VSYS",
       "position_mm": [
-        444.5,
-        41.91
+        73.66,
+        109.22
       ],
       "basis": "User confirmed Q1.L -> U5 pin4 and L1/L2 supply sides. Q1 passive terminals do not declare a power source to ERC."
     },
@@ -34,8 +34,8 @@
       "reference": "#FLG04",
       "net": "H_AUX_IN",
       "position_mm": [
-        307.34,
-        302.26
+        27.94,
+        196.85
       ],
       "basis": "VDD from U1 reaches U6 VIN through R37. Passive resistor output requires a power declaration."
     },
@@ -43,8 +43,8 @@
       "reference": "#FLG05",
       "net": "H_RX_VDD",
       "position_mm": [
-        563.88,
-        172.72
+        386.08,
+        194.31
       ],
       "basis": "Modeled switched supply VDD -> Q7 -> R20 -> U3 pin8. Flag declares intended power distribution only; Q7 identity/switching and rail voltage remain E08/E09 open."
     },
@@ -52,8 +52,8 @@
       "reference": "#FLG06",
       "net": "U2_VCC",
       "position_mm": [
-        190.5,
-        166.37
+        265.43,
+        137.16
       ],
       "basis": "B78-B81 support H_RF_VDD -> passive R5 (22 ohm) -> U2/C7. B76 measured 6.3 V here. Passive resistor does not propagate power-output pin type. This flag does not approve candidate U2 voltage compatibility."
     }

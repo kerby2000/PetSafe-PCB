@@ -32,7 +32,7 @@ for ref in ['Q3','Q4','Q5','Q6','Q11','D1','R6','R7','TP3','Q8','C6','S1','LED1'
  summary=components[ref]['current_summary']
  assert xml.findtext('./components/comp[@ref="'+ref+'"]/fields/field[@name="CurrentEvidence"]')==summary
  assert next(c for c in placements if c['reference']==ref)['properties']['CurrentEvidence']==summary
-v=read('evidence/validation.json');assert v['erc_total']==5 and v['erc_by_type']==verify_receiver_open_erc(read('output/erc.json'))
+v=read('evidence/validation.json');assert v['erc_total']==1 and v['erc_by_type']==verify_receiver_open_erc(read('output/erc.json'))
 assert len(read('evidence/power_source_declarations.json')['declarations'])==6
 assert read('evidence/finalization_audit.json')['pad_membership_baseline']=='ecd683d'
 result=dict(result='PASS',revision=m['revision'],baseline_commit=record['baseline_commit'],bounded_rf_partition_change='PASS',other_pad_partitions_unchanged='PASS',bounded_antenna_outer_rail_change='PASS',bounded_ra0_tp6_merge='PASS',bounded_tp14_outa_move='PASS',bounded_u2_r5_topology='PASS',bounded_r39_output_pullup='PASS',bounded_receiver_input_split='PASS',unsupported_r33_withdrawal='PASS',native_rf_paths='PASS',u6a_symbol_and_mapping_retained='PASS',review_file_and_photo_hashes='PASS',erc_total=v['erc_total'],power_declarations='Six documented supply paths; see power_source_declarations.json',nc_added=False,measurement_contracts='See live_evidence_verification.json')

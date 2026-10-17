@@ -1,7 +1,7 @@
 {
-  "date": "2026-10-15",
-  "revision": "v0.9.47",
-  "review_revision": "v0.9.47",
+  "date": "2026-10-16",
+  "revision": "v0.9.51",
+  "review_revision": "v0.9.51",
   "interpretation": "Every catalog entry is drawn. Hardware connectivity, values and identities are only partially verified. No routed PCB exists.",
   "catalog_entries": 148,
   "physical_pins": 349,
@@ -65,14 +65,12 @@
     ],
     "qualification": "Assigned is not the same as measured. R8, C11 and S1 have user body dimensions; lead geometry and exact housing variants remain qualified."
   },
-  "erc_total": 5,
+  "erc_total": 1,
   "erc_by_type": {
-    "pin_to_pin": 1,
-    "pin_not_driven": 1,
-    "isolated_pin_label": 3
+    "pin_to_pin": 1
   },
-  "modeled_nets": 85,
-  "schematic_sha256": "52e393490645a837379de03a0b6d2d443036b65afa6e206d2ada907406617e41",
+  "modeled_nets": 82,
+  "schematic_sha256": "00a4ccd656a728448f0cc6ead8e3618fee060c0c8587666846d881db7f4bbd77",
   "known_identified_ICs_needing_new_symbols": [],
   "complete_symbols_for_selected_candidates": true,
   "available_instruments": [
@@ -111,7 +109,7 @@
       "id": "E03",
       "area": "RF supply and Q8 drive",
       "gap": "Exact U2 identity and compatibility with measured 6.3 V remain unresolved; candidate SN74LVC2G14 recommended supply maximum is 5.5 V. Q8 switching margin, timing and RF waveform validation are deferred by owner. B82 alone is not a zero-ohm proof; output route is photo-supported.",
-      "method": "Photo and device-consistency review completed in TOPOLOGY_AUDIT.md. Keep the measured 6.3 V U2 feed and explicit 5.5 V recommended-limit conflict; no justified device replacement or further copper correction. None now. Scope and component-isolation work are deferred by owner."
+      "method": "2026-10-16 manufacturer search compared TI SN74LVC2G14, Nexperia 74HC2G14GV/74HCT2G14GV and onsemi NL27WZ14. No verified combination of C14R marking, six-pin layout and recommended operation at 6.3 V was found. Keep the measured feed and the candidate explicitly qualified; see RECONSTRUCTION.md. None pending. If identification is pursued, the smallest useful input is a clearer complete U2 top marking/manufacturer logo; another continuity reading cannot identify its voltage grade. Scope and component isolation remain deferred."
     },
     {
       "id": "E04",
@@ -128,13 +126,13 @@
     {
       "id": "E08",
       "area": "Receiver and Q7 operating behavior",
-      "gap": "Why the receiver is inactive and its enabled-state behavior remain unverified. Earlier separate 0/4.5 V readings conflict with the later direct 0 V; do not diagnose failure or assume simultaneous identical states. Exact Q7 identity and E/C selection remain qualified. Receiver gain/filter response and MCU interface roles are unverified; DC readings do not exclude pulses. U3.3 external signal/DC-return is a distinct unresolved reconstruction question in E11; RX-1 now also rejects the modeled C19 connection; no external DC return is established.",
-      "method": "Retain established feedback and U3.5/VREF. Prioritize the U3.3 physical input path under E11; the measured D2/C20/R28 separation must remain. Operating behavior remains deferred, separate from copper. None now. Scope and component-isolation work are deferred by owner."
+      "gap": "Why the receiver is inactive and its enabled-state behavior remain unverified. Earlier separate 0/4.5 V readings conflict with the later direct 0 V; do not diagnose failure or assume simultaneous identical states. Exact Q7 identity and E/C selection remain qualified. Receiver gain/filter response and MCU interface roles are unverified; DC readings do not exclude pulses. The new VREF connection establishes U3.3 bias routing. RX-1/RX-2 exclusions remain; the supported C19/C20 destinations are recorded under E11. This does not establish enabled-state gain or timing.",
+      "method": "Retain the established receiver feedback and U3.3/U3.5 VREF reference. Keep the owner-supported C19/C20 destinations and measured separations. Operating behavior remains deferred, separate from copper. None now. Scope and component-isolation work are deferred by owner."
     },
     {
       "id": "E09",
       "area": "Supply voltages and Q1 control",
-      "gap": "Q1 fitted identity, terminal roles and powered control behavior remain unverified. The resistance recheck is compatible with R44 in the path but does not prove an intact MOSFET or the exact remaining path. Q1/motor dynamics and R3/R4/C28 sensing role remain qualified.",
+      "gap": "Q1 fitted identity, terminal roles and powered control behavior remain unverified. The resistance recheck is compatible with R44 in the path but does not prove an intact MOSFET or the exact remaining path. Q1/motor dynamics and R3/R4/C28 sensing role remain qualified. R4 returns to RB3, not permanent ground: half-VSYS at the modeled middle junction requires RB3 driven low, while the PIC pin itself is low. A firmware-dependent RC/supply-sensing method is only a candidate; its exact method and voltage handling are unresolved. The common R3/R4/C28 copper junction remains an E11 gap.",
       "method": "Photo and device-consistency review completed in TOPOLOGY_AUDIT.md. R44 local route corroborated; 516-ohm contradiction stays closed by B84/B85. Q1 roles/control remain qualified. None now. Scope and component-isolation work are deferred by owner."
     },
     {
@@ -164,8 +162,8 @@
     {
       "id": "E11",
       "area": "Inherited copper joins without independent closure",
-      "gap": "U3.3 signal/DC-bias feed, C19 lower/model1 destination and C20 upper/model1 destination remain unknown; each photo stopping point is recorded in TOPOLOGY_AUDIT.md. These are three separate unresolved nodes, not intentional NCs. Other undetermined bridges: U1 native3-VIN; R18.2-Q7.L; R20.2 and TP5.1 to C24.1/U3.8; R3.2-R4.1-C28.1; U5.1/C34.1 and J1.VDD to printed VDD; twelve candidate ground groups individually listed in the same audit. Six modeled nets have incomplete evidence groups in addition to the three receiver singletons.",
-      "method": "Autonomous pass completed. Preserve the specific unproved bridges and receiver singletons; no new physical destination is established for the three receiver terminals. Retain four receiver ERC findings and the intentional U6A conflict. Device identity/behavior remains separate from copper evidence. Owner action: none. No pending readings. RX-3 is deferred and unmeasured; completed RX-1/RX-2 and earlier C20 checks are not repeated."
+      "gap": "Remaining undetermined bridges: U1 native3-VIN; R18.2-Q7.L; R20.2 and TP5.1 to C24.1/U3.8; R3.2-R4.1-C28.1; U5.1/C34.1 and J1.VDD to printed VDD; twelve candidate ground groups individually listed in TOPOLOGY_AUDIT.md. Six modeled nets retain incomplete independent evidence groups. Receiver terminal destinations are now reported; circuit operating roles and device identities remain separately qualified.",
+      "method": "Keep the three supported receiver joins and earlier measured separations. Preserve the specifically qualified remaining copper groups and intentional U6A ERC conflict; no new measurement campaign. Owner action: none. No pending readings. RX-3 is deferred and unmeasured; completed RX-1/RX-2 and earlier C20 checks are not repeated."
     }
   ],
   "items": [
@@ -183,7 +181,7 @@
       "state": "open",
       "known": "C5/C6 and Q8 source/ground/outer-drain joins supported. U2/C7 supply now fed from H_RF_VDD through R5 (22 ohm): local and endpoint readings B78-B81 support this route. U2 supply = 6.3 V; direct difference to printed VDD = +1.8 V rejects old VDD tie. Q8 output-to-ANT1 accepted from visible copper and compatible B82 4.5-ohm reading with antenna fitted. Rest gate-source voltages: P=0 V, N=+6.3 V. TI lists C14R among the DBV candidate markings; absolute maximum VCC is 6.5 V, distinct from the 5.5-V recommended maximum.",
       "unknown": "Exact U2 identity and compatibility with measured 6.3 V remain unresolved; candidate SN74LVC2G14 recommended supply maximum is 5.5 V. Q8 switching margin, timing and RF waveform validation are deferred by owner. B82 alone is not a zero-ohm proof; output route is photo-supported.",
-      "next_action": "Photo and device-consistency review completed in TOPOLOGY_AUDIT.md. Keep the measured 6.3 V U2 feed and explicit 5.5 V recommended-limit conflict; no justified device replacement or further copper correction. None now. Scope and component-isolation work are deferred by owner.",
+      "next_action": "2026-10-16 manufacturer search compared TI SN74LVC2G14, Nexperia 74HC2G14GV/74HCT2G14GV and onsemi NL27WZ14. No verified combination of C14R marking, six-pin layout and recommended operation at 6.3 V was found. Keep the measured feed and the candidate explicitly qualified; see RECONSTRUCTION.md. None pending. If identification is pursued, the smallest useful input is a clearer complete U2 top marking/manufacturer logo; another continuity reading cannot identify its voltage grade. Scope and component isolation remain deferred.",
       "closed_when": "U2 identity and voltage compatibility resolved; RF operating waveform validation recorded separately when the owner resumes scope work. Local RF supply/output drawing is corrected; unknown C6/C7 values remain V01.",
       "open_pads": [],
       "nets": [
@@ -193,7 +191,10 @@
       ],
       "source_documents": [
         "docs/datasheets/SIL3724A.pdf, P-channel table p3",
-        "docs/datasheets/SN74LVC2G14.pdf, supply/output specifications"
+        "docs/datasheets/SN74LVC2G14.pdf, supply/output specifications",
+        "https://www.ti.com/lit/ds/symlink/sn74lvc2g14.pdf",
+        "https://assets.nexperia.com/documents/data-sheet/74HC_HCT2G14.pdf",
+        "https://www.onsemi.com/pdf/datasheet/nl27wz14-d.pdf"
       ],
       "supporting_evidence": [
         "docs/history/v0.9.30-before-finalization/evidence/remaining_work.json",
@@ -214,8 +215,8 @@
       ],
       "owner": "Codex evidence audit; no active bench request",
       "category": "Device function/rating; operating behaviour",
-      "codex_action": "Photo and device-consistency review completed in TOPOLOGY_AUDIT.md. Keep the measured 6.3 V U2 feed and explicit 5.5 V recommended-limit conflict; no justified device replacement or further copper correction.",
-      "owner_input": "None now. Scope and component-isolation work are deferred by owner."
+      "codex_action": "2026-10-16 manufacturer search compared TI SN74LVC2G14, Nexperia 74HC2G14GV/74HCT2G14GV and onsemi NL27WZ14. No verified combination of C14R marking, six-pin layout and recommended operation at 6.3 V was found. Keep the measured feed and the candidate explicitly qualified; see RECONSTRUCTION.md.",
+      "owner_input": "None pending. If identification is pursued, the smallest useful input is a clearer complete U2 top marking/manufacturer logo; another continuity reading cannot identify its voltage grade. Scope and component isolation remain deferred."
     },
     {
       "id": "E04",
@@ -345,9 +346,9 @@
       ],
       "priority": 2,
       "state": "open",
-      "known": "U3.5/VREF and R23/R42/C40, C23/R25/R48 and DNP R47/C42 paths are reconciled. VREF supplies U3 pin5; C25.1-TP6.1 measured 1.5 ohm joins the receiver filter to PIC2/RA0. Powered: VREF 0 V, TP5 0.066 V, R19 left/right 0/4.5 V. Both R19-to-Q7 joins measured 1.5 ohm. Q7 diode results: R->L 0.74 V, L->R 1.74 V, S->L 0.74 V, L->S OL. These support PNP polarity with L as base; reverse finite reading can include parallel-board paths. B71 direct QR-QL measured 0 V, consistent with no forward base-emitter bias in the latest state and the low receiver supply; stability not reported.",
-      "unknown": "Why the receiver is inactive and its enabled-state behavior remain unverified. Earlier separate 0/4.5 V readings conflict with the later direct 0 V; do not diagnose failure or assume simultaneous identical states. Exact Q7 identity and E/C selection remain qualified. Receiver gain/filter response and MCU interface roles are unverified; DC readings do not exclude pulses. U3.3 external signal/DC-return is a distinct unresolved reconstruction question in E11; RX-1 now also rejects the modeled C19 connection; no external DC return is established.",
-      "next_action": "Retain established feedback and U3.5/VREF. Prioritize the U3.3 physical input path under E11; the measured D2/C20/R28 separation must remain. Operating behavior remains deferred, separate from copper. None now. Scope and component-isolation work are deferred by owner.",
+      "known": "U3.5/VREF and R23/R42/C40, C23/R25/R48 and DNP R47/C42 paths are reconciled. VREF supplies U3 pins3 and5, with pin3 newly identified by the owner; C25.1-TP6.1 measured 1.5 ohm joins the receiver filter to PIC2/RA0. Powered: VREF 0 V, TP5 0.066 V, R19 left/right 0/4.5 V. Both R19-to-Q7 joins measured 1.5 ohm. Q7 diode results: R->L 0.74 V, L->R 1.74 V, S->L 0.74 V, L->S OL. These support PNP polarity with L as base; reverse finite reading can include parallel-board paths. B71 direct QR-QL measured 0 V, consistent with no forward base-emitter bias in the latest state and the low receiver supply; stability not reported.",
+      "unknown": "Why the receiver is inactive and its enabled-state behavior remain unverified. Earlier separate 0/4.5 V readings conflict with the later direct 0 V; do not diagnose failure or assume simultaneous identical states. Exact Q7 identity and E/C selection remain qualified. Receiver gain/filter response and MCU interface roles are unverified; DC readings do not exclude pulses. The new VREF connection establishes U3.3 bias routing. RX-1/RX-2 exclusions remain; the supported C19/C20 destinations are recorded under E11. This does not establish enabled-state gain or timing.",
+      "next_action": "Retain the established receiver feedback and U3.3/U3.5 VREF reference. Keep the owner-supported C19/C20 destinations and measured separations. Operating behavior remains deferred, separate from copper. None now. Scope and component-isolation work are deferred by owner.",
       "closed_when": "Receiver supply, bias and the existing RA0/RA1/RB4 interfaces have supported operating roles; no presumed extra output wire is required.",
       "open_pads": [],
       "nets": [
@@ -357,7 +358,6 @@
         "RX_A_FB",
         "RX_A_FILTER",
         "RX_A_OUT",
-        "RX_A_PLUS",
         "RX_B_FB",
         "RX_B_OUT",
         "H_RX_DETECT",
@@ -380,7 +380,7 @@
       ],
       "owner": "Codex evidence audit; no active bench request",
       "category": "Device function/rating; operating behaviour",
-      "codex_action": "Retain established feedback and U3.5/VREF. Prioritize the U3.3 physical input path under E11; the measured D2/C20/R28 separation must remain. Operating behavior remains deferred, separate from copper.",
+      "codex_action": "Retain the established receiver feedback and U3.3/U3.5 VREF reference. Keep the owner-supported C19/C20 destinations and measured separations. Operating behavior remains deferred, separate from copper.",
       "owner_input": "None now. Scope and component-isolation work are deferred by owner."
     },
     {
@@ -401,8 +401,8 @@
       ],
       "priority": 2,
       "state": "open",
-      "known": "VSYS/RF 6.3 V, printed VDD 4.5 V, PIR supply 3.3 V with PIR attached; VREF 0 V and red LED approximately 1 Hz. TP14 is on U5.8/OUTA at 1.5 ohm, with R43.2/V015; BATTERY+ stays separate. Receiver TP5 = 0.066 V (B62). R44 = 15 kohm (B83); TP14-to-Q1 presumed gate recheck = 21.4/21.7 kohm (B84/B85). The earlier 516-ohm conflict is not reproduced and no wiring change is warranted.",
-      "unknown": "Q1 fitted identity, terminal roles and powered control behavior remain unverified. The resistance recheck is compatible with R44 in the path but does not prove an intact MOSFET or the exact remaining path. Q1/motor dynamics and R3/R4/C28 sensing role remain qualified.",
+      "known": "VSYS/RF 6.3 V, printed VDD 4.5 V, PIR supply 3.3 V with PIR attached; VREF 0 V and red LED approximately 1 Hz. TP14 is on U5.8/OUTA at 1.5 ohm, with R43.2/V015; BATTERY+ stays separate. Receiver TP5 = 0.066 V (B62). R44 = 15 kohm (B83); TP14-to-Q1 presumed gate recheck = 21.4/21.7 kohm (B84/B85). The earlier 516-ohm conflict is not reproduced and no wiring change is warranted. R3/R4 are 330 kohm (334 marking); R4 reaches PIC24/RB3. The retained C28 estimate is 10nF. RB3 supports GPIO, ADC and comparator input functions.",
+      "unknown": "Q1 fitted identity, terminal roles and powered control behavior remain unverified. The resistance recheck is compatible with R44 in the path but does not prove an intact MOSFET or the exact remaining path. Q1/motor dynamics and R3/R4/C28 sensing role remain qualified. R4 returns to RB3, not permanent ground: half-VSYS at the modeled middle junction requires RB3 driven low, while the PIC pin itself is low. A firmware-dependent RC/supply-sensing method is only a candidate; its exact method and voltage handling are unresolved. The common R3/R4/C28 copper junction remains an E11 gap.",
       "next_action": "Photo and device-consistency review completed in TOPOLOGY_AUDIT.md. R44 local route corroborated; 516-ohm contradiction stays closed by B84/B85. Q1 roles/control remain qualified. None now. Scope and component-isolation work are deferred by owner.",
       "closed_when": "Actual supply levels and control behavior are recorded without merging battery, VSYS or filtered branches.",
       "open_pads": [],
@@ -426,7 +426,10 @@
         "evidence/r44_resistance_result_20261015.json",
         "evidence/q1_gate_recheck_results_20261015.json",
         "evidence/physical_evidence_review_20261015.json",
-        "evidence/topology_closure_audit.json"
+        "evidence/topology_closure_audit.json",
+        "photos/originals/IMG_2436.jpg",
+        "photos/originals/IMG_2437.jpg",
+        "docs/RECONSTRUCTION.md"
       ],
       "owner": "Codex evidence audit; no active bench request",
       "category": "Device function/rating; operating behaviour",
@@ -491,7 +494,7 @@
       ],
       "priority": 2,
       "state": "open",
-      "known": "Manufacturer candidate datasheets and pin tables exist. D2 local wiring is complete; measured R -> S -> L diode behavior supports a series pair.",
+      "known": "Manufacturer candidate datasheets and pin tables exist. D2 local wiring is complete; measured R -> S -> L diode behavior supports a series pair. Native D2 now uses a generic two-series-diode equivalent with the original L=1/R=2/S=3 crosswalk; exact 4P identity is still open.",
       "unknown": "Exact fitted identity/ratings remain candidates for D1-D6, Q1-Q8/Q11, U1/U2/U6. The 4P marking alone does not identify three-pin D2; a manufacturer 4P code for a two-pin diode is incompatible.",
       "next_action": "Photo and device-consistency review completed in TOPOLOGY_AUDIT.md. D2 series-junction equivalent documented separately from its unchanged physical placeholder. Primary U2/Q3 sources checked; remaining identities stay candidates. None now. Scope and component-isolation work are deferred by owner.",
       "closed_when": "Each part has a supported pin/function model and adequate ratings or an explicit accepted-equivalent limitation; exact branding is not falsely claimed.",
@@ -584,11 +587,11 @@
       "priority": 1,
       "state": "open",
       "category": "Copper connection; evidence coverage",
-      "known": "D2.R/C20.2/R28.2 is separated from U3.3 and TP7 by the completed 1.023-Mohm, 998-kohm and 1.5-ohm results. RX-1 C19.1-to-U3.3 = 1.023 Mohm (raw 1.023mohm); RX-2 C20.1-to-GND = 271 kohm; probes = 1 ohm; settling unreported. All four exclusions remain. The original-photo/via pass additionally supports R10.2-GND via V116 and R2.1/C4.1-U1.L2/native2, without changing wiring. Existing feedback and R28/R29 paths are explained conditionally in the audit; neither provides a recovered input wire. Prior local copper recoveries and the five rear midpoints remain supported.",
-      "unknown": "U3.3 signal/DC-bias feed, C19 lower/model1 destination and C20 upper/model1 destination remain unknown; each photo stopping point is recorded in TOPOLOGY_AUDIT.md. These are three separate unresolved nodes, not intentional NCs. Other undetermined bridges: U1 native3-VIN; R18.2-Q7.L; R20.2 and TP5.1 to C24.1/U3.8; R3.2-R4.1-C28.1; U5.1/C34.1 and J1.VDD to printed VDD; twelve candidate ground groups individually listed in the same audit. Six modeled nets have incomplete evidence groups in addition to the three receiver singletons.",
-      "codex_action": "Autonomous pass completed. Preserve the specific unproved bridges and receiver singletons; no new physical destination is established for the three receiver terminals. Retain four receiver ERC findings and the intentional U6A conflict. Device identity/behavior remains separate from copper evidence.",
+      "known": "Owner now identifies U3.3 as VREF; C20 upper/model1 as R42 lower/model2/D3.S; C19 lower/model1 as C20 lower/model2/R28 right/model2/D2.R. C19 upper/model2 remains R29 right/model2/GND. Completed C20-to-U3.3=1.023 Mohm, C20-to-TP7=998 kohm, C20-to-R28 right=1.5 ohm, RX-1=1.023 Mohm and RX-2=271 kohm retain their original meaning. These joins resolve all three isolated receiver endpoints and their four ERC findings without suppressions. Earlier R39, R10/V116 and R2/C4 ground recoveries remain. Native D2 now uses a generic two-series-diode equivalent with the original L=1/R=2/S=3 crosswalk; exact 4P identity is still open.",
+      "unknown": "Remaining undetermined bridges: U1 native3-VIN; R18.2-Q7.L; R20.2 and TP5.1 to C24.1/U3.8; R3.2-R4.1-C28.1; U5.1/C34.1 and J1.VDD to printed VDD; twelve candidate ground groups individually listed in TOPOLOGY_AUDIT.md. Six modeled nets retain incomplete independent evidence groups. Receiver terminal destinations are now reported; circuit operating roles and device identities remain separately qualified.",
+      "codex_action": "Keep the three supported receiver joins and earlier measured separations. Preserve the specifically qualified remaining copper groups and intentional U6A ERC conflict; no new measurement campaign.",
       "owner_input": "Owner action: none. No pending readings. RX-3 is deferred and unmeasured; completed RX-1/RX-2 and earlier C20 checks are not repeated.",
-      "closed_when": "The actual U3.3 signal/DC-bias feed and the newly isolated capacitor-terminal destinations have independent evidence, and remaining named copper gaps are supported or specifically qualified. A rejected old join is not a completed circuit.",
+      "closed_when": "Remaining named copper gaps acquire independent support or a documented disposition; reported receiver terminal routes are now incorporated without claiming verified dynamic function.",
       "open_pads": [],
       "nets": [
         "GND",
@@ -596,10 +599,7 @@
         "H_LDO_IN",
         "H_RX_ENABLE",
         "H_RX_VDD",
-        "RX_A_PLUS",
-        "VDD",
-        "C19_LOWER",
-        "C20_UPPER"
+        "VDD"
       ],
       "owner": "No owner reading pending; Codex retains the specific unresolved relationships.",
       "supporting_evidence": [
@@ -610,9 +610,10 @@
         "evidence/receiver_input_results_20261015.json",
         "evidence/receiver_input_correction_v0946.json",
         "evidence/finishing_measurements.json",
-        "evidence/receiver_input_correction_v0947.json"
+        "evidence/receiver_input_correction_v0947.json",
+        "evidence/receiver_connections_v0948.json"
       ],
-      "next_action": "Autonomous pass completed. Preserve the specific unproved bridges and receiver singletons; no new physical destination is established for the three receiver terminals. Retain four receiver ERC findings and the intentional U6A conflict. Device identity/behavior remains separate from copper evidence. Owner action: none. No pending readings. RX-3 is deferred and unmeasured; completed RX-1/RX-2 and earlier C20 checks are not repeated."
+      "next_action": "Keep the three supported receiver joins and earlier measured separations. Preserve the specifically qualified remaining copper groups and intentional U6A ERC conflict; no new measurement campaign. Owner action: none. No pending readings. RX-3 is deferred and unmeasured; completed RX-1/RX-2 and earlier C20 checks are not repeated."
     }
   ],
   "finish_plan": [
@@ -630,7 +631,7 @@
         "E10",
         "I01"
       ],
-      "summary": "The autonomous pass closes two ground evidence gaps without changing topology. Three receiver destinations, six nets with specific incomplete evidence groups, and qualified device functions remain; see the existing audit for exact stopping points.",
+      "summary": "Six modeled nets retain specific gaps in independent copper evidence. Device functions, voltage ratings and operating behavior remain qualified. The three receiver destinations are established; see the existing audit for the remaining groups.",
       "next_action": "Owner action: none. No pending readings. RX-3 is deferred and unmeasured; completed RX-1/RX-2 and earlier C20 checks are not repeated."
     },
     {
@@ -690,7 +691,7 @@
     {
       "name": "VREF",
       "board_label": "VREF test point",
-      "path": "TP104, PIC4/RA2/V035/C39, R21.2/V071. U3.5 and R22 D/left/model2 at 1 ohm.",
+      "path": "TP104, PIC4/RA2/V035/C39, R21.2/V071, U3.3 and U3.5. U3.5/R22 D/left/model2 measured 1 ohm; U3.3 joins VREF by the later owner report.",
       "basis": "User-confirmed core plus U3.5/R22 D/left. R48.2 removed: user annotation groups it with R25/R47/C42; R23 branch rejected. PIC21/RB0/V026 explicitly withdrawn; TP16-VREF measured 800 kohm."
     },
     {
