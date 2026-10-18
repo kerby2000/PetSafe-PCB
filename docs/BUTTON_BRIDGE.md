@@ -1,6 +1,6 @@
-# External ESP32 button bridge — proposed modification
+# External ESP32 button bridge — working prototype
 
-**Prototype direction, 2026-10-17:** the owner will assemble the pictured perfboard button bridge, with a separate battery-fed **LM2596 / HW-411 module set to 3.3 V** as the proposed internal supply. TPL5111/PIR wake and converter shutdown are deferred. [Firmware v0.1.0, setup and commissioning](../firmware/button_bridge/README.md) now provide the selected local web page and HTTP API, with Wi-Fi continuously available. The native schematic remains the checked USB-powered drawing; its electrical connections and owner layout are unchanged. The SuperMini's external-supply/backfeed arrangement and the module's regulation under ESP load, especially near depleted batteries, remain qualifications before energizing the internal supply. At least 500 mA output capability remains the design requirement, not a measurement of the owned module.
+**Commissioned prototype, 2026-10-18:** the owner assembled the perfboard and reports successful remote button/motor operation with firmware v0.1.0, including USB-C operation. Flash/boot and authenticated HTTP status were independently checked. The owner prefers wired USB power and reports a successful follow-up to the suggested 5 V supply test; numeric supply results, final routing and RFID-specific performance were not supplied. Camera integration waits for the camera. [Commissioning evidence and next steps](../firmware/button_bridge/README.md#commissioning) are recorded in the existing A01 register. The native schematic remains the reviewed separate-supply drawing with unchanged factory connections. TPL5111/PIR wake is deferred.
 
 The USB-powered **ESP32-C6 SuperMini** briefly pulls **H_BUTTON** to **PetSafe GND** through the owner's **2N3904 NPN**. This is electrically in parallel with S1. S1, R40/R41/C35, the factory PIC firmware and the motor wiring are unchanged. No trace cuts are required.
 
@@ -10,7 +10,7 @@ The dashed block on the [A3 schematic](../output/pdf/PetSafe_single_sheet.pdf) c
 
 | Ref | Part | Symbol / footprint | Qualification |
 |---|---|---|---|
-| U201 | Owner's ESP32-C6 SuperMini, USB powered | TrailCurrent ESP32-C6-SuperMini / ESP32-C6-SuperMini_TH | Imported library is a candidate physical match; check owned board before assembly. |
+| U201 | Owner's ESP32-C6 SuperMini, USB powered | TrailCurrent ESP32-C6-SuperMini / ESP32-C6-SuperMini_TH | Owned chip identified as ESP32-C6FH4/4 MB and prototype operates; imported footprint remains a candidate for any manufactured carrier. |
 | Q201 | Owner's 2N3904 NPN | Stock `Transistor_BJT:2N3904` / `Package_TO_SOT_THT:TO-92_Inline` | **Owned part's manufacturer and actual E/B/C lead order pending.** |
 | R201 | 4.7 kΩ, ordinary 1/4 W resistor | Stock `Device:R` / axial DIN0207, 7.62 mm pitch | Series base resistor. |
 | R202 | 100 kΩ, ordinary 1/4 W resistor | Stock `Device:R` / axial DIN0207, 7.62 mm pitch | Base-to-emitter pull-down, after R201. |
@@ -33,14 +33,14 @@ Use board silk labels to identify the SuperMini pads; **library header number 6 
 
 The supplied STEP model's [labelled top view](esp32-c6-owner-top.png) agrees with these two selected pads. It is a model view, not a photograph confirming the owned board.
 
-Keep ESP32 **5V and 3V3 disconnected** from PetSafe BATTERY+, VSYS, VDD and H_BUTTON. The two devices keep their own positive supplies; only their grounds are joined. Unused SuperMini header pins have explicit NC marks in this proposed external circuit; USB supplies the board internally, so an unused 5V header is not a claim that the module is unpowered. Disconnect the PetSafe programmer for commissioning.
+The **native schematic baseline** keeps ESP32 5V/3V3 separate from PetSafe positive rails, with common ground. The newer shared USB supply is a bench power arrangement described below; its final routing is not inferred into the schematic. Do not connect ESP 3V3 to PetSafe BATTERY+, VSYS, VDD or H_BUTTON. Unused SuperMini header pins have explicit NC marks in this proposed external circuit; USB supplies the board internally, so an unused 5V header is not a claim that the module is unpowered. Disconnect the PetSafe programmer for commissioning.
 
 ## GPIO and press behavior
 
-**GPIO_BTN is GPIO3.** Espressif's [ESP32-C6 datasheet](https://www.espressif.com/sites/default/files/documentation/esp32-c6_datasheet_en.pdf), Tables 2-2 and 2-5 and Section 3, identifies GPIO3 as an output-capable ordinary GPIO, input-enabled at/after reset without a listed weak pull-up. It is not one of the boot strapping pins, USB pins, UART0 pins or default JTAG pins. R202 pulls the base low while the GPIO is high impedance. This is the documented basis for selecting it; the actual owned SuperMini and its installed firmware have **not** been startup-tested for this interface.
+**GPIO_BTN is GPIO3.** Espressif's [ESP32-C6 datasheet](https://www.espressif.com/sites/default/files/documentation/esp32-c6_datasheet_en.pdf), Tables 2-2 and 2-5 and Section 3, identifies GPIO3 as an output-capable ordinary GPIO, input-enabled at/after reset without a listed weak pull-up. It is not one of the boot strapping pins, USB pins, UART0 pins or default JTAG pins. R202 pulls the base low while the GPIO is high impedance. This is the documented basis for selecting it; the owned SuperMini has now booted this firmware and reported an idle/no-fault output over HTTP before owner tests. That software status is not an independently measured pin waveform.
 
-- **HIGH = press; LOW = release.** Around **200 ms HIGH** is an initial commissioning pulse, not a verified PetSafe timing specification.
-- Firmware v0.1.0 initializes the output latch LOW before enabling output and uses an independent GPTimer interrupt for release. It supplies authenticated 200 ms presses, a five-second cooldown and duplicate/stale-command rejection. Boot/reset/flashing behavior on the actual owned board still needs commissioning; host tests and compilation do not establish it physically.
+- **HIGH = press; LOW = release.** Firmware commands **200 ms HIGH**; the owner confirms the expected motor/button response. Exact physical pulse width and the accepted duration range have not been measured.
+- Firmware v0.1.0 initializes the output latch LOW before enabling output and uses an independent GPTimer interrupt for release. It supplies authenticated 200 ms presses, a five-second cooldown and duplicate/stale-command rejection. Flashing, normal boot/API status and owner remote-button operation have been checked. Physical release waveforms through all resets, Wi-Fi loss and power transitions remain uncharacterized.
 - A continuous HIGH is a held button, **not “keep unlocked.”** The existing button changes the door's mode; this is not separate OPEN/CLOSE control and supplies no latch feedback.
 - A firmware failure that holds HIGH is not corrected by the 100 kΩ resistor. This minimal circuit does not guarantee release or relocking after an ESP32 failure.
 
@@ -58,13 +58,23 @@ Rendered from the supplied STEP geometry. Colours are illustrative; this is not 
 
 The model's hole rows are approximately 15.24 mm apart with 2.54 mm pitch, consistent with the selected footprint. The model is centered using offset (9, 12.9865, 0) mm and a 180° Z rotation so the USB end and hole rows align in KiCad's 3D coordinates. Its 18 × 26 mm body differs slightly from the footprint's 18.2 × 26.2 mm outline. This checks the provided assets against each other, **not the owned board, pad numbering, header stand-off or enclosure clearance**. No carrier PCB has been created.
 
-## Before assembly
+## Assembly record and remaining qualifications
 
 Imported asset integrity uses exact LF bytes for the project symbol, footprint and STEP, enforced by `.gitattributes` even on Windows checkouts. The live hashes in `evidence/reconstruction.json` match Git's committed blobs. The separate `original_import_sha256` record retains the pre-Git CRLF digests; upstream library and owner ZIP digests are unchanged. Line-ending normalization does not change pad geometry, symbol pins, the STEP transform or source/licensing evidence.
 
-No new reconstruction measurements are requested. Assembly readiness remains conditional on confirming the owned 2N3904 lead order, the SuperMini's labelled GPIO3/GND pads and physical fit, and release behavior with the supplied firmware during boot, reset and flashing. Those qualifications are tracked as **A01** in the [existing open-item register](OPEN_ITEMS.md#a01).
+No new reconstruction measurements are requested. Basic assembly and remote operation are complete by owner report. Exact maker/lead-order documentation, final solder-side power wiring and failure/restart behavior remain qualified in **A01** in the [existing open-item register](OPEN_ITEMS.md#a01).
 
-## Internal power and soldering
+The owner's original [overview](../photos/originals/owner_bridge_layout_20261018_overview.png) and [close-up](../photos/originals/owner_bridge_layout_20261018_closeup.png) show placement **before soldering**, not verified final wiring. The pictured compact converter is not positively identified as the earlier LM2596/HW-411 proposal. The apparent GPIO2 placement in the preliminary image was flagged before soldering; the unchanged firmware uses GPIO3. The later functional result is owner evidence, not a new final assembly photograph.
+
+## Current wired-power direction
+
+The owner prefers one USB-C wall supply and reports a successful follow-up to the suggested 5 V test. The proposed routing splits regulated 5 V at the supply: one branch to the ESP's normal USB/5 V input, the other to PetSafe's actual battery-positive terminal, with common ground and batteries removed. This proposal does not certify the exact routing used in the owner's test or authorize routing motor current through an unqualified SuperMini header/trace.
+
+When supplying the ESP through USB, disconnect the external converter's 3.3 V output from the ESP; do not parallel its output with the onboard regulator. Never connect a live external supply across fitted alkaline batteries. A 5 V/2 A wall adapter was suggested as an initial capacity choice, not a measured motor-current requirement. Final current margin, transients, reverse-power isolation, long-term operation and RFID performance at 5 V remain unverified. The native drawing is unchanged pending documented final power routing.
+
+Camera tests are the next functional phase once the camera is available; no new measurements are pending now.
+
+## Earlier battery-converter option and soldering reference
 
 The existing model supplies the PIR as follows:
 
@@ -88,6 +98,6 @@ Use a small **2.54 mm isolated-pad perfboard** to support the transistor and res
 4. Reserve separate red/black battery leads for the eventual converter. Use short stranded wires, approximately 24–26 AWG for power and 26–28 AWG for the button signal, with a labelled removable connector. Keep the converter and its wiring away from the RFID receive/tuning area and the ESP antenna.
 5. Insulate the perfboard underside and exposed component leads; add strain relief so cable movement does not pull on S1's pads. Maintain clearance from the motor and moving latch. Check solder joints for accidental shorts as part of assembly, not as a repeated reconstruction measurement campaign.
 
-For the battery-powered prototype this needs **three connections to PetSafe: BATTERY+, GND and H_BUTTON**. The owner has selected the LM2596/HW-411 for the proposed converter block that is still labelled TBD in the earlier illustration. [TI specifies 4.5 V minimum operating input](https://www.ti.com/lit/ds/symlink/lm2596.pdf); reliable 3.3 V output at low battery and Wi-Fi peaks is not guaranteed by the listing. Set its output to 3.30 V before connecting the ESP. The current firmware does not switch this module off, so its idle draw remains part of the prototype battery budget. The transistor wiring can be assembled independently with power disconnected.
+The earlier battery-powered proposal needs **three connections to PetSafe: BATTERY+, GND and H_BUTTON**. LM2596/HW-411 was the candidate for the converter block labelled TBD in the historical illustration; the later compact photographed module has not been identified, and wired USB power is now preferred. [TI specifies 4.5 V minimum operating input](https://www.ti.com/lit/ds/symlink/lm2596.pdf); reliable 3.3 V output at low battery and Wi-Fi peaks is not guaranteed by the listing. Set its output to 3.30 V before connecting the ESP. The current firmware does not switch this module off, so its idle draw remains part of the prototype battery budget. The transistor wiring can be assembled independently with power disconnected.
 
 Wi-Fi uses the existing router and is the owner's preferred starting point. Keeping it reachable requires periodic radio activity; deep sleep cannot receive a spontaneous Wi-Fi command, while connected modem/light-sleep modes trade latency against consumption ([Espressif sleep modes](https://docs.espressif.com/projects/esp-idf/en/latest/esp32c6/api-reference/system/sleep_modes.html)). Zigbee sleepy end devices can poll a powered parent for queued messages; this offers a different power/latency tradeoff but requires a coordinator and appropriate firmware ([Espressif Zigbee sleepy-device example](https://github.com/espressif/esp-zigbee-sdk/tree/main/examples/sleepy_devices/light_sleep_end_device)). Neither protocol removes the need for a supply able to handle radio current peaks. Battery life has not been measured for this SuperMini or proposed firmware.

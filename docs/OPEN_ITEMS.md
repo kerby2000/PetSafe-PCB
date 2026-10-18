@@ -4,7 +4,7 @@ Current schematic **v0.9.52**. Generated from [the authoritative register](../ev
 
 [Schematic and PCB photographs](../README.md) | [HTML checklist](FINISHING_CHECKLIST.html) | [History and closed findings](history/README.md)
 
-No pending readings. RX-3 remains deferred. Owner is preparing the perfboard button bridge; local web/HTTP firmware is provided for later commissioning. LM2596 internal-power qualification, SuperMini input/isolation and owned-part lead order remain open. TPL5111/PIR wake is deferred. [Independent connection audit](TOPOLOGY_AUDIT.md). Supported copper, device interpretation and operating validation are distinct claims.
+No pending readings. RX-3 remains deferred. The perfboard is assembled, firmware flashed, and remote motor/button operation is owner-confirmed. The owner reports a successful follow-up to the 5 V supply proposal; final wiring and power margins remain qualified. Camera integration waits for the camera. TPL5111/PIR wake is deferred. [Independent connection audit](TOPOLOGY_AUDIT.md). Supported copper, device interpretation and operating validation are distinct claims.
 
 | ID | Area | Category |
 |---|---|---|
@@ -18,7 +18,7 @@ No pending readings. RX-3 remains deferred. Owner is preparing the perfboard but
 | [V01](#v01) | Capacitor values and passive ratings | Reproduction/package (values and passive ratings) |
 | [M01](#m01) | LED footprint and mechanical qualification | Reproduction/package |
 | [E11](#e11) | Inherited copper joins without independent closure | Copper connection; evidence coverage |
-| [A01](#a01) | External ESP32 button bridge: assembly qualification | Proposed modification; separate from reconstruction |
+| [A01](#a01) | External ESP32 button bridge: camera and power qualification | Working external prototype; separate from reconstruction |
 
 <a id="e03"></a>
 ## E03 - RF supply and Q8 drive
@@ -161,16 +161,16 @@ Evidence: [remaining_work.json](../docs/history/v0.9.30-before-finalization/evid
 Evidence: [physical_evidence_review_20261015.json](../evidence/physical_evidence_review_20261015.json), [topology_closure_audit.json](../evidence/topology_closure_audit.json), [d2_diode_20261009.json](../evidence/d2_diode_20261009.json), [receiver_input_bridge.svg](../docs/measurement-images/receiver_input_bridge.svg), [receiver_input_results_20261015.json](../evidence/receiver_input_results_20261015.json), [receiver_input_correction_v0946.json](../evidence/receiver_input_correction_v0946.json), [finishing_measurements.json](../evidence/finishing_measurements.json), [receiver_input_correction_v0947.json](../evidence/receiver_input_correction_v0947.json), [receiver_connections_v0948.json](../evidence/receiver_connections_v0948.json).
 
 <a id="a01"></a>
-## A01 - External ESP32 button bridge: assembly qualification
+## A01 - External ESP32 button bridge: camera and power qualification
 
 | Field | Current position |
 |---|---|
-| Category | Proposed modification; separate from reconstruction |
-| Known | 2N3904 circuit proposed in parallel with measured S1 contacts: C to H_BUTTON, E to GND, GPIO3/header6 through 4.7k to base, 100k base-emitter on transistor side. ESP32 USB and PetSafe battery positives remain separate. GPIO3 reset input/no-pull configuration checked in Espressif data; library symbol/header footprint imported at a pinned commit. Owner STEP hole rows/pitch are geometrically consistent. Owner subsequently requested internal battery power and prefers Wi-Fi. Existing PIR supply path is U1 4.5 V -> R37 22 ohm -> candidate U6 3.3 V; it cannot be treated as an ESP32-capable spare rail. Native circuit still represents the validated USB version; a separate battery-fed converter and hand-wiring plan are documented as a proposal. Owner now chooses the pictured perfboard prototype with an LM2596/HW-411 battery-fed converter proposed at 3.3 V; TPL5111 and PIR wake are deferred. Provisional output requirement is at least 500 mA, not a confirmed owned-module rating. Firmware v0.1.0 supplies local web/HTTP control on GPIO3, fixed 200 ms pulses, five-second cooldown and duplicate/stale-command protection. It keeps Wi-Fi and the converter powered; no physical flashing or commissioning is claimed. |
-| Unresolved claim | Owned 2N3904 maker/physical lead order and SuperMini header/fit; physical GPIO release through boot/reset/flashing, accepted pulse timing and actual Wi-Fi reliability. The bridge has no latch-state feedback or guaranteed relock. LM2596 regulation under load and near depleted batteries, and the actual SuperMini external-input/USB backfeed arrangement, remain unqualified; battery life is unmeasured. |
-| Next Codex action | Firmware and setup/client guide added under firmware/button_bridge. Preserve the checked native schematic and original evidence. No TPL5111, PIR wake input or power-switch output is used. Qualify the internal supply before changing the native supply connection. |
-| Owner input | Owner is preparing the perfboard and will report readiness. Local web page plus HTTP API selected. No reconstruction readings are pending. Wi-Fi credentials are entered locally with configure.py, never in the repository or chat. |
-| Closure evidence | Owned-package pin order and board mapping/fit confirmed; final firmware leaves the button released through idle, boot, reset and flashing and demonstrates a brief mode-toggle pulse. Internal power conversion and board input/isolation are qualified; power budget matches the intended battery-life and command-latency requirements. |
+| Category | Working external prototype; separate from reconstruction |
+| Known | Perfboard assembled and firmware v0.1.0 flashed on 2026-10-18. COM3 identifies ESP32-C6FH4 rev0.1 with 4 MB flash. Flash hashes verified; web page/script returned HTTP 200, unauthenticated status 401, authenticated status released/no fault with zero consumed sequences before owner testing. Owner subsequently reports remote commands operate the PetSafe motor and its delayed return like S1, including USB-C operation. Owner reports a successful follow-up after the proposed 5 V wired-supply test; exact supply voltage/current, final power routing and RFID test details were not supplied. GPIO3, 2N3904, 4.7k base resistor and 100k base-emitter pull-down remain the implemented interface. The native drawing still documents separate positive supplies; its electrical connections are unchanged. The PIR rail is not an ESP power source. |
+| Unresolved claim | Camera integration awaits the camera. Exact final USB power routing, converter isolation/backfeed, supply transients/current margin and long-term operation are unqualified; the short successful owner report does not establish these or RFID performance at 5 V. Owned transistor maker/lead order and final solder-side wiring are not independently documented. Startup/API checks establish software status, not a measured GPIO waveform through every reset/flashing/power-loss case. The bridge is a mode-toggle interface with no latch-state feedback or guaranteed relock. Battery conversion/life and TPL5111/PIR wake are deferred. |
+| Next Codex action | Wait for the camera; then integrate its decision with the existing authenticated HTTP client and commission one deliberate command at a time. Do not infer absolute OPEN/CLOSE or automatically resend a lost-response toggle. Retain the working firmware and factory circuitry. Document the final power routing before revising the native power drawing; no new reconstruction readings requested. |
+| Owner input | None now. Owner will provide the camera when ready. No pending reconstruction readings. Wi-Fi credentials, API token and configured binaries remain local and Git-ignored. |
+| Closure evidence | Camera workflow commissioned against the working remote button, final power routing and transient/isolation behavior documented, and relevant failure/restart cases qualified. Retain the explicit lack of latch-state feedback; no battery-life claim for the wired prototype. |
 
 Evidence: [BUTTON_BRIDGE.md](../docs/BUTTON_BRIDGE.md), [reconstruction.json](../evidence/reconstruction.json), [README.md](../firmware/button_bridge/README.md).
 
