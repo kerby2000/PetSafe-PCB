@@ -12,9 +12,9 @@ One A3 landscape main-board schematic, reconstructed from original photographs a
 
 All **44 starred capacitor values are estimates**, preserved with their basis and proposed ratings. C5 and the recorded inductor measurements remain unchanged. The **U6/U6A regulator-output ERC conflict is deliberately retained**; the new owner-supported receiver joins resolve the four earlier receiver findings without exclusions. U3 pin3 joins VREF; C19 lower joins C20 lower/R28 right/D2.R; C20 upper joins R42 lower/D3.S. File consistency is not proof of complete hardware connectivity.
 
-## Proposed external button bridge
+## Working external button bridge
 
-The native drawing retains the USB-powered ESP32-C6 SuperMini, the owner's 2N3904 and 4.7 kΩ / 100 kΩ resistors in parallel with S1. The owner is preparing the perfboard prototype with a separate LM2596 battery converter; external-power qualification remains open. [Add-on BOM and wiring](docs/BUTTON_BRIDGE.md) · [Firmware: local web control, HTTP API and flashing](firmware/button_bridge/README.md). These four external parts are excluded from the factory-board BOM/PCB. TPL5111/PIR wake is deferred; no carrier PCB is included.
+The native drawing retains the USB-powered ESP32-C6 SuperMini, the owner's 2N3904 and 4.7 kΩ / 100 kΩ resistors in parallel with S1. The owner has assembled and tested the perfboard. Firmware v0.1.0 is flashed; web/API startup checks passed and the owner confirms remote motor/button action. The USB 5 V follow-up was reported successful; final power routing and margins remain qualified. [Add-on BOM and wiring](docs/BUTTON_BRIDGE.md) · [Firmware: local web control, HTTP API and flashing](firmware/button_bridge/README.md). These four external parts are excluded from the factory-board BOM/PCB. TPL5111/PIR wake is deferred; no carrier PCB is included.
 
 ## Actual physical PCB
 
@@ -38,9 +38,9 @@ The [full Markdown register](docs/OPEN_ITEMS.md) and [HTML checklist](docs/FINIS
 | [V01](docs/OPEN_ITEMS.md#v01) | Capacitor values and passive ratings | Reproduction/package (values and passive ratings) |
 | [M01](docs/OPEN_ITEMS.md#m01) | LED footprint and mechanical qualification | Reproduction/package |
 | [E11](docs/OPEN_ITEMS.md#e11) | Inherited copper joins without independent closure | Copper connection; evidence coverage |
-| [A01](docs/OPEN_ITEMS.md#a01) | External ESP32 button bridge: assembly qualification | Proposed modification; separate from reconstruction |
+| [A01](docs/OPEN_ITEMS.md#a01) | External ESP32 button bridge: camera and power qualification | Working external prototype; separate from reconstruction |
 
-TP11/TP17 hidden continuations remain a separately documented reconstruction boundary. No pending readings. RX-3 remains deferred. Owner is preparing the perfboard button bridge; local web/HTTP firmware is provided for later commissioning. LM2596 internal-power qualification, SuperMini input/isolation and owned-part lead order remain open. TPL5111/PIR wake is deferred. Package geometry, routing/stackup, external assemblies and firmware remain prerequisites for a working reproduction.
+TP11/TP17 hidden continuations remain a separately documented reconstruction boundary. No pending readings. RX-3 remains deferred. The perfboard is assembled, firmware flashed, and remote motor/button operation is owner-confirmed. The owner reports a successful follow-up to the 5 V supply proposal; final wiring and power margins remain qualified. Camera integration waits for the camera. TPL5111/PIR wake is deferred. Package geometry, routing/stackup, external assemblies and firmware remain prerequisites for a working reproduction.
 
 ## Evidence and rebuild
 

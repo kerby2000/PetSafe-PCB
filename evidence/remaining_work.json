@@ -1,5 +1,5 @@
 {
-  "date": "2026-10-17",
+  "date": "2026-10-18",
   "review_revision": "v0.9.52",
   "basis_revision": "v0.9.48",
   "scope": "Current main-board finishing register. Supported connections and completed measurements are recorded in the current model; resolved issues are archived. Remaining hidden paths, candidate identities, values and operating behavior are listed below.",
@@ -487,7 +487,7 @@
     },
     {
       "id": "A01",
-      "area": "External ESP32 button bridge: assembly qualification",
+      "area": "External ESP32 button bridge: camera and power qualification",
       "refs": [
         "U201",
         "Q201",
@@ -496,24 +496,68 @@
       ],
       "priority": 2,
       "state": "open",
-      "category": "Proposed modification; separate from reconstruction",
-      "known": "2N3904 circuit proposed in parallel with measured S1 contacts: C to H_BUTTON, E to GND, GPIO3/header6 through 4.7k to base, 100k base-emitter on transistor side. ESP32 USB and PetSafe battery positives remain separate. GPIO3 reset input/no-pull configuration checked in Espressif data; library symbol/header footprint imported at a pinned commit. Owner STEP hole rows/pitch are geometrically consistent. Owner subsequently requested internal battery power and prefers Wi-Fi. Existing PIR supply path is U1 4.5 V -> R37 22 ohm -> candidate U6 3.3 V; it cannot be treated as an ESP32-capable spare rail. Native circuit still represents the validated USB version; a separate battery-fed converter and hand-wiring plan are documented as a proposal. Owner now chooses the pictured perfboard prototype with an LM2596/HW-411 battery-fed converter proposed at 3.3 V; TPL5111 and PIR wake are deferred. Provisional output requirement is at least 500 mA, not a confirmed owned-module rating. Firmware v0.1.0 supplies local web/HTTP control on GPIO3, fixed 200 ms pulses, five-second cooldown and duplicate/stale-command protection. It keeps Wi-Fi and the converter powered; no physical flashing or commissioning is claimed.",
-      "unknown": "Owned 2N3904 maker/physical lead order and SuperMini header/fit; physical GPIO release through boot/reset/flashing, accepted pulse timing and actual Wi-Fi reliability. The bridge has no latch-state feedback or guaranteed relock. LM2596 regulation under load and near depleted batteries, and the actual SuperMini external-input/USB backfeed arrangement, remain unqualified; battery life is unmeasured.",
-      "codex_action": "Firmware and setup/client guide added under firmware/button_bridge. Preserve the checked native schematic and original evidence. No TPL5111, PIR wake input or power-switch output is used. Qualify the internal supply before changing the native supply connection.",
-      "owner_input": "Owner is preparing the perfboard and will report readiness. Local web page plus HTTP API selected. No reconstruction readings are pending. Wi-Fi credentials are entered locally with configure.py, never in the repository or chat.",
-      "closed_when": "Owned-package pin order and board mapping/fit confirmed; final firmware leaves the button released through idle, boot, reset and flashing and demonstrates a brief mode-toggle pulse. Internal power conversion and board input/isolation are qualified; power budget matches the intended battery-life and command-latency requirements.",
+      "category": "Working external prototype; separate from reconstruction",
+      "known": "Perfboard assembled and firmware v0.1.0 flashed on 2026-10-18. COM3 identifies ESP32-C6FH4 rev0.1 with 4 MB flash. Flash hashes verified; web page/script returned HTTP 200, unauthenticated status 401, authenticated status released/no fault with zero consumed sequences before owner testing. Owner subsequently reports remote commands operate the PetSafe motor and its delayed return like S1, including USB-C operation. Owner reports a successful follow-up after the proposed 5 V wired-supply test; exact supply voltage/current, final power routing and RFID test details were not supplied. GPIO3, 2N3904, 4.7k base resistor and 100k base-emitter pull-down remain the implemented interface. The native drawing still documents separate positive supplies; its electrical connections are unchanged. The PIR rail is not an ESP power source.",
+      "unknown": "Camera integration awaits the camera. Exact final USB power routing, converter isolation/backfeed, supply transients/current margin and long-term operation are unqualified; the short successful owner report does not establish these or RFID performance at 5 V. Owned transistor maker/lead order and final solder-side wiring are not independently documented. Startup/API checks establish software status, not a measured GPIO waveform through every reset/flashing/power-loss case. The bridge is a mode-toggle interface with no latch-state feedback or guaranteed relock. Battery conversion/life and TPL5111/PIR wake are deferred.",
+      "codex_action": "Wait for the camera; then integrate its decision with the existing authenticated HTTP client and commission one deliberate command at a time. Do not infer absolute OPEN/CLOSE or automatically resend a lost-response toggle. Retain the working firmware and factory circuitry. Document the final power routing before revising the native power drawing; no new reconstruction readings requested.",
+      "owner_input": "None now. Owner will provide the camera when ready. No pending reconstruction readings. Wi-Fi credentials, API token and configured binaries remain local and Git-ignored.",
+      "closed_when": "Camera workflow commissioned against the working remote button, final power routing and transient/isolation behavior documented, and relevant failure/restart cases qualified. Retain the explicit lack of latch-state feedback; no battery-life claim for the wired prototype.",
       "open_pads": [],
       "nets": [
         "H_BUTTON",
         "GND"
       ],
-      "owner": "Owner assembly; add-on firmware commissioning when ready",
+      "owner": "Owner camera integration when camera is available",
       "supporting_evidence": [
         "docs/BUTTON_BRIDGE.md",
         "evidence/reconstruction.json",
         "firmware/button_bridge/README.md"
       ],
-      "next_action": "When the perfboard is ready, confirm transistor lead order and the SuperMini supply/input arrangement, configure and flash locally, then commission one explicit button press. See firmware/button_bridge/README.md. No new reconstruction measurement batch; TPL5111/PIR wake deferred."
+      "next_action": "Wait for the camera; then integrate its decision with the existing authenticated HTTP client and commission one deliberate command at a time. Do not infer absolute OPEN/CLOSE or automatically resend a lost-response toggle. Retain the working firmware and factory circuitry. Document the final power routing before revising the native power drawing; no new reconstruction readings requested.",
+      "commissioning": {
+        "date": "2026-10-18",
+        "firmware_version": "0.1.0",
+        "source_commit": "60a01ba7d99b88a4fa08504a8c0b6812a3d2c883",
+        "configured_binary_sha256": "3b49fab8b8c8c728a364f3113ebed5eae487eb3311939fb6fb547ba66c0b8df0",
+        "configured_binary_published": false,
+        "chip": "ESP32-C6FH4 rev0.1, embedded 4 MB flash",
+        "port": "COM3",
+        "agent_observed": [
+          "esptool verified bootloader, partition table and application flash hashes.",
+          "Serial startup reached Ready and obtained a Wi-Fi address.",
+          "HTTP / and /app.js returned 200; unauthenticated /api/status returned 401.",
+          "Authenticated status twice: same boot, increasing uptime, button_active=false, output_fault=false, last_sequence=0, next_sequence=1.",
+          "Agent sent no press commands during commissioning checks."
+        ],
+        "owner_reports": [
+          {
+            "context": "After flashing and connecting PetSafe",
+            "quote": "Pet-safe button triggers motor, and after delay it triggers back. So exactly the same functionality as the button, just remote button."
+          },
+          {
+            "context": "USB-C operation",
+            "quote": "I also tried it with USB-C connector connected."
+          },
+          {
+            "context": "Reply to proposed regulated 5 V battery-terminal test and camera follow-up",
+            "quote": "Well worked. Good results. Now, as soon as I have camera, let's test it with the camera.",
+            "qualification": "Positive owner result; no numeric voltage/current, final wiring diagram, RFID-specific result or test duration supplied."
+          }
+        ],
+        "photos": [
+          {
+            "file": "photos/originals/owner_bridge_layout_20261018_closeup.png",
+            "sha256": "98b3f8dc936361e30874b9141887c942dd2be1d63774ad8a5fdd11cbee3e717e",
+            "scope": "Owner placement photograph before soldering; not a verified final wiring view."
+          },
+          {
+            "file": "photos/originals/owner_bridge_layout_20261018_overview.png",
+            "sha256": "f3899b38a6878f63fc3692b87640509756184e067e7652c61c0a3b87e4378aa9",
+            "scope": "Owner placement photograph before soldering; not a verified final wiring view."
+          }
+        ],
+        "privacy": "Credentials, token, LAN/MAC identifiers, raw serial logs and configured binaries are excluded from published evidence."
+      }
     }
   ],
   "milestones": [
@@ -572,13 +616,13 @@
     },
     {
       "id": "F4",
-      "title": "Qualify the proposed external button bridge",
+      "title": "Integrate the working external button bridge",
       "scope": "External add-on only",
       "issues": [
         "A01"
       ],
-      "summary": "Circuit and local web/HTTP add-on firmware implemented; factory endpoint relationships preserved. Hardware commissioning remains pending. No carrier PCB; TPL5111/PIR wake deferred.",
-      "next_action": "When the perfboard is ready, confirm transistor lead order and the SuperMini supply/input arrangement, configure and flash locally, then commission one explicit button press. See firmware/button_bridge/README.md. No new reconstruction measurement batch; TPL5111/PIR wake deferred."
+      "summary": "Flashed ESP32-C6 prototype and web/API startup verified; owner confirms remote motor/button action and successful follow-up to the 5 V supply proposal. Camera and final power qualifications remain. Factory circuit unchanged.",
+      "next_action": "Wait for the camera; then integrate its decision with the existing authenticated HTTP client and commission one deliberate command at a time. Do not infer absolute OPEN/CLOSE or automatically resend a lost-response toggle. Retain the working firmware and factory circuitry. Document the final power routing before revising the native power drawing; no new reconstruction readings requested."
     }
   ],
   "settled_summary": [],
@@ -689,6 +733,6 @@
     ]
   },
   "historical_photo_summary": "docs/history/pr1-cleanup-20261015/photo_supported_summary.json",
-  "owner_action_summary": "No pending readings. RX-3 remains deferred. Owner is preparing the perfboard button bridge; local web/HTTP firmware is provided for later commissioning. LM2596 internal-power qualification, SuperMini input/isolation and owned-part lead order remain open. TPL5111/PIR wake is deferred.",
+  "owner_action_summary": "No pending readings. RX-3 remains deferred. The perfboard is assembled, firmware flashed, and remote motor/button operation is owner-confirmed. The owner reports a successful follow-up to the 5 V supply proposal; final wiring and power margins remain qualified. Camera integration waits for the camera. TPL5111/PIR wake is deferred.",
   "topology_audit": "evidence/topology_closure_audit.json"
 }
