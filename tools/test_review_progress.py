@@ -6,9 +6,29 @@ from audit_physical_evidence import compare
 from verify_capacitor_application import canonical_text_sha256, matches_text_digest, verify_receiver_capacitor_metadata
 from inventory_contracts import verify_receiver_open_erc, verify_bridge_asset_bytes
 from validate_native import wire_graph, board_net_partitions, verify_diode_functions, verify_button_bridge
+from verify_stock_symbols import graphical_units
+import sexpdata as sx
 import xml.etree.ElementTree as ET
 
 class ReviewProgress(unittest.TestCase):
+    def test_stock_symbol_inheritance_keeps_pins_and_names(self):
+        symbols = {e[1]: e for e in sx.loads('''(
+            (symbol "Parent" (symbol "Parent_1_1" (pin input line (number "1"))))
+            (symbol "Child" (extends "Parent"))
+            (symbol "Grandchild" (extends "Child")))''')}
+        original = copy.deepcopy(symbols)
+        resolved = graphical_units(symbols, 'Grandchild')
+        self.assertEqual(resolved, sx.loads('((symbol "Grandchild_1_1" (pin input line (number "1"))))'))
+        self.assertEqual(symbols, original)
+        symbols['Parent'][2][2][-1][1] = '2'
+        self.assertNotEqual(resolved, graphical_units(symbols, 'Grandchild'))
+
+    def test_stock_symbol_missing_or_cyclic_parent_fails(self):
+        for text in ['((symbol "A" (extends "Missing")))',
+                     '((symbol "A" (extends "B")) (symbol "B" (extends "A")))']:
+            symbols = {e[1]: e for e in sx.loads(text)}
+            with self.assertRaises(ValueError): graphical_units(symbols, 'A')
+
     def test_bridge_asset_bytes_and_original_digests(self):
         record=self.model['external_button_bridge']['library_files']
         paths={'symbol_sha256':'schematic/TrailCurrentSymbolLibrary.kicad_sym',

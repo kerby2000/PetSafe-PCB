@@ -19,11 +19,10 @@ The owner selected **a local web page plus HTTP API**, with Wi-Fi continuously a
 
 Tested toolchain: **ESP-IDF v6.0.2**, target **esp32c6**. No Arduino or third-party firmware libraries are required. Defaults use DIO, 40 MHz flash, **4 MB flash** and native USB Serial/JTAG console. COM3 identified the owned board as ESP32-C6FH4 rev0.1 with 4 MB flash on 2026-10-18; this was checked using esptool, independently of the imported footprint.
 
-On this Windows installation, open PowerShell:
+Install **ESP-IDF v6.0.2** using Espressif's [Windows setup instructions](https://docs.espressif.com/projects/esp-idf/en/v6.0.2/esp32c6/get-started/windows-setup.html), and open its configured ESP-IDF PowerShell. From your repository root:
 
 ```powershell
-. 'C:/Espressif/tools/Microsoft.v6.0.2.PowerShell_profile.ps1'
-Set-Location 'C:/Users/lukin/Documents/ChatGPT/PetSafe-PCB/firmware/button_bridge'
+Set-Location firmware/button_bridge
 python configure.py
 idf.py build
 ```
@@ -44,7 +43,7 @@ If automatic bootloader entry fails, hold BOOT while connecting USB or resetting
 
 The console prints `Open http://<assigned-IP>/`. Open that address, enter the access token, and select **Connect**. Connecting only reads status. Consider a router DHCP reservation for the camera controller. `petsafe-bridge` is the DHCP hostname; this firmware does not advertise mDNS, so `.local` resolution is not promised.
 
-The current preference is wired USB power; see [power arrangements and remaining qualifications](../../docs/BUTTON_BRIDGE.md#current-wired-power-direction). For any later battery operation, disconnect USB and use a qualified regulated supply. Set the LM2596 output to **3.30 V before connecting the ESP**; its ability to hold that voltage at low battery and the SuperMini's external-input/backfeed arrangement remain hardware qualifications. Do not power the ESP load from the PIR rail or factory 4.5 V rail.
+The current preference is wired USB power; see [power arrangements and remaining qualifications](../../docs/BUTTON_BRIDGE.md#current-wired-power-direction). For any later battery operation, disconnect USB and use a qualified regulated supply. The earlier LM2596 battery-converter proposal is not the installed supply route. The owner now confirms USB-C into the ESP, its 5V pad to PetSafe battery-positive, all cells removed and converter output disconnected. Any future converter/direct-3V3 arrangement still needs separate input/backfeed qualification. Do not power the ESP load from the PIR rail or factory 4.5 V rail.
 
 ## Commissioning
 

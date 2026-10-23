@@ -1,10 +1,14 @@
 """Verify stock-footprint existence and logical pad coverage; does not validate physical fit."""
 from pathlib import Path
-import json, hashlib, xml.etree.ElementTree as ET
+import argparse, os, json, hashlib, xml.etree.ElementTree as ET
 import sexpdata as sx
 from inventory_contracts import verify_bridge_asset_bytes
 R=Path(__file__).resolve().parents[1]
-F=Path.home()/'AppData/Local/Programs/KiCad/10.0/share/kicad/footprints'
+parser=argparse.ArgumentParser(description=__doc__)
+parser.add_argument('--footprints',default=os.environ.get('KICAD10_FOOTPRINT_DIR'),help='KiCad 10 footprint directory; defaults to KICAD10_FOOTPRINT_DIR')
+args=parser.parse_args()
+if not args.footprints:parser.error('Set KICAD10_FOOTPRINT_DIR or pass --footprints; see docs/REBUILD.md')
+F=Path(args.footprints).resolve()
 m=json.loads((R/'evidence/reconstruction.json').read_text())
 net=ET.parse(R/'output/PetSafe_netlist.xml')
 report=[]

@@ -324,7 +324,9 @@ for issue in issues:
 assert m['revision'] in (ROOT/'README.md').read_text() and m['revision'] in markdown
 assert 'physical switch common pairs remain inferred' not in next(c for c in m['components'] if c['ref']=='R40')['current_summary']
 assert 'R33 branch remains' not in next(n for n in m['nets'] if n['net']=='H_PIR_RAW')['status']
-for file in ['README.md','docs/OPEN_ITEMS.md','docs/TOPOLOGY_AUDIT.md']:
+for file in ['README.md','docs/OPEN_ITEMS.md','docs/TOPOLOGY_AUDIT.md',
+             'docs/BUTTON_BRIDGE.md','docs/REBUILD.md','docs/PUBLICATION.md',
+             'firmware/button_bridge/README.md']:
     import re
     for target in re.findall(r'\]\(([^)]+)\)', (ROOT/file).read_text()):
         url=urlparse(target)

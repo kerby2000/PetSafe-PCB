@@ -1,30 +1,61 @@
-# PetSafe PCB reverse engineering
+# PetSafe microchip cat-flap reverse engineering and remote-button retrofit
 
-**PetSafe PPA19-16811 · 100-1339 R03 A · schematic v0.9.52**
+[![Installed PetSafe flap with the working USB-powered retrofit](photos/publication/installed-flap.jpg)](docs/BUTTON_BRIDGE.md#installed-placement)
 
-One A3 landscape main-board schematic, reconstructed from original photographs and owner measurements. 82 modeled net partitions agree with KiCad; device functions and physical-evidence coverage remain qualified. **There is no routed reproduction PCB.**
+*Owner's installed prototype in a temporary cardboard fit-test insert. This is not a permanent weatherproof installation.*
 
-## Current schematic
+An **ESP32-C6 SuperMini and one transistor operate the original PetSafe button remotely** from a local web page or authenticated HTTP API. The owner reports successful remote button/motor operation and installation. The original S1 button, PIC controller and motor driver remain in use.
 
-[PDF](output/pdf/PetSafe_single_sheet.pdf) · [Editable KiCad project](schematic/PetSafe_1001339.kicad_pro) · [Schematic](schematic/PetSafe_1001339.kicad_sch) · [Local zoomable overview](index.html)
+**PetSafe PPA19-16811 · main board 100-1339 R03 A · firmware 0.1.0 · schematic v0.9.52**
+
+## What works and what remains
+
+| Status | Scope |
+|---|---|
+| Demonstrated | Owner-reported remote button press, motor response/delayed return and installation; firmware flash/boot and authenticated HTTP status checks recorded. |
+| Planned | Camera/prey recognition and automatic admission. Neither is implemented or demonstrated. |
+| Unknown | Independent OPEN/CLOSE state and latch position; the API reports button-output status, not door state. Power margins, failure behavior and long-term reliability remain qualified. |
+| Reconstruction | One A3 landscape schematic; 82 modeled factory net partitions agree with KiCad. All **44 starred capacitor values are estimates**. **No routed reproduction PCB exists.** |
+
+This is a working prototype, not a finished prey detector, secure access-control product or exact factory schematic. A press can toggle the current mode; a lost response must not trigger a fresh automatic retry.
+
+## Short demo
+
+[Watch the silent bench excerpt](photos/publication/remote-button-bench-excerpt.mp4) — the final 11.7 seconds of the owner's bench demonstration, following an off-screen remote command. It shows the original mechanism, not AI recognition or the final installed power routing. The full clip stays local because it includes a private chat on the monitor; [media details and release preparation](docs/PUBLICATION.md#demo).
+
+## Build the minimal retrofit
+
+| Quantity | Part | Connection |
+|---|---|---|
+| 1 | ESP32-C6 SuperMini | GPIO3 drives the base resistor; GND joins PetSafe GND. |
+| 1 | 2N3904 NPN | Collector → H_BUTTON/S1 pin 2; emitter → GND/S1 pin 1. Confirm the actual part's lead order. |
+| 1 | 4.7 kΩ resistor | GPIO3 → transistor base. |
+| 1 | 100 kΩ resistor | Base → emitter, on the transistor side of the 4.7 kΩ resistor. |
+| As needed | Insulated wire, isolated-pad perfboard and mounting insulation | Preserve the original button and factory circuitry. |
+
+[Wiring, transistor pin mapping and installation photos](docs/BUTTON_BRIDGE.md) · [Owner-confirmed USB power arrangement and its limits](docs/BUTTON_BRIDGE.md#current-wired-power-direction)
+
+Installed power: USB-C into the ESP, its 5V header to PetSafe battery-positive, common ground, **AA cells removed**, external converter output disconnected. The ESP uses its onboard 3.3 V regulator. This records the owner's build; it does not qualify the header/trace for motor current or establish source isolation. The native schematic retains the separate-positive-supply reference drawing. Do not parallel external power with alkaline cells or two regulator outputs.
+
+## Firmware setup and use
+
+Follow the [ESP-IDF v6.0.2 configuration/build instructions](firmware/button_bridge/README.md#build-and-configure), then the [first-flash instructions](firmware/button_bridge/README.md#flash-or-update-a-prototype). Configure Wi-Fi and a private token locally; configured binaries contain credentials and must not be published.
+
+The [local web page and HTTP API](firmware/button_bridge/README.md#http-api) issue an authenticated 200 ms GPIO3 pulse with duplicate protection and a five-second cooldown. HIGH presses, LOW releases. Keep this HTTP control service on a trusted local network; do not expose it to the internet. Camera decisions can later use the existing client, but there is no camera integration in this version. TPL5111/PIR wake is deferred.
+
+## Reconstructed schematic and evidence
+
+[PDF](output/pdf/PetSafe_single_sheet.pdf) · [Editable KiCad project](schematic/PetSafe_1001339.kicad_pro) · [Schematic](schematic/PetSafe_1001339.kicad_sch) · [Existing investigation viewer](index.html)
 
 [![Current native schematic preview](output/svg/PetSafe_1001339.svg)](output/pdf/PetSafe_single_sheet.pdf)
 
-All **44 starred capacitor values are estimates**, preserved with their basis and proposed ratings. C5 and the recorded inductor measurements remain unchanged. The **U6/U6A regulator-output ERC conflict is deliberately retained**; the new owner-supported receiver joins resolve the four earlier receiver findings without exclusions. U3 pin3 joins VREF; C19 lower joins C20 lower/R28 right/D2.R; C20 upper joins R42 lower/D3.S. File consistency is not proof of complete hardware connectivity.
+The **U6/U6A regulator-output ERC conflict is deliberately retained**. File consistency is not proof of every physical connection. Capacitor estimates, observed values, original photographs, measurements and negative results remain distinct and preserved.
 
-## Working external button bridge
+[Original-photo atlas](photo-atlas-v01.html) · [Front/rear PCB mosaics](photos/two_sides_overview.jpg) · [Via/photo viewer](docs/VIA_REVIEW.html) · [Physical-evidence audit](docs/TOPOLOGY_AUDIT.md) · [Current interpretation](docs/RECONSTRUCTION.md) · [Measurements](docs/MEASUREMENTS.md) · [Capacitor estimates](docs/CAPACITOR_VALUE_REVIEW.html)
 
-The native drawing retains the USB-powered ESP32-C6 SuperMini, the owner's 2N3904 and 4.7 kΩ / 100 kΩ resistors in parallel with S1. The owner has assembled and tested the perfboard. Firmware v0.1.0 is flashed; web/API startup checks passed and the owner confirms remote motor/button action. The USB 5 V follow-up was reported successful; final power routing and margins remain qualified. [Add-on BOM and wiring](docs/BUTTON_BRIDGE.md) · [Firmware: local web control, HTTP API and flashing](firmware/button_bridge/README.md). These four external parts are excluded from the factory-board BOM/PCB. TPL5111/PIR wake is deferred; no carrier PCB is included.
+## Remaining work
 
-## Actual physical PCB
-
-[![Actual front and rear PCB photographs](photos/two_sides_overview.jpg)](photos/two_sides_overview.jpg)
-
-These mosaics contain original photographic pixels. The rear is **mirrored and approximately registered** to the front; it is a comparison aid, not a hidden-layer reconstruction. [Readable rear orientation](photos/back_readable.jpg) · [Original-photo atlas](photo-atlas-v01.html) · [Originals](photos/originals) · [Via/photo viewer](docs/VIA_REVIEW.html).
-
-## Open items
-
-The [full Markdown register](docs/OPEN_ITEMS.md) and [HTML checklist](docs/FINISHING_CHECKLIST.html) reflect [remaining_work.json](evidence/remaining_work.json). The duplicate completion PDF is retired; use the HTML checklist for current status.
+The [existing register](docs/OPEN_ITEMS.md) and [HTML checklist](docs/FINISHING_CHECKLIST.html) both use [remaining_work.json](evidence/remaining_work.json). There is no second checklist or completion PDF.
 
 | ID | Area | Category |
 |---|---|---|
@@ -40,20 +71,12 @@ The [full Markdown register](docs/OPEN_ITEMS.md) and [HTML checklist](docs/FINIS
 | [E11](docs/OPEN_ITEMS.md#e11) | Inherited copper joins without independent closure | Copper connection; evidence coverage |
 | [A01](docs/OPEN_ITEMS.md#a01) | External ESP32 button bridge: camera and power qualification | Working external prototype; separate from reconstruction |
 
-TP11/TP17 hidden continuations remain a separately documented reconstruction boundary. No pending readings. RX-3 remains deferred. The perfboard is assembled, firmware flashed, and remote motor/button operation is owner-confirmed. The owner reports a successful follow-up to the 5 V supply proposal; final wiring and power margins remain qualified. Camera integration waits for the camera. TPL5111/PIR wake is deferred. Package geometry, routing/stackup, external assemblies and firmware remain prerequisites for a working reproduction.
+No pending readings. RX-3 remains deferred. Remote button/motor operation and installation are owner-confirmed. USB-C powers the ESP; its 5V header feeds PetSafe battery-positive with cells removed and converter output disconnected. Power margins remain unverified. Camera/prey recognition and automatic admission are not implemented. TPL5111/PIR wake is deferred. TP11/TP17 hidden continuations remain an explicit reconstruction boundary. Package geometry, routing/stackup, external assemblies and original firmware remain prerequisites for a factory-board reproduction.
 
-## Evidence and rebuild
+## Rebuild and publication
 
-[Independent physical-evidence audit](docs/TOPOLOGY_AUDIT.md) · [Current circuit interpretation](docs/RECONSTRUCTION.md) · [Measurements and negative results](docs/MEASUREMENTS.md) · [Capacitor proposals](docs/CAPACITOR_VALUE_REVIEW.html) · [Native validation](evidence/validation.json) · [Investigation history](docs/history/README.md)
+[Ordinary native-project use versus optional audit regeneration](docs/REBUILD.md) · [Native validation](evidence/validation.json) · [Source/provenance register](docs/SOURCES.md) · [Licensing proposal and draft prototype release](docs/PUBLICATION.md) · [Investigation history](docs/history/README.md)
 
-Use installed KiCad 10 (checked with 10.0.5), PowerShell and [Python dependencies](tools/requirements.txt):
+There is no top-level project license yet; public visibility is not a uniform open-source license. Third-party notices and the STEP model's noncommercial terms remain in force. Licensing, any release tag and Pages hosting await owner approval. No release or hosted control service is published by this preparation.
 
-```powershell
-$env:PYTHONUTF8 = '1'
-./tools/build.ps1 -Python python
-./tools/refresh_review.ps1 -Python python
-```
-
-The normal build exports/checks the current native file. The owner's redrawn layout is now the checked baseline; `-Regenerate` restores that complete layout from the synchronized native template, including its wires and comments. It no longer runs the old placement router. [The baseline review](evidence/owner_redraw_baseline_v0951.json) records the electrical fixes, requested layout moves and comment review; the incoming file is archived there. [The physical crosswalk](evidence/pin_crosswalk.json) preserves original pad labels. Original photos and raw results are not rewritten when interpretations change.
-
-[Original architect review: PR #1](https://github.com/kerby2000/PetSafe-PCB/pull/1) is merged. Later corrections are reviewed in follow-up pull requests.
+**Unofficial independent project; not affiliated with or endorsed by PetSafe or Radio Systems Corporation.**
