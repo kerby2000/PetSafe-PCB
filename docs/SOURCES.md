@@ -1,5 +1,7 @@
 # Source register
 
+Publication media/provenance, 2026-10-23: selected owner installation photographs are published only as metadata-free derivatives under `photos/publication/`; the originals and source/derivative map remain local. The bench excerpt excludes the monitor/private chat and audio. Photographs establish visible placement, not hidden solder connections or clearance. Owner-confirmed installed power is recorded in [A01](OPEN_ITEMS.md#a01) and the [bridge guide](BUTTON_BRIDGE.md#current-wired-power-direction). [Publication preparation](PUBLICATION.md#licensing-proposal) identifies the pinned TrailCurrent source/author, KiCad terms, vendor-document boundaries and the unresolved creator/source attribution of the separately licensed CC BY-NC STEP. No top-level license is applied by that proposal.
+
 Manufacturer pinouts and application examples establish plausible functions, not photographed board connectivity. Accessed 2026-10-07 and 2026-10-08. Key PDFs are saved under `datasheets/`; SHA-256 checksums are in `evidence/datasheet_manifest.json`.
 
 | Ref | Primary source | What it supports |
