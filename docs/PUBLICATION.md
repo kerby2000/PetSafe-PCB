@@ -57,7 +57,23 @@ Exclude configured firmware, access tokens, Wi-Fi credentials, build directories
 
 ## Validation
 
-Reviewed starting point: [`7bf727c4b753d1c0f620ca748917d07ce63623a3`](https://github.com/kerby2000/PetSafe-PCB/commit/7bf727c4b753d1c0f620ca748917d07ce63623a3). Publication-branch validation and its exact commit will be recorded before this PR is delivered. Firmware logic and native electrical files are outside the change scope.
+Reviewed starting point: [`7bf727c4b753d1c0f620ca748917d07ce63623a3`](https://github.com/kerby2000/PetSafe-PCB/commit/7bf727c4b753d1c0f620ca748917d07ce63623a3).
+
+**Validated publication source: [`1ddf1e558b0f898a811bbba97ee0f556267abb03`](https://github.com/kerby2000/PetSafe-PCB/commit/1ddf1e558b0f898a811bbba97ee0f556267abb03)**, tested on 2026-10-23 in the working checkout and a separate initially clean, full-history clone. This validation record is a subsequent documentation-only commit. Any eventual release/tag must name its actual final commit and be rechecked if content changes.
+
+Environment: Windows/PowerShell, KiCad **10.0.5**, Python **3.11** virtual environment installed from `tools/requirements.txt`, Node.js and Zig **0.13.0** as the firmware host C compiler. The clean clone used explicit paths to these installed tools; no private MCP symbol-loader directory was used. This is not a claim of cross-platform or byte-for-byte reproducible exports.
+
+| Executed check | Result |
+|---|---|
+| `tools/build.ps1` | PASS: native netlist, PDF and SVG export; native ERC; native connectivity, historical preservation, receiver/R39/capacitor, stock-symbol, finalization and footprint checks. All **82 factory endpoint partitions** retained, **44 capacitor estimates** retained, **33 embedded symbol definitions** match their registered library sources. |
+| Native ERC | Exactly **one** finding: the deliberately retained U6/U6A power-output conflict. No library-load errors; exclusions and circuitry unchanged. |
+| `tools/refresh_review.ps1` | PASS: regenerated existing reports; electrical/photo evidence checks; current links and JavaScript syntax; **23 regression tests**. No pending measurements; RX-3 stays deferred. |
+| `node tools/test_measurement_form.cjs` | PASS: draft restoration, input/copy/download paths and blocked-storage/clipboard fallbacks. No browser interaction claimed. |
+| `firmware/button_bridge/tests/run_tests.py --cc <zig executable>` | PASS in both checkouts: policy tests, **13 output/error/interleaving scenarios**, **6 Python tooling tests**, and web-client regressions. No target rebuild, flashing, hardware actuation or live API test in this publication task; firmware source is unchanged. |
+| Preservation and export comparison | Native schematic/model, original measurement register, capacitor evidence, local credentials and configured binaries retained byte-for-byte. Original PCB/photo checksum audit passes. Regenerated PDF drawing stream matches the baseline exactly; fresh native timestamps/source paths and the PDF hash can differ. |
+| Publication privacy | Three JPEGs have no EXIF/XMP/GPS/device/comment metadata. MP4 has only its video track and technical descriptors, with no audio or identifying metadata. Selected clip reviewed at 4 fps across its full duration; no monitor/chat or people appear. Private originals and full-video derivatives remain outside Git. Staged files checked against local credential values without printing them. |
+
+The clean rebuild changed only native timestamp/source-path metadata, PDF metadata and its recorded hash. New public media hashes match the local source/derivative map; source originals are unchanged. The owner's restore-backup directory remains untouched. Fresh file checks validate the modeled reconstruction and software consistency, not latch feedback, power-current margin or physical safety.
 
 ## Hosting and approval boundary
 
